@@ -91,7 +91,8 @@ HomeKit exposes an advisory switch plus a temporary override:
   the current window. Neither HomeKit nor a schedule can command indefinite on.
 
 All thresholds and timers are explicit configuration. The CLI supports them at
-startup; `Supervisor::reconfigure` supports a future local configuration adapter.
+startup; `Supervisor::reconfigure` supports the selected ESP-hosted local
+settings/schedule webpage's future configuration adapter.
 It clamps an active deadline when the run duration decreases and never extends
 it when duration increases. No runtime configuration UI or Matter stack is
 implemented. The HomeKit/Matter adapter must report the actual command/state,

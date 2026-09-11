@@ -7,6 +7,9 @@ the skimmer. The controller and mains board share an enclosure with physical sep
 It runs on configurable 15-minute schedules when the water level permits, with
 bounded HomeKit overrides. Every run ends automatically. See [behavior](docs/controls.md).
 Pushover alerts report confirmed water-level transitions in either direction.
+An ESP-hosted local webpage is selected for settings and schedules. The sensor
+targets a freshwater tank with 5 mm glass and is held snug by the owner's separate
+clip; this project supplies the PCB attachment interface.
 
 **Status:** requirements and development scaffold. Parts, electrode geometry, and
 the mains design are provisional. There is no product schematic, routed PCB, sensor

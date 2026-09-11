@@ -4,6 +4,10 @@
 and purchase status are independent. All rows start unpurchased for Crystal Shim;
 Stillair's received stock is reference evidence only.
 
+The owner's separately modeled/printed sensor clip is outside this BOM's scope.
+PCB attachment features and any required sensor protection remain project work;
+adhesive is not the mounting requirement.
+
 Quantities are per prototype where known. Blank quantity, order code or part
 number means open, not zero or an approved substitute. Candidate families are not
 orderable complete assemblies. Resolve exact suffix, footprint, mating connector,

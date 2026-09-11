@@ -1,12 +1,13 @@
 # Build and commissioning sequence
 
-1. **Establish sensor geometry.** Use the owner's 5 mm glass and 50 mm span down
-   from the rim; allow board padding without a rim clip. Stop/restart and timed
-   override behavior are confirmed. Adapt TI's geometry and define calibration data.
-   Prototype at isolated low voltage before making mains hardware.
+1. **Establish sensor geometry.** Use the freshwater tank's 5 mm glass and 50 mm
+   span down from the rim. Keep the PCB reasonably compact and define its attachment
+   interface for the owner's separate clip; the PCB stays outside the glass.
+   Stop/restart and timed override behavior are confirmed. Adapt TI's geometry and
+   define calibration data. Prototype at isolated low voltage before making mains hardware.
 2. **Prove the sensor.** Measure rising/falling levels and receding wet glass with
-   hands, deposits and expected installation conditions. Record raw capacitances;
-   set a threshold margin and freshness policy from evidence.
+   hands, deposits, clip pressure, contact gaps and removal/reseating. Record raw
+   capacitances; set a threshold margin and freshness policy from evidence.
 3. **Capture electrical design.** Select complete connector sets, parts/footprints,
    power budget, GPIO map and protection components. Review mains separation and
    enclosure before routing. Resolve the output snubber with actual pump tests.
@@ -17,6 +18,8 @@
    driver, sensor faults, retained maintenance and watchdog on real hardware.
    Add Matter/HomeKit switch reporting, configurable local schedules, Off suppression
    and timed overrides; prove every run cap through clock/config/network changes.
+   Implement the ESP-hosted settings/schedule webpage with validated persistent
+   configuration and calibration/Pushover setup.
    Provision Pushover credentials separately, then verify water-transition alerts
    and control independence during network/API failures.
 6. **Commission mains and load.** After reviewed protection/enclosure setup, validate

@@ -35,6 +35,20 @@ Ordinary network requests cannot bypass these interlocks. The explicit manual
 override is the sole exception for a **valid low-water level**, not for an
 untrustworthy sensor, calibration fault or maintenance state.
 
+## Local settings page
+
+The owner selected an ESP-hosted local webpage for settings and scheduling.
+It will configure the daily schedule/timezone, shared run duration, calibrated
+thresholds, confirmation/off/freshness timings, calibration workflow and Pushover
+settings. HomeKit remains the advisory switch and temporary-override interface.
+
+Apply validated configuration through the same control model, persist accepted
+settings, and never extend an active run deadline when settings change. Invalid or
+missing calibration must keep the relay off. The webpage and its network/storage
+work must not block sensor sampling or local control. Page layout,
+access control and provisioning details are implementation work; the local web
+interface is selected but not built by the scaffold.
+
 ## Run windows and HomeKit
 
 Scheduled windows have an original start/end and stable identity. A late start or

@@ -19,13 +19,17 @@ are not a released electrical design.
   override even at valid low water. No indefinite run. All control tuning is configurable.
 - Pushover alerts on confirmed high-to-low and low-to-high water changes, independent
   of pump activity; notification delivery cannot gate local control.
+- Freshwater tank. A separate owner-designed clip holds the compact sensor PCB
+  snug against glass; this project defines the PCB attachment interface only.
+- Controller enclosure sits on a spacious flat surface behind the tank within
+  8 inches of the sensor. Settings and scheduling use a local webpage on the ESP.
 
 ## Open inputs and selections
 
 | ID | Input/choice | Current state | Resolves |
 | --- | --- | --- | --- |
 | D-01 | Glass thickness | Confirmed by owner: 5 mm, 2026-09-11 | Sensor sensitivity and geometry |
-| D-02 | Desired vertical detection range and mounting datum | Confirmed: 50 mm down from top of tank rim; padding at top/bottom allowed; no clip over rim | Stick outline and reference margins remain to design |
+| D-02 | Desired vertical detection range and mounting datum | Confirmed: 50 mm down from top of tank rim; padding at top/bottom allowed; PCB stays outside glass while separate mount clips over it | Stick outline and reference margins remain to design |
 | D-03 | Stop low / automatic restart after refill | Owner confirmed; only within unsuppressed scheduled windows, with explicit timed manual override exception | Product behavior locked |
 | D-04 | Existing Stillair connector family | Resolved from BOM: Micro-Fit 3.0, received parts; see sources | Family continuity only |
 | D-05 | Six-position sensor header/contact set and wire | Open; `43025-0600` housing candidate | Pinout, harness, orderable set |
@@ -38,17 +42,17 @@ are not a released electrical design.
 | D-12 | Retained state and network interface | HomeKit switch via Matter-over-Wi-Fi selected like Stillair; maintenance and current-window Off suppression need persistence | Hardware firmware |
 | D-13 | Run duration and daily schedule | Default 15 min shared by schedule and override, all adjustable; exact daily times/count/timezone open | Local scheduler and configuration |
 | D-14 | Water-transition notifications | Pushover selected; first baseline silent; keys and delivery/persistence adapter not provisioned | Notification integration |
-| D-15 | Settings interface | Configurability is required; local webpage versus USB/serial configuration has not been selected | Schedule, calibration, timing and Pushover provisioning workflow |
-| D-16 | Aquarium water and mounting envelope | Freshwater/saltwater, flat glass width, rim obstructions and enclosure mounting space are not recorded | Sensor prototype conditions and mechanical fit |
+| D-15 | Settings interface | Confirmed: ESP-hosted local webpage for settings and schedule; implementation pending | Schedule, calibration, timing and Pushover provisioning workflow |
+| D-16 | Aquarium water and mounting envelope | Confirmed: freshwater, ample width with reasonably compact sensor PCB, snug contact via owner's separate gravity/friction clip; other hardware on spacious flat surface behind tank within 8 inches | PCB attachment interface remains project work; printed clip design is out of scope |
 
 The confirmed inputs do not establish electrode geometry or physical thresholds.
 Proceed with independent tooling and documentation while designing those from
 the reference and measurements. Do not fabricate geometry by guessing.
 
-The operating behavior is defined well enough to begin sensor design. D-15 and
-D-16 are remaining owner inputs; exact schedule entries can wait for configuration,
-and physical stop/restart thresholds need calibration. Exact part selection,
-protection values, GPIO allocation and insulation layout are engineering work,
+The owner inputs needed to begin sensor design are resolved. Exact schedule entries
+can wait for the local settings page, and physical stop/restart thresholds need
+calibration. Exact part selection, protection values, GPIO allocation and
+insulation layout are engineering work,
 not a list of component choices the owner must answer before work can proceed.
 
 ## Release gates

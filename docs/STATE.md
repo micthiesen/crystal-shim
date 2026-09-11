@@ -8,7 +8,12 @@ Last updated: 2026-09-11
   candidate parts in the [BOM](../bom/bom.csv) and physical checks in the
   [commissioning matrix](../testing/test-matrix.csv). No hardware test has run.
 - Owner confirmed **5 mm glass** and a **50 mm sensing span downward from the tank
-  rim**. Board padding is allowed; it must not clip over the rim. See [sensor](sensor.md).
+  rim**, with freshwater and ample width for a reasonably compact sensor. Board
+  padding is allowed; the PCB stays outside the glass. The owner's separate clip
+  goes over the glass and holds it snug by gravity/friction. See [sensor](sensor.md).
+- Other hardware sits behind the tank on a spacious flat surface within 8 inches.
+  The local settings/schedule webpage is confirmed. The printed clip is outside
+  project scope; the PCB attachment interface is included. See [mechanical](mechanical.md).
 - Scheduled 15-minute runs, HomeKit switch/temporary overrides and automatic low-water
   control are locked in. All timing and thresholds are adjustable; runs never last
   indefinitely. Exact daily times/timezone remain open. See [controls](controls.md).
@@ -28,14 +33,14 @@ This addresses the main uncertainty, sensing through receding wet glass, before
 committing the full controller layout. Scope is a focused sensor design/prototype
 task; the risk is inadequate separation between real water level and residual film.
 See [sensor](sensor.md), [G-01](decisions.md) and [build sequence](build.md).
-Reference study and circuit planning can begin now. Exact placement needs the
-available glass/rim envelope; physical validation needs the prototype and aquarium.
+Reference study and circuit planning can begin now. Provide a dimensioned PCB
+attachment interface for the owner's clip; do not design the clip itself.
+Physical validation needs the prototype, snug mount and freshwater aquarium.
 
-Exact mating connectors, rim clearance, reference margins, calibrated thresholds,
+Exact mating connectors, retention features, reference margins, calibrated thresholds,
 daily schedule and all protection values remain open in [decisions](decisions.md).
-Owner inputs still needed: freshwater/saltwater, mounting clearances and the
-settings interface. Schedule times can wait for configuration; level thresholds
-need measurements. These are recorded in D-13, D-15 and D-16.
+No remaining owner question blocks sensor design. D-15 and D-16 are resolved;
+schedule times can wait for the settings page, and level thresholds need measurements.
 
 ## Candidates not chosen
 
@@ -43,10 +48,10 @@ need measurements. These are recorded in D-13, D-15 and D-16.
   datasheet research; final protection choices need pump measurements. Sensor
   feasibility has priority because it can invalidate the present approach.
 - Matter/HomeKit and configuration: medium implementation task, with host work
-  available now and actual pairing gated on a C6 board. Select the settings
-  interface before committing its user flow; it does not resolve sensor feasibility.
+  available now and actual pairing gated on a C6 board. The local settings webpage
+  is selected; this implementation does not resolve sensor feasibility.
 - Enclosure design: medium mechanical task that unblocks physical assembly, but
-  needs the mounting envelope, selected filter/connectors and reviewed isolation
+  needs selected filter/connectors and reviewed isolation
   layout. Fabrication now risks making an enclosure that cannot fit the design.
 
 ## Learned recently

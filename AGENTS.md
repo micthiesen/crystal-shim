@@ -16,7 +16,8 @@ parts, firmware, PCB source, test evidence, and exported mechanical artifacts.
   `sensor/`, `controller/`, and `mains/` start as requirements, not fabricated designs.
 - `bom/bom.csv`: candidate/selected parts and independent purchase status.
 - `testing/test-matrix.csv`: commissioning criteria and actual evidence.
-- `cad/`: enclosure and sensor-mount exports when dimensions are established.
+- `cad/`: enclosure exports and the PCB attachment interface. The owner models
+  the separate sensor clip outside this project.
 
 ## Design rules
 
@@ -25,6 +26,14 @@ relay contact/coil boundary belong on the mains board; the controller and sensor
 carry only isolated low voltage. PE is continuous and never switched. Switch hot;
 neutral is never switched alone. The pump remains connected to household mains
 through a filter and relay, without an isolation transformer.
+
+Design for freshwater, 5 mm glass and a 50 mm sensing span down from the rim. Keep
+the sensor reasonably compact and provide an attachment interface for the owner's
+separate printed clip, which holds it snug against glass by gravity/friction.
+The PCB stays outside the glass; the clip may go over it. Adhesive is not required.
+Other hardware sits on a spacious flat surface behind the tank within 8 inches;
+preserve the sensor harness length limit. The ESP hosts the local settings and
+schedule webpage; its implementation must not block local control.
 
 Relay command defaults off at boot/reset, invalid or stale sensor input, and
 maintenance. Networking must not control the availability of local protection.
