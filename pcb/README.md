@@ -3,6 +3,12 @@
 This is a requirements-first workspace. The three product boards have no schematic,
 pin assignment, outline, placement, fabrication profile, or accepted KiCad handoff yet.
 
+Design the three boards as one final-use set for a single fabrication cycle.
+Complete part, interface, enclosure and source/layout reviews before release.
+There is no separate sensor prototype or planned board respin. Sensor calibration
+and actual-load verification use the final boards after assembly; they do not
+block the complete design's fabrication release. See [build order](../docs/build.md).
+
 | Board | Role | Requirements |
 | --- | --- | --- |
 | [sensor](sensor/README.md) | External active capacitance sensor stick | [Sensor](../docs/sensor.md) |

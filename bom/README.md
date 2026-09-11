@@ -8,7 +8,9 @@ The owner's separately modeled/printed sensor clip is outside this BOM's scope.
 PCB attachment features and any required sensor protection remain project work;
 adhesive is not the mounting requirement.
 
-Quantities are per prototype where known. Blank quantity, order code or part
+Quantities are for one complete final-use unit where known, including one of each
+board and the required harnesses and enclosure parts. There is no separate
+prototype BOM or planned second board order. Blank quantity, order code or part
 number means open, not zero or an approved substitute. Candidate families are not
 orderable complete assemblies. Resolve exact suffix, footprint, mating connector,
 terminal/gauge and ratings together before changing a line to Selected.

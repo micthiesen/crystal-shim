@@ -38,6 +38,13 @@ by the pair list; draw both mating faces before freezing the harness.
 
 ## Geometry and calibration
 
+Design this as the final-use daughterboard in the complete three-board release.
+There is no separate sensor prototype or pre-fabrication wet-glass test phase.
+Before release, document the reference-derived geometry, channel/shield assignment,
+expected capacitance and converter range, reference coverage and mounting tolerances.
+Use reference evidence and calculations to review the design; physical calibration
+and performance verification follow on the final board.
+
 Adapt [TI TIDA-00317](https://www.ti.com/tool/TIDA-00317), particularly
 [TIDU736A sections 4 and 6](https://www.ti.com/lit/ug/tidu736a/tidu736a.pdf), rather
 than replacing it with six independent level pads. Its matched liquid and
@@ -73,9 +80,12 @@ glass. Use the actual freshwater aquarium conditions. Include deposits/biofilm,
 temperature changes, clip pressure, contact gaps, removal/reseating, nearby
 hands/objects, cable motion, and skimmer switching. Validate repeatable snug
 contact; any protective layer or spacer must be included in the sensor calibration.
-Retain raw measurements and independent observed water position. Establish a
-stable stop/restart margin before building the full mains controller. See the
-`SEN-*` rows in [the commissioning matrix](../testing/test-matrix.csv).
+Perform these checks during final-board commissioning, initially with isolated
+low-voltage power and mains disconnected. Retain raw measurements and independent
+observed water position. Establish a stable stop/restart margin before unattended
+automatic operation. This acceptance work does not block fabrication of the full
+board set. See the `SEN-*` rows in
+[the commissioning matrix](../testing/test-matrix.csv).
 
 Until that evidence exists, no routine cleaning and immunity to hand movement
 remain goals. Continuous sensing is a hardware simplification, not a promise of

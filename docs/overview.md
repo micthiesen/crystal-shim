@@ -6,8 +6,15 @@ when enough water is present. Automatic low-water stop/recovery and timed HomeKi
 switch overrides are confirmed requirements. Every run ends automatically; an
 explicit override can run at a valid low level. See [the control contract](controls.md).
 
+The project targets one complete, final-use three-board build. There is no separate
+sensor prototype or planned PCB revision cycle. Resolve geometry, interfaces and
+component selection through reference research, calculations and design review
+before fabrication; calibrate and verify actual performance on the final assembly.
+See [the build sequence](build.md).
+
 The North American skimmer is specified at 120 VAC, 60 Hz, 4 W. Starting behavior
-still needs measurement for relay and fuse selection.
+must be accounted for in relay and fuse selection from documented ratings and
+design margins, then measured during final-assembly commissioning.
 [OASE product specifications](https://www.oase.com/en-US/aquarium/crystalskim-350).
 
 ## Three boards

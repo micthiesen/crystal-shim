@@ -21,6 +21,15 @@ parts, firmware, PCB source, test evidence, and exported mechanical artifacts.
 
 ## Design rules
 
+This is a one-shot project: design all three final-use boards and their interfaces
+for one fabrication and assembly cycle. Do not introduce a separate prototype,
+evaluation-board phase or planned PCB respin. Front-load reference research,
+calculations, component/footprint checks, integration review and ERC/DRC before
+fabrication. Calibrate and commission the final boards after assembly; physical
+sensor results are an operating acceptance gate, not a prerequisite to designing
+or fabricating the controller and mains boards. Record unverified assumptions
+honestly; the build strategy does not guarantee first-build performance.
+
 Preserve the three-board split and mains/low-voltage barrier. The isolated PSU and
 relay contact/coil boundary belong on the mains board; the controller and sensor
 carry only isolated low voltage. PE is continuous and never switched. Switch hot;

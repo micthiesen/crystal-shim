@@ -161,8 +161,11 @@ are ignored. `tick` reuses the last reading without renewing its timestamp.
 Supply successful acquisitions frequently enough to meet the configured age
 deadline. A single leap forward in time cannot simulate uninterrupted sampling.
 
-Before binding hardware, validate electrode calibration on the confirmed glass/range, measured
-thresholds, maximum sample age and cadence, reviewed GPIO/net assignments,
-watchdog behavior, maintenance/window-suppression persistence, calendar scheduling,
-Matter/Pushover adapters, and diagnostic storage/transport for
-raw capacitances, interpreted level, validity, relay command, and reset reason.
+Bind hardware drivers to reviewed GPIO/net assignments from the complete board
+design. During commissioning of the final assembled boards, validate electrode
+calibration on the confirmed glass/range, measured thresholds, maximum sample age
+and cadence, watchdog behavior, maintenance/window-suppression persistence,
+calendar scheduling, Matter/Pushover adapters, and diagnostic storage/transport
+for raw capacitances, interpreted level, validity, relay command and reset reason.
+Physical calibration follows fabrication; it does not block implementing the
+hardware bindings.

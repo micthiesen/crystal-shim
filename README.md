@@ -11,6 +11,10 @@ An ESP-hosted local webpage is selected for settings and schedules. The sensor
 targets a freshwater tank with 5 mm glass and is held snug by the owner's separate
 clip; this project supplies the PCB attachment interface.
 
+**Build approach:** one complete design and fabrication cycle for all three
+final-use boards. Complete design reviews before fabrication, then calibrate and
+commission the assembled unit. No separate prototype phase is planned.
+
 **Status:** requirements and development scaffold. Parts, electrode geometry, and
 the mains design are provisional. There is no product schematic, routed PCB, sensor
 driver, or commissioned hardware. The embedded app has no relay GPIO binding.

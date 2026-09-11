@@ -5,6 +5,10 @@ are not a released electrical design.
 
 ## Baseline
 
+- One-shot project: one complete design and fabrication cycle for the three
+  final-use boards. No separate prototype, evaluation-board phase or planned
+  respin. Design review precedes fabrication; calibration and actual-load tests
+  use the final assembly.
 - Three boards: active glass-mounted sensor, low-voltage ESP, and mains board.
   Controller and mains share a physically partitioned enclosure.
 - Isolated controller/sensor power; filtered and relay-switched pump mains without
@@ -34,7 +38,7 @@ are not a released electrical design.
 | D-04 | Existing Stillair connector family | Resolved from BOM: Micro-Fit 3.0, received parts; see sources | Family continuity only |
 | D-05 | Six-position sensor header/contact set and wire | Open; `43025-0600` housing candidate | Pinout, harness, orderable set |
 | D-06 | FDC1004 VSSOP, ESP32-C6-WROOM-1, IRM-05-5 | Proposed; exact order suffixes/footprints where needed remain open | Schematics and power budget |
-| D-07 | G5RL-1A-TV8 5 V coil | Proposed; exact motor rating and actual start behavior to confirm | Relay selection |
+| D-07 | G5RL-1A-TV8 5 V coil | Proposed; confirm exact motor rating and design margin before fabrication; verify actual starts on final assembly | Relay selection and commissioning |
 | D-08 | FN2090 filter variant | Open | Attenuation, leakage, enclosure fit |
 | D-09 | Fuse/MOV/RC/regulators and internal mains connector set | Open, no generic values frozen | Protection and source capture |
 | D-10 | Enclosure, insulation/spacing and earth scheme | Open, reviewed mains layout required | Physical safety |
@@ -44,28 +48,38 @@ are not a released electrical design.
 | D-14 | Water-transition notifications | Pushover selected; first baseline silent; keys and delivery/persistence adapter not provisioned | Notification integration |
 | D-15 | Settings interface | Confirmed: ESP-hosted local webpage for settings and schedule; implementation pending | Schedule, calibration, timing and Pushover provisioning workflow |
 | D-16 | Aquarium water and mounting envelope | Confirmed: freshwater, ample width with reasonably compact sensor PCB, snug contact via owner's separate gravity/friction clip; other hardware on spacious flat surface behind tank within 8 inches | PCB attachment interface remains project work; printed clip design is out of scope |
+| D-17 | Build strategy | Owner confirmed: one-shot final-use build of all three boards; no separate prototype or planned respin | Complete design/review before fabrication; physical calibration and acceptance afterward |
 
 The confirmed inputs do not establish electrode geometry or physical thresholds.
-Proceed with independent tooling and documentation while designing those from
-the reference and measurements. Do not fabricate geometry by guessing.
+Set geometry from TI's reference, the installation constraints and documented
+engineering analysis before fabrication. Set physical thresholds from measurements
+on the final sensor during commissioning. Sensor measurements do not gate design
+or fabrication of the other boards.
 
-The owner inputs needed to begin sensor design are resolved. Exact schedule entries
+The owner inputs needed to begin the complete design are resolved. Exact schedule entries
 can wait for the local settings page, and physical stop/restart thresholds need
 calibration. Exact part selection, protection values, GPIO allocation and
-insulation layout are engineering work,
-not a list of component choices the owner must answer before work can proceed.
+insulation layout are engineering work, not a list of component choices the owner
+must answer before work can proceed.
 
 ## Release gates
 
-| Gate | Evidence needed |
-| --- | --- |
-| G-01 Sensor feasibility | Actual glass/range defined; wet/dry reference geometry; receding wet-glass and interference measurements establish threshold margin |
-| G-02 Electrical capture | Exact parts, pin/pad maps, power budget, harness mating views; schematic checks and visual review |
-| G-03 Mains and enclosure review | Protection coordination, rated connectors, thermal/insulation/spacing, PE, separation, strain relief, splash/GFCI installation reviewed |
-| G-04 PCB handoff and fabrication | Tscircuit manifest parity, declared KiCad augmentations, ERC/DRC, renders, assembly and manufacturing evidence per project skills |
-| G-05 Firmware on hardware | Calibration/faults, default-off reset/watchdog/USB, maintenance, HomeKit switch, schedule suppression, bounded overrides/expiry, configuration and clock changes, network independence demonstrated |
-| G-06 Actual load and installation | Pump start/switching, tuned suppression, temperature, GFCI/leakage, repeated switching with no PC wake or controller/sensor upset |
-| G-07 Unattended use | All applicable prior gates passed with dated evidence; no routine cleaning goal validated over an agreed observation period |
+Gate IDs are stable references, not execution order. G-02/G-03/G-04 are required
+for fabrication release of the complete board set. G-01/G-05/G-06 use the final
+hardware after assembly; their measurements are not pre-fabrication requirements.
+
+| Gate | Stage | Evidence needed |
+| --- | --- | --- |
+| G-01 Sensor calibration and acceptance | Final-board commissioning | Rising/falling water, receding wet glass, mount repeatability and interference measurements establish a stable threshold margin on the final sensor |
+| G-02 Complete electrical capture | Before fabrication | Documented sensor geometry/channel/shield design basis; exact parts, pin/pad maps, power budget, protection calculations and harness mating views for all three boards; schematic checks and integration review |
+| G-03 Mains and enclosure review | Before fabrication | Protection coordination, rated connectors, thermal/insulation/spacing, PE, separation, strain relief and splash/GFCI installation design reviewed |
+| G-04 PCB handoff and fabrication | Before fabrication | Tscircuit manifest parity, declared KiCad augmentations, ERC/DRC, renders and assembly/manufacturing files for all three boards per project skills |
+| G-05 Firmware on hardware | Final-board commissioning | Calibration/faults, default-off reset/watchdog/USB, maintenance, HomeKit switch, schedule suppression, bounded overrides/expiry, configuration and clock changes, network independence demonstrated |
+| G-06 Actual load and installation | Final-assembly commissioning | Pump start/switching, suppression effectiveness, temperature, GFCI/leakage, repeated switching with no PC wake or controller/sensor upset |
+| G-07 Unattended use | After commissioning | All applicable gates passed with dated evidence; no routine cleaning goal validated over an agreed observation period |
 
 No gate is passed by creating this repository. A source test cannot establish
 isolation, EMC, enclosure suitability or certification of the completed unit.
+One-shot describes the planned build, not a guarantee that unmeasured performance
+will pass. If final commissioning fails, record the failure and resolve it before
+claiming readiness; do not silently pass the test or introduce a planned respin.

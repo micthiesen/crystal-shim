@@ -4,58 +4,61 @@ Last updated: 2026-09-11
 
 ## Now
 
-- Initial three-board design brief is encoded in the [dossier](README.md), with
-  candidate parts in the [BOM](../bom/bom.csv) and physical checks in the
-  [commissioning matrix](../testing/test-matrix.csv). No hardware test has run.
-- Owner confirmed **5 mm glass** and a **50 mm sensing span downward from the tank
-  rim**, with freshwater and ample width for a reasonably compact sensor. Board
-  padding is allowed; the PCB stays outside the glass. The owner's separate clip
-  goes over the glass and holds it snug by gravity/friction. See [sensor](sensor.md).
-- Other hardware sits behind the tank on a spacious flat surface within 8 inches.
-  The local settings/schedule webpage is confirmed. The printed clip is outside
-  project scope; the PCB attachment interface is included. See [mechanical](mechanical.md).
-- Scheduled 15-minute runs, HomeKit switch/temporary overrides and automatic low-water
-  control are locked in. All timing and thresholds are adjustable; runs never last
-  indefinitely. Exact daily times/timezone remain open. See [controls](controls.md).
-- Pushover alerts are required on confirmed high/low water transitions. Live
-  notification sending and credentials are deferred to app integration.
-- Rust host control/simulator and inert ESP32-C6 app are scaffolded. Actual sensor
-  acquisition, GPIO bindings, calibration, watchdog and maintenance persistence
-  remain implementation work. [Firmware](../firmware/README.md).
-- PCB tools and native skills come from Stillair, with reciprocal sync maps.
-  Product board areas contain requirements only; the TSX fixture validates tooling.
+- The owner selected a **one-shot final-use build**: complete the three-board
+  design and reviews, fabricate one board set, then assemble and commission it.
+  No separate prototype or planned respin. See [D-17 and release gates](decisions.md)
+  and the [build sequence](build.md).
+- Freshwater, **5 mm glass**, **50 mm sensing span down from the rim**, compact
+  sensor with padding allowed. The owner's separate gravity/friction clip is out
+  of scope; the PCB attachment interface is included. Other hardware sits behind
+  the tank on a flat surface within 8 inches. See [sensor](sensor.md) and
+  [mechanical](mechanical.md).
+- Adjustable 15-minute scheduled runs, automatic low-water stop/recovery, bounded
+  HomeKit overrides, a local settings/schedule webpage and Pushover water-transition
+  alerts are specified. All runs end automatically. See [controls](controls.md).
+- Rust host control/simulator and an inert ESP32-C6 app are scaffolded. Sensor
+  acquisition, GPIO bindings, calibration/storage, watchdog, Matter, web settings
+  and live Pushover integration remain implementation work. [Firmware](../firmware/README.md).
+- PCB tools and native skills follow Stillair with reciprocal sync maps. Board
+  areas contain requirements only; the TSX fixture validates tooling. The
+  [BOM](../bom/bom.csv) has candidates, and every physical check in the
+  [commissioning matrix](../testing/test-matrix.csv) remains unrun.
 
 ## Next
 
-Adapt the TI reference electrode geometry to the confirmed glass and sensing span,
-then produce a concrete low-voltage prototype design and measurement plan.
-This addresses the main uncertainty, sensing through receding wet glass, before
-committing the full controller layout. Scope is a focused sensor design/prototype
-task; the risk is inadequate separation between real water level and residual film.
-See [sensor](sensor.md), [G-01](decisions.md) and [build sequence](build.md).
-Reference study and circuit planning can begin now. Provide a dimensioned PCB
-attachment interface for the owner's clip; do not design the clip itself.
-Physical validation needs the prototype, snug mount and freshwater aquarium.
+Complete the design basis and interfaces for **all three final boards**: adapt
+TI's electrode/shield geometry, select exact parts and footprints, define the
+harnesses and GPIO map, calculate power/protection margins and establish the
+enclosure and PCB attachment interfaces. This unblocks coherent schematic/layout
+work and one fabrication release without waiting for a sensor prototype.
 
-Exact mating connectors, retention features, reference margins, calibrated thresholds,
-daily schedule and all protection values remain open in [decisions](decisions.md).
-No remaining owner question blocks sensor design. D-15 and D-16 are resolved;
-schedule times can wait for the settings page, and level thresholds need measurements.
+This is a substantial design task, startable from references and engineering
+analysis without hardware in hand. The main uncertainties are the sensor's actual
+wet-glass margin and actual-load suppression; review their design assumptions
+before fabrication, then verify them during final-assembly commissioning.
+See [G-02/G-03/G-04](decisions.md), [electrical](electrical.md), [sensor](sensor.md)
+and [build sequence](build.md).
+
+No owner question blocks this work. Exact parts, geometry, protection values and
+insulation layout remain engineering selections. Schedule entries and physical
+thresholds are configured on the finished unit; G-01 sensor acceptance is owed
+after assembly, not before controller/mains design or fabrication.
 
 ## Candidates not chosen
 
-- Full mains schematic: larger task that unblocks G-02/G-03 and can begin with
-  datasheet research; final protection choices need pump measurements. Sensor
-  feasibility has priority because it can invalidate the present approach.
-- Matter/HomeKit and configuration: medium implementation task, with host work
-  available now and actual pairing gated on a C6 board. The local settings webpage
-  is selected; this implementation does not resolve sensor feasibility.
-- Enclosure design: medium mechanical task that unblocks physical assembly, but
-  needs selected filter/connectors and reviewed isolation
-  layout. Fabrication now risks making an enclosure that cannot fit the design.
+- Firmware integration: medium-to-large task that advances G-05; host work can
+  proceed alongside design, while actual pairing and GPIO validation use the final
+  boards. Establishing hardware interfaces first avoids binding drivers to an
+  unsettled pin map.
+- Enclosure CAD: medium task that supports G-03/G-04 and is startable without
+  hardware, but exact filter/connectors and board envelopes must be selected
+  before dimensioned fit can be reviewed. The owner's clip CAD remains out of scope.
 
 ## Learned recently
 
+- Prototype-first planning is superseded by the owner's one-shot build decision;
+  design review precedes fabrication and measured acceptance follows assembly.
+  [Build strategy](decisions.md), [build sequence](build.md).
 - Stillair already records received Micro-Fit 3.0 parts; the family question is
   resolved without assuming six-position stock. [Sources](sources.md).
 - This project follows Stillair's Rust and tscircuit/Oxc split, including TypeScript

@@ -50,9 +50,12 @@ Pick with these biases, in order:
 
 1. **Unblock the critical path.** Work that advances STATE's Now/Next beats work that widens the
    surface.
-2. **De-risk the biggest unknown early.** A cheap probe that could invalidate a plan beats
-   building on the unproven plan (this project's gates encode this: prove sensing through wet glass
-   before final board geometry, validate the mains design before commissioning).
+2. **Honor the one-shot build strategy.** Advance the complete three-board design
+   with reference research, calculations and interface/layout review before one
+   fabrication cycle. Do not propose a separate prototype, evaluation-board phase
+   or planned respin. G-02/G-03/G-04 govern fabrication readiness; physical sensing
+   and load checks use the final assembly under G-01/G-05/G-06. Unmeasured hardware
+   performance is not a prerequisite to starting or completing board design.
 3. **Parallelize the independent.** The recommendation can be "start X AND kick off Y in the
    background" — candidates aren't mutually exclusive.
 

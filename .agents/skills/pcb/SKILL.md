@@ -12,6 +12,12 @@ description: "Build Crystal Shim PCBs with tscircuit authoritative through schem
 tooling smoke test, not a starting product design. No product board is ready for
 handoff, manufacture or unattended use.
 
+The owner selected a one-shot build. Develop the three final-use boards and their
+interfaces for one fabrication cycle; do not insert a separate sensor prototype
+or planned respin. Front-load reference research, calculations and complete design
+review. Physical calibration and load tests occur on the final boards after
+assembly, under the stage-specific [release gates](../../../docs/decisions.md).
+
 For each new board, committed tscircuit source will own stable component IDs and
 refs; values, pin maps, MPNs, supplier metadata and exact footprints; schematic
 connectivity and named nets; outline, dimensions, holes, layers and specifications;

@@ -1,33 +1,53 @@
-# Build and commissioning sequence
+# One-shot build and commissioning sequence
 
-1. **Establish sensor geometry.** Use the freshwater tank's 5 mm glass and 50 mm
-   span down from the rim. Keep the PCB reasonably compact and define its attachment
-   interface for the owner's separate clip; the PCB stays outside the glass.
-   Stop/restart and timed override behavior are confirmed. Adapt TI's geometry and
-   define calibration data. Prototype at isolated low voltage before making mains hardware.
-2. **Prove the sensor.** Measure rising/falling levels and receding wet glass with
-   hands, deposits, clip pressure, contact gaps and removal/reseating. Record raw
-   capacitances; set a threshold margin and freshness policy from evidence.
-3. **Capture electrical design.** Select complete connector sets, parts/footprints,
-   power budget, GPIO map and protection components. Review mains separation and
-   enclosure before routing. Resolve the output snubber with actual pump tests.
-4. **Author and review boards.** Follow `$pcb`: source checks, schematic/PCB renders,
-   explicit placement and augmentation manifests, staged KiCad handoff and parity.
-   Route and check in KiCad; use `$kicad-manufacture` for release artifacts.
-5. **Commission low voltage.** Verify supplies, USB power combinations, default-off
-   driver, sensor faults, retained maintenance and watchdog on real hardware.
-   Add Matter/HomeKit switch reporting, configurable local schedules, Off suppression
-   and timed overrides; prove every run cap through clock/config/network changes.
-   Implement the ESP-hosted settings/schedule webpage with validated persistent
-   configuration and calibration/Pushover setup.
-   Provision Pushover credentials separately, then verify water-transition alerts
-   and control independence during network/API failures.
-6. **Commission mains and load.** After reviewed protection/enclosure setup, validate
-   actual pump starts, suppression, thermal and off behavior. Record exact variants
-   and measurements in the BOM and matrix.
-7. **Validate installation.** Repeated switching with the actual aquarium and PC,
-   cable routing, GFCI and water behavior. Establish the observation interval needed
-   to substantiate no routine cleaning before unattended use.
+The target is one complete, final-use set of sensor, controller and mains boards,
+designed and reviewed together before a single fabrication and assembly cycle.
+There is no separate sensor prototype, evaluation-board phase or planned respin.
+Physical calibration and acceptance use the final boards after assembly.
+
+1. **Complete the design basis and interfaces.** Adapt TI's sensor geometry to
+   freshwater, 5 mm glass and a 50 mm sensing span down from the rim. Define the
+   compact PCB's attachment interface for the owner's separate clip. Select exact
+   components, footprints, mating connectors, harness pinouts, rails and GPIOs
+   across all three boards. Calculate power, sensing and protection margins;
+   document assumptions and checks owed on the assembled unit. No sensor hardware
+   measurement is required to proceed with controller or mains design.
+2. **Capture and review the complete design.** Author all three boards in
+   tscircuit using `$pcb`, including explicit placement, geometry and augmentation
+   manifests. Check schematic and PCB renders, datasheet pin/pad mappings, the
+   sensor channel/shield geometry, enclosure fit and every board-to-board interface.
+   Review mains separation and protection before routing. Select the fuse, MOV,
+   RC network and filter from documented ratings and calculations before release;
+   actual-load verification follows assembly.
+3. **Prepare firmware and fabrication files.** Implement sensor acquisition,
+   calibration storage, local control, retained maintenance, Matter/HomeKit,
+   schedules, the local settings page and Pushover integration. Verify behavior
+   and failure modes with host tests; retain explicit hardware checks. Complete
+   staged KiCad handoff, parity, routing, ERC/DRC and fabrication review for every
+   board using `$kicad-manufacture`. Release one coherent set of BOMs, assembly
+   drawings, harness drawings, enclosure/PCB interface drawings and manufacturing
+   outputs. G-02/G-03/G-04 govern fabrication readiness; see
+   [the decision register](decisions.md).
+4. **Fabricate and assemble the final board set.** Use the reviewed release to
+   order and assemble the three boards, enclosure and harnesses as one complete
+   build. The owner supplies the separately modeled sensor clip. There is no
+   intermediate sensor-board order or measurement-driven second fabrication phase.
+5. **Calibrate and commission the final low-voltage hardware.** With mains
+   disconnected and a reviewed isolated low-voltage power arrangement, verify
+   supplies, USB combinations, default-off drive, sensor faults, retained state
+   and watchdog behavior. Fit the final sensor to the aquarium; measure rising and
+   falling water, receding wet glass, clip pressure/gaps and reseating. Record raw
+   capacitances and set stop/restart margins and freshness limits through firmware.
+   Verify Matter/HomeKit, window suppression, override expiry, settings persistence
+   and control independence during clock/configuration/network changes. Provision
+   credentials separately and verify water-transition notifications.
+6. **Commission the final mains assembly and load.** After installation and
+   protection review, verify actual pump starts, suppression, thermal behavior,
+   leakage and loss-of-control-power response. Record measurements and actual
+   fitted parts; record and resolve any failed acceptance check.
+7. **Accept the installed unit.** Repeat switching with the actual aquarium, PC
+   and cable routing. Establish the observation interval for receding films and
+   deposits. G-01/G-05/G-06 and the G-07 observation evidence govern unattended use.
 
 `sh scripts/check.sh` is the development gate. PCB dependencies must be installed;
 the Rust toolchain installs the C6 target. [Firmware](../firmware/README.md) and
@@ -35,7 +55,6 @@ the Rust toolchain installs the C6 target. [Firmware](../firmware/README.md) and
 for the offline scaffold. Matter/Wi-Fi commissioning and Pushover application/recipient
 keys are future integration inputs. Do not commit them or send setup test messages.
 
-Parts remain candidates until exact datasheets, footprint and mating-system checks
-pass. The BOM carries design status separately from purchase status. No purchasing
-or hardware flashing is included in setup. Selection for a prototype is not
-selection for unattended operation.
+Parts remain candidates until exact datasheets, footprints, mating systems and
+design ratings have been checked. The BOM records quantities for one complete
+unit and separates design selection from purchase status.

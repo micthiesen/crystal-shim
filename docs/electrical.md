@@ -51,8 +51,11 @@ no solid-state or more elaborate switching scheme is selected.
 
 Do not install the RC network across open relay contacts by default: that creates
 a bypass current path through the nominally off pump. This project chooses a
-network across the load. Determine suppression values on the actual load;
-manufacturer guidance calls for experimental confirmation.
+network across the load. Select its values and ratings before fabrication using
+the load information, manufacturer guidance and documented calculations. Confirm
+effectiveness and component stress with the actual pump on the final assembly;
+manufacturer guidance calls for experimental confirmation. This is a commissioning
+check, not a separate prototype phase.
 [Relay precautions](https://components.omron.com/us-en/system/files/2026-05/ds_related_pdf/K337-E1.pdf).
 
 Start filter selection with the low-current Schaffner/TE FN2090 family. It is a
