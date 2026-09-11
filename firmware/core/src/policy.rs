@@ -557,6 +557,53 @@ mod tests {
     }
 
     #[test]
+    fn new_on_after_a_resolved_timing_fault_can_override_valid_low_water() {
+        for (fault_at, on_at, fault) in [
+            (350, 450, Fault::ClockWentBackwards),
+            (550, 600, Fault::ControlGap),
+        ] {
+            let mut controller = Supervisor::new(config(1500), Millis(0));
+            for now in (0..=400).step_by(50) {
+                assert_eq!(
+                    tick(&mut controller, now, 100, None).control.relay,
+                    RelayCommand::Off
+                );
+            }
+            let failed = tick(&mut controller, fault_at, 100, None);
+            assert_eq!(failed.control.state, State::Fault(fault));
+            assert_eq!(failed.control.relay, RelayCommand::Off);
+            let mut on = input(on_at, 100, None);
+            on.switch = SwitchCommand::On;
+            let restored = controller.update(Millis(on_at), on);
+            assert_eq!(restored.control.relay, RelayCommand::On);
+            assert_eq!(restored.demand, Demand::Override);
+            assert_eq!(restored.deadline, Some(Millis(on_at + 1500)));
+        }
+    }
+
+    #[test]
+    fn late_on_for_a_low_blocked_window_gets_one_full_manual_duration() {
+        let mut controller = Supervisor::new(config(1500), Millis(0));
+        for now in (0..=800).step_by(50) {
+            let status = tick(&mut controller, now, 100, window(1, 1000));
+            assert_eq!(status.control.relay, RelayCommand::Off);
+            assert_eq!(status.deadline, Some(Millis(1000)));
+        }
+        for now in (850..=2350).step_by(50) {
+            let mut on = input(now, 100, window(1, 1000));
+            on.switch = SwitchCommand::On;
+            let status = controller.update(Millis(now), on);
+            if now < 2350 {
+                assert_eq!(status.control.relay, RelayCommand::On);
+                assert_eq!(status.demand, Demand::Override);
+                assert_eq!(status.deadline, Some(Millis(2350)));
+            } else {
+                assert_eq!(status.control.relay, RelayCommand::Off);
+            }
+        }
+    }
+
+    #[test]
     fn on_with_invalid_sensor_is_not_queued_for_later() {
         let mut controller = Supervisor::new(config(1500), Millis(0));
         let mut failed = input(0, 100, None);

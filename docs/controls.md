@@ -55,6 +55,12 @@ the relay continuously on by repeatedly renewing its deadline. A new explicit
 request after a completed/stopped run is a new bounded run and still obeys the
 minimum off period.
 
+Here, preserving an active automatic run's cap means preserving the cap while
+the relay is energized. A scheduled window that is waiting for recovery or has
+stopped at low water does not consume the user's new manual allowance: an explicit
+On starts a new timed override from that request. Once a manual request exists,
+even if it is waiting for minimum off, repeated On cannot renew it.
+
 The scaffold measures an override's deadline from the accepted request time.
 Waiting for minimum off consumes part of that allowance; it does not queue a
 fresh 15 minutes for later. Duration edits may shorten an active request but
@@ -62,7 +68,11 @@ cannot extend it. Final commissioning should retain this visible, bounded behavi
 
 Invalid/stale sensor input, maintenance and reset cancel a manual override rather
 than leaving a surprise queued restart. Minimum off remains applicable to manual
-requests. The app must report actual relay command as the HomeKit switch state,
+requests. Sensor/time faults describe failed input at the current tick; they are
+not maintenance latches. After a fault resolves, fresh valid input with a healthy
+control cadence allows a **new explicit** override even if the level is still low,
+subject to minimum off. No previous override is resumed. The app must report
+actual relay command as the HomeKit switch state,
 including automatic starts and timed/fault stops; HomeKit's last requested value
 is not the truth. This switch state is advisory about commanded power, not feedback
 that proves relay contacts moved. Diagnostics distinguish scheduled, overridden,
