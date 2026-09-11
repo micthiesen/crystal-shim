@@ -23,22 +23,31 @@ Last updated: 2026-09-11
 ## Next
 
 Adapt the TI reference electrode geometry to the confirmed glass and sensing span,
-then define a low-voltage sensor feasibility prototype and its measurements.
-Wet glass and reference placement are the main uncertainties; prove those before
-committing the complete mains controller geometry. See [sensor](sensor.md),
-[G-01](decisions.md) and [build sequence](build.md). Physical validation needs a
-sensor prototype and the actual aquarium; source/design work can proceed first.
+then produce a concrete low-voltage prototype design and measurement plan.
+This addresses the main uncertainty, sensing through receding wet glass, before
+committing the full controller layout. Scope is a focused sensor design/prototype
+task; the risk is inadequate separation between real water level and residual film.
+See [sensor](sensor.md), [G-01](decisions.md) and [build sequence](build.md).
+Reference study and circuit planning can begin now. Exact placement needs the
+available glass/rim envelope; physical validation needs the prototype and aquarium.
 
 Exact mating connectors, rim clearance, reference margins, calibrated thresholds,
 daily schedule and all protection values remain open in [decisions](decisions.md).
+Owner inputs still needed: freshwater/saltwater, mounting clearances and the
+settings interface. Schedule times can wait for configuration; level thresholds
+need measurements. These are recorded in D-13, D-15 and D-16.
 
 ## Candidates not chosen
 
-- Full mains schematic: can be researched independently, but sensor feasibility
-  and exact protection/connector selections come first.
-- Matter/HomeKit connection: technology and switch behavior are selected; actual
-  sensor acquisition and the bounded local run policy precede pairing work.
-- Enclosure fabrication: waits for the sensor, connector, filter and reviewed mains layout.
+- Full mains schematic: larger task that unblocks G-02/G-03 and can begin with
+  datasheet research; final protection choices need pump measurements. Sensor
+  feasibility has priority because it can invalidate the present approach.
+- Matter/HomeKit and configuration: medium implementation task, with host work
+  available now and actual pairing gated on a C6 board. Select the settings
+  interface before committing its user flow; it does not resolve sensor feasibility.
+- Enclosure design: medium mechanical task that unblocks physical assembly, but
+  needs the mounting envelope, selected filter/connectors and reviewed isolation
+  layout. Fabrication now risks making an enclosure that cannot fit the design.
 
 ## Learned recently
 

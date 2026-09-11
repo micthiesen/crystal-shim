@@ -38,10 +38,18 @@ are not a released electrical design.
 | D-12 | Retained state and network interface | HomeKit switch via Matter-over-Wi-Fi selected like Stillair; maintenance and current-window Off suppression need persistence | Hardware firmware |
 | D-13 | Run duration and daily schedule | Default 15 min shared by schedule and override, all adjustable; exact daily times/count/timezone open | Local scheduler and configuration |
 | D-14 | Water-transition notifications | Pushover selected; first baseline silent; keys and delivery/persistence adapter not provisioned | Notification integration |
+| D-15 | Settings interface | Configurability is required; local webpage versus USB/serial configuration has not been selected | Schedule, calibration, timing and Pushover provisioning workflow |
+| D-16 | Aquarium water and mounting envelope | Freshwater/saltwater, flat glass width, rim obstructions and enclosure mounting space are not recorded | Sensor prototype conditions and mechanical fit |
 
 The confirmed inputs do not establish electrode geometry or physical thresholds.
 Proceed with independent tooling and documentation while designing those from
 the reference and measurements. Do not fabricate geometry by guessing.
+
+The operating behavior is defined well enough to begin sensor design. D-15 and
+D-16 are remaining owner inputs; exact schedule entries can wait for configuration,
+and physical stop/restart thresholds need calibration. Exact part selection,
+protection values, GPIO allocation and insulation layout are engineering work,
+not a list of component choices the owner must answer before work can proceed.
 
 ## Release gates
 
