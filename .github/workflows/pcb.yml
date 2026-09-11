@@ -1,0 +1,45 @@
+name: PCB tooling
+
+on:
+  push:
+    paths:
+      - "pcb/**"
+      - ".node-version"
+      - ".bun-version"
+      - ".agents/skills/pcb/**"
+      - ".agents/skills/konnect/**"
+      - ".agents/skills/kicad-manufacture/**"
+      - ".github/workflows/pcb.yml"
+  pull_request:
+    paths:
+      - "pcb/**"
+      - ".node-version"
+      - ".bun-version"
+      - ".agents/skills/pcb/**"
+      - ".agents/skills/konnect/**"
+      - ".agents/skills/kicad-manufacture/**"
+      - ".github/workflows/pcb.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  pcb-tooling:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pcb
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11
+      - run: bun install --frozen-lockfile
+      - run: bun run check
+      - run: bun run typecheck
+      - run: bun run check:smoke
+      - run: bun run test
+      - run: bun run test:handoff

@@ -1,0 +1,13 @@
+[package]
+name = "crystal-shim-cli"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.88"
+publish = false
+
+[[bin]]
+name = "crystal-shim-sim"
+path = "src/main.rs"
+
+[dependencies]
+crystal-shim-core = { path = "../core" }

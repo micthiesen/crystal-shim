@@ -1,0 +1,39 @@
+[package]
+name = "crystal-shim-app"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.88"
+publish = false
+
+[workspace]
+
+[[bin]]
+name = "crystal-shim"
+path = "src/main.rs"
+test = false
+bench = false
+
+[dependencies]
+crystal-shim-core = { path = "../core" }
+esp-hal = { version = "1.1", default-features = false, features = ["esp32c6", "unstable", "rt"] }
+esp-println = { version = "0.17", default-features = false, features = ["esp32c6", "jtag-serial"] }
+esp-backtrace = { version = "0.19", default-features = false, features = ["esp32c6", "panic-handler", "println"] }
+esp-bootloader-esp-idf = { version = "0.5", default-features = false, features = ["esp32c6"] }
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true
+opt-level = "z"
+
+# Same compatible esp-hal revision as ../stillair. All esp-* crates used here, including
+# generated metadata, move together. Radio, Matter, and an async runtime are not needed
+# by this inert scaffold. Stillair-style Matter over Wi-Fi is selected; its adapter
+# and radio/runtime dependency family will be added with the actual implementation.
+[patch.crates-io]
+esp-hal = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
+esp-backtrace = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
+esp-println = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
+esp-bootloader-esp-idf = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
+esp-metadata-generated = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }

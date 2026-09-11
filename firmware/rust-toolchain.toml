@@ -1,0 +1,5 @@
+[toolchain]
+# Same stable toolchain convention as ../stillair.
+channel = "stable"
+components = ["rustfmt", "clippy"]
+targets = ["riscv32imac-unknown-none-elf"]

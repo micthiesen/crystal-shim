@@ -1,0 +1,9 @@
+[package]
+name = "crystal-shim-core"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.88"
+publish = false
+
+# The control contract deliberately has no HAL, allocation, or network dependencies.
+[dependencies]

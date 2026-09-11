@@ -1,0 +1,19 @@
+target/
+node_modules/
+dist/
+.tscircuit/
+.venv/
+tmp/
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+# KiCad local state, not source designs
+*.kicad_prl
+*-backups/
+fp-info-cache
+.history/
+*.lck
+*.kicad_pcb.bak

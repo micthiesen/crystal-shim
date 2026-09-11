@@ -1,0 +1,24 @@
+ID,Assembly,Manufacturer,Part number,Qty,Function,Design status,Purchase status,Order ref,Source,Notes
+BOM-01,Sensor,Texas Instruments,FDC1004 (VSSOP-10),1,Capacitance converter,Proposed,Not ordered,,https://www.ti.com/lit/ds/symlink/fdc1004.pdf,Exact VSSOP order suffix and footprint open
+BOM-02,Controller,Espressif,ESP32-C6-WROOM-1,1,Wireless MCU module,Proposed,Not ordered,,https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf,Flash suffix and GPIO map open; not Stillair MINI footprint
+BOM-03,Mains,Mean Well,IRM-05-5,1,Always-on isolated 5 V 1 A PSU,Proposed,Not ordered,,https://www.meanwell.com/Upload/PDF/IRM-05/IRM-05-SPEC.pdf,Power/thermal and mains layout review required
+BOM-04,Mains,Omron-origin G5RL,G5RL-1A-TV8 (5 V coil),1,Normally-open pump relay,Proposed,Not ordered,,https://components.omron.com/us-en/products/relays/G5RL,Exact ordering code motor rating and pump starting behavior to verify
+BOM-05,Enclosure mains,TE/Schaffner,FN2090 family,1,Manufactured two-stage EMI filter,Open variant,Not ordered,,https://www.te.com/en/product-CAT-P97-F2090.html,Choose attenuation/leakage/dimensions/termination together
+BOM-06,Sensor harness,Molex,43025-0600,2,Six-position cable receptacle housing,Proposed,Not ordered,,https://www.molex.com/en-us/products/part-detail/430250600,Assumes cable plugs at both boards; matching headers and contacts open
+BOM-07,Sensor harness,Molex,,2,Matching six-position board header,Open,Not ordered,,,Select with BOM-06; orientation and complete pin map required
+BOM-08,Sensor harness,Molex,,12,Female crimp contact,Open,Not ordered,,,Gauge/plating open; Stillair 43030-0038 inventory is not allocated here
+BOM-09,Internal mains,Molex,Mini-Fit Jr 4.2 mm,,Input/output mating connector sets,Open,Not ordered,,https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/productspecificationpdf/555/5556/PS-5556-001-001.pdf,Exact rated housings headers terminals and keying open
+BOM-10,Enclosure,,IEC C14 inlet,1,Standard mains input,Open variant,Not ordered,,,Rating mounting and guarded terminals to select
+BOM-11,Enclosure,,,1,Mains receptacle or female pigtail,Open,Not ordered,,,Original skimmer cord stays intact; strain relief required
+BOM-12,Mains,,,,Fuse and holder,Open,Not ordered,,,Coordinate fault protection and inrush; no current or type fixed
+BOM-13,Mains,,,,Protected MOV surge network,Open,Not ordered,,,Voltage/energy/thermal failure protection open
+BOM-14,Mains,,,,Series RC snubber across switched output,Open,Not ordered,,,Mains-appropriate parts and values need actual-load validation
+BOM-15,Controller,,,,MOSFET relay driver and coil suppression,Open,Not ordered,,,Include hardware gate pulldown and suppression; verify dropout
+BOM-16,Controller,,,1,3.3 V ESP regulator and decoupling,Open,Not ordered,,,Budget radio peaks and thermal margin
+BOM-17,Sensor,,,1,Local 3.3 V regulator and decoupling,Open,Not ordered,,,Noise and capacitor requirements open
+BOM-18,Controller,,,,USB connector and power-path protection,Open,Not ordered,,,Prevent USB/external-supply backfeed in all power modes
+BOM-19,Controller,,,1,Status LED with resistor,Open,Not ordered,,,Indication and values open
+BOM-20,Controller,,,1,Physical maintenance/off button,Open,Not ordered,,,Explicit exit and reset persistence implementation open
+BOM-21,Enclosure,,,1,Flame-rated splash-resistant enclosure,Open,Not ordered,,,Partition bonding strain relief and drip loops; dimensions open
+BOM-22,Sensor mount,,,,Adhesive and sensor protection,Open,Not ordered,,,5 mm glass; 50 mm span down from rim; no clip over rim
+BOM-23,Sensor harness,,,1,Three-pair cable at most 8 inches,Open,Not ordered,,,5 V/GND SDA/GND SCL/GND; gauge and pin numbering open

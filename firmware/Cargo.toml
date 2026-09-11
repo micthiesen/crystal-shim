@@ -1,0 +1,5 @@
+[workspace]
+resolver = "2"
+members = ["core", "cli"]
+# Keep host tests separate from the ESP32-C6 target configuration.
+exclude = ["app"]
