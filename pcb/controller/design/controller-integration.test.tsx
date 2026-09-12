@@ -1,3 +1,4 @@
+import { applyControllerProjectSymbolsForInitialExport } from "./project-symbol-library-initial-export";
 import { expect, test } from "bun:test";
 import { Circuit } from "tscircuit";
 import ControllerCircuit from "./controller.circuit";
@@ -228,6 +229,7 @@ test("controller schematic preserves power separation, hardware permission and b
   // Instance metadata must reach every emitted child file, without changing
   // the cached symbol library, wires, pin geometry, UUIDs or other properties.
   const manifest = createControllerManifest(json);
+  applyControllerProjectSymbolsForInitialExport(exportJson, sheets, manifest);
   const fieldsBefore = sheets.map((s) => s.getString());
   const invalidFields = structuredClone(manifest);
   invalidFields.components.find((c) => c.ref === "U9")!.value = "wrong part";

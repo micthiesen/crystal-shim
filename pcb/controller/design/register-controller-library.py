@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Register only the fresh controller's native library through verified Konnect.
 
-No native file is serialized here. Konnect owns the fp-lib-table write. The shared
+No native file is serialized here. Konnect owns the fp-lib-table and sym-lib-table writes. The shared
 handoff later runs KiCad ERC/DRC and binds this file in its complete stage receipt.
 """
 from __future__ import annotations
@@ -138,6 +138,13 @@ def register() -> Path:
     table = stage / "fp-lib-table"
     if table.exists() or receipt.exists():
         raise ValueError("registration refuses an existing table or receipt")
+    symbol_library = stage / "CrystalShim_Controller.kicad_sym"
+    symbol_table = stage / "sym-lib-table"
+    if not symbol_library.is_file() or symbol_table.exists():
+        raise ValueError("registration requires a fresh project symbol library and no symbol table")
+    symbol_names = {f"Controller_{item['ref']}" for item in manifest["components"] if item['footprint']['pad_numbers']} | {"PWR_FLAG"}
+    if len(symbol_names) != 96:
+        raise ValueError("expected 95 source symbols and one ERC-only flag definition")
     project = stage / "controller.kicad_pro"
     client = Konnect()
     try:
@@ -145,6 +152,11 @@ def register() -> Path:
                        "clientInfo": {"name": "Crystal Shim initial library registration", "version": "1"}})
         client.send({"jsonrpc": "2.0", "method": "notifications/initialized"})
         client.call("load_toolset", {"name": "library"})
+        symbol_inventory = client.call("list_symbols_in_library", {"library_path": str(symbol_library)})
+        if symbol_inventory.get("library") != str(symbol_library) or symbol_inventory.get("count") != 96 or sorted(symbol_inventory.get("symbols", [])) != sorted(symbol_names):
+            raise ValueError("source-exported symbol library differs from the controller declaration")
+        if tree_hashes(stage) != before:
+            raise ValueError("symbol inspection changed stage inputs")
         result = client.call("register_footprint_library", {
             "scope": "project", "project": str(project),
             "library_path": str(library), "nickname": "CrystalShim_Controller",
@@ -152,6 +164,13 @@ def register() -> Path:
         if result.get("success") is not True or result.get("scope") != "project" or result.get("table") != str(table):
             raise ValueError("Konnect did not confirm the exact project table")
         readback = client.call("list_footprint_libraries", {"scope": "project", "project": str(project)})
+        result = client.call("register_symbol_library", {
+            "scope": "project", "project": str(project),
+            "library_path": str(symbol_library), "nickname": "CrystalShim_Controller",
+        })
+        if result.get("success") is not True or result.get("scope") != "project" or result.get("table") != str(symbol_table):
+            raise ValueError("Konnect did not confirm the exact project symbol table")
+        symbol_readback = client.call("list_symbol_libraries", {"scope": "project", "project": str(project)})
     finally:
         client.close()
     entries = readback.get("libraries", [])
@@ -162,13 +181,24 @@ def register() -> Path:
         }.items()
     ):
         raise ValueError("Konnect project-library readback differs")
+    symbol_entries = symbol_readback.get("libraries", [])
+    if symbol_readback.get("count") != 1 or len(symbol_entries) != 1 or any(
+        symbol_entries[0].get(key) != value for key, value in {
+            "nickname": "CrystalShim_Controller", "scope": "project",
+            "type": "KiCad", "path": str(symbol_library), "uri": str(symbol_library),
+        }.items()
+    ):
+        raise ValueError("Konnect project-symbol-library readback differs")
     after = tree_hashes(stage)
-    if any(after.get(path) != digest for path, digest in before.items()) or set(after) - set(before) != {"fp-lib-table"}:
+    if any(after.get(path) != digest for path, digest in before.items()) or set(after) - set(before) != {"fp-lib-table", "sym-lib-table"}:
         raise ValueError("registration changed files beyond the new project library table")
-    evidence = {"schema_version": 1, "scope": "initial-project-library-registration-only",
-                "tool": "Konnect 0.2.1 register_footprint_library", "table": "fp-lib-table",
+    evidence = {"schema_version": 2, "scope": "initial-project-library-registration-only",
+                "tool": "Konnect 0.2.1 register_footprint_library + register_symbol_library", "table": "fp-lib-table",
                 "tool_sha256": client.executable_sha256,
                 "table_sha256": after["fp-lib-table"], "readback": readback,
+                "symbol_table": "sym-lib-table", "symbol_table_sha256": after["sym-lib-table"],
+                "symbol_readback": symbol_readback, "symbol_inventory": symbol_inventory,
+                "symbol_library": {"path": symbol_library.name, "sha256": before[symbol_library.name]},
                 "existing_files_unchanged": True,
                 "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     with receipt.open("x") as output:

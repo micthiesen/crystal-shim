@@ -35,6 +35,13 @@ export const controllerNativeFootprint = (ref: string) => {
   return `${controllerNativeLibrary}:Controller_${ref}`;
 };
 
+export const controllerProjectSymbol = (ref: string) => {
+  controllerComponentId(ref);
+  if (!Object.hasOwn(controllerPlacements, ref))
+    throw new Error(`No schematic symbol for ${ref}`);
+  return `${controllerNativeLibrary}:Controller_${ref}`;
+};
+
 // Source metadata, not a native-board snapshot. Stable IDs never depend on
 // generated source_component_N IDs, traversal order or KiCad UUIDs. Per-ref
 // native entries preserve exact instance graphics, including test-pad labels.
@@ -137,19 +144,7 @@ export function createControllerManifest(json: CircuitJson) {
               ? ref
               : mpn;
     if (!value) throw new Error(`${ref}: missing source value`);
-    const symbol =
-      source.ftype === "simple_test_point"
-        ? `Custom:ControllerTestPoint_${ref}`
-        : source.ftype === "simple_chip"
-          ? // Match the pinned converter's sanitizeName for the initial symbol
-            // identity; retain the exact MPN as the value and manufacturer field.
-            `Device:U_${mpn!
-              .replace(/[^A-Za-z0-9_-]+/g, "_")
-              .replace(/_+/g, "_")
-              .replace(/^_|_$/g, "")}`
-          : `Device:${schematic[0]!.symbol_name}`;
-    if (symbol.endsWith(":undefined"))
-      throw new Error(`${ref}: missing source symbol intent`);
+    const symbol = controllerProjectSymbol(ref);
     const pads = ports
       .filter((e) => e.source_component_id === source.source_component_id)
       .map((p) => pin(ref, p.pin_number!))

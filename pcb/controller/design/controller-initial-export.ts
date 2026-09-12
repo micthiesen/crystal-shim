@@ -1,6 +1,11 @@
+import {
+  applyControllerProjectSymbolsForInitialExport,
+  addControllerPowerFlagsForInitialExport,
+  controllerSymbolLibraryFilename,
+} from "./project-symbol-library-initial-export";
 import { createControllerInitialPcb } from "./controller-initial-pcb";
 import type { CircuitJson } from "circuit-json";
-import type { KicadSch } from "kicadts";
+import { KicadSym, type KicadSch } from "kicadts";
 import { CircuitJsonToKicadSchConverter } from "circuit-json-to-kicad";
 import {
   mapUsbSchematicForInitialExport,
@@ -21,7 +26,7 @@ export function createControllerInitialGraphs(input: CircuitJson) {
     ["U1", "J1", "J2", "J3", "D4", "SW1", "SW2", "SW3"],
   );
   // Preserve actual electrical labels instead of the converter's unconnected
-  // custom power graphics. Reviewed PWR_FLAG symbols are a native augmentation.
+  // custom power graphics. Four reviewed project PWR_FLAG annotations follow.
   const powerIds = new Set<string>();
   for (const element of json) {
     if (
@@ -63,13 +68,23 @@ export function createControllerInitialGraphs(input: CircuitJson) {
     throw new Error("Controller initial component count changed");
   const manifest = createControllerManifest(input);
   const sheets = initialFiles.map((file) => file.kicadSch);
+  const library = applyControllerProjectSymbolsForInitialExport(json, sheets, manifest);
   applyControllerFieldsForInitialExport(sheets, manifest);
   applyControllerSchematicCleanupForInitialExport(sheets, manifest);
+  library.push(addControllerPowerFlagsForInitialExport(sheets, manifest));
   for (const file of initialFiles) file.content = file.kicadSch.getString();
   const pcb = createControllerInitialPcb(json);
   return {
     circuitJson: json,
     pcb,
+    symbolLibraryFile: {
+      filename: controllerSymbolLibraryFilename,
+      content: new KicadSym({
+        version: 20231120,
+        generator: "tscircuit",
+        symbols: library,
+      }).getString(),
+    },
     schematicFiles: schematic.getOutputFiles({
       schematicFilename: "controller.kicad_sch",
     }),

@@ -358,9 +358,7 @@
       "target": {},
       "params": {
         "allowed_initial_erc_types": [
-          "endpoint_off_grid",
-          "lib_symbol_issues",
-          "power_pin_not_driven"
+          "endpoint_off_grid"
         ],
         "allowed_initial_erc_ignored_checks": [
           "footprint_filter",
@@ -379,7 +377,55 @@
           "Preserve all 95 exact values, MPNs, datasheet and footprint fields and every hierarchical sheet."
         ],
         "verification": "Require strict source schematic/XML parity and a clean ERC report with all errors/warnings resolved before any routing; these initial finding types are not release waivers.",
-        "status": "initial typed NC and two overlap repairs applied with strict XML parity; grid, library, power flags and page framing remain"
+        "status": "Initial typed NC markers, two overlap repairs, project symbol library and four explicit power flags applied; grid and page framing/legibility remain. Completion requires current native receipts and strict source/XML parity.",
+        "project_symbol_library": {
+          "file": "CrystalShim_Controller.kicad_sym",
+          "nickname": "CrystalShim_Controller",
+          "source_entries": 95,
+          "mapping": "Controller_<exact source reference>",
+          "annotation_entries": [
+            "PWR_FLAG"
+          ],
+          "serialization": "Fresh typed initial graph, version 20231120; registered through verified project-scoped Konnect. Every source pin type and symbol geometry retained.",
+          "footprint_filters": "Exact Library:Footprint filters match each source-selected per-reference footprint; no alternate wildcard. Native XML must preserve all95 filters. KiCad footprint_filter remains ignored by the initial settings and must be enabled and run through supported native UI/settings before release."
+        },
+        "power_flags": {
+          "definition": "CrystalShim_Controller:PWR_FLAG",
+          "revision": 1,
+          "electrical_type": "power_out",
+          "zero_length_pin": "1",
+          "physical_part": false,
+          "on_board": false,
+          "in_bom": false,
+          "in_pos_files": false,
+          "dnp": false,
+          "exclude_from_sim": true,
+          "annotations": [
+            {
+              "reference": "#FLG0101",
+              "net": "V5_LOGIC",
+              "basis": "Passive PSU/service diode OR feeds the logic rail"
+            },
+            {
+              "reference": "#FLG0102",
+              "net": "V3V3",
+              "basis": "AP63203 output after L1 feeds 3.3 V"
+            },
+            {
+              "reference": "#FLG0103",
+              "net": "V5_SERVICE_RAW",
+              "basis": "External service supply enters through J2"
+            },
+            {
+              "reference": "#FLG0104",
+              "net": "GND",
+              "basis": "Power connector return defines common low-voltage ground"
+            }
+          ],
+          "verification": "Four ERC-only annotations; no extra native XML parts/endpoints, real power_out conflicts rejected. An annotation does not certify a live supply.",
+          "assembly": "ERC annotation only; do not populate. No physical footprint or assembly entry.",
+          "display": "Hide redundant Value and pin names/numbers; rotate glyphs away from existing net labels and wires without moving anchors."
+        }
       }
     },
     {

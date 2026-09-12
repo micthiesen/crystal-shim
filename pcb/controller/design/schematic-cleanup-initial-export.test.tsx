@@ -1,3 +1,4 @@
+import { applyControllerProjectSymbolsForInitialExport } from "./project-symbol-library-initial-export";
 import { beforeAll, expect, test } from "bun:test";
 import { Circuit } from "tscircuit";
 import type { CircuitJson } from "circuit-json";
@@ -80,6 +81,7 @@ beforeAll(async () => {
   );
   mapUsbSchematicForInitialExport(sheetFor(sheets, "J4"), ["J4"]);
   applyControllerPinTypesForInitialExport(json, sheets);
+  applyControllerProjectSymbolsForInitialExport(json, sheets, manifest);
   applyControllerFieldsForInitialExport(sheets, manifest);
   initial = sheets.map((s) => s.getString());
 }, 30_000);
@@ -201,7 +203,12 @@ test("full initial export refreshes every child cache with the cleanup", () => {
     parseKicadSch(f.content),
   );
   expect(sheets.flatMap((s) => s.noConnects)).toHaveLength(20);
-  expect(sheets.flatMap((s) => s.symbols)).toHaveLength(95);
+  expect(
+    sheets.flatMap((s) => s.symbols).filter((s) => !ref(s)?.startsWith("#")),
+  ).toHaveLength(95);
+  expect(
+    sheets.flatMap((s) => s.symbols).filter((s) => ref(s)?.startsWith("#FLG")),
+  ).toHaveLength(4);
   const before = sheets.map((s) => s.getString());
   expect(() =>
     applyControllerSchematicCleanupForInitialExport(sheets, manifest),

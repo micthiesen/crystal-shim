@@ -931,6 +931,113 @@ authenticated time source remain unverified. Hourly USB time-setting is not an
 unattended solution. HTTP and Pushover workloads are not yet active, and live
 memory/clock accuracy evidence remains open. See [trusted UTC](trusted-utc.md).
 
+## Sabre capture and MOV lead-form correction
+
+An independent header review found no actionable component-capture defect.
+Actual Molex sheets 1/2/5, exact PDF digest and both rendered views were checked.
+Five source/native tests pass with 936 assertions across four cardinal rotations.
+The reviewer separately checked the rendered JSON: eight connected endpoints,
+five nets, 15 logical pins, seven NCs and all 30 solder tails are preserved.
+The actual drawn schematic passes the connectivity checker. Evidence is
+`/tmp/crystal-shim-mains-headers-independent-review`.
+
+The qualified body pose, opposite-face harness fit, circuit-1 marking and native
+origin/mask/paste remain open. This review covers component capture, not mains
+placement or release. All 21 mains tests now pass with 1,734 assertions.
+
+Primary MOV drawing recovery found that the unsuffixed bulk part has staggered
+leads. Two collinear 1.1 mm holes did not cover the actual dimensions and are
+withdrawn. The exact factory-formed `TMOV14RP175EL2T7` appears in the manufacturer
+PCN. The [revised capture basis](mov-capture.md) gives the round-hole/slot fit
+calculation and remaining body/seating/soldering obligations. Root inspected the
+actual drawing and hand-soldering guidance; the researcher independently checked
+the new durable document without finding a transcription error. Native KiCad
+readback of disposable slot exports passes all four rotations. No MOV model is
+adopted and the BOM remains unpurchased.
+
+## Controller project symbols and power annotations
+
+The final guarded stage is
+`/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-g0fkkd9o`.
+It has a 96-entry project symbol library: 95 exact source parts and one explicit
+power-flag definition. Four flags at existing supply labels resolve the four
+undriven power inputs without changing real component pin types. They have no
+board, BOM or position-file presence. Root inspected all four native flag details;
+all eight final SVGs match the inspected render after removing only their
+generated title timestamps.
+
+Review found that duplicated converter library IDs supplied another part's
+default value, and generic-chip symbols gave 14 connector/diode/button/MOSFET
+entries an incorrect `U` reference prefix. Eleven test-pad library definitions
+also retained BOM/simulation defaults that differed from their placed instances.
+The project entries now carry exact source prefixes, values, MPNs, datasheets,
+footprints, filters and exclusion attributes. All existing placed references,
+fields and geometry remain unchanged except the declared inherited filter fields.
+
+Independent final readback checks 95 XML parts, 51 named nets, 254 connected pins,
+20 explicit NCs and all 99 physical footprint identities. Both global KiCad
+library tables retain their before/after hashes; only the new project tables are
+registered. Native ERC is now 542 off-grid findings, with no library or undriven
+power finding. DRC remains zero violations plus 216 unrouted items. The new flags
+add four grid findings at already off-grid anchors. No ERC check was newly
+suppressed; the four initial ignored checks still require explicit disposition,
+including enabling/running the footprint-filter check through supported native
+settings. Exact filters alone are not a passed ERC check.
+
+The bounded implementation review is
+`/tmp/crystal-shim-controller-library-independent-review`; its final native report
+binds source hashes, strict parity and both global tables. The 25 coupled tests
+pass with 2,982 assertions. Grid conversion, complete page layout, remaining
+native augmentation and routing are still open. No board was adopted.
+
+## Complete mains placement feasibility
+
+An independent 23-part proposal preserves the 135 x 75 mm board allocation,
+opposite filter connections and the primary/isolated split. Root inspected its
+2D drawing. Conservative source-bound distances and all 79 captured pad centres
+pass; the two proposed MOV pads bring the total to 81. The smallest primary-net
+copper gap is 3.40 mm and primary/isolated copper gap is 15.62 mm.
+The [placement proposal](mains-placement.md) preserves exact coordinates, checks
+and limitations. Its 28 x 28 mm MOV region is a conditional allocation, not a
+proved body datum. Mated connectors, board/carrier/partition fit, solder/etch
+tolerances and routed creepage remain open. This screen does not approve mains
+fabrication or assembly.
+
+## Offline signed-time verifier
+
+The new `no_std` Roughtime crate verifies one bounded draft-19 reply against one
+of two pinned public identities. It retains the original request, signed bytes,
+nonce and receive capture, and returns a conservative UTC interval. It creates
+no network, clock authority or storage owner and is not linked into the app.
+The [integration basis](unattended-time.md) records the custom two-provider
+agreement proposal, historical delegated-key trust, clock drift and remaining
+TLS/schedule/runtime work.
+
+Independent review reproduced one interoperability defect: total message length
+and the implicit final field end were incorrectly required to align to four
+bytes. The draft requires alignment of encoded offsets. A captured authenticated
+reply with a one-byte unknown final field still passed an independent signature
+and Merkle checker but failed this parser. The fix keeps encoded-offset alignment
+and all known-field sizes, bounds and signature checks while accepting the valid
+optional tail. Both providers' one/two/three-byte cases pass; equivalent short
+known INDX fields still reject. The new regression fails against the old parser.
+
+All 18 repository tests pass. Independent scratch checks cover 6,688 single-bit
+reply mutations, 100,000 bounded parser inputs, 2,401 tag-spelling combinations,
+timing and interval boundaries, exact public capture hashes and the regenerated
+mixed-side Merkle fixture. The raw authentication check uses a separate crypto
+implementation. Host fmt/Clippy and a C6 `no_std` release-library build pass.
+Evidence is `/tmp/crystal-shim-roughtime-independent-review` and
+`/tmp/crystal-shim-roughtime-offline-implementation`. This is bounded component
+review, not a proof of runtime time-service availability or full-project review
+convergence.
+
+Root also proved the pinned C TLS callback can visit root/intermediate/leaf and
+add interval-bound rejection without clearing existing hostname errors. Two
+offline Linux tests pass in `/tmp/crystal-shim-tls-interval-seam-probe`. The safe
+Rust provider seam, actual handshake/generation checks and application integration
+are still unimplemented. The shipped application ELF remains unchanged.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

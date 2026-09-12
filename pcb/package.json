@@ -21,7 +21,8 @@
     "export:kicad:controller": "bun controller/design/stage-controller-export.ts",
     "handoff:controller": "bun run render:controller && python3 tools/tscircuit_handoff.py stage dist/controller/design/design-manifest.json --augmentation controller/design/kicad-augment.json --build-command '[\"bun\",\"run\",\"render:controller\"]' --export-command '[\"bun\",\"run\",\"export:kicad:controller\"]' --production-dir controller/kicad --source-dir . --staging-root /tmp/crystal-shim-controller-handoff --staged-footprint-root footprints",
     "render:mains-secondary": "bun mains/design/render-secondary.tsx",
-    "render:mains-suppression": "bun mains/design/render-suppression.tsx"
+    "render:mains-suppression": "bun mains/design/render-suppression.tsx",
+    "render:mains-headers": "bun mains/design/render-headers.tsx"
   },
   "dependencies": {
     "circuit-json-to-kicad": "0.0.205",

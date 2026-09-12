@@ -1,12 +1,26 @@
 # Mains component source
 
+`mains-headers.tsx` captures the four exact vertical Sabre headers, preserving two
+same-number solder tails per blade and all unused physical contacts. J2 uses the
+same fused-line/neutral nets as J1; PE bypasses the PCB headers. See the
+[header capture basis](../../../docs/design/mains-header-capture.md) for source
+drawings, copper/tolerance calculations and the unresolved body/housing fit.
+Run `bun run render:mains-headers` from `pcb` for inspected component-review
+renders. These are provisional positions, not a complete mains placement.
+
 `power-components.tsx` captures the selected IRM-10-5 isolated supply and exact
 G5RL-1A-TV8 DC5 relay. `secondary-power.tsx` captures the 13-part isolated
 eFuse circuit and J5 harness interface; `suppression.tsx` captures the coil
 flyback and the series RC across the switched pump output. These are parts
-of the final mains board. MOV/primary-header capture, inlet-fuse wiring, complete schematic
+of the final mains board. MOV capture, inlet-fuse wiring, complete schematic
 integration, board placement and native handoff remain work. Review canvases
 are not product board outlines or isolation layouts.
+
+The [complete placement proposal](../../../docs/design/mains-placement.md)
+fits the planned 135 x 75 mm allocation in a conditional 2D screen. It preserves
+opposite filter connectors and the isolation space while reserving room for RV1.
+Its coordinates are available for integration; MOV datum, connector mating,
+enclosure access and routed tolerance checks remain open.
 
 The relay's contact pins are staggered by 3.5 mm. The original design-basis table
 incorrectly aligned them. Source and regression checks now follow the actual
@@ -50,7 +64,3 @@ They write source JSON and SVGs under ignored `dist/mains/` review directories.
 PCB lint, format, TypeScript and normal test gates include this directory.
 Use [the mains design basis](../../../docs/design/mains-design-basis.md) for
 power domains, exact interfaces and the independent insulation boundary.
-
-The next primary-header capture follows the checked
-[Sabre drawing and pin/physical contract](../../../docs/design/mains-header-capture.md).
-Its 30 paired tails and seven unused circuits must survive source/native parity.

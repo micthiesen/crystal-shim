@@ -343,7 +343,7 @@ overcurrent protection within the filter rating.
 
 ### Thermally protected MOV
 
-Fit Littelfuse **`TMOV14RP175E`** from `AC_L_FUSED` to `AC_N`, immediately after
+Fit Littelfuse **`TMOV14RP175EL2T7`** from `AC_L_FUSED` to `AC_N`, immediately after
 board input `J1`. F1 is upstream. The MOV is before the circuit divides at its
 pads into the IRM branch and board connector `J2` for the pump filter. The
 [TMOV manufacturer data sheet](https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05)
@@ -363,10 +363,13 @@ the MOV and its short high-current loop beside `J1`, away from the enclosure wal
 low-voltage barrier, and inspect temperature and fault containment before
 release. Do not fit line-to-PE or neutral-to-PE MOVs.
 
-The standard bulk part has two 0.76 to 0.86 mm leads on 7.5 plus or minus 1.0 mm
-spacing. For the 175 V 14 mm body, maximum thickness is 9.0 mm and body dimensions
-span 15 to 22 mm high and 12.5 to 17 mm diameter by the family drawing. Use a
-1.1 mm nominal finished hole, then check lead and fabrication tolerances.
+The original unsuffixed bulk part has staggered leads; the prior two 1.1 mm
+hole proposal does not cover its tolerances and is withdrawn. The selected
+factory outer-crimp L2T7 variant retains broad lead spacing but reduces the
+perpendicular stagger. The [MOV capture basis](mov-capture.md) documents the exact
+order code, inspected primary drawing and a 1.3 mm round hole plus 3.7 x 1.3 mm
+plated-slot proposal at 7.5 mm centres. Body yaw, seating, soldering, fabrication
+tolerances and the complete occupied envelope still need review before adoption.
 
 ### Pump RC network
 
@@ -670,7 +673,7 @@ Schurter inlet must remain within 70 C.
 | `C5` | TDK `C1608C0G1H472J080AA` | 1 | 4.7 nF, 50 V, C0G, 5%, 0603 | U2.7 to GND_ISO, short Kelvin return |
 | `K1` | Omron `G5RL-1A-TV8 DC5` | 1 | SPST-NO, 5 V/80 mA coil; 29 x 12.7 x 15.7 mm max | pins 1/5 coil, 3/4 contact |
 | `D1` | Vishay `1N4007-E3/54` | 1 | 1 A, 1000 V, DO-204AL | cathode to `V5_PSU` |
-| `RV1` | Littelfuse `TMOV14RP175E` | 1 | 175 VAC MCOV, thermally protected, 7.5 mm pitch | fused input L-N before branch split |
+| `RV1` | Littelfuse `TMOV14RP175EL2T7` | 1 | 175 VAC MCOV, factory outer-crimp leads; proposed round-hole/slot fit | fused input L-N before branch split; see MOV capture basis |
 | `R1` | Vishay `PR02FS0201000KA100` | 1 | 100 ohm, 10%, 2 W, flameproof/non-inductive | series RC, 15.24 mm footprint pitch |
 | `C1` | TDK `B32921C3473K000` | 1 | 47 nF, 10%, 305 VAC X2, 10 mm pitch | series RC across pump load |
 | `J1` | Molex `43160-0102` / `44441-2002` | 1 set | 2-circuit shrouded vertical Sabre, 7.50 mm pitch | fused input after C14/F1; L1/N2 |

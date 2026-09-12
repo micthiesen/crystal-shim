@@ -1,3 +1,5 @@
+import { controllerPlacements } from "./placements";
+import { controllerSymbolLibraryFilename } from "./project-symbol-library-initial-export";
 import { constants } from "node:fs";
 import { lstat, open, readdir, realpath } from "node:fs/promises";
 import { basename, isAbsolute, join, relative, resolve, sep } from "node:path";
@@ -43,19 +45,46 @@ export function validateControllerRegistration(
   stage: string,
   receiptBytes: Buffer,
   tableBytes: Buffer,
+  symbolTableBytes: Buffer,
+  symbolLibraryBytes: Buffer,
   scriptHash: string,
 ) {
   const receipt = JSON.parse(receiptBytes.toString());
   const entries = receipt.readback?.libraries;
   const library = join(stage, "footprints/CrystalShim_Controller.pretty");
+  const symbolEntries = receipt.symbol_readback?.libraries;
+  const symbolLibrary = join(stage, controllerSymbolLibraryFilename);
   if (
-    receipt.schema_version !== 1 ||
+    receipt.schema_version !== 2 ||
     receipt.scope !== "initial-project-library-registration-only" ||
-    receipt.tool !== "Konnect 0.2.1 register_footprint_library" ||
+    receipt.tool !==
+      "Konnect 0.2.1 register_footprint_library + register_symbol_library" ||
     typeof receipt.tool_sha256 !== "string" ||
     !/^[a-f0-9]{64}$/.test(receipt.tool_sha256) ||
     receipt.table !== "fp-lib-table" ||
     receipt.table_sha256 !== sha256(tableBytes) ||
+    receipt.symbol_table !== "sym-lib-table" ||
+    receipt.symbol_table_sha256 !== sha256(symbolTableBytes) ||
+    receipt.symbol_library?.path !== controllerSymbolLibraryFilename ||
+    receipt.symbol_library?.sha256 !== sha256(symbolLibraryBytes) ||
+    receipt.symbol_inventory?.library !== symbolLibrary ||
+    receipt.symbol_inventory?.count !== 96 ||
+    !Array.isArray(receipt.symbol_inventory?.symbols) ||
+    JSON.stringify([...receipt.symbol_inventory.symbols].sort()) !==
+      JSON.stringify(
+        [
+          ...Object.keys(controllerPlacements).map((ref) => `Controller_${ref}`),
+          "PWR_FLAG",
+        ].sort(),
+      ) ||
+    receipt.symbol_readback?.count !== 1 ||
+    !Array.isArray(symbolEntries) ||
+    symbolEntries.length !== 1 ||
+    symbolEntries[0]?.nickname !== "CrystalShim_Controller" ||
+    symbolEntries[0]?.scope !== "project" ||
+    symbolEntries[0]?.type !== "KiCad" ||
+    symbolEntries[0]?.path !== symbolLibrary ||
+    symbolEntries[0]?.uri !== symbolLibrary ||
     receipt.script_sha256 !== scriptHash ||
     receipt.existing_files_unchanged !== true ||
     receipt.readback?.count !== 1 ||
@@ -71,7 +100,14 @@ export function validateControllerRegistration(
   return {
     path: registrationReceiptName,
     sha256: sha256(receiptBytes),
-    table: { path: "fp-lib-table", sha256: sha256(tableBytes) },
+    tables: [
+      { path: "fp-lib-table", sha256: sha256(tableBytes) },
+      { path: "sym-lib-table", sha256: sha256(symbolTableBytes) },
+    ],
+    symbol_library: {
+      path: controllerSymbolLibraryFilename,
+      sha256: sha256(symbolLibraryBytes),
+    },
     tool: receipt.tool as string,
     tool_sha256: receipt.tool_sha256 as string,
     script: registrationScript,
@@ -272,14 +308,15 @@ function bindManifest(
 function validateFiles(files: InitialFile[]) {
   const names = files.map((file) => file.filename);
   if (
-    names.length !== 9 ||
-    new Set(names).size !== 9 ||
+    names.length !== 10 ||
+    new Set(names).size !== 10 ||
     !names.includes("controller.kicad_pcb") ||
+    !names.includes(controllerSymbolLibraryFilename) ||
     !names.includes("controller.kicad_sch") ||
     names.filter((name) => name.endsWith(".kicad_sch")).length !== 8 ||
     files.some(
       (file) =>
-        !/^[A-Za-z0-9_-]+\.kicad_(?:pcb|sch)$/.test(file.filename) ||
+        !/^[A-Za-z0-9_-]+\.kicad_(?:pcb|sch|sym)$/.test(file.filename) ||
         !file.content.trim(),
     )
   )
@@ -300,6 +337,7 @@ export async function prepareControllerStage(
   const files = [
     { filename: "controller.kicad_pcb", content: graphs.pcb.getString() },
     ...graphs.schematicFiles,
+    graphs.symbolLibraryFile,
   ];
   validateFiles(files);
   return { guard, files, sourceHashes: hashes, manifestDigest };
@@ -443,7 +481,12 @@ export async function stageControllerExport(
   if (
     JSON.stringify((await readdir(stage)).sort()) !==
       JSON.stringify(
-        [...rootEntries, "fp-lib-table", registrationReceiptName].sort(),
+        [
+          ...rootEntries,
+          "fp-lib-table",
+          "sym-lib-table",
+          registrationReceiptName,
+        ].sort(),
       ) ||
     JSON.stringify((await readdir(library)).sort()) !==
       JSON.stringify(expectedEntries) ||
@@ -463,11 +506,13 @@ export async function stageControllerExport(
     stage,
     await readRegular(join(stage, registrationReceiptName)),
     await readRegular(join(stage, "fp-lib-table")),
+    await readRegular(join(stage, "sym-lib-table")),
+    await readRegular(join(stage, controllerSymbolLibraryFilename)),
     plan.sourceHashes[registrationScript]!,
   );
   preservedFiles.push(
     { path: registrationEvidence.path, sha256: registrationEvidence.sha256 },
-    registrationEvidence.table,
+    ...registrationEvidence.tables,
   );
   await runInitialTool(
     ["sh", join(pcbRoot, "tools/kicad_python.sh"), join(pcbRoot, rulesScript)],
@@ -484,6 +529,7 @@ export async function stageControllerExport(
         [
           ...rootEntries,
           "fp-lib-table",
+          "sym-lib-table",
           registrationReceiptName,
           "controller.kicad_pro",
           ...(hasLocalSettings ? ["controller.kicad_prl"] : []),
@@ -535,7 +581,7 @@ export async function stageControllerExport(
           native_library_registration: registrationEvidence,
           native_initial_rules: initialRulesEvidence,
           limitations:
-            "Only the declared initial NPTH rule applied; no adoption, handoff lock, completed augmentation, ERC/DRC or fabrication acceptance.",
+            "Initial project libraries, four source power annotations and the declared NPTH rule applied; no adoption, handoff lock, completed augmentation, ERC/DRC or fabrication acceptance.",
         },
         null,
         2,

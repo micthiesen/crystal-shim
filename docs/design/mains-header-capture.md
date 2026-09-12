@@ -1,8 +1,9 @@
 # Mains Sabre header capture basis
 
 The four selected vertical Molex Sabre headers use two plated tails per circuit.
-This is source-capture evidence, not an adopted footprint, placement or harness
-fit approval. Preserve every unused blade and both of its tails.
+Their [source models](../../pcb/mains/design/mains-headers.tsx) retain every unused
+blade and both tails. They are not adopted native footprints, placement or harness
+fit approval.
 
 The primary authority is Molex **431600001-SD PSD000 A1**, released 2020-05-26,
 sheets 1, 2 and 5. The [official drawing](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf)
@@ -87,6 +88,22 @@ Native KiCad 10.0.5 candidates have correct paired tails and drills but use
 difference is within the drawing tolerance; it is not the reason to reject them.
 Use a custom Crystal Shim ID for the exact-pitch, 3.50 mm source adaptation and
 qualified maximum body bounds. No native footprint has been modified or adopted.
+
+## Source capture checks
+
+The four exact part models compile to 15 logical pins and 30 plated holes,
+including seven intentional NC pins and all 14 unused tails. Parsed initial
+native output preserves both same-number pads and the same net on every connected
+pair. Five source/native tests check all four cardinal rotations with signed
+pin vectors, finished drills, copper, eight connected logical endpoints and
+absence of optional board-lock holes. Body/latch bounds preserve the qualified
+pose and separate seated height from the mated assembly envelope.
+
+`cd pcb && bun run render:mains-headers` creates the component-only review images;
+root inspected the actual land and schematic renders. The renderer uses provisional
+component-review positions. Native origin normalization, mask/paste, circuit-1
+marking, full manufacturer body pose and opposite-face harness fit remain work.
+Passing the source checks does not approve mains insulation or placement.
 
 Read-only native inventories, source images, a 30-pad CSV and compilable coordinate
 data are in `/tmp/crystal-shim-mains-sabre-capture-research`. The formulas, part

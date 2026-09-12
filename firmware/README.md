@@ -3,7 +3,7 @@
 Rust, bare-metal ESP32-C6, following `../stillair`: `core/` contains the `no_std`
 control contract, `drivers/` contains async device drivers, `cli/` runs the control
 model on the host, `matter/` contains the actual SDK command and KV adapters,
-and `app/` is a separate workspace
+and `roughtime/` verifies signed time replies offline. `app/` is a separate workspace
 targeting `riscv32imac-unknown-none-elf`. Stable Rust is declared in
 `rust-toolchain.toml`; setup was verified with Rust 1.97.1. Commit each workspace's lockfile.
 
@@ -14,9 +14,10 @@ streams bounded USB diagnostics. Boot validates saved settings/calibration and r
 retained safety state through a relay-off flash gate. Missing or invalid settings keep
 the output off. The runtime coordinator evaluates schedules, persists configuration
 and suppression, and accepts bounded physical USB administration. The Matter
-command and shared KV adapters are implemented; Wi-Fi, commissioning, a conforming
-device profile, the settings webpage and Pushover remain to be integrated. HomeKit
-cannot connect to this image yet. The external coil
+command and shared KV adapters, Wi-Fi/BLE commissioning and private credential
+provisioning are implemented. The private switch profile follows D-22; Apple Home
+pairing and behavior have not been exercised. The settings webpage and Pushover
+worker remain to be integrated. The external coil
 pull-down must establish off before application entry and during reset; a build
 cannot verify that physical behavior.
 
@@ -38,8 +39,14 @@ The app uses the same compatible esp-hal revision as Stillair,
 `10e48dd74837bae4be663a7d1825d12875363727`, for HAL, panic/log output, bootloader,
 and generated metadata. Its lockfile was seeded from Stillair's to retain the
 same transitive versions. HomeKit through Stillair-style Matter over Wi-Fi is
-selected; radio dependencies and the network adapter remain to be integrated.
+selected; radio dependencies and the shared network adapter are linked.
 Keep the esp-* dependency family on one compatible revision.
+
+The [offline signed-time verifier](../docs/design/unattended-time.md) is a host
+workspace member with a checked C6 `no_std` library build. It is not linked into
+the app or accepted as UTC. Its public captures and synthetic test identity are
+offline fixtures. Source agreement, interval-aware schedule/TLS checks and runtime
+integration remain work.
 
 ## Control contract
 
@@ -91,7 +98,9 @@ the versioned safety record and boot recovery policy. The core timezone resolver
 accepts explicit POSIX rules. The app loads saved settings, repairs retained state
 at boot and stores eligibility before exposing a scheduled window. USB can supply
 an explicit UTC observation; it ages automatically and expires after one hour.
-Automatic synchronization remains work; no hours are guessed.
+The [trusted UTC path](../docs/design/trusted-utc.md) can also read an
+administrator-configured Matter CASE source. A usable Home hub source has not
+been demonstrated; unattended time availability remains open. No hours are guessed.
 The intended starting schedule is fifteen minutes a few times per day.
 
 Every run has an absolute deadline. The initial configurable maximum duration is
@@ -122,11 +131,12 @@ startup; `Supervisor::reconfigure` clamps an active deadline when duration decre
 and never extends it when duration increases. The runtime's configuration-save
 transaction deliberately enters maintenance, preserves deadline history and
 requires an explicit durable exit. The future settings webpage must show this
-consequence. No configuration UI or commissioned Matter node is implemented.
+consequence. No configuration UI or commissioned final Matter node exists yet.
 The generated async Matter handler reports the observed relay command and waits
 for control-applied replies. Source-owned tokens prevent stale replies or another
-producer from consuming them. Toggle resolves inside control. Radio integration
-must preserve this boundary and run the attribute notification handler.
+producer from consuming them. Toggle resolves inside control. The linked radio
+adapter preserves this boundary and runs the attribute notification handler;
+final hardware behavior remains unverified.
 
 ## Water notifications
 
@@ -142,8 +152,9 @@ Changing interlock configuration resets pending level confirmation and the notif
 or threshold edits do not masquerade as water movement. A transport adapter must
 handle secure credentials, queueing, bounded retries, and deduplication without
 blocking local control. The [verified HTTPS provider](../docs/design/tls-provider.md)
-is implemented and cross-compiled; the Pushover queue/POST adapter, credentials
-and actual ESP network integration remain work. No notification was sent.
+is implemented and cross-compiled; the Pushover queue/POST worker, credentials
+and verified operation over the shared ESP network remain work. No notification
+was sent.
 
 ## Verify
 

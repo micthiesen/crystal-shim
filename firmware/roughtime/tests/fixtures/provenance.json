@@ -1,0 +1,223 @@
+{
+  "scope": "Public draft-19 wire captures, offline tests only. No private signing material.",
+  "captured_on": "2026-09-12",
+  "wire_version": "0x8000000c",
+  "reference": {
+    "url": "https://raw.githubusercontent.com/dansarie/pyroughtime/47535dc719f952dbb4faa98608c2430f9aa07144/pyroughtime.py",
+    "sha256": "9c4c69825ae86e8d1cd4684652715541a6601a0885a3c3874f06e660736e3014"
+  },
+  "protocol": {
+    "url": "https://www.ietf.org/archive/id/draft-ietf-ntp-roughtime-19.txt",
+    "sha256": "6807658966791943b34094e32fcb06c5f6e9bab7fb637285c72d6d864049d533"
+  },
+  "providers": {
+    "roughtime.se": {
+      "primary_identity_source": "https://roughtime.se/",
+      "port": 2002,
+      "public_key_base64": "S3AzfZJ5CjSdkJ21ZJGbxqdYP/SoE8fXKY0+aicsehI=",
+      "decoded_public_key_sha256": "39a588794b4fd5cdb0cb3a7a911a60d3212b893c0b12322829c23cd7fb5ef65d",
+      "round_trip_ns": 154365167
+    },
+    "roughtime.int08h.com": {
+      "primary_identity_source": "https://int08h.com/post/public-roughtime-server/",
+      "port": 2002,
+      "public_key_base64": "AW5uAoTSTDfG5NfY1bTh08GUnOqlRb+HVhbJ3ODJvsE=",
+      "decoded_public_key_sha256": "b42e418f22fd940f7ab6b75129a743de8d46a765df186b55206149a91737ef36",
+      "round_trip_ns": 69142917
+    }
+  },
+  "files": {
+    "roughtime.se.request.bin": {
+      "sha256": "1a764e59b43639075f7085cf10f4e35dc1e024278696abba4fdf3fad571fecea",
+      "frame_bytes": 1036,
+      "message_bytes": 1024,
+      "fields": {
+        "VER": {
+          "bytes": 4
+        },
+        "SRV": {
+          "bytes": 32
+        },
+        "NONC": {
+          "bytes": 32
+        },
+        "TYPE": {
+          "bytes": 4
+        },
+        "ZZZZ": {
+          "bytes": 912
+        }
+      }
+    },
+    "roughtime.se.response.bin": {
+      "sha256": "fb16075b6289d8d3ea0f191b808d04febe2a8a780074e39169a9eef556debf24",
+      "frame_bytes": 416,
+      "message_bytes": 404,
+      "fields": {
+        "SIG": {
+          "bytes": 64
+        },
+        "NONC": {
+          "bytes": 32
+        },
+        "TYPE": {
+          "bytes": 4
+        },
+        "PATH": {
+          "bytes": 0
+        },
+        "SREP": {
+          "bytes": 92,
+          "fields": {
+            "VER": {
+              "bytes": 4
+            },
+            "RADI": {
+              "bytes": 4
+            },
+            "MIDP": {
+              "bytes": 8
+            },
+            "VERS": {
+              "bytes": 4
+            },
+            "ROOT": {
+              "bytes": 32
+            }
+          }
+        },
+        "CERT": {
+          "bytes": 152,
+          "fields": {
+            "SIG": {
+              "bytes": 64
+            },
+            "DELE": {
+              "bytes": 72,
+              "fields": {
+                "PUBK": {
+                  "bytes": 32
+                },
+                "MINT": {
+                  "bytes": 8
+                },
+                "MAXT": {
+                  "bytes": 8
+                }
+              }
+            }
+          }
+        },
+        "INDX": {
+          "bytes": 4
+        }
+      }
+    },
+    "roughtime.int08h.com.request.bin": {
+      "sha256": "aa0e6ebf46aeecc1a68f215a7feb0ec7f5e7e5de78d5c8edb34caa2f4305bd9c",
+      "frame_bytes": 1036,
+      "message_bytes": 1024,
+      "fields": {
+        "VER": {
+          "bytes": 4
+        },
+        "SRV": {
+          "bytes": 32
+        },
+        "NONC": {
+          "bytes": 32
+        },
+        "TYPE": {
+          "bytes": 4
+        },
+        "ZZZZ": {
+          "bytes": 912
+        }
+      }
+    },
+    "roughtime.int08h.com.response.bin": {
+      "sha256": "d1b5a323619f43fcc8215456ef126e4d6c6de5b40351fcc1c919aeeef55d536f",
+      "frame_bytes": 420,
+      "message_bytes": 408,
+      "fields": {
+        "SIG": {
+          "bytes": 64
+        },
+        "NONC": {
+          "bytes": 32
+        },
+        "TYPE": {
+          "bytes": 4
+        },
+        "PATH": {
+          "bytes": 0
+        },
+        "SREP": {
+          "bytes": 96,
+          "fields": {
+            "VER": {
+              "bytes": 4
+            },
+            "RADI": {
+              "bytes": 4
+            },
+            "MIDP": {
+              "bytes": 8
+            },
+            "VERS": {
+              "bytes": 8
+            },
+            "ROOT": {
+              "bytes": 32
+            }
+          }
+        },
+        "CERT": {
+          "bytes": 152,
+          "fields": {
+            "SIG": {
+              "bytes": 64
+            },
+            "DELE": {
+              "bytes": 72,
+              "fields": {
+                "PUBK": {
+                  "bytes": 32
+                },
+                "MINT": {
+                  "bytes": 8
+                },
+                "MAXT": {
+                  "bytes": 8
+                }
+              }
+            }
+          }
+        },
+        "INDX": {
+          "bytes": 4
+        }
+      }
+    },
+    "reference-tree.request.bin": {
+      "scope": "Synthetic TEST-ONLY signing identity, not a public time claim",
+      "sha256": "1e0410fd0157f0a7a1ac7335da9cdb08cf6ba34339f537810bad8fd90c8bbe1b",
+      "frame_bytes": 1036,
+      "message_bytes": 1024
+    },
+    "reference-tree.response.bin": {
+      "scope": "Synthetic TEST-ONLY signing identity, not a public time claim",
+      "sha256": "2bbffdd844d8726152ce70d79bad386ac443343d9fbc68d3761c1868565ea7d9",
+      "frame_bytes": 512,
+      "message_bytes": 500
+    }
+  },
+  "synthetic_reference_vector": {
+    "generator": "generate_reference.py",
+    "generator_sha256": "ee0cee195da7806d0c1e9215a40b5bde42a21c520d427f8e94adab31d3a8f3f5",
+    "reference_validation": "Passed the pinned unmodified reference query verifier using an in-memory transport override. No network.",
+    "test_root_public_hex": "fa4834147f6e690c3693eff61336046403cd8ae2a14f31b3c407358569239565",
+    "index": 5,
+    "path_nodes": 3
+  }
+}

@@ -152,8 +152,10 @@ reason, sample age, calibration revision, relay command, state/timer status and
 reset reason. Raw conversion, calibrated validity, watchdog service and boot loading
 of saved configuration are implemented. Runtime settings/persistence, bounded USB
 commands and schedule evaluation from explicit UTC observations are implemented.
-Automatic time acquisition, the settings webpage and Matter adapter remain work. The network technology is
-selected; pairing and Pushover delivery are not implemented yet. Stored Pushover
+The Matter radio/command adapter and bounded CASE time-source reader are linked;
+private credential provisioning is implemented. Apple Home pairing and a usable
+hub time source have not been demonstrated on hardware. The settings webpage,
+unattended signed-time integration and Pushover worker remain work. Stored Pushover
 credentials have a validated format but are not used by a network sender.
 
 Use hardware gate pulldown and watchdog recovery so reset removes relay drive.

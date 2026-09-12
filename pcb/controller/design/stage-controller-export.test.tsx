@@ -1,3 +1,4 @@
+import { controllerPlacements } from "./placements";
 import { afterAll, beforeAll, expect, test } from "bun:test";
 import {
   chmod,
@@ -245,7 +246,7 @@ test("writes the actual complete initial hierarchy once without adoption", async
   const env = await freshStage();
   const plan = await planFor(env);
   await writeControllerInitialFiles(plan);
-  expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(11);
+  expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(12);
   const pcb = parseKicadPcb(
     await readFile(join(env.STILLAIR_HANDOFF_STAGE, "controller.kicad_pcb"), "utf8"),
   );
@@ -260,7 +261,7 @@ test("writes the actual complete initial hierarchy once without adoption", async
     symbols += parseKicadSch(
       await readFile(join(env.STILLAIR_HANDOFF_STAGE, file.filename), "utf8"),
     ).symbols.length;
-  expect(symbols).toBe(95);
+  expect(symbols).toBe(99); // 95 physical parts and four excluded ERC flags.
   for (const file of plan.files)
     expect(
       await readFile(join(env.STILLAIR_HANDOFF_STAGE, file.filename), "utf8"),
@@ -289,7 +290,7 @@ test("native exporter failure leaves no success receipt and cannot be retried", 
   ]);
   expect(code).not.toBe(0);
   expect(stderr).toContain("Initial native footprint export failed (23)");
-  expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(11);
+  expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(12);
   await expect(guardControllerStage(env)).rejects.toThrow("Fresh stage");
 }, 20_000);
 
@@ -305,17 +306,45 @@ test("CLI rejects supplied target paths", async () => {
 test("registration evidence binds exact stage, native table and pinned tool provenance", () => {
   // Opaque bytes only: this test neither constructs nor writes a native table.
   const table = Buffer.from([1, 3, 5, 7]);
+  const symbolTable = Buffer.from([2, 4, 6, 8]);
+  const symbolLibrary = Buffer.from([8, 6, 4, 2]);
   const scriptHash = "a".repeat(64);
   const library = join(scratch, "footprints/CrystalShim_Controller.pretty");
   const receipt = {
-    schema_version: 1,
+    schema_version: 2,
     scope: "initial-project-library-registration-only",
-    tool: "Konnect 0.2.1 register_footprint_library",
+    tool: "Konnect 0.2.1 register_footprint_library + register_symbol_library",
     tool_sha256: "b".repeat(64),
     table: "fp-lib-table",
     table_sha256: createHash("sha256").update(table).digest("hex"),
     script_sha256: scriptHash,
     existing_files_unchanged: true,
+    symbol_table: "sym-lib-table",
+    symbol_table_sha256: createHash("sha256").update(symbolTable).digest("hex"),
+    symbol_library: {
+      path: "CrystalShim_Controller.kicad_sym",
+      sha256: createHash("sha256").update(symbolLibrary).digest("hex"),
+    },
+    symbol_inventory: {
+      library: join(scratch, "CrystalShim_Controller.kicad_sym"),
+      count: 96,
+      symbols: [
+        ...Object.keys(controllerPlacements).map((ref) => `Controller_${ref}`),
+        "PWR_FLAG",
+      ],
+    },
+    symbol_readback: {
+      count: 1,
+      libraries: [
+        {
+          nickname: "CrystalShim_Controller",
+          scope: "project",
+          type: "KiCad",
+          path: join(scratch, "CrystalShim_Controller.kicad_sym"),
+          uri: join(scratch, "CrystalShim_Controller.kicad_sym"),
+        },
+      ],
+    },
     readback: {
       count: 1,
       libraries: [
@@ -334,10 +363,12 @@ test("registration evidence binds exact stage, native table and pinned tool prov
       scratch,
       Buffer.from(JSON.stringify(value)),
       bytes,
+      symbolTable,
+      symbolLibrary,
       script,
     );
   const evidence = check(receipt);
-  expect(evidence.table.sha256).toBe(receipt.table_sha256);
+  expect(evidence.tables[0]!.sha256).toBe(receipt.table_sha256);
   expect(evidence.tool_sha256).toBe(receipt.tool_sha256);
   expect(evidence.script_sha256).toBe(scriptHash);
   for (const override of [
@@ -347,6 +378,16 @@ test("registration evidence binds exact stage, native table and pinned tool prov
     { tool_sha256: "unknown" },
     { table: "../fp-lib-table" },
     { table_sha256: "c".repeat(64) },
+    { symbol_table: "../sym-lib-table" },
+    { symbol_table_sha256: "c".repeat(64) },
+    { symbol_library: { ...receipt.symbol_library, sha256: "c".repeat(64) } },
+    {
+      symbol_inventory: {
+        ...receipt.symbol_inventory,
+        symbols: [...receipt.symbol_inventory.symbols.slice(0, -1), "phantom"],
+      },
+    },
+    { symbol_readback: { count: 0, libraries: [] } },
     { script_sha256: "c".repeat(64) },
     { existing_files_unchanged: false },
     { readback: { count: 0, libraries: [] } },
@@ -368,6 +409,26 @@ test("registration evidence binds exact stage, native table and pinned tool prov
         },
       }),
     ).toThrow("does not bind");
+  expect(() =>
+    validateControllerRegistration(
+      scratch,
+      Buffer.from(JSON.stringify(receipt)),
+      table,
+      Buffer.from([9]),
+      symbolLibrary,
+      scriptHash,
+    ),
+  ).toThrow("does not bind");
+  expect(() =>
+    validateControllerRegistration(
+      scratch,
+      Buffer.from(JSON.stringify(receipt)),
+      table,
+      symbolTable,
+      Buffer.from([9]),
+      scriptHash,
+    ),
+  ).toThrow("does not bind");
   expect(() => check(receipt, Buffer.from([1, 3, 5, 8]))).toThrow("does not bind");
   expect(() => check(receipt, table, "d".repeat(64))).toThrow("does not bind");
 });
