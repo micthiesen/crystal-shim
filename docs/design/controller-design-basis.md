@@ -35,7 +35,7 @@ leaving the peripheral available to the Matter entropy source used by Stillair.
 | `USB_D_P` | 13 | 14 | Native USB Serial/JTAG D+, 22 ohm series resistor near module |
 | `BOOT_N` | 9 | 15 | Separate recessed boot button to GND, 10 kohm pullup; not the maintenance button |
 | Boot strap | 8 | 10 | 10 kohm pullup; ensures documented joint-download combination when BOOT_N is low |
-| `CHIP_EN` | n/a | 3 | 10 kohm pullup, 1 uF to GND, separate reset button to GND |
+| `CHIP_EN` | n/a | 3 | 10 kohm pullup, 1 uF directly to GND, separate reset button through 330 ohm to GND |
 | `3V3` | n/a | 2 | Buck output; local 22 uF and 100 nF close to module |
 | `GND` | n/a | 1, 28, 29 | Isolated ground, exposed-pad implementation per manufacturer drawing |
 | Reserved UART0 | 16, 17 | 25, 24 | Accessible unpopulated service pads; no required external UART bridge |
@@ -151,8 +151,21 @@ not manufacturer-guaranteed combined limits. Retain the exact part through
 capture; verify startup, ripple and load-transient response on the final board.
 [ROHM 61AN104E Rev 004, page 5 and Figure 6](https://fscdn.rohm.com/en/products/databook/applinote/ic/power/switching_regulator/capacitor_calculation_appli-e.pdf).
 
-Exact small bypass/boot capacitors still need selection. Do not substitute the
-smaller or differently rated Murata series on nominal capacitance alone.
+Use TDK C1608X7R1H104K080AA for the ten 100 nF bypass/bootstrap positions and
+C2012X7R1E105K125AB for CHIP_EN and sensor-feed OUT (two 1 uF positions).
+The [small-parts inventory](controller-small-parts.md) enumerates their uses,
+resistor ordering codes and effective-capacitance allowances. Do not substitute
+the smaller or differently rated Murata series on nominal capacitance alone.
+
+Use one Kingbright WP710A10LGD green THT LED through 680 ohm from GPIO20 and
+three Omron B3F-1002-G gold-contact buttons for maintenance, BOOT and reset.
+Fit ERA3AEB331V, 330 ohm, in series with the reset button to bound discharge of
+the CHIP_EN capacitor. Its initial current is below 11 mA and peak resistor loss
+below 40 mW. Including the TPS3808 MR internal pullup, held CHIP_EN remains below
+0.132 V at a 3.6 V rail. The sourced calculation permits reset after 1 ms stable
+closure; a deliberate press of at least 10 ms allows for switch bounce. Keep BOOT
+recessed and distinct from maintenance. See the small-parts record for limits and
+assembly requirements.
 
 Design the 3.3 V rail for at least **500 mA**; use **600 mA** as the initial
 allocated load including module, LED and logic. This is a design allowance, not
@@ -332,7 +345,7 @@ overhang, service access, standoffs, antenna keepout and cable bends must fit th
 
 ## Capture work still owed
 
-Finish the service-input protection and adapter, exact MLCCs and protection
+Finish the service-input protection and adapter, remaining protection
 parts, sensor-feed ESD, connector mating drawings,
 component footprints and the enclosure fit. Review the schematic and transient
 power combinations before adopting these selections as a fabrication baseline.

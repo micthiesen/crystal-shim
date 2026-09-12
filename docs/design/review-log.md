@@ -1,8 +1,46 @@
 # Design and implementation review record
 
 Date: 2026-09-12. This records bounded adversarial review, root triage and evidence.
-It does not release a board or substitute for the commissioning matrix. All product
-PCB capture, routing and physical acceptance checks remain outstanding.
+It does not release a board or substitute for the commissioning matrix. Complete
+product PCB capture, routing and physical acceptance checks remain outstanding.
+
+## Controller component capture
+
+Independent primary-source batches resolved exact copper lands and pin maps for
+the WROOM module, buck, relay MOSFET, I2C buffer, sensor feed, supervisor, AND
+gate, USB detector and USB switch. Most installed generic IC footprints differ
+from the manufacturers' land recommendations, so the controller now has explicit
+[tscircuit component models](../../pcb/controller/design/README.md). These are
+partial source capture, with complete native footprints and board assembly still
+pending. Source hashes and geometry comparisons are in the footprint audit and
+source modules.
+
+The first independent review checked WROOM/AP63203/AO3400A/TCA9517A against the
+drawings and compiled models, including 90/180/270-degree placement and all nine
+exposed-ground lands. It found no actionable mapping or geometry defect. Root's
+initial test assumed a single physical port for pad 29; inspection showed that
+the pinned compiler correctly creates nine internally connected ports. The test
+now checks that actual grouping and each land's geometry.
+
+A separate final reviewer checked the five additional logic/USB models, compiled
+corner radius, exact small-part quantities and reset calculations. That pass also
+found no actionable defect. The onsemi mechanical drawing has horizontal rows;
+rotating its entire top view 90 degrees clockwise matches electrical Figure 3.
+The initial suggestion of a pin-orientation discrepancy was refuted without
+changing the correct map.
+
+The small-parts review exposed the reset capacitor's direct contact-discharge
+pulse. Root selected a 330 ohm series resistor. The calculation includes the
+TPS3808 MR internal pullup and was independently recomputed: held enable below
+0.132 V at 3.6 V, threshold crossing below 0.64 ms and peak resistor loss below
+40 mW. Exact parts and quantities are now in the BOM. Physical reset and enclosure
+environment checks remain unrun.
+
+The four new compiled component tests and complete repository gate pass. Root
+inspected the generated nine-part copper SVG. These reviews cover component
+source and small parts, not the still-unfinished controller schematic, placement,
+service-input protection, native handoff or manufacturing release. The full
+delivery goal remains active.
 
 ## FDC1004 acquisition
 

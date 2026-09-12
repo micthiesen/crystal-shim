@@ -15,5 +15,11 @@
     "target": "ESNext",
     "types": ["bun", "tscircuit"]
   },
-  "include": ["fixtures/**/*.ts", "fixtures/**/*.tsx", "tools/*.ts"]
+  "include": [
+    "fixtures/**/*.ts",
+    "fixtures/**/*.tsx",
+    "tools/*.ts",
+    "controller/design/**/*.ts",
+    "controller/design/**/*.tsx"
+  ]
 }

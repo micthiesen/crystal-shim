@@ -1,7 +1,8 @@
 # Controller and mains footprint audit
 
-Status: read-only library inventory for schematic capture, 2026-09-12. This
-does not create or approve a product footprint. `available-exact` means a
+Status: library and source-land validation for schematic capture, 2026-09-12.
+Selected controller copper patterns now exist in tscircuit source; no complete
+product footprint, board or handoff is approved. `available-exact` means a
 part-specific or geometry-checked stock candidate agrees with the dimensions
 checked here. `needs-validation` means a plausible package candidate remains
 subject to the manufacturer land-pattern, assembly and polarity checks.
@@ -19,28 +20,43 @@ design-basis documents remain the authority for the selected parts and nets.
 
 | BOM / part | Status | Installed candidate and checked geometry | Action before capture release |
 | --- | --- | --- | --- |
-| BOM-02 ESP32-C6-WROOM-1-N8 | custom-required | No installed WROOM candidate. The fetched Espressif footprint has pads 1-14 at x=-8.75, pads 15-28 at x=8.75, 1.27 mm pitch, 1.5 x 0.9 pads, and exposed pad 29 as a 3 x 3 array of 0.8 x 0.8 pads. Silk body is 18 x 25.5. | Vendor the fetched file only after comparing every module pad to the datasheet, antenna keepout and the project pad map. Record the adopted revision. |
-| BOM-15 AO3400A | needs-validation | `Package_TO_SOT_SMD:SOT-23`: pads 1-3, pad centres (-0.9375,-0.95), (-0.9375,0.95), (0.9375,0), each 1.475 x 0.6. | Compare AOS SOT-23 drawing and land pattern, including pin 1 orientation, before assigning the footprint. |
-| BOM-16 AP63203WU-7 | needs-validation | `Package_TO_SOT_SMD:TSOT-23-6`: pads 1-6, centres x=±1.1375 and y=-0.95, 0, 0.95, 1.325 x 0.6. | Diodes calls the package TSOT26 and suggests 0.7 x 1.0 mm pads with 0.95 mm pitch. The stock candidate is a near match only; validate or replace it with a package-specific land pattern. |
+| BOM-02 ESP32-C6-WROOM-1-N8 | source lands verified | Pinned Espressif geometry is reproduced in `esp32-c6-wroom.tsx`: 28 perimeter lands at x=+/-8.75, 1.27 mm pitch, 1.5 x 0.9, plus nine 0.8 x 0.8 ground lands for pad 29. | Datasheet v1.4 Figure 11-1 and all module pin functions were independently checked. Compiled tests retain the native asymmetric origin and internally connected pad-29 group. Antenna keepout, thermal vias, body graphics and final native footprint adoption remain board work. |
+| BOM-15 AO3400A | source lands verified | AOS PO-00001 Version N requires three 0.8 x 0.8 lands: 1=(-1.2,-0.95), 2=(-1.2,0.95), 3=(1.2,0), with native +Y down. Stock SOT-23 instead uses 1.475 x 0.6 at x=+/-0.9375. | Use the source AOS pattern, with 1 gate, 2 source, 3 drain. Complete mask, stencil, body/courtyard and native adoption before board release. |
+| BOM-16 AP63203WU-7 | source lands verified | Diodes DS41326 Rev 3-2 p17 requires six 1.0 x 0.7 lands at x=+/-1.1 and 0.95 mm pitch. The 3.2 mm Y1 dimension is the outer span, giving 2.2 mm centre separation. Stock TSOT-23-6 instead uses 1.325 x 0.6 at x=+/-1.1375. | Use the source Diodes pattern and 1 FB, 2 EN, 3 VIN, 4 GND, 5 SW, 6 BST. Complete mask/stencil and native adoption before release. |
 | BOM-26 SRP5030TA-4R7M | available-exact candidate | `Inductor_SMD:L_Bourns_SRP5030T` has 5.7 x 5.2 body graphics, pad centres ±2.25 (4.5 mm apart), and 2.0 x 1.8 pads. | Visual comparison confirms the drawing's 6.5 mm outer span and 2.5 mm inner gap imply 2.0 mm wide pads at 4.5 mm centres. The initial centre-spacing mismatch claim was incorrect. Verify the selected suffix and final rendered placement. |
 | BOM-27 STPS2L40U (x2) | needs-validation | `Diode_SMD:D_SMB`: pads 1 and 2 at (-2.15,0) and (2.15,0), each 2.5 x 2.3. | ST DS2146 Rev 6 Figure 17 recommends 1.62 x 2.18 lands with 2.60 inner gap and 5.84 outer span. Stock is larger and is not an exact reproduction. Validate assembly or use the exact ST pattern; pad 1 cathode, pad 2 anode. |
-| BOM-28 TPS3808G01DBVR | needs-validation | `Package_TO_SOT_SMD:SOT-23-6`: pads 1-6, x=±1.1375, y=-0.95, 0, 0.95, 1.325 x 0.6. | Confirm TI DBV0006A dimensions, pad length and pin 1 orientation against the selected package. |
-| BOM-29 SN74LVC1G08DBVR | needs-validation | `Package_TO_SOT_SMD:SOT-23-5`: pads 1-5, x=±1.1375, y=-0.95, 0, 0.95, 1.325 x 0.6. | Confirm TI DBV0005A land pattern and pin 1 orientation. |
-| BOM-30 FSUSB42 | needs-validation | `Package_SO:MSOP-10_3x3mm_P0.5mm`: pads 1-10, x=±2.1, y=-1,-0.5,0,0.5,1, each 1.5 x 0.35. | The onsemi part is MSOP10, but its case drawing and solder land pattern must be compared before using the generic footprint. |
-| BOM-31 SN74LVC1G14DBVR | needs-validation | `Package_TO_SOT_SMD:SOT-23-5`, same checked 1-5 pad set and 1.325 x 0.6 pad geometry as BOM-29. | Confirm TI DBV0005A land pattern and pin 1 orientation. |
+| BOM-28 TPS3808G01DBVR | source lands verified | TI DBV0006A: 1.1 x 0.6, R0.05 lands at x=+/-1.3, 0.95 mm pitch. Native SOT-23-6 has 1.325 x 0.6 lands at x=+/-1.1375. | Use source DBV6 and RESET/GND/MR/CT/SENSE/VDD pin order; CT remains intentionally open in this circuit. Complete native footprint and assembly settings. |
+| BOM-29 SN74LVC1G08DBVR | source lands verified | TI DBV0005A: 1.1 x 0.6, R0.05 lands at x=+/-1.3; left 1/2/3 at -0.95/0/+0.95, right 5/4 at -0.95/+0.95. | Source DBV5 preserves A/B/GND/Y/VCC ordering. Native SOT-23-5 lands are longer and their column centres differ. Complete native footprint/assembly settings. |
+| BOM-30 FSUSB42MUX | source lands verified | onsemi Case846AP: 1.4 minimum length x 0.3 reference width lands at x=+/-2.2, 0.5 mm pitch. Native MSOP10 uses 1.5 x 0.35 lands at x=+/-2.1. | The mechanical top-view horizontal rows rotate 90 degrees clockwise to the electrical Figure 3 orientation: pin 1 upper-left, 1-5 down left, 6-10 up right. The source preserves that mapping. Complete native footprint and stencil settings. |
+| BOM-31 SN74LVC1G14DBVR | source lands verified | Same manufacturer DBV5 geometry as BOM-29, independently checked in SCES218AA p39-40. | Preserve 1 NC, 2 A, 3 GND, 4 Y, 5 VCC; source explicitly marks NC. Native SOT-23-5 is not the exact TI land example. |
 | BOM-32 USBLC6-2SC6 | needs-validation | `Package_TO_SOT_SMD:SOT-23-6`, checked 1-6 pad set, x=±1.1375, y=-0.95, 0, 0.95, 1.325 x 0.6. | ST’s SOT-23-6 package drawing and ESD routing/ground pad requirements must be checked; the generic name does not establish exactness. |
-| BOM-33 TCA9517ADGKR | needs-validation | `Package_SO:VSSOP-8_3x3mm_P0.65mm`: pads 1-8, x=±2.1125, y=±0.975 and ±0.325, each 1.625 x 0.5. | TI DGK0008A drawing recommends 1.4 x 0.45 lands on 0.65 mm pitch. Validate pad length, mask definition and pin 1 orientation or adopt a TI-specific pattern. |
+| BOM-33 TCA9517ADGKR | source lands verified | TI DGK drawing 4214862/A 04/2023 has 1.4 x 0.45, R0.05 lands at x=+/-2.2 on 0.65 pitch. Stock VSSOP-8 instead has 1.625 x 0.5, R0.125 at x=+/-2.1125. | Use the source TI pattern; paste matches copper, NSMD preferred with at most 0.05 mm mask expansion per side. Pin order and rotated compiled coordinates were independently checked. Complete the native footprint/assembly settings. |
 | BOM-18 GCT USB4105-GF-A | available-exact | `Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal`. Checked A/B pads A1,A4,A5,A6,A7,A8,A9,A12 and B1,B4,B5,B6,B7,B8,B9,B12, plus four `SH` through-hole pads. Signal pads are 0.3 or 0.6 x 1.15; shell pads are at x=±4.32. | Retain this part-specific candidate, then run the final rendered component-side check against the GCT drawing and verify D+/D- mapping. |
 | BOM-06/07 43025-0600 / 43045-0600 | available-exact | BOM-06 housing has no PCB footprint. `Connector_Molex:Molex_Micro-Fit_3.0_43045-0600_2x03_P3.00mm_Horizontal` has pads 1-6 at (0,0),(3,0),(6,0),(0,3),(3,3),(6,3), 1.02 mm drills and 1.5 x 2.02 lands, plus the 3 mm locator at (3,-4.32). | Preserve the six-circuit numbering and verify mating clearance, edge distance and the manufacturer drawing in the rendered board. |
 | BOM-38/39/40 43045-0200 / 43025-0200 / 43030-0007 | available-exact for header | `Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal` has pads 1 and 2 at (0,0) and (0,3), 1.4 mm drills and 1.5 mm pad diameter, plus a 3 mm locator at (0,-4.32). Housing and contacts have no PCB footprints. | Verify the two-position drawing and ensure this keyed service header cannot mate with the sensor or coil harness. |
 | BOM-35/36/37 43650-0300 / 43645-0300 / 43030-0007 | available-exact for header | `Connector_Molex:Molex_Micro-Fit_3.0_43650-0300_1x03_P3.00mm_Horizontal` has pads 1-3 at (0,0),(3,0),(6,0), 1.02 mm drills and 1.5 x 2.02 lands, plus the 3 mm locator at (3,-4.32). Housing and contacts have no PCB footprints. | This matches the Molex component-side layout checked in drawing SD-43650-001, Rev E1, document revision D8. Keep pad 1 marking and the 10.16 mm edge limit visible. |
-| BOM-19 status LED and BOM-20 buttons | open | No exact MPN, package or installed candidate is selected. | Select the actual LED, buttons and resistor values, then assign package-specific footprints. |
-| BOM-62 TPS2553DBVR | needs-validation | `Package_TO_SOT_SMD:SOT-23-6` is the DBV package candidate, as for the supervisor above. | Compare the TPS2553 DBV drawing and pin map before adoption; preserve separate power enable and fault nets. |
+| BOM-19 WP710A10LGD and BOM-20/79 B3F-1002-G | exact candidates checked | `LED_THT:LED_D3.0mm` has 2.54 mm pitch, 0.9 mm holes, pad 1 cathode and 2 anode. `Button_Switch_THT:SW_PUSH_6mm_H4.3mm` has a 6.5 x 4.5 hole rectangle and 1.1 mm holes; repeated native pad 1 is manufacturer 3/4, native pad 2 is manufacturer 1/2. | Sources, quantities and assembly limits are in [controller small parts](controller-small-parts.md). Capture three distinct buttons. Hand-solder the LED after reflow; verify component-side orientation and enclosure actuation. |
+| BOM-62 TPS2553DBVR | source lands verified | Same manufacturer DBV6 geometry as BOM-28, independently checked in SLVS841F p41-42. | Preserve IN/GND/EN/FAULT/ILIM/OUT pin order and distinct power-enable/fault nets. Complete the native footprint/assembly settings. |
 | BOM-63 GRM32ER71E226ME15L (x5) | needs-validation | `Capacitor_SMD:C_1210_3225Metric` is a package candidate for the 3.2 x 2.5 mm nominal body. | Compare Murata's land pattern and 2.7 mm maximum height; the capacitance/bias calculation does not validate the footprint. |
 
 The generic `SOT-23`, `SOT-23-5`, `SOT-23-6`, `TSOT-23-6`, `MSOP-10` and
 `VSSOP-8` entries are usable review candidates only. Their names identify a
 package family, not a checked manufacturer land pattern.
+
+## Controller source geometry
+
+The [component source](../../pcb/controller/design/README.md) records manufacturer
+drawings/hashes and converts top-view +Y-down pad coordinates to tscircuit +Y up
+once. These are copper models for product capture, not complete native footprints.
+Tests compile the actual JSX and check pin identity, translated/rotated geometry,
+and all nine exposed-ground lands. The WROOM keeps its vendor origin, 3 mm below
+the body centre; body and antenna bounds are separately explicit.
+
+Small SMD passive lands still need source/native implementation. The exact
+[Panasonic and TDK recommendations](controller-small-parts.md#footprint-capture)
+differ from the installed IPC footprints. Choosing the package name alone does
+not settle that difference. BOM-80 through BOM-91 independently count the
+controller passives; the mains quantities remain separate.
 
 ## Mains
 

@@ -1,7 +1,9 @@
 # PCB workspace
 
-This is a requirements-first workspace. The three product boards have no schematic,
-pin assignment, outline, placement, fabrication profile, or accepted KiCad handoff yet.
+The three product boards have sourced design bases and selected interfaces.
+[Controller component capture](controller/design/README.md) has started; complete
+product schematics, placement, fabrication profiles and accepted KiCad handoffs
+remain outstanding.
 
 Design the three boards as one final-use set for a single fabrication cycle.
 Complete part, interface, enclosure and source/layout reviews before release.

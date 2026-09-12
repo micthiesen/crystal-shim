@@ -43,9 +43,11 @@ and Pushover transition alerts remain the [control contract](controls.md).
 - The locked mains branch split is preserved: fuse/MOV then separate IRM and
   pump-filter branches. PE bypasses board connectors. Exact parts and provisional
   mechanical allocations are in the mains basis; physical results remain unrun.
-- The [BOM](../bom/bom.csv) now distinguishes sourced capture candidates from open
-  items. It is still incomplete for ordering. PCB directories contain requirements
-  and tooling only; there are no product schematics, routes or fabrication outputs.
+- The [BOM](../bom/bom.csv) now includes exact controller LED, three buttons and
+  enumerated small passives. It is still incomplete for ordering.
+  [Controller component source](../pcb/controller/design/README.md) now models nine
+  selected parts with manufacturer copper lands and pin maps. Complete product
+  schematics, placements, routes and fabrication outputs remain outstanding.
 
 ## In progress
 
@@ -65,13 +67,21 @@ and Pushover transition alerts remain the [control contract](controls.md).
    transient clamp. Forward off-state leakage is not bounded by TI's reverse-polarity
    leakage test; PWR-05 must verify discharge/backfeed and shutdown timing.
    No physical overvoltage or dropout result is claimed.
-3. The [footprint audit](design/footprint-audit.md) identifies missing/exact-import
-   candidates. Visual source rechecks refuted the Bourns and IRM mismatch claims;
-   stock geometry matches when the native IRM pin functions and rotation are
-   respected. No product KiCad files have been generated or changed.
+3. The [footprint audit](design/footprint-audit.md) now resolves source copper for
+   WROOM, AP63203, AO3400A, TCA9517A, TPS3808, TPS2553, LVC1G08, LVC1G14 and
+   FSUSB42. Their source pin maps and compiled lands are checked, including
+   rotation and the WROOM's nine ground lands. The generic stock IC patterns
+   differ from manufacturer recommendations; exact source patterns replace those
+   candidates. Bourns and IRM stock geometry remains compatible as previously
+   checked. Native footprint adoption, assembly details and complete board capture
+   remain work. No product KiCad files have been generated or changed.
 4. TLS review found and fixed stale-clock acceptance and missing reproducible
-   tests. The second independent pass is clean within this scope. Exact small passives, cable,
-   enclosure fit, actual PCB source and ESP adapters remain implementation work.
+   tests. The second independent pass is clean within this scope. Controller
+   [small parts](design/controller-small-parts.md) are now selected. A 330 ohm
+   reset-button resistor bounds capacitor discharge while retaining a valid reset
+   low, including the supervisor's MR pullup. Remaining connector/passive/protection
+   footprints, service-input protection, cable, enclosure fit, complete PCB source
+   and ESP adapters remain implementation work.
 5. A source/ELF audit found that priority cannot isolate control from flash access.
    The [implemented boot flash adapter](design/flash-storage.md) enables critical
    sections, waits for a matching relay-off acknowledgement and keeps the output
@@ -99,18 +109,21 @@ prototype or final-unit calibration before fabrication.
 
 ## Verification
 
-`sh scripts/check.sh` passes after the power-circuit and 200 ms sensor-startup
-changes: 79 core tests,
+`sh scripts/check.sh` passes after the controller component-source and BOM changes:
+79 core tests,
 nine driver tests, one CLI test, three production-code partition regressions,
 11 deterministic TLS tests on Linux through OrbStack with crypto-profile parity,
-host and embedded fmt/clippy, C6 release build, PCB source fixture, two Bun tests
-and 28 handoff tests. Two existing tscircuit fixture reference-text warnings
+host and embedded fmt/clippy, C6 release build, PCB source fixture, six Bun tests
+(including four compiled controller-component tests) and 28 handoff tests.
+The generated nine-part copper SVG was visually inspected. Two independent
+component review batches found no remaining actionable mapping/geometry or
+small-parts/reset issue in their scopes. Two existing tscircuit fixture reference-text warnings
 remain documented tooling output. Documentation checks pass for the new design
 records. The TLS provider report separates its historical app build from the linked
 provider probe and the live host checks; no C6 runtime result is implied.
-GitHub documentation and firmware CI passed for configuration/storage checkpoint
-`3abf894`, including the three partition regressions, Linux TLS harness and ESP target
-build. The [firmware run](https://github.com/micthiesen/crystal-shim/actions/runs/34667891185)
+GitHub documentation and firmware CI passed for power-circuit checkpoint
+`28079e4`, including the three partition regressions, Linux TLS harness and ESP target
+build. The [firmware run](https://github.com/micthiesen/crystal-shim/actions/runs/34685901002)
 records those hosted checks. The local release ELF reports text 611,742 / data 6,628 / bss 8,524
 bytes; this is not the complete SRAM/stack budget or physical runtime evidence.
 
@@ -119,9 +132,10 @@ No parts were bought, hardware flashed, mains energized or live alerts sent.
 
 ## Next after current reviews
 
-Complete exact footprint/land validation, remaining controller small parts and
-the layout-dependent power calculations, then capture controller and mains source
-while implementing ESP adapters. The secondary topology and passive ordering
+Finish the remaining connector, passive and protection footprints and the
+controller service-input protection, then assemble the complete controller circuit
+from its checked component models. Continue layout-dependent power calculations
+and mains source while implementing ESP adapters. The secondary topology and passive ordering
 codes are now selected; transient and off-state behavior remain explicit gates. Controller
 capture is the preferred next board step because its pin/power interfaces unblock
 complete firmware integration and the mains LV boundary. The next firmware unit
