@@ -380,6 +380,98 @@ filter or switch refinement addresses both polarities with documented residual
 voltage/current calculations. The final assembly still needs its declared ESD
 tests; no physical immunity result is inferred from the component ratings.
 
+## Connected service section and native signal labels
+
+The 16-part service input now captures both 470 kohm control-pin series resistors,
+the specified divider/ILM values, input bypass, dVdt capacitor, output bulk/bleeder,
+RAW TVS and correctly polarized output clamp. Combined source checks retain its
+separate OR input and the independent PSU/coil path.
+
+Root native readback found that some displayed signal names were plain
+`schematic_text`, which the converter correctly preserved as drawing text rather
+than electrical labels. This left pins disconnected despite clean source netlists
+and legible SVGs. The same issue affected 15 relay-section and five buck-section
+pin-to-named-net comparisons. Explicit source net labels, with inherited sheet
+identity, correct those circuits. Current disposable native exports match all
+29 relay, 24 buck and 37 service connected pins; the service PCB also matches all
+40 numbered pads and its three intended unused eFuse pins. No adopted native
+board was edited. Regressions remove the real labels while keeping source nets
+unchanged and detect the lost connections. The reusable checker also separates
+sheets and rejects wires on intended unused pins.
+
+The 14-part module section fixes U1, SW1/SW2/SW3, D4, R50-R55 and C5/C6/C9.
+Tests independently check module-pad/GPIO allocation, separate BOOT/maintenance,
+the GPIO8 pullup, 330 ohm reset discharge path and 680 ohm LED path. Native
+schematic readback matches all 46 connected pins; the source and schematic retain
+nine unused module pins. Raw PCB conversion still omits nets from eight pad-29
+copies and one copy of each button terminal. This is the known converter behavior
+handled by shared native augmentation, not a new accepted handoff. Complete export
+integration must validate all physical copies. UART test pads and final module,
+antenna and button placement remain full-board work.
+
+The 13-part USB section captures separate CC pulldowns, connector-side protection,
+self-powered VBUS detection, fail-safe data gating, module-side series resistors
+and bypass capacitors. A drawn-wire check caught an unintended data-wire overlap;
+explicit route/label placement now preserves separate D+ and D- nets. Native
+readback matches 51 connected pins, 59 numbered pads and five unused pins. Both
+source and native previews were inspected using KiCad 10.0.5 in disposable stages.
+
+Independent section review freshly compiled all five sections and compared them
+with native XML: 64 components, 187 connected pins and 18 unused pins match. Native
+PCB checks find no additional net discrepancy in the relay, power, service or USB
+sections. Module retains exactly the 14 known repeated-pad omissions awaiting
+shared augmentation. The reviewer ran 13 focused tests with 666 assertions and
+found no actionable finding in the reviewed pin maps, networks, passive selections,
+USB gating, service separation or reset/boot controls. Full-board placement, native
+augmentation, ERC/DRC and manufacture remain outside that clean review scope.
+
+Firmware CI separately exposed Rust 1.98's new `chunks_exact_to_as_chunks` Clippy
+lint; local stable was 1.97.1. The parser now uses fixed-size `as_chunks` after
+its existing even-length check. Host checks pass and
+[firmware CI passed for 80c7ea5](https://github.com/micthiesen/crystal-shim/actions/runs/34692231377).
+
+The relay section now also captures J1, the three-position `43650-0300` controller/
+mains harness header: pin 1 `V5_PSU`, pin 2 isolated GND and pin 3 `COIL_DRAIN`.
+Its source is separate from the service-power input and retains the mains-board
+coil supply. Combined-source tests check all three circuits through the diode OR
+and supervisor. The relay schematic was rearranged to keep connector and net
+labels inside the sheet and readable. This brings the five sections to 65 parts
+and 190 connected pins; the earlier independent 64-part result remains its stated
+scope.
+
+## Matter command and gated KV adapter
+
+The actual rs-matter 0.2.0 trait adapter now shares one `Store` between application
+transactions and SDK KV access. Host tests compile the production store with
+deterministic NOR/permit adapters and exercise shared keys, removal, garbage
+collection, chunk checkpoints and error release. A resolved dependency guard
+rejects the SDK's interrupt-masking mutex feature in either workspace.
+
+The generated async On/Off handler uses source-owned generation tokens, bounded
+reply waiting and cancellation, and reports control's observed output. Independent
+review found that On could return success before the same tick rejected its
+request for a fault or maintenance. Output stayed off, but the acknowledgement
+was misleading. Runtime now returns `Rejected` unless resolved On finishes with
+an accepted override lease and deadline. This uses the actual supervisor outcome,
+without duplicating freshness or safety checks. Valid LOW requests waiting for
+minimum off still succeed; expiry cannot renew a run; Toggle resolved to Off still
+acknowledges revocation. Two regressions failed against the old runtime, and a real
+Matter-future-to-runtime test covers the resulting bridge behavior.
+
+Independent delta review found no further actionable command, ownership or lease
+finding. It also checked the sensor startup epoch correction: observe the epoch
+after 200 ms settling, before checking FAULT and bus lines. Startup current limiting
+can then clear during the invalid-input interval; persistent/later faults still
+reject recovery, and only an initialized fresh frame clears the latch. Saturation
+continues to fail closed.
+
+The focused suites pass 115 core, nine driver, one CLI and nine Matter tests, with
+host/app fmt and Clippy plus the locked C6 release build. The current ELF is text
+621,272 / data 9,052 / BSS 16,980 bytes. These tests do not exercise encrypted
+transport, actual flash/interrupt timing or HomeKit pairing. [D-22](../decisions.md)
+keeps the private accessory's boot-off and bounded behavior authoritative and
+records the complete plug-profile deviation. Radio/TCP assembly remains work.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

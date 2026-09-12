@@ -106,8 +106,10 @@ BOM-74 / service C1608C0G1H472J080AA is 4.7 nF, 5%, C0G, 50 V, with nominal
 defines inner gap, individual land length and width as 0.6-0.8 each for C1608
 reflow. Existing 0.70 mm square lands at x=+/-0.70 match the selected midpoints.
 Keep each capacitor's exact characterization URL separate from shared package
-geometry metadata. These checked mappings await registry/source integration;
-mask, stencil, courtyard and native adoption remain separate work.
+geometry metadata. The registry now selects the exact 26.1/38.3/2.87 kohm 0603
+parts, 470/2.2 kohm 0805 parts and 4.7 nF C0G capacitor. Compiled checks cover both
+pads at 0/90 degrees, exact MPN/value/voltage and footprint identity. Mask, stencil,
+courtyard and native adoption remain separate work.
 
 Mains C2/C3/C4 and R7 are now independently counted as BOM-75 through BOM-78.
 C2 is TDK 0805, C3 TDK 0603, C4 the same 1210 Murata part as controller

@@ -12,6 +12,7 @@ parts, firmware, PCB source, test evidence, and exported mechanical artifacts.
   [decisions](docs/decisions.md), [build](docs/build.md), and [sources](docs/sources.md).
 - `firmware/core/`: pure Rust `no_std` behavior with injected time and inputs.
 - `firmware/drivers/`: async device drivers with host tests and no ESP dependency.
+- `firmware/matter/`: tested `no_std` Matter command and gated KV adapters.
 - `firmware/cli/`: host simulation; `firmware/app/`: separate ESP32-C6 workspace.
 - `pcb/`: Bun/TypeScript tscircuit authoring, then guarded KiCad routing and fabrication.
   `sensor/`, `controller/`, and `mains/` start as requirements, not fabricated designs.
@@ -70,11 +71,14 @@ dependencies. Inject monotonic time; use enums and integer calibrated units, foc
 modules, and meaningful behavior/failure tests. Hardware bindings stay thin. No
 ESP-IDF C SDK, debug leftovers, live credentials, or unrequested flashing.
 
-All flash access, including future Matter KV, belongs to the gated storage owner.
+All flash access, including Matter KV, belongs to the gated storage owner.
 Preserve `esp-storage/critical-section`, relay-off acknowledgements and bounded
 flash chunks. Interrupt priority alone cannot protect flash-backed control code.
 Storage never feeds the watchdog or logs stored bytes. See
 [the flash contract](docs/design/flash-storage.md) before adding persistence.
+Keep rs-matter's resolved `sync-mutex` feature disabled: its critical-section
+backend prevents the control acknowledgement needed by synchronous KV access.
+`scripts/check_matter_features.py` checks both workspace dependency graphs.
 
 PCB tooling follows Stillair's pinned Bun, TypeScript 5.9.3, tscircuit, and Oxc.
 Do not update TypeScript alone: Stillair observed tscircuit's Rollup compiler-API
@@ -101,6 +105,9 @@ in `.agents/skills/sync/sync-map.json`. Port procedures, not Stillair's fan circ
 stock allocations, pin map, fan-specific Matter behavior, or commissioning evidence.
 Use Stillair's Matter-over-Wi-Fi stack for the HomeKit switch, with this project's
 scheduled-run and override semantics.
+This personal accessory preserves boot-off and bounded leases even where a full
+Matter plug profile would allow startup restore or timer changes. Expose only
+implemented commands; record profile deviations under D-22 and do not claim certification.
 Pushover sends confirmed water-state transitions independently of the relay;
 notification/network failures never delay local control. Credentials stay out of git.
 Local skills are real files under `.agents/skills/`; compatibility links may expose

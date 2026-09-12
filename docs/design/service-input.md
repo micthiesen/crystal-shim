@@ -1,6 +1,6 @@
 # Isolated controller service input
 
-Status: component and circuit capture proposal, 2026-09-12. This closes the
+Status: connected controller section captured, 2026-09-12. This closes the
 adapter choice, harness construction and service protection connections. It does
 not approve the complete controller, assert measured transient performance, or
 authorize purchasing or energizing hardware. The [controller basis](controller-design-basis.md)
@@ -105,8 +105,24 @@ There is no intentional forward path from this output to `V5_PSU`, the coil,
 disconnected; service-only operation must leave PSU_GOOD low. Keep the service
 connector and USB behind the low-voltage cover.
 
-Functional names below identify parts for subsequent source capture; they are
-not final board references. All ground connections are controller isolated `GND`.
+The [source section](../../pcb/controller/design/service-input.tsx) reserves J2,
+U10, D5/D6, R30-R37 and C20-C23 for the complete controller. Placement is still
+provisional. All ground connections are controller isolated `GND`.
+
+| Source reference | Function |
+| --- | --- |
+| J2 / U10 | Service connector / TPS259470 |
+| D5 / D6 | RAW bidirectional TVS / output negative clamp |
+| R30 / R31 / R32 | UV top / bottom / control-pin series |
+| R33 / R34 / R35 | OV top / bottom / control-pin series |
+| R36 / R37 | Current limit / output bleeder |
+| C20 / C21 | IN 1 uF / 100 nF |
+| C22 / C23 | OUT 22 uF / dVdt 4.7 nF |
+
+D2 remains the separate service OR diode in the logic-power section. Native
+readback of the disposable initial service export matches all 16 components,
+37 connected pins, 40 numbered PCB pads and three intentional NC pins. These
+checks establish connectivity, not transient performance or manufacturing release.
 
 | TPS259470 pin | Connection |
 | ---: | --- |

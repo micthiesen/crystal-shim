@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { ControllerBuck } from "./ic-components";
 import { PowerSchottky } from "./protection-components";
 import { BuckInductor } from "./assembly-components";
@@ -7,7 +8,7 @@ import { ControllerCapacitor } from "./passive-components";
 // of their respective eFuses. USB_VBUS has no power connection to this section.
 export function ControllerLogicPower() {
   return (
-    <>
+    <group name="LogicPower" schSheetName="Power">
       <PowerSchottky
         name="D1"
         pcbX={-20}
@@ -111,7 +112,19 @@ export function ControllerLogicPower() {
         schSheetName="Power"
         connections={{ pin1: "net.V3V3", pin2: "net.GND" }}
       />
-    </>
+      {/* Explicit electrical labels survive the initial native export. */}
+      {[
+        ["BUCK_SW", ".U2 > .pin5"],
+        ["BUCK_SW", ".L1 > .pin1"],
+        ["BUCK_SW", ".C8 > .pin2"],
+        ["BUCK_BST", ".U2 > .pin6"],
+        ["BUCK_BST", ".C8 > .pin1"],
+      ].map(([net, port]) => (
+        <Fragment key={port}>
+          <netlabel net={net} connectsTo={port} />
+        </Fragment>
+      ))}
+    </group>
   );
 }
 

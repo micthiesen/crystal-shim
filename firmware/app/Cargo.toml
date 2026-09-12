@@ -24,6 +24,7 @@ bench = false
 critical-section = "1"
 crystal-shim-core = { path = "../core" }
 crystal-shim-drivers = { path = "../drivers" }
+crystal-shim-matter = { path = "../matter" }
 embassy-executor = { version = "0.10", default-features = false }
 embassy-time = { version = "0.5", default-features = false }
 embassy-futures = "0.1"

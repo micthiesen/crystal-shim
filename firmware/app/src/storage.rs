@@ -6,13 +6,15 @@ use crystal_shim_core::{
     configuration::ValidatedDeviceConfig, load_retained, ConfigurationLifecycle,
     LoadedRetainedState, RETAINED_STORAGE_KEY,
 };
+use crystal_shim_matter::sdk::error::{Error as MatterError, ErrorCode};
+use crystal_shim_matter::sdk::persist::KvBlobStore;
 use embedded_storage::nor_flash::{NorFlash as _, ReadNorFlash as _};
 use embedded_storage_async::nor_flash::{ErrorType, MultiwriteNorFlash, NorFlash, ReadNorFlash};
 use esp_hal::peripherals::FLASH;
 use esp_storage::{FlashStorage, FlashStorageError};
 use sequential_storage::cache::NoCache;
 
-pub const CONFIGURATION_STORAGE_KEY: u16 = 0x4346;
+pub use crystal_shim_matter::storage::CONFIGURATION_STORAGE_KEY;
 pub const SCRATCH_BYTES: usize = 4096;
 
 #[derive(Clone, Copy, Debug)]
@@ -41,22 +43,6 @@ pub struct Store {
 }
 
 impl Store {
-    pub fn apply(
-        &mut self,
-        record: crystal_shim_core::runtime::Record,
-        buf: &mut [u8],
-    ) -> Result<(), Error> {
-        match record {
-            crystal_shim_core::runtime::Record::Retained(state) => {
-                let bytes = state.encode().map_err(|_| Error::Retained)?;
-                self.store(RETAINED_STORAGE_KEY, &bytes, buf)
-            }
-            crystal_shim_core::runtime::Record::Configuration(config) => {
-                let bytes = config.encode().map_err(|_| Error::Configuration)?;
-                self.store(CONFIGURATION_STORAGE_KEY, bytes.as_bytes(), buf)
-            }
-        }
-    }
     pub fn open(flash: FLASH<'static>, table_buffer: &mut [u8]) -> Result<Self, Error> {
         let _permit = Permit::acquire()?;
         let mut flash = FlashStorage::new(flash);
@@ -102,6 +88,22 @@ impl Store {
         .map_err(|_| Error::Flash)
     }
 
+    fn remove(&mut self, key: u16, buf: &mut [u8]) -> Result<(), Error> {
+        let mut permit = Permit::acquire()?;
+        let mut flash = Access {
+            flash: &mut self.flash,
+            permit: &mut permit,
+        };
+        embassy_futures::block_on(sequential_storage::map::remove_item(
+            &mut flash,
+            self.range.clone(),
+            &mut self.cache,
+            buf,
+            &key,
+        ))
+        .map_err(|_| Error::Flash)
+    }
+
     pub fn load_boot(&mut self, buf: &mut [u8]) -> Result<BootState, Error> {
         let configuration = self
             .load(CONFIGURATION_STORAGE_KEY, buf)?
@@ -130,6 +132,22 @@ impl Store {
             retained,
         })
     }
+}
+
+impl KvBlobStore for Store {
+    fn load<'a>(&mut self, key: u16, buf: &'a mut [u8]) -> Result<Option<&'a [u8]>, MatterError> {
+        Store::load(self, key, buf).map_err(matter_error)
+    }
+    fn store(&mut self, key: u16, data: &[u8], buf: &mut [u8]) -> Result<(), MatterError> {
+        Store::store(self, key, data, buf).map_err(matter_error)
+    }
+    fn remove(&mut self, key: u16, buf: &mut [u8]) -> Result<(), MatterError> {
+        Store::remove(self, key, buf).map_err(matter_error)
+    }
+}
+fn matter_error(_error: Error) -> MatterError {
+    // Do not include raw driver details or stored bytes in protocol errors.
+    ErrorCode::Failure.into()
 }
 
 /// Private borrowed driver cannot outlive the transaction's output exclusion.

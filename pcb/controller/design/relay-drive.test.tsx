@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import { Circuit } from "tscircuit";
 import { ControllerRelayDrive } from "./relay-drive";
+import { schematicConnectivityErrors } from "./schematic-connectivity-check";
 
 test("relay circuit compiles the supervisor, independent permission gate and low-side coil path", async () => {
   const circuit = new Circuit();
@@ -36,18 +37,22 @@ test("relay circuit compiles the supervisor, independent permission gate and low
       )
       .sort();
   };
-  expect(components).toHaveLength(11);
-  expect(endpoints("V5_PSU")).toEqual(["R14.1"]);
+  expect(components).toHaveLength(12);
+  expect(components.find((e) => e.name === "J1")?.manufacturer_part_number).toBe(
+    "43650-0300",
+  );
+  expect(endpoints("V5_PSU")).toEqual(["J1.1", "R14.1"]);
   expect(endpoints("PSU_SENSE")).toEqual(["R14.2", "R15.1", "U4.5"]);
   expect(endpoints("PSU_GOOD")).toEqual(["R12.2", "U4.1", "U6.2"]);
   expect(endpoints("CHIP_EN")).toEqual(["U4.3"]);
   expect(endpoints("RELAY_REQUEST")).toEqual(["R2.1", "U6.1"]);
   expect(endpoints("RELAY_GATED")).toEqual(["R20.1", "U6.4"]);
   expect(endpoints("MOS_GATE")).toEqual(["Q1.1", "R11.1", "R20.2"]);
-  expect(endpoints("COIL_DRAIN")).toEqual(["Q1.3"]);
+  expect(endpoints("COIL_DRAIN")).toEqual(["J1.3", "Q1.3"]);
   expect(endpoints("GND")).toEqual([
     "C11.2",
     "C12.2",
+    "J1.2",
     "Q1.2",
     "R11.2",
     "R15.2",
@@ -67,5 +72,12 @@ test("relay circuit compiles the supervisor, independent permission gate and low
   ).toBe(false);
   expect(json.filter((e) => "error_type" in e || e.type.endsWith("_error"))).toEqual(
     [],
+  );
+  expect(schematicConnectivityErrors(json)).toEqual([]);
+  const withoutPermissionLabels = json.filter(
+    (e) => e.type !== "schematic_net_label" || e.text !== "PSU_GOOD",
+  );
+  expect(schematicConnectivityErrors(withoutPermissionLabels).length).toBeGreaterThan(
+    0,
   );
 });

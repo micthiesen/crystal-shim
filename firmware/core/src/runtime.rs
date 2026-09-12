@@ -21,6 +21,8 @@ pub enum RuntimeCommand {
     SaveConfiguration(ValidatedDeviceConfig),
     On,
     Off,
+    /// Resolve against the actual commanded output in the control iteration.
+    Toggle,
     EnterMaintenance,
     ExitMaintenance,
     /// A newly acquired, trusted observation, never a republished cached value.
@@ -48,11 +50,14 @@ pub enum Error {
     Superseded,
     InvalidTime,
     Exhausted,
+    /// Control rejected or cancelled On; no valid override lease remains.
+    Rejected,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Acknowledgement {
-    /// Applied by control; this never claims that the relay is energized.
+    /// Applied by control. On retains a valid override lease, possibly waiting
+    /// for minimum-off recovery; this never claims that the relay is energized.
     Applied,
     /// Matching configuration/retained state has completed its storage writes.
     Durable,
@@ -206,6 +211,19 @@ impl Runtime {
         request: Option<Request>,
         completion: Option<StoreCompletion>,
     ) -> Step {
+        let request = request.map(|mut request| {
+            if matches!(request.command, RuntimeCommand::Toggle) {
+                request.command =
+                    if self.supervisor.as_ref().is_some_and(|supervisor| {
+                        supervisor.status().control.relay == RelayCommand::On
+                    }) {
+                        RuntimeCommand::Off
+                    } else {
+                        RuntimeCommand::On
+                    };
+            }
+            request
+        });
         let mut completed_reply = None;
         if observation.maintenance_pressed {
             self.enter_maintenance();
@@ -382,6 +400,19 @@ impl Runtime {
                 },
             )
         });
+        let command_reply = command_reply.map(|mut reply| {
+            // Admission is provisional until the supervisor has applied every
+            // safety/expiry rule. A valid pending override is still accepted.
+            if request.is_some_and(|request| matches!(request.command, RuntimeCommand::On))
+                && reply.result == Ok(Acknowledgement::Applied)
+                && !status.is_some_and(|status| {
+                    status.demand == Demand::Override && status.deadline.is_some()
+                })
+            {
+                reply.result = Err(Error::Rejected);
+            }
+            reply
+        });
         Step {
             status,
             command_reply,
@@ -485,6 +516,7 @@ impl Runtime {
                 self.suppress();
                 return Some(Ok(Acknowledgement::Applied));
             }
+            RuntimeCommand::Toggle => unreachable!("resolved by control before acceptance"),
         };
         self.active_request = Some(ActiveRequest {
             id: request.id,

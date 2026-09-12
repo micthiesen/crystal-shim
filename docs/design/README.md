@@ -10,6 +10,8 @@ release or commissioning evidence. Their explicit open items remain work to fini
   loading estimates and the power-switch residual-pulse boundary still under review.
 - [Controller](controller-design-basis.md): module pins, power and service inputs,
   USB attach gating, relay driver, power-good interlock and harnesses.
+- [Controller service pads](controller-test-points.md): exposed supply, bus, relay
+  and UART points, probe access, mask and no-paste export rules.
 - [Mains and enclosure](mains-design-basis.md): PSU, relay, filter, fuse/MOV/RC,
   mains harness, PE, spacing and enclosure allocation.
 - [Secondary power protection](power-protection-review.md): selected 2 A supply,
@@ -23,6 +25,8 @@ release or commissioning evidence. Their explicit open items remain work to fini
 - [Flash storage](flash-storage.md): output-off ownership, bounded flash chunks and boot recovery.
 - [Runtime transactions](runtime-transactions.md): durable settings, schedule eligibility,
   immediate Off, sensor revisions and bounded USB administration.
+- [Matter adapter](matter-integration.md): generated command handling, producer ownership,
+  applied reporting, shared gated KV and the remaining radio/profile integration.
 - [Verified TLS](tls-provider.md): fixed Pushover trust policy, C6 build,
   live endpoint checks, measured linked size and remaining runtime evidence.
 - [Footprint audit](footprint-audit.md): installed-library candidates, manufacturer

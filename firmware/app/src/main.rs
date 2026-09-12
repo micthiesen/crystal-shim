@@ -3,6 +3,9 @@
 #![no_main]
 
 use core::fmt::Write as _;
+use crystal_shim_core::runtime_ingress::Source;
+use crystal_shim_matter::sdk::persist::SharedKvBlobStore;
+use crystal_shim_matter::sdk::utils::{cell::RefCell, sync::blocking::Mutex};
 use embassy_time::{with_timeout, Duration};
 use embedded_io_async::{Read, Write};
 use esp_backtrace as _;
@@ -13,6 +16,7 @@ use static_cell::StaticCell;
 mod board;
 mod control;
 mod flash_gate;
+mod matter;
 mod partition;
 mod runtime;
 mod sensor;
@@ -23,7 +27,7 @@ esp_bootloader_esp_idf::esp_app_desc!();
 
 static CONTROL: StaticCell<InterruptExecutor<1>> = StaticCell::new();
 static SENSOR: StaticCell<InterruptExecutor<2>> = StaticCell::new();
-static STORAGE_BUFFER: StaticCell<[u8; storage::SCRATCH_BYTES]> = StaticCell::new();
+static STORAGE_BUFFER: StaticCell<Mutex<RefCell<[u8; storage::SCRATCH_BYTES]>>> = StaticCell::new();
 static CONSOLE: StaticCell<crystal_shim_core::runtime_ingress::Receiver> = StaticCell::new();
 
 #[esp_rtos::main]
@@ -55,7 +59,8 @@ async fn main(_spawner: embassy_executor::Spawner) {
     );
     control.spawn(sensor::fault_monitor(board.sensor_fault).unwrap());
     // Start the output owner before storage: every flash access needs its off ACK.
-    let storage_buffer = STORAGE_BUFFER.init([0; storage::SCRATCH_BYTES]);
+    let shared_buffer = STORAGE_BUFFER.init(Mutex::new(RefCell::new([0; storage::SCRATCH_BYTES])));
+    let storage_buffer = shared_buffer.get_mut().get_mut();
     let mut store = storage::Store::open(board.flash, storage_buffer);
     let boot = store
         .as_mut()
@@ -76,6 +81,10 @@ async fn main(_spawner: embassy_executor::Spawner) {
     let receiver = CONSOLE.init(crystal_shim_core::runtime_ingress::Receiver::new());
     let mut last_ticket = 0;
     let mut storage_error = boot.as_ref().err().copied();
+    // This is the same access type returned by Matter::kv. It owns the one Store;
+    // future protocol callers borrow this same access, never construct another flash handle.
+    let kv = store.map(|store| SharedKvBlobStore::new(store, shared_buffer));
+    let matter = matter::handler();
     let mut reported_at = None;
     loop {
         // Applied-Off replies follow the GPIO write and precede this USB
@@ -90,13 +99,13 @@ async fn main(_spawner: embassy_executor::Spawner) {
             .await;
         }
         if let Some(write) = runtime::write_request().filter(|write| write.ticket != last_ticket) {
-            // Sole thread-mode storage owner. Store.apply retains the existing
+            // Sole thread-mode storage owner. Shared KV access retains the existing
             // relay-off gate and bounded read/program/erase checkpoints.
             last_ticket = write.ticket;
-            let result = store
-                .as_mut()
-                .map_err(|error| *error)
-                .and_then(|store| store.apply(write.record, storage_buffer));
+            let result = kv.as_ref().map_err(|error| *error).and_then(|kv| {
+                crystal_shim_matter::storage::apply(kv, write.record)
+                    .map_err(|_| storage::Error::Flash)
+            });
             storage_error = result.err();
             runtime::store_completed(crystal_shim_core::runtime::StoreCompletion {
                 ticket: write.ticket,
@@ -119,7 +128,7 @@ async fn main(_spawner: embassy_executor::Spawner) {
                     let mut line = heapless::String::<128>::new();
                     match request {
                         Ok(request) if snapshot::boot_configuration().is_some() => {
-                            let accepted = runtime::submit(request);
+                            let accepted = matter.begin(Source::Usb, request).is_ok();
                             let _ = writeln!(
                                 line,
                                 "{} {}",
@@ -145,6 +154,7 @@ async fn main(_spawner: embassy_executor::Spawner) {
         }
         input.fill(0);
         let now = snapshot::now().0;
+        matter.refresh();
         if reported_at.is_some_and(|at| now >= at && now - at < 1_000) {
             continue;
         }

@@ -159,6 +159,121 @@ test("selected passive values retain manufacturer codes and reviewed copper afte
   );
 });
 
+for (const rotation of [0, 90] as const) {
+  test(`service passives select exact values and package copper at ${rotation} degrees`, async () => {
+    const parts = [
+      { value: "26.1k", mpn: "ERA3AEB2612V", ohms: 26100, size: "0603" },
+      { value: "38.3k", mpn: "ERA3AEB3832V", ohms: 38300, size: "0603" },
+      { value: "2.87k", mpn: "ERA3AEB2871V", ohms: 2870, size: "0603" },
+      { value: "470k", mpn: "ERA6AEB474V", ohms: 470000, size: "0805" },
+      { value: "2.2k", mpn: "ERA6AEB222V", ohms: 2200, size: "0805" },
+    ] as const;
+    const circuit = new Circuit();
+    circuit.add(
+      <board width={70} height={30} routingDisabled>
+        {parts.map((part, index) => (
+          <ControllerResistor
+            key={part.value}
+            name={`R${index + 1}`}
+            value={part.value}
+            pcbX={-25 + index * 10}
+            pcbY={3}
+            pcbRotation={rotation}
+            schX={-25 + index * 10}
+            schY={0}
+          />
+        ))}
+        <ControllerCapacitor
+          name="C1"
+          value="4.7nF"
+          pcbX={25}
+          pcbY={3}
+          pcbRotation={rotation}
+          schX={25}
+          schY={0}
+        />
+      </board>,
+    );
+    await circuit.renderUntilSettled();
+    const json = circuit.getCircuitJson();
+    const components = json.filter((e) => e.type === "source_component");
+    const pcbComponents = json.filter((e) => e.type === "pcb_component");
+    const ports = json.filter((e) => e.type === "source_port");
+    const pcbPorts = json.filter((e) => e.type === "pcb_port");
+    const pads = json.filter((e) => e.type === "pcb_smtpad");
+    expect(components).toHaveLength(6);
+    expect(pads).toHaveLength(12);
+
+    for (let index = 0; index < 6; index++) {
+      const part = parts[index];
+      const ref = part ? `R${index + 1}` : "C1";
+      const source = components.find((e) => e.name === ref);
+      if (!source) throw new Error(`${ref} missing compiled source component`);
+      expect(source.manufacturer_part_number).toBe(part?.mpn ?? "C1608C0G1H472J080AA");
+      if (part) {
+        if (source.ftype !== "simple_resistor")
+          throw new Error(`${ref} is not a resistor`);
+        expect(source.resistance).toBe(part.ohms);
+      } else {
+        if (source.ftype !== "simple_capacitor")
+          throw new Error(`${ref} is not a capacitor`);
+        expect(source.capacitance).toBe(4.7e-9);
+        expect(source.max_voltage_rating).toBe(50);
+      }
+      const footprint = pcbComponents.find(
+        (e) => e.source_component_id === source.source_component_id,
+      );
+      expect(footprint?.metadata?.kicad_footprint?.footprintName).toBe(
+        part ? `CrystalShim:Panasonic_${part.size}` : "CrystalShim:TDK_C1608",
+      );
+      const partPorts = ports.filter(
+        (e) => e.source_component_id === source.source_component_id,
+      );
+      expect(partPorts.map((p) => p.pin_number).sort()).toEqual([1, 2]);
+      const [offset, width, height] = !part
+        ? [0.7, 0.7, 0.7]
+        : part.size === "0805"
+          ? [1.175, 1.15, 1.15]
+          : [0.725, 0.65, 0.9];
+      for (const pin of [1, 2]) {
+        const port = partPorts.find((p) => p.pin_number === pin)!;
+        const pcbPort = pcbPorts.find((p) => p.source_port_id === port.source_port_id);
+        const physicalPads = pads.filter((p) => p.pcb_port_id === pcbPort?.pcb_port_id);
+        expect(physicalPads).toHaveLength(1);
+        const pad = physicalPads[0]!;
+        if (pad.shape !== "rect")
+          throw new Error(`${ref}.${pin} needs a rectangular pad`);
+        const displacement = pin === 1 ? -offset! : offset!;
+        expect(pad.x).toBeCloseTo(
+          -25 + index * 10 + (rotation === 0 ? displacement : 0),
+          6,
+        );
+        expect(pad.y).toBeCloseTo(3 + (rotation === 90 ? displacement : 0), 6);
+        expect(pad.width).toBeCloseTo(rotation === 0 ? width! : height!, 6);
+        expect(pad.height).toBeCloseTo(rotation === 0 ? height! : width!, 6);
+      }
+    }
+    expect(json.filter((e) => "error_type" in e || e.type.endsWith("_error"))).toEqual(
+      [],
+    );
+  });
+}
+
+test("shared C1608 copper keeps each capacitor's own characterization link", () => {
+  const c0g = ControllerCapacitor({ name: "C1", value: "4.7nF" });
+  const x7r = ControllerCapacitor({ name: "C2", value: "100nF" });
+  expect(c0g.props.datasheetUrl).toBe(
+    "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608c0g1h472j080aa.pdf",
+  );
+  expect(x7r.props.datasheetUrl).toBe(
+    "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+  );
+  expect(c0g.props.footprint.props.pattern).toBe(x7r.props.footprint.props.pattern);
+  expect(c0g.props.footprint.props.pattern.source.url).toBe(
+    "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/specification/mlccspec_commercial_general_midvoltage_en.pdf",
+  );
+});
+
 test("Micro-Fit source preserves circuit numbering, round drills and non-plated locator positions", async () => {
   const circuit = new Circuit();
   circuit.add(

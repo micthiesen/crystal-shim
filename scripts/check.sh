@@ -22,6 +22,7 @@ sh scripts/check-tls.sh
   sh ../../scripts/with-esp-toolchain.sh cargo clippy --locked --all-targets -- -D warnings
   sh ../../scripts/with-esp-toolchain.sh cargo build --locked --release
 )
+python3 scripts/check_matter_features.py
 (
   cd pcb
   bun run check

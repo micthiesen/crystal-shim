@@ -43,7 +43,7 @@ are not a released electrical design.
 | D-09 | Fuse/MOV/RC/regulators and internal mains connector set | Sourced candidates and calculations in the detailed design basis; integrated schematic review owed | Protection and source capture |
 | D-10 | Enclosure, insulation/spacing and earth scheme | Hammond 1554V2GY envelope and conservative spacing proposed; actual CAD/routed mains review owed | Physical safety |
 | D-11 | Thresholds, calibration limits and freshness timeout | Open; 1/10/30 s timing seeds provisional | Sensor and firmware tuning |
-| D-12 | Retained state and network interface | Matter-over-Wi-Fi selected; host retained schema and schedule implemented, ESP storage/network adapters owed | Hardware firmware |
+| D-12 | Retained state and network interface | Matter-over-Wi-Fi selected; runtime schedule/retained transactions and actual Matter command/KV adapters implemented; radio/profile assembly remains work | Hardware firmware |
 | D-13 | Run duration and daily schedule | Default 15 min shared by schedule and override, all adjustable; exact daily times/count/timezone open | Local scheduler and configuration |
 | D-14 | Water-transition notifications | Pushover selected; first baseline silent; verified TLS provider built and host-tested; keys and delivery/persistence adapter remain work | Notification integration |
 | D-15 | Settings interface | Confirmed: ESP-hosted local webpage for settings and schedule; implementation pending | Schedule, calibration, timing and Pushover provisioning workflow |
@@ -53,6 +53,7 @@ are not a released electrical design.
 | D-19 | USB and service power | Self-powered USB data port with hardware VBUS gating; GST18U05-P1J isolated service adapter through protected Micro-Fit input | Mains-disconnected programming/calibration; exact harness and service eFuse in [service design](design/service-input.md); transient evidence remains open |
 | D-20 | Sensor bus power sequencing | TCA9517A separates pullup domains; independent GPIO0 enable disconnects the cable during recovery/startup | Prevent sensor backfeed and isolate the unpowered cable's low/floating bus |
 | D-21 | Controlled sensor recovery | TPS2553 with GPIO22 enable/GPIO23 fault; discharge resistors and bounded power-cycle/reinitialization sequence | Recover transient sensor faults without blocking control; persistent faults stay off |
+| D-22 | Private Matter accessory behavior | Use controlled-load `0x010A` identity for Apple Home interoperability, retaining boot-off and bounded leases. Expose only implemented commands; document deviation from the complete plug profile rather than claim conformance. Certification is outside this personal build | Radio implementation can proceed; actual Apple Home pairing/behavior remains G-05 |
 
 The confirmed inputs do not establish electrode geometry or physical thresholds.
 Set geometry from TI's reference, the installation constraints and documented

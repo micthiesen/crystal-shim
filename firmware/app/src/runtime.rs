@@ -2,7 +2,7 @@
 use core::cell::Cell;
 use critical_section::Mutex;
 use crystal_shim_core::runtime::{Reply, Request, StoreCompletion, StoreRequest};
-use crystal_shim_core::runtime_ingress::Ingress;
+use crystal_shim_core::runtime_ingress::{Ingress, Source, Token};
 
 static INGRESS: Mutex<Cell<Ingress>> = Mutex::new(Cell::new(Ingress::new()));
 static WRITE: Mutex<Cell<Option<StoreRequest>>> = Mutex::new(Cell::new(None));
@@ -18,8 +18,14 @@ fn ingress<R>(f: impl FnOnce(&mut Ingress) -> R) -> R {
     })
 }
 
-pub fn submit(request: Request) -> bool {
-    ingress(|ingress| ingress.submit(request))
+pub fn submit(source: Source, request: Request) -> Option<Token> {
+    ingress(|ingress| ingress.submit_from(source, request))
+}
+pub fn reply(token: Token) -> Option<Reply> {
+    ingress(|ingress| ingress.take_reply_for(token))
+}
+pub fn cancel(token: Token) {
+    ingress(|ingress| ingress.cancel(token));
 }
 pub fn take() -> (bool, Option<Request>) {
     ingress(Ingress::take)

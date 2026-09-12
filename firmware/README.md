@@ -2,7 +2,8 @@
 
 Rust, bare-metal ESP32-C6, following `../stillair`: `core/` contains the `no_std`
 control contract, `drivers/` contains async device drivers, `cli/` runs the control
-model on the host, and `app/` is a separate workspace
+model on the host, `matter/` contains the actual SDK command and KV adapters,
+and `app/` is a separate workspace
 targeting `riscv32imac-unknown-none-elf`. Stable Rust is declared in
 `rust-toolchain.toml`; setup was verified with Rust 1.97.1. Commit each workspace's lockfile.
 
@@ -12,8 +13,10 @@ task, services a 1,500 ms system-reset watchdog only after that task completes, 
 streams bounded USB diagnostics. Boot validates saved settings/calibration and repairs
 retained safety state through a relay-off flash gate. Missing or invalid settings keep
 the output off. The runtime coordinator evaluates schedules, persists configuration
-and suppression, and accepts bounded physical USB administration. Wi-Fi, Matter,
-the settings webpage and Pushover adapters remain to be integrated. The external coil
+and suppression, and accepts bounded physical USB administration. The Matter
+command and shared KV adapters are implemented; Wi-Fi, commissioning, a conforming
+device profile, the settings webpage and Pushover remain to be integrated. HomeKit
+cannot connect to this image yet. The external coil
 pull-down must establish off before application entry and during reset; a build
 cannot verify that physical behavior.
 
@@ -25,6 +28,8 @@ without fabricated default thresholds. The [integration design](../docs/design/f
 distinguishes implemented executor and storage adapters from remaining network
 integration. The [runtime transaction contract](../docs/design/runtime-transactions.md)
 defines configuration saves, command acknowledgements and the USB protocol.
+The [Matter adapter contract](../docs/design/matter-integration.md) defines producer
+ownership, cancellation, applied replies and the single shared SDK storage owner.
 The [configuration](../docs/design/configuration.md),
 [timezone](../docs/design/timezone.md) and [flash-storage](../docs/design/flash-storage.md)
 records describe the bounded models and current evidence.
@@ -117,9 +122,11 @@ startup; `Supervisor::reconfigure` clamps an active deadline when duration decre
 and never extends it when duration increases. The runtime's configuration-save
 transaction deliberately enters maintenance, preserves deadline history and
 requires an explicit durable exit. The future settings webpage must show this
-consequence. No configuration UI or Matter stack is implemented.
-The HomeKit/Matter adapter must report the actual command/state,
-serialize incoming events, and keep network work separate from control ticks.
+consequence. No configuration UI or commissioned Matter node is implemented.
+The generated async Matter handler reports the observed relay command and waits
+for control-applied replies. Source-owned tokens prevent stale replies or another
+producer from consuming them. Toggle resolves inside control. Radio integration
+must preserve this boundary and run the attribute notification handler.
 
 ## Water notifications
 
@@ -153,6 +160,8 @@ cd app
 cargo fmt --check
 sh ../../scripts/with-esp-toolchain.sh cargo clippy --locked --all-targets -- -D warnings
 sh ../../scripts/with-esp-toolchain.sh cargo build --locked --release
+cd ../..
+python3 scripts/check_matter_features.py
 ```
 
 Use `cargo fmt` in the appropriate workspace to apply formatting. The host tests

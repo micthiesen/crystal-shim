@@ -4,8 +4,10 @@ Implemented in `firmware/app/src/storage.rs`, `firmware/app/src/flash_gate.rs`
 and the independently testable `firmware/core/src/flash_gate.rs`. It loads saved
 configuration, repairs retained safety records at boot and services the
 [runtime coordinator](runtime-transactions.md)'s ticketed configuration and retained
-writes. USB supplies bounded command/configuration ingress; the Matter KV trait
-adapter, authenticated network settings and factory reset remain integration work.
+writes. The same store implements the actual Matter `KvBlobStore` load/store/remove
+interface. Application transactions use its shared SDK access; see the
+[Matter integration contract](matter-integration.md). Authenticated network settings,
+radio ownership and factory reset remain integration work.
 
 ## Ownership and timing
 
@@ -43,8 +45,9 @@ testing run level alone would allow an unserviceable wait. Flash callers must no
 that masks interrupts or invoke it from an interrupt executor. The actual pinned
 `rs-matter 0.2.0` KV trait is synchronous. Its default mutex is `NoopRawMutex`;
 enabling `sync-mutex` on bare metal changes it to `CriticalSectionRawMutex` and is
-incompatible with waiting for control from inside KV access. Matter integration must
-preserve the single thread-mode owner and verify its complete feature graph.
+incompatible with waiting for control from inside KV access. The implemented adapter
+preserves the single thread-mode owner. `scripts/check_matter_features.py` rejects
+that resolved feature and mismatched rs-matter versions across both workspaces.
 
 The store directly uses the same `sequential-storage 3.0.1` map operations as
 Stillair's pinned `SeqMapKvBlobStore`, with a fresh borrowed gated driver for each
@@ -97,6 +100,9 @@ malformed records and revision/reset recovery. `firmware/partition-tests` compil
 the same pinned parser's host backend and checks custom/unknown tags, scratch sizing,
 MD5 corruption, protected regions, flags, alignment, overflow and overlapping regions.
 It cannot write or erase the fake storage. There are three regression tests.
+Two Matter storage tests compile the actual app store against deterministic NOR
+and permit adapters, exercising shared keys, removal, garbage collection, bounded
+access and error release. Fake permits cannot prove actual interrupt or GPIO timing.
 The adapter passes target
 checks; no physical flash, power-cut, page-erase or output timing test has run.
 The complete commissioning matrix remains authoritative for those results.

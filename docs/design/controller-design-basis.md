@@ -352,9 +352,13 @@ overhang, service access, standoffs, antenna keepout and cable bends must fit th
 ## Capture work still owed
 
 The source now includes USB4105-GF-A, TPS259470 and SMBJ8.0CA copper/pin models.
+Connected sections capture the relay-permission circuit, buck/diode OR, protected
+service input, USB data gate and module/local controls. Their provisional review
+placements do not constitute a complete controller layout. Source tests compare
+the drawn schematic with named nets; native readback remains a separate gate.
 USB origin/pin normalization and eFuse custom-pad anchor correction are tested
 at the initial-export boundary; complete-board integration and native parity are
-still required. Capture the selected service-input circuit and finish its
-transient model, sensor-feed ESD, connector mating drawings, remaining passive
+still required. Finish the service-input transient model, sensor-feed ESD,
+connector mating drawings, remaining passive
 footprints and the enclosure fit. Review the schematic and transient
 power combinations before adopting these selections as a fabrication baseline.

@@ -264,7 +264,7 @@ calibration and removal/reseat testing.
 | `U2` | ADI `LT3042IMSE#PBF` | MSE | 3 | `V5_SENSOR` | EN/UV tied directly to IN |
 | `U2` | ADI `LT3042IMSE#PBF` | MSE | 4 | `NC_PG` | PG unused; leave open |
 | `U2` | ADI `LT3042IMSE#PBF` | MSE | 5 | `LDO_ILIM` | Current-limit resistor to GND |
-| `U2` | ADI `LT3042IMSE#PBF` | MSE | 6 | `V5_SENSOR` | PGFB tied to IN; fast startup disabled |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE | 6 | `PGFB_HOLD` | Diode from IN, anode IN/cathode PGFB; fast startup disabled with reverse-input protection |
 | `U2` | ADI `LT3042IMSE#PBF` | MSE | 7 | `LDO_SET` | Setting resistor and bypass capacitor to GND |
 | `U2` | ADI `LT3042IMSE#PBF` | MSE | 8 | `GND` | Join exposed pad directly |
 | `U2` | ADI `LT3042IMSE#PBF` | MSE | 9 | `3V3_SENSOR` | OUTS; Kelvin route to positive pad of `c_ldo_out` |
@@ -282,6 +282,12 @@ plus or minus 22 V. The I grade guarantees the specified temperature limits
 over -40 to 125 degrees C, covering cold startup and the 0 to 50 degrees C
 design environment. This is a component-rating margin; it does not prove the
 complete rail's response to a fast overvoltage step.
+
+PGFB does not share the IN/EN reverse-input rating: its absolute minimum is
+-0.3 V. ADI Rev C pages 12 and 22 require a diode from IN to PGFB, anode at IN,
+when disabling fast startup while retaining reverse-input protection. The earlier
+direct tie is withdrawn. The exact diode and its pin/land mapping are part of the
+sensor-cable refinement review; do not capture PGFB directly on `V5_SENSOR`.
 
 Use MSE drawing `05-08-1664 Rev I`: 3.00 x 3.00 mm body, 4.90 mm nominal lead
 span, 1.10 mm maximum height and 1.68 x 1.88 mm exposed pad. The candidate
@@ -354,7 +360,7 @@ output. Even reserving the SET capacitor's maximum 0.59455 uF against the
 output budget keeps it below 14.64 uF. Count controller-side capacitance and
 any later additions against the complete `V5_SENSOR` rail's 20 uF limit.
 
-Leave fast startup disabled through the PGFB-to-IN connection. With the
+Leave fast startup disabled through the protected IN-to-PGFB diode connection. With the
 largest setting resistor and capacitor, the natural SET time constant is
 `33000 * 1.0035 * 0.47 uF * 1.10 * 1.15 = 19.689 ms`; 99.9% settling takes
 `ln(1000) * 19.689 = 136.006 ms`. Firmware therefore waits **200 ms** after

@@ -101,7 +101,6 @@ pub async fn run(hardware: SensorHardware) {
             continue;
         };
         *slot = Some(now);
-        let recovery_epoch = snapshot::sensor().power_fault_epoch;
         let mut bus = driver.into_inner();
         // HAL cancellation has completed bus release; reset while cable is isolated.
         if bus.0.apply_config(&Board::i2c_config()).is_err() {
@@ -111,6 +110,11 @@ pub async fn run(hardware: SensorHardware) {
         power.set_high();
         // LT3042 SET network needs about 136 ms for 99.9% settling.
         Timer::after(Duration::from_millis(200)).await;
+        // Charging can assert the current-limit flag during this invalid-input
+        // interval. Observe the epoch after settling, before checking the pins:
+        // a persistent fault or any later edge still rejects the fresh frame.
+        // Do not clear the latch until a complete initialized frame is accepted.
+        let recovery_epoch = snapshot::sensor().power_fault_epoch;
         if fault.level() != Level::High || sda.level() != Level::High || scl.level() != Level::High
         {
             record_failure(None);

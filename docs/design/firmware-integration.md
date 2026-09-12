@@ -101,16 +101,17 @@ result as a fresh observation.
 | `firmware/core/src/retained.rs` | Implemented versioned 32-byte safety record, CRC validation, configured versus never-configured boot lifecycle, maintenance recovery, and interrupted-window suppression. It is independent of any flash driver. |
 | `firmware/core/src/calibration.rs` | Implemented measured TI response normalization, calibrated raw envelopes, denominator/domain, sequence/freshness and slew validation. No physical coefficients are invented. |
 | `firmware/core/src/runtime.rs` | Implemented coordinator for durable configuration/retained transactions, bounded schedule evaluation, command handling, aged UTC and sensor revision acceptance. |
-| `firmware/core/src/runtime_ingress.rs` | Implemented bounded request slot, reserved Off flag and physical USB line/configuration decoder. |
+| `firmware/core/src/runtime_ingress.rs` | Implemented source-owned generation tokens, bounded request slot, reserved Off flag, cancellation and physical USB line/configuration decoder. |
 | `firmware/drivers/` | Separate no-std FDC1004 crate. It returns raw acquisition results and never imports schedule, storage, Matter, or the relay supervisor. |
 | `firmware/app/src/board.rs` | Implemented controller capture pin bindings and safe initial levels; final-board acceptance remains open. |
 | `firmware/app/src/control.rs` | Priority3 task, control mailbox, force-off flag, latest `SupervisorStatus`, relay write, and watchdog service. |
 | `firmware/app/src/sensor.rs` | Priority2 owner of the FDC1004 driver, finite transaction timeout, sample freshness, and calibrated `Reading` publication. |
-| `firmware/app/src/storage.rs` | Implemented sole gated owner for boot and runtime configuration/retained writes. Matter KV and notification records must extend this owner; they are not implemented yet. |
+| `firmware/app/src/storage.rs` | Implemented sole gated owner for boot and runtime writes, including the actual Matter `KvBlobStore` load/store/remove trait. Notification records must use this owner. |
 | `firmware/app/src/runtime.rs` | Implemented copied command/reply/write/completion mailboxes. No I/O or waits while holding their critical sections. |
 | `firmware/app/src/clock.rs` | SNTP acquisition, plausibility checks, UTC-to-monotonic anchor, timezone rule adapter, and `LocalTimeResolver` implementation. Publishes `None` when UTC or timezone rules are untrusted. |
 | `firmware/core/src/runtime.rs` schedule path | Already calls the scheduler from control, persists `PersistBeforeRun` before exposing a window and preserves the supervisor across writes/configuration. No separate app schedule task is needed. |
-| `firmware/app/src/matter.rs` | Matter node, custom On/Off handler, descriptor tree, BLE commissioning, Wi-Fi ownership, NVS startup, and attribute-change notifier. |
+| `firmware/matter/` | Implemented SDK-generated async On/Off handler, applied acknowledgements, observed reporting and shared KV transaction helper, with host tests. |
+| `firmware/app/src/matter.rs` | Implemented copied-mailbox `LocalControl` binding. Matter node, descriptor tree, BLE commissioning, Wi-Fi ownership and running subscriptions remain work. |
 | `firmware/app/src/network.rs` | `rs_matter_embassy::stack::UserTask` implementation. Runs clock, HTTP, and Pushover services against the generic Matter-owned network stack while the interface is up. |
 | `firmware/app/src/settings_http.rs` | Fixed-capacity HTTP parser/renderer, authenticated configuration reads/writes, validation, and storage request/ack protocol. |
 | `firmware/app/src/pushover.rs` | Persistent transition queue, DNS/TCP/TLS transaction, retry policy, and acknowledgement removal. It cannot call or await control APIs. |
@@ -174,20 +175,25 @@ This boot policy fails closed but keeps a deterministic recovery path. Factory r
 erases both the Crystal records and Matter fabrics, then returns to the first row.
 Maintenance cannot be cleared until the replacement record is durably acknowledged.
 
-Use the first NVS partition found with `read_partition_table`,
-`DataPartitionSubType::Nvs`, and `FlashStorage`. Stillair's exact store construction is
+The implemented selector validates the partition table and scans raw type/subtype
+tags for the first writable NVS region, avoiding typed-decoder panics on legal
+custom entries. See the [partition and flash contract](flash-storage.md).
+Stillair's reference store construction is
 `SeqMapKvBlobStore::new(BlockingAsync::new(flash), range)`, followed by
 `stack.startup(&crypto, &mut store).await` and `let kv = stack.matter().kv(store)`.
-Crystal keys must be allocated outside rs-matter's key range and documented in
-`storage.rs`. All Crystal state updates use encode-to-new-value then acknowledged KV
+Crystal uses its own gated `Store` implementation because the upstream adapter
+logs blob contents. Application writes already use `SharedKvBlobStore` access;
+radio assembly must move that same owner through startup and `Matter::kv`.
+Crystal keys are outside rs-matter's built-in range and documented in the flash
+contract. All Crystal state updates use encode-to-new-value then acknowledged KV
 replacement. Relay control never waits for that writer; a write required to allow a
 run simply withholds the run until it succeeds.
 
 ## Flash and relay exclusion
 
-The [implemented boot storage adapter](flash-storage.md) follows this requirement.
-The future Matter KV adapter must use the same owner. Do not copy Stillair's flash
-feature flags unchanged.
+The [implemented boot/runtime and Matter KV adapter](flash-storage.md) follows this
+requirement. Radio assembly must preserve the same owner. Do not copy Stillair's
+flash feature flags unchanged.
 At the pinned revision, `BlockingAsync` calls `FlashStorage` synchronously, and
 only the ROM-call shims are in RAM. The Embassy interrupt handler, task poll and
 supervisor remain in flash-backed code. Espressif documents that
@@ -219,40 +225,44 @@ preserves the durable-before-run and durable-before-maintenance-exit contracts.
 
 ## Matter endpoint behavior
 
-The load endpoint is a Matter **On/Off Plug-in Unit** (`0x010A`), an actuator that
-hosts the On/Off server cluster. It is not `DEV_TYPE_ON_OFF_LIGHT_SWITCH` or
-`DEV_TYPE_GENERIC_SWITCH`; both describe controller/input devices. The pinned
-`rs-matter 0.2.0` source does not export a plug-in-unit constant, so define the
-`DeviceType` locally and pin its revision to the device-library revision supported by
-the selected cluster set. Current connectedhomeip data identifies revision 5, but
-that value and the mandatory Identify, Groups, Scenes Management, Descriptor, and
-On/Off server set must be checked together before the endpoint is frozen. Apple lists
-`0x010A` as supported.
+The proposed load endpoint is a Matter **On/Off Plug-in Unit** (`0x010A`), an actuator
+with an On/Off server. Light-switch and generic-switch types describe controller/input
+devices. The [implemented adapter](matter-integration.md) currently advertises only
+the basic Off/On/Toggle cluster metadata and no device profile. Plug-in-unit conformance
+requires additional clusters and Lighting behavior; the exact device-library revision,
+cluster set and required command semantics matter for a conformance claim. For this
+personal build, [D-22](../decisions.md) selects the controlled-load identity with
+explicit profile deviations and only implemented command metadata. Apple lists
+`0x010A` as supported, but pairing this restricted implementation remains an actual
+final-board test. Do not claim full profile conformance or add stock startup,
+timed or scene behavior that bypasses boot-off or the configured lease limit.
 
 Follow Stillair's generated-cluster handler pattern, replacing its fan handler:
 
-- Implement `rs_matter::dm::clusters::decl::on_off::ClusterHandler` and adapt it with
+- Implement `rs_matter::dm::clusters::decl::on_off::ClusterAsyncHandler` and adapt it with
   `on_off::HandlerAdaptor`.
 - Define `CLUSTER` from `on_off::FULL_CLUSTER`, with required attributes and commands
   only. Do not use the convenience `app::on_off::OnOffHandler`: its hook cannot report
   a full control mailbox and its private target state is not the device truth.
-- `on_off()` reads the latest Priority3 `SupervisorStatus` relay command. `handle_on`,
-  `handle_off`, and `handle_toggle` use `try_send` to a bounded mailbox. Return the
-  Matter Busy status when full. Toggle chooses from the latest actual relay command.
+- `on_off()` reads the observed Priority3 relay command. The implemented command
+  future submits through a bounded mailbox and waits at most 250 ms for its
+  source-owned applied reply. Return Matter Busy when full. Toggle resolves inside
+  control from its current output, rather than from a transport-side snapshot.
 - Off sets the lossless force-off flag before queueing ordinary work, so a full queue
   cannot delay relay revocation. The control task then requests durable suppression.
   A reset before that write completes still loads the previously `Eligible` occurrence
-  as `Suppressed`, closing the flash race without making the synchronous Matter handler
-  wait on storage.
+  as `Suppressed`, closing the flash race. The async handler acknowledges actual
+  GPIO application without waiting for suppression storage.
 - A notification task watches the authoritative status snapshot. On a relay change it
   calls `dataver.changed()` and `notifier.notify_cluster_changed(endpoint,
   on_off_cluster_id)`. Matter never caches a requested On as the reported value.
 
 The reported value is the commanded relay output after all software and hardware
 permits. It is not welded-contact feedback; the hardware has no auxiliary contact.
-Use test attestation only for private commissioning and expect an uncertified-device
-warning in Apple Home. Production credentials and certification are outside this
-one-off build.
+Use private commissioning material for this one-off device; no shared public
+example private key belongs in its firmware. Missing material must leave local
+control available with commissioning closed. Expect an uncertified-device warning
+in Apple Home. Production certification is outside this one-off build.
 
 Matter startup follows the currently working Stillair path:
 
@@ -268,8 +278,14 @@ stack
     .await
 ```
 
-`run_coex` preserves BLE commissioning while Wi-Fi runs. A Matter startup or runtime
-error is logged and returned without panicking the process or stopping local control.
+`run_coex` preserves BLE commissioning while Wi-Fi runs. The snippet is the reference
+shape, not the final Crystal adapter: the pinned `EspWifiDriver` unwraps setup
+errors, and its `EnetStack::tcp_connect` returns `None`. Extra socket capacity alone
+does not provide TCP for TLS. Build one project-owned Embassy network stack with
+fallible radio setup and a TCP-capable `NetStack`, using the public preexisting-
+interface adapters. A Matter startup or runtime error must return without stopping
+the independent USB/storage service or local control. Network-only services may
+restart with the interface; durable queue state must survive that cancellation.
 
 ## Shared Wi-Fi services
 

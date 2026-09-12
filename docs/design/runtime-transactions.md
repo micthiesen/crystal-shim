@@ -7,8 +7,9 @@ at a time. `firmware/app/src/runtime.rs` contains only bounded copied mailboxes;
 it performs no I/O or waits under its critical-section locks.
 
 This unit adds a working USB path for configuration, commands, maintenance and
-explicit UTC observations. Matter, HTTP settings and SNTP are still separate
-integration work. No current date, schedule or calibration is compiled into the
+explicit UTC observations. The [Matter command/KV adapter](matter-integration.md)
+now shares that ingress and storage owner; radio/profile integration, HTTP settings
+and SNTP remain work. No current date, schedule or calibration is compiled into the
 application. A valid configured calibration and matching sensor revision remain
 required before an explicit run request can energize the output.
 
@@ -154,8 +155,10 @@ APIs. Commands are newline-terminated ASCII:
 | `<id> CLEAR_UTC` | Invalidate the schedule clock. |
 | `<id> CONFIG <hex>` | Decode and save a canonical `CSCF` configuration blob at the next revision. |
 
-IDs are nonzero `u32` correlation values. There is one request slot through final
-reply consumption. `ACCEPTED <id>` means queued, not applied or durable.
+IDs are nonzero `u32` correlation values. Internal non-reusable generation tokens
+also identify the USB or Matter producer, so a reused correlation ID cannot claim
+an old reply. There is one request slot through final reply consumption.
+`ACCEPTED <id>` means queued, not applied or durable.
 `REPLY <id> Ok(Applied)` means control handled the request; it does not promise
 the relay is on. `REPLY <id> Ok(Durable)` means the matching configuration or
 maintenance writes completed. Off receives `Applied`, while its independent
@@ -189,16 +192,18 @@ clock ageing/rollback, late eligibility acknowledgements across expiry, automati
 lease cancellation during configuration saves, USB/physical maintenance and clock
 discontinuities, manual preservation during expiry suppression, unchanged caps
 during active-window corrections, ticket exhaustion, partial input and oversized
-lines. Twenty-nine new focused regressions pass, bringing the host suite to 108 core tests,
-nine driver tests and one CLI test. Host fmt/clippy and the actual app's embedded
+lines. The original coordinator unit added 29 focused regressions. Producer-token,
+cancellation, Toggle and post-control rejection tests now bring the host suite to
+115 core tests, alongside nine driver, one CLI and nine Matter adapter tests.
+Host fmt/clippy and the actual app's embedded
 fmt/clippy/release build pass. Run these through `sh scripts/check.sh`, or the
 host workspace directly with `cargo test --manifest-path firmware/Cargo.toml --locked`.
 Hardware timing and USB
 behavior remain final-board evidence, not host-test results.
 
 Remaining work includes authenticated HTTP adapters and UI, real SNTP acquisition
-and joint schedule/TLS clock publication, Matter command/attribute adapters, the
-shared Matter KV trait adapter, notification persistence/delivery, settings-token
+and joint schedule/TLS clock publication, Matter radio/profile assembly,
+notification persistence/delivery, settings-token
 rotation, and factory reset/recovery when the partition itself cannot be opened.
 No notification or network request is added by this unit. Final-board tests must
 still measure control execution time, flash/output timing, calibration transitions

@@ -23,6 +23,17 @@ fn config_at(
     calibrated: bool,
     start_second: u32,
 ) -> ValidatedDeviceConfig {
+    config_at_with_minimum_off(revision, duration, scheduled, calibrated, start_second, 100)
+}
+
+fn config_at_with_minimum_off(
+    revision: u32,
+    duration: u32,
+    scheduled: bool,
+    calibrated: bool,
+    start_second: u32,
+    minimum_off_ms: u64,
+) -> ValidatedDeviceConfig {
     // Synthetic arithmetic/transaction fixture, never production calibration.
     let limits = ChannelLimits {
         envelope: CountsRange {
@@ -71,7 +82,7 @@ fn config_at(
         Timing {
             low_confirmation_ms: 50,
             recovery_ms: 60,
-            minimum_off_ms: 100,
+            minimum_off_ms,
         },
         duration,
         [0x5a; 32],
@@ -647,6 +658,198 @@ fn usb_configuration_uses_the_canonical_codec_and_runtime_transaction() {
         })
     );
     assert_eq!(runtime.configuration().unwrap().revision(), 1);
+}
+
+#[test]
+fn toggle_is_resolved_by_control_and_reserved_off_still_wins() {
+    let mut runtime = configured(false);
+    until(&mut runtime, 0, 100);
+    let started = command(&mut runtime, 120, RuntimeCommand::Toggle)
+        .status
+        .unwrap();
+    assert_eq!(started.control.relay, RelayCommand::On);
+    let stopped = command(&mut runtime, 140, RuntimeCommand::Toggle)
+        .status
+        .unwrap();
+    assert_eq!(stopped.control.relay, RelayCommand::Off);
+    assert_eq!(stopped.deadline, None);
+    let waiting = command(&mut runtime, 160, RuntimeCommand::Toggle)
+        .status
+        .unwrap();
+    assert_eq!(waiting.control.relay, RelayCommand::Off);
+    let repeated = command(&mut runtime, 180, RuntimeCommand::Toggle)
+        .status
+        .unwrap();
+    assert_eq!(repeated.deadline, waiting.deadline);
+    let cancelled = runtime.step(
+        Observation {
+            force_off: true,
+            ..observation(200)
+        },
+        Some(Request {
+            id: 8,
+            command: RuntimeCommand::Toggle,
+        }),
+        None,
+    );
+    assert_eq!(
+        cancelled.command_reply.unwrap().result,
+        Err(Error::Superseded)
+    );
+    assert_eq!(cancelled.status.unwrap().deadline, None);
+}
+
+#[test]
+fn on_and_toggle_acknowledgements_follow_the_final_safety_decision() {
+    for request in [RuntimeCommand::On, RuntimeCommand::Toggle] {
+        for scenario in 0..9 {
+            let mut runtime = configured(false);
+            until(&mut runtime, 0, 100);
+            let mut input = observation(120);
+            match scenario {
+                0 => input.reading = Reading::Invalid(Fault::Bus),
+                1 => {
+                    input.reading = Reading::Valid {
+                        level: Level::new(850).unwrap(),
+                        observed_at: Millis(121),
+                    }
+                }
+                2 => {
+                    input.now = Millis(700);
+                    input.reading = Reading::Valid {
+                        level: Level::new(850).unwrap(),
+                        observed_at: Millis(100),
+                    };
+                    until(&mut runtime, 120, 680);
+                }
+                3 => input.sensor_revision = 2,
+                4 => input.hardware = HardwarePermit::ForcedOff,
+                5 => input.maintenance_pressed = true,
+                6 => {
+                    command(&mut runtime, 120, RuntimeCommand::EnterMaintenance);
+                    complete(&mut runtime, 140, true);
+                    input.now = Millis(160);
+                    input.reading = observation(160).reading;
+                }
+                7 => input.now = Millis(99),
+                _ => {
+                    runtime = Runtime::new(
+                        Some(config(1, 3, false, false)),
+                        Some(RetainedState::new(1).unwrap()),
+                        Millis(0),
+                    )
+                    .unwrap()
+                }
+            }
+            let step = runtime.step(
+                input,
+                Some(Request {
+                    id: 91,
+                    command: request,
+                }),
+                None,
+            );
+            let status = step.status.unwrap();
+            assert_eq!(
+                status.control.relay,
+                RelayCommand::Off,
+                "scenario {scenario}"
+            );
+            assert_eq!(status.demand, Demand::Off, "scenario {scenario}");
+            assert_eq!(status.deadline, None, "scenario {scenario}");
+            assert_eq!(
+                step.command_reply.unwrap().result,
+                Err(Error::Rejected),
+                "scenario {scenario}"
+            );
+            assert_eq!(step.command_reply.unwrap().id, 91);
+        }
+    }
+}
+
+#[test]
+fn valid_low_on_and_toggle_pending_recovery_are_applied_without_extending_the_lease() {
+    for request in [RuntimeCommand::On, RuntimeCommand::Toggle] {
+        let mut runtime = configured(false);
+        let low = |now| Observation {
+            reading: Reading::Valid {
+                level: Level::new(100).unwrap(),
+                observed_at: Millis(now),
+            },
+            ..observation(now)
+        };
+        let first = runtime.step(
+            low(0),
+            Some(Request {
+                id: 1,
+                command: request,
+            }),
+            None,
+        );
+        assert_eq!(
+            first.command_reply.unwrap().result,
+            Ok(Acknowledgement::Applied)
+        );
+        let pending = first.status.unwrap();
+        assert_eq!(pending.demand, Demand::Override);
+        assert_eq!(pending.control.relay, RelayCommand::Off);
+        assert_eq!(pending.deadline, Some(Millis(3_000)));
+        let repeated = runtime.step(
+            low(20),
+            Some(Request {
+                id: 2,
+                command: request,
+            }),
+            None,
+        );
+        assert_eq!(
+            repeated.command_reply.unwrap().result,
+            Ok(Acknowledgement::Applied)
+        );
+        assert_eq!(repeated.status.unwrap().deadline, pending.deadline);
+        let mut status = repeated.status.unwrap();
+        for now in (40..=100).step_by(20) {
+            status = runtime.step(low(now), None, None).status.unwrap();
+        }
+        assert_eq!(status.control.relay, RelayCommand::On);
+        assert_eq!(status.deadline, pending.deadline);
+    }
+}
+
+#[test]
+fn expiry_tick_on_cannot_succeed_or_renew_but_toggle_to_off_still_applies() {
+    for request in [RuntimeCommand::On, RuntimeCommand::Toggle] {
+        let mut runtime = manual();
+        until(&mut runtime, 140, 3_100);
+        let step = command(&mut runtime, 3_120, request);
+        assert_eq!(step.status.unwrap().deadline, None);
+        assert_eq!(step.status.unwrap().control.relay, RelayCommand::Off);
+        match request {
+            RuntimeCommand::On => {
+                assert_eq!(step.command_reply.unwrap().result, Err(Error::Rejected))
+            }
+            RuntimeCommand::Toggle => assert_eq!(
+                step.command_reply.unwrap().result,
+                Ok(Acknowledgement::Applied)
+            ),
+            _ => unreachable!(),
+        }
+    }
+    // A valid pending override can expire before minimum-off recovery finishes.
+    // Toggle resolves to On from that Off state, and must not renew the expired cap.
+    let config = config_at_with_minimum_off(1, 1, false, true, 1_000, 2_000);
+    let mut runtime = Runtime::new(
+        Some(config),
+        Some(RetainedState::new(1).unwrap()),
+        Millis(0),
+    )
+    .unwrap();
+    let first = command(&mut runtime, 0, RuntimeCommand::On);
+    assert_eq!(first.status.unwrap().deadline, Some(Millis(1_000)));
+    until(&mut runtime, 20, 980);
+    let expired = command(&mut runtime, 1_000, RuntimeCommand::Toggle);
+    assert_eq!(expired.status.unwrap().deadline, None);
+    assert_eq!(expired.command_reply.unwrap().result, Err(Error::Rejected));
 }
 
 #[test]

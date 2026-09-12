@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import { Circuit } from "tscircuit";
 import { ControllerLogicPower } from "./logic-power";
+import { schematicConnectivityErrors } from "./schematic-connectivity-check";
 
 test("logic supply preserves diode isolation, bootstrap connection and direct fixed-output feedback", async () => {
   const circuit = new Circuit();
@@ -64,4 +65,9 @@ test("logic supply preserves diode isolation, bootstrap connection and direct fi
   expect(json.filter((e) => "error_type" in e || e.type.endsWith("_error"))).toEqual(
     [],
   );
+  expect(schematicConnectivityErrors(json)).toEqual([]);
+  const withoutBootstrapLabels = json.filter(
+    (e) => e.type !== "schematic_net_label" || e.text !== "BUCK_BST",
+  );
+  expect(schematicConnectivityErrors(withoutBootstrapLabels).length).toBeGreaterThan(0);
 });
