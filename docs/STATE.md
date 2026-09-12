@@ -30,10 +30,12 @@ Last updated: 2026-09-12
   route candidate using Alpha 78073 and a LAPP reduced-insert gland. Exact end
   allocations, support height, clip/cable restraint, gland fit and an available
   qualified crimp process remain open. No BOM or sensor placement was changed.
-- [Mains capture](../pcb/mains/design/README.md) has 22 parts plus a conditional
-  MOV region in a 23-part, 135 x 75 mm [placement proposal](design/mains-placement.md).
-  MOV occupied pose, mated connector/partition/enclosure access, complete schematic
-  and native handoff remain work. The [BOM](../bom/bom.csv) is not ready to order;
+- [Mains capture](../pcb/mains/design/README.md) now integrates all 23 parts and
+  the 135 x 75 mm [placement proposal](design/mains-placement.md). Three sheets
+  preserve 66 logical pins, 14 nets, 81 lands and ten unused pins. The MOV has
+  a [project assembly envelope](design/mov-capture.md), not a manufacturer fit
+  guarantee. Mated/partition/enclosure fit, native preparation and handoff remain
+  work. The [BOM](../bom/bom.csv) is not ready to order;
   all 34 commissioning rows remain Not run.
 
 ## Owner input pending
@@ -44,6 +46,21 @@ pending. The 38 x 86 mm proposal puts a 10 mm dry band below the rim and permits
 11-50 mm surface travel; it is not accepted geometry. Other work is independent.
 
 ## Verification and recent learning
+
+The complete mains circuit passes independent electrical integration review and
+31 scoped tests with 2,662 assertions. Tests exercise a drawn isolation short,
+missing load-neutral labels, unused contacts, exact pad datums and four MOV slot/
+courtyard rotations. Review corrected the initial MOV courtyard from 28 to 29 mm.
+All three actual schematic sheets and the PCB source rendering were inspected.
+A temporary four-file KiCad schematic parses and preserves every named-net member
+and unused pin; [the receipt](design/evidence/mains-integration/initial-schematic-parity.json)
+records hashes. No mains native project has been adopted or routed.
+
+The pinned mains source/netlist/placement commands report zero errors, with 29
+pin-metadata warnings and three connector-orientation warnings. The build also
+warns about chip reference prefixes and passive reference labels; those labels
+are present in the inspected output. Native electrical metadata and mated access
+still require review. These warnings are not a clean-ERC or placement-release claim.
 
 The [review log](design/review-log.md) records scope and corrections. The agreement
 crate passes 31 tests, plus an independent scratch review with three additional
@@ -69,22 +86,25 @@ The initial lock remains historical provenance; the recorded later augmentation
 does not rewrite the initial receipt or claim all operations complete.
 
 `sh scripts/check.sh` passes, including the embedded release build, 157 core tests,
-31 Roughtime tests, the existing TLS/actual-worker suite, 116 PCB tests with 23,670
+31 Roughtime tests, the existing TLS/actual-worker suite, 126 PCB tests with 24,602
 assertions and 38 shared handoff tests. The same 38 handoff tests pass in Stillair.
-Log: `/tmp/crystal-shim-adoption-agreement-full-check.log`. Native cleanup, stack/
+Current log: `/tmp/crystal-shim-mains-integration-full-check.log`. The controller's
+prior native cleanup, stack/
 rule readback, preservation, DRC and current top-render inspection also pass within
 the partial scope above. No physical hardware, live notifications or mains actions
 were used; firmware runtime memory/timing and all commissioning criteria remain open.
 
 ## Next
 
-Resolve RV1's actual occupied pose and source footprint, then integrate the complete
-mains schematic and its reviewed placement. This advances G-02/G-03/G-04 and removes
-the conditional component from the remaining full board capture. It is substantial
-and needs primary drawing/assembly evidence, not fabricated hardware or the pending
-sensor rim measurement. Start from [the mains placement](design/mains-placement.md)
-and [component source](../pcb/mains/design/README.md); preserve the independent
-mains/isolated-low-voltage barrier and off-board fuse/filter/PE scheme.
+Prepare the complete mains design's native manifest, electrical metadata,
+origin/mask/paste/thermal adapters and augmentation declaration, alongside the
+mated connector/partition fit. This substantial G-02/G-03/G-04 work turns the
+verified source into a reviewable KiCad handoff without depending on the pending
+sensor rim measurement or fabricated hardware. Start from
+[the mains placement](design/mains-placement.md) and
+[component source](../pcb/mains/design/README.md); preserve the independent
+mains/isolated-low-voltage barrier and off-board fuse/filter/PE scheme. J5 mating
+and partition research is underway; the board/enclosure poses remain provisional.
 
 In parallel, establish the explicit clock/error/execution policy for unattended
 acquisition and continue controller mated fit/native augmentation. Final calibration

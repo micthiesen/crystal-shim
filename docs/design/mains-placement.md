@@ -2,9 +2,10 @@
 
 A complete 23-part allocation fits the planned **135 x 75 mm** board in a
 conditional two-dimensional screen. This is a source-coordinate proposal, not
-accepted placement or routing. It includes the 22 captured parts and an explicit
-28 x 28 mm reserve for the [MOV candidate](mov-capture.md). Its body datum has not
-been proved; the reserve must not be treated as a manufacturer envelope.
+accepted placement or routing. All 23 parts are now captured in the complete
+mains source, including the [MOV](mov-capture.md) with a project-owned installed
+acceptance contract and 28 x 28 mm reserve. Its missing manufacturer body datum
+is not replaced by an asserted manufacturer envelope.
 
 The isolated supply and relay bridge the primary/secondary boundary. All other
 primary bodies, including unused Sabre contacts, remain on the mains side.
@@ -34,13 +35,15 @@ it is not a universal metal-free boundary. Routing must also preserve the full
 primary-body separation requirements.
 
 The script independently compares all **79 existing-model pad centres** with an
-actual tscircuit compile, within 0.000001 mm. The two MOV pads belong only to the
-proposal. Four 3.2 mm corner mounting holes are centred 5 mm from the edges,
+actual tscircuit compile, within 0.000001 mm. The complete source now includes the
+two MOV pads, with independent integration tests for all 81 physical lands and
+the authored placement datums. Four 3.2 mm corner mounting holes are centred
+5 mm from the edges,
 with an assumed 8 mm diameter hardware/tool reserve. J5 contributes the fifth
 NPTH. Board/filter floor allocation keeps the specified board size and a nominal
 10 mm gap; full enclosure fit is still required.
 
-## Coordinates for subsequent source integration
+## Integrated source coordinates
 
 These are tscircuit coordinates in millimetres, relative to the board centre,
 with positive Y upward and source rotations. Each origin is the existing model's
@@ -75,9 +78,9 @@ parts on the top side.
 
 ## Obligations before placement acceptance
 
-- Establish the MOV's occupied body/lead envelope through permitted yaw and
-  seating, or revise this proposal. The selected reserve is an engineering
-  allocation with room to resolve the model, not a proven tolerance bound.
+- Apply the MOV's project-owned installed acceptance volume, with its measured
+  final-unit fit and controlled assembly process. Its source reserve is an
+  allocation, not a guarantee that every supplied part will fit.
 - Resolve the qualified Sabre body-to-tail poses, mating face numbering, latch
   access and adjacent plug cross-mating; retain every unused blade and tail.
   The housing table requires at least 16.88 mm mated depth at J1 and 17.69 mm
@@ -90,8 +93,8 @@ parts on the top side.
 - Recheck the 3.2 mm primary-net and 8 mm primary/secondary rules using complete
   copper, solder, hardware, fabrication tolerances and routed native geometry.
   The MOV's nominal 3.40 mm gap has only 0.20 mm above the primary-net rule.
-- Complete the mains schematic, source/native origin and mask/paste adapters,
-  integration review and guarded handoff before routing. No fabrication, assembly
+- Complete source/native origin and mask/paste adapters, electrical metadata,
+  guarded handoff and native review before routing. No fabrication, assembly
   or operating gate is passed by this feasibility result.
 
 The source-derived models, distance calculation, compiled-coordinate comparison,

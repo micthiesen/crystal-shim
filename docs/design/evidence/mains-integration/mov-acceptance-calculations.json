@@ -1,0 +1,173 @@
+{
+  "status": "Project acceptance geometry, not universal manufacturer occupied envelope. Reads prior placement evidence; does not rerun slot-fit proof.",
+  "basis_placement_sha256": "20095478bc1e45c4a5cc6177ea42c6e86412086cdc3cd9b91e3c948f6ae4228a",
+  "proposal": {
+    "part": "TMOV14RP175EL2T7",
+    "source_origin_mm": [
+      -36.25,
+      4.5
+    ],
+    "local_pad_centers_mm": [
+      [
+        0,
+        0
+      ],
+      [
+        7.5,
+        0
+      ]
+    ],
+    "local_acceptance_prism_mm": {
+      "x": [
+        -9.75,
+        17.25
+      ],
+      "y": [
+        -13.5,
+        13.5
+      ],
+      "z_top": [
+        0,
+        26
+      ]
+    },
+    "local_reserved_prism_mm": {
+      "x": [
+        -10.25,
+        17.75
+      ],
+      "y": [
+        -14,
+        14
+      ],
+      "z_top": [
+        0,
+        26.5
+      ]
+    },
+    "seating_plane_z_mm": [
+      0.5,
+      1.0
+    ],
+    "maximum_trimmed_tail_and_solder_below_actual_board_underside_mm": 2.0,
+    "yaw_about_board_normal_deg": [
+      -20,
+      20
+    ],
+    "lean_cone_deg": 5,
+    "acceptance_applies": "Entire actual body/coating, crimps, bare above-board leads, solder; no numerical Cy is assumed. Lower metal also inside accepted XY and capped at underside minus2mm. Final actual gauge acceptance overrides no formula."
+  },
+  "body_size_only_at20deg_mm": [
+    19.052955843291464,
+    14.271576023609544
+  ],
+  "size_only_center_motion_in27mm_box_mm": [
+    3.973522078354268,
+    6.364211988195228
+  ],
+  "natural_alignment_yaw_max_deg": 17.102728969052375,
+  "max_round_hole_min_lead_free_motion_mm": 0.32,
+  "recorded_differential_hole_position_error_mm": 0.1,
+  "plane_limit_is_not_automatic_crimp_support": true,
+  "comparison": [
+    {
+      "occupied_side_mm": 27,
+      "xy_bounds_board_top_left_mm": [
+        21.5,
+        19.5,
+        48.5,
+        46.5
+      ],
+      "courtyard_side_mm": 28,
+      "minimum_isolated_body_gap": {
+        "ref": "C2",
+        "mm": 11.310863141246116
+      },
+      "minimum_isolated_copper_gap": {
+        "ref": "C2.1",
+        "mm": 11.494835797000322
+      },
+      "nearest_courtyard": {
+        "ref": "J1",
+        "mm": 1.620000000000001
+      },
+      "courtyard_overlaps": [],
+      "board_edge_min_mm": 19.5
+    },
+    {
+      "occupied_side_mm": 28,
+      "xy_bounds_board_top_left_mm": [
+        21.0,
+        19.0,
+        49.0,
+        47.0
+      ],
+      "courtyard_side_mm": 29,
+      "minimum_isolated_body_gap": {
+        "ref": "C2",
+        "mm": 10.782422037742725
+      },
+      "minimum_isolated_copper_gap": {
+        "ref": "C2.1",
+        "mm": 10.976395127727502
+      },
+      "nearest_courtyard": {
+        "ref": "J1",
+        "mm": 1.120000000000001
+      },
+      "courtyard_overlaps": [],
+      "board_edge_min_mm": 19.0
+    },
+    {
+      "occupied_side_mm": 30,
+      "xy_bounds_board_top_left_mm": [
+        20.0,
+        18.0,
+        50.0,
+        48.0
+      ],
+      "courtyard_side_mm": 31,
+      "minimum_isolated_body_gap": {
+        "ref": "C2",
+        "mm": 9.774999999999999
+      },
+      "minimum_isolated_copper_gap": {
+        "ref": "C2.1",
+        "mm": 9.975000000000001
+      },
+      "nearest_courtyard": {
+        "ref": "J1",
+        "mm": 0.120000000000001
+      },
+      "courtyard_overlaps": [],
+      "board_edge_min_mm": 18.0
+    },
+    {
+      "occupied_side_mm": 32,
+      "xy_bounds_board_top_left_mm": [
+        19.0,
+        17.0,
+        51.0,
+        49.0
+      ],
+      "courtyard_side_mm": 33,
+      "minimum_isolated_body_gap": {
+        "ref": "C2",
+        "mm": 8.774999999999999
+      },
+      "minimum_isolated_copper_gap": {
+        "ref": "C2.1",
+        "mm": 8.975000000000001
+      },
+      "nearest_courtyard": {
+        "ref": "J1",
+        "mm": 0.0
+      },
+      "courtyard_overlaps": [
+        "J1",
+        "J2"
+      ],
+      "board_edge_min_mm": 17.0
+    }
+  ]
+}

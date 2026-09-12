@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="690" viewBox="0 0 1200 690">
+<rect width="1200" height="690" fill="#fafafa"/>
+<style>text{font-family:Arial,sans-serif;fill:#182b3a;font-size:15px}.small{font-size:13px}.head{font-weight:700;font-size:21px}.dim{stroke:#556;stroke-width:1.4;fill:none}</style>
+<text x="32" y="35" class="head">RV1 proposed final-part acceptance volume</text>
+<text x="32" y="60">Engineering allocation and physical inspection contract; not a manufacturer Cy or universal fit guarantee</text>
+<rect x="78.0" y="113.0" width="348" height="348" fill="none" stroke="#8a94a3" stroke-width="2" stroke-dasharray="5 4"/>
+<rect x="84.0" y="119.0" width="336" height="336" fill="none" stroke="#c37918" stroke-width="2" stroke-dasharray=""/>
+<rect x="90.0" y="125.0" width="324" height="324" fill="none" stroke="#146a88" stroke-width="2" stroke-dasharray=""/>
+<text x="77" y="98">Top view, nominal local pad midpoint</text>
+<circle cx="207.0" cy="287" r="5.2" fill="#773c23"/>
+<circle cx="297.0" cy="287" r="5.2" fill="#773c23"/>
+<line x1="192" y1="287" x2="312" y2="287" stroke="#995d40"/>
+<circle cx="252" cy="287" r="3" fill="#222"/>
+<rect x="150.0" y="233.0" width="204" height="108" rx="40" fill="#bddad8" stroke="#318279" transform="rotate(20 252 287)"/>
+<text x="164" y="255" class="small">Illustrative body only</text>
+<text x="70" y="488">Blue: actual installed union ≤27 × 27 mm</text>
+<text x="70" y="510">Orange: keep existing 28 × 28 mm reserve</text>
+<text x="70" y="532">Dashed: existing 29 × 29 mm courtyard</text>
+<text x="70" y="560">No assumed body centering. Both orientations of the</text>
+<text x="70" y="581">nonpolar part allowed if every acceptance limit passes.</text>
+<text x="665" y="100">Side view; Z referenced to finished PCB top</text>
+<rect x="662" y="414" width="400" height="16" fill="#467c53"/>
+<line x1="662" y1="149.0" x2="1062" y2="149.0" stroke="#c37918" stroke-width="2"/>
+<line x1="662" y1="154" x2="1062" y2="154" stroke="#146a88" stroke-width="2"/>
+<text x="662" y="137.0">Reserved ceiling Z26.5; actual top ≤Z26.0 mm</text>
+<ellipse cx="858" cy="279" rx="51" ry="89" fill="#bddad8" stroke="#318279" transform="rotate(4 858 279)"/>
+<path d="M842 355 V392 l-3 4 l3 4 V445 M874 355 V392 l3 4 l-3 4 V445" stroke="#773c23" stroke-width="3" fill="none"/>
+<text x="662" y="459">Seat plane Z0.5..1.0 mm, held independently</text>
+<text x="662" y="481">Below board: tail plus solder ≤2.0 mm</text>
+<text x="662" y="508">Top/body graphics are illustrative, not a seated STEP.</text>
+<text x="662" y="531">Removable fixture supports bare leads without bending</text>
+<text x="662" y="553">or loading coating. No permanent jig inside the enclosure.</text>
+<text x="32" y="650">Final fit check includes yaw ≤20°, lean ≤5°, inspection error budget, no forced leads, soldering and metal clearances.</text>
+<circle cx="207" cy="287" r="5" fill="#773c23"/><circle cx="297" cy="287" r="5" fill="#773c23"/><circle cx="252" cy="287" r="2.5" fill="#111"/><text x="197" y="322" class="small">Pad 1</text><text x="281" y="322" class="small">Pad 2</text>
+</svg>

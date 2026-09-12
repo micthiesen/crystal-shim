@@ -40,7 +40,7 @@ are not a released electrical design.
 | D-06 | FDC1004 VSSOP, ESP32-C6-WROOM-1, IRM-10-5 | Capture candidates: FDC1004DGSR, ESP32-C6-WROOM-1-N8, IRM-10-5; footprint/capture review owed | Schematics and power budget |
 | D-07 | G5RL-1A-TV8 5 V coil | G5RL-1A-TV8 DC5 sourced motor rating and pin map; design review and final-unit start tests owed | Relay selection and commissioning |
 | D-08 | FN2090 filter variant | FN2090A-1-06 / 802490-SF capture candidate | Attenuation, leakage, enclosure fit |
-| D-09 | Fuse/MOV/RC/regulators and internal mains connector set | Sourced candidates and calculations in the detailed design basis; integrated schematic review owed | Protection and source capture |
+| D-09 | Fuse/MOV/RC/regulators and internal mains connector set | Complete 23-part mains source and proposed placement captured; MOV uses a project assembly envelope; native/fit/process review remains | Protection and source capture |
 | D-10 | Enclosure, insulation/spacing and earth scheme | Hammond 1554V2GY envelope and conservative spacing proposed; actual CAD/routed mains review owed | Physical safety |
 | D-11 | Thresholds, calibration limits and freshness timeout | Open; 1/10/30 s timing seeds provisional | Sensor and firmware tuning |
 | D-12 | Retained state and network interface | Matter-over-Wi-Fi selected; runtime schedule/retained transactions, actual command/KV adapters, Wi-Fi/BLE, shared TCP stack, bounded USB provisioning writer/sender and original-capture CASE/USB UTC implemented; unattended time-source compatibility and actual pairing remain work | Hardware firmware |

@@ -3,34 +3,44 @@ import {
   SnubberCapacitor,
   SnubberResistor,
 } from "./suppression-components";
+import type { MainsPlacement } from "./placements";
 
-// Final circuit and references, provisional review coordinates. Do not use this
-// canvas as a board outline or a mains/secondary isolation layout.
-export function MainsSuppression() {
+const reviewPlacements = {
+  D1: { pcbX: -5, pcbY: -12, pcbRotation: 0, layer: "top" },
+  R1: { pcbX: -17, pcbY: 14, pcbRotation: 0, layer: "top" },
+  C1: { pcbX: 7, pcbY: 14, pcbRotation: 0, layer: "top" },
+} as const;
+
+// Final circuit and references. The complete board passes its placement proposal;
+// standalone defaults are a component-review canvas, not an isolation layout.
+export function MainsSuppression({
+  placements = reviewPlacements,
+  sheetName,
+}: {
+  placements?: Record<keyof typeof reviewPlacements, MainsPlacement>;
+  sheetName?: string;
+} = {}) {
   return (
-    <group name="LoadSuppression">
+    <group name="LoadSuppression" schSheetName={sheetName}>
       <CoilFlyback
         name="D1"
         schX={-7}
         schY={-6}
-        pcbX={-5}
-        pcbY={-12}
+        {...placements.D1}
         connections={{ K: "net.V5_PSU", A: "net.COIL_DRAIN" }}
       />
       <SnubberResistor
         name="R1"
         schX={-7}
         schY={5}
-        pcbX={-17}
-        pcbY={14}
+        {...placements.R1}
         connections={{ pin1: "net.PUMP_L_SW", pin2: "net.SNUBBER_RC" }}
       />
       <SnubberCapacitor
         name="C1"
         schX={6}
         schY={5}
-        pcbX={7}
-        pcbY={14}
+        {...placements.C1}
         connections={{ pin1: "net.SNUBBER_RC", pin2: "net.PUMP_N_FILTERED" }}
       />
       <netlabel net="V5_PSU" connectsTo=".D1 > .K" />

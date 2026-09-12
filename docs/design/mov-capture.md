@@ -59,11 +59,11 @@ and an assembly support that does not load the coating or thermal disconnect.
 The drawing does not prove that the crimp automatically bridges the entire slot;
 hold the intended seating height independently during soldering.
 
-Before placement acceptance, establish a conservative occupied body/lead envelope
-through the allowed yaw and actual seating geometry. Review board thickness,
-crimp seating, trimmed tail projection, solderability and the manufacturer's
-temperature/time limits. Do not force or straighten the leads to fit a smaller
-pattern. The mathematical lead-fit result alone does not close those obligations.
+The installed acceptance contract below provides the project-owned occupied
+volume. It must be checked on the final unit; the lead-fit calculation does not
+prove the coating/crimp position. Review board thickness, seating, trimmed tails,
+solderability and the manufacturer's thermal guidance before fabrication release.
+The published wave profiles do not establish a hand-iron temperature/time limit.
 
 Root separately compiled the proposed round/slot copper in a disposable component
 canvas and loaded each fresh exporter seed through KiCad 10.0.5's native API.
@@ -95,6 +95,54 @@ and 0.50 mm edge margin, its Y inequality gives `abs(Cy)≤5.089799 mm`. This is
 an illustrative assembly acceptance limit, not a manufacturer datum. Do not use
 it to mark occupied-envelope or placement review complete. Exact missing inputs,
 formulas and source identities are in `/tmp/crystal-shim-mains-fit-closure`.
+
+## Source and final-assembly contract
+
+`pcb/mains/design/mov-component.tsx` now captures the exact two-pin part and
+round/slot footprint. It uses a **project-owned assembly acceptance volume**,
+not an inferred manufacturer body position. No located 17 x 9 mm F.Fab body is
+invented. The complete mains source places pad 1 at `(-36.25, 4.5)` mm with
+rotation zero; local pad midpoint is `(3.75, 0)` mm.
+
+| Requirement | Limit |
+| --- | --- |
+| Complete installed body, factory crimps, leads and solder, at every height | 27 x 27 mm XY centred on the pad midpoint |
+| Reserved volume for placement/enclosure screening | 28 x 28 mm XY, top at most 26.5 mm above finished PCB top |
+| Source courtyard | 29 x 29 mm centred on the pad midpoint |
+| Actual installed top | At most 26.0 mm above PCB top |
+| Crimp seat | 0.5..1.0 mm above PCB top, independently supported during soldering |
+| Tail and solder below board | At most 2.0 mm below the actual board underside |
+| Yaw / lean | Within 20 degrees of the pad-pair direction, modulo 180; at most 5 degrees from upright |
+
+All acceptance limits include measurement and fixture registration error. The
+whole-volume check controls; yaw, lean and seating limits alone do not prove fit.
+The 0.5 mm margin per XY side and above the accepted top remain reserved space.
+The manufacturer does not guarantee every supplied part fits this allocation.
+
+Use an adjustable removable support on bare leads without reshaping the factory
+form or loading the coating. The crimp need not bridge the slot. Inspect loose
+unpowered fit on the final board before soldering, then repeat after soldering
+and removing the fixture. A board-referenced non-contact gauge must include its
+own verified error budget. For example, indicated XY faces within 13.25 mm of
+the midpoint with at most 0.25 mm total error establish the 13.5 mm actual limit;
+an indicated top of 25.75 mm with the same error establishes the 26.0 mm ceiling.
+Do not push the part into the gauge or relax insulation distances if it fails.
+
+Hand solder after reflow with independent lead heat sinks and a qualified
+process. Fixture/heat-sink access may require fitting RV1 before adjacent tall
+headers. No permanent support or adhesive is assumed. Complete process capability,
+actual solder clearance, enclosure containment and exact-part procurement remain
+release work; final-unit fit is not a separate prototype phase.
+
+The retained reserve has 10.782 mm to the nearest isolated body and 10.976 mm to
+isolated copper in the current 2D placement screen. Increasing it to 30 mm leaves
+only 0.120 mm courtyard clearance to J1; 32 mm overlaps J1/J2. A larger box cannot
+turn the unpublished body datum into a manufacturer guarantee. The existing
+3.40 mm nominal pad gap still requires a tolerance/solder check against 3.2 mm.
+The [acceptance drawing](evidence/mains-integration/mov-acceptance-envelope.svg),
+[calculations](evidence/mains-integration/mov-acceptance-calculations.json) and
+[primary-source receipts](evidence/mains-integration/mov-primary-sources.json)
+are retained. Extended research is in `/tmp/crystal-shim-mov-final-capture-basis`.
 
 ## Sources and evidence
 

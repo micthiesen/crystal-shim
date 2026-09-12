@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-12",
+  "scope": "Read-only research, conditional project assembly acceptance model; no repo/native writes.",
+  "files": {
+    "littelfuse_2019": {
+      "path": "/private/tmp/crystal-shim-mov-independent-research/ic-components.pdf",
+      "sha256": "039bf6182ec4e86bce375c1935716375361cefe365a1f8515b030bdd343fbea5"
+    },
+    "exact_order_code_pcn": {
+      "path": "/private/tmp/crystal-shim-mov-independent-research/pcn-4925e.pdf",
+      "sha256": "b9d3184c7444360a685f10237abfa86e856746c808ab24a3e11b9ce330047ab1"
+    },
+    "prior_placement": {
+      "path": "/private/tmp/crystal-shim-mains-placement-independent/placement-results.json",
+      "sha256": "20095478bc1e45c4a5cc6177ea42c6e86412086cdc3cd9b91e3c948f6ae4228a"
+    },
+    "mov_capture_doc": {
+      "path": "/Users/michael/Code/crystal-shim/docs/design/mov-capture.md",
+      "sha256": "6f1a5695fbd4295b27ee4fdeb80a8d0fc4f1bba1bf2b83608577604fe2c3ae78"
+    },
+    "mains_placement_doc": {
+      "path": "/Users/michael/Code/crystal-shim/docs/design/mains-placement.md",
+      "sha256": "a07fb0c4acd0aeedb05444053a8c038eb88fcfa0fb2339f27c7c9c180b9add37"
+    }
+  },
+  "primary_urls": [
+    "https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05",
+    "https://ae.ic-components.com/files/28/TMOV14RP140E.pdf",
+    "https://www.anglia.com/registration/pcn_ptn/docs/pcn/lfu_PCN_4925E_Republish.pdf"
+  ],
+  "current_2025_bytes_recovered": false,
+  "current_2025_table_read": true,
+  "inspected_2019_renders": [
+    "ic-components-p4.png",
+    "ic-components-p6.png",
+    "ic-components-p7.png"
+  ]
+}

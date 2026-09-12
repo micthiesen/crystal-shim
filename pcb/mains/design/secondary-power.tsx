@@ -6,6 +6,7 @@ import {
 } from "../../controller/design/passive-components";
 import { PowerSchottky } from "../../controller/design/protection-components";
 import { ServiceEfuse } from "../../controller/design/service-protection-components";
+import type { MainsPlacement } from "./placements";
 
 export const secondaryPowerBoundary = [
   "V5_RAW",
@@ -14,7 +15,7 @@ export const secondaryPowerBoundary = [
   "COIL_DRAIN",
 ] as const;
 
-// Component-review coordinates only; the complete mains placement remains work.
+// Default coordinates for the separate component-review canvas.
 export const secondaryPowerReviewPlacements = {
   U2: { pcbX: 0, pcbY: 0, pcbRotation: 0, layer: "top" },
   D2: { pcbX: 12, pcbY: 0, pcbRotation: 0, layer: "top" },
@@ -31,16 +32,20 @@ export const secondaryPowerReviewPlacements = {
   C5: { pcbX: 3, pcbY: -5, pcbRotation: 0, layer: "top" },
 } as const;
 
-// Final-use parts and fixed references; every PCB position below is a provisional
-// component-review position, not an adopted mains-board placement. Keep source
+// Final-use parts and fixed references. The complete board passes its explicit
+// placement proposal; a standalone review uses the defaults above. Keep source
 // routing disabled for the RPW custom-pad port centres. Native anchor, stencil,
 // thermal copper and J5 origin/mask/paste adapters remain handoff obligations.
-export function MainsSecondaryPower() {
+export function MainsSecondaryPower({
+  placements = secondaryPowerReviewPlacements,
+}: {
+  placements?: Record<keyof typeof secondaryPowerReviewPlacements, MainsPlacement>;
+} = {}) {
   return (
     <group name="MainsSecondaryPower" schSheetName="Secondary">
       <ServiceEfuse
         name="U2"
-        {...secondaryPowerReviewPlacements.U2}
+        {...placements.U2}
         schX={0}
         schY={0}
         schWidth={5}
@@ -64,7 +69,7 @@ export function MainsSecondaryPower() {
       />
       <PowerSchottky
         name="D2"
-        {...secondaryPowerReviewPlacements.D2}
+        {...placements.D2}
         schX={8}
         schY={1.5}
         schWidth={3}
@@ -72,7 +77,7 @@ export function MainsSecondaryPower() {
       />
       <PsuHeader
         name="J5"
-        {...secondaryPowerReviewPlacements.J5}
+        {...placements.J5}
         schX={14.5}
         schY={0}
         schWidth={4.5}
@@ -82,7 +87,7 @@ export function MainsSecondaryPower() {
       <ControllerResistor
         name="R2"
         value="26.1k"
-        {...secondaryPowerReviewPlacements.R2}
+        {...placements.R2}
         schX={-10}
         schY={4}
         schSheetName="Secondary"
@@ -90,7 +95,7 @@ export function MainsSecondaryPower() {
       <ControllerResistor
         name="R3"
         value="10k"
-        {...secondaryPowerReviewPlacements.R3}
+        {...placements.R3}
         schX={-5}
         schY={4}
         schSheetName="Secondary"
@@ -98,7 +103,7 @@ export function MainsSecondaryPower() {
       <ControllerResistor
         name="R4"
         value="38.3k"
-        {...secondaryPowerReviewPlacements.R4}
+        {...placements.R4}
         schX={-10}
         schY={-4}
         schSheetName="Secondary"
@@ -106,7 +111,7 @@ export function MainsSecondaryPower() {
       <ControllerResistor
         name="R5"
         value="10k"
-        {...secondaryPowerReviewPlacements.R5}
+        {...placements.R5}
         schX={-5}
         schY={-4}
         schSheetName="Secondary"
@@ -114,7 +119,7 @@ export function MainsSecondaryPower() {
       <ControllerResistor
         name="R6"
         value="2.87k"
-        {...secondaryPowerReviewPlacements.R6}
+        {...placements.R6}
         schX={5}
         schY={-4}
         schSheetName="Secondary"
@@ -122,7 +127,7 @@ export function MainsSecondaryPower() {
       <ControllerResistor
         name="R7"
         value="2.2k"
-        {...secondaryPowerReviewPlacements.R7}
+        {...placements.R7}
         schX={10}
         schY={-4}
         schSheetName="Secondary"
@@ -130,7 +135,7 @@ export function MainsSecondaryPower() {
       <ControllerCapacitor
         name="C2"
         value="1uF"
-        {...secondaryPowerReviewPlacements.C2}
+        {...placements.C2}
         schX={-10}
         schY={0}
         schSheetName="Secondary"
@@ -138,7 +143,7 @@ export function MainsSecondaryPower() {
       <ControllerCapacitor
         name="C3"
         value="100nF"
-        {...secondaryPowerReviewPlacements.C3}
+        {...placements.C3}
         schX={-6}
         schY={0}
         schSheetName="Secondary"
@@ -146,7 +151,7 @@ export function MainsSecondaryPower() {
       <ControllerCapacitor
         name="C4"
         value="22uF"
-        {...secondaryPowerReviewPlacements.C4}
+        {...placements.C4}
         schX={10}
         schY={4}
         schSheetName="Secondary"
@@ -154,7 +159,7 @@ export function MainsSecondaryPower() {
       <ControllerCapacitor
         name="C5"
         value="4.7nF"
-        {...secondaryPowerReviewPlacements.C5}
+        {...placements.C5}
         schX={5}
         schY={4}
         schSheetName="Secondary"

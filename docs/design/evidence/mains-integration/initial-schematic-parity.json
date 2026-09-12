@@ -1,0 +1,138 @@
+{
+  "status": "pass",
+  "scope": "Initial scratch schematic parsing and complete native net membership, not handoff, fields/pin-type cleanup, ERC or fabrication acceptance",
+  "counts": {
+    "components": 23,
+    "logical_pins": 66,
+    "named_nets": 14,
+    "connected_pins": 56,
+    "unconnected_pins": 10
+  },
+  "source_json_sha256": "070cb5c07e47ce99d7cb3bb28ddec65af3392efc17a83f700653fcfb6a2b307d",
+  "native_xml_sha256": "9403588ce2ccafc6dc4e6973af97eb73062be6e89d3496c30423dcb59cf0ae19",
+  "native_schematic_sha256": {
+    "mains.kicad_sch": "30025866eafff329335820088311d690657a3ac80c6ec415779f1744df48c3fd",
+    "primary.kicad_sch": "b0fd09c5abbcfe65bea23caafa8f72e9cc8ddad4d5d7b4d6cb64a714d55270b7",
+    "secondary.kicad_sch": "f912b39ab3c77485f5ad49e7812bf3cb6f553823e3078523aa758ae11ecf93e3",
+    "suppression.kicad_sch": "5fd48cdf394f243fc231dd4a687dfb6fc208385732513d508a5e8f30c8f061db"
+  },
+  "source_sha256": {
+    "pcb/mains/design/mains-headers.test.tsx": "262d461622b8f76edcf611bb04319df2d30b5e2f30821d19f072472cb149e16d",
+    "pcb/mains/design/mains-headers.tsx": "4e9794d44044aafe1610877a454511c49d6c693f58cde11ac1899c48900a79c7",
+    "pcb/mains/design/mains-integration.test.tsx": "6e443355f48d80badd0a7647468111edfe939dfceb3242e1407550185a260191",
+    "pcb/mains/design/mains.circuit.tsx": "e087d8f65edc9f8e0602dde77e6f0e11ed07b0ad489d2a010b041a4c84f39352",
+    "pcb/mains/design/mov-component.test.tsx": "cb29b36fc3782f5432d648023a03fec1f16752c0f6e1dde5779447679dc13141",
+    "pcb/mains/design/mov-component.tsx": "44d124f98f0d4231d75b03068301e8de6d252df2c5421d71fbd388745f486e31",
+    "pcb/mains/design/power-components.test.tsx": "afb1cfd9779a41b9813ab6badfca285abc6ac93837d2335ad172dacb02c5abfd",
+    "pcb/mains/design/power-components.tsx": "09be07bf09b91b5c3eb1840c92975b9f54328080dafca3210749569ad596dc01",
+    "pcb/mains/design/primary.tsx": "d6eefa781e931450fb0db8e9076eb96dd4c6fd01a1a5dcf311d1f0122406eb62",
+    "pcb/mains/design/render-headers.tsx": "5015d96933f6474bf27522c8d8995d2e3f93189feadb98106b755e3911154c85",
+    "pcb/mains/design/render-mains.tsx": "b07425499320beb8bf89372438ce558e438f38ca4910e8f83a80b0ddbfa6ceb2",
+    "pcb/mains/design/render-power-parts.tsx": "01f58e0868da9cad4befe1db326214f14b973f7524c448fa639704f5bacd8ea8",
+    "pcb/mains/design/render-secondary.tsx": "43a53894135a0bed3fbf07652a656c96dd6f627120aaf6769a0c3ee2a0a71a34",
+    "pcb/mains/design/render-suppression.tsx": "c17ababab6c4895b2b1563b49076ced4743bbc82999049dc61916ac150fe11b7",
+    "pcb/mains/design/secondary-power.test.tsx": "87975b877314a66afaaded9cb06995d18491e78f375aba526f566ebf5b2d4fe7",
+    "pcb/mains/design/secondary-power.tsx": "0f59a7ff357469d161ddc05791cccd27dbf3f95f6f02b474359d6df54b787423",
+    "pcb/mains/design/suppression-components.tsx": "27c59edcba7fc1593d836f454c19efbf35b120246f1a4ac02b1d99ff0ba96257",
+    "pcb/mains/design/suppression.test.tsx": "98e170f742c263cded0465e45ae8b683010c81b22aaba8346d6c37788a939f31",
+    "pcb/mains/design/suppression.tsx": "96a6a15c1ebedbe116554d06784b8c13ed6aa3b7a989fead0e6e943db0d4acd8"
+  },
+  "nets": {
+    "AC_L_FUSED": [
+      "J1.1",
+      "J2.1",
+      "RV1.1",
+      "U1.2"
+    ],
+    "AC_N": [
+      "J1.2",
+      "J2.2",
+      "RV1.2",
+      "U1.1"
+    ],
+    "COIL_DRAIN": [
+      "D1.2",
+      "J5.3",
+      "K1.5"
+    ],
+    "EFUSE_DVDT": [
+      "C5.1",
+      "U2.7"
+    ],
+    "EFUSE_ILM": [
+      "R6.1",
+      "U2.9"
+    ],
+    "EFUSE_OV": [
+      "R4.2",
+      "R5.1",
+      "U2.2"
+    ],
+    "EFUSE_UV": [
+      "R2.2",
+      "R3.1",
+      "U2.1"
+    ],
+    "GND_ISO": [
+      "C2.2",
+      "C3.2",
+      "C4.2",
+      "C5.2",
+      "D2.2",
+      "J5.2",
+      "R3.2",
+      "R5.2",
+      "R6.2",
+      "R7.2",
+      "U1.3",
+      "U2.8"
+    ],
+    "PUMP_L_FILTERED": [
+      "J3.1",
+      "K1.3"
+    ],
+    "PUMP_L_SW": [
+      "J4.1",
+      "K1.4",
+      "R1.1"
+    ],
+    "PUMP_N_FILTERED": [
+      "C1.2",
+      "J3.2",
+      "J4.2"
+    ],
+    "SNUBBER_RC": [
+      "C1.1",
+      "R1.2"
+    ],
+    "V5_PSU": [
+      "C4.1",
+      "D1.1",
+      "D2.1",
+      "J5.1",
+      "K1.1",
+      "R7.1",
+      "U2.6"
+    ],
+    "V5_RAW": [
+      "C2.1",
+      "C3.1",
+      "R2.1",
+      "R4.1",
+      "U1.4",
+      "U2.5"
+    ]
+  },
+  "unconnected": [
+    "J2.3",
+    "J3.3",
+    "J3.4",
+    "J4.3",
+    "J4.4",
+    "J4.5",
+    "J4.6",
+    "U2.10",
+    "U2.3",
+    "U2.4"
+  ]
+}

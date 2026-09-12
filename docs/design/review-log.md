@@ -1363,6 +1363,55 @@ This does not approve the explicitly conditional mated datums, surface height,
 clip restraint, water exposure or supplier availability. No BOM, sensor placement,
 purchase or physical result changed.
 
+## Complete mains source integration, 2026-09-12
+
+The complete three-sheet source captures 23 parts, 66 logical pins, 14 named nets,
+81 numbered lands and five NPTHs on the proposed 135 x 75 mm allocation. The
+source selects two layers as a starting routing choice, not a fabrication stack.
+Primary protection/filter interfaces, isolated power and coil/load suppression
+are integrated. Fuse, filter and continuous PE remain off-board. All seven unused
+Sabre blades retain both tails; three unused eFuse pins remain disconnected.
+
+Independent electrical review found no actionable pin/net, polarity or boundary
+finding. The integration suite checks all named-net memberships, NCs, physical
+land multiplicity and authored pad datums. It detects a drawn primary/secondary
+short and deleted load-neutral labels. Compiler bounding centres differ from
+some asymmetric footprint origins; actual pad positions match the intended
+placements. This was a representation issue, not a displaced part.
+
+The MOV review established a project-owned final-assembly acceptance volume,
+without inventing the unpublished manufacturer body offset. Source reserves
+28 x 28 mm and height 26.5 mm; the accepted whole part is at most 27 x 27 mm and
+height 26 mm with controlled seat/tails/pose. The initial source courtyard was
+28 mm instead of the reviewed 29 mm; this was corrected, and all four rotation
+regressions fail on the old geometry. Actual supplied-part fit, process and
+enclosure acceptance remain open. See [the contract](mov-capture.md).
+
+Root inspected the complete PCB rendering and each of the three actual schematic
+sheets. The render command now writes every sheet and a stacked overview because
+the default API returned only the first sheet. The pinned source, pin, netlist,
+schematic-placement and placement checks report zero errors. Their 29 electrical
+metadata and three connector-orientation warnings remain explicit native/fit work;
+build warnings about passive ref labels were checked against labels present in
+the SVGs. These checks do not establish ERC or physical accessibility.
+
+A fresh initial schematic export to `/tmp/crystal-shim-mains-schematic-final-_p3esjyj`
+parses through KiCad and preserves all 56 connected plus ten unused pin memberships
+across four native files. [The receipt](evidence/mains-integration/initial-schematic-parity.json)
+binds source and native hashes. No native mains board was adopted and no protected
+file was text-edited. Fields/pin types, native origin/mask/paste/thermal preparation,
+augmentation, complete mated fit and guarded handoff remain work.
+
+Scoped mains checks pass 31 tests with 2,662 assertions, including five MOV tests
+with 279 assertions and five integration tests with 653 assertions. Independent
+review reports are in `/tmp/crystal-shim-mains-electrical-review`,
+`/tmp/crystal-shim-mains-integration` and `/tmp/crystal-shim-mov-final-capture-basis`.
+The full `sh scripts/check.sh` gate passes, including embedded release, all host
+and actual-worker/TLS suites, 126 PCB tests with 24,602 assertions and 38 shared
+handoff tests. Log: `/tmp/crystal-shim-mains-integration-full-check.log`.
+All 34 commissioning rows remain Not run; no purchase, flashing, live notification
+or mains operation occurred.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

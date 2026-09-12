@@ -4,6 +4,10 @@
   "type": "module",
   "packageManager": "bun@1.3.11",
   "scripts": {
+    "render:mains": "bun mains/design/render-mains.tsx",
+    "build:mains": "tsci build mains/design/mains.circuit.tsx --routing-disabled",
+    "check:mains": "tsci check source mains/design/mains.circuit.tsx && tsci check pin_specification mains/design/mains.circuit.tsx && tsci check schematic-placement mains/design/mains.circuit.tsx && tsci check netlist mains/design/mains.circuit.tsx && tsci check placement mains/design/mains.circuit.tsx",
+    "dev:mains": "tsci dev mains/design/mains.circuit.tsx",
     "render:mains-power-parts": "bun mains/design/render-power-parts.tsx",
     "render:controller": "bun run controller/design/render-controller.tsx",
     "render:controller-sections": "bun run controller/design/render-sections.tsx",
