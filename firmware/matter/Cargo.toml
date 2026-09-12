@@ -12,6 +12,7 @@ crystal-shim-core = { path = "../core" }
 rs-matter = { version = "=0.2.0", default-features = false }
 p256 = { version = "0.13", default-features = false, features = ["arithmetic"] }
 embassy-futures = "0.1"
+sha2 = { version = "=0.10.9", default-features = false }
 
 [dev-dependencies]
 embedded-storage = "0.3"

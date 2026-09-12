@@ -1,6 +1,6 @@
 # Controller design basis
 
-Status: design for schematic capture, 2026-09-12. These selections have source
+Status: complete schematic and source placement under review, 2026-09-12. These selections have source
 evidence and calculations; they are not an accepted layout or fabrication release.
 The board carries isolated low voltage only. Physical checks remain unrun.
 
@@ -134,7 +134,7 @@ Use **SRP5030TA-4R7M**, 4.7 uH shielded inductor. Diodes' current datasheet list
 3.9 uH for AP63203 and permits 2.2-10 uH. The 4.7 uH selection reduces ripple
 at this low input/output ratio. Bourns lists 53 milliohm maximum DCR, 4.6 A Irms
 and 6 A saturation current, above the regulator's 3.1 A maximum peak-limit value.
-Its 5.7 x 5.2 x 2.8 mm package needs an exact manufacturer-pattern footprint,
+Its nominal 5.3 x 5.2 mm body, 5.7 mm lead span and 2.8 mm height need an exact manufacturer-pattern footprint,
 not an arbitrary 5 mm inductor substitute.
 [Diodes DS41326 Rev 3-2, Table 2 and sections 10-14](https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf),
 [Bourns SRP5030TA drawing and ratings](https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf).
@@ -361,12 +361,17 @@ Put the regulator and relay driver at the harness side, the antenna at the
 opposite outer edge, and the USB connector/buttons at the service edge. Provide
 accessible isolated-ground, V5_PSU, V5_LOGIC, 3V3, SDA, SCL, PSU_GOOD and gated
 relay test points. Allocate a **70 x 110 mm**, 1.6 mm nominal controller PCB with
-four 3.2 mm non-plated mounting holes at (5,5), (65,5), (5,105) and (65,105) mm
+four 3.2 mm non-plated mounting holes at (5,29), (65,29), (5,105) and (65,105) mm
 from its upper-left corner. The 70 mm axis spans the 75 mm controller bay.
-Keep antenna copper clearance independent of these mounting allocations; move
-the module or holes if the manufacturer's keepout conflicts during placement.
-This is an initial CAD allocation, not a verified enclosure fit. Final connector
-overhang, service access, standoffs, antenna keepout and cable bends must fit the
+The upper holes moved down 24 mm to clear the harness/antenna arrangement; reserve
+a 4 mm radius around each hole for mounting hardware and access. Source selects
+four layers with a continuous L2 ground reference, 1.6 mm FR4 and top assembly.
+Exact fabricated stackup, copper weights and USB routing dimensions remain to select.
+The [placement basis](controller-placement.md) records all positions and routing intent.
+The [nominal enclosure screen](controller-enclosure-fit.md) checks the actual
+Hammond reference STEP, mate envelopes and service opening, with an insulating
+carrier allocation. Current-production tolerances, exact support/cover hardware
+and cable reach still need completion within the
 [enclosure coordinates](mains-design-basis.md#enclosure-and-layout).
 
 ## Capture work still owed
@@ -374,13 +379,13 @@ overhang, service access, standoffs, antenna keepout and cable bends must fit th
 The source now includes USB4105-GF-A, TPS259470 and SMBJ8.0CA copper/pin models.
 Connected sections capture the relay-permission circuit, buck/diode OR, protected
 service input, USB data gate, module/local controls, sensor interface and test pads.
-The complete 95-component schematic joins these sections; its provisional review
-placements overlap and do not constitute a complete controller layout. Source tests compare
+The complete 95-component schematic joins these sections and a shared placement
+table now locates every part. Source tests compare
 the drawn schematic with named nets; native readback remains a separate gate.
 USB origin/pin normalization and eFuse custom-pad anchor correction are tested
 at the initial-export boundary; complete-board integration and native parity are
 still required. The selected sensor RC/ESD design and PGFB diode are now in the
 circuit contracts and BOM. Complete the return-path/parasitic review, connector
-mating drawings, physical footprint declarations, full placement and enclosure
-fit. Review the schematic and transient
+mating drawings, native assembly details, placement review and enclosure
+fit. Physical declarations now cover all 27 purchased-part models. Review the schematic and transient
 power combinations before adopting these selections as a fabrication baseline.

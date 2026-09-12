@@ -698,6 +698,7 @@ dependencies = [
  "embassy-futures",
  "p256",
  "rs-matter",
+ "sha2",
 ]
 
 [[package]]

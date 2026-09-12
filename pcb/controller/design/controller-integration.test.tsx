@@ -3,9 +3,18 @@ import { Circuit } from "tscircuit";
 import ControllerCircuit from "./controller.circuit";
 import { schematicConnectivityErrors } from "./schematic-connectivity-check";
 import { CircuitJsonToKicadSchConverter } from "circuit-json-to-kicad";
-import { parseKicadSch, type KicadSch, type SchematicSymbol } from "kicadts";
+import {
+  At,
+  parseKicadPcb,
+  parseKicadSch,
+  type KicadSch,
+  type SchematicSymbol,
+} from "kicadts";
 import { mapUsbSchematicForInitialExport } from "./usb-initial-export";
 import { applyControllerPinTypesForInitialExport } from "./pin-electrical-initial-export";
+import { createControllerInitialGraphs } from "./controller-initial-export";
+import { controllerPlacements } from "./placements";
+import { controllerPlacementErrors } from "./placement-check";
 
 // Rendering all 95 components exceeded Bun's 5 s default on GitHub's runner
 // (5.55 s, with no assertion failure). Keep the limit local to this full design.
@@ -22,20 +31,29 @@ test("controller schematic preserves power separation, hardware permission and b
   expect(new Set(components.map((e) => e.name)).size).toBe(95);
   expect(new Set(nets.map((e) => e.name)).size).toBe(nets.length);
   expect(json.filter((e) => e.type === "schematic_sheet")).toHaveLength(7);
-  // Multiple unanchored groups otherwise trigger automatic board packing,
-  // which moves and rotates even explicitly placed section components.
-  for (const [ref, x, y, rotation] of [
-    ["TP1", -24, -29, 0],
-    ["TP10", 20, -37, 0],
-    ["J4", -20, 1.14, 0],
-  ] as const) {
+  const initialGraphs = createControllerInitialGraphs(json);
+  const nativePcb = parseKicadPcb(initialGraphs.pcb.getString());
+  expect(initialGraphs.schematicFiles).toHaveLength(8);
+  expect(nativePcb.footprints).toHaveLength(99); // 95 parts plus four board NPTHs
+  // Check every actual source/native position against the authored manufacturer
+  // datum. pcbRelative prevents the compiler's implicit group packing/rotation.
+  for (const [ref, placement] of Object.entries(controllerPlacements)) {
     const source = components.find((e) => e.name === ref)!;
-    const placed = json
+    const placed = initialGraphs.circuitJson
       .filter((e) => e.type === "pcb_component")
       .find((e) => e.source_component_id === source.source_component_id)!;
-    expect(placed.center.x).toBeCloseTo(x, 6);
-    expect(placed.center.y).toBeCloseTo(y, 6);
-    expect(placed.rotation).toBeCloseTo(rotation, 6);
+    expect(placed.center.x).toBeCloseTo(placement.pcbX, 6);
+    expect(placed.center.y).toBeCloseTo(placement.pcbY, 6);
+    expect(placed.rotation).toBeCloseTo(placement.pcbRotation, 6);
+    const fp = nativePcb.footprints.find((f) =>
+      f.properties.some((p) => p.key === "Reference" && p.value === ref),
+    )!;
+    expect(fp).toBeDefined();
+    const at = fp.position;
+    if (!(at instanceof At)) throw new Error(`${ref}: missing native origin`);
+    expect(at.x).toBeCloseTo(100 + placement.pcbX, 6);
+    expect(at.y).toBeCloseTo(100 - placement.pcbY, 6);
+    expect(at.angle ?? 0).toBeCloseTo(placement.pcbRotation, 6);
   }
 
   // Check the board interfaces as whole named electrical nodes. A section-level
@@ -96,15 +114,22 @@ test("controller schematic preserves power separation, hardware permission and b
       });
     expect(actual.sort()).toEqual(expected.sort());
   }
-  // This is the electrical integration gate. The section review placements
-  // overlap; real board placement checks must pass separately before handoff.
-  expect(
-    json.filter(
-      (e) =>
-        ("error_type" in e || e.type.endsWith("_error")) && !e.type.startsWith("pcb_"),
-    ),
-  ).toEqual([]);
+  // The full source has no component/courtyard overlap or placement errors.
+  // Enclosure mating/access, routed return paths and native DRC remain separate.
+  expect(json.filter((e) => "error_type" in e || e.type.endsWith("_error"))).toEqual(
+    [],
+  );
   expect(schematicConnectivityErrors(json)).toEqual([]);
+  expect(controllerPlacementErrors(json)).toEqual([]);
+  // A probe courtyard entering a mounting reserve must fail even without
+  // touching another part. Exercise the check against actual compiled geometry.
+  const crowded = structuredClone(json);
+  const probe = crowded.find((e) => e.type === "pcb_courtyard_circle")!;
+  if (probe.type !== "pcb_courtyard_circle") throw new Error("Missing probe circle");
+  probe.center = { x: -30, y: 26 };
+  expect(
+    controllerPlacementErrors(crowded).some((e) => e.includes("mounting reserve")),
+  ).toBe(true);
   // Native ERC must see actual driver/supply/NC roles. Keep electrical labels
   // instead of the converter's unconnected custom power-rail graphics.
   const exportJson = structuredClone(json);

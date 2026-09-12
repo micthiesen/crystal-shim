@@ -1,7 +1,8 @@
 # Controller component source
 
 These are actual selected part models for the final controller. They now form the complete
-controller schematic; placement, native assembly and manufacturing delivery remain work.
+controller schematic and explicit board placement; enclosure fit, native assembly
+and manufacturing delivery remain work.
 The [controller basis](../../../docs/design/controller-design-basis.md) owns the
 circuit contract and [footprint audit](../../../docs/design/footprint-audit.md)
 records the manufacturer comparisons.
@@ -37,7 +38,7 @@ records the manufacturer comparisons.
   `usb-interface.tsx` the 13-part self-powered data interface and
   `module-controls.tsx` the 14-part module/boot/reset/maintenance/LED section. Their fixed
   references and named boundary nets are for integration into the final controller.
-  These are incomplete sections of that board, not separate product boards.
+  They are integrated sections of the one controller board.
 - `test-points.tsx` adds eleven unpopulated supply, I2C, relay and UART probe pads.
   They have explicit mask openings, no paste and no purchased BOM/CPL entries;
   [the pad contract](../../../docs/design/controller-test-points.md) records access and export rules.
@@ -48,32 +49,37 @@ records the manufacturer comparisons.
   seven-sheet schematic. The 84 purchased parts agree with the controller BOM
   allocation; the other eleven components are test pads. `pcbRelative` disables
   automatic group packing that otherwise moves and rotates explicit placements.
-  Current section placements overlap and must be replaced by the reviewed full
-  layout. The integration test covers electrical boundaries, not placement approval.
+  `placements.ts` supplies all 95 manufacturer-origin positions. The board also
+  owns four 3.2 mm mounting holes and a four-layer, 1.6 mm FR4 specification.
+  The integration test checks every source/native position, compiled courtyards
+  and mounting reserves. Enclosure mating/access and routing review remain open.
 - Compiled tests check physical pin/port identity, translated/rotated geometry,
   exposed-ground and switch pairing, and actual section netlists. Copper checks
   do not establish a final solder process or complete electrical performance.
 
-Run `bun test controller/design` or `bun run render:controller-parts` from `pcb/`.
-The latter writes a 25-component review SVG and Circuit JSON under ignored
+Run `bun test controller/design` and `bun run render:controller` from `pcb/` for
+the complete source checks and board/schematic previews under `dist/controller/design`.
+`bun run render:controller-parts` writes a 25-component review SVG and Circuit JSON under ignored
 `dist/controller/part-review/`. Its display positions and outline are not a product
 board or an additional fabrication design. `bun run render:controller-sections`
 renders all seven connected sections separately under
-`dist/controller/section-review/`. Their positions remain provisional until all
-controller parts and the enclosure/antenna constraints are integrated. No render
+`dist/controller/section-review/`, using their positions from the complete board.
+Final enclosure mating and routing review remain required. No render
 here is a fabrication input.
 
 The `CrystalShim:*` footprint metadata names reserve future native library IDs;
 those KiCad footprints have not been adopted. Body/courtyard and mask output now
 exists for every purchased controller part. Complete paste, thermal and antenna
-declarations, board specification, native origin normalization and placement before
-the guarded handoff. No handoff lock or
+declarations, exact stackup and enclosure fit before the guarded handoff. No handoff lock or
 fabrication outputs exist. The component tests run in the normal project gate.
 
 ## Initial export integration
 
-Before running the pinned converters, call `prepareUsbForInitialExport(json, refs)`
-and use its returned copy. After conversion, call `mapUsbPcbForInitialExport` and
+Before running the pinned converters, call `prepareUsbForInitialExport(json, ["J4"])`
+and `prepareFootprintOriginsForInitialExport` for U1/J1/J2/J3/D4/SW1/SW2/SW3,
+using each returned copy. The latter validates the complete numbered-land/locator
+multiset against the selected manufacturer pattern before restoring its origin;
+absolute geometry is unchanged. After conversion, call `mapUsbPcbForInitialExport` and
 `mapUsbSchematicForInitialExport` on the initial object graphs, and call
 `anchorServiceEfuseForInitialExport` for every TPS259470 instance. Serialize only
 after those validations succeed. Multi-sheet conversion places components in
@@ -126,8 +132,12 @@ children). It matches all 254 connected pins and 20 intended unused pins across
 known 14 repeated-pad net omissions, still awaiting shared augmentation. USB
 mapping, eFuse anchors and test-pad paste removal were applied to initial object
 graphs before the first stage-file write. No existing native design was edited.
-This checks integrated electrical export behavior; overlapping review placements,
-pending native assembly details and ERC/DRC still prevent handoff.
+The current placed export contains four additional unnumbered mounting-hole
+footprints, four copper layers and nine total NPTHs. Source/native renders were
+inspected. Pending enclosure fit, manifests, native assembly details and ERC/DRC
+still prevent handoff. `createControllerInitialGraphs` composes all adapters and
+refreshes every child schematic cache; it creates fresh graphs without reading
+or writing any native file. Its caller must use guarded staging/adoption.
 
 ## Electrical metadata and physical datums
 
@@ -149,10 +159,12 @@ native cleanup. Pin metadata is not a clean ERC result.
 
 Physical bodies and courtyards use independent centres where necessary. The
 WROOM native body centre is (0,-3); its compiled copper bounding-box centre is
-(0,-0.005), so native footprint-origin normalization remains required before the
-accepted manifest. This does not move its actual source pads or body. THT parts
-retain pin-1 copper datums with offset bodies; normalize their initial native
-origins against verified lands too. Connector envelopes include rear tails and
+(0,-0.005). The initial origin adapter restores that vendor datum and the THT
+pin-one origins without moving actual source pads or bodies. Four-angle tests
+and complete native pcbnew readback confirm the corrected datums and unchanged
+absolute geometry. `createControllerInitialGraphs` now invokes that adapter;
+the guarded manifest/handoff command remains to implement.
+Connector envelopes include rear tails and
 latches, but harness bends, mating sweep and enclosure access remain separate.
 The Molex 10.16 mm maximum edge datum is measured from the locator centre at
 y=-4.32, not pin 1. See `connectorMechanicalConstraints` before placement.

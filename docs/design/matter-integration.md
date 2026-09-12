@@ -210,11 +210,13 @@ its policy for private development identities. Provisioning is not a certificati
 claim. Records and key-bearing objects have no Debug/Display implementation and
 are never echoed or logged.
 
-This unit defines and consumes the provisioning record; it does not add a USB
-private-material command or provisioner. A later authorized owner-only tool must
-validate/encode and place the material through the same Store contract, without
-printing it. Its physical delivery/attestation choice and actual Apple Home
-acceptance remain separate. Missing/invalid material reports a generic state,
+The [offline tool and bounded USB writer](matter-provisioning.md) now create,
+validate and install the record through that same Store contract without printing
+private material. The writer requires explicit CONFIG, a current durable-maintenance
+and relay-low acknowledgement, bounded staging, exact verified readback and a
+separate explicit reboot. The host serial sender and physical delivery/activation
+remain work. Actual Apple Home acceptance remains separate.
+Missing/invalid material reports a generic state,
 constructs no radio, and retains local settings/calibration service.
 
 ## Verification and remaining work
@@ -222,7 +224,8 @@ constructs no radio, and retains local settings/calibration service.
 Evidence collected 2026-09-12 without hardware or network operations:
 
 - Host fmt and Clippy with warnings denied passed. The host workspace passed
-  115 core, 9 driver, 1 CLI, and 15 Matter tests. New tests cover provisioning
+  117 core, 9 driver, 1 CLI, and 36 Matter tests across library and integration
+  targets. New tests cover provisioning
   bounds/key consistency/closed invalid identity, actual restricted endpoint
   metadata, and service polling/cancellation after network completion.
   Root review added a complete X.509 acceptance case and mismatched VID/PID/DAC
@@ -254,11 +257,11 @@ Evidence collected 2026-09-12 without hardware or network operations:
   recovery fix. They do not include a live TLS handshake worker: no connect/send
   caller exists yet, so unused handshake code may still be eliminated.
 
-`llvm-size` on the linked C6 release reports text 1,901,488 bytes, data 23,692
-bytes and BSS 238,696 bytes. RAM execution sections (`.trap`, `.rwtext`,
-`.rwtext.wifi`) add 80,392 bytes, for 342,780 static RAM bytes before alignment.
-The configured RAM ends at `0x4086E610`; BSS ends at `0x40853B00`, leaving
-109,328 bytes in `.stack`. BSS includes the 102,400-byte heap and a 66,440-byte
+`llvm-size` on the linked C6 release with the USB writer reports text 1,906,596
+bytes, data 23,836 bytes and BSS 245,392 bytes. RAM execution sections (`.trap`,
+`.rwtext`, `.rwtext.wifi`) add 80,392 bytes, for 349,620 static RAM bytes before
+alignment. The configured RAM ends at `0x4086E610`; `.stack` contains 102,488
+bytes. BSS includes the 102,400-byte heap and a 66,440-byte
 Matter allocation containing its 20,000-byte bump arena. TCP buffers, UDP buffers,
 BLE/mDNS state, IP resources and task futures are also present. The release build
 is below the static RAM limit; runtime radio/crypto heap peaks and stack use remain
@@ -283,8 +286,8 @@ sh ../../scripts/with-esp-toolchain.sh cargo build --release --locked
 sh ../../scripts/with-esp-toolchain.sh llvm-size target/riscv32imac-unknown-none-elf/release/crystal-shim
 ```
 
-Remaining integration is the private provisioning writer/identity choice,
-a trusted clock source, hosted settings/schedule UI, and the bounded HTTP/Pushover
+Remaining integration is the host provisioning sender, a trusted clock source,
+hosted settings/schedule UI, and the bounded HTTP/Pushover
 worker using this TCP interface. RF pairing/reconnect, real group/subscription
 behavior, combined TLS handshakes, GPIO/flash/watchdog timing, peak heap and stack
 high-water, and Apple Home acceptance remain final-board tests. The static RAM

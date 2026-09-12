@@ -3,8 +3,12 @@
 The host-only `matter-provision` tool creates or imports private device material,
 serializes the exact record consumed by the app, and validates it offline. It
 does not open a serial port, flash hardware, pair an accessory or contact a
-network. The app still needs the USB writer described below before this record
-can be installed through its single gated Store.
+network. The app implements the bounded USB writer below through its single gated
+Store. An unattended host serial sender remains a separate integration.
+
+Offline issuance/import/validation requires OpenSSL 3 on PATH. On macOS, check
+`openssl version` in the shell running the tool; the system LibreSSL executable
+does not satisfy that dependency.
 
 ## Identity and trust choices
 
@@ -158,39 +162,103 @@ clears its caller buffer on every error. The record remains version `CSMAT01`, a
 most 3584 bytes, stored under key `0x434D`. The wire layout is unchanged from
 [matter-integration.md](matter-integration.md).
 
-## Required application writer transaction
+## Application USB writer
 
-This is a contract for the next app integration, not an implemented USB command.
-It must use the live `Matter::kv` access or the existing local fallback access,
-never a second `FlashStorage`, independent NVS writer or partition-image flash.
+The actual `service::run` loop uses `provision_transfer::Transfer` and the shared
+`RecordStore` interface. Both the live `Matter::kv` and the local fallback access
+implement `ProvisionStore` through the same generic installer. There is no second
+`FlashStorage`, NVS owner, radio handle or partition-image writer. Radio failure or
+return leaves this service running.
 
-1. Require explicit local provisioning intent while maintenance is durably active.
-   Confirm the actual relay-low control acknowledgement. Keep the reserved Off
-   ingress and control task available throughout the transfer.
-2. Admit one bounded transfer with a fresh owner token, total length no greater
-   than 3584 bytes and a whole-record integrity value. Receive bounded chunks with
-   exact offsets and a finite monotonic timeout. Never echo bytes, PINs, keys or
-   pairing strings. A duplicate/stale token cannot complete another transfer.
-3. On cancellation, timeout, bad offset/length or malformed final record, clear the
-   transfer buffer, release its ownership and retain the prior durable record.
-   Validate the complete bytes with `Provisioning::decode` before storage. The
-   host's stronger chain/CD checks complement, not replace, this app check.
-4. For the initial writer, require provisioning to be absent. Identical existing
-   bytes can be acknowledged idempotently after verification; different existing
-   material must require a separately reviewed replacement/factory-reset flow.
-   Do not silently overwrite the identity of an already commissioned node.
-5. Store key `0x434D` through the existing KV closure and relay-off gate. Preserve
-   each at-most-256-byte read/program checkpoint and single-4-KiB erase checkpoint.
-   Read back and compare the exact completed record before the durable success
-   reply. A receipt/transfer acknowledgement is not a durability acknowledgement.
-6. Report only token/result/integrity status. Keep local service available after
-   failure. After durable success, require an explicit reboot to activate the new
-   identity; the current app consumes radio peripherals and static cells once per
-   boot. Do not auto-reboot, erase fabrics or make calibration/configuration changes
-   as a side effect of provisioning.
+An explicit valid CONFIG must have completed first. Calibration may remain absent.
+Provisioning never invents configuration, calibration or UTC. A never-configured
+runtime can acknowledge maintenance only as Applied; the writer rejects it as
+`Unconfigured`, because no durable maintenance record exists. The ordinary CONFIG
+command accepts the canonical CSCF hex record; a convenient host configuration
+encoder and the settings webpage remain separate work.
 
-No app writer, activation, live pairing or hardware installation occurred in this
-unit. Final-unit records belong outside git and require owner-controlled custody.
+`PROVISION_BEGIN` submits an owned `EnterMaintenance` through the existing ingress.
+It accepts no chunks until that exact request replies Durable and the control task
+publishes current configured/durable-maintenance/relay-low status after its GPIO
+write. Admission is not a durability acknowledgement. The extra internal source
+prevents the generic USB reply drain from consuming this ACK. Cancelling an
+in-flight request abandons its reply without releasing its ingress generation
+until completion, so a late reply cannot authorize another transfer.
+
+While preparing or receiving, the service admits only ordinary OFF and provisioning
+commands. The existing reserved Off flag still works when the normal request slot
+is occupied. Other USB commands return BUSY; Matter On remains subject to the
+supervisor's maintenance rejection. USB is currently the only CONFIG/EXIT producer.
+Any future settings endpoint must participate in this reservation before it can
+change configuration or exit maintenance. No supervisor lease policy was changed.
+
+The line protocol below uses a nonzero decimal request `id`. Each line ends with
+LF; CRLF also works. A nonce is exactly 32 hex characters, chosen freshly by the
+host for every attempt and across boots, and cannot be all zero. A token is the
+device's nonwrapping decimal generation, a colon, and that nonce. Tokens provide
+correlation for this trusted physical USB boundary, not authentication.
+
+| Request | Meaning |
+| --- | --- |
+| `id PROVISION_BEGIN nonce length sha256` | Length is 1 through 3584; SHA-256 is 64 hex characters over the exact record. Returns `Ok(Pending)` with the token, followed by `Ok(Ready(0))` only after the owned durable-maintenance/GPIO ACK. |
+| `id PROVISION_CHUNK token offset hex` | 1 through 256 decoded bytes at the exact next offset. Returns `Ok(Next(offset))` with the new next offset. This acknowledges staging only. |
+| `id PROVISION_STATUS token` | Returns Pending, the next offset, or the last verified completion. It does not refresh transfer deadlines or repeat a write. |
+| `id PROVISION_COMMIT token` | Requires complete length, matching SHA-256 and successful production `Provisioning::decode`, then performs verified KV installation. |
+| `id PROVISION_CANCEL token` | Clears staging and releases pre-commit ownership. It never issues EXIT; maintenance stays latched if it was already applied. |
+| `id PROVISION_REBOOT token` | Requires the last verified receipt, then a new owned durable-maintenance/GPIO-low ACK. Only the resulting `Ok(Rebooting)` invokes `esp_hal::system::software_reset()`. |
+
+Replies are `PROVISION id token result`, with `-` when no token was assigned.
+Results use the typed names above, `Ok(Complete(StoredVerified))`,
+`Ok(Complete(AlreadyPresentVerified))`, or `Err(...)`. This stream coexists with
+ordinary REPLY, STORAGE and diagnostic lines. No bytes, PINs, keys, digest values
+or pairing strings are echoed. Do not paste provisioning records into an echoing
+terminal or save a plaintext command transcript; an eventual host sender must
+configure its explicit serial device without echo and retain secret-safe file
+handling and offline validation on the same loaded bytes.
+
+One transfer owns a statically allocated 3584-byte staging buffer. Admission and
+reboot handshakes each expire at 5 seconds. Receiving expires at 5 seconds without
+a valid chunk or 60 seconds from BEGIN, whichever comes first. STATUS, wrong-token
+traffic and rejected commands never renew either limit. Lines have a separate
+5-second whole-line deadline and a 4128-byte cap. Polling without USB input clears
+expired partial lines while draining through their newline so a suffix cannot
+become a command. A backwards monotonic observation aborts an active transfer.
+The last successful receipt expires after 120 seconds and holds no transfer
+reservation. A new admitted transfer invalidates that receipt. Tokens cannot wrap.
+
+Wrong tokens cannot cancel or complete the current owner's transfer. An attributable
+malformed request, bad offset, duplicate or oversized chunk, invalid final record or
+failed integrity check aborts and wipes that owner's staging. Unattributable syntax
+errors do not acquire or cancel ownership. After a lost chunk ACK, use STATUS and
+the reported next offset instead of replaying a chunk. Raw input, framing/decode
+buffers and owned chunks are cleared; staging is cleared on all terminal paths.
+Compiler-resistant stores preserve these clears, without claiming erasure of
+historical flash, prior compiler copies or registers.
+
+`storage::install_provisioning` validates before mutation and holds one KV access
+closure across the existing-record check, store and exact readback. Only absence
+allows a write. Exact existing bytes return verified idempotence without a write;
+different bytes, including an invalid old identity, return Conflict. A load error
+is never treated as absence. Configuration, retained, network and fabric keys are
+not changed by this installer. Each raw read/program remains at most 256 bytes,
+and every single 4 KiB erase retains its fresh relay-off gate checkpoint. Scratch
+used by the KV closure is cleared when that closure returns.
+
+Before KV mutation begins, cancellation or validation failure retains the prior
+record. KV is synchronous, so USB cannot cancel it midway; it can temporarily stall
+thread-mode USB/radio polling while Priority3 control remains independent. A store
+or readback failure may occur after bytes became durable. It produces no success
+receipt and does not attempt rollback or remove a possibly committed identity.
+A new identical transfer can resolve that uncertainty through verified idempotence.
+Power loss before the first write leaves the old record/absence. Interrupted NOR
+records use existing map recovery; loss after commit but before ACK is idempotent.
+
+Successful installation does not reboot or start commissioning. The current app
+consumes its provisioning bytes, radio peripherals and static cells once per boot.
+An explicit reboot is required for the new identity to be consumed. No fabric erase
+or identity replacement workflow is provided. Final-unit records remain outside
+git. No physical USB transfer, activation, live pairing or hardware installation
+has been performed by these software checks.
 
 ## Verification
 
@@ -208,6 +276,23 @@ cargo clippy --manifest-path firmware/Cargo.toml --workspace --all-targets --loc
 cargo fmt --manifest-path firmware/Cargo.toml --all -- --check
 ```
 
-The full project gate also checks the unchanged app's C6 fmt, Clippy and release
-build. Tool success does not satisfy G-05, prove attestation acceptance in Apple
-Home, or measure radio/TLS memory and interrupt timing.
+Production transfer tests exercise actual Runtime/Ingress ownership, CONFIG-first
+admission without calibration, durable versus Applied ACKs, GPIO readiness,
+reserved Off, stale/cancelled replies, exact bounds/timeouts, buffer clearing,
+integrity/record rejection, receipt expiry and separate reboot authorization.
+The production app Store is compiled over deterministic NOR in `gated_store.rs`.
+It tests same-owner installation, idempotence, conflicts and failure at every raw
+operation boundary during an installation that triggers page cleanup, then reopens
+the Store and verifies retry and preservation of other keys. Adapter tests separately
+exercise missing/different/error readback and uncertain store completion.
+
+The full gate also checks C6 fmt, Clippy, release and resolved Matter feature identity.
+The writer release measured text 1,906,596, data 23,836 and BSS 245,392 bytes; relative
+to the preceding release this is +5,108 text and +6,840 static SRAM (data + BSS).
+The transfer static itself is 3,752 bytes; the remainder includes additional async
+service and snapshot state. The 100 KiB heap allocation is unchanged. The installer
+is present in the linked ELF through `SharedKvBlobStore<Store, 4096>`, the concrete
+access used by both live Matter KV and fallback. These are linked build measurements,
+not measured stack peaks or radio/TLS/USB concurrency headroom. Tool success does not
+satisfy G-05, prove Apple Home attestation acceptance, or measure physical interrupt,
+USB, flash-stall or reset behavior.

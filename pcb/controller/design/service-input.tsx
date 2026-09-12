@@ -1,3 +1,4 @@
+import { controllerPlacements } from "./placements";
 import { Fragment } from "react";
 import { ServiceHeader } from "./micro-fit-components";
 import { ControllerCapacitor, ControllerResistor } from "./passive-components";
@@ -12,8 +13,7 @@ export function ControllerServiceInput() {
     <group name="ServiceProtection" schSheetName="Service">
       <ServiceHeader
         name="J2"
-        pcbX={22}
-        pcbY={-50}
+        {...controllerPlacements.J2}
         schX={-11.88}
         schY={0}
         schSheetName="Service"
@@ -21,8 +21,7 @@ export function ControllerServiceInput() {
       />
       <BidirectionalSupplyTvs
         name="D5"
-        pcbX={22}
-        pcbY={-34}
+        {...controllerPlacements.D5}
         schX={-11.88}
         schY={-3.3}
         schSheetName="Service"
@@ -30,8 +29,7 @@ export function ControllerServiceInput() {
       />
       <ServiceEfuse
         name="U10"
-        pcbX={12}
-        pcbY={-34}
+        {...controllerPlacements.U10}
         schX={0}
         schY={0}
         schSheetName="Service"
@@ -48,8 +46,7 @@ export function ControllerServiceInput() {
       />
       <PowerSchottky
         name="D6"
-        pcbX={4}
-        pcbY={-34}
+        {...controllerPlacements.D6}
         schX={9.9}
         schY={0}
         schSheetName="Service"
@@ -57,9 +54,8 @@ export function ControllerServiceInput() {
       />
       <ControllerResistor
         name="R30"
+        {...controllerPlacements.R30}
         value="26.1k"
-        pcbX={14}
-        pcbY={-26}
         schX={-9.9}
         schY={6.6}
         schSheetName="Service"
@@ -67,9 +63,8 @@ export function ControllerServiceInput() {
       />
       <ControllerResistor
         name="R31"
+        {...controllerPlacements.R31}
         value="10k"
-        pcbX={10}
-        pcbY={-26}
         schX={-6.6}
         schY={6.6}
         schSheetName="Service"
@@ -77,9 +72,8 @@ export function ControllerServiceInput() {
       />
       <ControllerResistor
         name="R32"
+        {...controllerPlacements.R32}
         value="470k"
-        pcbX={14}
-        pcbY={-30}
         schX={-3.3}
         schY={3.96}
         schSheetName="Service"
@@ -87,9 +81,8 @@ export function ControllerServiceInput() {
       />
       <ControllerResistor
         name="R33"
+        {...controllerPlacements.R33}
         value="38.3k"
-        pcbX={21}
-        pcbY={-26}
         schX={-9.9}
         schY={-6.6}
         schSheetName="Service"
@@ -97,9 +90,8 @@ export function ControllerServiceInput() {
       />
       <ControllerResistor
         name="R34"
+        {...controllerPlacements.R34}
         value="10k"
-        pcbX={25}
-        pcbY={-26}
         schX={-6.6}
         schY={-6.6}
         schSheetName="Service"
@@ -107,9 +99,8 @@ export function ControllerServiceInput() {
       />
       <ControllerResistor
         name="R35"
+        {...controllerPlacements.R35}
         value="470k"
-        pcbX={20}
-        pcbY={-30}
         schX={-3.3}
         schY={-3.96}
         schSheetName="Service"
@@ -117,9 +108,8 @@ export function ControllerServiceInput() {
       />
       <ControllerResistor
         name="R36"
+        {...controllerPlacements.R36}
         value="2.87k"
-        pcbX={7}
-        pcbY={-30}
         schX={3.96}
         schY={-3.96}
         schSheetName="Service"
@@ -127,9 +117,8 @@ export function ControllerServiceInput() {
       />
       <ControllerResistor
         name="R37"
+        {...controllerPlacements.R37}
         value="2.2k"
-        pcbX={4}
-        pcbY={-27}
         schX={9.9}
         schY={-3.3}
         schSheetName="Service"
@@ -137,9 +126,8 @@ export function ControllerServiceInput() {
       />
       <ControllerCapacitor
         name="C20"
+        {...controllerPlacements.C20}
         value="1uF"
-        pcbX={16}
-        pcbY={-38}
         schX={-7.92}
         schY={0}
         schSheetName="Service"
@@ -147,9 +135,8 @@ export function ControllerServiceInput() {
       />
       <ControllerCapacitor
         name="C21"
+        {...controllerPlacements.C21}
         value="100nF"
-        pcbX={12}
-        pcbY={-38}
         schX={-7.92}
         schY={-3.3}
         schSheetName="Service"
@@ -157,9 +144,8 @@ export function ControllerServiceInput() {
       />
       <ControllerCapacitor
         name="C22"
+        {...controllerPlacements.C22}
         value="22uF"
-        pcbX={6}
-        pcbY={-39}
         schX={6.6}
         schY={0}
         schSheetName="Service"
@@ -167,9 +153,8 @@ export function ControllerServiceInput() {
       />
       <ControllerCapacitor
         name="C23"
+        {...controllerPlacements.C23}
         value="4.7nF"
-        pcbX={10}
-        pcbY={-22}
         schX={3.96}
         schY={3.96}
         schSheetName="Service"

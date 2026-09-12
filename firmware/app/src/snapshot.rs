@@ -5,6 +5,7 @@ use crystal_shim_core::calibration::{Calibration, CalibrationError};
 use crystal_shim_core::configuration::ValidatedDeviceConfig;
 use crystal_shim_core::{Fault, Millis, Reading, RetainedState, SupervisorStatus};
 use crystal_shim_drivers::fdc1004::Frame;
+use crystal_shim_matter::provision_transfer::Readiness;
 
 #[derive(Clone, Copy, Debug)]
 pub struct SensorSnapshot {
@@ -32,6 +33,13 @@ static SENSOR: Mutex<Cell<SensorSnapshot>> = Mutex::new(Cell::new(SensorSnapshot
     power_fault_latched: false,
 }));
 pub static STATUS: Mutex<Cell<Option<SupervisorStatus>>> = Mutex::new(Cell::new(None));
+static ADMINISTRATION: Mutex<Cell<Option<Readiness>>> = Mutex::new(Cell::new(None));
+pub fn publish_administration(readiness: Readiness) {
+    critical_section::with(|cs| ADMINISTRATION.borrow(cs).set(Some(readiness)));
+}
+pub fn administration() -> Readiness {
+    critical_section::with(|cs| ADMINISTRATION.borrow(cs).get()).unwrap_or_default()
+}
 #[derive(Clone, Copy)]
 pub struct BootConfiguration {
     pub configuration: Option<ValidatedDeviceConfig>,

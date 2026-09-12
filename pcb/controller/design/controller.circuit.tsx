@@ -5,13 +5,23 @@ import { ControllerSensorInterface } from "./sensor-interface";
 import { ControllerServiceInput } from "./service-input";
 import { ControllerTestPoints } from "./test-points";
 import { ControllerUsbInterface } from "./usb-interface";
+import { controllerMountingHoles } from "./placements";
+import { Fragment } from "react";
 
 // One controller schematic, using the final-use electrical sections. The source
-// currently retains their review placements. Do not export for fabrication until
-// complete placement, mechanical fit and declared native augmentations pass.
+// uses explicit complete-board placements. Do not export for fabrication until
+// placement review, mechanical fit and declared native augmentations pass.
 export default function ControllerCircuit() {
   return (
-    <board width={70} height={110} routingDisabled pcbRelative>
+    <board
+      width={70}
+      height={110}
+      thickness={1.6}
+      layers={4}
+      material="fr4"
+      routingDisabled
+      pcbRelative
+    >
       <schematicsheet
         name="Relay"
         displayName="Relay permission and mains-board harness"
@@ -50,6 +60,11 @@ export default function ControllerCircuit() {
       <ControllerUsbInterface />
       <ControllerSensorInterface />
       <ControllerTestPoints />
+      {controllerMountingHoles.map((hole) => (
+        <Fragment key={hole.ref}>
+          <hole name={hole.ref} pcbX={hole.x} pcbY={hole.y} diameter={3.2} />
+        </Fragment>
+      ))}
     </board>
   );
 }

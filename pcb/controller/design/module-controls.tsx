@@ -1,3 +1,4 @@
+import { controllerPlacements } from "./placements";
 import { Fragment } from "react";
 import { Esp32C6Wroom } from "./esp32-c6-wroom";
 import { ControllerButton, StatusLed } from "./assembly-components";
@@ -11,8 +12,7 @@ export function ControllerModuleControls() {
     <group name="ModuleControls" schSheetName="Module">
       <Esp32C6Wroom
         name="U1"
-        pcbX={0}
-        pcbY={34}
+        {...controllerPlacements.U1}
         schX={0}
         schY={0}
         schSheetName="Module"
@@ -42,8 +42,7 @@ export function ControllerModuleControls() {
       />
       <ControllerButton
         name="SW1"
-        pcbX={-25}
-        pcbY={15}
+        {...controllerPlacements.SW1}
         schX={-11}
         schY={6}
         schSheetName="Module"
@@ -54,8 +53,7 @@ export function ControllerModuleControls() {
       />
       <ControllerButton
         name="SW2"
-        pcbX={-25}
-        pcbY={5}
+        {...controllerPlacements.SW2}
         schX={-11}
         schY={1}
         schSheetName="Module"
@@ -66,8 +64,7 @@ export function ControllerModuleControls() {
       />
       <ControllerButton
         name="SW3"
-        pcbX={-25}
-        pcbY={-5}
+        {...controllerPlacements.SW3}
         schX={-11}
         schY={-4}
         schSheetName="Module"
@@ -78,8 +75,7 @@ export function ControllerModuleControls() {
       />
       <StatusLed
         name="D4"
-        pcbX={25}
-        pcbY={15}
+        {...controllerPlacements.D4}
         schX={11}
         schY={1}
         schSheetName="Module"
@@ -90,9 +86,8 @@ export function ControllerModuleControls() {
       />
       <ControllerResistor
         name="R50"
+        {...controllerPlacements.R50}
         value="10k"
-        pcbX={-15}
-        pcbY={15}
         schX={-7}
         schY={6}
         schSheetName="Module"
@@ -103,9 +98,8 @@ export function ControllerModuleControls() {
       />
       <ControllerResistor
         name="R51"
+        {...controllerPlacements.R51}
         value="10k"
-        pcbX={-15}
-        pcbY={5}
         schX={-7}
         schY={1}
         schSheetName="Module"
@@ -116,9 +110,8 @@ export function ControllerModuleControls() {
       />
       <ControllerResistor
         name="R52"
+        {...controllerPlacements.R52}
         value="10k"
-        pcbX={13}
-        pcbY={30}
         schX={7}
         schY={6}
         schSheetName="Module"
@@ -129,9 +122,8 @@ export function ControllerModuleControls() {
       />
       <ControllerResistor
         name="R53"
+        {...controllerPlacements.R53}
         value="10k"
-        pcbX={-13}
-        pcbY={25}
         schX={-7}
         schY={-8}
         schSheetName="Module"
@@ -142,9 +134,8 @@ export function ControllerModuleControls() {
       />
       <ControllerResistor
         name="R54"
+        {...controllerPlacements.R54}
         value="680"
-        pcbX={18}
-        pcbY={15}
         schX={7}
         schY={1}
         schSheetName="Module"
@@ -155,9 +146,8 @@ export function ControllerModuleControls() {
       />
       <ControllerResistor
         name="R55"
+        {...controllerPlacements.R55}
         value="330"
-        pcbX={-15}
-        pcbY={-5}
         schX={-7}
         schY={-4}
         schSheetName="Module"
@@ -168,9 +158,8 @@ export function ControllerModuleControls() {
       />
       <ControllerCapacitor
         name="C5"
+        {...controllerPlacements.C5}
         value="22uF"
-        pcbX={-14}
-        pcbY={34}
         schX={7}
         schY={-4}
         schSheetName="Module"
@@ -181,9 +170,8 @@ export function ControllerModuleControls() {
       />
       <ControllerCapacitor
         name="C6"
+        {...controllerPlacements.C6}
         value="100nF"
-        pcbX={-14}
-        pcbY={29}
         schX={11}
         schY={-4}
         schSheetName="Module"
@@ -194,9 +182,8 @@ export function ControllerModuleControls() {
       />
       <ControllerCapacitor
         name="C9"
+        {...controllerPlacements.C9}
         value="1uF"
-        pcbX={-14}
-        pcbY={21}
         schX={-11}
         schY={-8}
         schSheetName="Module"

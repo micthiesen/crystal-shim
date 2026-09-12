@@ -1,3 +1,4 @@
+import { controllerPlacements } from "./placements";
 import { Fragment } from "react";
 import { ControllerBuck } from "./ic-components";
 import { PowerSchottky } from "./protection-components";
@@ -11,8 +12,7 @@ export function ControllerLogicPower() {
     <group name="LogicPower" schSheetName="Power">
       <PowerSchottky
         name="D1"
-        pcbX={-20}
-        pcbY={-38}
+        {...controllerPlacements.D1}
         schX={-12}
         schY={4}
         schSheetName="Power"
@@ -20,8 +20,7 @@ export function ControllerLogicPower() {
       />
       <PowerSchottky
         name="D2"
-        pcbX={-10}
-        pcbY={-38}
+        {...controllerPlacements.D2}
         schX={-12}
         schY={-2}
         schSheetName="Power"
@@ -29,9 +28,8 @@ export function ControllerLogicPower() {
       />
       <ControllerCapacitor
         name="C1"
+        {...controllerPlacements.C1}
         value="22uF"
-        pcbX={-24}
-        pcbY={-30}
         schX={-7}
         schY={4}
         schSheetName="Power"
@@ -39,9 +37,8 @@ export function ControllerLogicPower() {
       />
       <ControllerCapacitor
         name="C2"
+        {...controllerPlacements.C2}
         value="22uF"
-        pcbX={-24}
-        pcbY={-25}
         schX={-7}
         schY={-2}
         schSheetName="Power"
@@ -49,9 +46,8 @@ export function ControllerLogicPower() {
       />
       <ControllerCapacitor
         name="C7"
+        {...controllerPlacements.C7}
         value="100nF"
-        pcbX={-20}
-        pcbY={-33.5}
         schX={-2}
         schY={-5}
         schSheetName="Power"
@@ -59,8 +55,7 @@ export function ControllerLogicPower() {
       />
       <ControllerBuck
         name="U2"
-        pcbX={-16}
-        pcbY={-28}
+        {...controllerPlacements.U2}
         schX={0}
         schY={0}
         schSheetName="Power"
@@ -75,9 +70,8 @@ export function ControllerLogicPower() {
       />
       <ControllerCapacitor
         name="C8"
+        {...controllerPlacements.C8}
         value="100nF"
-        pcbX={-13}
-        pcbY={-23}
         schX={4}
         schY={5}
         schSheetName="Power"
@@ -85,8 +79,7 @@ export function ControllerLogicPower() {
       />
       <BuckInductor
         name="L1"
-        pcbX={-9}
-        pcbY={-28}
+        {...controllerPlacements.L1}
         schX={7}
         schY={0}
         schSheetName="Power"
@@ -94,9 +87,8 @@ export function ControllerLogicPower() {
       />
       <ControllerCapacitor
         name="C3"
+        {...controllerPlacements.C3}
         value="22uF"
-        pcbX={-2}
-        pcbY={-28}
         schX={12}
         schY={4}
         schSheetName="Power"
@@ -104,9 +96,8 @@ export function ControllerLogicPower() {
       />
       <ControllerCapacitor
         name="C4"
+        {...controllerPlacements.C4}
         value="22uF"
-        pcbX={-2}
-        pcbY={-24}
         schX={12}
         schY={-2}
         schSheetName="Power"

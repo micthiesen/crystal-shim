@@ -1,21 +1,28 @@
 import { Fragment } from "react";
 import type { KicadPcb } from "kicadts";
+import { controllerPlacements } from "./placements";
 
 // Board-owned exposed copper, not a purchased component or populated header.
-// Coordinates are provisional in the centered X-right/Y-up 70 x 110 mm board.
-export const controllerTestPoints = [
-  { ref: "TP1", net: "GND", label: "GND", x: -24, y: -29 },
-  { ref: "TP2", net: "V5_PSU", label: "5V PSU", x: -16, y: -29 },
-  { ref: "TP3", net: "V5_LOGIC", label: "5V LOGIC", x: -8, y: -29 },
-  { ref: "TP4", net: "V3V3", label: "3V3", x: 0, y: -29 },
-  { ref: "TP5", net: "SENSOR_SDA", label: "SDA", x: -24, y: -37 },
-  { ref: "TP6", net: "SENSOR_SCL", label: "SCL", x: -16, y: -37 },
-  { ref: "TP7", net: "PSU_GOOD", label: "PSU GOOD", x: -8, y: -37 },
-  { ref: "TP8", net: "RELAY_GATED", label: "RELAY EN", x: 0, y: -37 },
-  { ref: "TP9", net: "UART0_RX", label: "RX 3V3", x: 12, y: -37 },
-  { ref: "TP10", net: "UART0_TX", label: "TX 3V3", x: 20, y: -37 },
-  { ref: "TP11", net: "GND", label: "GND", x: 28, y: -37 },
-] as const;
+// Positions share the complete controller placement map.
+export const controllerTestPoints = (
+  [
+    { ref: "TP1", net: "GND", label: "GND" },
+    { ref: "TP2", net: "V5_PSU", label: "5V PSU" },
+    { ref: "TP3", net: "V5_LOGIC", label: "5V LOGIC" },
+    { ref: "TP4", net: "V3V3", label: "3V3" },
+    { ref: "TP5", net: "SENSOR_SDA", label: "SDA" },
+    { ref: "TP6", net: "SENSOR_SCL", label: "SCL" },
+    { ref: "TP7", net: "PSU_GOOD", label: "PSU GOOD" },
+    { ref: "TP8", net: "RELAY_GATED", label: "RELAY EN" },
+    { ref: "TP9", net: "UART0_RX", label: "RX 3V3" },
+    { ref: "TP10", net: "UART0_TX", label: "TX 3V3" },
+    { ref: "TP11", net: "GND", label: "GND" },
+  ] as const
+).map((point) => ({
+  ...point,
+  x: controllerPlacements[point.ref].pcbX,
+  y: controllerPlacements[point.ref].pcbY,
+}));
 
 export const controllerTestPointLand = {
   id: "CrystalShim:TestPoint_Pad_D2.0mm_NoPaste",

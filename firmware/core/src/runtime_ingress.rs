@@ -7,6 +7,7 @@ use crate::UtcSeconds;
 pub enum Source {
     Usb,
     Matter,
+    Provisioning,
 }
 
 /// An opaque generation owned by one producer. User correlation IDs are separate.
@@ -182,21 +183,24 @@ impl Receiver {
     /// Five seconds for the whole line, not five seconds renewed per byte.
     /// Overflow/timeout drains through newline so a suffix cannot become a command.
     pub fn push(&mut self, now_ms: u64, byte: u8) -> Option<Result<Request, ParseError>> {
-        if self
-            .started_at
-            .is_some_and(|at| now_ms < at || now_ms - at >= 5_000)
-        {
-            self.discarded = Some(ParseError::Timeout);
-        }
+        self.push_with(now_ms, byte, parse_line)
+    }
+
+    /// One shared bounded framer; the parser returns an owned result before wipe.
+    pub fn push_with<T>(
+        &mut self,
+        now_ms: u64,
+        byte: u8,
+        parse: impl FnOnce(&[u8], &mut [u8; CONFIGURATION_BLOB_MAX_LEN]) -> Result<T, ParseError>,
+    ) -> Option<Result<T, ParseError>> {
+        self.expire(now_ms);
         if byte == b'\n' {
             let result = if let Some(error) = self.discarded {
                 Err(error)
             } else {
-                parse_line(&self.line[..self.len], &mut self.scratch)
+                parse(&self.line[..self.len], &mut self.scratch)
             };
-            self.line.fill(0);
-            self.scratch.fill(0);
-            self.len = 0;
+            self.clear();
             self.started_at = None;
             self.discarded = None;
             return Some(result);
@@ -205,12 +209,42 @@ impl Receiver {
         if self.discarded.is_none() {
             if self.len == self.line.len() {
                 self.discarded = Some(ParseError::TooLong);
+                self.clear();
             } else {
                 self.line[self.len] = byte;
                 self.len += 1;
             }
         }
         None
+    }
+
+    /// Poll even without input. Wipe immediately, then drain the old line to LF.
+    pub fn expire(&mut self, now_ms: u64) {
+        if self.discarded != Some(ParseError::Timeout)
+            && self
+                .started_at
+                .is_some_and(|at| now_ms < at || now_ms - at >= 5_000)
+        {
+            self.discarded = Some(ParseError::Timeout);
+            self.clear();
+        }
+    }
+
+    fn clear(&mut self) {
+        // Volatile stores retain the clearing even if this buffer is never read
+        // again. This does not promise erasure of earlier copies or flash bytes.
+        for byte in self.line.iter_mut().chain(self.scratch.iter_mut()) {
+            // SAFETY: each pointer comes from a unique live mutable byte reference.
+            unsafe { core::ptr::write_volatile(byte, 0) };
+        }
+        core::sync::atomic::compiler_fence(core::sync::atomic::Ordering::SeqCst);
+        self.len = 0;
+    }
+}
+
+impl Drop for Receiver {
+    fn drop(&mut self) {
+        self.clear();
     }
 }
 
@@ -278,6 +312,37 @@ fn digit(byte: u8) -> Option<u8> {
 mod tests {
     use super::*;
     use crate::runtime::Acknowledgement;
+
+    #[test]
+    fn silent_expiry_and_overflow_wipe_partial_bytes_before_the_next_newline() {
+        for at in [5_000, 0] {
+            let mut receiver = Receiver::new();
+            for byte in b"1 CONFIG sensitive" {
+                receiver.push(1, *byte);
+            }
+            receiver.scratch.fill(0x5a);
+            receiver.expire(if at == 0 { 0 } else { 5_001 });
+            assert!(receiver.line.iter().all(|byte| *byte == 0));
+            assert!(receiver.scratch.iter().all(|byte| *byte == 0));
+            assert_eq!(receiver.len, 0);
+            for byte in b"2 ON" {
+                assert!(receiver.push(5_001, *byte).is_none());
+            }
+            assert!(matches!(
+                receiver.push(5_001, b'\n'),
+                Some(Err(ParseError::Timeout))
+            ));
+        }
+        let mut receiver = Receiver::new();
+        for _ in 0..=CONFIGURATION_BLOB_MAX_LEN * 2 + 32 {
+            receiver.push(0, b'a');
+        }
+        assert!(receiver.line.iter().all(|byte| *byte == 0));
+        assert!(matches!(
+            receiver.push(0, b'\n'),
+            Some(Err(ParseError::TooLong))
+        ));
+    }
 
     #[test]
     fn producer_and_generation_route_replies_independently_of_user_ids() {

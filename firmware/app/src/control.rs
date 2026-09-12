@@ -70,13 +70,22 @@ pub async fn run(
             step
         });
         let status = step.and_then(|step| step.status);
-        if !flash_inhibited && status.is_some_and(|status| status.control.relay == RelayCommand::On)
-        {
+        let relay_on = !flash_inhibited
+            && status.is_some_and(|status| status.control.relay == RelayCommand::On);
+        if relay_on {
             relay.set_high();
         } else {
             relay.set_low();
         }
         critical_section::with(|cs| STATUS.borrow(cs).set(status));
+        snapshot::publish_administration(crystal_shim_matter::provision_transfer::Readiness {
+            configured: runtime
+                .as_ref()
+                .is_some_and(|runtime| runtime.configuration().is_some()),
+            durable_maintenance: runtime.as_ref().is_some_and(Runtime::durable_maintenance),
+            relay_off: !relay_on,
+            observed_at_ms: now.0,
+        });
         if let Some(step) = step {
             for reply in [step.command_reply, step.completed_reply]
                 .into_iter()

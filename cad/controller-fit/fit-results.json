@@ -1,0 +1,301 @@
+{
+  "datum": "Z=0 is STEP planar inside base y=-67. planning centre XY=(115.5,73). STEP height is 90 mm, drawing 90.5. CAD nominal reference, not machining tolerance.",
+  "0": {
+    "pcb": {
+      "base_distance": 0.38470333572083343,
+      "lid_distance": 45.399999999999885,
+      "base_intersection_volume": 0.0
+    },
+    "antenna_max": {
+      "base_distance": 15.60434446775987,
+      "lid_distance": 45.44326132662578,
+      "base_intersection_volume": 0.0
+    },
+    "j1_mate_and_header": {
+      "base_distance": 21.599999999999984,
+      "lid_distance": 51.365541951779306,
+      "base_intersection_volume": 0.0
+    },
+    "j3_mate_and_header": {
+      "base_distance": 21.599999999999984,
+      "lid_distance": 48.60149071787819,
+      "base_intersection_volume": 0.0
+    },
+    "j2_mate_and_header": {
+      "base_distance": 1.5855455951720128,
+      "lid_distance": 34.05678933781035,
+      "base_intersection_volume": 0.0
+    },
+    "usb_plug_nominal": {
+      "base_distance": 3.552713678800501e-15,
+      "lid_distance": 40.51999999999988,
+      "base_intersection_volume": 226.79999999999808
+    },
+    "antenna_x_wall_sections": [
+      [
+        -3.9057,
+        -0.9057,
+        28.899,
+        28.901
+      ],
+      [
+        231.9057,
+        234.9057,
+        28.899,
+        28.901
+      ]
+    ],
+    "antenna_y_wall_sections": [
+      [
+        216.299,
+        216.301,
+        -6.4057,
+        -3.4057
+      ],
+      [
+        216.299,
+        216.301,
+        149.4057,
+        152.4057
+      ]
+    ],
+    "usb_x_wall_sections": [
+      [
+        232.475,
+        234.9057,
+        144.999,
+        145.001
+      ],
+      [
+        222.4057,
+        225.525,
+        144.999,
+        145.001
+      ],
+      [
+        5.475,
+        8.5943,
+        144.999,
+        145.001
+      ],
+      [
+        -3.9057,
+        -1.475,
+        144.999,
+        145.001
+      ]
+    ],
+    "usb_y_wall_sections": [
+      [
+        197.999,
+        198.001,
+        -6.4057,
+        -3.4057
+      ],
+      [
+        197.999,
+        198.001,
+        149.4057,
+        152.4057
+      ]
+    ],
+    "service_x_wall_sections": [
+      [
+        225.3605,
+        233.2406,
+        130.999,
+        131.001
+      ],
+      [
+        233.4057,
+        234.9057,
+        130.999,
+        131.001
+      ],
+      [
+        -2.2406,
+        5.6395,
+        130.999,
+        131.001
+      ],
+      [
+        -3.9057,
+        -2.4057,
+        130.999,
+        131.001
+      ]
+    ],
+    "service_y_wall_sections": [
+      [
+        165.999,
+        166.001,
+        -6.4057,
+        -3.4057
+      ],
+      [
+        165.999,
+        166.001,
+        149.4057,
+        152.4057
+      ]
+    ]
+  },
+  "-0.5": {
+    "pcb": {
+      "base_distance": 0.8846604995078196,
+      "lid_distance": 45.399999999999885,
+      "base_intersection_volume": 0.0
+    },
+    "antenna_max": {
+      "base_distance": 16.104301631546885,
+      "lid_distance": 45.60745553086691,
+      "base_intersection_volume": 0.0
+    },
+    "j1_mate_and_header": {
+      "base_distance": 21.599999999999984,
+      "lid_distance": 51.365541951779306,
+      "base_intersection_volume": 0.0
+    },
+    "j3_mate_and_header": {
+      "base_distance": 21.599999999999984,
+      "lid_distance": 48.60149071787819,
+      "base_intersection_volume": 0.0
+    },
+    "j2_mate_and_header": {
+      "base_distance": 1.5855455951720128,
+      "lid_distance": 34.05678933781035,
+      "base_intersection_volume": 0.0
+    },
+    "usb_plug_nominal": {
+      "base_distance": 3.552713678800501e-15,
+      "lid_distance": 40.51999999999988,
+      "base_intersection_volume": 226.79999999999808
+    },
+    "antenna_x_wall_sections": [
+      [
+        -3.9057,
+        -0.9057,
+        28.899,
+        28.901
+      ],
+      [
+        231.9057,
+        234.9057,
+        28.899,
+        28.901
+      ]
+    ],
+    "antenna_y_wall_sections": [
+      [
+        215.799,
+        215.801,
+        -6.4057,
+        -3.4057
+      ],
+      [
+        215.799,
+        215.801,
+        149.4057,
+        152.4057
+      ]
+    ],
+    "usb_x_wall_sections": [
+      [
+        232.475,
+        234.9057,
+        144.999,
+        145.001
+      ],
+      [
+        222.4057,
+        225.525,
+        144.999,
+        145.001
+      ],
+      [
+        5.475,
+        8.5943,
+        144.999,
+        145.001
+      ],
+      [
+        -3.9057,
+        -1.475,
+        144.999,
+        145.001
+      ]
+    ],
+    "usb_y_wall_sections": [
+      [
+        197.499,
+        197.501,
+        -6.4057,
+        -3.4057
+      ],
+      [
+        197.499,
+        197.501,
+        149.4057,
+        152.4057
+      ]
+    ],
+    "service_x_wall_sections": [
+      [
+        225.3605,
+        233.2406,
+        130.999,
+        131.001
+      ],
+      [
+        233.4057,
+        234.9057,
+        130.999,
+        131.001
+      ],
+      [
+        -2.2406,
+        5.6395,
+        130.999,
+        131.001
+      ],
+      [
+        -3.9057,
+        -2.4057,
+        130.999,
+        131.001
+      ]
+    ],
+    "service_y_wall_sections": [
+      [
+        165.499,
+        165.501,
+        -6.4057,
+        -3.4057
+      ],
+      [
+        165.499,
+        165.501,
+        149.4057,
+        152.4057
+      ]
+    ]
+  },
+  "window_removed_volume": 3899.3036658094497,
+  "usb_14x8_sweep": {
+    "cut_base_intersection_volume": 0.0,
+    "cut_base_distance": 2.3300000000000054
+  },
+  "j2_8x12_sweep": {
+    "cut_base_intersection_volume": 0.0,
+    "cut_base_distance": 4.600000000000005
+  },
+  "j1_insert_14mm": {
+    "cut_base_intersection_volume": 0.0,
+    "cut_base_distance": 19.412256740997833
+  },
+  "j3_insert_14mm": {
+    "cut_base_intersection_volume": 0.0,
+    "cut_base_distance": 21.246136339675825
+  },
+  "antenna_to_all_housing": 16.104301631546885
+}

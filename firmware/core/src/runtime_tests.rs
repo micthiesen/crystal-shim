@@ -105,6 +105,45 @@ fn configured(scheduled: bool) -> Runtime {
     .unwrap()
 }
 
+#[test]
+fn durable_administration_requires_current_configured_quiescent_maintenance() {
+    let mut empty = Runtime::new(None, None, Millis(0)).unwrap();
+    assert!(!empty.durable_maintenance());
+    assert_eq!(
+        command(&mut empty, 0, RuntimeCommand::EnterMaintenance)
+            .command_reply
+            .unwrap()
+            .result,
+        Ok(Acknowledgement::Applied)
+    );
+    assert!(!empty.durable_maintenance());
+
+    let mut runtime = Runtime::new(
+        Some(config(1, 3, false, false)),
+        Some(RetainedState::new(1).unwrap()),
+        Millis(0),
+    )
+    .unwrap();
+    assert!(!runtime.durable_maintenance());
+    command(&mut runtime, 0, RuntimeCommand::EnterMaintenance);
+    assert!(!runtime.durable_maintenance());
+    complete(&mut runtime, 20, true);
+    assert!(
+        runtime.durable_maintenance(),
+        "calibration is not required for maintenance"
+    );
+    command(&mut runtime, 40, RuntimeCommand::ExitMaintenance);
+    assert!(
+        !runtime.durable_maintenance(),
+        "old durable maintenance cannot authorize a pending exit"
+    );
+    complete(&mut runtime, 60, true);
+    assert!(!runtime.durable_maintenance());
+    command(&mut runtime, 80, RuntimeCommand::EnterMaintenance);
+    complete(&mut runtime, 100, false);
+    assert!(!runtime.durable_maintenance());
+}
+
 fn observation(now: u64) -> Observation {
     Observation {
         now: Millis(now),

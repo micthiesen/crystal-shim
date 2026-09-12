@@ -44,7 +44,7 @@ const noConnects = ["J4.A8", "J4.B8", "U7.1", "U8.8", "U8.9"];
 async function fixture() {
   const circuit = new Circuit();
   circuit.add(
-    <board width={70} height={50} routingDisabled>
+    <board width={70} height={110} routingDisabled pcbRelative>
       <schematicsheet
         name="USB"
         displayName="Controller self-powered USB interface"

@@ -60,7 +60,8 @@ BOM-80 through BOM-91 count the base controller passives; the additional
 [service circuit](service-input.md) and mains quantities are counted separately.
 Service eFuse/input TVS, 0805 protection resistors and C0G capacitor are captured.
 All seven controller electrical sections are now joined, including the selected
-sensor-cable ESD/RC circuit. Complete placement and native augmentation remain work.
+sensor-cable ESD/RC circuit. Complete source placement and compiled courtyard checks
+now pass; enclosure completion and native augmentation remain work.
 
 The opt-in [physical registry](../../pcb/controller/design/land-pattern-physical.ts)
 now supplies body outlines, package/lead/flash envelopes, maximum height and mask
@@ -229,8 +230,12 @@ The controller registry separates body centre, occupied-envelope centre and
 electrical origin. Molex rear leads, USB rear contacts and offset THT bodies are
 not symmetric about pin 1. The WROOM body centre is 3 mm above its native origin;
 its compiled copper bounding-box centre is another 0.005 mm above that origin.
-Tests compare actual absolute geometry, not an assumed component centre. Full
-initial-export origin normalization remains required before the placement manifest.
+Tests compare actual absolute geometry, not an assumed component centre. The
+initial-export origin adapter now restores every manufacturer datum without
+moving any pad or outline. Four-angle tests cover all six affected model IDs;
+complete native readback verifies all nine asymmetric instances, including USB,
+and preserves every absolute pad position. Invoke the adapters before building
+the placement manifest.
 
 The source envelopes retain manufacturer tolerance limits and exclusions. ERA-3A
 0603 has +/-0.2 mm length/width tolerance, larger than the ERJ-3E part sharing its

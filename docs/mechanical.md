@@ -54,4 +54,8 @@ guided bench work; no exposed-mains measurement procedure is supplied by setup.
 
 `cad/` holds reviewed enclosure and PCB-interface drawings/exports and their
 provenance when available. The owner's separate clip CAD is outside scope.
-No enclosure CAD or fabricated mechanical part exists at setup.
+The controller's [nominal enclosure CAD screen](design/controller-enclosure-fit.md)
+now covers antenna clearance, mating/insertion, a covered service opening and a
+retained insulating carrier allocation. Exact cover/strain-relief/hardware selection
+and the complete mains/controller enclosure assembly remain work. No fabricated
+mechanical part or released machining file exists.

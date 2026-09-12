@@ -1,3 +1,4 @@
+import { controllerPlacements } from "./placements";
 import { Fragment } from "react";
 import { PsuSupervisor, RelayPermissionGate } from "./logic-components";
 import { RelayMosfet } from "./ic-components";
@@ -12,8 +13,7 @@ export function ControllerRelayDrive() {
     <group name="RelayPermission" schSheetName="Relay">
       <PsuHeader
         name="J1"
-        pcbX={22}
-        pcbY={-14}
+        {...controllerPlacements.J1}
         schX={13.5}
         schY={3}
         schSheetName="Relay"
@@ -25,8 +25,7 @@ export function ControllerRelayDrive() {
       />
       <PsuSupervisor
         name="U4"
-        pcbX={-8}
-        pcbY={-14}
+        {...controllerPlacements.U4}
         schX={-6}
         schY={0}
         schSheetName="Relay"
@@ -41,9 +40,8 @@ export function ControllerRelayDrive() {
       />
       <ControllerResistor
         name="R14"
+        {...controllerPlacements.R14}
         value="95.3k"
-        pcbX={-13}
-        pcbY={-12}
         schX={-9}
         schY={3}
         schOrientation="vertical"
@@ -52,9 +50,8 @@ export function ControllerRelayDrive() {
       />
       <ControllerResistor
         name="R15"
+        {...controllerPlacements.R15}
         value="10k"
-        pcbX={-13}
-        pcbY={-16}
         schX={-9}
         schY={0}
         schOrientation="vertical"
@@ -63,9 +60,8 @@ export function ControllerRelayDrive() {
       />
       <ControllerResistor
         name="R12"
+        {...controllerPlacements.R12}
         value="10k"
-        pcbX={-4}
-        pcbY={-12}
         schX={-3}
         schY={3}
         schOrientation="vertical"
@@ -74,9 +70,8 @@ export function ControllerRelayDrive() {
       />
       <ControllerCapacitor
         name="C11"
+        {...controllerPlacements.C11}
         value="100nF"
-        pcbX={-8}
-        pcbY={-18}
         schX={-6}
         schY={-3}
         schSheetName="Relay"
@@ -84,8 +79,7 @@ export function ControllerRelayDrive() {
       />
       <RelayPermissionGate
         name="U6"
-        pcbX={0}
-        pcbY={-14}
+        {...controllerPlacements.U6}
         schX={0}
         schY={0}
         schSheetName="Relay"
@@ -99,9 +93,8 @@ export function ControllerRelayDrive() {
       />
       <ControllerResistor
         name="R2"
+        {...controllerPlacements.R2}
         value="10k"
-        pcbX={0}
-        pcbY={-10}
         schX={0}
         schY={3}
         schOrientation="vertical"
@@ -110,9 +103,8 @@ export function ControllerRelayDrive() {
       />
       <ControllerCapacitor
         name="C12"
+        {...controllerPlacements.C12}
         value="100nF"
-        pcbX={0}
-        pcbY={-18}
         schX={0}
         schY={-3}
         schSheetName="Relay"
@@ -120,9 +112,8 @@ export function ControllerRelayDrive() {
       />
       <ControllerResistor
         name="R20"
+        {...controllerPlacements.R20}
         value="100"
-        pcbX={5}
-        pcbY={-14}
         schX={4.5}
         schY={0}
         schSheetName="Relay"
@@ -130,8 +121,7 @@ export function ControllerRelayDrive() {
       />
       <RelayMosfet
         name="Q1"
-        pcbX={10}
-        pcbY={-14}
+        {...controllerPlacements.Q1}
         schX={9.75}
         schY={0}
         schSheetName="Relay"
@@ -139,9 +129,8 @@ export function ControllerRelayDrive() {
       />
       <ControllerResistor
         name="R11"
+        {...controllerPlacements.R11}
         value="10k"
-        pcbX={10}
-        pcbY={-18}
         schX={5.25}
         schY={-3}
         schOrientation="vertical"

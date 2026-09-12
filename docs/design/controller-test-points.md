@@ -2,8 +2,8 @@
 
 Status: connected source section, 2026-09-12. The pad bank implements the
 [controller design basis](controller-design-basis.md) observability and UART
-service requirements. It is provisional placement within the allocated 70 x
-110 mm controller board, not an accepted complete layout.
+service requirements. It now shares the complete source placement within the
+70 x 110 mm controller board; enclosure access and routing remain under review.
 
 ## Electrical assignment
 
@@ -53,13 +53,14 @@ right and Y up. Convert to upper-left X-right/Y-down by `(35 + X, 55 - Y)`.
 
 | References | Center X | Center Y |
 | --- | --- | --- |
-| TP1, TP2, TP3, TP4 | -24, -16, -8, 0 | -29 |
-| TP5, TP6, TP7, TP8 | -24, -16, -8, 0 | -37 |
-| TP9, TP10, TP11 | 12, 20, 28 | -37 |
+| TP1, TP2, TP3, TP4 | -30.5, -18, -10, -2 | -10 |
+| TP5, TP6, TP7, TP8 | -26, -18, -10, -2 | -18 |
+| TP9, TP10, TP11 | 15 | -13, -21, -5 respectively |
 
 This lower-half allocation stays inside the 70 x 110 mm outline and away from
-the four allocated mounting-hole centers. It has not been reconciled with all
-other provisional section placements, enclosure access or final routing. Keep
+the four mounting-hole reserves. It passes the complete source courtyard check
+and retains the 8 mm minimum centre spacing; enclosure access and final routing
+still need verification. Keep
 I2C and relay measurement branches short when integrating it. The UART locations
 are individual probe/solder pads, not a claim of compatibility with a header or
 pogo connector pitch.

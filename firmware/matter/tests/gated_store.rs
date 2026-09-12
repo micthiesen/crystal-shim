@@ -20,6 +20,12 @@ use std::{
 
 #[path = "../../app/src/storage.rs"]
 mod production;
+#[path = "support/provision_record.rs"]
+mod provision_record;
+use crystal_shim_matter::{
+    provisioning::STORAGE_KEY as PROVISIONING_KEY,
+    storage::{install_provisioning, InstallError, InstallOutcome},
+};
 
 thread_local! {
     static PERMIT: Cell<bool> = const { Cell::new(false) };
@@ -81,10 +87,13 @@ impl NorFlashError for FlashStorageError {
     }
 }
 
+#[derive(Clone)]
 struct Memory {
     bytes: Vec<u8>,
     operations: Vec<Range<u32>>,
     fail_next: bool,
+    fail_at: Option<usize>,
+    mutations: usize,
 }
 pub struct FlashStorage<'a> {
     memory: Rc<RefCell<Memory>>,
@@ -105,7 +114,11 @@ impl FlashStorage<'_> {
         );
         assert!(range.end - range.start <= max_len);
         let mut memory = self.memory.borrow_mut();
-        if std::mem::take(&mut memory.fail_next) {
+        let boundary_failure = memory.fail_at == Some(memory.operations.len());
+        if boundary_failure {
+            memory.fail_at = None;
+        }
+        if std::mem::take(&mut memory.fail_next) || boundary_failure {
             return Err(FlashStorageError::Other(1));
         }
         memory.operations.push(range);
@@ -133,6 +146,7 @@ impl NorFlash for FlashStorage<'_> {
     const ERASE_SIZE: usize = 4096;
     fn write(&mut self, offset: u32, bytes: &[u8]) -> Result<(), Self::Error> {
         self.access(offset..offset + bytes.len() as u32, 256)?;
+        self.memory.borrow_mut().mutations += 1;
         assert!(offset as usize % 256 + bytes.len() <= 256);
         for (old, new) in self.memory.borrow_mut().bytes
             [offset as usize..offset as usize + bytes.len()]
@@ -150,6 +164,7 @@ impl NorFlash for FlashStorage<'_> {
     }
     fn erase(&mut self, from: u32, to: u32) -> Result<(), Self::Error> {
         self.access(from..to, 4096)?;
+        self.memory.borrow_mut().mutations += 1;
         assert_eq!(to - from, 4096);
         self.memory.borrow_mut().bytes[from as usize..to as usize].fill(0xff);
         Ok(())
@@ -162,6 +177,8 @@ fn real_owner_shares_matter_and_application_records_through_gated_load_store_rem
         bytes: vec![0xff; 16_384],
         operations: Vec::new(),
         fail_next: false,
+        fail_at: None,
+        mutations: 0,
     }));
     let mut scratch = [0; production::SCRATCH_BYTES];
     let mut store = production::Store::open(
@@ -213,6 +230,8 @@ fn every_protocol_operation_returns_failure_and_releases_its_permit_after_driver
         bytes: vec![0xff; 16_384],
         operations: Vec::new(),
         fail_next: false,
+        fail_at: None,
+        mutations: 0,
     }));
     let mut scratch = [0; production::SCRATCH_BYTES];
     let store = production::Store::open(
@@ -236,4 +255,143 @@ fn every_protocol_operation_returns_failure_and_releases_its_permit_after_driver
         kv.access(|store, buf| store.store(NETWORKS_KEY, b"fixture", buf))
             .unwrap();
     }
+}
+
+fn with_store<R>(
+    memory: Rc<RefCell<Memory>>,
+    f: impl FnOnce(&SharedKvBlobStore<'_, production::Store, { production::SCRATCH_BYTES }>) -> R,
+) -> R {
+    let mut scratch = [0; production::SCRATCH_BYTES];
+    let store =
+        production::Store::open(peripherals::FLASH(memory, PhantomData), &mut scratch).unwrap();
+    let buffer = Mutex::new(MatterCell::new(scratch));
+    f(&SharedKvBlobStore::new(store, &buffer))
+}
+
+fn empty_memory() -> Rc<RefCell<Memory>> {
+    Rc::new(RefCell::new(Memory {
+        bytes: vec![0xff; 16_384],
+        operations: Vec::new(),
+        fail_next: false,
+        fail_at: None,
+        mutations: 0,
+    }))
+}
+
+#[test]
+fn initial_provisioning_is_verified_idempotent_and_never_replaces_other_identity() {
+    let memory = empty_memory();
+    let bytes = provision_record::record();
+    with_store(memory.clone(), |kv| {
+        assert_eq!(
+            install_provisioning(kv, &bytes),
+            Ok(InstallOutcome::StoredVerified)
+        );
+        let mutations = memory.borrow().mutations;
+        assert_eq!(
+            install_provisioning(kv, &bytes),
+            Ok(InstallOutcome::AlreadyPresentVerified)
+        );
+        assert_eq!(memory.borrow().mutations, mutations);
+        kv.access(|_, scratch| assert!(scratch.iter().all(|byte| *byte == 0)));
+    });
+    with_store(memory.clone(), |kv| {
+        assert_eq!(
+            install_provisioning(kv, &bytes),
+            Ok(InstallOutcome::AlreadyPresentVerified)
+        );
+    });
+    let memory = empty_memory();
+    with_store(memory.clone(), |kv| {
+        kv.access(|store, scratch| {
+            store.store(PROVISIONING_KEY, b"invalid existing identity", scratch)
+        })
+        .unwrap();
+        let mutations = memory.borrow().mutations;
+        assert_eq!(
+            install_provisioning(kv, &bytes),
+            Err(InstallError::Conflict)
+        );
+        assert_eq!(memory.borrow().mutations, mutations);
+        kv.access(|store, scratch| {
+            assert_eq!(
+                store.load(PROVISIONING_KEY, scratch).unwrap().unwrap(),
+                b"invalid existing identity"
+            )
+        });
+    });
+}
+
+#[test]
+fn every_raw_installation_boundary_can_fail_without_losing_other_keys_and_retry_recovers() {
+    let initial = empty_memory();
+    // Deliberate raw map sentinels, not claimed valid boot configurations.
+    let sentinels = [
+        (
+            production::CONFIGURATION_STORAGE_KEY,
+            b"configuration sentinel".as_slice(),
+        ),
+        (RETAINED_STORAGE_KEY, b"retained sentinel"),
+        (NETWORKS_KEY, b"network sentinel"),
+    ];
+    with_store(initial.clone(), |kv| {
+        for (key, value) in sentinels {
+            kv.access(|store, scratch| store.store(key, value, scratch))
+                .unwrap();
+        }
+        // Leave insufficient append space so installing the larger identity
+        // also exercises page advancement/erase checkpoints.
+        for _ in 0..20 {
+            kv.access(|store, scratch| store.store(0x5350, &[0xcc; 512], scratch))
+                .unwrap();
+        }
+    });
+    let baseline = initial.borrow().clone();
+    let bytes = provision_record::record();
+    with_store(initial.clone(), |kv| {
+        assert_eq!(
+            install_provisioning(kv, &bytes),
+            Ok(InstallOutcome::StoredVerified)
+        );
+    });
+    let operation_count = initial.borrow().operations.len() - baseline.operations.len();
+    assert!(operation_count > 20);
+    assert!(initial.borrow().operations[baseline.operations.len()..]
+        .iter()
+        .any(|range| range.end - range.start == 4096));
+    for boundary in 0..operation_count {
+        let memory = Rc::new(RefCell::new(baseline.clone()));
+        memory.borrow_mut().fail_at = Some(baseline.operations.len() + boundary);
+        with_store(memory.clone(), |kv| {
+            assert!(
+                install_provisioning(kv, &bytes).is_err(),
+                "boundary {boundary}"
+            );
+            kv.access(|_, scratch| assert!(scratch.iter().all(|byte| *byte == 0)));
+        });
+        assert!(!PERMIT.get());
+        // Reopen without volatile map state, recovering an interrupted record or
+        // discovering a commit whose final readback/receipt was interrupted.
+        with_store(memory.clone(), |kv| {
+            for (key, value) in sentinels {
+                kv.access(|store, scratch| {
+                    assert_eq!(store.load(key, scratch).unwrap().unwrap(), value)
+                });
+            }
+            assert!(
+                install_provisioning(kv, &bytes).is_ok(),
+                "retry boundary {boundary}"
+            );
+            assert_eq!(
+                install_provisioning(kv, &bytes),
+                Ok(InstallOutcome::AlreadyPresentVerified)
+            );
+        });
+    }
+    with_store(initial, |kv| {
+        assert_eq!(
+            install_provisioning(kv, &bytes),
+            Ok(InstallOutcome::AlreadyPresentVerified)
+        );
+    });
 }

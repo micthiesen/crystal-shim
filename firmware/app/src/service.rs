@@ -3,14 +3,19 @@ use crate::{runtime, snapshot, storage};
 use core::{cell::Cell, fmt::Write as _};
 use crystal_shim_core::{runtime::Record, runtime_ingress::Source};
 use crystal_shim_matter::{on_off::Control as _, sdk::persist::KvBlobStoreAccess};
+use crystal_shim_matter::{
+    provision_transfer::{self, LocalCommand, Progress, Response, Transfer},
+    storage::ProvisionStore,
+};
 use embassy_time::{with_timeout, Duration};
 use embedded_io_async::{Read, Write};
 use esp_hal::{gpio::Output, usb::usb_serial_jtag::UsbSerialJtag, Async};
 use static_cell::StaticCell;
 
 static CONSOLE: StaticCell<crystal_shim_core::runtime_ingress::Receiver> = StaticCell::new();
+static PROVISION_TRANSFER: StaticCell<Transfer> = StaticCell::new();
 
-pub trait RecordStore {
+pub trait RecordStore: ProvisionStore {
     fn apply(&self, record: Record) -> Result<(), storage::Error>;
 }
 impl<K: KvBlobStoreAccess> RecordStore for K {
@@ -36,17 +41,26 @@ pub async fn run(
     identify_until: &Cell<Option<u64>>,
 ) {
     let receiver = CONSOLE.init(crystal_shim_core::runtime_ingress::Receiver::new());
+    let transfer = PROVISION_TRANSFER.init(Transfer::new());
     let mut last_ticket = 0;
     let mut storage_error = initial_storage_error;
     let mut reported_at = None;
     let mut last_led = None;
     loop {
+        receiver.expire(snapshot::now().0);
         // Applied-Off replies follow the GPIO write and precede this USB
         // producer's next storage call. They never wait for suppression durability.
         if let Some(reply) = runtime::take_reply() {
             let mut line = heapless::String::<128>::new();
             let _ = writeln!(line, "REPLY {} {:?}", reply.id, reply.result);
             let _ = with_timeout(Duration::from_millis(100), usb.write_all(line.as_bytes())).await;
+        }
+        if let Some(response) = transfer.poll(
+            snapshot::now().0,
+            &crate::matter::LocalControl,
+            snapshot::administration(),
+        ) {
+            provision_reply(&mut usb, response).await;
         }
         if let Some(write) = runtime::write_request().filter(|write| write.ticket != last_ticket) {
             // Preparation publishes exactly one access owner. Until then the
@@ -71,14 +85,36 @@ pub async fn run(
         }
         let mut input = [0u8; 64];
         if let Ok(Ok(count)) = with_timeout(Duration::from_millis(20), usb.read(&mut input)).await {
-            for byte in &input[..count] {
-                if let Some(request) = receiver.push(snapshot::now().0, *byte) {
+            for byte in &mut input[..count] {
+                let value = *byte;
+                provision_transfer::clear_input(core::slice::from_mut(byte));
+                if let Some(request) =
+                    receiver.push_with(snapshot::now().0, value, provision_transfer::parse_line)
+                {
                     let mut line = heapless::String::<128>::new();
                     match request {
-                        Ok(request) if snapshot::boot_configuration().is_some() => {
-                            let accepted = crate::matter::LocalControl
-                                .begin(Source::Usb, request)
-                                .is_ok();
+                        Ok(LocalCommand::Provision(request)) => {
+                            let store = match access.get() {
+                                Access::Ready(store) => Some(store as &dyn ProvisionStore),
+                                _ => None,
+                            };
+                            let response = transfer.handle(
+                                request,
+                                snapshot::now().0,
+                                &crate::matter::LocalControl,
+                                snapshot::administration(),
+                                store,
+                            );
+                            provision_reply(&mut usb, response).await;
+                            continue;
+                        }
+                        Ok(LocalCommand::Runtime(request))
+                            if snapshot::boot_configuration().is_some() =>
+                        {
+                            let accepted = transfer.allows_runtime(request.command)
+                                && crate::matter::LocalControl
+                                    .begin(Source::Usb, request)
+                                    .is_ok();
                             let _ = writeln!(
                                 line,
                                 "{} {}",
@@ -86,7 +122,7 @@ pub async fn run(
                                 request.id
                             );
                         }
-                        Ok(request) => {
+                        Ok(LocalCommand::Runtime(request)) => {
                             let _ = writeln!(line, "NOT_READY {}", request.id);
                         }
                         Err(error) => {
@@ -100,7 +136,7 @@ pub async fn run(
                 }
             }
         }
-        input.fill(0);
+        provision_transfer::clear_input(&mut input);
         let now = snapshot::now().0;
         // Identify drives only this LED. It never touches relay/control state.
         let period = if identify_until.get().is_some_and(|until| now < until) {
@@ -153,5 +189,17 @@ pub async fn run(
             );
         }
         let _ = with_timeout(Duration::from_millis(100), usb.write_all(line.as_bytes())).await;
+    }
+}
+
+async fn provision_reply(usb: &mut UsbSerialJtag<'static, Async>, response: Response) {
+    let mut line = heapless::String::<192>::new();
+    if writeln!(line, "{response}").is_ok() {
+        let _ = with_timeout(Duration::from_millis(100), usb.write_all(line.as_bytes())).await;
+    }
+    if response.result == Ok(Progress::Rebooting) {
+        // Only a separate explicit reboot request, with a fresh durable
+        // maintenance + GPIO-low acknowledgement, produces this effect.
+        esp_hal::system::software_reset();
     }
 }

@@ -1,3 +1,4 @@
+import { controllerPlacements } from "./placements";
 import { Fragment } from "react";
 import { SensorBusBuffer } from "./ic-components";
 import { SensorPowerFeed } from "./logic-components";
@@ -14,8 +15,7 @@ export function ControllerSensorInterface() {
     <group name="SensorInterface" schSheetName="SensorInterface">
       <SensorPowerFeed
         name="U5"
-        pcbX={-24}
-        pcbY={-10}
+        {...controllerPlacements.U5}
         schX={-7}
         schY={4}
         schSheetName="SensorInterface"
@@ -30,9 +30,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerCapacitor
         name="C42"
+        {...controllerPlacements.C42}
         value="100nF"
-        pcbX={-29}
-        pcbY={-10}
         schX={-10}
         schY={8}
         schSheetName="SensorInterface"
@@ -40,9 +39,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerResistor
         name="R65"
+        {...controllerPlacements.R65}
         value="10k"
-        pcbX={-24}
-        pcbY={-5}
         schX={-13}
         schY={6}
         schOrientation="vertical"
@@ -51,9 +49,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerResistor
         name="R66"
+        {...controllerPlacements.R66}
         value="10k"
-        pcbX={-19}
-        pcbY={-5}
         schX={-13}
         schY={3}
         schSheetName="SensorInterface"
@@ -61,9 +58,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerCapacitor
         name="C43"
+        {...controllerPlacements.C43}
         value="1uF"
-        pcbX={-24}
-        pcbY={-18}
         schX={-1}
         schY={6}
         schSheetName="SensorInterface"
@@ -71,9 +67,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerCapacitor
         name="C44"
+        {...controllerPlacements.C44}
         value="10uF"
-        pcbX={-29}
-        pcbY={-19}
         schX={-1}
         schY={3}
         schSheetName="SensorInterface"
@@ -81,9 +76,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerResistor
         name="R67"
+        {...controllerPlacements.R67}
         value="10k"
-        pcbX={-20}
-        pcbY={-18}
         schX={-1}
         schY={0}
         schOrientation="vertical"
@@ -92,10 +86,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerResistor
         name="R68"
+        {...controllerPlacements.R68}
         value="6.8"
-        pcbX={-27}
-        pcbY={-26}
-        pcbRotation={270}
         schX={5}
         schY={4}
         schSheetName="SensorInterface"
@@ -103,8 +95,7 @@ export function ControllerSensorInterface() {
       />
       <CablePowerTvs
         name="D7"
-        pcbX={-27}
-        pcbY={-35}
+        {...controllerPlacements.D7}
         schX={10}
         schY={4}
         schSheetName="SensorInterface"
@@ -112,8 +103,7 @@ export function ControllerSensorInterface() {
       />
       <SensorHeader
         name="J3"
-        pcbX={-26}
-        pcbY={-50}
+        {...controllerPlacements.J3}
         schX={12}
         schY={-1}
         schSheetName="SensorInterface"
@@ -128,8 +118,7 @@ export function ControllerSensorInterface() {
       />
       <CableSignalEsd
         name="U11"
-        pcbX={-12}
-        pcbY={-43}
+        {...controllerPlacements.U11}
         schX={7}
         schY={-7}
         schSheetName="SensorInterface"
@@ -137,9 +126,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerResistor
         name="R62"
+        {...controllerPlacements.R62}
         value="22"
-        pcbX={-15}
-        pcbY={-35}
         schX={0}
         schY={-6}
         schSheetName="SensorInterface"
@@ -147,9 +135,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerResistor
         name="R63"
+        {...controllerPlacements.R63}
         value="22"
-        pcbX={-11}
-        pcbY={-35}
         schX={0}
         schY={-10}
         schSheetName="SensorInterface"
@@ -157,8 +144,7 @@ export function ControllerSensorInterface() {
       />
       <SensorBusBuffer
         name="U3"
-        pcbX={-10}
-        pcbY={-22}
+        {...controllerPlacements.U3}
         schX={-7}
         schY={-6}
         schSheetName="SensorInterface"
@@ -175,9 +161,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerCapacitor
         name="C40"
+        {...controllerPlacements.C40}
         value="100nF"
-        pcbX={-13}
-        pcbY={-18}
         schX={-11}
         schY={-10}
         schSheetName="SensorInterface"
@@ -185,9 +170,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerCapacitor
         name="C41"
+        {...controllerPlacements.C41}
         value="100nF"
-        pcbX={-6}
-        pcbY={-18}
         schX={-7}
         schY={-10}
         schSheetName="SensorInterface"
@@ -195,9 +179,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerResistor
         name="R60"
+        {...controllerPlacements.R60}
         value="2.7k"
-        pcbX={-10}
-        pcbY={-12}
         schX={-13}
         schY={0}
         schOrientation="vertical"
@@ -206,9 +189,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerResistor
         name="R61"
+        {...controllerPlacements.R61}
         value="2.7k"
-        pcbX={-6}
-        pcbY={-12}
         schX={-9}
         schY={0}
         schOrientation="vertical"
@@ -217,9 +199,8 @@ export function ControllerSensorInterface() {
       />
       <ControllerResistor
         name="R64"
+        {...controllerPlacements.R64}
         value="10k"
-        pcbX={-14}
-        pcbY={-26}
         schX={-13}
         schY={-6}
         schOrientation="vertical"

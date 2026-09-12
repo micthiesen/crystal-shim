@@ -602,6 +602,81 @@ regression and offline issue/import/tamper/refusal tests pass. Public TEST issue
 fixtures are identified by source; they are not device private keys or production
 defaults. The actual USB writer, activation and HomeKit pairing remain work.
 
+## Manufacturer origins in initial conversion
+
+The compiler's copper-bounds centre differs from the manufacturer datum on the
+WROOM, Micro-Fit headers, LED and buttons. A derived-input adapter now validates
+the full numbered-land/locator multiset and restores those centres before native
+conversion. It changes no absolute source geometry. Four-angle tests exercise all
+six models, repeated pins, reordered input and atomic rejection of geometry,
+identity or placement drift. Actual pcbnew readback from a new initial stage at
+`/tmp/crystal-shim-controller-native-origins-20260912` verifies all nine asymmetric
+origins including USB; all absolute native pad geometry and electrical counts are
+unchanged. No existing native design was edited. The complete initial graph builder
+now composes all adapters and refreshes all eight schematic strings after typing.
+An independent reader checked the origin/composition code, five focused tests
+(1,351 assertions), six additional atomic rejection cases and all eight serialized
+schematic files. No actionable finding survived that bounded review. This does
+not review routing, enclosure fit or the still-missing handoff manifest.
+
+## Complete controller placement and shared hole identity
+
+The complete source now uses one 95-reference placement map, four 3.2 mm mounting
+holes and four copper layers on 1.6 mm FR4. Independent placement analysis supplied
+the initial proposal. Root corrected six test-pad positions to retain the existing
+8 mm minimum probe spacing, then checked actual compiled courtyards and 4 mm
+mounting reserves. The USB section's old review-fixture outline was expanded to
+the complete board outline without weakening its geometry assertions.
+
+A fresh disposable native stage at
+`/tmp/crystal-shim-controller-placed-20260912` has 99 footprints, nine NPTHs,
+95 courtyards, 336 body edges and 291 numbered-pad mask overrides. Actual KiCad
+readback matches every source position and all 254 connected pins, 20 unused pins
+and 51 nets. Exactly the known 14 repeated-pad net omissions remain for declared
+native augmentation. Root inspected the source and native placement renders.
+Full mating/access, support geometry, assembly details and clean ERC/DRC remain
+open; no product board was adopted.
+
+The shared manifest normalizer incorrectly required each NPTH to have a unique
+component reference, rejecting USB's two locating holes. It now requires unique
+hole IDs and unique reference/position pairs, allowing distinct holes within one
+footprint. The new regression accepts two locators and rejects duplicate IDs or
+locations. All 31 handoff tests pass in both projects. The exact shared files were
+synced and pushed to Stillair in `e0f2359`; reciprocal maps remain current.
+
+## Bounded USB writer and independent review
+
+The actual app USB service now installs private provisioning through its existing
+Store. Explicit CONFIG precedes an owned durable-maintenance/GPIO-low handshake;
+bounded staging and production decoding precede exact verified readback. Only
+absence permits a write; identical retries are verified without replacement.
+Timeouts, owned malformed input and cancellation clear staging. Installation
+does not activate radio or reboot; a separate request needs a fresh handshake.
+The implementation preserves the existing reserved Off path and gated flash owner.
+
+Root reviewed the protocol, app integration and actual-store failure tests, then
+ran the complete repository gate. A separate reader passed 26 focused production
+tests and two additional scratch tests: consumed Durable ACK while GPIO remained
+high, cancelled/old-owner traffic versus a new generation, reserved Off, and
+400 deterministic arbitrary-byte framing cases at exact/overflow boundaries.
+No actionable defect remained in this bounded review. Evidence is at
+`/tmp/crystal-shim-provision-writer-review/review.md` with reviewed source hashes.
+Live USB HAL behavior, analogue torn flash writes, GPIO and reset remain untested.
+The [provisioning contract](matter-provisioning.md) records those limits and the
+remaining host sender; this does not claim whole-project review convergence.
+
+## Controller nominal enclosure screen
+
+Independent exact-part research and CAD screening established the
+[mounting/access allocation](controller-enclosure-fit.md). Root inspected the
+dimensioned drawing and checked its source positions and qualification. The
+0.5 mm westward mounting shift preserves every PCB placement; the covered shared
+opening resolves the demonstrated USB overmold collision and J2 cable-bend gap.
+Support envelopes clear the nominal base and antenna. The 2016 STEP/2020 drawing
+difference, tight corner/partition margins, absent mould tolerances, exact
+cover/support/strain-relief parts and mechanical force checks remain explicit.
+This is not a final assembly or splash/thermal acceptance result.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

@@ -64,7 +64,14 @@ await mkdir(output, { recursive: true });
 for (const section of sections) {
   const circuit = new Circuit();
   circuit.add(
-    <board width={70} height={110} routingDisabled>
+    <board
+      width={70}
+      height={110}
+      thickness={1.6}
+      layers={4}
+      routingDisabled
+      pcbRelative
+    >
       <schematicsheet name={section.name} displayName={section.title} sheetIndex={0} />
       {section.content}
       <silkscreentext

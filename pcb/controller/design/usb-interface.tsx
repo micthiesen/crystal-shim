@@ -1,3 +1,4 @@
+import { controllerPlacements } from "./placements";
 import { UsbConnector } from "./usb-connector";
 import { UsbDataSwitch, UsbPresenceDetector } from "./logic-components";
 import { UsbEsdProtection } from "./protection-components";
@@ -12,8 +13,7 @@ export function ControllerUsbInterface() {
     <group name="UsbInterface" schSheetName="USB">
       <UsbConnector
         name="J4"
-        pcbX={-20}
-        pcbY={0}
+        {...controllerPlacements.J4}
         schX={-11}
         schY={0}
         schSheetName="USB"
@@ -101,9 +101,8 @@ export function ControllerUsbInterface() {
       <netlabel net="USB_D_P" connectsTo=".R45 > .pin2" schX={14} schY={2} />
       <ControllerResistor
         name="R40"
+        {...controllerPlacements.R40}
         value="5.1k"
-        pcbX={-22}
-        pcbY={8}
         schX={-12}
         schY={4}
         schOrientation="vertical"
@@ -112,9 +111,8 @@ export function ControllerUsbInterface() {
       />
       <ControllerResistor
         name="R41"
+        {...controllerPlacements.R41}
         value="5.1k"
-        pcbX={-18}
-        pcbY={8}
         schX={-6}
         schY={4}
         schOrientation="vertical"
@@ -123,8 +121,7 @@ export function ControllerUsbInterface() {
       />
       <UsbEsdProtection
         name="U9"
-        pcbX={-12}
-        pcbY={3.5}
+        {...controllerPlacements.U9}
         schX={-3.5}
         schY={0}
         schSheetName="USB"
@@ -139,8 +136,7 @@ export function ControllerUsbInterface() {
       />
       <UsbDataSwitch
         name="U8"
-        pcbX={-4}
-        pcbY={3.5}
+        {...controllerPlacements.U8}
         schX={4.5}
         schY={0}
         schSheetName="USB"
@@ -158,9 +154,8 @@ export function ControllerUsbInterface() {
       />
       <ControllerCapacitor
         name="C31"
+        {...controllerPlacements.C31}
         value="100nF"
-        pcbX={-4}
-        pcbY={-1}
         schX={4.5}
         schY={-6}
         schSheetName="USB"
@@ -169,9 +164,8 @@ export function ControllerUsbInterface() {
       {/* These two series resistors must end up close to WROOM pads 13/14. */}
       <ControllerResistor
         name="R44"
+        {...controllerPlacements.R44}
         value="22"
-        pcbX={6}
-        pcbY={3}
         schX={11}
         schY={-2}
         schSheetName="USB"
@@ -179,9 +173,8 @@ export function ControllerUsbInterface() {
       />
       <ControllerResistor
         name="R45"
+        {...controllerPlacements.R45}
         value="22"
-        pcbX={6}
-        pcbY={6}
         schX={11}
         schY={2}
         schSheetName="USB"
@@ -189,9 +182,8 @@ export function ControllerUsbInterface() {
       />
       <ControllerResistor
         name="R42"
+        {...controllerPlacements.R42}
         value="1k"
-        pcbX={-23}
-        pcbY={-7}
         schX={-11}
         schY={-7}
         schSheetName="USB"
@@ -199,9 +191,8 @@ export function ControllerUsbInterface() {
       />
       <ControllerResistor
         name="R43"
+        {...controllerPlacements.R43}
         value="100k"
-        pcbX={-18}
-        pcbY={-8}
         schX={-11}
         schY={-11}
         schOrientation="vertical"
@@ -210,8 +201,7 @@ export function ControllerUsbInterface() {
       />
       <UsbPresenceDetector
         name="U7"
-        pcbX={-12}
-        pcbY={-5}
+        {...controllerPlacements.U7}
         schX={-3.5}
         schY={-8}
         schSheetName="USB"
@@ -224,9 +214,8 @@ export function ControllerUsbInterface() {
       />
       <ControllerCapacitor
         name="C30"
+        {...controllerPlacements.C30}
         value="100nF"
-        pcbX={-8}
-        pcbY={-5}
         schX={-3.5}
         schY={-12}
         schSheetName="USB"
@@ -234,9 +223,8 @@ export function ControllerUsbInterface() {
       />
       <ControllerResistor
         name="R46"
+        {...controllerPlacements.R46}
         value="10k"
-        pcbX={1}
-        pcbY={-1}
         schX={4.5}
         schY={-8}
         schOrientation="vertical"

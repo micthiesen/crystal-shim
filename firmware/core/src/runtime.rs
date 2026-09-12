@@ -205,6 +205,19 @@ impl Runtime {
         self.durable
     }
 
+    /// Current administrative permission, not a cached command acknowledgement.
+    /// The hardware owner must additionally acknowledge the actual relay-low write.
+    pub fn durable_maintenance(&self) -> bool {
+        self.configuration.is_some()
+            && self.maintenance
+            && self.desired == self.durable
+            && self.durable.is_some_and(|state| state.maintenance)
+            && self.pending.is_none()
+            && self.replacement.is_none()
+            && self.active_request.is_none()
+            && !self.storage_failed
+    }
+
     pub fn step(
         &mut self,
         observation: Observation,
