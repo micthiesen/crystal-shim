@@ -1,6 +1,7 @@
 //! Scheduled skimmer control with bounded manual override, independent of hardware.
 #![no_std]
 
+pub mod calibration;
 mod policy;
 mod retained;
 mod schedule;
@@ -110,6 +111,7 @@ pub enum Fault {
     ClockWentBackwards,
     ControlGap,
     HardwareOff,
+    InvalidSensorFrame,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]

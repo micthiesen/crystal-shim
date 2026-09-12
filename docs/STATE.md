@@ -22,8 +22,11 @@ and Pushover transition alerts remain the [control contract](controls.md).
 - The core has schedule evaluation and a versioned retained safety record in
   addition to its supervisor and water-state logic. A separate async
   [FDC1004 driver](../firmware/drivers/README.md) acquires complete sequential OoP
-  frames. ESP pin bindings, calibration, actual storage, networking and watchdog
-  integration remain work; the app still does not operate hardware.
+  frames. The integer calibration stage validates measured coefficients and
+  raw/time/slew limits. ESP capture pin bindings, separate control/sensor executors,
+  sensor recovery, fault latching, watchdog and bounded USB diagnostics are implemented.
+  Boot supplies no saved calibration/configuration, so the relay stays off. Actual
+  storage, schedule/command ingress, settings/provisioning and networking remain work.
 - The [verified TLS provider](design/tls-provider.md) is implemented and C6-built,
   with automatic clock ageing and a checked-in offline certificate test harness.
   The initial provider also passed a live public-endpoint handshake.
@@ -49,8 +52,10 @@ and Pushover transition alerts remain the [control contract](controls.md).
    partial/cross-mating, exposed metal and final layout still require checks.
    The normal PSU envelope now includes ripple, temperature and wiring, with an
    850 mA system allocation and revised supervisor divider. **Coil overvoltage
-   protection remains open**. The researched LDO options need hot-pickup,
-   dropout/reverse-current and thermal closure before adoption.
+   protection remains open**. The [secondary protection review](design/power-protection-review.md)
+   now favors a reverse-blocking TPS259470 eFuse ahead of both coil and controller.
+   Exact threshold/current/ramp networks and package assembly remain to close;
+   the LDO and non-reverse-blocking cutoff options were not adopted.
 3. The [footprint audit](design/footprint-audit.md) identifies missing/exact-import
    candidates. Visual source rechecks refuted the Bourns and IRM mismatch claims;
    stock geometry matches when the native IRM pin functions and rotation are
@@ -58,6 +63,11 @@ and Pushover transition alerts remain the [control contract](controls.md).
 4. TLS review found and fixed stale-clock acceptance and missing reproducible
    tests. The second independent pass is clean within this scope. Exact small passives, cable,
    enclosure fit, actual PCB source and ESP adapters remain implementation work.
+5. A source/ELF audit found that priority cannot isolate control from flash access.
+   The pending storage adapter must enable flash critical sections and wait for
+   a matching relay-off acknowledgement before every access, including Matter KV.
+   The current runtime has no flash adapter. Runtime review also found a short
+   power-fault polling race, now addressed by a Priority3 latched fault epoch.
 
 ## Owner input pending
 
@@ -71,12 +81,13 @@ prototype or final-unit calibration before fabrication.
 
 ## Verification
 
-`sh scripts/check.sh` passes: 50 core tests, nine driver tests, one CLI test,
+`sh scripts/check.sh` passes at the runtime integration checkpoint: 62 core tests,
+nine driver tests, one CLI test,
 11 deterministic TLS tests on Linux through OrbStack with crypto-profile parity,
 host and embedded fmt/clippy, C6 release build, PCB source fixture, two Bun tests
 and 28 handoff tests. Two existing tscircuit fixture reference-text warnings
 remain documented tooling output. Documentation checks pass for the new design
-records. The TLS provider report separates the inert app build from the linked
+records. The TLS provider report separates its historical app build from the linked
 provider probe and the live host checks; no C6 runtime result is implied.
 GitHub documentation and firmware CI passed for checkpoint `6ca0fa3`, including
 the Linux TLS harness and ESP target build. The [firmware run](https://github.com/micthiesen/crystal-shim/actions/runs/34664738800)
@@ -90,7 +101,9 @@ No parts were bought, hardware flashed, mains energized or live alerts sent.
 Close the coil-protection and remaining exact-part calculations, then capture
 the controller and mains source while implementing ESP adapters. Controller
 capture is the preferred next board step because its pin/power interfaces unblock
-firmware binding and the mains LV boundary. Sensor capture awaits the rim datum;
+complete firmware integration and the mains LV boundary. The next firmware unit
+is validated persistent configuration with the flash/output gate, followed by
+schedule/command ingress and networking. Sensor capture awaits the rim datum;
 fabrication export awaits all three complete designs. Remaining review must cover
 actual artifacts, not only these design documents. The overall goal stays active
 through those implementation and delivery steps.

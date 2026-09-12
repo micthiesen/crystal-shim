@@ -23,11 +23,18 @@ bench = false
 [dependencies]
 critical-section = "1"
 crystal-shim-core = { path = "../core" }
+crystal-shim-drivers = { path = "../drivers" }
+embassy-executor = { version = "0.10", default-features = false }
+embassy-time = { version = "0.5", default-features = false }
+embedded-hal-async = "1.0"
+heapless = "0.8"
+static_cell = "2"
 edge-nal = { version = "0.7", default-features = false }
 edge-nal-tls = { version = "0.2.0", default-features = false }
 embedded-io-async = { version = "0.7", default-features = false }
 esp-alloc = { version = "0.10", default-features = false, features = ["global-allocator", "compat", "esp32c6"] }
 esp-hal = { version = "1.1", default-features = false, features = ["esp32c6", "unstable", "rt"] }
+esp-rtos = { version = "0.3", default-features = false, features = ["esp32c6", "embassy"] }
 esp-println = { version = "0.17", default-features = false, features = ["esp32c6", "jtag-serial"] }
 esp-backtrace = { version = "0.19", default-features = false, features = ["esp32c6", "panic-handler", "println"] }
 esp-bootloader-esp-idf = { version = "0.5", default-features = false, features = ["esp32c6"] }
@@ -71,11 +78,11 @@ debug = true
 opt-level = "z"
 
 # Same compatible esp-hal revision as ../stillair. All esp-* crates used here, including
-# generated metadata, move together. Radio, Matter, and an async runtime are not needed
-# by this inert scaffold. Stillair-style Matter over Wi-Fi is selected; its adapter
-# and radio/runtime dependency family will be added with the actual implementation.
+# generated metadata, move together. Radio and Matter adapters will add their
+# matching family members when integrated with the local acquisition/control runtime.
 [patch.crates-io]
 esp-hal = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
+esp-rtos = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
 esp-alloc = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
 esp-backtrace = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
 esp-println = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }

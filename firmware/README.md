@@ -6,23 +6,27 @@ model on the host, and `app/` is a separate workspace
 targeting `riscv32imac-unknown-none-elf`. Stable Rust is declared in
 `rust-toolchain.toml`; setup was verified with Rust 1.97.1. Commit both lockfiles.
 
-The ESP image is **uncommissioned and inert**. It initializes the HAL, prints its
-uncommissioned status over USB Serial/JTAG, and loops. It has no relay GPIO,
-sensor I²C binding, maintenance button binding, Wi-Fi stack,
-watchdog supervision, persistent storage, or flashing runner. It does not run the
-controller. The hardware coil pull-down must establish off during reset and
-before reviewed GPIO wiring is added. A successful build cannot verify that.
+The ESP image is **uncommissioned**. It binds the controller capture pin map,
+acquires FDC1004 frames on a separate interrupt executor, runs a 20 ms relay-output
+task, services a 500 ms system-reset watchdog only after that task completes, and
+streams bounded USB diagnostics. Boot supplies no calibration or control configuration,
+so the relay remains off. Wi-Fi, persistent storage, schedules, command ingress and
+credential/configuration provisioning remain to be integrated. The external coil
+pull-down must establish off before application entry and during reset; a build
+cannot verify that physical behavior.
 
 The separate [FDC1004 driver](drivers/README.md) implements reset, identity/config
 checks and complete sequential out-of-phase measurement frames, with host tests.
-It is not bound to ESP I2C yet. The [integration design](../docs/design/firmware-integration.md)
+It is bound to the ESP's 100 kHz bus with finite transactions and power recovery.
+The [calibration stage](../docs/design/calibration.md) applies measured tank data
+without fabricated default thresholds. The [integration design](../docs/design/firmware-integration.md)
 describes the executor, storage and network adapters that remain to be implemented.
 
 The app uses the same compatible esp-hal revision as Stillair,
 `10e48dd74837bae4be663a7d1825d12875363727`, for HAL, panic/log output, bootloader,
 and generated metadata. Its lockfile was seeded from Stillair's to retain the
 same transitive versions. HomeKit through Stillair-style Matter over Wi-Fi is
-selected; its radio/runtime dependencies and adapter implementation are deferred.
+selected; radio dependencies and the network adapter remain to be integrated.
 Keep the esp-* dependency family on one compatible revision.
 
 ## Control contract
@@ -142,7 +146,7 @@ sh ../../scripts/with-esp-toolchain.sh cargo build --locked --release
 
 Use `cargo fmt` in the appropriate workspace to apply formatting. The host tests
 exercise meaningful control and parser behavior; the target build only proves
-that the inert image links. The separate TLS construction probe and host endpoint
+that the local-runtime image links. The separate TLS construction probe and host endpoint
 checks are recorded in the provider document. Clang with a RISC-V backend is
 required for its portable C dependency; on macOS the wrapper finds installed
 Homebrew LLVM. No hardware or mains testing is implied.

@@ -10,8 +10,39 @@ An independent driver reviewer checked register selection, differential OoP chan
 assignment, single-shot ordering, signed decoding, timeout/error paths and frame
 validity. No concrete defect survived that review. Root added cancellation and
 deadline-boundary regressions; all nine driver tests and strict clippy pass.
-The app must still enforce the independent 5 ms transaction timeout and keep
-control running during sensor recovery.
+The app now enforces 5 ms transfer acceptance and independently exposes that
+deadline to Priority3. Pinned HAL cancellation can spend another 50 ms clearing
+the bus; the cleanup is below control priority. Actual cadence remains unmeasured.
+
+## Runtime and flash isolation audit
+
+The independent source/ELF audit rejected the claim that Priority3 alone protects
+control from flash. `BlockingAsync` calls the blocking NOR driver inline; the
+pinned `esp-storage` RAM shims do not move Embassy's interrupt/task/supervisor
+call graph into RAM. Stillair's disabled default flash critical-section feature
+is not a safe pattern to copy. The pending Crystal storage adapter must enable
+that feature and enforce the [relay-off acknowledgement gate](firmware-integration.md#flash-and-relay-exclusion)
+for every raw flash operation, including Matter KV. This requirement has a new
+physical commissioning row, CTL-12. No flash adapter is implemented in this checkpoint.
+
+Root also corrected the conflicting HomeKit Off acknowledgement wording: command
+response means immediate revocation, while storage has a separate durable ack.
+The boot policy already suppresses interrupted eligible windows before use.
+Pre-fabrication memory/layout analysis is now distinguished from runtime high-water
+and cadence measurements on the final boards, preserving the one-shot sequence.
+
+## Calibration and local runtime
+
+The new calibration stage received a separate independent review covering TI's
+empty-level baseline, denominator polarity, endpoint normalization, exact domain
+checks before rounding, arithmetic extrema and frame/slew histories. No finding
+survived that pass; all 62 core tests passed, including twelve calibration cases.
+Runtime review found a short TPS2553 fault assertion could escape polling. The
+adapter now has a Priority3 fault monitor and sticky epoch, with a new full frame
+and unchanged epoch required to clear it. Calibration history is committed only
+under the same check. Final-unit pulse/cadence evidence remains outstanding.
+The second runtime pass found no further supported defect after checking that
+the underlying GPIO ISR, as well as its monitor task, runs at Priority3.
 
 ## Schedule and retained safety record
 

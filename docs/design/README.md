@@ -10,8 +10,12 @@ release or commissioning evidence. Their explicit open items remain work to fini
   USB attach gating, relay driver, power-good interlock and harnesses.
 - [Mains and enclosure](mains-design-basis.md): PSU, relay, filter, fuse/MOV/RC,
   mains harness, PE, spacing and enclosure allocation.
+- [Secondary protection review](power-protection-review.md): rejected coil-only
+  options and the reverse-blocking cutoff candidate awaiting circuit closure.
 - [Firmware integration](firmware-integration.md): schedule/retained state,
   executor ownership, Matter, HTTP, Pushover, storage, USB and resource gates.
+- [Calibration](calibration.md): measured TI response normalization, integer arithmetic,
+  raw envelopes, frame ordering and validity checks.
 - [Verified TLS](tls-provider.md): fixed Pushover trust policy, C6 build,
   live endpoint checks, measured linked size and remaining runtime evidence.
 - [Footprint audit](footprint-audit.md): installed-library candidates, manufacturer

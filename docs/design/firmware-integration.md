@@ -21,20 +21,38 @@ bindings.
 
 ## Execution and data ownership
 
-Use three executor levels, matching the isolation already exercised by Stillair:
+Use three executor levels, following Stillair's task split. Priority protects
+against lower-priority task work, not globally masked interrupts or flash access:
 
 | Executor | Priority | Tasks | Rule |
 | --- | ---: | --- | --- |
 | `CONTROL_EXECUTOR: InterruptExecutor<1>` | `Priority3` | `control_task`, watchdog service | Owns `Supervisor`, the relay GPIO, and the authoritative status snapshot. It never awaits flash, I2C, USB, Matter, DNS, HTTP, or TLS. |
 | `SENSOR_EXECUTOR: InterruptExecutor<2>` | `Priority2` | `sensor_task` | Owns the FDC1004 instance and bounded acquisition state machine. It publishes calibrated or invalid readings through a latest-value cell. Priority3 can preempt every I2C transaction. |
-| thread-mode Embassy executor | normal | storage, schedule/clock, Matter/Wi-Fi/BLE, HTTP, Pushover, USB, LED | All work that may wait on a peripheral, allocator, radio, flash, or peer. A failure here leaves Priority3 control running. |
+| thread-mode Embassy executor | normal | storage, schedule/clock, Matter/Wi-Fi/BLE, HTTP, Pushover, USB, LED | No network or storage await belongs to control. Flash additionally requires the output-off handshake below. |
 
 Initialize `RELAY_REQUEST` as a push-pull low output before starting any task. The
 provisional controller map is GPIO10 for `RELAY_REQUEST`, GPIO18/19 for I2C,
 GPIO11 for `MAINTENANCE_N`, GPIO20 for the status LED, and GPIO21 for `PSU_GOOD`.
-GPIO12/13 remain assigned to native USB Serial/JTAG. These numbers are design inputs,
-not released bindings; `board.rs` is the single place that may bind them after the
-controller review releases the map.
+GPIO12/13 remain assigned to native USB Serial/JTAG. These capture assignments
+are bound in `board.rs`; no physical pin or board acceptance is implied.
+GPIO0 separately enables the sensor bus, GPIO22 enables sensor power, and GPIO23
+reads its active-low current-limit fault. Boot drives relay, bus enable and power
+enable low before setting up I2C, USB or executors.
+An interrupt-backed GPIO23 monitor at Priority3 latches each falling edge with
+a monotonic fault epoch. Polling alone misses short TPS2553 fault assertions.
+Only a full newly acquired frame following the power-recovery sequence may
+clear that latch, provided the epoch has not changed and FAULT is high. Calibration
+history is evaluated on a candidate copy and committed under that same epoch
+check, so an interrupted acquisition cannot become the next slew baseline.
+
+The current image implements those bindings, the 20 ms Priority3 output task,
+Priority2 acquisition/recovery and a bounded thread-mode USB writer. `main`
+passes `None` for calibration and supervisor configuration. It has no schedule
+or command ingress and cannot run the pump. A configured image must load and
+validate both before enabling policy. TIMG1 has a 500 ms system-reset watchdog;
+only a completed output iteration feeds it. Storage integration must revisit
+that timeout against allowed flash-operation bounds, while keeping the relay
+off during flash and never feeding from storage.
 
 `control_task` runs on a fixed monotonic cadence and consumes snapshots only:
 
@@ -55,11 +73,17 @@ controller review releases the map.
 
 The FDC1004 driver crate owns register encoding, reset/configuration, conversion-ready
 polling, raw samples, I2C errors, and conversion/frame deadlines. The app-level
-`sensor_task` supplies the independent 5 ms HAL transaction timeout and owns
+`sensor_task` supplies a 5 ms transaction timeout and owns
 cadence, stale-age measurement, calibration application, and
 translation to `crystal_shim_core::Reading`. Its only cross-priority output is a
 copyable snapshot such as `{ sampled_at: Millis, reading: Reading, diagnostic }`.
 No driver future or I2C mutex enters `control_task`.
+The pinned HAL's cancellation path can spend up to another 50 ms clearing the
+bus synchronously. The sensor publishes each transfer deadline before awaiting
+it; Priority3 independently invalidates an expired transfer while cleanup runs
+below it. Clear the deadline together with a failed reading after timeout. The
+5 ms bound is transfer acceptance, not total cancellation latency. The runtime
+allows at most three startup/recovery attempts in a sliding 60-second interval.
 After a failed frame, the sensor task follows the controller's bounded
 TPS2553 power-cycle policy, isolates the cable with SENSOR_BUS_EN before removing
 power, and reinitializes the converter after startup. It publishes invalid
@@ -73,8 +97,9 @@ result as a fresh observation.
 | `firmware/core/src/policy.rs` | Existing relay supervisor, `ScheduledWindow`, `WindowId`, interlock, manual override, and monotonic deadlines. |
 | `firmware/core/src/schedule.rs` | Implemented bounded daily schedule evaluation. `Scheduler::evaluate` consumes injected UTC/civil time, a `LocalTimeResolver`, and the retained occurrence watermark. It returns `Inactive`, `PersistBeforeRun`, `Suppressed`, or an existing `ScheduledWindow`. |
 | `firmware/core/src/retained.rs` | Implemented versioned 32-byte safety record, CRC validation, configured versus never-configured boot lifecycle, maintenance recovery, and interrupted-window suppression. It is independent of any flash driver. |
+| `firmware/core/src/calibration.rs` | Implemented measured TI response normalization, calibrated raw envelopes, denominator/domain, sequence/freshness and slew validation. No physical coefficients are invented. |
 | `firmware/drivers/` | Separate no-std FDC1004 crate. It returns raw acquisition results and never imports schedule, storage, Matter, or the relay supervisor. |
-| `firmware/app/src/board.rs` | Final pin bindings and safe initial levels. This module is created only after the controller pin map is released. |
+| `firmware/app/src/board.rs` | Implemented controller capture pin bindings and safe initial levels; final-board acceptance remains open. |
 | `firmware/app/src/control.rs` | Priority3 task, control mailbox, force-off flag, latest `SupervisorStatus`, relay write, and watchdog service. |
 | `firmware/app/src/sensor.rs` | Priority2 owner of the FDC1004 driver, finite transaction timeout, sample freshness, and calibrated `Reading` publication. |
 | `firmware/app/src/storage.rs` | Sole writer for the Crystal configuration, retained safety record, notification queue, and settings access token in the same NVS-backed `KvBlobStore` used by Matter. Serializes writes through one bounded request channel. |
@@ -120,8 +145,11 @@ waits for storage acknowledgement, and evaluates again before exposing the monot
 replay and remains suppressed. The payload-free `Suppressed` decision never requests
 a storage write: preserve the existing watermark, including when the clock moves
 back to an older occurrence. Only `PersistBeforeRun` may replace it with a newer
-occurrence. HomeKit Off changes the current saved disposition to `Suppressed` before
-reporting the command complete; it must not copy an older clock-derived ID into storage.
+occurrence. HomeKit Off immediately revokes output and requests `Suppressed`
+for the current saved disposition. Its command response does not claim the write
+is durable; storage completion has a separate acknowledgement. Reset before that
+acknowledgement suppresses the previously eligible record through the boot policy.
+Never copy an older clock-derived ID into storage.
 
 The retained blob is key `0x4353`, 32 bytes, magic `CSRT`, format version 1, and an
 IEEE CRC-32. Decode validates the occurrence ID's reserved bits, nonzero entry and
@@ -150,7 +178,40 @@ Crystal keys must be allocated outside rs-matter's key range and documented in
 replacement. Relay control never waits for that writer; a write required to allow a
 run simply withholds the run until it succeeds.
 
-## Matter switch behavior
+## Flash and relay exclusion
+
+This is an implementation requirement for the pending storage adapter, including
+the Matter KV store. Do not copy Stillair's flash feature flags unchanged.
+At the pinned revision, `BlockingAsync` calls `FlashStorage` synchronously, and
+only the ROM-call shims are in RAM. The Embassy interrupt handler, task poll and
+supervisor remain in flash-backed code. Espressif documents that
+[C6 flash access disables caches](https://docs.espressif.com/projects/esp-idf/en/v5.1.2/esp32c6/api-reference/peripherals/spi_flash/spi_flash_concurrency.html);
+every reachable function and datum must be in internal RAM for an interrupt to
+run during that interval. A priority or single `#[ram]` task annotation is insufficient.
+
+Enable `esp-storage/critical-section` and wrap **every** runtime flash operation
+in an async gate. Storage raises `FLASH_INHIBIT`, waits for an epoch acknowledgement
+published by control after writing the relay GPIO low, and keeps the inhibit
+asserted until the operation ends. Cancellation must release ownership safely;
+an acknowledgement from an older request cannot authorize a later write. Control
+maps the inhibit to forced off and withholds re-energization until the gate clears,
+fresh sensor/permit inputs arrive and the existing minimum-off interval permits it.
+Defer ordinary persistence until off where possible. Boot scans happen before
+run eligibility; factory erase requires the same off condition. Neither network
+nor Matter persistence may bypass the gate or create a second raw flash handle.
+
+A 4 KiB sector erase has a published C6 planning maximum of 500 ms, compared
+with 70 ms typical; 64 KiB block erase can take 3 s. A ROM write spanning a
+4 KiB page may include sixteen flash-program pages.
+[ESP32-C6 flash timing table](https://documentation.espressif.com/esp32-c6_datasheet_en.html).
+Confirm the WROOM-N8's actual
+JEDEC flash part and its maximum timings before final timing acceptance. These
+operations mask Priority3 when the supported critical-section feature is enabled.
+No flash operation may occur while the relay is energized. The watchdog must not
+be fed or disabled by storage to disguise a stalled control loop. This policy
+preserves the durable-before-run and durable-before-maintenance-exit contracts.
+
+## Matter endpoint behavior
 
 The load endpoint is a Matter **On/Off Plug-in Unit** (`0x010A`), an actuator that
 hosts the On/Off server cluster. It is not `DEV_TYPE_ON_OFF_LIGHT_SWITCH` or
@@ -352,9 +413,10 @@ release map and `espflash save-image` measurement and pass all of these gates:
 - Priority3 cadence remains within its deadline while thread mode is saturated and
   while the Priority2 sensor task times out an I2C transaction.
 
-These are pre-fabrication build and analysis gates. RF commissioning, sensor
-calibration, relay verification, and Apple pairing remain final-board commissioning
-tests.
+Static image, SRAM allocation and stack/buffer budget analysis precede fabrication.
+Measured heap/stack high-water, concurrent-task cadence, RF commissioning, sensor
+calibration, relay verification and Apple pairing use the final assembled boards.
+Do not turn those physical results into an evaluation-board or prototype gate.
 
 ## Required verification
 

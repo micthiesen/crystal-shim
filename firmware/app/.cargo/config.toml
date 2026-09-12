@@ -4,4 +4,4 @@ rustflags = ["-C", "link-arg=-Tlinkall.x"]
 [build]
 target = "riscv32imac-unknown-none-elf"
 
-# No flash runner: this uncommissioned image has no board bindings.
+# No flash runner: hardware bindings are uncommissioned and flashing requires authorization.

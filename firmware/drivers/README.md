@@ -28,6 +28,10 @@ software deadlines for the selected 100 S/s rate, not measured board timings.
 Each I2C transaction needs a separate 5 ms HAL timeout; the generic async trait
 does not provide this. An independently scheduled control task must continue
 checking sensor age during acquisition and I2C recovery.
+The ESP adapter now enforces transfer acceptance and publishes its deadline for
+Priority3 control. The pinned HAL may spend another 50 ms clearing the bus after
+cancellation; that runs below control priority and is not part of a 5 ms completion
+guarantee. See the [runtime timing contract](../../docs/design/firmware-integration.md).
 
 Host mocks verify transaction order, signed conversion, partial read failure,
 brownout detection, frozen/backward time and stuck conversion behavior. Actual
