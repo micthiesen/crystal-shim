@@ -36,19 +36,23 @@ are not a released electrical design.
 | D-02 | Desired vertical detection range and mounting datum | Confirmed: 50 mm down from top of tank rim; padding at top/bottom allowed; PCB stays outside glass while separate mount clips over it | Stick outline and reference margins remain to design |
 | D-03 | Stop low / automatic restart after refill | Owner confirmed; only within unsuppressed scheduled windows, with explicit timed manual override exception | Product behavior locked |
 | D-04 | Existing Stillair connector family | Resolved from BOM: Micro-Fit 3.0, received parts; see sources | Family continuity only |
-| D-05 | Six-position sensor header/contact set and wire | Open; `43025-0600` housing candidate | Pinout, harness, orderable set |
-| D-06 | FDC1004 VSSOP, ESP32-C6-WROOM-1, IRM-05-5 | Proposed; exact order suffixes/footprints where needed remain open | Schematics and power budget |
-| D-07 | G5RL-1A-TV8 5 V coil | Proposed; confirm exact motor rating and design margin before fabrication; verify actual starts on final assembly | Relay selection and commissioning |
-| D-08 | FN2090 filter variant | Open | Attenuation, leakage, enclosure fit |
-| D-09 | Fuse/MOV/RC/regulators and internal mains connector set | Open, no generic values frozen | Protection and source capture |
-| D-10 | Enclosure, insulation/spacing and earth scheme | Open, reviewed mains layout required | Physical safety |
+| D-05 | Six-position sensor header/contact set and wire | Capture candidates: `43045-0600` / `43025-0600` / `43030-0007`, 24 AWG; exact cable and mating drawings owed | Pinout, harness, orderable set |
+| D-06 | FDC1004 VSSOP, ESP32-C6-WROOM-1, IRM-05-5 | Capture candidates: FDC1004DGSR, ESP32-C6-WROOM-1-N8, IRM-05-5; footprint/capture review owed | Schematics and power budget |
+| D-07 | G5RL-1A-TV8 5 V coil | G5RL-1A-TV8 DC5 sourced motor rating and pin map; design review and final-unit start tests owed | Relay selection and commissioning |
+| D-08 | FN2090 filter variant | FN2090A-1-06 / 802490-SF capture candidate | Attenuation, leakage, enclosure fit |
+| D-09 | Fuse/MOV/RC/regulators and internal mains connector set | Sourced candidates and calculations in the detailed design basis; integrated schematic review owed | Protection and source capture |
+| D-10 | Enclosure, insulation/spacing and earth scheme | Hammond 1554V2GY envelope and conservative spacing proposed; actual CAD/routed mains review owed | Physical safety |
 | D-11 | Thresholds, calibration limits and freshness timeout | Open; 1/10/30 s timing seeds provisional | Sensor and firmware tuning |
-| D-12 | Retained state and network interface | HomeKit switch via Matter-over-Wi-Fi selected like Stillair; maintenance and current-window Off suppression need persistence | Hardware firmware |
+| D-12 | Retained state and network interface | Matter-over-Wi-Fi selected; host retained schema and schedule implemented, ESP storage/network adapters owed | Hardware firmware |
 | D-13 | Run duration and daily schedule | Default 15 min shared by schedule and override, all adjustable; exact daily times/count/timezone open | Local scheduler and configuration |
-| D-14 | Water-transition notifications | Pushover selected; first baseline silent; keys and delivery/persistence adapter not provisioned | Notification integration |
+| D-14 | Water-transition notifications | Pushover selected; first baseline silent; verified TLS provider built and host-tested; keys and delivery/persistence adapter remain work | Notification integration |
 | D-15 | Settings interface | Confirmed: ESP-hosted local webpage for settings and schedule; implementation pending | Schedule, calibration, timing and Pushover provisioning workflow |
 | D-16 | Aquarium water and mounting envelope | Confirmed: freshwater, ample width with reasonably compact sensor PCB, snug contact via owner's separate gravity/friction clip; other hardware on spacious flat surface behind tank within 8 inches | PCB attachment interface remains project work; printed clip design is out of scope |
 | D-17 | Build strategy | Owner confirmed: one-shot final-use build of all three boards; no separate prototype or planned respin | Complete design/review before fabrication; physical calibration and acceptance afterward |
+| D-18 | Normal-full water surface below glass rim | Owner measurement requested: proposed RE band requires at least 11 mm below rim | Final reference geometry and valid upper limit |
+| D-19 | USB and service power | Self-powered USB data port with hardware VBUS gating; separate isolated 5 V service input | Mains-disconnected programming/calibration without host radio-current dependency |
+| D-20 | Sensor bus power sequencing | TCA9517A separates pullup domains; independent GPIO0 enable disconnects the cable during recovery/startup | Prevent sensor backfeed and isolate the unpowered cable's low/floating bus |
+| D-21 | Controlled sensor recovery | TPS2553 with GPIO22 enable/GPIO23 fault; discharge resistors and bounded power-cycle/reinitialization sequence | Recover transient sensor faults without blocking control; persistent faults stay off |
 
 The confirmed inputs do not establish electrode geometry or physical thresholds.
 Set geometry from TI's reference, the installation constraints and documented
@@ -56,7 +60,9 @@ engineering analysis before fabrication. Set physical thresholds from measuremen
 on the final sensor during commissioning. Sensor measurements do not gate design
 or fabrication of the other boards.
 
-The owner inputs needed to begin the complete design are resolved. Exact schedule entries
+The original inputs were sufficient to begin design. TI reference placement now
+requires the normal-full surface datum (D-18) before fixing the sensor geometry.
+Other board and firmware work continues independently. Exact schedule entries
 can wait for the local settings page, and physical stop/restart thresholds need
 calibration. Exact part selection, protection values, GPIO allocation and
 insulation layout are engineering work, not a list of component choices the owner

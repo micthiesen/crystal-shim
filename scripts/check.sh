@@ -3,6 +3,7 @@
 set -eu
 cd "$(dirname "$0")/.."
 python3 scripts/check_docs.py
+sh scripts/check-tls.sh
 (
   cd firmware
   cargo fmt --all -- --check
@@ -12,8 +13,8 @@ python3 scripts/check_docs.py
 (
   cd firmware/app
   cargo fmt --all -- --check
-  cargo clippy --locked --all-targets -- -D warnings
-  cargo build --locked --release
+  sh ../../scripts/with-esp-toolchain.sh cargo clippy --locked --all-targets -- -D warnings
+  sh ../../scripts/with-esp-toolchain.sh cargo build --locked --release
 )
 (
   cd pcb

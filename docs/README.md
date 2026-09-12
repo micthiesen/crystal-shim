@@ -19,8 +19,12 @@ from measurements performed on the final assembly.
 | [Decisions](decisions.md) | Baseline, open inputs, release gates |
 | [Build](build.md) | Development and commissioning order |
 | [Sources](sources.md) | Manufacturer references and Stillair evidence |
+| [Detailed design](design/README.md) | Parts, geometry, interfaces, calculations and firmware integration under review |
+| [Active goal](goal.md) | Full implementation, adversarial review and delivery scope |
 | [STATE](STATE.md) | Current work and next step, with pointers to durable facts |
 
 `Proposed` means a starting choice; `open` means unspecified; `verified` requires
 linked evidence. A component rating does not establish whole-product compliance.
 Update the owning document, BOM, and test matrix together when a choice is resolved.
+`Capture candidate` identifies an exact proposed part with source evidence; it
+does not mean the layout has passed release review or that procurement is ready.

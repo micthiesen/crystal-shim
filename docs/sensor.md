@@ -1,5 +1,11 @@
 # Active sensor daughterboard
 
+The [detailed design basis](design/sensor-design-basis.md) now specifies the TI
+channel/shield topology, parts and proposed geometry. Its dry-reference band
+requires the normal-full water surface at least 11 mm below the rim; the owner
+measurement is pending before that geometry is fixed. The 50 mm physical level
+electrode and the valid calibrated water range are separate dimensions.
+
 ## Proposed hardware
 
 | Item | Initial requirement |
@@ -8,7 +14,7 @@
 | Mounting | Snug against outside 5 mm glass, held by an owner-designed external clip; adhesive is not required |
 | Width | Reasonably compact; ample glass width available, no fixed maximum specified |
 | Sensing span | 50 mm downward from the top of the tank rim; extra board padding at top/bottom allowed |
-| Converter | One TI FDC1004, leaded VSSOP-10 package; exact order suffix open |
+| Converter | One TI FDC1004DGSR, leaded VSSOP-10; capture candidate pending footprint review |
 | Electrodes | One continuous level electrode, matched dry reference above range, wet reference below range |
 | Shielding | Driven, out-of-phase arrangement adapted from TI's actual geometry |
 | Supply | 5 V cable input, local 3.3 V regulator and decoupling |
@@ -63,8 +69,11 @@ the glass; the PCB need not. Resolve any actual obstruction when checking the
 owner's mount against the board interface, before claiming coverage at the datum.
 The wet reference must remain covered
 and the dry reference remain above water throughout the calibrated range.
-Loss of either reference condition must become invalid input rather than a
-plausible but misleading level. Specify the channel/shield assignment from TI's
+Detectable departures from commissioned raw/reference envelopes must become
+invalid input immediately. Capacitance alone cannot distinguish every wet film,
+mounting gap or board shift from a valid water level; no independent physical
+reference witness is fitted. Record those limits and test them during final-unit
+commissioning. Specify the channel/shield assignment from TI's
 design before capture; the fourth channel does not imply another required pad.
 
 Calibration must retain raw level/wet/dry capacitances, baseline/scale, validity

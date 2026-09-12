@@ -1,5 +1,10 @@
 # Electrical design brief
 
+This brief owns the requirements. Sourced capture candidates, pin maps and
+calculations now live in the [controller](design/controller-design-basis.md) and
+[mains](design/mains-design-basis.md) design basis. Those documents refine the
+initial choices below; no layout or fabrication gate has passed.
+
 ## Power and controller
 
 | Function | Proposed choice | Remaining work |
@@ -74,14 +79,17 @@ survive repeated switching; a cleaner bench waveform alone does not pass `EMI-*`
 | --- | --- |
 | Enclosure input | IEC C14 inlet, appropriate enclosed/guarded termination |
 | Skimmer output | Rated mains receptacle or strain-relieved female pigtail, original pump cord intact |
-| Internal mains input/output | Molex Mini-Fit Jr, 4.2 mm, complete rated housing/header/contact set |
+| Internal mains input/output | Molex Sabre 7.50 mm: `43160-0102/-0103/-0104/-0106` headers, `44441-2002/-2003/-2004/-2006` housings and `43375-2001` contacts; L1/N2 |
 | Sensor cable | Micro-Fit 3.0, six positions, locking/polarized; housing candidate `43025-0600` |
 
-Mini-Fit Jr has 600 V AC/DC-rated configurations; the rating depends on the
-specific system and approval. This does not establish waterproofness or allow
-exposed live unplugging. All mains connectors remain enclosed. Do not use a DC
-barrel connector for mains.
-[Molex system specification](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/productspecificationpdf/555/5556/PS-5556-001-001.pdf).
+The Sabre product specification reports 600 V AC RMS under CSA and 16 A fully
+loaded for the 43160 header series, subject to the exact part, wire, cavity
+count and applicable derating. Different circuit counts do not prove
+non-intermateability: require a CAD partial/cross-mate check, receipt inspection
+of keying and pin numbering, and final DRC before release. These ratings do not
+establish waterproofness or allow exposed live unplugging. All mains connectors
+remain enclosed. Do not use a DC barrel connector for mains.
+[Molex Sabre product specification](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/productspecificationpdf/444/44441/PS-44441-9999-001.pdf).
 
 The six-position Micro-Fit candidate is a dual-row, 3.0 mm, locking and polarized
 receptacle. Select mating header and terminals together for wire gauge and plating;

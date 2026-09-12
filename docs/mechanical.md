@@ -2,8 +2,11 @@
 
 Use one flame-rated, splash-resistant enclosure for the controller and mains
 board with physical separation between sections. The manufactured filter sits
-in the mains section. Size, material/rating, partition and mounting geometry are
-open; a generic printed enclosure is not automatically an acceptable substitute.
+in the mains section. Candidates for size, material/rating, partition and
+mounting geometry are now specified in the
+[mains/enclosure basis](design/mains-design-basis.md). The final placed model,
+wire bends and cutouts remain to be checked; a generic printed enclosure is not
+automatically an acceptable substitute.
 
 All hardware except the sensor board sits on a flat surface behind the tank,
 within at most 8 inches of the sensor, with ample space available. Do not optimize

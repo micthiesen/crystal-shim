@@ -1,6 +1,6 @@
 # Candidate BOM
 
-[bom.csv](bom.csv) records the initial selections from the brief. Design status
+[bom.csv](bom.csv) records initial and sourced capture candidates. Design status
 and purchase status are independent. All rows start unpurchased for Crystal Shim;
 Stillair's received stock is reference evidence only.
 
@@ -14,6 +14,9 @@ prototype BOM or planned second board order. Blank quantity, order code or part
 number means open, not zero or an approved substitute. Candidate families are not
 orderable complete assemblies. Resolve exact suffix, footprint, mating connector,
 terminal/gauge and ratings together before changing a line to Selected.
+`Capture candidate` means the detailed design has identified an exact proposed
+part. Remaining passives, protection, harness and mechanical items still make
+this an incomplete procurement list. Do not order from a partially resolved BOM.
 
 Update the owning design document and commissioning criteria when measured data
 changes a part. Preserve source URLs and notes explaining gates. Manufacturing

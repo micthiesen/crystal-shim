@@ -7,6 +7,13 @@ publish = false
 
 [workspace]
 
+[lib]
+name = "crystal_shim_tls"
+path = "src/tls.rs"
+doctest = false
+harness = false
+test = false
+
 [[bin]]
 name = "crystal-shim"
 path = "src/main.rs"
@@ -14,11 +21,47 @@ test = false
 bench = false
 
 [dependencies]
+critical-section = "1"
 crystal-shim-core = { path = "../core" }
+edge-nal = { version = "0.7", default-features = false }
+edge-nal-tls = { version = "0.2.0", default-features = false }
+embedded-io-async = { version = "0.7", default-features = false }
+esp-alloc = { version = "0.10", default-features = false, features = ["global-allocator", "compat", "esp32c6"] }
 esp-hal = { version = "1.1", default-features = false, features = ["esp32c6", "unstable", "rt"] }
 esp-println = { version = "0.17", default-features = false, features = ["esp32c6", "jtag-serial"] }
 esp-backtrace = { version = "0.19", default-features = false, features = ["esp32c6", "panic-handler", "println"] }
 esp-bootloader-esp-idf = { version = "0.5", default-features = false, features = ["esp32c6"] }
+mbedtls-rs = { version = "0.2.0", default-features = false, features = [
+  "alg-aes",
+  "alg-ecdh",
+  "alg-ecp",
+  "alg-gcm",
+  "alg-rsa",
+  "alg-rsa-pss",
+  "alg-sha256",
+  "curve-secp256r1",
+  "drbg-ctr",
+  "embassy-time",
+  "entropy",
+  "hook-wall-clock",
+  "kex-ecdhe-rsa",
+  "pk",
+  "ssl-in-content-len-8192",
+  "ssl-out-content-len-2048",
+  "tls-client",
+  "tls-core",
+  "tls-proto-tls12",
+  "x509-parse",
+] }
+tinyrlibc = { version = "0.5", default-features = false, features = [
+  "memchr",
+  "strchr",
+  "strcmp",
+  "strlen",
+  "strncmp",
+  "strncpy",
+  "strstr",
+] }
 
 [profile.release]
 opt-level = "s"
@@ -33,6 +76,7 @@ opt-level = "z"
 # and radio/runtime dependency family will be added with the actual implementation.
 [patch.crates-io]
 esp-hal = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
+esp-alloc = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
 esp-backtrace = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
 esp-println = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
 esp-bootloader-esp-idf = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }

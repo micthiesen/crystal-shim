@@ -2,10 +2,21 @@
 #![no_std]
 
 mod policy;
+mod retained;
+mod schedule;
 mod water;
 pub use policy::{
     HardwarePermit, Inputs, ScheduledWindow, Supervisor, SupervisorConfig, SupervisorStatus,
     SwitchCommand, WindowId,
+};
+pub use retained::{
+    load_retained, ConfigurationLifecycle, LoadDisposition, LoadedRetainedState, RetainedError,
+    RetainedState, RetainedWindow, WindowDisposition, RETAINED_BLOB_LEN, RETAINED_STORAGE_KEY,
+};
+pub use schedule::{
+    CivilTime, DailyEntry, DayMask, Fold, LocalDay, LocalResolution, LocalTimeResolver, Occurrence,
+    Schedule, ScheduleDecision, ScheduleError, Scheduler, UtcOffset, UtcSeconds, Weekday,
+    MAX_DAILY_ENTRIES, MAX_WINDOW_SECONDS,
 };
 pub use water::{WaterState, WaterTransition};
 

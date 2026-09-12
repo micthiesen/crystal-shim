@@ -15,7 +15,8 @@ for directory in ("docs", "bom", "testing", "cad", ".agents/skills"):
     documents.extend((ROOT / directory).rglob("*.md"))
 documents.extend(ROOT.glob("pcb/**/README.md"))
 documents = [p for p in documents if "node_modules" not in p.parts]
-documents.append(ROOT / "firmware/README.md")
+documents.extend(ROOT.glob("firmware/**/README.md"))
+documents = [p for p in documents if "target" not in p.parts]
 
 for path in documents:
     content = path.read_text()

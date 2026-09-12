@@ -1,0 +1,9 @@
+[package]
+name = "crystal-shim-drivers"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.88"
+publish = false
+
+[dependencies]
+embedded-hal-async = "=1.0.0"

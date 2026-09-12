@@ -15,9 +15,11 @@ clip; this project supplies the PCB attachment interface.
 final-use boards. Complete design reviews before fabrication, then calibrate and
 commission the assembled unit. No separate prototype phase is planned.
 
-**Status:** requirements and development scaffold. Parts, electrode geometry, and
-the mains design are provisional. There is no product schematic, routed PCB, sensor
-driver, or commissioned hardware. The embedded app has no relay GPIO binding.
+**Status:** detailed design and firmware implementation are in progress. The
+[design basis](docs/design/README.md) records sourced parts, interfaces and open
+engineering checks. Host code includes control, scheduling, retained safety state
+and an async FDC1004 driver. There is no product schematic, routed PCB or
+commissioned hardware. The embedded app has no relay GPIO binding yet.
 
 Start with [the overview](docs/overview.md) and [current state](docs/STATE.md).
 The [decision register](docs/decisions.md) tracks open inputs and release gates.

@@ -1,0 +1,43 @@
+[package]
+name = "crystal-shim-tls-tests"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.88"
+publish = false
+
+[workspace]
+
+# Compile the real provider, including its private policy and clock, directly.
+# Keeping this workspace separate avoids ESP-only dependencies in host tests.
+[lib]
+path = "../app/src/tls.rs"
+doctest = false
+
+[dependencies]
+critical-section = { version = "1", features = ["std"] }
+edge-nal = { version = "0.7", default-features = false }
+edge-nal-tls = { version = "0.2.0", default-features = false }
+# Identical production algorithm/record features, plus the host std backend.
+mbedtls-rs = { version = "0.2.0", default-features = false, features = [
+  "alg-aes",
+  "alg-ecdh",
+  "alg-ecp",
+  "alg-gcm",
+  "alg-rsa",
+  "alg-rsa-pss",
+  "alg-sha256",
+  "curve-secp256r1",
+  "drbg-ctr",
+  "embassy-time",
+  "entropy",
+  "hook-wall-clock",
+  "kex-ecdhe-rsa",
+  "pk",
+  "ssl-in-content-len-8192",
+  "ssl-out-content-len-2048",
+  "std",
+  "tls-client",
+  "tls-core",
+  "tls-proto-tls12",
+  "x509-parse",
+] }

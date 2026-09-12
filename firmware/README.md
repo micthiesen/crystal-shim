@@ -1,16 +1,22 @@
-# Firmware scaffold
+# Firmware
 
 Rust, bare-metal ESP32-C6, following `../stillair`: `core/` contains the `no_std`
-control contract, `cli/` runs it on the host, and `app/` is a separate workspace
+control contract, `drivers/` contains async device drivers, `cli/` runs the control
+model on the host, and `app/` is a separate workspace
 targeting `riscv32imac-unknown-none-elf`. Stable Rust is declared in
 `rust-toolchain.toml`; setup was verified with Rust 1.97.1. Commit both lockfiles.
 
 The ESP image is **uncommissioned and inert**. It initializes the HAL, prints its
 uncommissioned status over USB Serial/JTAG, and loops. It has no relay GPIO,
-sensor I²C binding, FDC1004 driver, maintenance button binding, Wi-Fi stack,
+sensor I²C binding, maintenance button binding, Wi-Fi stack,
 watchdog supervision, persistent storage, or flashing runner. It does not run the
 controller. The hardware coil pull-down must establish off during reset and
 before reviewed GPIO wiring is added. A successful build cannot verify that.
+
+The separate [FDC1004 driver](drivers/README.md) implements reset, identity/config
+checks and complete sequential out-of-phase measurement frames, with host tests.
+It is not bound to ESP I2C yet. The [integration design](../docs/design/firmware-integration.md)
+describes the executor, storage and network adapters that remain to be implemented.
 
 The app uses the same compatible esp-hal revision as Stillair,
 `10e48dd74837bae4be663a7d1825d12875363727`, for HAL, panic/log output, bootloader,
@@ -63,8 +69,10 @@ coil state; it provides no contact feedback or protection from welded contacts.
 maintenance command, and `HardwarePermit`. A local calendar adapter will supply
 only active windows with a stable, strictly increasing `WindowId` and the
 original absolute monotonic `ends_at`. It must preserve identities across
-repeated ticks and schedule edits. Calendar times, timezone handling, time sync,
-and daily schedule persistence are not implemented and no hours are guessed.
+repeated ticks and schedule edits. `schedule.rs` implements bounded daily entries,
+injected timezone resolution and stable occurrence IDs. `retained.rs` implements
+the versioned safety record and boot recovery policy. Time synchronization,
+timezone-rule parsing and actual flash storage remain app work; no hours are guessed.
 The intended starting schedule is fifteen minutes a few times per day.
 
 Every run has an absolute deadline. The initial configurable maximum duration is
@@ -111,8 +119,9 @@ Cached samples cannot prove a transition. `status()` does not replay an event.
 Changing interlock configuration resets pending level confirmation and the notification baseline so calibration
 or threshold edits do not masquerade as water movement. A transport adapter must
 handle secure credentials, queueing, bounded retries, and deduplication without
-blocking local control. Pushover HTTPS delivery and keys are not implemented;
-no notification was sent during setup.
+blocking local control. The [verified HTTPS provider](../docs/design/tls-provider.md)
+is implemented and cross-compiled; the Pushover queue/POST adapter, credentials
+and actual ESP network integration remain work. No notification was sent.
 
 ## Verify
 
@@ -120,19 +129,29 @@ Run from the repository root. These are the same checks as
 `.github/workflows/firmware.yml`:
 
 ```bash
+sh scripts/check-tls.sh
 cd firmware
 cargo fmt --check
 cargo clippy --locked --all-targets -- -D warnings
 cargo test --locked
 cd app
 cargo fmt --check
-cargo clippy --locked --all-targets -- -D warnings
-cargo build --locked --release
+sh ../../scripts/with-esp-toolchain.sh cargo clippy --locked --all-targets -- -D warnings
+sh ../../scripts/with-esp-toolchain.sh cargo build --locked --release
 ```
 
 Use `cargo fmt` in the appropriate workspace to apply formatting. The host tests
 exercise meaningful control and parser behavior; the target build only proves
-that the inert image links. No hardware or mains testing is implied.
+that the inert image links. The separate TLS construction probe and host endpoint
+checks are recorded in the provider document. Clang with a RISC-V backend is
+required for its portable C dependency; on macOS the wrapper finds installed
+Homebrew LLVM. No hardware or mains testing is implied.
+
+The TLS policy harness compiles the production provider source directly and runs
+offline certificate and clock tests on Linux. `scripts/check-tls.sh` uses native
+Linux or the default OrbStack Linux machine on macOS. That environment needs Rust,
+Clang, libclang and CMake. The script also checks production/test dependency and
+crypto-feature parity; it does not silently skip TLS tests on an unsupported host.
 
 ## Host simulator
 

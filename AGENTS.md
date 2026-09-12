@@ -11,6 +11,7 @@ parts, firmware, PCB source, test evidence, and exported mechanical artifacts.
   [sensor](docs/sensor.md), [controls](docs/controls.md), [mechanical](docs/mechanical.md),
   [decisions](docs/decisions.md), [build](docs/build.md), and [sources](docs/sources.md).
 - `firmware/core/`: pure Rust `no_std` behavior with injected time and inputs.
+- `firmware/drivers/`: async device drivers with host tests and no ESP dependency.
 - `firmware/cli/`: host simulation; `firmware/app/`: separate ESP32-C6 workspace.
 - `pcb/`: Bun/TypeScript tscircuit authoring, then guarded KiCad routing and fabrication.
   `sensor/`, `controller/`, and `mains/` start as requirements, not fabricated designs.
@@ -76,7 +77,11 @@ Biome, or Zod environment config because those do not fit this hardware scaffold
 
 Validation gate: `sh scripts/check.sh`. It runs host fmt/clippy/tests, embedded
 fmt/clippy/release build, PCB lint/format/typecheck and tooling tests, and repository
-document checks. Install PCB dependencies first with `cd pcb && bun install --frozen-lockfile`.
+document checks. Verified-TLS policy tests run on Linux through `scripts/check-tls.sh`;
+on macOS it uses the default OrbStack Linux machine. That environment needs Rust,
+Clang, libclang and CMake. The embedded TLS build uses `scripts/with-esp-toolchain.sh`
+to select a Clang with RISC-V support. Install PCB dependencies first with
+`cd pcb && bun install --frozen-lockfile`.
 Use `python3 .agents/skills/sync/sync-status.py` after shared-tooling changes.
 For a real board also run the `$pcb` source, render, parity, ERC/DRC and handoff gates;
 hardware tests live in the commissioning matrix and cannot be passed by simulation.
