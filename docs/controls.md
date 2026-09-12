@@ -127,9 +127,12 @@ Pushover requires an application token and recipient user/group key. Provision
 them outside tracked source and avoid exposing them in logs or HomeKit attributes.
 Use verified HTTPS to the Message API; delivery needs internet, but its failure
 must never delay a local stop or extend a run. See [Pushover API](https://pushover.net/api).
-The application has no live sender or built-in credentials. Persistence and offline
-queue policy remain app work; a reboot establishes a fresh baseline unless a
-validated persisted classification is restored.
+The [Pushover worker](design/pushover.md) is linked to the shared ESP network.
+It captures fresh transitions after the relay write into eight RAM slots, with a
+15-minute event lifetime and at most three attempts. Reboot discards pending
+notifications and establishes a silent baseline. Accepted configuration replacements immediately cancel
+old work; a failed save keeps delivery paused until a later save commits. Credentials are provisioned privately; there are no built-in keys.
+Live API acceptance and phone delivery remain final-unit checks.
 
 ## Implementation boundary
 
@@ -160,9 +163,10 @@ commands and schedule evaluation from explicit UTC observations are implemented.
 The Matter radio/command adapter and bounded CASE time-source reader are linked;
 private credential provisioning is implemented. Apple Home pairing and a usable
 hub time source have not been demonstrated on hardware. The settings service is
-linked; its calibration workflow, unattended signed-time integration and Pushover
-worker remain work. Stored Pushover
-credentials have a validated format but are not used by a network sender.
+linked, as is the verified-HTTPS Pushover worker. Its calibration workflow and
+unattended signed-time integration remain work. Stored Pushover credentials are
+used only after an authenticated TLS handshake; no live notification was sent
+during implementation.
 
 Use hardware gate pulldown and watchdog recovery so reset removes relay drive.
 Verify bootloader/flashing, brownout and unpowered GPIO behavior on the real board.

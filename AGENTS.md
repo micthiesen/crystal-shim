@@ -122,6 +122,8 @@ Matter plug profile would allow startup restore or timer changes. Expose only
 implemented commands; record profile deviations under D-22 and do not claim certification.
 Pushover sends confirmed water-state transitions independently of the relay;
 notification/network failures never delay local control. Credentials stay out of git.
+Its bounded RAM queue performs no flash writes. Settings replacement admission
+retires old delivery work before durability; see [the delivery contract](docs/design/pushover.md).
 Local skills are real files under `.agents/skills/`; compatibility links may expose
 them to Claude. `$next` selects the next step and `$wrap` records session state.
 

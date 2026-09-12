@@ -22,7 +22,7 @@ impl MbedtlsTimer for TestTimer {
     }
 }
 
-fn clock_test() -> MutexGuard<'static, ()> {
+pub(super) fn clock_test() -> MutexGuard<'static, ()> {
     // Each test resets all state, so a failure need not hide independent cases.
     let guard = CLOCK_TEST.lock().unwrap_or_else(|error| error.into_inner());
     INSTALL.call_once(|| {
@@ -30,24 +30,24 @@ fn clock_test() -> MutexGuard<'static, ()> {
         // only installation, before any operation that reads those hooks.
         unsafe { install_certificate_clock() };
     });
-    clear_trusted_utc();
+    operation::reset_for_test();
     tick(0);
     guard
 }
 
-fn tick(ms: i64) {
+pub(super) fn tick(ms: i64) {
     MONOTONIC_MS.store(ms, Ordering::SeqCst);
 }
 
-fn date(year: u16, month: u8, day: u8, hour: u8, minute: u8, second: u8) -> UtcDateTime {
+pub(super) fn date(year: u16, month: u8, day: u8, hour: u8, minute: u8, second: u8) -> UtcDateTime {
     UtcDateTime::new(year, month, day, hour, minute, second).expect("valid fixture date")
 }
 
-fn fixture_date() -> UtcDateTime {
+pub(super) fn fixture_date() -> UtcDateTime {
     date(2026, 9, 11, 12, 0, 0)
 }
 
-fn hooked_utc() -> Option<tm> {
+pub(super) fn hooked_utc() -> Option<tm> {
     let mut value = tm::default();
     // SAFETY: MbedTLS ignores the timestamp pointer and writes only the supplied
     // valid output. clock_test installed the static hook before this call.
@@ -91,7 +91,7 @@ fn clock_expires_without_publisher_or_caller_refresh() {
     assert!(!has_trusted_utc());
     assert!(hooked_utc().is_none());
     assert!(matches!(
-        pushover_config(),
+        pushover_ready(),
         Err(ProviderError::ClockUnavailable)
     ));
 
@@ -109,7 +109,7 @@ fn clock_expires_without_publisher_or_caller_refresh() {
     assert!(!has_trusted_utc());
     assert!(hooked_utc().is_none());
     assert!(matches!(
-        pushover_config(),
+        pushover_ready(),
         Err(ProviderError::ClockUnavailable)
     ));
     // An invalid anchor cannot revive even if a broken clock returns in range.
@@ -130,7 +130,7 @@ fn a_new_observation_renews_the_anchor_and_explicit_clear_revokes_it() {
     assert!(!has_trusted_utc());
     assert!(hooked_utc().is_none());
     assert!(matches!(
-        pushover_config(),
+        pushover_ready(),
         Err(ProviderError::ClockUnavailable)
     ));
     set_trusted_utc(refreshed);
@@ -203,7 +203,9 @@ fn advancing_utc_crosses_day_month_leap_day_and_year_boundaries() {
 fn fixed_policy_parses_the_exact_root_and_requires_hostname_and_verification() {
     let _guard = clock_test();
     set_trusted_utc(fixture_date());
-    let config = pushover_config().expect("embedded certificate parses");
+    let lease = OperationLease::begin().unwrap();
+    let config = pushover_config(&lease).expect("embedded certificate parses");
+    assert!(config.certificate_restriction.is_some());
     assert!(config.ca_chain.is_some());
     assert_eq!(config.server_name, Some(c"api.pushover.net"));
     assert!(matches!(config.auth_mode, AuthMode::Required));
@@ -300,7 +302,8 @@ fn rejected(result: (i32, u32), expected_flags: u32) {
 fn public_chain_validates_and_wrong_hostname_or_trust_is_rejected() {
     let _guard = clock_test();
     set_trusted_utc(fixture_date());
-    let config = pushover_config().unwrap();
+    let lease = OperationLease::begin().unwrap();
+    let config = pushover_config(&lease).unwrap();
     let mut chain = Chain::endpoint();
     let mut root = Chain::parse(&[DIGICERT_GLOBAL_ROOT_G2_DER]);
     assert_eq!(chain.verify(&mut root, config.server_name.unwrap()), (0, 0));
@@ -325,13 +328,16 @@ fn actual_verifier_rejects_missing_stale_and_out_of_validity_utc() {
         (sys::MBEDTLS_ERR_X509_FATAL_ERROR, u32::MAX)
     );
     set_trusted_utc(fixture_date());
-    let _existing_config = pushover_config().unwrap();
+    let lease = OperationLease::begin().unwrap();
+    let existing_config = pushover_config(&lease).unwrap();
     tick(TRUSTED_UTC_MAX_AGE_MS);
     // Covers a connector constructed while fresh but used after publisher loss.
     assert_eq!(
         chain.verify(&mut root, PUSHOVER_HOST),
         (sys::MBEDTLS_ERR_X509_FATAL_ERROR, u32::MAX)
     );
+    drop(existing_config);
+    drop(lease);
     set_trusted_utc(date(2025, 1, 1, 0, 0, 0));
     rejected(
         chain.verify(&mut root, PUSHOVER_HOST),
@@ -362,10 +368,8 @@ fn scalar_tls_cannot_accept_an_interval_by_choosing_one_endpoint() {
             UtcObservation::bounded(UtcBounds::new(lo, hi).unwrap(), Millis(0), rate).unwrap();
         set_trusted_observation(sample);
         assert!(!has_trusted_utc());
-        assert!(matches!(
-            pushover_config(),
-            Err(ProviderError::ClockUnavailable)
-        ));
+        assert!(pushover_ready().is_ok());
+        assert!(has_trusted_bounds());
         assert_eq!(
             chain.verify(&mut root, PUSHOVER_HOST),
             (sys::MBEDTLS_ERR_X509_FATAL_ERROR, u32::MAX)
@@ -416,3 +420,6 @@ fn control_accepted_original_capture_drives_both_clocks_without_dispatch_refresh
     set_trusted_observation(sample);
     assert!(!has_trusted_utc());
 }
+
+#[path = "operation_handshake_tests.rs"]
+mod operation_handshake_tests;

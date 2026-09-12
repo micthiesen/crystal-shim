@@ -121,8 +121,9 @@ Host checks and a linked image do not prove browser-to-device operation, RAM mar
 Matter/TLS load, physical USB, final-unit control latency or network isolation.
 Independent review confirmed the corrected serial-request and preflight-error
 contracts. Separate Off acknowledgement re-review is also clean; final-board commissioning
-remains required. Pushover credential storage does not mean the notification
-worker is running.
+remains required. The [Pushover worker](pushover.md) is now linked, and sends only
+with configured credentials, operational networking and an accepted clock lease.
+Credential storage alone does not establish live delivery.
 
 `sh scripts/check.sh` includes the Rust tests, Node UI tests, feature guard,
 embedded build and the existing project checks. The UI can be exercised with

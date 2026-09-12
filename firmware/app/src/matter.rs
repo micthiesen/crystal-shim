@@ -248,6 +248,7 @@ pub async fn run(
             matter: stack.matter(),
             crypto: &crypto,
             settings_buffers: crate::settings::BUFFERS.take(),
+            pushover_buffers: crate::pushover::BUFFERS.take(),
         },
         random,
         resources,
@@ -288,6 +289,7 @@ struct Application<'a, C> {
     matter: &'a crystal_shim_matter::sdk::Matter<'a>,
     crypto: &'a C,
     settings_buffers: &'static mut crystal_shim_settings::Buffers,
+    pushover_buffers: &'static mut crystal_shim_pushover::http::Buffers,
 }
 impl<C: Crypto> rs_matter_embassy::stack::UserTask for Application<'_, C> {
     async fn run<S, N>(
@@ -311,8 +313,8 @@ impl<C: Crypto> rs_matter_embassy::stack::UserTask for Application<'_, C> {
                 })?;
                 let status = if !online {
                     Status::WaitingForNetwork
-                } else if let (Some(tls), Some(tcp)) = (&self.tls, stack.tcp_connect()) {
-                    match crystal_shim_tls::pushover_connector(tls.reference(), tcp) {
+                } else if self.tls.is_some() && stack.tcp_connect().is_some() {
+                    match crystal_shim_tls::pushover_ready() {
                         Ok(_) => Status::OnlineTlsReady,
                         Err(crystal_shim_tls::ProviderError::ClockUnavailable) => {
                             Status::OnlineClockRequired
@@ -330,13 +332,16 @@ impl<C: Crypto> rs_matter_embassy::stack::UserTask for Application<'_, C> {
             readiness,
             embassy_futures::join::join(
                 crate::clock::run(self.matter, self.crypto),
-                crate::settings::run(&stack, &netif, self.settings_buffers),
+                embassy_futures::join::join(
+                    crate::settings::run(&stack, &netif, self.settings_buffers),
+                    crate::pushover::run(&stack, &netif, self.tls.as_ref(), self.pushover_buffers),
+                ),
             ),
         )
         .await
         {
             embassy_futures::select::Either::First(result) => result,
-            embassy_futures::select::Either::Second(((), ())) => Ok(()),
+            embassy_futures::select::Either::Second(((), ((), ()))) => Ok(()),
         }
     }
 }

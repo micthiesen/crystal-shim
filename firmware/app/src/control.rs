@@ -65,7 +65,7 @@ pub async fn run(
                 request,
                 crate::runtime::take_completion(),
             );
-            crate::clock::publish(runtime.clock_observation());
+            crate::clock::publish(runtime.clock_authority());
             boot_maintenance_requested = false;
             snapshot::publish_configuration(runtime.configuration());
             crate::runtime::publish_write(runtime.store_request());
@@ -79,6 +79,14 @@ pub async fn run(
         } else {
             relay.set_low();
         }
+        crate::pushover::capture(
+            now,
+            runtime.as_ref().and_then(Runtime::configuration),
+            runtime.as_ref().and_then(Runtime::clock_authority),
+            status,
+            relay_on,
+            runtime.as_ref().is_some_and(Runtime::configuration_pending),
+        );
         critical_section::with(|cs| STATUS.borrow(cs).set(status));
         snapshot::publish_administration(crystal_shim_matter::provision_transfer::Readiness {
             configured: runtime

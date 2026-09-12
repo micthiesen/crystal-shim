@@ -1,7 +1,7 @@
 //! Control owns trust acceptance; the thread-mode CASE task only offers observations.
 use core::cell::Cell;
 use critical_section::Mutex;
-use crystal_shim_core::utc::{Attempt, ClockMailbox, ClockUpdate, ReadResult, UtcObservation};
+use crystal_shim_core::utc::{Attempt, ClockAuthority, ClockMailbox, ClockUpdate, ReadResult};
 use crystal_shim_matter::{
     sdk::{crypto::Crypto, Matter},
     time_source::{self, SourceId},
@@ -10,13 +10,16 @@ use embassy_futures::select::select;
 use embassy_time::Timer;
 
 static MAILBOX: Mutex<Cell<ClockMailbox<SourceId>>> = Mutex::new(Cell::new(ClockMailbox::new()));
-static PUBLISHED: Mutex<Cell<Option<UtcObservation>>> = Mutex::new(Cell::new(None));
+static PUBLISHED: Mutex<Cell<Option<ClockAuthority>>> = Mutex::new(Cell::new(None));
 
 fn mailbox<R>(f: impl FnOnce(&mut ClockMailbox<SourceId>) -> R) -> R {
     critical_section::with(|cs| {
         let mut value = MAILBOX.borrow(cs).get();
         let result = f(&mut value);
         MAILBOX.borrow(cs).set(value);
+        // Accepted authority and the current invalidation epoch enter TLS as one
+        // snapshot. Normal clock reads do not advance this separate source epoch.
+        crystal_shim_tls::publish_clock(PUBLISHED.borrow(cs).get(), value.source_epoch());
         result
     })
 }
@@ -34,14 +37,11 @@ pub fn take_update() -> ClockUpdate {
 
 /// Called only by control after runtime accepted the original capture. Repeated
 /// ticks do not republish it or renew a TLS clock invalidated between ticks.
-pub fn publish(sample: Option<UtcObservation>) {
+pub fn publish(authority: Option<ClockAuthority>) {
     critical_section::with(|cs| {
-        if PUBLISHED.borrow(cs).get() != sample {
-            match sample {
-                Some(sample) => crystal_shim_tls::set_trusted_observation(sample),
-                None => crystal_shim_tls::clear_trusted_utc(),
-            }
-            PUBLISHED.borrow(cs).set(sample);
+        if PUBLISHED.borrow(cs).get() != authority {
+            PUBLISHED.borrow(cs).set(authority);
+            crystal_shim_tls::publish_clock(authority, MAILBOX.borrow(cs).get().source_epoch());
         }
     });
 }

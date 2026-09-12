@@ -15,6 +15,7 @@ mod control;
 mod flash_gate;
 mod matter;
 mod partition;
+mod pushover;
 mod radio;
 mod runtime;
 mod sensor;

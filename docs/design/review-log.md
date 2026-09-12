@@ -1205,6 +1205,68 @@ Evidence is in `/tmp/crystal-shim-first-config-implementation` and
 radio, live credentials or notification was used. This is a scoped host workflow
 review, with all physical commissioning rows still Not run.
 
+## Interval TLS and Pushover integration, 2026-09-12
+
+The application now captures fresh water edges after the output write and uses
+one shared-network verified-HTTPS sender. A borrowed operation lease binds the
+original 20-second certificate horizon, accepted authority generation and source
+epoch. The scalar compatibility view cannot consume a valid uncertain anchor.
+The bounded RAM policy replaces the earlier unimplemented persistent FIFO to
+avoid advisory notification writes invoking the relay-off flash gate. See
+[the delivery contract](pushover.md) and [TLS policy](tls-restriction.md).
+
+Independent app review reproduced a source-withdrawal window: null/invalid CASE
+responses queued revocation but kept the epoch until the next control tick.
+Matching rejection now invalidates the source epoch immediately; exhaustion of
+either checked mailbox counter makes network authority unavailable. Ordinary
+successful reads and transport failures preserve the epoch. The old-source
+scratch regression fails and current code passes. Root added a combined mailbox/
+production-lease case proving revocation before control consumes the update.
+Independent core review then found no actionable issue in accepted generation,
+operator/network separation, expiry, rollback, exhaustion, storage or manual leases.
+Evidence: `/tmp/crystal-shim-app-clock-review` and
+`/tmp/crystal-shim-core-authority-review`.
+
+Independent notification review found accepted configuration replacement left
+old queued/active credentials usable until durability. Control now pauses and
+retires old work on admission without publishing the candidate as committed.
+Failure leaves delivery paused until a later save commits a new revision. This
+preserves an API rejection across unrelated settings edits. Actual Runtime/Queue
+tests cover delayed storage, failed writes, retry/recovery and stale completion.
+Root's scoped tests and Clippy pass with 20 Pushover tests; evidence is
+`/tmp/crystal-shim-notifications-config-pause.log`.
+
+HTTP review and implementation tests also cover malformed Content-Length before
+the pinned parser's unwrap, conflicting framing, explicit chunk termination,
+strict JSON including unknown strings, bounded bodies, uncertainty and credential
+suspension. A known rejection for the still-active token remains restrictive even
+when completion crosses the attempt/event deadline. It cannot become a retry or
+be applied to a newer token. Production buffers are wiped on return/cancellation;
+remote exactly-once delivery is not claimed.
+
+Independent re-review found no actionable configuration-pause defect. The actual
+app worker then gained four host tests through the pinned network interfaces,
+using the production TLS connector and no ports. They prove cancellation during
+DNS/TCP/TLS, pending-resource/socket drop before queue and lease release, original
+event identity/expiry on retry, clock revocation before another I/O poll, and the
+actual accepted-configuration capture path. A fresh test review found no false
+positive in these assertions. The earlier raw-session handshake test no longer
+makes a vacuous no-further-I/O claim; it retains callback-rejection scope. Actual
+app HTTP cancellation is not exercised in that harness; pure HTTP cancellation/
+wiping and real local TLS-chain tests remain separate evidence. Evidence and
+exact hashes: `/tmp/crystal-shim-pushover-app-test-feasibility/evidence.json`.
+
+The final integrated `sh scripts/check.sh` passes: 157 core, nine driver, one
+CLI, 72 Matter/provisioning, 20 Pushover, 18 signed-time and 31 settings tests;
+three partition tests; 26 Node UI and three settings guards. Linux TLS passes
+29 provider/lease/worker tests plus the existing eight accepted and 50 rejected
+full-handshake matrix, two pre-I/O resumption rejections, one canceled Pending
+handshake, E0515 borrow regression and four provenance/registry regressions.
+PCB checks pass 116 Bun tests / 23,670 assertions and 36 shared handoff tests.
+Evidence: `/tmp/crystal-shim-notifications-final-full-check.log`. The final C6
+ELF hash, size and offline binary export are recorded in [Pushover delivery](pushover.md).
+No whole-project electrical, manufacturing or operating sign-off is implied.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

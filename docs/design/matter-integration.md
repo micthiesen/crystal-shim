@@ -173,8 +173,9 @@ interface-up-only documentation, so application network work must check readines
 Our task checks an operational interface and IPv4 configuration and reports TLS
 readiness without opening HTTPS sockets. Its [trusted UTC child](trusted-utc.md)
 now makes bounded CASE reads through the same Matter exchange/UDP transport when
-a trusted source is configured. A future HTTP/Pushover worker must await usable
-configuration and handle loss/retry itself.
+a trusted source is configured. The linked HTTP and Pushover workers wait for
+usable configuration/network state and handle loss themselves. Pushover retains
+its original event expiry across task cancellation.
 
 A permanent `TrngSource` owns RNG and ADC1, which the I2C sensor does not use.
 Independent hardware-seeded, periodically reseeded CSPRNG streams serve Matter
@@ -265,8 +266,8 @@ Evidence collected 2026-09-12 without hardware or network operations:
 - Combined release ELF/static SRAM measurements are recorded below. These include
   the runtime-selected radio branch, TCP pools, root and application handlers,
   RustCrypto, provisioning checks, TLS engine/root policy, and the sensor startup
-  recovery fix. They do not include a live TLS handshake worker: no connect/send
-  caller exists yet, so unused handshake code may still be eliminated.
+  recovery fix. These historical sizes predate the live TLS handshake worker;
+  current combined measurements are in [Pushover delivery](pushover.md).
 
 `llvm-size` on the linked C6 release with the USB writer reports text 1,906,596
 bytes, data 23,836 bytes and BSS 245,392 bytes. RAM execution sections (`.trap`,
@@ -276,8 +277,8 @@ bytes. BSS includes the 102,400-byte heap and a 66,440-byte
 Matter allocation containing its 20,000-byte bump arena. TCP buffers, UDP buffers,
 BLE/mDNS state, IP resources and task futures are also present. The release build
 is below the static RAM limit; runtime radio/crypto heap peaks and stack use remain
-unmeasured. The future TLS worker will add live session allocations beyond the
-engine/readiness path measured here.
+unmeasured. The now-linked TLS worker adds live session allocations beyond the
+engine/readiness path measured in this earlier checkpoint.
 
 Commands from the repository root:
 
@@ -299,11 +300,11 @@ sh ../../scripts/with-esp-toolchain.sh llvm-size target/riscv32imac-unknown-none
 
 The host provisioning sender is now implemented and tested through synthetic
 serial terminals on macOS and Linux; it has not opened real USB hardware.
-Its host-only dependency adds no embedded code, and the release sizes above remain
-unchanged. See [provisioning](matter-provisioning.md) for the explicit command.
+Its host-only dependency adds no embedded code. The release sizes above describe
+the earlier Matter/USB checkpoint, before settings and Pushover were linked. See [provisioning](matter-provisioning.md) for the explicit command.
 The trusted UTC acquisition and control/TLS publication are implemented; the
-configured peer and ACL must still be proven during final pairing. Remaining
-integration includes the bounded Pushover worker using this TCP interface.
+configured peer and ACL must still be proven during final pairing. The bounded
+[Pushover worker](pushover.md) now uses this TCP interface.
 The [settings/schedule UI](settings.md) is now linked through the same stack. RF pairing/reconnect, real group/subscription
 behavior, combined TLS handshakes, GPIO/flash/watchdog timing, peak heap and stack
 high-water, and Apple Home acceptance remain final-board tests. The static RAM

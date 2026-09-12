@@ -14,8 +14,10 @@ use esp_alloc as _;
 use core::{cell::Cell, ffi::CStr};
 
 use critical_section::Mutex;
+#[cfg(all(test, not(target_os = "none")))]
+use crystal_shim_core::utc::UtcObservation;
 use crystal_shim_core::{
-    utc::{self, UtcAnchor, UtcObservation},
+    utc::{self, UtcAnchor},
     Millis,
 };
 use edge_nal::TcpConnect;
@@ -26,7 +28,8 @@ use edge_nal_tls::{
             hook::wall_clock::{hook_wall_clock, MbedtlsWallClock},
             tm,
         },
-        AuthMode, Certificate, ClientSessionConfig, SessionError, TlsReference, TlsVersion,
+        AuthMode, Certificate, CertificateRestriction, ClientSessionConfig, SessionError,
+        TlsReference, TlsVersion,
     },
     TlsConnector,
 };
@@ -190,7 +193,13 @@ use edge_nal_tls::mbedtls::sys::hook::backend::embassy::timer::EmbassyTimer;
 #[cfg(all(not(test), not(target_os = "none")))]
 use edge_nal_tls::mbedtls::sys::hook::backend::std::timer::StdTimer;
 
-static TRUSTED_UTC: Mutex<Cell<Option<UtcAnchor>>> = Mutex::new(Cell::new(None));
+#[path = "tls/operation.rs"]
+mod operation;
+#[cfg(all(test, not(target_os = "none")))]
+use operation::trusted_utc;
+pub use operation::{
+    has_trusted_bounds, has_trusted_utc, publish_clock, OperationLease, OPERATION_MS,
+};
 static CERTIFICATE_CLOCK: CertificateClock = CertificateClock;
 #[cfg(target_os = "none")]
 static TLS_TIMER: EmbassyTimer = EmbassyTimer;
@@ -201,7 +210,7 @@ static TLS_TIMER: tests::TestTimer = tests::TestTimer;
 
 impl MbedtlsWallClock for CertificateClock {
     fn instant(&self) -> Option<tm> {
-        trusted_utc().map(UtcDateTime::as_tm)
+        operation::certificate_clock()
     }
 }
 
@@ -224,15 +233,9 @@ pub unsafe fn install_certificate_clock() {
     }
 }
 
-/// Installs the control-accepted observation with its original monotonic capture.
-/// Re-delivery cannot renew age. Only the control owner may publish production UTC.
-pub fn set_trusted_observation(sample: UtcObservation) {
-    critical_section::with(|cs| {
-        let anchor = u64::try_from(TLS_TIMER.now())
-            .ok()
-            .and_then(|now| UtcAnchor::new(sample, Millis(now)));
-        TRUSTED_UTC.borrow(cs).set(anchor);
-    });
+#[cfg(all(test, not(target_os = "none")))]
+fn set_trusted_observation(sample: UtcObservation) {
+    operation::test_observation(Some(sample));
 }
 
 #[cfg(all(test, not(target_os = "none")))]
@@ -255,31 +258,9 @@ fn set_trusted_utc(date: UtcDateTime) {
     }
 }
 
-/// Clears UTC after the clock loses trust. New handshakes then fail closed.
-pub fn clear_trusted_utc() {
-    critical_section::with(|cs| TRUSTED_UTC.borrow(cs).set(None));
-}
-
-/// Reports whether UTC is available and still within its monotonic age limit.
-pub fn has_trusted_utc() -> bool {
-    trusted_utc().is_some()
-}
-
-fn trusted_utc() -> Option<UtcDateTime> {
-    critical_section::with(|cs| {
-        let cell = TRUSTED_UTC.borrow(cs);
-        let mut anchor = cell.get()?;
-        // Read time and update the anchor under the same lock: a concurrent
-        // refresh/read must not appear to move the monotonic clock backwards.
-        let utc = u64::try_from(TLS_TIMER.now())
-            .ok()
-            .and_then(|now| anchor.at(Millis(now)))
-            .and_then(UtcDateTime::from_unix);
-        // Expiry, rollback, saturation, and calendar overflow stay invalid until
-        // a new trusted observation arrives, even if the timer later recovers.
-        cell.set(utc.map(|_| anchor));
-        utc
-    })
+#[cfg(all(test, not(target_os = "none")))]
+fn clear_trusted_utc() {
+    operation::test_observation(None);
 }
 
 /// Error constructing the fixed Pushover connector policy.
@@ -287,6 +268,10 @@ fn trusted_utc() -> Option<UtcDateTime> {
 pub enum ProviderError {
     /// Certificate verification cannot run without trusted UTC.
     ClockUnavailable,
+    /// Another socket still owns the process-wide certificate clock scope.
+    OperationBusy,
+    /// The original operation expired or its accepted authority was revoked.
+    OperationRevoked,
     /// The embedded trust anchor could not be parsed.
     TrustAnchor(SessionError),
 }
@@ -294,26 +279,28 @@ pub enum ProviderError {
 /// Wraps an edge-nal TCP connector with the fixed, verified Pushover policy.
 ///
 /// The returned connector requires a chain to DigiCert Global Root G2, verifies
-/// api.pushover.net, requires certificate dates to contain the hooked UTC value,
-/// and requires TLS 1.2.
+/// api.pushover.net, checks every selected certificate over the lease's full UTC
+/// horizon and requires TLS 1.2. The caller must complete the handshake explicitly
+/// before forming/writing credentials and check the lease around every await.
 pub fn pushover_connector<'a, T>(
     tls: TlsReference<'a>,
     tcp: T,
+    lease: &'a OperationLease,
 ) -> Result<TlsConnector<'a, T>, ProviderError>
 where
     T: TcpConnect,
 {
-    let config = pushover_config()?;
+    let config = pushover_config(lease)?;
     Ok(TlsConnector::new(tls, tcp, &config))
 }
 
-fn pushover_config() -> Result<ClientSessionConfig<'static>, ProviderError> {
-    require_trusted_utc()?;
+fn pushover_config(lease: &OperationLease) -> Result<ClientSessionConfig<'_>, ProviderError> {
+    lease.check()?;
 
     let ca_chain = Certificate::new_no_copy(DIGICERT_GLOBAL_ROOT_G2_DER)
         .map_err(ProviderError::TrustAnchor)?;
     Ok(ClientSessionConfig {
-        certificate_restriction: None,
+        certificate_restriction: Some(CertificateRestriction::new(lease)),
         ca_chain: Some(ca_chain),
         creds: None,
         server_name: Some(PUSHOVER_HOST),
@@ -323,10 +310,14 @@ fn pushover_config() -> Result<ClientSessionConfig<'static>, ProviderError> {
     })
 }
 
-fn require_trusted_utc() -> Result<(), ProviderError> {
-    has_trusted_utc()
+/// Checks interval clock availability and the fixed root without opening a socket
+/// or competing with an active operation for its wall-clock scope.
+pub fn pushover_ready() -> Result<(), ProviderError> {
+    has_trusted_bounds()
         .then_some(())
-        .ok_or(ProviderError::ClockUnavailable)
+        .ok_or(ProviderError::ClockUnavailable)?;
+    Certificate::new_no_copy(DIGICERT_GLOBAL_ROOT_G2_DER).map_err(ProviderError::TrustAnchor)?;
+    Ok(())
 }
 
 const fn is_leap_year(year: u16) -> bool {
@@ -386,3 +377,20 @@ fn panic(_info: &core::panic::PanicInfo<'_>) -> ! {
 #[cfg(all(test, not(target_os = "none")))]
 #[path = "../../tls-tests/src/tests.rs"]
 mod tests;
+
+// Compile the actual thread-mode worker in this existing host harness. Only its
+// hardware snapshot clock is substituted, under the same global clock-test lock.
+#[cfg(all(test, not(target_os = "none")))]
+extern crate self as crystal_shim_tls;
+
+#[cfg(all(test, not(target_os = "none")))]
+mod snapshot {
+    pub fn now() -> crystal_shim_core::Millis {
+        use super::MbedtlsTimer;
+        crystal_shim_core::Millis(super::tests::TestTimer.now().try_into().unwrap())
+    }
+}
+
+#[cfg(all(test, not(target_os = "none")))]
+#[path = "pushover.rs"]
+mod app_pushover;

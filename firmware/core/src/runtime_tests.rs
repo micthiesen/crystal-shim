@@ -1595,6 +1595,13 @@ fn utc_sample(seconds: u64, captured_at: u64) -> crate::utc::UtcObservation {
     crate::utc::UtcObservation::from_seconds(UtcSeconds(seconds), Millis(captured_at)).unwrap()
 }
 
+fn network_sample(observation: UtcObservation) -> crate::utc::NetworkObservation {
+    crate::utc::NetworkObservation {
+        observation,
+        source_epoch: 1,
+    }
+}
+
 fn bounded_sample(lo: u64, hi: u64, captured_at: u64) -> crate::utc::UtcObservation {
     UtcObservation::bounded(
         UtcBounds::new(lo, hi).unwrap(),
@@ -1612,7 +1619,7 @@ fn automatic_interval_waits_for_certain_start_and_stops_at_possible_end() {
         &mut runtime,
         0,
         crate::utc::ClockUpdate {
-            sample: Some(sample),
+            sample: Some(network_sample(sample)),
             ..Default::default()
         },
     );
@@ -1649,7 +1656,7 @@ fn automatic_interval_waits_for_certain_start_and_stops_at_possible_end() {
         &mut runtime,
         3_020,
         crate::utc::ClockUpdate {
-            sample: Some(bounded_sample(1_001_000, 1_001_010, 3_020)),
+            sample: Some(network_sample(bounded_sample(1_001_000, 1_001_010, 3_020))),
             ..Default::default()
         },
     );
@@ -1668,7 +1675,7 @@ fn late_eligibility_ack_cannot_reopen_an_interval_that_may_have_ended() {
         &mut runtime,
         0,
         crate::utc::ClockUpdate {
-            sample: Some(bounded_sample(1_000_000, 1_002_980, 0)),
+            sample: Some(network_sample(bounded_sample(1_000_000, 1_002_980, 0))),
             ..Default::default()
         },
     );
@@ -1676,7 +1683,7 @@ fn late_eligibility_ack_cannot_reopen_an_interval_that_may_have_ended() {
     runtime.step(
         Observation {
             clock_update: crate::utc::ClockUpdate {
-                sample: Some(bounded_sample(1_000_000, 1_001_000, 20)),
+                sample: Some(network_sample(bounded_sample(1_000_000, 1_001_000, 20))),
                 ..Default::default()
             },
             ..observation(20)
@@ -1729,7 +1736,7 @@ fn uncertain_clock_corrections_and_revocation_do_not_extend_or_cancel_manual_low
         (
             140,
             crate::utc::ClockUpdate {
-                sample: Some(bounded_sample(999_000, 1_009_000, 140)),
+                sample: Some(network_sample(bounded_sample(999_000, 1_009_000, 140))),
                 ..Default::default()
             },
         ),
@@ -1786,7 +1793,7 @@ fn clock_loss_bypasses_immutable_storage_and_does_not_revoke_operator_time() {
         &mut runtime,
         0,
         crate::utc::ClockUpdate {
-            sample: Some(utc_sample(1_000, 0)),
+            sample: Some(network_sample(utc_sample(1_000, 0))),
             ..Default::default()
         },
     );
@@ -1845,7 +1852,7 @@ fn network_revocation_and_fresh_correction_observe_old_expiry_before_late_ack() 
         &mut runtime,
         0,
         crate::utc::ClockUpdate {
-            sample: Some(utc_sample(1_000, 0)),
+            sample: Some(network_sample(utc_sample(1_000, 0))),
             ..Default::default()
         },
     );
@@ -1854,7 +1861,7 @@ fn network_revocation_and_fresh_correction_observe_old_expiry_before_late_ack() 
         Observation {
             clock_update: crate::utc::ClockUpdate {
                 revoke_network: true,
-                sample: Some(utc_sample(1_000, 3_000)),
+                sample: Some(network_sample(utc_sample(1_000, 3_000))),
             },
             ..observation(3_000)
         },
@@ -1907,7 +1914,7 @@ fn same_tick_operator_wins_and_network_loss_preserves_waiting_and_active_low_ove
         runtime.step(
             Observation {
                 clock_update: crate::utc::ClockUpdate {
-                    sample: Some(sample),
+                    sample: Some(network_sample(sample)),
                     ..Default::default()
                 },
                 ..input(120)
@@ -1942,7 +1949,7 @@ fn same_tick_operator_wins_and_network_loss_preserves_waiting_and_active_low_ove
         let step = runtime.step(
             Observation {
                 clock_update: crate::utc::ClockUpdate {
-                    sample: Some(utc_sample(1_000, 160)),
+                    sample: Some(network_sample(utc_sample(1_000, 160))),
                     ..Default::default()
                 },
                 ..input(160)
@@ -2107,7 +2114,7 @@ fn rejected_network_candidate_withdraws_network_but_preserves_operator_anchor() 
                 &mut runtime,
                 UTC_MAX_AGE_MS,
                 crate::utc::ClockUpdate {
-                    sample: Some(fresh),
+                    sample: Some(network_sample(fresh)),
                     ..Default::default()
                 },
             );
@@ -2122,7 +2129,7 @@ fn rejected_network_candidate_withdraws_network_but_preserves_operator_anchor() 
             &mut runtime,
             UTC_MAX_AGE_MS + 20,
             crate::utc::ClockUpdate {
-                sample: Some(utc_sample(1_000, 0)),
+                sample: Some(network_sample(utc_sample(1_000, 0))),
                 ..Default::default()
             },
         );
@@ -2220,3 +2227,6 @@ fn clear_supersedes_an_older_queued_utc_but_a_later_operator_observation_can_app
     );
     assert_eq!(runtime.clock_observation(), Some(utc_sample(1_001, 40)));
 }
+
+#[path = "clock_authority_tests.rs"]
+mod clock_authority_tests;

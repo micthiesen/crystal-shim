@@ -656,6 +656,7 @@ dependencies = [
  "crystal-shim-core",
  "crystal-shim-drivers",
  "crystal-shim-matter",
+ "crystal-shim-pushover",
  "crystal-shim-settings",
  "edge-nal",
  "edge-nal-tls",
@@ -707,6 +708,19 @@ dependencies = [
  "p256",
  "rs-matter",
  "sha2",
+]
+
+[[package]]
+name = "crystal-shim-pushover"
+version = "0.1.0"
+dependencies = [
+ "crystal-shim-core",
+ "edge-http",
+ "embassy-futures",
+ "embedded-io-async 0.7.0",
+ "serde",
+ "serde_json",
+ "zeroize",
 ]
 
 [[package]]

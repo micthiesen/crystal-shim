@@ -204,6 +204,10 @@ pub async fn run(
             );
         }
         let _ = with_timeout(Duration::from_millis(100), usb.write_all(line.as_bytes())).await;
+        line.clear();
+        if writeln!(line, "PUSHOVER {:?}", crate::pushover::diagnostics()).is_ok() {
+            let _ = with_timeout(Duration::from_millis(100), usb.write_all(line.as_bytes())).await;
+        }
     }
 }
 

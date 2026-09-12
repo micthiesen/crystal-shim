@@ -112,7 +112,7 @@ result as a fresh observation.
 | `firmware/core/src/runtime.rs` schedule path | Already calls the scheduler from control, persists `PersistBeforeRun` before exposing a window and preserves the supervisor across writes/configuration. No separate app schedule task is needed. |
 | `firmware/matter/` | Implemented SDK-generated async On/Off handler, applied acknowledgements, observed reporting and shared KV transaction helper, with host tests. |
 | `firmware/app/src/matter.rs` | Implemented `LocalControl`, private Matter node/descriptor tree, generated bounded On/Off and reporting handlers, provisioning admission, entropy/allocator integration and the `Application` network task. Actual Apple Home pairing/subscriptions remain final-board acceptance. |
-| `firmware/app/src/matter.rs::Application` / `radio.rs` | Implemented fallible single-owner BLE/Wi-Fi/TCP assembly and `UserTask` with bounded CASE UTC acquisition and TLS readiness. The settings HTTP child is linked; the Pushover child remains work. Interface loss cannot block local service. |
+| `firmware/app/src/matter.rs::Application` / `radio.rs` | Implemented fallible single-owner BLE/Wi-Fi/TCP assembly and `UserTask` with bounded CASE UTC acquisition and TLS readiness. The settings HTTP and bounded Pushover children are linked. Interface loss cannot block local service. |
 | `firmware/app/src/settings.rs`, `firmware/settings/` | Shared-stack HTTP adapter, fixed-capacity parser/renderer, authenticated configuration reads/writes and correlated storage acknowledgments. |
 | Planned `firmware/app/src/pushover.rs` | Persistent transition queue, DNS/TCP/TLS transaction, retry policy, and acknowledgement removal. It cannot call or await control APIs. |
 | `firmware/app/src/service.rs` USB loop | Implemented bounded status/configuration/command/UTC protocol using core ingress. UTC is captured before queuing; a correlated clock-clear slot bypasses CONFIG storage. Physical settings-token read/rotation is implemented; factory reset/recovery remains work. |
@@ -285,17 +285,18 @@ does not provide TCP for TLS. Build one project-owned Embassy network stack with
 fallible radio setup and a TCP-capable `NetStack`, using the public preexisting-
 interface adapters. A Matter startup or runtime error must return without stopping
 the independent USB/storage service or local control. Network-only services may
-restart with the interface; durable queue state must survive that cancellation.
+restart with the interface; the RAM notification queue survives task cancellation
+for its original event lifetime, but not a reboot.
 
 ## Shared Wi-Fi services
 
 The fifth `run_coex` argument is implemented in `matter.rs` as an
 `rs_matter_embassy::stack::UserTask`. Its `run` method receives the generic network
 stack plus diagnostics/change notifications and can start before IP is usable.
-It runs TLS readiness, bounded CASE time acquisition and the
-[local settings service](settings.md). The future Pushover worker must handle
-readiness and cancellation. None owns a second
-radio stack or hard-coded Wi-Fi credentials.
+It runs TLS readiness, bounded CASE time acquisition, the
+[local settings service](settings.md) and [Pushover delivery](pushover.md). Each
+network child handles readiness and cancellation through the existing stack.
+No child owns a second radio stack or hard-coded Wi-Fi credentials.
 
 Use `edge-http 0.8.0` for the local settings server. It matches Rust 1.88,
 `edge-nal 0.7`, `embedded-io-async 0.7`, and `embassy-time 0.5` in Stillair's lock.
@@ -343,24 +344,29 @@ into the build, using `scripts/with-esp-toolchain.sh`; it does not use ESP-IDF.
 The reqwless embedded-tls path lacks server-certificate verification and is not
 selected. Do not weaken verification to accommodate a dependency or CA change.
 
-Keep one TLS session in the normal-priority task. Configured records alone need
-10,240 bytes of heap, with additional dynamic session allocations. Bound DNS,
-connect, handshake, writes, reads and shutdown; drop the complete session after
-a timeout because the async handshake cannot safely resume after cancellation.
-The actual Matter-owned network integration, peak heap and control-cadence tests
-remain work. The provider alone does not implement notification delivery.
+The normal-priority [Pushover worker](pushover.md) now uses the shared TCP/DNS
+owners and one TLS session. A control-accepted [operation lease](tls-restriction.md)
+covers DNS, connect, explicit handshake and the complete response with one original
+20-second horizon. The whole socket is dropped on return or cancellation. No
+credential-bearing HTTP bytes are built before the handshake succeeds.
 
-`pushover.rs` will own a four-entry persistent FIFO. Each
-confirmed `WaterTransition` is offered with `try_send`; the producer never awaits the
-network. The storage worker assigns a monotonic event ID and persists the event before
-delivery. On a full FIFO it preserves the oldest unsent event and records an overflow
-counter plus the latest observed classification for diagnostics. Use normal priority,
-include the event ID in the message, and remove an event only after HTTP success and a
-Pushover JSON response with `status: 1`. Retry DNS/connect/TLS/HTTP failures after 5 s,
-30 s, then 5 min, capped at one attempt per 5 min while the record remains queued.
-An ambiguous timeout can duplicate a message, so the event ID makes that visible;
-there is no Pushover idempotency key and the firmware must not claim exactly-once
-delivery. An acknowledged event is removed durably and is not resent after reboot.
+Eight RAM slots retain confirmed events for 15 minutes, including the active
+attempt. Overflow preserves the active event and drops the oldest pending event.
+Transient failures get at most three attempts, separated by 5 seconds then 30
+seconds. HTTP 200 and complete integer `status: 1` acknowledge API acceptance;
+4xx or an API rejection suspends the credential generation. Ambiguous failures
+may duplicate a notification and are counted. Accepted configuration replacement
+immediately cancels old work before flash. A failed save keeps delivery paused
+until a later committed revision; task cancellation preserves other pending work
+within its original lifetime.
+
+This replaces the earlier proposed persistent four-entry FIFO and indefinite
+five-minute retry policy. Notification flash writes would require the project's
+relay-off storage gate, coupling advisory delivery to pump operation. The bounded
+RAM policy avoids that coupling and limits stale messages after outages. Reboot
+loses the queue and establishes a silent baseline. No exactly-once remote or
+reboot-persistent delivery is claimed. Peak heap, runtime stack, control cadence,
+real API acceptance and phone delivery still require the final unit.
 
 ## USB setup, commissioning, and recovery
 
@@ -427,7 +433,7 @@ bump buffer; the Matter task is documented around 35 to 50 KiB of stack.
 
 The controller's 8 MiB ESP32-C6-WROOM-1-N8 gives comfortable flash margin relative to
 that image, but it does not add internal SRAM. Crystal must reserve fixed buffers for
-FDC1004 acquisition, two HTTP connections, configuration parsing, four notification
+FDC1004 acquisition, two HTTP connections, configuration parsing, eight notification
 events, TLS, and the priority task stacks. Before freezing dependencies, produce a
 release map and `espflash save-image` measurement and pass all of these gates:
 

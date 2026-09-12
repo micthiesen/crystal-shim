@@ -17,6 +17,12 @@ required-features = ["compile-fail-tests"]
 
 [dev-dependencies]
 rand_core = { version = "0.10.1", default-features = false }
+crystal-shim-matter = { path = "../matter" }
+crystal-shim-pushover = { path = "../pushover" }
+embassy-futures = "=0.1.2"
+embassy-time = { version = "=0.5.1", default-features = false, features = ["mock-driver", "generic-queue-8"] }
+rs-matter-embassy = { git = "https://github.com/ivmarkov/rs-matter-embassy", rev = "f31233a6fd4530ff25ad3bcbd9abf8fe854320aa", default-features = false }
+static_cell = "=2.1.1"
 
 [patch.crates-io]
 mbedtls-rs = { path = "../../vendor/mbedtls-rs" }

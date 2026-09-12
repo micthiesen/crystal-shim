@@ -85,26 +85,24 @@ The public API is deliberately narrow:
 - `install_certificate_clock` installs static MbedTLS wall-clock and monotonic
   hooks. It is `unsafe`; call it exactly once during single-threaded startup,
   before any MbedTLS validation or monotonic-timer use.
-- `set_trusted_observation` accepts the original monotonic capture that control
-  accepted for scheduling. The [trusted UTC service](trusted-utc.md) acquires CASE
-  peer time or explicit USB operator UTC. Control publishes changes only;
-  repeated delivery of an old capture cannot renew its age. SDK RTC and
-  unauthenticated SNTP are never certificate-validation trust.
-- UTC advances by elapsed whole seconds, including Gregorian calendar rollover.
-  `TRUSTED_UTC_MAX_AGE_MS` is 3,600,000 ms: the anchor expires at exactly one hour
-  without a new observation. Reads and connector construction never renew it.
-  This bounds reliance on an unattended anchor while allowing transient network
-  outages. The configured authenticated authority remains responsible for accuracy.
-- `has_trusted_utc` and the MbedTLS wall-clock hook apply the same age check.
-  Observed monotonic rollback, reset, signed timer saturation, or advancing past
-  year 9999 also revoke the anchor until a new trusted observation arrives.
-- `clear_trusted_utc` removes time trust. New connector construction and
-  MbedTLS validation then fail closed.
-- `pushover_connector(tls.reference(), net_stack)` returns
-  `edge_nal_tls::TlsConnector` only when UTC is trusted. Its private
-  `ClientSessionConfig` sets the CA certificate, server name
-  `api.pushover.net`, `AuthMode::Required`, and a TLS 1.2 minimum. Callers
-  cannot substitute another host, root, or authentication mode.
+- `publish_clock` receives the control-accepted original observation, generation
+  and current source epoch. CASE/USB provide the current authorities. Repeated
+  publication cannot renew age or revive a revoked anchor; SDK RTC and SNTP are
+  never certificate-validation trust.
+- `TRUSTED_UTC_MAX_AGE_MS` is 3,600,000 ms. A bounded anchor expires when its upper
+  elapsed bound reaches one hour. Original capture, observed rollback, timer
+  saturation and calendar overflow remain fail-closed.
+- `has_trusted_utc` is a scalar compatibility view. `has_trusted_bounds` retains
+  uncertain observations for [operation leases](tls-restriction.md). Refusing a
+  scalar read does not erase the bounded anchor.
+- `OperationLease::begin` fixes one original 20-second horizon and accepted
+  authority generation. Clock loss/replacement and source epoch changes revoke
+  an active operation. The scoped certificate clock and rejection-only callback
+  require every selected certificate to contain that full horizon.
+- `pushover_connector(tls.reference(), net_stack, &lease)` returns a connector
+  borrowing the lease. Its private configuration sets the fixed CA, server name
+  `api.pushover.net`, `AuthMode::Required`, a TLS 1.2 minimum and the mandatory
+  restriction. Callers cannot substitute another host, root or verification mode.
 
 MbedTLS receives the same `api.pushover.net` value through
 `mbedtls_ssl_set_hostname`; Mbed TLS uses it for SNI and X.509 DNS-name
@@ -128,27 +126,25 @@ sequence is:
 3. Construct the single process-wide `mbedtls_rs::Tls` with
    `Tls::new(tls_rng)`. Keep it alive for every notification attempt.
 4. Call `unsafe { install_certificate_clock() }` once after the Embassy timer
-   driver is active. Publish each new trusted UTC observation and clear UTC when
-   trust is lost. Acquire a new observation before the one-hour expiry; do not
-   refresh the provider from a cached clock value.
-5. Inside `rs_matter_embassy::stack::UserTask::run`, resolve
-   `api.pushover.net` using the supplied `NetStack`, then create the fixed
-   connector from the same stack. Connect to port 443 and issue
-   `POST /1/messages.json`.
-6. Use sequential `embedded_io_async::Write` then `Read`. Do not call
-   `TcpSplit::split`; edge-nal-tls 0.2.0 implements it with a panic.
-   Its `Readable` implementation returns immediately, so it is not a wait
-   primitive.
-7. Apply an Embassy deadline around DNS, TCP connect, the first write
-   (which drives the TLS handshake), all remaining writes, reads, and shutdown.
-   mbedtls-rs marks an async handshake as not cancellation-safe. On timeout,
-   drop the entire socket/session and create a fresh one for the retry; never
-   resume or reuse a cancelled session.
+   driver is active. Publish the original control-accepted authority and current
+   source epoch atomically; never refresh from a cached clock value.
+5. Inside `UserTask::run`, the [worker](pushover.md) acquires one operation lease,
+   claims one queued event and resolves `api.pushover.net` through the shared DNS
+   owner. It constructs the fixed connector and connects to port 443.
+6. Complete `socket.session_mut().connect()` explicitly before constructing any
+   credential-bearing form. Then send one POST and parse its bounded response.
+   Do not use `TcpSplit::split` (the pinned adapter panics) or its immediately-ready
+   `Readable` as a wait primitive.
+7. Check the lease, queue token, network and deadline around every I/O poll, with
+   a periodic pending-work monitor. DNS/TCP have five-second ceilings, handshake
+   ten seconds and each HTTP I/O two seconds, all within the original 20 seconds.
+   Timeout/cancellation drops the entire socket/session; never resume or reuse it.
 
-The TLS future stays in thread mode. It never enters the Priority2 sensor task
-or Priority3 control task. Heap failure, DNS failure, a certificate error, or a
-timeout leaves the persistent notification record queued and has no control
-effect.
+The TLS future stays in thread mode, outside Priority2 sensor and Priority3 control.
+Failures feed the bounded RAM retry policy; no notification flash writes or watchdog
+feeds occur. The queue survives network-task cancellation within its original
+15-minute event lifetime, but not reset. Unknown acceptance can produce duplicates.
+
 
 ## Evidence
 

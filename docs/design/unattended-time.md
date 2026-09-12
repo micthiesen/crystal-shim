@@ -163,8 +163,7 @@ The published mbedtls-rs 0.2.0 wall-clock hook returns one calendar instant; its
 unpatched ClientSessionConfig/async Session API exposes neither a verification
 callback nor the peer chain. Choosing a midpoint or either endpoint cannot enforce
 both boundaries. The project now carries a narrow
-[borrowed restriction callback](tls-restriction.md); runtime interval policy is
-still required. Global
+[borrowed restriction callback and operation lease](tls-restriction.md). Global
 clock alternation or relying on undocumented certificate-check order is not an
 acceptable substitute. A callback may only add rejection flags, must cover all
 relevant certificates in the verified chain and cannot clear baseline errors.
@@ -178,8 +177,9 @@ both interval edges that an otherwise valid scalar clock misses. A small safe
 Rust wrapper extension can expose copied validity fields and permit rejection
 without allowing baseline flags to be cleared. That wrapper extension is now
 implemented and exercised with local TLS 1.2/1.3 handshakes. Both app and host
-harness resolve the same source-pinned vendor copy; the app's current policy is
-`None`, so no interval is promoted to TLS trust. The original C probe remains in
+harness resolve the same source-pinned vendor copy. The app now requires a
+borrowed operation lease, retaining the accepted authority and complete 20-second
+certificate horizon. This does not promote an unaccepted signed-time sample. The original C probe remains in
 `/tmp/crystal-shim-tls-interval-seam-probe`; current provenance and checks are
 [documented separately](tls-restriction.md).
 

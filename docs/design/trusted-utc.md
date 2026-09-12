@@ -180,12 +180,14 @@ network latency or oscillator drift; the existing 48 KiB runtime-margin gate rem
 The authority is responsible for UTC accuracy. The two-second read bound does not
 prove subsecond accuracy or compensate for asymmetric packet delay.
 
-New TLS handshakes fail without fresh UTC. The future Pushover worker must also
-cancel/drop an in-progress TLS operation on trust loss; this provider cannot revoke
-an already established application session. The [local HTTP/UI](settings.md) is
-now linked; notification delivery and actual Home pairing/time-server/ACL
-acceptance remain separate work. No live radio,
-network endpoint, credentials, hardware or notification POST was used for these checks.
+New TLS handshakes fail without fresh UTC. The [operation lease](tls-restriction.md)
+and [Pushover worker](pushover.md) now retain the accepted authority generation
+and source epoch, check revocation throughout the original deadline, and drop the
+whole socket on cancellation. Normal read consumption preserves the source epoch;
+explicit withdrawal, policy changes and network exhaustion invalidate it immediately.
+The local HTTP/UI and notification worker are linked. Actual Home pairing,
+time-server/ACL acceptance and live API delivery remain final-unit work. No live
+radio, credentials, hardware or notification POST was used for these checks.
 
 ## Primary implementation references
 

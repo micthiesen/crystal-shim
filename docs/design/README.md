@@ -26,7 +26,10 @@ release or commissioning evidence. Their explicit open items remain work to fini
 - [First configuration](first-configuration.md): private initial record creation,
   offline validation and one-shot USB delivery before Matter commissioning.
 - [Local settings](settings.md): actual HTTP service, browser UI and durable command admission.
-- [TLS restriction](tls-restriction.md): borrowed rejection-only certificate callback and vendor provenance.
+- [TLS restriction](tls-restriction.md): borrowed rejection-only certificate callback,
+  interval operation lease and vendor provenance.
+- [Pushover delivery](pushover.md): fresh water events, bounded RAM queue, verified
+  HTTP worker, cancellation and failure diagnostics.
 - [Controller grid](controller-grid.md): initial coordinate conversion and verified native-save connectivity.
 - [Timezone](timezone.md): explicit POSIX rules, DST folds/gaps and calendar limits.
 - [Flash storage](flash-storage.md): output-off ownership, bounded flash chunks and boot recovery.

@@ -9,31 +9,29 @@ Last updated: 2026-09-12
   commissioning support. Freshwater, 5 mm glass, the 50 mm physical span, the
   owner's separate snug clip and 203.2 mm harness limit remain fixed. No prototype
   or planned respin is introduced; no fabrication or operating gate has passed.
-- [Matter](design/matter-integration.md), private USB provisioning, sensor/control
-  bindings and gated storage are implemented. The [settings service](design/settings.md)
-  now edits schedules, thresholds, duration, all four response/freshness timings
-  and credentials. It preserves measured calibration and durable maintenance.
-  The [first-configuration tool](design/first-configuration.md) creates a private
-  revision-1 record, validates it offline and sends one USB CONFIG. Physical
-  calibration workflow remains work.
+- [Matter](design/matter-integration.md), private USB identity/first configuration,
+  sensor/control bindings, gated storage and the [settings service](design/settings.md)
+  are implemented. Settings cover schedules, thresholds, duration, response and
+  freshness timings and credentials. Physical calibration workflow remains work.
+- [Pushover delivery](design/pushover.md) now captures fresh water edges after
+  GPIO output and uses the shared ESP network. Eight RAM events expire after 15
+  minutes, with at most three attempts. Each attempt uses a borrowed
+  [TLS interval lease](design/tls-restriction.md) with one original 20-second
+  certificate horizon and immediate authority/configuration cancellation.
 - [UTC intervals](design/utc-intervals.md) and conservative scheduling are reviewed.
-  CASE/USB retain point observations. The offline signed-time verifier still needs
-  source agreement, drift policy and unattended acquisition integration.
-  The [TLS restriction](design/tls-restriction.md) passes real Linux handshakes;
-  the app still sets the extra policy to None. Interval operation leases and the
-  live Pushover transition worker remain work.
+  CASE/USB retain their point-clock contract. The offline signed-time verifier
+  still needs provider agreement, drift policy and unattended app acquisition.
+  Interval TLS support does not establish a new time authority.
 - The [controller](../pcb/controller/design/README.md) has 95 electrical parts,
-  99 footprints and checked 70 x 110 mm placement. The new USB schematic preserves
-  all source/PCB/native identities through actual KiCad Save. USB and module page
-  defects are fixed, and the stricter before-routing schematic gate passes in the
-  saved copy. Native augmentation, enclosure fit and routing remain work.
+  99 footprints and checked 70 x 110 mm placement. The complete native-save
+  connectivity proof and strict schematic cleanup gate pass in the saved copy.
+  Native augmentation, enclosure/mated fit and routing remain work. No production
+  board or handoff lock is adopted.
 - [Mains capture](../pcb/mains/design/README.md) has 22 parts plus a conditional
   MOV region in a 23-part, 135 x 75 mm [placement proposal](design/mains-placement.md).
-  MOV body datum, mated connector/partition/enclosure access, complete schematic
-  and native handoff remain work. Follow-up references establish larger Sabre
-  housing depths and a qualified MOV X datum; occupied/mated poses remain unresolved.
-  The [BOM](../bom/bom.csv) is not ready for ordering; all 34 commissioning rows
-  remain Not run. No production board or handoff lock is adopted.
+  MOV occupied pose, mated connector/partition/enclosure access, complete schematic
+  and native handoff remain work. The [BOM](../bom/bom.csv) is not ready to order;
+  all 34 commissioning rows remain Not run.
 
 ## Owner input pending
 
@@ -44,74 +42,71 @@ pending. The 38 x 86 mm proposal puts a 10 mm dry band below the rim and permits
 
 ## Verification and recent learning
 
-The integrated project gate passes with 141 core, nine driver, one CLI, 72
-Matter/provisioning, 18 signed-time and 31 settings tests; three partition tests;
-26 Node UI and three settings feature-guard tests. Linux TLS passes 13 provider
-tests, eight accepted and 50 rejected full handshakes, two pre-I/O resumption
-rejections, one canceled Pending handshake, E0515 borrow regression and four
-provenance/registry regressions. PCB checks pass 116 Bun tests / 23,670 assertions
-and 36 shared handoff tests. Evidence: `/tmp/crystal-shim-first-config-full-check.log`.
+The [review log](design/review-log.md) records scope and corrections. Clock
+withdrawal now revokes TLS before control consumes the mailbox update; either
+checked mailbox counter's exhaustion also closes network authority. Normal reads
+and transport failures retain their source epoch. Independent core and app review
+found no additional actionable authority/lifetime issue after the fixes.
 
-First-configuration review found no remaining material issue after fixing
-attribution of malformed matching replies. A scratch copy of the former parser
-fails the new regression. The CLI/owned-PTY tests prove exact loaded bytes, private
-artifacts, two-write durability and uncertain outcomes. The final test-only
-CLOEXEC fix makes the disconnect case exercise EOF instead of inherited-descriptor
-timeout; the affected macOS and OrbStack Linux checks pass. Both platforms pass
-19 binary, five configuration CLI/PTY and five existing identity CLI tests, plus
-all-target Clippy. Evidence:
-`/tmp/crystal-shim-first-config-implementation`.
+Accepted settings replacement now cancels old delivery work before durability,
+while keeping the old committed configuration authoritative for storage recovery.
+A failed save keeps delivery paused until a later revision commits. API rejection
+suspension survives unrelated settings edits. Independent re-review is clean;
+actual Runtime/Queue tests cover delay, failure, recovery and stale completion.
 
-Independent timing settings, USB/module topology and strict cleanup-gate delta
-reviews found no remaining actionable findings. Previous Off-ordering, UTC interval
-and TLS reviews remain recorded in
-[the review log](design/review-log.md). The timing page passed real-browser
-save/refetch and freshness-floor checks against synthetic data. These are scoped
-reviews and host/browser evidence, not final-unit performance or project completion.
+The actual app worker is compiled in the existing Linux TLS harness with the
+pinned network interfaces, mock timer and in-memory DNS/TCP/socket fakes. Tests
+cover cancellation during DNS/TCP/TLS, socket drop before queue/lease cleanup,
+clock revocation before further I/O and accepted-config pause without retry. They
+use the unchanged production connector and open no network port. HTTP buffer
+wiping and partial-write behavior are covered separately in the pure crate.
+The 193 preexisting TLS-lock package identities/checksums remain unchanged; host
+network interfaces add 148 packages without changing the embedded dependency graph.
 
-The [native source/save proof](design/controller-grid.md) rewrites all eight sheets
-and preserves every component, library definition, 71 nets and 274 complete pin
-memberships. The latest saved copy has no ignored categories or ERC findings at
-error, warning and exclusion severities. The shared cleanup command now rejects
-initial-only ignores, requires excluded findings to be reported and rejects them.
-A regression fails against the prior permissive gate; both peer suites pass 36
-tests. The current stage has 427 wires, seven added branch dots and 216 unrouted
-items. The complete A3 module page was inspected with its former label/frame
-crossings resolved. No board or lock is adopted.
+The final full project gate passes, including 157 core, 20 Pushover and 29 TLS/
+lease/actual-worker tests, the existing full-handshake matrix, the embedded image,
+116 PCB tests / 23,670 assertions and 36 shared handoff tests. Other host/UI checks
+also pass. Counts and scope are in [the review log](design/review-log.md); the log
+is `/tmp/crystal-shim-notifications-final-full-check.log`.
 
-The current C6 ELF SHA-256 is
-`8ccf75f857532380a7881bb47f741cd655304bf05fc5d8253052035f7c895fe4`:
-text 2,081,318 / data 25,164 / BSS 253,824 bytes. RAM execution is 80,392 bytes,
-static SRAM excluding stack 359,380 bytes, and linker stack region 92,728 bytes.
-This is linked-image evidence, not peak memory or simultaneous network-load margin.
-No parts were purchased, hardware flashed, mains energized or notifications sent.
+Current linked size and evidence are in [Pushover delivery](design/pushover.md).
+The sender's handshake path is now linked, but static totals do not establish
+runtime heap peaks, stack high-water or control cadence under RF load. No live API
+request, real serial device, hardware flash or mains action was used.
+
+The [native source/save proof](design/controller-grid.md) still rewrites all eight
+sheets while preserving components, library definitions, 71 nets and 274 complete
+pin memberships. The saved copy reports no ignored categories or ERC findings at
+error, warning and exclusion severities. Its stage has 427 wires, seven added
+branch dots and 216 unrouted items. That is not a routing/fabrication release.
 
 ## Next
 
-Implement the interval TLS operation lease and live Pushover worker. First
-configuration now closes the earlier local setup dependency. The next substantial
-firmware slice needs control-accepted authority generations, a scoped certificate
-clock and full-chain validity over one original 20-second operation horizon.
-Capture confirmed water edges directly after the control output write into a
-bounded RAM queue; use the existing network/TLS owners and preserve configuration,
-credential and authority cancellation across awaited work. Independent finders
-identified these production seams and the pinned HTTP framing hazards. Review the
-implementation and actual integration before claiming notification delivery.
+Implement the pure signed-time agreement coordinator in
+[the unattended-time design](design/unattended-time.md), then review its trust and
+timing boundaries before app acquisition. The verifier and interval/TLS consumers
+now exist; owning both requests inside one bounded round prevents fabricated or
+cross-round samples from entering agreement. Require two distinct pinned providers,
+project to one original receive capture, require overlap, retain the hull and cap
+its width at 20 seconds. Caller-supplied rate/quantization and round deadline remain
+explicit; this slice must not silently select a production drift bound or enable
+unattended requests. It is substantial, has no hardware prerequisite, and unblocks
+unattended G-05 behavior.
 
 Continue native controller augmentation/mated fit and complete mains schematic
-integration as independent G-02/G-03/G-04 work. Unattended source agreement and
-acquisition, physical calibration and commissioning remain required under the same goal.
+integration as independent G-02/G-03/G-04 work. Final calibration and commissioning
+remain required under the same full delivery goal.
 
 ## Candidates not chosen
 
 - **Freeze sensor geometry:** substantial G-02 work awaiting the existing rim datum;
   sensor regulation/interface capture remains independent.
-- **Controller augmentation and mains mated fit:** substantial hardware-design work,
-  startable without final boards. Native process details and source dimensional
-  gaps need closure; neither header-only boxes nor a conditional MOV reserve prove fit.
-- **Unattended signed-time acquisition:** substantial firmware work with source,
-  drift and execution-context risks. The offline verifier and interval schedule
-  model exist; source agreement and app acquisition remain work. Interval TLS and
-  notification delivery can integrate with the existing accepted clock path first.
+- **Controller augmentation and mains mated fit:** substantial, startable design
+  work. Native augmentation and occupied/mated poses need evidence; neither
+  header-only boxes nor a conditional MOV reserve prove fit. This remains a
+  parallel hardware priority, not a hardware-measurement dependency.
+- **Enable unattended UDP acquisition directly:** source agreement and explicit
+  drift/deadline/execution-context policy must precede app adoption. The pure
+  request-owning round is the next bounded dependency.
 - **Route or release fabrication now:** native augmentation, complete design review
-  and mated fit remain prerequisites; strict schematic ERC alone cannot replace them.
+  and mated fit remain prerequisites; strict schematic ERC cannot replace them.

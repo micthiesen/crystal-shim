@@ -107,11 +107,36 @@ impl UtcAnchor {
     }
 }
 
+/// Identity of the authority accepted by control. The network epoch identifies
+/// the mailbox policy under which the original observation was acquired.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ClockSource {
+    Operator,
+    Network { source_epoch: u64 },
+}
+
+/// Published only by the control owner after validation. Reaccepting even an
+/// identical observation creates a different nonzero generation.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub struct ClockAuthority {
+    pub observation: UtcObservation,
+    pub generation: u64,
+    pub source: ClockSource,
+}
+
+/// The source epoch travels with the original observation, never a later read
+/// of the current mailbox counter. Consumers must compare it with current policy.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub struct NetworkObservation {
+    pub observation: UtcObservation,
+    pub source_epoch: u64,
+}
+
 /// Revocation is retained separately: a later sample cannot hide a lost source.
 #[derive(Clone, Copy, Debug, Default)]
 pub struct ClockUpdate {
     pub revoke_network: bool,
-    pub sample: Option<UtcObservation>,
+    pub sample: Option<NetworkObservation>,
 }
 
 /// Outcome from a bounded authenticated read; transport loss cannot renew age.
@@ -128,6 +153,7 @@ pub enum ReadResult {
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct Attempt<S> {
     generation: u64,
+    source_epoch: u64,
     source: S,
 }
 
@@ -137,6 +163,8 @@ pub struct ClockMailbox<S> {
     source: Option<S>,
     generation: u64,
     exhausted: bool,
+    source_epoch: u64,
+    source_epoch_exhausted: bool,
     pending: ClockUpdate,
 }
 impl<S: Copy + Eq> Default for ClockMailbox<S> {
@@ -150,6 +178,8 @@ impl<S: Copy + Eq> ClockMailbox<S> {
             source: None,
             generation: 0,
             exhausted: false,
+            source_epoch: 0,
+            source_epoch_exhausted: false,
             pending: ClockUpdate {
                 revoke_network: false,
                 sample: None,
@@ -166,9 +196,29 @@ impl<S: Copy + Eq> ClockMailbox<S> {
             }
         }
     }
+    fn invalidate_source(&mut self) {
+        self.invalidate();
+        match self.source_epoch.checked_add(1) {
+            Some(value) if !self.source_epoch_exhausted => self.source_epoch = value,
+            _ => {
+                self.source_epoch_exhausted = true;
+                self.pending.revoke_network = true;
+            }
+        }
+    }
+    /// Independent of ordinary attempt consumption and transport completion.
+    /// None means checked exhaustion of either counter: further network authority
+    /// is impossible and a previously accepted network clock must be revoked.
+    pub const fn source_epoch(&self) -> Option<u64> {
+        if self.source_epoch_exhausted || self.exhausted {
+            None
+        } else {
+            Some(self.source_epoch)
+        }
+    }
     pub fn set_source(&mut self, source: Option<S>) {
         if source != self.source {
-            self.invalidate();
+            self.invalidate_source();
             self.source = source;
             self.pending.revoke_network = true;
         }
@@ -176,22 +226,25 @@ impl<S: Copy + Eq> ClockMailbox<S> {
     /// A source policy mutation observed by the existing storage owner. This also
     /// catches source A -> B -> A between network-service polls.
     pub fn source_changed(&mut self) {
-        self.invalidate();
+        self.invalidate_source();
         self.pending.revoke_network = true;
     }
     /// Called only when an explicit operator clock command enters the command slot.
     pub fn operator_command(&mut self) {
-        self.invalidate();
+        self.invalidate_source();
     }
     pub fn begin(&self) -> Option<Attempt<S>> {
-        (!self.exhausted).then_some(Attempt {
+        (!self.exhausted && !self.source_epoch_exhausted).then_some(Attempt {
             generation: self.generation,
+            source_epoch: self.source_epoch,
             source: self.source?,
         })
     }
     fn matches(&self, attempt: Attempt<S>) -> bool {
         !self.exhausted
+            && !self.source_epoch_exhausted
             && self.generation == attempt.generation
+            && self.source_epoch == attempt.source_epoch
             && self.source == Some(attempt.source)
     }
     pub fn offer(&mut self, attempt: Attempt<S>, sample: UtcObservation, now: Millis) -> bool {
@@ -202,13 +255,18 @@ impl<S: Copy + Eq> ClockMailbox<S> {
         if self.exhausted {
             return false;
         }
-        self.pending.sample = Some(sample);
+        self.pending.sample = Some(NetworkObservation {
+            observation: sample,
+            source_epoch: attempt.source_epoch,
+        });
         true
     }
     /// A null/invalid response explicitly withdraws this source's current time.
     pub fn reject(&mut self, attempt: Attempt<S>) {
         if self.matches(attempt) {
-            self.invalidate();
+            // Withdraw the published source immediately, before the control
+            // owner consumes the pending revocation on its next tick.
+            self.invalidate_source();
             self.pending.revoke_network = true;
         }
     }
@@ -334,7 +392,13 @@ mod tests {
         assert!(!mailbox.offer(fresh, sample(0), Millis(0)));
         let update = mailbox.take();
         assert!(update.revoke_network);
-        assert_eq!(update.sample, Some(sample(0)));
+        assert_eq!(
+            update.sample,
+            Some(NetworkObservation {
+                observation: sample(0),
+                source_epoch: fresh.source_epoch
+            })
+        );
         assert!(mailbox.take().sample.is_none());
         let clear = mailbox.begin().unwrap();
         mailbox.reject(clear);
@@ -396,5 +460,253 @@ mod tests {
             Millis(MAX_AGE_MS)
         ));
         assert!(mailbox.take().revoke_network);
+    }
+
+    #[test]
+    fn source_epoch_survives_read_consumption_and_transport_completion() {
+        let mut mailbox = ClockMailbox::new();
+        assert_eq!(mailbox.source_epoch(), Some(0));
+        mailbox.set_source(Some(7));
+        let epoch = mailbox.source_epoch().unwrap();
+        mailbox.take();
+        let read = mailbox.begin().unwrap();
+        assert!(mailbox.offer(read, sample(10), Millis(20)));
+        assert_eq!(mailbox.source_epoch(), Some(epoch));
+        assert!(!mailbox.offer(read, sample(10), Millis(20)));
+        assert_eq!(
+            mailbox.take().sample,
+            Some(NetworkObservation {
+                observation: sample(10),
+                source_epoch: epoch
+            })
+        );
+        assert_eq!(mailbox.source_epoch(), Some(epoch));
+        let transport = mailbox.begin().unwrap();
+        assert!(!mailbox.finish(transport, ReadResult::TransportFailure, Millis(20)));
+        assert_eq!(mailbox.source_epoch(), Some(epoch));
+        assert!(!mailbox.take().revoke_network);
+        let missing = mailbox.begin().unwrap();
+        assert!(!mailbox.finish(missing, ReadResult::Unavailable, Millis(20)));
+        assert_eq!(mailbox.source_epoch(), Some(epoch + 1));
+        assert!(mailbox.take().revoke_network);
+        mailbox.set_source(Some(7));
+        assert_eq!(mailbox.source_epoch(), Some(epoch + 1));
+    }
+
+    #[test]
+    fn explicit_rejection_changes_publication_epoch_before_revocation_is_consumed() {
+        for result in [
+            ReadResult::Unavailable,
+            ReadResult::Fresh {
+                matter_micros: u64::MAX,
+                captured_at: Millis(MAX_AGE_MS),
+            },
+            ReadResult::Fresh {
+                matter_micros: 0,
+                captured_at: Millis(MAX_AGE_MS + 1),
+            },
+            ReadResult::Fresh {
+                matter_micros: 0,
+                captured_at: Millis(0),
+            },
+        ] {
+            let mut mailbox = ClockMailbox::new();
+            mailbox.set_source(Some(7));
+            mailbox.take();
+            let original_epoch = mailbox.source_epoch();
+            let rejected = mailbox.begin().unwrap();
+            assert!(!mailbox.finish(rejected, result, Millis(MAX_AGE_MS)));
+            assert_ne!(mailbox.source_epoch(), original_epoch);
+            let replacement_epoch = mailbox.source_epoch();
+            // Delayed duplicate failures cannot invalidate newer read work.
+            let replacement = mailbox.begin().unwrap();
+            mailbox.reject(rejected);
+            assert_eq!(mailbox.source_epoch(), replacement_epoch);
+            assert!(mailbox.offer(replacement, sample(MAX_AGE_MS), Millis(MAX_AGE_MS)));
+            let update = mailbox.take();
+            assert!(update.revoke_network);
+            assert_eq!(
+                update.sample.unwrap().source_epoch,
+                replacement_epoch.unwrap()
+            );
+            assert!(!mailbox.take().revoke_network);
+        }
+    }
+
+    #[test]
+    fn either_counter_exhaustion_revokes_the_published_network_epoch_immediately() {
+        for source_exhaustion in [false, true] {
+            let mut mailbox = ClockMailbox::new();
+            mailbox.set_source(Some(7));
+            mailbox.take();
+            if source_exhaustion {
+                mailbox.source_epoch = u64::MAX;
+            } else {
+                mailbox.generation = u64::MAX;
+            }
+            let attempt = mailbox.begin().unwrap();
+            assert!(mailbox.source_epoch().is_some());
+            let result = if source_exhaustion {
+                ReadResult::Unavailable
+            } else {
+                ReadResult::TransportFailure
+            };
+            assert!(!mailbox.finish(attempt, result, Millis(0)));
+            assert_eq!(mailbox.source_epoch(), None);
+            assert!(mailbox.begin().is_none());
+            assert!(mailbox.take().revoke_network);
+        }
+    }
+
+    #[test]
+    fn original_epoch_is_not_restamped_after_policy_operator_or_session_changes() {
+        let mut mailbox = ClockMailbox::new();
+        mailbox.set_source(Some(1));
+        let original_epoch = mailbox.source_epoch().unwrap();
+        let attempt = mailbox.begin().unwrap();
+        assert!(mailbox.offer(attempt, sample(0), Millis(0)));
+        let delayed = mailbox.take();
+        for change in 0..4 {
+            let attempt = mailbox.begin().unwrap();
+            let before = mailbox.source_epoch().unwrap();
+            match change {
+                0 => {
+                    mailbox.set_source(Some(2));
+                    mailbox.set_source(Some(1));
+                }
+                1 => mailbox.source_changed(),
+                2 => mailbox.operator_command(),
+                _ => mailbox.set_source(None),
+            }
+            assert_eq!(
+                mailbox.source_epoch(),
+                Some(before + if change == 0 { 2 } else { 1 })
+            );
+            assert!(!mailbox.offer(attempt, sample(0), Millis(0)));
+            let update = mailbox.take();
+            assert!(update.sample.is_none());
+            assert_eq!(update.revoke_network, change != 2);
+        }
+        assert_eq!(delayed.sample.unwrap().source_epoch, original_epoch);
+        assert_ne!(
+            Some(delayed.sample.unwrap().source_epoch),
+            mailbox.source_epoch()
+        );
+        assert!(mailbox.begin().is_none());
+    }
+
+    #[test]
+    fn source_epoch_and_attempt_exhaustion_are_independent_and_keep_revocation() {
+        let mut mailbox = ClockMailbox::new();
+        mailbox.set_source(Some(1));
+        mailbox.take();
+        mailbox.source_epoch = u64::MAX - 1;
+        mailbox.source_changed();
+        let final_attempt = mailbox.begin().unwrap();
+        assert_eq!(mailbox.source_epoch(), Some(u64::MAX));
+        assert!(mailbox.offer(final_attempt, sample(0), Millis(0)));
+        assert_eq!(mailbox.take().sample.unwrap().source_epoch, u64::MAX);
+        let pending = mailbox.begin().unwrap();
+        mailbox.operator_command();
+        assert_eq!(mailbox.source_epoch(), None);
+        assert!(!mailbox.offer(pending, sample(0), Millis(0)));
+        assert!(mailbox.begin().is_none());
+        let revoked = mailbox.take();
+        assert!(revoked.revoke_network && revoked.sample.is_none());
+        mailbox.set_source(Some(2));
+        mailbox.source_changed();
+        assert_eq!(mailbox.source_epoch(), None);
+        assert!(mailbox.begin().is_none());
+        assert!(mailbox.take().revoke_network);
+
+        let mut mailbox = ClockMailbox::new();
+        mailbox.set_source(Some(1));
+        mailbox.take();
+        let epoch = mailbox.source_epoch;
+        mailbox.generation = u64::MAX;
+        let last = mailbox.begin().unwrap();
+        assert!(!mailbox.offer(last, sample(0), Millis(0)));
+        assert_eq!(
+            mailbox.source_epoch, epoch,
+            "read exhaustion is not a source policy mutation"
+        );
+        assert_eq!(mailbox.source_epoch(), None, "network authority is closed");
+        assert!(mailbox.take().revoke_network);
+        assert!(mailbox.begin().is_none());
+    }
+
+    #[test]
+    fn exhausted_source_epoch_cannot_revoke_or_block_independent_operator_authority() {
+        use crate::{
+            configuration::{RawDeviceConfig, ValidatedDeviceConfig},
+            runtime::{Acknowledgement, Observation, Request, Runtime, RuntimeCommand},
+            Fault, HardwarePermit, Reading, RetainedState, Timing,
+        };
+        // Uncalibrated configuration is sufficient for the clock API. These
+        // values are only an offline fixture and cannot produce sensor readings.
+        let config = ValidatedDeviceConfig::from_raw(
+            RawDeviceConfig::builder(1, 200, 800, 500, Timing::PROVISIONAL, 900, [0x5a; 32])
+                .timezone_rule("UTC0")
+                .unwrap()
+                .build(),
+        )
+        .unwrap();
+        let mut runtime = Runtime::new(
+            Some(config),
+            Some(RetainedState::new(1).unwrap()),
+            Millis(0),
+        )
+        .unwrap();
+        let observation = |now, update| Observation {
+            now: Millis(now),
+            sensor_revision: 0,
+            reading: Reading::Invalid(Fault::Uncalibrated),
+            hardware: HardwarePermit::Allowed,
+            maintenance_pressed: false,
+            force_off: false,
+            clock_update: update,
+        };
+        runtime.step(
+            observation(0, ClockUpdate::default()),
+            Some(Request {
+                id: 1,
+                command: RuntimeCommand::SetUtcObserved(sample(0)),
+            }),
+            None,
+        );
+        let operator = runtime.clock_authority().unwrap();
+        let mut mailbox = ClockMailbox::new();
+        mailbox.set_source(Some(1));
+        mailbox.take();
+        let old = mailbox.begin().unwrap();
+        mailbox.source_epoch = u64::MAX;
+        mailbox.source_changed();
+        assert_eq!(mailbox.source_epoch(), None);
+        assert!(!mailbox.offer(old, sample(0), Millis(0)));
+        runtime.step(observation(20, mailbox.take()), None, None);
+        assert_eq!(runtime.clock_authority(), Some(operator));
+        mailbox.operator_command();
+        let result = runtime.step(
+            observation(40, mailbox.take()),
+            Some(Request {
+                id: 2,
+                command: RuntimeCommand::SetUtcObserved(sample(40)),
+            }),
+            None,
+        );
+        assert_eq!(
+            result.command_reply.unwrap().result,
+            Ok(Acknowledgement::Applied)
+        );
+        assert_eq!(
+            runtime.clock_authority().unwrap().source,
+            ClockSource::Operator
+        );
+        assert_eq!(
+            runtime.clock_authority().unwrap().generation,
+            operator.generation + 1
+        );
+        assert_eq!(mailbox.source_epoch(), None);
+        assert!(mailbox.begin().is_none());
     }
 }

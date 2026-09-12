@@ -5,7 +5,7 @@
 //! the owner must explicitly exit after the new configuration is durable.
 
 use crate::configuration::ValidatedDeviceConfig;
-use crate::utc::{ClockUpdate, UtcAnchor, UtcObservation};
+use crate::utc::{ClockAuthority, ClockSource, ClockUpdate, UtcAnchor, UtcObservation};
 use crate::utc_bounds::UtcBounds;
 use crate::{
     Command, Demand, Fault, HardwarePermit, Inputs, Millis, Reading, RelayCommand, RetainedState,
@@ -130,7 +130,7 @@ struct ActiveRequest {
 #[derive(Clone, Copy)]
 struct Clock {
     anchor: UtcAnchor,
-    network: bool,
+    authority: ClockAuthority,
 }
 
 pub struct Runtime {
@@ -145,6 +145,8 @@ pub struct Runtime {
     maintenance: bool,
     storage_failed: bool,
     clock: Option<Clock>,
+    clock_generation: u64,
+    clock_generation_exhausted: bool,
 }
 
 impl Runtime {
@@ -177,6 +179,8 @@ impl Runtime {
             maintenance: retained.is_none_or(|state| state.maintenance),
             storage_failed: false,
             clock: None,
+            clock_generation: 0,
+            clock_generation_exhausted: false,
         })
     }
 
@@ -190,6 +194,12 @@ impl Runtime {
 
     pub const fn storage_failed(&self) -> bool {
         self.storage_failed
+    }
+
+    /// Admission precedes durability. Network consumers must retire old work
+    /// now, without treating the candidate as the committed configuration.
+    pub const fn configuration_pending(&self) -> bool {
+        self.replacement.is_some()
     }
 
     pub const fn durable_state(&self) -> Option<RetainedState> {
@@ -248,19 +258,24 @@ impl Runtime {
         // In particular, a late eligibility ACK plus a backwards correction must
         // not resurrect an occurrence the supervisor never had a chance to see.
         self.observe_utc(observation.now);
-        if observation.clock_update.revoke_network && self.clock.is_some_and(|clock| clock.network)
-        {
-            self.clock = None;
-            self.suppress();
+        if observation.clock_update.revoke_network && self.network_clock() {
+            self.invalidate_clock();
         }
         if let Some(sample) = observation.clock_update.sample {
             // The producer has already checked source and generation. Acceptance
             // still checks this original capture; dispatch never refreshes age.
-            if self.set_utc(sample, observation.now, true).is_err()
-                && self.clock.is_some_and(|clock| clock.network)
+            if self
+                .set_utc(
+                    sample.observation,
+                    observation.now,
+                    ClockSource::Network {
+                        source_epoch: sample.source_epoch,
+                    },
+                )
+                .is_err()
+                && self.network_clock()
             {
-                self.clock = None;
-                self.suppress();
+                self.invalidate_clock();
             }
         }
 
@@ -462,8 +477,7 @@ impl Runtime {
     ) -> Option<Result<Acknowledgement, Error>> {
         if matches!(request.command, RuntimeCommand::ClearUtc) {
             // Revocation must never wait behind a configuration/flash transaction.
-            self.clock = None;
-            self.suppress();
+            self.invalidate_clock();
             return Some(Ok(Acknowledgement::Applied));
         }
         if matches!(request.command, RuntimeCommand::Off) {
@@ -538,12 +552,14 @@ impl Runtime {
             RuntimeCommand::SetUtc(utc) => {
                 let result = UtcObservation::from_seconds(utc, observation.now)
                     .ok_or(Error::InvalidTime)
-                    .and_then(|sample| self.set_utc(sample, observation.now, false));
+                    .and_then(|sample| {
+                        self.set_utc(sample, observation.now, ClockSource::Operator)
+                    });
                 return Some(result.map(|()| Acknowledgement::Applied));
             }
             RuntimeCommand::SetUtcObserved(sample) => {
                 return Some(
-                    self.set_utc(sample, observation.now, false)
+                    self.set_utc(sample, observation.now, ClockSource::Operator)
                         .map(|()| Acknowledgement::Applied),
                 );
             }
@@ -561,7 +577,50 @@ impl Runtime {
         self.clock.and_then(|clock| clock.anchor.observation())
     }
 
-    fn set_utc(&mut self, sample: UtcObservation, now: Millis, network: bool) -> Result<(), Error> {
+    /// Original capture and the accepted identity used to revoke derived leases.
+    /// Callers publish this value, never reconstruct it from a current counter.
+    pub fn clock_authority(&self) -> Option<ClockAuthority> {
+        self.clock
+            .and_then(|clock| clock.anchor.observation().map(|_| clock.authority))
+    }
+
+    fn network_clock(&self) -> bool {
+        self.clock
+            .is_some_and(|clock| matches!(clock.authority.source, ClockSource::Network { .. }))
+    }
+
+    fn advance_clock_generation(&mut self) -> Result<u64, Error> {
+        if self.clock_generation_exhausted {
+            return Err(Error::Exhausted);
+        }
+        match self.clock_generation.checked_add(1) {
+            Some(next) => {
+                self.clock_generation = next;
+                Ok(next)
+            }
+            None => {
+                self.clock_generation_exhausted = true;
+                Err(Error::Exhausted)
+            }
+        }
+    }
+
+    fn invalidate_clock(&mut self) {
+        // Revocation is effective even when no further identity can be minted.
+        let _ = self.advance_clock_generation();
+        self.clock = None;
+        self.suppress();
+    }
+
+    fn set_utc(
+        &mut self,
+        sample: UtcObservation,
+        now: Millis,
+        source: ClockSource,
+    ) -> Result<(), Error> {
+        if matches!(source, ClockSource::Network { source_epoch: 0 }) {
+            return Err(Error::InvalidTime);
+        }
         let mut anchor = UtcAnchor::new(sample, now).ok_or(Error::InvalidTime)?;
         let utc = anchor.bounds_at(now).ok_or(Error::InvalidTime)?;
         if self.configuration.is_none_or(|config| {
@@ -576,7 +635,21 @@ impl Runtime {
         }) {
             return Err(Error::InvalidTime);
         }
-        self.clock = Some(Clock { anchor, network });
+        let generation = match self.advance_clock_generation() {
+            Ok(generation) => generation,
+            Err(error) => {
+                self.invalidate_clock();
+                return Err(error);
+            }
+        };
+        self.clock = Some(Clock {
+            anchor,
+            authority: ClockAuthority {
+                observation: sample,
+                generation,
+                source,
+            },
+        });
         Ok(())
     }
 
@@ -601,10 +674,9 @@ impl Runtime {
                 }
             }
             None => {
-                self.clock = None;
                 // With no valid anchor, an unexposed occurrence's elapsed cap
                 // cannot be reconstructed safely from a future clock correction.
-                self.suppress();
+                self.invalidate_clock();
             }
         }
         utc

@@ -59,19 +59,19 @@ existing durable suppression, source/operator generation ordering and sole flash
 owner remain in force. An interval constructor authenticates nothing by itself;
 authority validation belongs to the producer.
 
-The current scalar TLS provider deliberately refuses uncertain observations,
-including a point capture with a nonzero future rate allowance. It cannot choose
-an endpoint and call that interval validation. The Linux test exercises the actual
-provider and MbedTLS rejection. The [borrowed certificate callback](tls-restriction.md)
-is implemented separately; complete
-chain checks, source-generation cancellation and bounded handshake/request horizon
-are still required before TLS can use intervals. Outward certificate seconds are
-available as `floor(earliest/1000)` and `ceil(latest/1000)`, not as a scalar clock.
+The scalar compatibility view still refuses uncertain observations without
+consuming the bounded anchor. The [TLS operation lease](tls-restriction.md) now
+uses the whole interval from the original start through its 20-second deadline.
+It checks every selected certificate through the borrowed callback, with outward
+seconds `floor(earliest/1000)` and `ceil(latest/1000)`. A scoped lower-endpoint
+MbedTLS clock works only alongside that full-horizon restriction. Accepted
+authority generation, source epoch, expiry and rollback are checked throughout
+the operation; cancellation drops the complete session.
 
 The public Roughtime verifier remains offline. Provider agreement, UDP scheduling,
-source adoption, drift-policy selection and runtime use of the TLS wrapper
-remain separate integration work. No new time authority, background request or flash write is
-enabled by this change.
+source adoption and drift-policy selection remain integration work. The Pushover
+worker can use the existing CASE/USB authority and future accepted intervals.
+This does not enable a new time authority or periodic time flash writes.
 
 ## Verification
 

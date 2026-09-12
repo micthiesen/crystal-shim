@@ -3,8 +3,8 @@
 The project carries a narrow source patch to the published `mbedtls-rs 0.2.0`
 wrapper under [vendor/mbedtls-rs](../../vendor/mbedtls-rs). The application and
 Linux TLS harness resolve that same copy. `mbedtls-rs-sys 0.2.0`, its Mbed TLS
-3.6.5 source and `edge-nal-tls 0.2.0` are unchanged. The current Pushover provider
-sets `certificate_restriction: None`; interval-based TLS authority is not enabled.
+3.6.5 source and `edge-nal-tls 0.2.0` are unchanged. The Pushover provider requires
+a borrowed `OperationLease`; every connection uses its interval certificate restriction.
 
 ## Contract
 
@@ -29,20 +29,46 @@ also rejects PSK, ticket and early-data features. Future consumers must create a
 fresh session for each operation. This is deliberately narrower than supporting
 resumption with a cached certificate policy.
 
-## Integration still required
+## Production operation lease
 
-The future interval policy must contain every selected certificate's validity
-within the entire operation horizon: earliest UTC at the original start through
-latest UTC at the original deadline, with outward rounding. It must retain the
-accepted authority generation and reject expiry, rollback, revocation or a newer
-authority around every await. Complete the handshake before writing credentials.
-Drop the session and socket when canceled; the upstream handshake future is not
-cancel-safe. A callback alone cannot revoke an established session.
+Control publishes `ClockAuthority`: original `UtcObservation`, checked nonzero
+accepted generation and operator/network source identity. An identical accepted
+replacement still gets a new generation. Network identity includes the acquisition
+mailbox's original source epoch. Ordinary read consumption and transport failures
+do not change it; source changes, explicit withdrawal, operator commands and
+checked exhaustion revoke older network work. The app publishes accepted authority
+and current source epoch atomically while holding the mailbox critical section.
+An independent operator authority survives network withdrawal.
 
-No midpoint or one-sided scalar conversion may replace this policy. The current
-provider refuses uncertain intervals. [UTC bounds](utc-intervals.md), source
-agreement, operation leases and the live notification worker remain separate
-integration steps. Hardware timing and peak-memory gates remain open.
+`OperationLease::begin` reserves the sole certificate scope for one original
+20-second operation, including DNS, TCP, handshake and response. Its certificate
+horizon is earliest UTC at the original start through latest UTC at the original
+deadline, rounded outward to whole seconds. It rejects an anchor that cannot cover
+that entire horizon. Every selected chain certificate must contain both endpoints.
+Gregorian fields and ordering are checked; no baseline verification flags can be
+cleared. The fixed Pushover root, hostname, Required verification and TLS 1.2
+minimum remain unchanged.
+
+During the lease the MbedTLS clock returns the fixed lower endpoint. This is safe
+only together with the borrowed full-horizon restriction; it is not scalar interval
+validation. Scalar compatibility queries still refuse uncertainty without erasing
+a valid bounded anchor. A revoked scope never falls back to a newer authority.
+Expiry, observed rollback, authority replacement and source mismatch latch failure.
+Repeated publication cannot revive the anchor. Scope and generation identifiers do
+not wrap. Drop clears only the matching scope.
+
+The [Pushover worker](pushover.md) checks the lease, current queue/configuration token,
+network identity and original deadline before and after every I/O future poll.
+A 20 ms monitor also cancels pending work. Explicit handshake completion precedes
+credential encoding. Each attempt owns its whole socket and session, which are
+dropped on completion or cancellation. A certificate callback alone cannot revoke
+an established session, and the upstream handshake future is not cancel-safe.
+There is no split, session save, resumption or connection reuse.
+
+CASE and USB retain their existing point-clock contract. Signed-source agreement,
+hardware drift policy and unattended acquisition remain work. Interval support
+does not authenticate a new authority. Hardware timing and peak-memory gates
+remain open.
 
 ## Provenance and checks
 
@@ -60,8 +86,9 @@ reviewed new callback module; deleting a source or license and its receipt entry
 fails. Independent re-review found no remaining actionable provenance or scoped
 callback-test gap after these corrections.
 
-`sh scripts/check-tls.sh` uses the supported Linux C backend. It runs 13
-production-provider tests and one serialized loopback OpenSSL matrix: eight
+`sh scripts/check-tls.sh` uses the supported Linux C backend. Provider and
+operation tests exercise the actual clock, immutable horizon and revocation. A
+separate serialized loopback OpenSSL matrix retains: eight
 accepted and 50 rejected full handshakes, two pre-I/O resumption rejections and
 one canceled Pending async handshake. Both blocking and async APIs exercise
 TLS 1.2/1.3 success, each selected chain depth, Required authentication, session
@@ -75,4 +102,8 @@ not an exhaustive digest, curve, key-type or CRL matrix. A separate compile-fail
 check requires E0515 when the verifier would escape its borrow. Synthetic private
 keys are marked test-only. No production credential or external notification is
 used. These tests do not establish device execution latency, allocation-failure
-behavior, real-service interoperability or completed interval integration.
+behavior or real-service interoperability. Production-lease loopback tests add
+uncertain-clock success and rejection of a leaf expiring inside the original
+horizon. Per-depth lease boundary cases call the actual policy directly; the
+separate matrix proves full-chain callback dispatch. See [Pushover evidence](pushover.md)
+for current integrated counts and cancellation coverage.

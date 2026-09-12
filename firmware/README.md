@@ -3,8 +3,8 @@
 Rust, bare-metal ESP32-C6, following `../stillair`: `core/` contains the `no_std`
 control contract, `drivers/` contains async device drivers, `cli/` runs the control
 model on the host, `matter/` contains the actual SDK command and KV adapters,
-`settings/` supplies the local HTTP service/UI, and `roughtime/` verifies signed
-time replies offline. `app/` is a separate workspace
+`settings/` supplies the local HTTP service/UI, `pushover/` owns bounded RAM
+events and HTTP delivery policy, and `roughtime/` verifies signed time replies offline. `app/` is a separate workspace
 targeting `riscv32imac-unknown-none-elf`. Stable Rust is declared in
 `rust-toolchain.toml`; setup was verified with Rust 1.97.1. Commit each workspace's lockfile.
 
@@ -19,8 +19,8 @@ command and shared KV adapters, Wi-Fi/BLE commissioning and private credential
 provisioning are implemented. The private switch profile follows D-22; Apple Home
 pairing and behavior have not been exercised. The authenticated
 [settings service](../docs/design/settings.md) includes schedule, threshold and
-response timing controls; its calibration workflow and the live Pushover worker
-remain work. The external coil
+response timing controls. The [Pushover worker](../docs/design/pushover.md) is
+linked through the same network; physical calibration workflow remains work. The external coil
 pull-down must establish off before application entry and during reset; a build
 cannot verify that physical behavior.
 
@@ -49,8 +49,8 @@ The [offline signed-time verifier](../docs/design/unattended-time.md) is a host
 workspace member with a checked C6 `no_std` library build. It is not linked into
 the app or accepted as UTC. Its public captures and synthetic test identity are
 offline fixtures. Conservative interval scheduling is implemented and reviewed.
-Signed-source agreement, interval TLS operation leases and unattended runtime
-acquisition remain work.
+Interval TLS operation leases are implemented. Signed-source agreement, drift
+policy and unattended runtime acquisition remain work.
 
 ## Control contract
 
@@ -147,7 +147,7 @@ final hardware behavior remains unverified.
 ## Water notifications
 
 `SupervisorStatus.water_transition` emits one confirmed HIGH-to-LOW or LOW-to-HIGH
-edge for a future normal-priority Pushover adapter. Detection is independent of
+edge for the normal-priority Pushover adapter. Detection is independent of
 relay command, schedule, manual override, and hardware permission. It uses the
 same stop/restart thresholds and low/recovery confirmation delays. Initial valid
 classification establishes a silent baseline. Intermediate-band readings and
@@ -155,12 +155,15 @@ invalid/stale data reset pending confirmation without inventing a water change.
 Cached samples cannot prove a transition. `status()` does not replay an event.
 
 Changing interlock configuration resets pending level confirmation and the notification baseline so calibration
-or threshold edits do not masquerade as water movement. A transport adapter must
-handle secure credentials, queueing, bounded retries, and deduplication without
-blocking local control. The [verified HTTPS provider](../docs/design/tls-provider.md)
-is implemented and cross-compiled; the Pushover queue/POST worker, credentials
-and verified operation over the shared ESP network remain work. No notification
-was sent.
+or threshold edits do not masquerade as water movement. The [worker](../docs/design/pushover.md)
+captures the fresh step after GPIO output, retains at most eight RAM events for
+15 minutes, and uses one original 20-second TLS/HTTP deadline per attempt. It
+checks the accepted clock authority, network and configuration token around
+every I/O poll. There are at most three attempts; uncertain failures may duplicate
+a message. Accepted settings replacement cancels old work before flash; failure
+keeps delivery paused until a later save commits. HTTP 4xx or a complete API rejection suspends the credential generation
+until it is changed or explicitly disabled and restored. Reboot clears queued
+work and suspension. No live notification was sent.
 
 ## Verify
 
