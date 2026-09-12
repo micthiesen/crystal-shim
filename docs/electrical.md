@@ -13,7 +13,7 @@ initial choices below; no layout or fabrication gate has passed.
 | Isolated PSU | Mean Well IRM-10-5, PCB mount | Thermal/current budget, input protection, approved isolation layout |
 | Rails | 5 V relay + daughterboard; regulated 3.3 V ESP | Regulator selection, transient margin, decoupling |
 | Relay driver | Logic-level MOSFET, gate pulldown, coil suppression | Part/value selection, dropout behavior, reset tests |
-| Programming | Native USB | USB/external-supply backfeed prevention and defined power modes |
+| Programming | Self-powered native USB data and isolated 5 V service input | Capture hardware VBUS gate and [GST18U05-P1J service protection](design/service-input.md); verify source combinations and transients |
 | Local UI | Status LED and maintenance/off button | Pin assignments, debounce, indications and explicit exit action |
 
 IRM-10-5 is a 5 V, 2 A isolated encapsulated module, selected to provide margin

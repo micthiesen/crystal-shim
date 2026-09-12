@@ -9,7 +9,8 @@ release. Physical checks remain unrun.
 ## Exact selections and quantities
 
 Quantities are for one controller board. They exclude sensor/mains parts and the
-five already selected controller bulk capacitors. Resistors and ceramic capacitors
+five already selected controller bulk capacitors and the additional
+[service-input protection parts](service-input.md). Resistors and ceramic capacitors
 are nonpolar; pads 1/2 are electrically interchangeable.
 
 | Exact manufacturer part | Qty | Value / package | Use |

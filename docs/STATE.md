@@ -45,9 +45,11 @@ and Pushover transition alerts remain the [control contract](controls.md).
   mechanical allocations are in the mains basis; physical results remain unrun.
 - The [BOM](../bom/bom.csv) now includes exact controller LED, three buttons and
   enumerated small passives. It is still incomplete for ordering.
-  [Controller component source](../pcb/controller/design/README.md) now models nine
-  selected parts with manufacturer copper lands and pin maps. Complete product
-  schematics, placements, routes and fabrication outputs remain outstanding.
+  [Controller source](../pcb/controller/design/README.md) now includes 22 representative
+  component models and connected relay-permission/logic-power sections. Copper,
+  holes, pin maps and section netlists are tested. The exact isolated service adapter,
+  harness and service-specific eFuse circuit are in the [service design](design/service-input.md).
+  Complete product schematics, placements, routes and fabrication outputs remain outstanding.
 
 ## In progress
 
@@ -72,16 +74,21 @@ and Pushover transition alerts remain the [control contract](controls.md).
    FSUSB42. Their source pin maps and compiled lands are checked, including
    rotation and the WROOM's nine ground lands. The generic stock IC patterns
    differ from manufacturer recommendations; exact source patterns replace those
-   candidates. Bourns and IRM stock geometry remains compatible as previously
-   checked. Native footprint adoption, assembly details and complete board capture
-   remain work. No product KiCad files have been generated or changed.
+   candidates. ST Schottky/USB ESD, Panasonic/TDK/Murata passives, Bourns, LED,
+   buttons and three Micro-Fit models are now captured. Review corrected inductor
+   corner identity and two connector-audit transcription errors; Murata uses its
+   actual reflow table, not test-substrate lands. Native adoption, assembly details
+   and full board capture remain work. No product KiCad files have been generated or changed.
 4. TLS review found and fixed stale-clock acceptance and missing reproducible
    tests. The second independent pass is clean within this scope. Controller
    [small parts](design/controller-small-parts.md) are now selected. A 330 ohm
    reset-button resistor bounds capacitor discharge while retaining a valid reset
-   low, including the supervisor's MR pullup. Remaining connector/passive/protection
-   footprints, service-input protection, cable, enclosure fit, complete PCB source
-   and ESP adapters remain implementation work.
+   low, including the supervisor's MR pullup. The service design selects GST18U05-P1J,
+   a shortened Tensility pigtail, input TVS and a second TPS259470. Added 470 kohm
+   sense-pin resistors limit reverse-input current; service thresholds are distinct
+   from the mains instance. Review also exposed an unloaded-startup extrapolation;
+   cold-start/light-load voltage remains an explicit final-unit check. USB pad mapping, service eFuse/TVS/passive capture,
+   sensor-cable ESD, enclosure fit, complete PCB source and ESP adapters remain work.
 5. A source/ELF audit found that priority cannot isolate control from flash access.
    The [implemented boot flash adapter](design/flash-storage.md) enables critical
    sections, waits for a matching relay-off acknowledgement and keeps the output
@@ -109,22 +116,22 @@ prototype or final-unit calibration before fabrication.
 
 ## Verification
 
-`sh scripts/check.sh` passes after the controller component-source and BOM changes:
-79 core tests,
-nine driver tests, one CLI test, three production-code partition regressions,
-11 deterministic TLS tests on Linux through OrbStack with crypto-profile parity,
-host and embedded fmt/clippy, C6 release build, PCB source fixture, six Bun tests
-(including four compiled controller-component tests) and 28 handoff tests.
-The generated nine-part copper SVG was visually inspected. Two independent
-component review batches found no remaining actionable mapping/geometry or
-small-parts/reset issue in their scopes. Two existing tscircuit fixture reference-text warnings
-remain documented tooling output. Documentation checks pass for the new design
+`sh scripts/check.sh` passes after the controller sections, component models and
+service BOM changes: 79 core tests, nine driver tests, one CLI test, three
+production-code partition regressions, 11 deterministic TLS tests on Linux through
+OrbStack, host/embedded fmt/clippy, C6 release build, PCB source fixture, 13 Bun
+tests (555 assertions) and 28 handoff tests. Root inspected the 22-part copper SVG
+and both connected-section schematics. Independent source review found and fixed
+the inductor footprint-identity mismatch; final scoped reviews of passives,
+connectors, assembly parts and both netlists found no remaining actionable issue.
+Two existing tscircuit fixture reference-text warnings remain documented output. Documentation checks pass for the new design
 records. The TLS provider report separates its historical app build from the linked
 provider probe and the live host checks; no C6 runtime result is implied.
-GitHub documentation and firmware CI passed for power-circuit checkpoint
-`28079e4`, including the three partition regressions, Linux TLS harness and ESP target
-build. The [firmware run](https://github.com/micthiesen/crystal-shim/actions/runs/34685901002)
-records those hosted checks. The local release ELF reports text 611,742 / data 6,628 / bss 8,524
+GitHub documentation and PCB CI passed for component checkpoint `551b106`:
+[PCB run](https://github.com/micthiesen/crystal-shim/actions/runs/34687114502),
+[documentation run](https://github.com/micthiesen/crystal-shim/actions/runs/34687114478).
+The unchanged firmware previously passed [hosted firmware checks](https://github.com/micthiesen/crystal-shim/actions/runs/34685901002)
+at `28079e4`, including production partition regressions, Linux TLS and ESP build. The local release ELF reports text 611,742 / data 6,628 / bss 8,524
 bytes; this is not the complete SRAM/stack budget or physical runtime evidence.
 
 Every [physical commissioning result](../testing/test-matrix.csv) remains Not run.
@@ -132,9 +139,10 @@ No parts were bought, hardware flashed, mains energized or live alerts sent.
 
 ## Next after current reviews
 
-Finish the remaining connector, passive and protection footprints and the
-controller service-input protection, then assemble the complete controller circuit
-from its checked component models. Continue layout-dependent power calculations
+Capture the service eFuse/input TVS and remaining protection passives, preserve
+USB connector alphanumeric pads through export, and select sensor-cable ESD.
+Then integrate the remaining controller sections with the connected relay and
+logic-power sections into one complete schematic and placement. Continue layout-dependent power calculations
 and mains source while implementing ESP adapters. The secondary topology and passive ordering
 codes are now selected; transient and off-state behavior remain explicit gates. Controller
 capture is the preferred next board step because its pin/power interfaces unblock

@@ -4,6 +4,7 @@
   "type": "module",
   "packageManager": "bun@1.3.11",
   "scripts": {
+    "render:controller-sections": "bun run controller/design/render-sections.tsx",
     "render:controller-parts": "bun run controller/design/render-parts.tsx",
     "dev:smoke": "tsci dev fixtures/tooling-smoke.circuit.tsx",
     "typecheck": "tsc --noEmit",

@@ -50,7 +50,7 @@ are not a released electrical design.
 | D-16 | Aquarium water and mounting envelope | Confirmed: freshwater, ample width with reasonably compact sensor PCB, snug contact via owner's separate gravity/friction clip; other hardware on spacious flat surface behind tank within 8 inches | PCB attachment interface remains project work; printed clip design is out of scope |
 | D-17 | Build strategy | Owner confirmed: one-shot final-use build of all three boards; no separate prototype or planned respin | Complete design/review before fabrication; physical calibration and acceptance afterward |
 | D-18 | Normal-full water surface below glass rim | Owner measurement requested: proposed RE band requires at least 11 mm below rim | Final reference geometry and valid upper limit |
-| D-19 | USB and service power | Self-powered USB data port with hardware VBUS gating; separate isolated 5 V service input | Mains-disconnected programming/calibration without host radio-current dependency |
+| D-19 | USB and service power | Self-powered USB data port with hardware VBUS gating; GST18U05-P1J isolated service adapter through protected Micro-Fit input | Mains-disconnected programming/calibration; exact harness and service eFuse in [service design](design/service-input.md); transient evidence remains open |
 | D-20 | Sensor bus power sequencing | TCA9517A separates pullup domains; independent GPIO0 enable disconnects the cable during recovery/startup | Prevent sensor backfeed and isolate the unpowered cable's low/floating bus |
 | D-21 | Controlled sensor recovery | TPS2553 with GPIO22 enable/GPIO23 fault; discharge resistors and bounded power-cycle/reinitialization sequence | Recover transient sensor faults without blocking control; persistent faults stay off |
 

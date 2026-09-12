@@ -1,6 +1,7 @@
 // Manufacturer land geometry, in millimetres. Top view, body-centre origin,
 // +X right and +Y DOWN, matching KiCad. A tscircuit renderer must negate Y once.
-// These data describe nominal bodies and copper lands, not completed footprints.
+// Body dimensions use the basis recorded by each source (nominal or maximum).
+// These data describe bodies and copper lands, not completed footprints.
 export type LandPattern = {
   id: string;
   body: { width: number; height: number };

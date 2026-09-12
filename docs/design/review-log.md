@@ -42,6 +42,63 @@ source and small parts, not the still-unfinished controller schematic, placement
 service-input protection, native handoff or manufacturing release. The full
 delivery goal remains active.
 
+## Controller sections, remaining component models and service power
+
+The next bounded batch captured STPS2L40U, USBLC6-2SC6, three Micro-Fit headers,
+Panasonic/TDK/Murata passives, Bourns inductor, LED and button source models. It
+then connected the final controller's relay-permission and logic-power sections.
+They reserve fixed references and expose named integration nets. They are not
+separate boards, complete controller placement, or fabrication exports.
+
+- Independent source review confirmed ST pin functions, copper and USB internal
+  pairs 1-6 / 3-4. Direct ST downloads failed; manufacturer PDFs from identified
+  mirrors supplied the hashed bytes and inspected drawings.
+- Root's current-native comparison corrected two earlier audit transcriptions:
+  43045-0200 drills are 1.02 mm, and 43045-0600 copper is 1.5 mm circular/roundrect,
+  rather than the single-row header's 1.5 x 2.02 mm pattern. Compiled checks and
+  independent reread preserve each header's native origin, numbering and NPTH locator.
+- Review found Bourns source rectangles were labelled with a stock rounded-pad
+  footprint ID. Source now uses `CrystalShim:SRP5030TA`; the final reviewer
+  confirmed that this resolves the mismatch.
+- Root located Murata's actual p27 reflow table after the first research pass
+  found p6 test-substrate lands. The selected 1.1 x 2.05 mm lands at x=+/-1.65
+  use GRM32 reflow midpoints. Independent delta review verified the source,
+  registry, terminal overlap and compiled dimensions.
+- Separate reviews checked LED polarity, button permanent pairs and the connected
+  supervisor/gate/MOSFET and diode-OR/buck netlists against the design basis.
+  Both section renders were inspected. Final scoped reviews found no further
+  actionable source or electrical-connection defect.
+
+The service design selects an intact GST18U05-P1J adapter, shortened Tensility
+10-02248 pigtail and a second TPS259470 with exact passives and input TVS.
+Research caught TI's reverse-input control-pin current restriction: direct sense
+dividers do not qualify. Added 470 kohm series resistors keep the calculated
+pin injection below 10 uA at -15 V; their leakage changes the trip bands, so the
+service instance has its own threshold calculation. BOM-92 through BOM-106 count
+these additions independently. Transient limits, aged contact loss, upstream raw
+harness shorts and discharge/backfeed remain explicit final-design/physical checks.
+
+Independent service review found one additional margin issue: the first adapter's
+5.25 V minimum OVP overlapped its conservative normal-voltage envelope. No
+manufacturer correlation excluded that corner. GST18U05-P1J replaces it with
+5.5 V minimum OVP above the 5.3675 V normal ceiling. Its higher ripple allowance
+is included in revised floors; the same pigtail is shortened to 100 mm with a
+90 mV complete-loop budget. The service record distinguishes the 4.00515 V
+modeled sensor input from a guaranteed floor, and records the replacement's
+zener/output-short OVP behavior without promising recovery.
+The final delta review found that the 34 mV startup margin extrapolated the
+adapter's 10-100% load-regulation test to an initially unloaded input. The record
+now limits the calculated envelope to its supported load range and requires a
+manufacturer bound or measured cold-start/light-load evidence. PWR-06 includes
+that check. The reviewer independently confirmed the revised source/hash,
+OVP behavior, harness and rail arithmetic, reverse-current limits and thresholds;
+no additional defect was reported in those reviewed calculations.
+
+The complete local gate passes with 13 Bun tests / 555 assertions and the unchanged
+firmware/TLS/partition checks. Physical rows, including new service row PWR-06,
+remain Not run. Complete controller integration, mains/sensor capture, guarded
+native handoff, routing and all release gates remain outstanding.
+
 ## FDC1004 acquisition
 
 An independent driver reviewer checked register selection, differential OoP channel

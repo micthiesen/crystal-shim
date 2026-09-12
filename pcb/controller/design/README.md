@@ -13,13 +13,29 @@ records the manufacturer comparisons.
 - `ic-components.tsx` binds exact MPNs, pin functions and copper models for capture.
 - `logic-land-patterns.ts` and `logic-components.tsx` add the supervisor, sensor
   feed, relay gate, USB detector and USB data switch with checked TI/onsemi lands.
-- `land-pattern.test.tsx` compiles the JSX and checks physical pad/port identity,
-  coordinate transforms and exposed-ground grouping.
+- `protection-components.tsx` adds exact ST Schottky/USB ESD models, including
+  the ESD part's two internal straight-through data paths.
+- `passive-components.tsx` binds exact resistor values and capacitor ordering codes
+  to Panasonic, TDK and Murata reflow lands. `assembly-components.tsx` adds the
+  Bourns inductor, LED and button, preserving native THT origins and button pairs.
+- `tht-footprint.tsx` and `micro-fit-components.tsx` reproduce the three selected
+  headers' copper, round drills, NPTH locators and component-side circuit numbering.
+- `relay-drive.tsx` captures the 11-part supervisor, relay gate and MOSFET section.
+  `logic-power.tsx` captures the 10-part diode OR and buck section. Their fixed
+  references and named boundary nets are for integration into the final controller.
+  These are incomplete sections of that board, not separate product boards.
+- Compiled tests check physical pin/port identity, translated/rotated geometry,
+  exposed-ground and switch pairing, and actual section netlists. Copper checks
+  do not establish a final solder process or complete electrical performance.
 
 Run `bun test controller/design` or `bun run render:controller-parts` from `pcb/`.
-The latter writes an explicitly labelled component review SVG and Circuit JSON
-under ignored `dist/controller/part-review/`. Its display positions and outline
-are not a product board or an additional fabrication design.
+The latter writes a 22-component review SVG and Circuit JSON under ignored
+`dist/controller/part-review/`. Its display positions and outline are not a product
+board or an additional fabrication design. `bun run render:controller-sections`
+renders the connected relay and logic-power sections separately under
+`dist/controller/section-review/`. Their positions remain provisional until all
+controller parts and the enclosure/antenna constraints are integrated. No render
+here is a fabrication input.
 
 The `CrystalShim:*` footprint metadata names reserve future native library IDs;
 those KiCad footprints have not been generated or adopted. Complete body/courtyard,

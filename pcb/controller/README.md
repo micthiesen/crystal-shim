@@ -8,6 +8,8 @@ maintenance/off button. It occupies the low-voltage enclosure section.
 The [controller basis](../../docs/design/controller-design-basis.md) selects GPIOs,
 connector numbering, protected/service power topology and a provisional outline.
 [Source component models](design/README.md) now bind checked copper lands and pin
-maps to exact parts. The complete schematic, placement, service-input protection,
-remaining footprints and enclosure fit still need implementation and review.
+maps to exact parts. Connected relay-permission and logic-power sections now
+compile with netlist tests. The [service circuit](../../docs/design/service-input.md)
+has exact adapter, harness and protection selections. Complete controller
+integration, remaining footprints, placement and enclosure fit still need work.
 Continue with [the PCB workflow](../../.agents/skills/pcb/SKILL.md).

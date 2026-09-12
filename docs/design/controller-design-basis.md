@@ -49,13 +49,16 @@ Place the antenna end at the enclosure's low-voltage outer edge.
 
 ## Power domains and USB
 
-Keep three distinct net names:
+Keep these distinct power nets:
 
 - `V5_PSU`: the protected IRM-10-5 secondary, also feeding the relay coil. The
   mains-board TPS259470 separates it from V5_RAW; raw output never enters this board.
 - `V5_LOGIC`: the diode-OR of V5_PSU and V5_SERVICE, feeding the controller buck and
   sensor supply. Its nominal voltage is below 5 V by a diode drop.
-- `3V3`: the controller regulator output. The sensor has its own 3.3 V regulator.
+- `V5_SERVICE_RAW`: the service adapter connector, ahead of controller protection.
+- `V5_SERVICE`: the service eFuse output, ahead of its OR diode.
+- `3V3`: the controller regulator output. Its tscircuit net spelling is `V3V3`;
+  use that one common net when integrating source sections. The sensor has its own regulator.
 
 Use two **STPS2L40U** Schottky diodes in SMB, each with its anode at its respective
 source and both cathodes at V5_LOGIC. There is no direct connection from USB VBUS
@@ -88,10 +91,13 @@ sensor or relay load, removing radio current and input bulk charging from the
 host's budget. Its only steady load is the hardware presence detector. A separate
 regulated isolated **5 V service supply, at least 1 A**, connects to a two-position
 Micro-Fit `43045-0200` header through `43025-0200` and `43030-0007` contacts:
-circuit 1 V5_SERVICE, circuit 2 GND. This cannot mate with the three-position
-coil/PSU harness or six-position sensor harness. Add input protection and an exact
-approved service adapter/harness to the final BOM. Put USB and the clearly marked
-5 V service input behind the low-voltage service cover. Disconnect the mains cord
+circuit 1 V5_SERVICE_RAW, circuit 2 GND. This cannot mate with the three-position
+coil/PSU harness or six-position sensor harness. Use the selected
+[GST18U05-P1J adapter, Tensility pigtail and service protection](service-input.md).
+A second TPS259470, with service-specific 470 kohm control-pin resistors and
+input TVS, feeds V5_SERVICE before the OR diode. Its thresholds and reverse-input
+conditions differ from the mains eFuse. Source and transient closure remain work.
+Put USB and the clearly marked 5 V service input behind the low-voltage service cover. Disconnect the mains cord
 for programming and calibration; the final board runs its full radio and sensor
 functions from service power while the coil remains unpowered.
 
@@ -345,7 +351,7 @@ overhang, service access, standoffs, antenna keepout and cable bends must fit th
 
 ## Capture work still owed
 
-Finish the service-input protection and adapter, remaining protection
-parts, sensor-feed ESD, connector mating drawings,
+Capture the selected service-input circuit and finish its transient model,
+sensor-feed ESD, USB pad mapping, connector mating drawings,
 component footprints and the enclosure fit. Review the schematic and transient
 power combinations before adopting these selections as a fabrication baseline.
