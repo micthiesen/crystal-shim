@@ -292,7 +292,7 @@ fn validated_cli_sends_exact_loaded_record_over_fragmented_pseudo_terminal() {
                     assert_eq!(fields[2], owner);
                     assert_eq!(fields[3].parse::<usize>().unwrap(), collected.len());
                     assert!(fields[4].len() <= 512);
-                    for pair in fields[4].as_bytes().chunks_exact(2) {
+                    for pair in fields[4].as_bytes().as_chunks::<2>().0 {
                         collected.push(
                             u8::from_str_radix(std::str::from_utf8(pair).unwrap(), 16).unwrap(),
                         );

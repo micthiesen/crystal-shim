@@ -312,7 +312,7 @@ fn parse_response(bytes: &[u8]) -> Option<Response> {
             return None;
         }
         let mut nonce = [0; 16];
-        for (n, pair) in nonce.iter_mut().zip(hex.as_bytes().chunks_exact(2)) {
+        for (n, pair) in nonce.iter_mut().zip(hex.as_bytes().as_chunks::<2>().0) {
             *n = u8::from_str_radix(std::str::from_utf8(pair).ok()?, 16).ok()?;
         }
         if nonce == [0; 16] {

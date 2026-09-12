@@ -771,6 +771,13 @@ private-key byte sequence remains absent. Physical serial behavior, flash/reset
 timing and HomeKit acceptance remain untested. This bounded review does not
 establish whole-project adversarial convergence.
 
+GitHub's Rust 1.98 Clippy then required `as_chunks::<2>()` for the two fixed-size
+hex decoders. Their existing length checks and behavior are unchanged; all 16
+sender/CLI cases pass with OpenSSL 3 after that adjustment. A shell started in the
+firmware directory selected macOS LibreSSL and failed offline issuance, while
+the project-root shell selected OpenSSL 3.6.3 and passed. The documented OpenSSL 3
+PATH prerequisite applies to the shell running the tests too.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.
