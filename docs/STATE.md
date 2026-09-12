@@ -78,6 +78,9 @@ and 28 handoff tests. Two existing tscircuit fixture reference-text warnings
 remain documented tooling output. Documentation checks pass for the new design
 records. The TLS provider report separates the inert app build from the linked
 provider probe and the live host checks; no C6 runtime result is implied.
+GitHub documentation and firmware CI passed for checkpoint `6ca0fa3`, including
+the Linux TLS harness and ESP target build. The [firmware run](https://github.com/micthiesen/crystal-shim/actions/runs/34664738800)
+records those hosted checks.
 
 Every [physical commissioning result](../testing/test-matrix.csv) remains Not run.
 No parts were bought, hardware flashed, mains energized or live alerts sent.
