@@ -1,5 +1,8 @@
 import { expect, test } from "bun:test";
 import { Circuit } from "tscircuit";
+import { Fragment } from "react";
+import { CircuitJsonToKicadPcbConverter } from "circuit-json-to-kicad";
+import { At, parseKicadPcb } from "kicadts";
 import { Esp32C6Wroom, wroomPattern, wroomPins } from "./esp32-c6-wroom";
 import { ap63203, ao3400a, tca9517a } from "./ic-land-patterns";
 import { ControllerBuck, RelayMosfet, SensorBusBuffer } from "./ic-components";
@@ -10,6 +13,148 @@ import {
   UsbPresenceDetector,
   UsbDataSwitch,
 } from "./logic-components";
+import { dbv5, dbv6 } from "./logic-land-patterns";
+import { esds312, smbj7_0a } from "./cable-protection-land-patterns";
+import { tdk10uf, vishay2512hp } from "./passive-land-patterns";
+import { LandPatternFootprint } from "./land-pattern";
+import { landPatternPhysicalGeometry } from "./land-pattern-physical";
+
+for (const rotation of [0, 90, 180, 270] as const) {
+  test(`physical package declarations preserve native body, courtyard and mask at ${rotation} degrees`, async () => {
+    // Independently fixed nominal-body, max-height and outward-rounded courtyard
+    // dimensions. TI courtyards include permitted mold flash, not just nominal body.
+    const cases = [
+      [tca9517a, 3, 3, 1.1, 6.8, 4.4],
+      [dbv6, 1.6, 2.9, 1.45, 4.7, 4.6],
+      [dbv5, 1.6, 2.9, 1.45, 4.7, 4.6],
+      [esds312, 1.6, 2.9, 1.45, 4.7, 4.6],
+      [smbj7_0a, 4.75, 3.94, 2.61, 8.1, 5],
+      [vishay2512hp, 6.3, 3.15, 0.7, 8.5, 4.4],
+      [tdk10uf, 3.2, 1.6, 1.8, 5.4, 2.8],
+    ] as const;
+    const circuit = new Circuit();
+    circuit.add(
+      <board width={110} height={40} pcbRelative routingDisabled>
+        {cases.map(([pattern], index) => (
+          <Fragment key={pattern.id}>
+            <chip
+              name={`U${index + 1}`}
+              pcbX={-45 + 15 * index}
+              pcbY={4}
+              pcbRotation={rotation}
+              schX={-30 + 10 * index}
+              footprint={<LandPatternFootprint pattern={pattern} />}
+              pinLabels={Object.fromEntries(
+                pattern.pads.map((p) => [`pin${p.number}`, `P${p.number}`]),
+              )}
+            />
+          </Fragment>
+        ))}
+      </board>,
+    );
+    await circuit.renderUntilSettled();
+    const json = circuit.getCircuitJson();
+    const converter = new CircuitJsonToKicadPcbConverter(json);
+    converter.runUntilFinished();
+    const native = parseKicadPcb(converter.getOutputString());
+    const rotate = ({ x, y }: { x: number; y: number }) => ({
+      x:
+        x * Math.cos((rotation * Math.PI) / 180) +
+        y * Math.sin((rotation * Math.PI) / 180),
+      y:
+        -x * Math.sin((rotation * Math.PI) / 180) +
+        y * Math.cos((rotation * Math.PI) / 180),
+    });
+    for (const [
+      index,
+      [pattern, bodyW, bodyH, thickness, courtW, courtH],
+    ] of cases.entries()) {
+      const declaration = landPatternPhysicalGeometry(pattern)!;
+      expect(declaration.declaration.body.thicknessMax).toBe(thickness);
+      expect(declaration.courtyard.width).toBeCloseTo(courtW, 7);
+      expect(declaration.courtyard.height).toBeCloseTo(courtH, 7);
+      expect(declaration.declaration.nativeAssembly.paste).toContain("KiCad");
+      const component = json
+        .filter((e) => e.type === "source_component")
+        .find((e) => e.name === `U${index + 1}`)!;
+      const pcb = json
+        .filter((e) => e.type === "pcb_component")
+        .find((e) => e.source_component_id === component.source_component_id)!;
+      const body = json
+        .filter((e) => e.type === "pcb_fabrication_note_path")
+        .find((e) => e.pcb_component_id === pcb.pcb_component_id)!;
+      const court = json
+        .filter((e) => e.type === "pcb_courtyard_outline")
+        .find((e) => e.pcb_component_id === pcb.pcb_component_id)!;
+      expect(body.route).toHaveLength(5);
+      expect(court.outline).toHaveLength(5);
+      expect(pcb.center.x).toBeCloseTo(-45 + 15 * index, 7);
+      expect(pcb.center.y).toBeCloseTo(4, 7);
+      for (const [points, width, height] of [
+        [body.route, bodyW, bodyH],
+        [court.outline, courtW, courtH],
+      ] as const) {
+        for (const [corner, [sx, sy]] of [
+          [-1, -1],
+          [1, -1],
+          [1, 1],
+          [-1, 1],
+          [-1, -1],
+        ].entries()) {
+          const expected = rotate({ x: (sx * width) / 2, y: (sy * height) / 2 });
+          expect(points[corner]!.x - pcb.center.x).toBeCloseTo(expected.x, 7);
+          expect(pcb.center.y - points[corner]!.y).toBeCloseTo(expected.y, 7);
+        }
+      }
+      const pads = json
+        .filter((e) => e.type === "pcb_smtpad")
+        .filter((e) => e.pcb_component_id === pcb.pcb_component_id);
+      expect(pads).toHaveLength(pattern.pads.length);
+      for (const pad of pads) expect(pad.soldermask_margin).toBe(0.05);
+      const footprint = native.footprints.find((e) =>
+        e.properties.some((p) => p.key === "Reference" && p.value === `U${index + 1}`),
+      )!;
+      const position = footprint.position;
+      if (!(position instanceof At)) throw new Error("Missing native placement");
+      expect(position.x).toBeCloseTo(100 + pcb.center.x, 7);
+      expect(position.y).toBeCloseTo(100 - pcb.center.y, 7);
+      expect(position.angle ?? 0).toBeCloseTo(rotation, 7);
+      const nativeBody = footprint.fpLines.filter((line) =>
+        line.layer?.names.includes("F.Fab"),
+      );
+      expect(nativeBody).toHaveLength(4);
+      const nativeCourts = footprint.fpPolys.filter((poly) =>
+        poly.layer?.names.includes("F.CrtYd"),
+      );
+      expect(nativeCourts).toHaveLength(1);
+      const nativeCourt = nativeCourts[0]!.points!.points;
+      expect(nativeCourt).toHaveLength(5);
+      // Validate all native global vertices, not only an axis-aligned bbox.
+      for (const [nativePoints, sourcePoints] of [
+        [nativeBody.map((line) => line.start!), body.route.slice(0, 4)],
+        [nativeCourt, court.outline],
+      ] as const) {
+        for (const [pointIndex, point] of nativePoints.entries()) {
+          if (!("x" in point && "y" in point)) throw new Error("Unexpected native arc");
+          const world = rotate(point);
+          expect(position.x + world.x).toBeCloseTo(
+            100 + sourcePoints[pointIndex]!.x,
+            7,
+          );
+          expect(position.y + world.y).toBeCloseTo(
+            100 - sourcePoints[pointIndex]!.y,
+            7,
+          );
+        }
+      }
+      for (const pad of footprint.fpPads) expect(pad.solderMaskMargin).toBe(0.05);
+    }
+    expect(landPatternPhysicalGeometry(ap63203)).toBeUndefined();
+    expect(json.filter((e) => "error_type" in e || e.type.endsWith("_error"))).toEqual(
+      [],
+    );
+  });
+}
 
 test("supervisor, feed, relay gate and USB models bind each physical pin correctly", async () => {
   const circuit = new Circuit();

@@ -1,32 +1,35 @@
-# Matter command and persistence adapter
+# Matter radio, command and persistence integration
 
-The app now uses the real rs-matter persistence interface for configuration and
-retained writes, and shares its bounded command ingress with a generated async
-On/Off cluster handler. This is an integration boundary for the next radio unit.
-There is no commissioned Matter node, radio, advertised device profile, or usable
-HomeKit accessory in this build.
+The app assembles the pinned Matter-over-Wi-Fi stack, BLE commissioning, one
+Embassy network runner with TCP/DNS/UDP, and the generated bounded On/Off handler.
+The production radio branch depends on a private provisioning record in NVS.
+Missing or invalid material keeps commissioning closed and USB/local protection
+available. No identity, private key, PIN, current UTC or calibration is supplied
+by this repository. Apple Home pairing and operation have not been exercised.
 
 ## Pinned interface and maintained reference
 
-`firmware/matter` is a `no_std` host-workspace crate used by the C6 app. Its direct
-dependency is exactly `rs-matter = 0.2.0`, with default features disabled. Both
-lockfiles resolve the same version, code generator, and macros. The resolved
-rs-matter feature set is empty. In particular, `sync-mutex`, `std`, and `log` are
-absent. Radio and crypto implementations are intentionally not selected by this
-adapter crate.
+`firmware/matter` is a `no_std` host-workspace crate used by the C6 app. Both
+lockfiles resolve the same `rs-matter 0.2.0`, code generator and macros. The app
+uses RustCrypto through `rs-matter-embassy` revision
+`f31233a6fd4530ff25ad3bcbd9abf8fe854320aa` and `rs-matter-stack 0.1.0`. Its
+common ESP family revision is `10e48dd74837bae4be663a7d1825d12875363727`,
+including `esp-radio 0.18.0`. Related exact resolved APIs are `embassy-net 0.9.1`,
+`edge-nal-embassy 0.9.0`, `edge-nal 0.7.0`, `bt-hci 0.8.1`, `trouble-host 0.6.0`
+and `sequential-storage 3.0.1`. Wi-Fi/BLE `coex` is explicitly enabled.
 
-The maintained Stillair reference resolves these interfaces through
-`rs-matter-embassy` revision
-`f31233a6fd4530ff25ad3bcbd9abf8fe854320aa`, `rs-matter-stack 0.1.0`, and
-`rs-matter 0.2.0`, using RustCrypto. The future radio assembly should use that
-revision and the existing common ESP family revision
-`10e48dd74837bae4be663a7d1825d12875363727`, including `esp-radio 0.18.0`, with
-`embassy-net 0.9.1`. Those radio dependencies are not yet part of this app.
-Sequential storage currently resolves to `3.0.1` in both test and app workspaces.
+The maintained Stillair locations are `firmware/app/Cargo.toml`,
+`firmware/app/src/matter.rs` and its main heap/executor setup. Its fan behavior,
+pins, stored data and example commissioning identity are not transferred.
+Primary implementation boundaries are the pinned
+[Embassy network adapter](https://github.com/ivmarkov/rs-matter-embassy/blob/f31233a6fd4530ff25ad3bcbd9abf8fe854320aa/rs-matter-embassy/src/enet.rs),
+[ESP Wi-Fi controller adapter](https://github.com/ivmarkov/rs-matter-embassy/blob/f31233a6fd4530ff25ad3bcbd9abf8fe854320aa/rs-matter-embassy/src/wifi/esp.rs),
+and [ESP radio sources](https://github.com/esp-rs/esp-hal/tree/10e48dd74837bae4be663a7d1825d12875363727/esp-radio).
 
-Relevant reference locations are Stillair's `firmware/app/Cargo.toml`,
-`firmware/app/src/matter.rs`, and its storage adapter. Its fan command behavior,
-pin map, and stored data are not transferred here.
+`sync-mutex`, `std`, `log` and `defmt` are absent from the app's resolved
+rs-matter features. The host adapter has no crypto backend selected, and the app
+selects RustCrypto. `scripts/check_matter_features.py` checks matching API identity
+and rejects the mutex feature. SDK blob logging remains disabled.
 
 ## One gated storage owner
 
@@ -37,13 +40,21 @@ each bounded driver operation. Reads and programs are at most 256 bytes;
 programs stay within a 256-byte page, and erases cover exactly one 4 KiB sector.
 The existing validated NVS partition remains the only allowed range.
 
-`main.rs` opens the sole `Store`, reads boot records, then moves that same owner
-into `SharedKvBlobStore`, with one 4096-byte scratch buffer. Application writes
-call `matter::storage::apply` through `KvBlobStoreAccess`, the same interface
-returned by `Matter::kv`. A future stack must receive this owner and give its
-shared access back to application transactions. It must not create an alternate
-`FlashStorage`, use a second partition writer, or re-enter storage from inside an
-access closure.
+`main.rs` opens the sole `Store` and reads boot records. `matter::run` reads the
+private provisioning record and invokes SDK `startup` with that same store.
+After startup returns, even on error, `stack.matter().kv(store)` owns it. A small
+permanent allocation keeps the access object alive after radio return. The
+separate USB service receives only a `RecordStore` trait object for application
+transactions; Matter borrows the exact same KV access. Missing provisioning or
+entropy uses `SharedKvBlobStore` with the same Store and a fallback 4096-byte
+scratch buffer. Only one path publishes the owner per boot.
+
+USB receives/parses and handles applied replies while preparation is pending;
+it leaves storage tickets pending until access is published. A failed Store open
+publishes a permanent typed failure. No network result cancels the local service.
+The app never constructs another `FlashStorage`, opens another partition writer,
+or re-enters storage from inside an access closure. The Matter-owned scratch
+buffer is also 4096 bytes; the fallback buffer remains statically reserved.
 
 The SDK's default blocking mutex uses its single-executor backend. It does not
 disable interrupts across the storage closure. All KV access remains in the
@@ -53,7 +64,7 @@ critical-section mutex on bare metal and break this contract. The production gat
 also rejects access outside interruptible thread mode.
 
 Retained and configuration keys remain `0x4353` and `0x4346`; Matter's built-in
-keys use the SDK's separate low-numbered range. `remove` is idempotent for a
+keys use the SDK's separate low-numbered range. Private provisioning uses `0x434D`. `remove` is idempotent for a
 missing key. Failures become a generic Matter `Failure` without logging driver
 details or stored bytes. The upstream sequential-map adapter is not used because
 its trace logging includes blob contents.
@@ -95,12 +106,11 @@ acknowledges immediate revocation; retained suppression durability is reported
 separately by the existing storage state.
 
 `app/src/matter.rs::LocalControl` touches only copied runtime mailboxes and status.
-The main loop uses the same `OnOff` object's producer entry point for USB commands
-and samples observed output to refresh the cluster data version. The generated
-`ClusterAsyncHandler` reads that observed state. Its `run` method separately tracks
-the last version notified, so sampling in the app cannot swallow a subscription
-notification. A radio assembly must run the handler and seed its initial data
-version from the TRNG; the current non-networked object starts at zero.
+The USB service uses `LocalControl::begin` with its own source. The generated
+`ClusterAsyncHandler` runs in the actual Matter handler chain, reads observed
+output and publishes data-version changes every 20 ms when needed. It separately
+tracks the last version notified, so a read cannot swallow a subscription update.
+All endpoint data versions are seeded from the hardware-backed CSPRNG.
 
 ## Device-profile boundary
 
@@ -109,7 +119,7 @@ lighting, startup, timed, or scene features. Direct handlers for OffWithEffect,
 OnWithTimedOff and OnWithRecallGlobalScene return `CommandNotFound` as well.
 
 Decision [D-22](../decisions.md)
-selects On/Off Plug-in Unit (`0x010A`, revision 3) as the next radio slice's private
+selects On/Off Plug-in Unit (`0x010A`, revision 3) as this app's private
 controlled-load identity. The pinned
 [CHIP v1.5.1.0 device definition](https://raw.githubusercontent.com/project-chip/connectedhomeip/v1.5.1.0/src/app/zap-templates/zcl/data-model/chip/matter-devices.xml)
 uses this revision. This describes the controlled load more closely than
@@ -117,45 +127,107 @@ the On/Off Light Switch type, which is a controller/client device. However, the
 [Matter 1.3 device library, section 5.1](https://csa-iot.org/wp-content/uploads/2024/05/matter-1-3-device-library-specification.pdf)
 requires additional clusters and Lighting behavior for an On/Off Plug-in Unit.
 The [CHIP device definitions](https://github.com/project-chip/connectedhomeip/blob/master/src/app/zap-templates/zcl/data-model/chip/matter-devices.xml)
-also carry profile-specific requirements. The private accessory will advertise
-only implemented metadata and document its deviations from those requirements.
-It will not claim Matter conformance or certification. Boot-off and immutable
+also carry profile-specific requirements. The private accessory advertises only implemented metadata and makes no Matter
+conformance or certification claim. Boot-off and immutable
 leases remain authoritative; startup restore, scenes and timed commands will not
 be added just to claim a complete profile. Actual Apple Home pairing and control
-remain final-board acceptance tests. The present build still advertises no node.
+remain final-board acceptance tests.
 
-## Next radio assembly boundary
+`matter/src/profile.rs` supplies the production endpoint metadata and its host
+regression. Endpoint 0 is the SDK Wi-Fi root endpoint and corresponding root
+handler. Endpoint 1 contains Descriptor, Identify, Groups and the bounded On/Off
+cluster. Identify advertises only its required Identify command/attributes; the
+single USB/LED owner blinks GPIO20 for the requested countdown. TriggerEffect is
+not advertised. Groups uses the SDK fabric/group-key machinery and the same KV
+owner. Group-addressed On/Off still reaches the bounded handler; no Scenes cluster
+or scene recall is exposed. The restricted On/Off surface and missing full
+Lighting behavior remain explicit private-profile deviations.
 
-The next unit will use the exact Embassy/ESP pins above and one project-owned,
-fallible Wi-Fi/BLE network stack. Its thread-mode network work must leave the USB
-transaction service running if startup fails, the interface is down, or Matter
-returns. The existing service must borrow the same `Matter::kv` access as the
-protocol. `UserTask` is unsuitable for that service because the SDK cancels it
-when the operational network interface goes down.
+## Actual radio and service lifetime
 
-The pinned Embassy `enet.rs::EnetStack` currently uses `NoopNet` for TCP and
-returns `None` from `tcp_connect`. Enabling TCP features or extra sockets alone
-does not make TLS usable. Construct one `embassy_net::Stack` and its runner in
-project code, wrap that same stack with TCP/DNS/UDP access, and use the public
-`PreexistingWireless`/`run_coex` boundary. Reuse `EnetNetif`,
-`EspWifiController` and Trouble GATT rather than opening another radio or flash
-handle. The precise assembly still needs a compile probe before implementation.
+`app/src/radio.rs` owns the WIFI/BT peripherals and creates one Embassy stack.
+It maps BLE construction, Wi-Fi construction and power-save configuration errors
+to typed errors; `Interface::try_station` also fails instead of panicking on a
+second take. `PreexistingWireless` joins the same stack's `ProjectNetStack`,
+`EnetNetif`, `EspWifiController`, built-in mDNS and Trouble GATT. `run_coex` and the
+Embassy runner share a cancellation scope. Radio return stops protocol work and
+reports `RadioStopped`; the USB/transaction service remains alive. Reboot is the
+current retry boundary after a fatal startup/run error.
 
-The stock ESP driver unwraps BLE construction, Wi-Fi construction and power-save
-configuration. A local wrapper must return those errors. Retain RNG, ADC1, WIFI
-and BT ownership in the board adapter; ADC1 is free here because the sensor uses
-I2C. Keep `TrngSource` alive and seed separate CSPRNG streams for Matter and the
-static RNG required by MbedTLS. Never substitute Matter's monotonic epoch for
-trusted certificate UTC. Network-only TLS work can use `UserTask` once TCP exists,
-with one session and cancellation-safe buffers. Commissioning identity and keys
-must come from explicit provisioning, and absent material leaves the app local.
+The pinned stock `EnetStack` returns `None` for TCP even if the TCP feature is
+enabled. Our wrapper exposes actual `TcpConnect`, `TcpBind`, UDP bind and DNS
+backed by the same stack. Two TCP pool slots each reserve 2048-byte TX/RX buffers;
+three UDP slots cover Matter, mDNS and a future time-acquisition socket. Seven IP
+socket resources include DHCP/DNS. TCP bind/connect share the two-slot pool.
+The SDK creates DHCPv4 plus MAC-derived link-local IPv6. This app does not claim
+Matter TCP-server transport; Basic Information advertises `tcp_supported=false`.
+
+The USB service lives outside `UserTask` and every network lifetime. The pinned
+`run_coex` implementation starts `UserTask` alongside protocol work, despite its
+interface-up-only documentation, so application network work must check readiness.
+Our task checks an operational interface and IPv4 configuration and reports TLS
+readiness without opening sockets or resolving DNS. A future HTTP/Pushover worker
+must await usable configuration and handle loss/retry itself.
+
+A permanent `TrngSource` owns RNG and ADC1, which the I2C sensor does not use.
+Independent hardware-seeded, periodically reseeded CSPRNG streams serve Matter
+and MbedTLS. A small typed adapter bridges the SDK's rand_core 0.6 RNG to
+MbedTLS's rand_core 0.10 interface. Main installs the TLS timer/certificate-clock
+hooks once. The fixed TLS provider still requires a fresh trusted UTC observation;
+Matter's monotonic epoch and the USB calendar clock are not passed off as that
+observation. No trusted UTC publisher is installed here. TLS engine failure is
+reported separately and does not disable Matter or local service.
+
+## Private provisioning boundary
+
+`matter/src/provisioning.rs::Provisioning::decode` is the only admission path.
+`matter::run` loads key `0x434D` through the gated Store into a 4096-byte buffer.
+The record payload is at most 3584 bytes, leaving sequential-storage overhead.
+No repository build flag supplies a deployable default. This runtime read keeps
+the real transport branch in the release binary even when material is absent.
+There is no public example DAC private key in the app. Unit tests use an explicitly
+synthetic keypair/framing fixture that fails production certificate validation;
+it is not a commissioning identity.
+
+Version 1 byte layout, in order:
+
+| Field | Encoding / bound |
+| --- | --- |
+| Magic/version | 8 bytes `CSMAT01` followed by NUL |
+| VID, PID, hardware version, discriminator | Four little-endian u16 values |
+| Setup PIN | Little-endian u32, Matter permitted range/patterns only |
+| Vendor name, serial number, unique ID, hardware version string | Each: little-endian u16 byte length plus nonempty UTF-8; limits 32, 32, 32, 64 bytes; no control characters |
+| DAC public key | 65-byte uncompressed P-256 point |
+| DAC private key | 32-byte P-256 scalar |
+| Certification Declaration, PAI DER, DAC DER | Each: little-endian u16 byte length plus DER; each at most 1536 bytes, total record still at most 3584 |
+
+The decoder rejects truncation, trailing bytes, forbidden setup codes, invalid
+identity fields and key mismatch. The SDK's `DacCert`/`PaiCert` parsers check X.509
+structure and required certificate extensions. DAC public key, VID/PID, PAI VID
+and any PAI PID, plus DAC authority/PAI subject key IDs must agree with the record.
+The commissioner still verifies certificate signatures, CD and trust, including
+its policy for private development identities. Provisioning is not a certification
+claim. Records and key-bearing objects have no Debug/Display implementation and
+are never echoed or logged.
+
+This unit defines and consumes the provisioning record; it does not add a USB
+private-material command or provisioner. A later authorized owner-only tool must
+validate/encode and place the material through the same Store contract, without
+printing it. Its physical delivery/attestation choice and actual Apple Home
+acceptance remain separate. Missing/invalid material reports a generic state,
+constructs no radio, and retains local settings/calibration service.
 
 ## Verification and remaining work
 
 Evidence collected 2026-09-12 without hardware or network operations:
 
 - Host fmt and Clippy with warnings denied passed. The host workspace passed
-  115 core, 9 driver, 1 CLI, and 9 Matter adapter tests.
+  115 core, 9 driver, 1 CLI, and 15 Matter tests. New tests cover provisioning
+  bounds/key consistency/closed invalid identity, actual restricted endpoint
+  metadata, and service polling/cancellation after network completion.
+  Root review added a complete X.509 acceptance case and mismatched VID/PID/DAC
+  key rejection. Public SDK credentials are used only inside `cfg(test)`; the
+  production image has no default attestation material.
 - `matter/tests/gated_store.rs` compiles the actual app storage source with a
   deterministic NOR driver. It checks shared application/protocol keys,
   missing-key deletion, garbage collection, driver failures, permit release,
@@ -174,11 +246,24 @@ Evidence collected 2026-09-12 without hardware or network operations:
   On/Toggle resolutions. Before the fix, the safety-result and expiry-tick
   regressions both failed because `Applied` was returned without retained demand.
 - Embedded fmt, Clippy `--all-targets` with warnings denied, and locked release
-  build passed. The current release ELF, including the concurrent sensor startup
-  recovery change, reports text 621,272, data 9,052, BSS 16,980 bytes
-  using `llvm-size`. This measures the current app, whose unused transport handler
-  paths can be removed by the linker; it is not a combined Matter-radio or TLS
-  memory measurement.
+  build passed. Both resolved feature guards passed. The deterministic Linux TLS
+  harness passed all 11 tests with production source and policy unchanged.
+- Combined release ELF/static SRAM measurements are recorded below. These include
+  the runtime-selected radio branch, TCP pools, root and application handlers,
+  RustCrypto, provisioning checks, TLS engine/root policy, and the sensor startup
+  recovery fix. They do not include a live TLS handshake worker: no connect/send
+  caller exists yet, so unused handshake code may still be eliminated.
+
+`llvm-size` on the linked C6 release reports text 1,901,488 bytes, data 23,692
+bytes and BSS 238,696 bytes. RAM execution sections (`.trap`, `.rwtext`,
+`.rwtext.wifi`) add 80,392 bytes, for 342,780 static RAM bytes before alignment.
+The configured RAM ends at `0x4086E610`; BSS ends at `0x40853B00`, leaving
+109,328 bytes in `.stack`. BSS includes the 102,400-byte heap and a 66,440-byte
+Matter allocation containing its 20,000-byte bump arena. TCP buffers, UDP buffers,
+BLE/mDNS state, IP resources and task futures are also present. The release build
+is below the static RAM limit; runtime radio/crypto heap peaks and stack use remain
+unmeasured. The future TLS worker will add live session allocations beyond the
+engine/readiness path measured here.
 
 Commands from the repository root:
 
@@ -198,12 +283,13 @@ sh ../../scripts/with-esp-toolchain.sh cargo build --release --locked
 sh ../../scripts/with-esp-toolchain.sh llvm-size target/riscv32imac-unknown-none-elf/release/crystal-shim
 ```
 
-The next integration needs recoverable radio initialization, Wi-Fi/BLE transport
-and coexistence, TRNG/crypto, commissioning material, root endpoint handlers,
-the documented private profile, handler execution/subscriptions, and shared KV ownership
-through `Matter::kv`. The Stillair Embassy driver currently unwraps some radio
-setup failures; carry a local fallible wrapper so failed networking cannot reset
-or disable local protection. Combined flash/RAM and allocator high-water checks,
-the 48 KiB free-SRAM gate, real GPIO/flash/watchdog timing, authenticated HomeKit
-behavior, and final-board commissioning remain required. No current time,
-calibration, credentials, or commissioning identity is invented by this unit.
+Remaining integration is the private provisioning writer/identity choice,
+a trusted clock source, hosted settings/schedule UI, and the bounded HTTP/Pushover
+worker using this TCP interface. RF pairing/reconnect, real group/subscription
+behavior, combined TLS handshakes, GPIO/flash/watchdog timing, peak heap and stack
+high-water, and Apple Home acceptance remain final-board tests. The static RAM
+margin is not a substitute for the required 48 KiB margin after measured runtime
+stack use. ESP radio/RTOS internals can still panic on SDK invariants or allocation
+exhaustion; the fallible wrapper covers their public Result-returning constructors,
+not a general panic recovery mechanism. No live radio traffic, flashing or notification POSTs were used for this
+evidence; the deterministic tests use no credentials or live endpoints.

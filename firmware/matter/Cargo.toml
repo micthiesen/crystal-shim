@@ -10,9 +10,10 @@ crystal-shim-core = { path = "../core" }
 # Exact data-model/persistence API from Stillair's locked rs-matter-embassy stack.
 # Radio and crypto assembly remain outside this adapter crate.
 rs-matter = { version = "=0.2.0", default-features = false }
+p256 = { version = "0.13", default-features = false, features = ["arithmetic"] }
+embassy-futures = "0.1"
 
 [dev-dependencies]
-embassy-futures = "0.1"
 embedded-storage = "0.3"
 embedded-storage-async = "0.4"
 sequential-storage = "3"

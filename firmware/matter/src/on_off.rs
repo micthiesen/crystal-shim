@@ -12,6 +12,10 @@ use rs_matter::error::{Error, ErrorCode};
 use rs_matter::with;
 
 pub const ENDPOINT: u16 = 1;
+pub const CLUSTER: Cluster<'static> = on_off::FULL_CLUSTER
+    .with_features(0)
+    .with_attrs(with!(required))
+    .with_cmds(with!(CommandId::Off | CommandId::On | CommandId::Toggle));
 pub const REPLY_TIMEOUT_MS: u64 = 250;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -124,10 +128,7 @@ fn matter_error(error: BridgeError) -> Error {
 }
 
 impl<C: Control> on_off::ClusterAsyncHandler for OnOff<C> {
-    const CLUSTER: Cluster<'static> = on_off::FULL_CLUSTER
-        .with_features(0)
-        .with_attrs(with!(required))
-        .with_cmds(with!(CommandId::Off | CommandId::On | CommandId::Toggle));
+    const CLUSTER: Cluster<'static> = CLUSTER;
 
     fn dataver(&self) -> u32 {
         self.dataver.get()

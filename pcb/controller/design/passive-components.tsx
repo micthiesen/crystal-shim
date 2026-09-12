@@ -5,11 +5,14 @@ import {
   panasonic0805,
   tdkC1608,
   tdk1uf,
+  tdk10uf,
+  vishay2512hp,
   murata22uf,
 } from "./passive-land-patterns";
 
 // Selecting a value selects its already reviewed exact ordering code as well.
 export const controllerResistors = {
+  "6.8": { mpn: "CRCW25126R80FKEGHP", pattern: vishay2512hp },
   "22": { mpn: "ERJ3EKF22R0V", pattern: panasonic0603 },
   "100": { mpn: "ERA3AEB101V", pattern: panasonic0603 },
   "330": { mpn: "ERA3AEB331V", pattern: panasonic0603 },
@@ -77,6 +80,13 @@ export const controllerCapacitors = {
     pattern: murata22uf,
     voltage: "25V",
     datasheetUrl: murata22uf.source.url,
+  },
+  "10uF": {
+    mpn: "C3216X7R1E106K160AB",
+    pattern: tdk10uf,
+    voltage: "25V",
+    datasheetUrl:
+      "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf",
   },
 } as const;
 

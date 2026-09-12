@@ -2,12 +2,8 @@
 #![no_std]
 #![no_main]
 
-use core::fmt::Write as _;
-use crystal_shim_core::runtime_ingress::Source;
-use crystal_shim_matter::sdk::persist::SharedKvBlobStore;
+extern crate alloc;
 use crystal_shim_matter::sdk::utils::{cell::RefCell, sync::blocking::Mutex};
-use embassy_time::{with_timeout, Duration};
-use embedded_io_async::{Read, Write};
 use esp_backtrace as _;
 use esp_hal::{interrupt::Priority, timer::timg::MwdtStage};
 use esp_rtos::embassy::InterruptExecutor;
@@ -18,8 +14,10 @@ mod control;
 mod flash_gate;
 mod matter;
 mod partition;
+mod radio;
 mod runtime;
 mod sensor;
+mod service;
 mod snapshot;
 mod storage;
 
@@ -28,10 +26,14 @@ esp_bootloader_esp_idf::esp_app_desc!();
 static CONTROL: StaticCell<InterruptExecutor<1>> = StaticCell::new();
 static SENSOR: StaticCell<InterruptExecutor<2>> = StaticCell::new();
 static STORAGE_BUFFER: StaticCell<Mutex<RefCell<[u8; storage::SCRATCH_BYTES]>>> = StaticCell::new();
-static CONSOLE: StaticCell<crystal_shim_core::runtime_ingress::Receiver> = StaticCell::new();
 
 #[esp_rtos::main]
 async fn main(_spawner: embassy_executor::Spawner) {
+    esp_alloc::heap_allocator!(size: 100 * 1024);
+    // SAFETY: the only installation, before TLS construction on this executor.
+    unsafe {
+        crystal_shim_tls::install_certificate_clock();
+    }
     let mut board = board::Board::new(esp_hal::init(esp_hal::Config::default()));
     let reset = esp_hal::rtc_cntl::reset_reason(esp_hal::system::Cpu::ProCpu);
     esp_rtos::start(board.timers.timer0, board.interrupts.software_interrupt0);
@@ -78,125 +80,31 @@ async fn main(_spawner: embassy_executor::Spawner) {
         Ok(_) => "UNCOMMISSIONED",
         Err(_) => "STORAGE_RECOVERY_REQUIRED",
     };
-    let receiver = CONSOLE.init(crystal_shim_core::runtime_ingress::Receiver::new());
-    let mut last_ticket = 0;
-    let mut storage_error = boot.as_ref().err().copied();
-    // This is the same access type returned by Matter::kv. It owns the one Store;
-    // future protocol callers borrow this same access, never construct another flash handle.
-    let kv = store.map(|store| SharedKvBlobStore::new(store, shared_buffer));
-    let matter = matter::handler();
-    let mut reported_at = None;
-    loop {
-        // Applied-Off replies follow the GPIO write and precede this USB
-        // producer's next storage call. They never wait for suppression durability.
-        if let Some(reply) = runtime::take_reply() {
-            let mut line = heapless::String::<128>::new();
-            let _ = writeln!(line, "REPLY {} {:?}", reply.id, reply.result);
-            let _ = with_timeout(
-                Duration::from_millis(100),
-                board.usb.write_all(line.as_bytes()),
-            )
-            .await;
-        }
-        if let Some(write) = runtime::write_request().filter(|write| write.ticket != last_ticket) {
-            // Sole thread-mode storage owner. Shared KV access retains the existing
-            // relay-off gate and bounded read/program/erase checkpoints.
-            last_ticket = write.ticket;
-            let result = kv.as_ref().map_err(|error| *error).and_then(|kv| {
-                crystal_shim_matter::storage::apply(kv, write.record)
-                    .map_err(|_| storage::Error::Flash)
-            });
-            storage_error = result.err();
-            runtime::store_completed(crystal_shim_core::runtime::StoreCompletion {
-                ticket: write.ticket,
-                succeeded: result.is_ok(),
-            });
-            let mut line = heapless::String::<128>::new();
-            let _ = writeln!(line, "STORAGE {} {:?}", write.ticket, result);
-            let _ = with_timeout(
-                Duration::from_millis(100),
-                board.usb.write_all(line.as_bytes()),
-            )
-            .await;
-        }
-        let mut input = [0u8; 64];
-        if let Ok(Ok(count)) =
-            with_timeout(Duration::from_millis(20), board.usb.read(&mut input)).await
-        {
-            for byte in &input[..count] {
-                if let Some(request) = receiver.push(snapshot::now().0, *byte) {
-                    let mut line = heapless::String::<128>::new();
-                    match request {
-                        Ok(request) if snapshot::boot_configuration().is_some() => {
-                            let accepted = matter.begin(Source::Usb, request).is_ok();
-                            let _ = writeln!(
-                                line,
-                                "{} {}",
-                                if accepted { "ACCEPTED" } else { "BUSY" },
-                                request.id
-                            );
-                        }
-                        Ok(request) => {
-                            let _ = writeln!(line, "NOT_READY {}", request.id);
-                        }
-                        Err(error) => {
-                            let _ = writeln!(line, "PARSE_ERROR {:?}", error);
-                        }
-                    }
-                    // Neither configuration bytes nor received lines are echoed.
-                    let _ = with_timeout(
-                        Duration::from_millis(100),
-                        board.usb.write_all(line.as_bytes()),
-                    )
-                    .await;
-                }
-            }
-        }
-        input.fill(0);
-        let now = snapshot::now().0;
-        matter.refresh();
-        if reported_at.is_some_and(|at| now >= at && now - at < 1_000) {
-            continue;
-        }
-        reported_at = Some(now);
-        // One thread-mode USB writer. No printing from interrupt tasks or critical sections.
-        let sensor = snapshot::sensor();
-        let mut line = heapless::String::<768>::new();
-        let formatted = writeln!(
-            line,
-            "boot={} revision={} storage_error={:?} last_stored={:?} reset={:?} ms={} frames={} failures={} raw={:?} reading={:?} calibration_error={:?} driver_error={:?} control={:?}",
+    let access = core::cell::Cell::new(service::Access::Preparing);
+    let network = core::cell::Cell::new(matter::Status::Preparing);
+    let identify_until = core::cell::Cell::new(None);
+    crystal_shim_matter::service::alongside(
+        service::run(
+            board.usb,
+            board.led,
             boot_status,
-            snapshot::configuration().revision,
-            storage_error,
-            runtime::last_stored(),
+            boot.as_ref().err().copied(),
             reset,
-            snapshot::now().0,
-            sensor.frames,
-            sensor.failures,
-            sensor.frame,
-            sensor.reading,
-            sensor.calibration_error,
-            sensor.driver_error,
-            critical_section::with(|cs| snapshot::STATUS.borrow(cs).get())
-        );
-        if formatted.is_err() {
-            // Never put an unterminated truncated diagnostic in front of a reply.
-            line.clear();
-            let status = critical_section::with(|cs| snapshot::STATUS.borrow(cs).get());
-            let _ = writeln!(
-                line,
-                "STATUS revision={} ms={} relay={:?} state={:?} diagnostic=TRUNCATED",
-                snapshot::configuration().revision,
-                now,
-                status.map(|status| status.control.relay),
-                status.map(|status| status.control.state)
-            );
-        }
-        let _ = with_timeout(
-            Duration::from_millis(100),
-            board.usb.write_all(line.as_bytes()),
-        )
-        .await;
-        board.led.toggle();
-    }
+            &access,
+            &network,
+            &identify_until,
+        ),
+        matter::run(
+            board.rng,
+            board.adc1,
+            board.wifi,
+            board.bt,
+            store,
+            shared_buffer,
+            &access,
+            &network,
+            &identify_until,
+        ),
+    )
+    .await;
 }

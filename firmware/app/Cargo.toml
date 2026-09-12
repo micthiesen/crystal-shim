@@ -25,6 +25,11 @@ critical-section = "1"
 crystal-shim-core = { path = "../core" }
 crystal-shim-drivers = { path = "../drivers" }
 crystal-shim-matter = { path = "../matter" }
+rs-matter-embassy = { git = "https://github.com/ivmarkov/rs-matter-embassy", rev = "f31233a6fd4530ff25ad3bcbd9abf8fe854320aa", default-features = false, features = ["esp", "embassy-net", "rustcrypto"] }
+embassy-net = { version = "=0.9.1", default-features = false, features = ["tcp", "udp", "dns", "dhcpv4"] }
+bt-hci = { version = "0.8", default-features = false }
+rand_core = { version = "0.6", default-features = false }
+rand_core10 = { package = "rand_core", version = "0.10", default-features = false }
 embassy-executor = { version = "0.10", default-features = false }
 embassy-time = { version = "0.5", default-features = false }
 embassy-futures = "0.1"
@@ -40,7 +45,8 @@ edge-nal-tls = { version = "0.2.0", default-features = false }
 embedded-io-async = { version = "0.7", default-features = false }
 esp-alloc = { version = "0.10", default-features = false, features = ["global-allocator", "compat", "esp32c6"] }
 esp-hal = { version = "1.1", default-features = false, features = ["esp32c6", "unstable", "rt"] }
-esp-rtos = { version = "0.3", default-features = false, features = ["esp32c6", "embassy"] }
+esp-rtos = { version = "0.3", default-features = false, features = ["esp32c6", "embassy", "esp-alloc", "esp-radio"] }
+esp-radio = { version = "0.18", default-features = false, features = ["esp32c6", "wifi", "ble", "coex", "unstable"] }
 esp-storage = { version = "0.9", default-features = false, features = ["esp32c6", "critical-section"] }
 esp-println = { version = "0.17", default-features = false, features = ["esp32c6", "jtag-serial"] }
 esp-backtrace = { version = "0.19", default-features = false, features = ["esp32c6", "panic-handler", "println"] }
@@ -75,6 +81,8 @@ tinyrlibc = { version = "0.5", default-features = false, features = [
   "strncmp",
   "strncpy",
   "strstr",
+  "utoa",
+  "strtoul",
 ] }
 
 [profile.release]
@@ -84,12 +92,15 @@ opt-level = "s"
 debug = true
 opt-level = "z"
 
+[profile.dev.package.esp-radio]
+opt-level = 3
+
 # Same compatible esp-hal revision as ../stillair. All esp-* crates used here, including
-# generated metadata, move together. Radio and Matter adapters will add their
-# matching family members when integrated with the local acquisition/control runtime.
+# generated metadata and the Wi-Fi/BLE radio, move together.
 [patch.crates-io]
 esp-hal = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
 esp-rtos = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
+esp-radio = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
 esp-storage = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
 esp-alloc = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
 esp-backtrace = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }

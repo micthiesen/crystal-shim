@@ -57,9 +57,36 @@ lands, with exact ordering codes and compiled checks. Their dimensions differ
 from stock IPC patterns. Native mask/paste/courtyard details remain open.
 BOM-80 through BOM-91 count the base controller passives; the additional
 [service circuit](service-input.md) and mains quantities are counted separately.
-Service eFuse and input TVS copper models are now captured. The 0805 protection
-resistors and C0G capacitor still need exact registry/land capture; sensor-cable
-ESD selection and complete connected service/USB sections remain work.
+Service eFuse/input TVS, 0805 protection resistors and C0G capacitor are captured.
+All seven controller electrical sections are now joined, including the selected
+sensor-cable ESD/RC circuit. Complete placement, physical declarations for the
+remaining models and native augmentation remain work.
+
+The opt-in [physical registry](../../pcb/controller/design/land-pattern-physical.ts)
+now supplies body outlines, package/lead/flash envelopes, maximum height and mask
+rules for TCA9517A, shared TI DBV5/DBV6, ESDS312, SMBJ7.0A, Vishay 2512 HP and the
+exact TDK 1206 capacitor. It emits F.Fab bodies, closed courtyards and +0.05 mm
+NSMD openings while preserving copper. The courtyard is a project hand-assembly
+choice: 0.50 mm beyond the larger of copper or maximum occupied package, with
+each edge rounded outward to 0.05 mm.
+
+| Model | Courtyard width x height, mm |
+| --- | --- |
+| TCA9517ADGKR | 6.8 x 4.4 |
+| TI DBV5, DBV6 and ESDS312 | 4.7 x 4.6 |
+| SMBJ7.0A | 8.1 x 5.0 |
+| Vishay CRCW2512 HP | 8.5 x 4.4 |
+| TDK C3216X7R1E106K160AB | 5.4 x 2.8 |
+
+Four cardinal-angle tests check every global body/courtyard vertex and mask
+margin through native serialization/readback. The sensor-interface native proof
+checks six physical instances, 24 body edges, six courtyards and 25 mask overrides.
+Root inspected the native physical preview. This does not add 3D bodies or pass
+assembly qualification. Per-model `nativeAssembly` records pending paste/stencil
+and thermal details: TI DBV examples use 0.125 mm stencil; the DGK drawing does
+not specify thickness. Complete those choices in the board augmentation before
+release. Manufacturer hashes and geometry remain in the registry and linked
+[cable](sensor-cable-protection.md)/[power](sensor-power-refinement.md) evidence.
 
 USB source indices 1-17 are compiler identifiers, not native contact numbers.
 The initial export adapters normalize its copper-bounding-box origin to the GCT

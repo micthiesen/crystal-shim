@@ -4,6 +4,97 @@ import { ControllerCapacitor, ControllerResistor } from "./passive-components";
 import { PsuHeader, SensorHeader, ServiceHeader } from "./micro-fit-components";
 import { BuckInductor, ControllerButton, StatusLed } from "./assembly-components";
 
+test("sensor power pulse resistor and local bulk retain exact 2512/1206 lands at both orientations", async () => {
+  const circuit = new Circuit();
+  circuit.add(
+    <board width={60} height={40} routingDisabled>
+      <ControllerResistor
+        name="R_A"
+        value="6.8"
+        pcbX={-15}
+        pcbY={8}
+        schX={-10}
+        schY={5}
+      />
+      <ControllerResistor
+        name="R_B"
+        value="6.8"
+        pcbX={15}
+        pcbY={8}
+        pcbRotation={90}
+        schX={10}
+        schY={5}
+      />
+      <ControllerCapacitor
+        name="C_A"
+        value="10uF"
+        pcbX={-15}
+        pcbY={-8}
+        schX={-10}
+        schY={-5}
+      />
+      <ControllerCapacitor
+        name="C_B"
+        value="10uF"
+        pcbX={15}
+        pcbY={-8}
+        pcbRotation={90}
+        schX={10}
+        schY={-5}
+      />
+    </board>,
+  );
+  await circuit.renderUntilSettled();
+  const json = circuit.getCircuitJson();
+  const components = json.filter((e) => e.type === "source_component");
+  const ports = json.filter((e) => e.type === "source_port");
+  const pcbPorts = json.filter((e) => e.type === "pcb_port");
+  const pads = json.filter((e) => e.type === "pcb_smtpad");
+  expect(pads).toHaveLength(8);
+  for (const [ref, cx, cy, angle] of [
+    ["R_A", -15, 8, 0],
+    ["R_B", 15, 8, 90],
+    ["C_A", -15, -8, 0],
+    ["C_B", 15, -8, 90],
+  ] as const) {
+    const part = components.find((e) => e.name === ref)!;
+    const resistor = ref.startsWith("R");
+    expect(part.manufacturer_part_number).toBe(
+      resistor ? "CRCW25126R80FKEGHP" : "C3216X7R1E106K160AB",
+    );
+    if (part.ftype === "simple_resistor") expect(part.resistance).toBe(6.8);
+    else if (part.ftype === "simple_capacitor") {
+      expect(part.capacitance).toBe(1e-5);
+      expect(part.max_voltage_rating).toBe(25);
+    } else throw new Error("Unexpected passive type");
+    // Vishay p9 reflow G/Y/X/Z=5.00/1.25/3.35/7.50, TDK C3216
+    // reflow A/B/C midpoint=2.20/1.10/1.35. Pin1 is adopted left.
+    const offset = resistor ? 3.125 : 1.65,
+      width = resistor ? 1.25 : 1.1,
+      height = resistor ? 3.35 : 1.35;
+    for (const [pin, direction] of [
+      [1, -1],
+      [2, 1],
+    ] as const) {
+      const source = ports.find(
+        (e) =>
+          e.source_component_id === part.source_component_id && e.pin_number === pin,
+      )!;
+      const pcb = pcbPorts.find((e) => e.source_port_id === source.source_port_id)!;
+      const pad = pads.find((e) => e.pcb_port_id === pcb.pcb_port_id)!;
+      if (pad.shape !== "rect") throw new Error("Expected cardinal rectangle");
+      expect(pad.x).toBeCloseTo(cx + (angle === 0 ? direction * offset : 0), 7);
+      expect(pad.y).toBeCloseTo(cy + (angle === 0 ? 0 : direction * offset), 7);
+      expect([pad.width, pad.height]).toEqual(
+        angle === 0 ? [width, height] : [height, width],
+      );
+    }
+  }
+  expect(json.filter((e) => "error_type" in e || e.type.endsWith("_error"))).toEqual(
+    [],
+  );
+});
+
 test("assembly parts keep LED polarity, switch permanent pairs and inductor geometry", async () => {
   const circuit = new Circuit();
   circuit.add(

@@ -10,6 +10,10 @@ records the manufacturer comparisons.
 - `esp32-c6-wroom.tsx` stores the WROOM pin map and pinned manufacturer lands,
   including nine separate, internally connected pad-29 lands and the vendor origin.
 - `land-pattern.tsx` converts the native top-view +Y-down coordinates once.
+- `land-pattern-physical.ts` adds checked body/envelope and explicit courtyard/
+  mask declarations for seven exact model IDs. Shared package users stay aligned;
+  [the footprint audit](../../../docs/design/footprint-audit.md) lists the scope
+  and remaining per-model stencil/thermal obligations.
 - `ic-components.tsx` binds exact MPNs, pin functions and copper models for capture.
 - `logic-land-patterns.ts` and `logic-components.tsx` add the supervisor, sensor
   feed, relay gate, USB detector and USB data switch with checked TI/onsemi lands.
@@ -36,6 +40,15 @@ records the manufacturer comparisons.
 - `test-points.tsx` adds eleven unpopulated supply, I2C, relay and UART probe pads.
   They have explicit mask openings, no paste and no purchased BOM/CPL entries;
   [the pad contract](../../../docs/design/controller-test-points.md) records access and export rules.
+- `sensor-interface.tsx` captures the 19-part protected feed, buffered I2C and
+  sensor connector. `cable-protection-components.tsx` binds the selected ESD and
+  TVS parts; the source preserves both bus domains and the power RC boundary.
+- `controller.circuit.tsx` joins all seven sections into one 95-component,
+  seven-sheet schematic. The 84 purchased parts agree with the controller BOM
+  allocation; the other eleven components are test pads. `pcbRelative` disables
+  automatic group packing that otherwise moves and rotates explicit placements.
+  Current section placements overlap and must be replaced by the reviewed full
+  layout. The integration test covers electrical boundaries, not placement approval.
 - Compiled tests check physical pin/port identity, translated/rotated geometry,
   exposed-ground and switch pairing, and actual section netlists. Copper checks
   do not establish a final solder process or complete electrical performance.
@@ -44,7 +57,7 @@ Run `bun test controller/design` or `bun run render:controller-parts` from `pcb/
 The latter writes a 25-component review SVG and Circuit JSON under ignored
 `dist/controller/part-review/`. Its display positions and outline are not a product
 board or an additional fabrication design. `bun run render:controller-sections`
-renders all six connected sections separately under
+renders all seven connected sections separately under
 `dist/controller/section-review/`. Their positions remain provisional until all
 controller parts and the enclosure/antenna constraints are integrated. No render
 here is a fabrication input.
@@ -71,7 +84,7 @@ For the full controller also call `omitTestPointPasteForInitialExport` on the
 initial PCB graph. It validates all eleven pads before removing the converter's
 unwanted paste layer; retain BOM/CPL exclusions and source-owned mask openings.
 
-The complete controller export does not exist yet. Its manifest, source/net checks
+The accepted controller export does not exist yet. Its manifest, source/net checks
 and staged native parity must incorporate these adapters and verify every repeated
 physical pad, not just unique pin names. Keep tscircuit routing disabled: the
 eFuse's source polygon-port centres remain in the L notches. TI's split paste
@@ -95,3 +108,12 @@ The separate test-pad section adds eleven native-checked pins/pads, including
 UART0 RX/TX and an adjacent isolated-ground return. Full-board integration must
 preserve short branches and physical probe access. No raw review seed is an
 accepted board.
+
+The combined disposable native export has eight schematic files (root plus seven
+children). It matches all 254 connected pins and 20 intended unused pins across
+51 named nets. PCB readback counts 291 numbered physical pads with exactly the
+known 14 repeated-pad net omissions, still awaiting shared augmentation. USB
+mapping, eFuse anchors and test-pad paste removal were applied to initial object
+graphs before the first stage-file write. No existing native design was edited.
+This checks integrated electrical export behavior; overlapping review placements,
+missing physical declarations and pending ERC/DRC still prevent handoff.

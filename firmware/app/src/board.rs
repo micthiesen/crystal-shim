@@ -6,7 +6,7 @@ use esp_hal::{
     },
     i2c::master::{Config, I2c},
     interrupt::{software::SoftwareInterruptControl, Priority},
-    peripherals::{Peripherals, FLASH, TIMG0, TIMG1},
+    peripherals::{Peripherals, ADC1, BT, FLASH, RNG, TIMG0, TIMG1, WIFI},
     time::Rate,
     timer::timg::{TimerGroup, Wdt},
     usb::usb_serial_jtag::UsbSerialJtag,
@@ -22,6 +22,10 @@ pub struct SensorHardware {
     pub fault: InputSignal<'static>,
 }
 pub struct Board {
+    pub rng: RNG<'static>,
+    pub adc1: ADC1<'static>,
+    pub wifi: WIFI<'static>,
+    pub bt: BT<'static>,
     pub flash: FLASH<'static>,
     pub relay: Output<'static>,
     pub maintenance: Input<'static>,
@@ -61,6 +65,10 @@ impl Board {
         let sensor_fault = Input::new(p.GPIO23, InputConfig::default());
         let sensor_fault_input = sensor_fault.peripheral_input();
         Self {
+            rng: p.RNG,
+            adc1: p.ADC1,
+            wifi: p.WIFI,
+            bt: p.BT,
             flash: p.FLASH,
             relay,
             maintenance: Input::new(p.GPIO11, InputConfig::default()),

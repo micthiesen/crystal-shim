@@ -4,46 +4,49 @@ Last updated: 2026-09-12
 
 ## Now
 
-- The [full delivery goal](goal.md) is active: three final-use boards, actual ESP
-  firmware, adversarial review, manufacturing delivery and final-unit commissioning
-  support. No separate prototype or planned respin. No fabrication or operating
-  release gate has passed.
+- The [full delivery goal](goal.md) remains active: three final-use boards, actual
+  ESP firmware, independent adversarial review, manufacturing delivery and final-unit
+  commissioning support. No separate prototype or planned respin. No fabrication
+  or operating release gate has passed.
 - Requirements remain freshwater, 5 mm glass, a 50 mm physical span below the rim,
   the owner's separate snug clip and a sensor harness no longer than 203.2 mm.
   Schedules, automatic low stop/recovery, bounded HomeKit overrides, local settings
   and Pushover transitions remain the [control contract](controls.md).
-- The ESP acquires calibrated FDC1004 frames and runs relay control on a separate
-  interrupt executor. Its [runtime coordinator](design/runtime-transactions.md)
-  handles schedules, durable configuration/retained transactions and bounded USB
-  commands. The actual [Matter command and KV adapters](design/matter-integration.md)
-  now share source-owned command tokens and one gated flash owner. Rejected On
-  requests return an error from the actual control result; valid LOW requests
-  waiting for minimum off remain accepted. Final delta review found no further
-  actionable issue. Radio and commissioning are not implemented, so HomeKit cannot
-  connect yet. D-22 preserves bounded behavior with explicit private-profile deviations. Authenticated
-  settings, shared UTC acquisition and Pushover delivery also remain work.
-- [Controller source](../pcb/controller/design/README.md) now has six connected
-  sections: relay/harness, logic power, service protection, USB, module/local
-  controls and eleven test pads, totaling 76 source components. Independent review
-  matched the preceding 64-part/187-pin set and all 18 unused pins; separate native
-  checks cover the added J1 and test pads, for 201 connected pins. Explicit labels
-  fix disconnected native nets concealed by readable SVGs. Full-board integration,
-  sensor interface, placement, native footprint assembly and export remain work. The known 14 repeated-pad net omissions in the raw module seed must
-  be corrected and checked by shared native augmentation before adoption.
+- The actual [Matter application](design/matter-integration.md) now links Wi-Fi/BLE
+  commissioning, one Embassy TCP/DNS/UDP stack, SDK root and restricted accessory
+  handlers, and one gated Store shared through `Matter::kv`. USB/LED/storage
+  service remains alive after radio startup failure or return. Missing private
+  commissioning material leaves radio closed and local service available. D-22
+  records the private profile's boot-off/bounded behavior. The provisioning writer,
+  trusted UTC, settings webpage and Pushover request/queue integration remain work.
+  No actual HomeKit pairing or live TLS session has been exercised.
+- [Controller source](../pcb/controller/design/README.md) now joins all seven
+  sections as one 95-component, seven-sheet schematic: 84 purchased parts and
+  eleven test pads. Combined native readback matches all 254 connected pins and
+  20 unused pins across 51 nets. The initial PCB has 291 numbered physical pads
+  with exactly the known 14 repeated-pad net omissions awaiting shared native
+  augmentation. `pcbRelative` prevents automatic group packing/rotation; preserved
+  section placements still overlap and must be replaced by the full layout.
+  Electrical integration tests do not pass the separate placement gate.
+- The [sensor RC/PGFB refinement](design/sensor-power-refinement.md) is adopted in
+  the BOM and circuit contracts. Controller capture includes the 6.8 ohm feed,
+  local 1+10 uF bypass/bleeder and cable-side TVS. Sensor capture must include its
+  own input bleed and 1N4148W-7-F PGFB isolation diode. The complete input budget is
+  30 uF; modeled minimum sensor input is 3.7986 V with 114.6 mV LDO headroom.
+  The repository calculator reproduces all 147 reviewed numerical values.
+- [Physical footprint declarations](design/footprint-audit.md) now cover seven
+  exact model IDs, with body/envelope/height, +0.05 mm NSMD and an explicit
+  hand-assembly courtyard policy. Four-angle source/native tests preserve copper,
+  body/courtyard vertices and mask. Remaining models, stencil/thermal choices,
+  pin electrical metadata, placement, antenna/enclosure fit and all three board
+  manifests still need completion. No product handoff has been accepted.
 - The [mains](design/mains-design-basis.md), [controller](design/controller-design-basis.md),
   [sensor](design/sensor-design-basis.md), [secondary protection](design/power-protection-review.md)
   and [service input](design/service-input.md) bases retain exact selections and
-  explicit limits. The sensor cable resistor/capacitance refinement and actual
-  finite-energy backfeed calculation have passed bounded review. Review also found
-  and corrected the sensor LDO's unsafe direct PGFB tie; the selected protection
-  diode and updated power budgets still need coordinated BOM/source adoption.
-  Source startup, transients, thermal behavior, enclosure fit and installed
-  interference still need their declared design or physical evidence. The BOM is
-  incomplete for ordering.
-- Shared KiCad tooling assigns and checks every physical pad sharing a logical
-  number. The fix is synced with canonical Stillair; exact resources remain aligned.
-  Project-specific skills retain their declared differences. No adopted product
-  KiCad board has been edited.
+  explicit limits. Source transients, return paths, enclosure fit and final-unit
+  behavior still need their declared evidence. The BOM remains incomplete for ordering.
+- Shared KiCad tooling's repeated-pad correction remains synced with Stillair.
+  Exact resources are aligned; project-specific skill differences are declared.
 
 ## Owner input pending
 
@@ -56,54 +59,66 @@ Controller, mains and firmware work remain independent of this input.
 ## Verification
 
 The complete `sh scripts/check.sh` gate passes: 115 core tests, nine driver tests,
-one CLI test, nine Matter adapter tests, three production partition tests,
-11 offline TLS cases on Linux, host/embedded fmt and clippy, C6 release build,
-resolved Matter feature checks, PCB checks, 32 Bun tests with 2,202 assertions
-and 30 handoff tests. Documentation checks cover 54 documents and two CSV tables.
+one CLI test, 15 Matter tests, three production partition tests, 11 offline TLS
+cases on Linux, host/embedded fmt and Clippy, C6 release build, resolved Matter
+feature checks, PCB checks, 40 Bun tests with 4,166 assertions and 30 handoff tests.
+Documentation checks cover 55 documents and two CSV tables.
 
-Root inspected all six connected-section schematics and test-pad copper. Independent PCB section
-review found no additional actionable finding in its source/native connectivity,
-pin maps, service separation, passive selections, USB gating or reset/boot scope.
-Disposable stages use KiCad 10.0.5; they are not accepted product boards.
+Root inspected the sensor source/native schematic and native physical preview,
+complementing the six previously inspected sections. Bounded electrical review
+accepted the RC/PGFB design; a separate adoption check reconciled source and BOM.
+Combined disposable exports use KiCad 10.0.5 and preserve all schematic nets.
+Full source placement, physical declarations, ERC/DRC and final native augmentation
+remain open. Read-only independent review of the new radio assembly found no
+actionable defect in service lifetime, shared storage, commissioning material,
+metadata or command restrictions. Actual radio failures and flash timing remain
+unmeasured.
 
-The release ELF is text 621,272 / data 9,052 / bss 16,980 bytes.
-This is not a combined radio/TLS SRAM or stack budget, and unused transport paths
-can be removed by the linker. Every [physical commissioning row](../testing/test-matrix.csv)
+The linked release ELF is text 1,901,488 / data 23,692 / BSS 238,696 bytes.
+RAM execution sections add 80,392 bytes; 109,328 bytes remain in the configured
+stack region. BSS includes a 100 KiB heap and 66,440-byte Matter allocation.
+These are static limits, not measured runtime stack/heap margins. A live TLS
+worker is not linked yet. The SDK public fixture private-key byte sequence is
+absent from the release ELF. Every [physical commissioning row](../testing/test-matrix.csv)
 remains Not run. No parts were bought, hardware flashed, mains energized or live
 notifications sent.
 
 ## Next
 
-Adopt the reviewed sensor cable power/ESD refinement across the BOM and circuit
-contracts, then capture the controller sensor interface and integrate all sections
-into the full schematic and placement. This advances G-02 and the shared interfaces
-toward G-03/G-04 without physical hardware or the rim datum. In parallel, assemble
-actual Matter radio/TCP and commissioning around the existing command and KV owner,
-using the private accessory profile under D-22. Both are substantial implementation units: the
-hardware risk is transient protection/export parity, and the firmware risk is
-profile semantics, fallible network startup and combined SRAM use.
+Complete the controller's remaining physical footprint and pin-type declarations,
+then place the complete board against the antenna, connector and enclosure limits
+and build its source manifest/augmentation contract. This advances G-02/G-04 now
+that all electrical sections integrate. It is substantial source/CAD work; the
+largest risks are the module's asymmetric origin, connector overhang, return-path
+layout and native parity. It needs no purchased hardware or sensor rim datum.
+
+Continue firmware with private-material provisioning and trusted UTC ownership,
+then the authenticated local settings/schedule page and bounded Pushover delivery
+on the shared TCP stack. These are repository work; live provisioning, pairing and
+installed tests stay separate. Static RAM and flash/control ownership must be
+rechecked when the real TLS/UI workloads are linked.
 
 ## Candidates not chosen
 
-- **Freeze complete sensor geometry:** blocked only by the normal-full rim datum;
-  local regulation/interface capture can proceed. Physical calibration uses final
-  boards after fabrication.
-- **Start native routing or fabrication:** complete schematics, placement, source
-  manifests and declared native augmentations must precede G-04. Review seeds are
-  not product boards.
-- **Build the settings webpage first:** useful and independent, but shared radio,
-  clock and command/storage ownership establish its integration boundary. Keep
-  the agreed local-page contract; resume it after that network unit.
+- **Freeze complete sensor geometry:** still needs the normal-full rim datum;
+  sensor regulation/interface capture remains startable. Physical calibration uses
+  final boards after fabrication, not a separate prototype.
+- **Route or release fabrication now:** complete placement, physical metadata,
+  source manifests and declared native augmentation must precede G-04. Current
+  schematic/native review outputs are not fabrication inputs.
+- **Build the settings page before its integration contracts:** useful, but trusted
+  time and private provisioning establish its authorization and persistence paths.
+  The local-page contract remains required; visual polish is not the current gate.
 
 ## Learned recently
 
-- [Review record](design/review-log.md): real schematic label loss, connected USB/
-  service/module evidence, repeated-pad handoff correction and runtime review.
-- [Matter integration](design/matter-integration.md): command ownership/cancellation,
-  applied reporting, single SDK KV owner and the unresolved device profile.
+- [Review record](design/review-log.md): RC/backfeed and PGFB findings, native
+  electrical-label loss, full schematic integration and bounded runtime review.
+- [Matter integration](design/matter-integration.md): fallible radio assembly,
+  shared KV, private record format, metadata and memory evidence.
 - [Runtime transactions](design/runtime-transactions.md): durable settings,
   suppression, configuration-save behavior and immediate versus durable replies.
-- [Footprint audit](design/footprint-audit.md): primary drawing hashes, checked
-  copper and native/paste/assembly work still owed.
+- [Footprint audit](design/footprint-audit.md): checked copper/physical declarations
+  and source/native/assembly work still owed.
 - [Flash storage](design/flash-storage.md): interruptible thread-mode owner,
   resolved mutex-feature guard and actual-device timing still owed.

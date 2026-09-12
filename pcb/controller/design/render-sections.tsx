@@ -6,6 +6,7 @@ import { ControllerServiceInput } from "./service-input";
 import { ControllerModuleControls } from "./module-controls";
 import { ControllerUsbInterface } from "./usb-interface";
 import { ControllerTestPoints } from "./test-points";
+import { ControllerSensorInterface } from "./sensor-interface";
 
 const sections = [
   {
@@ -42,6 +43,13 @@ const sections = [
     title: "Controller self-powered USB interface",
     content: <ControllerUsbInterface />,
     captionY: -30,
+  },
+  {
+    prefix: "sensor-",
+    name: "SensorInterface",
+    title: "Controller sensor power and bus interface",
+    content: <ControllerSensorInterface />,
+    captionY: 10,
   },
   {
     prefix: "test-points-",

@@ -6,8 +6,10 @@ release or commissioning evidence. Their explicit open items remain work to fini
 
 - [Sensor](sensor-design-basis.md): TI OoP topology, glass/rim geometry, references,
   local regulation, I2C and clip interface.
-- [Sensor-cable protection proposal](sensor-cable-protection.md): exact ESD candidates,
-  loading estimates and the power-switch residual-pulse boundary still under review.
+- [Sensor-cable protection](sensor-cable-protection.md): exact ESD selections,
+  bus loading and final-system immunity limits.
+- [Sensor power refinement](sensor-power-refinement.md): RC protection, PGFB diode,
+  voltage/load/capacitance budgets and finite backfeed calculations.
 - [Controller](controller-design-basis.md): module pins, power and service inputs,
   USB attach gating, relay driver, power-good interlock and harnesses.
 - [Controller service pads](controller-test-points.md): exposed supply, bus, relay

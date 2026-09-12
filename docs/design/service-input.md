@@ -200,12 +200,14 @@ and TVS leakage. The coil's 110 mA allocation is absent. With the reviewed
 allocation, `V5_LOGIC >= 4.6325 - 0.090 - 0.740*0.045 - 0.450 = 4.0592 V`.
 This preserves the controller's 3.9 V buck budget. TPS2553DBVR's 135 milliohm
 maximum adds at most 4.05 mV at 30 mA; with 50 mV sensor-harness allowance,
-the LT3042 input is **at least 4.00515 V under this engineering model**, only
-5.15 mV above its 4.0 V design-input basis. This is not a guaranteed rail floor:
-OR-diode temperature loss and harness loss are engineering allocations.
-The modeled regulator headroom beyond 3.384 V output and 0.300 V dropout is
-0.32115 V; the 5.15 mV figure is margin to the 4.0 V allocation, not the
-regulator's remaining dropout margin.
+the rail before the selected cable resistor would be 4.00515 V. The
+[6.8 ohm refinement](sensor-power-refinement.md) adds up to
+`0.030 * 6.885 = 0.20655 V` loss, giving an LT3042 input floor of
+**3.7986 V under this engineering model**. This supersedes the earlier 4.0 V
+input allocation and leaves 114.6 mV beyond 3.384 V output plus 0.300 V dropout.
+It is not a guaranteed rail floor: OR-diode temperature loss, harness losses and
+the effective service envelope are engineering allocations. Retain the 30 mA
+sensor branch allocation, including its new local bleeders and suppressors.
 [TPS2553 Rev F, p. 7](https://www.ti.com/lit/ds/symlink/tps2553.pdf),
 [LT3042 headroom calculation](sensor-design-basis.md#passives-and-power-nets).
 

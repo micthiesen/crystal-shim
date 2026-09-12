@@ -65,6 +65,35 @@ export const tdkC1608: LandPattern = {
 // Preserve the original export for callers; the copper is shared across values.
 export const tdk100nf = tdkC1608;
 
+export const tdk10uf: LandPattern = {
+  id: "CrystalShim:TDK_C3216",
+  body: { width: 3.2, height: 1.6 },
+  pads: [
+    { number: "1", x: -1.65, y: 0, width: 1.1, height: 1.35 },
+    { number: "2", x: 1.65, y: 0, width: 1.1, height: 1.35 },
+  ],
+  source: {
+    ...tdkC1608.source,
+    drawing:
+      "GC11010030, September 2026, printed p18 / PDF p19: C3216 reflow inner gap A=2.0-2.4, individual pad length B=1.0-1.2, width C=1.1-1.6 mm. Adopt 2.2/1.1/1.35 midpoints. Exact C3216X7R1E106K160AB body is 3.2 +/-0.2 x 1.6 +/-0.2 x 1.6 +/-0.2 mm; its characterization PDF is in the component registry.",
+  },
+};
+
+export const vishay2512hp: LandPattern = {
+  id: "CrystalShim:Vishay_CRCW2512_HP",
+  body: { width: 6.3, height: 3.15 },
+  pads: [
+    { number: "1", x: -3.125, y: 0, width: 1.25, height: 3.35 },
+    { number: "2", x: 3.125, y: 0, width: 1.25, height: 3.35 },
+  ],
+  source: {
+    url: "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+    sha256: "882d8353d2ae19d246e9d24a74d56c3ba890c6b287dc1b66fdaa6a508b798320",
+    drawing:
+      "CRCW-HP e3, document 20043, 17-Mar-2026 p9: CRCW2512-HP reflow G=5.00 inner gap, Y=1.25 pad length, X=3.35 pad width, Z=7.50 outer span. Body 6.3 +/-0.2 x 3.15 +/-0.15, H=0.6 +/-0.1 mm. Use the reflow row, not the larger wave lands. Copper is unpolarized.",
+  },
+};
+
 export const tdk1uf: LandPattern = {
   id: "CrystalShim:TDK_C2012",
   body: { width: 2, height: 1.25 },

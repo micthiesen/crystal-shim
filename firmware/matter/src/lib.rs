@@ -2,5 +2,8 @@
 #![no_std]
 
 pub mod on_off;
+pub mod profile;
+pub mod provisioning;
+pub mod service;
 pub mod storage;
 pub use rs_matter as sdk;

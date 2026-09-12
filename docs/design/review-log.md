@@ -472,6 +472,90 @@ transport, actual flash/interrupt timing or HomeKit pairing. [D-22](../decisions
 keeps the private accessory's boot-off and bounded behavior authoritative and
 records the complete plug-profile deviation. Radio/TCP assembly remains work.
 
+## Sensor power refinement adopted for capture
+
+The selected [sensor power design](sensor-power-refinement.md) adds 6.8 ohm
+between the TPS2553's locally bypassed V5_SENSOR_SW and the connector V5_SENSOR,
+10 uF local bulk alongside the existing 1 uF, and a separate daughterboard input
+bleeder. Both connector TVS devices stay on the cable side. The complete input
+capacitance budget is now 30 uF, with 20 uF retained on the regulated output.
+The service-supply calculation gives a 3.7986 V input floor and 114.6 mV modeled
+LDO headroom beyond the output/dropout allocation. The generic regulated-load
+allowance is 19.61 mA. These supersede the earlier input budget and headroom.
+
+Independent adversarial review examined finite capacitor backfeed into a collapsed
+logic rail, source order, startup, discharge, ESR sensitivity and part pulse limits.
+It accepted the finite-energy assessment without inventing a reverse-current peak
+bound from typical switch resistance. Local parasitic overshoot still needs layout
+review and final waveforms. No extra input resistor or larger limiter was selected.
+
+The same review found an actual pin-limit violation: LT3042 PGFB was directly tied
+to the input despite a -0.3 V limit, unlike IN/EN's reverse-input rating. The adopted
+1N4148W-7-F places its anode on V5_SENSOR and cathode on the separate LDO_PGFB net,
+as ADI specifies. The exact leaded part, polarity and lands are recorded. The
+final bounded delta review found no further actionable finding in this refinement.
+
+The repository [calculator](calculations/sensor-power.py) reproduces all 147
+numerical results from the reviewed analysis within 1e-12 relative/absolute
+tolerance. This is formula reproduction, not simulation or measured immunity.
+The BOM now records both ESD arrays, both rail TVS devices, the controller RC
+additions, sensor series resistors, both sensor bleeders, PGFB diode and exact FDC
+bypass/pullup parts. PWR-07 preserves final-assembly waveform/source-order checks;
+PWR-04 distinguishes charging-time FAULT from persistent/post-settling faults.
+Every physical result remains Not run. Controller capture is proceeding; sensor
+capture and complete-board native parity remain work.
+
+## Complete controller schematic and real radio assembly
+
+The controller's seventh section adds the exact 19-part sensor power/bus interface.
+Independent source/native readback matches 53 connected pins, two unused pins and
+all 55 physical pads, including the rotated 6.8 ohm part. Root inspected both
+source and native schematic previews. The worker separately checked the adopted
+BOM and circuit contracts against its capture; no electrical propagation defect
+remained. Physical-outline review did correct a transposed DBV package body/lead
+span in the cable-protection prose; copper and pin numbering were already correct.
+
+Root joined all seven sections in `controller.circuit.tsx`: 95 components, 84
+purchased parts and eleven test pads. The first full render silently packed and
+rotated the section groups despite their explicit child coordinates. Setting
+`pcbRelative` on the board preserves source placement; a regression checks that
+behavior. Those preserved review placements currently overlap. The new integration
+test is explicitly electrical; it does not waive placement errors or pass handoff.
+
+A complete disposable native hierarchy, root plus seven child schematics, matches
+all 254 connected pins and 20 intended unused pins across 51 nets. USB renumbering,
+eFuse pad-anchor correction and test-pad paste exclusion were applied to initial
+object graphs before writing the stage. Native PCB readback counts 291 numbered
+physical pads and exactly the known 14 repeated-pad blank nets. Shared augmentation
+must correct those before acceptance. Proof is in
+`/tmp/crystal-shim-controller-full-initial/proof.json`; no adopted board was edited.
+
+The firmware now links one real Wi-Fi/BLE owner, one Embassy IP stack with TCP,
+SDK root/Descriptor/Identify/Groups plus the restricted OnOff handler, and the
+actual `Matter::kv` access over the same gated Store. USB/LED/storage service runs
+outside radio lifetime. Root reviewed source publication on normal/failed startup,
+network completion/cancellation, metadata/handler agreement and control commands.
+It found no additional ownership or relay-policy bypass in this scope.
+
+Root added the missing successful complete-X.509 provisioning test, with identity
+and DAC-key substitution rejection. SDK public attestation fixtures are confined
+to `cfg(test)`; the known SDK private-key byte sequence is absent from the linked
+release image. Missing private material still closes commissioning. The build
+includes the runtime-selected radio branch; transport, pairing, heap peaks and
+combined TLS session behavior remain unrun hardware evidence, as recorded in the
+[Matter integration contract](matter-integration.md).
+
+A separate read-only firmware reviewer found no actionable defect in the complete
+radio assembly. It checked local service after network completion, every
+recoverable pre-radio failure's storage publication, the sole Store/KV owner,
+one Wi-Fi/BLE/IP stack, cancellation of claimed commands, LED-only Identify,
+absent scene/timed/startup handlers and matching endpoint metadata. Public example
+credentials remain test-only; production requires the validated private record.
+Six focused service/profile/provisioning tests passed independently. This scope
+does not include injected ESP radio failures, live flash/concurrency timing or
+Apple Home pairing. Enclosing service cancellation intentionally cancels both
+thread services; interrupt-owned protection remains separate.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

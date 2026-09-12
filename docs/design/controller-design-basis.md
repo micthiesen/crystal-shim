@@ -269,21 +269,30 @@ I/O plus resistor/protection parasitics in the cable rise-time calculation.
 Use **TPS2553DBVR**, SOT-23-6, for V5_SENSOR. Pin 1 IN and pin 5 ILIM connect to
 V5_LOGIC, pin 2 to GND, pin 3 EN to SENSOR_POWER_EN with a 10 kohm pulldown,
 pin 4 FAULT to SENSOR_POWER_FAULT_N with a 10 kohm pullup to 3V3, and pin 6 OUT
-to V5_SENSOR. Add 100 nF at IN and 1 uF at OUT. With ILIM shorted to IN, TI's
+to `V5_SENSOR_SW`. Add 100 nF at IN and the existing 1 uF plus a new
+`C3216X7R1E106K160AB` 10 uF at OUT. A `CRCW25126R80FKEGHP` 6.8 ohm resistor
+connects OUT to cable-side `V5_SENSOR`; its SMBJ7.0A cathode is on the cable side,
+anode at isolated GND. The [reviewed refinement](sensor-power-refinement.md)
+defines both-polarity pulse calculations, finite backfeed and layout limits.
+With ILIM shorted to IN, TI's
 Table 2 specifies 50/75/100 mA minimum/typical/maximum limiting. The 30 mA normal
 budget is below the minimum limit; it is not the protection threshold. This part
 limits continuously and has thermal/reverse-voltage protection. The firmware
 turns EN off after a fault; do not substitute a latch-off suffix without review.
 [TI TPS2553 Rev F, pin table, protection behavior and Table 2](https://www.ti.com/lit/ds/symlink/tps2553.pdf).
 
-Fit a 10 kohm / 1% bleeder on V5_SENSOR at the controller and 3.01 kohm / 1%
-on 3V3_SENSOR at the daughterboard. The latter keeps LT3042 loaded above 1 mA
-for its accuracy specification. Each rail's complete maximum capacitance,
-including MLCC tolerance, must stay below 20 uF. The maximum individual time
-constants are 202 ms and 60.802 ms. Preserve the 2-second off interval for both
-cascaded decays; confirm both rails below 0.3 V on the final unit. Include
-0.54 mA input bleed, about 1.14 mA output bleed and 7.3 mA LDO overhead in the
-30 mA sensor allocation. Exact capacitor and regulator calculations are in the
+Fit a 10 kohm bleeder on `V5_SENSOR_SW` at the controller and another on
+`V5_SENSOR` at the daughterboard, so unplugging leaves each board a discharge path.
+Retain 3.01 kohm on `3V3_SENSOR` to keep LT3042 loaded above 1 mA. The complete
+sensor input network, both names together and including MLCC tolerance, has a
+**30 uF maximum**; `3V3_SENSOR` remains at 20 uF. The conservative sequential
+discharge bound is 1.092 s, within the unchanged 2 s off interval. Confirm both
+rails below 0.3 V on the final unit. Both input bleeders draw at most 1.085 mA
+normally. Including 7.3 mA LDO overhead, a 2 mA TVS hot-leakage allocation and
+signal-protection leakage leaves 19.61 mA for general 3.3 V loads within the
+unchanged 30 mA branch budget. The actual circuit uses about 4.618 mA on 3.3 V.
+The service-envelope model now gives 3.7986 V at the sensor input, 114.6 mV above
+the output-plus-dropout allowance. Exact capacitor and regulator calculations are in the
 [sensor basis](sensor-design-basis.md#passives-and-power-nets).
 
 On an acquisition timeout, malformed frame or asserted power fault, publish
@@ -298,14 +307,19 @@ After restoring sensor power, wait at least 200 ms with the buffer disabled.
 The LT3042 SET-network calculation permits 99.9% settling within 136 ms;
 the 200 ms allowance also covers the current-limited feed ramp. Verify the
 assembled startup waveform during commissioning.
+The firmware observes the recovery fault epoch after this wait, before checking
+FAULT/SDA/SCL high. A charging flag may clear while readings remain invalid;
+persistent or later faults still reject the initialized fresh frame.
 Release both ESP bus pins, enable the buffer between transactions, check both
 lines high within a bounded timeout, and then reinitialize the FDC before
 accepting an entirely new frame. Normal EN changes occur with an idle bus as TI
 requires. Disconnecting a stuck bus is deliberate transaction cancellation;
 never continue the old transfer after reconnecting. Limit automatic recovery to
 three attempts per minute. A persistent cable short remains a reported fault
-and keeps the relay off; power cycling cannot repair it. Exact cable ESD parts
-remain to be selected.
+and keeps the relay off; power cycling cannot repair it. ESDS312DBVR signal arrays
+and SMBJ7.0A power suppressors are selected at both cable ends, with the reviewed
+RC and daughterboard PGFB diode refinement. Full transient/return-path and final
+assembly immunity evidence remain required.
 
 ## Harness and placement interface
 
@@ -317,9 +331,13 @@ checks. The overall harness remains at most 203.2 mm including connector routing
 | Sensor connector circuit | Net | Twisted pair |
 | --- | --- | --- |
 | 1 | V5_SENSOR, protected branch of V5_LOGIC | 1 with 4 |
-| 2 | SENSOR_SDA | 2 with 5 |
-| 3 | SENSOR_SCL | 3 with 6 |
+| 2 | SDA_CABLE | 2 with 5 |
+| 3 | SCL_CABLE | 3 with 6 |
 | 4, 5, 6 | GND | Corresponding signal/power return |
+
+`SENSOR_SDA`/`SENSOR_SCL` name the ESP-side TCA B segment. `SDA_CABLE`/`SCL_CABLE`
+name this harness segment, reached through separate TCA A pins and 22 ohm
+resistors. They must never collapse into one net across the buffer.
 
 Wire circuit number to the same circuit number at the opposite end. Molex's
 component-side PCB drawing numbers rows 1/2/3 and 4/5/6; do not substitute the
@@ -353,12 +371,14 @@ overhang, service access, standoffs, antenna keepout and cable bends must fit th
 
 The source now includes USB4105-GF-A, TPS259470 and SMBJ8.0CA copper/pin models.
 Connected sections capture the relay-permission circuit, buck/diode OR, protected
-service input, USB data gate and module/local controls. Their provisional review
-placements do not constitute a complete controller layout. Source tests compare
+service input, USB data gate, module/local controls, sensor interface and test pads.
+The complete 95-component schematic joins these sections; its provisional review
+placements overlap and do not constitute a complete controller layout. Source tests compare
 the drawn schematic with named nets; native readback remains a separate gate.
 USB origin/pin normalization and eFuse custom-pad anchor correction are tested
 at the initial-export boundary; complete-board integration and native parity are
-still required. Finish the service-input transient model, sensor-feed ESD,
-connector mating drawings, remaining passive
-footprints and the enclosure fit. Review the schematic and transient
+still required. The selected sensor RC/ESD design and PGFB diode are now in the
+circuit contracts and BOM. Complete the return-path/parasitic review, connector
+mating drawings, physical footprint declarations, full placement and enclosure
+fit. Review the schematic and transient
 power combinations before adopting these selections as a fabrication baseline.

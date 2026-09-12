@@ -1,8 +1,8 @@
-# Sensor cable ESD proposal
+# Sensor cable ESD design
 
-Status: research proposal under circuit/layout review, 2026-09-12. These parts are not yet in the source or BOM. Resolve the TPS2553 residual-pulse boundary before claiming the power-line design complete. Physical immunity tests use the final assembly after fabrication; no separate prototype phase is required.
+Status: selected capture basis, 2026-09-12. Use these suppressors together with the independently reviewed [power RC and PGFB diode refinement](sensor-power-refinement.md). BOM selections are recorded and controller source capture is in progress. Full-board return-path/parasitic review and physical immunity evidence remain open. Tests use the final assembly after fabrication; no separate prototype phase is required.
 
-## Recommended capture candidates
+## Capture selections
 
 Use ground-referenced protection at **both ends** of the removable 203.2 mm maximum harness. A clamp on the other end of a cable is not a substitute for a short local ESD return. Preserve the three separate ground-return conductors and isolated-ground domain.
 
@@ -10,9 +10,9 @@ Use ground-referenced protection at **both ends** of the removable 203.2 mm maxi
 | --- | --- | ---: | --- |
 | Cable SDA/SCL protection | TI **ESDS312DBVR**, SOT-23-5/DBV0005A | 2, one per board | Pin 4 I/O1 to connector SDA; pin 5 I/O2 to connector SCL; pin 2 GND. Pins 1/3 NC, left unconnected. No supply connection. |
 | I2C series damping | Panasonic **ERJ3EKF22R0V**, 22 ohm, 1%, 100 ppm/K, 0.1 W, 0603 | 4 total: preserve controller pair and add sensor pair | One per line, on IC side of each local ESD tap. Controller: toward TCA9517A pins 3 SDAA / 2 SCLA. Sensor: toward FDC1004 pins 10 SDA / 9 SCL; existing sensor pullups remain on the IC side. |
-| Cable power transient suppression | Littelfuse **SMBJ7.0A**, unidirectional DO-214AA/SMB | 2, one per board | Banded cathode to connector V5_SENSOR; anode to isolated GND. Preserve existing controller 1 uF and sensor LT3042 input 10 uF. **Suppression candidate only; this does not close a guaranteed 7 V ceiling at TPS2553.** |
+| Cable power transient suppression | Littelfuse **SMBJ7.0A**, unidirectional DO-214AA/SMB | 2, one per board | Banded cathode to connector V5_SENSOR; anode to isolated GND. Use the reviewed 6.8 ohm and local 1+10 uF controller network; retain sensor input 10 uF and add PGFB isolation. **The TVS alone does not enforce a 7 V ceiling at TPS2553.** |
 
-The proposed BOM additions are two ESDS312DBVR, two SMBJ7.0A and two ERJ3EKF22R0V. The existing controller two resistors remain. The USB resistor/protector inventory is separate.
+The BOM adds two ESDS312DBVR, two SMBJ7.0A and two sensor ERJ3EKF22R0V resistors, plus the power refinement's resistor, capacitor, bleeder and PGFB diode. Existing controller I2C series resistors remain; USB protection is separate. `SENSOR_SDA`/`SENSOR_SCL` are the ESP-side buffered nets. `SDA_CABLE`/`SCL_CABLE` reach the harness; on the sensor, the series resistors lead to FDC-side `I2C_SDA`/`I2C_SCL` and its pullups.
 
 ESDS312 is preferred over the single-channel leaded ESD321/ESDS311 alternatives because its SOT-23-5 package is easier to assemble and its published typical positive and negative clamps are lower. It is active, tin-finished, MSL1/260 C, and rated -40..125 C. Its channels are ground-referenced passive protection, not VCC steering diodes. A powered-off controller therefore acquires no new path from the sensor rail to controller 3V3 through this protection circuit.
 
@@ -22,7 +22,7 @@ SMBJ7.0A preserves a 7 V working-voltage rating above the 6.75 V existing fault 
 
 Native component-side coordinates below use body centre as origin, +Y down, millimetres.
 
-**ESDS312DBVR:** TI drawing 4214839/K, 08/2024, DBV0005A. Five rounded rectangles, 1.10 x 0.60, R0.05. Centres: 1=(-1.30,-0.95), 2=(-1.30,0), 3=(-1.30,+0.95), 4=(+1.30,+0.95), 5=(+1.30,-0.95). Body 1.45..1.75 x 2.60..3.00; lead span 2.75..3.05; height 1.45 maximum. TI shows NSMD as preferred, with maximum 0.07 mm mask clearance. Use the exact manufacturer land source, not a blind substitution of `Package_TO_SOT_SMD:SOT-23-5`; that stock name is a candidate mapping, not dimensional proof. The already captured TI DBV0005A logic geometry can be reused if its exact dimensions match. Do not mistake NC pins 1/3 for internally connected pass-through pins.
+**ESDS312DBVR:** TI drawing 4214839/K, 08/2024, DBV0005A. Five rounded rectangles, 1.10 x 0.60, R0.05. Centres: 1=(-1.30,-0.95), 2=(-1.30,0), 3=(-1.30,+0.95), 4=(+1.30,+0.95), 5=(+1.30,-0.95). Body 1.45..1.75 x 2.75..3.05; lead span 2.60..3.00; height 1.45 maximum. The body dimensions exclude up to 0.25 mm mold flash per side. TI shows NSMD as preferred, with maximum 0.07 mm mask clearance. Use the exact manufacturer land source, not a blind substitution of `Package_TO_SOT_SMD:SOT-23-5`; that stock name is a candidate mapping, not dimensional proof. The already captured TI DBV0005A logic geometry can be reused if its exact dimensions match. Do not mistake NC pins 1/3 for internally connected pass-through pins.
 
 **SMBJ7.0A:** adopt pin 1 = cathode/band, pin 2 = anode. Two rectangular lands 2.16 x 2.26 at (-2.45,0) and (+2.45,0). This implements Littelfuse's minimum J/L=2.16, minimum I=2.26 and maximum K gap=2.74; total copper span is 7.06. Body B=4.06..4.75 by C=3.30..3.94, overall lead span G=5.21..5.59, height D=1.99..2.61. `Diode_SMD:D_SMB` is only a stock starting candidate; retain the selected manufacturer lands and clear cathode marking. The diode is nonpolar only with the CA suffix, which is **not** selected here.
 
@@ -45,22 +45,22 @@ For the 2.70 kohm pullups and 22 ohm series parts, conservatively combine 1% ini
 
 Keep the existing TCA enable sequencing and sensor-only pullups. ESDS312 adds neither a pullup nor a VCC clamp, and its ground leakage assists discharge. Its typical holding voltage is 5 V, above the normal 3.384 V line ceiling; there is no intended sustaining source after an ESD event. Holding voltage is typical, so persistent latch or leakage change is part of final ESD recovery checks. The current power-off/backfeed gate remains; this protection does not establish zero leakage for TCA9517A, TPS2553 or FDC1004.
 
-## Power-line loading and the unresolved protection boundary
+## Power-line loading and protection limits
 
-SMBJ7.0A: 7 V stand-off; 7.78..8.60 V breakdown at 10 mA; 12 V maximum clamping at 50 A with the 10/1000 us waveform; 600 W peak for the stated waveform; 200 uA maximum reverse leakage at 7 V and 25 C. The two parts add no series drop and at most 0.4 mA in that 25 C leakage test. Reserve 2 mA for both in the 0..50 C load allocation pending hot-leakage measurement. This is a design allowance, not a manufacturer hot-leakage guarantee. The existing <11.92 mA daughterboard plus controller input bleed and this allowance remains below 30 mA. The published TVS capacitance graph is typical only; reserve 0.02 uF for the pair in the complete V5_SENSOR 20 uF budget, then check the actual selected-model capacitance during capture. Existing 1 uF + 10 uF nominal bulk contributes at most 13.915 uF with positive initial/X7R tolerances, leaving substantial budget without changing recovery timing.
+SMBJ7.0A: 7 V stand-off; 7.78..8.60 V breakdown at 10 mA; 12 V maximum clamping at 50 A with the 10/1000 us waveform; 600 W peak for the stated waveform; 200 uA maximum reverse leakage at 7 V and 25 C. The two parts add no series drop and at most 0.4 mA in that 25 C leakage test. Reserve 2 mA for both in the 0..50 C load allocation pending hot-leakage measurement. This is a design allowance, not a manufacturer hot-leakage guarantee. The existing <11.92 mA daughterboard, both local input bleeders and protection allocations total <15.007 mA normally within 30 mA. The TVS capacitance graph is typical only; reserve 0.02 uF for the pair in the revised complete 30 uF V5_SENSOR/V5_SENSOR_SW input budget. The controller 11 uF plus sensor 10 uF nominal bulk contributes at most 26.565 uF with positive initial/X7R tolerances, leaving 3.435 uF for TVS/cable/other additions. The [power refinement](sensor-power-refinement.md) preserves the 2 s discharge and 200 ms startup contracts with the implemented fault-epoch correction.
 
-**This cannot be described as a guaranteed 7 V protection circuit.** TPS2553 IN/OUT are rated -0.3..7 V absolute and its reverse-voltage shutoff takes 3..7 ms. The clamp starts above 7 V and cannot enforce that limit. LT3042 IN/EN tolerate +/-22 V absolute and operate through 20 V, but that does not protect the switch at the other end of the cable. The supplied TPS2553 IEC +/-8 kV contact and +/-15 kV air result was on TI's EVM with external capacitance, not this 1 uF local-output network.
+**This cannot be described as a guaranteed 7 V protection circuit.** TPS2553 IN/OUT are rated -0.3..7 V absolute and its reverse-voltage shutoff takes 3..7 ms. The clamp starts above 7 V and cannot enforce that limit. LT3042 IN/EN tolerate +/-22 V absolute and operate through 20 V, but PGFB only tolerates -0.3 V and must use the selected IN-anode/PGFB-cathode 1N4148W-7-F diode. Neither LDO rating protects the switch at the other end of the cable. The supplied TPS2553 IEC +/-8 kV contact and +/-15 kV air result was on TI's EVM with external capacitance, not this selected RC network.
 
-Independent review also found the negative boundary unresolved: SMBJ7.0A's
-forward-voltage rating permits -3.5 V at the cable node, below TPS2553's -0.3 V
-minimum. Its reverse-voltage shutdown responds to output above input and cannot
-be credited for this below-ground event. Before adopting the power network,
-define a pulse-capable isolation/filter or switch refinement and calculate the
-residual voltage/current at the protected pins for both polarities. The existing
-TVS belongs at the connector with a short local ground return; its component
-rating alone does not close the protected-switch boundary.
+Independent review found the bare network's negative boundary unresolved as
+well: the stated -3.5 V cable event exceeds TPS2553's -0.3 V minimum. Its reverse
+shutdown responds to output above input, not below ground. The selected 6.8 ohm
+RC refinement now gives conditional two-polarity residual calculations including
+an initial 6.75 V fault, finite capacitor backfeed and ESR sensitivity. It also
+isolates LT3042 PGFB as ADI requires. The TVS remains at the connector with a short
+return; its component rating and the conditional model are not an assembled IEC
+waveform guarantee.
 
-Nor does an ideal capacitor calculation prove immunity: the IEC 150 pF source carries 1.2 uC at 8 kV. The existing controller 1 uF part is screened as only 0.5527 uF effective at normal voltage; depositing all of that charge locally would raise it by 2.17 V before ESR/ESL/ground effects. This is an illustrative worst-allocation calculation, not a model of the real protected circuit, but it rules out claiming that the nominal capacitor alone guarantees a <7 V peak.
+Nor does an ideal capacitor calculation prove immunity: the IEC 150 pF source carries 1.2 uC at 8 kV. In the superseded 1 uF-only circuit, that part screened as only 0.5527 uF effective at normal voltage; depositing all of the charge locally would raise it by 2.17 V before ESR/ESL/ground effects. This historical calculation illustrates why nominal capacitance alone was insufficient. The selected additional 10 uF and resistor have separate conditional pulse, ESR and finite-charge calculations in the power refinement; those also retain explicit parasitic and physical limits.
 
 The exact quoted clamp conditions are:
 
@@ -80,7 +80,7 @@ ESDS312's component rating is +/-30 kV IEC contact/air and 25 A 8/20 us surge. L
 
 Similarly ESDS312's 5.5 V positive and 2.2 V negative TLP clamps at 16 A are **typical**, with a 4.5..7.5 V trigger range. FDC SDA/SCL are -0.3..6 V absolute with 3 mA maximum input current; TCA bus pins are -0.5..7 V absolute and permit negative excursions subject to clamp-current limits. The 22 ohm resistors are useful damping/secondary-current impedance, not a proven bound keeping either IC within every absolute rating during IEC discharge.
 
-Thus these exact parts are a defensible low-capacitance ESD suppression capture proposal, with an essential remaining **system transient-immunity validation**, not datasheet-only closure. If the required release claim is that all protected IC pins remain within their static absolute maxima for a specified ESD waveform, this minimal network does not supply that proof. That stronger claim would need a separately reviewed filter/protection/switch change and measured or validated transient evidence before being asserted.
+Thus these exact parts are a defensible low-capacitance ESD suppression capture proposal, with an essential remaining **system transient-immunity validation**, not datasheet-only closure. If the required release claim is that all protected IC pins remain within their static absolute maxima for a specified ESD waveform, this minimal network does not supply that proof. The selected RC/PGFB change improves the power circuit, but that stronger claim still requires measured or validated full transient evidence before being asserted.
 
 ## Layout and final-unit checks
 

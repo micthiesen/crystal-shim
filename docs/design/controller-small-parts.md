@@ -10,7 +10,8 @@ release. Physical checks remain unrun.
 
 Quantities are for one controller board. They exclude sensor/mains parts and the
 five already selected controller bulk capacitors and the additional
-[service-input protection parts](service-input.md). Resistors and ceramic capacitors
+[service-input protection parts](service-input.md) and
+[sensor cable additions](sensor-power-refinement.md). Resistors and ceramic capacitors
 are nonpolar; pads 1/2 are electrically interchangeable.
 
 | Exact manufacturer part | Qty | Value / package | Use |
@@ -38,7 +39,7 @@ the bootstrap capacitor connects across BST and SW, not BST and GND.
 The twelve general 10 kohm positions are RELAY_REQUEST pulldown, MAINTENANCE_N
 pullup, SENSOR_POWER_EN pulldown, SENSOR_POWER_FAULT_N pullup, SENSOR_BUS_EN
 pulldown, BOOT_N pullup, GPIO8 pullup, CHIP_EN pullup, FSUSB42 OE pullup,
-AO3400A gate-source pulldown, PSU_GOOD pullup and V5_SENSOR bleeder.
+AO3400A gate-source pulldown, PSU_GOOD pullup and V5_SENSOR_SW bleeder.
 RELAY_REQUEST's AND-gate input uses the same pulldown; TPS2553 EN/FAULT uses
 the same GPIO resistors. Do not count those descriptions twice. BOOT/reset are
 separate required buttons, not additional functions or aliases of maintenance.

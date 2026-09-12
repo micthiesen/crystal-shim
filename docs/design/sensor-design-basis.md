@@ -264,7 +264,7 @@ calibration and removal/reseat testing.
 | `U2` | ADI `LT3042IMSE#PBF` | MSE | 3 | `V5_SENSOR` | EN/UV tied directly to IN |
 | `U2` | ADI `LT3042IMSE#PBF` | MSE | 4 | `NC_PG` | PG unused; leave open |
 | `U2` | ADI `LT3042IMSE#PBF` | MSE | 5 | `LDO_ILIM` | Current-limit resistor to GND |
-| `U2` | ADI `LT3042IMSE#PBF` | MSE | 6 | `PGFB_HOLD` | Diode from IN, anode IN/cathode PGFB; fast startup disabled with reverse-input protection |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE | 6 | `LDO_PGFB` | 1N4148W-7-F from IN, anode IN/cathode PGFB; fast startup disabled with reverse-input protection |
 | `U2` | ADI `LT3042IMSE#PBF` | MSE | 7 | `LDO_SET` | Setting resistor and bypass capacitor to GND |
 | `U2` | ADI `LT3042IMSE#PBF` | MSE | 8 | `GND` | Join exposed pad directly |
 | `U2` | ADI `LT3042IMSE#PBF` | MSE | 9 | `3V3_SENSOR` | OUTS; Kelvin route to positive pad of `c_ldo_out` |
@@ -286,8 +286,10 @@ complete rail's response to a fast overvoltage step.
 PGFB does not share the IN/EN reverse-input rating: its absolute minimum is
 -0.3 V. ADI Rev C pages 12 and 22 require a diode from IN to PGFB, anode at IN,
 when disabling fast startup while retaining reverse-input protection. The earlier
-direct tie is withdrawn. The exact diode and its pin/land mapping are part of the
-sensor-cable refinement review; do not capture PGFB directly on `V5_SENSOR`.
+direct tie is withdrawn. The selected Diodes Incorporated `1N4148W-7-F` uses pad 1
+cathode on `LDO_PGFB`, pad 2 anode on `V5_SENSOR`; see its checked ratings and
+lands in the [power refinement](sensor-power-refinement.md). Do not capture PGFB
+directly on `V5_SENSOR`.
 
 Use MSE drawing `05-08-1664 Rev I`: 3.00 x 3.00 mm body, 4.90 mm nominal lead
 span, 1.10 mm maximum height and 1.68 x 1.88 mm exposed pad. The candidate
@@ -301,21 +303,33 @@ lands, stencil apertures and any thermal vias remain part of the
 | Stable ID | Value / class | From | To | Placement |
 | --- | --- | --- | --- | --- |
 | `c_ldo_in` | TDK `C3216X7R1E106K160AB`, 10 uF, 10%, X7R, 25 V, 1206 | `V5_SENSOR` | `GND` | At `U2.1/U2.2` and `U2.8` |
+| `r_input_bleed` | Panasonic `ERA3AEB103V`, 10 kohm, 0.1%, 0603 | `V5_SENSOR` | `GND` | Local input discharge when cable unplugged |
+| `d_pgfb` | Diodes `1N4148W-7-F`, SOD-123 | Anode pad 2 `V5_SENSOR` | Cathode pad 1 `LDO_PGFB` | Close to U2 pin 6; separate from TVS return |
 | `c_ldo_out` | TDK `C3216X7R1E106K160AB`, 10 uF, 10%, X7R, 25 V, 1206 | `3V3_SENSOR` | `GND` | At `U2.10/U2.8`; separate Kelvin route from `U2.9` |
 | `r_ldo_set` | Panasonic `ERA3AEB333V`, 33.0 kohm, 0.1%, 25 ppm/K, 0603 | `LDO_SET` | `GND` | Kelvin ground return to the load |
 | `c_ldo_set` | TDK `C2012X7R1E474K125AA`, 0.47 uF, 10%, X7R, 25 V, 0805 | `LDO_SET` | `GND` | Ground directly at `c_ldo_out` ground |
 | `r_ldo_ilim` | Panasonic `ERA3AEB2491V`, 2.49 kohm, 0.1%, 25 ppm/K, 0603 | `LDO_ILIM` | `GND` | Kelvin return directly to `U2.8` |
-| `c_fdc_hf` | 0.10 uF, 10%, X7R, 0603, at least 6.3 V | `3V3_SENSOR` | `GND` | Closest capacitor to `U1.8/U1.7` |
-| `c_fdc_bulk` | 1.0 uF, 10%, X7R, 0603, at least 6.3 V | `3V3_SENSOR` | `GND` | Beside `c_fdc_hf`, after it |
-| `r_sda_pullup` | 2.70 kohm, 1%, 0603 | `I2C_SDA` | `3V3_SENSOR` | Sensor board only |
-| `r_scl_pullup` | 2.70 kohm, 1%, 0603 | `I2C_SCL` | `3V3_SENSOR` | Sensor board only |
-| `r_sensor_discharge` | 3.01 kohm, 1%, 0603 | `3V3_SENSOR` | `GND` | Discharges local rail and maintains at least 1 mA load |
+| `c_fdc_hf` | TDK `C1608X7R1H104K080AA`, 0.10 uF, 10%, X7R, 50 V, 0603 | `3V3_SENSOR` | `GND` | Closest capacitor to `U1.8/U1.7` |
+| `c_fdc_bulk` | TDK `C2012X7R1E105K125AB`, 1.0 uF, 10%, X7R, 25 V, 0805 | `3V3_SENSOR` | `GND` | Beside `c_fdc_hf`, after it |
+| `r_sda_pullup` | Panasonic `ERA3AEB272V`, 2.70 kohm, 0.1%, 0603 | `I2C_SDA` | `3V3_SENSOR` | Sensor board only, FDC side of series resistor |
+| `r_scl_pullup` | Panasonic `ERA3AEB272V`, 2.70 kohm, 0.1%, 0603 | `I2C_SCL` | `3V3_SENSOR` | Sensor board only, FDC side of series resistor |
+| `r_sda_series` | Panasonic `ERJ3EKF22R0V`, 22 ohm, 1%, 0603 | `SDA_CABLE` | `I2C_SDA` | After connector-side ESDS312 tap |
+| `r_scl_series` | Panasonic `ERJ3EKF22R0V`, 22 ohm, 1%, 0603 | `SCL_CABLE` | `I2C_SCL` | After connector-side ESDS312 tap |
+| `r_sensor_discharge` | Panasonic `ERA3AEB3011V`, 3.01 kohm, 0.1%, 0603 | `3V3_SENSOR` | `GND` | Discharges local rail and maintains at least 1 mA load |
 
 The 2.49 kohm current-limit resistor supersedes the earlier 2.50 kohm proposal.
 Keep the input and output bypass ground pads close. Guard `LDO_SET` with
 `3V3_SENSOR` copper and clean flux residue; 100 nA of unwanted SET current
 changes the output by about 3.31 mV. Do not treat `c_ldo_out` as a replacement
 for the two bypass capacitors at `U1`.
+The FDC bypasses and pullups reuse the exact controller-selected families and
+checked lands from the [small-parts inventory](controller-small-parts.md).
+The [exact 3.01 kohm part](https://industrial.panasonic.com/ww/products/pt/high-precision-chip-resistors/models/ERA3AEB3011V)
+is 0.1 W and 25 ppm/K. Existing 1% resistance calculations remain conservative.
+The bulk bypass is now the same 0805 part used on the controller, replacing its
+earlier package-only 0603 proposal without changing the 1 uF allocation.
+Fit the local ESDS312DBVR on `SDA_CABLE`/`SCL_CABLE` and SMBJ7.0A on `V5_SENSOR`
+as specified in the [cable protection design](sensor-cable-protection.md).
 
 ### Voltage, capacitance and recovery margins
 
@@ -331,7 +345,9 @@ the accuracy specifications even when the converter is idle.
 
 ADI specifies at most 300 mV dropout at 1 mA and 50 mA across temperature.
 Using that bound for this board's smaller load leaves
-`4.000 - 3.384 - 0.300 = 0.316 V` additional headroom at minimum sensor input.
+`3.7986 - 3.384 - 0.300 = 0.1146 V` additional headroom at minimum sensor input.
+The [power refinement](sensor-power-refinement.md) derives this input floor from
+the service supply, both harnesses, source OR, power switch and 6.8 ohm resistor.
 This includes static regulation corners; final-board startup and transient
 measurements remain required. With 0.47 uF SET capacitance the data sheet gives
 1.9 uV RMS typical output noise over 10 Hz to 100 kHz. Noise and PSRR are
@@ -353,12 +369,14 @@ near 3.384 V, 14% near 5.363 V and 22% near 6.75 V. The adopted calculation is
 
 Bias curves are manufacturer characterization, not production guarantees.
 The 15% aging allowance is a design allocation, not a part-specific lifetime
-guarantee. Each rail retains its 20 uF maximum capacitance budget. Positive
-initial/temperature tolerances give `10 * 1.10 * 1.15 = 12.65 uF` for the
-local input capacitor and `(10 + 1 + 0.1) * 1.10 * 1.15 = 14.0415 uF` on the
-output. Even reserving the SET capacitor's maximum 0.59455 uF against the
-output budget keeps it below 14.64 uF. Count controller-side capacitance and
-any later additions against the complete `V5_SENSOR` rail's 20 uF limit.
+guarantee. The complete `V5_SENSOR`/`V5_SENSOR_SW` input network now has a
+30 uF maximum budget; `3V3_SENSOR` retains 20 uF. Positive initial/temperature
+tolerances give `10 * 1.10 * 1.15 = 12.65 uF` for the local input capacitor.
+Together with the controller's 11 uF nominal, input capacitance is at most
+26.565 uF before the cable/TVS reserve. Output capacitance is
+`(10 + 1 + 0.1) * 1.10 * 1.15 = 14.0415 uF`. Even reserving the SET capacitor's
+maximum 0.59455 uF against the output budget keeps it below 14.64 uF. Count all
+later additions against the corresponding complete rail budget.
 
 Leave fast startup disabled through the protected IN-to-PGFB diode connection. With the
 largest setting resistor and capacitor, the natural SET time constant is
@@ -369,12 +387,16 @@ This allowance includes the short input-capacitor charge interval and must be
 confirmed with the final current-limited feed and assembled sensor.
 
 Preserve the **2 s off interval** with the bus buffer disabled and both bus
-lines released. The controller's 10 kohm, 1% `V5_SENSOR` bleeder discharges a
-conservative 20 uF from 6.75 V to 0.3 V in
-`20 uF * 10100 * ln(6.75 / 0.3) = 0.629 s`. Subsequently discharging another
+lines released. The controller's 10 kohm bleeder is on `V5_SENSOR_SW`, and the
+daughterboard has its own 10 kohm on `V5_SENSOR`. Conservatively using only one
+bleeder with a 1% resistance envelope and the series resistor discharges the
+30 uF budget from 6.75 V to 0.3 V in
+`30 uF * (10100 + 6.885) * ln(6.75 / 0.3) = 0.944039 s`.
+Subsequently discharging another
 20 uF on `3V3_SENSOR` from 3.384 V to 0.3 V through the 3.01 kohm, 1% bleeder
-takes at most 0.147 s. This deliberately sequential bound is below 0.777 s,
-leaving more than 1.22 s inside the off interval. SET discharges through its
+takes at most 0.147326 s. This deliberately sequential bound is 1.091365 s,
+leaving more than 0.90 s inside the off interval. Each unplugged board also
+retains a local discharge path. SET discharges through its
 33 kohm resistor with at most the 19.689 ms time constant. This calculation
 requires the documented bus isolation and excludes an external backfeed fault;
 measure both rails during final-board recovery.
@@ -409,9 +431,11 @@ bleeder draw at most
 `0.95 + 2 * 3.384 / 2673 * 1000 + 3.384 / 2979.9 * 1000 = 4.618 mA`.
 Reserve 7.3 mA for the LT3042, including its 7 mA worst-case GND-pin current
 at the higher 50 mA load and its SET/ILIM overhead. The resulting daughterboard
-allocation is below 11.92 mA before capacitor charging, within the 30 mA system
-allocation. The broader allocation permits at most 22.7 mA of total 3.3 V
-loads after regulator overhead, including the bleeder and pull-ups.
+allocation is below 11.92 mA before input bleeders, protection leakage and capacitor
+charging. Two input bleeders plus the TVS hot-leakage and signal-ESD allocations
+bring the total below 15.007 mA normally. The broader 30 mA branch allocation now
+permits at most **19.61 mA** of total 3.3 V loads after all overhead, including
+the output bleeder and pull-ups. The TVS hot-leakage allowance still needs measurement.
 
 `ILIM = 125 mA*kohm / 2.49 kohm = 50.2008 mA` nominal. Scaling ADI's
 45 to 55 mA limits at 2.50 kohm by the selected resistor gives
@@ -420,9 +444,9 @@ loads after regulator overhead, including the bleeder and pull-ups.
 The controller's TPS2553 feed limits at 50 to 100 mA and still protects the
 cable; either limiter may act first on an output fault. These fault currents
 are not part of the 30 mA normal-load allocation. At the maximum allocated
-22.7 mA output load and 6.75 V input, regulator dissipation is bounded for
-design by `(6.75 - 3.217) * 0.0227 + 6.75 * 0.0073 < 0.130 W`.
-The data-sheet 33 degrees C/W MSE thermal metric predicts about 4.3 degrees C
+19.61 mA output load and 6.75 V input, regulator dissipation is bounded for
+design by `(6.75 - 3.217) * 0.01961 + 6.75 * 0.0073 < 0.119 W`.
+The data-sheet 33 degrees C/W MSE thermal metric predicts less than 3.93 degrees C
 rise; it is not a substitute for the final copper layout and temperature check.
 
 ## Harness contract
@@ -439,8 +463,8 @@ pointing away from the sensing span.
 | Header pin | Net | Twisted pair | Matching return |
 | ---: | --- | ---: | ---: |
 | 1 | `V5_SENSOR` | A | 4 |
-| 2 | `I2C_SDA` | B | 5 |
-| 3 | `I2C_SCL` | C | 6 |
+| 2 | `SDA_CABLE` | B | 5 |
+| 3 | `SCL_CABLE` | C | 6 |
 | 4 | `GND` | A | 1 |
 | 5 | `GND` | B | 2 |
 | 6 | `GND` | C | 3 |

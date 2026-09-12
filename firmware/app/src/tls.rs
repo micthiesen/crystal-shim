@@ -6,6 +6,11 @@
 
 #![no_std]
 
+// The all-targets compile/check artifact includes allocation-using radio dependencies
+// after feature unification. Production's allocator is initialized by main.
+#[cfg(all(test, target_os = "none"))]
+use esp_alloc as _;
+
 use core::{cell::Cell, ffi::CStr};
 
 use critical_section::Mutex;
