@@ -76,12 +76,34 @@ matches the 6.80 reference approximately, but is not a newly proven datum.
 
 Reserve at least 0.50 mm outside the maximum occupied envelope plus separate
 latch and wire access. Preliminary width lower bounds are 22.41, 29.91, 37.40
-and 52.38 mm; depth lower bound is 14.67 mm. Final fit must account for the
-qualified body pose. Courtyard spacing does not replace mains insulation rules.
-Housing drawing/CAD bytes were not recovered in this bounded pass. Opposite-face
-housing numbering, exact housing tolerances and partial/cross mating remain
-unverified. Use molded circuit numbers; different pole counts alone do not prove
-that wrong mating is impossible.
+and 52.38 mm. The 14.67 mm depth lower bound covers the header alone. The
+subsequently recovered primary indexed housing table requires larger mated-depth
+allocations below. Final fit must account for the qualified body pose. Courtyard
+spacing does not replace mains insulation rules. Opposite-face numbering and
+partial/cross mating remain unverified. Use molded circuit numbers; different
+pole counts alone do not prove that wrong mating is impossible.
+
+A bounded follow-up found Molex **444410000-SD PSD000 A1**, released 2018-09-13,
+in the [official indexed housing drawing](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/444/44441/444412008_sd.pdf).
+Its chart explicitly includes the four selected housings and their 43375 terminals
+and 43160 mates. This evidence is parsed primary text; actual PDF/CAD bytes were
+not recovered, so no housing file hash or visually verified mating pose is claimed.
+
+| Housing | A maximum, mm | C maximum, mm | Minimum depth allocation with 0.50 mm each side |
+| --- | ---: | ---: | ---: |
+| 44441-2002 | 16.07 | 15.88 | 16.88 |
+| 44441-2003 | 23.57 | 16.69 | 17.69 |
+| 44441-2004 | 31.07 | 16.69 | 17.69 |
+| 44441-2006 | 46.05 | 16.69 | 17.69 |
+
+C is 15.24±0.64 mm for two circuits and 16.05±0.64 mm for the others. These
+mated-envelope lower bounds exceed the existing header-only depth. Housing height
+27.38±0.38 mm must not be added to the header height: the header drawing already
+specifies the combined 30.69 mm maximum mated height. Latch release, cable bend
+and withdrawal space remain additional. The exact housing-to-contact and
+header-to-tail transforms remain unresolved; do not centre the deeper housing
+on the current header box by convenience. Evidence and arithmetic are in
+`/tmp/crystal-shim-mains-fit-closure`.
 
 Native KiCad 10.0.5 candidates have correct paired tails and drills but use
 7.49 mm pitch, 3.78 x 3.43 mm copper and nominal-body courtyards. Their tiny pitch

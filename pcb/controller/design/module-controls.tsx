@@ -192,11 +192,76 @@ export function ControllerModuleControls() {
           pin2: "net.GND",
         }}
       />
+      {/* Pin these real electrical islands above the short button stubs. The
+          default left-facing labels extend beyond the native page frame. */}
+      <netlabel
+        net="MAINTENANCE_N"
+        connectsTo=".SW1 > .pin1"
+        schX={-12.7}
+        schY={6.7}
+        anchorSide="left"
+      />
+      <netlabel
+        net="BOOT_N"
+        connectsTo=".SW2 > .pin1"
+        schX={-12.7}
+        schY={1.7}
+        anchorSide="left"
+      />
+      <netlabel
+        net="RESET_CONTACT"
+        connectsTo=".SW3 > .pin1"
+        schX={-12.7}
+        schY={-3.3}
+        anchorSide="left"
+      />
+      {/* A separate pull-up island avoids a wire through the CHIP_EN label. */}
+      <netlabel
+        net="CHIP_EN"
+        connectsTo=".R53 > .pin2"
+        schX={-6}
+        schY={-7.3}
+        anchorSide="left"
+      />
+      <netlabel
+        net="CHIP_EN"
+        connectsTo=".U1 > .pin3"
+        schX={-3}
+        schY={1}
+        anchorSide="right"
+      />
+      <netlabel
+        net="CHIP_EN"
+        connectsTo=".R55 > .pin1"
+        schX={-8}
+        schY={-3.3}
+        anchorSide="left"
+      />
+      <netlabel
+        net="CHIP_EN"
+        connectsTo=".C9 > .pin1"
+        schX={-12}
+        schY={-8}
+        anchorSide="right"
+      />
+      <netlabel
+        net="LED_ANODE"
+        connectsTo=".D4 > .pin2"
+        schX={12.2}
+        schY={1.7}
+        anchorSide="right"
+      />
+      <netlabel
+        net="GND"
+        connectsTo={[".U1 > .pin28", ".U1 > .pin29"]}
+        schX={2}
+        schY={2}
+        anchorSide="bottom"
+      />
       {/* Electrical labels are required; inline text does not join native nets. */}
       {[
         ["GND", ".U1 > .pin1"],
         ["V3V3", ".U1 > .pin2"],
-        ["CHIP_EN", ".U1 > .pin3"],
         ["SENSOR_BUS_EN", ".U1 > .pin8"],
         ["BOOT_STRAP8", ".U1 > .pin10"],
         ["RELAY_REQUEST", ".U1 > .pin11"],
@@ -212,21 +277,12 @@ export function ControllerModuleControls() {
         ["SENSOR_POWER_FAULT_N", ".U1 > .pin21"],
         ["UART0_RX", ".U1 > .pin24"],
         ["UART0_TX", ".U1 > .pin25"],
-        ["GND", ".U1 > .pin28"],
-        ["GND", ".U1 > .pin29"],
-        ["MAINTENANCE_N", ".SW1 > .pin1"],
-        ["BOOT_N", ".SW2 > .pin1"],
-        ["RESET_CONTACT", ".SW3 > .pin1"],
-        ["LED_ANODE", ".D4 > .pin2"],
         ["MAINTENANCE_N", ".R50 > .pin2"],
         ["BOOT_N", ".R51 > .pin2"],
         ["BOOT_STRAP8", ".R52 > .pin2"],
-        ["CHIP_EN", ".R53 > .pin2"],
         ["STATUS_LED", ".R54 > .pin1"],
         ["LED_ANODE", ".R54 > .pin2"],
-        ["CHIP_EN", ".R55 > .pin1"],
         ["RESET_CONTACT", ".R55 > .pin2"],
-        ["CHIP_EN", ".C9 > .pin1"],
       ].map(([net, port]) => (
         <Fragment key={port}>
           <netlabel net={net} connectsTo={port} />

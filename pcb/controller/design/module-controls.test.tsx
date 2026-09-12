@@ -1,9 +1,12 @@
 import { expect, test } from "bun:test";
 import { Circuit } from "tscircuit";
 import { ControllerModuleControls } from "./module-controls";
-import { schematicConnectivityErrors } from "./schematic-connectivity-check";
+import {
+  schematicConnectivityErrors,
+  schematicPortNetNames,
+} from "./schematic-connectivity-check";
 
-test("module controls preserve GPIO allocation, separate buttons and current-limited reset/LED paths", async () => {
+async function fixture() {
   const circuit = new Circuit();
   circuit.add(
     <board width={70} height={110} routingDisabled>
@@ -16,7 +19,11 @@ test("module controls preserve GPIO allocation, separate buttons and current-lim
     </board>,
   );
   await circuit.renderUntilSettled();
-  const json = circuit.getCircuitJson();
+  return circuit.getCircuitJson();
+}
+
+test("module controls preserve GPIO allocation, separate buttons and current-limited reset/LED paths", async () => {
+  const json = await fixture();
   const components = json.filter((e) => e.type === "source_component");
   const ports = json
     .filter((e) => e.type === "source_port")
@@ -108,4 +115,65 @@ test("module controls preserve GPIO allocation, separate buttons and current-lim
   expect(json.filter((e) => "error_type" in e || e.type.endsWith("_error"))).toEqual(
     [],
   );
+});
+
+test("module signal labels serve distinct short islands and face inward at page edges", async () => {
+  const json = await fixture();
+  const components = json.filter((e) => e.type === "source_component");
+  const names = new Map(
+    json
+      .filter((e) => e.type === "source_port")
+      .map((port) => [
+        port.source_port_id,
+        `${components.find((e) => e.source_component_id === port.source_component_id)!.name}.${port.pin_number}`,
+      ]),
+  );
+  const connected = (input: typeof json) =>
+    new Map(
+      [...schematicPortNetNames(input)].map(([id, nets]) => [names.get(id)!, nets]),
+    );
+  const before = connected(json);
+  const labels = json.filter((e) => e.type === "schematic_net_label");
+  const enableLabels = labels.filter((e) => e.text === "CHIP_EN");
+  expect(enableLabels).toHaveLength(4);
+  const enableIslands: string[][] = [];
+  for (const label of enableLabels) {
+    const cut = connected(json.filter((e) => e !== label));
+    const lost: string[] = [];
+    for (const [pin, prior] of before) {
+      if (JSON.stringify(cut.get(pin)) !== JSON.stringify(prior)) {
+        expect(prior, pin).toEqual(["CHIP_EN"]);
+        expect(cut.get(pin), pin).toEqual([]);
+        lost.push(pin);
+      }
+    }
+    enableIslands.push(lost.sort());
+  }
+  // The old automatic U1/R53 wire joined two labels and crossed their text.
+  expect(enableIslands.sort()).toEqual([["C9.1"], ["R53.2"], ["R55.1"], ["U1.3"]]);
+  for (const [net, pin, side] of [
+    ["MAINTENANCE_N", "SW1.1", "left"],
+    ["BOOT_N", "SW2.1", "left"],
+    ["RESET_CONTACT", "SW3.1", "left"],
+    ["LED_ANODE", "D4.2", "right"],
+  ] as const) {
+    const port = json
+      .filter((e) => e.type === "schematic_port")
+      .find((e) => names.get(e.source_port_id) === pin)!;
+    const label = labels
+      .filter((e) => e.text === net)
+      .find(
+        (e) => connected(json.filter((entry) => entry !== e)).get(pin)?.length === 0,
+      )!;
+    expect(label, pin).toBeDefined();
+    // These short elbows leave a label above the switch/LED and point its text
+    // toward the sheet interior. Automatic pin-end labels crossed the frame.
+    expect(label.anchor_side, pin).toBe(side);
+    expect(label.anchor_position!.y - port.center.y, pin).toBeGreaterThanOrEqual(0.6);
+    expect(label.anchor_position!.y - port.center.y, pin).toBeLessThanOrEqual(0.8);
+    expect(Math.abs(label.anchor_position!.x - port.center.x), pin).toBeLessThanOrEqual(
+      0.8,
+    );
+  }
+  expect(schematicConnectivityErrors(json)).toEqual([]);
 });

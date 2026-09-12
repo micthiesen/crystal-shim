@@ -61,7 +61,10 @@ python3 tools/tscircuit_handoff.py verify-schematic-cleanup \
 ```
 
 It derives fresh XML netlist and JSON ERC reports and requires exact references,
-values, symbols, footprints, MPNs, datasheets, pins and nets. The accepted lock is
+values, symbols, footprints, MPNs, datasheets, pins and nets. This before-routing
+gate enables reporting of errors, warnings and excluded findings, requires proof
+of all three severities in the report, and rejects every ignored check even when
+initial staging declared it. No excluded finding may remain. The accepted lock is
 byte-bound to every staged `.kicad_*` file in the handoff receipt. Never re-export
 over a routed project; use a reviewed ECO and verify preserved KiCad state.
 

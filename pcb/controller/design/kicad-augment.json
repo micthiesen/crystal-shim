@@ -372,10 +372,11 @@
           "Declare power sources at V5_LOGIC, V5_SERVICE_RAW, V3V3 and GND as supported by source supply paths; PWR_FLAG is an ERC source annotation, not proof a rail is live.",
           "Resolve dangling-wire reports by UUID in the actual child sheet; the initial ERC root path and coordinate units are misleading. Power and USB each contain a redundant collinear overlap. Union/split only after preserving every pin/label anchor and explicit T junction, then require identical native XML connectivity.",
           "Fit every sheet's complete symbols, fields and wiring inside its page at a readable scale. Inspect every complete rendered page, including margins and title block, before acceptance.",
-          "Preserve all 95 exact values, MPNs, datasheet and footprint fields and every hierarchical sheet."
+          "Preserve all 95 exact values, MPNs, datasheet and footprint fields and every hierarchical sheet.",
+          "After actual native Save, enable every ERC category and include error, warning and exclusion severities in the before-routing report. Initial defaults and excluded findings are not release waivers."
         ],
-        "verification": "Require strict source schematic/XML parity and a clean ERC report with all errors/warnings resolved before any routing; these initial finding types are not release waivers.",
-        "status": "Initial typed NC markers, two overlap repairs, project symbol library, four explicit power flags, monotone 1.27 mm electrical grid and persistent connected-branch junctions applied. Current native receipts and exact source/XML parity remain required; inherited label overlaps and full-page legibility remain to review.",
+        "verification": "Require strict source schematic/XML parity and a clean ERC report with all categories enabled and error/warning/exclusion severities included before any routing; initial allowances do not apply to this gate.",
+        "status": "Initial typed NC markers, overlap repairs, project symbol library, power flags, monotone 1.27 mm electrical grid and connected-branch junctions applied. USB labeled islands and module label layout are source-authoritative. Current native receipts, actual Save/readback, strict ERC and complete-page inspection remain mandatory before adoption.",
         "project_symbol_library": {
           "file": "CrystalShim_Controller.kicad_sym",
           "nickname": "CrystalShim_Controller",
@@ -430,10 +431,10 @@
           "native_units_per_mm": 10000,
           "connection_grid_mm": 1.27,
           "mapping": "Separate strictly monotone X/Y map for each electrical sheet, canonical native integer coordinates, preserving every orthogonal wire, pin, label, junction and NC incidence. No nearest-coordinate merge. Preserve two-field junction/NC at syntax.",
-          "branch_junctions": "Add explicit dots only where all incident wires already connect through shared endpoints, positive collinear overlap or existing junctions. The controller adds 16 USB dots so native Save cannot disconnect branches when merging collinear stubs. Unconnected crossings or endpoint-on-interior contacts are never inferred as net ties.",
+          "branch_junctions": "Add explicit dots only where all incident wires already connect through shared endpoints, positive collinear overlap or existing junctions. Current source-derived branch dots prevent native Save from disconnecting branches when merging collinear stubs. Unconnected crossings or endpoint-on-interior contacts are never inferred as net ties.",
           "display": "Map symbol body polylines and field anchors, retaining font/stroke sizes and circle radii. Explicit joined four-lobe L1 display repair leaves all electrical pin anchors, lengths and types unchanged. Zero-length power flag definitions stay rigid.",
-          "verification": "Require identical native XML components, pin names/types, all 51 named nets/254 connected pins/20 NCs; preserve all 443 initial wires and 34 existing junctions, add 16 proven branch dots. Current enabled ERC findings must be empty both initially and after native GUI save of a disposable copy; native wire merging may change segment counts but not connectivity. Inspect full pages and L1/module/USB/test-pad/flag details.",
-          "remaining": "Existing adjacent GND labels by J4 require legibility cleanup; no global anchor relocation or electrical label removal is performed."
+          "verification": "Require identical native XML components, pin names/types, all 51 named nets/254 connected pins/20 NCs. Preserve every original wire and junction; add only proven branch dots. Current enabled ERC findings must be empty both initially and after native GUI save of a disposable copy; native wire merging may change segment counts but not connectivity. The before-routing saved report must include excluded findings and no ignored categories. Inspect complete pages and L1/module/USB/test-pad/flag details.",
+          "remaining": "Source label islands resolve the prior J4 ground and module page/label crossings. Full native page review, strict saved ERC and current exact parity are still required for each adoption candidate."
         }
       }
     },

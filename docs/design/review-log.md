@@ -1148,6 +1148,33 @@ The integrated `sh scripts/check.sh` passes; evidence is
 operating gate is passed. The before-routing cleanup gate is separately under
 review for its handling of inherited ignored ERC categories.
 
+## Module layout and strict schematic cleanup
+
+Root's full-page inspection found existing module labels crossing the page frame
+and an R53 label crossed by a wire. Source-authored short stubs and four distinct
+CHIP_EN islands remove those defects while preserving every source/PCB/native
+identity. Per-label removal tests fail against the old source. The current A3
+module render was inspected; the full PCB suite passes 116 tests / 23,670
+assertions. Independent module delta review found no actionable defect.
+
+The cleanup-gate audit reproduced acceptance of zero findings while all four
+initial ERC ignores remained enabled. Cleanup now rejects any ignored category,
+requests every severity including exclusions, and requires the report to prove
+excluded findings were included. A declared initial violation remains a failure
+when reported as excluded. The initial staging policy is unchanged. The focused
+CLI regression and all 36 shared handoff tests pass in both projects; the old
+source fails. Independent review confirmed both fixes and their native CLI semantics. The
+excluded-finding regression uses KiCad's nested sheets/violations structure. No live excluded marker was created.
+
+Actual KiCad Save rewrote all eight candidate sheets without changing any
+component, library definition or native 71 nets / 274 pin memberships. The saved
+copy passes the stricter cleanup command with no ignored checks or findings at
+all three severities. Evidence is [the native record](controller-grid.md),
+`/tmp/crystal-shim-controller-module-gui` and
+`/tmp/crystal-shim-module-strict-full-check.log`. The complete project gate passes;
+firmware behavior and its linked image are unchanged from the timing checkpoint.
+No routed board, lock or fabrication release is implied.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

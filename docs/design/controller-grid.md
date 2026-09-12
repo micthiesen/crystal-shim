@@ -138,3 +138,43 @@ inspected the full USB page and J4/U8 details. Existing module-page labels cross
 the left frame, and the R53 CHIP_EN label crosses its wire; source layout and
 complete-page acceptance remain open. No production board or handoff lock is
 adopted, and this evidence does not authorize routing or fabrication release.
+
+
+## Module page and strict cleanup gate
+
+The module source now places button and LED labels on short inward-facing stubs,
+uses four distinct CHIP_EN islands, and routes U1's paired grounds above the NC
+pin. The complete A3 page was inspected; the former left/right frame crossings
+and R53 label/wire crossing are gone. Every physical PCB record, source manifest
+field and native net membership remains exact. Removing individual CHIP_EN labels
+proves each one serves only C9.1, R53.2, R55.1 or U1.3; the old source fails that
+regression. Current initial source has 427 wires and seven added branch dots;
+the grid algorithm is unchanged. Evidence is `/tmp/crystal-shim-module-layout`.
+
+The current guarded stage is
+`/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0`.
+All eight stage commands pass. Root opened its byte-copy at
+`/tmp/crystal-shim-controller-module-gui` through the native project editor,
+saved all eight sheets, enabled all four initial default checks in Schematic
+Setup, and saved again. Exact components, library definitions and all 71 nets /
+274 complete pin memberships survive. The strict report includes error, warning
+and exclusion severities, has no ignored checks and no violations. Its SHA-256 is
+`20d4b0eb1a38b67944ab6e2b7a08551e7eb80d34e97bdd5a46ef4a2a4e86000f`.
+`native-gui-receipt.json` binds that proof; `cleanup-strict-gate.json` also passes
+exact source-field and schematic parity through the shared production command.
+
+Independent audit found the cleanup command previously reused the initial ignored
+allowlist and could accept a zero-finding report with disabled rules. It now
+rejects all ignored categories, requests `--severity-all`, requires proof that
+excluded findings were included and rejects every remaining finding. Initial
+staging retains its separate declared allowances. CLI regressions cover each of
+the four initial ignores, all four together, missing exclusion reporting, an
+excluded finding of an initially allowed type and the strict clean case. The
+old source fails the ignored-rule regression. Both shared Python suites pass
+36 tests. A live excluded marker was not exercised; the current native copy has
+no exclusion entries. The initial/default policy and strict cleanup policy remain
+separate, explicit stages.
+
+This closes the identified page defects and strict schematic-cleanup check for
+this candidate. Native board augmentation, mated enclosure fit, complete design
+review, routing and fabrication still remain; no board or lock has been adopted.

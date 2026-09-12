@@ -72,6 +72,30 @@ orientation, 3.7 x 1.3 mm plated drill, 5.3 x 2.9 mm copper and line/neutral net
 This validates the installed exporter's slot capability, not a complete MOV model
 or fabrication process. Evidence is `/tmp/crystal-shim-mov-slot-probe`.
 
+## Further body-datum constraints
+
+The inspected tape drawing on page 7 provides a qualified in-plane centre:
+feed-hole to first insertion lead `P1=8.95±0.7 mm` and to component centre
+`P2=12.7±0.7 mm` imply `Cx=P2−P1=3.75±1.4 mm` relative to lead 1. This does
+not establish the perpendicular common body offset `Cy`, outer-crimp width or
+installed lean. The separate tape-alignment excursions need clear interpretation
+before this qualified X interval becomes a guaranteed occupied-body bound.
+
+For subsequent fit work, a body rectangle with half-sizes 8.5 and 4.5 mm is
+centred at `(Cx,Cy)`, then unioned with the crimp/lead geometry and transformed
+through allowed yaw and insertion travel. Size-only projection at 17.102729
+degrees is 18.895016 x 13.601471 mm; that does not locate the rectangle relative
+to the PCB. Maximum-hole/minimum-lead motion is 0.32 mm, whereas the lead-fit
+proof above uses the opposite tolerance corner. Top height is `s+22.5 mm`, where
+`s` is the controlled crimp-seat height above the PCB.
+
+The 28 x 28 mm placement reserve remains conditional. Under explicitly assumed
+zero additional lean/crimp motion, the qualified X range, 0.32 mm free motion
+and 0.50 mm edge margin, its Y inequality gives `abs(Cy)≤5.089799 mm`. This is
+an illustrative assembly acceptance limit, not a manufacturer datum. Do not use
+it to mark occupied-envelope or placement review complete. Exact missing inputs,
+formulas and source identities are in `/tmp/crystal-shim-mains-fit-closure`.
+
 ## Sources and evidence
 
 | Manufacturer-authored source | Identity |

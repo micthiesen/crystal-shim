@@ -80,6 +80,9 @@ parts on the top side.
   allocation with room to resolve the model, not a proven tolerance bound.
 - Resolve the qualified Sabre body-to-tail poses, mating face numbering, latch
   access and adjacent plug cross-mating; retain every unused blade and tail.
+  The housing table requires at least 16.88 mm mated depth at J1 and 17.69 mm
+  at J2-J4 with 0.50 mm edge margins. The current header-only proposal does not
+  prove those deeper, still-unlocated envelopes fit.
 - Check J5's mated housing, cable bend/withdrawal and partition opening. Its
   right-facing orientation alone does not establish enclosure clearance.
 - Retain the supply and relay's internal isolation qualifications and keep primary

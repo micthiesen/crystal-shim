@@ -28,8 +28,11 @@ signal islands and six explicit branch dots, preserving every native connection
 through actual KiCad Save. Initial ERC has zero enabled findings; DRC has 216
 unrouted items with zero other violations. A disposable copy saved through KiCad
 passes all ERC categories with no ignored checks and exact component/net parity.
-Fresh stages retain their declared initial defaults; the before-routing gate and
-remaining module-page frame/label overlap need closure. See
+The module source now keeps its labels inside the A3 frame and clear of wires.
+The latest saved candidate passes the stricter before-routing cleanup command,
+which includes excluded findings and rejects every ignored category. Fresh stages
+retain their separate declared initial defaults. Native board augmentation,
+complete design review and mated enclosure fit remain required. See
 [the native evidence](../../../docs/design/controller-grid.md) and
 [STATE](../../../docs/STATE.md).
 
