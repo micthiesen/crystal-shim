@@ -121,7 +121,7 @@ test("service protection retains both reverse-input series resistors, current li
 test("service joins the existing OR input without creating a coil-supply or PSU-sense path", async () => {
   const circuit = new Circuit();
   circuit.add(
-    <board width={70} height={110} routingDisabled>
+    <board width={70} height={110} routingDisabled pcbRelative>
       <schematicsheet name="Service" sheetIndex={0} />
       <schematicsheet name="Power" sheetIndex={1} />
       <schematicsheet name="Relay" sheetIndex={2} />

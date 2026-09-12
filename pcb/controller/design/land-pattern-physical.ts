@@ -1,11 +1,20 @@
-import type { LandPattern } from "./ic-land-patterns";
+import { passivePhysicalModels } from "./passive-physical-models";
+import { icPhysicalLandPatterns } from "./ic-physical-models";
+import { connectorPhysicalModels } from "./connector-physical-models";
 
-// Millimetres in the same body-centred, component-top-view axes as LandPattern.
+// Millimetres in the same component-top-view axes as the copper model.
 // Thickness is the Z envelope for enclosure review, not a generated 3D model.
 export type PhysicalLandPattern = {
+  // Native +Y down. Omit for a body-centred footprint; never move the copper
+  // origin to center an asymmetric package such as the WROOM module.
+  packageCenter?: { x: number; y: number };
+  // Optional separate center for asymmetric protrusions such as bent leads.
+  // Defaults to packageCenter; independent of the electrical footprint origin.
+  envelopeCenter?: { x: number; y: number };
   // Body-outline dimensions for F.Fab; these do not include the leads.
   body: { width: number; height: number; thicknessMax: number; basis: string };
-  // Maximum occupied package rectangle, including leads and permitted flash.
+  // Occupied package rectangle. The basis states maximum vs basic dimensions
+  // and any manufacturer exclusions; it must not invent a tolerance.
   envelope: { width: number; height: number; basis: string };
   solderMask: { expansion: number; manufacturerMax?: number; basis: string };
   nativeAssembly: { paste: string; thermal: string };
@@ -58,6 +67,42 @@ const dbv5: PhysicalLandPattern = {
 export const physicalLandPatterns: Readonly<
   Partial<Record<string, PhysicalLandPattern>>
 > = {
+  ...passivePhysicalModels,
+  ...icPhysicalLandPatterns,
+  ...connectorPhysicalModels,
+  "Espressif:ESP32-C6-WROOM-1": {
+    packageCenter: { x: 0, y: -3 },
+    body: {
+      width: 18,
+      height: 25.5,
+      thicknessMax: 3.25,
+      basis:
+        "Module nominal 18.0 +/-0.2 by 25.5 +/-0.2, maximum height 3.1 +0.15 mm. Native origin is 3 mm below the body center.",
+    },
+    envelope: {
+      width: 18.2,
+      height: 25.7,
+      basis:
+        "Maximum module outline, including the PCB antenna. Antenna RF clearance is a separate board/enclosure constraint, not the assembly courtyard.",
+    },
+    solderMask: {
+      expansion: 0.05,
+      basis:
+        "Project NSMD margin on all 28 perimeter and nine separate exposed-ground lands; no aperture merged across pad 29.",
+    },
+    nativeAssembly: {
+      paste:
+        "KiCad augmentation: preserve nine separate 0.8 mm ground-land apertures. Review board stencil thickness and peripheral apertures with Espressif's reflow profile; do not form one full ground-pad paste square.",
+      thermal:
+        "Keep the ground pad connected by reviewed plane/via geometry. Any vias/paste exclusion and antenna keepout must be declared in board augmentation; height excludes solder standoff.",
+    },
+    source: {
+      url: "https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf",
+      sha256: "163020762fa6d499e0c611c5a13e78ad9d4720b421c6bc5e14e16fc748862b73",
+      drawing:
+        "v1.4 p41 Figure 10-1 physical outline; p44 Figure 11-1 copper; the pinned Espressif library fixes the asymmetric native origin.",
+    },
+  },
   TCA9517ADGKR: {
     body: {
       width: 3,
@@ -194,22 +239,55 @@ export const physicalLandPatterns: Readonly<
   },
 };
 
-export function landPatternPhysicalGeometry(pattern: LandPattern) {
+export function landPatternPhysicalGeometry(pattern: {
+  id: string;
+  pads: readonly (
+    | { x: number; y: number; width: number; height: number }
+    | { points: readonly { x: number; y: number }[] }
+  )[];
+  holes?: readonly { x: number; y: number; diameter: number }[];
+}) {
   const declaration = physicalLandPatterns[pattern.id];
   if (!declaration) return undefined;
   const { clearance, grid } = physicalCourtyardPolicy;
-  const extentX = Math.max(
-    declaration.envelope.width / 2,
-    ...pattern.pads.map((pad) => Math.abs(pad.x) + pad.width / 2),
+  const center = declaration.packageCenter ?? { x: 0, y: 0 };
+  const rectangles = [
+    { ...(declaration.envelopeCenter ?? center), ...declaration.envelope },
+    ...pattern.pads.map((pad) => {
+      if (!("points" in pad)) return pad;
+      const left = Math.min(...pad.points.map((point) => point.x));
+      const right = Math.max(...pad.points.map((point) => point.x));
+      const top = Math.min(...pad.points.map((point) => point.y));
+      const bottom = Math.max(...pad.points.map((point) => point.y));
+      return {
+        x: (left + right) / 2,
+        y: (top + bottom) / 2,
+        width: right - left,
+        height: bottom - top,
+      };
+    }),
+    ...(pattern.holes ?? []).map((hole) => ({
+      x: hole.x,
+      y: hole.y,
+      width: hole.diameter,
+      height: hole.diameter,
+    })),
+  ];
+  const floor = (v: number) => Math.floor(v / grid + 1e-9) * grid;
+  const ceil = (v: number) => Math.ceil(v / grid - 1e-9) * grid;
+  const left = floor(Math.min(...rectangles.map((r) => r.x - r.width / 2)) - clearance);
+  const right = ceil(Math.max(...rectangles.map((r) => r.x + r.width / 2)) + clearance);
+  const top = floor(Math.min(...rectangles.map((r) => r.y - r.height / 2)) - clearance);
+  const bottom = ceil(
+    Math.max(...rectangles.map((r) => r.y + r.height / 2)) + clearance,
   );
-  const extentY = Math.max(
-    declaration.envelope.height / 2,
-    ...pattern.pads.map((pad) => Math.abs(pad.y) + pad.height / 2),
-  );
-  const outward = (halfExtent: number) =>
-    Math.ceil((halfExtent + clearance) / grid - 1e-9) * grid;
   return {
     declaration,
-    courtyard: { width: 2 * outward(extentX), height: 2 * outward(extentY) },
+    bodyCenter: center,
+    courtyard: {
+      width: right - left,
+      height: bottom - top,
+      center: { x: (left + right) / 2, y: (top + bottom) / 2 },
+    },
   };
 }

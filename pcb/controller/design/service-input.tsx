@@ -13,7 +13,7 @@ export function ControllerServiceInput() {
       <ServiceHeader
         name="J2"
         pcbX={22}
-        pcbY={-44}
+        pcbY={-50}
         schX={-11.88}
         schY={0}
         schSheetName="Service"

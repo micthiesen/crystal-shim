@@ -37,7 +37,95 @@ pub struct Provisioning<'a> {
     dac: &'a [u8],
 }
 
+/// Explicit metadata for host provisioning. Includes a secret PIN, so no Debug.
+pub struct Metadata<'a> {
+    pub vendor_id: u16,
+    pub product_id: u16,
+    pub hardware_version: u16,
+    pub discriminator: u16,
+    pub passcode: u32,
+    pub vendor_name: &'a str,
+    pub serial_number: &'a str,
+    pub unique_id: &'a str,
+    pub hardware_version_string: &'a str,
+}
+
+/// Explicit attestation inputs. There is no default or example key fallback.
+pub struct Attestation<'a> {
+    pub public_key: &'a [u8; 65],
+    pub private_key: &'a [u8; 32],
+    pub declaration: &'a [u8],
+    pub pai: &'a [u8],
+    pub dac: &'a [u8],
+}
+
+/// Encode only a record that the production decoder accepts. Failure clears the
+/// entire caller buffer so a partial key-bearing record cannot be mistaken for output.
+pub fn encode(
+    metadata: Metadata<'_>,
+    attestation: Attestation<'_>,
+    out: &mut [u8],
+) -> Result<usize, Error> {
+    let record = Provisioning {
+        vendor_id: metadata.vendor_id,
+        product_id: metadata.product_id,
+        hardware_version: metadata.hardware_version,
+        discriminator: metadata.discriminator,
+        passcode: metadata.passcode,
+        vendor_name: metadata.vendor_name,
+        serial_number: metadata.serial_number,
+        unique_id: metadata.unique_id,
+        hardware_version_string: metadata.hardware_version_string,
+        public_key: attestation.public_key,
+        private_key: attestation.private_key,
+        declaration: attestation.declaration,
+        pai: attestation.pai,
+        dac: attestation.dac,
+    };
+    record.encode(out)
+}
+
 impl<'a> Provisioning<'a> {
+    /// Canonical serialization, revalidating even if public metadata was changed.
+    pub fn encode(&self, out: &mut [u8]) -> Result<usize, Error> {
+        out.fill(0);
+        let result = self.encode_inner(out);
+        if result.is_err() {
+            out.fill(0);
+        }
+        result
+    }
+
+    fn encode_inner(&self, out: &mut [u8]) -> Result<usize, Error> {
+        let mut writer = Writer { out, position: 0 };
+        writer.bytes(MAGIC)?;
+        for value in [
+            self.vendor_id,
+            self.product_id,
+            self.hardware_version,
+            self.discriminator,
+        ] {
+            writer.bytes(&value.to_le_bytes())?;
+        }
+        writer.bytes(&self.passcode.to_le_bytes())?;
+        for text in [
+            self.vendor_name,
+            self.serial_number,
+            self.unique_id,
+            self.hardware_version_string,
+        ] {
+            writer.blob(text.as_bytes())?;
+        }
+        writer.bytes(self.public_key)?;
+        writer.bytes(self.private_key)?;
+        for bytes in [self.declaration, self.pai, self.dac] {
+            writer.blob(bytes)?;
+        }
+        let length = writer.position;
+        Provisioning::decode(&out[..length])?;
+        Ok(length)
+    }
+
     /// Validate record bounds, setup parameters, keypair and attestation identity.
     /// Certificate trust/signatures and CD validity are checked by the commissioner.
     pub fn decode(bytes: &'a [u8]) -> Result<Self, Error> {
@@ -133,6 +221,31 @@ impl DeviceAttestation for Provisioning<'_> {
     }
     fn dac_priv_key(&self) -> CanonPkcSecretKeyRef<'_> {
         CanonPkcSecretKeyRef::new(self.private_key)
+    }
+}
+
+struct Writer<'a> {
+    out: &'a mut [u8],
+    position: usize,
+}
+impl Writer<'_> {
+    fn bytes(&mut self, bytes: &[u8]) -> Result<(), Error> {
+        let end = self
+            .position
+            .checked_add(bytes.len())
+            .filter(|end| *end <= MAX_BYTES)
+            .ok_or(Error::Format)?;
+        self.out
+            .get_mut(self.position..end)
+            .ok_or(Error::Format)?
+            .copy_from_slice(bytes);
+        self.position = end;
+        Ok(())
+    }
+    fn blob(&mut self, bytes: &[u8]) -> Result<(), Error> {
+        let length = u16::try_from(bytes.len()).map_err(|_| Error::Format)?;
+        self.bytes(&length.to_le_bytes())?;
+        self.bytes(bytes)
     }
 }
 
@@ -287,6 +400,19 @@ mod tests {
         assert_eq!(record.vendor_id, TEST_VID);
         assert_eq!(record.product_id, TEST_PID);
         assert_eq!(record.serial_number, "unit-test");
+        let mut encoded = [0xa5; MAX_BYTES];
+        let size = record.encode(&mut encoded).unwrap();
+        assert_eq!(&encoded[..size], bytes);
+        for capacity in 0..size {
+            let mut short = [0xa5; MAX_BYTES];
+            assert!(record.encode(&mut short[..capacity]).is_err());
+            assert!(short[..capacity].iter().all(|byte| *byte == 0));
+        }
+        let mut changed_record = Provisioning::decode(&bytes).unwrap();
+        changed_record.passcode = 0;
+        assert!(changed_record.encode(&mut encoded).is_err());
+        assert!(encoded.iter().all(|byte| *byte == 0));
+
         for identity_at in [8, 10] {
             let mut changed = bytes.clone();
             changed[identity_at] ^= 1;

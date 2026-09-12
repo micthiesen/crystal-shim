@@ -1,4 +1,6 @@
 import { Fragment } from "react";
+import { PhysicalFootprintGraphics } from "./land-pattern";
+import { landPatternPhysicalGeometry } from "./land-pattern-physical";
 
 // Electrical pads and non-plated locators, in native top-view +Y-down coordinates.
 export type ThtPattern = {
@@ -17,14 +19,17 @@ export type ThtPattern = {
 };
 
 export function ThtFootprint({ pattern }: { pattern: ThtPattern }) {
+  const physical = landPatternPhysicalGeometry(pattern);
   return (
     <footprint>
+      <PhysicalFootprintGraphics physical={physical} />
       {pattern.pads.map((pad, index) => {
         const common = {
           name: `land_${pad.number}_${index}`,
           pcbX: pad.x,
           pcbY: -pad.y,
           portHints: [`pin${pad.number}`],
+          solderMaskMargin: physical?.declaration.solderMask.expansion,
         };
         return (
           <Fragment key={`${pad.number}-${index}`}>

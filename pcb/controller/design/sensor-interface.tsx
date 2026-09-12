@@ -113,7 +113,7 @@ export function ControllerSensorInterface() {
       <SensorHeader
         name="J3"
         pcbX={-26}
-        pcbY={-44}
+        pcbY={-50}
         schX={12}
         schY={-1}
         schSheetName="SensorInterface"
@@ -128,7 +128,7 @@ export function ControllerSensorInterface() {
       />
       <CableSignalEsd
         name="U11"
-        pcbX={-16}
+        pcbX={-12}
         pcbY={-43}
         schX={7}
         schY={-7}

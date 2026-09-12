@@ -50,8 +50,8 @@ export function ControllerLogicPower() {
       <ControllerCapacitor
         name="C7"
         value="100nF"
-        pcbX={-19}
-        pcbY={-30}
+        pcbX={-20}
+        pcbY={-33.5}
         schX={-2}
         schY={-5}
         schSheetName="Power"
@@ -77,7 +77,7 @@ export function ControllerLogicPower() {
         name="C8"
         value="100nF"
         pcbX={-13}
-        pcbY={-30}
+        pcbY={-23}
         schX={4}
         schY={5}
         schSheetName="Power"
@@ -95,8 +95,8 @@ export function ControllerLogicPower() {
       <ControllerCapacitor
         name="C3"
         value="22uF"
-        pcbX={-3}
-        pcbY={-29}
+        pcbX={-2}
+        pcbY={-28}
         schX={12}
         schY={4}
         schSheetName="Power"
@@ -105,7 +105,7 @@ export function ControllerLogicPower() {
       <ControllerCapacitor
         name="C4"
         value="22uF"
-        pcbX={-3}
+        pcbX={-2}
         pcbY={-24}
         schX={12}
         schY={-2}

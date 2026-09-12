@@ -1,7 +1,8 @@
 # Tscircuit authoring
 
-Use the pinned toolchain in `pcb/package.json`. No real board source exists yet.
-Keep the TOOLING-only fixture separate from product work.
+Use the pinned toolchain in `pcb/package.json`. Start from each board's existing
+source and its README; `docs/STATE.md` records the current release gates. Keep the
+TOOLING-only fixture separate from product work.
 
 ## Per-board files
 

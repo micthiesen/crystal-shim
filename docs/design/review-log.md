@@ -556,6 +556,52 @@ does not include injected ESP radio failures, live flash/concurrency timing or
 Apple Home pairing. Enclosing service cancellation intentionally cancels both
 thread services; interrupt-owned protection remains separate.
 
+## Controller physical metadata, ERC roles and private provisioning
+
+The physical declaration unit now covers all 27 purchased controller model IDs.
+Root checked package dimensions and passive tolerances; independent semiconductor
+and connector work inspected exact manufacturer drawings. Independent physical
+review rechecked selected primary pages, envelope arithmetic, origins, mask gaps
+and four-angle output. It found two real native-export omissions: PTH mask margins
+and rounded pin-one copper. The initial graph adapter now restores +0.05 mm
+PTH mask growth and R0.25 mm Micro-Fit corners after validating the whole batch.
+Five tests cover all four rotations and all 42 gallery pads/NPTHs, exact mutation
+boundaries, idempotence and rejected drift. Source expectations were retained.
+Root reviewed the adapter and inspected its native connector-gallery render.
+The new courtyards exposed overlaps in the section review arrangements. Root
+spaced thirteen components without changing schematic geometry, nets, rotations
+or pin assignments, and retained the strict section overlap assertions. The
+three-section service test now uses `pcbRelative`, matching the complete board
+and avoiding the compiler's automatic group repacking. Full placement, stencil,
+thermal-via, mating and enclosure work remain separate.
+
+The pinned converter also hardcodes library pin types as passive, ignoring source
+port metadata. The exact-MPN electrical contract and initial adapter cover every
+source part before first native serialization. A separate primary-source reviewer
+caught TPS259470 pin 3 AUXOFF misclassified as an input; TI SLVSFC9C Table 5-1
+requires open-drain output, now adopted. The reviewer found no further actionable
+pin-role defect and independently exercised 15 rejection cases with atomic graph
+preservation. The committed full-board test proves only library pin types change;
+instance syntax, UUIDs, geometry, wires and other metadata are preserved.
+
+Actual KiCad 10.0.5 XML readback retains 254 connected pins, 20 intended unused pins
+and 51 nets. Its diagnostic ERC now reports 16 unconnected-pin errors for intended
+unused terminals and four undriven-power errors. Those require declared native
+NC markers and source flags; they have not been waived or counted as a clean ERC.
+Warnings also include the known grid/library/footprint cleanup and two wire
+endpoints. The corrected disposable initial board has 336 body edges, 95 courtyards and
+all 291 numbered-pad mask overrides, independently loaded through pcbnew.
+It still has the known 14 repeated-pad net omissions before shared augmentation.
+
+The host provisioning tool imports or freshly issues per-device credentials under
+explicit local authority/CD inputs, then uses the same bounded production codec.
+Root reviewed signature/identity checks, setup-code generation, private output
+modes and publication order. It corrected FIFO pre-open rejection and disabled
+OpenSSL's default CA path/store so trust remains the explicit input. An added FIFO
+regression and offline issue/import/tamper/refusal tests pass. Public TEST issuer
+fixtures are identified by source; they are not device private keys or production
+defaults. The actual USB writer, activation and HomeKit pairing remain work.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

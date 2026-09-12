@@ -2,6 +2,10 @@ import { expect, test } from "bun:test";
 import { Circuit } from "tscircuit";
 import ControllerCircuit from "./controller.circuit";
 import { schematicConnectivityErrors } from "./schematic-connectivity-check";
+import { CircuitJsonToKicadSchConverter } from "circuit-json-to-kicad";
+import { parseKicadSch, type KicadSch, type SchematicSymbol } from "kicadts";
+import { mapUsbSchematicForInitialExport } from "./usb-initial-export";
+import { applyControllerPinTypesForInitialExport } from "./pin-electrical-initial-export";
 
 // Rendering all 95 components exceeded Bun's 5 s default on GitHub's runner
 // (5.55 s, with no assertion failure). Keep the limit local to this full design.
@@ -101,6 +105,99 @@ test("controller schematic preserves power separation, hardware permission and b
     ),
   ).toEqual([]);
   expect(schematicConnectivityErrors(json)).toEqual([]);
+  // Native ERC must see actual driver/supply/NC roles. Keep electrical labels
+  // instead of the converter's unconnected custom power-rail graphics.
+  const exportJson = structuredClone(json);
+  const powerIds = new Set<string>();
+  for (const e of exportJson) {
+    if (
+      e.type === "source_net" &&
+      (e.is_power || e.is_ground || e.is_positive_voltage_source)
+    ) {
+      powerIds.add(e.source_net_id);
+      e.is_power = false;
+      e.is_ground = false;
+      e.is_positive_voltage_source = false;
+    }
+  }
+  for (const e of exportJson) {
+    if (e.type === "schematic_net_label" && powerIds.has(e.source_net_id))
+      delete e.symbol_name;
+  }
+  const converter = new CircuitJsonToKicadSchConverter(exportJson);
+  converter.runUntilFinished();
+  // Pinned 0.0.205 exposes only serialized children publicly. Its internal
+  // initial-file cache carries the typed graphs; no native file is loaded here.
+  const initialFiles = Reflect.get(converter, "files") as { kicadSch: KicadSch }[];
+  expect(initialFiles).toHaveLength(8);
+  const sheets = initialFiles.map((f) => f.kicadSch);
+  const reference = (symbol: SchematicSymbol) =>
+    symbol.properties.find((p) => p.key === "Reference")?.value;
+  const usb = sheets.filter((s) =>
+    s.symbols.some((symbol) => reference(symbol) === "J4"),
+  );
+  expect(usb).toHaveLength(1);
+  mapUsbSchematicForInitialExport(usb[0]!, ["J4"]);
+  const before = sheets.map((s) => s.getString());
+  // A bad component late in the multi-sheet batch must not leave early sheets
+  // partly typed. Unknown exact parts are refused, never silently passive.
+  const unknown = structuredClone(exportJson);
+  unknown
+    .filter((e) => e.type === "source_component")
+    .find((e) => e.name === "U3")!.manufacturer_part_number = "UNREVIEWED";
+  expect(() => applyControllerPinTypesForInitialExport(unknown, sheets)).toThrow(
+    "exact chip MPN",
+  );
+  expect(sheets.map((s) => s.getString())).toEqual(before);
+  expect(() =>
+    applyControllerPinTypesForInitialExport(exportJson, sheets.slice(0, -1)),
+  ).toThrow();
+  expect(sheets.map((s) => s.getString())).toEqual(before);
+  expect(applyControllerPinTypesForInitialExport(exportJson, sheets).components).toBe(
+    95,
+  );
+  const native = sheets.map((s) => parseKicadSch(s.getString()));
+  const pinList = (symbol: SchematicSymbol): import("kicadts").SymbolPin[] => [
+    ...symbol.pins,
+    ...symbol.subSymbols.flatMap(pinList),
+  ];
+  const pin = (ref: string, number: string) => {
+    const sheet = native.find((s) =>
+      s.symbols.some((symbol) => reference(symbol) === ref),
+    )!;
+    const instance = sheet.symbols.find((s) => reference(s) === ref)!;
+    const library = sheet.libSymbols!.symbols.find(
+      (s) => s.libraryId === instance.libraryId,
+    )!;
+    return pinList(library).find((p) => p.numberString === number)!;
+  };
+  // Independent safety-relevant expected roles, including the AUXOFF output
+  // correction found against TI's RPW table by independent review.
+  for (const [ref, number, name, type] of [
+    ["U4", "1", "RESET_N", "open_collector"],
+    ["U6", "4", "Y", "output"],
+    ["U1", "2", "V3V3", "power_in"],
+    ["U1", "22", "NC", "no_connect"],
+    ["U1", "29", "GND_EP", "power_in"],
+    ["U3", "2", "SCLA", "bidirectional"],
+    ["U5", "4", "FAULT_N", "open_collector"],
+    ["U5", "6", "OUT", "power_out"],
+    ["U10", "3", "AUXOFF", "open_collector"],
+    ["U11", "1", "NC_1", "no_connect"],
+    ["J4", "A6", "A6", "passive"],
+    ["Q1", "1", "G", "input"],
+    ["R14", "1", "1", "passive"],
+    ["TP1", "1", "1", "passive"],
+  ] as const) {
+    expect(pin(ref, number).name).toBe(name);
+    expect(pin(ref, number).pinElectricalType).toBe(type);
+  }
+  // Only library electrical fields changed. Reset just those typed fields in a
+  // readback copy and prove all native geometry, wires, UUIDs and instances equal.
+  for (const sheet of native)
+    for (const library of sheet.libSymbols?.symbols ?? [])
+      for (const pin of pinList(library)) pin.pinElectricalType = "passive";
+  expect(native.map((s) => s.getString())).toEqual(before);
   // This regression mimics the real exporter hazard: names still readable as
   // text and source nets intact, but physical pins lose their electrical labels.
   expect(

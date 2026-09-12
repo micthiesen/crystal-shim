@@ -13,9 +13,20 @@ import {
   UsbPresenceDetector,
   UsbDataSwitch,
 } from "./logic-components";
-import { dbv5, dbv6 } from "./logic-land-patterns";
+import { dbv5, dbv6, fsusb42 } from "./logic-land-patterns";
+import { stps2l40u, usblc6_2sc6 } from "./protection-land-patterns";
+import { smbj8_0ca } from "./service-protection-land-patterns";
 import { esds312, smbj7_0a } from "./cable-protection-land-patterns";
-import { tdk10uf, vishay2512hp } from "./passive-land-patterns";
+import {
+  tdk10uf,
+  vishay2512hp,
+  panasonic0603,
+  panasonic0805,
+  tdkC1608,
+  tdk1uf,
+  murata22uf,
+} from "./passive-land-patterns";
+import { buckInductorPattern } from "./assembly-components";
 import { LandPatternFootprint } from "./land-pattern";
 import { landPatternPhysicalGeometry } from "./land-pattern-physical";
 
@@ -31,15 +42,30 @@ for (const rotation of [0, 90, 180, 270] as const) {
       [smbj7_0a, 4.75, 3.94, 2.61, 8.1, 5],
       [vishay2512hp, 6.3, 3.15, 0.7, 8.5, 4.4],
       [tdk10uf, 3.2, 1.6, 1.8, 5.4, 2.8],
+      [panasonic0603, 1.6, 0.8, 0.55, 3.1, 2],
+      [panasonic0805, 2, 1.25, 0.6, 4.5, 2.4],
+      [tdkC1608, 1.6, 0.8, 0.9, 3.1, 1.9],
+      [tdk1uf, 2, 1.25, 1.45, 3.7, 2.5],
+      [murata22uf, 3.2, 2.5, 2.7, 5.4, 3.7],
+      [buckInductorPattern, 5.3, 5.2, 3, 7.5, 6.4],
+      [wroomPattern, 18, 25.5, 3.25, 20, 26.7],
+      [ap63203, 1.6, 2.9, 1, 4.2, 4],
+      [ao3400a, 1.6, 2.9, 1.25, 4.2, 4.4],
+      [fsusb42, 3, 3, 1.1, 6.8, 4.1],
+      [stps2l40u, 4.6, 3.95, 2.65, 6.9, 5],
+      [usblc6_2sc6, 1.75, 3.05, 1.45, 4.5, 4.1],
+      [smbj8_0ca, 4.75, 3.94, 2.61, 8.1, 5],
     ] as const;
+    const pitch = 25;
+    const firstX = (-pitch * (cases.length - 1)) / 2;
     const circuit = new Circuit();
     circuit.add(
-      <board width={110} height={40} pcbRelative routingDisabled>
+      <board width={pitch * cases.length + 10} height={40} pcbRelative routingDisabled>
         {cases.map(([pattern], index) => (
           <Fragment key={pattern.id}>
             <chip
               name={`U${index + 1}`}
-              pcbX={-45 + 15 * index}
+              pcbX={firstX + pitch * index}
               pcbY={4}
               pcbRotation={rotation}
               schX={-30 + 10 * index}
@@ -70,6 +96,10 @@ for (const rotation of [0, 90, 180, 270] as const) {
       [pattern, bodyW, bodyH, thickness, courtW, courtH],
     ] of cases.entries()) {
       const declaration = landPatternPhysicalGeometry(pattern)!;
+      const packageY = pattern === wroomPattern ? -3 : 0;
+      expect(declaration.bodyCenter).toEqual({ x: 0, y: packageY });
+      expect(declaration.courtyard.center.x).toBeCloseTo(0, 7);
+      expect(declaration.courtyard.center.y).toBeCloseTo(packageY, 7);
       expect(declaration.declaration.body.thicknessMax).toBe(thickness);
       expect(declaration.courtyard.width).toBeCloseTo(courtW, 7);
       expect(declaration.courtyard.height).toBeCloseTo(courtH, 7);
@@ -88,8 +118,13 @@ for (const rotation of [0, 90, 180, 270] as const) {
         .find((e) => e.pcb_component_id === pcb.pcb_component_id)!;
       expect(body.route).toHaveLength(5);
       expect(court.outline).toHaveLength(5);
-      expect(pcb.center.x).toBeCloseTo(-45 + 15 * index, 7);
-      expect(pcb.center.y).toBeCloseTo(4, 7);
+      const origin = { x: firstX + pitch * index, y: 4 };
+      // The compiler reports copper bbox center, not the source placement
+      // anchor. Espressif's perimeter spans y=-8.26..8.25, so its bbox center
+      // is -0.005 native Y. Physical outlines still use the unchanged origin.
+      const copperCenter = rotate({ x: 0, y: pattern === wroomPattern ? -0.005 : 0 });
+      expect(pcb.center.x).toBeCloseTo(origin.x + copperCenter.x, 7);
+      expect(pcb.center.y).toBeCloseTo(origin.y - copperCenter.y, 7);
       for (const [points, width, height] of [
         [body.route, bodyW, bodyH],
         [court.outline, courtW, courtH],
@@ -101,9 +136,12 @@ for (const rotation of [0, 90, 180, 270] as const) {
           [-1, 1],
           [-1, -1],
         ].entries()) {
-          const expected = rotate({ x: (sx * width) / 2, y: (sy * height) / 2 });
-          expect(points[corner]!.x - pcb.center.x).toBeCloseTo(expected.x, 7);
-          expect(pcb.center.y - points[corner]!.y).toBeCloseTo(expected.y, 7);
+          const expected = rotate({
+            x: (sx * width) / 2,
+            y: packageY + (sy * height) / 2,
+          });
+          expect(points[corner]!.x - origin.x).toBeCloseTo(expected.x, 7);
+          expect(origin.y - points[corner]!.y).toBeCloseTo(expected.y, 7);
         }
       }
       const pads = json
@@ -149,7 +187,9 @@ for (const rotation of [0, 90, 180, 270] as const) {
       }
       for (const pad of footprint.fpPads) expect(pad.solderMaskMargin).toBe(0.05);
     }
-    expect(landPatternPhysicalGeometry(ap63203)).toBeUndefined();
+    expect(
+      landPatternPhysicalGeometry({ ...ap63203, id: "unknown-model" }),
+    ).toBeUndefined();
     expect(json.filter((e) => "error_type" in e || e.type.endsWith("_error"))).toEqual(
       [],
     );

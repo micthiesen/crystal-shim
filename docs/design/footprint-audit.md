@@ -20,9 +20,9 @@ design-basis documents remain the authority for the selected parts and nets.
 
 | BOM / part | Status | Installed candidate and checked geometry | Action before capture release |
 | --- | --- | --- | --- |
-| BOM-02 ESP32-C6-WROOM-1-N8 | source lands verified | Pinned Espressif geometry is reproduced in `esp32-c6-wroom.tsx`: 28 perimeter lands at x=+/-8.75, 1.27 mm pitch, 1.5 x 0.9, plus nine 0.8 x 0.8 ground lands for pad 29. | Datasheet v1.4 Figure 11-1 and all module pin functions were independently checked. Compiled tests retain the native asymmetric origin and internally connected pad-29 group. Antenna keepout, thermal vias, body graphics and final native footprint adoption remain board work. |
-| BOM-15 AO3400A | source lands verified | AOS PO-00001 Version N requires three 0.8 x 0.8 lands: 1=(-1.2,-0.95), 2=(-1.2,0.95), 3=(1.2,0), with native +Y down. Stock SOT-23 instead uses 1.475 x 0.6 at x=+/-0.9375. | Use the source AOS pattern, with 1 gate, 2 source, 3 drain. Complete mask, stencil, body/courtyard and native adoption before board release. |
-| BOM-16 AP63203WU-7 | source lands verified | Diodes DS41326 Rev 3-2 p17 requires six 1.0 x 0.7 lands at x=+/-1.1 and 0.95 mm pitch. The 3.2 mm Y1 dimension is the outer span, giving 2.2 mm centre separation. Stock TSOT-23-6 instead uses 1.325 x 0.6 at x=+/-1.1375. | Use the source Diodes pattern and 1 FB, 2 EN, 3 VIN, 4 GND, 5 SW, 6 BST. Complete mask/stencil and native adoption before release. |
+| BOM-02 ESP32-C6-WROOM-1-N8 | source lands verified | Pinned Espressif geometry is reproduced in `esp32-c6-wroom.tsx`: 28 perimeter lands at x=+/-8.75, 1.27 mm pitch, 1.5 x 0.9, plus nine 0.8 x 0.8 ground lands for pad 29. | Datasheet v1.4 Figure 11-1 and all module pin functions were independently checked. Compiled tests retain the native asymmetric origin and internally connected pad-29 group. Body/courtyard and mask now emit from source. Antenna keepout, thermal vias and final native footprint adoption remain board work. |
+| BOM-15 AO3400A | source lands verified | AOS PO-00001 Version N requires three 0.8 x 0.8 lands: 1=(-1.2,-0.95), 2=(-1.2,0.95), 3=(1.2,0), with native +Y down. Stock SOT-23 instead uses 1.475 x 0.6 at x=+/-0.9375. | Use the source AOS pattern, with 1 gate, 2 source, 3 drain. Body/courtyard and mask now emit from source; complete stencil and native adoption before board release. |
+| BOM-16 AP63203WU-7 | source lands verified | Diodes DS41326 Rev 3-2 p17 requires six 1.0 x 0.7 lands at x=+/-1.1 and 0.95 mm pitch. The 3.2 mm Y1 dimension is the outer span, giving 2.2 mm centre separation. Stock TSOT-23-6 instead uses 1.325 x 0.6 at x=+/-1.1375. | Use the source Diodes pattern and 1 FB, 2 EN, 3 VIN, 4 GND, 5 SW, 6 BST. Body/courtyard and mask now emit from source; complete stencil and native adoption before release. |
 | BOM-26 SRP5030TA-4R7M | source lands verified | Bourns recommends 2.0 x 1.8 rectangular pads at x=+/-2.25. Stock `Inductor_SMD:L_Bourns_SRP5030T` shares centres/sizes but has about 0.25 mm corner radii. | Source retains manufacturer rectangles under `CrystalShim:SRP5030TA`; the stock ID is not an exact copper match. Complete native footprint and assembly review. |
 | BOM-27 STPS2L40U (x2) | source lands verified | ST DS2146 Rev 6 Figure 17: 1.62 x 2.18 lands at x=+/-2.11, inner gap 2.60 and outer span 5.84. Stock `Diode_SMD:D_SMB` uses larger 2.5 x 2.3 lands at x=+/-2.15. | `CrystalShim:STPS2L40U_SMB` uses exact source copper, with adopted KiCad convention 1 cathode / 2 anode. Compiled orientation and connectivity checked. Complete native assembly details. |
 | BOM-28 TPS3808G01DBVR | source lands verified | TI DBV0006A: 1.1 x 0.6, R0.05 lands at x=+/-1.3, 0.95 mm pitch. Native SOT-23-6 has 1.325 x 0.6 lands at x=+/-1.1375. | Use source DBV6 and RESET/GND/MR/CT/SENSE/VDD pin order; CT remains intentionally open in this circuit. Complete native footprint and assembly settings. |
@@ -37,7 +37,7 @@ design-basis documents remain the authority for the selected parts and nets.
 | BOM-35/36/37 43650-0300 / 43645-0300 / 43030-0007 | source lands and holes verified | Native `Connector_Molex:Molex_Micro-Fit_3.0_43650-0300_1x03_P3.00mm_Horizontal`: pads (0,0),(3,0),(6,0), 1.02 mm drills and 1.5 x 2.02 oval copper except roundrect pin 1, plus 3 mm NPTH locator at (3,-4.32). | Source and rotated compiled tests preserve 1 V5_PSU / 2 GND / 3 COIL_DRAIN. Keep pad-1 marking and the 10.16 mm edge limit visible; final mating/fit remains. |
 | BOM-19 WP710A10LGD and BOM-20/79 B3F-1002-G | source lands and holes verified | `LED_THT:LED_D3.0mm`: native origin at cathode, anode (2.54,0), 0.9 mm holes, 1.8 mm copper. `Button_Switch_THT:SW_PUSH_6mm_H4.3mm`: native origin at upper-left hole, 6.5 x 4.5 rectangle, 1.1 mm holes and 2.0 mm circular copper; repeated native pad 1 maps to manufacturer 3/4, pad 2 to 1/2. | Compiled tests preserve native origins, LED polarity and both permanently joined button pairs. Capture three distinct buttons. Hand-solder LED after reflow; final actuation/fit remains. |
 | BOM-62 TPS2553DBVR | source lands verified | Same manufacturer DBV6 geometry as BOM-28, independently checked in SLVS841F p41-42. | Preserve IN/GND/EN/FAULT/ILIM/OUT pin order and distinct power-enable/fault nets. Complete the native footprint/assembly settings. |
-| BOM-63 GRM32ER71E226ME15L (x5) | source lands verified | Murata GRM32ER71E226ME15-04CA p27 Table 2 reflow: inner gap 2.0-2.4, pad length 1.0-1.2, width 1.8-2.3 mm. Source midpoints give 1.1 x 2.05 lands at x=+/-1.65. | `CrystalShim:Murata_GRM32_Reflow` uses reflow guidance, not p6 test-substrate lands. Stock IPC lands 1.15 x 2.7 at x=+/-1.475 differ. Complete stencil/courtyard and final solder inspection; body maximum 3.5 x 2.7 x 2.7 mm. |
+| BOM-63 GRM32ER71E226ME15L (x5) | source lands verified | Murata GRM32ER71E226ME15-04CA p27 Table 2 reflow: inner gap 2.0-2.4, pad length 1.0-1.2, width 1.8-2.3 mm. Source midpoints give 1.1 x 2.05 lands at x=+/-1.65. | `CrystalShim:Murata_GRM32_Reflow` uses reflow guidance, not p6 test-substrate lands. Stock IPC lands 1.15 x 2.7 at x=+/-1.475 differ. Complete stencil and final solder inspection; body maximum 3.5 x 2.7 x 2.7 mm. |
 
 The generic `SOT-23`, `SOT-23-5`, `SOT-23-6`, `TSOT-23-6`, `MSOP-10` and
 `VSSOP-8` entries are usable review candidates only. Their names identify a
@@ -54,20 +54,21 @@ the body centre; body and antenna bounds are separately explicit.
 
 Source now includes Panasonic 0603, TDK 100 nF/1 uF and Murata 22 uF reflow
 lands, with exact ordering codes and compiled checks. Their dimensions differ
-from stock IPC patterns. Native mask/paste/courtyard details remain open.
+from stock IPC patterns. Body/courtyard and mask output now exists; final paste
+and native assembly details remain open.
 BOM-80 through BOM-91 count the base controller passives; the additional
 [service circuit](service-input.md) and mains quantities are counted separately.
 Service eFuse/input TVS, 0805 protection resistors and C0G capacitor are captured.
 All seven controller electrical sections are now joined, including the selected
-sensor-cable ESD/RC circuit. Complete placement, physical declarations for the
-remaining models and native augmentation remain work.
+sensor-cable ESD/RC circuit. Complete placement and native augmentation remain work.
 
 The opt-in [physical registry](../../pcb/controller/design/land-pattern-physical.ts)
 now supplies body outlines, package/lead/flash envelopes, maximum height and mask
-rules for TCA9517A, shared TI DBV5/DBV6, ESDS312, SMBJ7.0A, Vishay 2512 HP and the
-exact TDK 1206 capacitor. It emits F.Fab bodies, closed courtyards and +0.05 mm
+rules for all 27 purchased-part model IDs, including passives, semiconductors,
+module, connectors, LED and buttons. It emits F.Fab bodies, closed courtyards and +0.05 mm
 NSMD openings while preserving copper. The courtyard is a project hand-assembly
-choice: 0.50 mm beyond the larger of copper or maximum occupied package, with
+choice: 0.50 mm beyond the union of copper, NPTH and the declared occupied
+package envelope, with
 each edge rounded outward to 0.05 mm.
 
 | Model | Courtyard width x height, mm |
@@ -77,6 +78,26 @@ each edge rounded outward to 0.05 mm.
 | SMBJ7.0A | 8.1 x 5.0 |
 | Vishay CRCW2512 HP | 8.5 x 4.4 |
 | TDK C3216X7R1E106K160AB | 5.4 x 2.8 |
+| Panasonic ERA/ERJ 0603 | 3.1 x 2.0 |
+| Panasonic ERA 0805 | 4.5 x 2.4 |
+| TDK C1608 X7R/C0G | 3.1 x 1.9 |
+| TDK C2012 1 uF | 3.7 x 2.5 |
+| Murata GRM32 22 uF | 5.4 x 3.7 |
+| Bourns SRP5030TA | 7.5 x 6.4 |
+| ESP32-C6-WROOM-1 | 20.0 x 26.7 |
+| AP63203 TSOT26 | 4.2 x 4.0 |
+| AO3400A SOT23 | 4.2 x 4.4 |
+| FSUSB42 MSOP10 | 6.8 x 4.1 |
+| STPS2L40U SMB | 6.9 x 5.0 |
+| USBLC6-2SC6 | 4.5 x 4.1 |
+| TPS259470A RPW | 3.4 x 3.4 |
+| SMBJ8.0CA | 8.1 x 5.0 |
+| Molex 43045-0600 | 15.0 x 14.15 |
+| Molex 43045-0200 | 8.9 x 14.15 |
+| Molex 43650-0300 | 14.0 x 12.05 |
+| GCT USB4105-GF-A | 10.7 x 9.05 |
+| Kingbright WP710A10LGD | 5.35 x 4.5 |
+| Omron B3F-1002-G | 9.5 x 7.5 |
 
 Four cardinal-angle tests check every global body/courtyard vertex and mask
 margin through native serialization/readback. The sensor-interface native proof
@@ -113,17 +134,16 @@ Additional selected power components:
 
 | BOM / part | Status | Candidate / checked source | Action before capture release |
 | --- | --- | --- | --- |
-| BOM-64 / BOM-94 TPS259470ARPWR | source lands verified | `CrystalShim:TPS259470A_RPW0010A` reproduces TI 4225183/A: ten functional lands, four rounded L corner pads and long IN/OUT pads 5/6; no exposed ground pad. | The initial-export adapter moves the converter's circular anchor into each L leg, preserving effective copper at all cardinal rotations. Keep source routing disabled. TI p74 split paste windows, mask, courtyard and native adoption remain required; generic 2 x 2 QFN/RPU is not a substitute. |
+| BOM-64 / BOM-94 TPS259470ARPWR | source lands verified | `CrystalShim:TPS259470A_RPW0010A` reproduces TI 4225183/A: ten functional lands, four rounded L corner pads and long IN/OUT pads 5/6; no exposed ground pad. | The initial-export adapter moves the converter's circular anchor into each L leg, preserving effective copper at all cardinal rotations. Keep source routing disabled. TI p74 split paste windows and native adoption remain required; source mask/courtyard now exist; generic 2 x 2 QFN/RPU is not a substitute. |
 | BOM-65 STPS2L40U | source lands verified | Same checked ST SMB source as BOM-27. | Preserve negative-clamp polarity: pad 1 V5_PSU, pad 2 GND_ISO. Transient/clamp evidence remains separate. |
-| BOM-106 SMBJ8.0CA | source lands verified | `CrystalShim:SMBJ8_0CA` uses Littelfuse p5 limits: 2.160 x 2.260 rectangular lands at x=+/-2.450, with 2.740 inner gap. | Source terminals 1/2 are nonpolar for the CA bidirectional part. Complete body/courtyard/stencil and connected pulse model; this is not a precise 5 V clamp. |
+| BOM-106 SMBJ8.0CA | source lands verified | `CrystalShim:SMBJ8_0CA` uses Littelfuse p5 limits: 2.160 x 2.260 rectangular lands at x=+/-2.450, with 2.740 inner gap. | Source terminals 1/2 are nonpolar for the CA bidirectional part. Complete stencil and connected pulse model; source body/courtyard/mask now exist; this is not a precise 5 V clamp. |
 
 The eFuse's exact ERA-3A divider/current resistors (BOM-70 through BOM-73)
 reuse the checked Panasonic 0603 lands. Service ERA3AEB2612V, ERA3AEB3832V and
 ERA3AEB2871V use the same pattern. ERA6AEB474V and ERA6AEB222V require an 0805
 pattern: Panasonic DMM0000COL17 p1 gives inner gap 1.0-1.4, outer span 3.2-3.8
 and width 0.9-1.4. Adopt midpoint rectangular lands 1.15 x 1.15 at x=+/-1.175.
-The current resistor wrapper assumes 0603 for every value; add per-value pattern
-metadata before registering these two ERA6A parts. All five exact service
+The resistor wrapper now selects the proper per-value 0603 or 0805 pattern. All five exact service
 resistor codes are 0.1%, 25 ppm/K; ERA3A is 0.100 W and ERA6A 0.125 W, with
 derating above 85 C. ERA3AEB's range ends at 330 kohm, so 470 kohm is not a
 same-package substitution.
@@ -135,8 +155,9 @@ reflow. Existing 0.70 mm square lands at x=+/-0.70 match the selected midpoints.
 Keep each capacitor's exact characterization URL separate from shared package
 geometry metadata. The registry now selects the exact 26.1/38.3/2.87 kohm 0603
 parts, 470/2.2 kohm 0805 parts and 4.7 nF C0G capacitor. Compiled checks cover both
-pads at 0/90 degrees, exact MPN/value/voltage and footprint identity. Mask, stencil,
-courtyard and native adoption remain separate work.
+pads at 0/90 degrees, exact MPN/value/voltage and footprint identity. Body, mask
+and courtyard now have four-angle native checks; stencil and native adoption
+remain separate work.
 
 Mains C2/C3/C4 and R7 are now independently counted as BOM-75 through BOM-78.
 C2 is TDK 0805, C3 TDK 0603, C4 the same 1210 Murata part as controller
@@ -201,3 +222,63 @@ These hashes identify the locally inspected files, not a KiCad library release.
 
 The final manufacturer's/component-side mating drawing and physical retention
 checks remain distinct from the source/native copper and drill comparison.
+
+## Completed physical declarations and remaining assembly work
+
+The controller registry separates body centre, occupied-envelope centre and
+electrical origin. Molex rear leads, USB rear contacts and offset THT bodies are
+not symmetric about pin 1. The WROOM body centre is 3 mm above its native origin;
+its compiled copper bounding-box centre is another 0.005 mm above that origin.
+Tests compare actual absolute geometry, not an assumed component centre. Full
+initial-export origin normalization remains required before the placement manifest.
+
+The source envelopes retain manufacturer tolerance limits and exclusions. ERA-3A
+0603 has +/-0.2 mm length/width tolerance, larger than the ERJ-3E part sharing its
+copper; the common envelope covers both. Bourns 5.3 mm is the molded body width,
+while 5.7 mm nominal includes leads. STPS2L40U maximum Z includes 2.45 mm body
+plus 0.20 mm seating. AP63203/FSUSB42 drawings include basic dimensions or
+unquantified exclusions; these are recorded, not silently promoted to guaranteed
+maximum dimensions. Heights exclude solder lift. LED lens height additionally
+excludes its still-unselected controlled standoff.
+
+Molex dual-row maximum Z includes the latch at 9.27 mm; the single row is 6.07 mm.
+The 10.16 mm maximum mating-edge distance is measured from the locator centre
+y=-4.32, giving mating-side edge y >= -14.48 in native axes, not from pin 1.
+Preserve material around the locator, separately reserve the mate/latch/wire sweep
+and verify retention on the specified PCB thickness. USB's GF-A stakes do not
+protrude below a 1.6 mm PCB. Its locator/hole tolerance stack does not guarantee
+clearance at opposing extremes; final fit/retention remains a declared check.
+
+These rectangular F.Fab bounds are not 3D bodies, LED polarity flats or panel
+cutouts. The initial converter loses plated-hole mask margins and rounded
+pin-one corners. The guarded connector adapter restores both before first native
+serialization; four-angle source/native tests and actual pcbnew readback verify
+the result. The complete controller now has 336 body edges, 95 courtyards and
+291 local mask overrides, while its 14 known repeated-pad net omissions still
+await shared native augmentation. All mask openings use the declared +0.05 mm growth. The RPW example
+stencil is 0.100 mm, with corner apertures at 93% and split long-pad apertures
+at 82%; do not inherit the DBV example's 0.125 mm stencil blindly. Finish the
+whole-board stencil and thermal-via plan in the augmentation contract. Connector
+PTHs, buttons and the LED are hand-soldered after SMT. The planned no-paste USB
+shell process is still an augmentation: the current initial adapter reproduces
+the audited library's F.Paste shell layer. The four shared A/B contact areas must
+not receive duplicate stencil deposits.
+
+Exact electrical roles now live in
+[pin-electrical-contract.ts](../../pcb/controller/design/pin-electrical-contract.ts).
+The pinned compiler/converter drops requested pin metadata and emits passive
+library pins. The guarded initial graph adapter checks complete source coverage
+and writes the declared roles before first serialization. Independent primary
+review corrected AUXOFF on TPS259470 pin 3 to an open-drain output. Actual KiCad
+XML confirms that role along with supply, logic, GPIO and NC types. External and
+post-diode/inductor power flags, native library cleanup and ERC still remain work.
+
+Additional physical sources:
+
+- [Panasonic ERJ specification](https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf): 2025-05-29, ERJ3E dimensions; SHA-256 `78825b819853a63f57cc18214f321d2f1da9dc205a7e58af7db18ae73563e378`.
+- [ESP32-C6-WROOM datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf): v1.4 p41/44; SHA-256 `163020762fa6d499e0c611c5a13e78ad9d4720b421c6bc5e14e16fc748862b73`.
+- [TDK C1608 100 nF](https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf): 2016-01-03 p1; SHA-256 `1a0db3109885361f08674eb5b2a35332e85631a3e0c0d80590197a18e3b7fe67`. The C0G source identity is recorded above.
+- [Molex SD-43045-001 H1 manufacturer mirror](https://www.micros.com.pl/mediaserver/Rys.0430452201_0002.pdf): PSD001 H1, 2024-09-27; SHA-256 `816251d97fd7eaaa7660c12b41d7963377bcb83ef56803b6bb6cdd12372ee5ad`.
+- [Molex SD-43650-001 D7 manufacturer mirror](https://pdf.icgoo.net/productinfo/allpdf/8b7741e7-98dc-3e33-b071-8f6e91fd5ad6.pdf): SHA-256 `4ff3b6c7b2258c6ae10f22efbefd596d13bbbc9f51124c99989f286b8af80922`. Primary D8 web drawing confirms cited dimensions; D8 bytes were unavailable, so this hash identifies D7 only.
+- [Kingbright WP710A10LGD](https://www.kingbrightusa.com/images/catalog/SPEC/WP710A10LGD.pdf): DSAL0509 V9B, 2020-04-18; SHA-256 `7c9e6196c3ba4f86d0cecaf00bc77578ea27dd76d7ab4341ce104781d6a37ccc`.
+- [Omron B3F](https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3f.pdf): exact gold-contact selection p2 and flat plunger p4; SHA-256 `be9cf69e5f43fb7689448a2097c19858e5643c0e2e49cd77d018881543e27a1f`.

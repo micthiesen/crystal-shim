@@ -190,8 +190,8 @@ export function ControllerUsbInterface() {
       <ControllerResistor
         name="R42"
         value="1k"
-        pcbX={-18}
-        pcbY={-4}
+        pcbX={-23}
+        pcbY={-7}
         schX={-11}
         schY={-7}
         schSheetName="USB"

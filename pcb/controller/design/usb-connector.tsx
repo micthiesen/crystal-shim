@@ -1,5 +1,7 @@
 import type { ChipProps } from "@tscircuit/props";
 import { Fragment } from "react";
+import { PhysicalFootprintGraphics } from "./land-pattern";
+import { landPatternPhysicalGeometry } from "./land-pattern-physical";
 
 // The compiler accepts numeric source indices only. These are NOT USB pin
 // numbers: the initial exporter must translate both symbol and copper using
@@ -81,6 +83,24 @@ type UsbConnectorProps = Omit<
 
 export function UsbConnector(props: UsbConnectorProps) {
   const pattern = usbConnectorPattern;
+  const physical = landPatternPhysicalGeometry({
+    id: pattern.id,
+    pads: [
+      ...usbConnectorPinMap.map((pin) => ({
+        x: pin.x,
+        y: pattern.smtY,
+        width: pin.width,
+        height: pattern.smtHeight,
+      })),
+      ...pattern.shell.map((pad) => ({
+        x: pad.x,
+        y: pad.y,
+        width: 1,
+        height: pad.height,
+      })),
+    ],
+    holes: pattern.locators.map((hole) => ({ ...hole, diameter: 0.65 })),
+  });
   return (
     <chip
       {...props}
@@ -93,6 +113,7 @@ export function UsbConnector(props: UsbConnectorProps) {
       // internally connected can hide required wires from the KiCad netlist.
       footprint={
         <footprint>
+          <PhysicalFootprintGraphics physical={physical} />
           {usbConnectorPinMap.map((pin) => (
             <Fragment key={pin.number}>
               <smtpad
@@ -103,6 +124,7 @@ export function UsbConnector(props: UsbConnectorProps) {
                 width={pin.width}
                 height={pattern.smtHeight}
                 shape="rect"
+                solderMaskMargin={physical?.declaration.solderMask.expansion}
                 cornerRadius={pin.width * 0.25}
                 layer="top"
               />
@@ -116,6 +138,7 @@ export function UsbConnector(props: UsbConnectorProps) {
                 pcbX={pad.x}
                 pcbY={-pad.y}
                 shape="pill"
+                solderMaskMargin={physical?.declaration.solderMask.expansion}
                 holeWidth={0.6}
                 holeHeight={pad.drillHeight}
                 outerWidth={1}

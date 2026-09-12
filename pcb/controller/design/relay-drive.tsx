@@ -13,7 +13,7 @@ export function ControllerRelayDrive() {
       <PsuHeader
         name="J1"
         pcbX={22}
-        pcbY={-32}
+        pcbY={-14}
         schX={13.5}
         schY={3}
         schSheetName="Relay"
@@ -42,7 +42,7 @@ export function ControllerRelayDrive() {
       <ControllerResistor
         name="R14"
         value="95.3k"
-        pcbX={-11}
+        pcbX={-13}
         pcbY={-12}
         schX={-9}
         schY={3}
@@ -53,7 +53,7 @@ export function ControllerRelayDrive() {
       <ControllerResistor
         name="R15"
         value="10k"
-        pcbX={-11}
+        pcbX={-13}
         pcbY={-16}
         schX={-9}
         schY={0}
@@ -76,7 +76,7 @@ export function ControllerRelayDrive() {
         name="C11"
         value="100nF"
         pcbX={-8}
-        pcbY={-17}
+        pcbY={-18}
         schX={-6}
         schY={-3}
         schSheetName="Relay"
@@ -112,7 +112,7 @@ export function ControllerRelayDrive() {
         name="C12"
         value="100nF"
         pcbX={0}
-        pcbY={-17}
+        pcbY={-18}
         schX={0}
         schY={-3}
         schSheetName="Relay"

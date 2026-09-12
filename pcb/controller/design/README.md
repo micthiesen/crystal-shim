@@ -1,7 +1,7 @@
 # Controller component source
 
-These are actual selected part models for the final controller. They do not yet
-form a complete controller schematic, placement or manufacturing footprint set.
+These are actual selected part models for the final controller. They now form the complete
+controller schematic; placement, native assembly and manufacturing delivery remain work.
 The [controller basis](../../../docs/design/controller-design-basis.md) owns the
 circuit contract and [footprint audit](../../../docs/design/footprint-audit.md)
 records the manufacturer comparisons.
@@ -11,9 +11,10 @@ records the manufacturer comparisons.
   including nine separate, internally connected pad-29 lands and the vendor origin.
 - `land-pattern.tsx` converts the native top-view +Y-down coordinates once.
 - `land-pattern-physical.ts` adds checked body/envelope and explicit courtyard/
-  mask declarations for seven exact model IDs. Shared package users stay aligned;
+  mask declarations for all 27 purchased-part model IDs. Shared package users stay aligned;
   [the footprint audit](../../../docs/design/footprint-audit.md) lists the scope
-  and remaining per-model stencil/thermal obligations.
+  and remaining per-model stencil/thermal obligations. Passive, semiconductor and
+  connector tables keep source evidence separate from the common geometry renderer.
 - `ic-components.tsx` binds exact MPNs, pin functions and copper models for capture.
 - `logic-land-patterns.ts` and `logic-components.tsx` add the supervisor, sensor
   feed, relay gate, USB detector and USB data switch with checked TI/onsemi lands.
@@ -63,9 +64,10 @@ controller parts and the enclosure/antenna constraints are integrated. No render
 here is a fabrication input.
 
 The `CrystalShim:*` footprint metadata names reserve future native library IDs;
-those KiCad footprints have not been generated or adopted. Complete body/courtyard,
-mask/paste, thermal and antenna declarations, the remaining parts, schematic nets,
-board specification and placement before the guarded handoff. No handoff lock or
+those KiCad footprints have not been adopted. Body/courtyard and mask output now
+exists for every purchased controller part. Complete paste, thermal and antenna
+declarations, board specification, native origin normalization and placement before
+the guarded handoff. No handoff lock or
 fabrication outputs exist. The component tests run in the normal project gate.
 
 ## Initial export integration
@@ -80,6 +82,14 @@ contains each USB instance and emit the complete `getOutputFiles()` set. An empt
 root `getOutputString()` is not a complete export. These adapters are tested with the actual pinned
 converters, including rejected drift, rotations and serialized native pins. They
 must never load or edit an adopted KiCad design.
+Also call `applyConnectorPhysicalForInitialExport` after the USB PCB mapper for
+J1/J2/J3/J4, D4 and SW1/SW2/SW3. The pinned converter drops PTH mask margins
+and rounded pin-one corners; this guarded adapter restores those source fields
+without changing pads, holes, nets, layers or paste. It checks the complete batch
+before mutation and preserves NPTHs. Four-angle tests compare native geometry
+and permitted changes. Micro-Fit corner radius is 0.25 mm, ratio 1/6 on the
+1.5 mm short side, not a 0.25 ratio.
+
 For the full controller also call `omitTestPointPasteForInitialExport` on the
 initial PCB graph. It validates all eleven pads before removing the converter's
 unwanted paste layer; retain BOM/CPL exclusions and source-owned mask openings.
@@ -88,7 +98,8 @@ The accepted controller export does not exist yet. Its manifest, source/net chec
 and staged native parity must incorporate these adapters and verify every repeated
 physical pad, not just unique pin names. Keep tscircuit routing disabled: the
 eFuse's source polygon-port centres remain in the L notches. TI's split paste
-windows, mask, body/courtyard and native adoption remain required. USB GND wiring
+windows and native adoption remain required; its body/courtyard and mask now emit
+from the source model. USB GND wiring
 needs explicit source labels as exercised by `usb-connector.test.tsx`; native
 netlist checks must retain A1/A12/B1/B12 and all four shell pads on GND.
 
@@ -116,4 +127,32 @@ known 14 repeated-pad net omissions, still awaiting shared augmentation. USB
 mapping, eFuse anchors and test-pad paste removal were applied to initial object
 graphs before the first stage-file write. No existing native design was edited.
 This checks integrated electrical export behavior; overlapping review placements,
-missing physical declarations and pending ERC/DRC still prevent handoff.
+pending native assembly details and ERC/DRC still prevent handoff.
+
+## Electrical metadata and physical datums
+
+`pin-electrical-contract.ts` owns exact chip pin names/types. The pinned converter
+emits passive library pins even when source ports request `kicadPinMetadata`.
+Call `applyControllerPinTypesForInitialExport(json, allInitialSchematicGraphs)`
+after power-label normalization and USB numbering, before serializing any file.
+Refresh the converter's cached `file.content` from each typed `file.kicadSch`
+before `getOutputFiles()`. The adapter validates every source component, exact
+chip MPN, pin multiset/name and shared library copy before any mutation. Instance
+pins retain UUID-only syntax. Unknown parts or incomplete batches fail closed.
+The full-board test and actual KiCad XML readback cover all 95 components.
+
+Native supply flags are still required at reviewed external and post-diode/inductor
+rails. Passive bootstrap/timing/programming terminals do not replace analogue
+circuit checks. The exporter repeats some passive library IDs with differing
+default Value properties; every copy is typed, with deduplication still part of
+native cleanup. Pin metadata is not a clean ERC result.
+
+Physical bodies and courtyards use independent centres where necessary. The
+WROOM native body centre is (0,-3); its compiled copper bounding-box centre is
+(0,-0.005), so native footprint-origin normalization remains required before the
+accepted manifest. This does not move its actual source pads or body. THT parts
+retain pin-1 copper datums with offset bodies; normalize their initial native
+origins against verified lands too. Connector envelopes include rear tails and
+latches, but harness bends, mating sweep and enclosure access remain separate.
+The Molex 10.16 mm maximum edge datum is measured from the locator centre at
+y=-4.32, not pin 1. See `connectorMechanicalConstraints` before placement.

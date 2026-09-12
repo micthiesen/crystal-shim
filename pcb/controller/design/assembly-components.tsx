@@ -5,7 +5,7 @@ import { ThtFootprint, type ThtPattern } from "./tht-footprint";
 
 export const buckInductorPattern: LandPattern = {
   id: "CrystalShim:SRP5030TA",
-  body: { width: 5.7, height: 5.2 },
+  body: { width: 5.3, height: 5.2 },
   pads: [
     { number: "1", x: -2.25, y: 0, width: 2, height: 1.8 },
     { number: "2", x: 2.25, y: 0, width: 2, height: 1.8 },

@@ -17,9 +17,13 @@ Last updated: 2026-09-12
   handlers, and one gated Store shared through `Matter::kv`. USB/LED/storage
   service remains alive after radio startup failure or return. Missing private
   commissioning material leaves radio closed and local service available. D-22
-  records the private profile's boot-off/bounded behavior. The provisioning writer,
+  records the private profile's boot-off/bounded behavior. The USB provisioning writer,
   trusted UTC, settings webpage and Pushover request/queue integration remain work.
   No actual HomeKit pairing or live TLS session has been exercised.
+- The offline [provisioning tool](design/matter-provisioning.md) can import or
+  freshly issue private per-device material, validate its explicit authority/CD
+  and publish a bounded record outside git. Public TEST issuer fixtures remain
+  host-test inputs only. Device installation and reboot activation remain work.
 - [Controller source](../pcb/controller/design/README.md) now joins all seven
   sections as one 95-component, seven-sheet schematic: 84 purchased parts and
   eleven test pads. Combined native readback matches all 254 connected pins and
@@ -34,12 +38,15 @@ Last updated: 2026-09-12
   own input bleed and 1N4148W-7-F PGFB isolation diode. The complete input budget is
   30 uF; modeled minimum sensor input is 3.7986 V with 114.6 mV LDO headroom.
   The repository calculator reproduces all 147 reviewed numerical values.
-- [Physical footprint declarations](design/footprint-audit.md) now cover seven
+- [Physical footprint declarations](design/footprint-audit.md) now cover all 27
   exact model IDs, with body/envelope/height, +0.05 mm NSMD and an explicit
   hand-assembly courtyard policy. Four-angle source/native tests preserve copper,
-  body/courtyard vertices and mask. Remaining models, stencil/thermal choices,
-  pin electrical metadata, placement, antenna/enclosure fit and all three board
-  manifests still need completion. No product handoff has been accepted.
+  body/courtyard vertices and mask. Initial graph adapters restore PTH mask growth,
+  rounded Micro-Fit pin-one copper and exact-MPN electrical pin types. Thirteen
+  review-section parts were spaced to retain strict courtyard checks. Complete
+  placement, asymmetric-origin normalization, stencil/thermal choices,
+  antenna/enclosure fit and all three board manifests still need completion.
+  No product handoff has been accepted.
 - The [mains](design/mains-design-basis.md), [controller](design/controller-design-basis.md),
   [sensor](design/sensor-design-basis.md), [secondary protection](design/power-protection-review.md)
   and [service input](design/service-input.md) bases retain exact selections and
@@ -59,17 +66,24 @@ Controller, mains and firmware work remain independent of this input.
 ## Verification
 
 The complete `sh scripts/check.sh` gate passes: 115 core tests, nine driver tests,
-one CLI test, 15 Matter tests, three production partition tests, 11 offline TLS
+one CLI test, 19 Matter tests, three production partition tests, 11 offline TLS
 cases on Linux, host/embedded fmt and Clippy, C6 release build, resolved Matter
-feature checks, PCB checks, 40 Bun tests with 4,166 assertions and 30 handoff tests.
-Documentation checks cover 55 documents and two CSV tables.
+feature checks, PCB checks, 54 Bun tests with 11,853 assertions and 30 handoff tests.
+Documentation checks cover 57 documents and two CSV tables. The complete log is
+`/tmp/crystal-shim-full-check-physical-provision-spaced.log` (exit 0).
 
 Root inspected the sensor source/native schematic and native physical preview,
 complementing the six previously inspected sections. Bounded electrical review
 accepted the RC/PGFB design; a separate adoption check reconciled source and BOM.
 Combined disposable exports use KiCad 10.0.5 and preserve all schematic nets.
-Full source placement, physical declarations, ERC/DRC and final native augmentation
-remain open. Read-only independent review of the new radio assembly found no
+The latest initial-stage native readback also retains 336 body edges, 95 courtyards
+and 291 numbered-pad mask overrides. Root inspected the native connector gallery;
+independent reviews checked physical models, adapter mutation boundaries and pin
+roles, correcting two converter omissions and the eFuse AUXOFF output type.
+Diagnostic ERC now reports 16 intended-unused pins needing NC markers and four
+undriven power nets needing flags. Grid/library/footprint cleanup and two wire
+endpoints also remain. Full source placement, clean ERC/DRC and final native
+augmentation remain open. Read-only independent review of the new radio assembly found no
 actionable defect in service lifetime, shared storage, commissioning material,
 metadata or command restrictions. Actual radio failures and flash timing remain
 unmeasured.
@@ -85,14 +99,13 @@ notifications sent.
 
 ## Next
 
-Complete the controller's remaining physical footprint and pin-type declarations,
-then place the complete board against the antenna, connector and enclosure limits
+Place the complete controller against the antenna, connector and enclosure limits
 and build its source manifest/augmentation contract. This advances G-02/G-04 now
 that all electrical sections integrate. It is substantial source/CAD work; the
 largest risks are the module's asymmetric origin, connector overhang, return-path
 layout and native parity. It needs no purchased hardware or sensor rim datum.
 
-Continue firmware with private-material provisioning and trusted UTC ownership,
+Continue firmware with the bounded USB provisioning writer and trusted UTC ownership,
 then the authenticated local settings/schedule page and bounded Pushover delivery
 on the shared TCP stack. These are repository work; live provisioning, pairing and
 installed tests stay separate. Static RAM and flash/control ownership must be
@@ -116,6 +129,8 @@ rechecked when the real TLS/UI workloads are linked.
   electrical-label loss, full schematic integration and bounded runtime review.
 - [Matter integration](design/matter-integration.md): fallible radio assembly,
   shared KV, private record format, metadata and memory evidence.
+- [Private provisioning](design/matter-provisioning.md): offline issuance/import,
+  explicit trust, private output publication and the remaining USB transaction.
 - [Runtime transactions](design/runtime-transactions.md): durable settings,
   suppression, configuration-save behavior and immediate versus durable replies.
 - [Footprint audit](design/footprint-audit.md): checked copper/physical declarations

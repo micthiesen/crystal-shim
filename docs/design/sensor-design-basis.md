@@ -456,9 +456,11 @@ The board header is `43045-0600`, a right-angle through-hole header specified
 for a 1.60 mm PCB. The cable housing at each end is `43025-0600`, and
 loose-piece tin female contact `43030-0007` accepts 20, 22 or 24 AWG. Use 24 AWG
 conductors and keep the finished cable, including service routing and strain
-relief, at or below 203.2 mm (8 inches). Place the header no more than 10.16 mm
-from the PCB edge as dimensioned in the Molex sales drawing, with its cable axis
-pointing away from the sensing span.
+relief, at or below 203.2 mm (8 inches). Keep the locator centre no more than
+10.16 mm from the mating-side PCB edge as dimensioned in the Molex drawing,
+with its cable axis pointing away from the sensing span. The locator is 4.32 mm
+ahead of pin 1; preserve board material around its hole. Mate/latch/wire sweep
+remains separate from the assembly courtyard.
 
 | Header pin | Net | Twisted pair | Matching return |
 | ---: | --- | ---: | ---: |

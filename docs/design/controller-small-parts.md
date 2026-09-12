@@ -147,8 +147,9 @@ For TDK, PA is the inner gap, PB each pad's length along the component, and PC
 pad width. Concrete midpoint examples are two 0.70 x 0.70 pads at x = +/-0.70
 for 100 nF and two 0.80 x 1.05 pads at x = +/-0.925 for 1 uF. The Panasonic
 midpoint example is two 0.65 x 0.90 pads at x = +/-0.725. These specify copper
-only; mask, paste, courtyard, solder process and final footprint approval remain
-capture work. Sources: [Panasonic land examples, page 1](https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf),
+only. The [physical registry](footprint-audit.md) now adds body/courtyard and
+mask declarations; paste, solder process and final native footprint approval
+remain work. Sources: [Panasonic land examples, page 1](https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf),
 [TDK 0603 lands](https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C1608X7R1H104K080AA),
 [TDK 0805 lands](https://product.tdk.com/de/search/capacitor/ceramic/mlcc/info?part_no=C2012X7R1E105K125AB).
 

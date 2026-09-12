@@ -7,10 +7,11 @@ description: "Build Crystal Shim PCBs with tscircuit authoritative through schem
 
 ## Authority and current state
 
-`docs/*.md` owns the product requirements. `pcb/sensor`, `pcb/controller` and
-`pcb/mains` are requirements-only. The arbitrary circuit in `pcb/fixtures` is a
-tooling smoke test, not a starting product design. No product board is ready for
-handoff, manufacture or unattended use.
+`docs/*.md` owns the product requirements. Read `docs/STATE.md` and each board's
+`README.md` for current capture, placement and handoff evidence. Controller source
+and component models live in `pcb/controller/design`; do not recreate them from
+the arbitrary `pcb/fixtures` tooling smoke test. A source model or passing tooling
+test does not establish handoff, manufacturing or operating readiness.
 
 The owner selected a one-shot build. Develop the three final-use boards and their
 interfaces for one fabrication cycle; do not insert a separate sensor prototype

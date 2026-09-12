@@ -342,8 +342,10 @@ resistors. They must never collapse into one net across the buffer.
 Wire circuit number to the same circuit number at the opposite end. Molex's
 component-side PCB drawing numbers rows 1/2/3 and 4/5/6; do not substitute the
 odd/even numbering of a generic two-row connector. Produce mating-face and
-wire-entry drawings during capture. Keep the header within the drawing's
-10.16 mm maximum distance from the PCB edge for mating clearance.
+wire-entry drawings during capture. The drawing's 10.16 mm maximum mating-edge
+distance is measured from the locator centre, which lies 4.32 mm ahead of pin 1.
+Preserve board material around the locator and reserve the mate/latch/wire sweep
+separately; the pin-1-to-edge distance is not the quoted dimension.
 [Molex header drawing](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf),
 [Molex contact](https://www.molex.com/en-us/products/part-detail/430300007).
 

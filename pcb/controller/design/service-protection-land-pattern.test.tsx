@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test";
 import { Circuit } from "tscircuit";
 import { CircuitJsonToKicadPcbConverter } from "circuit-json-to-kicad";
-import { At, PadPrimitiveGrPoly, Xy, type KicadPcb } from "kicadts";
+import { At, PadPrimitiveGrPoly, Xy, parseKicadPcb, type KicadPcb } from "kicadts";
 import { BidirectionalSupplyTvs, ServiceEfuse } from "./service-protection-components";
 import { anchorServiceEfuseForInitialExport } from "./service-protection-initial-export";
 import { tps259470a } from "./service-protection-land-patterns";
@@ -375,6 +375,42 @@ test("initial eFuse export anchors preserve complete world polygons, nets and un
     }
   }
   const corrected = board.getString();
+  const readback = parseKicadPcb(corrected);
+  for (const ref of exportRefs) {
+    const fp = readback.footprints.find((footprint) =>
+      footprint.properties.some((p) => p.key === "Reference" && p.value === ref),
+    )!;
+    const placement = fp.position;
+    if (!(placement instanceof At)) throw new Error("Missing native placement");
+    const body = fp.fpLines.filter((line) => line.layer?.names.includes("F.Fab"));
+    const courts = fp.fpPolys.filter((poly) => poly.layer?.names.includes("F.CrtYd"));
+    expect(body).toHaveLength(4);
+    expect(courts).toHaveLength(1);
+    expect(courts[0]!.points!.points).toHaveLength(5);
+    for (const [vertices, half] of [
+      [body.map((line) => line.start!), 1],
+      [courts[0]!.points!.points.slice(0, 4), 1.7],
+    ] as const) {
+      for (const [index, [x, y]] of [
+        [-1, -1],
+        [1, -1],
+        [1, 1],
+        [-1, 1],
+      ].entries()) {
+        const vertex = vertices[index]!;
+        if (!("x" in vertex && "y" in vertex)) throw new Error("Unexpected arc");
+        const actual = nativeRotate(vertex, placement.angle ?? 0);
+        const expected = nativeRotate(
+          { x: x! * half, y: y! * half },
+          placement.angle ?? 0,
+        );
+        expect(actual.x).toBeCloseTo(expected.x, 7);
+        expect(actual.y).toBeCloseTo(expected.y, 7);
+      }
+    }
+    expect(fp.fpPads).toHaveLength(10);
+    for (const pad of fp.fpPads) expect(pad.solderMaskMargin).toBe(0.05);
+  }
   expect(() => anchorServiceEfuseForInitialExport(board, exportRefs)).toThrow(
     "anchor changed",
   );
