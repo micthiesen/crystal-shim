@@ -3,6 +3,8 @@ import { Circuit } from "tscircuit";
 import ControllerCircuit from "./controller.circuit";
 import { schematicConnectivityErrors } from "./schematic-connectivity-check";
 
+// Rendering all 95 components exceeded Bun's 5 s default on GitHub's runner
+// (5.55 s, with no assertion failure). Keep the limit local to this full design.
 test("controller schematic preserves power separation, hardware permission and buffered sensor boundaries across sheets", async () => {
   const circuit = new Circuit();
   circuit.add(<ControllerCircuit />);
@@ -108,4 +110,4 @@ test("controller schematic preserves power separation, hardware permission and b
       ),
     ).length,
   ).toBeGreaterThan(0);
-});
+}, 30_000);
