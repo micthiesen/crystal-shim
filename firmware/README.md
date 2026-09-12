@@ -11,8 +11,9 @@ acquires FDC1004 frames on a separate interrupt executor, runs a 20 ms relay-out
 task, services a 1,500 ms system-reset watchdog only after that task completes, and
 streams bounded USB diagnostics. Boot validates saved settings/calibration and repairs
 retained safety state through a relay-off flash gate. Missing or invalid settings keep
-the output off. Wi-Fi, schedule/command ingress, runtime persistence and
-credential/configuration provisioning remain to be integrated. The external coil
+the output off. The runtime coordinator evaluates schedules, persists configuration
+and suppression, and accepts bounded physical USB administration. Wi-Fi, Matter,
+the settings webpage and Pushover adapters remain to be integrated. The external coil
 pull-down must establish off before application entry and during reset; a build
 cannot verify that physical behavior.
 
@@ -21,8 +22,10 @@ checks and complete sequential out-of-phase measurement frames, with host tests.
 It is bound to the ESP's 100 kHz bus with finite transactions and power recovery.
 The [calibration stage](../docs/design/calibration.md) applies measured tank data
 without fabricated default thresholds. The [integration design](../docs/design/firmware-integration.md)
-distinguishes implemented executor and boot-storage adapters from remaining network
-and runtime integration. The [configuration](../docs/design/configuration.md),
+distinguishes implemented executor and storage adapters from remaining network
+integration. The [runtime transaction contract](../docs/design/runtime-transactions.md)
+defines configuration saves, command acknowledgements and the USB protocol.
+The [configuration](../docs/design/configuration.md),
 [timezone](../docs/design/timezone.md) and [flash-storage](../docs/design/flash-storage.md)
 records describe the bounded models and current evidence.
 
@@ -58,11 +61,10 @@ No real stop/restart thresholds or maximum sample age are supplied by default.
   off time. Faults, maintenance, and hardware-forced-off cancel an override rather
   than queueing it for later. A scheduled request can recover inside its original
   remaining window.
-- Maintenance stays off until an explicit exit command in the same supervisor
-  instance. Exit then requires fresh stable recovery. Restoring maintenance
-  across reset/power loss, together with HomeKit Off suppression of the current
-  scheduled window, is an outstanding persistence requirement for the eventual
-  app; the core alone cannot provide it.
+- Maintenance stays off until an explicit exit command. The runtime persists
+  maintenance and window suppression through the gated storage owner, and exits
+  maintenance only after its clear record is durable. Exit then requires fresh
+  stable recovery. Final-board power-cut behavior still requires measurement.
 - Network state is absent from the control contract, so future network tasks
   must not be able to prevent local sampling/control ticks.
 
@@ -75,15 +77,16 @@ coil state; it provides no contact feedback or protection from welded contacts.
 ## Scheduled operation and HomeKit
 
 `Inputs` carries a reading, optional `ScheduledWindow`, `SwitchCommand`,
-maintenance command, and `HardwarePermit`. A local calendar adapter will supply
+maintenance command, and `HardwarePermit`. The runtime calendar adapter supplies
 only active windows with a stable, strictly increasing `WindowId` and the
 original absolute monotonic `ends_at`. It must preserve identities across
 repeated ticks and schedule edits. `schedule.rs` implements bounded daily entries,
 injected timezone resolution and stable occurrence IDs. `retained.rs` implements
 the versioned safety record and boot recovery policy. The core timezone resolver
-accepts explicit POSIX rules. The app loads saved settings and repairs retained state
-at boot. Time synchronization and runtime schedule/storage coordination remain work;
-no hours are guessed.
+accepts explicit POSIX rules. The app loads saved settings, repairs retained state
+at boot and stores eligibility before exposing a scheduled window. USB can supply
+an explicit UTC observation; it ages automatically and expires after one hour.
+Automatic synchronization remains work; no hours are guessed.
 The intended starting schedule is fifteen minutes a few times per day.
 
 Every run has an absolute deadline. The initial configurable maximum duration is
@@ -110,11 +113,12 @@ HomeKit exposes an advisory switch plus a temporary override:
   the current window. Neither HomeKit nor a schedule can command indefinite on.
 
 All thresholds and timers are explicit configuration. The CLI supports them at
-startup; `Supervisor::reconfigure` supports the selected ESP-hosted local
-settings/schedule webpage's future configuration adapter.
-It clamps an active deadline when the run duration decreases and never extends
-it when duration increases. No runtime configuration UI or Matter stack is
-implemented. The HomeKit/Matter adapter must report the actual command/state,
+startup; `Supervisor::reconfigure` clamps an active deadline when duration decreases
+and never extends it when duration increases. The runtime's configuration-save
+transaction deliberately enters maintenance, preserves deadline history and
+requires an explicit durable exit. The future settings webpage must show this
+consequence. No configuration UI or Matter stack is implemented.
+The HomeKit/Matter adapter must report the actual command/state,
 serialize incoming events, and keep network work separate from control ticks.
 
 ## Water notifications

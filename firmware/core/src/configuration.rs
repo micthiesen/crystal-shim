@@ -1,8 +1,9 @@
 //! Validated, bounded device configuration and its canonical persistent representation.
 //!
-//! This module owns format validation, not storage. The application must atomically commit a
+//! This module owns format validation, not storage. The application must commit a
 //! newly incremented configuration revision with the matching retained safety record before it
-//! publishes the replacement configuration.
+//! publishes the replacement configuration. The runtime stages a maintenance-safe retained
+//! record first; interrupted multi-key replacement fails closed through revision validation.
 
 use core::{fmt, str};
 

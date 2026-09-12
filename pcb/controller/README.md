@@ -10,6 +10,8 @@ connector numbering, protected/service power topology and a provisional outline.
 [Source component models](design/README.md) now bind checked copper lands and pin
 maps to exact parts. Connected relay-permission and logic-power sections now
 compile with netlist tests. The [service circuit](../../docs/design/service-input.md)
-has exact adapter, harness and protection selections. Complete controller
+has exact adapter, harness and protection selections. USB, eFuse and input TVS
+source models now have tested initial-export corrections for native pins and copper.
+Complete controller
 integration, remaining footprints, placement and enclosure fit still need work.
 Continue with [the PCB workflow](../../.agents/skills/pcb/SKILL.md).

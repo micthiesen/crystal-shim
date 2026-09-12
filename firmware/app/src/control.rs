@@ -1,8 +1,7 @@
-//! Priority3 local output owner with startup configuration and flash exclusion.
+//! Priority3 local output owner, runtime transactions and flash exclusion.
 use crate::snapshot::{self, STATUS};
-use crystal_shim_core::{
-    Command, Fault, HardwarePermit, Inputs, Reading, RelayCommand, Supervisor, SwitchCommand,
-};
+use crystal_shim_core::runtime::{Observation, Runtime};
+use crystal_shim_core::{Fault, HardwarePermit, Reading, RelayCommand};
 use embassy_time::{Duration, Ticker};
 use esp_hal::{
     gpio::{interconnect::InputSignal, Input, Level, Output},
@@ -18,19 +17,17 @@ pub async fn run(
     sensor_fault: InputSignal<'static>,
     mut watchdog: Wdt<TIMG1<'static>>,
 ) {
-    let mut supervisor: Option<Supervisor> = None;
+    let mut runtime: Option<Runtime> = None;
     let mut boot_maintenance_requested = false;
     let mut tick = Ticker::every(Duration::from_millis(20));
     loop {
         let now = snapshot::now();
-        if supervisor.is_none() && maintenance.is_low() {
+        if runtime.is_none() && maintenance.is_low() {
             boot_maintenance_requested = true;
         }
-        let mut restore_maintenance = false;
-        if supervisor.is_none() {
+        if runtime.is_none() {
             if let Some(config) = snapshot::boot_configuration() {
-                supervisor = Some(Supervisor::new(config.supervisor, now));
-                restore_maintenance = config.maintenance || boot_maintenance_requested;
+                runtime = Runtime::new(config.configuration, config.retained, now).ok();
             }
         }
         let (flash_inhibited, flash_ticket) = crate::flash_gate::observation();
@@ -46,18 +43,15 @@ pub async fn run(
         } else {
             sample.reading
         };
-        let status = supervisor.as_mut().map(|supervisor| {
-            supervisor.update(
-                now,
-                Inputs {
+        let step = runtime.as_mut().map(|runtime| {
+            let (force_off, request) = crate::runtime::take();
+            let step = runtime.step(
+                Observation {
+                    now,
+                    sensor_revision: sample.configuration_revision,
                     reading,
-                    window: None,
-                    switch: SwitchCommand::None,
-                    maintenance: if restore_maintenance || maintenance.is_low() {
-                        Command::EnterMaintenance
-                    } else {
-                        Command::None
-                    },
+                    force_off,
+                    maintenance_pressed: maintenance.is_low() || boot_maintenance_requested,
                     hardware: if !flash_inhibited
                         && psu_good.is_high()
                         && sensor_fault.level() == Level::High
@@ -67,8 +61,15 @@ pub async fn run(
                         HardwarePermit::ForcedOff
                     },
                 },
-            )
+                request,
+                crate::runtime::take_completion(),
+            );
+            boot_maintenance_requested = false;
+            snapshot::publish_configuration(runtime.configuration());
+            crate::runtime::publish_write(runtime.store_request());
+            step
         });
+        let status = step.and_then(|step| step.status);
         if !flash_inhibited && status.is_some_and(|status| status.control.relay == RelayCommand::On)
         {
             relay.set_high();
@@ -76,6 +77,14 @@ pub async fn run(
             relay.set_low();
         }
         critical_section::with(|cs| STATUS.borrow(cs).set(status));
+        if let Some(step) = step {
+            for reply in [step.command_reply, step.completed_reply]
+                .into_iter()
+                .flatten()
+            {
+                crate::runtime::complete(reply);
+            }
+        }
         watchdog.feed(); // Only after a complete output iteration, never from another task.
         if let Some(ticket) = flash_ticket {
             crate::flash_gate::acknowledge_off(ticket);

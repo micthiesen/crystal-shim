@@ -41,6 +41,22 @@ pub struct Store {
 }
 
 impl Store {
+    pub fn apply(
+        &mut self,
+        record: crystal_shim_core::runtime::Record,
+        buf: &mut [u8],
+    ) -> Result<(), Error> {
+        match record {
+            crystal_shim_core::runtime::Record::Retained(state) => {
+                let bytes = state.encode().map_err(|_| Error::Retained)?;
+                self.store(RETAINED_STORAGE_KEY, &bytes, buf)
+            }
+            crystal_shim_core::runtime::Record::Configuration(config) => {
+                let bytes = config.encode().map_err(|_| Error::Configuration)?;
+                self.store(CONFIGURATION_STORAGE_KEY, bytes.as_bytes(), buf)
+            }
+        }
+    }
     pub fn open(flash: FLASH<'static>, table_buffer: &mut [u8]) -> Result<Self, Error> {
         let _permit = Permit::acquire()?;
         let mut flash = FlashStorage::new(flash);

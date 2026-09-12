@@ -26,9 +26,9 @@ against lower-priority task work, not globally masked interrupts or flash access
 
 | Executor | Priority | Tasks | Rule |
 | --- | ---: | --- | --- |
-| `CONTROL_EXECUTOR: InterruptExecutor<1>` | `Priority3` | `control_task`, watchdog service | Owns `Supervisor`, the relay GPIO, and the authoritative status snapshot. It never awaits flash, I2C, USB, Matter, DNS, HTTP, or TLS. |
+| `CONTROL_EXECUTOR: InterruptExecutor<1>` | `Priority3` | `control_task`, watchdog service | Owns the runtime coordinator, bounded schedule evaluation, `Supervisor`, relay GPIO and authoritative status. It never awaits flash, I2C, USB, Matter, DNS, HTTP, or TLS. |
 | `SENSOR_EXECUTOR: InterruptExecutor<2>` | `Priority2` | `sensor_task` | Owns the FDC1004 instance and bounded acquisition state machine. It publishes calibrated or invalid readings through a latest-value cell. Priority3 can preempt every I2C transaction. |
-| thread-mode Embassy executor | normal | storage, schedule/clock, Matter/Wi-Fi/BLE, HTTP, Pushover, USB, LED | No network or storage await belongs to control. Flash additionally requires the output-off handshake below. |
+| thread-mode Embassy executor | normal | storage, clock acquisition, Matter/Wi-Fi/BLE, HTTP, Pushover, USB, LED | No network or storage await belongs to control. Flash additionally requires the output-off handshake below. |
 
 Initialize `RELAY_REQUEST` as a push-pull low output before starting any task. The
 provisional controller map is GPIO10 for `RELAY_REQUEST`, GPIO18/19 for I2C,
@@ -46,9 +46,11 @@ history is evaluated on a candidate copy and committed under that same epoch
 check, so an interrupted acquisition cannot become the next slew baseline.
 
 The current image implements those bindings, the 20 ms Priority3 output task,
-Priority2 acquisition/recovery and a bounded thread-mode USB writer. `main`
+Priority2 acquisition/recovery and bounded thread-mode USB administration. `main`
 loads validated settings/calibration and repairs retained state before publishing
-boot configuration. It has no schedule or command ingress and cannot run the pump.
+boot configuration. The [runtime coordinator](runtime-transactions.md) evaluates
+schedules and consumes USB command/configuration requests. A valid calibration
+and matching sensor revision are required before a run request can energize output.
 TIMG1 has a 1,500 ms system-reset watchdog; only a completed output iteration feeds
 it. The [flash adapter](flash-storage.md) holds the output off across each transaction,
 uses at most one sector erase per chunk and requires another control acknowledgement
@@ -62,21 +64,21 @@ between chunks. Physical timing remains unverified.
    `HardwarePermit::ForcedOff`, consumes any pending manual request, and therefore
    cannot restart when power returns. The existing supervisor freshness and minimum
    off interval must elapse before a later request can energize the output.
-3. Take at most one command from a bounded nonblocking control mailbox. An Off command
-   also requests durable suppression of the current scheduled occurrence. A separate
-   atomic force-off flag is available to PSU-loss and maintenance paths so a full
-   ordinary command queue cannot delay revocation.
-4. Call `Supervisor::update`, set the relay GPIO directly from
-   `status.control.relay`, and publish the complete `SupervisorStatus` through a
-   critical-section latest-value cell.
-5. Feed the watchdog only after that complete iteration.
+3. Take at most one command and storage completion from bounded nonblocking
+   mailboxes. The reserved Off flag survives a full ordinary command slot.
+4. Run the coordinator's bounded schedule/transaction step and publish its next
+   immutable write request. Only matching durable settings and sensor revisions
+   reach `Supervisor::update`. Set the relay GPIO from `status.control.relay`,
+   constrained by the flash inhibit, then publish status and command replies.
+5. Feed the watchdog only after that complete iteration, then acknowledge the
+   matching relay-off flash ticket. No flash call occurs in this task.
 
 The FDC1004 driver crate owns register encoding, reset/configuration, conversion-ready
 polling, raw samples, I2C errors, and conversion/frame deadlines. The app-level
 `sensor_task` supplies a 5 ms transaction timeout and owns
 cadence, stale-age measurement, calibration application, and
 translation to `crystal_shim_core::Reading`. Its only cross-priority output is a
-copyable snapshot such as `{ sampled_at: Millis, reading: Reading, diagnostic }`.
+copyable snapshot including configuration revision, `Reading` and diagnostics.
 No driver future or I2C mutex enters `control_task`.
 The pinned HAL's cancellation path can spend up to another 50 ms clearing the
 bus synchronously. The sensor publishes each transfer deadline before awaiting
@@ -98,20 +100,23 @@ result as a fresh observation.
 | `firmware/core/src/schedule.rs` | Implemented bounded daily schedule evaluation. `Scheduler::evaluate` consumes injected UTC/civil time, a `LocalTimeResolver`, and the retained occurrence watermark. It returns `Inactive`, `PersistBeforeRun`, `Suppressed`, or an existing `ScheduledWindow`. |
 | `firmware/core/src/retained.rs` | Implemented versioned 32-byte safety record, CRC validation, configured versus never-configured boot lifecycle, maintenance recovery, and interrupted-window suppression. It is independent of any flash driver. |
 | `firmware/core/src/calibration.rs` | Implemented measured TI response normalization, calibrated raw envelopes, denominator/domain, sequence/freshness and slew validation. No physical coefficients are invented. |
+| `firmware/core/src/runtime.rs` | Implemented coordinator for durable configuration/retained transactions, bounded schedule evaluation, command handling, aged UTC and sensor revision acceptance. |
+| `firmware/core/src/runtime_ingress.rs` | Implemented bounded request slot, reserved Off flag and physical USB line/configuration decoder. |
 | `firmware/drivers/` | Separate no-std FDC1004 crate. It returns raw acquisition results and never imports schedule, storage, Matter, or the relay supervisor. |
 | `firmware/app/src/board.rs` | Implemented controller capture pin bindings and safe initial levels; final-board acceptance remains open. |
 | `firmware/app/src/control.rs` | Priority3 task, control mailbox, force-off flag, latest `SupervisorStatus`, relay write, and watchdog service. |
 | `firmware/app/src/sensor.rs` | Priority2 owner of the FDC1004 driver, finite transaction timeout, sample freshness, and calibrated `Reading` publication. |
-| `firmware/app/src/storage.rs` | Sole writer for the Crystal configuration, retained safety record, notification queue, and settings access token in the same NVS-backed `KvBlobStore` used by Matter. Serializes writes through one bounded request channel. |
+| `firmware/app/src/storage.rs` | Implemented sole gated owner for boot and runtime configuration/retained writes. Matter KV and notification records must extend this owner; they are not implemented yet. |
+| `firmware/app/src/runtime.rs` | Implemented copied command/reply/write/completion mailboxes. No I/O or waits while holding their critical sections. |
 | `firmware/app/src/clock.rs` | SNTP acquisition, plausibility checks, UTC-to-monotonic anchor, timezone rule adapter, and `LocalTimeResolver` implementation. Publishes `None` when UTC or timezone rules are untrusted. |
-| `firmware/app/src/schedule.rs` | Calls the core scheduler, completes `PersistBeforeRun` before publishing a window, submits suppression writes, and gives control a latest optional `ScheduledWindow`. |
+| `firmware/core/src/runtime.rs` schedule path | Already calls the scheduler from control, persists `PersistBeforeRun` before exposing a window and preserves the supervisor across writes/configuration. No separate app schedule task is needed. |
 | `firmware/app/src/matter.rs` | Matter node, custom On/Off handler, descriptor tree, BLE commissioning, Wi-Fi ownership, NVS startup, and attribute-change notifier. |
 | `firmware/app/src/network.rs` | `rs_matter_embassy::stack::UserTask` implementation. Runs clock, HTTP, and Pushover services against the generic Matter-owned network stack while the interface is up. |
 | `firmware/app/src/settings_http.rs` | Fixed-capacity HTTP parser/renderer, authenticated configuration reads/writes, validation, and storage request/ack protocol. |
 | `firmware/app/src/pushover.rs` | Persistent transition queue, DNS/TCP/TLS transaction, retry policy, and acknowledgement removal. It cannot call or await control APIs. |
-| `firmware/app/src/usb.rs` | Bounded line protocol over native USB Serial/JTAG for status, initial configuration, settings-token rotation, recovery, and factory reset. |
+| `firmware/app/src/main.rs` USB loop | Implemented bounded status/configuration/command/UTC protocol using core ingress. Token rotation and factory reset/recovery remain work. |
 | `firmware/app/src/output.rs` | One bounded async USB/log writer. No logging from interrupts or critical sections. |
-| `firmware/app/src/main.rs` | Safe boot order, allocator/radio initialization, executor startup, and ownership transfer only. |
+| `firmware/app/src/main.rs` | Implemented safe boot, executor startup, sole storage service and bounded USB loop. Radio/allocator startup and service extraction remain network integration work. |
 
 ## Schedule and retained safety state
 
@@ -289,12 +294,14 @@ USB. Do not place it in a URL, HTML log, or normal status output. A write is han
 
 1. Parse into a fixed-capacity candidate and validate thresholds, calibration,
    duration, entry count, entry IDs, local times, timezone rule, and Pushover fields.
-2. Increment a nonzero configuration revision and send the complete record to the
-   sole storage writer.
-3. Return success only after the writer acknowledges the durable record and matching
-   retained state. On failure, leave the old runtime configuration active.
-4. Publish the validated configuration snapshot. `Supervisor::reconfigure` and the
-   retained occurrence end clamp prevent a duration edit from extending an active run.
+2. Submit the next nonzero configuration revision to the runtime coordinator.
+   It enters maintenance and stores the matching maintenance-retained record
+   before the new configuration, through the sole storage owner.
+3. Return success only after the coordinator's `Durable` acknowledgement. On
+   failure, the old configuration remains published but output stays inhibited.
+4. Show that saving stops an active run and requires an explicit maintenance exit.
+   That exit also needs a durable acknowledgement. The existing supervisor and
+   retained occurrence end prevent edits or persistence from renewing a deadline.
 
 For time, use `sntpc-core 0.11` concepts: `get_time`, `NtpContext`,
 `NtpUdpSocket`, and `NtpTimestampGenerator`. `sntpc-net-embassy 0.11` targets

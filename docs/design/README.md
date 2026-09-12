@@ -6,6 +6,8 @@ release or commissioning evidence. Their explicit open items remain work to fini
 
 - [Sensor](sensor-design-basis.md): TI OoP topology, glass/rim geometry, references,
   local regulation, I2C and clip interface.
+- [Sensor-cable protection proposal](sensor-cable-protection.md): exact ESD candidates,
+  loading estimates and the power-switch residual-pulse boundary still under review.
 - [Controller](controller-design-basis.md): module pins, power and service inputs,
   USB attach gating, relay driver, power-good interlock and harnesses.
 - [Mains and enclosure](mains-design-basis.md): PSU, relay, filter, fuse/MOV/RC,
@@ -19,6 +21,8 @@ release or commissioning evidence. Their explicit open items remain work to fini
 - [Configuration](configuration.md): validated settings and canonical bounded storage format.
 - [Timezone](timezone.md): explicit POSIX rules, DST folds/gaps and calendar limits.
 - [Flash storage](flash-storage.md): output-off ownership, bounded flash chunks and boot recovery.
+- [Runtime transactions](runtime-transactions.md): durable settings, schedule eligibility,
+  immediate Off, sensor revisions and bounded USB administration.
 - [Verified TLS](tls-provider.md): fixed Pushover trust policy, C6 build,
   live endpoint checks, measured linked size and remaining runtime evidence.
 - [Footprint audit](footprint-audit.md): installed-library candidates, manufacturer

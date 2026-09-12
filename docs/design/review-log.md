@@ -3,6 +3,8 @@
 Date: 2026-09-12. This records bounded adversarial review, root triage and evidence.
 It does not release a board or substitute for the commissioning matrix. Complete
 product PCB capture, routing and physical acceptance checks remain outstanding.
+Test counts below describe their individual checkpoints; current integrated
+evidence belongs in [STATE](../STATE.md).
 
 ## Controller component capture
 
@@ -152,7 +154,7 @@ driver tests, one CLI test, 11 TLS cases and the PCB/document checks. The partit
 suite checks MD5 corruption, custom tags, flags, alignment, capacity, overflow and
 overlap using the actual production selection function. None of this is physical
 flash timing, power-cut or relay-pin evidence. Runtime command/configuration
-transactions and Matter storage remain later integration work.
+transactions were implemented in the later checkpoint below; Matter storage remains work.
 
 ## Calibration and local runtime
 
@@ -180,8 +182,8 @@ the underlying GPIO ISR, as well as its monitor task, runs at Priority3.
 
 The host workspace passes 50 core tests, nine driver tests and one CLI test.
 The final independent pass found no further substantive defect in this scope.
-Runtime schedule/storage coordination and command persistence remain integration
-work. The later boot-storage checkpoint below does not complete those adapters.
+Runtime schedule/storage coordination and command persistence were separate
+integration work, now covered by the later runtime-transaction checkpoint below.
 
 ## Sensor basis
 
@@ -275,8 +277,108 @@ full local gate run it and check production/test crypto-profile parity.
 The [provider report](tls-provider.md) distinguishes the initial live handshake
 and construction-size evidence from the current build and offline tests. The second
 independent pass found no surviving actionable defect in this scope and reran all
-11 tests successfully. The current app cannot request a pump run and does not yet integrate
-the provider or Matter network; current C6 heap/cadence evidence remains work.
+11 tests successfully. That checkpoint had no pump command ingress. The app now
+has the runtime path below, but has not integrated the provider or Matter network;
+current C6 heap/cadence evidence remains work.
+
+## USB and service protection source/export
+
+Source now captures USB4105-GF-A, TPS259470ARPWR and SMBJ8.0CA from the hashed
+manufacturer drawings in the [footprint audit](footprint-audit.md). The gallery
+contains 25 representative component models; connected sections remain relay
+permission and logic power. This is not a complete controller board.
+
+| Finding | Correction and evidence |
+| --- | --- |
+| The compiler accepts numeric USB source indices, while the native footprint needs A/B/SH numbers | Initial-converter adapters translate PCB pads plus library/instance schematic pins. Tests check the serialized result and reject mixed, duplicate or mismatched batches before mutation. |
+| The USB compiler centre is 1.14 mm from the native body origin | Review found the mismatch. A cloned Circuit JSON normalization derives the body origin from the checked A1 land and validates all contact locations before conversion. Native replacement now preserves placement. |
+| The converter leaves three shared shell pads without a net | Initial mapping propagates the single validated shell net to all four pads and restores their F.Paste layer. Conflicting populated shell nets reject export. |
+| Routed source schematic leaves some USB GND contacts as separate islands | Each contact has an explicit connection; source net labels retain A1/A12/B1 on GND alongside B12/SH. The native XML netlist checks every power, data and CC pin. |
+| The typed schematic library-pin setter removes its serialized number | The initial mapper updates the existing number node and tests actual serialized library/instance pin numbers. Native KiCad parses all 17 pins. |
+| The eFuse converter places a circular custom-pad anchor in each L notch, adding copper | The initial adapter moves anchors into horizontal legs while translating primitives oppositely. Native effective-copper checks cover the full union, not just the intended polygon vertices. |
+
+Independent final review found no additional actionable copper, pin/net, origin or
+anchor defect. All 22 USB pads/holes match the installed exact GCT footprint at
+0/90/180/270 degrees, including size, position, layers, corner ratio and drill.
+Native schematic/board reads preserve both USB data pairs, CC, VBUS/GND contacts
+and all four shell nets. All 16 eFuse corner pads across those rotations preserve
+source copper within 1.5 nm native quantization, with unchanged nets, UUIDs and
+other pads. Root inspected the 25-part source gallery and corrected native copper
+render. The eight focused tests pass with 707 assertions.
+
+These helpers operate only on initial converter graphs before staging
+serialization. Complete-board export/manifest integration, repeated-pad native
+parity, TI split paste/mask, body/courtyard and fabrication gates remain required.
+The eFuse source polygon-port centres still lie in the notches, so source routing
+stays disabled. No adopted product KiCad design was edited.
+
+The shared handoff review separately found dictionary lookups collapsing repeated
+physical pads to one net. Native augmentation left three USB shell tabs unconnected,
+while general parity could hide those blank nets behind the one correct entry.
+The later initial-stage alias check already caught this defect, so no bad stage
+receipt was demonstrated. The generic assignment/parity functions now process
+every physical pad. Two added regressions cover four/nine repeats, wrong/blank
+nets and NC clearing; they produced five failures against the old code. Both
+repositories' 30-test handoff suites pass, and native KiCad now preserves all four
+USB shell nets through augmentation. The fix was applied to canonical Stillair
+and synced exactly to Crystal Shim. Required physical pad counts still belong to
+source/footprint geometry validation; the logical manifest schema is unchanged.
+
+## Runtime configuration and command transactions
+
+The [runtime coordinator](runtime-transactions.md) now applies ticketed settings
+and retained writes, schedules and USB commands through the existing output-off
+storage owner. It publishes settings only after maintenance-retained and
+configuration records are durable, rejects old sensor revisions and preserves
+the supervisor across configuration and storage operations.
+
+Writer review found that persisting an arriving schedule could interrupt an
+accepted manual request waiting for minimum off. Ordinary eligibility writes
+now wait while a manual override is active or pending. Root review found that
+Off's command acknowledgement waited for suppression persistence. Applied Off
+now follows the actual GPIO write; storage completion is reported independently.
+Regressions cover these races, Off followed by storage failure, both configuration
+write boundaries, interrupted replacement, stale tickets, revision mismatch,
+maintenance/button races, clock ageing and bounded partial/oversized USB input.
+Independent review then reproduced two automatic-lease defects. A delayed
+eligibility acknowledgement could replay an expired occurrence after clock
+rollback; configuration save could leave an old automatic lease available to a
+later window. Review of the same call paths extended cancellation to physical/USB
+maintenance and calendar invalidation. Runtime now records observed suppression
+before re-anchoring time, preserves it across late writes and revokes automatic
+demand when its calendar context is invalid. Every runtime maintenance path
+revokes both run modes through the existing Off path. Normal active-window
+corrections and overlap still preserve the continuous run cap; manual overrides
+remain independent of clock loss. Suppression-only persistence waits for a
+manual lease without changing readiness; explicit stops bypass that deferral.
+
+Review also examined reset before the first configuration record commits. No
+intent record can make an uncommitted request durable. The contract and regression
+now state that this boundary recovers the old saved pair, including normal boot
+suppression of any old Eligible occurrence. Revision-mismatch maintenance recovery
+begins after the first retained record commits. The reviewer accepted that
+distinction; `ACCEPTED` remains a queue receipt and never promises durability.
+
+The targeted host suite now passes 108 core tests, nine driver tests and one CLI
+test. Twenty-nine new runtime/ingress regressions cover the implementation;
+pre-fix copies fail the new replay/cancellation cases. The repeated complete
+repository check passes, including 21 Bun tests/1,262 assertions, 30 handoff tests,
+partition/TLS checks and the C6 release build. Final independent delta review
+found no further actionable findings across Off, configuration/maintenance/storage
+failure, clock expiry/loss/correction and ordinary overlap/manual independence.
+The reviewer reran the targeted calendar regression. Actual flash, USB and control
+timing remain final-board checks.
+
+## Sensor cable protection proposal
+
+Independent review identified a second unresolved TPS2553 boundary alongside the
+already recorded positive overvoltage gap. SMBJ7.0A's forward-voltage rating permits
+a -3.5 V cable event; TPS2553 IN/OUT have a -0.3 V absolute minimum. The switch's
+3-7 ms reverse-voltage shutdown addresses output above input, not output below
+ground. Keep these parts outside adopted source/BOM until a defined isolation,
+filter or switch refinement addresses both polarities with documented residual
+voltage/current calculations. The final assembly still needs its declared ESD
+tests; no physical immunity result is inferred from the component ratings.
 
 ## References used to triage
 

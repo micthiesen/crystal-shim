@@ -130,27 +130,29 @@ validated persisted classification is restored.
 
 `firmware/core/` contains a `no_std`, host-tested control model with injected time,
 calibrated integer level input and explicit validity. `firmware/cli/` demonstrates
-the model using synthetic readings. `firmware/app/` is a separate ESP32-C6 build,
-initially inert with no GPIO binding. See [firmware commands](../firmware/README.md).
+the model using synthetic readings. `firmware/app/` is a separate ESP32-C6 build
+with capture pin bindings, acquisition, local control and gated persistence.
+It is uncommissioned. See [firmware commands](../firmware/README.md).
 
 The model does not measure capacitance, validate an aquarium, or establish physical
-relay state. An eventual FDC1004 adapter must reject invalid channel/reference
-data and provide a timestamp for the complete fresh measurement set. Stored or
+relay state. The FDC1004 and calibration adapters reject invalid channel/reference
+data and timestamp the complete fresh measurement set. Stored or
 repeated samples cannot qualify recovery by themselves. Hardware initialization
 must hold the relay off before sensor, USB or network setup.
 
-Maintenance must not silently clear through reset. Implement retained maintenance
-state, a maintained physical input, or equivalent explicit recovery policy before
-hardware commissioning. The initial in-memory model alone does not provide this
-persistence. On exiting maintenance, require fresh recovery and the off delay.
+Maintenance must not silently clear through reset. The runtime stores retained
+maintenance and requires a durable explicit exit. Final-board commissioning must
+verify power-cut recovery; host tests do not establish physical persistence.
+On exiting maintenance, require fresh recovery and the off delay.
 
 ## Diagnostics and resilience
 
 Retain raw level/wet/dry capacitances, calculated level, sensor validity and fault
 reason, sample age, calibration revision, relay command, state/timer status and
 reset reason. Raw conversion, calibrated validity, watchdog service and boot loading
-of saved configuration are implemented. Runtime settings/persistence, USB commands,
-wall-clock scheduling and the Matter adapter remain work. The network technology is
+of saved configuration are implemented. Runtime settings/persistence, bounded USB
+commands and schedule evaluation from explicit UTC observations are implemented.
+Automatic time acquisition, the settings webpage and Matter adapter remain work. The network technology is
 selected; pairing and Pushover delivery are not implemented yet. Stored Pushover
 credentials have a validated format but are not used by a network sender.
 

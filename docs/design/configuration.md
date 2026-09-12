@@ -103,7 +103,10 @@ it must increment the current revision with checked arithmetic without producing
 complete new configuration, and commit it with a retained record carrying the same
 revision. The storage acknowledgement for that matching pair must complete before the
 app publishes the new runtime snapshot or reports success to USB or HTTP. If either
-write fails, the old runtime configuration remains active. Boot applies the retained
+write fails, the old configuration remains published and output stays inhibited.
+The [implemented runtime transaction](runtime-transactions.md) writes the matching
+maintenance-retained record first, then configuration, and requires an explicit
+durable maintenance exit after a successful save. Boot applies the retained
 lifecycle rules in `retained.rs`; a missing, corrupt or mismatched retained record on a
 configured unit enters recoverable maintenance.
 

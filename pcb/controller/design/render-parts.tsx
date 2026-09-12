@@ -8,6 +8,8 @@ import { PowerSchottky, UsbEsdProtection } from "./protection-components";
 import { ControllerCapacitor, ControllerResistor } from "./passive-components";
 import { BuckInductor, ControllerButton, StatusLed } from "./assembly-components";
 import { PsuHeader, SensorHeader, ServiceHeader } from "./micro-fit-components";
+import { UsbConnector } from "./usb-connector";
+import { ServiceEfuse, BidirectionalSupplyTvs } from "./service-protection-components";
 import {
   PsuSupervisor,
   SensorPowerFeed,
@@ -22,6 +24,11 @@ circuit.add(
     <SensorHeader name="J1" pcbX={-50} pcbY={42} schX={-50} schY={25} />
     <ServiceHeader name="J2" pcbX={-25} pcbY={42} schX={-25} schY={25} />
     <PsuHeader name="J3" pcbX={0} pcbY={42} schX={0} schY={25} />
+    <UsbConnector name="J4" pcbX={25} pcbY={42} schX={25} schY={25} />
+    <silkscreenrect pcbX={25} pcbY={42} width={8.94} height={7.35} />
+    <silkscreentext text="MATING / PCB EDGE" pcbX={25} pcbY={36} fontSize={0.8} />
+    <ServiceEfuse name="U10" pcbX={50} pcbY={42} schX={50} schY={25} />
+    <BidirectionalSupplyTvs name="D5" pcbX={-50} pcbY={12} schX={-40} schY={0} />
     <Esp32C6Wroom name="U1" pcbX={-25} pcbY={0} schX={-20} schY={0} />
     <ControllerBuck name="U2" pcbX={0} pcbY={12} schX={0} schY={0} />
     <RelayMosfet name="Q1" pcbX={25} pcbY={12} schX={15} schY={0} />
@@ -73,6 +80,9 @@ circuit.add(
       ["SENSOR 43045-0600", -47, 54],
       ["SERVICE 43045-0200", -25, 54],
       ["PSU 43650-0300", 3, 54],
+      ["USB4105-GF-A", 25, 54],
+      ["TPS259470A", 50, 54],
+      ["SMBJ8.0CA", -50, 17],
       ["STPS2L40U", -50, -45],
       ["USBLC6-2SC6", -25, -45],
       ["ERJ 22R", 0, -45],

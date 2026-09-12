@@ -1,10 +1,11 @@
 # Flash storage and output exclusion
 
 Implemented in `firmware/app/src/storage.rs`, `firmware/app/src/flash_gate.rs`
-and the independently testable `firmware/core/src/flash_gate.rs`. This checkpoint
-loads saved configuration and repairs retained safety records at boot. Runtime
-configuration transactions, the Matter KV trait adapter, command persistence and
-factory reset still require integration. The pump has no command/schedule ingress.
+and the independently testable `firmware/core/src/flash_gate.rs`. It loads saved
+configuration, repairs retained safety records at boot and services the
+[runtime coordinator](runtime-transactions.md)'s ticketed configuration and retained
+writes. USB supplies bounded command/configuration ingress; the Matter KV trait
+adapter, authenticated network settings and factory reset remain integration work.
 
 ## Ownership and timing
 
@@ -81,9 +82,12 @@ record without configuration is inconsistent storage. A malformed configuration 
 an error, not a request to install defaults. Calibration is optional in a valid
 configuration; its absence still produces invalid readings and keeps the relay off.
 The sensor receives the boot calibration, and control restores saved maintenance
-before its first configured output decision. Runtime settings publication will need
-an explicit revision handshake with sensor and supervisor, which is not implemented
-by this startup-only interface.
+before its first configured output decision. Runtime configuration replacement
+first stores the new revision's maintenance record, then its configuration. Only
+both exact acknowledgements publish the new revision to control and sensor. Old
+sensor frames retain their previous revision and cannot enable output. The output
+stays in maintenance until an explicit durable exit; a reset between the two writes
+recovers through the revision-mismatch policy above.
 
 ## Evidence and remaining work
 

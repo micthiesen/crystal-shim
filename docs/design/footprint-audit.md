@@ -31,7 +31,7 @@ design-basis documents remain the authority for the selected parts and nets.
 | BOM-31 SN74LVC1G14DBVR | source lands verified | Same manufacturer DBV5 geometry as BOM-29, independently checked in SCES218AA p39-40. | Preserve 1 NC, 2 A, 3 GND, 4 Y, 5 VCC; source explicitly marks NC. Native SOT-23-5 is not the exact TI land example. |
 | BOM-32 USBLC6-2SC6 | source lands verified | ST DS4260 Rev 7 Figure 19: 1.20 x 0.60 lands at x=+/-1.15 and 0.95 pitch. Stock SOT-23-6 lands differ. | Source explicitly joins only internal pairs 1-6 and 3-4. Pin 2 GND, 5 VBUS; compiled physical pin map and rotation checked. Complete ESD routing and native assembly details. |
 | BOM-33 TCA9517ADGKR | source lands verified | TI DGK drawing 4214862/A 04/2023 has 1.4 x 0.45, R0.05 lands at x=+/-2.2 on 0.65 pitch. Stock VSSOP-8 instead has 1.625 x 0.5, R0.125 at x=+/-2.1125. | Use the source TI pattern; paste matches copper, NSMD preferred with at most 0.05 mm mask expansion per side. Pin order and rotated compiled coordinates were independently checked. Complete the native footprint/assembly settings. |
-| BOM-18 GCT USB4105-GF-A | available-exact | `Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal`. Checked A/B pads A1,A4,A5,A6,A7,A8,A9,A12 and B1,B4,B5,B6,B7,B8,B9,B12, plus four `SH` through-hole pads. Signal pads are 0.3 or 0.6 x 1.15; shell pads are at x=±4.32. | Retain this part-specific candidate, then run the final rendered component-side check against the GCT drawing and verify D+/D- mapping. |
+| BOM-18 GCT USB4105-GF-A | source lands and holes verified | `Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal`. Source reproduces all 16 A/B contact numbers, four `SH` slots and two 0.65 mm locators against GCT B4. Independent native comparison matches all 22 pads/holes at 0/90/180/270 degrees. | Initial adapters restore body origin, native symbol/PCB pin numbers, all shell nets and F.Paste. Native netlist confirms A6/B6 D+ and A7/B7 D-. Integrate the adapters and explicit GND wiring into full-board export. GF-A stakes are 0.95 +/-0.15 mm; review retention and paste/reflow for the 1.6 mm board. |
 | BOM-06/07 43025-0600 / 43045-0600 | source lands and holes verified | Native `Connector_Molex:Molex_Micro-Fit_3.0_43045-0600_2x03_P3.00mm_Horizontal`: pads 1-6 at (0,0),(3,0),(6,0),(0,3),(3,3),(6,3), 1.02 mm drills and 1.5 mm circular copper except 1.5 mm roundrect pin 1, plus a 3 mm NPTH locator at (3,-4.32). | Corrects earlier 1.5 x 2.02 copper claim for this dual-row header. Source/test preserves six-circuit numbering and native pin-1 origin. Final mating clearance, edge distance and enclosure fit remain open. |
 | BOM-38/39/40 43045-0200 / 43025-0200 / 43030-0007 | source lands and holes verified | Native `Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal`: pads (0,0) and (0,3), 1.02 mm drills, 1.5 mm copper and 3 mm NPTH locator at (0,-4.32). | Corrects the earlier 1.4 mm drill transcription. Source/test preserves native origin and pin 1 RAW service input / pin 2 GND. Final mating/retention checks remain. |
 | BOM-35/36/37 43650-0300 / 43645-0300 / 43030-0007 | source lands and holes verified | Native `Connector_Molex:Molex_Micro-Fit_3.0_43650-0300_1x03_P3.00mm_Horizontal`: pads (0,0),(3,0),(6,0), 1.02 mm drills and 1.5 x 2.02 oval copper except roundrect pin 1, plus 3 mm NPTH locator at (3,-4.32). | Source and rotated compiled tests preserve 1 V5_PSU / 2 GND / 3 COIL_DRAIN. Keep pad-1 marking and the 10.16 mm edge limit visible; final mating/fit remains. |
@@ -57,9 +57,17 @@ lands, with exact ordering codes and compiled checks. Their dimensions differ
 from stock IPC patterns. Native mask/paste/courtyard details remain open.
 BOM-80 through BOM-91 count the base controller passives; the additional
 [service circuit](service-input.md) and mains quantities are counted separately.
-Service eFuse, 0805 protection resistors, C0G capacitor and input TVS still need
-complete component source. USB connector alphanumeric pad mapping and cable
-ESD remain before full controller capture.
+Service eFuse and input TVS copper models are now captured. The 0805 protection
+resistors and C0G capacitor still need exact registry/land capture; sensor-cable
+ESD selection and complete connected service/USB sections remain work.
+
+USB source indices 1-17 are compiler identifiers, not native contact numbers.
+The initial export adapters normalize its copper-bounding-box origin to the GCT
+body origin before conversion, then restore alphanumeric pins in both the native
+symbol and footprint. Tests reject partial/mixed mappings and verify serialized
+symbol pins. The native review also verifies all four shell pads on GND and
+explicit A1/A12/B1/B12 wiring. These component checks must become complete-board
+manifest/net-parity checks before handoff.
 
 ## Mains
 
@@ -78,14 +86,28 @@ Additional selected power components:
 
 | BOM / part | Status | Candidate / checked source | Action before capture release |
 | --- | --- | --- | --- |
-| BOM-64 TPS259470ARPWR | custom-required | No exact RPW0010A installed pattern found. TI land drawing 4225183/A has ten functional lands, including long IN/OUT pads 5/6; no exposed ground pad. | Reproduce the visually inspected manufacturer land and stencil patterns in source. Do not substitute installed RPU or a generic 2 x 2 QFN. Keep the pin functions in the secondary protection contract. |
+| BOM-64 / BOM-94 TPS259470ARPWR | source lands verified | `CrystalShim:TPS259470A_RPW0010A` reproduces TI 4225183/A: ten functional lands, four rounded L corner pads and long IN/OUT pads 5/6; no exposed ground pad. | The initial-export adapter moves the converter's circular anchor into each L leg, preserving effective copper at all cardinal rotations. Keep source routing disabled. TI p74 split paste windows, mask, courtyard and native adoption remain required; generic 2 x 2 QFN/RPU is not a substitute. |
 | BOM-65 STPS2L40U | source lands verified | Same checked ST SMB source as BOM-27. | Preserve negative-clamp polarity: pad 1 V5_PSU, pad 2 GND_ISO. Transient/clamp evidence remains separate. |
+| BOM-106 SMBJ8.0CA | source lands verified | `CrystalShim:SMBJ8_0CA` uses Littelfuse p5 limits: 2.160 x 2.260 rectangular lands at x=+/-2.450, with 2.740 inner gap. | Source terminals 1/2 are nonpolar for the CA bidirectional part. Complete body/courtyard/stencil and connected pulse model; this is not a precise 5 V clamp. |
 
 The eFuse's exact ERA-3A divider/current resistors (BOM-70 through BOM-73)
-use the same Panasonic 0603 package candidate as the sensor resistors below.
-BOM-74 TDK C1608C0G1H472J080AA uses a 1.60 x 0.80 mm 0603 body; its
-reflow PA/PB/PC recommendation is 0.60-0.80 mm for each dimension. Compare the
-actual drawing orientation and stock lands before adoption.
+reuse the checked Panasonic 0603 lands. Service ERA3AEB2612V, ERA3AEB3832V and
+ERA3AEB2871V use the same pattern. ERA6AEB474V and ERA6AEB222V require an 0805
+pattern: Panasonic DMM0000COL17 p1 gives inner gap 1.0-1.4, outer span 3.2-3.8
+and width 0.9-1.4. Adopt midpoint rectangular lands 1.15 x 1.15 at x=+/-1.175.
+The current resistor wrapper assumes 0603 for every value; add per-value pattern
+metadata before registering these two ERA6A parts. All five exact service
+resistor codes are 0.1%, 25 ppm/K; ERA3A is 0.100 W and ERA6A 0.125 W, with
+derating above 85 C. ERA3AEB's range ends at 330 kohm, so 470 kohm is not a
+same-package substitution.
+
+BOM-74 / service C1608C0G1H472J080AA is 4.7 nF, 5%, C0G, 50 V, with nominal
+1.60 x 0.80 x 0.80 mm body. TDK GC11010030, September 2026, printed p18/PDF p19
+defines inner gap, individual land length and width as 0.6-0.8 each for C1608
+reflow. Existing 0.70 mm square lands at x=+/-0.70 match the selected midpoints.
+Keep each capacitor's exact characterization URL separate from shared package
+geometry metadata. These checked mappings await registry/source integration;
+mask, stencil, courtyard and native adoption remain separate work.
 
 Mains C2/C3/C4 and R7 are now independently counted as BOM-75 through BOM-78.
 C2 is TDK 0805, C3 TDK 0603, C4 the same 1210 Murata part as controller
@@ -142,6 +164,11 @@ These hashes identify the locally inspected files, not a KiCad library release.
 - [ST DS4260 Rev 7 manufacturer PDF mirror](https://store.comet.bg/download-file.php?id=30778): SHA-256 `1c61ac54a7cce343899a55ff9e19229444c0e22a3e7265c24fe979be476ca7de`; pinout and land p1/12/13 inspected. Direct ST downloads failed; these hashes identify actual mirrored manufacturer bytes.
 - [Murata detailed reference sheet](https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647): SHA-256 `167a6933d9fb0b46ed47eff2bcb1b43822cb141c9a10abfb46ff7f204f17acdb`; p27 reflow table and p2 body/termination dimensions.
 - Native 43045-0600: `1189d97f82d7fb3431677e14c083aca02bb7d19cf70b3b44453348b7371d963d`; 43045-0200: `8e925c4f589c229e874438e65821325e6f912a3852dc7341d6539d24986eed66`; 43650-0300: `6b669b0fab1c154bd32124d3f453b52a4dbb4ff697b7aab6dffc95fbbf582d76`. These hashes identify the installed KiCad 10.0.5 files reproduced in source, not downloaded Molex PDF bytes.
+- [Littelfuse SMBJ manufacturer PDF mirror](https://atta.szlcsc.com/upload/public/pdf/source/20250918/1F4D01A109F9E96436584D6D9E812816.pdf): JC.07/04/25 v4, SHA-256 `d7df155be4b1f612085401e8c946f065e284d65a0e7de22b9225a7b73946e51b`. Exact SMBJ8.0CA selection, p5 land dimensions and CA polarity were checked. Canonical Littelfuse downloads returned HTTP 403.
+- [Panasonic resistor land drawing](https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf): 2025-12-24, p1, SHA-256 `fc707b230cce91d464bc3aaf1ed614fa5b412f40cbe7df7cab1541d2c164a882`. ERA 0603/0805 gap/span/width ranges visually checked.
+- [Panasonic ERA specifications](https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf): 2024-04-24, p1-3, SHA-256 `2ffb715174964a986d8cd22f38607a14465c938bb5ff9817e0948124ebb69a5b`. Exact code classes, ratings and body dimensions checked with manufacturer model pages.
+- [TDK exact 4.7 nF characterization](https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608c0g1h472j080aa.pdf): 2019-05-21, p1, SHA-256 `07fe6542d046e96878552c0c2dfba1b7027b45231fec57092052b755a2bf6f45`.
+- [TDK family delivery specification](https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/specification/mlccspec_commercial_general_midvoltage_en.pdf): GC11010030, September 2026, SHA-256 `4e6084e013d796f311636cc4c8e2e3e27d05beef7c876fbf5a3759c4cd32624e`. Printed p18/PDF p19 reflow diagram and table visually checked; flow-solder lands differ.
 
 The final manufacturer's/component-side mating drawing and physical retention
 checks remain distinct from the source/native copper and drill comparison.

@@ -387,7 +387,7 @@ const fn weekday(year: u16, month: u8, day: u8) -> u8 {
 
 // Cargo's `--all-targets` asks rustc for a test artifact even though this
 // embedded library declares `test = false`. With `harness = false`, these two
-// target-only items make that lint artifact link without pretending the C6 can
+// target-only items let that lint artifact compile without pretending the C6 can
 // execute Rust's host test harness.
 #[cfg(all(test, target_os = "none"))]
 fn main() {}

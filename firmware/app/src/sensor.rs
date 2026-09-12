@@ -3,7 +3,7 @@ use crate::{
     board::{Board, SensorHardware},
     snapshot,
 };
-use crystal_shim_core::calibration::{Calibration, CalibrationStage, Channels, RawFrame};
+use crystal_shim_core::calibration::{CalibrationStage, Channels, RawFrame};
 use crystal_shim_core::{Fault, Millis, Reading};
 use crystal_shim_drivers::fdc1004::Fdc1004;
 use embassy_time::{with_timeout, Delay, Duration, Timer};
@@ -68,7 +68,7 @@ impl I2c for TimedBus {
 }
 
 #[embassy_executor::task]
-pub async fn run(hardware: SensorHardware, calibration: Option<Calibration>) {
+pub async fn run(hardware: SensorHardware) {
     let SensorHardware {
         i2c,
         sda,
@@ -82,7 +82,8 @@ pub async fn run(hardware: SensorHardware, calibration: Option<Calibration>) {
     let mut driver = Fdc1004::new(TimedBus(i2c.into_async()));
     let mut delay = Delay;
     let mut attempts = [None; 3];
-    let mut calibration = calibration.map(|value| CalibrationStage::new(value, snapshot::now()));
+    let mut calibration = None;
+    let mut configuration_revision = 0;
     let mut sequence = 0u64;
     loop {
         snapshot::update_sensor(|s| s.reading = Reading::Invalid(Fault::Bus));
@@ -126,6 +127,13 @@ pub async fn run(hardware: SensorHardware, calibration: Option<Calibration>) {
             continue;
         }
         loop {
+            let configuration = snapshot::configuration();
+            if configuration.revision != configuration_revision {
+                configuration_revision = configuration.revision;
+                calibration = configuration
+                    .calibration
+                    .map(|value| CalibrationStage::new(value, snapshot::now()));
+            }
             if fault.level() != Level::High
                 || snapshot::sensor().power_fault_epoch != recovery_epoch
             {
@@ -154,6 +162,7 @@ pub async fn run(hardware: SensorHardware, calibration: Option<Calibration>) {
                     snapshot::update_sensor(|s| {
                         s.frame = Some(frame);
                         s.frames = sequence;
+                        s.configuration_revision = configuration_revision;
                         // A fault during the frame or calibration cannot be overwritten
                         // by its completion. Epoch saturation fails closed too.
                         let recovered = s.power_fault_epoch == recovery_epoch
