@@ -173,7 +173,7 @@ pub fn parse_line(
             if !hex.len().is_multiple_of(2) || hex.len() / 2 > scratch.len() {
                 return Err(ParseError::Configuration);
             }
-            for (index, pair) in hex.chunks_exact(2).enumerate() {
+            for (index, pair) in hex.as_chunks::<2>().0.iter().enumerate() {
                 let high = digit(pair[0]).ok_or(ParseError::Configuration)?;
                 let low = digit(pair[1]).ok_or(ParseError::Configuration)?;
                 scratch[index] = high * 16 + low;
