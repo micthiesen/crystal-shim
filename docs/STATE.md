@@ -25,8 +25,11 @@ and Pushover transition alerts remain the [control contract](controls.md).
   frames. The integer calibration stage validates measured coefficients and
   raw/time/slew limits. ESP capture pin bindings, separate control/sensor executors,
   sensor recovery, fault latching, watchdog and bounded USB diagnostics are implemented.
-  Boot supplies no saved calibration/configuration, so the relay stays off. Actual
-  storage, schedule/command ingress, settings/provisioning and networking remain work.
+  Boot now validates saved configuration/calibration and repairs retained state
+  through an exclusive relay-off flash gate. The core has a bounded configuration
+  codec and POSIX timezone resolver. Runtime settings/storage coordination,
+  schedule/command ingress, provisioning and networking remain work. The current
+  image still has no input that can request a pump run.
 - The [verified TLS provider](design/tls-provider.md) is implemented and C6-built,
   with automatic clock ageing and a checked-in offline certificate test harness.
   The initial provider also passed a live public-endpoint handshake.
@@ -64,10 +67,16 @@ and Pushover transition alerts remain the [control contract](controls.md).
    tests. The second independent pass is clean within this scope. Exact small passives, cable,
    enclosure fit, actual PCB source and ESP adapters remain implementation work.
 5. A source/ELF audit found that priority cannot isolate control from flash access.
-   The pending storage adapter must enable flash critical sections and wait for
-   a matching relay-off acknowledgement before every access, including Matter KV.
-   The current runtime has no flash adapter. Runtime review also found a short
-   power-fault polling race, now addressed by a Priority3 latched fault epoch.
+   The [implemented boot flash adapter](design/flash-storage.md) enables critical
+   sections, waits for a matching relay-off acknowledgement and keeps the output
+   inhibited across bounded read/program/erase chunks. Only control feeds the
+   revised 1,500 ms watchdog. Matter still needs to use this same storage owner.
+   Root corrected partition-buffer sizing and enabled MD5 validation. Review fixed
+   an interrupt-enable guard and custom-partition panic; host regressions cover
+   the actual selection code. Configuration/timezone reviews and a fresh final
+   flash pass found no remaining actionable defect in this scope. Power-circuit
+   closure is underway; the 1 A supply/current-limit tolerance conflict is being
+   checked against the concrete IRM-10-5 alternative before adopting a circuit.
 
 ## Owner input pending
 
@@ -81,17 +90,20 @@ prototype or final-unit calibration before fabrication.
 
 ## Verification
 
-`sh scripts/check.sh` passes at the runtime integration checkpoint: 62 core tests,
-nine driver tests, one CLI test,
+`sh scripts/check.sh` passes at the configuration/storage checkpoint: 79 core tests,
+nine driver tests, one CLI test, three production-code partition regressions,
 11 deterministic TLS tests on Linux through OrbStack with crypto-profile parity,
 host and embedded fmt/clippy, C6 release build, PCB source fixture, two Bun tests
 and 28 handoff tests. Two existing tscircuit fixture reference-text warnings
 remain documented tooling output. Documentation checks pass for the new design
 records. The TLS provider report separates its historical app build from the linked
 provider probe and the live host checks; no C6 runtime result is implied.
-GitHub documentation and firmware CI passed for checkpoint `6ca0fa3`, including
-the Linux TLS harness and ESP target build. The [firmware run](https://github.com/micthiesen/crystal-shim/actions/runs/34664738800)
-records those hosted checks.
+GitHub documentation and firmware CI passed for the preceding runtime checkpoint
+`81c128b`, including the Linux TLS harness and ESP target build. The
+[firmware run](https://github.com/micthiesen/crystal-shim/actions/runs/34666376445)
+records those hosted checks. Hosted results for the current storage changes follow
+the next push. The local release ELF reports text 611,742 / data 6,628 / bss 8,524
+bytes; this is not the complete SRAM/stack budget or physical runtime evidence.
 
 Every [physical commissioning result](../testing/test-matrix.csv) remains Not run.
 No parts were bought, hardware flashed, mains energized or live alerts sent.
@@ -102,8 +114,8 @@ Close the coil-protection and remaining exact-part calculations, then capture
 the controller and mains source while implementing ESP adapters. Controller
 capture is the preferred next board step because its pin/power interfaces unblock
 complete firmware integration and the mains LV boundary. The next firmware unit
-is validated persistent configuration with the flash/output gate, followed by
-schedule/command ingress and networking. Sensor capture awaits the rim datum;
+is runtime configuration/retained transactions and schedule/command ingress,
+followed by the shared Matter network and settings/notification adapters. Sensor capture awaits the rim datum;
 fabrication export awaits all three complete designs. Remaining review must cover
 actual artifacts, not only these design documents. The overall goal stays active
 through those implementation and delivery steps.

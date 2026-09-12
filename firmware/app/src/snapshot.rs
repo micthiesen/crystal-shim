@@ -2,7 +2,7 @@
 use core::cell::Cell;
 use critical_section::Mutex;
 use crystal_shim_core::calibration::CalibrationError;
-use crystal_shim_core::{Fault, Millis, Reading, SupervisorStatus};
+use crystal_shim_core::{Fault, Millis, Reading, SupervisorConfig, SupervisorStatus};
 use crystal_shim_drivers::fdc1004::Frame;
 
 #[derive(Clone, Copy, Debug)]
@@ -29,6 +29,25 @@ static SENSOR: Mutex<Cell<SensorSnapshot>> = Mutex::new(Cell::new(SensorSnapshot
     power_fault_latched: false,
 }));
 pub static STATUS: Mutex<Cell<Option<SupervisorStatus>>> = Mutex::new(Cell::new(None));
+#[derive(Clone, Copy)]
+pub struct BootConfiguration {
+    pub supervisor: SupervisorConfig,
+    pub maintenance: bool,
+}
+static BOOT: Mutex<Cell<Option<BootConfiguration>>> = Mutex::new(Cell::new(None));
+/// Startup-only publication, after settings and any retained repair are durable.
+pub fn publish_boot(config: BootConfiguration) {
+    critical_section::with(|cs| {
+        assert!(
+            BOOT.borrow(cs).get().is_none(),
+            "boot settings may be published only once"
+        );
+        BOOT.borrow(cs).set(Some(config));
+    });
+}
+pub fn boot_configuration() -> Option<BootConfiguration> {
+    critical_section::with(|cs| BOOT.borrow(cs).get())
+}
 pub fn sensor() -> SensorSnapshot {
     critical_section::with(|cs| SENSOR.borrow(cs).get())
 }

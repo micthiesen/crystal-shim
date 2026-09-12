@@ -2,9 +2,12 @@
 #![no_std]
 
 pub mod calibration;
+pub mod configuration;
+pub mod flash_gate;
 mod policy;
 mod retained;
 mod schedule;
+pub mod timezone;
 mod water;
 pub use policy::{
     HardwarePermit, Inputs, ScheduledWindow, Supervisor, SupervisorConfig, SupervisorStatus,

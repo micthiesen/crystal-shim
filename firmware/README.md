@@ -4,13 +4,14 @@ Rust, bare-metal ESP32-C6, following `../stillair`: `core/` contains the `no_std
 control contract, `drivers/` contains async device drivers, `cli/` runs the control
 model on the host, and `app/` is a separate workspace
 targeting `riscv32imac-unknown-none-elf`. Stable Rust is declared in
-`rust-toolchain.toml`; setup was verified with Rust 1.97.1. Commit both lockfiles.
+`rust-toolchain.toml`; setup was verified with Rust 1.97.1. Commit each workspace's lockfile.
 
 The ESP image is **uncommissioned**. It binds the controller capture pin map,
 acquires FDC1004 frames on a separate interrupt executor, runs a 20 ms relay-output
-task, services a 500 ms system-reset watchdog only after that task completes, and
-streams bounded USB diagnostics. Boot supplies no calibration or control configuration,
-so the relay remains off. Wi-Fi, persistent storage, schedules, command ingress and
+task, services a 1,500 ms system-reset watchdog only after that task completes, and
+streams bounded USB diagnostics. Boot validates saved settings/calibration and repairs
+retained safety state through a relay-off flash gate. Missing or invalid settings keep
+the output off. Wi-Fi, schedule/command ingress, runtime persistence and
 credential/configuration provisioning remain to be integrated. The external coil
 pull-down must establish off before application entry and during reset; a build
 cannot verify that physical behavior.
@@ -20,7 +21,10 @@ checks and complete sequential out-of-phase measurement frames, with host tests.
 It is bound to the ESP's 100 kHz bus with finite transactions and power recovery.
 The [calibration stage](../docs/design/calibration.md) applies measured tank data
 without fabricated default thresholds. The [integration design](../docs/design/firmware-integration.md)
-describes the executor, storage and network adapters that remain to be implemented.
+distinguishes implemented executor and boot-storage adapters from remaining network
+and runtime integration. The [configuration](../docs/design/configuration.md),
+[timezone](../docs/design/timezone.md) and [flash-storage](../docs/design/flash-storage.md)
+records describe the bounded models and current evidence.
 
 The app uses the same compatible esp-hal revision as Stillair,
 `10e48dd74837bae4be663a7d1825d12875363727`, for HAL, panic/log output, bootloader,
@@ -35,7 +39,8 @@ Stop-low / automatic restart-after-refill is confirmed. `Supervisor` is the publ
 control entry point; the lower-level interlock is crate-private and cannot serve
 as an unscheduled hardware entry point. The core uses injected monotonic milliseconds and
 integer calibrated levels in `0..1000` thousandths of the selected sensing range.
-These are neither millimetres nor an implemented capacitance-to-level conversion.
+These are calibrated fractions, not millimetres. The integer calibration stage
+converts measured capacitance response into this domain.
 No real stop/restart thresholds or maximum sample age are supplied by default.
 
 - Boot starts off. Automatic restart requires valid readings at or above the configured
@@ -75,8 +80,10 @@ only active windows with a stable, strictly increasing `WindowId` and the
 original absolute monotonic `ends_at`. It must preserve identities across
 repeated ticks and schedule edits. `schedule.rs` implements bounded daily entries,
 injected timezone resolution and stable occurrence IDs. `retained.rs` implements
-the versioned safety record and boot recovery policy. Time synchronization,
-timezone-rule parsing and actual flash storage remain app work; no hours are guessed.
+the versioned safety record and boot recovery policy. The core timezone resolver
+accepts explicit POSIX rules. The app loads saved settings and repairs retained state
+at boot. Time synchronization and runtime schedule/storage coordination remain work;
+no hours are guessed.
 The intended starting schedule is fifteen minutes a few times per day.
 
 Every run has an absolute deadline. The initial configurable maximum duration is

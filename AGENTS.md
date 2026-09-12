@@ -70,6 +70,12 @@ dependencies. Inject monotonic time; use enums and integer calibrated units, foc
 modules, and meaningful behavior/failure tests. Hardware bindings stay thin. No
 ESP-IDF C SDK, debug leftovers, live credentials, or unrequested flashing.
 
+All flash access, including future Matter KV, belongs to the gated storage owner.
+Preserve `esp-storage/critical-section`, relay-off acknowledgements and bounded
+flash chunks. Interrupt priority alone cannot protect flash-backed control code.
+Storage never feeds the watchdog or logs stored bytes. See
+[the flash contract](docs/design/flash-storage.md) before adding persistence.
+
 PCB tooling follows Stillair's pinned Bun, TypeScript 5.9.3, tscircuit, and Oxc.
 Do not update TypeScript alone: Stillair observed tscircuit's Rollup compiler-API
 integration fail with TypeScript 7. There is no root TypeScript service, mitools,
@@ -77,8 +83,10 @@ Biome, or Zod environment config because those do not fit this hardware scaffold
 
 Validation gate: `sh scripts/check.sh`. It runs host fmt/clippy/tests, embedded
 fmt/clippy/release build, PCB lint/format/typecheck and tooling tests, and repository
-document checks. Verified-TLS policy tests run on Linux through `scripts/check-tls.sh`;
-on macOS it uses the default OrbStack Linux machine. That environment needs Rust,
+document checks. The separate `firmware/partition-tests` workspace compiles the actual partition
+selection code against the pinned bootloader library's host backend.
+Verified-TLS policy tests run on Linux through `scripts/check-tls.sh`; on macOS the
+harness uses the default OrbStack Linux machine. That environment needs Rust,
 Clang, libclang and CMake. The embedded TLS build uses `scripts/with-esp-toolchain.sh`
 to select a Clang with RISC-V support. Install PCB dependencies first with
 `cd pcb && bun install --frozen-lockfile`.

@@ -5,6 +5,12 @@ cd "$(dirname "$0")/.."
 python3 scripts/check_docs.py
 sh scripts/check-tls.sh
 (
+  cd firmware/partition-tests
+  cargo fmt --all -- --check
+  cargo clippy --locked --all-targets -- -D warnings
+  cargo test --locked
+)
+(
   cd firmware
   cargo fmt --all -- --check
   cargo clippy --locked --all-targets -- -D warnings

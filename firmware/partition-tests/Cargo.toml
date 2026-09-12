@@ -1,0 +1,19 @@
+[package]
+name = "crystal-shim-partition-tests"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[workspace]
+
+# Compile the actual ESP selection code against the same pinned parser's host backend.
+[lib]
+path = "../app/src/partition.rs"
+doctest = false
+
+[dependencies]
+embedded-storage = "0.3"
+esp-bootloader-esp-idf = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727", default-features = false, features = ["std", "validation"] }
+
+[dev-dependencies]
+md-5 = "0.10.6"

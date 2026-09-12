@@ -148,10 +148,11 @@ persistence. On exiting maintenance, require fresh recovery and the off delay.
 
 Retain raw level/wet/dry capacitances, calculated level, sensor validity and fault
 reason, sample age, calibration revision, relay command, state/timer status and
-reset reason. Raw capacitance conversion, calibration storage, USB protocol,
-watchdog integration, wall-clock scheduling and the Matter adapter are implementation
-work, not connected features claimed by the scaffold. The network technology is
-selected; pairing, Pushover sending and their credentials/storage are not implemented yet.
+reset reason. Raw conversion, calibrated validity, watchdog service and boot loading
+of saved configuration are implemented. Runtime settings/persistence, USB commands,
+wall-clock scheduling and the Matter adapter remain work. The network technology is
+selected; pairing and Pushover delivery are not implemented yet. Stored Pushover
+credentials have a validated format but are not used by a network sender.
 
 Use hardware gate pulldown and watchdog recovery so reset removes relay drive.
 Verify bootloader/flashing, brownout and unpowered GPIO behavior on the real board.

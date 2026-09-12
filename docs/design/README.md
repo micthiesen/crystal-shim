@@ -16,6 +16,9 @@ release or commissioning evidence. Their explicit open items remain work to fini
   executor ownership, Matter, HTTP, Pushover, storage, USB and resource gates.
 - [Calibration](calibration.md): measured TI response normalization, integer arithmetic,
   raw envelopes, frame ordering and validity checks.
+- [Configuration](configuration.md): validated settings and canonical bounded storage format.
+- [Timezone](timezone.md): explicit POSIX rules, DST folds/gaps and calendar limits.
+- [Flash storage](flash-storage.md): output-off ownership, bounded flash chunks and boot recovery.
 - [Verified TLS](tls-provider.md): fixed Pushover trust policy, C6 build,
   live endpoint checks, measured linked size and remaining runtime evidence.
 - [Footprint audit](footprint-audit.md): installed-library candidates, manufacturer

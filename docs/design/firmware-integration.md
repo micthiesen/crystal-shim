@@ -47,12 +47,12 @@ check, so an interrupted acquisition cannot become the next slew baseline.
 
 The current image implements those bindings, the 20 ms Priority3 output task,
 Priority2 acquisition/recovery and a bounded thread-mode USB writer. `main`
-passes `None` for calibration and supervisor configuration. It has no schedule
-or command ingress and cannot run the pump. A configured image must load and
-validate both before enabling policy. TIMG1 has a 500 ms system-reset watchdog;
-only a completed output iteration feeds it. Storage integration must revisit
-that timeout against allowed flash-operation bounds, while keeping the relay
-off during flash and never feeding from storage.
+loads validated settings/calibration and repairs retained state before publishing
+boot configuration. It has no schedule or command ingress and cannot run the pump.
+TIMG1 has a 1,500 ms system-reset watchdog; only a completed output iteration feeds
+it. The [flash adapter](flash-storage.md) holds the output off across each transaction,
+uses at most one sector erase per chunk and requires another control acknowledgement
+between chunks. Physical timing remains unverified.
 
 `control_task` runs on a fixed monotonic cadence and consumes snapshots only:
 
@@ -180,8 +180,9 @@ run simply withholds the run until it succeeds.
 
 ## Flash and relay exclusion
 
-This is an implementation requirement for the pending storage adapter, including
-the Matter KV store. Do not copy Stillair's flash feature flags unchanged.
+The [implemented boot storage adapter](flash-storage.md) follows this requirement.
+The future Matter KV adapter must use the same owner. Do not copy Stillair's flash
+feature flags unchanged.
 At the pinned revision, `BlockingAsync` calls `FlashStorage` synchronously, and
 only the ROM-call shims are in RAM. The Embassy interrupt handler, task poll and
 supervisor remain in flash-backed code. Espressif documents that
@@ -190,7 +191,7 @@ every reachable function and datum must be in internal RAM for an interrupt to
 run during that interval. A priority or single `#[ram]` task annotation is insufficient.
 
 Enable `esp-storage/critical-section` and wrap **every** runtime flash operation
-in an async gate. Storage raises `FLASH_INHIBIT`, waits for an epoch acknowledgement
+in the output-off gate. Storage raises the inhibit, waits for an epoch acknowledgement
 published by control after writing the relay GPIO low, and keeps the inhibit
 asserted until the operation ends. Cancellation must release ownership safely;
 an acknowledgement from an older request cannot authorize a later write. Control
@@ -292,7 +293,7 @@ USB. Do not place it in a URL, HTML log, or normal status output. A write is han
    sole storage writer.
 3. Return success only after the writer acknowledges the durable record and matching
    retained state. On failure, leave the old runtime configuration active.
-4. Publish the validated configuration snapshot. `Supervisor::set_config` and the
+4. Publish the validated configuration snapshot. `Supervisor::reconfigure` and the
    retained occurrence end clamp prevent a duration edit from extending an active run.
 
 For time, use `sntpc-core 0.11` concepts: `get_time`, `NtpContext`,

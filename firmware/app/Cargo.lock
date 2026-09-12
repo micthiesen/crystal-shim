@@ -452,17 +452,23 @@ dependencies = [
  "edge-nal",
  "edge-nal-tls",
  "embassy-executor",
+ "embassy-futures",
  "embassy-time",
  "embedded-hal-async",
  "embedded-io-async 0.7.0",
+ "embedded-storage",
+ "embedded-storage-async",
  "esp-alloc",
  "esp-backtrace",
  "esp-bootloader-esp-idf",
  "esp-hal",
  "esp-println",
  "esp-rtos",
+ "esp-storage",
  "heapless 0.8.0",
  "mbedtls-rs",
+ "riscv",
+ "sequential-storage",
  "static_cell",
  "tinyrlibc",
 ]
@@ -1194,6 +1200,20 @@ dependencies = [
  "portable-atomic",
  "riscv",
  "xtensa-lx",
+]
+
+[[package]]
+name = "esp-storage"
+version = "0.9.0"
+source = "git+https://github.com/esp-rs/esp-hal?rev=10e48dd74837bae4be663a7d1825d12875363727#10e48dd74837bae4be663a7d1825d12875363727"
+dependencies = [
+ "document-features",
+ "embedded-storage",
+ "esp-hal",
+ "esp-hal-procmacros",
+ "esp-metadata-generated",
+ "esp-rom-sys",
+ "esp-sync",
 ]
 
 [[package]]
@@ -2144,6 +2164,15 @@ checksum = "8a7852d02fc848982e0c167ef163aaff9cd91dc640ba85e263cb1ce46fae51cd"
 dependencies = [
  "serde",
  "serde_core",
+]
+
+[[package]]
+name = "sequential-storage"
+version = "3.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b80693b2169b3fe0f9c68d5fae804490cc437113c0526dbabb75c01e758db597"
+dependencies = [
+ "embedded-storage-async",
 ]
 
 [[package]]

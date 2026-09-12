@@ -41,6 +41,12 @@ jobs:
       - run: cargo fmt --check
       - run: cargo clippy --locked --all-targets -- -D warnings
       - run: cargo test --locked
+      - name: Check actual partition selection against the host parser
+        working-directory: firmware/partition-tests
+        run: |
+          cargo fmt --all -- --check
+          cargo clippy --locked --all-targets -- -D warnings
+          cargo test --locked
 
   app:
     runs-on: ubuntu-latest

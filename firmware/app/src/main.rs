@@ -12,13 +12,17 @@ use static_cell::StaticCell;
 
 mod board;
 mod control;
+mod flash_gate;
+mod partition;
 mod sensor;
 mod snapshot;
+mod storage;
 
 esp_bootloader_esp_idf::esp_app_desc!();
 
 static CONTROL: StaticCell<InterruptExecutor<1>> = StaticCell::new();
 static SENSOR: StaticCell<InterruptExecutor<2>> = StaticCell::new();
+static STORAGE_BUFFER: StaticCell<[u8; storage::SCRATCH_BYTES]> = StaticCell::new();
 
 #[esp_rtos::main]
 async fn main(_spawner: embassy_executor::Spawner) {
@@ -31,9 +35,10 @@ async fn main(_spawner: embassy_executor::Spawner) {
     let sensor = SENSOR
         .init(InterruptExecutor::new(board.interrupts.software_interrupt2))
         .start(Priority::Priority2);
-    board
-        .watchdog
-        .set_timeout(MwdtStage::Stage0, esp_hal::time::Duration::from_millis(500));
+    board.watchdog.set_timeout(
+        MwdtStage::Stage0,
+        esp_hal::time::Duration::from_millis(1500),
+    );
     board.watchdog.enable();
     let sensor_fault = board.sensor_fault.peripheral_input();
     control.spawn(
@@ -43,19 +48,45 @@ async fn main(_spawner: embassy_executor::Spawner) {
             board.psu_good,
             sensor_fault,
             board.watchdog,
-            None,
         )
         .unwrap(),
     );
     control.spawn(sensor::fault_monitor(board.sensor_fault).unwrap());
-    sensor.spawn(sensor::run(board.sensor, None).unwrap());
+    // Start the output owner before storage: every flash access needs its off ACK.
+    let storage_buffer = STORAGE_BUFFER.init([0; storage::SCRATCH_BYTES]);
+    let mut store = storage::Store::open(board.flash, storage_buffer);
+    let boot = store
+        .as_mut()
+        .map_err(|error| *error)
+        .and_then(|store| store.load_boot(storage_buffer));
+    let calibration = boot
+        .as_ref()
+        .ok()
+        .and_then(|boot| boot.configuration.as_ref())
+        .and_then(|config| config.calibration());
+    if let Ok(boot) = &boot {
+        if let Some(config) = &boot.configuration {
+            snapshot::publish_boot(snapshot::BootConfiguration {
+                supervisor: config.supervisor_config(),
+                maintenance: boot.retained.is_none_or(|loaded| loaded.state.maintenance),
+            });
+        }
+    }
+    sensor.spawn(sensor::run(board.sensor, calibration).unwrap());
+    let boot_status = match &boot {
+        Ok(boot) if boot.configuration.is_some() => "SAVED_CONFIGURATION",
+        Ok(_) => "UNCOMMISSIONED",
+        Err(_) => "STORAGE_RECOVERY_REQUIRED",
+    };
     loop {
         // One thread-mode USB writer. No printing from interrupt tasks or critical sections.
         let sensor = snapshot::sensor();
         let mut line = heapless::String::<768>::new();
         let _ = writeln!(
             line,
-            "UNCOMMISSIONED reset={:?} ms={} frames={} failures={} raw={:?} reading={:?} calibration_error={:?} driver_error={:?}",
+            "{} storage_error={:?} reset={:?} ms={} frames={} failures={} raw={:?} reading={:?} calibration_error={:?} driver_error={:?}",
+            boot_status,
+            boot.as_ref().err(),
             reset,
             snapshot::now().0,
             sensor.frames,

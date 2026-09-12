@@ -20,16 +20,44 @@ The independent source/ELF audit rejected the claim that Priority3 alone protect
 control from flash. `BlockingAsync` calls the blocking NOR driver inline; the
 pinned `esp-storage` RAM shims do not move Embassy's interrupt/task/supervisor
 call graph into RAM. Stillair's disabled default flash critical-section feature
-is not a safe pattern to copy. The pending Crystal storage adapter must enable
-that feature and enforce the [relay-off acknowledgement gate](firmware-integration.md#flash-and-relay-exclusion)
-for every raw flash operation, including Matter KV. This requirement has a new
-physical commissioning row, CTL-12. No flash adapter is implemented in this checkpoint.
+is not a safe pattern to copy. The Crystal boot-storage adapter now enables
+that feature and implements the [relay-off acknowledgement gate](flash-storage.md)
+with fresh control acknowledgements between bounded flash chunks. Matter must
+integrate through that same owner. Physical commissioning row CTL-12 remains unrun.
 
 Root also corrected the conflicting HomeKit Off acknowledgement wording: command
 response means immediate revocation, while storage has a separate durable ack.
 The boot policy already suppresses interrupted eligible windows before use.
 Pre-fabrication memory/layout analysis is now distinguished from runtime high-water
 and cadence measurements on the final boards, preserving the one-shot sequence.
+
+## Configuration, timezone and boot storage
+
+Independent configuration review found no defect after checking canonical decoding,
+CRC-valid semantic mutations, fixed bounds, credential redaction and calibration /
+schedule / supervisor invariants. Independent timezone review found no defect in the
+explicitly supported POSIX subset, including folds/gaps, unusual DST shifts and
+calendar boundaries. Its isolated two-million-timestamp round-trip sweep passed.
+
+Storage review produced these corrections:
+
+| Finding | Correction and evidence |
+| --- | --- |
+| Thread run level does not prove C6 interrupts are enabled | The gate checks both run level and `mstatus.MIE` before requesting or renewing ownership. The actual critical-section backend clears MIE without raising the threshold. Source re-review confirmed the fix. |
+| Passing the entire 4,096-byte scratch to the partition parser always fails | Slice to `PARTITION_TABLE_MAX_LEN` (3,072 bytes) and enable MD5 validation. The shared production/host selection test uses the real larger scratch. |
+| The typed upstream partition decoder panics on a legal custom type before NVS | Scan raw type/subtype tags. A checked-in regression using the same pinned parser passes; an isolated copy restoring the typed predicate fails at the upstream `unreachable!()`. |
+
+The first reviewer's final source/ELF pass found no remaining defect in boot flash
+ownership, chunk/ACK freshness, safe publication or secret handling. The five ROM
+flash wrappers resolve in IRAM. A separate fresh flash review found no further
+actionable defect, including the extracted production partition function and its
+three host regressions.
+The full local gate passes with 79 core tests, three partition regressions, nine
+driver tests, one CLI test, 11 TLS cases and the PCB/document checks. The partition
+suite checks MD5 corruption, custom tags, flags, alignment, capacity, overflow and
+overlap using the actual production selection function. None of this is physical
+flash timing, power-cut or relay-pin evidence. Runtime command/configuration
+transactions and Matter storage remain later integration work.
 
 ## Calibration and local runtime
 
@@ -57,8 +85,8 @@ the underlying GPIO ISR, as well as its monitor task, runs at Priority3.
 
 The host workspace passes 50 core tests, nine driver tests and one CLI test.
 The final independent pass found no further substantive defect in this scope.
-The ESP scheduler/storage adapters are
-not implemented, so storage acknowledgement and task integration remain review work.
+Runtime schedule/storage coordination and command persistence remain integration
+work. The later boot-storage checkpoint below does not complete those adapters.
 
 ## Sensor basis
 
