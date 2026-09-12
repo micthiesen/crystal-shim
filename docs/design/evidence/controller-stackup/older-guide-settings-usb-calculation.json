@@ -1,0 +1,40 @@
+{
+  "captured_date": "2026-09-12",
+  "model": "DiffCoatedCoplanarWaveguideWithLowerGnd1B",
+  "numeric_request": {
+    "H1": 8.283464566929135,
+    "Er1": 4.4,
+    "W1": 9.448818897637794,
+    "W2": 8.748818897637795,
+    "S1": 5.905511811023622,
+    "D1": 19.68503937007874,
+    "T1": 1.6,
+    "C1": 1.2,
+    "C2": 0.6,
+    "C3": 1.2,
+    "CEr": 3.8,
+    "dCalculateMode": 3,
+    "isLinkComputingMode": false,
+    "W2LinkW1Incr": 0.7,
+    "ZoTol": 0.05
+  },
+  "accepted": true,
+  "result": {
+    "accessId": "fce3167b-6473-41a4-aab2-d5d53469f834",
+    "impedance_calc_error_msg": "",
+    "impedance_calc_mark": "DiffCoatedCoplanarWaveguideWithLowerGnd1B",
+    "impedance_calc_result": {
+      "dCer": 0,
+      "dDelay": 5782.38817311,
+      "dErEff": 3.00507982462,
+      "dImpedance": 89.8138426614,
+      "dInductance": 0,
+      "dResultValid": 1
+    },
+    "impedance_calc_status": 0,
+    "impedance_calc_time": 125,
+    "paramMd5": "37b87bcfa0b33a300e35b37c790a0630",
+    "uuid": "4896fca4-7c3c-4051-8f90-8f30157f90f4"
+  },
+  "source_request_sha256": "2ed12aae5047c393addaa2baa09ab9176f4e429f7fc350d1e70771e528b8bd32"
+}

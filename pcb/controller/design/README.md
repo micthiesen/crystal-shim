@@ -1,5 +1,33 @@
 # Controller component source
 
+## Guarded initial handoff
+
+From `pcb/`, run `bun run handoff:controller` on the verified macOS KiCad host.
+It rebuilds source and stages a fresh initial board, eight schematic files and
+99 per-reference footprints. `export:kicad:controller` is an internal command:
+it requires all four shared handoff environment guards, exact normalized inputs
+and an empty canonical stage outside the repository. It cannot overwrite a seed.
+
+The wrapper binds the freshly regenerated manifest, generator source hashes,
+native footprint preservation, project-scoped Konnect library registration and
+native initial project rules. It applies the declared 0.20 mm hole-clearance rule
+through KiCad's settings manager; `.kicad_pro` and any native `.kicad_prl` output
+are bound in receipts. The library table currently names its exact stage path.
+Relocation needs verified native re-registration and new acceptance evidence.
+
+The shared stage then checks hierarchy, source parity, initial ERC/DRC finding
+policy and actual schematic/PCB renders. A successful **initial handoff stage**
+can still contain the explicitly declared schematic cleanup and unrouted items.
+It is not an adopted board, clean final ERC/DRC or a manufacturing package. Do
+not create a lock or start routing until the remaining project gates are met.
+Current native ERC has 655 declared findings and DRC has 216 unrouted items with
+zero other violations. Complete page framing and legibility review are explicit
+cleanup obligations before acceptance.
+
+The [augmentation contract](kicad-augment.json) and
+[fabrication design basis](../../../docs/design/controller-stackup.md) retain
+the native stackup, USB, thermal/via, stencil, antenna and assembly obligations.
+
 These are actual selected part models for the final controller. They now form the complete
 controller schematic and explicit board placement; enclosure fit, native assembly
 and manufacturing delivery remain work.
@@ -69,8 +97,9 @@ here is a fabrication input.
 
 The `CrystalShim:*` footprint metadata names reserve future native library IDs;
 those KiCad footprints have not been adopted. Body/courtyard and mask output now
-exists for every purchased controller part. Complete paste, thermal and antenna
-declarations, exact stackup and enclosure fit before the guarded handoff. No handoff lock or
+exists for every purchased controller part. The [augmentation contract](kicad-augment.json) now declares the stackup, USB,
+thermal/via, paste, antenna, rule and manufacturing obligations. Native application,
+assembly process closure and full enclosure fit remain required. No handoff lock or
 fabrication outputs exist. The component tests run in the normal project gate.
 
 ## Initial export integration
@@ -165,8 +194,8 @@ WROOM native body centre is (0,-3); its compiled copper bounding-box centre is
 pin-one origins without moving actual source pads or bodies. Four-angle tests
 and complete native pcbnew readback confirm the corrected datums and unchanged
 absolute geometry. `createControllerInitialGraphs` now invokes that adapter;
-the source manifest now passes strict native parity, while the guarded handoff
-command and complete augmentation declaration remain to implement.
+the source manifest now passes strict native parity. The guarded handoff command
+and augmentation declaration above integrate this into a fresh, verified stage.
 Connector envelopes include rear tails and
 latches, but harness bends, mating sweep and enclosure access remain separate.
 The Molex 10.16 mm maximum edge datum is measured from the locator centre at

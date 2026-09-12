@@ -121,7 +121,7 @@ export const connectorPhysicalModels: Readonly<
     },
     nativeAssembly: {
       paste:
-        "SMT contacts require paste; do not double-print the four shared A/B copper areas. Planned shell hand-soldering with no paste is pending KiCad board augmentation: the current initial adapter still restores F.Paste on shell slots to match the audited native model. Exact stencil apertures and any paste-in-hole alternative require process review. Plastic locator holes have no paste.",
+        "SMT contacts require paste; do not double-print the four shared A/B copper areas. The two ground areas A1/B12 and A12/B1 use project R0.25 corners: any 1:1 stencil apertures must follow those corners once per physical area, not the former stock R0.15 corners. Planned shell hand-soldering with no paste is pending KiCad board augmentation: the current initial adapter still restores F.Paste on shell slots to match the audited native model. Exact stencil apertures and any paste-in-hole alternative require process review. Plastic locator holes have no paste.",
       thermal:
         "Shell is GND; choose relief/return geometry with USB ESD and mechanical retention in mind. No exposed thermal pad. GF-A stakes are 0.95+/-0.15 long, so a 1.6 mm board does not give underside protrusion; inspect solder retention.",
     },
@@ -129,7 +129,7 @@ export const connectorPhysicalModels: Readonly<
       url: "https://gct.co/files/drawings/usb4105.pdf",
       sha256: "fb331fbabee8392ed2937ed757c1610cb0f174b84625147c0b580a18eea8c0e5",
       drawing:
-        "USB4105 B4 2023-12-18 sheet 1, component-side layout and mating view; ordering grid GF-A uses default 0.95 mm shell stakes. General two-decimal +/-0.15; recommended PCB layout +/-0.05.",
+        "USB4105 B4 2023-12-18 sheet 1, component-side layout and mating view; ordering grid GF-A uses default 0.95 mm shell stakes. General two-decimal +/-0.15; recommended PCB layout +/-0.05. GND copper uses a project R0.25 DFM adaptation, preserving every manufacturer pad bound/centre and locator; that radius is not specified by GCT.",
     },
   },
   [ledId]: {

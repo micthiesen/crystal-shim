@@ -28,8 +28,13 @@ Last updated: 2026-09-12
   fields. The per-reference native library preserves all source geometry through
   save/load and 396 rotation comparisons. Actual shared augmentation fixes every
   repeated physical-pad net, and strict PCB plus schematic XML parity passes.
-  No production board or handoff lock has been adopted. Complete augmentation,
-  clean ERC/DRC, routing and all three fabrication packages remain work.
+  The guarded initial handoff now runs end to end, registering the exact staged
+  library and setting 0.20 mm NPTH clearance through native tools. The
+  [fabrication contract](design/controller-stackup.md) selects the stackup, USB
+  geometry, thermal vias and stencil obligations. J4's revised ground corners
+  give 0.218788 mm locator clearance without moving pads or holes. No production
+  board or handoff lock has been adopted. Native schematic cleanup, remaining
+  augmentation, routing and all three fabrication packages remain work.
 - The [nominal enclosure allocation](design/controller-enclosure-fit.md) establishes
   the controller shift, covered J2/USB opening and retained carrier envelope.
   Exact cover/support/strain-relief parts, tight mould/board tolerances, actuator
@@ -54,20 +59,27 @@ Controller, mains and firmware work remain independent of this input.
 The complete `sh scripts/check.sh` gate passes: 117 core, nine driver, one CLI and
 48 Matter tests, three production partition tests, 11 offline TLS cases on Linux,
 host/embedded fmt and Clippy, C6 release build, resolved Matter feature checks,
-PCB source checks, 62 Bun tests with 14,522 assertions and 35 handoff tests.
-The full log is `/tmp/crystal-shim-full-check-geometry-sender.log` (exit 0).
-Subsequent sender checks also pass on macOS and Linux after correcting a test-only
-EINTR handling failure, with the original fixed exchange deadline preserved.
-Documentation checks cover 59 documents and two CSV tables.
+PCB source checks, 77 Bun tests with 14,979 assertions and 35 handoff tests.
+The full log is `/tmp/crystal-shim-full-check-guarded-handoff-final.log` (exit 0).
+Sender checks pass on macOS and Linux, with fixed exchange deadlines preserved.
+Documentation checks cover 60 documents and two CSV tables. GitHub firmware and
+documentation checks passed on `9f4a8e0`, including current Rust 1.98 Clippy.
 
-Actual native evidence is in
-`/tmp/crystal-shim-native-library-plan/geometry-stage-gtJYOj/final-production-parity.json`:
-99 independent library readbacks, no strict source parity errors, no intrinsic
-geometry drift and no physical-pad net drift. C22/R35 each retain a -1 IU Y
-translation from shared `FromMM`, within parity tolerance. Initial ERC still
-requires NC markers, power flags, connection-grid and library cleanup. Current
-source/native geometry preservation is not a clean ERC/DRC or manufacturing result.
-The [review log](design/review-log.md) records bounded reviews and their limits.
+The guarded native stage passes strict source parity for 99 footprints, 291
+numbered pads, nine NPTHs and eight schematic files. DRC has zero violations and
+216 expected unrouted items. Initial ERC retains 655 declared findings: 538
+off-grid endpoints, 95 symbol-library issues, 16 unconnected pins, four undriven
+power pins and two dangling wire endpoints. Complete page framing and legibility
+review remain explicit cleanup obligations; the proposed USB clipping finding
+was rejected on independent inspection of the full A2 page.
+The independent stage-helper review found no actionable defect in its bounded
+scope. Current source/native preservation is not clean final ERC/DRC or a
+manufacturing result. The [review log](design/review-log.md) records evidence and limits.
+
+The final declaration-bound stage is
+`/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-5vb1r2al`;
+its `handoff-receipt.json` binds source, native files, checks and rendered outputs.
+The command log is `/tmp/crystal-shim-controller-handoff-final-declaration.log` (exit 0).
 
 The release ELF remains text 1,906,596 / data 23,836 / BSS 245,392 bytes;
 RAM execution sections add 80,392 bytes and the configured stack region is
@@ -78,11 +90,11 @@ No parts were purchased, hardware flashed, mains energized or live notifications
 
 ## Next
 
-Complete the controller augmentation declaration and guarded initial-export command,
-then resolve native schematic cleanup before routing. The source manifest and
-native preservation proof now advance G-02/G-04; the next substantial risks are
-fabricated stackup/USB dimensions, thermal/paste details, exact mechanical fit and
-clean electrical checks. This work needs no purchased hardware or sensor rim datum.
+Resolve the controller's native schematic grid, library, NC, power-flag and page
+framing issues, then apply and verify the remaining fabrication declaration before
+routing. The guarded stage advances G-02/G-04; exact mechanical fit, saved native
+stackup/USB and thermal/paste details still need closure. This work needs no
+purchased hardware or sensor rim datum.
 
 Continue firmware with trusted UTC ownership, then the authenticated settings and
 schedule page and bounded Pushover worker on the shared TCP stack. Recheck RAM and
@@ -107,4 +119,6 @@ pairing and installed tests remain separate final-board commissioning work.
   [provisioning](design/matter-provisioning.md).
 - Nominal fit, tight margins, mating sweeps and unfinished mechanical parts:
   [enclosure allocation](design/controller-enclosure-fit.md).
+- Selected stack, reviewed USB clearance and explicit thermal/via/stencil process:
+  [fabrication contract](design/controller-stackup.md).
 - Independent review scope and actual evidence: [review log](design/review-log.md).

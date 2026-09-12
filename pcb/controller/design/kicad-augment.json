@@ -1,0 +1,422 @@
+{
+  "schema_version": 1,
+  "board_id": "controller.board.main",
+  "operations": [
+    {
+      "id": "controller.augment.coordinates",
+      "kind": "coordinate_transform",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "tscircuit_center_mm": [
+          0,
+          0
+        ],
+        "kicad_center_mm": [
+          100,
+          100
+        ],
+        "x_axis": "same",
+        "y_axis": "invert"
+      }
+    },
+    {
+      "id": "controller.augment.native-footprints",
+      "kind": "footprint_override",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "scope": "all 99 manifest components",
+        "library": "CrystalShim_Controller",
+        "mapping": "Controller_<exact manifest reference>",
+        "reason": "Preserve the compiled initial geometry through native per-reference FootprintSave/FootprintLoad; no installed stock substitution.",
+        "verification": "Bind compiled and effective initial geometry hashes, the native library receipt, exact pad multiplicities, all pad nets, NPTHs, placement and 396 cardinal rotations. Register the stage-local library through verified Konnect before initial ERC/DRC.",
+        "status": "applied during guarded initial stage; complete only when its receipts and parity pass"
+      }
+    },
+    {
+      "id": "controller.augment.stackup",
+      "kind": "stackup",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "layer_count": 4,
+        "copper_weight_oz": 1,
+        "inner_copper_weight_oz": 0.5,
+        "thickness_mm": 1.6,
+        "vendor_stack": "JLC04161H-7628",
+        "vendor_template_id": "30726297697b4c18a0946278a48fb7d8",
+        "vendor_finished_thickness_mm": 1.59,
+        "vendor_thickness_tolerance_percent": 10,
+        "material_basis": "NanYa NP-155F / FR4 Tg155",
+        "layers": [
+          "F.Cu: components, signals, local ground and power",
+          "In1.Cu: uninterrupted GND reference",
+          "In2.Cu: power and limited routing",
+          "B.Cu: ground/thermal spreading and limited routing"
+        ],
+        "dielectrics_mm": [
+          0.2104,
+          1.065,
+          0.2104
+        ],
+        "dielectric_er": [
+          4.4,
+          4.6,
+          4.4
+        ],
+        "nominal_copper_mm": [
+          0.035,
+          0.0152,
+          0.0152,
+          0.035
+        ],
+        "solver_finished_outer_copper_mm": 0.04064,
+        "verification": "Apply detailed stack through native KiCad settings, query the saved stack and fabrication notes. Do not rescale pressed dielectric to force a 1.600 mm sum. See docs/design/controller-stackup.md.",
+        "status": "declared; detailed native stack not yet applied"
+      }
+    },
+    {
+      "id": "controller.augment.npth-clearance",
+      "kind": "custom_rule",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "minimum_hole_to_copper_mm": 0.2,
+        "basis": "JLC rigid PCB published NPTH-to-copper minimum. J4 GND R0.25 source adaptation gives 0.218788 mm nominal.",
+        "application": "apply-controller-initial-rules.py creates controller.kicad_pro with native m_HoleClearance only. No below-minimum exclusions.",
+        "verification": "Native settings readback and actual KiCad DRC with all warning/error severities; retain every connector locator.",
+        "status": "applied during guarded initial stage; other fabrication rules remain pending"
+      }
+    },
+    {
+      "id": "controller.augment.fabrication-rules",
+      "kind": "custom_rule",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "minimum_clearance_mm": 0.15,
+        "minimum_trace_width_mm": 0.15,
+        "minimum_via_drill_mm": 0.2,
+        "minimum_via_annulus_mm": 0.075,
+        "minimum_mask_opening_to_other_copper_mm": 0.09,
+        "minimum_mask_web_mm": 0.1,
+        "ordinary_signal_width_mm": 0.25,
+        "ordinary_via_drill_pad_mm": [
+          0.3,
+          0.6
+        ],
+        "reason": "Project routing allocations within the selected 1 oz process; declared U10/U1 vias are smaller than ordinary routing vias.",
+        "verification": "Native setup/custom-rule readback, native pad/polygon/via distances, actual connected copper and clean DRC; source artwork and hole sizes remain authoritative.",
+        "status": "declared; apply and verify before routing"
+      }
+    },
+    {
+      "id": "controller.augment.usb-impedance",
+      "kind": "impedance",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "nets": [
+          "USB_D_N",
+          "USB_D_N_PORT",
+          "USB_D_N_SWITCH",
+          "USB_D_P",
+          "USB_D_P_PORT",
+          "USB_D_P_SWITCH"
+        ],
+        "impedance_ohm": 90,
+        "tolerance_percent": 10,
+        "trace_width_mm": 0.24,
+        "pair_gap_mm": 0.15,
+        "coplanar_ground_gap_mm": 0.5,
+        "uniform_line_solver_ohm": 89.9427963903,
+        "layer": "F.Cu",
+        "reference_layer": "In1.Cu",
+        "ground_stitch_pitch_max_mm": 5,
+        "length_mismatch_target_mm": 0.5,
+        "requirements": [
+          "Resolve exact consecutive data nets from J4 through U9/U8 to R44/R45/U1; the list is descriptive and does not authorize renaming.",
+          "Continuous L2 GND under the complete USB path; uniform grounded side rails, short paired pad transitions, no protection stubs.",
+          "Keep the long pair on L1; a layer change requires new line calculation and adjacent paired ground return vias.",
+          "Merge duplicate connector contacts immediately, and print one aperture per physical shared contact area."
+        ],
+        "verification": "Inspect actual routed pair and returns, measure mismatch and geometry, and require explicit 81-99 ohm fabrication acceptance. The uniform-line calculation does not model U9/U8/pad discontinuities.",
+        "status": "declared; no production routing or coupon evidence"
+      }
+    },
+    {
+      "id": "controller.augment.power-net-classes",
+      "kind": "net_class",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "scope": "power, control, I2C and USB paths resolved from the current source manifest",
+        "power_spine_width_min_mm": 2,
+        "service_continuous_current_review_a": 1.5,
+        "requirements": [
+          "Short unavoidable IC pad necks need individual length/copper/current review.",
+          "Keep U2 SW and high-current input/capacitor loops compact; sense FB at the quiet output capacitor.",
+          "Keep U10 programming return separate from IN/OUT/TVS loops; join near GND pin 8.",
+          "Separate cable ESD/TVS returns from sensor buffer and programming grounds."
+        ],
+        "verification": "Saved net-class rules and actual route/current/thermal review. These width allocations do not prove final current capacity.",
+        "status": "declared; apply before routing"
+      }
+    },
+    {
+      "id": "controller.augment.ground-and-thermal",
+      "kind": "zone",
+      "owner": "kicad",
+      "target": {
+        "net_stable_id": "controller.net.gnd"
+      },
+      "params": {
+        "layers": [
+          "F.Cu",
+          "In1.Cu",
+          "B.Cu"
+        ],
+        "buck_bottom_reserve_source_xy_mm": [
+          -32,
+          -5,
+          -2,
+          15
+        ],
+        "buck_bottom_nominal_area_mm2": 600,
+        "buck_vias": "At least two 0.30/0.60 GND vias beside each C1/C2/C3/C4/C7 GND land and two near U2.4.",
+        "requirements": [
+          "Preserve continuous In1.Cu beneath USB and non-antenna module body.",
+          "Use broad joined bottom copper rather than an isolated thermal rectangle; measure remaining useful copper after clearances.",
+          "Keep SW copper small, with quiet FB routing. There is no U2 exposed ground pad.",
+          "Do not carry power/TVS current through U10 programming-ground return."
+        ],
+        "verification": "Native zone net/layer/fill readback, connected area and return-path inspection, DRC; final closed-enclosure thermal tests remain required.",
+        "status": "declared; zones/vias not yet applied"
+      }
+    },
+    {
+      "id": "controller.augment.u10-filled-vias",
+      "kind": "pofv",
+      "owner": "kicad",
+      "target": {
+        "component_stable_id": "controller.component.u10"
+      },
+      "params": {
+        "drill_mm": 0.2,
+        "copper_diameter_mm": 0.35,
+        "annulus_mm": 0.075,
+        "process": "Epoxy filled and copper capped through vias; no independent via mask or paste apertures.",
+        "footprint_local_centres_mm": {
+          "5": [
+            [
+              -0.25,
+              -0.75
+            ],
+            [
+              -0.25,
+              -0.25
+            ],
+            [
+              -0.25,
+              0.25
+            ],
+            [
+              -0.25,
+              0.75
+            ]
+          ],
+          "6": [
+            [
+              0.25,
+              -0.75
+            ],
+            [
+              0.25,
+              -0.25
+            ],
+            [
+              0.25,
+              0.25
+            ],
+            [
+              0.25,
+              0.75
+            ]
+          ]
+        },
+        "minimum_bottom_copper_area_per_power_net_mm2": 25,
+        "requirements": [
+          "Pin 5 vias join IN; pin 6 vias join OUT. Neither array is ground.",
+          "Retain source lands and +0.05 mm NSMD openings. Same-net via copper extends 0.025 mm beyond each power land inside the existing mask opening.",
+          "Retain TI split power apertures and 0.100 mm stencil; do not print circular via apertures.",
+          "Preserve quiet GND8 return and USB reference when power-via antipads merge locally."
+        ],
+        "verification": "Actual native pad/net resolver, via coordinates and connected copper; minimum nominal inter-net via copper 0.150, control-mask to via copper 0.125, drill to other-net via copper 0.225 mm; DRC and explicit capped-via order process.",
+        "status": "declared and geometry reviewed; not yet inserted or fabricated"
+      }
+    },
+    {
+      "id": "controller.augment.u1-ground-vias",
+      "kind": "mask_override",
+      "owner": "kicad",
+      "target": {
+        "component_stable_id": "controller.component.u1"
+      },
+      "params": {
+        "drill_mm": 0.2,
+        "copper_diameter_mm": 0.45,
+        "footprint_local_centres_mm": [
+          [
+            -2.13,
+            -3.165
+          ],
+          [
+            -2.13,
+            -1.915
+          ],
+          [
+            -0.88,
+            -3.165
+          ],
+          [
+            -0.88,
+            -1.915
+          ]
+        ],
+        "process": "Top and bottom tenting; no added mask or paste openings. Do not substitute ink plugging.",
+        "requirements": [
+          "All four vias join ground and retain the nine separate 0.8 mm source lands/paste apertures.",
+          "Preserve close returns at module GND1/28 and keep every via/copper structure out of the antenna overhang."
+        ],
+        "verification": "Native GND assignment and aperture layers; nominal drill-to-paste 0.218198 mm and drill-to-mask-opening 0.147487 mm. Final aperture/filled-via process must match the manufacturing package.",
+        "status": "declared; not yet inserted"
+      }
+    },
+    {
+      "id": "controller.augment.antenna-and-mounts",
+      "kind": "keepout",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "antenna_source_xy_mm": [
+          11.2,
+          55,
+          29.2,
+          61.1
+        ],
+        "antenna_housing_clearance_min_mm": 15,
+        "mounting_hole_reserve_radius_mm": 4,
+        "requirements": [
+          "No baseboard copper, vias, zones, support or wiring under the antenna overhang.",
+          "Keep carrier, connectors and cables outside the enclosure-fit antenna exclusion volume.",
+          "Retain all four H1-H4 source locations and clear screw/spacer/tool access."
+        ],
+        "verification": "All-layer native render/zone inspection and full 3D assembly/mating sweep against controller-enclosure-fit.md; final carrier/support tolerances remain open.",
+        "status": "declared; native keepouts and final assembly verification pending"
+      }
+    },
+    {
+      "id": "controller.augment.stencil",
+      "kind": "paste_override",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "stencil_thickness_mm": 0.1,
+        "u10_power_windows": "Two 1.06 x 0.28 mm R0.05 windows per IN/OUT power land; preserve TI RPW0010A corner-pad apertures and their 93%/82% examples.",
+        "u1_ground_windows": "Nine separate 0.8 mm apertures; never a single ground square.",
+        "j4_ground_windows": "One R0.25 0.60 x 1.15 aperture per shared A1+B12 and A12+B1 area, two total; remaining VBUS/data apertures retain source geometry.",
+        "requirements": [
+          "No paste on J1/J2/J3, SW1/SW2/SW3, D4, H1-H4 or TP1-TP11. Hand-solder through-hole items after SMT.",
+          "Remove F.Paste from J4 shell slots for the selected shell hand-solder process; never double-print shared A/B copper.",
+          "Resolve all other package-specific apertures against source physical-model declarations, using 0.100 mm as the board process rather than silently claiming the 0.125 mm DBV example.",
+          "Filled U10 vias add no mask/paste openings; U1 interstitial vias stay tented and clear of all apertures."
+        ],
+        "verification": "Saved native pad layers/margins and exact paste polygons, Gerber stencil union/area counts and assembly process review.",
+        "status": "declared; package-by-package native aperture/process closure still required"
+      }
+    },
+    {
+      "id": "controller.augment.final-silkscreen",
+      "kind": "silkscreen",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "scope": "production board",
+        "requirements": [
+          "Preserve connector pin-1, polarity, maintenance/reset/boot and service/test-point function labels.",
+          "Move reference/value text only for final legibility without changing source placement; keep text off pads, holes and board edges."
+        ],
+        "verification": "Inspect front/back 2D renders and final Gerbers; run native text/silk DRC.",
+        "status": "declared; pending routing/assembly review"
+      }
+    },
+    {
+      "id": "controller.augment.schematic-cleanup",
+      "kind": "schematic_cleanup",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "allowed_initial_erc_types": [
+          "endpoint_off_grid",
+          "lib_symbol_issues",
+          "pin_not_connected",
+          "power_pin_not_driven",
+          "unconnected_wire_endpoint"
+        ],
+        "allowed_initial_erc_ignored_checks": [
+          "footprint_filter",
+          "four_way_junction",
+          "simulation_model_issue",
+          "single_global_label"
+        ],
+        "allowed_initial_semantic_differences": [],
+        "requirements": [
+          "Snap symbol pins, wires and labels to a consistent connection grid while preserving all manifest endpoints and electrical types.",
+          "Resolve the 95 exporter-local symbol-library links using validated symbol definitions and a native project library table.",
+          "Place explicit no-connect markers on every manifest unconnected pin; preserve pin numbers and ensure none is wired.",
+          "Declare power sources at V5_LOGIC, V5_SERVICE_RAW, V3V3 and GND as supported by source supply paths; PWR_FLAG is an ERC source annotation, not proof a rail is live.",
+          "Remove the two root-sheet dangling wire fragments only after confirming they serve no source endpoint or intended net connection.",
+          "Fit every sheet's complete symbols, fields and wiring inside its page at a readable scale. Inspect every complete rendered page, including margins and title block, before acceptance.",
+          "Preserve all 95 exact values, MPNs, datasheet and footprint fields and every hierarchical sheet."
+        ],
+        "verification": "Require strict source schematic/XML parity and a clean ERC report with all errors/warnings resolved before any routing; these initial finding types are not release waivers.",
+        "status": "declared; cleanup not yet applied"
+      }
+    },
+    {
+      "id": "controller.augment.production-routing",
+      "kind": "fabrication_note",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "category": "routing",
+        "allowed_initial_drc_ignored_checks": [
+          "footprint_filters_mismatch",
+          "footprint_type_mismatch",
+          "missing_courtyard",
+          "track_not_centered_on_via",
+          "tuning_profile_track_geometries"
+        ],
+        "text": "KiCad owns all tracks, vias and filled zones. Unconnected items are expected only in initial staging. No hole, copper or library violation is allowed by this declaration.",
+        "verification": "Before fabrication enable applicable checks or record individually justified categories, require zero unconnected items and clean DRC, inspect routes and returns.",
+        "status": "declared; no routed production board"
+      }
+    },
+    {
+      "id": "controller.augment.manufacturing-delivery",
+      "kind": "fabrication_note",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "category": "fabrication_export",
+        "finish": "ENIG",
+        "mask": "green",
+        "silkscreen": "white",
+        "text": "Export all three final boards together after G-02/G-03/G-04: Gerbers, PTH/NPTH drills, assembly BOM/CPL with exact exclusions, stencil, netlist/rule receipts, harness drawings and reviewed mechanical interface. State the exact stack, 81-99 ohm USB acceptance, U10 capped vias and U1 tenting. No part purchase or fabrication order is implied.",
+        "verification": "Use project kicad-manufacture checks and independent CAM/assembly review; source/simulation tests do not establish electrical or operating acceptance.",
+        "status": "declared; no manufacturing package released"
+      }
+    }
+  ]
+}

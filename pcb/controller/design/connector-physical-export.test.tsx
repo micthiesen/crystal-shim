@@ -143,7 +143,7 @@ const cases: { ref: string; body: Outline; court: Outline; lands: Land[] }[] = [
         width,
         height: 1.15,
         shape: "roundrect",
-        radius: width / 4,
+        radius: ["A1", "B12", "A12", "B1"].includes(number) ? 0.25 : width / 4,
       })),
       ...[-4.32, 4.32].flatMap((x): Land[] => [
         {

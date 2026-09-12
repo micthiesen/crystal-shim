@@ -16,7 +16,9 @@
     "lint": "oxlint --report-unused-disable-directives fixtures tools controller/design",
     "format": "oxfmt --check \"fixtures/**/*.ts\" \"fixtures/**/*.tsx\" \"tools/*.ts\" \"controller/design/**/*.ts\" \"controller/design/**/*.tsx\"",
     "check": "bun run lint && bun run format",
-    "check:write": "oxlint --fix --report-unused-disable-directives fixtures tools controller/design && oxfmt --write \"fixtures/**/*.ts\" \"fixtures/**/*.tsx\" \"tools/*.ts\" \"controller/design/**/*.ts\" \"controller/design/**/*.tsx\""
+    "check:write": "oxlint --fix --report-unused-disable-directives fixtures tools controller/design && oxfmt --write \"fixtures/**/*.ts\" \"fixtures/**/*.tsx\" \"tools/*.ts\" \"controller/design/**/*.ts\" \"controller/design/**/*.tsx\"",
+    "export:kicad:controller": "bun controller/design/stage-controller-export.ts",
+    "handoff:controller": "bun run render:controller && python3 tools/tscircuit_handoff.py stage dist/controller/design/design-manifest.json --augmentation controller/design/kicad-augment.json --build-command '[\"bun\",\"run\",\"render:controller\"]' --export-command '[\"bun\",\"run\",\"export:kicad:controller\"]' --production-dir controller/kicad --source-dir . --staging-root /tmp/crystal-shim-controller-handoff --staged-footprint-root footprints"
   },
   "dependencies": {
     "circuit-json-to-kicad": "0.0.205",

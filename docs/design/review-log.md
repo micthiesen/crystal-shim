@@ -778,6 +778,50 @@ firmware directory selected macOS LibreSSL and failed offline issuance, while
 the project-root shell selected OpenSSL 3.6.3 and passed. The documented OpenSSL 3
 PATH prerequisite applies to the shell running the tests too.
 
+## Controller fabrication contract and guarded native operations
+
+The next controller review selected the four-layer JLC04161H-7628 stack and
+0.24/0.15/0.50 mm USB line/spacing geometry from an actual vendor calculation.
+Independent review reproduced a 0.194403 mm USB locator clearance below the
+0.20 mm fabrication minimum. R0.25 on only the four logical ground pads raises
+it to 0.218788 mm while preserving all pad bounds, centres, nets and holes.
+Fresh native before/after comparison covers 99 footprints and all 300 physical
+pads: only those four radius/ratio pairs change, representing two physical areas.
+The geometry regression fails against the previous source. Evidence is in
+`/tmp/crystal-shim-usb-ground-radius`; the selected design and numeric evidence
+are preserved in [the fabrication contract](controller-stackup.md).
+
+The same independent review resolved the service eFuse's original 0.15 mm drill
+proposal to 0.20/0.35 mm filled/capped vias. Actual source-polygon calculations
+preserve its existing mask and split stencil geometry. The module's interstitial
+ground vias require tenting without new apertures. These changes are declared,
+not inserted into a routed board. Thermal measurements and manufacturing-process
+acceptance remain open; no source fixture is a thermal result.
+
+Verified Konnect 0.2.1 project-library registration created only the staged
+fp-lib-table, leaving all existing source files and the global library table
+unchanged. Actual KiCad 10.0.5 checks eliminated all 99 PCB and 95 schematic
+footprint-library findings afterward. Native settings-manager serialization also
+preserves the board while setting the supported 0.20 mm hole-to-copper rule in
+the new project. SaveProject can additionally create local .kicad_prl settings;
+the wrapper binds that exact optional output rather than discarding it. These
+are initial-stage operations, not adoption or schematic-cleanup completion.
+
+Independent guard/helper review found no actionable defect in the reviewed
+wrapper, registration and native settings boundary. Its 14 tests and 133
+assertions pass; a separately created native control project differs only in
+`min_hole_clearance`, from 0.25 to 0.20 mm. Invalid declarations and repeated
+operations reject without writes. Exact reviewed source hashes and limits are
+in `/tmp/crystal-shim-controller-stage-review/review.md`. Root separately ran
+the public `bun run handoff:controller` command through the full native pipeline.
+Strict parity passes, with 655 declared initial ERC findings and 216 unrouted
+items but zero other DRC violations. Root inspected the native PCB image and
+power/USB schematic pages. A proposed USB clipping finding was rejected after
+independent full-page inspection: R40/R41 and their wires are inside the A2 page.
+Complete page framing/legibility review and clean ERC still precede acceptance
+and routing. This bounded clean code review does not approve
+the board or establish whole-project convergence.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

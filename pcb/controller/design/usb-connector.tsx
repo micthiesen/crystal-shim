@@ -46,6 +46,8 @@ export const usbConnectorPinMap = [
 ] as const;
 
 export const usbConnectorPattern = {
+  // Retain the audited stock pin/pose identifier as the base mapping. The four
+  // logical GND pads use the project DFM radius below, not stock-equivalent copper.
   id: "Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal",
   // Native top view, +Y down. Origin is the body centre; mating is toward +Y.
   body: { width: 8.94, height: 7.35, nominalHeightAbovePcb: 3.31 },
@@ -66,7 +68,7 @@ export const usbConnectorPattern = {
     url: "https://gct.co/files/drawings/usb4105.pdf",
     sha256: "fb331fbabee8392ed2937ed757c1610cb0f174b84625147c0b580a18eea8c0e5",
     drawing:
-      "USB4105 B4, 2023-12-18, sheet 1 component-side recommended layout. Native library adopts 25% rounded SMT corners; GCT does not dimension a corner radius. Four shared copper areas carry two contact numbers each. Shell stakes default to 0.95 +/-0.15 mm for GF-A; reflow/paste and final board-thickness retention must be reviewed.",
+      "USB4105 B4, 2023-12-18, sheet 1 component-side recommended layout. Project DFM adaptation: A1/B12 and A12/B1 use R0.25 corners to give 0.218788 mm nominal clearance to the unchanged 0.65 mm NPTHs, above JLC's 0.20 mm minimum. Their 0.60 x 1.15 mm bounds and centres are unchanged. Other SMT contacts retain the stock 25% corner radius. GCT does not dimension a corner radius. Four shared copper areas carry two contact numbers each. Shell stakes default to 0.95 +/-0.15 mm for GF-A; reflow/paste and final board-thickness retention must be reviewed.",
   },
 } as const;
 
@@ -125,7 +127,7 @@ export function UsbConnector(props: UsbConnectorProps) {
                 height={pattern.smtHeight}
                 shape="rect"
                 solderMaskMargin={physical?.declaration.solderMask.expansion}
-                cornerRadius={pin.width * 0.25}
+                cornerRadius={pin.signal === "GND" ? 0.25 : pin.width * 0.25}
                 layer="top"
               />
             </Fragment>
