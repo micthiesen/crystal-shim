@@ -10,6 +10,7 @@ import { prepareFootprintOriginsForInitialExport } from "./footprint-origin-init
 import { applyControllerPinTypesForInitialExport } from "./pin-electrical-initial-export";
 import { createControllerManifest } from "./design-manifest";
 import { applyControllerFieldsForInitialExport } from "./fields-initial-export";
+import { applyControllerSchematicCleanupForInitialExport } from "./schematic-cleanup-initial-export";
 
 // This creates fresh initial object graphs only. It never loads, writes or edits
 // a native file. Stage/adoption/parity and declared downstream augmentation are
@@ -60,10 +61,10 @@ export function createControllerInitialGraphs(input: CircuitJson) {
   );
   if (pinTypes.components !== 95)
     throw new Error("Controller initial component count changed");
-  applyControllerFieldsForInitialExport(
-    initialFiles.map((file) => file.kicadSch),
-    createControllerManifest(input),
-  );
+  const manifest = createControllerManifest(input);
+  const sheets = initialFiles.map((file) => file.kicadSch);
+  applyControllerFieldsForInitialExport(sheets, manifest);
+  applyControllerSchematicCleanupForInitialExport(sheets, manifest);
   for (const file of initialFiles) file.content = file.kicadSch.getString();
   const pcb = createControllerInitialPcb(json);
   return {

@@ -166,17 +166,23 @@ The USB service lives outside `UserTask` and every network lifetime. The pinned
 `run_coex` implementation starts `UserTask` alongside protocol work, despite its
 interface-up-only documentation, so application network work must check readiness.
 Our task checks an operational interface and IPv4 configuration and reports TLS
-readiness without opening sockets or resolving DNS. A future HTTP/Pushover worker
-must await usable configuration and handle loss/retry itself.
+readiness without opening HTTPS sockets. Its [trusted UTC child](trusted-utc.md)
+now makes bounded CASE reads through the same Matter exchange/UDP transport when
+a trusted source is configured. A future HTTP/Pushover worker must await usable
+configuration and handle loss/retry itself.
 
 A permanent `TrngSource` owns RNG and ADC1, which the I2C sensor does not use.
 Independent hardware-seeded, periodically reseeded CSPRNG streams serve Matter
 and MbedTLS. A small typed adapter bridges the SDK's rand_core 0.6 RNG to
 MbedTLS's rand_core 0.10 interface. Main installs the TLS timer/certificate-clock
-hooks once. The fixed TLS provider still requires a fresh trusted UTC observation;
-Matter's monotonic epoch and the USB calendar clock are not passed off as that
-observation. No trusted UTC publisher is installed here. TLS engine failure is
-reported separately and does not disable Matter or local service.
+hooks once. Control now publishes the same accepted original UTC capture to the
+schedule and TLS provider. Automatic observations come from the configured CASE
+peer; explicit USB UTC remains an operator authority. Cached SDK RTC, build time
+and unauthenticated network time do not establish TLS trust. The root enables only
+TimeSyncClient and advertises client cluster 0x0038; POSIX timezone configuration
+remains project-owned. TLS engine failure does not disable Matter or local service.
+Actual Home hub time-server availability and TrustedTimeSource/ACL setup remain
+final-pairing evidence; this implementation does not claim the Home app configures them.
 
 ## Private provisioning boundary
 
@@ -290,9 +296,10 @@ The host provisioning sender is now implemented and tested through synthetic
 serial terminals on macOS and Linux; it has not opened real USB hardware.
 Its host-only dependency adds no embedded code, and the release sizes above remain
 unchanged. See [provisioning](matter-provisioning.md) for the explicit command.
-Remaining integration is a trusted clock source, hosted settings/schedule UI,
-and the bounded HTTP/Pushover
-worker using this TCP interface. RF pairing/reconnect, real group/subscription
+The trusted UTC acquisition and control/TLS publication are implemented; the
+configured peer and ACL must still be proven during final pairing. Remaining
+integration is hosted settings/schedule UI and the bounded HTTP/Pushover worker
+using this TCP interface. RF pairing/reconnect, real group/subscription
 behavior, combined TLS handshakes, GPIO/flash/watchdog timing, peak heap and stack
 high-water, and Apple Home acceptance remain final-board tests. The static RAM
 margin is not a substitute for the required 48 KiB margin after measured runtime

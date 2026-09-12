@@ -104,6 +104,7 @@ impl Backend {
                 hardware: HardwarePermit::Allowed,
                 maintenance_pressed: false,
                 force_off: false,
+                clock_update: Default::default(),
             }),
             status: Cell::new(None),
         }

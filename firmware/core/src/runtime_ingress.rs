@@ -1,6 +1,6 @@
-//! Bounded command ingress. Off has a reserved flag even when the request slot is full.
+//! Bounded command ingress. Off has a reserved flag; UTC clear has a small reply slot.
 use crate::configuration::{ValidatedDeviceConfig, CONFIGURATION_BLOB_MAX_LEN};
-use crate::runtime::{Reply, Request, RuntimeCommand};
+use crate::runtime::{Error, Reply, Request, RuntimeCommand};
 use crate::UtcSeconds;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -33,9 +33,19 @@ enum Slot {
     Replied(Reply, Route),
 }
 
+// Revocation carries only its route and reply, never a second configuration buffer.
+#[derive(Clone, Copy)]
+enum ClearSlot {
+    Empty,
+    Queued(Route),
+    InFlight(Route, bool),
+    Replied(Reply, Route),
+}
+
 #[derive(Clone, Copy)]
 pub struct Ingress {
     slot: Slot,
+    clear: ClearSlot,
     off: bool,
     generation: u32,
 }
@@ -50,6 +60,7 @@ impl Ingress {
     pub const fn new() -> Self {
         Self {
             slot: Slot::Empty,
+            clear: ClearSlot::Empty,
             off: false,
             generation: 0,
         }
@@ -64,7 +75,12 @@ impl Ingress {
         if matches!(request.command, RuntimeCommand::Off) {
             self.off = true;
         }
-        if !matches!(self.slot, Slot::Empty) {
+        let clearing = matches!(request.command, RuntimeCommand::ClearUtc);
+        if if clearing {
+            !matches!(self.clear, ClearSlot::Empty)
+        } else {
+            !matches!(self.slot, Slot::Empty)
+        } {
             return None;
         }
         let generation = self.generation.checked_add(1)?;
@@ -75,12 +91,42 @@ impl Ingress {
             correlation: request.id,
         };
         request.id = generation;
-        self.slot = Slot::Queued(request, route);
+        if clearing {
+            // A newer revocation must not let an older queued UTC command apply
+            // on the following tick. Preserve that request's correlated error.
+            if let Slot::Queued(older, older_route) = self.slot {
+                if matches!(
+                    older.command,
+                    RuntimeCommand::SetUtc(_) | RuntimeCommand::SetUtcObserved(_)
+                ) {
+                    self.slot = Slot::Replied(
+                        Reply {
+                            id: older_route.correlation,
+                            result: Err(Error::Superseded),
+                        },
+                        older_route,
+                    );
+                }
+            }
+            self.clear = ClearSlot::Queued(route);
+        } else {
+            self.slot = Slot::Queued(request, route);
+        }
         Some(token)
     }
 
     pub fn take(&mut self) -> (bool, Option<Request>) {
         let off = core::mem::take(&mut self.off);
+        if let ClearSlot::Queued(route) = self.clear {
+            self.clear = ClearSlot::InFlight(route, false);
+            return (
+                off,
+                Some(Request {
+                    id: route.token.generation,
+                    command: RuntimeCommand::ClearUtc,
+                }),
+            );
+        }
         let request = match self.slot {
             Slot::Queued(request, route) => {
                 self.slot = Slot::InFlight(route, false);
@@ -92,6 +138,22 @@ impl Ingress {
     }
 
     pub fn complete(&mut self, reply: Reply) {
+        if let ClearSlot::InFlight(route, abandoned) = self.clear {
+            if route.token.generation == reply.id {
+                self.clear = if abandoned {
+                    ClearSlot::Empty
+                } else {
+                    ClearSlot::Replied(
+                        Reply {
+                            id: route.correlation,
+                            ..reply
+                        },
+                        route,
+                    )
+                };
+                return;
+            }
+        }
         if let Slot::InFlight(route, abandoned) = self.slot {
             if route.token.generation == reply.id {
                 self.slot = if abandoned {
@@ -110,6 +172,11 @@ impl Ingress {
     }
 
     pub fn take_reply(&mut self) -> Option<Reply> {
+        if let ClearSlot::Replied(_, route) = self.clear {
+            if route.token.source == Source::Usb {
+                return self.take_reply_for(route.token);
+            }
+        }
         let Slot::Replied(_, route) = self.slot else {
             return None;
         };
@@ -120,6 +187,12 @@ impl Ingress {
     }
 
     pub fn take_reply_for(&mut self, token: Token) -> Option<Reply> {
+        if let ClearSlot::Replied(reply, route) = self.clear {
+            if route.token == token {
+                self.clear = ClearSlot::Empty;
+                return Some(reply);
+            }
+        }
         let Slot::Replied(reply, route) = self.slot else {
             return None;
         };
@@ -135,6 +208,15 @@ impl Ingress {
     /// Keep dispatched ownership until its completion so cancellation cannot
     /// allow a stale reply to acknowledge another producer's request.
     pub fn cancel(&mut self, token: Token) {
+        match self.clear {
+            ClearSlot::Queued(route) | ClearSlot::Replied(_, route) if route.token == token => {
+                self.clear = ClearSlot::Empty
+            }
+            ClearSlot::InFlight(route, _) if route.token == token => {
+                self.clear = ClearSlot::InFlight(route, true)
+            }
+            _ => {}
+        }
         match self.slot {
             Slot::Queued(_, route) | Slot::Replied(_, route) if route.token == token => {
                 self.slot = Slot::Empty;

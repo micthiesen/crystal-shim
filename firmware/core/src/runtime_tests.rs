@@ -155,6 +155,7 @@ fn observation(now: u64) -> Observation {
         hardware: HardwarePermit::Allowed,
         maintenance_pressed: false,
         force_off: false,
+        clock_update: Default::default(),
     }
 }
 
@@ -1441,4 +1442,463 @@ fn explicit_stops_do_not_defer_their_writes_behind_a_manual_lease() {
         );
         assert_eq!(state.maintenance, !matches!(stop, RuntimeCommand::Off));
     }
+}
+
+fn network_tick(runtime: &mut Runtime, now: u64, update: crate::utc::ClockUpdate) -> Step {
+    runtime.step(
+        Observation {
+            clock_update: update,
+            ..observation(now)
+        },
+        None,
+        None,
+    )
+}
+fn utc_sample(seconds: u64, captured_at: u64) -> crate::utc::UtcObservation {
+    crate::utc::UtcObservation::from_seconds(UtcSeconds(seconds), Millis(captured_at)).unwrap()
+}
+
+#[test]
+fn original_utc_capture_survives_dispatch_and_matches_exact_expiry() {
+    let mut runtime = configured(false);
+    let sample = utc_sample(1_000, 100);
+    let reply = command(&mut runtime, 1_100, RuntimeCommand::SetUtcObserved(sample))
+        .command_reply
+        .unwrap();
+    assert_eq!(reply.result, Ok(Acknowledgement::Applied));
+    assert_eq!(runtime.clock_observation(), Some(sample));
+    assert_eq!(runtime.observe_utc(Millis(1_100)), Some(UtcSeconds(1_001)));
+    tick(&mut runtime, 100 + UTC_MAX_AGE_MS - 1);
+    assert!(runtime.clock_observation().is_some());
+    tick(&mut runtime, 100 + UTC_MAX_AGE_MS);
+    assert!(runtime.clock_observation().is_none());
+    for now in [99, 100 + UTC_MAX_AGE_MS, i64::MAX as u64] {
+        let reply = command(&mut runtime, now, RuntimeCommand::SetUtcObserved(sample))
+            .command_reply
+            .unwrap();
+        assert_eq!(reply.result, Err(Error::InvalidTime));
+        assert!(runtime.clock_observation().is_none());
+    }
+}
+
+#[test]
+fn clock_loss_bypasses_immutable_storage_and_does_not_revoke_operator_time() {
+    let mut runtime = configured(true);
+    network_tick(
+        &mut runtime,
+        0,
+        crate::utc::ClockUpdate {
+            sample: Some(utc_sample(1_000, 0)),
+            ..Default::default()
+        },
+    );
+    let pending = runtime.store_request().unwrap();
+    network_tick(
+        &mut runtime,
+        20,
+        crate::utc::ClockUpdate {
+            revoke_network: true,
+            sample: None,
+        },
+    );
+    assert!(runtime.clock_observation().is_none());
+    assert_eq!(runtime.store_request().unwrap().ticket, pending.ticket);
+    let Record::Retained(immutable) = pending.record else {
+        panic!()
+    };
+    assert_eq!(
+        immutable.window.unwrap().disposition,
+        WindowDisposition::Eligible
+    );
+    assert_eq!(
+        runtime.desired.unwrap().window.unwrap().disposition,
+        WindowDisposition::Suppressed
+    );
+    // USB clear has its own correlated Applied response even before the old write completes.
+    let reply = command(&mut runtime, 40, RuntimeCommand::ClearUtc)
+        .command_reply
+        .unwrap();
+    assert_eq!(
+        reply,
+        Reply {
+            id: 7,
+            result: Ok(Acknowledgement::Applied)
+        }
+    );
+    complete(&mut runtime, 60, true);
+    complete(&mut runtime, 80, true);
+    command(&mut runtime, 100, RuntimeCommand::SetUtc(UtcSeconds(1_000)));
+    let operator = runtime.clock_observation().unwrap();
+    network_tick(
+        &mut runtime,
+        120,
+        crate::utc::ClockUpdate {
+            revoke_network: true,
+            sample: None,
+        },
+    );
+    assert_eq!(runtime.clock_observation(), Some(operator));
+}
+
+#[test]
+fn network_revocation_and_fresh_correction_observe_old_expiry_before_late_ack() {
+    let mut runtime = configured(true);
+    network_tick(
+        &mut runtime,
+        0,
+        crate::utc::ClockUpdate {
+            sample: Some(utc_sample(1_000, 0)),
+            ..Default::default()
+        },
+    );
+    let ticket = runtime.store_request().unwrap().ticket;
+    let step = runtime.step(
+        Observation {
+            clock_update: crate::utc::ClockUpdate {
+                revoke_network: true,
+                sample: Some(utc_sample(1_000, 3_000)),
+            },
+            ..observation(3_000)
+        },
+        None,
+        Some(StoreCompletion {
+            ticket,
+            succeeded: true,
+        }),
+    );
+    assert_eq!(step.status.unwrap().control.relay, RelayCommand::Off);
+    assert_eq!(
+        runtime.desired.unwrap().window.unwrap().disposition,
+        WindowDisposition::Suppressed
+    );
+    complete(&mut runtime, 3_020, true);
+    until(&mut runtime, 3_040, 3_200);
+    assert_eq!(
+        tick(&mut runtime, 3_220).status.unwrap().demand,
+        Demand::Off
+    );
+}
+
+#[test]
+fn same_tick_operator_wins_and_network_loss_preserves_waiting_and_active_low_override() {
+    for minimum_off in [100, 1_000] {
+        let mut runtime = Runtime::new(
+            Some(config_at_with_minimum_off(
+                1,
+                10,
+                false,
+                true,
+                1_000,
+                minimum_off,
+            )),
+            Some(RetainedState::new(1).unwrap()),
+            Millis(0),
+        )
+        .unwrap();
+        let input = |now| Observation {
+            reading: Reading::Valid {
+                level: Level::new(100).unwrap(),
+                observed_at: Millis(now),
+            },
+            ..observation(now)
+        };
+        for now in (0..120).step_by(20) {
+            runtime.step(input(now), None, None);
+        }
+        let sample = utc_sample(1_000, 120);
+        runtime.step(
+            Observation {
+                clock_update: crate::utc::ClockUpdate {
+                    sample: Some(sample),
+                    ..Default::default()
+                },
+                ..input(120)
+            },
+            Some(Request {
+                id: 8,
+                command: RuntimeCommand::On,
+            }),
+            None,
+        );
+        let before = runtime.supervisor.as_ref().unwrap().status();
+        assert_eq!(before.demand, Demand::Override);
+        let after = runtime
+            .step(
+                Observation {
+                    clock_update: crate::utc::ClockUpdate {
+                        revoke_network: true,
+                        sample: None,
+                    },
+                    ..input(140)
+                },
+                None,
+                None,
+            )
+            .status
+            .unwrap();
+        assert_eq!(after.demand, Demand::Override);
+        assert_eq!(after.deadline, before.deadline);
+        assert_eq!(after.control.relay, before.control.relay);
+        assert!(runtime.clock_observation().is_none());
+        let operator = utc_sample(2_000, 160);
+        let step = runtime.step(
+            Observation {
+                clock_update: crate::utc::ClockUpdate {
+                    sample: Some(utc_sample(1_000, 160)),
+                    ..Default::default()
+                },
+                ..input(160)
+            },
+            Some(Request {
+                id: 9,
+                command: RuntimeCommand::SetUtcObserved(operator),
+            }),
+            None,
+        );
+        assert_eq!(
+            step.command_reply.unwrap(),
+            Reply {
+                id: 9,
+                result: Ok(Acknowledgement::Applied)
+            }
+        );
+        assert_eq!(runtime.clock_observation(), Some(operator));
+        assert_eq!(step.status.unwrap().deadline, before.deadline);
+    }
+}
+
+#[test]
+fn reserved_usb_clock_clear_applies_and_routes_its_reply_while_config_owns_ingress() {
+    use crate::runtime_ingress::{Ingress, Source};
+    let mut ingress = Ingress::new();
+    let mut runtime = configured(false);
+    command(&mut runtime, 0, RuntimeCommand::SetUtc(UtcSeconds(1_000)));
+    let configuration = ingress
+        .submit_from(
+            Source::Usb,
+            Request {
+                id: 41,
+                command: RuntimeCommand::SaveConfiguration(config(2, 3, false, true)),
+            },
+        )
+        .unwrap();
+    let (force_off, request) = ingress.take();
+    let first = runtime.step(
+        Observation {
+            force_off,
+            ..observation(20)
+        },
+        request,
+        None,
+    );
+    assert!(first.command_reply.is_none());
+    assert!(runtime.store_request().is_some());
+    let clear = ingress
+        .submit_from(
+            Source::Usb,
+            Request {
+                id: 42,
+                command: RuntimeCommand::ClearUtc,
+            },
+        )
+        .unwrap();
+    assert!(ingress
+        .submit_from(
+            Source::Usb,
+            Request {
+                id: 43,
+                command: RuntimeCommand::On
+            }
+        )
+        .is_none());
+    // Reserving clock clear does not consume or weaken the existing Off flag.
+    assert!(ingress
+        .submit_from(
+            Source::Matter,
+            Request {
+                id: 44,
+                command: RuntimeCommand::Off
+            }
+        )
+        .is_none());
+    let (force_off, request) = ingress.take();
+    assert!(force_off);
+    let applied = runtime
+        .step(
+            Observation {
+                force_off,
+                ..observation(40)
+            },
+            request,
+            None,
+        )
+        .command_reply
+        .unwrap();
+    assert!(runtime.clock_observation().is_none());
+    ingress.complete(applied);
+    assert!(ingress.take_reply_for(configuration).is_none());
+    assert_eq!(
+        ingress.take_reply_for(clear).unwrap(),
+        Reply {
+            id: 42,
+            result: Ok(Acknowledgement::Applied)
+        }
+    );
+    assert!(ingress.take_reply_for(clear).is_none());
+    complete(&mut runtime, 60, true);
+    let durable = complete(&mut runtime, 80, true).completed_reply.unwrap();
+    ingress.complete(durable);
+    assert_eq!(
+        ingress.take_reply_for(configuration).unwrap(),
+        Reply {
+            id: 41,
+            result: Ok(Acknowledgement::Durable)
+        }
+    );
+    // A stale clear completion cannot acknowledge the next distinct request.
+    let next = ingress
+        .submit_from(
+            Source::Usb,
+            Request {
+                id: 42,
+                command: RuntimeCommand::ClearUtc,
+            },
+        )
+        .unwrap();
+    let (_, request) = ingress.take();
+    ingress.complete(applied);
+    assert!(ingress.take_reply_for(next).is_none());
+    let reply = runtime
+        .step(observation(100), request, None)
+        .command_reply
+        .unwrap();
+    ingress.complete(reply);
+    assert_eq!(
+        ingress.take_reply_for(next).unwrap().result,
+        Ok(Acknowledgement::Applied)
+    );
+}
+
+#[test]
+fn rejected_network_candidate_withdraws_network_but_preserves_operator_anchor() {
+    for network in [false, true] {
+        let mut runtime = configured(false);
+        let fresh = utc_sample(1_000, UTC_MAX_AGE_MS);
+        if network {
+            network_tick(
+                &mut runtime,
+                UTC_MAX_AGE_MS,
+                crate::utc::ClockUpdate {
+                    sample: Some(fresh),
+                    ..Default::default()
+                },
+            );
+        } else {
+            command(
+                &mut runtime,
+                UTC_MAX_AGE_MS,
+                RuntimeCommand::SetUtcObserved(fresh),
+            );
+        }
+        network_tick(
+            &mut runtime,
+            UTC_MAX_AGE_MS + 20,
+            crate::utc::ClockUpdate {
+                sample: Some(utc_sample(1_000, 0)),
+                ..Default::default()
+            },
+        );
+        assert_eq!(
+            runtime.clock_observation(),
+            if network { None } else { Some(fresh) }
+        );
+    }
+}
+
+#[test]
+fn clear_supersedes_an_older_queued_utc_but_a_later_operator_observation_can_apply() {
+    use crate::runtime_ingress::{Ingress, Source};
+    let mut ingress = Ingress::new();
+    let mut runtime = configured(false);
+    for command in [
+        RuntimeCommand::SetUtc(UtcSeconds(1_000)),
+        RuntimeCommand::SetUtcObserved(utc_sample(1_000, 0)),
+    ] {
+        let older = ingress
+            .submit_from(Source::Usb, Request { id: 1, command })
+            .unwrap();
+        let clear = ingress
+            .submit_from(
+                Source::Usb,
+                Request {
+                    id: 2,
+                    command: RuntimeCommand::ClearUtc,
+                },
+            )
+            .unwrap();
+        assert_eq!(
+            ingress.take_reply_for(older).unwrap(),
+            Reply {
+                id: 1,
+                result: Err(Error::Superseded)
+            }
+        );
+        let (_, request) = ingress.take();
+        let reply = runtime
+            .step(observation(20), request, None)
+            .command_reply
+            .unwrap();
+        ingress.complete(reply);
+        assert_eq!(
+            ingress.take_reply_for(clear).unwrap().result,
+            Ok(Acknowledgement::Applied)
+        );
+        assert!(
+            ingress.take().1.is_none(),
+            "the older queued UTC cannot revive after clear"
+        );
+        assert!(runtime.clock_observation().is_none());
+    }
+    let clear = ingress
+        .submit_from(
+            Source::Usb,
+            Request {
+                id: 3,
+                command: RuntimeCommand::ClearUtc,
+            },
+        )
+        .unwrap();
+    let fresh = ingress
+        .submit_from(
+            Source::Usb,
+            Request {
+                id: 4,
+                command: RuntimeCommand::SetUtcObserved(utc_sample(1_001, 40)),
+            },
+        )
+        .unwrap();
+    let (_, request) = ingress.take();
+    ingress.complete(
+        runtime
+            .step(observation(40), request, None)
+            .command_reply
+            .unwrap(),
+    );
+    assert!(runtime.clock_observation().is_none());
+    let (_, request) = ingress.take();
+    ingress.complete(
+        runtime
+            .step(observation(60), request, None)
+            .command_reply
+            .unwrap(),
+    );
+    assert_eq!(ingress.take_reply_for(clear).unwrap().id, 3);
+    assert_eq!(
+        ingress.take_reply_for(fresh).unwrap(),
+        Reply {
+            id: 4,
+            result: Ok(Acknowledgement::Applied)
+        }
+    );
+    assert_eq!(runtime.clock_observation(), Some(utc_sample(1_001, 40)));
 }

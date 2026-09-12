@@ -76,6 +76,13 @@ Preserve `esp-storage/critical-section`, relay-off acknowledgements and bounded
 flash chunks. Interrupt priority alone cannot protect flash-backed control code.
 Storage never feeds the watchdog or logs stored bytes. See
 [the flash contract](docs/design/flash-storage.md) before adding persistence.
+
+Control owns the accepted UTC observation and publishes its original monotonic
+capture to both scheduling and TLS. Use bounded CASE reads from the configured
+Matter trusted source or explicit USB UTC; SDK RTC extrapolation, unauthenticated
+SNTP and repeated publication cannot create freshness. Keep source revocation
+and correlated Clear UTC independent of pending configuration writes. See
+[trusted UTC](docs/design/trusted-utc.md) before adding clock or network consumers.
 Keep rs-matter's resolved `sync-mutex` feature disabled: its critical-section
 backend prevents the control acknowledgement needed by synchronous KV access.
 `scripts/check_matter_features.py` checks both workspace dependency graphs.

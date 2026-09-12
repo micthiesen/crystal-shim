@@ -239,15 +239,17 @@ export const physicalLandPatterns: Readonly<
   },
 };
 
-export function landPatternPhysicalGeometry(pattern: {
-  id: string;
-  pads: readonly (
-    | { x: number; y: number; width: number; height: number }
-    | { points: readonly { x: number; y: number }[] }
-  )[];
-  holes?: readonly { x: number; y: number; diameter: number }[];
-}) {
-  const declaration = physicalLandPatterns[pattern.id];
+export function landPatternPhysicalGeometry(
+  pattern: {
+    id: string;
+    pads: readonly (
+      | { x: number; y: number; width: number; height: number }
+      | { points: readonly { x: number; y: number }[] }
+    )[];
+    holes?: readonly { x: number; y: number; diameter: number }[];
+  },
+  declaration: PhysicalLandPattern | undefined = physicalLandPatterns[pattern.id],
+) {
   if (!declaration) return undefined;
   const { clearance, grid } = physicalCourtyardPolicy;
   const center = declaration.packageCenter ?? { x: 0, y: 0 };

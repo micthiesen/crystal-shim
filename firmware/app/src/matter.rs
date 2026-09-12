@@ -242,7 +242,12 @@ pub async fn run(
         &crypto,
         (NODE, handler),
         &*kv,
-        Application { status, tls },
+        Application {
+            status,
+            tls,
+            matter: stack.matter(),
+            crypto: &crypto,
+        },
         random,
         resources,
         tcp,
@@ -276,11 +281,13 @@ fn tls_engine() -> Option<mbedtls_rs::Tls<'static>> {
     mbedtls_rs::Tls::new(Box::leak(Box::new(TlsRng(seeded)))).ok()
 }
 
-struct Application<'a> {
+struct Application<'a, C> {
     status: &'a Cell<Status>,
     tls: Option<mbedtls_rs::Tls<'static>>,
+    matter: &'a crystal_shim_matter::sdk::Matter<'a>,
+    crypto: &'a C,
 }
-impl rs_matter_embassy::stack::UserTask for Application<'_> {
+impl<C: Crypto> rs_matter_embassy::stack::UserTask for Application<'_, C> {
     async fn run<S, N>(
         &mut self,
         stack: S,
@@ -291,29 +298,40 @@ impl rs_matter_embassy::stack::UserTask for Application<'_> {
         N: crystal_shim_matter::sdk::dm::clusters::gen_diag::NetifDiag
             + crystal_shim_matter::sdk::dm::networks::NetChangeNotif,
     {
-        // The SDK starts UserTask before IP is up. This service reports readiness
-        // without opening a socket, querying DNS, or sending a notification.
-        loop {
-            let mut online = false;
-            netif.netifs(&mut |info| {
-                online |= info.operational && !info.ipv4_addrs.is_empty();
-                Ok(())
-            })?;
-            let status = if !online {
-                Status::WaitingForNetwork
-            } else if let (Some(tls), Some(tcp)) = (&self.tls, stack.tcp_connect()) {
-                match crystal_shim_tls::pushover_connector(tls.reference(), tcp) {
-                    Ok(_) => Status::OnlineTlsReady,
-                    Err(crystal_shim_tls::ProviderError::ClockUnavailable) => {
-                        Status::OnlineClockRequired
+        // The SDK starts UserTask before IP is up. CASE retries are bounded and
+        // independent of local control; TLS readiness opens no HTTPS socket.
+        let readiness = async {
+            loop {
+                let mut online = false;
+                netif.netifs(&mut |info| {
+                    online |= info.operational && !info.ipv4_addrs.is_empty();
+                    Ok(())
+                })?;
+                let status = if !online {
+                    Status::WaitingForNetwork
+                } else if let (Some(tls), Some(tcp)) = (&self.tls, stack.tcp_connect()) {
+                    match crystal_shim_tls::pushover_connector(tls.reference(), tcp) {
+                        Ok(_) => Status::OnlineTlsReady,
+                        Err(crystal_shim_tls::ProviderError::ClockUnavailable) => {
+                            Status::OnlineClockRequired
+                        }
+                        Err(_) => Status::OnlineTlsUnavailable,
                     }
-                    Err(_) => Status::OnlineTlsUnavailable,
-                }
-            } else {
-                Status::OnlineTlsUnavailable
-            };
-            self.status.set(status);
-            embassy_time::Timer::after_secs(1).await;
+                } else {
+                    Status::OnlineTlsUnavailable
+                };
+                self.status.set(status);
+                embassy_time::Timer::after_secs(1).await;
+            }
+        };
+        match embassy_futures::select::select(
+            readiness,
+            crate::clock::run(self.matter, self.crypto),
+        )
+        .await
+        {
+            embassy_futures::select::Either::First(result) => result,
+            embassy_futures::select::Either::Second(()) => Ok(()),
         }
     }
 }

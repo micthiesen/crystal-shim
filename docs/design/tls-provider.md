@@ -81,16 +81,17 @@ The public API is deliberately narrow:
   leap years and all field bounds.
 - `install_certificate_clock` installs static MbedTLS wall-clock and monotonic
   hooks. It is `unsafe`; call it exactly once during single-threaded startup,
-  after `esp_rtos::start` and before any MbedTLS validation.
-- `set_trusted_utc` anchors a newly acquired UTC observation to the same
-  monotonic timer used by MbedTLS. The clock module calls it only after SNTP
-  plausibility and freshness checks; republishing cached UTC would incorrectly
-  renew its trust and is forbidden.
+  before any MbedTLS validation or monotonic-timer use.
+- `set_trusted_observation` accepts the original monotonic capture that control
+  accepted for scheduling. The [trusted UTC service](trusted-utc.md) acquires CASE
+  peer time or explicit USB operator UTC. Control publishes changes only;
+  repeated delivery of an old capture cannot renew its age. SDK RTC and
+  unauthenticated SNTP are never certificate-validation trust.
 - UTC advances by elapsed whole seconds, including Gregorian calendar rollover.
   `TRUSTED_UTC_MAX_AGE_MS` is 3,600,000 ms: the anchor expires at exactly one hour
   without a new observation. Reads and connector construction never renew it.
-  This bounds reliance on an unattended anchor while allowing transient SNTP
-  outages. It does not authenticate SNTP or replace the clock module's checks.
+  This bounds reliance on an unattended anchor while allowing transient network
+  outages. The configured authenticated authority remains responsible for accuracy.
 - `has_trusted_utc` and the MbedTLS wall-clock hook apply the same age check.
   Observed monotonic rollback, reset, signed timer saturation, or advancing past
   year 9999 also revoke the anchor until a new trusted observation arrives.
@@ -205,7 +206,7 @@ alert, which is why that feature is retained.
 The checked-in [host harness](../../firmware/tls-tests/README.md) compiles
 `firmware/app/src/tls.rs` directly, including its private connector policy. It
 uses the production MbedTLS algorithm and record-size features plus the host
-`std` backend. Its eleven deterministic tests cover Gregorian bounds and C `tm`
+`std` backend. Its twelve deterministic tests cover shared original-capture expiry, Gregorian bounds and C `tm`
 conversion; advancing UTC; exact expiry; refresh and clearing; monotonic
 rollback/reset/saturation; calendar overflow; the root's parse and SHA-256
 fingerprint; the fixed hostname, required authentication and TLS minimum; and

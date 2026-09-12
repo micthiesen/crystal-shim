@@ -11,3 +11,5 @@ pub mod provisioning;
 pub mod service;
 pub mod storage;
 pub use rs_matter as sdk;
+
+pub mod time_source;

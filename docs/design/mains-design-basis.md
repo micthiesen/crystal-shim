@@ -196,20 +196,28 @@ The flyback diode suppresses turn-off inductance, not supply overvoltage.
 
 The body is 29.0 x 12.7 x 15.7 mm maximum. Omron's PCB-hole and terminal diagram
 is a bottom view. Mirror it for the component-side footprint. With contact pin 3
-at `(0, 0)`, pin 4 below it, and the coil pins 20 mm to the right, the
+at `(0, 0)`, pin 4 staggered 3.5 mm to the right and 7.5 mm down, and the coil
+pins 23.5 mm to the right of pin 3, the
 component-side pad centres are:
 
 | Relay pin | Centre `(x, y)` mm | Function | Net |
 | ---: | --- | --- | --- |
-| 1 | `(20.00, 0)` | coil, no inherent polarity | `V5_PSU` |
-| 5 | `(20.00, 7.50)` | coil, no inherent polarity | `COIL_DRAIN` |
+| 1 | `(23.50, 0)` | coil, no inherent polarity | `V5_PSU` |
+| 5 | `(23.50, 7.50)` | coil, no inherent polarity | `COIL_DRAIN` |
 | 3 | `(0, 0)` | normally-open fixed contact | `PUMP_L_FILTERED` |
-| 4 | `(0, 7.50)` | moving contact | `PUMP_L_SW` |
+| 4 | `(3.50, 7.50)` | moving contact | `PUMP_L_SW` |
 
 Use four 1.3 plus or minus 0.1 mm finished holes as Omron specifies. In footprint
 review, the component-side render must match this table and the mirrored
 bottom-side render must match Omron's drawing. Do not swap the coil and contact
 columns.
+
+The 20 +/-0.1 mm dimension runs from coil pin 5 to contact pin 4; another
+3.5 +/-0.1 mm reaches pin 3's column. The derived 23.5 mm span does not have
+an independently specified +/-0.1 mm tolerance. This corrects the earlier table
+that incorrectly aligned both contacts and put the coil only 20 mm from pin 3.
+Independent inspection of the manufacturer's mounting-hole and terminal drawings
+confirmed the correction before a mains footprint was authored.
 
 ### Coil suppression and controller harness
 
@@ -256,7 +264,7 @@ mirroring the cable order by eye.
 
 | Micro-Fit circuit at both boards | Net | Rule |
 | ---: | --- | --- |
-| 1 | `V5_PSU` | raw IRM output and relay coil supply; never USB-derived |
+| 1 | `V5_PSU` | protected secondary and relay coil supply; never USB-derived |
 | 2 | `GND_ISO` | IRM secondary return and MOSFET source return |
 | 3 | `COIL_DRAIN` | relay coil low side to controller AO3400A drain |
 
@@ -271,7 +279,7 @@ Use **TE/Schaffner `FN2090A-1-06`**, TE internal number `802490-SF`, only in the
 pump branch. The 1 A variant is the lowest current in the family and is 30 times
 the pump's 33.3 mA unity-power-factor lower bound. Actual pump RMS and starting
 current still need measurement. The IRM branch bypasses this filter, so its
-0.12 A typical input current does not consume filter current capacity.
+0.25 A typical input current at 115 VAC does not consume filter current capacity.
 
 The A version is preferred over the standard version because its maximum leakage
 is 0.07 mA at 120 VAC/60 Hz and 0.13 mA at 250 VAC/50 Hz. The standard 1 A version
@@ -374,11 +382,23 @@ The [Vishay PR02-FS sheet](https://www.vishay.com/docs/28915/pr02fs.pdf)
 specifies a non-inductive, flameproof, UL 94V-0, UL 1412-recognized resistor for
 snubber use, with greater than 600 V 1.2/50 us pulse capability. Its body is
 10.0 mm long by 3.9 mm diameter maximum with 0.78 plus or minus 0.05 mm leads.
-Use a 15.24 mm horizontal pitch and 1.0 mm nominal finished holes.
+Use a 15.24 mm horizontal pitch and 1.1 plus or minus 0.1 mm finished holes
+with 2.6 mm copper lands. This increases the original 1.0 mm hole proposal to
+allow more clearance around the 0.83 mm maximum wire. The drawing separately
+limits the coating extent `L2` to 12.0 mm; retain it in the forming envelope.
+The project chooses the horizontal pitch. Verify the bend beyond the coating
+and assembly standoff before native footprint adoption.
 
 The [TDK product table](https://www.tdk-electronics.tdk.com/en/3191402/products/product-catalog/film-capacitors/emi-suppression-capacitors/search-results-deltacap-capacitors?so=%7B%22orderingCode%22%3A%22B32921C3473%2A%22%7D)
-specifies a 10 mm lead pitch and 13 x 5 x 11 mm maximum body. Use the exact X2
-part rather than an ordinary film capacitor.
+specifies a 10 mm lead pitch and 13 x 5 x 11 mm maximum body. The June 2026
+[manufacturer drawing](https://www.tdk-electronics.tdk.com/inf/20/20/db/fc_2009/X2_B32921_928.pdf)
+gives straight leads 0.60 plus or minus 0.05 mm in diameter, pitch tolerance
+plus or minus 0.4 mm and untaped lead length 6 minus 1 mm. Use 1.3 plus or
+minus 0.1 mm finished holes and 2.9 mm copper lands. The worst diametric
+clearance is 0.55 mm, allowing the lead-pitch tolerance plus a 0.10 mm
+differential hole-position budget. Verify the actual fabrication position
+tolerance and body standoff; never force the capacitor into the board.
+Use the exact X2 part rather than an ordinary film capacitor.
 
 At 120 VAC/60 Hz, the 47 nF reactance is 56.44 kilohms. The branch current is
 2.126 mA RMS and normal resistor dissipation is 0.452 mW. The RC time constant is

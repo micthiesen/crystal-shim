@@ -43,7 +43,7 @@ are not a released electrical design.
 | D-09 | Fuse/MOV/RC/regulators and internal mains connector set | Sourced candidates and calculations in the detailed design basis; integrated schematic review owed | Protection and source capture |
 | D-10 | Enclosure, insulation/spacing and earth scheme | Hammond 1554V2GY envelope and conservative spacing proposed; actual CAD/routed mains review owed | Physical safety |
 | D-11 | Thresholds, calibration limits and freshness timeout | Open; 1/10/30 s timing seeds provisional | Sensor and firmware tuning |
-| D-12 | Retained state and network interface | Matter-over-Wi-Fi selected; runtime schedule/retained transactions, actual command/KV adapters, Wi-Fi/BLE, shared TCP stack and bounded USB provisioning writer implemented; host sender, trusted UTC and actual pairing remain work | Hardware firmware |
+| D-12 | Retained state and network interface | Matter-over-Wi-Fi selected; runtime schedule/retained transactions, actual command/KV adapters, Wi-Fi/BLE, shared TCP stack, bounded USB provisioning writer/sender and original-capture CASE/USB UTC implemented; unattended time-source compatibility and actual pairing remain work | Hardware firmware |
 | D-13 | Run duration and daily schedule | Default 15 min shared by schedule and override, all adjustable; exact daily times/count/timezone open | Local scheduler and configuration |
 | D-14 | Water-transition notifications | Pushover selected; first baseline silent; verified TLS provider built and host-tested; keys and delivery/persistence adapter remain work | Notification integration |
 | D-15 | Settings interface | Confirmed: ESP-hosted local webpage for settings and schedule; implementation pending | Schedule, calibration, timing and Pushover provisioning workflow |

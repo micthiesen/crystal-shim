@@ -72,6 +72,9 @@ impl Store {
     }
 
     pub fn store(&mut self, key: u16, value: &[u8], buf: &mut [u8]) -> Result<(), Error> {
+        if key == crystal_shim_matter::sdk::persist::TRUSTED_TIME_SOURCE_KEY {
+            crate::clock::source_changed();
+        }
         let mut permit = Permit::acquire()?;
         let mut flash = Access {
             flash: &mut self.flash,
@@ -89,6 +92,9 @@ impl Store {
     }
 
     fn remove(&mut self, key: u16, buf: &mut [u8]) -> Result<(), Error> {
+        if key == crystal_shim_matter::sdk::persist::TRUSTED_TIME_SOURCE_KEY {
+            crate::clock::source_changed();
+        }
         let mut permit = Permit::acquire()?;
         let mut flash = Access {
             flash: &mut self.flash,

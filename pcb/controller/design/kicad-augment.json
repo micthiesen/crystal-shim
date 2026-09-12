@@ -360,9 +360,7 @@
         "allowed_initial_erc_types": [
           "endpoint_off_grid",
           "lib_symbol_issues",
-          "pin_not_connected",
-          "power_pin_not_driven",
-          "unconnected_wire_endpoint"
+          "power_pin_not_driven"
         ],
         "allowed_initial_erc_ignored_checks": [
           "footprint_filter",
@@ -376,12 +374,12 @@
           "Resolve the 95 exporter-local symbol-library links using validated symbol definitions and a native project library table.",
           "Place explicit no-connect markers on every manifest unconnected pin; preserve pin numbers and ensure none is wired.",
           "Declare power sources at V5_LOGIC, V5_SERVICE_RAW, V3V3 and GND as supported by source supply paths; PWR_FLAG is an ERC source annotation, not proof a rail is live.",
-          "Remove the two root-sheet dangling wire fragments only after confirming they serve no source endpoint or intended net connection.",
+          "Resolve dangling-wire reports by UUID in the actual child sheet; the initial ERC root path and coordinate units are misleading. Power and USB each contain a redundant collinear overlap. Union/split only after preserving every pin/label anchor and explicit T junction, then require identical native XML connectivity.",
           "Fit every sheet's complete symbols, fields and wiring inside its page at a readable scale. Inspect every complete rendered page, including margins and title block, before acceptance.",
           "Preserve all 95 exact values, MPNs, datasheet and footprint fields and every hierarchical sheet."
         ],
         "verification": "Require strict source schematic/XML parity and a clean ERC report with all errors/warnings resolved before any routing; these initial finding types are not release waivers.",
-        "status": "declared; cleanup not yet applied"
+        "status": "initial typed NC and two overlap repairs applied with strict XML parity; grid, library, power flags and page framing remain"
       }
     },
     {

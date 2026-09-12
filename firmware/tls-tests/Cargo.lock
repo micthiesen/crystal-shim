@@ -389,10 +389,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "crystal-shim-core"
+version = "0.1.0"
+
+[[package]]
 name = "crystal-shim-tls-tests"
 version = "0.1.0"
 dependencies = [
  "critical-section",
+ "crystal-shim-core",
  "edge-nal",
  "edge-nal-tls",
  "mbedtls-rs",

@@ -30,6 +30,17 @@ use crystal_shim_matter::{
 thread_local! {
     static PERMIT: Cell<bool> = const { Cell::new(false) };
     static CHECKPOINT: Cell<bool> = const { Cell::new(false) };
+    static CLOCK_GENERATION: Cell<u64> = const { Cell::new(0) };
+}
+
+mod clock {
+    pub fn source_changed() {
+        assert!(
+            !super::PERMIT.get(),
+            "revocation must precede any flash permit wait"
+        );
+        super::CLOCK_GENERATION.set(super::CLOCK_GENERATION.get() + 1);
+    }
 }
 
 mod flash_gate {
@@ -393,5 +404,52 @@ fn every_raw_installation_boundary_can_fail_without_losing_other_keys_and_retry_
             install_provisioning(kv, &bytes),
             Ok(InstallOutcome::AlreadyPresentVerified)
         );
+    });
+}
+
+#[test]
+fn source_policy_mutations_invalidate_before_flash_even_when_the_write_fails() {
+    use crystal_shim_matter::sdk::persist::TRUSTED_TIME_SOURCE_KEY;
+    let memory = empty_memory();
+    CLOCK_GENERATION.set(0);
+    with_store(memory.clone(), |kv| {
+        kv.access(|store, buf| store.store(NETWORKS_KEY, b"public fixture", buf))
+            .unwrap();
+        assert_eq!(CLOCK_GENERATION.get(), 0);
+        kv.access(|store, buf| store.store(TRUSTED_TIME_SOURCE_KEY, b"source A", buf))
+            .unwrap();
+        assert_eq!(CLOCK_GENERATION.get(), 1);
+        kv.access(|store, buf| {
+            store.load(TRUSTED_TIME_SOURCE_KEY, buf).unwrap();
+        });
+        assert_eq!(
+            CLOCK_GENERATION.get(),
+            1,
+            "readback is not a policy mutation"
+        );
+        for source in [b"source B", b"source A"] {
+            kv.access(|store, buf| store.store(TRUSTED_TIME_SOURCE_KEY, source, buf))
+                .unwrap();
+        }
+        assert_eq!(
+            CLOCK_GENERATION.get(),
+            3,
+            "ABA cannot hide two mutations between polls"
+        );
+        memory.borrow_mut().fail_next = true;
+        assert!(kv
+            .access(|store, buf| store.remove(TRUSTED_TIME_SOURCE_KEY, buf))
+            .is_err());
+        assert_eq!(
+            CLOCK_GENERATION.get(),
+            4,
+            "SDK already changed RAM before failed persistence"
+        );
+        kv.access(|store, buf| store.remove(TRUSTED_TIME_SOURCE_KEY, buf))
+            .unwrap();
+        assert_eq!(CLOCK_GENERATION.get(), 5);
+        kv.access(|store, buf| store.remove(NETWORKS_KEY, buf))
+            .unwrap();
+        assert_eq!(CLOCK_GENERATION.get(), 5);
     });
 }

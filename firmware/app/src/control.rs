@@ -48,6 +48,7 @@ pub async fn run(
             let step = runtime.step(
                 Observation {
                     now,
+                    clock_update: crate::clock::take_update(),
                     sensor_revision: sample.configuration_revision,
                     reading,
                     force_off,
@@ -64,6 +65,7 @@ pub async fn run(
                 request,
                 crate::runtime::take_completion(),
             );
+            crate::clock::publish(runtime.clock_observation());
             boot_maintenance_requested = false;
             snapshot::publish_configuration(runtime.configuration());
             crate::runtime::publish_write(runtime.store_request());

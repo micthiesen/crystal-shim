@@ -1,6 +1,9 @@
 import { Fragment } from "react";
 import { PhysicalFootprintGraphics } from "./land-pattern";
-import { landPatternPhysicalGeometry } from "./land-pattern-physical";
+import {
+  landPatternPhysicalGeometry,
+  type PhysicalLandPattern,
+} from "./land-pattern-physical";
 
 // Electrical pads and non-plated locators, in native top-view +Y-down coordinates.
 export type ThtPattern = {
@@ -18,8 +21,14 @@ export type ThtPattern = {
   holes?: { x: number; y: number; diameter: number }[];
 };
 
-export function ThtFootprint({ pattern }: { pattern: ThtPattern }) {
-  const physical = landPatternPhysicalGeometry(pattern);
+export function ThtFootprint({
+  pattern,
+  physicalDeclaration,
+}: {
+  pattern: ThtPattern;
+  physicalDeclaration?: PhysicalLandPattern;
+}) {
+  const physical = landPatternPhysicalGeometry(pattern, physicalDeclaration);
   return (
     <footprint>
       <PhysicalFootprintGraphics physical={physical} />

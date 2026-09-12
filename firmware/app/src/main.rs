@@ -10,6 +10,7 @@ use esp_rtos::embassy::InterruptExecutor;
 use static_cell::StaticCell;
 
 mod board;
+mod clock;
 mod control;
 mod flash_gate;
 mod matter;

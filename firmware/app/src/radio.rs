@@ -29,7 +29,7 @@ pub type UdpPool = UdpBuffers<UDP_SOCKETS, MAX_TX_PACKET_SIZE, MAX_RX_PACKET_SIZ
 pub type TcpPool = TcpBuffers<TCP_SOCKETS, 2048, 2048>;
 pub type IpResources = StackResources<IP_SOCKETS>;
 pub type Matter = WifiMatterStack<'static, 20_000, ()>;
-pub const ROOT: Endpoint<'static> = Matter::root_endpoint();
+pub const ROOT: Endpoint<'static> = crystal_shim_matter::time_source::ROOT;
 
 #[derive(Copy, Clone)]
 pub struct ProjectNetStack<'a> {

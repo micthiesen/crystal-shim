@@ -108,16 +108,16 @@ result as a fresh observation.
 | `firmware/app/src/sensor.rs` | Priority2 owner of the FDC1004 driver, finite transaction timeout, sample freshness, and calibrated `Reading` publication. |
 | `firmware/app/src/storage.rs` | Implemented sole gated owner for boot and runtime writes, including the actual Matter `KvBlobStore` load/store/remove trait. Notification records must use this owner. |
 | `firmware/app/src/runtime.rs` | Implemented copied command/reply/write/completion mailboxes. No I/O or waits while holding their critical sections. |
-| `firmware/app/src/clock.rs` | SNTP acquisition, plausibility checks, UTC-to-monotonic anchor, timezone rule adapter, and `LocalTimeResolver` implementation. Publishes `None` when UTC or timezone rules are untrusted. |
+| `firmware/app/src/clock.rs` | Implemented bounded CASE time acquisition, source/generation mailbox and control-only publication of the original UTC capture to TLS. Shared checked anchors live in `core/src/utc.rs`; POSIX timezone conversion remains in core. See [trusted UTC](trusted-utc.md). |
 | `firmware/core/src/runtime.rs` schedule path | Already calls the scheduler from control, persists `PersistBeforeRun` before exposing a window and preserves the supervisor across writes/configuration. No separate app schedule task is needed. |
 | `firmware/matter/` | Implemented SDK-generated async On/Off handler, applied acknowledgements, observed reporting and shared KV transaction helper, with host tests. |
-| `firmware/app/src/matter.rs` | Implemented copied-mailbox `LocalControl` binding. Matter node, descriptor tree, BLE commissioning, Wi-Fi ownership and running subscriptions remain work. |
-| `firmware/app/src/network.rs` | `rs_matter_embassy::stack::UserTask` implementation. Runs clock, HTTP, and Pushover services against the generic Matter-owned network stack while the interface is up. |
+| `firmware/app/src/matter.rs` | Implemented `LocalControl`, private Matter node/descriptor tree, generated bounded On/Off and reporting handlers, provisioning admission, entropy/allocator integration and the `Application` network task. Actual Apple Home pairing/subscriptions remain final-board acceptance. |
+| `firmware/app/src/matter.rs::Application` / `radio.rs` | Implemented fallible single-owner BLE/Wi-Fi/TCP assembly and `UserTask` with bounded CASE UTC acquisition and TLS readiness. HTTP/Pushover children remain work; they must handle interface loss without blocking local service. |
 | `firmware/app/src/settings_http.rs` | Fixed-capacity HTTP parser/renderer, authenticated configuration reads/writes, validation, and storage request/ack protocol. |
 | `firmware/app/src/pushover.rs` | Persistent transition queue, DNS/TCP/TLS transaction, retry policy, and acknowledgement removal. It cannot call or await control APIs. |
-| `firmware/app/src/main.rs` USB loop | Implemented bounded status/configuration/command/UTC protocol using core ingress. Token rotation and factory reset/recovery remain work. |
+| `firmware/app/src/service.rs` USB loop | Implemented bounded status/configuration/command/UTC protocol using core ingress. UTC is captured before queuing; a correlated clock-clear slot bypasses CONFIG storage. Token rotation and factory reset/recovery remain work. |
 | `firmware/app/src/output.rs` | One bounded async USB/log writer. No logging from interrupts or critical sections. |
-| `firmware/app/src/main.rs` | Implemented safe boot, executor startup, sole storage service and bounded USB loop. Radio/allocator startup and service extraction remain network integration work. |
+| `firmware/app/src/main.rs` | Implemented safe boot, allocator/executor startup and parallel local-service/Matter ownership. USB/storage live in `service.rs` and remain available after radio startup/runtime return. |
 
 ## Schedule and retained safety state
 
@@ -289,12 +289,12 @@ restart with the interface; durable queue state must survive that cancellation.
 
 ## Shared Wi-Fi services
 
-Implement the fifth `run_coex` argument as an
-`rs_matter_embassy::stack::UserTask`. Its `run` method receives the generic
-`edge_nal::NetStack` plus network diagnostics/change notifications. It starts only
-while an interface is usable and is cancelled and restarted after loss. Run three
-child futures under this task: SNTP, local HTTP, and Pushover. None owns a second radio
-stack or hard-coded Wi-Fi credentials.
+The fifth `run_coex` argument is implemented in `matter.rs` as an
+`rs_matter_embassy::stack::UserTask`. Its `run` method receives the generic network
+stack plus diagnostics/change notifications and can start before IP is usable.
+It currently runs TLS readiness and bounded CASE time acquisition. Future local
+HTTP/Pushover children must handle readiness and cancellation. None owns a second
+radio stack or hard-coded Wi-Fi credentials.
 
 Use `edge-http 0.8.0` for the local settings server. It matches Rust 1.88,
 `edge-nal 0.7`, `embedded-io-async 0.7`, and `embassy-time 0.5` in Stillair's lock.
@@ -319,14 +319,15 @@ USB. Do not place it in a URL, HTML log, or normal status output. A write is han
    That exit also needs a durable acknowledgement. The existing supervisor and
    retained occurrence end prevent edits or persistence from renewing a deadline.
 
-For time, use `sntpc-core 0.11` concepts: `get_time`, `NtpContext`,
-`NtpUdpSocket`, and `NtpTimestampGenerator`. `sntpc-net-embassy 0.11` targets
-embassy-net 0.9 but the `UserTask` exposes generic edge-nal, so implement the small UDP
-socket adapter instead of reaching into the concrete Wi-Fi stack. Persist the last
-trusted UTC anchor, reject implausible cold-start results, and account for NTP's
-68-year era ambiguity. Publish no civil time until an answer is plausible and fresh.
-A clock loss immediately withholds schedule windows; monotonic HomeKit overrides still
-work.
+Time now comes from bounded CASE-authenticated reads of the administrator-configured
+Matter TrustedTimeSource, or explicit physical USB UTC. Control accepts one original
+monotonic capture for schedule/TLS and expires it at one hour. Source/fabric changes
+and operator commands invalidate older in-flight reads; clock loss bypasses storage
+admission and suppresses automatic occurrences. Manual override deadlines remain
+monotonic. The [trusted UTC contract](trusted-utc.md) excludes cached SDK RTC, a
+persisted anchor, build time and unauthenticated SNTP as current TLS trust. No
+periodic UTC flash writes or extra UDP owner are added. A usable Home hub source
+and ACL are pending actual pairing; no Home app setup behavior is assumed.
 
 ## Pushover delivery
 
@@ -412,7 +413,7 @@ Stillair's tested dependency family must move as one unit:
 | `esp-hal`, `esp-rtos`, `esp-alloc`, `esp-radio`, `esp-storage`, bootloader and metadata | crates.io versions patched together to esp-hal git `10e48dd74837bae4be663a7d1825d12875363727` | Copy the complete patch table. Never update one crate alone. |
 | Embassy | executor 0.10, time 0.5, sync 0.8, net 0.9 | Reuse. |
 | edge APIs | edge-nal 0.7, embedded-io-async 0.7 | Reuse; add edge-http 0.8.0. |
-| SNTP | sntpc-core 0.11 API | Add only with a bounded edge-nal UDP adapter and era/plausibility tests. |
+| Trusted UTC | rs-matter 0.2.0 CASE/generated TimeSynchronization client | Implemented against the pinned SDK; no SNTP dependency or periodic UTC persistence. |
 | HTTPS client | edge-nal-tls 0.2.0 / mbedtls-rs 0.2.0 | Provider builds and verifies the public endpoint; combined runtime/heap evidence remains required. |
 
 Stillair's measured release image is 1,973,536 bytes, or 47.80% of a 4,128,768-byte
@@ -429,7 +430,7 @@ events, TLS, and the priority task stacks. Before freezing dependencies, produce
 release map and `espflash save-image` measurement and pass all of these gates:
 
 - no task stack overlaps or high-water warning under concurrent BLE commissioning,
-  HTTP requests, SNTP, and a Pushover attempt;
+  HTTP requests, CASE UTC reads, and a Pushover attempt;
 - at least 48 KiB unallocated SRAM after static allocations and configured task stacks;
 - no allocator exhaustion during Matter attestation plus one HTTP connection;
 - final image fits the selected partition table with at least 20% application-partition

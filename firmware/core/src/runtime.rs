@@ -5,13 +5,14 @@
 //! the owner must explicitly exit after the new configuration is durable.
 
 use crate::configuration::ValidatedDeviceConfig;
+use crate::utc::{ClockUpdate, UtcAnchor, UtcObservation};
 use crate::{
     Command, Demand, Fault, HardwarePermit, Inputs, Millis, Reading, RelayCommand, RetainedState,
     RetainedWindow, ScheduleDecision, Scheduler, Supervisor, SupervisorStatus, SwitchCommand,
     UtcSeconds, WindowDisposition,
 };
 
-pub const UTC_MAX_AGE_MS: u64 = 3_600_000;
+pub const UTC_MAX_AGE_MS: u64 = crate::utc::MAX_AGE_MS;
 
 #[derive(Clone, Copy, Debug)]
 // One fixed mailbox owns the complete validated configuration; no allocator or
@@ -27,6 +28,8 @@ pub enum RuntimeCommand {
     ExitMaintenance,
     /// A newly acquired, trusted observation, never a republished cached value.
     SetUtc(UtcSeconds),
+    /// Timestamped at operator ingress, before any dispatch delay.
+    SetUtcObserved(UtcObservation),
     ClearUtc,
 }
 
@@ -99,6 +102,8 @@ pub struct Observation {
     pub maintenance_pressed: bool,
     /// Reserved lossless ingress, including Off requests rejected with Busy.
     pub force_off: bool,
+    /// Latest authenticated observation and loss, independent of storage admission.
+    pub clock_update: ClockUpdate,
 }
 
 #[derive(Clone, Copy, Debug)]
@@ -123,23 +128,8 @@ struct ActiveRequest {
 
 #[derive(Clone, Copy)]
 struct Clock {
-    utc: UtcSeconds,
-    observed_at: Millis,
-    last_read: Millis,
-}
-
-impl Clock {
-    fn at(&mut self, now: Millis) -> Option<UtcSeconds> {
-        if now < self.last_read || now.0 == u64::MAX {
-            return None;
-        }
-        let age = now.0.checked_sub(self.observed_at.0)?;
-        if age >= UTC_MAX_AGE_MS {
-            return None;
-        }
-        self.last_read = now;
-        self.utc.0.checked_add(age / 1000).map(UtcSeconds)
-    }
+    anchor: UtcAnchor,
+    network: bool,
 }
 
 pub struct Runtime {
@@ -257,6 +247,21 @@ impl Runtime {
         // In particular, a late eligibility ACK plus a backwards correction must
         // not resurrect an occurrence the supervisor never had a chance to see.
         self.observe_utc(observation.now);
+        if observation.clock_update.revoke_network && self.clock.is_some_and(|clock| clock.network)
+        {
+            self.clock = None;
+            self.suppress();
+        }
+        if let Some(sample) = observation.clock_update.sample {
+            // The producer has already checked source and generation. Acceptance
+            // still checks this original capture; dispatch never refreshes age.
+            if self.set_utc(sample, observation.now, true).is_err()
+                && self.clock.is_some_and(|clock| clock.network)
+            {
+                self.clock = None;
+                self.suppress();
+            }
+        }
 
         let explicit_off = observation.force_off
             || request.is_some_and(|request| matches!(request.command, RuntimeCommand::Off));
@@ -440,6 +445,12 @@ impl Runtime {
         explicit_off: bool,
         switch: &mut SwitchCommand,
     ) -> Option<Result<Acknowledgement, Error>> {
+        if matches!(request.command, RuntimeCommand::ClearUtc) {
+            // Revocation must never wait behind a configuration/flash transaction.
+            self.clock = None;
+            self.suppress();
+            return Some(Ok(Acknowledgement::Applied));
+        }
         if self.active_request.is_some() || self.pending.is_some() {
             return Some(Err(Error::Busy));
         }
@@ -510,25 +521,18 @@ impl Runtime {
                 Purpose::ExitMaintenance
             }
             RuntimeCommand::SetUtc(utc) => {
-                if observation.now.0 == u64::MAX
-                    || self
-                        .configuration
-                        .is_none_or(|config| config.timezone().civil_at(utc).is_err())
-                {
-                    return Some(Err(Error::InvalidTime));
-                }
-                self.clock = Some(Clock {
-                    utc,
-                    observed_at: observation.now,
-                    last_read: observation.now,
-                });
-                return Some(Ok(Acknowledgement::Applied));
+                let result = UtcObservation::from_seconds(utc, observation.now)
+                    .ok_or(Error::InvalidTime)
+                    .and_then(|sample| self.set_utc(sample, observation.now, false));
+                return Some(result.map(|()| Acknowledgement::Applied));
             }
-            RuntimeCommand::ClearUtc => {
-                self.clock = None;
-                self.suppress();
-                return Some(Ok(Acknowledgement::Applied));
+            RuntimeCommand::SetUtcObserved(sample) => {
+                return Some(
+                    self.set_utc(sample, observation.now, false)
+                        .map(|()| Acknowledgement::Applied),
+                );
             }
+            RuntimeCommand::ClearUtc => unreachable!("revocation handled before storage admission"),
             RuntimeCommand::Toggle => unreachable!("resolved by control before acceptance"),
         };
         self.active_request = Some(ActiveRequest {
@@ -536,6 +540,23 @@ impl Runtime {
             purpose,
         });
         None
+    }
+
+    pub fn clock_observation(&self) -> Option<UtcObservation> {
+        self.clock.and_then(|clock| clock.anchor.observation())
+    }
+
+    fn set_utc(&mut self, sample: UtcObservation, now: Millis, network: bool) -> Result<(), Error> {
+        let mut anchor = UtcAnchor::new(sample, now).ok_or(Error::InvalidTime)?;
+        let utc = anchor.at(now).ok_or(Error::InvalidTime)?;
+        if self
+            .configuration
+            .is_none_or(|config| config.timezone().civil_at(utc).is_err())
+        {
+            return Err(Error::InvalidTime);
+        }
+        self.clock = Some(Clock { anchor, network });
+        Ok(())
     }
 
     fn enter_maintenance(&mut self) {
@@ -547,7 +568,7 @@ impl Runtime {
     }
 
     fn observe_utc(&mut self, now: Millis) -> Option<UtcSeconds> {
-        let utc = self.clock.as_mut()?.at(now);
+        let utc = self.clock.as_mut()?.anchor.at(now);
         match utc {
             Some(utc) => {
                 if self

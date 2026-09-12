@@ -358,3 +358,32 @@ fn verifier_observes_certificate_expiry_as_utc_advances() {
         sys::MBEDTLS_X509_BADCERT_EXPIRED,
     );
 }
+
+#[test]
+fn control_accepted_original_capture_drives_both_clocks_without_dispatch_refresh() {
+    let _guard = clock_test();
+    let sample = UtcObservation::new(1_709_251_199_999, Millis(100)).unwrap();
+    let mut schedule_anchor = UtcAnchor::new(sample, Millis(700)).unwrap();
+    tick(900);
+    set_trusted_observation(sample);
+    let expected = schedule_anchor.at(Millis(900)).unwrap();
+    assert_eq!(trusted_utc(), UtcDateTime::from_unix(expected));
+    assert_eq!(hooked_utc().unwrap().tm_sec, 0);
+    tick(100 + TRUSTED_UTC_MAX_AGE_MS - 1);
+    assert!(schedule_anchor
+        .at(Millis((100 + TRUSTED_UTC_MAX_AGE_MS - 1) as u64))
+        .is_some());
+    assert!(has_trusted_utc());
+    // Even an accidental repeat carries the old capture and cannot renew it.
+    set_trusted_observation(sample);
+    tick(100 + TRUSTED_UTC_MAX_AGE_MS);
+    assert!(schedule_anchor
+        .at(Millis((100 + TRUSTED_UTC_MAX_AGE_MS) as u64))
+        .is_none());
+    assert!(hooked_utc().is_none());
+    set_trusted_observation(sample);
+    assert!(!has_trusted_utc());
+    tick(99);
+    set_trusted_observation(sample);
+    assert!(!has_trusted_utc());
+}

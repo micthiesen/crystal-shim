@@ -1,7 +1,7 @@
 //! Small cross-priority mailboxes. Flash remains exclusively in thread mode.
 use core::cell::Cell;
 use critical_section::Mutex;
-use crystal_shim_core::runtime::{Reply, Request, StoreCompletion, StoreRequest};
+use crystal_shim_core::runtime::{Reply, Request, RuntimeCommand, StoreCompletion, StoreRequest};
 use crystal_shim_core::runtime_ingress::{Ingress, Source, Token};
 
 static INGRESS: Mutex<Cell<Ingress>> = Mutex::new(Cell::new(Ingress::new()));
@@ -18,8 +18,33 @@ fn ingress<R>(f: impl FnOnce(&mut Ingress) -> R) -> R {
     })
 }
 
-pub fn submit(source: Source, request: Request) -> Option<Token> {
-    ingress(|ingress| ingress.submit_from(source, request))
+pub fn submit(source: Source, mut request: Request) -> Option<Token> {
+    // The stamp and command admission share one critical section with generation
+    // invalidation: older network work cannot race an accepted operator command.
+    critical_section::with(|_| {
+        let clock_command = matches!(
+            request.command,
+            RuntimeCommand::SetUtc(_)
+                | RuntimeCommand::SetUtcObserved(_)
+                | RuntimeCommand::ClearUtc
+        );
+        if let RuntimeCommand::SetUtc(utc) = request.command {
+            request.command = match crystal_shim_core::utc::UtcObservation::from_seconds(
+                utc,
+                crate::snapshot::now(),
+            ) {
+                Some(sample) => RuntimeCommand::SetUtcObserved(sample),
+                // Preserve an invalid capture as unrepresentable UTC. A timer
+                // recovery before dispatch must not manufacture a fresh stamp.
+                None => RuntimeCommand::SetUtc(crystal_shim_core::UtcSeconds(u64::MAX)),
+            };
+        }
+        let token = ingress(|ingress| ingress.submit_from(source, request));
+        if token.is_some() && clock_command {
+            crate::clock::operator_command();
+        }
+        token
+    })
 }
 pub fn reply(token: Token) -> Option<Reply> {
     ingress(|ingress| ingress.take_reply_for(token))

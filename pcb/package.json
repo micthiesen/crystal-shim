@@ -4,6 +4,7 @@
   "type": "module",
   "packageManager": "bun@1.3.11",
   "scripts": {
+    "render:mains-power-parts": "bun mains/design/render-power-parts.tsx",
     "render:controller": "bun run controller/design/render-controller.tsx",
     "render:controller-sections": "bun run controller/design/render-sections.tsx",
     "render:controller-parts": "bun run controller/design/render-parts.tsx",
@@ -11,14 +12,16 @@
     "typecheck": "tsc --noEmit",
     "build:smoke": "tsci build fixtures/tooling-smoke.circuit.tsx --routing-disabled",
     "check:smoke": "tsci check source fixtures/tooling-smoke.circuit.tsx && tsci check pin_specification fixtures/tooling-smoke.circuit.tsx && tsci check schematic-placement fixtures/tooling-smoke.circuit.tsx && tsci check netlist fixtures/tooling-smoke.circuit.tsx && tsci check placement fixtures/tooling-smoke.circuit.tsx",
-    "test": "bun run build:smoke && bun test fixtures controller/design tools/export_kicad_schematic.test.ts",
+    "test": "bun run build:smoke && bun test fixtures controller/design mains/design tools/export_kicad_schematic.test.ts",
     "test:handoff": "python3 -m unittest tools.test_tscircuit_handoff",
-    "lint": "oxlint --report-unused-disable-directives fixtures tools controller/design",
-    "format": "oxfmt --check \"fixtures/**/*.ts\" \"fixtures/**/*.tsx\" \"tools/*.ts\" \"controller/design/**/*.ts\" \"controller/design/**/*.tsx\"",
+    "lint": "oxlint --report-unused-disable-directives fixtures tools controller/design mains/design",
+    "format": "oxfmt --check \"fixtures/**/*.ts\" \"fixtures/**/*.tsx\" \"tools/*.ts\" \"controller/design/**/*.ts\" \"controller/design/**/*.tsx\" \"mains/design/**/*.ts\" \"mains/design/**/*.tsx\"",
     "check": "bun run lint && bun run format",
-    "check:write": "oxlint --fix --report-unused-disable-directives fixtures tools controller/design && oxfmt --write \"fixtures/**/*.ts\" \"fixtures/**/*.tsx\" \"tools/*.ts\" \"controller/design/**/*.ts\" \"controller/design/**/*.tsx\"",
+    "check:write": "oxlint --fix --report-unused-disable-directives fixtures tools controller/design mains/design && oxfmt --write \"fixtures/**/*.ts\" \"fixtures/**/*.tsx\" \"tools/*.ts\" \"controller/design/**/*.ts\" \"controller/design/**/*.tsx\" \"mains/design/**/*.ts\" \"mains/design/**/*.tsx\"",
     "export:kicad:controller": "bun controller/design/stage-controller-export.ts",
-    "handoff:controller": "bun run render:controller && python3 tools/tscircuit_handoff.py stage dist/controller/design/design-manifest.json --augmentation controller/design/kicad-augment.json --build-command '[\"bun\",\"run\",\"render:controller\"]' --export-command '[\"bun\",\"run\",\"export:kicad:controller\"]' --production-dir controller/kicad --source-dir . --staging-root /tmp/crystal-shim-controller-handoff --staged-footprint-root footprints"
+    "handoff:controller": "bun run render:controller && python3 tools/tscircuit_handoff.py stage dist/controller/design/design-manifest.json --augmentation controller/design/kicad-augment.json --build-command '[\"bun\",\"run\",\"render:controller\"]' --export-command '[\"bun\",\"run\",\"export:kicad:controller\"]' --production-dir controller/kicad --source-dir . --staging-root /tmp/crystal-shim-controller-handoff --staged-footprint-root footprints",
+    "render:mains-secondary": "bun mains/design/render-secondary.tsx",
+    "render:mains-suppression": "bun mains/design/render-suppression.tsx"
   },
   "dependencies": {
     "circuit-json-to-kicad": "0.0.205",

@@ -76,6 +76,7 @@ impl Harness {
                 sensor_revision: 1,
                 reading: Reading::Invalid(Fault::Uncalibrated),
                 force_off,
+                clock_update: Default::default(),
                 maintenance_pressed: false,
                 hardware: HardwarePermit::Allowed,
             },

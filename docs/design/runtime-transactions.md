@@ -9,7 +9,7 @@ it performs no I/O or waits under its critical-section locks.
 This unit adds a working USB path for configuration, commands, maintenance and
 explicit UTC observations. The [Matter command/KV adapter](matter-integration.md)
 now shares that ingress and storage owner; radio/profile integration, HTTP settings
-and SNTP remain work. No current date, schedule or calibration is compiled into the
+and authenticated HTTP remain work. No current date, schedule or calibration is compiled into the
 application. A valid configured calibration and matching sensor revision remain
 required before an explicit run request can energize the output.
 
@@ -87,9 +87,12 @@ The coordinator evaluates the configured POSIX timezone and daily schedule in
 the local control task using an explicitly supplied UTC observation anchored to
 monotonic time. It advances that anchor automatically and invalidates it at an
 elapsed age of 3,600,000 ms, monotonic rollback or counter saturation. A clock
-observation is never persisted or invented at boot. It does not feed the TLS
-certificate clock yet; the future clock service must publish each fresh trusted
-observation to both consumers after its plausibility checks.
+observation is never persisted or invented at boot. The [trusted UTC service](trusted-utc.md)
+now offers CASE-authenticated observations or explicitly supplied USB UTC. Control
+accepts one original monotonic capture and publishes that same capture to TLS;
+dispatch or repeated publication cannot renew its age. Source loss has a dedicated
+lane independent of pending storage. USB `CLEAR_UTC` has a small correlated priority
+slot and is applied by control even while CONFIG awaits its durable reply.
 
 `PersistBeforeRun` becomes an immutable retained-eligibility write. No schedule
 window reaches the supervisor until that write succeeds and a fresh evaluation
@@ -152,7 +155,7 @@ APIs. Commands are newline-terminated ASCII:
 | `<id> MAINTENANCE` | Enter maintenance and persist it. |
 | `<id> EXIT` | Persist maintenance-clear before exit. |
 | `<id> UTC <unix-seconds>` | Anchor a newly acquired UTC observation supplied by the operator. This is not SNTP authentication or automatic synchronization. |
-| `<id> CLEAR_UTC` | Invalidate the schedule clock. |
+| `<id> CLEAR_UTC` | Invalidate schedule/TLS UTC. A separate correlated slot bypasses pending CONFIG storage; automatic acquisition may later supply a new observation. |
 | `<id> CONFIG <hex>` | Decode and save a canonical `CSCF` configuration blob at the next revision. |
 
 IDs are nonzero `u32` correlation values. Internal non-reusable generation tokens
@@ -201,10 +204,11 @@ host workspace directly with `cargo test --manifest-path firmware/Cargo.toml --l
 Hardware timing and USB
 behavior remain final-board evidence, not host-test results.
 
-Remaining work includes authenticated HTTP adapters and UI, real SNTP acquisition
-and joint schedule/TLS clock publication, Matter radio/profile assembly,
-notification persistence/delivery, settings-token
+Remaining work includes authenticated HTTP adapters and UI, final-board acceptance
+of the implemented Matter radio and trusted UTC source, notification
+persistence/delivery, settings-token
 rotation, and factory reset/recovery when the partition itself cannot be opened.
-No notification or network request is added by this unit. Final-board tests must
-still measure control execution time, flash/output timing, calibration transitions
+The original coordinator added no network requests. The later trusted-UTC service
+now performs bounded CASE reads through Matter; notification delivery remains work.
+Final-board tests must still measure control execution time, flash/output timing, calibration transitions
 and power-cut recovery using the actual storage part.

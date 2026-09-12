@@ -822,6 +822,115 @@ Complete page framing/legibility review and clean ERC still precede acceptance
 and routing. This bounded clean code review does not approve
 the board or establish whole-project convergence.
 
+## Initial controller NC and wire cleanup
+
+The initial typed exporter now places all 20 intended no-connect markers and
+repairs only two audited collinear overlaps on the Power and USB child sheets.
+Native ERC drops from 655 to 637: all 16 unconnected-pin errors and both wire
+endpoint warnings disappear. The exact native XML snapshots, every symbol and
+label anchor/type, full wire union and all 99 footprint identities remain
+unchanged. Focused adapter/integration checks pass 20 tests and 1,604 assertions.
+Root read the adapter and inspected actual power/USB detail renders.
+Evidence is in `/tmp/crystal-shim-schematic-cleanup-research`.
+
+The root ERC path and coordinate-unit label are misleading for these reports:
+resolve UUID/ref/pin into the child graph, not the printed coordinates. A proposed
+report corruption was refuted: the receipt hashes canonical parsed JSON, not
+report bytes. Proposed Service/Sensor clipping findings were also retracted on
+full-page inspection; no verified out-of-frame defect was established. Complete
+page framing and legibility remain a release obligation.
+
+The declaration now rejects a regression to either resolved finding type. Root's
+fresh declaration-bound stage is
+`/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-f77a7_6_`.
+Its normalized augmentation digest is
+`df626a3956f93a24c8f279633d56243b4bb09e61c93df6740401907b3514167c`;
+strict parity and native parse checks pass. DRC retains zero violations and 216
+unrouted items. Remaining ERC is 538 off-grid, 95 library and four power-source
+findings. No native production board or handoff lock is adopted.
+
+## Mains power, secondary and suppression capture
+
+Primary drawing review corrected the G5RL-1A-TV8 contact geometry: contact 4 is
+staggered 3.5 mm from contact 3; the derived coil-to-pin-3 distance is 23.5 mm.
+Both root and independent reviewers verified the actual bottom view and its
+component-side mirror. A supposed PDF cache was an Access Denied HTML response;
+its hash was replaced with a validated Omron PDF and independently rechecked.
+The source now includes the selected relay and IRM-10-5 with body/courtyard bounds,
+exact pin functions and explicit remaining native/assembly obligations. See
+[the source](../../pcb/mains/design/README.md) and [footprint audit](footprint-audit.md).
+
+Independent review of the 13-part secondary circuit reproduced every exact
+part/value, 35 pins, three intentional NCs and eight nets. UV/OV dividers use raw
+power; the clamp and J5 use protected power with the specified polarity. Four
+checks with 268 assertions pass and the freshly rebuilt schematic is readable.
+No actionable findings remain in that scope. Evidence is in
+`/tmp/crystal-shim-secondary-review-independent`.
+
+A separate review verified the exact D1/R1/C1 ordering, primary PDF hashes,
+body/lead dimensions and across-load suppression topology. Six checks initially
+passed 136 assertions; the reviewer also ran 168 independent signed-vector,
+body-offset and native-serialization assertions across four rotations. Root added
+signed native pin-vector regressions so distance-only tests cannot miss a reversed
+diode. R1 uses 1.1 mm finished holes and includes the separate 12 mm coating
+extent. C1 uses 1.3 mm finished holes for lead-pitch tolerance. Evidence is in
+`/tmp/crystal-shim-suppression-independent-review`.
+
+No outstanding actionable finding remains in these bounded component/circuit
+reviews. Complete mains integration, primary-header/MOV capture, inlet-fuse wiring, isolation
+placement, native adapters, lead forming, installed height and thermal/transient
+acceptance remain work. This is not whole-board approval or project review
+convergence. No purchase or physical test was performed.
+
+## Trusted UTC integration and adversarial corrections
+
+The production CASE reader, operator USB path, control calendar and TLS provider
+now share original-capture UTC semantics. Separate independent reviews covered
+control/command ordering and CASE source/response authority. They reproduced
+three defects during the work:
+
+- A newer `CLEAR_UTC` could run before an older queued UTC command, which then
+  restored trust on the next tick. Clear now supersedes that older queued request
+  with its own correlated reply, preserving CONFIG and the reserved Off path.
+- Work-first future selection could accept a ready response after either the
+  two-second read or ten-second total deadline. Both bounds now retain their
+  original start and check elapsed time before polling and after completion.
+- The pinned generated UTC convenience reader decoded the first report without
+  checking its attribute path. The production public IM read now validates one
+  exact endpoint/cluster/UTC report and its nullable unsigned scalar. Original
+  capture precedes the final ACK await.
+
+The independent control reviewer verified the real USB reply order, equal caller
+IDs, stale completion, slot release and Clear during a pending CONFIG commit.
+Both scratch probes pass; removing supersession makes the first fail. Root also
+reran the authority review's original deadline and wrong-path reproductions.
+Mutation checks restoring the two authority defects fail the new regressions.
+Evidence is in `/tmp/crystal-shim-utc-control-independent-review`,
+`/tmp/crystal-shim-utc-authority-independent-review` and
+`/tmp/crystal-shim-utc-review-mutants.0th29ry8`.
+
+The final independent authority recheck closed both findings with nine current
+source tests and two independent extracted-helper probes. It verified expiry
+before the first work poll, exact/late completion, the original wrong-path
+fixtures and capture before ACK. All 27 supplied source/document hashes and
+seven verification/mutation log hashes matched. No actionable finding remains
+in either bounded UTC review; this does not establish whole-project convergence.
+
+The full post-correction gate passed: 196 host tests, three actual partition
+tests, 12 Linux TLS tests, host/app formatting and Clippy, C6 release, feature
+guards, 98 Bun tests with 15,915 assertions and 35 shared handoff tests. The final
+ELF is text 1,948,678 / data 23,884 / BSS 245,560 bytes; the SDK example private
+key is absent. Static SRAM grows by 216 bytes over the pre-UTC image, which does
+not establish runtime margin. The complete log is
+`/tmp/crystal-shim-full-check-utc-mains-final.log`.
+
+The SDK exposes parsed reports and tolerates a missing outer TLV end after a
+complete attribute array; the project does not claim canonical raw-frame
+validation. Actual radio/CASE timing, Home pairing and a usable unattended
+authenticated time source remain unverified. Hourly USB time-setting is not an
+unattended solution. HTTP and Pushover workloads are not yet active, and live
+memory/clock accuracy evidence remains open. See [trusted UTC](trusted-utc.md).
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

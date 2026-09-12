@@ -14,6 +14,7 @@ path = "../app/src/tls.rs"
 doctest = false
 
 [dependencies]
+crystal-shim-core = { path = "../core" }
 critical-section = { version = "1", features = ["std"] }
 edge-nal = { version = "0.7", default-features = false }
 edge-nal-tls = { version = "0.2.0", default-features = false }

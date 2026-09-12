@@ -14,6 +14,10 @@ use esp_alloc as _;
 use core::{cell::Cell, ffi::CStr};
 
 use critical_section::Mutex;
+use crystal_shim_core::{
+    utc::{self, UtcAnchor, UtcObservation},
+    Millis,
+};
 use edge_nal::TcpConnect;
 use edge_nal_tls::{
     mbedtls::{
@@ -32,7 +36,7 @@ pub const PUSHOVER_HOST: &CStr = c"api.pushover.net";
 /// The TCP port used by the Pushover HTTPS API.
 pub const PUSHOVER_PORT: u16 = 443;
 /// UTC must be refreshed before this elapsed age, even if the publisher stops.
-pub const TRUSTED_UTC_MAX_AGE_MS: i64 = 60 * 60 * 1_000;
+pub const TRUSTED_UTC_MAX_AGE_MS: i64 = utc::MAX_AGE_MS as i64;
 /// SHA-256 fingerprint of the embedded DigiCert Global Root G2 certificate.
 pub const TRUST_ANCHOR_SHA256: &str =
     "CB:3C:CB:B7:60:31:E5:E0:13:8F:8D:D3:9A:23:F9:DE:47:FF:C3:5E:43:C1:14:4C:EA:27:D4:6A:5A:B1:CB:5F";
@@ -173,64 +177,20 @@ impl UtcDateTime {
         }
     }
 
-    fn advance_seconds(mut self, elapsed: u32) -> Option<Self> {
-        let seconds =
-            u32::from(self.hour) * 3_600 + u32::from(self.minute) * 60 + u32::from(self.second);
-        let advanced = seconds.checked_add(elapsed)?;
-        self.second = (advanced % 60) as u8;
-        self.minute = (advanced / 60 % 60) as u8;
-        self.hour = (advanced / 3_600 % 24) as u8;
-
-        // The freshness limit bounds this to at most one midnight per read.
-        for _ in 0..advanced / 86_400 {
-            self.day += 1;
-            if self.day > days_in_month(self.year, self.month) {
-                self.day = 1;
-                self.month += 1;
-                if self.month > 12 {
-                    self.month = 1;
-                    self.year = self.year.checked_add(1)?;
-                    if self.year > 9999 {
-                        return None;
-                    }
-                }
-            }
-        }
-        Some(self)
+    fn from_unix(utc: crystal_shim_core::UtcSeconds) -> Option<Self> {
+        let (year, month, day, hour, minute, second) = utc::calendar(utc)?;
+        Self::new(year, month, day, hour, minute, second).ok()
     }
 }
 
 struct CertificateClock;
-
-#[derive(Clone, Copy)]
-struct TrustedUtc {
-    utc: UtcDateTime,
-    anchored_at_ms: i64,
-    last_checked_ms: i64,
-}
-
-impl TrustedUtc {
-    fn at(&mut self, monotonic_ms: i64) -> Option<UtcDateTime> {
-        // Both timer backends saturate at i64::MAX. Reject saturation as well
-        // as observed rollback so an exhausted or reset timer cannot freeze UTC.
-        if monotonic_ms < self.last_checked_ms || monotonic_ms == i64::MAX {
-            return None;
-        }
-        let elapsed = monotonic_ms.checked_sub(self.anchored_at_ms)?;
-        if !(0..TRUSTED_UTC_MAX_AGE_MS).contains(&elapsed) {
-            return None;
-        }
-        self.last_checked_ms = monotonic_ms;
-        self.utc.advance_seconds((elapsed / 1_000) as u32)
-    }
-}
 
 #[cfg(target_os = "none")]
 use edge_nal_tls::mbedtls::sys::hook::backend::embassy::timer::EmbassyTimer;
 #[cfg(all(not(test), not(target_os = "none")))]
 use edge_nal_tls::mbedtls::sys::hook::backend::std::timer::StdTimer;
 
-static TRUSTED_UTC: Mutex<Cell<Option<TrustedUtc>>> = Mutex::new(Cell::new(None));
+static TRUSTED_UTC: Mutex<Cell<Option<UtcAnchor>>> = Mutex::new(Cell::new(None));
 static CERTIFICATE_CLOCK: CertificateClock = CertificateClock;
 #[cfg(target_os = "none")]
 static TLS_TIMER: EmbassyTimer = EmbassyTimer;
@@ -247,7 +207,7 @@ impl MbedtlsWallClock for CertificateClock {
 
 /// Installs the process-wide clocks used by MbedTLS.
 ///
-/// Until set_trusted_utc supplies a value, MbedTLS rejects certificate validation.
+/// Until control supplies an accepted observation, MbedTLS rejects certificate validation.
 ///
 /// # Safety
 ///
@@ -264,21 +224,35 @@ pub unsafe fn install_certificate_clock() {
     }
 }
 
-/// Anchors a newly acquired, trusted UTC observation to the monotonic clock.
-///
-/// The caller must validate its source and freshness before publishing. Do not
-/// republish a cached observation: that would incorrectly renew its trust.
-/// UTC advances automatically and expires at TRUSTED_UTC_MAX_AGE_MS.
-pub fn set_trusted_utc(now: UtcDateTime) {
+/// Installs the control-accepted observation with its original monotonic capture.
+/// Re-delivery cannot renew age. Only the control owner may publish production UTC.
+pub fn set_trusted_observation(sample: UtcObservation) {
     critical_section::with(|cs| {
-        let monotonic_ms = TLS_TIMER.now();
-        let anchor = (0..i64::MAX).contains(&monotonic_ms).then_some(TrustedUtc {
-            utc: now,
-            anchored_at_ms: monotonic_ms,
-            last_checked_ms: monotonic_ms,
-        });
+        let anchor = u64::try_from(TLS_TIMER.now())
+            .ok()
+            .and_then(|now| UtcAnchor::new(sample, Millis(now)));
         TRUSTED_UTC.borrow(cs).set(anchor);
     });
+}
+
+#[cfg(all(test, not(target_os = "none")))]
+fn set_trusted_utc(date: UtcDateTime) {
+    let days = (1970..date.year)
+        .map(|year| if is_leap_year(year) { 366_u64 } else { 365 })
+        .sum::<u64>()
+        + u64::from(day_of_year(date.year, date.month, date.day))
+        - 1;
+    let seconds = days * 86_400
+        + u64::from(date.hour) * 3_600
+        + u64::from(date.minute) * 60
+        + u64::from(date.second);
+    let sample = u64::try_from(TLS_TIMER.now()).ok().and_then(|now| {
+        UtcObservation::from_seconds(crystal_shim_core::UtcSeconds(seconds), Millis(now))
+    });
+    match sample {
+        Some(sample) => set_trusted_observation(sample),
+        None => clear_trusted_utc(),
+    }
 }
 
 /// Clears UTC after the clock loses trust. New handshakes then fail closed.
@@ -297,7 +271,10 @@ fn trusted_utc() -> Option<UtcDateTime> {
         let mut anchor = cell.get()?;
         // Read time and update the anchor under the same lock: a concurrent
         // refresh/read must not appear to move the monotonic clock backwards.
-        let utc = anchor.at(TLS_TIMER.now());
+        let utc = u64::try_from(TLS_TIMER.now())
+            .ok()
+            .and_then(|now| anchor.at(Millis(now)))
+            .and_then(UtcDateTime::from_unix);
         // Expiry, rollback, saturation, and calendar overflow stay invalid until
         // a new trusted observation arrives, even if the timer later recovers.
         cell.set(utc.map(|_| anchor));
