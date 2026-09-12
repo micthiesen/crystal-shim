@@ -14,6 +14,10 @@ p256 = { version = "0.13", default-features = false, features = ["arithmetic"] }
 embassy-futures = "0.1"
 sha2 = { version = "=0.10.9", default-features = false }
 
+[target.'cfg(unix)'.dependencies]
+# Host provisioning transport only; absent from the ESP target dependency graph.
+libc = "=0.2.189"
+
 [dev-dependencies]
 embedded-storage = "0.3"
 embedded-storage-async = "0.4"

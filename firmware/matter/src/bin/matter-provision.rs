@@ -1,10 +1,14 @@
-//! Host-only private provisioning. No serial ports, flash tools, or network clients.
+//! Host-only private provisioning. Serial writes require explicit `send`; no flash/network tools.
 #[path = "provision/cd.rs"]
 mod cd;
 #[path = "provision/crypto.rs"]
 mod crypto;
 #[path = "provision/files.rs"]
 mod files;
+#[path = "provision/sender.rs"]
+mod sender;
+#[path = "provision/serial.rs"]
+mod serial;
 
 use crystal_shim_matter::{
     provisioning::{self, Attestation, Metadata, Provisioning},
@@ -23,12 +27,14 @@ use std::{
     path::{Path, PathBuf},
 };
 
-const HELP: &str = "Private Matter provisioning (host only; never writes hardware)\n\
-Commands: issue-dev, import, validate\n\
+const HELP: &str = "Private Matter provisioning (host tool; only send opens the explicitly named USB port)\n\
+Commands: issue-dev, import, validate, send\n\
 issue-dev/import required: --metadata FILE --pai-cert FILE --cd FILE --paa-cert FILE --cd-signer FILE --out NEW_DIRECTORY\n\
 issue-dev also requires: --pai-key FILE (fresh device key; explicit development VID FFF1-FFF4)\n\
 import also requires: --dac-cert FILE --dac-key FILE (unencrypted P-256 PEM)\n\
 validate required: --record FILE --paa-cert FILE --cd-signer FILE\n\
+send required: --record FILE --paa-cert FILE --cd-signer FILE --serial /absolute/device [--reboot]\n\
+send verifies the same private bytes offline before opening USB. Success stays in maintenance unless --reboot requests a fresh writer acknowledgement. Close other terminal programs. No credentials are printed.\n\
 Metadata has exactly vendor_id, product_id, hardware_version, vendor_name, serial_number, hardware_version_string as key=value lines. IDs accept decimal or 0x hex.\n\
 PIN, discriminator and unique ID are freshly generated; private record.bin and pairing.txt are never printed. Certificates may be PEM or DER; CD is DER. Output must be new and outside git.\n\
 Validation uses explicit local trust certificates, not an assertion of CSA certification or Apple Home acceptance. See docs/design/matter-provisioning.md.";
@@ -40,27 +46,32 @@ fn main() {
         return;
     }
     match run(&args) {
-        Ok(()) => {
-            println!("OK: offline provisioning validation complete; no credentials are printed")
-        }
+        Ok(message) => println!("OK: {message}"),
         Err(error) => {
             eprintln!("ERROR: {error}");
             std::process::exit(1);
         }
     }
 }
-fn run(args: &[std::ffi::OsString]) -> Result<()> {
+fn run(args: &[std::ffi::OsString]) -> Result<&'static str> {
     let command = args[0].to_str().ok_or("invalid command")?;
-    if !matches!(command, "issue-dev" | "import" | "validate") {
+    if !matches!(command, "issue-dev" | "import" | "validate" | "send") {
         return Err("unknown command; use --help");
     }
     let mut options = BTreeMap::new();
-    for pair in args[1..].chunks(2) {
-        if pair.len() != 2 {
-            return Err("every option requires one file path");
+    let mut reboot = false;
+    let mut fields = args[1..].iter();
+    while let Some(option) = fields.next() {
+        let key = option.to_str().ok_or("invalid option name")?;
+        if key == "--reboot" {
+            if command != "send" || reboot {
+                return Err("--reboot is allowed once, only with send");
+            }
+            reboot = true;
+            continue;
         }
-        let key = pair[0].to_str().ok_or("invalid option name")?;
-        if options.insert(key, PathBuf::from(&pair[1])).is_some() {
+        let value = fields.next().ok_or("every file option requires one path")?;
+        if options.insert(key, PathBuf::from(value)).is_some() {
             return Err("duplicate option");
         }
     }
@@ -84,6 +95,7 @@ fn run(args: &[std::ffi::OsString]) -> Result<()> {
             "--cd-signer",
             "--out",
         ],
+        "send" => &["--record", "--paa-cert", "--cd-signer", "--serial"],
         _ => &["--record", "--paa-cert", "--cd-signer"],
     };
     if expected.len() != options.len() || expected.iter().any(|key| !options.contains_key(key)) {
@@ -95,7 +107,7 @@ fn run(args: &[std::ffi::OsString]) -> Result<()> {
             .map(PathBuf::as_path)
             .ok_or("missing option")
     };
-    if command == "validate" {
+    if matches!(command, "validate" | "send") {
         let bytes = files::read(path("--record")?, true, provisioning::MAX_BYTES)?;
         let record =
             Provisioning::decode(&bytes.0).map_err(|_| "record rejected by production decoder")?;
@@ -103,7 +115,24 @@ fn run(args: &[std::ffi::OsString]) -> Result<()> {
         let result = validate(&scratch, &record, path("--paa-cert")?, path("--cd-signer")?);
         std::fs::remove_dir_all(&scratch.0).map_err(|_| "cannot remove validation scratch")?;
         result?;
-        return Ok(());
+        if command == "send" {
+            // No serial inspection/open/configuration until decoder, signatures,
+            // explicit PAA/CD trust, scratch cleanup and fresh randomness succeed.
+            let random = crypto::random(16)?;
+            let nonce: [u8; 16] = random.0.as_slice().try_into().map_err(|_| "nonce length")?;
+            if nonce == [0; 16] {
+                return Err("random nonce rejected; no serial device opened");
+            }
+            let mut port = serial::Serial::open(path("--serial")?)?;
+            let success = sender::send(&mut port, &bytes.0, nonce, reboot)
+                .map_err(sender::Failure::message)?;
+            return Ok(if success.reboot_acknowledged {
+                "installation verified; fresh reboot acknowledgement received (physical activation is not verified)"
+            } else {
+                "installation verified; controller remains in maintenance; no reboot requested"
+            });
+        }
+        return Ok("offline provisioning validation complete; no credentials are printed");
     }
     let metadata_file = files::read(path("--metadata")?, false, 2048)?;
     let metadata = parse_metadata(&metadata_file.0)?;
@@ -180,7 +209,8 @@ fn run(args: &[std::ffi::OsString]) -> Result<()> {
     directory.write("metadata.txt", &metadata_file.0)?;
     directory.write("validation.txt", format!("format=CSMAT01\nmode={command}\nrecord_length={length}\ncd_device_type=0x{:04X}\ncd_certification_type={}\ntrust=explicit-local-inputs\ncommissioner_acceptance=unverified\n", cd.device_type, cd.certification_type).as_bytes())?;
     // Atomically publish only after all validation and private files completed.
-    directory.publish_record(&encoded.0[..length])
+    directory.publish_record(&encoded.0[..length])?;
+    Ok("offline provisioning validation complete; no credentials are printed")
 }
 fn parse_metadata(bytes: &[u8]) -> Result<BTreeMap<&str, &str>> {
     let text = std::str::from_utf8(bytes).map_err(|_| "metadata must be UTF-8")?;

@@ -1,10 +1,10 @@
 # Private Matter provisioning
 
 The host-only `matter-provision` tool creates or imports private device material,
-serializes the exact record consumed by the app, and validates it offline. It
-does not open a serial port, flash hardware, pair an accessory or contact a
-network. The app implements the bounded USB writer below through its single gated
-Store. An unattended host serial sender remains a separate integration.
+serializes the exact record consumed by the app, and validates it offline. Its
+explicit `send` command transfers a validated record through the app's bounded USB
+writer and single gated Store. Other commands never open serial ports. The tool
+does not flash a firmware/partition image, pair an accessory or contact a network.
 
 Offline issuance/import/validation requires OpenSSL 3 on PATH. On macOS, check
 `openssl version` in the shell running the tool; the system LibreSSL executable
@@ -75,8 +75,9 @@ They are test inputs, never production defaults.
 
 ## Tool and private artifacts
 
-Requires stable Rust and OpenSSL 3 on macOS or Linux. No new Cargo dependency,
-workspace or lockfile is needed. Build from the repository root:
+Requires stable Rust and OpenSSL 3 on macOS or Linux. The existing host workspace
+pins `libc` for Unix serial access; it is absent from the ESP target graph.
+Build from the repository root:
 
 ```sh
 cargo build --manifest-path firmware/Cargo.toml -p crystal-shim-matter --bin matter-provision --locked
@@ -161,6 +162,88 @@ The library encoder reuses the production decoder as its acceptance check and
 clears its caller buffer on every error. The record remains version `CSMAT01`, at
 most 3584 bytes, stored under key `0x434D`. The wire layout is unchanged from
 [matter-integration.md](matter-integration.md).
+
+## Explicit host USB sender
+
+On macOS or Linux, close other terminal programs and select the actual physical
+USB device path. The tool never enumerates or opens candidate ports. The record
+must be a regular file with no group/other permissions, normally mode 0600.
+Final-path symlinks are rejected for both the record and port; use the actual
+device node rather than a `/dev/serial/by-id` symlink on Linux.
+
+```sh
+firmware/target/debug/matter-provision send \
+  --record /private/material/new-device/record.bin \
+  --paa-cert /private/material/paa.pem \
+  --cd-signer /private/material/cd-signer.pem \
+  --serial /dev/cu.usbmodemACTUAL_DEVICE
+```
+
+`send` loads the record once with bounded, nonblocking, no-follow file access,
+checks descriptor identity and private permissions, and completes the same
+production-decoder, PAA-chain and CD-signer validation described above. It removes
+validation scratch and generates a fresh 128-bit OpenSSL nonce before opening
+the port. The exact validated bytes supply the SHA-256 digest and every chunk;
+replacing the file during transfer cannot substitute unvalidated credentials.
+OpenSSL 3 must be on PATH in the shell running the command, including tests.
+
+The port uses nonblocking 115200 8N1 raw mode, no echo, no software/hardware flow
+control, bounded poll/read/write calls, an advisory lock and kernel terminal
+exclusivity. An already-open reader cannot be evicted by that exclusivity; close
+it first. No-echo, 8N1 and disabled flow-control flags are read back before any
+transmission; a driver that does not retain them is rejected. USB Serial/JTAG
+does not depend on the nominal baud rate. The sender
+does not request DTR/RTS changes, breaks or flashing/reset operations. It restores
+terminal processing on normal close but leaves HUPCL disabled to avoid requesting
+a hangup at close. OS/driver behavior at device open is not a physical reset test.
+
+BEGIN must receive the matching nonce/generation's `Ready(0)` after durable
+maintenance and relay-off admission. A lost initial Ready cannot be guessed from
+diagnostic text; it times out. Chunks are sequential and at most 256 bytes. Each
+acknowledgement must have the exact request ID, full owner token and expected next
+offset. A missing ACK triggers STATUS: an advanced offset or verified receipt
+resolves the lost response, and only STATUS proving the unchanged offset allows
+one bounded retransmission. A chunk already acknowledged by STATUS is never
+replayed. An owned cancellation is attempted on a pre-commit rejection/timeout;
+a partial I/O failure receives no appended command because framing is uncertain.
+The writer's own expiry clears abandoned staging. Cancellation never exits
+maintenance.
+
+Host deadlines are fixed: 1 second for each write/chunk ACK/STATUS, up to 5.25
+seconds for admission, a 59-second staging/commit exchange limit, and up to 5.25
+additional seconds only for explicitly requested reboot admission. Commit ACK
+wait is bounded to 2 seconds before STATUS recovery. The device independently
+retains its 5-second idle, 60-second total and 120-second receipt limits. There are
+no CLI timeout overrides. Long storage stalls or disconnects can therefore yield
+an uncertain result even when storage ultimately succeeds.
+Interrupting the host process never exits maintenance. Before commit, abandoned
+staging expires; an interruption during commit must be treated as uncertain and
+resolved with the same private record.
+
+Success requires exactly `Complete(StoredVerified)` or
+`Complete(AlreadyPresentVerified)` for the current owner. It leaves the device in
+maintenance with no reboot. The sender reports a different-record conflict
+without replacement. A missing final receipt, reboot during commit or storage
+verification failure is reported as uncertain, never as success. Keep the same
+private record and retry it with a fresh invocation/nonce: the installer either
+performs verified identical readback or rejects a conflict. Do not generate a
+replacement identity to resolve an uncertain result.
+
+Append `--reboot` only when activation is intended. This flag first requires a
+verified commit result, then issues a separate REBOOT with its own request ID and
+requires the writer's fresh durable maintenance/GPIO acknowledgement followed by
+`Rebooting`. The success message confirms receipt of that acknowledgement, not
+completion of a physical reset or Matter commissioning. If the acknowledgement
+is lost, installation remains verified but activation is reported unconfirmed;
+an identical retry with `--reboot` obtains a new verified receipt and request.
+
+The physical USB connection is trusted. Owner tokens provide correlation, not
+authentication against a malicious local reader/writer. Received lines are bounded
+and discarded after strict parsing; diagnostics are never printed or captured as
+a transcript. Record/chunk/read buffers are cleared on release. Neither keys,
+PINs, record bytes, digest nor transfer token are supplied as CLI arguments or
+printed in success/error messages. No serial hardware was opened during sender
+development or its tests; only explicitly created pseudo terminals were used.
 
 ## Application USB writer
 
@@ -269,6 +352,17 @@ CD, symlink/read-permission rejection, git/output refusal and no overwrite.
 The library test covers canonical round-trip, every short output capacity and
 clearing on rejected metadata. Tests use public authority fixtures; newly
 generated device credentials remain private scratch and are removed afterwards.
+
+Sender tests run the real production `Transfer` through a deterministic stream,
+including stale tokens, lost requests/ACKs and STATUS resolution, corrupt offsets,
+storage errors, idempotent retry after an uncertain commit, missing Ready, bounded
+diagnostic floods and separate reboot admission. Pseudo-terminal tests check raw
+no-echo mode, bounded I/O, fragmented replies, validation before terminal mutation,
+and a full CLI transfer whose file is replaced after validation while the original
+validated bytes still arrive. All 16 sender/CLI tests and scoped Clippy pass on
+macOS and OrbStack Linux. The test emulator retries interrupted polls against
+one absolute exchange deadline. These are host checks; USB HAL, physical reset and
+live flash behavior remain untested.
 
 ```sh
 cargo test --manifest-path firmware/Cargo.toml -p crystal-shim-matter --locked

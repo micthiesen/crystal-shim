@@ -1,19 +1,15 @@
+import { createControllerInitialPcb } from "./controller-initial-pcb";
 import type { CircuitJson } from "circuit-json";
 import type { KicadSch } from "kicadts";
+import { CircuitJsonToKicadSchConverter } from "circuit-json-to-kicad";
 import {
-  CircuitJsonToKicadPcbConverter,
-  CircuitJsonToKicadSchConverter,
-} from "circuit-json-to-kicad";
-import {
-  mapUsbPcbForInitialExport,
   mapUsbSchematicForInitialExport,
   prepareUsbForInitialExport,
 } from "./usb-initial-export";
 import { prepareFootprintOriginsForInitialExport } from "./footprint-origin-initial-export";
-import { anchorServiceEfuseForInitialExport } from "./service-protection-initial-export";
-import { applyConnectorPhysicalForInitialExport } from "./connector-physical-initial-export";
 import { applyControllerPinTypesForInitialExport } from "./pin-electrical-initial-export";
-import { omitTestPointPasteForInitialExport } from "./test-points";
+import { createControllerManifest } from "./design-manifest";
+import { applyControllerFieldsForInitialExport } from "./fields-initial-export";
 
 // This creates fresh initial object graphs only. It never loads, writes or edits
 // a native file. Stage/adoption/parity and declared downstream augmentation are
@@ -64,23 +60,12 @@ export function createControllerInitialGraphs(input: CircuitJson) {
   );
   if (pinTypes.components !== 95)
     throw new Error("Controller initial component count changed");
+  applyControllerFieldsForInitialExport(
+    initialFiles.map((file) => file.kicadSch),
+    createControllerManifest(input),
+  );
   for (const file of initialFiles) file.content = file.kicadSch.getString();
-  const converter = new CircuitJsonToKicadPcbConverter(json);
-  converter.runUntilFinished();
-  const pcb = converter.getOutput();
-  mapUsbPcbForInitialExport(pcb, ["J4"]);
-  anchorServiceEfuseForInitialExport(pcb, ["U10"]);
-  applyConnectorPhysicalForInitialExport(pcb, [
-    "J1",
-    "J2",
-    "J3",
-    "J4",
-    "D4",
-    "SW1",
-    "SW2",
-    "SW3",
-  ]);
-  omitTestPointPasteForInitialExport(pcb);
+  const pcb = createControllerInitialPcb(json);
   return {
     circuitJson: json,
     pcb,

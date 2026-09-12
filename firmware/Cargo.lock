@@ -191,6 +191,7 @@ dependencies = [
  "embassy-futures",
  "embedded-storage",
  "embedded-storage-async",
+ "libc",
  "p256",
  "rs-matter",
  "sequential-storage",

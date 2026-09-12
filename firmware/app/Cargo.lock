@@ -696,6 +696,7 @@ version = "0.1.0"
 dependencies = [
  "crystal-shim-core",
  "embassy-futures",
+ "libc",
  "p256",
  "rs-matter",
  "sha2",

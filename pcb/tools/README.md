@@ -33,6 +33,18 @@ and `verify-schematic-cleanup` subcommands have their own `--help`. Add board bu
 and export package scripts only when an actual board exists. Export commands
 receive `STILLAIR_HANDOFF_STAGE` and must emit generated KiCad files there.
 
+For a source-derived native footprint library created by the export command, use
+`stage --staged-footprint-root footprints`. It resolves that relative directory
+inside the new stage only after export, rejects missing paths and all symlinks
+in or below that root, and
+never substitutes installed stock libraries. It is mutually exclusive with
+`--footprint-root`. The controller uses per-reference native entries to preserve
+all source geometry; see its [export contract](../controller/design/README.md).
+Optional footprint `source_geometry_sha256` and `initial_geometry_sha256` fields
+bind compiled intent and effective initial geometry. Either digest changing,
+appearing or disappearing is a high-risk footprint ECO, like changing its library
+identity. Older manifests without them retain their existing behavior.
+
 Native staging and acceptance are currently macOS-only and use `kicad-cli`,
 KiCad's footprint libraries and the bundled `pcbnew` Python runtime. Source CI
 and mocked Python tests cannot replace that local gate.

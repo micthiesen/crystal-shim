@@ -128,13 +128,15 @@ accepted board.
 
 The combined disposable native export has eight schematic files (root plus seven
 children). It matches all 254 connected pins and 20 intended unused pins across
-51 named nets. PCB readback counts 291 numbered physical pads with exactly the
-known 14 repeated-pad net omissions, still awaiting shared augmentation. USB
+51 named nets. Before augmentation, PCB readback counts 291 numbered physical pads
+with exactly the known 14 repeated-pad net omissions. The new source-derived
+library and shared native augmentation now restore every pad net; full strict
+board and schematic parity pass in the disposable stage described below. USB
 mapping, eFuse anchors and test-pad paste removal were applied to initial object
 graphs before the first stage-file write. No existing native design was edited.
 The current placed export contains four additional unnumbered mounting-hole
 footprints, four copper layers and nine total NPTHs. Source/native renders were
-inspected. Pending enclosure fit, manifests, native assembly details and ERC/DRC
+inspected. Pending final enclosure fit, native assembly details and ERC/DRC
 still prevent handoff. `createControllerInitialGraphs` composes all adapters and
 refreshes every child schematic cache; it creates fresh graphs without reading
 or writing any native file. Its caller must use guarded staging/adoption.
@@ -163,8 +165,95 @@ WROOM native body centre is (0,-3); its compiled copper bounding-box centre is
 pin-one origins without moving actual source pads or bodies. Four-angle tests
 and complete native pcbnew readback confirm the corrected datums and unchanged
 absolute geometry. `createControllerInitialGraphs` now invokes that adapter;
-the guarded manifest/handoff command remains to implement.
+the source manifest now passes strict native parity, while the guarded handoff
+command and complete augmentation declaration remain to implement.
 Connector envelopes include rear tails and
 latches, but harness bends, mating sweep and enclosure access remain separate.
 The Molex 10.16 mm maximum edge datum is measured from the locator centre at
 y=-4.32, not pin 1. See `connectorMechanicalConstraints` before placement.
+
+## Source manifest and initial instance fields
+
+[design-manifest.ts](design-manifest.ts) derives immutable reference-based IDs,
+all 99 physical items, 274 logical pins, 51 nets and nine distinct holes from the
+checked complete source. It retains the exact source model and gives each native
+footprint a per-reference library ID. A compiled physical-geometry digest and an
+effective initial-footprint digest bind copper, mask, paste, bodies, courtyards,
+text and attributes even when a model ID stays the same. Shared normalization
+retains both digests and classifies changes as high-risk footprint ECOs. Unknown
+component owners fail. Unowned physical elements (including 50 compiler-emitted
+THT paste records) and the complete compiled board record have board-level
+digests, so changes to them require board-specification review. Unknown parts,
+source errors, changed board
+specifications or placement drift fail before export. The renderer emits
+`dist/controller/design/design-manifest.json` beside the Circuit JSON.
+
+[fields-initial-export.ts](fields-initial-export.ts) adds exact Footprint, MPN
+and Datasheet properties to every initial schematic instance before serialization.
+It accepts only empty fields, the pinned converter's `~` datasheet placeholder
+and the exact expected source/native footprint identities. Whole-batch validation
+precedes mutation. The manifest accounts for the pinned converter's symbol-name
+sanitization, while preserving exact MPN values. Tests check late-batch rejection,
+all 95 emitted instances and preservation of everything except those properties.
+H1..H4 are board-only mechanical items excluded from schematic, BOM and CPL.
+
+The current disposable native stage is
+`/tmp/crystal-shim-native-library-plan/geometry-stage-gtJYOj`.
+`final-production-parity.json` records zero strict board/schematic parity errors,
+zero intrinsic geometry drift and zero physical-pad net drift after shared
+augmentation. All 99 native library entries were independently reloaded and hashed.
+The shared `FromMM` conversion translates C22 and R35 by -1 internal unit in Y
+(one nanometre); it remains within the declared parity tolerance. This is a
+conversion proof, not an accepted handoff or clean ERC/DRC result.
+
+### Source-derived native footprint library
+
+`createControllerInitialGraphs` and `createControllerManifest` supply the fresh
+seed and source manifest. [export-native-footprints.py](export-native-footprints.py)
+reads those files and creates `CrystalShim_Controller.pretty` under a new staged
+output root. Every reference gets its own `Controller_REF` entry, including
+H1..H4. Shared model IDs contain different source-baked rotations and test-point
+text, so selecting one instance per model ID would lose geometry.
+
+Run from the repository root, with all paths below the same fresh stage:
+
+```sh
+sh pcb/tools/kicad_python.sh pcb/controller/design/export-native-footprints.py \
+  --board /tmp/controller-stage/controller.kicad_pcb \
+  --manifest /tmp/controller-stage/design-manifest.json \
+  --stage /tmp/controller-stage \
+  --output-root /tmp/controller-stage/footprints
+```
+
+The output root must not exist. If `STILLAIR_HANDOFF_STAGE` is set, it must equal
+`--stage`. The exporter validates all 99 references, exact source/per-reference
+library IDs, logical pad sets, 291 physical numbered lands and nine NPTHs before
+creating output. The read-only Bun verifier uses the same pinned typed footprint
+projection to compare every serialized initial seed against the manifest digest.
+UUIDs, assigned nets, instance placement and metadata values are separate domains;
+their geometry/styles remain in the digest. Compiled geometry uses coordinates
+relative to the manufacturer datum; baked rotation can conservatively trigger
+footprint review. Converter-ignored physical intent such as paste still changes
+the compiled-source digest. Native save/load then compares complete physical-pad multisets,
+copper, rounded corners, custom polygons, drills, mask/paste, body/courtyard
+and text at all four cardinal rotations. The 0.25 mm PTH corner radius stays exact;
+KiCad's ten-decimal ratio serialization is accounted for separately.
+
+`native-footprints-receipt.json` is written only after every entry passes. It
+records native/tool versions, verifier/canonicalizer hashes, both source geometry
+identities, seed and manifest byte hashes, per-entry byte and
+geometry hashes, and the 396 rotation comparisons. An interrupted or failed
+output has no completion receipt and cannot be overwritten or resumed. The tool
+never saves the seed, assigns production nets, registers libraries or adopts a
+board. Shared staged augmentation consumes this output via
+`--staged-footprint-root footprints` and remains responsible for every repeated
+pad's source net, placement and complete board parity.
+
+The native readback contract covers the current front-side controller, normal
+pad stacks and front-side SMD custom copper. Models, footprint zones, per-layer
+pad stacks, back-side footprints and unsupported graphic shapes fail closed
+until their validation is implemented. This proves source geometry preservation,
+not ERC/DRC or manufacturing readiness. No native library is checked in by this
+step. Register an adopted project-local library through KiCad's Project Specific
+Footprint Libraries GUI using a `${KIPRJMOD}` URI; this tool does not text-write
+`fp-lib-table`.

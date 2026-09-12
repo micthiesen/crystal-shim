@@ -677,6 +677,100 @@ difference, tight corner/partition margins, absent mould tolerances, exact
 cover/support/strain-relief parts and mechanical force checks remain explicit.
 This is not a final assembly or splash/thermal acceptance result.
 
+## Controller manifest and native library preservation
+
+The source manifest now covers 99 PCB items, 274 logical pins, 51 nets and nine
+distinct NPTHs. Root authored and checked exact instance metadata and H1..H4
+identity adapters. Integration tests reject a late metadata mismatch without
+partial changes, verify all 95 serialized schematic instances and prove that
+other properties, libraries, wires, pin geometry and UUIDs remain unchanged.
+The pinned converter's unset Datasheet `~` and D5/D7 symbol-name sanitization
+were reconciled explicitly, without changing actual part values.
+
+A separate native implementation/research pass established per-reference library
+save/load through KiCad's API. Shared source model names contain variant geometry,
+so collapsing them would lose physical intent. The production exporter compares
+all 99 native files and 396 rotations, including copper, mask, paste, drills,
+rounded corners, custom pads, bodies, courtyards and text. Fourteen additional
+negative/snapshot checks reject unsupported or changed state.
+
+The actual current-builder round trip at
+`/tmp/crystal-shim-native-library-plan/production-stage-y05BL5` passes strict
+PCB and schematic XML parity after shared native augmentation. Every repeated
+physical pad has its expected net. Readback retains all intrinsic geometry;
+C22 and R35 have only the existing `FromMM` -1 IU Y translation (one nanometre).
+`final-production-parity.json` records the result. No board was adopted and no
+ERC/DRC or fabrication release is claimed.
+
+Native testing also reproduced a KiCad 10 SWIG lifetime failure after replacing
+footprints with `board.Remove(old)`: a later same-process `LoadBoard` became an
+unusable proxy. The shared initial-stage path now uses `board.Delete(old)` because
+the old footprint is never reused. Actual augmentation plus same-process readback
+then passes. The shared tool also accepts an export-created footprint directory
+relative to the fresh stage, with no stock fallback. Its 35 tests pass in both
+projects; exact copies remain synced.
+
+Independent review then reproduced two gaps: changing R14 copper width while
+keeping its model ID produced no manifest/ECO change, and a nested `.pretty`
+symlink escaped the staged-library boundary. The manifest now binds both compiled
+physical intent and the complete effective initial footprint after conversion
+and adapters. The same read-only canonicalizer verifies the initial seed before
+native library export. UUIDs, nets and placement are separate domains; physical
+styles and attributes remain bound. Shared normalization retains both hashes and
+requires high-risk footprint review when either changes, appears or disappears.
+Staged-library roots now reject symlinks at every level. The added shared tests
+fail against the previous helper and pass in both projects.
+
+The next independent pass found 50 converter-emitted THT paste records without a
+component owner. They now enter a board-level physical-intent digest alongside
+other unowned geometry; unknown nonempty owners fail. The compiled board record,
+including minimum rules, also has a board-level digest. Tests cover copper, mask,
+paste, body strokes, orphan paste and board-rule changes. These identities detect
+source changes even when the converter omits an element; they do not declare its
+native implementation complete. Initial-stage parity was rerun successfully at
+`/tmp/crystal-shim-native-library-plan/geometry-stage-s0gRm7` after the first geometry
+binding fix. Final review and verification cover the subsequent board-level fix.
+
+The final independent geometry review found no remaining actionable defect in
+this scope. It checked all 99 serialization round trips, 14 physical mutations,
+six excluded metadata/placement changes, a custom polygon vertex and unsupported
+parser elements. A same-ID R14 copper edit was rejected before an output directory
+existed. Fresh native export and independent receipt verification passed for
+99 footprints, 291 numbered pads, nine NPTHs and 396 rotations. Evidence and
+reviewed source hashes are in `/tmp/crystal-shim-geometry-identity-review`.
+Root's final augmentation/parity run also passes at
+`/tmp/crystal-shim-native-library-plan/geometry-stage-gtJYOj/final-production-parity.json`.
+These checks establish geometry identity and preservation, not downstream
+augmentation completeness, clean ERC/DRC or manufacturing readiness.
+
+## Host provisioning sender and cross-platform review
+
+The explicit host sender validates the exact bounded private record and its
+authority/CD before opening the requested character device. It uses the device
+writer's ownership token, ordered chunks, fixed deadlines, verified readback and
+separate reboot handshake. Root reviewed protocol and file/serial handling.
+A separate reviewer passed all 16 repository sender/CLI tests and three added
+scratch regressions: partial chunk failure sends no later cancel/commit, partial
+commit failure reports uncertainty without reboot, and storage completing after
+the deadline remains uncertain without reboot. No actionable production defect
+remained in that scope. Review/source hashes are in
+`/tmp/crystal-shim-sender-review-ku_7vye8`.
+
+Actual pseudo-terminal tests also passed on OrbStack Ubuntu noble with OpenSSL
+3.0.13 and macOS with OpenSSL 3.6.3, including same-byte transmission after the
+file is replaced and no port changes for invalid records. Linux exposed an
+interrupted `poll` in the test emulator during concurrent OpenSSL child exits;
+scratch instrumentation confirmed errno 4. The test now retries interruptions
+against one fixed absolute deadline. Production transport already did so and was
+unchanged. Both platforms pass 11 binary and five CLI tests and scoped Clippy.
+Commands and reproduction are in `/tmp/crystal-shim-linux-sender-review/validation.md`.
+
+The complete repository gate passes. The embedded lock gained only the host
+dependency edge; linked release size is unchanged and the SDK public device
+private-key byte sequence remains absent. Physical serial behavior, flash/reset
+timing and HomeKit acceptance remain untested. This bounded review does not
+establish whole-project adversarial convergence.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

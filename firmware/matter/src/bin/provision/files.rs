@@ -1,14 +1,15 @@
 //! Private, bounded filesystem artifacts. No record/key contents in errors.
+use p256::elliptic_curve::zeroize::Zeroize;
 use std::fs::{self, DirBuilder, File, OpenOptions};
 use std::io::{Read, Write};
-use std::os::unix::fs::{DirBuilderExt, OpenOptionsExt, PermissionsExt};
+use std::os::unix::fs::{DirBuilderExt, MetadataExt, OpenOptionsExt, PermissionsExt};
 use std::path::{Path, PathBuf};
 
 pub type Result<T> = std::result::Result<T, &'static str>;
 pub struct Bytes(pub Vec<u8>);
 impl Drop for Bytes {
     fn drop(&mut self) {
-        self.0.fill(0);
+        self.0.zeroize();
     }
 }
 pub fn read(path: &Path, private: bool, maximum: usize) -> Result<Bytes> {
@@ -18,24 +19,32 @@ pub fn read(path: &Path, private: bool, maximum: usize) -> Result<Bytes> {
     if !before.is_file() || before.len() > maximum as u64 {
         return Err("input must be a bounded regular file, not a symlink");
     }
-    let file = File::open(path).map_err(|_| "cannot open input file")?;
+    let file = OpenOptions::new()
+        .read(true)
+        .custom_flags(libc::O_NOFOLLOW | libc::O_NONBLOCK | libc::O_CLOEXEC)
+        .open(path)
+        .map_err(|_| "cannot open input file")?;
     let metadata = file
         .metadata()
         .map_err(|_| "cannot inspect opened input file")?;
-    if !metadata.is_file() || metadata.len() > maximum as u64 {
+    if !metadata.is_file()
+        || metadata.len() > maximum as u64
+        || metadata.dev() != before.dev()
+        || metadata.ino() != before.ino()
+    {
         return Err("input must be a bounded regular file, not a symlink");
     }
     if private && metadata.permissions().mode() & 0o077 != 0 {
         return Err("private input must have no group/other permissions (use chmod 600)");
     }
-    let mut bytes = Vec::new();
+    let mut bytes = Bytes(Vec::with_capacity(maximum + 1));
     file.take(maximum as u64 + 1)
-        .read_to_end(&mut bytes)
+        .read_to_end(&mut bytes.0)
         .map_err(|_| "cannot read input file")?;
-    if bytes.len() > maximum {
+    if bytes.0.len() > maximum {
         return Err("input exceeds size limit");
     }
-    Ok(Bytes(bytes))
+    Ok(bytes)
 }
 
 pub struct Directory(pub PathBuf);

@@ -3,6 +3,7 @@ import { Circuit } from "tscircuit";
 import ControllerCircuit from "./controller.circuit";
 import { controllerPlacementErrors } from "./placement-check";
 import { schematicConnectivityErrors } from "./schematic-connectivity-check";
+import { createControllerManifest } from "./design-manifest";
 
 const circuit = new Circuit();
 circuit.add(<ControllerCircuit />);
@@ -18,6 +19,10 @@ if (errors.length)
 const output = "dist/controller/design";
 await mkdir(output, { recursive: true });
 await Bun.write(`${output}/circuit.json`, `${JSON.stringify(json, null, 2)}\n`);
+await Bun.write(
+  `${output}/design-manifest.json`,
+  `${JSON.stringify(createControllerManifest(json), null, 2)}\n`,
+);
 await Bun.write(`${output}/pcb.svg`, await circuit.getSvg({ view: "pcb" }));
 await Bun.write(`${output}/schematic.svg`, await circuit.getSvg({ view: "schematic" }));
 console.log(

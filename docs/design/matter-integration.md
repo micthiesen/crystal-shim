@@ -286,8 +286,12 @@ sh ../../scripts/with-esp-toolchain.sh cargo build --release --locked
 sh ../../scripts/with-esp-toolchain.sh llvm-size target/riscv32imac-unknown-none-elf/release/crystal-shim
 ```
 
-Remaining integration is the host provisioning sender, a trusted clock source,
-hosted settings/schedule UI, and the bounded HTTP/Pushover
+The host provisioning sender is now implemented and tested through synthetic
+serial terminals on macOS and Linux; it has not opened real USB hardware.
+Its host-only dependency adds no embedded code, and the release sizes above remain
+unchanged. See [provisioning](matter-provisioning.md) for the explicit command.
+Remaining integration is a trusted clock source, hosted settings/schedule UI,
+and the bounded HTTP/Pushover
 worker using this TCP interface. RF pairing/reconnect, real group/subscription
 behavior, combined TLS handshakes, GPIO/flash/watchdog timing, peak heap and stack
 high-water, and Apple Home acceptance remain final-board tests. The static RAM

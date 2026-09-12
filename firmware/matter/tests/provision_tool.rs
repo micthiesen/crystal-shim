@@ -109,6 +109,227 @@ fn no_secrets(output: &Output, record: &Provisioning<'_>) {
         assert!(!String::from_utf8_lossy(stream).contains("PRIVATE KEY"));
     }
 }
+
+fn pseudo_terminal() -> (std::fs::File, std::fs::File, PathBuf) {
+    use std::os::fd::FromRawFd;
+    let mut master = -1;
+    let mut slave = -1;
+    let mut name = [0 as libc::c_char; 256];
+    assert_eq!(
+        unsafe {
+            libc::openpty(
+                &mut master,
+                &mut slave,
+                name.as_mut_ptr(),
+                std::ptr::null_mut(),
+                std::ptr::null_mut(),
+            )
+        },
+        0
+    );
+    let path = unsafe { std::ffi::CStr::from_ptr(name.as_ptr()) }
+        .to_str()
+        .unwrap();
+    (
+        unsafe { std::fs::File::from_raw_fd(master) },
+        unsafe { std::fs::File::from_raw_fd(slave) },
+        PathBuf::from(path),
+    )
+}
+
+fn send_args(scratch: &Scratch, record: &str, serial: &Path, paa: &str) -> Output {
+    tool(&[
+        "send",
+        "--record",
+        scratch.path(record).to_str().unwrap(),
+        "--paa-cert",
+        scratch.path(paa).to_str().unwrap(),
+        "--cd-signer",
+        scratch.path("cd-signer.pem").to_str().unwrap(),
+        "--serial",
+        serial.to_str().unwrap(),
+    ])
+}
+
+#[test]
+fn sender_rejects_private_file_and_trust_failures_before_any_terminal_mutation() {
+    use std::os::fd::AsRawFd;
+    let scratch = Scratch::new();
+    success(&scratch.issue("send", "cd.der"));
+    let (master, slave, path) = pseudo_terminal();
+    let mut original: libc::termios = unsafe { std::mem::zeroed() };
+    assert_eq!(
+        unsafe { libc::tcgetattr(slave.as_raw_fd(), &mut original) },
+        0
+    );
+    original.c_cflag |= libc::HUPCL;
+    original.c_lflag |= libc::ECHO;
+    assert_eq!(
+        unsafe { libc::tcsetattr(slave.as_raw_fd(), libc::TCSANOW, &original) },
+        0
+    );
+    scratch.write("bad-record.bin", b"invalid secret-bearing record");
+    scratch.write("bad-root.pem", b"invalid root certificate");
+    std::os::unix::fs::symlink(scratch.path("send/record.bin"), scratch.path("symlink.bin"))
+        .unwrap();
+    scratch.write(
+        "world-readable.bin",
+        &fs::read(scratch.path("send/record.bin")).unwrap(),
+    );
+    fs::set_permissions(
+        scratch.path("world-readable.bin"),
+        fs::Permissions::from_mode(0o644),
+    )
+    .unwrap();
+    let record_bytes = fs::read(scratch.path("send/record.bin")).unwrap();
+    let record = Provisioning::decode(&record_bytes).unwrap();
+    for (file, root) in [
+        ("bad-record.bin", "paa.pem"),
+        ("symlink.bin", "paa.pem"),
+        ("world-readable.bin", "paa.pem"),
+        ("send/record.bin", "bad-root.pem"),
+        ("send/record.bin", "pai.pem"),
+    ] {
+        let output = send_args(&scratch, file, &path, root);
+        failure(&output);
+        no_secrets(&output, &record);
+        assert!(
+            !String::from_utf8_lossy(&output.stderr).contains("serial"),
+            "validation must fail before serial access"
+        );
+        let mut after = original;
+        assert_eq!(unsafe { libc::tcgetattr(slave.as_raw_fd(), &mut after) }, 0);
+        assert_eq!(after.c_cflag, original.c_cflag);
+        assert_eq!(after.c_lflag, original.c_lflag);
+        let mut descriptor = libc::pollfd {
+            fd: master.as_raw_fd(),
+            events: libc::POLLIN,
+            revents: 0,
+        };
+        assert_eq!(unsafe { libc::poll(&mut descriptor, 1, 0) }, 0);
+    }
+    let invalid_flag = tool(&["validate", "--reboot"]);
+    failure(&invalid_flag);
+    let duplicate_flag = tool(&["send", "--reboot", "--reboot"]);
+    failure(&duplicate_flag);
+}
+
+#[test]
+fn validated_cli_sends_exact_loaded_record_over_fragmented_pseudo_terminal() {
+    use sha2::{Digest, Sha256};
+    use std::io::Read;
+    use std::os::fd::AsRawFd;
+    let scratch = Scratch::new();
+    success(&scratch.issue("send", "cd.der"));
+    let bytes = fs::read(scratch.path("send/record.bin")).unwrap();
+    let expected = bytes.clone();
+    let replacement_path = scratch.path("send/record.bin");
+    let (mut master, _slave, path) = pseudo_terminal();
+    let emulator = std::thread::spawn(move || {
+        let mut line = Vec::new();
+        let mut collected = Vec::new();
+        let mut owner = String::new();
+        let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
+        loop {
+            let remaining = deadline.saturating_duration_since(std::time::Instant::now());
+            assert!(
+                !remaining.is_zero(),
+                "bounded pseudo-terminal exchange timed out"
+            );
+            let mut descriptor = libc::pollfd {
+                fd: master.as_raw_fd(),
+                events: libc::POLLIN,
+                revents: 0,
+            };
+            let timeout = remaining.as_millis().clamp(1, i32::MAX as u128) as i32;
+            let polled = unsafe { libc::poll(&mut descriptor, 1, timeout) };
+            if polled < 0
+                && std::io::Error::last_os_error().kind() == std::io::ErrorKind::Interrupted
+            {
+                // Concurrent OpenSSL child exits can interrupt poll on Linux.
+                // Retry against the same deadline, never a renewed timeout.
+                continue;
+            }
+            if polled == 0 {
+                continue;
+            }
+            assert_eq!(polled, 1);
+            let mut byte = [0];
+            master.read_exact(&mut byte).unwrap();
+            if byte[0] != b'\n' {
+                line.push(byte[0]);
+                continue;
+            }
+            let text = std::str::from_utf8(&line).unwrap();
+            let fields: Vec<_> = text.split_ascii_whitespace().collect();
+            let id = fields[0];
+            let result = match fields[1] {
+                "PROVISION_BEGIN" => {
+                    assert_eq!(fields.len(), 5);
+                    assert_eq!(fields[2].len(), 32);
+                    assert_ne!(fields[2], "00000000000000000000000000000000");
+                    assert_eq!(fields[3].parse::<usize>().unwrap(), expected.len());
+                    assert_eq!(
+                        fields[4],
+                        Sha256::digest(&expected)
+                            .iter()
+                            .map(|b| format!("{b:02x}"))
+                            .collect::<String>()
+                    );
+                    owner = format!("1:{}", fields[2]);
+                    // Prove there is no second record read after opening USB.
+                    fs::write(&replacement_path, b"replacement after validation").unwrap();
+                    master
+                        .write_all(
+                            format!("SENSOR invalid\r\nPROVISION {id} {owner} Ok(Pending)\r\n")
+                                .as_bytes(),
+                        )
+                        .unwrap();
+                    "Ready(0)".to_owned()
+                }
+                "PROVISION_CHUNK" => {
+                    assert_eq!(fields.len(), 5);
+                    assert_eq!(fields[2], owner);
+                    assert_eq!(fields[3].parse::<usize>().unwrap(), collected.len());
+                    assert!(fields[4].len() <= 512);
+                    for pair in fields[4].as_bytes().chunks_exact(2) {
+                        collected.push(
+                            u8::from_str_radix(std::str::from_utf8(pair).unwrap(), 16).unwrap(),
+                        );
+                    }
+                    format!("Next({})", collected.len())
+                }
+                "PROVISION_COMMIT" => {
+                    assert_eq!(fields[2], owner);
+                    assert_eq!(collected, expected);
+                    master
+                        .write_all(
+                            format!("PROVISION {id} {owner} Ok(Complete(StoredVerified))\r\n")
+                                .as_bytes(),
+                        )
+                        .unwrap();
+                    return master; // Keep master alive until child has consumed final bytes.
+                }
+                _ => panic!(
+                    "default sender must not reboot, exit maintenance or send other commands"
+                ),
+            };
+            let reply = format!("PROVISION {id} {owner} Ok({result})\r\n");
+            // Deliberate boundaries inside prefix, owner and payload.
+            for fragment in reply.as_bytes().chunks(7) {
+                master.write_all(fragment).unwrap();
+            }
+            line.fill(0);
+            line.clear();
+        }
+    });
+    let output = send_args(&scratch, "send/record.bin", &path, "paa.pem");
+    let _master = emulator.join().unwrap();
+    success(&output);
+    no_secrets(&output, &Provisioning::decode(&bytes).unwrap());
+    assert!(String::from_utf8_lossy(&output.stdout)
+        .contains("remains in maintenance; no reboot requested"));
+}
 #[test]
 fn fresh_issuance_import_and_validation_use_real_codec_without_printing_secrets() {
     let scratch = Scratch::new();

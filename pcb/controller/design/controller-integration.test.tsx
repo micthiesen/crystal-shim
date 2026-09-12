@@ -15,6 +15,8 @@ import { applyControllerPinTypesForInitialExport } from "./pin-electrical-initia
 import { createControllerInitialGraphs } from "./controller-initial-export";
 import { controllerPlacements } from "./placements";
 import { controllerPlacementErrors } from "./placement-check";
+import { createControllerManifest } from "./design-manifest";
+import { applyControllerFieldsForInitialExport } from "./fields-initial-export";
 
 // Rendering all 95 components exceeded Bun's 5 s default on GitHub's runner
 // (5.55 s, with no assertion failure). Keep the limit local to this full design.
@@ -223,6 +225,51 @@ test("controller schematic preserves power separation, hardware permission and b
     for (const library of sheet.libSymbols?.symbols ?? [])
       for (const pin of pinList(library)) pin.pinElectricalType = "passive";
   expect(native.map((s) => s.getString())).toEqual(before);
+  // Instance metadata must reach every emitted child file, without changing
+  // the cached symbol library, wires, pin geometry, UUIDs or other properties.
+  const manifest = createControllerManifest(json);
+  const fieldsBefore = sheets.map((s) => s.getString());
+  const invalidFields = structuredClone(manifest);
+  invalidFields.components.find((c) => c.ref === "U9")!.value = "wrong part";
+  expect(() => applyControllerFieldsForInitialExport(sheets, invalidFields)).toThrow(
+    "U9: unexpected initial symbol identity/value",
+  );
+  expect(sheets.map((s) => s.getString())).toEqual(fieldsBefore);
+  applyControllerFieldsForInitialExport(sheets, manifest);
+  const initialInstances = initialGraphs.schematicFiles.flatMap(
+    (file) => parseKicadSch(file.content).symbols,
+  );
+  for (const component of manifest.components.filter(
+    (c) => c.footprint.pad_numbers.length,
+  )) {
+    const instance = initialInstances.find((s) => reference(s) === component.ref)!;
+    const field = (key: string) => instance.properties.filter((p) => p.key === key);
+    for (const [key, expected] of Object.entries({
+      Footprint: component.footprint.kicad,
+      MPN:
+        "manufacturer_part_number" in component.fields
+          ? (component.fields.manufacturer_part_number ?? "")
+          : "",
+      Datasheet:
+        "datasheet_url" in component.fields
+          ? (component.fields.datasheet_url ?? "")
+          : "",
+    })) {
+      expect(field(key)).toHaveLength(1);
+      expect(field(key)[0]!.value).toBe(expected);
+    }
+  }
+  const metadataReadback = sheets.map((s) => parseKicadSch(s.getString()));
+  for (const [index, sheet] of metadataReadback.entries()) {
+    const original = parseKicadSch(fieldsBefore[index]!);
+    for (const instance of sheet.symbols) {
+      const previous = original.symbols.find(
+        (s) => reference(s) === reference(instance),
+      )!;
+      instance.properties.splice(0, instance.properties.length, ...previous.properties);
+    }
+  }
+  expect(metadataReadback.map((s) => s.getString())).toEqual(fieldsBefore);
   // This regression mimics the real exporter hazard: names still readable as
   // text and source nets intact, but physical pins lose their electrical labels.
   expect(
