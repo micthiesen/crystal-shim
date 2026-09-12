@@ -7,6 +7,20 @@ publish = false
 
 [workspace]
 
+[features]
+compile-fail-tests = []
+
+[[example]]
+name = "restriction-borrow-escape"
+path = "compile-fail/restriction-borrow-escape.rs"
+required-features = ["compile-fail-tests"]
+
+[dev-dependencies]
+rand_core = { version = "0.10.1", default-features = false }
+
+[patch.crates-io]
+mbedtls-rs = { path = "../../vendor/mbedtls-rs" }
+
 # Compile the real provider, including its private policy and clock, directly.
 # Keeping this workspace separate avoids ESP-only dependencies in host tests.
 [lib]

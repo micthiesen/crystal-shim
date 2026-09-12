@@ -258,7 +258,8 @@ Provisioning never invents configuration, calibration or UTC. A never-configured
 runtime can acknowledge maintenance only as Applied; the writer rejects it as
 `Unconfigured`, because no durable maintenance record exists. The ordinary CONFIG
 command accepts the canonical CSCF hex record; a convenient host configuration
-encoder and the settings webpage remain separate work.
+encoder remains separate work. The [settings webpage](settings.md) can edit an
+already configured device after network provisioning.
 
 `PROVISION_BEGIN` submits an owned `EnterMaintenance` through the existing ingress.
 It accepts no chunks until that exact request replies Durable and the control task
@@ -271,9 +272,9 @@ until completion, so a late reply cannot authorize another transfer.
 While preparing or receiving, the service admits only ordinary OFF and provisioning
 commands. The existing reserved Off flag still works when the normal request slot
 is occupied. Other USB commands return BUSY; Matter On remains subject to the
-supervisor's maintenance rejection. USB is currently the only CONFIG/EXIT producer.
-Any future settings endpoint must participate in this reservation before it can
-change configuration or exit maintenance. No supervisor lease policy was changed.
+supervisor's maintenance rejection. HTTP settings now participate atomically in
+the same reservation before they can change configuration or exit maintenance.
+Both USB and HTTP preserve the independent Off path. No supervisor lease policy was changed.
 
 The line protocol below uses a nonzero decimal request `id`. Each line ends with
 LF; CRLF also works. A nonce is exactly 32 hex characters, chosen freshly by the

@@ -247,6 +247,7 @@ pub async fn run(
             tls,
             matter: stack.matter(),
             crypto: &crypto,
+            settings_buffers: crate::settings::BUFFERS.take(),
         },
         random,
         resources,
@@ -286,6 +287,7 @@ struct Application<'a, C> {
     tls: Option<mbedtls_rs::Tls<'static>>,
     matter: &'a crystal_shim_matter::sdk::Matter<'a>,
     crypto: &'a C,
+    settings_buffers: &'static mut crystal_shim_settings::Buffers,
 }
 impl<C: Crypto> rs_matter_embassy::stack::UserTask for Application<'_, C> {
     async fn run<S, N>(
@@ -326,12 +328,15 @@ impl<C: Crypto> rs_matter_embassy::stack::UserTask for Application<'_, C> {
         };
         match embassy_futures::select::select(
             readiness,
-            crate::clock::run(self.matter, self.crypto),
+            embassy_futures::join::join(
+                crate::clock::run(self.matter, self.crypto),
+                crate::settings::run(&stack, &netif, self.settings_buffers),
+            ),
         )
         .await
         {
             embassy_futures::select::Either::First(result) => result,
-            embassy_futures::select::Either::Second(()) => Ok(()),
+            embassy_futures::select::Either::Second(((), ())) => Ok(()),
         }
     }
 }

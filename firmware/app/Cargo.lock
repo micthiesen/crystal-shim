@@ -188,6 +188,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4c7f02d4ea65f2c1853089ffd8d2787bdbc63de2f0d29dedbcf8ccdfa0ccd4cf"
 
 [[package]]
+name = "base64"
+version = "0.22.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
+
+[[package]]
 name = "base64ct"
 version = "1.8.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -650,6 +656,7 @@ dependencies = [
  "crystal-shim-core",
  "crystal-shim-drivers",
  "crystal-shim-matter",
+ "crystal-shim-settings",
  "edge-nal",
  "edge-nal-tls",
  "embassy-executor",
@@ -700,6 +707,19 @@ dependencies = [
  "p256",
  "rs-matter",
  "sha2",
+]
+
+[[package]]
+name = "crystal-shim-settings"
+version = "0.1.0"
+dependencies = [
+ "crystal-shim-core",
+ "edge-http",
+ "embassy-futures",
+ "embedded-io-async 0.7.0",
+ "heapless 0.8.0",
+ "subtle",
+ "zeroize",
 ]
 
 [[package]]
@@ -990,6 +1010,22 @@ dependencies = [
  "elliptic-curve",
  "rfc6979",
  "signature",
+]
+
+[[package]]
+name = "edge-http"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2e8d05b815a091dc636cc1d62374cf1b96b763117291242882f9741dd4e251ed"
+dependencies = [
+ "base64",
+ "edge-nal",
+ "embassy-futures",
+ "embassy-sync 0.8.0",
+ "embedded-io-async 0.7.0",
+ "heapless 0.9.3",
+ "httparse",
+ "sha1_smol",
 ]
 
 [[package]]
@@ -2121,6 +2157,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "httparse"
+version = "1.10.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6dbf3de79e51f3d586ab4cb9d5c3e2c14aa28ed23d180cf89b4df0454a69cc87"
+
+[[package]]
 name = "iana-time-zone"
 version = "0.1.65"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2506,8 +2548,6 @@ dependencies = [
 [[package]]
 name = "mbedtls-rs"
 version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7ffe70b1a677b6efabede0d8e762f6187e66bff5118814aee2dcbfefad187add"
 dependencies = [
  "critical-section",
  "embedded-io 0.7.1",
@@ -3522,6 +3562,12 @@ dependencies = [
  "cpufeatures",
  "digest",
 ]
+
+[[package]]
+name = "sha1_smol"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bbfa15b3dddfee50a0fff136974b3e1bde555604ba463834a7eb7deb6417705d"
 
 [[package]]
 name = "sha2"

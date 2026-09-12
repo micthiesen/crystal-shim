@@ -9,6 +9,8 @@ mod retained;
 pub mod runtime;
 pub mod runtime_ingress;
 mod schedule;
+mod schedule_interval;
+pub use schedule_interval::ScheduleInterval;
 pub mod timezone;
 mod water;
 pub use policy::{
@@ -559,3 +561,4 @@ mod tests {
 }
 
 pub mod utc;
+pub mod utc_bounds;

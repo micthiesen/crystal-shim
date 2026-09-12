@@ -79,3 +79,37 @@ pub fn take_completion() -> Option<StoreCompletion> {
 pub fn last_stored() -> Option<StoreCompletion> {
     critical_section::with(|cs| LAST_STORED.borrow(cs).get())
 }
+
+pub fn reserve_provisioning(active: bool) {
+    ingress(|ingress| ingress.reserve_provisioning(active));
+}
+
+pub fn settings_view(
+    bearer: &crystal_shim_settings::Bearer,
+) -> Result<crystal_shim_settings::Snapshot, crystal_shim_settings::Error> {
+    critical_section::with(|_| {
+        let view = crate::snapshot::settings().ok_or(crystal_shim_settings::Error::NotReady)?;
+        crystal_shim_settings::authorize(Some(view.configuration), bearer, None)?;
+        Ok(view)
+    })
+}
+
+pub fn submit_settings(
+    bearer: &crystal_shim_settings::Bearer,
+    revision: u32,
+    command: RuntimeCommand,
+) -> Result<Token, crystal_shim_settings::Error> {
+    use crystal_shim_settings::Error;
+    critical_section::with(|_| {
+        let view = crate::snapshot::settings().ok_or(Error::NotReady)?;
+        ingress(|ingress| {
+            crystal_shim_settings::admit(
+                ingress,
+                Some(view.configuration),
+                bearer,
+                revision,
+                command,
+            )
+        })
+    })
+}

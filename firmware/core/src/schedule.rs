@@ -327,7 +327,7 @@ impl Scheduler {
     }
 }
 
-fn active_occurrence(
+pub(crate) fn active_occurrence(
     civil: CivilTime,
     schedule: Schedule<'_>,
     resolver: &impl LocalTimeResolver,

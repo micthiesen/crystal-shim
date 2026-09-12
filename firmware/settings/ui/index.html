@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Crystal Shim settings</title>
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <main>
+    <header><div><p class="eyebrow">LOCAL CONTROL</p><h1>Crystal Shim</h1></div><button id="lock" type="button" hidden>Lock</button></header>
+    <p class="network-note">This device serves unencrypted HTTP. Use it on a trusted local network. The access token stays in this page until you lock or leave it.</p>
+    <section id="access" class="panel">
+      <h2>Unlock settings</h2>
+      <form id="unlock-form" method="post" autocomplete="off">
+        <label for="access-token">Settings access token</label>
+        <input id="access-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="64" maxlength="64" pattern="[0-9a-fA-F]{64}" required disabled aria-describedby="token-help">
+        <p id="token-help" class="hint">Enter the 64-character token supplied during provisioning.</p>
+        <button id="unlock-submit" type="submit" class="primary" disabled>Unlock and load</button>
+      </form>
+    </section>
+    <p id="message" role="status" aria-live="polite">Loading local settings…</p>
+    <div id="workspace" hidden>
+      <section class="panel">
+        <div class="section-heading"><h2>Device status</h2><button id="refresh" type="button">Refetch settings and status</button></div>
+        <p id="freshness" class="hint">No status loaded.</p>
+        <dl class="status-grid">
+          <div><dt>Relay</dt><dd id="relay-status">Unknown</dd></div>
+          <div><dt>Maintenance</dt><dd id="maintenance-status">Unknown</dd></div>
+          <div><dt>Storage</dt><dd id="storage-status">Unknown</dd></div>
+          <div><dt>Trusted clock</dt><dd id="clock-status">Unknown</dd></div>
+          <div><dt>Control state</dt><dd id="control-status">Unknown</dd></div>
+          <div><dt>Revision</dt><dd id="revision-status">Unknown</dd></div>
+        </dl>
+        <div class="actions"><button id="off" type="button" class="danger">Turn off</button><button id="maintenance" type="button">Enter maintenance</button><button id="exit" type="button">Exit maintenance</button></div>
+        <p class="hint">Wait for the current request to finish before using Turn off. Exiting maintenance is a separate action and may allow an eligible scheduled run.</p>
+      </section>
+      <form id="settings-form" method="post" autocomplete="off">
+        <fieldset id="settings-fields" class="panel" disabled>
+          <legend>Run settings</legend>
+          <div class="form-grid">
+            <label>Stop level<input id="stop-level" type="number" min="0" max="1000" step="1" required></label>
+            <label>Restart level<input id="restart-level" type="number" min="0" max="1000" step="1" required></label>
+            <label>Run duration in seconds<input id="duration" type="number" min="1" max="86400" step="1" required></label>
+          </div>
+          <p class="hint">Levels are calibrated thousandths of the sensing range, from 0 to 1000. Restart must be above stop. Duration is shared by scheduled runs and timed overrides.</p>
+          <p id="calibration-status" class="hint"></p>
+          <label for="timezone">POSIX timezone rule</label><input id="timezone" type="text" maxlength="128" autocapitalize="none" spellcheck="false" required>
+          <p class="hint">Use the device's configured rule, such as UTC0 or PST8PDT,M3.2.0,M11.1.0. The browser's timezone is not used.</p>
+          <div class="section-heading schedule-heading"><h2>Scheduled starts</h2><button id="add-entry" type="button">Add start</button></div>
+          <p class="hint">Up to 16 starts, in the timezone above. Choose at least one day for each entry. IDs stay the same when you edit a start.</p>
+          <div id="entries"></div><p id="empty-entries" class="hint">No scheduled starts.</p>
+          <h2 class="schedule-heading">Pushover</h2><p id="pushover-status" class="hint"></p>
+          <label for="pushover-action">Stored credentials</label><select id="pushover-action"><option value="keep">Keep current credentials</option><option value="clear">Clear credentials</option><option value="replace">Replace credentials</option></select>
+          <div id="pushover-fields" hidden>
+            <label>Application token<input id="pushover-application" type="password" autocomplete="new-password" maxlength="30" autocapitalize="none" spellcheck="false"></label>
+            <label>User key<input id="pushover-user" type="password" autocomplete="new-password" maxlength="30" autocapitalize="none" spellcheck="false"></label>
+            <label>Device name (optional)<input id="pushover-device" type="text" autocomplete="off" maxlength="25" autocapitalize="none" spellcheck="false"></label>
+            <p class="hint">Existing secrets are never shown. Leave device name empty to use the account's default destinations.</p>
+          </div>
+          <div class="save-box"><p>Saving stops the current run and enters maintenance. Refetch after saving, then explicitly exit maintenance when ready.</p><button id="save" type="submit" class="primary">Save and enter maintenance</button></div>
+        </fieldset>
+      </form>
+    </div>
+    <noscript><p>JavaScript is required for authenticated settings requests. No settings have been sent.</p></noscript>
+  </main>
+</body>
+</html>

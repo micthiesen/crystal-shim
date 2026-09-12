@@ -52,8 +52,8 @@ Physical calibration and acceptance use the final boards after assembly.
 `sh scripts/check.sh` is the development gate. PCB dependencies must be installed;
 the Rust toolchain installs the C6 target. [Firmware](../firmware/README.md) and
 [PCB](../pcb/README.md) document individual commands. No credentials are required
-for the offline scaffold. Matter/Wi-Fi commissioning and Pushover application/recipient
-keys are future integration inputs. Do not commit them or send setup test messages.
+for the offline checks. Matter/Wi-Fi commissioning and Pushover application/recipient
+keys are supplied privately during final-unit provisioning. Do not commit them or send setup test messages.
 
 Parts remain candidates until exact datasheets, footprints, mating systems and
 design ratings have been checked. The BOM records quantities for one complete

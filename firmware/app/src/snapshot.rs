@@ -56,6 +56,22 @@ static CONFIGURATION: Mutex<Cell<SensorConfiguration>> =
         revision: 0,
         calibration: None,
     }));
+static SETTINGS_CONFIGURATION: Mutex<Cell<Option<ValidatedDeviceConfig>>> =
+    Mutex::new(Cell::new(None));
+static SETTINGS_STATUS: Mutex<Cell<crystal_shim_settings::Status>> =
+    Mutex::new(Cell::new(crystal_shim_settings::Status::EMPTY));
+
+pub fn settings() -> Option<crystal_shim_settings::Snapshot> {
+    critical_section::with(|cs| {
+        Some(crystal_shim_settings::Snapshot {
+            configuration: SETTINGS_CONFIGURATION.borrow(cs).get()?,
+            status: SETTINGS_STATUS.borrow(cs).get(),
+        })
+    })
+}
+pub fn publish_settings_status(status: crystal_shim_settings::Status) {
+    critical_section::with(|cs| SETTINGS_STATUS.borrow(cs).set(status));
+}
 pub fn publish_configuration(configuration: Option<ValidatedDeviceConfig>) {
     critical_section::with(|cs| {
         let next = configuration.map_or(
@@ -69,6 +85,7 @@ pub fn publish_configuration(configuration: Option<ValidatedDeviceConfig>) {
             },
         );
         if CONFIGURATION.borrow(cs).get().revision != next.revision {
+            SETTINGS_CONFIGURATION.borrow(cs).set(configuration);
             // Revision publication immediately invalidates the previous reading.
             let mut sample = SENSOR.borrow(cs).get();
             sample.reading = Reading::Invalid(Fault::Uncalibrated);

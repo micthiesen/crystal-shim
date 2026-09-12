@@ -159,10 +159,12 @@ fresh age. Selecting this model is separate from the offline verifier.
 
 TLS must check every certificate's notBefore against the interval's **earliest**
 instant and notAfter against its **latest** instant, with outward second rounding.
-The pinned mbedtls-rs 0.2.0 wall-clock hook returns one calendar instant; its public
-ClientSessionConfig/async Session API exposes neither a verification callback nor
-the peer chain. Choosing a midpoint or either one endpoint cannot enforce both
-boundaries. A narrow reviewed provider/upstream seam is still required. Global
+The published mbedtls-rs 0.2.0 wall-clock hook returns one calendar instant; its
+unpatched ClientSessionConfig/async Session API exposes neither a verification
+callback nor the peer chain. Choosing a midpoint or either endpoint cannot enforce
+both boundaries. The project now carries a narrow
+[borrowed restriction callback](tls-restriction.md); runtime interval policy is
+still required. Global
 clock alternation or relying on undocumented certificate-check order is not an
 acceptable substitute. A callback may only add rejection flags, must cover all
 relevant certificates in the verified chain and cannot clear baseline errors.
@@ -174,13 +176,18 @@ The callback visits the selected root, intermediate and leaf; additional date
 failures preserve the original hostname flags. Two Linux tests demonstrate
 both interval edges that an otherwise valid scalar clock misses. A small safe
 Rust wrapper extension can expose copied validity fields and permit rejection
-without allowing baseline flags to be cleared. This extension is not implemented.
-The probe, source identities and required handshake/resumption checks are in
-`/tmp/crystal-shim-tls-interval-seam-probe`. No TLS dependency or app behavior changed.
+without allowing baseline flags to be cleared. That wrapper extension is now
+implemented and exercised with local TLS 1.2/1.3 handshakes. Both app and host
+harness resolve the same source-pinned vendor copy; the app's current policy is
+`None`, so no interval is promoted to TLS trust. The original C probe remains in
+`/tmp/crystal-shim-tls-interval-seam-probe`; current provenance and checks are
+[documented separately](tls-restriction.md).
 
-Schedule eligibility must conservatively account for intervals crossing occurrence
-boundaries, while preserving manual override independence and immutable run
-deadlines. Future adoption must use one control-accepted original interval for
+The [runtime interval path](utc-intervals.md) now requires the whole interval to
+select one occurrence, keeps its latest millisecond endpoint when shortening the
+run cap, and preserves manual override independence. No hardware error bound is
+selected by this implementation. Future authority adoption must use one
+control-accepted original interval for
 schedule/TLS, preserve USB generation precedence, expire the old anchor first,
 and ensure source loss/revocation cannot clear a newer operator authority or wait
 behind storage Busy. The existing shared UDP/RNG owners should be reused without

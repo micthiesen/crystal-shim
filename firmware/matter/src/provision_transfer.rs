@@ -97,6 +97,23 @@ pub struct Request {
 pub enum LocalCommand {
     Runtime(ControlRequest),
     Provision(Request),
+    SettingsToken {
+        id: u32,
+        replacement: Option<SettingsToken>,
+    },
+}
+
+/// Explicit physical USB administration. Never printed by Debug or echoed.
+pub struct SettingsToken([u8; 32]);
+impl SettingsToken {
+    pub fn bytes(&self) -> &[u8; 32] {
+        &self.0
+    }
+}
+impl Drop for SettingsToken {
+    fn drop(&mut self) {
+        self.0.zeroize();
+    }
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -542,6 +559,22 @@ pub fn parse_line(
         .filter(|id| *id != 0)
         .ok_or(ParseError::Syntax)?;
     let name = fields.next().ok_or(ParseError::Syntax)?;
+    if name == "SETTINGS_TOKEN" || name == "SETTINGS_TOKEN_ROTATE" {
+        let replacement = if name == "SETTINGS_TOKEN_ROTATE" {
+            let mut token = SettingsToken([0; 32]);
+            decode_exact(fields.next(), &mut token.0)?;
+            if token.0 == [0; 32] {
+                return Err(ParseError::Configuration);
+            }
+            Some(token)
+        } else {
+            None
+        };
+        if fields.next().is_some() {
+            return Err(ParseError::Syntax);
+        }
+        return Ok(LocalCommand::SettingsToken { id, replacement });
+    }
     if !name.starts_with("PROVISION_") {
         return runtime_ingress::parse_line(line, scratch).map(LocalCommand::Runtime);
     }

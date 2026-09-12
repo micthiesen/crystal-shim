@@ -22,7 +22,10 @@ The crates resolve to edge-net commit
 and mbedtls-rs commit
 [`ef5a274`](https://github.com/esp-rs/mbedtls-rs/tree/ef5a274f3506f14bf90df4490b34a83ba35c4c12).
 The latter contains Mbed TLS 3.6.5. The app lockfile records all transitive
-versions.
+versions. The Rust wrapper now resolves to a source-pinned project
+[vendor copy with a borrowed certificate restriction](tls-restriction.md).
+Its underlying C library and edge adapter are unchanged; the active provider
+passes no additional restriction until runtime interval integration is complete.
 
 Do not use reqwless's `embedded-tls` backend for this path. It does not provide
 server-certificate verification. Do not change `AuthMode::Required`, omit the

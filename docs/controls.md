@@ -18,7 +18,7 @@ HomeKit uses Stillair's Matter-over-Wi-Fi approach, presented as a switch.
 
 The common scheduled/override duration starts at **15 minutes (900 s)**. Run a few
 scheduled windows each day; exact times, count and timezone are still open, so the
-scaffold must not invent a daily schedule. Duration, schedule, stop/restart
+firmware must not invent a daily schedule. Duration, schedule, stop/restart
 thresholds, freshness limits and debounce/recovery/off timings must be configurable
 through firmware. The override uses the same configured duration as a scheduled run.
 
@@ -45,9 +45,12 @@ settings. HomeKit remains the advisory switch and temporary-override interface.
 Apply validated configuration through the same control model, persist accepted
 settings, and never extend an active run deadline when settings change. Invalid or
 missing calibration must keep the relay off. The webpage and its network/storage
-work must not block sensor sampling or local control. Page layout,
-access control and provisioning details are implementation work; the local web
-interface is selected but not built by the scaffold.
+work must not block sensor sampling or local control. The
+[implemented page](design/settings.md) edits schedule, timezone, duration,
+thresholds and Pushover credential actions through authenticated durable
+transactions. Calibration workflow and timing/freshness form controls remain
+work; the existing values are preserved. First configuration and token discovery
+use physical USB; no default calibration or live credentials are supplied.
 
 ## Run windows and HomeKit
 
@@ -75,7 +78,7 @@ stopped at low water does not consume the user's new manual allowance: an explic
 On starts a new timed override from that request. Once a manual request exists,
 even if it is waiting for minimum off, repeated On cannot renew it.
 
-The scaffold measures an override's deadline from the accepted request time.
+The runtime measures an override's deadline from the accepted request time.
 Waiting for minimum off consumes part of that allowance; it does not queue a
 fresh 15 minutes for later. Duration edits may shorten an active request but
 cannot extend it. Final commissioning should retain this visible, bounded behavior.
@@ -122,7 +125,7 @@ Pushover requires an application token and recipient user/group key. Provision
 them outside tracked source and avoid exposing them in logs or HomeKit attributes.
 Use verified HTTPS to the Message API; delivery needs internet, but its failure
 must never delay a local stop or extend a run. See [Pushover API](https://pushover.net/api).
-The initial scaffold has no live sender or credentials. Persistence and offline
+The application has no live sender or built-in credentials. Persistence and offline
 queue policy remain app work; a reboot establishes a fresh baseline unless a
 validated persisted classification is restored.
 
@@ -154,8 +157,9 @@ of saved configuration are implemented. Runtime settings/persistence, bounded US
 commands and schedule evaluation from explicit UTC observations are implemented.
 The Matter radio/command adapter and bounded CASE time-source reader are linked;
 private credential provisioning is implemented. Apple Home pairing and a usable
-hub time source have not been demonstrated on hardware. The settings webpage,
-unattended signed-time integration and Pushover worker remain work. Stored Pushover
+hub time source have not been demonstrated on hardware. The settings service is
+linked; its calibration/timing UI, unattended signed-time integration and Pushover
+worker remain work. Stored Pushover
 credentials have a validated format but are not used by a network sender.
 
 Use hardware gate pulldown and watchdog recovery so reset removes relay drive.

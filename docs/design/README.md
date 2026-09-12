@@ -23,6 +23,9 @@ release or commissioning evidence. Their explicit open items remain work to fini
 - [Calibration](calibration.md): measured TI response normalization, integer arithmetic,
   raw envelopes, frame ordering and validity checks.
 - [Configuration](configuration.md): validated settings and canonical bounded storage format.
+- [Local settings](settings.md): actual HTTP service, browser UI and durable command admission.
+- [TLS restriction](tls-restriction.md): borrowed rejection-only certificate callback and vendor provenance.
+- [Controller grid](controller-grid.md): initial coordinate conversion and verified native-save connectivity.
 - [Timezone](timezone.md): explicit POSIX rules, DST folds/gaps and calendar limits.
 - [Flash storage](flash-storage.md): output-off ownership, bounded flash chunks and boot recovery.
 - [Runtime transactions](runtime-transactions.md): durable settings, schedule eligibility,

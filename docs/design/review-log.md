@@ -1038,6 +1038,88 @@ offline Linux tests pass in `/tmp/crystal-shim-tls-interval-seam-probe`. The saf
 Rust provider seam, actual handshake/generation checks and application integration
 are still unimplemented. The shipped application ELF remains unchanged.
 
+## UTC intervals, settings, TLS restriction and controller grid
+
+The [UTC interval core](utc-intervals.md) received independent arithmetic,
+schedule-boundary and runtime review. The review independently checked 100,000
+arithmetic cases, 12,000 endpoint cases, 192,930 interior points and nine runtime
+error combinations. No actionable defect survived. Existing CASE/USB producers
+still supply point observations; this does not qualify a drift rate, Roughtime
+source agreement or interval TLS operation lease.
+
+The [settings service](settings.md) is linked to the shared C6 stack and the sole
+command/storage owners. Its independent review found two supported defects:
+
+| Finding | Correction and evidence |
+| --- | --- |
+| Off looked available during an active HTTP request, but the adapter is serial | The page disables/rejects Off until the request settles, including the config/status read pair. It becomes available after an ambiguous result without requiring another read first. No second socket or automatic retry was added. |
+| Pre-admission errors had an empty body and appeared to the browser as an unknown write result | The raw framing rejection path sends bounded JSON with exact length and `unknown_outcome:false`, without body draining or command admission. Lost/unusable responses and admitted timeouts remain unknown. |
+| Off could revoke output during pending storage but receive Busy | A small independent reply slot and pre-storage Runtime acknowledgement now report Applied after the app writes its GPIO. Older queued On/Toggle or clock-setting work is superseded even if the Off reply cannot be admitted. Full Off reply-slot/generation failure still preserves the revocation flag. |
+
+The original-source UI and HTTP regressions fail and the fixes pass. Tests cover
+six preflight failures at three fragment sizes, no admission/body drain/secret
+echo, DOM disable/re-enable, and known-versus-unknown outcomes. The independent
+settings reviewer confirmed both original findings resolved. Separate Off review
+covers queued start supersession, cancellation, producer/generation routing and
+storage completion. It found a queued older UTC request could reveal an active
+schedule after Off and start the relay at 100 ms. Off now supersedes older
+SetUtc/SetUtcObserved commands too. The behavior regression fails before the fix
+and passes for both command forms afterward; a later fresh time observation
+remains admissible. Independent delta re-review found no further actionable
+Off ordering or reply-ownership defect. A separate temporary copy restoring Busy-before-Off fails
+the retained-write regression. The original configuration owner and durable
+maintenance ACK remain distinct in the actual Matter/provisioning tests.
+
+Root used a real browser at approximately 500-pixel width to inspect unchanged
+assets with synthetic local data, save a duration, refetch, exit maintenance and
+lock. The fixture/tab were closed. That browser check precedes the small Off UI
+fix, which has actual-DOM regression coverage. No browser-to-ESP, Home pairing,
+physical USB or runtime RAM-margin evidence is claimed. Calibration/timing form
+controls, first configuration encoding and the notification worker remain work.
+
+The [borrowed TLS wrapper seam](tls-restriction.md) received independent lifetime,
+FFI and policy review. Its callback only adds rejection, retains the borrowed
+policy through session moves, requires peer authentication and rejects restricted
+resumption. Review identified these verification/provenance gaps:
+
+| Finding | Correction and evidence |
+| --- | --- |
+| A mutable upstream receipt could reauthorize an edit outside the five-file patch | An independently archive-derived complete manifest digest pins the upstream source. A synchronized source/upstream/patched-receipt mutation now fails. |
+| Deleting an upstream file and its patched receipt entry could pass | Require the anchored upstream file set plus only the reviewed `src/restriction.rs` addition. README, license and source deletion regressions fail against the previous guard and pass now. |
+| Matching sys/edge path patches could pass a cross-workspace comparison | Require fixed registry source, version and checksum in both locks and fixed source/version in resolved Cargo metadata. Tests reject path, git, version and checksum replacement. |
+| Blocking APIs lacked real handshake evidence | The serialized Linux matrix now exercises blocking TLS 1.2/1.3, each chain depth, Required authentication and save/resume with an actual unrestricted saved session. |
+| An accepting callback had not been tested with baseline verification failures | Both APIs retain exact flags for hostname, wrong root, corrupt signature, expired/future dates and RSA-1024. Denial adds only OTHER. |
+
+Linux verification passes 13 provider tests, eight accepted and 50 rejected full
+handshakes, two pre-I/O resumption rejections, a Pending async cancellation and the
+E0515 borrow-escape regression. RSA minimum strength is the specific algorithm
+case; no exhaustive digest/curve/key-type/CRL claim is made. The current app still
+sets the extra policy to None. No real Pushover request or hardware was used.
+
+The [controller grid correction](controller-grid.md) was independently reviewed
+for topology and native serialization. No actionable defect was reported. Its
+six focused tests pass 5,493 assertions. Root verified that actual KiCad Save
+rewrote all eight sheets without changing any component or net/ref/pin/type.
+The earlier loss of 13 USB memberships was traced to native collinear wire merging
+without branch dots; 16 explicit dots preserve existing connections. Separate
+negative tests ensure no isolated T endpoint or plain crossing is joined.
+
+The guarded stage retains 95 electrical parts, 99 footprints, 274 logical pins,
+51 named nets and nine NPTHs. Enabled ERC is zero; 216 unrouted items remain.
+A strict native check in a disposable copy found no footprint-filter, four-way
+junction or simulation-model findings, and seven single-global-label findings.
+Those and J4 label overlap still require source-authoritative cleanup. No ignored
+category was silently promoted, board adopted, lock created or routing released.
+The shared empty-ERC-allowlist validator correction passes 36 tests in both
+projects and is pushed to Stillair as 67e6953.
+
+Current combined firmware counts are 141 core, nine driver, one CLI, 59
+Matter/provisioning, 18 signed-time and 27 settings tests; 23 UI tests and the
+feature/provenance/partition checks also pass. PCB tests pass 113 cases / 23,670
+assertions. Exact current linked-memory evidence belongs in [STATE](../STATE.md).
+All commissioning rows remain Not run. These bounded reviews do not complete
+three-board manufacture or final-unit acceptance.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

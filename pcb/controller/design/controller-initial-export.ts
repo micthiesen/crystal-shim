@@ -1,3 +1,4 @@
+import { gridInitialSchematics } from "../../scripts/lib/schematic-grid-initial-export";
 import {
   applyControllerProjectSymbolsForInitialExport,
   addControllerPowerFlagsForInitialExport,
@@ -68,11 +69,17 @@ export function createControllerInitialGraphs(input: CircuitJson) {
     throw new Error("Controller initial component count changed");
   const manifest = createControllerManifest(input);
   const sheets = initialFiles.map((file) => file.kicadSch);
-  const library = applyControllerProjectSymbolsForInitialExport(json, sheets, manifest);
+  applyControllerProjectSymbolsForInitialExport(json, sheets, manifest);
   applyControllerFieldsForInitialExport(sheets, manifest);
   applyControllerSchematicCleanupForInitialExport(sheets, manifest);
-  library.push(addControllerPowerFlagsForInitialExport(sheets, manifest));
-  for (const file of initialFiles) file.content = file.kicadSch.getString();
+  addControllerPowerFlagsForInitialExport(sheets, manifest);
+  const gridded = gridInitialSchematics(sheets, {
+    joinedInductorLibraryId: "CrystalShim_Controller:Controller_L1",
+  });
+  for (const [index, file] of initialFiles.entries()) {
+    file.kicadSch = gridded.sheets[index]!;
+    file.content = file.kicadSch.getString();
+  }
   const pcb = createControllerInitialPcb(json);
   return {
     circuitJson: json,
@@ -82,7 +89,7 @@ export function createControllerInitialGraphs(input: CircuitJson) {
       content: new KicadSym({
         version: 20231120,
         generator: "tscircuit",
-        symbols: library,
+        symbols: gridded.library,
       }).getString(),
     },
     schematicFiles: schematic.getOutputFiles({

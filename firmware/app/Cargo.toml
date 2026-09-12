@@ -23,6 +23,7 @@ bench = false
 [dependencies]
 critical-section = "1"
 crystal-shim-core = { path = "../core" }
+crystal-shim-settings = { path = "../settings" }
 crystal-shim-drivers = { path = "../drivers" }
 crystal-shim-matter = { path = "../matter" }
 rs-matter-embassy = { git = "https://github.com/ivmarkov/rs-matter-embassy", rev = "f31233a6fd4530ff25ad3bcbd9abf8fe854320aa", default-features = false, features = ["esp", "embassy-net", "rustcrypto"] }
@@ -98,6 +99,7 @@ opt-level = 3
 # Same compatible esp-hal revision as ../stillair. All esp-* crates used here, including
 # generated metadata and the Wi-Fi/BLE radio, move together.
 [patch.crates-io]
+mbedtls-rs = { path = "../../vendor/mbedtls-rs" }
 esp-hal = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
 esp-rtos = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }
 esp-radio = { git = "https://github.com/esp-rs/esp-hal", rev = "10e48dd74837bae4be663a7d1825d12875363727" }

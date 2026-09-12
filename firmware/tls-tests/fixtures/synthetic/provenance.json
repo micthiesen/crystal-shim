@@ -1,0 +1,28 @@
+{
+  "scope": "Synthetic TEST ONLY loopback certificate/key fixtures. Never use this key or trust root for a device or service.",
+  "source": "Generated solely for this project's offline wrapper handshake tests, 2026-09-12.",
+  "sha256": {
+    "inter.pem": "c1575f0e0e996d15a38f69db200aab611637c0539dea7294c7fe36b15ae256bd",
+    "leaf.TEST_ONLY.key.pem": "4b457dbc6722073136d35887bd85ed1aa2ae9b586d2964b397b7b9f21f64e5e3",
+    "leaf.pem": "167ec6ba270ee77e8c8825abc3980b1159089bd2f2951c1502d2e15c16e956ea",
+    "root.der": "cf552ab1184dc8177863c500ef62c32916990b217fe28a69f27e65fa0fb43c2f",
+    "weak-rsa1024.pem": "7f9b607fe15a31490e8d2ee0a5cde440560b353ab12f202865aa4276a5dbc7ba",
+    "weak-rsa1024.TEST_ONLY.key.pem": "ffdf3f5889ad36459e2a3a63658d515062bea5683fb2789fb810a6401f08d600",
+    "leaf-bad-signature.pem": "e1bcd2c944d59d8dea72be453df26e4442135182efc07b4e5100974a4a97c48f",
+    "unrelated-root.der": "d040bca04bcd49d00b633cb9bfeb98db31b018e22332a932b5845842915e8d61"
+  },
+  "review_fixture_generation": {
+    "date": "2026-09-12",
+    "openssl": "OpenSSL 3.6.3 9 Jun 2026 (Library: OpenSSL 3.6.3 9 Jun 2026)",
+    "weak-rsa1024.pem": "Fresh TEST ONLY RSA 1024-bit leaf, existing synthetic intermediate signs with SHA256, serial 2026091201, 3650 days, same serverAuth and interval-proof.invalid SAN extensions. OpenSSL server security level 0 is used only to present this deliberately rejected test certificate.",
+    "leaf-bad-signature.pem": "Existing leaf DER final signature octet XOR 1; every signed certificate field and the corresponding leaf test key are unchanged. Re-encoded as PEM.",
+    "private_key_scope": "Only synthetic server leaf keys are checked in. Existing synthetic intermediate signing key remains scratch-only; no device credentials or real trust authority used.",
+    "openssl_commands": [
+      "openssl req -new -newkey rsa:1024 -nodes -keyout weak-rsa1024.TEST_ONLY.key.pem -out weak.csr -subj /CN=Crystal TEST ONLY weak leaf",
+      "openssl x509 -req -in weak.csr -CA inter.pem -CAkey inter.key -set_serial 2026091201 -days 3650 -sha256 -extfile leaf.ext -out weak-rsa1024.pem",
+      "openssl req -x509 -newkey rsa:2048 -nodes -sha256 -days 7300 -keyout unrelated-root.TEST_ONLY.key.pem -outform DER -out unrelated-root.der -subj /CN=Crystal TEST ONLY unrelated Root -addext basicConstraints=critical,CA:TRUE -addext keyUsage=critical,keyCertSign,cRLSign"
+    ],
+    "leaf_extensions": "basicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth\nsubjectAltName=DNS:interval-proof.invalid\nsubjectKeyIdentifier=hash\nauthorityKeyIdentifier=keyid,issuer\n",
+    "unrelated-root.der": "Independent synthetic RSA-2048 self-signed SHA256 root, 7300 days, CA:true and keyCertSign/cRLSign. Generated only for wrong-trust rejection. Its private key remains scratch-only."
+  }
+}

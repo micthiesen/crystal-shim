@@ -3,7 +3,8 @@
 Rust, bare-metal ESP32-C6, following `../stillair`: `core/` contains the `no_std`
 control contract, `drivers/` contains async device drivers, `cli/` runs the control
 model on the host, `matter/` contains the actual SDK command and KV adapters,
-and `roughtime/` verifies signed time replies offline. `app/` is a separate workspace
+`settings/` supplies the local HTTP service/UI, and `roughtime/` verifies signed
+time replies offline. `app/` is a separate workspace
 targeting `riscv32imac-unknown-none-elf`. Stable Rust is declared in
 `rust-toolchain.toml`; setup was verified with Rust 1.97.1. Commit each workspace's lockfile.
 
@@ -16,8 +17,9 @@ the output off. The runtime coordinator evaluates schedules, persists configurat
 and suppression, and accepts bounded physical USB administration. The Matter
 command and shared KV adapters, Wi-Fi/BLE commissioning and private credential
 provisioning are implemented. The private switch profile follows D-22; Apple Home
-pairing and behavior have not been exercised. The settings webpage and Pushover
-worker remain to be integrated. The external coil
+pairing and behavior have not been exercised. The authenticated
+[settings service](../docs/design/settings.md) is linked; calibration/timing UI
+and the live Pushover worker remain work. The external coil
 pull-down must establish off before application entry and during reset; a build
 cannot verify that physical behavior.
 
@@ -45,8 +47,9 @@ Keep the esp-* dependency family on one compatible revision.
 The [offline signed-time verifier](../docs/design/unattended-time.md) is a host
 workspace member with a checked C6 `no_std` library build. It is not linked into
 the app or accepted as UTC. Its public captures and synthetic test identity are
-offline fixtures. Source agreement, interval-aware schedule/TLS checks and runtime
-integration remain work.
+offline fixtures. Conservative interval scheduling is implemented and reviewed.
+Signed-source agreement, interval TLS operation leases and unattended runtime
+acquisition remain work.
 
 ## Control contract
 

@@ -1,4 +1,5 @@
 //! Fresh UTC observations, never a persisted or repeatedly republished wall clock.
+use crate::utc_bounds::{ClockRateBound, UtcBounds};
 use crate::{Millis, UtcSeconds};
 
 pub const MAX_AGE_MS: u64 = 3_600_000;
@@ -7,17 +8,31 @@ const MATTER_EPOCH_MS: u64 = 946_684_800_000;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct UtcObservation {
-    unix_ms: u64,
+    bounds: UtcBounds,
     captured_at: Millis,
+    rate: ClockRateBound,
 }
 impl UtcObservation {
     pub const fn new(unix_ms: u64, captured_at: Millis) -> Option<Self> {
-        if unix_ms > MAX_UNIX_MS || captured_at.0 >= i64::MAX as u64 {
+        let Some(bounds) = UtcBounds::new(unix_ms, unix_ms) else {
+            return None;
+        };
+        Self::bounded(bounds, captured_at, ClockRateBound::EXACT)
+    }
+    /// The caller supplies authenticated bounds at the original capture and an
+    /// explicit timer error model. This does not establish a source's accuracy.
+    pub const fn bounded(
+        bounds: UtcBounds,
+        captured_at: Millis,
+        rate: ClockRateBound,
+    ) -> Option<Self> {
+        if captured_at.0 >= i64::MAX as u64 {
             None
         } else {
             Some(Self {
-                unix_ms,
+                bounds,
                 captured_at,
+                rate,
             })
         }
     }
@@ -30,16 +45,30 @@ impl UtcObservation {
     pub const fn captured_at(self) -> Millis {
         self.captured_at
     }
-    pub const fn unix_ms(self) -> u64 {
-        self.unix_ms
+    pub const fn bounds(self) -> UtcBounds {
+        self.bounds
     }
+    pub const fn rate(self) -> ClockRateBound {
+        self.rate
+    }
+    /// Legacy scalar access deliberately refuses uncertain observations. TLS
+    /// cannot silently substitute an endpoint for two-boundary verification.
     pub fn at(self, now: Millis) -> Option<u64> {
+        if self.rate != ClockRateBound::EXACT {
+            return None;
+        }
+        self.bounds_at(now)?.point()
+    }
+    pub fn bounds_at(self, now: Millis) -> Option<UtcBounds> {
         if now.0 >= i64::MAX as u64 {
             return None;
         }
         let age = now.0.checked_sub(self.captured_at.0)?;
-        let utc = self.unix_ms.checked_add(age)?;
-        (age < MAX_AGE_MS && utc <= MAX_UNIX_MS).then_some(utc)
+        let (_, upper_age) = self.rate.elapsed_bounds(age)?;
+        if upper_age >= MAX_AGE_MS {
+            return None;
+        }
+        self.bounds.project(age, self.rate)
     }
 }
 
@@ -51,21 +80,27 @@ pub struct UtcAnchor {
 }
 impl UtcAnchor {
     pub fn new(observation: UtcObservation, now: Millis) -> Option<Self> {
-        observation.at(now)?;
+        observation.bounds_at(now)?;
         Some(Self {
             observation: Some(observation),
             last_read: now,
         })
     }
     pub fn at(&mut self, now: Millis) -> Option<UtcSeconds> {
+        let rate = self.observation?.rate;
+        let value = self.bounds_at(now)?;
+        (rate == ClockRateBound::EXACT).then_some(())?;
+        value.point().map(|value| UtcSeconds(value / 1_000))
+    }
+    pub fn bounds_at(&mut self, now: Millis) -> Option<UtcBounds> {
         let value = (now >= self.last_read)
             .then_some(())
-            .and_then(|()| self.observation?.at(now));
+            .and_then(|()| self.observation?.bounds_at(now));
         self.last_read = now;
         if value.is_none() {
             self.observation = None;
         }
-        value.map(|value| UtcSeconds(value / 1_000))
+        value
     }
     pub const fn observation(self) -> Option<UtcObservation> {
         self.observation
@@ -160,7 +195,7 @@ impl<S: Copy + Eq> ClockMailbox<S> {
             && self.source == Some(attempt.source)
     }
     pub fn offer(&mut self, attempt: Attempt<S>, sample: UtcObservation, now: Millis) -> bool {
-        if !self.matches(attempt) || sample.at(now).is_none() {
+        if !self.matches(attempt) || sample.bounds_at(now).is_none() {
             return false;
         }
         self.invalidate(); // consume this attempt, rejecting duplicate/late responses
@@ -183,7 +218,7 @@ impl<S: Copy + Eq> ClockMailbox<S> {
                 matter_micros,
                 captured_at,
             } => match UtcObservation::from_matter_micros(matter_micros, captured_at) {
-                Some(sample) if sample.at(now).is_some() => self.offer(attempt, sample, now),
+                Some(sample) if sample.bounds_at(now).is_some() => self.offer(attempt, sample, now),
                 _ => {
                     self.reject(attempt);
                     false

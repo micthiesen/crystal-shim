@@ -88,6 +88,17 @@ pub async fn run(
             relay_off: !relay_on,
             observed_at_ms: now.0,
         });
+        snapshot::publish_settings_status(crystal_shim_settings::Status {
+            relay_on,
+            durable_maintenance: runtime.as_ref().is_some_and(Runtime::durable_maintenance),
+            storage_failed: runtime.as_ref().is_some_and(Runtime::storage_failed),
+            clock_available: runtime
+                .as_ref()
+                .is_some_and(|runtime| runtime.clock_observation().is_some()),
+            state: status.map_or(crystal_shim_core::State::Boot, |status| {
+                status.control.state
+            }),
+        });
         if let Some(step) = step {
             for reply in [step.command_reply, step.completed_reply]
                 .into_iter()

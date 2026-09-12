@@ -51,9 +51,11 @@ compatibility or fallback remains integration work.
   the shared anchor rules again at actual hook/connector reads between control ticks.
 
 `core/src/utc.rs` keeps fractional milliseconds, converts the Matter 2000 epoch
-with checked arithmetic, and produces Gregorian fields in constant time. Both
-consumers truncate to seconds only when reading. Trust expires at exactly
-3,600,000 ms from the original capture. Future monotonic captures, observed
+with checked arithmetic, and produces Gregorian fields in constant time. Runtime
+now also accepts [explicit UTC intervals](utc-intervals.md); schedule caps retain
+the latest endpoint's milliseconds. Current CASE/USB producers still supply point
+observations. For these, trust expires at exactly 3,600,000 ms from the original
+capture; a supplied error model can require earlier expiry. Future monotonic captures, observed
 rollback, the signed TLS timer's saturation, arithmetic overflow and calendar
 values outside 1970 through 9999 fail closed. A new observation is needed after
 invalidity. No captured value survives boot as current UTC.
@@ -180,8 +182,9 @@ prove subsecond accuracy or compensate for asymmetric packet delay.
 
 New TLS handshakes fail without fresh UTC. The future Pushover worker must also
 cancel/drop an in-progress TLS operation on trust loss; this provider cannot revoke
-an already established application session. HTTP/UI, notification delivery and
-actual Home pairing/time-server/ACL acceptance remain separate work. No live radio,
+an already established application session. The [local HTTP/UI](settings.md) is
+now linked; notification delivery and actual Home pairing/time-server/ACL
+acceptance remain separate work. No live radio,
 network endpoint, credentials, hardware or notification POST was used for these checks.
 
 ## Primary implementation references

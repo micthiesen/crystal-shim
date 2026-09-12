@@ -23,6 +23,9 @@ sh scripts/check-tls.sh
   sh ../../scripts/with-esp-toolchain.sh cargo build --locked --release
 )
 python3 scripts/check_matter_features.py
+python3 scripts/check_settings_features.py
+python3 scripts/test_check_settings_features.py
+node --test firmware/settings/ui/app.test.mjs
 (
   cd pcb
   bun run check

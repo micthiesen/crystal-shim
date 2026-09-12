@@ -22,9 +22,11 @@ can still contain the explicitly declared schematic cleanup and unrouted items.
 It is not an adopted board, clean final ERC/DRC or a manufacturing package. Do
 not create a lock or start routing until the remaining project gates are met.
 Native cleanup has resolved unconnected pins, redundant wire overlaps, library
-identity and missing power-source annotations. The latest checked stage has 542
-off-grid findings; DRC has 216 unrouted items with zero other violations. Grid,
-page framing and legibility remain cleanup obligations before acceptance. The
+identity and missing power-source annotations. The initial grid transform now
+removes all 542 off-grid findings. Sixteen explicit USB junctions preserve existing
+branch connections through actual KiCad Save. Initial ERC has zero enabled
+findings; DRC has 216 unrouted items with zero other violations. Page framing and
+legibility, including overlapping J4 GND labels, remain obligations before acceptance. The
 initial project still ignores the footprint-filter ERC check; exact library
 filters do not count as having enabled and passed it. See current source-bound
 stage evidence in [STATE](../../../docs/STATE.md).

@@ -313,6 +313,7 @@ fn pushover_config() -> Result<ClientSessionConfig<'static>, ProviderError> {
     let ca_chain = Certificate::new_no_copy(DIGICERT_GLOBAL_ROOT_G2_DER)
         .map_err(ProviderError::TrustAnchor)?;
     Ok(ClientSessionConfig {
+        certificate_restriction: None,
         ca_chain: Some(ca_chain),
         creds: None,
         server_name: Some(PUSHOVER_HOST),

@@ -247,6 +247,7 @@ async function sourceHashes(): Promise<Record<string, string>> {
     .filter((name) => /\.(?:ts|tsx|py)$/.test(name) && !name.includes(".test."))
     .map((name) => join("controller/design", name));
   names.push(
+    "scripts/lib/schematic-grid-initial-export.ts",
     "package.json",
     "bun.lock",
     "tools/tscircuit_handoff.py",
@@ -581,7 +582,7 @@ export async function stageControllerExport(
           native_library_registration: registrationEvidence,
           native_initial_rules: initialRulesEvidence,
           limitations:
-            "Initial project libraries, four source power annotations and the declared NPTH rule applied; no adoption, handoff lock, completed augmentation, ERC/DRC or fabrication acceptance.",
+            "Initial project libraries, four source power annotations, monotone schematic grid and the declared NPTH rule applied; no adoption, handoff lock, completed augmentation, ERC/DRC or fabrication acceptance.",
         },
         null,
         2,

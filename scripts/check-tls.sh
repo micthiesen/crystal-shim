@@ -19,7 +19,9 @@ case "$(uname -s)" in
 esac
 
 python3 scripts/check_tls_features.py
+python3 scripts/test_check_tls_vendor.py
 cd firmware/tls-tests
 cargo fmt --all -- --check
 cargo clippy --locked --all-targets -- -D warnings
 cargo test --locked
+python3 ../../scripts/check_tls_borrow.py

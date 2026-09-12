@@ -7,7 +7,7 @@ the skimmer. The controller and mains board share an enclosure with physical sep
 It runs on configurable 15-minute schedules when the water level permits, with
 bounded HomeKit overrides. Every run ends automatically. See [behavior](docs/controls.md).
 Pushover alerts report confirmed water-level transitions in either direction.
-An ESP-hosted local webpage is selected for settings and schedules. The sensor
+An ESP-hosted local webpage implements settings and schedules. The sensor
 targets a freshwater tank with 5 mm glass and is held snug by the owner's separate
 clip; this project supplies the PCB attachment interface.
 
@@ -17,9 +17,12 @@ commission the assembled unit. No separate prototype phase is planned.
 
 **Status:** detailed design and firmware implementation are in progress. The
 [design basis](docs/design/README.md) records sourced parts, interfaces and open
-engineering checks. Host code includes control, scheduling, retained safety state
-and an async FDC1004 driver. There is no product schematic, routed PCB or
-commissioned hardware. The embedded app has no relay GPIO binding yet.
+engineering checks. The C6 application binds sensing, relay/watchdog control,
+retained state, private Matter provisioning and the local settings service.
+The controller schematic and placement are captured; its guarded initial export
+preserves connectivity through native KiCad Save. Mains integration, sensor
+geometry, board routing and the live Pushover worker remain work. No fabrication
+release or final-unit commissioning has passed.
 
 Start with [the overview](docs/overview.md) and [current state](docs/STATE.md).
 The [decision register](docs/decisions.md) tracks open inputs and release gates.

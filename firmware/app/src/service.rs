@@ -55,11 +55,17 @@ pub async fn run(
             let _ = writeln!(line, "REPLY {} {:?}", reply.id, reply.result);
             let _ = with_timeout(Duration::from_millis(100), usb.write_all(line.as_bytes())).await;
         }
-        if let Some(response) = transfer.poll(
+        let response = transfer.poll(
             snapshot::now().0,
             &crate::matter::LocalControl,
             snapshot::administration(),
-        ) {
+        );
+        // Transfer state and its central admission reservation change without a
+        // yield on this same executor. HTTP cannot slip between these operations.
+        runtime::reserve_provisioning(
+            !transfer.allows_runtime(crystal_shim_core::runtime::RuntimeCommand::ExitMaintenance),
+        );
+        if let Some(response) = response {
             provision_reply(&mut usb, response).await;
         }
         if let Some(write) = runtime::write_request().filter(|write| write.ticket != last_ticket) {
@@ -105,7 +111,14 @@ pub async fn run(
                                 snapshot::administration(),
                                 store,
                             );
+                            runtime::reserve_provisioning(!transfer.allows_runtime(
+                                crystal_shim_core::runtime::RuntimeCommand::ExitMaintenance,
+                            ));
                             provision_reply(&mut usb, response).await;
+                            continue;
+                        }
+                        Ok(LocalCommand::SettingsToken { id, replacement }) => {
+                            settings_token(&mut usb, id, replacement).await;
                             continue;
                         }
                         Ok(LocalCommand::Runtime(request))
@@ -158,9 +171,10 @@ pub async fn run(
         let mut line = heapless::String::<768>::new();
         let formatted = writeln!(
             line,
-            "boot={} network={:?} revision={} storage_error={:?} last_stored={:?} reset={:?} ms={} frames={} failures={} raw={:?} reading={:?} calibration_error={:?} driver_error={:?} control={:?}",
+            "boot={} network={:?} settings_ip={:?} revision={} storage_error={:?} last_stored={:?} reset={:?} ms={} frames={} failures={} raw={:?} reading={:?} calibration_error={:?} driver_error={:?} control={:?}",
             boot_status,
             network.get(),
+            crate::settings::address(),
             snapshot::configuration().revision,
             storage_error,
             runtime::last_stored(),
@@ -180,8 +194,9 @@ pub async fn run(
             let status = critical_section::with(|cs| snapshot::STATUS.borrow(cs).get());
             let _ = writeln!(
                 line,
-                "STATUS network={:?} revision={} ms={} relay={:?} state={:?} diagnostic=TRUNCATED",
+                "STATUS network={:?} settings_ip={:?} revision={} ms={} relay={:?} state={:?} diagnostic=TRUNCATED",
                 network.get(),
+                crate::settings::address(),
                 snapshot::configuration().revision,
                 now,
                 status.map(|status| status.control.relay),
@@ -202,4 +217,68 @@ async fn provision_reply(usb: &mut UsbSerialJtag<'static, Async>, response: Resp
         // maintenance + GPIO-low acknowledgement, produces this effect.
         esp_hal::system::software_reset();
     }
+}
+
+struct TokenOutput([u8; 128]);
+impl Drop for TokenOutput {
+    fn drop(&mut self) {
+        provision_transfer::clear_input(&mut self.0);
+    }
+}
+
+async fn settings_token(
+    usb: &mut UsbSerialJtag<'static, Async>,
+    id: u32,
+    replacement: Option<provision_transfer::SettingsToken>,
+) {
+    use crystal_shim_core::runtime::{Request, RuntimeCommand};
+    use crystal_shim_settings::{form, Bearer, Error};
+    let mut output = TokenOutput([0u8; 128]);
+    let mut prefix = heapless::String::<64>::new();
+    let result = snapshot::settings()
+        .ok_or(Error::NotReady)
+        .and_then(|view| {
+            if let Some(replacement) = replacement {
+                let bearer = Bearer::new(*replacement.bytes());
+                let config = form::rotate(view.configuration, &bearer)?;
+                crate::matter::LocalControl
+                    .begin(
+                        Source::Usb,
+                        Request {
+                            id,
+                            command: RuntimeCommand::SaveConfiguration(config),
+                        },
+                    )
+                    .map_err(|_| Error::Busy)?;
+                let _ = writeln!(prefix, "ACCEPTED {id}");
+                output.0[..prefix.len()].copy_from_slice(prefix.as_bytes());
+                Ok(prefix.len())
+            } else {
+                // This is the only token disclosure, requested explicitly over USB.
+                let _ = write!(prefix, "SETTINGS_TOKEN {id} ");
+                output.0[..prefix.len()].copy_from_slice(prefix.as_bytes());
+                let bearer = Bearer::new(*view.configuration.settings_auth_token().as_bytes());
+                let mut hex = [0; 64];
+                bearer.encode(&mut hex);
+                output.0[prefix.len()..prefix.len() + 64].copy_from_slice(&hex);
+                provision_transfer::clear_input(&mut hex);
+                output.0[prefix.len() + 64] = b'\n';
+                Ok(prefix.len() + 65)
+            }
+        });
+    let length = match result {
+        Ok(length) => length,
+        Err(error) => {
+            prefix.clear();
+            let _ = writeln!(prefix, "SETTINGS_ERROR {id} {}", error.label());
+            output.0[..prefix.len()].copy_from_slice(prefix.as_bytes());
+            prefix.len()
+        }
+    };
+    let _ = with_timeout(
+        Duration::from_millis(100),
+        usb.write_all(&output.0[..length]),
+    )
+    .await;
+    provision_transfer::clear_input(&mut output.0);
 }

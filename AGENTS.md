@@ -99,7 +99,12 @@ selection code against the pinned bootloader library's host backend.
 Verified-TLS policy tests run on Linux through `scripts/check-tls.sh`; on macOS the
 harness uses the default OrbStack Linux machine. That environment needs Rust,
 Clang, libclang and CMake. The embedded TLS build uses `scripts/with-esp-toolchain.sh`
-to select a Clang with RISC-V support. Install PCB dependencies first with
+to select a Clang with RISC-V support. Both TLS workspaces use the same narrowly
+patched `vendor/mbedtls-rs`; preserve its archive-derived source receipt and
+restriction-only callback contract in [docs/design/tls-restriction.md](docs/design/tls-restriction.md).
+The sys/edge crates retain fixed registry identities. The settings service uses
+io-only edge-http and shares the existing network/ingress/storage owners; its Node
+UI tests and resolved-feature guard belong to the validation gate. Install PCB dependencies first with
 `cd pcb && bun install --frozen-lockfile`.
 Use `python3 .agents/skills/sync/sync-status.py` after shared-tooling changes.
 For a real board also run the `$pcb` source, render, parity, ERC/DRC and handoff gates;

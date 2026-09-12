@@ -391,6 +391,19 @@ impl ValidatedDeviceConfig {
         self.supervisor
     }
 
+    /// Nonsecret values for administrative views and complete revalidation.
+    pub const fn thresholds(&self) -> (u16, u16) {
+        (self.stop.value(), self.restart.value())
+    }
+
+    pub const fn max_sample_age_ms(&self) -> u64 {
+        self.max_sample_age_ms
+    }
+
+    pub const fn timing(&self) -> Timing {
+        self.timing
+    }
+
     pub const fn calibration(&self) -> Option<Calibration> {
         self.calibration
     }

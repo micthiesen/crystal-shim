@@ -308,19 +308,26 @@ fn reserved_off_survives_busy_ingress_and_transfer_rejects_other_local_mutations
         assert!(!transfer.allows_runtime(command));
     }
     assert!(transfer.allows_runtime(RuntimeCommand::Off));
-    assert_eq!(
-        h.begin(
+    let off = h
+        .begin(
             Source::Usb,
             ControlRequest {
                 id: 1,
-                command: RuntimeCommand::Off
-            }
-        ),
-        Err(BridgeError::Busy)
-    );
-    assert!(
-        h.inner.borrow_mut().ingress.take().0,
-        "reserved Off survives a full slot"
+                command: RuntimeCommand::Off,
+            },
+        )
+        .unwrap();
+    h.tick(20, None);
+    assert!(h.ready().relay_off);
+    assert_eq!(h.reply(off).unwrap().result, Ok(Acknowledgement::Applied));
+    assert!(transfer.poll(20, &h, h.ready()).is_none());
+    // The Off receipt cannot satisfy or consume provisioning's maintenance ACK.
+    h.tick(40, None);
+    assert!(transfer.poll(40, &h, h.ready()).is_none());
+    h.tick(60, Some(true));
+    assert_eq!(
+        transfer.poll(60, &h, h.ready()).unwrap().result,
+        Ok(Progress::Ready(0))
     );
 }
 
@@ -728,4 +735,36 @@ fn receiving_cancel_wipes_and_lost_final_receipt_can_be_checked_without_rewritin
         handle(&mut transfer, &h, &store, Command::Reboot(owner)).result,
         Err(Error::StaleToken)
     );
+}
+
+#[test]
+fn physical_settings_token_commands_are_exact_and_do_not_enter_runtime_parser() {
+    let mut scratch = [0; CONFIGURATION_BLOB_MAX_LEN];
+    assert!(matches!(
+        parse_line(b"7 SETTINGS_TOKEN", &mut scratch),
+        Ok(LocalCommand::SettingsToken {
+            id: 7,
+            replacement: None
+        })
+    ));
+    let line = format!("8 SETTINGS_TOKEN_ROTATE {}", "12".repeat(32));
+    let Ok(LocalCommand::SettingsToken {
+        id: 8,
+        replacement: Some(replacement),
+    }) = parse_line(line.as_bytes(), &mut scratch)
+    else {
+        panic!("explicit rotation must parse");
+    };
+    assert_eq!(replacement.bytes(), &[0x12; 32]);
+    for line in [
+        "0 SETTINGS_TOKEN".into(),
+        "1 SETTINGS_TOKEN trailing".into(),
+        "1 SETTINGS_TOKEN_ROTATE".into(),
+        "1 SETTINGS_TOKEN_ROTATE xyz".into(),
+        format!("1 SETTINGS_TOKEN_ROTATE {}", "00".repeat(32)),
+        format!("1 SETTINGS_TOKEN_ROTATE {} extra", "12".repeat(32)),
+        format!("1 SETTINGS_TOKEN_ROTATE {}", "12".repeat(33)),
+    ] {
+        assert!(parse_line(line.as_bytes(), &mut scratch).is_err());
+    }
 }

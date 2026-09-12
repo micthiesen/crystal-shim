@@ -112,10 +112,10 @@ result as a fresh observation.
 | `firmware/core/src/runtime.rs` schedule path | Already calls the scheduler from control, persists `PersistBeforeRun` before exposing a window and preserves the supervisor across writes/configuration. No separate app schedule task is needed. |
 | `firmware/matter/` | Implemented SDK-generated async On/Off handler, applied acknowledgements, observed reporting and shared KV transaction helper, with host tests. |
 | `firmware/app/src/matter.rs` | Implemented `LocalControl`, private Matter node/descriptor tree, generated bounded On/Off and reporting handlers, provisioning admission, entropy/allocator integration and the `Application` network task. Actual Apple Home pairing/subscriptions remain final-board acceptance. |
-| `firmware/app/src/matter.rs::Application` / `radio.rs` | Implemented fallible single-owner BLE/Wi-Fi/TCP assembly and `UserTask` with bounded CASE UTC acquisition and TLS readiness. HTTP/Pushover children remain work; they must handle interface loss without blocking local service. |
-| `firmware/app/src/settings_http.rs` | Fixed-capacity HTTP parser/renderer, authenticated configuration reads/writes, validation, and storage request/ack protocol. |
-| `firmware/app/src/pushover.rs` | Persistent transition queue, DNS/TCP/TLS transaction, retry policy, and acknowledgement removal. It cannot call or await control APIs. |
-| `firmware/app/src/service.rs` USB loop | Implemented bounded status/configuration/command/UTC protocol using core ingress. UTC is captured before queuing; a correlated clock-clear slot bypasses CONFIG storage. Token rotation and factory reset/recovery remain work. |
+| `firmware/app/src/matter.rs::Application` / `radio.rs` | Implemented fallible single-owner BLE/Wi-Fi/TCP assembly and `UserTask` with bounded CASE UTC acquisition and TLS readiness. The settings HTTP child is linked; the Pushover child remains work. Interface loss cannot block local service. |
+| `firmware/app/src/settings.rs`, `firmware/settings/` | Shared-stack HTTP adapter, fixed-capacity parser/renderer, authenticated configuration reads/writes and correlated storage acknowledgments. |
+| Planned `firmware/app/src/pushover.rs` | Persistent transition queue, DNS/TCP/TLS transaction, retry policy, and acknowledgement removal. It cannot call or await control APIs. |
+| `firmware/app/src/service.rs` USB loop | Implemented bounded status/configuration/command/UTC protocol using core ingress. UTC is captured before queuing; a correlated clock-clear slot bypasses CONFIG storage. Physical settings-token read/rotation is implemented; factory reset/recovery remains work. |
 | `firmware/app/src/output.rs` | One bounded async USB/log writer. No logging from interrupts or critical sections. |
 | `firmware/app/src/main.rs` | Implemented safe boot, allocator/executor startup and parallel local-service/Matter ownership. USB/storage live in `service.rs` and remain available after radio startup/runtime return. |
 
@@ -292,16 +292,18 @@ restart with the interface; durable queue state must survive that cancellation.
 The fifth `run_coex` argument is implemented in `matter.rs` as an
 `rs_matter_embassy::stack::UserTask`. Its `run` method receives the generic network
 stack plus diagnostics/change notifications and can start before IP is usable.
-It currently runs TLS readiness and bounded CASE time acquisition. Future local
-HTTP/Pushover children must handle readiness and cancellation. None owns a second
+It runs TLS readiness, bounded CASE time acquisition and the
+[local settings service](settings.md). The future Pushover worker must handle
+readiness and cancellation. None owns a second
 radio stack or hard-coded Wi-Fi credentials.
 
 Use `edge-http 0.8.0` for the local settings server. It matches Rust 1.88,
 `edge-nal 0.7`, `embedded-io-async 0.7`, and `embassy-time 0.5` in Stillair's lock.
-The concrete path is `edge_http::io::server::{Server, Connection, Handler}` over
-`edge_nal::TcpBind`: bind the Matter-provided stack, then run a deliberately small
-server such as `Server<2, 2048, 16>`. Every read, write, header, and idle wait gets an
-Embassy timeout. Reject oversized bodies before parsing.
+The actual path uses `edge_nal::TcpBind` with one outstanding connection and
+`edge_http::io::server::Connection`. Raw-header preflight avoids the SDK's
+Content-Length panic before constructor entry. The limits are 2048-byte headers,
+24 header slots and a 2048-byte body, with one original 10-second request deadline
+and shorter phase/I/O bounds. See the [implemented contract](settings.md).
 
 The settings page uses plain HTTP on the trusted local LAN because no compatible,
 verified server-TLS design has been established. Mutating requests require a random

@@ -357,9 +357,7 @@
       "owner": "kicad",
       "target": {},
       "params": {
-        "allowed_initial_erc_types": [
-          "endpoint_off_grid"
-        ],
+        "allowed_initial_erc_types": [],
         "allowed_initial_erc_ignored_checks": [
           "footprint_filter",
           "four_way_junction",
@@ -377,7 +375,7 @@
           "Preserve all 95 exact values, MPNs, datasheet and footprint fields and every hierarchical sheet."
         ],
         "verification": "Require strict source schematic/XML parity and a clean ERC report with all errors/warnings resolved before any routing; these initial finding types are not release waivers.",
-        "status": "Initial typed NC markers, two overlap repairs, project symbol library and four explicit power flags applied; grid and page framing/legibility remain. Completion requires current native receipts and strict source/XML parity.",
+        "status": "Initial typed NC markers, two overlap repairs, project symbol library, four explicit power flags, monotone 1.27 mm electrical grid and persistent connected-branch junctions applied. Current native receipts and exact source/XML parity remain required; inherited label overlaps and full-page legibility remain to review.",
         "project_symbol_library": {
           "file": "CrystalShim_Controller.kicad_sym",
           "nickname": "CrystalShim_Controller",
@@ -386,7 +384,7 @@
           "annotation_entries": [
             "PWR_FLAG"
           ],
-          "serialization": "Fresh typed initial graph, version 20231120; registered through verified project-scoped Konnect. Every source pin type and symbol geometry retained.",
+          "serialization": "Fresh typed initial graph, version 20231120; registered through verified project-scoped Konnect. Every source pin identity/type retained; library pin/display positions follow the declared monotone initial grid transform and standalone cache is rebuilt identically.",
           "footprint_filters": "Exact Library:Footprint filters match each source-selected per-reference footprint; no alternate wildcard. Native XML must preserve all95 filters. KiCad footprint_filter remains ignored by the initial settings and must be enabled and run through supported native UI/settings before release."
         },
         "power_flags": {
@@ -425,6 +423,17 @@
           "verification": "Four ERC-only annotations; no extra native XML parts/endpoints, real power_out conflicts rejected. An annotation does not certify a live supply.",
           "assembly": "ERC annotation only; do not populate. No physical footprint or assembly entry.",
           "display": "Hide redundant Value and pin names/numbers; rotate glyphs away from existing net labels and wires without moving anchors."
+        },
+        "initial_grid": {
+          "adapter": "pcb/scripts/lib/schematic-grid-initial-export.ts",
+          "scope": "Cloned fresh typed initial schematic graphs before first serialization; no PCB transformation or existing native-file mutation",
+          "native_units_per_mm": 10000,
+          "connection_grid_mm": 1.27,
+          "mapping": "Separate strictly monotone X/Y map for each electrical sheet, canonical native integer coordinates, preserving every orthogonal wire, pin, label, junction and NC incidence. No nearest-coordinate merge. Preserve two-field junction/NC at syntax.",
+          "branch_junctions": "Add explicit dots only where all incident wires already connect through shared endpoints, positive collinear overlap or existing junctions. The controller adds 16 USB dots so native Save cannot disconnect branches when merging collinear stubs. Unconnected crossings or endpoint-on-interior contacts are never inferred as net ties.",
+          "display": "Map symbol body polylines and field anchors, retaining font/stroke sizes and circle radii. Explicit joined four-lobe L1 display repair leaves all electrical pin anchors, lengths and types unchanged. Zero-length power flag definitions stay rigid.",
+          "verification": "Require identical native XML components, pin names/types, all 51 named nets/254 connected pins/20 NCs; preserve all 443 initial wires and 34 existing junctions, add 16 proven branch dots. Current enabled ERC findings must be empty both initially and after native GUI save of a disposable copy; native wire merging may change segment counts but not connectivity. Inspect full pages and L1/module/USB/test-pad/flag details.",
+          "remaining": "Existing adjacent GND labels by J4 require legibility cleanup; no global anchor relocation or electrical label removal is performed."
         }
       }
     },

@@ -6,10 +6,11 @@
 
 use crate::configuration::ValidatedDeviceConfig;
 use crate::utc::{ClockUpdate, UtcAnchor, UtcObservation};
+use crate::utc_bounds::UtcBounds;
 use crate::{
     Command, Demand, Fault, HardwarePermit, Inputs, Millis, Reading, RelayCommand, RetainedState,
-    RetainedWindow, ScheduleDecision, Scheduler, Supervisor, SupervisorStatus, SwitchCommand,
-    UtcSeconds, WindowDisposition,
+    RetainedWindow, ScheduleDecision, ScheduleInterval, Scheduler, Supervisor, SupervisorStatus,
+    SwitchCommand, UtcSeconds, WindowDisposition,
 };
 
 pub const UTC_MAX_AGE_MS: u64 = crate::utc::MAX_AGE_MS;
@@ -280,8 +281,22 @@ impl Runtime {
 
         let utc = self.observe_utc(observation.now);
         let decision = self.configuration.and_then(|config| {
-            let civil = utc.and_then(|utc| config.timezone().civil_at(utc).ok());
-            Scheduler::evaluate(
+            let civil = utc.and_then(|bounds| {
+                ScheduleInterval::new(
+                    bounds,
+                    self.clock?.anchor.observation()?.rate(),
+                    config
+                        .timezone()
+                        .civil_at(UtcSeconds(bounds.earliest_ms() / 1000))
+                        .ok()?,
+                    config
+                        .timezone()
+                        .civil_at(UtcSeconds(bounds.latest_ms() / 1000))
+                        .ok()?,
+                )
+                .ok()
+            });
+            Scheduler::evaluate_interval(
                 observation.now,
                 civil,
                 config.schedule(),
@@ -451,6 +466,12 @@ impl Runtime {
             self.suppress();
             return Some(Ok(Acknowledgement::Applied));
         }
+        if matches!(request.command, RuntimeCommand::Off) {
+            *switch = SwitchCommand::Off;
+            // Confirm output revocation in this control iteration even while a
+            // storage request remains active. This does not promise durability.
+            return Some(Ok(Acknowledgement::Applied));
+        }
         if self.active_request.is_some() || self.pending.is_some() {
             return Some(Err(Error::Busy));
         }
@@ -493,13 +514,7 @@ impl Runtime {
                 *switch = SwitchCommand::On;
                 return Some(Ok(Acknowledgement::Applied));
             }
-            RuntimeCommand::Off => {
-                *switch = SwitchCommand::Off;
-                // Output revocation is acknowledged by this control iteration.
-                // Retained suppression proceeds independently, with the storage
-                // ticket's completion reporting durability or failure.
-                return Some(Ok(Acknowledgement::Applied));
-            }
+            RuntimeCommand::Off => unreachable!("revocation handled before storage admission"),
             RuntimeCommand::EnterMaintenance => {
                 self.enter_maintenance();
                 if self.configuration.is_none() {
@@ -548,11 +563,17 @@ impl Runtime {
 
     fn set_utc(&mut self, sample: UtcObservation, now: Millis, network: bool) -> Result<(), Error> {
         let mut anchor = UtcAnchor::new(sample, now).ok_or(Error::InvalidTime)?;
-        let utc = anchor.at(now).ok_or(Error::InvalidTime)?;
-        if self
-            .configuration
-            .is_none_or(|config| config.timezone().civil_at(utc).is_err())
-        {
+        let utc = anchor.bounds_at(now).ok_or(Error::InvalidTime)?;
+        if self.configuration.is_none_or(|config| {
+            [utc.earliest_ms(), utc.latest_ms()]
+                .into_iter()
+                .any(|value| {
+                    config
+                        .timezone()
+                        .civil_at(UtcSeconds(value / 1000))
+                        .is_err()
+                })
+        }) {
             return Err(Error::InvalidTime);
         }
         self.clock = Some(Clock { anchor, network });
@@ -567,14 +588,14 @@ impl Runtime {
         self.suppress();
     }
 
-    fn observe_utc(&mut self, now: Millis) -> Option<UtcSeconds> {
-        let utc = self.clock.as_mut()?.anchor.at(now);
+    fn observe_utc(&mut self, now: Millis) -> Option<UtcBounds> {
+        let utc = self.clock.as_mut()?.anchor.bounds_at(now);
         match utc {
             Some(utc) => {
                 if self
                     .desired
                     .and_then(|state| state.window)
-                    .is_some_and(|window| utc >= window.ends_utc)
+                    .is_some_and(|window| utc.latest_ms() / 1000 >= window.ends_utc.0)
                 {
                     self.suppress();
                 }

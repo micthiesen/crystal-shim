@@ -345,6 +345,35 @@ fn actual_verifier_rejects_missing_stale_and_out_of_validity_utc() {
 }
 
 #[test]
+fn scalar_tls_cannot_accept_an_interval_by_choosing_one_endpoint() {
+    use crystal_shim_core::utc_bounds::{ClockRateBound, UtcBounds};
+    let _guard = clock_test();
+    let mut chain = Chain::endpoint();
+    let mut root = Chain::parse(&[DIGICERT_GLOBAL_ROOT_G2_DER]);
+    for (lo, hi, rate) in [
+        (1_789_128_000_000, 1_789_128_010_000, ClockRateBound::EXACT),
+        (
+            1_789_128_000_000,
+            1_789_128_000_000,
+            ClockRateBound::new(100, 0).unwrap(),
+        ),
+    ] {
+        let sample =
+            UtcObservation::bounded(UtcBounds::new(lo, hi).unwrap(), Millis(0), rate).unwrap();
+        set_trusted_observation(sample);
+        assert!(!has_trusted_utc());
+        assert!(matches!(
+            pushover_config(),
+            Err(ProviderError::ClockUnavailable)
+        ));
+        assert_eq!(
+            chain.verify(&mut root, PUSHOVER_HOST),
+            (sys::MBEDTLS_ERR_X509_FATAL_ERROR, u32::MAX)
+        );
+    }
+}
+
+#[test]
 fn verifier_observes_certificate_expiry_as_utc_advances() {
     let _guard = clock_test();
     let mut chain = Chain::endpoint();

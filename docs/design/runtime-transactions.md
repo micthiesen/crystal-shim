@@ -8,8 +8,9 @@ it performs no I/O or waits under its critical-section locks.
 
 This unit adds a working USB path for configuration, commands, maintenance and
 explicit UTC observations. The [Matter command/KV adapter](matter-integration.md)
-now shares that ingress and storage owner; radio/profile integration, HTTP settings
-and authenticated HTTP remain work. No current date, schedule or calibration is compiled into the
+shares that ingress and storage owner. The [local HTTP settings service](settings.md)
+now uses the same correlated requests and sole storage owner; live notification
+delivery remains separate work. No current date, schedule or calibration is compiled into the
 application. A valid configured calibration and matching sensor revision remain
 required before an explicit run request can energize the output.
 
@@ -159,8 +160,9 @@ APIs. Commands are newline-terminated ASCII:
 | `<id> CONFIG <hex>` | Decode and save a canonical `CSCF` configuration blob at the next revision. |
 
 IDs are nonzero `u32` correlation values. Internal non-reusable generation tokens
-also identify the USB or Matter producer, so a reused correlation ID cannot claim
-an old reply. There is one request slot through final reply consumption.
+also identify the producer, so a reused correlation ID cannot claim an old reply.
+One large request slot remains owned through final reply consumption. Off and
+UTC clear each have a small independent reply slot with no configuration buffer.
 `ACCEPTED <id>` means queued, not applied or durable.
 `REPLY <id> Ok(Applied)` means control handled the request; it does not promise
 the relay is on. `REPLY <id> Ok(Durable)` means the matching configuration or
@@ -171,8 +173,11 @@ Failures use a typed error, without echoing the command or configuration.
 
 `BUSY <id>` means the slot could not accept the request. Off also sets a reserved
 lossless flag before the slot check, so Busy cannot delay a stop. That flag
-supersedes a queued On before its control iteration. A Busy Off has no correlated
-command acknowledgement; storage status reports eventual suppression independently.
+supersedes an older queued On/Toggle or clock-setting request before its control
+iteration. Configuration occupancy does not block Off admission or its `Applied` acknowledgement. Only
+Off reply-slot occupancy or exhausted generations prevent its admission.
+A Busy Off has no correlated command acknowledgement; storage status reports
+eventual suppression independently.
 Boot storage failure reports `NOT_READY` and
 leaves the output off rather than accepting requests with no control owner.
 

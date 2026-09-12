@@ -19,6 +19,7 @@ mod radio;
 mod runtime;
 mod sensor;
 mod service;
+mod settings;
 mod snapshot;
 mod storage;
 

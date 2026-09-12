@@ -143,13 +143,22 @@ fn full_usb_slot_preserves_off_and_dropping_queued_matter_work_releases_its_clai
             },
         )
         .unwrap();
+    backend.reported.set(true);
+    backend.applied.set(Some(Ok(Acknowledgement::Applied)));
+    backend.dispatch.set(true);
     assert_eq!(
         embassy_futures::block_on(handler.command(RuntimeCommand::Off)),
-        Err(BridgeError::Busy)
+        Ok(())
     );
-    let (off, _) = backend.ingress.borrow_mut().take();
-    assert!(off);
-    backend.ingress.borrow_mut().cancel(usb);
+    assert!(!handler.reported_on());
+    assert_eq!(
+        backend.ingress.borrow_mut().take_reply_for(usb).unwrap(),
+        Reply {
+            id: 1,
+            result: Err(Error::Superseded),
+        }
+    );
+    assert!(backend.ingress.borrow_mut().take().1.is_none());
 }
 
 #[test]

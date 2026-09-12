@@ -71,9 +71,10 @@ its trace logging includes blob contents.
 
 ## Command ownership and applied reporting
 
-`runtime_ingress::Ingress` has one fixed request slot and a reserved Off flag.
+`runtime_ingress::Ingress` has one fixed configuration/request slot, small reserved
+Off and UTC-clear reply slots, and a lossless Off flag.
 Each accepted request gets a monotonically increasing internal generation plus
-its producer (`Usb` or `Matter`). The user-visible USB ID is only a correlation
+its producer (`Usb`, `Matter`, `Provisioning` or `Settings`). The user-visible USB ID is only a correlation
 value. Tokens own replies, preventing reused IDs, stale completions, or another
 producer from collecting an acknowledgement. Generation exhaustion refuses new
 requests until reboot and still preserves reserved Off.
@@ -88,8 +89,12 @@ deadline. Sensor faults, stale/future/revision-mismatched input, maintenance,
 hardware exclusion and an expired lease produce `Rejected` if no override
 remains. Valid low-water overrides waiting for minimum-off recovery still succeed.
 The decision uses the final supervisor result rather than duplicating its gates.
-Busy and rejected commands are returned as errors. An Off received while the slot is full returns Busy but still
-sets the reserved revocation flag.
+Busy and rejected commands are returned as errors. Off can be admitted while a
+configuration request owns the large slot and receives `Applied` after the output
+iteration, even during pending storage. If its own reply slot is full or generation
+is exhausted, it returns Busy while still setting the reserved revocation flag
+and superseding any older queued On/Toggle or clock-setting request. A later
+explicit On remains a new request governed by the usual safety checks.
 
 Dropping or timing out a command future removes its queued request. Once control
 has dispatched it, cancellation abandons only the reply and retains ownership
@@ -298,8 +303,8 @@ Its host-only dependency adds no embedded code, and the release sizes above rema
 unchanged. See [provisioning](matter-provisioning.md) for the explicit command.
 The trusted UTC acquisition and control/TLS publication are implemented; the
 configured peer and ACL must still be proven during final pairing. Remaining
-integration is hosted settings/schedule UI and the bounded HTTP/Pushover worker
-using this TCP interface. RF pairing/reconnect, real group/subscription
+integration includes the bounded Pushover worker using this TCP interface.
+The [settings/schedule UI](settings.md) is now linked through the same stack. RF pairing/reconnect, real group/subscription
 behavior, combined TLS handshakes, GPIO/flash/watchdog timing, peak heap and stack
 high-water, and Apple Home acceptance remain final-board tests. The static RAM
 margin is not a substitute for the required 48 KiB margin after measured runtime

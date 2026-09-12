@@ -1,4 +1,4 @@
-//! Bounded command ingress. Off has a reserved flag; UTC clear has a small reply slot.
+//! Bounded command ingress. Off and UTC clear have small reserved reply slots.
 use crate::configuration::{ValidatedDeviceConfig, CONFIGURATION_BLOB_MAX_LEN};
 use crate::runtime::{Error, Reply, Request, RuntimeCommand};
 use crate::UtcSeconds;
@@ -8,6 +8,7 @@ pub enum Source {
     Usb,
     Matter,
     Provisioning,
+    Settings,
 }
 
 /// An opaque generation owned by one producer. User correlation IDs are separate.
@@ -35,7 +36,7 @@ enum Slot {
 
 // Revocation carries only its route and reply, never a second configuration buffer.
 #[derive(Clone, Copy)]
-enum ClearSlot {
+enum RevocationSlot {
     Empty,
     Queued(Route),
     InFlight(Route, bool),
@@ -45,9 +46,11 @@ enum ClearSlot {
 #[derive(Clone, Copy)]
 pub struct Ingress {
     slot: Slot,
-    clear: ClearSlot,
+    clear: RevocationSlot,
+    off_reply: RevocationSlot,
     off: bool,
     generation: u32,
+    provisioning_reserved: bool,
 }
 
 impl Default for Ingress {
@@ -60,9 +63,11 @@ impl Ingress {
     pub const fn new() -> Self {
         Self {
             slot: Slot::Empty,
-            clear: ClearSlot::Empty,
+            clear: RevocationSlot::Empty,
+            off_reply: RevocationSlot::Empty,
             off: false,
             generation: 0,
+            provisioning_reserved: false,
         }
     }
 
@@ -72,12 +77,42 @@ impl Ingress {
     }
 
     pub fn submit_from(&mut self, source: Source, mut request: Request) -> Option<Token> {
-        if matches!(request.command, RuntimeCommand::Off) {
+        let turning_off = matches!(request.command, RuntimeCommand::Off);
+        if turning_off {
             self.off = true;
+            // Revoke older queued starts even if no reply slot or generation is
+            // available. Otherwise dispatching the reserved Off first could let
+            // an older start or clock update reveal an automatic window on the
+            // following iteration, after force_off was consumed.
+            if let Slot::Queued(older, route) = self.slot {
+                if matches!(
+                    older.command,
+                    RuntimeCommand::On
+                        | RuntimeCommand::Toggle
+                        | RuntimeCommand::SetUtc(_)
+                        | RuntimeCommand::SetUtcObserved(_)
+                ) {
+                    self.slot = Slot::Replied(
+                        Reply {
+                            id: route.correlation,
+                            result: Err(Error::Superseded),
+                        },
+                        route,
+                    );
+                }
+            }
+        }
+        if self.provisioning_reserved
+            && matches!(source, Source::Usb | Source::Settings)
+            && !matches!(request.command, RuntimeCommand::Off)
+        {
+            return None;
         }
         let clearing = matches!(request.command, RuntimeCommand::ClearUtc);
         if if clearing {
-            !matches!(self.clear, ClearSlot::Empty)
+            !matches!(self.clear, RevocationSlot::Empty)
+        } else if turning_off {
+            !matches!(self.off_reply, RevocationSlot::Empty)
         } else {
             !matches!(self.slot, Slot::Empty)
         } {
@@ -108,22 +143,43 @@ impl Ingress {
                     );
                 }
             }
-            self.clear = ClearSlot::Queued(route);
+            self.clear = RevocationSlot::Queued(route);
+        } else if turning_off {
+            self.off_reply = RevocationSlot::Queued(route);
         } else {
             self.slot = Slot::Queued(request, route);
         }
         Some(token)
     }
 
+    /// The existing USB transfer owner publishes this synchronously before yielding.
+    pub fn reserve_provisioning(&mut self, active: bool) {
+        self.provisioning_reserved = active;
+    }
+
+    pub const fn provisioning_reserved(&self) -> bool {
+        self.provisioning_reserved
+    }
+
     pub fn take(&mut self) -> (bool, Option<Request>) {
         let off = core::mem::take(&mut self.off);
-        if let ClearSlot::Queued(route) = self.clear {
-            self.clear = ClearSlot::InFlight(route, false);
+        if let RevocationSlot::Queued(route) = self.clear {
+            self.clear = RevocationSlot::InFlight(route, false);
             return (
                 off,
                 Some(Request {
                     id: route.token.generation,
                     command: RuntimeCommand::ClearUtc,
+                }),
+            );
+        }
+        if let RevocationSlot::Queued(route) = self.off_reply {
+            self.off_reply = RevocationSlot::InFlight(route, false);
+            return (
+                off,
+                Some(Request {
+                    id: route.token.generation,
+                    command: RuntimeCommand::Off,
                 }),
             );
         }
@@ -138,12 +194,28 @@ impl Ingress {
     }
 
     pub fn complete(&mut self, reply: Reply) {
-        if let ClearSlot::InFlight(route, abandoned) = self.clear {
+        if let RevocationSlot::InFlight(route, abandoned) = self.clear {
             if route.token.generation == reply.id {
                 self.clear = if abandoned {
-                    ClearSlot::Empty
+                    RevocationSlot::Empty
                 } else {
-                    ClearSlot::Replied(
+                    RevocationSlot::Replied(
+                        Reply {
+                            id: route.correlation,
+                            ..reply
+                        },
+                        route,
+                    )
+                };
+                return;
+            }
+        }
+        if let RevocationSlot::InFlight(route, abandoned) = self.off_reply {
+            if route.token.generation == reply.id {
+                self.off_reply = if abandoned {
+                    RevocationSlot::Empty
+                } else {
+                    RevocationSlot::Replied(
                         Reply {
                             id: route.correlation,
                             ..reply
@@ -172,7 +244,12 @@ impl Ingress {
     }
 
     pub fn take_reply(&mut self) -> Option<Reply> {
-        if let ClearSlot::Replied(_, route) = self.clear {
+        if let RevocationSlot::Replied(_, route) = self.clear {
+            if route.token.source == Source::Usb {
+                return self.take_reply_for(route.token);
+            }
+        }
+        if let RevocationSlot::Replied(_, route) = self.off_reply {
             if route.token.source == Source::Usb {
                 return self.take_reply_for(route.token);
             }
@@ -187,9 +264,15 @@ impl Ingress {
     }
 
     pub fn take_reply_for(&mut self, token: Token) -> Option<Reply> {
-        if let ClearSlot::Replied(reply, route) = self.clear {
+        if let RevocationSlot::Replied(reply, route) = self.clear {
             if route.token == token {
-                self.clear = ClearSlot::Empty;
+                self.clear = RevocationSlot::Empty;
+                return Some(reply);
+            }
+        }
+        if let RevocationSlot::Replied(reply, route) = self.off_reply {
+            if route.token == token {
+                self.off_reply = RevocationSlot::Empty;
                 return Some(reply);
             }
         }
@@ -209,11 +292,24 @@ impl Ingress {
     /// allow a stale reply to acknowledge another producer's request.
     pub fn cancel(&mut self, token: Token) {
         match self.clear {
-            ClearSlot::Queued(route) | ClearSlot::Replied(_, route) if route.token == token => {
-                self.clear = ClearSlot::Empty
+            RevocationSlot::Queued(route) | RevocationSlot::Replied(_, route)
+                if route.token == token =>
+            {
+                self.clear = RevocationSlot::Empty
             }
-            ClearSlot::InFlight(route, _) if route.token == token => {
-                self.clear = ClearSlot::InFlight(route, true)
+            RevocationSlot::InFlight(route, _) if route.token == token => {
+                self.clear = RevocationSlot::InFlight(route, true)
+            }
+            _ => {}
+        }
+        match self.off_reply {
+            RevocationSlot::Queued(route) | RevocationSlot::Replied(_, route)
+                if route.token == token =>
+            {
+                self.off_reply = RevocationSlot::Empty
+            }
+            RevocationSlot::InFlight(route, _) if route.token == token => {
+                self.off_reply = RevocationSlot::InFlight(route, true)
             }
             _ => {}
         }
@@ -473,16 +569,34 @@ mod tests {
         let actual = ingress.take().1.unwrap();
         ingress.cancel(dispatched);
         assert!(ingress.submit_from(Source::Usb, request).is_none());
-        assert!(ingress
+        let off = ingress
             .submit_from(
                 Source::Usb,
+                Request {
+                    command: RuntimeCommand::Off,
+                    ..request
+                },
+            )
+            .unwrap();
+        let (force_off, off_request) = ingress.take();
+        assert!(force_off);
+        ingress.cancel(off);
+        let off_request = off_request.unwrap();
+        // Abandoned Off retains only acknowledgement ownership until completion.
+        assert!(ingress
+            .submit_from(
+                Source::Matter,
                 Request {
                     command: RuntimeCommand::Off,
                     ..request
                 }
             )
             .is_none());
-        assert!(ingress.take().0);
+        ingress.complete(Reply {
+            id: off_request.id,
+            result: Ok(Acknowledgement::Applied),
+        });
+        assert!(ingress.take_reply_for(off).is_none());
         ingress.complete(Reply {
             id: actual.id,
             result: Ok(Acknowledgement::Applied),
@@ -518,38 +632,71 @@ mod tests {
     }
 
     #[test]
-    fn full_slot_off_cannot_be_lost_and_stale_completion_cannot_release_it() {
+    fn reserved_off_is_correlated_and_stale_completion_cannot_release_it() {
         let mut ingress = Ingress::new();
-        assert!(ingress.submit(Request {
-            id: 1,
-            command: RuntimeCommand::On
-        }));
-        assert!(!ingress.submit(Request {
-            id: 2,
-            command: RuntimeCommand::Off
-        }));
-        let (off, request) = ingress.take();
-        assert!(off);
-        assert_eq!(request.unwrap().id, 1);
-        assert!(!ingress.take().0);
+        let request = Request {
+            id: 42,
+            command: RuntimeCommand::Off,
+        };
+        let first = ingress.submit_from(Source::Matter, request).unwrap();
+        let (_, original) = ingress.take();
+        let original = original.unwrap();
+        ingress.cancel(first);
         ingress.complete(Reply {
-            id: 2,
+            id: original.id,
+            result: Ok(Acknowledgement::Applied),
+        });
+        let next = ingress.submit_from(Source::Settings, request).unwrap();
+        let (_, next_request) = ingress.take();
+        ingress.complete(Reply {
+            id: original.id,
+            result: Ok(Acknowledgement::Applied),
+        });
+        assert!(ingress.take_reply_for(next).is_none());
+        ingress.complete(Reply {
+            id: next_request.unwrap().id,
             result: Ok(Acknowledgement::Applied),
         });
         assert!(ingress.take_reply().is_none());
-        assert!(!ingress.submit(Request {
-            id: 3,
-            command: RuntimeCommand::On
-        }));
-        ingress.complete(Reply {
-            id: 1,
-            result: Ok(Acknowledgement::Applied),
-        });
-        assert_eq!(ingress.take_reply().unwrap().id, 1);
-        assert!(ingress.submit(Request {
-            id: 3,
-            command: RuntimeCommand::On
-        }));
+        assert_eq!(
+            ingress.take_reply_for(next).unwrap(),
+            Reply {
+                id: 42,
+                result: Ok(Acknowledgement::Applied)
+            }
+        );
+    }
+
+    #[test]
+    fn unacknowledgeable_off_still_supersedes_a_queued_start() {
+        for exhausted in [false, true] {
+            let mut ingress = Ingress::new();
+            let off = Request {
+                id: 42,
+                command: RuntimeCommand::Off,
+            };
+            // Occupy the small slot and then consume its original revocation.
+            assert!(ingress.submit(off));
+            assert!(ingress.take().0);
+            assert!(ingress.submit(Request {
+                id: 43,
+                command: RuntimeCommand::On
+            }));
+            if exhausted {
+                ingress.generation = u32::MAX;
+            }
+            assert!(!ingress.submit(off));
+            let (revoked, request) = ingress.take();
+            assert!(revoked);
+            assert!(request.is_none());
+            assert_eq!(
+                ingress.take_reply().unwrap(),
+                Reply {
+                    id: 43,
+                    result: Err(Error::Superseded)
+                }
+            );
+        }
     }
 
     #[test]
