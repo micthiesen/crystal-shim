@@ -1,0 +1,5703 @@
+{
+  "board_id": "controller.board.main",
+  "kicad_owned": {
+    "graphics": {
+      "details": [],
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "rules": {
+      "details": [
+        {
+          "board_setup": {
+            "copper_layer_count": 4,
+            "minimum_clearance_mm": 0,
+            "minimum_hole_to_hole_mm": 0.25,
+            "minimum_track_width_mm": 0.2,
+            "minimum_via_drill_mm": 0.3,
+            "minimum_via_size_mm": 0.5
+          }
+        },
+        {
+          "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller.kicad_pro",
+          "sha256": "8ad144f5beb4b9ab287d21b4e2077c2c86e852ff7ce7d06e1966c1ff9a51bd58"
+        }
+      ],
+      "sha256": "c601eaab0694a610375c2ac6a8355989bb66919e0ee6a4c8c10da1ac5e582e49"
+    },
+    "tracks": {
+      "details": [],
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "vias": {
+      "details": [],
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "zones": {
+      "details": [],
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "routed": false,
+  "schematic_owned": {
+    "components": [
+      {
+        "datasheet": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "footprint": "CrystalShim_Controller:Controller_C1",
+        "manufacturer_part_number": "GRM32ER71E226ME15L",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C1",
+        "symbol": "CrystalShim_Controller:Controller_C1",
+        "value": "22uF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C11",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C11",
+        "symbol": "CrystalShim_Controller:Controller_C11",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C12",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C12",
+        "symbol": "CrystalShim_Controller:Controller_C12",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "footprint": "CrystalShim_Controller:Controller_C2",
+        "manufacturer_part_number": "GRM32ER71E226ME15L",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C2",
+        "symbol": "CrystalShim_Controller:Controller_C2",
+        "value": "22uF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C20",
+        "manufacturer_part_number": "C2012X7R1E105K125AB",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C20",
+        "symbol": "CrystalShim_Controller:Controller_C20",
+        "value": "1uF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C21",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C21",
+        "symbol": "CrystalShim_Controller:Controller_C21",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "footprint": "CrystalShim_Controller:Controller_C22",
+        "manufacturer_part_number": "GRM32ER71E226ME15L",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C22",
+        "symbol": "CrystalShim_Controller:Controller_C22",
+        "value": "22uF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608c0g1h472j080aa.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C23",
+        "manufacturer_part_number": "C1608C0G1H472J080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C23",
+        "symbol": "CrystalShim_Controller:Controller_C23",
+        "value": "4.7nF"
+      },
+      {
+        "datasheet": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "footprint": "CrystalShim_Controller:Controller_C3",
+        "manufacturer_part_number": "GRM32ER71E226ME15L",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C3",
+        "symbol": "CrystalShim_Controller:Controller_C3",
+        "value": "22uF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C30",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C30",
+        "symbol": "CrystalShim_Controller:Controller_C30",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C31",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C31",
+        "symbol": "CrystalShim_Controller:Controller_C31",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "footprint": "CrystalShim_Controller:Controller_C4",
+        "manufacturer_part_number": "GRM32ER71E226ME15L",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C4",
+        "symbol": "CrystalShim_Controller:Controller_C4",
+        "value": "22uF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C40",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C40",
+        "symbol": "CrystalShim_Controller:Controller_C40",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C41",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C41",
+        "symbol": "CrystalShim_Controller:Controller_C41",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C42",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C42",
+        "symbol": "CrystalShim_Controller:Controller_C42",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C43",
+        "manufacturer_part_number": "C2012X7R1E105K125AB",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C43",
+        "symbol": "CrystalShim_Controller:Controller_C43",
+        "value": "1uF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C44",
+        "manufacturer_part_number": "C3216X7R1E106K160AB",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C44",
+        "symbol": "CrystalShim_Controller:Controller_C44",
+        "value": "10uF"
+      },
+      {
+        "datasheet": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "footprint": "CrystalShim_Controller:Controller_C5",
+        "manufacturer_part_number": "GRM32ER71E226ME15L",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C5",
+        "symbol": "CrystalShim_Controller:Controller_C5",
+        "value": "22uF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C6",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C6",
+        "symbol": "CrystalShim_Controller:Controller_C6",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C7",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C7",
+        "symbol": "CrystalShim_Controller:Controller_C7",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C8",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C8",
+        "symbol": "CrystalShim_Controller:Controller_C8",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf",
+        "footprint": "CrystalShim_Controller:Controller_C9",
+        "manufacturer_part_number": "C2012X7R1E105K125AB",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C9",
+        "symbol": "CrystalShim_Controller:Controller_C9",
+        "value": "1uF"
+      },
+      {
+        "datasheet": "https://www.st.com/resource/en/datasheet/stps2l40.pdf",
+        "footprint": "CrystalShim_Controller:Controller_D1",
+        "manufacturer_part_number": "STPS2L40U",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "D1",
+        "symbol": "CrystalShim_Controller:Controller_D1",
+        "value": "STPS2L40U"
+      },
+      {
+        "datasheet": "https://www.st.com/resource/en/datasheet/stps2l40.pdf",
+        "footprint": "CrystalShim_Controller:Controller_D2",
+        "manufacturer_part_number": "STPS2L40U",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "D2",
+        "symbol": "CrystalShim_Controller:Controller_D2",
+        "value": "STPS2L40U"
+      },
+      {
+        "datasheet": "https://www.kingbrightusa.com/images/catalog/SPEC/WP710A10LGD.pdf",
+        "footprint": "CrystalShim_Controller:Controller_D4",
+        "manufacturer_part_number": "WP710A10LGD",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "D4",
+        "symbol": "CrystalShim_Controller:Controller_D4",
+        "value": "WP710A10LGD"
+      },
+      {
+        "datasheet": "https://www.littelfuse.com/assetdocs/tvs-diodes-smbj-series-datasheet?assetguid=ba555e99-a12d-4f72-a0b6-86b06c67171e",
+        "footprint": "CrystalShim_Controller:Controller_D5",
+        "manufacturer_part_number": "SMBJ8.0CA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "D5",
+        "symbol": "CrystalShim_Controller:Controller_D5",
+        "value": "SMBJ8.0CA"
+      },
+      {
+        "datasheet": "https://www.st.com/resource/en/datasheet/stps2l40.pdf",
+        "footprint": "CrystalShim_Controller:Controller_D6",
+        "manufacturer_part_number": "STPS2L40U",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "D6",
+        "symbol": "CrystalShim_Controller:Controller_D6",
+        "value": "STPS2L40U"
+      },
+      {
+        "datasheet": "https://www.littelfuse.com/assetdocs/tvs-diodes-smbj-series-datasheet?assetguid=ba555e99-a12d-4f72-a0b6-86b06c67171e",
+        "footprint": "CrystalShim_Controller:Controller_D7",
+        "manufacturer_part_number": "SMBJ7.0A",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "D7",
+        "symbol": "CrystalShim_Controller:Controller_D7",
+        "value": "SMBJ7.0A"
+      },
+      {
+        "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/436/43650/436501200_sd.pdf",
+        "footprint": "CrystalShim_Controller:Controller_J1",
+        "manufacturer_part_number": "43650-0300",
+        "pins": [
+          "1",
+          "2",
+          "3"
+        ],
+        "ref": "J1",
+        "symbol": "CrystalShim_Controller:Controller_J1",
+        "value": "43650-0300"
+      },
+      {
+        "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf",
+        "footprint": "CrystalShim_Controller:Controller_J2",
+        "manufacturer_part_number": "43045-0200",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "J2",
+        "symbol": "CrystalShim_Controller:Controller_J2",
+        "value": "43045-0200"
+      },
+      {
+        "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf",
+        "footprint": "CrystalShim_Controller:Controller_J3",
+        "manufacturer_part_number": "43045-0600",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "ref": "J3",
+        "symbol": "CrystalShim_Controller:Controller_J3",
+        "value": "43045-0600"
+      },
+      {
+        "datasheet": "https://gct.co/files/drawings/usb4105.pdf",
+        "footprint": "CrystalShim_Controller:Controller_J4",
+        "manufacturer_part_number": "USB4105-GF-A",
+        "pins": [
+          "A1",
+          "A12",
+          "A4",
+          "A5",
+          "A6",
+          "A7",
+          "A8",
+          "A9",
+          "B1",
+          "B12",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B9",
+          "SH"
+        ],
+        "ref": "J4",
+        "symbol": "CrystalShim_Controller:Controller_J4",
+        "value": "USB4105-GF-A"
+      },
+      {
+        "datasheet": "https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf",
+        "footprint": "CrystalShim_Controller:Controller_L1",
+        "manufacturer_part_number": "SRP5030TA-4R7M",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "L1",
+        "symbol": "CrystalShim_Controller:Controller_L1",
+        "value": "4.7\u00b5H"
+      },
+      {
+        "datasheet": "https://www.aosmd.com/res/data_sheets/AO3400A.pdf",
+        "footprint": "CrystalShim_Controller:Controller_Q1",
+        "manufacturer_part_number": "AO3400A",
+        "pins": [
+          "1",
+          "2",
+          "3"
+        ],
+        "ref": "Q1",
+        "symbol": "CrystalShim_Controller:Controller_Q1",
+        "value": "AO3400A"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R11",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R11",
+        "symbol": "CrystalShim_Controller:Controller_R11",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R12",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R12",
+        "symbol": "CrystalShim_Controller:Controller_R12",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R14",
+        "manufacturer_part_number": "ERA3AEB9532V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R14",
+        "symbol": "CrystalShim_Controller:Controller_R14",
+        "value": "95.3k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R15",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R15",
+        "symbol": "CrystalShim_Controller:Controller_R15",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R2",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R2",
+        "symbol": "CrystalShim_Controller:Controller_R2",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R20",
+        "manufacturer_part_number": "ERA3AEB101V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R20",
+        "symbol": "CrystalShim_Controller:Controller_R20",
+        "value": "100\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R30",
+        "manufacturer_part_number": "ERA3AEB2612V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R30",
+        "symbol": "CrystalShim_Controller:Controller_R30",
+        "value": "26.1k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R31",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R31",
+        "symbol": "CrystalShim_Controller:Controller_R31",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R32",
+        "manufacturer_part_number": "ERA6AEB474V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R32",
+        "symbol": "CrystalShim_Controller:Controller_R32",
+        "value": "470k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R33",
+        "manufacturer_part_number": "ERA3AEB3832V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R33",
+        "symbol": "CrystalShim_Controller:Controller_R33",
+        "value": "38.3k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R34",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R34",
+        "symbol": "CrystalShim_Controller:Controller_R34",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R35",
+        "manufacturer_part_number": "ERA6AEB474V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R35",
+        "symbol": "CrystalShim_Controller:Controller_R35",
+        "value": "470k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R36",
+        "manufacturer_part_number": "ERA3AEB2871V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R36",
+        "symbol": "CrystalShim_Controller:Controller_R36",
+        "value": "2.87k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R37",
+        "manufacturer_part_number": "ERA6AEB222V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R37",
+        "symbol": "CrystalShim_Controller:Controller_R37",
+        "value": "2.2k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R40",
+        "manufacturer_part_number": "ERA3AEB512V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R40",
+        "symbol": "CrystalShim_Controller:Controller_R40",
+        "value": "5.1k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R41",
+        "manufacturer_part_number": "ERA3AEB512V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R41",
+        "symbol": "CrystalShim_Controller:Controller_R41",
+        "value": "5.1k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R42",
+        "manufacturer_part_number": "ERA3AEB102V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R42",
+        "symbol": "CrystalShim_Controller:Controller_R42",
+        "value": "1k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R43",
+        "manufacturer_part_number": "ERA3AEB104V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R43",
+        "symbol": "CrystalShim_Controller:Controller_R43",
+        "value": "100k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R44",
+        "manufacturer_part_number": "ERJ3EKF22R0V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R44",
+        "symbol": "CrystalShim_Controller:Controller_R44",
+        "value": "22\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R45",
+        "manufacturer_part_number": "ERJ3EKF22R0V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R45",
+        "symbol": "CrystalShim_Controller:Controller_R45",
+        "value": "22\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R46",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R46",
+        "symbol": "CrystalShim_Controller:Controller_R46",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R50",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R50",
+        "symbol": "CrystalShim_Controller:Controller_R50",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R51",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R51",
+        "symbol": "CrystalShim_Controller:Controller_R51",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R52",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R52",
+        "symbol": "CrystalShim_Controller:Controller_R52",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R53",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R53",
+        "symbol": "CrystalShim_Controller:Controller_R53",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R54",
+        "manufacturer_part_number": "ERA3AEB681V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R54",
+        "symbol": "CrystalShim_Controller:Controller_R54",
+        "value": "680\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R55",
+        "manufacturer_part_number": "ERA3AEB331V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R55",
+        "symbol": "CrystalShim_Controller:Controller_R55",
+        "value": "330\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R60",
+        "manufacturer_part_number": "ERA3AEB272V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R60",
+        "symbol": "CrystalShim_Controller:Controller_R60",
+        "value": "2.7k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R61",
+        "manufacturer_part_number": "ERA3AEB272V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R61",
+        "symbol": "CrystalShim_Controller:Controller_R61",
+        "value": "2.7k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R62",
+        "manufacturer_part_number": "ERJ3EKF22R0V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R62",
+        "symbol": "CrystalShim_Controller:Controller_R62",
+        "value": "22\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R63",
+        "manufacturer_part_number": "ERJ3EKF22R0V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R63",
+        "symbol": "CrystalShim_Controller:Controller_R63",
+        "value": "22\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R64",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R64",
+        "symbol": "CrystalShim_Controller:Controller_R64",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R65",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R65",
+        "symbol": "CrystalShim_Controller:Controller_R65",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R66",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R66",
+        "symbol": "CrystalShim_Controller:Controller_R66",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R67",
+        "manufacturer_part_number": "ERA3AEB103V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R67",
+        "symbol": "CrystalShim_Controller:Controller_R67",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+        "footprint": "CrystalShim_Controller:Controller_R68",
+        "manufacturer_part_number": "CRCW25126R80FKEGHP",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R68",
+        "symbol": "CrystalShim_Controller:Controller_R68",
+        "value": "6.8\u03a9"
+      },
+      {
+        "datasheet": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3f.pdf",
+        "footprint": "CrystalShim_Controller:Controller_SW1",
+        "manufacturer_part_number": "B3F-1002-G",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "SW1",
+        "symbol": "CrystalShim_Controller:Controller_SW1",
+        "value": "B3F-1002-G"
+      },
+      {
+        "datasheet": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3f.pdf",
+        "footprint": "CrystalShim_Controller:Controller_SW2",
+        "manufacturer_part_number": "B3F-1002-G",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "SW2",
+        "symbol": "CrystalShim_Controller:Controller_SW2",
+        "value": "B3F-1002-G"
+      },
+      {
+        "datasheet": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3f.pdf",
+        "footprint": "CrystalShim_Controller:Controller_SW3",
+        "manufacturer_part_number": "B3F-1002-G",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "SW3",
+        "symbol": "CrystalShim_Controller:Controller_SW3",
+        "value": "B3F-1002-G"
+      },
+      {
+        "datasheet": "",
+        "footprint": "CrystalShim_Controller:Controller_TP1",
+        "manufacturer_part_number": "",
+        "pins": [
+          "1"
+        ],
+        "ref": "TP1",
+        "symbol": "CrystalShim_Controller:Controller_TP1",
+        "value": "TP1"
+      },
+      {
+        "datasheet": "",
+        "footprint": "CrystalShim_Controller:Controller_TP10",
+        "manufacturer_part_number": "",
+        "pins": [
+          "1"
+        ],
+        "ref": "TP10",
+        "symbol": "CrystalShim_Controller:Controller_TP10",
+        "value": "TP10"
+      },
+      {
+        "datasheet": "",
+        "footprint": "CrystalShim_Controller:Controller_TP11",
+        "manufacturer_part_number": "",
+        "pins": [
+          "1"
+        ],
+        "ref": "TP11",
+        "symbol": "CrystalShim_Controller:Controller_TP11",
+        "value": "TP11"
+      },
+      {
+        "datasheet": "",
+        "footprint": "CrystalShim_Controller:Controller_TP2",
+        "manufacturer_part_number": "",
+        "pins": [
+          "1"
+        ],
+        "ref": "TP2",
+        "symbol": "CrystalShim_Controller:Controller_TP2",
+        "value": "TP2"
+      },
+      {
+        "datasheet": "",
+        "footprint": "CrystalShim_Controller:Controller_TP3",
+        "manufacturer_part_number": "",
+        "pins": [
+          "1"
+        ],
+        "ref": "TP3",
+        "symbol": "CrystalShim_Controller:Controller_TP3",
+        "value": "TP3"
+      },
+      {
+        "datasheet": "",
+        "footprint": "CrystalShim_Controller:Controller_TP4",
+        "manufacturer_part_number": "",
+        "pins": [
+          "1"
+        ],
+        "ref": "TP4",
+        "symbol": "CrystalShim_Controller:Controller_TP4",
+        "value": "TP4"
+      },
+      {
+        "datasheet": "",
+        "footprint": "CrystalShim_Controller:Controller_TP5",
+        "manufacturer_part_number": "",
+        "pins": [
+          "1"
+        ],
+        "ref": "TP5",
+        "symbol": "CrystalShim_Controller:Controller_TP5",
+        "value": "TP5"
+      },
+      {
+        "datasheet": "",
+        "footprint": "CrystalShim_Controller:Controller_TP6",
+        "manufacturer_part_number": "",
+        "pins": [
+          "1"
+        ],
+        "ref": "TP6",
+        "symbol": "CrystalShim_Controller:Controller_TP6",
+        "value": "TP6"
+      },
+      {
+        "datasheet": "",
+        "footprint": "CrystalShim_Controller:Controller_TP7",
+        "manufacturer_part_number": "",
+        "pins": [
+          "1"
+        ],
+        "ref": "TP7",
+        "symbol": "CrystalShim_Controller:Controller_TP7",
+        "value": "TP7"
+      },
+      {
+        "datasheet": "",
+        "footprint": "CrystalShim_Controller:Controller_TP8",
+        "manufacturer_part_number": "",
+        "pins": [
+          "1"
+        ],
+        "ref": "TP8",
+        "symbol": "CrystalShim_Controller:Controller_TP8",
+        "value": "TP8"
+      },
+      {
+        "datasheet": "",
+        "footprint": "CrystalShim_Controller:Controller_TP9",
+        "manufacturer_part_number": "",
+        "pins": [
+          "1"
+        ],
+        "ref": "TP9",
+        "symbol": "CrystalShim_Controller:Controller_TP9",
+        "value": "TP9"
+      },
+      {
+        "datasheet": "https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf",
+        "footprint": "CrystalShim_Controller:Controller_U1",
+        "manufacturer_part_number": "ESP32-C6-WROOM-1-N8",
+        "pins": [
+          "1",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "2",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "ref": "U1",
+        "symbol": "CrystalShim_Controller:Controller_U1",
+        "value": "ESP32-C6-WROOM-1-N8"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+        "footprint": "CrystalShim_Controller:Controller_U10",
+        "manufacturer_part_number": "TPS259470ARPWR",
+        "pins": [
+          "1",
+          "10",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "ref": "U10",
+        "symbol": "CrystalShim_Controller:Controller_U10",
+        "value": "TPS259470ARPWR"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/esds312.pdf",
+        "footprint": "CrystalShim_Controller:Controller_U11",
+        "manufacturer_part_number": "ESDS312DBVR",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "ref": "U11",
+        "symbol": "CrystalShim_Controller:Controller_U11",
+        "value": "ESDS312DBVR"
+      },
+      {
+        "datasheet": "https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf",
+        "footprint": "CrystalShim_Controller:Controller_U2",
+        "manufacturer_part_number": "AP63203WU-7",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "ref": "U2",
+        "symbol": "CrystalShim_Controller:Controller_U2",
+        "value": "AP63203WU-7"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/tca9517a.pdf",
+        "footprint": "CrystalShim_Controller:Controller_U3",
+        "manufacturer_part_number": "TCA9517ADGKR",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "ref": "U3",
+        "symbol": "CrystalShim_Controller:Controller_U3",
+        "value": "TCA9517ADGKR"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+        "footprint": "CrystalShim_Controller:Controller_U4",
+        "manufacturer_part_number": "TPS3808G01DBVR",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "ref": "U4",
+        "symbol": "CrystalShim_Controller:Controller_U4",
+        "value": "TPS3808G01DBVR"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/tps2553.pdf",
+        "footprint": "CrystalShim_Controller:Controller_U5",
+        "manufacturer_part_number": "TPS2553DBVR",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "ref": "U5",
+        "symbol": "CrystalShim_Controller:Controller_U5",
+        "value": "TPS2553DBVR"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf",
+        "footprint": "CrystalShim_Controller:Controller_U6",
+        "manufacturer_part_number": "SN74LVC1G08DBVR",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "ref": "U6",
+        "symbol": "CrystalShim_Controller:Controller_U6",
+        "value": "SN74LVC1G08DBVR"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/sn74lvc1g14.pdf",
+        "footprint": "CrystalShim_Controller:Controller_U7",
+        "manufacturer_part_number": "SN74LVC1G14DBVR",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "ref": "U7",
+        "symbol": "CrystalShim_Controller:Controller_U7",
+        "value": "SN74LVC1G14DBVR"
+      },
+      {
+        "datasheet": "https://www.onsemi.com/download/data-sheet/pdf/fsusb42-d.pdf",
+        "footprint": "CrystalShim_Controller:Controller_U8",
+        "manufacturer_part_number": "FSUSB42MUX",
+        "pins": [
+          "1",
+          "10",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "ref": "U8",
+        "symbol": "CrystalShim_Controller:Controller_U8",
+        "value": "FSUSB42MUX"
+      },
+      {
+        "datasheet": "https://www.st.com/resource/en/datasheet/usblc6-2.pdf",
+        "footprint": "CrystalShim_Controller:Controller_U9",
+        "manufacturer_part_number": "USBLC6-2SC6",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "ref": "U9",
+        "symbol": "CrystalShim_Controller:Controller_U9",
+        "value": "USBLC6-2SC6"
+      }
+    ],
+    "nets": [
+      {
+        "endpoints": [
+          [
+            "R51",
+            "2"
+          ],
+          [
+            "SW2",
+            "1"
+          ],
+          [
+            "U1",
+            "15"
+          ]
+        ],
+        "name": "BOOT_N"
+      },
+      {
+        "endpoints": [
+          [
+            "R52",
+            "2"
+          ],
+          [
+            "U1",
+            "10"
+          ]
+        ],
+        "name": "BOOT_STRAP8"
+      },
+      {
+        "endpoints": [
+          [
+            "C8",
+            "1"
+          ],
+          [
+            "U2",
+            "6"
+          ]
+        ],
+        "name": "BUCK_BST"
+      },
+      {
+        "endpoints": [
+          [
+            "C8",
+            "2"
+          ],
+          [
+            "L1",
+            "1"
+          ],
+          [
+            "U2",
+            "5"
+          ]
+        ],
+        "name": "BUCK_SW"
+      },
+      {
+        "endpoints": [
+          [
+            "C9",
+            "1"
+          ],
+          [
+            "R53",
+            "2"
+          ],
+          [
+            "R55",
+            "1"
+          ],
+          [
+            "U1",
+            "3"
+          ],
+          [
+            "U4",
+            "3"
+          ]
+        ],
+        "name": "CHIP_EN"
+      },
+      {
+        "endpoints": [
+          [
+            "J1",
+            "3"
+          ],
+          [
+            "Q1",
+            "3"
+          ]
+        ],
+        "name": "COIL_DRAIN"
+      },
+      {
+        "endpoints": [
+          [
+            "C1",
+            "2"
+          ],
+          [
+            "C11",
+            "2"
+          ],
+          [
+            "C12",
+            "2"
+          ],
+          [
+            "C2",
+            "2"
+          ],
+          [
+            "C20",
+            "2"
+          ],
+          [
+            "C21",
+            "2"
+          ],
+          [
+            "C22",
+            "2"
+          ],
+          [
+            "C23",
+            "2"
+          ],
+          [
+            "C3",
+            "2"
+          ],
+          [
+            "C30",
+            "2"
+          ],
+          [
+            "C31",
+            "2"
+          ],
+          [
+            "C4",
+            "2"
+          ],
+          [
+            "C40",
+            "2"
+          ],
+          [
+            "C41",
+            "2"
+          ],
+          [
+            "C42",
+            "2"
+          ],
+          [
+            "C43",
+            "2"
+          ],
+          [
+            "C44",
+            "2"
+          ],
+          [
+            "C5",
+            "2"
+          ],
+          [
+            "C6",
+            "2"
+          ],
+          [
+            "C7",
+            "2"
+          ],
+          [
+            "C9",
+            "2"
+          ],
+          [
+            "D4",
+            "1"
+          ],
+          [
+            "D5",
+            "2"
+          ],
+          [
+            "D6",
+            "2"
+          ],
+          [
+            "D7",
+            "2"
+          ],
+          [
+            "J1",
+            "2"
+          ],
+          [
+            "J2",
+            "2"
+          ],
+          [
+            "J3",
+            "4"
+          ],
+          [
+            "J3",
+            "5"
+          ],
+          [
+            "J3",
+            "6"
+          ],
+          [
+            "J4",
+            "A1"
+          ],
+          [
+            "J4",
+            "A12"
+          ],
+          [
+            "J4",
+            "B1"
+          ],
+          [
+            "J4",
+            "B12"
+          ],
+          [
+            "J4",
+            "SH"
+          ],
+          [
+            "Q1",
+            "2"
+          ],
+          [
+            "R11",
+            "2"
+          ],
+          [
+            "R15",
+            "2"
+          ],
+          [
+            "R2",
+            "2"
+          ],
+          [
+            "R31",
+            "2"
+          ],
+          [
+            "R34",
+            "2"
+          ],
+          [
+            "R36",
+            "2"
+          ],
+          [
+            "R37",
+            "2"
+          ],
+          [
+            "R40",
+            "2"
+          ],
+          [
+            "R41",
+            "2"
+          ],
+          [
+            "R43",
+            "2"
+          ],
+          [
+            "R64",
+            "2"
+          ],
+          [
+            "R65",
+            "2"
+          ],
+          [
+            "R67",
+            "2"
+          ],
+          [
+            "SW1",
+            "2"
+          ],
+          [
+            "SW2",
+            "2"
+          ],
+          [
+            "SW3",
+            "2"
+          ],
+          [
+            "TP1",
+            "1"
+          ],
+          [
+            "TP11",
+            "1"
+          ],
+          [
+            "U1",
+            "1"
+          ],
+          [
+            "U1",
+            "28"
+          ],
+          [
+            "U1",
+            "29"
+          ],
+          [
+            "U10",
+            "8"
+          ],
+          [
+            "U11",
+            "2"
+          ],
+          [
+            "U2",
+            "4"
+          ],
+          [
+            "U3",
+            "4"
+          ],
+          [
+            "U4",
+            "2"
+          ],
+          [
+            "U5",
+            "2"
+          ],
+          [
+            "U6",
+            "3"
+          ],
+          [
+            "U7",
+            "3"
+          ],
+          [
+            "U8",
+            "2"
+          ],
+          [
+            "U8",
+            "5"
+          ],
+          [
+            "U9",
+            "2"
+          ]
+        ],
+        "name": "GND"
+      },
+      {
+        "endpoints": [
+          [
+            "D4",
+            "2"
+          ],
+          [
+            "R54",
+            "2"
+          ]
+        ],
+        "name": "LED_ANODE"
+      },
+      {
+        "endpoints": [
+          [
+            "R50",
+            "2"
+          ],
+          [
+            "SW1",
+            "1"
+          ],
+          [
+            "U1",
+            "12"
+          ]
+        ],
+        "name": "MAINTENANCE_N"
+      },
+      {
+        "endpoints": [
+          [
+            "Q1",
+            "1"
+          ],
+          [
+            "R11",
+            "1"
+          ],
+          [
+            "R20",
+            "2"
+          ]
+        ],
+        "name": "MOS_GATE"
+      },
+      {
+        "endpoints": [
+          [
+            "R12",
+            "2"
+          ],
+          [
+            "TP7",
+            "1"
+          ],
+          [
+            "U1",
+            "19"
+          ],
+          [
+            "U4",
+            "1"
+          ],
+          [
+            "U6",
+            "2"
+          ]
+        ],
+        "name": "PSU_GOOD"
+      },
+      {
+        "endpoints": [
+          [
+            "R14",
+            "2"
+          ],
+          [
+            "R15",
+            "1"
+          ],
+          [
+            "U4",
+            "5"
+          ]
+        ],
+        "name": "PSU_SENSE"
+      },
+      {
+        "endpoints": [
+          [
+            "R20",
+            "1"
+          ],
+          [
+            "TP8",
+            "1"
+          ],
+          [
+            "U6",
+            "4"
+          ]
+        ],
+        "name": "RELAY_GATED"
+      },
+      {
+        "endpoints": [
+          [
+            "R2",
+            "1"
+          ],
+          [
+            "U1",
+            "11"
+          ],
+          [
+            "U6",
+            "1"
+          ]
+        ],
+        "name": "RELAY_REQUEST"
+      },
+      {
+        "endpoints": [
+          [
+            "R55",
+            "2"
+          ],
+          [
+            "SW3",
+            "1"
+          ]
+        ],
+        "name": "RESET_CONTACT"
+      },
+      {
+        "endpoints": [
+          [
+            "R63",
+            "1"
+          ],
+          [
+            "U3",
+            "2"
+          ]
+        ],
+        "name": "SCL_BUFFER_A"
+      },
+      {
+        "endpoints": [
+          [
+            "J3",
+            "3"
+          ],
+          [
+            "R63",
+            "2"
+          ],
+          [
+            "U11",
+            "5"
+          ]
+        ],
+        "name": "SCL_CABLE"
+      },
+      {
+        "endpoints": [
+          [
+            "R62",
+            "1"
+          ],
+          [
+            "U3",
+            "3"
+          ]
+        ],
+        "name": "SDA_BUFFER_A"
+      },
+      {
+        "endpoints": [
+          [
+            "J3",
+            "2"
+          ],
+          [
+            "R62",
+            "2"
+          ],
+          [
+            "U11",
+            "4"
+          ]
+        ],
+        "name": "SDA_CABLE"
+      },
+      {
+        "endpoints": [
+          [
+            "R64",
+            "1"
+          ],
+          [
+            "U1",
+            "8"
+          ],
+          [
+            "U3",
+            "5"
+          ]
+        ],
+        "name": "SENSOR_BUS_EN"
+      },
+      {
+        "endpoints": [
+          [
+            "R65",
+            "1"
+          ],
+          [
+            "U1",
+            "20"
+          ],
+          [
+            "U5",
+            "3"
+          ]
+        ],
+        "name": "SENSOR_POWER_EN"
+      },
+      {
+        "endpoints": [
+          [
+            "R66",
+            "2"
+          ],
+          [
+            "U1",
+            "21"
+          ],
+          [
+            "U5",
+            "4"
+          ]
+        ],
+        "name": "SENSOR_POWER_FAULT_N"
+      },
+      {
+        "endpoints": [
+          [
+            "R61",
+            "2"
+          ],
+          [
+            "TP6",
+            "1"
+          ],
+          [
+            "U1",
+            "17"
+          ],
+          [
+            "U3",
+            "7"
+          ]
+        ],
+        "name": "SENSOR_SCL"
+      },
+      {
+        "endpoints": [
+          [
+            "R60",
+            "2"
+          ],
+          [
+            "TP5",
+            "1"
+          ],
+          [
+            "U1",
+            "16"
+          ],
+          [
+            "U3",
+            "6"
+          ]
+        ],
+        "name": "SENSOR_SDA"
+      },
+      {
+        "endpoints": [
+          [
+            "C23",
+            "1"
+          ],
+          [
+            "U10",
+            "7"
+          ]
+        ],
+        "name": "SERVICE_DVDT"
+      },
+      {
+        "endpoints": [
+          [
+            "R36",
+            "1"
+          ],
+          [
+            "U10",
+            "9"
+          ]
+        ],
+        "name": "SERVICE_ILM"
+      },
+      {
+        "endpoints": [
+          [
+            "R35",
+            "2"
+          ],
+          [
+            "U10",
+            "2"
+          ]
+        ],
+        "name": "SERVICE_OVLO"
+      },
+      {
+        "endpoints": [
+          [
+            "R33",
+            "2"
+          ],
+          [
+            "R34",
+            "1"
+          ],
+          [
+            "R35",
+            "1"
+          ]
+        ],
+        "name": "SERVICE_OV_DIV"
+      },
+      {
+        "endpoints": [
+          [
+            "R32",
+            "2"
+          ],
+          [
+            "U10",
+            "1"
+          ]
+        ],
+        "name": "SERVICE_UVLO"
+      },
+      {
+        "endpoints": [
+          [
+            "R30",
+            "2"
+          ],
+          [
+            "R31",
+            "1"
+          ],
+          [
+            "R32",
+            "1"
+          ]
+        ],
+        "name": "SERVICE_UV_DIV"
+      },
+      {
+        "endpoints": [
+          [
+            "R54",
+            "1"
+          ],
+          [
+            "U1",
+            "18"
+          ]
+        ],
+        "name": "STATUS_LED"
+      },
+      {
+        "endpoints": [
+          [
+            "TP9",
+            "1"
+          ],
+          [
+            "U1",
+            "24"
+          ]
+        ],
+        "name": "UART0_RX"
+      },
+      {
+        "endpoints": [
+          [
+            "TP10",
+            "1"
+          ],
+          [
+            "U1",
+            "25"
+          ]
+        ],
+        "name": "UART0_TX"
+      },
+      {
+        "endpoints": [
+          [
+            "J4",
+            "A5"
+          ],
+          [
+            "R40",
+            "1"
+          ]
+        ],
+        "name": "USB_CC1"
+      },
+      {
+        "endpoints": [
+          [
+            "J4",
+            "B5"
+          ],
+          [
+            "R41",
+            "1"
+          ]
+        ],
+        "name": "USB_CC2"
+      },
+      {
+        "endpoints": [
+          [
+            "R44",
+            "2"
+          ],
+          [
+            "U1",
+            "13"
+          ]
+        ],
+        "name": "USB_D_N"
+      },
+      {
+        "endpoints": [
+          [
+            "J4",
+            "A7"
+          ],
+          [
+            "J4",
+            "B7"
+          ],
+          [
+            "U8",
+            "4"
+          ],
+          [
+            "U9",
+            "3"
+          ],
+          [
+            "U9",
+            "4"
+          ]
+        ],
+        "name": "USB_D_N_PORT"
+      },
+      {
+        "endpoints": [
+          [
+            "R44",
+            "1"
+          ],
+          [
+            "U8",
+            "6"
+          ]
+        ],
+        "name": "USB_D_N_SWITCH"
+      },
+      {
+        "endpoints": [
+          [
+            "R45",
+            "2"
+          ],
+          [
+            "U1",
+            "14"
+          ]
+        ],
+        "name": "USB_D_P"
+      },
+      {
+        "endpoints": [
+          [
+            "J4",
+            "A6"
+          ],
+          [
+            "J4",
+            "B6"
+          ],
+          [
+            "U8",
+            "3"
+          ],
+          [
+            "U9",
+            "1"
+          ],
+          [
+            "U9",
+            "6"
+          ]
+        ],
+        "name": "USB_D_P_PORT"
+      },
+      {
+        "endpoints": [
+          [
+            "R45",
+            "1"
+          ],
+          [
+            "U8",
+            "7"
+          ]
+        ],
+        "name": "USB_D_P_SWITCH"
+      },
+      {
+        "endpoints": [
+          [
+            "R46",
+            "2"
+          ],
+          [
+            "U7",
+            "4"
+          ],
+          [
+            "U8",
+            "10"
+          ]
+        ],
+        "name": "USB_SWITCH_OE_N"
+      },
+      {
+        "endpoints": [
+          [
+            "J4",
+            "A4"
+          ],
+          [
+            "J4",
+            "A9"
+          ],
+          [
+            "J4",
+            "B4"
+          ],
+          [
+            "J4",
+            "B9"
+          ],
+          [
+            "R42",
+            "1"
+          ],
+          [
+            "U9",
+            "5"
+          ]
+        ],
+        "name": "USB_VBUS"
+      },
+      {
+        "endpoints": [
+          [
+            "R42",
+            "2"
+          ],
+          [
+            "R43",
+            "1"
+          ],
+          [
+            "U7",
+            "2"
+          ]
+        ],
+        "name": "USB_VBUS_SENSE"
+      },
+      {
+        "endpoints": [
+          [
+            "C11",
+            "1"
+          ],
+          [
+            "C12",
+            "1"
+          ],
+          [
+            "C3",
+            "1"
+          ],
+          [
+            "C30",
+            "1"
+          ],
+          [
+            "C31",
+            "1"
+          ],
+          [
+            "C4",
+            "1"
+          ],
+          [
+            "C40",
+            "1"
+          ],
+          [
+            "C41",
+            "1"
+          ],
+          [
+            "C5",
+            "1"
+          ],
+          [
+            "C6",
+            "1"
+          ],
+          [
+            "L1",
+            "2"
+          ],
+          [
+            "R12",
+            "1"
+          ],
+          [
+            "R46",
+            "1"
+          ],
+          [
+            "R50",
+            "1"
+          ],
+          [
+            "R51",
+            "1"
+          ],
+          [
+            "R52",
+            "1"
+          ],
+          [
+            "R53",
+            "1"
+          ],
+          [
+            "R60",
+            "1"
+          ],
+          [
+            "R61",
+            "1"
+          ],
+          [
+            "R66",
+            "1"
+          ],
+          [
+            "TP4",
+            "1"
+          ],
+          [
+            "U1",
+            "2"
+          ],
+          [
+            "U2",
+            "1"
+          ],
+          [
+            "U3",
+            "1"
+          ],
+          [
+            "U3",
+            "8"
+          ],
+          [
+            "U4",
+            "6"
+          ],
+          [
+            "U6",
+            "5"
+          ],
+          [
+            "U7",
+            "5"
+          ],
+          [
+            "U8",
+            "1"
+          ]
+        ],
+        "name": "V3V3"
+      },
+      {
+        "endpoints": [
+          [
+            "C1",
+            "1"
+          ],
+          [
+            "C2",
+            "1"
+          ],
+          [
+            "C42",
+            "1"
+          ],
+          [
+            "C7",
+            "1"
+          ],
+          [
+            "D1",
+            "1"
+          ],
+          [
+            "D2",
+            "1"
+          ],
+          [
+            "TP3",
+            "1"
+          ],
+          [
+            "U2",
+            "2"
+          ],
+          [
+            "U2",
+            "3"
+          ],
+          [
+            "U5",
+            "1"
+          ],
+          [
+            "U5",
+            "5"
+          ]
+        ],
+        "name": "V5_LOGIC"
+      },
+      {
+        "endpoints": [
+          [
+            "D1",
+            "2"
+          ],
+          [
+            "J1",
+            "1"
+          ],
+          [
+            "R14",
+            "1"
+          ],
+          [
+            "TP2",
+            "1"
+          ]
+        ],
+        "name": "V5_PSU"
+      },
+      {
+        "endpoints": [
+          [
+            "D7",
+            "1"
+          ],
+          [
+            "J3",
+            "1"
+          ],
+          [
+            "R68",
+            "2"
+          ]
+        ],
+        "name": "V5_SENSOR"
+      },
+      {
+        "endpoints": [
+          [
+            "C43",
+            "1"
+          ],
+          [
+            "C44",
+            "1"
+          ],
+          [
+            "R67",
+            "1"
+          ],
+          [
+            "R68",
+            "1"
+          ],
+          [
+            "U5",
+            "6"
+          ]
+        ],
+        "name": "V5_SENSOR_SW"
+      },
+      {
+        "endpoints": [
+          [
+            "C22",
+            "1"
+          ],
+          [
+            "D2",
+            "2"
+          ],
+          [
+            "D6",
+            "1"
+          ],
+          [
+            "R37",
+            "1"
+          ],
+          [
+            "U10",
+            "6"
+          ]
+        ],
+        "name": "V5_SERVICE"
+      },
+      {
+        "endpoints": [
+          [
+            "C20",
+            "1"
+          ],
+          [
+            "C21",
+            "1"
+          ],
+          [
+            "D5",
+            "1"
+          ],
+          [
+            "J2",
+            "1"
+          ],
+          [
+            "R30",
+            "1"
+          ],
+          [
+            "R33",
+            "1"
+          ],
+          [
+            "U10",
+            "5"
+          ]
+        ],
+        "name": "V5_SERVICE_RAW"
+      }
+    ]
+  },
+  "source_owned": {
+    "components": [
+      {
+        "footprint": "CrystalShim_Controller:Controller_C1",
+        "pads": [
+          {
+            "net": "V5_LOGIC",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            78,
+            101.4
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "C1",
+        "stable_id": "controller.component.c1",
+        "uuid": "e831d999-eb98-4260-8c02-4e0e4b0a51bb",
+        "value": "22uF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C11",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            72,
+            81
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "C11",
+        "stable_id": "controller.component.c11",
+        "uuid": "cd89c003-246c-4e88-aaed-2b99c7392867",
+        "value": "100nF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C12",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            76,
+            74.5
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "C12",
+        "stable_id": "controller.component.c12",
+        "uuid": "a15ec943-a0f9-4f40-942c-7bea84a18aa7",
+        "value": "100nF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C2",
+        "pads": [
+          {
+            "net": "V5_LOGIC",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            72,
+            101.4
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "C2",
+        "stable_id": "controller.component.c2",
+        "uuid": "74dc4333-830b-46fe-8a0e-da2f52ca1285",
+        "value": "22uF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C20",
+        "pads": [
+          {
+            "net": "V5_SERVICE_RAW",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            91.3,
+            138
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "C20",
+        "stable_id": "controller.component.c20",
+        "uuid": "3c4f9fde-6f5f-41db-b897-0523c1e0f58f",
+        "value": "1uF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C21",
+        "pads": [
+          {
+            "net": "V5_SERVICE_RAW",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            88,
+            134.9
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "C21",
+        "stable_id": "controller.component.c21",
+        "uuid": "02080643-9cd8-4e73-b107-57cfe098f82c",
+        "value": "100nF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C22",
+        "pads": [
+          {
+            "net": "V5_SERVICE",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            88,
+            128.199999
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "C22",
+        "stable_id": "controller.component.c22",
+        "uuid": "d4fe903e-fc0c-4822-af87-dae37e723fbf",
+        "value": "22uF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C23",
+        "pads": [
+          {
+            "net": "SERVICE_DVDT",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            92,
+            134.4
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "C23",
+        "stable_id": "controller.component.c23",
+        "uuid": "88a536d6-2f9c-4adc-85c5-17a340c5b9f8",
+        "value": "4.7nF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C3",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            94.7,
+            95
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "C3",
+        "stable_id": "controller.component.c3",
+        "uuid": "ff33ab78-94d7-441d-865f-665ec5caf9b4",
+        "value": "22uF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C30",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            120,
+            138.5
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "C30",
+        "stable_id": "controller.component.c30",
+        "uuid": "96867676-d307-4d17-9627-a681241b8c1f",
+        "value": "100nF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C31",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            106.5,
+            137.4
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "C31",
+        "stable_id": "controller.component.c31",
+        "uuid": "8f56d6d1-b170-4473-ac27-cc85aa5f11f5",
+        "value": "100nF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C4",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            94.7,
+            99.5
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "C4",
+        "stable_id": "controller.component.c4",
+        "uuid": "3c2fd365-026c-446a-9587-99ea0ccdc664",
+        "value": "22uF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C40",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            94.5,
+            77
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "C40",
+        "stable_id": "controller.component.c40",
+        "uuid": "a2c2b293-3df6-48ae-922d-bd1437b1018e",
+        "value": "100nF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C41",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            105.5,
+            77
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "C41",
+        "stable_id": "controller.component.c41",
+        "uuid": "a7516939-70a5-4a1c-b777-d251dc20050c",
+        "value": "100nF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C42",
+        "pads": [
+          {
+            "net": "V5_LOGIC",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            82.25,
+            79.5
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "C42",
+        "stable_id": "controller.component.c42",
+        "uuid": "64a6f5e3-b896-4551-a16a-8541db75baa0",
+        "value": "100nF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C43",
+        "pads": [
+          {
+            "net": "V5_SENSOR_SW",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            90.6,
+            79.5
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "C43",
+        "stable_id": "controller.component.c43",
+        "uuid": "74eb1b3b-f188-4c30-9525-1312e6f0bc8a",
+        "value": "1uF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C44",
+        "pads": [
+          {
+            "net": "V5_SENSOR_SW",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            86,
+            86.5
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "C44",
+        "stable_id": "controller.component.c44",
+        "uuid": "f64977f8-fa23-4799-8bef-39ea9ebf7a2e",
+        "value": "10uF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C5",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            103.3,
+            50.5
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "C5",
+        "stable_id": "controller.component.c5",
+        "uuid": "e5829147-1e11-461c-a477-c2ee921841dd",
+        "value": "22uF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C6",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            108.6,
+            47.75
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "C6",
+        "stable_id": "controller.component.c6",
+        "uuid": "afb7fae0-ff0b-49c5-a708-220ae83099dc",
+        "value": "100nF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C7",
+        "pads": [
+          {
+            "net": "V5_LOGIC",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            80,
+            98.3
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "C7",
+        "stable_id": "controller.component.c7",
+        "uuid": "66b3006a-0f4e-421f-bcc7-b386c03fe848",
+        "value": "100nF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C8",
+        "pads": [
+          {
+            "net": "BUCK_BST",
+            "number": "1"
+          },
+          {
+            "net": "BUCK_SW",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            83.1,
+            94.5
+          ],
+          "rotation_deg": 270,
+          "side": "front"
+        },
+        "ref": "C8",
+        "stable_id": "controller.component.c8",
+        "uuid": "d4532184-4d3d-4c6c-9ebd-8aadbce47ce3",
+        "value": "100nF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_C9",
+        "pads": [
+          {
+            "net": "CHIP_EN",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            108.2,
+            51.5
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "C9",
+        "stable_id": "controller.component.c9",
+        "uuid": "3accc237-f6cc-49ce-97ef-e226e67ba16e",
+        "value": "1uF"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_D1",
+        "pads": [
+          {
+            "net": "V5_LOGIC",
+            "number": "1"
+          },
+          {
+            "net": "V5_PSU",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            71,
+            93.6
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "D1",
+        "stable_id": "controller.component.d1",
+        "uuid": "f112306e-1f73-4188-82d3-e073c539199e",
+        "value": "STPS2L40U"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_D2",
+        "pads": [
+          {
+            "net": "V5_LOGIC",
+            "number": "1"
+          },
+          {
+            "net": "V5_SERVICE",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            75,
+            106.9
+          ],
+          "rotation_deg": 270,
+          "side": "front"
+        },
+        "ref": "D2",
+        "stable_id": "controller.component.d2",
+        "uuid": "47dc64e7-8237-4305-a75c-9a396b7e93ec",
+        "value": "STPS2L40U"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_D4",
+        "pads": [
+          {
+            "net": "GND",
+            "number": "1"
+          },
+          {
+            "net": "LED_ANODE",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            124,
+            86
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "D4",
+        "stable_id": "controller.component.d4",
+        "uuid": "9009b8dd-a28b-4f1b-8bb9-e8c6105188c3",
+        "value": "WP710A10LGD"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_D5",
+        "pads": [
+          {
+            "net": "V5_SERVICE_RAW",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            75.3,
+            132
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "D5",
+        "stable_id": "controller.component.d5",
+        "uuid": "0d91eeb1-773f-473c-a712-88378eec1adf",
+        "value": "SMBJ8.0CA"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_D6",
+        "pads": [
+          {
+            "net": "V5_SERVICE",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            81.5,
+            127.7
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "D6",
+        "stable_id": "controller.component.d6",
+        "uuid": "43c5bb9c-4bd4-482e-be3b-385be2488974",
+        "value": "STPS2L40U"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_D7",
+        "pads": [
+          {
+            "net": "V5_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            81.1,
+            67.7
+          ],
+          "rotation_deg": 270,
+          "side": "front"
+        },
+        "ref": "D7",
+        "stable_id": "controller.component.d7",
+        "uuid": "29012f9a-af16-4de0-8a43-2ca178bfca19",
+        "value": "SMBJ7.0A"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_H1",
+        "pads": [],
+        "placement": {
+          "position_mm": [
+            70,
+            74
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "H1",
+        "stable_id": "controller.component.h1",
+        "uuid": "5aad719d-f804-4357-ab00-9852ca66f4af",
+        "value": "3.2mm NPTH"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_H2",
+        "pads": [],
+        "placement": {
+          "position_mm": [
+            130,
+            74
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "H2",
+        "stable_id": "controller.component.h2",
+        "uuid": "7794cdfb-2f1a-4d37-a996-dfe5f7607ed7",
+        "value": "3.2mm NPTH"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_H3",
+        "pads": [],
+        "placement": {
+          "position_mm": [
+            70,
+            150
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "H3",
+        "stable_id": "controller.component.h3",
+        "uuid": "a739fb3f-f3d9-4638-bf67-ca963abee994",
+        "value": "3.2mm NPTH"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_H4",
+        "pads": [],
+        "placement": {
+          "position_mm": [
+            130,
+            150
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "H4",
+        "stable_id": "controller.component.h4",
+        "uuid": "d13c40d3-16ee-4ab8-851a-e50016e08b6c",
+        "value": "3.2mm NPTH"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_J1",
+        "pads": [
+          {
+            "net": "V5_PSU",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          },
+          {
+            "net": "COIL_DRAIN",
+            "number": "3"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            71,
+            59
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "J1",
+        "stable_id": "controller.component.j1",
+        "uuid": "a3123935-873d-48cb-8ba7-97caf2ebff1e",
+        "value": "43650-0300"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_J2",
+        "pads": [
+          {
+            "net": "V5_SERVICE_RAW",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            79,
+            141
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "J2",
+        "stable_id": "controller.component.j2",
+        "uuid": "b09a21e6-8d5b-4706-9a8c-38e22b1db226",
+        "value": "43045-0200"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_J3",
+        "pads": [
+          {
+            "net": "V5_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "SDA_CABLE",
+            "number": "2"
+          },
+          {
+            "net": "SCL_CABLE",
+            "number": "3"
+          },
+          {
+            "net": "GND",
+            "number": "4"
+          },
+          {
+            "net": "GND",
+            "number": "5"
+          },
+          {
+            "net": "GND",
+            "number": "6"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            86,
+            59
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "J3",
+        "stable_id": "controller.component.j3",
+        "uuid": "ab3f2b8b-f9a4-45d8-9077-b4a90d990918",
+        "value": "43045-0600"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_J4",
+        "pads": [
+          {
+            "net": "GND",
+            "number": "A1"
+          },
+          {
+            "net": "GND",
+            "number": "A12"
+          },
+          {
+            "net": "USB_VBUS",
+            "number": "A4"
+          },
+          {
+            "net": "USB_CC1",
+            "number": "A5"
+          },
+          {
+            "net": "USB_D_P_PORT",
+            "number": "A6"
+          },
+          {
+            "net": "USB_D_N_PORT",
+            "number": "A7"
+          },
+          {
+            "net": "",
+            "number": "A8"
+          },
+          {
+            "net": "USB_VBUS",
+            "number": "A9"
+          },
+          {
+            "net": "GND",
+            "number": "B1"
+          },
+          {
+            "net": "GND",
+            "number": "B12"
+          },
+          {
+            "net": "USB_VBUS",
+            "number": "B4"
+          },
+          {
+            "net": "USB_CC2",
+            "number": "B5"
+          },
+          {
+            "net": "USB_D_P_PORT",
+            "number": "B6"
+          },
+          {
+            "net": "USB_D_N_PORT",
+            "number": "B7"
+          },
+          {
+            "net": "",
+            "number": "B8"
+          },
+          {
+            "net": "USB_VBUS",
+            "number": "B9"
+          },
+          {
+            "net": "GND",
+            "number": "SH"
+          },
+          {
+            "net": "GND",
+            "number": "SH"
+          },
+          {
+            "net": "GND",
+            "number": "SH"
+          },
+          {
+            "net": "GND",
+            "number": "SH"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            111,
+            151.325
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "J4",
+        "stable_id": "controller.component.j4",
+        "uuid": "5669b5b9-42a7-46a7-aaaf-940f09945702",
+        "value": "USB4105-GF-A"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_L1",
+        "pads": [
+          {
+            "net": "BUCK_SW",
+            "number": "1"
+          },
+          {
+            "net": "V3V3",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            88,
+            95
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "L1",
+        "stable_id": "controller.component.l1",
+        "uuid": "90b64fbd-8aee-4acf-a19d-a67e9f170c09",
+        "value": "4.7\u00b5H"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_Q1",
+        "pads": [
+          {
+            "net": "MOS_GATE",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          },
+          {
+            "net": "COIL_DRAIN",
+            "number": "3"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            75,
+            67
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "Q1",
+        "stable_id": "controller.component.q1",
+        "uuid": "7e47a39a-da6a-4b32-9b20-8e16991bf992",
+        "value": "AO3400A"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R11",
+        "pads": [
+          {
+            "net": "MOS_GATE",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            71,
+            66.4
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R11",
+        "stable_id": "controller.component.r11",
+        "uuid": "1f09a3e7-f957-4412-94c9-28d4c36ef26a",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R12",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "PSU_GOOD",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            67.7,
+            83
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R12",
+        "stable_id": "controller.component.r12",
+        "uuid": "f04620a4-a3e7-4c5e-a0dd-e13aa358479e",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R14",
+        "pads": [
+          {
+            "net": "V5_PSU",
+            "number": "1"
+          },
+          {
+            "net": "PSU_SENSE",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            76.6,
+            83.8
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "R14",
+        "stable_id": "controller.component.r14",
+        "uuid": "541ea27f-364d-49a3-95f1-a829c057dbc1",
+        "value": "95.3k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R15",
+        "pads": [
+          {
+            "net": "PSU_SENSE",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            76.6,
+            86.3
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R15",
+        "stable_id": "controller.component.r15",
+        "uuid": "96f28772-c334-4164-8870-986fcdd63066",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R2",
+        "pads": [
+          {
+            "net": "RELAY_REQUEST",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            76.5,
+            78.3
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "R2",
+        "stable_id": "controller.component.r2",
+        "uuid": "79fe77e7-5cee-4619-a003-757fe9679ea5",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R20",
+        "pads": [
+          {
+            "net": "RELAY_GATED",
+            "number": "1"
+          },
+          {
+            "net": "MOS_GATE",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            76,
+            71.6
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R20",
+        "stable_id": "controller.component.r20",
+        "uuid": "6a403c78-23d2-4f0d-ac54-6c919929156e",
+        "value": "100\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R30",
+        "pads": [
+          {
+            "net": "V5_SERVICE_RAW",
+            "number": "1"
+          },
+          {
+            "net": "SERVICE_UV_DIV",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            71,
+            123.5
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R30",
+        "stable_id": "controller.component.r30",
+        "uuid": "0fb892f6-0b43-4a6b-8d7a-9e3306b35a31",
+        "value": "26.1k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R31",
+        "pads": [
+          {
+            "net": "SERVICE_UV_DIV",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            75,
+            123.5
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R31",
+        "stable_id": "controller.component.r31",
+        "uuid": "66c1b389-f418-4265-a24e-5cc46a141059",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R32",
+        "pads": [
+          {
+            "net": "SERVICE_UV_DIV",
+            "number": "1"
+          },
+          {
+            "net": "SERVICE_UVLO",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            83,
+            131.5
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R32",
+        "stable_id": "controller.component.r32",
+        "uuid": "d5fd6570-1cbc-4c64-a992-72b6ea2a26d8",
+        "value": "470k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R33",
+        "pads": [
+          {
+            "net": "V5_SERVICE_RAW",
+            "number": "1"
+          },
+          {
+            "net": "SERVICE_OV_DIV",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            71,
+            126
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R33",
+        "stable_id": "controller.component.r33",
+        "uuid": "f42d30e6-0715-430b-8252-02b08a9173b4",
+        "value": "38.3k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R34",
+        "pads": [
+          {
+            "net": "SERVICE_OV_DIV",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            75,
+            126
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R34",
+        "stable_id": "controller.component.r34",
+        "uuid": "8e0bb6cd-5c0a-4cdc-a86d-9cbb257f2943",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R35",
+        "pads": [
+          {
+            "net": "SERVICE_OV_DIV",
+            "number": "1"
+          },
+          {
+            "net": "SERVICE_OVLO",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            83,
+            134.199999
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R35",
+        "stable_id": "controller.component.r35",
+        "uuid": "c851c8e5-74b2-49c9-a5b7-af9d87190155",
+        "value": "470k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R36",
+        "pads": [
+          {
+            "net": "SERVICE_ILM",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            92,
+            131.775
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R36",
+        "stable_id": "controller.component.r36",
+        "uuid": "df902b48-27ab-45f3-94b2-78cc1e6aadbb",
+        "value": "2.87k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R37",
+        "pads": [
+          {
+            "net": "V5_SERVICE",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            81.5,
+            123.4
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R37",
+        "stable_id": "controller.component.r37",
+        "uuid": "a810a659-7001-4385-af36-1c1236247a18",
+        "value": "2.2k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R40",
+        "pads": [
+          {
+            "net": "USB_CC1",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            104.3,
+            146.8
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R40",
+        "stable_id": "controller.component.r40",
+        "uuid": "c5623a5b-2871-4578-b119-fea1665a43c9",
+        "value": "5.1k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R41",
+        "pads": [
+          {
+            "net": "USB_CC2",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            117.7,
+            146.8
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R41",
+        "stable_id": "controller.component.r41",
+        "uuid": "bb9069a1-452c-435f-931c-821f96cec258",
+        "value": "5.1k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R42",
+        "pads": [
+          {
+            "net": "USB_VBUS",
+            "number": "1"
+          },
+          {
+            "net": "USB_VBUS_SENSE",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            121,
+            143
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R42",
+        "stable_id": "controller.component.r42",
+        "uuid": "95d2efbc-3dc6-4e95-a8f4-dc99fe34d904",
+        "value": "1k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R43",
+        "pads": [
+          {
+            "net": "USB_VBUS_SENSE",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            125,
+            140
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R43",
+        "stable_id": "controller.component.r43",
+        "uuid": "a17ab45a-b0f2-49f5-b1fe-9b4476ef9c5a",
+        "value": "100k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R44",
+        "pads": [
+          {
+            "net": "USB_D_N_SWITCH",
+            "number": "1"
+          },
+          {
+            "net": "USB_D_N",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            108.5,
+            63.25
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R44",
+        "stable_id": "controller.component.r44",
+        "uuid": "699529a6-742f-4d3c-8dbf-396252faf3e1",
+        "value": "22\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R45",
+        "pads": [
+          {
+            "net": "USB_D_P_SWITCH",
+            "number": "1"
+          },
+          {
+            "net": "USB_D_P",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            108.5,
+            65.75
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R45",
+        "stable_id": "controller.component.r45",
+        "uuid": "d74253a7-3b7c-4988-8784-96504a8a72e2",
+        "value": "22\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R46",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "USB_SWITCH_OE_N",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            107,
+            132.6
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R46",
+        "stable_id": "controller.component.r46",
+        "uuid": "19129bf2-98fc-4500-aadd-79c07f1f163b",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R50",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "MAINTENANCE_N",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            108.5,
+            60.5
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R50",
+        "stable_id": "controller.component.r50",
+        "uuid": "4b25199f-13b9-48bc-95af-2c80495e11d9",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R51",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "BOOT_N",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            132,
+            63.1
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "R51",
+        "stable_id": "controller.component.r51",
+        "uuid": "4230ee37-3c9f-418b-a4d6-71f0ebbb8c9c",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R52",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "BOOT_STRAP8",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            108.5,
+            58
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R52",
+        "stable_id": "controller.component.r52",
+        "uuid": "5cf4b548-ed39-4c05-bfed-630ba2f4f500",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R53",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "CHIP_EN",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            108.5,
+            54
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R53",
+        "stable_id": "controller.component.r53",
+        "uuid": "dbf3678a-c6ad-4045-b7dd-75c37179da0b",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R54",
+        "pads": [
+          {
+            "net": "STATUS_LED",
+            "number": "1"
+          },
+          {
+            "net": "LED_ANODE",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            132,
+            58
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R54",
+        "stable_id": "controller.component.r54",
+        "uuid": "b43a1084-a335-4b8d-86ba-96fc2ef667ab",
+        "value": "680\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R55",
+        "pads": [
+          {
+            "net": "CHIP_EN",
+            "number": "1"
+          },
+          {
+            "net": "RESET_CONTACT",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            104.2,
+            55.5
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R55",
+        "stable_id": "controller.component.r55",
+        "uuid": "8ce53736-aaf6-42f9-9eae-eafe5fbd1326",
+        "value": "330\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R60",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "SENSOR_SDA",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            103,
+            82
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R60",
+        "stable_id": "controller.component.r60",
+        "uuid": "80e0bf22-b8e9-4102-a6cb-7daee90db183",
+        "value": "2.7k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R61",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "SENSOR_SCL",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            106.5,
+            82
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R61",
+        "stable_id": "controller.component.r61",
+        "uuid": "c5251ec1-08f8-4959-a786-98d98a7e7eb4",
+        "value": "2.7k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R62",
+        "pads": [
+          {
+            "net": "SDA_BUFFER_A",
+            "number": "1"
+          },
+          {
+            "net": "SDA_CABLE",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            99,
+            71.5
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R62",
+        "stable_id": "controller.component.r62",
+        "uuid": "cbed3fc0-f6ad-4552-84bc-d20c28b21867",
+        "value": "22\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R63",
+        "pads": [
+          {
+            "net": "SCL_BUFFER_A",
+            "number": "1"
+          },
+          {
+            "net": "SCL_CABLE",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            95.5,
+            71.5
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R63",
+        "stable_id": "controller.component.r63",
+        "uuid": "9c1ffb09-a68a-42c9-93c4-140d456fe1d8",
+        "value": "22\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R64",
+        "pads": [
+          {
+            "net": "SENSOR_BUS_EN",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            99.5,
+            82
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R64",
+        "stable_id": "controller.component.r64",
+        "uuid": "9d8795e9-8f80-46df-a317-9649177c54fd",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R65",
+        "pads": [
+          {
+            "net": "SENSOR_POWER_EN",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            86,
+            83
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R65",
+        "stable_id": "controller.component.r65",
+        "uuid": "1885576b-a814-45bc-9440-b56a491e3b96",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R66",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "SENSOR_POWER_FAULT_N",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            90.5,
+            86
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R66",
+        "stable_id": "controller.component.r66",
+        "uuid": "eb031a31-6c22-4dc5-9fb9-89f450ed6760",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R67",
+        "pads": [
+          {
+            "net": "V5_SENSOR_SW",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            90.6,
+            83
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R67",
+        "stable_id": "controller.component.r67",
+        "uuid": "67514c54-81f5-47a0-a4cc-11eb243f7e4e",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_R68",
+        "pads": [
+          {
+            "net": "V5_SENSOR_SW",
+            "number": "1"
+          },
+          {
+            "net": "V5_SENSOR",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            86,
+            71.5
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R68",
+        "stable_id": "controller.component.r68",
+        "uuid": "43124038-d054-4dd7-a4b8-b203627f7b3c",
+        "value": "6.8\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_SW1",
+        "pads": [
+          {
+            "net": "MAINTENANCE_N",
+            "number": "1"
+          },
+          {
+            "net": "MAINTENANCE_N",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            124,
+            126
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "SW1",
+        "stable_id": "controller.component.sw1",
+        "uuid": "2a91b169-d0bc-4813-832a-34a5a88475d1",
+        "value": "B3F-1002-G"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_SW2",
+        "pads": [
+          {
+            "net": "BOOT_N",
+            "number": "1"
+          },
+          {
+            "net": "BOOT_N",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            124,
+            114
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "SW2",
+        "stable_id": "controller.component.sw2",
+        "uuid": "469a2098-6f5b-4eb0-9495-18ec2a4c3a17",
+        "value": "B3F-1002-G"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_SW3",
+        "pads": [
+          {
+            "net": "RESET_CONTACT",
+            "number": "1"
+          },
+          {
+            "net": "RESET_CONTACT",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            124,
+            102
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "SW3",
+        "stable_id": "controller.component.sw3",
+        "uuid": "9117b453-065f-49a4-9982-03d9aeedf699",
+        "value": "B3F-1002-G"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_TP1",
+        "pads": [
+          {
+            "net": "GND",
+            "number": "1"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            69.5,
+            110
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "TP1",
+        "stable_id": "controller.component.tp1",
+        "uuid": "1845d5dd-bfd8-4075-a669-16839756c0b0",
+        "value": "TP1"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_TP10",
+        "pads": [
+          {
+            "net": "UART0_TX",
+            "number": "1"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            115,
+            121
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "TP10",
+        "stable_id": "controller.component.tp10",
+        "uuid": "d268076d-e3ca-41ca-9cea-5e2fbb2bceb1",
+        "value": "TP10"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_TP11",
+        "pads": [
+          {
+            "net": "GND",
+            "number": "1"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            115,
+            105
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "TP11",
+        "stable_id": "controller.component.tp11",
+        "uuid": "2888d261-26c5-4736-86fb-52a603132cba",
+        "value": "TP11"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_TP2",
+        "pads": [
+          {
+            "net": "V5_PSU",
+            "number": "1"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            82,
+            110
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "TP2",
+        "stable_id": "controller.component.tp2",
+        "uuid": "6acfa0db-b44b-4d48-8a9f-172b50a768c0",
+        "value": "TP2"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_TP3",
+        "pads": [
+          {
+            "net": "V5_LOGIC",
+            "number": "1"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            90,
+            110
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "TP3",
+        "stable_id": "controller.component.tp3",
+        "uuid": "1e5e1ada-c514-4853-abbf-de7aae15bf01",
+        "value": "TP3"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_TP4",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            98,
+            110
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "TP4",
+        "stable_id": "controller.component.tp4",
+        "uuid": "2e4bc5d9-5fd4-42ec-8ef4-018ab2ec0c0e",
+        "value": "TP4"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_TP5",
+        "pads": [
+          {
+            "net": "SENSOR_SDA",
+            "number": "1"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            74,
+            118
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "TP5",
+        "stable_id": "controller.component.tp5",
+        "uuid": "d518d1ad-8f6a-47fd-8fea-119f2282ca1c",
+        "value": "TP5"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_TP6",
+        "pads": [
+          {
+            "net": "SENSOR_SCL",
+            "number": "1"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            82,
+            118
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "TP6",
+        "stable_id": "controller.component.tp6",
+        "uuid": "e40f9658-374e-4fa9-9d27-098e88ac77a6",
+        "value": "TP6"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_TP7",
+        "pads": [
+          {
+            "net": "PSU_GOOD",
+            "number": "1"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            90,
+            118
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "TP7",
+        "stable_id": "controller.component.tp7",
+        "uuid": "7c9d9316-4c6a-40bf-80c5-d5569825601f",
+        "value": "TP7"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_TP8",
+        "pads": [
+          {
+            "net": "RELAY_GATED",
+            "number": "1"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            98,
+            118
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "TP8",
+        "stable_id": "controller.component.tp8",
+        "uuid": "4ba83c53-672d-465d-8ce7-a55548b54020",
+        "value": "TP8"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_TP9",
+        "pads": [
+          {
+            "net": "UART0_RX",
+            "number": "1"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            115,
+            113
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "TP9",
+        "stable_id": "controller.component.tp9",
+        "uuid": "a019edd4-6429-40b6-bf54-37b04faaa489",
+        "value": "TP9"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_U1",
+        "pads": [
+          {
+            "net": "GND",
+            "number": "1"
+          },
+          {
+            "net": "BOOT_STRAP8",
+            "number": "10"
+          },
+          {
+            "net": "RELAY_REQUEST",
+            "number": "11"
+          },
+          {
+            "net": "MAINTENANCE_N",
+            "number": "12"
+          },
+          {
+            "net": "USB_D_N",
+            "number": "13"
+          },
+          {
+            "net": "USB_D_P",
+            "number": "14"
+          },
+          {
+            "net": "BOOT_N",
+            "number": "15"
+          },
+          {
+            "net": "SENSOR_SDA",
+            "number": "16"
+          },
+          {
+            "net": "SENSOR_SCL",
+            "number": "17"
+          },
+          {
+            "net": "STATUS_LED",
+            "number": "18"
+          },
+          {
+            "net": "PSU_GOOD",
+            "number": "19"
+          },
+          {
+            "net": "V3V3",
+            "number": "2"
+          },
+          {
+            "net": "SENSOR_POWER_EN",
+            "number": "20"
+          },
+          {
+            "net": "SENSOR_POWER_FAULT_N",
+            "number": "21"
+          },
+          {
+            "net": "",
+            "number": "22"
+          },
+          {
+            "net": "",
+            "number": "23"
+          },
+          {
+            "net": "UART0_RX",
+            "number": "24"
+          },
+          {
+            "net": "UART0_TX",
+            "number": "25"
+          },
+          {
+            "net": "",
+            "number": "26"
+          },
+          {
+            "net": "",
+            "number": "27"
+          },
+          {
+            "net": "GND",
+            "number": "28"
+          },
+          {
+            "net": "GND",
+            "number": "29"
+          },
+          {
+            "net": "GND",
+            "number": "29"
+          },
+          {
+            "net": "GND",
+            "number": "29"
+          },
+          {
+            "net": "GND",
+            "number": "29"
+          },
+          {
+            "net": "GND",
+            "number": "29"
+          },
+          {
+            "net": "GND",
+            "number": "29"
+          },
+          {
+            "net": "GND",
+            "number": "29"
+          },
+          {
+            "net": "GND",
+            "number": "29"
+          },
+          {
+            "net": "GND",
+            "number": "29"
+          },
+          {
+            "net": "CHIP_EN",
+            "number": "3"
+          },
+          {
+            "net": "",
+            "number": "4"
+          },
+          {
+            "net": "",
+            "number": "5"
+          },
+          {
+            "net": "",
+            "number": "6"
+          },
+          {
+            "net": "",
+            "number": "7"
+          },
+          {
+            "net": "SENSOR_BUS_EN",
+            "number": "8"
+          },
+          {
+            "net": "",
+            "number": "9"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            120.2,
+            54.75
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "U1",
+        "stable_id": "controller.component.u1",
+        "uuid": "881b7e11-a521-4307-9681-db4d0df32368",
+        "value": "ESP32-C6-WROOM-1-N8"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_U10",
+        "pads": [
+          {
+            "net": "SERVICE_UVLO",
+            "number": "1"
+          },
+          {
+            "net": "",
+            "number": "10"
+          },
+          {
+            "net": "SERVICE_OVLO",
+            "number": "2"
+          },
+          {
+            "net": "",
+            "number": "3"
+          },
+          {
+            "net": "",
+            "number": "4"
+          },
+          {
+            "net": "V5_SERVICE_RAW",
+            "number": "5"
+          },
+          {
+            "net": "V5_SERVICE",
+            "number": "6"
+          },
+          {
+            "net": "SERVICE_DVDT",
+            "number": "7"
+          },
+          {
+            "net": "GND",
+            "number": "8"
+          },
+          {
+            "net": "SERVICE_ILM",
+            "number": "9"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            88,
+            132
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "U10",
+        "stable_id": "controller.component.u10",
+        "uuid": "7da8d103-e9cc-4aa0-a1a5-82ede0ab9edd",
+        "value": "TPS259470ARPWR"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_U11",
+        "pads": [
+          {
+            "net": "",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          },
+          {
+            "net": "",
+            "number": "3"
+          },
+          {
+            "net": "SDA_CABLE",
+            "number": "4"
+          },
+          {
+            "net": "SCL_CABLE",
+            "number": "5"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            93,
+            66.4
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "U11",
+        "stable_id": "controller.component.u11",
+        "uuid": "b8b1ae36-a0a1-4d09-bf90-c65f35c744f4",
+        "value": "ESDS312DBVR"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_U2",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "V5_LOGIC",
+            "number": "2"
+          },
+          {
+            "net": "V5_LOGIC",
+            "number": "3"
+          },
+          {
+            "net": "GND",
+            "number": "4"
+          },
+          {
+            "net": "BUCK_SW",
+            "number": "5"
+          },
+          {
+            "net": "BUCK_BST",
+            "number": "6"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            80,
+            95
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "U2",
+        "stable_id": "controller.component.u2",
+        "uuid": "fcd63d64-9a32-46f9-8758-7dc6dcda90a0",
+        "value": "AP63203WU-7"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_U3",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "SCL_BUFFER_A",
+            "number": "2"
+          },
+          {
+            "net": "SDA_BUFFER_A",
+            "number": "3"
+          },
+          {
+            "net": "GND",
+            "number": "4"
+          },
+          {
+            "net": "SENSOR_BUS_EN",
+            "number": "5"
+          },
+          {
+            "net": "SENSOR_SDA",
+            "number": "6"
+          },
+          {
+            "net": "SENSOR_SCL",
+            "number": "7"
+          },
+          {
+            "net": "V3V3",
+            "number": "8"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            100,
+            78
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "U3",
+        "stable_id": "controller.component.u3",
+        "uuid": "1a63f70f-2d57-4ce0-a761-a9b019c43689",
+        "value": "TCA9517ADGKR"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_U4",
+        "pads": [
+          {
+            "net": "PSU_GOOD",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          },
+          {
+            "net": "CHIP_EN",
+            "number": "3"
+          },
+          {
+            "net": "",
+            "number": "4"
+          },
+          {
+            "net": "PSU_SENSE",
+            "number": "5"
+          },
+          {
+            "net": "V3V3",
+            "number": "6"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            72,
+            85
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "U4",
+        "stable_id": "controller.component.u4",
+        "uuid": "e1aa5676-7132-4c94-bd56-fa692efb253c",
+        "value": "TPS3808G01DBVR"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_U5",
+        "pads": [
+          {
+            "net": "V5_LOGIC",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          },
+          {
+            "net": "SENSOR_POWER_EN",
+            "number": "3"
+          },
+          {
+            "net": "SENSOR_POWER_FAULT_N",
+            "number": "4"
+          },
+          {
+            "net": "V5_LOGIC",
+            "number": "5"
+          },
+          {
+            "net": "V5_SENSOR_SW",
+            "number": "6"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            86,
+            79.5
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "U5",
+        "stable_id": "controller.component.u5",
+        "uuid": "1a526f11-74a8-4a31-9965-ba94b345198f",
+        "value": "TPS2553DBVR"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_U6",
+        "pads": [
+          {
+            "net": "RELAY_REQUEST",
+            "number": "1"
+          },
+          {
+            "net": "PSU_GOOD",
+            "number": "2"
+          },
+          {
+            "net": "GND",
+            "number": "3"
+          },
+          {
+            "net": "RELAY_GATED",
+            "number": "4"
+          },
+          {
+            "net": "V3V3",
+            "number": "5"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            80.5,
+            74.5
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "U6",
+        "stable_id": "controller.component.u6",
+        "uuid": "f88133ee-10c8-48ea-9c28-1f63893d3006",
+        "value": "SN74LVC1G08DBVR"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_U7",
+        "pads": [
+          {
+            "net": "",
+            "number": "1"
+          },
+          {
+            "net": "USB_VBUS_SENSE",
+            "number": "2"
+          },
+          {
+            "net": "GND",
+            "number": "3"
+          },
+          {
+            "net": "USB_SWITCH_OE_N",
+            "number": "4"
+          },
+          {
+            "net": "V3V3",
+            "number": "5"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            120,
+            135
+          ],
+          "rotation_deg": 180,
+          "side": "front"
+        },
+        "ref": "U7",
+        "stable_id": "controller.component.u7",
+        "uuid": "dfc738e3-2caa-45ad-9ed9-3e644aec6ec5",
+        "value": "SN74LVC1G14DBVR"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_U8",
+        "pads": [
+          {
+            "net": "V3V3",
+            "number": "1"
+          },
+          {
+            "net": "USB_SWITCH_OE_N",
+            "number": "10"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          },
+          {
+            "net": "USB_D_P_PORT",
+            "number": "3"
+          },
+          {
+            "net": "USB_D_N_PORT",
+            "number": "4"
+          },
+          {
+            "net": "GND",
+            "number": "5"
+          },
+          {
+            "net": "USB_D_N_SWITCH",
+            "number": "6"
+          },
+          {
+            "net": "USB_D_P_SWITCH",
+            "number": "7"
+          },
+          {
+            "net": "",
+            "number": "8"
+          },
+          {
+            "net": "",
+            "number": "9"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            111,
+            135
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "U8",
+        "stable_id": "controller.component.u8",
+        "uuid": "a8ccd1d3-cdfa-4cee-8bba-7e12e0647683",
+        "value": "FSUSB42MUX"
+      },
+      {
+        "footprint": "CrystalShim_Controller:Controller_U9",
+        "pads": [
+          {
+            "net": "USB_D_P_PORT",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          },
+          {
+            "net": "USB_D_N_PORT",
+            "number": "3"
+          },
+          {
+            "net": "USB_D_N_PORT",
+            "number": "4"
+          },
+          {
+            "net": "USB_VBUS",
+            "number": "5"
+          },
+          {
+            "net": "USB_D_P_PORT",
+            "number": "6"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            111,
+            143
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "U9",
+        "stable_id": "controller.component.u9",
+        "uuid": "98de14c4-3d7b-407b-bdec-2fccccc9a159",
+        "value": "USBLC6-2SC6"
+      }
+    ],
+    "holes": [
+      {
+        "drill_mm": [
+          0.65,
+          0.65
+        ],
+        "footprint_ref": "J4",
+        "pad": "",
+        "position_mm": [
+          108.11,
+          148.72
+        ],
+        "uuid": "fb433102-676c-4aee-a617-1ab8efab9c17"
+      },
+      {
+        "drill_mm": [
+          0.65,
+          0.65
+        ],
+        "footprint_ref": "J4",
+        "pad": "",
+        "position_mm": [
+          113.89,
+          148.72
+        ],
+        "uuid": "aa613d36-d8d6-4cbf-a985-4433abeced84"
+      },
+      {
+        "drill_mm": [
+          3,
+          3
+        ],
+        "footprint_ref": "J1",
+        "pad": "",
+        "position_mm": [
+          74,
+          54.68
+        ],
+        "uuid": "1020fd06-9492-4561-b2ba-2118c9fcb2b4"
+      },
+      {
+        "drill_mm": [
+          3,
+          3
+        ],
+        "footprint_ref": "J2",
+        "pad": "",
+        "position_mm": [
+          79,
+          145.32
+        ],
+        "uuid": "11f8199b-bf4d-4912-8bb7-4aa3638f05ce"
+      },
+      {
+        "drill_mm": [
+          3,
+          3
+        ],
+        "footprint_ref": "J3",
+        "pad": "",
+        "position_mm": [
+          89,
+          54.68
+        ],
+        "uuid": "7405d4ee-5f8e-42fa-be54-a3b3e91961b2"
+      },
+      {
+        "drill_mm": [
+          3.2,
+          3.2
+        ],
+        "footprint_ref": "H1",
+        "pad": "",
+        "position_mm": [
+          70,
+          74
+        ],
+        "uuid": "1e3d4d0b-2ad7-4acb-b698-2ee73aaadffb"
+      },
+      {
+        "drill_mm": [
+          3.2,
+          3.2
+        ],
+        "footprint_ref": "H2",
+        "pad": "",
+        "position_mm": [
+          130,
+          74
+        ],
+        "uuid": "0f8b03b3-494d-457b-b814-d38283c3fe80"
+      },
+      {
+        "drill_mm": [
+          3.2,
+          3.2
+        ],
+        "footprint_ref": "H3",
+        "pad": "",
+        "position_mm": [
+          70,
+          150
+        ],
+        "uuid": "96f2a132-5913-41d1-a32e-364bd5e28d0c"
+      },
+      {
+        "drill_mm": [
+          3.2,
+          3.2
+        ],
+        "footprint_ref": "H4",
+        "pad": "",
+        "position_mm": [
+          130,
+          150
+        ],
+        "uuid": "e9701f46-31be-42e2-b091-ac9e91bb049a"
+      }
+    ],
+    "outline": [
+      {
+        "bbox_mm": [
+          134.95,
+          44.95,
+          0.1,
+          110.1
+        ],
+        "class": "PCB_SHAPE",
+        "end_mm": [
+          135,
+          45
+        ],
+        "layer": "Edge.Cuts",
+        "position_mm": [
+          135,
+          155
+        ],
+        "start_mm": [
+          135,
+          155
+        ],
+        "uuid": "6dc66c10-a3fb-4bba-b06b-fdff05e4caf1"
+      },
+      {
+        "bbox_mm": [
+          64.95,
+          154.95,
+          70.1,
+          0.1
+        ],
+        "class": "PCB_SHAPE",
+        "end_mm": [
+          135,
+          155
+        ],
+        "layer": "Edge.Cuts",
+        "position_mm": [
+          65,
+          155
+        ],
+        "start_mm": [
+          65,
+          155
+        ],
+        "uuid": "a837c00c-a3ae-4b05-b49b-588e635795cf"
+      },
+      {
+        "bbox_mm": [
+          64.95,
+          44.95,
+          0.1,
+          110.1
+        ],
+        "class": "PCB_SHAPE",
+        "end_mm": [
+          65,
+          155
+        ],
+        "layer": "Edge.Cuts",
+        "position_mm": [
+          65,
+          45
+        ],
+        "start_mm": [
+          65,
+          45
+        ],
+        "uuid": "7f6c2e14-9596-4728-a488-fd15858008f2"
+      },
+      {
+        "bbox_mm": [
+          64.95,
+          44.95,
+          70.1,
+          0.1
+        ],
+        "class": "PCB_SHAPE",
+        "end_mm": [
+          65,
+          45
+        ],
+        "layer": "Edge.Cuts",
+        "position_mm": [
+          135,
+          45
+        ],
+        "start_mm": [
+          135,
+          45
+        ],
+        "uuid": "568d650e-8463-4493-a398-1f0a72f77276"
+      }
+    ]
+  },
+  "uuid_map": {
+    "controller.component.c1": "e831d999-eb98-4260-8c02-4e0e4b0a51bb",
+    "controller.component.c11": "cd89c003-246c-4e88-aaed-2b99c7392867",
+    "controller.component.c12": "a15ec943-a0f9-4f40-942c-7bea84a18aa7",
+    "controller.component.c2": "74dc4333-830b-46fe-8a0e-da2f52ca1285",
+    "controller.component.c20": "3c4f9fde-6f5f-41db-b897-0523c1e0f58f",
+    "controller.component.c21": "02080643-9cd8-4e73-b107-57cfe098f82c",
+    "controller.component.c22": "d4fe903e-fc0c-4822-af87-dae37e723fbf",
+    "controller.component.c23": "88a536d6-2f9c-4adc-85c5-17a340c5b9f8",
+    "controller.component.c3": "ff33ab78-94d7-441d-865f-665ec5caf9b4",
+    "controller.component.c30": "96867676-d307-4d17-9627-a681241b8c1f",
+    "controller.component.c31": "8f56d6d1-b170-4473-ac27-cc85aa5f11f5",
+    "controller.component.c4": "3c2fd365-026c-446a-9587-99ea0ccdc664",
+    "controller.component.c40": "a2c2b293-3df6-48ae-922d-bd1437b1018e",
+    "controller.component.c41": "a7516939-70a5-4a1c-b777-d251dc20050c",
+    "controller.component.c42": "64a6f5e3-b896-4551-a16a-8541db75baa0",
+    "controller.component.c43": "74eb1b3b-f188-4c30-9525-1312e6f0bc8a",
+    "controller.component.c44": "f64977f8-fa23-4799-8bef-39ea9ebf7a2e",
+    "controller.component.c5": "e5829147-1e11-461c-a477-c2ee921841dd",
+    "controller.component.c6": "afb7fae0-ff0b-49c5-a708-220ae83099dc",
+    "controller.component.c7": "66b3006a-0f4e-421f-bcc7-b386c03fe848",
+    "controller.component.c8": "d4532184-4d3d-4c6c-9ebd-8aadbce47ce3",
+    "controller.component.c9": "3accc237-f6cc-49ce-97ef-e226e67ba16e",
+    "controller.component.d1": "f112306e-1f73-4188-82d3-e073c539199e",
+    "controller.component.d2": "47dc64e7-8237-4305-a75c-9a396b7e93ec",
+    "controller.component.d4": "9009b8dd-a28b-4f1b-8bb9-e8c6105188c3",
+    "controller.component.d5": "0d91eeb1-773f-473c-a712-88378eec1adf",
+    "controller.component.d6": "43c5bb9c-4bd4-482e-be3b-385be2488974",
+    "controller.component.d7": "29012f9a-af16-4de0-8a43-2ca178bfca19",
+    "controller.component.h1": "5aad719d-f804-4357-ab00-9852ca66f4af",
+    "controller.component.h2": "7794cdfb-2f1a-4d37-a996-dfe5f7607ed7",
+    "controller.component.h3": "a739fb3f-f3d9-4638-bf67-ca963abee994",
+    "controller.component.h4": "d13c40d3-16ee-4ab8-851a-e50016e08b6c",
+    "controller.component.j1": "a3123935-873d-48cb-8ba7-97caf2ebff1e",
+    "controller.component.j2": "b09a21e6-8d5b-4706-9a8c-38e22b1db226",
+    "controller.component.j3": "ab3f2b8b-f9a4-45d8-9077-b4a90d990918",
+    "controller.component.j4": "5669b5b9-42a7-46a7-aaaf-940f09945702",
+    "controller.component.l1": "90b64fbd-8aee-4acf-a19d-a67e9f170c09",
+    "controller.component.q1": "7e47a39a-da6a-4b32-9b20-8e16991bf992",
+    "controller.component.r11": "1f09a3e7-f957-4412-94c9-28d4c36ef26a",
+    "controller.component.r12": "f04620a4-a3e7-4c5e-a0dd-e13aa358479e",
+    "controller.component.r14": "541ea27f-364d-49a3-95f1-a829c057dbc1",
+    "controller.component.r15": "96f28772-c334-4164-8870-986fcdd63066",
+    "controller.component.r2": "79fe77e7-5cee-4619-a003-757fe9679ea5",
+    "controller.component.r20": "6a403c78-23d2-4f0d-ac54-6c919929156e",
+    "controller.component.r30": "0fb892f6-0b43-4a6b-8d7a-9e3306b35a31",
+    "controller.component.r31": "66c1b389-f418-4265-a24e-5cc46a141059",
+    "controller.component.r32": "d5fd6570-1cbc-4c64-a992-72b6ea2a26d8",
+    "controller.component.r33": "f42d30e6-0715-430b-8252-02b08a9173b4",
+    "controller.component.r34": "8e0bb6cd-5c0a-4cdc-a86d-9cbb257f2943",
+    "controller.component.r35": "c851c8e5-74b2-49c9-a5b7-af9d87190155",
+    "controller.component.r36": "df902b48-27ab-45f3-94b2-78cc1e6aadbb",
+    "controller.component.r37": "a810a659-7001-4385-af36-1c1236247a18",
+    "controller.component.r40": "c5623a5b-2871-4578-b119-fea1665a43c9",
+    "controller.component.r41": "bb9069a1-452c-435f-931c-821f96cec258",
+    "controller.component.r42": "95d2efbc-3dc6-4e95-a8f4-dc99fe34d904",
+    "controller.component.r43": "a17ab45a-b0f2-49f5-b1fe-9b4476ef9c5a",
+    "controller.component.r44": "699529a6-742f-4d3c-8dbf-396252faf3e1",
+    "controller.component.r45": "d74253a7-3b7c-4988-8784-96504a8a72e2",
+    "controller.component.r46": "19129bf2-98fc-4500-aadd-79c07f1f163b",
+    "controller.component.r50": "4b25199f-13b9-48bc-95af-2c80495e11d9",
+    "controller.component.r51": "4230ee37-3c9f-418b-a4d6-71f0ebbb8c9c",
+    "controller.component.r52": "5cf4b548-ed39-4c05-bfed-630ba2f4f500",
+    "controller.component.r53": "dbf3678a-c6ad-4045-b7dd-75c37179da0b",
+    "controller.component.r54": "b43a1084-a335-4b8d-86ba-96fc2ef667ab",
+    "controller.component.r55": "8ce53736-aaf6-42f9-9eae-eafe5fbd1326",
+    "controller.component.r60": "80e0bf22-b8e9-4102-a6cb-7daee90db183",
+    "controller.component.r61": "c5251ec1-08f8-4959-a786-98d98a7e7eb4",
+    "controller.component.r62": "cbed3fc0-f6ad-4552-84bc-d20c28b21867",
+    "controller.component.r63": "9c1ffb09-a68a-42c9-93c4-140d456fe1d8",
+    "controller.component.r64": "9d8795e9-8f80-46df-a317-9649177c54fd",
+    "controller.component.r65": "1885576b-a814-45bc-9440-b56a491e3b96",
+    "controller.component.r66": "eb031a31-6c22-4dc5-9fb9-89f450ed6760",
+    "controller.component.r67": "67514c54-81f5-47a0-a4cc-11eb243f7e4e",
+    "controller.component.r68": "43124038-d054-4dd7-a4b8-b203627f7b3c",
+    "controller.component.sw1": "2a91b169-d0bc-4813-832a-34a5a88475d1",
+    "controller.component.sw2": "469a2098-6f5b-4eb0-9495-18ec2a4c3a17",
+    "controller.component.sw3": "9117b453-065f-49a4-9982-03d9aeedf699",
+    "controller.component.tp1": "1845d5dd-bfd8-4075-a669-16839756c0b0",
+    "controller.component.tp10": "d268076d-e3ca-41ca-9cea-5e2fbb2bceb1",
+    "controller.component.tp11": "2888d261-26c5-4736-86fb-52a603132cba",
+    "controller.component.tp2": "6acfa0db-b44b-4d48-8a9f-172b50a768c0",
+    "controller.component.tp3": "1e5e1ada-c514-4853-abbf-de7aae15bf01",
+    "controller.component.tp4": "2e4bc5d9-5fd4-42ec-8ef4-018ab2ec0c0e",
+    "controller.component.tp5": "d518d1ad-8f6a-47fd-8fea-119f2282ca1c",
+    "controller.component.tp6": "e40f9658-374e-4fa9-9d27-098e88ac77a6",
+    "controller.component.tp7": "7c9d9316-4c6a-40bf-80c5-d5569825601f",
+    "controller.component.tp8": "4ba83c53-672d-465d-8ce7-a55548b54020",
+    "controller.component.tp9": "a019edd4-6429-40b6-bf54-37b04faaa489",
+    "controller.component.u1": "881b7e11-a521-4307-9681-db4d0df32368",
+    "controller.component.u10": "7da8d103-e9cc-4aa0-a1a5-82ede0ab9edd",
+    "controller.component.u11": "b8b1ae36-a0a1-4d09-bf90-c65f35c744f4",
+    "controller.component.u2": "fcd63d64-9a32-46f9-8758-7dc6dcda90a0",
+    "controller.component.u3": "1a63f70f-2d57-4ce0-a761-a9b019c43689",
+    "controller.component.u4": "e1aa5676-7132-4c94-bd56-fa692efb253c",
+    "controller.component.u5": "1a526f11-74a8-4a31-9965-ba94b345198f",
+    "controller.component.u6": "f88133ee-10c8-48ea-9c28-1f63893d3006",
+    "controller.component.u7": "dfc738e3-2caa-45ad-9ed9-3e644aec6ec5",
+    "controller.component.u8": "a8ccd1d3-cdfa-4cee-8bba-7e12e0647683",
+    "controller.component.u9": "98de14c4-3d7b-407b-bdec-2fccccc9a159"
+  }
+}

@@ -1,0 +1,429 @@
+{
+  "readback": {
+    "fields_mm": {
+      "m_MinClearance": 0.15,
+      "m_TrackMinWidth": 0.15,
+      "m_MinThroughDrill": 0.2,
+      "m_ViasMinSize": 0.35,
+      "m_ViasMinAnnularWidth": 0.075,
+      "m_HoleClearance": 0.2,
+      "m_SolderMaskMinWidth": 0.1,
+      "m_SolderMaskToCopperClearance": 0.09
+    },
+    "nets": {
+      "BOOT_N": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "BOOT_STRAP8": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "BUCK_BST": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "BUCK_SW": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "CHIP_EN": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "COIL_DRAIN": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "GND": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "LED_ANODE": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "MAINTENANCE_N": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "MOS_GATE": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "PSU_GOOD": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "PSU_SENSE": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "RELAY_GATED": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "RELAY_REQUEST": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "RESET_CONTACT": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SCL_BUFFER_A": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SCL_CABLE": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SDA_BUFFER_A": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SDA_CABLE": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SENSOR_BUS_EN": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SENSOR_POWER_EN": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SENSOR_POWER_FAULT_N": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SENSOR_SCL": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SENSOR_SDA": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SERVICE_DVDT": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SERVICE_ILM": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SERVICE_OVLO": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SERVICE_OV_DIV": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SERVICE_UVLO": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "SERVICE_UV_DIV": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "STATUS_LED": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "UART0_RX": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "UART0_TX": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "USB_CC1": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "USB_CC2": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "USB_D_N": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.24,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.24,
+        "GetDiffPairGap": 0.15
+      },
+      "USB_D_N_PORT": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.24,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.24,
+        "GetDiffPairGap": 0.15
+      },
+      "USB_D_N_SWITCH": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.24,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.24,
+        "GetDiffPairGap": 0.15
+      },
+      "USB_D_P": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.24,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.24,
+        "GetDiffPairGap": 0.15
+      },
+      "USB_D_P_PORT": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.24,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.24,
+        "GetDiffPairGap": 0.15
+      },
+      "USB_D_P_SWITCH": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.24,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.24,
+        "GetDiffPairGap": 0.15
+      },
+      "USB_SWITCH_OE_N": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "USB_VBUS": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "USB_VBUS_SENSE": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "V3V3": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "V5_LOGIC": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "V5_PSU": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "V5_SENSOR": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "V5_SENSOR_SW": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "V5_SERVICE": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      },
+      "V5_SERVICE_RAW": {
+        "GetClearance": 0.15,
+        "GetTrackWidth": 0.25,
+        "GetViaDiameter": 0.6,
+        "GetViaDrill": 0.3,
+        "GetDiffPairWidth": 0.2,
+        "GetDiffPairGap": 0.25
+      }
+    }
+  },
+  "kicad_version": "10.0.5",
+  "project_sha256": "e2a88ebb7b7fca28ebcefeb304c8885182aaef057bb159a76448d61277b83858",
+  "board_sha256": "61f0d86d7133a6524ccca8029c78c25675ba2a42fadbf4d77f3697c75f0f0fe4",
+  "augmentation_sha256": "c09931487ac2134e47990cb9b5eb282bfb1c11f0f08a3a4d018dc0f99cfc018f",
+  "script_sha256": "a0192dcd999d0e16b3a70dc96c89e89753de4745d56daefb963c9564a54d77fb"
+}

@@ -1,0 +1,1105 @@
+{
+  "augmentation_sha256": "971a3a97410dc9a27ec95d7e5534b3d6681c14e400c96f6f35089abcc2d7cd41",
+  "board_id": "controller.board.main",
+  "commands": [
+    {
+      "argv": [
+        "bun",
+        "run",
+        "render:controller"
+      ],
+      "returncode": 0,
+      "stderr": "$ bun run controller/design/render-controller.tsx\n",
+      "stdout": "Wrote complete controller review to dist/controller/design; native handoff and fabrication remain separate\n"
+    },
+    {
+      "argv": [
+        "bun",
+        "run",
+        "export:kicad:controller"
+      ],
+      "returncode": 0,
+      "stderr": "$ bun controller/design/stage-controller-export.ts\n",
+      "stdout": "Controller initial export only: /private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller-initial-export-receipt.json\n"
+    },
+    {
+      "argv": [
+        "/Users/michael/Code/crystal-shim/pcb/tools/kicad_python.sh",
+        "/Users/michael/Code/crystal-shim/pcb/tools/tscircuit_handoff.py",
+        "augment-staged",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller.kicad_pcb",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/source-manifest.normalized.json",
+        "--augmentation",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/kicad-augmentation.normalized.json",
+        "--footprint-root",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints"
+      ],
+      "returncode": 0,
+      "stderr": "./src/common/stdpbase.cpp(59): assert \"\"traits\"\" failed in Get(): create wxApp before calling this\n",
+      "stdout": "augmented staged KiCad board /private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller.kicad_pcb\n"
+    },
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "sch",
+        "export",
+        "netlist",
+        "--format",
+        "kicadxml",
+        "--output",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/staged-schematic.netlist.xml",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller.kicad_sch"
+      ],
+      "returncode": 0,
+      "stderr": "Fontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 19: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 20: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 23: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 42: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 43: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 46: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 68: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 69: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 72: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 88: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 89: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 92: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 108: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 109: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 112: invalid constant used : math\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 120: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 121: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 124: invalid constant used : system-ui\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 132: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 133: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 136: invalid constant used : cursive\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 144: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 145: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 148: invalid constant used : fantasy\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 156: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 157: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 160: invalid constant used : ui-sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 168: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 169: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 172: invalid constant used : ui-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 180: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 181: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 184: invalid constant used : ui-monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 192: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 193: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 196: invalid constant used : ui-rounded\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 204: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 205: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 208: invalid constant used : fangsong\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-spacing.conf\", line 14: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 10: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 18: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 26: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 34: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 42: invalid constant used : math\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "sch",
+        "export",
+        "svg",
+        "--output",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/review-renders/schematic-svg",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller.kicad_sch"
+      ],
+      "returncode": 0,
+      "stderr": "Fontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 19: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 20: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 23: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 42: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 43: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 46: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 68: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 69: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 72: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 88: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 89: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 92: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 108: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 109: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 112: invalid constant used : math\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 120: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 121: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 124: invalid constant used : system-ui\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 132: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 133: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 136: invalid constant used : cursive\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 144: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 145: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 148: invalid constant used : fantasy\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 156: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 157: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 160: invalid constant used : ui-sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 168: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 169: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 172: invalid constant used : ui-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 180: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 181: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 184: invalid constant used : ui-monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 192: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 193: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 196: invalid constant used : ui-rounded\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 204: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 205: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 208: invalid constant used : fangsong\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-spacing.conf\", line 14: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 10: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 18: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 26: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 34: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 42: invalid constant used : math\n",
+      "stdout": "Plotted to '/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/review-renders/schematic-svg/controller.svg'.\nPlotted to '/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/review-renders/schematic-svg/controller-Relay permission and mains-board harness.svg'.\nPlotted to '/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/review-renders/schematic-svg/controller-Logic power.svg'.\nPlotted to '/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/review-renders/schematic-svg/controller-Protected isolated service input.svg'.\nPlotted to '/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/review-renders/schematic-svg/controller-ESP module and local controls.svg'.\nPlotted to '/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/review-renders/schematic-svg/controller-Self-powered USB data interface.svg'.\nPlotted to '/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/review-renders/schematic-svg/controller-Protected sensor feed and buffered bus.svg'.\nPlotted to '/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/review-renders/schematic-svg/controller-Test and UART service pads.svg'.\nDone.\n"
+    },
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "sch",
+        "export",
+        "pdf",
+        "--output",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/review-renders/schematic.pdf",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller.kicad_sch"
+      ],
+      "returncode": 0,
+      "stderr": "Fontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 19: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 20: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 23: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 42: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 43: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 46: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 68: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 69: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 72: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 88: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 89: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 92: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 108: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 109: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 112: invalid constant used : math\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 120: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 121: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 124: invalid constant used : system-ui\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 132: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 133: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 136: invalid constant used : cursive\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 144: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 145: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 148: invalid constant used : fantasy\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 156: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 157: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 160: invalid constant used : ui-sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 168: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 169: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 172: invalid constant used : ui-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 180: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 181: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 184: invalid constant used : ui-monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 192: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 193: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 196: invalid constant used : ui-rounded\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 204: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 205: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 208: invalid constant used : fangsong\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-spacing.conf\", line 14: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 10: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 18: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 26: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 34: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 42: invalid constant used : math\n",
+      "stdout": "Plotted to '/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/review-renders/schematic.pdf'.\nDone.\n"
+    },
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "pcb",
+        "render",
+        "--output",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/review-renders/pcb-top.png",
+        "--side",
+        "top",
+        "--quality",
+        "high",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller.kicad_pcb"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Loading\u2026\nBuild board outline\n\nCreate layers\nCreate tracks and vias\nCreate zones\nBuild Tech layers\nBuild Tech layer 11\nBuild Tech layer 9\nBuild Tech layer 15\nBuild Tech layer 13\nBuild Tech layer 7\nBuild Tech layer 5\nBuild Tech layer 3\nBuild Tech layer 1\nBuild Tech layer 17\nBuild Tech layer 19\nBuild Tech layer 21\nBuild Tech layer 23\nBuild Tech layer 39\nBuild Tech layer 41\nBuild Tech layer 43\nBuild Tech layer 45\nBuild Tech layer 47\nBuild Tech layer 49\nBuild Tech layer 51\nBuild Tech layer 53\nBuild Tech layer 55\nBuild Tech layer 57\nBuild Tech layer 59\nBuild Tech layer 61\nBuild Tech layer 63\nBuild Tech layer 65\nBuild Tech layer 67\nBuild Tech layer 69\nBuild Tech layer 71\nBuild Tech layer 73\nBuild Tech layer 75\nBuild Tech layer 77\nBuild Tech layer 79\nBuild Tech layer 81\nBuild Tech layer 83\nBuild Tech layer 85\nBuild Tech layer 87\nBuild Tech layer 89\nBuild Tech layer 91\nBuild Tech layer 93\nBuild Tech layer 95\nBuild Tech layer 97\nBuild Tech layer 99\nBuild Tech layer 101\nBuild Tech layer 103\nBuild Tech layer 105\nBuild Tech layer 107\nBuild Tech layer 109\nBuild Tech layer 111\nBuild Tech layer 113\nBuild Tech layer 115\nBuild Tech layer 117\nBuild Tech layer 119\nBuild Tech layer 121\nBuild Tech layer 123\nBuild Tech layer 125\nBuild Tech layer 127\nSimplifying copper layer polygons\nCalculating plated copper\nSimplify holes contours\nBuild BVH for holes and vias\nLoad Raytracing: board\nLoad Raytracing: layers\nLoading 3D models...\nReload time 0.028 s\nRendering: 28 %\nRendering: 45 %\nRendering: 79 %\nRendering: 100 %\nRendering: Post processing shader\nRendering time 1.476 s\nSuccessfully created 3D render image\n"
+    },
+    {
+      "argv": [
+        "/Users/michael/Code/crystal-shim/pcb/tools/kicad_python.sh",
+        "/Users/michael/Code/crystal-shim/pcb/tools/tscircuit_handoff.py",
+        "snapshot-kicad",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller.kicad_pcb",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/source-manifest.normalized.json",
+        "--augmentation",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/kicad-augmentation.normalized.json",
+        "--schematic-netlist",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/staged-schematic.netlist.xml",
+        "--output",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/staged-kicad-snapshot.json",
+        "--unrouted"
+      ],
+      "returncode": 0,
+      "stderr": "./src/common/stdpbase.cpp(59): assert \"\"traits\"\" failed in Get(): create wxApp before calling this\n",
+      "stdout": "snapshotted controller.board.main -> /private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/staged-kicad-snapshot.json (99 components, routed=false)\n"
+    }
+  ],
+  "footprint_fingerprints": {
+    "CrystalShim_Controller:Controller_C1": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C1.kicad_mod",
+      "sha256": "272f3bfcf57d6a7e583462db7a11ca96f4dafcb7a80f6f3a2d3824c375392c33"
+    },
+    "CrystalShim_Controller:Controller_C11": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C11.kicad_mod",
+      "sha256": "8ebc91e93e1643455e7534fb8d727e93f0378b50271655c1c91b66f7e4c9826a"
+    },
+    "CrystalShim_Controller:Controller_C12": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C12.kicad_mod",
+      "sha256": "9dc28167cc0cd5d9c88709f5162eba3392a3ee9b98b23e2cff700c8cfcb3123d"
+    },
+    "CrystalShim_Controller:Controller_C2": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C2.kicad_mod",
+      "sha256": "66beabfe1d68d65db9c9e124952d29d347c84668bf3f801fdcdbe76efc40ff20"
+    },
+    "CrystalShim_Controller:Controller_C20": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C20.kicad_mod",
+      "sha256": "950ee3665d48a01073f139375c7e04b3b19c138a4feae5fc323e973b9f973ffc"
+    },
+    "CrystalShim_Controller:Controller_C21": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C21.kicad_mod",
+      "sha256": "d4ed03a0e615a67717bbd7ac01a6575d3857297cd489518c40af87f17647e7b3"
+    },
+    "CrystalShim_Controller:Controller_C22": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C22.kicad_mod",
+      "sha256": "f5252e78f9a419aa18c30bb1deb1d20400267e413eaccb15f43f493559dbe47b"
+    },
+    "CrystalShim_Controller:Controller_C23": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C23.kicad_mod",
+      "sha256": "5a9108410b10e42bac9a7da73c61137e1e5713da8af031ac9639a16d56e396f7"
+    },
+    "CrystalShim_Controller:Controller_C3": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C3.kicad_mod",
+      "sha256": "dd07815457b041cf976d20e96ab474932de5e504d61d716ab69a5ef62b77bbdf"
+    },
+    "CrystalShim_Controller:Controller_C30": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C30.kicad_mod",
+      "sha256": "d2017fb8caa3278c54dfbb659ac35d2d55cfe2d003c4a2d0446f40554ad37508"
+    },
+    "CrystalShim_Controller:Controller_C31": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C31.kicad_mod",
+      "sha256": "de8d769e0edcb368b8a3ee3096b49e3d5371374ffb434f402fddb61ef04fbff8"
+    },
+    "CrystalShim_Controller:Controller_C4": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C4.kicad_mod",
+      "sha256": "9cf95eedf84d823182df7f310e31d571852ba04c97bb29f0cb6cba4cd3b5fa02"
+    },
+    "CrystalShim_Controller:Controller_C40": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C40.kicad_mod",
+      "sha256": "a74cea568e1c9ae5e972b9c3430735182e1310eeb7e9c0a27340880f64e431f4"
+    },
+    "CrystalShim_Controller:Controller_C41": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C41.kicad_mod",
+      "sha256": "1d5738ab7188396c5e61e5171315bf22edbef3dc3caecab2e71eca85087dd569"
+    },
+    "CrystalShim_Controller:Controller_C42": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C42.kicad_mod",
+      "sha256": "9a4e30685b2de5a00cabda1f414e64dd9689e04f9d0f9f6b31e4c3467b23217b"
+    },
+    "CrystalShim_Controller:Controller_C43": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C43.kicad_mod",
+      "sha256": "493f6b9e5d0e970f4daf07a1ae1eab1e3c0f2d7c79b8798e91c643d412e7b1db"
+    },
+    "CrystalShim_Controller:Controller_C44": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C44.kicad_mod",
+      "sha256": "5dabba2f987712fb19a4c609edb4dfc91c124a2a44e730a46e884781b7e844e8"
+    },
+    "CrystalShim_Controller:Controller_C5": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C5.kicad_mod",
+      "sha256": "c17aa507b418fe9df7c89d32da270c1377c346804134c744935e5e3c77a9aab6"
+    },
+    "CrystalShim_Controller:Controller_C6": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C6.kicad_mod",
+      "sha256": "6e8efc74bf0338e9141ac392fd183c2a9d24d76add911d3f9687d58438454036"
+    },
+    "CrystalShim_Controller:Controller_C7": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C7.kicad_mod",
+      "sha256": "5bf23dfe717eff20c1ce2a277957728773959aa3e3b13e3ebfe863f3533c893f"
+    },
+    "CrystalShim_Controller:Controller_C8": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C8.kicad_mod",
+      "sha256": "33566e7a1dbb37d60d7a6c2944d289016b1ab7a04374d53f5fca187ccd96250b"
+    },
+    "CrystalShim_Controller:Controller_C9": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_C9.kicad_mod",
+      "sha256": "d47b69d7077ead545c2b955db1b5313860f0b27297496c8d27cc6b59135d4ac5"
+    },
+    "CrystalShim_Controller:Controller_D1": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_D1.kicad_mod",
+      "sha256": "2a754d70af73623ac66fa7879c95a4bd442f4d6c166e32488eeaedb7a5e6a21c"
+    },
+    "CrystalShim_Controller:Controller_D2": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_D2.kicad_mod",
+      "sha256": "93b49912735f1913f8dc1c6b39753257117e1fc999743a00070a0785a3a10023"
+    },
+    "CrystalShim_Controller:Controller_D4": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_D4.kicad_mod",
+      "sha256": "99e2edc4f1a41c9eb751da167e946205c3575f4c2eb0617e2b2d4dd84de6451d"
+    },
+    "CrystalShim_Controller:Controller_D5": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_D5.kicad_mod",
+      "sha256": "0dd2143fbbc976ba37e72c9c8e629f15094db76724c9718f8487246d9a22704c"
+    },
+    "CrystalShim_Controller:Controller_D6": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_D6.kicad_mod",
+      "sha256": "ec924659448df384096382bbb5bb17169446adeae8e569d95dacaff46d397d08"
+    },
+    "CrystalShim_Controller:Controller_D7": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_D7.kicad_mod",
+      "sha256": "562e1f6995b40a437222e1ed378c62eecd6be4e1a7cb1da014fb111594b02408"
+    },
+    "CrystalShim_Controller:Controller_H1": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_H1.kicad_mod",
+      "sha256": "d43187f95715b9f1710104d03477f417b20a89fe2ec2d9efc85571053fa26caf"
+    },
+    "CrystalShim_Controller:Controller_H2": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_H2.kicad_mod",
+      "sha256": "680aa27c999d558610d0d322483db7bee5230f7caa64539d6ee48f86fba72d20"
+    },
+    "CrystalShim_Controller:Controller_H3": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_H3.kicad_mod",
+      "sha256": "f53688a452589bb999d42a52504c9e160093e525b3d33b47f215eebdb8aa6114"
+    },
+    "CrystalShim_Controller:Controller_H4": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_H4.kicad_mod",
+      "sha256": "e83e6e4532f5a297a81dbfe0569cdfc89084b8dae3095e7d503552629177d095"
+    },
+    "CrystalShim_Controller:Controller_J1": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_J1.kicad_mod",
+      "sha256": "5cc857e8dd316e25219ce6ccbd9d8d854e35bb392c89bfb85c5e58c67e40aa88"
+    },
+    "CrystalShim_Controller:Controller_J2": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_J2.kicad_mod",
+      "sha256": "e333b5dbddf931400415620c2788d10a5a35d0573df3febb8a94bea8ac378130"
+    },
+    "CrystalShim_Controller:Controller_J3": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_J3.kicad_mod",
+      "sha256": "ba22967e8eeda4479137c569e01b9883be0d3c65450c078dd6d753798ef1ef36"
+    },
+    "CrystalShim_Controller:Controller_J4": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_J4.kicad_mod",
+      "sha256": "7aaf9fd481364249339e6f1e7e8dd57252df759476158ac1a545b6344708df0b"
+    },
+    "CrystalShim_Controller:Controller_L1": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_L1.kicad_mod",
+      "sha256": "0814479b2a2bd1fb3f538164917d981f06d729de89af9d0addb3e31eed2bcc62"
+    },
+    "CrystalShim_Controller:Controller_Q1": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_Q1.kicad_mod",
+      "sha256": "e644c6cf59e3dc9d42a672c90eeec9e2531878a0fab2d7714fcdeb2dc4021c41"
+    },
+    "CrystalShim_Controller:Controller_R11": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R11.kicad_mod",
+      "sha256": "0bcc3b3236f2a44a4d8607e5da18f32b570583df799241d4815b108b3221678e"
+    },
+    "CrystalShim_Controller:Controller_R12": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R12.kicad_mod",
+      "sha256": "f784a0de7251a92238205772df8ba901fab294427661cd171bd165beec59a35e"
+    },
+    "CrystalShim_Controller:Controller_R14": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R14.kicad_mod",
+      "sha256": "ca2b1e578066ed69f6dabec7dd31ce413cc59c6beda8059e3ed3b2ba834cc726"
+    },
+    "CrystalShim_Controller:Controller_R15": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R15.kicad_mod",
+      "sha256": "04ceeefb7802a30795d17ec63089129dd1b65630a7d77081b73b64d0e348372a"
+    },
+    "CrystalShim_Controller:Controller_R2": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R2.kicad_mod",
+      "sha256": "af49a2817ffc388dc0db38cebdc043c118543e9a9f5187c61f74c16209ffa439"
+    },
+    "CrystalShim_Controller:Controller_R20": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R20.kicad_mod",
+      "sha256": "3ce87d877cd0d6b01e56a2f20db9f1d58e3faa90c13b0d7607e8a6ef8d6050c8"
+    },
+    "CrystalShim_Controller:Controller_R30": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R30.kicad_mod",
+      "sha256": "b505d26bbccbaa1fc894f7ff70070d409c8e1e075d22fa71a7a2165853ba91e5"
+    },
+    "CrystalShim_Controller:Controller_R31": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R31.kicad_mod",
+      "sha256": "2c8cbe155912f9668504903d590818e8ccd683ea94c3df3ef4a96ea691814d08"
+    },
+    "CrystalShim_Controller:Controller_R32": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R32.kicad_mod",
+      "sha256": "b7091ce7f067d10fc8935b60c34197e3427752811333411f4e552a536d9b4667"
+    },
+    "CrystalShim_Controller:Controller_R33": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R33.kicad_mod",
+      "sha256": "7a40f36674d272dc2949bb1c9084d315b4d87967961cc2d9913a295df8e1e1b7"
+    },
+    "CrystalShim_Controller:Controller_R34": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R34.kicad_mod",
+      "sha256": "0f4d221823de37681596979467d1bfa56d4e18c90655a55629f6ca26e55ffae6"
+    },
+    "CrystalShim_Controller:Controller_R35": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R35.kicad_mod",
+      "sha256": "801b7a5e2217e450fde971a5daf58c00a920b8467791445e944ba54099bf7c80"
+    },
+    "CrystalShim_Controller:Controller_R36": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R36.kicad_mod",
+      "sha256": "4e257bbd06305c76b4f5ea744ae83589f828e98fedd78f89be0b98452c7873d8"
+    },
+    "CrystalShim_Controller:Controller_R37": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R37.kicad_mod",
+      "sha256": "abb497f6b31543a1f6ccb90860a03db69302a0cffd5f0dd9fb3a8e9b0a272f2c"
+    },
+    "CrystalShim_Controller:Controller_R40": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R40.kicad_mod",
+      "sha256": "7a03c4d7747ce6770243ceea48117b00c1f74b0cdf8a58a2d01f4eb969a0fe8e"
+    },
+    "CrystalShim_Controller:Controller_R41": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R41.kicad_mod",
+      "sha256": "62e9158bbc68e1f6e330629d543a08b327653f6ce370f8ffb063888dc5e10b2e"
+    },
+    "CrystalShim_Controller:Controller_R42": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R42.kicad_mod",
+      "sha256": "8c1f69bd6f775101bd1f07a89372539b0db3da99874b1915c5579ea2baf289e6"
+    },
+    "CrystalShim_Controller:Controller_R43": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R43.kicad_mod",
+      "sha256": "db0ac473cf8373789f1dec1e3abb375e7f0365f79cbaa34e5a7cc0c6050dcab2"
+    },
+    "CrystalShim_Controller:Controller_R44": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R44.kicad_mod",
+      "sha256": "4c56e68960715d0189c61d8654f5b3fe7df20fa39c484f9007b696bb6663ec66"
+    },
+    "CrystalShim_Controller:Controller_R45": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R45.kicad_mod",
+      "sha256": "8fc37d106e6eb1312a338c89a1e7a52aca823e7c4de49e9f4d9bc3a6273bdd88"
+    },
+    "CrystalShim_Controller:Controller_R46": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R46.kicad_mod",
+      "sha256": "f33c34a9180f2d08d427213ad3974006dbc71168f6f4b5bcf68db9379730cf3e"
+    },
+    "CrystalShim_Controller:Controller_R50": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R50.kicad_mod",
+      "sha256": "feaf6ccb1c4afe91149438f88c8e142b81c57e62dedd7beebd6e6c5967496489"
+    },
+    "CrystalShim_Controller:Controller_R51": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R51.kicad_mod",
+      "sha256": "db1c21c505d366216d778d13b165e901b63bb454854e950eda26a753fd79961e"
+    },
+    "CrystalShim_Controller:Controller_R52": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R52.kicad_mod",
+      "sha256": "30ea8c6908765fa44dde2aea2c234cc5fe2c29f8025faa996f67f311f71f6ca9"
+    },
+    "CrystalShim_Controller:Controller_R53": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R53.kicad_mod",
+      "sha256": "e8403745bad3f6b1d3b1390f1b1215da7415371640be8e38dc75981da0e4b796"
+    },
+    "CrystalShim_Controller:Controller_R54": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R54.kicad_mod",
+      "sha256": "dc5218fe1b617cf033c762fc131bda95e5d9da752a0435f3f217d31d051119ae"
+    },
+    "CrystalShim_Controller:Controller_R55": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R55.kicad_mod",
+      "sha256": "cc8d5d6a5440326cdf259d7c667b88b43417d2f9541e605785ba2abfb9fcaf8d"
+    },
+    "CrystalShim_Controller:Controller_R60": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R60.kicad_mod",
+      "sha256": "3fbf4d66721950b27c6951db95e2fcdfa7375fefd2d82b3701e379ad1be2b9fc"
+    },
+    "CrystalShim_Controller:Controller_R61": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R61.kicad_mod",
+      "sha256": "b6111dbd7b488e8d2442413d57aa840c93d6980c60edf896c4fc1cb3792dd289"
+    },
+    "CrystalShim_Controller:Controller_R62": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R62.kicad_mod",
+      "sha256": "d2dc66acc78ce4cb4e398442be88d144a1934e18ec7f891c1835e145330c4ee2"
+    },
+    "CrystalShim_Controller:Controller_R63": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R63.kicad_mod",
+      "sha256": "69148353a209d70305f3d8f7641eb3a93826ec144842c3a2a54c70d728f3c8b9"
+    },
+    "CrystalShim_Controller:Controller_R64": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R64.kicad_mod",
+      "sha256": "2f0865321596de3ef981d334ec31d192532951cb17815d2f283be453e4564741"
+    },
+    "CrystalShim_Controller:Controller_R65": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R65.kicad_mod",
+      "sha256": "cc2b1956ca5f5b7733ce71bdc2b9b926e5e9089a2c2afbe63ba21d5347955aff"
+    },
+    "CrystalShim_Controller:Controller_R66": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R66.kicad_mod",
+      "sha256": "bbb59eb6e65587002fc42feb5c6db2ab19f171868c3e6b28a37ee2778f1cbbae"
+    },
+    "CrystalShim_Controller:Controller_R67": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R67.kicad_mod",
+      "sha256": "21f4b1597347e9088d3b2463802f3ca9bc8cfa49f865e58e677f8811a343839e"
+    },
+    "CrystalShim_Controller:Controller_R68": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_R68.kicad_mod",
+      "sha256": "b1cdbfb8cd51eff669c8a918b58bb5602928d6714a534e7688cd2d3895e17c1c"
+    },
+    "CrystalShim_Controller:Controller_SW1": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_SW1.kicad_mod",
+      "sha256": "65daef4be9a2e86ddf24566d3f7252aeea57c39dfb31c2299d29618ff2482226"
+    },
+    "CrystalShim_Controller:Controller_SW2": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_SW2.kicad_mod",
+      "sha256": "bca781e8b0d092f89f106494e88bc60b7b98097243f85f4c788d3e57710f332a"
+    },
+    "CrystalShim_Controller:Controller_SW3": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_SW3.kicad_mod",
+      "sha256": "7f7df354adaccfaf54790c7a72f3d09ef0f9c625d9ec2dbaaf7775e1615061b2"
+    },
+    "CrystalShim_Controller:Controller_TP1": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_TP1.kicad_mod",
+      "sha256": "0162f81357b186f12cc8c2cb061c406430acf8987346bbd5a34be736a55c0a11"
+    },
+    "CrystalShim_Controller:Controller_TP10": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_TP10.kicad_mod",
+      "sha256": "a75ad923c76b7c80fb554bd228372d99917909c25683161efc3586c51022b560"
+    },
+    "CrystalShim_Controller:Controller_TP11": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_TP11.kicad_mod",
+      "sha256": "1ceed3b5efc4801a22bbdb11cff476722b1c453e5a1104bc63280e77a6af4e28"
+    },
+    "CrystalShim_Controller:Controller_TP2": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_TP2.kicad_mod",
+      "sha256": "8ccc669d8d20e4d4ff5768ee9dd289d3d7dace1198e9086a850218b9bf109cba"
+    },
+    "CrystalShim_Controller:Controller_TP3": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_TP3.kicad_mod",
+      "sha256": "32705cdd39455bd47603807351ac9cb9c18d4cc4d704be3009f44af87ecb67ae"
+    },
+    "CrystalShim_Controller:Controller_TP4": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_TP4.kicad_mod",
+      "sha256": "729ba3e36ed2bcb540cac62f1a4d4ba1a52922c2c2050e32a9dba596f96dca68"
+    },
+    "CrystalShim_Controller:Controller_TP5": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_TP5.kicad_mod",
+      "sha256": "c25e34b4bdf7d48a08a27113e19f0c9bf28305cde7a3a61acc5852b504822fc7"
+    },
+    "CrystalShim_Controller:Controller_TP6": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_TP6.kicad_mod",
+      "sha256": "981b31db13393d9f4b2ab037af04ea79fdbfed4d2dcf351a6a673f6d7523a76b"
+    },
+    "CrystalShim_Controller:Controller_TP7": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_TP7.kicad_mod",
+      "sha256": "1279202c1885f344a472068f6a90d964c2c9d81af683039188a31a8e8a37ecd2"
+    },
+    "CrystalShim_Controller:Controller_TP8": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_TP8.kicad_mod",
+      "sha256": "9f927c616c179de4386094a09b7c385a4478ef7a0744b24f0974e3f0255b7dd1"
+    },
+    "CrystalShim_Controller:Controller_TP9": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_TP9.kicad_mod",
+      "sha256": "6dcf710e2e998276938128cd1638d4fefe6a9f75e519bf24663cdad146c50c26"
+    },
+    "CrystalShim_Controller:Controller_U1": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_U1.kicad_mod",
+      "sha256": "192719b41b105e6b15ca9c6160dd5952f9522f050ef3b008e48ff509a5ed5473"
+    },
+    "CrystalShim_Controller:Controller_U10": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_U10.kicad_mod",
+      "sha256": "63bf8d1c0b3931259541b1253a2172a832701f8b37c480f4875e76f5acaf463b"
+    },
+    "CrystalShim_Controller:Controller_U11": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_U11.kicad_mod",
+      "sha256": "985d5003fe70b33fb7ed0b8aa4ee3234cfc6ec76b2b60982e5ea26e8276d12d2"
+    },
+    "CrystalShim_Controller:Controller_U2": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_U2.kicad_mod",
+      "sha256": "5a5f0b1d1820d05622ce5629a490212b58e69159781fcfc343ef651a8e1650ce"
+    },
+    "CrystalShim_Controller:Controller_U3": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_U3.kicad_mod",
+      "sha256": "baa0cef1c49521ae4c49b0cbbe3f78ef3e2c2874da3bb9dd1f17e86a8e734aa9"
+    },
+    "CrystalShim_Controller:Controller_U4": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_U4.kicad_mod",
+      "sha256": "4e5636b34803f1e475c41398ebbf5135333b947f8a6ff2cea5bde95ad465b870"
+    },
+    "CrystalShim_Controller:Controller_U5": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_U5.kicad_mod",
+      "sha256": "fa74e3b2e929ce2936da54e0762feac0d262b4842ab918215ff7110dc861ba08"
+    },
+    "CrystalShim_Controller:Controller_U6": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_U6.kicad_mod",
+      "sha256": "bc33686f92bc9e3d289d8a7c7652e9891845c966eebcb298fa1a8e0d339d906e"
+    },
+    "CrystalShim_Controller:Controller_U7": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_U7.kicad_mod",
+      "sha256": "1004a852acad330328fd18a4a9d4739864b6e2125569c3c5a629925a478a5c83"
+    },
+    "CrystalShim_Controller:Controller_U8": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_U8.kicad_mod",
+      "sha256": "ad0b920c46ef5a5fa95a94f51948c23c31e656a5bf28f98fec737a56c9530940"
+    },
+    "CrystalShim_Controller:Controller_U9": {
+      "path": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/footprints/CrystalShim_Controller.pretty/Controller_U9.kicad_mod",
+      "sha256": "3b28952e8c4fc5b46aa421796db9bb7f4b9135cc4c2b2b68e38d868d02168d54"
+    }
+  },
+  "generated_kicad": [
+    {
+      "path": "CrystalShim_Controller.kicad_sym",
+      "sha256": "2bc9e9170640f0770e4c1a6ae26a78e0251c5928c3f1c78b98897f9a95380907"
+    },
+    {
+      "path": "controller.kicad_pcb",
+      "sha256": "38e7f5917da3c6abaeba7626cb93445a6a3f00b5ad6d80a054443b76ed94d4c7"
+    },
+    {
+      "path": "controller.kicad_prl",
+      "sha256": "79c537cb7ea30e31bc290a295cfa2d9e7edbbbdfc28391c5bca6c4092e8cf0eb"
+    },
+    {
+      "path": "controller.kicad_pro",
+      "sha256": "8ad144f5beb4b9ab287d21b4e2077c2c86e852ff7ce7d06e1966c1ff9a51bd58"
+    },
+    {
+      "path": "controller.kicad_sch",
+      "sha256": "8a75972ca1d5addfd65f04987641ae9d51e80d69df346e58e888e00af467beb7"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C1.kicad_mod",
+      "sha256": "272f3bfcf57d6a7e583462db7a11ca96f4dafcb7a80f6f3a2d3824c375392c33"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C11.kicad_mod",
+      "sha256": "8ebc91e93e1643455e7534fb8d727e93f0378b50271655c1c91b66f7e4c9826a"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C12.kicad_mod",
+      "sha256": "9dc28167cc0cd5d9c88709f5162eba3392a3ee9b98b23e2cff700c8cfcb3123d"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C2.kicad_mod",
+      "sha256": "66beabfe1d68d65db9c9e124952d29d347c84668bf3f801fdcdbe76efc40ff20"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C20.kicad_mod",
+      "sha256": "950ee3665d48a01073f139375c7e04b3b19c138a4feae5fc323e973b9f973ffc"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C21.kicad_mod",
+      "sha256": "d4ed03a0e615a67717bbd7ac01a6575d3857297cd489518c40af87f17647e7b3"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C22.kicad_mod",
+      "sha256": "f5252e78f9a419aa18c30bb1deb1d20400267e413eaccb15f43f493559dbe47b"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C23.kicad_mod",
+      "sha256": "5a9108410b10e42bac9a7da73c61137e1e5713da8af031ac9639a16d56e396f7"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C3.kicad_mod",
+      "sha256": "dd07815457b041cf976d20e96ab474932de5e504d61d716ab69a5ef62b77bbdf"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C30.kicad_mod",
+      "sha256": "d2017fb8caa3278c54dfbb659ac35d2d55cfe2d003c4a2d0446f40554ad37508"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C31.kicad_mod",
+      "sha256": "de8d769e0edcb368b8a3ee3096b49e3d5371374ffb434f402fddb61ef04fbff8"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C4.kicad_mod",
+      "sha256": "9cf95eedf84d823182df7f310e31d571852ba04c97bb29f0cb6cba4cd3b5fa02"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C40.kicad_mod",
+      "sha256": "a74cea568e1c9ae5e972b9c3430735182e1310eeb7e9c0a27340880f64e431f4"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C41.kicad_mod",
+      "sha256": "1d5738ab7188396c5e61e5171315bf22edbef3dc3caecab2e71eca85087dd569"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C42.kicad_mod",
+      "sha256": "9a4e30685b2de5a00cabda1f414e64dd9689e04f9d0f9f6b31e4c3467b23217b"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C43.kicad_mod",
+      "sha256": "493f6b9e5d0e970f4daf07a1ae1eab1e3c0f2d7c79b8798e91c643d412e7b1db"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C44.kicad_mod",
+      "sha256": "5dabba2f987712fb19a4c609edb4dfc91c124a2a44e730a46e884781b7e844e8"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C5.kicad_mod",
+      "sha256": "c17aa507b418fe9df7c89d32da270c1377c346804134c744935e5e3c77a9aab6"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C6.kicad_mod",
+      "sha256": "6e8efc74bf0338e9141ac392fd183c2a9d24d76add911d3f9687d58438454036"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C7.kicad_mod",
+      "sha256": "5bf23dfe717eff20c1ce2a277957728773959aa3e3b13e3ebfe863f3533c893f"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C8.kicad_mod",
+      "sha256": "33566e7a1dbb37d60d7a6c2944d289016b1ab7a04374d53f5fca187ccd96250b"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_C9.kicad_mod",
+      "sha256": "d47b69d7077ead545c2b955db1b5313860f0b27297496c8d27cc6b59135d4ac5"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_D1.kicad_mod",
+      "sha256": "2a754d70af73623ac66fa7879c95a4bd442f4d6c166e32488eeaedb7a5e6a21c"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_D2.kicad_mod",
+      "sha256": "93b49912735f1913f8dc1c6b39753257117e1fc999743a00070a0785a3a10023"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_D4.kicad_mod",
+      "sha256": "99e2edc4f1a41c9eb751da167e946205c3575f4c2eb0617e2b2d4dd84de6451d"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_D5.kicad_mod",
+      "sha256": "0dd2143fbbc976ba37e72c9c8e629f15094db76724c9718f8487246d9a22704c"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_D6.kicad_mod",
+      "sha256": "ec924659448df384096382bbb5bb17169446adeae8e569d95dacaff46d397d08"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_D7.kicad_mod",
+      "sha256": "562e1f6995b40a437222e1ed378c62eecd6be4e1a7cb1da014fb111594b02408"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_H1.kicad_mod",
+      "sha256": "d43187f95715b9f1710104d03477f417b20a89fe2ec2d9efc85571053fa26caf"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_H2.kicad_mod",
+      "sha256": "680aa27c999d558610d0d322483db7bee5230f7caa64539d6ee48f86fba72d20"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_H3.kicad_mod",
+      "sha256": "f53688a452589bb999d42a52504c9e160093e525b3d33b47f215eebdb8aa6114"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_H4.kicad_mod",
+      "sha256": "e83e6e4532f5a297a81dbfe0569cdfc89084b8dae3095e7d503552629177d095"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_J1.kicad_mod",
+      "sha256": "5cc857e8dd316e25219ce6ccbd9d8d854e35bb392c89bfb85c5e58c67e40aa88"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_J2.kicad_mod",
+      "sha256": "e333b5dbddf931400415620c2788d10a5a35d0573df3febb8a94bea8ac378130"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_J3.kicad_mod",
+      "sha256": "ba22967e8eeda4479137c569e01b9883be0d3c65450c078dd6d753798ef1ef36"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_J4.kicad_mod",
+      "sha256": "7aaf9fd481364249339e6f1e7e8dd57252df759476158ac1a545b6344708df0b"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_L1.kicad_mod",
+      "sha256": "0814479b2a2bd1fb3f538164917d981f06d729de89af9d0addb3e31eed2bcc62"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_Q1.kicad_mod",
+      "sha256": "e644c6cf59e3dc9d42a672c90eeec9e2531878a0fab2d7714fcdeb2dc4021c41"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R11.kicad_mod",
+      "sha256": "0bcc3b3236f2a44a4d8607e5da18f32b570583df799241d4815b108b3221678e"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R12.kicad_mod",
+      "sha256": "f784a0de7251a92238205772df8ba901fab294427661cd171bd165beec59a35e"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R14.kicad_mod",
+      "sha256": "ca2b1e578066ed69f6dabec7dd31ce413cc59c6beda8059e3ed3b2ba834cc726"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R15.kicad_mod",
+      "sha256": "04ceeefb7802a30795d17ec63089129dd1b65630a7d77081b73b64d0e348372a"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R2.kicad_mod",
+      "sha256": "af49a2817ffc388dc0db38cebdc043c118543e9a9f5187c61f74c16209ffa439"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R20.kicad_mod",
+      "sha256": "3ce87d877cd0d6b01e56a2f20db9f1d58e3faa90c13b0d7607e8a6ef8d6050c8"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R30.kicad_mod",
+      "sha256": "b505d26bbccbaa1fc894f7ff70070d409c8e1e075d22fa71a7a2165853ba91e5"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R31.kicad_mod",
+      "sha256": "2c8cbe155912f9668504903d590818e8ccd683ea94c3df3ef4a96ea691814d08"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R32.kicad_mod",
+      "sha256": "b7091ce7f067d10fc8935b60c34197e3427752811333411f4e552a536d9b4667"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R33.kicad_mod",
+      "sha256": "7a40f36674d272dc2949bb1c9084d315b4d87967961cc2d9913a295df8e1e1b7"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R34.kicad_mod",
+      "sha256": "0f4d221823de37681596979467d1bfa56d4e18c90655a55629f6ca26e55ffae6"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R35.kicad_mod",
+      "sha256": "801b7a5e2217e450fde971a5daf58c00a920b8467791445e944ba54099bf7c80"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R36.kicad_mod",
+      "sha256": "4e257bbd06305c76b4f5ea744ae83589f828e98fedd78f89be0b98452c7873d8"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R37.kicad_mod",
+      "sha256": "abb497f6b31543a1f6ccb90860a03db69302a0cffd5f0dd9fb3a8e9b0a272f2c"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R40.kicad_mod",
+      "sha256": "7a03c4d7747ce6770243ceea48117b00c1f74b0cdf8a58a2d01f4eb969a0fe8e"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R41.kicad_mod",
+      "sha256": "62e9158bbc68e1f6e330629d543a08b327653f6ce370f8ffb063888dc5e10b2e"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R42.kicad_mod",
+      "sha256": "8c1f69bd6f775101bd1f07a89372539b0db3da99874b1915c5579ea2baf289e6"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R43.kicad_mod",
+      "sha256": "db0ac473cf8373789f1dec1e3abb375e7f0365f79cbaa34e5a7cc0c6050dcab2"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R44.kicad_mod",
+      "sha256": "4c56e68960715d0189c61d8654f5b3fe7df20fa39c484f9007b696bb6663ec66"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R45.kicad_mod",
+      "sha256": "8fc37d106e6eb1312a338c89a1e7a52aca823e7c4de49e9f4d9bc3a6273bdd88"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R46.kicad_mod",
+      "sha256": "f33c34a9180f2d08d427213ad3974006dbc71168f6f4b5bcf68db9379730cf3e"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R50.kicad_mod",
+      "sha256": "feaf6ccb1c4afe91149438f88c8e142b81c57e62dedd7beebd6e6c5967496489"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R51.kicad_mod",
+      "sha256": "db1c21c505d366216d778d13b165e901b63bb454854e950eda26a753fd79961e"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R52.kicad_mod",
+      "sha256": "30ea8c6908765fa44dde2aea2c234cc5fe2c29f8025faa996f67f311f71f6ca9"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R53.kicad_mod",
+      "sha256": "e8403745bad3f6b1d3b1390f1b1215da7415371640be8e38dc75981da0e4b796"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R54.kicad_mod",
+      "sha256": "dc5218fe1b617cf033c762fc131bda95e5d9da752a0435f3f217d31d051119ae"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R55.kicad_mod",
+      "sha256": "cc8d5d6a5440326cdf259d7c667b88b43417d2f9541e605785ba2abfb9fcaf8d"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R60.kicad_mod",
+      "sha256": "3fbf4d66721950b27c6951db95e2fcdfa7375fefd2d82b3701e379ad1be2b9fc"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R61.kicad_mod",
+      "sha256": "b6111dbd7b488e8d2442413d57aa840c93d6980c60edf896c4fc1cb3792dd289"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R62.kicad_mod",
+      "sha256": "d2dc66acc78ce4cb4e398442be88d144a1934e18ec7f891c1835e145330c4ee2"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R63.kicad_mod",
+      "sha256": "69148353a209d70305f3d8f7641eb3a93826ec144842c3a2a54c70d728f3c8b9"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R64.kicad_mod",
+      "sha256": "2f0865321596de3ef981d334ec31d192532951cb17815d2f283be453e4564741"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R65.kicad_mod",
+      "sha256": "cc2b1956ca5f5b7733ce71bdc2b9b926e5e9089a2c2afbe63ba21d5347955aff"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R66.kicad_mod",
+      "sha256": "bbb59eb6e65587002fc42feb5c6db2ab19f171868c3e6b28a37ee2778f1cbbae"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R67.kicad_mod",
+      "sha256": "21f4b1597347e9088d3b2463802f3ca9bc8cfa49f865e58e677f8811a343839e"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_R68.kicad_mod",
+      "sha256": "b1cdbfb8cd51eff669c8a918b58bb5602928d6714a534e7688cd2d3895e17c1c"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_SW1.kicad_mod",
+      "sha256": "65daef4be9a2e86ddf24566d3f7252aeea57c39dfb31c2299d29618ff2482226"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_SW2.kicad_mod",
+      "sha256": "bca781e8b0d092f89f106494e88bc60b7b98097243f85f4c788d3e57710f332a"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_SW3.kicad_mod",
+      "sha256": "7f7df354adaccfaf54790c7a72f3d09ef0f9c625d9ec2dbaaf7775e1615061b2"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_TP1.kicad_mod",
+      "sha256": "0162f81357b186f12cc8c2cb061c406430acf8987346bbd5a34be736a55c0a11"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_TP10.kicad_mod",
+      "sha256": "a75ad923c76b7c80fb554bd228372d99917909c25683161efc3586c51022b560"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_TP11.kicad_mod",
+      "sha256": "1ceed3b5efc4801a22bbdb11cff476722b1c453e5a1104bc63280e77a6af4e28"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_TP2.kicad_mod",
+      "sha256": "8ccc669d8d20e4d4ff5768ee9dd289d3d7dace1198e9086a850218b9bf109cba"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_TP3.kicad_mod",
+      "sha256": "32705cdd39455bd47603807351ac9cb9c18d4cc4d704be3009f44af87ecb67ae"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_TP4.kicad_mod",
+      "sha256": "729ba3e36ed2bcb540cac62f1a4d4ba1a52922c2c2050e32a9dba596f96dca68"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_TP5.kicad_mod",
+      "sha256": "c25e34b4bdf7d48a08a27113e19f0c9bf28305cde7a3a61acc5852b504822fc7"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_TP6.kicad_mod",
+      "sha256": "981b31db13393d9f4b2ab037af04ea79fdbfed4d2dcf351a6a673f6d7523a76b"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_TP7.kicad_mod",
+      "sha256": "1279202c1885f344a472068f6a90d964c2c9d81af683039188a31a8e8a37ecd2"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_TP8.kicad_mod",
+      "sha256": "9f927c616c179de4386094a09b7c385a4478ef7a0744b24f0974e3f0255b7dd1"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_TP9.kicad_mod",
+      "sha256": "6dcf710e2e998276938128cd1638d4fefe6a9f75e519bf24663cdad146c50c26"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_U1.kicad_mod",
+      "sha256": "192719b41b105e6b15ca9c6160dd5952f9522f050ef3b008e48ff509a5ed5473"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_U10.kicad_mod",
+      "sha256": "63bf8d1c0b3931259541b1253a2172a832701f8b37c480f4875e76f5acaf463b"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_U11.kicad_mod",
+      "sha256": "985d5003fe70b33fb7ed0b8aa4ee3234cfc6ec76b2b60982e5ea26e8276d12d2"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_U2.kicad_mod",
+      "sha256": "5a5f0b1d1820d05622ce5629a490212b58e69159781fcfc343ef651a8e1650ce"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_U3.kicad_mod",
+      "sha256": "baa0cef1c49521ae4c49b0cbbe3f78ef3e2c2874da3bb9dd1f17e86a8e734aa9"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_U4.kicad_mod",
+      "sha256": "4e5636b34803f1e475c41398ebbf5135333b947f8a6ff2cea5bde95ad465b870"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_U5.kicad_mod",
+      "sha256": "fa74e3b2e929ce2936da54e0762feac0d262b4842ab918215ff7110dc861ba08"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_U6.kicad_mod",
+      "sha256": "bc33686f92bc9e3d289d8a7c7652e9891845c966eebcb298fa1a8e0d339d906e"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_U7.kicad_mod",
+      "sha256": "1004a852acad330328fd18a4a9d4739864b6e2125569c3c5a629925a478a5c83"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_U8.kicad_mod",
+      "sha256": "ad0b920c46ef5a5fa95a94f51948c23c31e656a5bf28f98fec737a56c9530940"
+    },
+    {
+      "path": "footprints/CrystalShim_Controller.pretty/Controller_U9.kicad_mod",
+      "sha256": "3b28952e8c4fc5b46aa421796db9bb7f4b9135cc4c2b2b68e38d868d02168d54"
+    },
+    {
+      "path": "fp-lib-table",
+      "sha256": "b0f481033d7549d44a933a2e893259e07de4581f112063a3321b5fe5c8113e30"
+    },
+    {
+      "path": "module.kicad_sch",
+      "sha256": "9f0d707e53b35043144d7201b88c1a315396e2b8a6cc9980fca6e938eed4bcb4"
+    },
+    {
+      "path": "power.kicad_sch",
+      "sha256": "53c168b0c5102eb2d2706501d29394fc6b0e3998dbbb83dc1e4c7c638d8b51b7"
+    },
+    {
+      "path": "relay.kicad_sch",
+      "sha256": "d3c5ba9a45c9a7258a0b1a62be62b5698b33092861725484aa15dca48768f817"
+    },
+    {
+      "path": "sensorinterface.kicad_sch",
+      "sha256": "b5757d83fcb06337b36c4c9107a299aeded55ac6137bfcb04183312df1f69a6b"
+    },
+    {
+      "path": "service.kicad_sch",
+      "sha256": "98fc1697c253c201cf557dfc7076c30fe374ae37d0988f1c2068c2d5ec5ca7ad"
+    },
+    {
+      "path": "sym-lib-table",
+      "sha256": "64c059a9d52ae7e1c787bd8989eec335376aefb76eb38005d446e74b08c12de8"
+    },
+    {
+      "path": "testpoints.kicad_sch",
+      "sha256": "368aeaadf4cc4504f6596eb796654437bab372fd2badedb73f786efa69d10723"
+    },
+    {
+      "path": "usb.kicad_sch",
+      "sha256": "3c54a139d6b045d917cd0a01dc4df0d527856fcc829df56c390a7f062624ded1"
+    }
+  ],
+  "kicad_parse_checks": [
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "pcb",
+        "drc",
+        "--format",
+        "json",
+        "--output",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller-initial-drc.json",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller.kicad_pcb"
+      ],
+      "clean": false,
+      "declared_findings": {
+        "unconnected_items": 216
+      },
+      "parsed": true,
+      "report": "controller-initial-drc.json",
+      "report_sha256": "4f025721d852e0aac91db2cc0a98b88c3a6cb269e3c90060c7cc1e677af1e0cc",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Found 0 violations\nFound 216 unconnected items\nSaved DRC Report to /private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller-initial-drc.json\n"
+    },
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "sch",
+        "erc",
+        "--format",
+        "json",
+        "--output",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller-initial-erc.json",
+        "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller.kicad_sch"
+      ],
+      "clean": true,
+      "declared_findings": {},
+      "parsed": true,
+      "report": "controller-initial-erc.json",
+      "report_sha256": "ab1104128ccadfbd0c999e17920fd96429a6a03d64bffef49499ba825f43b0fe",
+      "returncode": 0,
+      "stderr": "Fontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 19: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 20: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 23: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 42: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 43: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 46: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 68: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 69: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 72: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 88: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 89: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 92: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 108: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 109: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 112: invalid constant used : math\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 120: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 121: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 124: invalid constant used : system-ui\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 132: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 133: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 136: invalid constant used : cursive\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 144: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 145: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 148: invalid constant used : fantasy\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 156: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 157: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 160: invalid constant used : ui-sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 168: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 169: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 172: invalid constant used : ui-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 180: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 181: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 184: invalid constant used : ui-monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 192: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 193: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 196: invalid constant used : ui-rounded\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 204: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 205: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 208: invalid constant used : fangsong\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-spacing.conf\", line 14: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 10: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 18: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 26: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 34: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 42: invalid constant used : math\n",
+      "stdout": "Found 0 violations\nSaved ERC Report to /private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0/controller-initial-erc.json\n"
+    }
+  ],
+  "kicad_parse_verified": true,
+  "manifest_sha256": "f7b20224e07e97b64c537c99f27dd24dfbb083f58721c6feeb6cf2b0142d579b",
+  "parity_verified": true,
+  "review_renders": [
+    {
+      "path": "review-renders/pcb-top.png",
+      "sha256": "79ad9f2a3e75003bed90fb469445dd62c24ec03e24f02c7a9ddc7e9c3bfff834"
+    },
+    {
+      "path": "review-renders/schematic-svg/controller-ESP module and local controls.svg",
+      "sha256": "85f8f70af03c438b8328157dd847d4b7426e88579e4e8898ccde66a45799c600"
+    },
+    {
+      "path": "review-renders/schematic-svg/controller-Logic power.svg",
+      "sha256": "4e5a399e7b120da5f7c71a1c84136e7db5a83d0715bd4998fa69ab54db89044c"
+    },
+    {
+      "path": "review-renders/schematic-svg/controller-Protected isolated service input.svg",
+      "sha256": "c5737e5b5a5e2c68c1131a01655891c08609e2e2b3c7b8a8851e41018c302a55"
+    },
+    {
+      "path": "review-renders/schematic-svg/controller-Protected sensor feed and buffered bus.svg",
+      "sha256": "aa24214b86cbb14decb454084e1cf6732378be663262c6e8476ab7d8d9e31ee5"
+    },
+    {
+      "path": "review-renders/schematic-svg/controller-Relay permission and mains-board harness.svg",
+      "sha256": "845dda8ab69f4ad832df5706204daa866692eb97dad47b704bd21379d470cb8c"
+    },
+    {
+      "path": "review-renders/schematic-svg/controller-Self-powered USB data interface.svg",
+      "sha256": "e87c62a1ce1924349b15e3f05993dce40cb5c8a05834b6e97a8fd4e8c1c71ff5"
+    },
+    {
+      "path": "review-renders/schematic-svg/controller-Test and UART service pads.svg",
+      "sha256": "8579543736bed3bff5f573d3547060f6c026bcc35b4a6f889a1dc37ac970845d"
+    },
+    {
+      "path": "review-renders/schematic-svg/controller.svg",
+      "sha256": "d4860685867ad8dfa46a0d30fa5c1d84be027af37d6dc550fd2e873955608196"
+    },
+    {
+      "path": "review-renders/schematic.pdf",
+      "sha256": "0c1cb066bc231442c9c7fa7f3d8aea25ed2ba7276f89fa40e1a0565fc95b098b"
+    }
+  ],
+  "schema_version": 1,
+  "schematic_declared_differences": [],
+  "stage": "/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0",
+  "staged_snapshot": "staged-kicad-snapshot.json",
+  "staged_snapshot_sha256": "88d6831a8cca7891fd2748de43eb954d2c8c5fa3d1c985027fea6e3cbac3a7c8",
+  "tool_fingerprints": {
+    "bun": {
+      "path": "/Users/michael/.bun/bin/bun",
+      "returncode": 0,
+      "sha256": "1d77af7bfd811aebb7d37bec496a5eed14fe227ded3ab7866d2f39786e8107b6",
+      "version": "1.3.11"
+    },
+    "circuit_json_to_kicad": {
+      "code_sha256": "591171d865a2214467dc2273f0ebd17a980d46b701074a2fe9a0193093d6f787",
+      "package_sha256": "c7195f2f6459ca3df7cf51f92d7d21603ba31204ee4f4d490ac4fc8aa833600e",
+      "version": "0.0.205"
+    },
+    "kicad_cli": {
+      "path": "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+      "returncode": 0,
+      "sha256": "852c180a8c923beb6173b54bd6cc0bd66714e52ebfdd451ef0e061224bc954f5",
+      "version": "10.0.5"
+    },
+    "kicad_python": {
+      "path": "/Users/michael/Code/crystal-shim/pcb/tools/kicad_python.sh",
+      "returncode": 0,
+      "sha256": "b79ad593b8744ede8f7c752c03300063cdbeb8e2beaca6a9a93ceb0bec7edb1d",
+      "version": "Python 3.9.13"
+    },
+    "tsci": {
+      "path": "/Users/michael/Code/crystal-shim/pcb/node_modules/tscircuit/cli.mjs",
+      "returncode": 0,
+      "sha256": "f4343ef47a49ba1ef342b82c8c3b2320f7b87d15af722ba1bc0e782622f7c65a",
+      "version": "0.0.2465"
+    }
+  },
+  "versions": {
+    "bun": "1.3.11",
+    "circuit_json_to_kicad": "0.0.205",
+    "node": "24.3.0",
+    "tscircuit": "0.0.2465"
+  }
+}

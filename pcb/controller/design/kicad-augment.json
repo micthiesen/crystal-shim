@@ -44,6 +44,14 @@
         "copper_weight_oz": 1,
         "inner_copper_weight_oz": 0.5,
         "thickness_mm": 1.6,
+        "thickness_basis": "Source and purchase nominal; native header must instead equal the saved physical stack sum.",
+        "native_stack_total_mm": 1.6062,
+        "native_unverified_defaults": {
+          "mask_thickness_each_mm": 0.01,
+          "dielectric_loss_tangent": 0.02,
+          "dielectric_constraints": false,
+          "release_limit": "These KiCad defaults are placeholders, not vendor requirements or the separate USB solver mask model. Resolve before fabrication output."
+        },
         "vendor_stack": "JLC04161H-7628",
         "vendor_template_id": "30726297697b4c18a0946278a48fb7d8",
         "vendor_finished_thickness_mm": 1.59,
@@ -73,7 +81,7 @@
         ],
         "solver_finished_outer_copper_mm": 0.04064,
         "verification": "Apply detailed stack through native KiCad settings, query the saved stack and fabrication notes. Do not rescale pressed dielectric to force a 1.600 mm sum. See docs/design/controller-stackup.md.",
-        "status": "declared; detailed native stack not yet applied"
+        "status": "partially applied: reviewed copper/dielectric thicknesses, Er, material labels and finish saved through KiCad; unverified defaults and final fabrication notes remain open"
       }
     },
     {
@@ -98,17 +106,19 @@
         "minimum_clearance_mm": 0.15,
         "minimum_trace_width_mm": 0.15,
         "minimum_via_drill_mm": 0.2,
+        "minimum_via_diameter_mm": 0.35,
         "minimum_via_annulus_mm": 0.075,
         "minimum_mask_opening_to_other_copper_mm": 0.09,
         "minimum_mask_web_mm": 0.1,
         "ordinary_signal_width_mm": 0.25,
+        "ordinary_net_class": "Default",
         "ordinary_via_drill_pad_mm": [
           0.3,
           0.6
         ],
         "reason": "Project routing allocations within the selected 1 oz process; declared U10/U1 vias are smaller than ordinary routing vias.",
-        "verification": "Native setup/custom-rule readback, native pad/polygon/via distances, actual connected copper and clean DRC; source artwork and hole sizes remain authoritative.",
-        "status": "declared; apply and verify before routing"
+        "verification": "Native setup/custom-rule readback, native pad/polygon/via distances, actual connected copper and clean DRC; source artwork and hole sizes remain authoritative. KiCad minimum-mask-width merges close openings when plotting; inspect physical aperture unions instead of treating it as a standalone web DRC guarantee. The 0.35 mm minimum via diameter permits the separately declared U10 vias; ordinary routing retains 0.60 mm vias.",
+        "status": "basic setup and Default routing preferences applied with fresh native readback; actual copper, mask aperture and routed DRC verification remain open"
       }
     },
     {
@@ -117,6 +127,7 @@
       "owner": "kicad",
       "target": {},
       "params": {
+        "net_class": "USB90",
         "nets": [
           "USB_D_N",
           "USB_D_N_PORT",
@@ -142,7 +153,7 @@
           "Merge duplicate connector contacts immediately, and print one aperture per physical shared contact area."
         ],
         "verification": "Inspect actual routed pair and returns, measure mismatch and geometry, and require explicit 81-99 ohm fabrication acceptance. The uniform-line calculation does not model U9/U8/pad discontinuities.",
-        "status": "declared; no production routing or coupon evidence"
+        "status": "USB90 preferences assigned to all six exact nets; ground-side spacing, routed geometry, returns and fabrication impedance acceptance remain open"
       }
     },
     {

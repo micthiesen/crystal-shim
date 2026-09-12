@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="830" viewBox="0 0 1020 830">
+<rect width="1020" height="830" fill="white"/>
+<g font-family="Arial,sans-serif" fill="#17212b">
+<text x="30" y="36" font-size="24">Sideways sensor header: equal-height harness reach</text>
+<text x="30" y="64" font-size="16">Plan view, north is upward. Provisional envelopes; tank/glass offset is not a final placement.</text>
+<path d="M110 130 H930" stroke="#358a9d" stroke-width="7"/>
+<text x="115" y="116" font-size="15">Glass plane, illustrative offset from connector</text>
+<rect x="560" y="430.78" width="320" height="175" fill="#f0f3f5" stroke="#87939e"/>
+<text x="666" y="455" font-size="16">Enclosure north wall</text>
+<rect x="658" y="492" width="160" height="100" fill="#fce3df" stroke="#bb493c" stroke-dasharray="6,4"/>
+<text x="685" y="536" font-size="14">Antenna reserve</text>
+<text x="686" y="558" font-size="14">inside enclosure</text>
+<rect x="611.6" y="364.78" width="49.8" height="66" fill="#d2dbe3" stroke="#465361"/>
+<text x="686" y="393" font-size="15">M12 gland, X175.5</text>
+<path d="M636.5 588 V319.78 A150 150 0 0 0 486.5 169.78 H396.5" fill="none" stroke="#0866bb" stroke-width="12"/>
+<path d="M636.5 319.78 H486.5 V169.78" fill="none" stroke="#a6b1bc" stroke-dasharray="5,4"/>
+<text x="515" y="287" font-size="17">R50 mm</text>
+<circle cx="636.5" cy="588" r="7" fill="#111"/>
+<text x="503" y="627" font-size="15">Controller J3 crimp</text>
+<rect x="277" y="144" width="76" height="14" fill="#d1e7d4" stroke="#388047"/>
+<rect x="351" y="153" width="45.5" height="32" fill="#e8e8e8" stroke="#555"/>
+<circle cx="396.5" cy="169.78" r="7" fill="#111"/>
+<rect x="456.5" y="157" width="30" height="25" fill="#fff3cd" stroke="#96751a"/>
+<text x="260" y="209" font-size="14">Upper sensor head, PCB seen on edge</text>
+<text x="264" y="232" font-size="14">Header exits east (+X), beside head</text>
+<path d="M383 145 H427" fill="none" stroke="#465361" stroke-width="2"/>
+<path d="M427 145 l-7 -4 v8 z" fill="#465361"/>
+<text x="275" y="280" font-size="15">14 mm lateral withdrawal reserve</text>
+<text x="68" y="342" font-size="17">Blue route: 197.95 mm crimp-to-crimp</text>
+<text x="68" y="371" font-size="16">Sensor crimp X95.5, Y−93.41, Z=Zg</text>
+<text x="68" y="399" font-size="16">80 mm lateral / 87 mm tankward from wall exit</text>
+<text x="68" y="445" font-size="15">Yellow land: 10 mm intact jacket support</text>
+<text x="68" y="471" font-size="15">20 mm from that land to the sensor crimp</text>
+<text x="68" y="497" font-size="15">No PCB, hole or clip geometry is released here.</text>
+<path d="M30 658 H990" stroke="#c6cdd3"/>
+<text x="30" y="690" font-size="18">Optional low point: R55 horizontal bend, 3 mm shallow sag</text>
+<path d="M45 735 H105 C155 735 175 768 240 768 C305 768 325 735 375 735 H435" fill="none" stroke="#0866bb" stroke-width="4"/>
+<path d="M45 735 H435" stroke="#a6b1bc" stroke-dasharray="5,4"/>
+<text x="478" y="733" font-size="16">199.05 mm total; conservative 3D radius ≥50.93 mm</text>
+<text x="478" y="759" font-size="16">Both connector axes remain at the same height.</text>
+<text x="30" y="803" font-size="15">Sag shown enlarged. A calculated low point does not establish splash/drip acceptance.</text>
+</g></svg>

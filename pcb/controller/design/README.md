@@ -1,8 +1,20 @@
 # Controller component source
 
+The controller is adopted at [`../kicad/`](../kicad/) with
+[`handoff.lock.json`](handoff.lock.json). The original 113 native files were
+copied byte-for-byte from the reviewed stage and verified before lock creation;
+[`adoption.json`](../kicad/evidence/adoption.json) retains that sequence. Both
+repository-local libraries now use native-saved `${KIPRJMOD}` paths. All eight
+schematic sheets pass strict cleanup, and basic rules plus all 51 net-class
+preferences pass native readback. There are 216 unrouted items and zero DRC
+violations. Adoption does not complete native augmentation, routing or manufacture.
+See [the current native record](../../../docs/design/controller-grid.md).
+
 ## Guarded initial handoff
 
-From `pcb/`, run `bun run handoff:controller` on the verified macOS KiCad host.
+For a fresh source-comparison stage, run `bun run handoff:controller` from `pcb/`
+on the verified macOS KiCad host. Preserve the adopted project and lock; later
+source changes follow the declared ECO workflow.
 It rebuilds source and stages a fresh initial board, eight schematic files,
 99 per-reference footprints and a 96-entry project symbol library.
 `export:kicad:controller` is an internal command:
@@ -13,14 +25,16 @@ The wrapper binds the freshly regenerated manifest, generator source hashes,
 native footprint preservation, project-scoped Konnect library registration and
 native initial project rules. It applies the declared 0.20 mm hole-clearance rule
 through KiCad's settings manager; `.kicad_pro` and any native `.kicad_prl` output
-are bound in receipts. Both library tables currently name their exact stage paths.
-Relocation needs verified native re-registration and new acceptance evidence.
+are bound in receipts. Fresh-stage library tables name their exact stage paths.
+The adopted project's native relocation has separately replaced those paths with
+`${KIPRJMOD}/footprints/CrystalShim_Controller.pretty` and
+`${KIPRJMOD}/CrystalShim_Controller.kicad_sym`.
 
 The shared stage then checks hierarchy, source parity, initial ERC/DRC finding
 policy and actual schematic/PCB renders. A successful **initial handoff stage**
 can still contain the explicitly declared schematic cleanup and unrouted items.
-It is not an adopted board, clean final ERC/DRC or a manufacturing package. Do
-not create a lock or start routing until the remaining project gates are met.
+Initial staging alone does not establish strict cleanup or manufacturing
+readiness; the adoption and saved cleanup evidence above are separate steps.
 Native cleanup has resolved unconnected pins, redundant wire overlaps, library
 identity and missing power-source annotations. The initial grid transform now
 removes all 542 off-grid findings. The revised USB source uses sixteen meaningful
@@ -29,10 +43,13 @@ through actual KiCad Save. Initial ERC has zero enabled findings; DRC has 216
 unrouted items with zero other violations. A disposable copy saved through KiCad
 passes all ERC categories with no ignored checks and exact component/net parity.
 The module source now keeps its labels inside the A3 frame and clear of wires.
-The latest saved candidate passes the stricter before-routing cleanup command,
-which includes excluded findings and rejects every ignored category. Fresh stages
-retain their separate declared initial defaults. Native board augmentation,
-complete design review and mated enclosure fit remain required. See
+The adopted project passes the stricter before-routing cleanup command, which
+includes excluded findings and rejects every ignored category. Fresh stages
+retain their separate declared initial defaults. Eight basic fabrication-rule
+fields and all 51 net preferences have been applied and reloaded. Known vendor
+nominal stack layers have been entered through the GUI; nominal thickness
+correction and final saved stack readback remain in progress. Further native
+augmentation, complete design review and mated enclosure fit remain required. See
 [the native evidence](../../../docs/design/controller-grid.md) and
 [STATE](../../../docs/STATE.md).
 
@@ -115,12 +132,13 @@ renders all seven connected sections separately under
 Final enclosure mating and routing review remain required. No render
 here is a fabrication input.
 
-The `CrystalShim:*` footprint metadata names reserve future native library IDs;
-those KiCad footprints have not been adopted. Body/courtyard and mask output now
-exists for every purchased controller part. The [augmentation contract](kicad-augment.json) now declares the stackup, USB,
-thermal/via, paste, antenna, rule and manufacturing obligations. Native application,
-assembly process closure and full enclosure fit remain required. No handoff lock or
-fabrication outputs exist. The component tests run in the normal project gate.
+The source `CrystalShim:*` model identities map through the manifest to adopted
+`CrystalShim_Controller:Controller_REF` native entries. Body/courtyard and mask
+output exists for every purchased controller part. The
+[augmentation contract](kicad-augment.json) declares the stackup, USB, thermal/via,
+paste, antenna, rule and manufacturing obligations. The handoff lock now exists;
+remaining native application, assembly process closure, full enclosure fit and
+fabrication outputs are still owed. Component tests run in the normal project gate.
 
 ## Initial export integration
 
@@ -149,12 +167,11 @@ For the full controller also call `omitTestPointPasteForInitialExport` on the
 initial PCB graph. It validates all eleven pads before removing the converter's
 unwanted paste layer; retain BOM/CPL exclusions and source-owned mask openings.
 
-The accepted controller export does not exist yet. Its manifest, source/net checks
-and staged native parity must incorporate these adapters and verify every repeated
-physical pad, not just unique pin names. Keep tscircuit routing disabled: the
-eFuse's source polygon-port centres remain in the L notches. TI's split paste
-windows and native adoption remain required; its body/courtyard and mask now emit
-from the source model. USB GND wiring
+The adopted controller export includes these adapters, manifest/source checks
+and repeated-physical-pad parity. Keep tscircuit routing disabled: the eFuse's
+source polygon-port centres remain in the L notches. TI's split paste windows
+remain a native augmentation obligation; body/courtyard and mask emit from the
+source model. USB GND wiring
 needs explicit source labels as exercised by `usb-connector.test.tsx`; native
 netlist checks must retain A1/A12/B1/B12 and all four shell pads on GND.
 
@@ -163,30 +180,30 @@ an electrical label. Source sections use explicit `netlabel` elements and inheri
 their sheet through a named group. Do not infer connectivity from a readable SVG
 or from source traces alone. `schematic-connectivity-check.ts` follows actual
 drawn wires and real label anchors, preserving sheet identity and checking unused
-pins. Native schematic readback matches all 190 connected pins across the five
-sections: 32 relay, 24 buck, 37 service, 51 USB and 46 module. Independent review
+pins. Earlier five-section native schematic readback matched 190 connected pins:
+32 relay, 24 buck, 37 service, 51 USB and 46 module. Independent review
 checked the preceding 64-component/187-pin set and all 18 unused pins; root then
-added the three-pin J1 harness and checked its native netlist. The raw module PCB
-seed still has the known unassigned
-repeated-pad copies; the complete export must run the shared native augmentation
-and verify all nine module ground lands and both lands of each button terminal.
+added the three-pin J1 harness and checked its native netlist. Raw module PCB
+seeds have known unassigned repeated-pad copies; the complete guarded export
+restores and verifies all nine module ground lands and both lands of each button
+terminal through shared native augmentation.
 The separate test-pad section adds eleven native-checked pins/pads, including
 UART0 RX/TX and an adjacent isolated-ground return. Full-board integration must
 preserve short branches and physical probe access. No raw review seed is an
 accepted board.
 
-The combined disposable native export has eight schematic files (root plus seven
-children). It matches all 254 connected pins and 20 intended unused pins across
-51 named nets. Before augmentation, PCB readback counts 291 numbered physical pads
-with exactly the known 14 repeated-pad net omissions. The new source-derived
+The combined export has eight schematic files (root plus seven children). It
+matches all 254 connected pins and 20 intended unused pins across 51 named nets.
+Raw initial PCB readback counts 291 numbered physical pads with exactly the known
+14 repeated-pad net omissions before augmentation. The new source-derived
 library and shared native augmentation now restore every pad net; full strict
-board and schematic parity pass in the disposable stage described below. USB
-mapping, eFuse anchors and test-pad paste removal were applied to initial object
-graphs before the first stage-file write. No existing native design was edited.
-The current placed export contains four additional unnumbered mounting-hole
-footprints, four copper layers and nine total NPTHs. Source/native renders were
-inspected. Pending final enclosure fit, native assembly details and ERC/DRC
-still prevent handoff. `createControllerInitialGraphs` composes all adapters and
+board and schematic parity passed before adoption. USB mapping, eFuse anchors
+and test-pad paste removal were applied to initial object graphs before the first
+stage-file write. No existing native design was edited.
+The adopted placed export contains H1..H4 mounting-hole footprints, four copper
+layers and nine total NPTHs. Source/native renders were inspected. Final enclosure
+fit, native assembly details and routed-board verification remain open after
+handoff. `createControllerInitialGraphs` composes all adapters and
 refreshes every child schematic cache; it creates fresh graphs without reading
 or writing any native file. Its caller must use guarded staging/adoption.
 
@@ -202,11 +219,11 @@ chip MPN, pin multiset/name and shared library copy before any mutation. Instanc
 pins retain UUID-only syntax. Unknown parts or incomplete batches fail closed.
 The full-board test and actual KiCad XML readback cover all 95 components.
 
-Native supply flags are still required at reviewed external and post-diode/inductor
-rails. Passive bootstrap/timing/programming terminals do not replace analogue
-circuit checks. The exporter repeats some passive library IDs with differing
-default Value properties; every copy is typed, with deduplication still part of
-native cleanup. Pin metadata is not a clean ERC result.
+The initial exporter now adds the four reviewed supply flags and derives
+per-reference project symbols, avoiding the earlier repeated-library-ID default
+conflicts. Passive bootstrap/timing/programming terminals do not replace analogue
+circuit checks. Pin metadata alone does not establish clean ERC; the adopted
+project's separate strict cleanup does.
 
 Physical bodies and courtyards use independent centres where necessary. The
 WROOM native body centre is (0,-3); its compiled copper bounding-box centre is
@@ -246,7 +263,7 @@ sanitization, while preserving exact MPN values. Tests check late-batch rejectio
 all 95 emitted instances and preservation of everything except those properties.
 H1..H4 are board-only mechanical items excluded from schematic, BOM and CPL.
 
-The current disposable native stage is
+The earlier library-preservation proof used
 `/tmp/crystal-shim-native-library-plan/geometry-stage-gtJYOj`.
 `final-production-parity.json` records zero strict board/schematic parity errors,
 zero intrinsic geometry drift and zero physical-pad net drift after shared
@@ -302,7 +319,7 @@ The native readback contract covers the current front-side controller, normal
 pad stacks and front-side SMD custom copper. Models, footprint zones, per-layer
 pad stacks, back-side footprints and unsupported graphic shapes fail closed
 until their validation is implemented. This proves source geometry preservation,
-not ERC/DRC or manufacturing readiness. No native library is checked in by this
-step. Register an adopted project-local library through KiCad's Project Specific
-Footprint Libraries GUI using a `${KIPRJMOD}` URI; this tool does not text-write
-`fp-lib-table`.
+not ERC/DRC or manufacturing readiness. The exporter itself does not register or
+adopt a library. The adopted controller's footprint and symbol tables were
+subsequently saved through the native project-library dialogs with `${KIPRJMOD}`
+URIs. This tool does not text-write either library table.

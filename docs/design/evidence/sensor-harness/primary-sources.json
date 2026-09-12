@@ -1,0 +1,93 @@
+{
+  "captured_date": "2026-09-12",
+  "status": "Candidate research only; no supplier availability, price, purchase or physical acceptance claim.",
+  "archive_policy": "Only metadata and original project calculations/drawing are stored; manufacturer PDFs are not copied into the repository.",
+  "http_user_agent": "OpenAI File Downloader, XaiImageApiFetch/1.0",
+  "sources": [
+    {
+      "id": "alpha-78073",
+      "url": "https://www.alphawire.com/disteAPI/SpecPDF/DownloadProductSpecPdf?productPartNumber=78073",
+      "supports": "Three-pair 24 AWG cable construction, insulation/jacket dimensions, 10D bend, nominal capacitance/resistance and put-ups.",
+      "accessed": "2026-09-12",
+      "retrieval": "Downloaded primary PDF; parsed locally",
+      "sha256": "f2365f22abb18b351aa383a4fd67785354f66a62c7ef91e981d9d19b194daa21",
+      "bytes": 413359
+    },
+    {
+      "id": "belden-9503",
+      "url": "https://catalog.belden.com/techdata/EN/9503_techdata.pdf",
+      "supports": "Three-pair 24 AWG construction, nominal jacket/insulation dimensions, shield/drain, 58 mm stationary/install radius. Direct download returned HTML and is not a PDF receipt.",
+      "accessed": "2026-09-12",
+      "revision": "0.557, 2026-02-20",
+      "retrieval": "Read primary document using web tools; no validated PDF archived"
+    },
+    {
+      "id": "belden-mrta3p24u",
+      "url": "https://www.belden.com/products/cable/electronic-wire-cable/multi-pair-cable/mrta3p24u",
+      "supports": "Three-pair 24 AWG construction, nominal 4.1 mm jacket and dynamic flex test radii; static bend/insulation OD/capacitance not established.",
+      "accessed": "2026-09-12",
+      "retrieval": "Read primary document using web tools; no validated PDF archived"
+    },
+    {
+      "id": "molex-43030-0007",
+      "url": "https://www.molex.com/en-us/products/part-detail/43030-0007",
+      "supports": "Tin contact, 24 AWG, 1.85 mm maximum insulation; reel packaging alternative 43030-0001.",
+      "accessed": "2026-09-12",
+      "retrieval": "Read primary document using web tools; no validated PDF archived"
+    },
+    {
+      "id": "molex-63901-8900",
+      "url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/639/63901/ATS-639018900-001.pdf",
+      "supports": "Applicator includes tin reel 43030-0001, 24 AWG, preferred insulation OD 0.91–1.09 mm and crimp/strip/pull specifications. Direct PDF download timed out.",
+      "accessed": "2026-09-12",
+      "revision": "H, 2026-02-11",
+      "retrieval": "Read primary document using web tools; no validated PDF archived"
+    },
+    {
+      "id": "molex-63811-2800",
+      "url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63811/ATS-638112800-001.pdf",
+      "supports": "Actual hand-tool page 1 specifies insulation OD 1.42–1.85 mm for 20–24 AWG contacts; not an in-range recipe for 78073. Direct PDF download timed out.",
+      "accessed": "2026-09-12",
+      "revision": "D, 2008-04-15",
+      "retrieval": "Read primary document using web tools; no validated PDF archived"
+    },
+    {
+      "id": "molex-63819-0000",
+      "url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/applicationtoolingspecificationpdf/638/63819/ATS-638190000-001.pdf",
+      "supports": "Actual hand-tool page 1 specifies insulation OD 1.42–1.85 mm for 20–24 AWG contacts; not an in-range recipe for 78073. Direct PDF download timed out.",
+      "accessed": "2026-09-12",
+      "revision": "G, 2016-06-23",
+      "retrieval": "Read primary document using web tools; no validated PDF archived"
+    },
+    {
+      "id": "lapp-gland",
+      "url": "https://products.lappgroup.com/fileadmin/documents/technische_doku/datenblaetter/skintop/DB53111000EN.pdf",
+      "supports": "53111100 STR-M M12 dimensions, generic clamping range and material; M12 table lists no included O-ring.",
+      "accessed": "2026-09-12",
+      "revision": "18, 2025-01-24",
+      "retrieval": "Downloaded primary PDF; parsed locally",
+      "sha256": "cc00fc89bdb3f73e47d106f95a6a9b80e8eda51c15d109fe91c763dff4d4fd12",
+      "bytes": 135574
+    },
+    {
+      "id": "lapp-locknut",
+      "url": "https://products.lappgroup.com/fileadmin/documents/technische_doku/datenblaetter/skintop/DB53119000EN.pdf",
+      "supports": "53119000 M12 locknut dimensions.",
+      "accessed": "2026-09-12",
+      "revision": "09, 2019-02-19",
+      "retrieval": "Downloaded primary PDF; parsed locally",
+      "sha256": "5b1bf4cad6e089449df4cd0b1989adf4b5bbe3eaefe166a151ee361fd6cd5518",
+      "bytes": 121654
+    },
+    {
+      "id": "lapp-installation",
+      "url": "https://imager.lapp.com/e/lapp/a6G4nvkL02p-wg_DJCmXyg~~/BZ99990621DE_EN.pdf",
+      "supports": "M12 STR-M EN 62444 range 4–5 mm, recommended torque and jacket-dependent adjustment, mounting recipe.",
+      "accessed": "2026-09-12",
+      "revision": "VS20",
+      "retrieval": "Downloaded primary PDF; parsed locally",
+      "sha256": "ad85793d470b538d5007e01a5a0f58f561c59b0ee8e4dc4dfad764451f7a0646",
+      "bytes": 90165
+    }
+  ]
+}

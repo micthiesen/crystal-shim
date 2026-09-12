@@ -1267,6 +1267,102 @@ Evidence: `/tmp/crystal-shim-notifications-final-full-check.log`. The final C6
 ELF hash, size and offline binary export are recorded in [Pushover delivery](pushover.md).
 No whole-project electrical, manufacturing or operating sign-off is implied.
 
+## Offline signed-time agreement, 2026-09-12
+
+The offline Roughtime crate now owns one request per compiled provider in
+`AgreementRound`, derives transport bounds from an explicit caller rate model,
+and checks original request/round deadlines through completion. Both verified
+intervals project to the latest original receive capture. Inclusive overlap and
+a hull no wider than 20,000 ms are required; no single-provider fallback, external
+sample import or retained-sample retry is available. This returns a candidate
+observation without app linkage or authority adoption. See
+[the implemented contract](unattended-time.md#offline-two-provider-agreement).
+
+Independent adversarial review found no actionable defect across the complete
+public API, request/root binding, historical receive order, failure closure,
+overflow, rollback, expiry and hull preservation. The scratch copy passed all
+31 project tests plus three independent cases. Those include 24 independent clock
+models spanning positive/negative rate error, either honest provider, both receive
+processing orders and an overlapping attacker whose interval excludes true time.
+All retained honest UTC. A separate external integration test passed through the
+production public API with captured signatures and no test-root override. All
+204 existing Cargo lock package versions/sources/checksums were unchanged.
+
+Evidence is `/tmp/crystal-shim-time-agreement-review/{REVIEW.md,evidence.json}`,
+with scratch tests and logs in the same directory. The independently reviewed
+`agreement.rs` hash is
+`9a3dec59d1178fc4b087a769281b808b123a3c2b7a8f82d1e625d94acd8d2f06`.
+This was a scoped offline review, not a full project gate. No live queries,
+credentials, hardware or app adoption were used. Provider availability, historical
+delegated-key security, cross-boot nonce quality, a justified hardware drift bound,
+C6 crypto execution context/latency and generation checks at future app adoption
+remain explicit limits. Current operating UTC stays on the CASE/operator path.
+
+## Controller adoption and native rule review, 2026-09-12
+
+The reviewed controller stage was copied into `pcb/controller/kicad`; every one
+of its 113 native files matched the original receipt before the initial lock was
+created. KiCad's GUI then saved all eight schematic sheets, enabled the previously
+ignored checks and relocated both project library tables to `${KIPRJMOD}`.
+Strict source/schematic parity and ERC pass. Historical stage evidence is retained
+under `evidence/initial`; [later operation evidence](../../pcb/controller/kicad/evidence/basic-augmentation/readback.json)
+binds the actual saved board, project, rule readback and augmentation plan.
+
+Independent review found four actionable evidence/tooling issues: a proposed
+header-only thickness correction would disagree with the detailed stack; the
+initial lock did not describe later rule changes; the shared snapshot asked the
+wrong native object for thickness; and the adoption record described the original
+library paths as current. The native stack/header now consistently total 1.6062 mm,
+while source 1.6 mm remains nominal ordering data. No dielectric was rescaled.
+The initial lock remains historical, and a separate one-change augmentation plan
+plus preservation proof authorizes only the rules category. Relocation has exact
+current table hashes. The shared checker now queries design settings and rejects
+an unavailable API; both new regressions fail on the previous code. The fix is
+identical in Stillair and Crystal Shim.
+
+The bounded independent follow-up found all four findings resolved, with no
+actionable residual. Every retained operation/evidence hash matches the current
+board/project and the augmentation plan; report:
+`/tmp/crystal-shim-controller-adopted-settings-rereview`. Effective rule readback
+depends on the adjacent same-stem `.kicad_pro`: a board-only scratch copy returns
+KiCad defaults. The adopted directory includes that project and records its hash.
+
+Native readback covers eight rule fields, 45 Default and six USB90 assignments,
+the detailed layer tree, and a consistent native thickness. A separate comparison
+against the pre-stack board proves that only `setup.stackup` and
+`general.thickness` changed; the project bytes stayed unchanged during that step.
+The complete preservation gate also retains every source/schematic domain and
+all unrelated KiCad categories. Strict ERC remains clean and DRC reports zero
+ordinary violations with 216 unconnected items. The current native top render was
+inspected. No tracks, vias or zones were added. Mask thickness/loss tangent remain
+unverified defaults, with dielectric constraints disabled. Full augmentation,
+mechanical fit, routing and fabrication remain open.
+
+The integrated `sh scripts/check.sh` passes: 157 core, nine driver, one CLI,
+72 Matter/provisioning, 20 Pushover, 31 Roughtime and 31 settings tests; the existing
+partition, UI and actual-worker/TLS suites; embedded fmt/clippy/release build;
+116 PCB tests with 23,670 assertions; and 38 shared handoff tests. Stillair also
+passes all 38 handoff tests. Logs are
+`/tmp/crystal-shim-adoption-agreement-full-check.log` and
+`/tmp/crystal-shim-stillair-thickness-tests.log`. This is a source/native checkpoint,
+not a manufacturing or operating sign-off.
+
+## Sensor harness research review, 2026-09-12
+
+The [harness study](sensor-harness.md) records Alpha 78073, a reduced-insert LAPP
+gland and a sideways sensor-header candidate. Independent primary-source and
+arithmetic review found no actionable defect. It reproduced the flat 197.945516 mm
+route and the optional 199.047396 mm low-point route with a conservative
+50.932241 mm minimum centreline radius. Six-pin pairing, internal/end length
+inclusion and the exact Molex applicator/manual-tool distinction were checked.
+
+Evidence: `/tmp/crystal-shim-harness-adversarial/{REVIEW.md,calculations.json,source-hashes.json}`.
+The reviewed document hash is
+`c2db79e4b8ff94910522439996ed7a5206cc1da00c7d62764f7987de80d87cb8`.
+This does not approve the explicitly conditional mated datums, surface height,
+clip restraint, water exposure or supplier availability. No BOM, sensor placement,
+purchase or physical result changed.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

@@ -51,7 +51,7 @@ fn fields(bytes: &[u8]) -> Fields {
         .collect()
 }
 
-fn set(fields: &mut Fields, key: &[u8; 4], value: impl AsRef<[u8]>) {
+pub(super) fn set(fields: &mut Fields, key: &[u8; 4], value: impl AsRef<[u8]>) {
     fields
         .iter_mut()
         .find(|(candidate, _)| *candidate == tag(key))
@@ -65,7 +65,7 @@ fn remove(fields: &mut Fields, key: &[u8; 4]) {
 
 // Deliberately public, deterministic TEST-ONLY keys. No production entry point
 // accepts these roots or contains a private signing key.
-fn root() -> SigningKey {
+pub(super) fn root() -> SigningKey {
     SigningKey::from_bytes(&[41; 32])
 }
 fn delegated() -> SigningKey {
@@ -76,15 +76,15 @@ fn sign(key: &SigningKey, context: &[u8], message: &[u8]) -> [u8; 64] {
     key.sign(&[context, message].concat()).to_bytes()
 }
 
-struct Model {
+pub(super) struct Model {
     top: Fields,
     delegation: Fields,
-    signed: Fields,
+    pub(super) signed: Fields,
     certificate_extra: Fields,
 }
 
 impl Model {
-    fn new(request: &Request) -> Self {
+    pub(super) fn new(request: &Request) -> Self {
         Self {
             top: vec![
                 field(b"NONC", request.nonce),
@@ -108,7 +108,7 @@ impl Model {
         }
     }
 
-    fn encode(self) -> Vec<u8> {
+    pub(super) fn encode(self) -> Vec<u8> {
         let delegation = encode(self.delegation);
         let signed = encode(self.signed);
         let mut certificate = self.certificate_extra;

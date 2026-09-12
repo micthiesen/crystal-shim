@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "status": "initial-export-only",
+  "board_id": "controller.board.main",
+  "manifest_digest": "f7b20224e07e97b64c537c99f27dd24dfbb083f58721c6feeb6cf2b0142d579b",
+  "input_sha256": {
+    "manifest": "63d160706ed599156e92777585cddeb271cc3295e0879df8a6fa62eec47522e7",
+    "augmentation": "1b4aad57aaf1c8582e2c3e61c89e22d49ebb6cde73d553ae9fd37326234134f0"
+  },
+  "generator_sha256": {
+    "bun.lock": "af097f92a8b20b3d74f71478f9f586ad63f98c095b5543fa13d50147fa6e1dd6",
+    "controller/design/apply-controller-initial-rules.py": "20af10acf0fe1a8fffaeb47f49abc720dad57e2ec8c23afd49e650eef080f8da",
+    "controller/design/assembly-components.tsx": "2d7195f3c40a94d63eb079bc83a95dae9648dfdc23de5be919a3729ba29d3fb1",
+    "controller/design/cable-protection-components.tsx": "ad5baff9dd005cc8fe74bf4451aa057f8141bcf1a3446edeaa81fda379f42979",
+    "controller/design/cable-protection-land-patterns.ts": "6173cc5f46bb23719d55bf34e557d5e1f986eb09f2869c727bf33595d68cdfa9",
+    "controller/design/connector-physical-initial-export.ts": "7b6dfe6230644f36011179a83ed22d44de0622de138e12a0b94f532187d5004c",
+    "controller/design/connector-physical-models.ts": "d247f090d2a9b1255abb6642ed1f7ccf2cb368bb30a87f1ee43da0e17079e1fe",
+    "controller/design/controller-initial-export.ts": "f3f08757f3f3afac5e7255a8d7b5c37b734f4c621785fa80ffd2ba63d7d91ee2",
+    "controller/design/controller-initial-pcb.ts": "2dc147c10f3e4691dd16eb84db9047b71454f3f4dfa15686d729261ed3fc7b2c",
+    "controller/design/controller.circuit.tsx": "23eeb3de753d0e9b83c71751e7de72b4fc4dac8081d9c1fe015ddcd325e13ca0",
+    "controller/design/design-manifest.ts": "979e2c6112cab75b78f83d79bf49c32a3b2b4d705c51d76cbc403b3b50f72845",
+    "controller/design/esp32-c6-wroom.tsx": "1bbd3cf614f70dbbf8fda2a6cc7fe5e336220c45f6f622fee2faff70721e7788",
+    "controller/design/export-native-footprints.py": "54878c89317dde6ec826ac185a60fa45b83b0b52aa05c9d8e5f0081ad0a6d85c",
+    "controller/design/fields-initial-export.ts": "05021ef342e05a91498100189e0185c55476b14f3542c3e6235ad6e5a29deb97",
+    "controller/design/footprint-geometry-identity.ts": "55835250c7424ed56a668950703e64dc3dc682a6083fe6b13cc26c225492884a",
+    "controller/design/footprint-origin-initial-export.ts": "f48b4847f5c891525938ee4846d5f806335634474b27cc487763d5506bd4cee6",
+    "controller/design/ic-components.tsx": "2e7409a776753d2c42918be46ca188a4375be598140dde29cb88e99dae6dd19c",
+    "controller/design/ic-land-patterns.ts": "f0a21290247de759a83138527a64357d8a74c4dd7a5fef55bde845884bb53e4e",
+    "controller/design/ic-physical-models.ts": "8928b71f67ae2249a0b3c7f31e4b4e17e4a2c314b505b54a54662dcb5e8680a5",
+    "controller/design/land-pattern-physical.ts": "8b70adc4ee384aac2a879ac20de339b3dd8dd93be94238857baf218a14585cf1",
+    "controller/design/land-pattern.tsx": "2a2c5d0b01d2c045d02b287d5e38f031deae9dfe87ec14b621aa91ebbc9a766f",
+    "controller/design/logic-components.tsx": "ef64d153a5cf946fe289fc9df68a7484e39febbbe004c215041ed5b764852fe6",
+    "controller/design/logic-land-patterns.ts": "f82446e6d8b750937d5a598b1badc8fd08a9a9aa54714e6e8d745de325945591",
+    "controller/design/logic-power.tsx": "9a1c4f564ac9793c5b0f21112a9cc827f47772900d87db7cceccdfe46c00d99f",
+    "controller/design/manifest-parts.ts": "147e61d97c9e510b318b8737bebacdd39aa01a3f2e172cf655a7b6e8f251811a",
+    "controller/design/micro-fit-components.tsx": "2e5878e41b56f17b2071509e480ed725258941e326594af13a185de6eba5a6bf",
+    "controller/design/module-controls.tsx": "1faf87fc7e1de7617f3e31ccb55bf7a3cc0b6212f8acc217f1a28da583a61874",
+    "controller/design/mounting-holes-initial-export.ts": "bf9dd13ca5c7735e5fa426c8e85811622d6ef11e2afd1b7a54c973e9003b5a70",
+    "controller/design/passive-components.tsx": "b0177b64e3b350b88f6553821c3af24c7f796d710439549005bb680d2ef15459",
+    "controller/design/passive-land-patterns.ts": "cec4d4c7d0bc075ed529bbb4dcd6e916c4d0932d65309bd831aa371e77efb0fc",
+    "controller/design/passive-physical-models.ts": "15dc2cd9625c8800bfcd13abb5094510c8b706bc3c5ea9e5fb591c52dec37d16",
+    "controller/design/pin-electrical-contract.ts": "0201ff24629f2ccf7b86c92e1e6da3473bc747056e076f9a6f4b8a7514059ef6",
+    "controller/design/pin-electrical-initial-export.ts": "e3c6f5964bb6b1dcbf11b3637c1b1c2196451c14d8992667ca8c23e304f37b59",
+    "controller/design/placement-check.ts": "b4ec8cb83fd4227df35b5eb44e8bddb6724140937797246951a88241380d6506",
+    "controller/design/placements.ts": "03e20258dd60f04b14eb35328281d9d9d2056ef6e5b41929cf2a991afe1d81c7",
+    "controller/design/project-symbol-library-initial-export.ts": "d054dc796a9c0f420b54afb396a6c9fe82231cd7eebc1cfdfc58afd1b3dda06f",
+    "controller/design/protection-components.tsx": "d56d5a30d38c8fe13e90fcb1702b1736e0aaa20ac15036e1c878a32d0f37bc3c",
+    "controller/design/protection-land-patterns.ts": "267e3aba059436d481a4ab5cf74164dcf97e76aaefe46bef8e58bae5a1d2ca58",
+    "controller/design/register-controller-library.py": "11424c71ca9fd064119e02a59b7b18c8a2c95ead05b54c5843ca3cd4d1533e12",
+    "controller/design/relay-drive.tsx": "fa59f8ec9360c75e5d6ee427cbebf05ff799fcb3bcd6882fac2d762dbcc25972",
+    "controller/design/render-controller.tsx": "ff53129e4c5631682f629f38d9e0be7ad67a02c9b2126ba0d7a21f1bd1d0ae27",
+    "controller/design/render-parts.tsx": "39042874cea48a5079db17ac196b339b17ebdf4e77b64d0d6e3453022b4a36ca",
+    "controller/design/render-sections.tsx": "a92fc05effe191e6fe25ba8efce2c09c26694a963c94da441f488332689f1c19",
+    "controller/design/schematic-cleanup-initial-export.ts": "48003284c65361d23d531395b5251b51682a32ab087bdc317a1ccfc8368f5cad",
+    "controller/design/schematic-connectivity-check.ts": "cc0719bee482246e49c996dd8b49fa9cc30a6c4016e0510baed230192bccb86f",
+    "controller/design/sensor-interface.tsx": "e3d5826295a2cfc96d64f68ee849cb5dbdebf48747250302e7d8a3ff9a1734b1",
+    "controller/design/service-input.tsx": "19603fe0284a33bdc967c888fbaec29b921506173d407a6e7f51e9b71ed70486",
+    "controller/design/service-protection-components.tsx": "cc57ac7dec8de2414df8657f258040497b2d01635848f2f5481ec4b8b0630101",
+    "controller/design/service-protection-initial-export.ts": "556a3e262a92eafa084f2b5c83985719df1e5bf7ab87f6abcd2ede30eaa33f14",
+    "controller/design/service-protection-land-patterns.ts": "01f3ca51792a68d9f2ff6ea1eff07c38910c43c82d2bef9c49b166118c62f41d",
+    "controller/design/stage-controller-export.ts": "1cf9a4ce7a64849bf4d08e54105db4677367d1d316d31a60fac2e7b6273ed92a",
+    "controller/design/test-points.tsx": "4514f782b5ef8e964b94c6be53597aeaefcaff91b338c5864c68739200bde51a",
+    "controller/design/tht-footprint.tsx": "b956acd079efde562010380b5f5d679e45bd0b4c479e22e530fc612bbe62698f",
+    "controller/design/usb-connector.tsx": "147b9d44e2d30c1a9e127e98760bdcba9283ad109c7c1108ee4d429807e94472",
+    "controller/design/usb-initial-export.ts": "be93fe293f287b911d9dadd5b5cbf40f6744d818edba5485377cc20ee77f90b5",
+    "controller/design/usb-interface.tsx": "3447b64deb92b80933101d859d6496b459fdcb22f786ac31f46d1ad5813f51e8",
+    "controller/design/verify-initial-geometry.ts": "80e41767183480b908d9a9f171398e525780a3a2d286a591dcf71bc8363347d9",
+    "package.json": "e99a17ed4cd50c51a3b56a9f8567bf362c112f3cbb619c4014df6f782ae21a85",
+    "scripts/lib/schematic-grid-initial-export.ts": "aeaf10d0467a2f788e9f16c4954b854e7cde1bc31de951e3291dc878aa2a2db8",
+    "tools/kicad_python.sh": "b79ad593b8744ede8f7c752c03300063cdbeb8e2beaca6a9a93ceb0bec7edb1d",
+    "tools/tscircuit_handoff.py": "645baa905dc7aca636ac6e4e4cd00d5d17a97a9b5625d756ac2496710078801f"
+  },
+  "initial_files": [
+    {
+      "path": "controller.kicad_pcb",
+      "sha256": "f6540c165ca4295ec93c433192362a5468842553f428069e26b914a2989b2d6d"
+    },
+    {
+      "path": "controller.kicad_sch",
+      "sha256": "8a75972ca1d5addfd65f04987641ae9d51e80d69df346e58e888e00af467beb7"
+    },
+    {
+      "path": "relay.kicad_sch",
+      "sha256": "d3c5ba9a45c9a7258a0b1a62be62b5698b33092861725484aa15dca48768f817"
+    },
+    {
+      "path": "power.kicad_sch",
+      "sha256": "53c168b0c5102eb2d2706501d29394fc6b0e3998dbbb83dc1e4c7c638d8b51b7"
+    },
+    {
+      "path": "service.kicad_sch",
+      "sha256": "98fc1697c253c201cf557dfc7076c30fe374ae37d0988f1c2068c2d5ec5ca7ad"
+    },
+    {
+      "path": "module.kicad_sch",
+      "sha256": "9f0d707e53b35043144d7201b88c1a315396e2b8a6cc9980fca6e938eed4bcb4"
+    },
+    {
+      "path": "usb.kicad_sch",
+      "sha256": "3c54a139d6b045d917cd0a01dc4df0d527856fcc829df56c390a7f062624ded1"
+    },
+    {
+      "path": "sensorinterface.kicad_sch",
+      "sha256": "b5757d83fcb06337b36c4c9107a299aeded55ac6137bfcb04183312df1f69a6b"
+    },
+    {
+      "path": "testpoints.kicad_sch",
+      "sha256": "368aeaadf4cc4504f6596eb796654437bab372fd2badedb73f786efa69d10723"
+    },
+    {
+      "path": "CrystalShim_Controller.kicad_sym",
+      "sha256": "2bc9e9170640f0770e4c1a6ae26a78e0251c5928c3f1c78b98897f9a95380907"
+    }
+  ],
+  "native_library_receipt": {
+    "path": "footprints/native-footprints-receipt.json",
+    "sha256": "593a6d0afe920b625fd65daf750bc46628e88f68de9cd29fffb06b4b205d796f"
+  },
+  "native_library_registration": {
+    "path": "native-library-registration.json",
+    "sha256": "53cf8cd4eb9dbe6a0ef5dae45c720603504a3a8bc6a489a3f6b608f36efc72a8",
+    "tables": [
+      {
+        "path": "fp-lib-table",
+        "sha256": "b0f481033d7549d44a933a2e893259e07de4581f112063a3321b5fe5c8113e30"
+      },
+      {
+        "path": "sym-lib-table",
+        "sha256": "64c059a9d52ae7e1c787bd8989eec335376aefb76eb38005d446e74b08c12de8"
+      }
+    ],
+    "symbol_library": {
+      "path": "CrystalShim_Controller.kicad_sym",
+      "sha256": "2bc9e9170640f0770e4c1a6ae26a78e0251c5928c3f1c78b98897f9a95380907"
+    },
+    "tool": "Konnect 0.2.1 register_footprint_library + register_symbol_library",
+    "tool_sha256": "8e25443b16304f3f7a678247800bc541e5eb24a5db3700fc5b4b5d4c621b1914",
+    "script": "controller/design/register-controller-library.py",
+    "script_sha256": "11424c71ca9fd064119e02a59b7b18c8a2c95ead05b54c5843ca3cd4d1533e12"
+  },
+  "native_initial_rules": {
+    "path": "native-initial-rules.json",
+    "sha256": "518a26eb8aae9d6aa6a9ee0fd021ff5cd08a8564fae1c65e94ca6487ef550f43",
+    "project": {
+      "path": "controller.kicad_pro",
+      "sha256": "6b81a49d1948af724d685e0de86c3455143bd766364736406ed53596c13e7e2c"
+    },
+    "native_files": [
+      {
+        "path": "controller.kicad_pro",
+        "sha256": "6b81a49d1948af724d685e0de86c3455143bd766364736406ed53596c13e7e2c"
+      },
+      {
+        "path": "controller.kicad_prl",
+        "sha256": "79c537cb7ea30e31bc290a295cfa2d9e7edbbbdfc28391c5bca6c4092e8cf0eb"
+      }
+    ],
+    "applied_operation": "controller.augment.npth-clearance",
+    "kicad_version": "10.0.5",
+    "script": "controller/design/apply-controller-initial-rules.py",
+    "script_sha256": "20af10acf0fe1a8fffaeb47f49abc720dad57e2ec8c23afd49e650eef080f8da"
+  },
+  "limitations": "Initial project libraries, four source power annotations, monotone schematic grid and the declared NPTH rule applied; no adoption, handoff lock, completed augmentation, ERC/DRC or fabrication acceptance."
+}

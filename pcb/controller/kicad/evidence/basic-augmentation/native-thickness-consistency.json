@@ -1,0 +1,230 @@
+{
+  "scope": "Keep native thickness consistent with the saved stack using SetBoardThickness and SaveBoard; source 1.6 mm remains nominal ordering data",
+  "kicad_version": "10.0.5",
+  "board_before_sha256": "4a78b4ae67d89a0e9eb39f7484364c9627a94a6357f19b452d6f5f084dd4c412",
+  "board_after_sha256": "61f0d86d7133a6524ccca8029c78c25675ba2a42fadbf4d77f3697c75f0f0fe4",
+  "unchanged_project_sha256": "e2a88ebb7b7fca28ebcefeb304c8885182aaef057bb159a76448d61277b83858",
+  "script_sha256": "32be66b2270019c3cd27d525ad3adef0ef6f04bdd27f1af5ffd46f5b35b1e502",
+  "native_reload_thickness_mm": 1.6062,
+  "source_nominal_ordering_thickness_mm": 1.6,
+  "only_changed_serialized_semantics": [
+    "general.thickness"
+  ],
+  "detailed_stack_preserved": true,
+  "saved_stack_tree": [
+    "stackup",
+    [
+      "layer",
+      "\"F.SilkS\"",
+      [
+        "type",
+        "\"Top Silk Screen\""
+      ],
+      [
+        "color",
+        "\"White\""
+      ]
+    ],
+    [
+      "layer",
+      "\"F.Paste\"",
+      [
+        "type",
+        "\"Top Solder Paste\""
+      ]
+    ],
+    [
+      "layer",
+      "\"F.Mask\"",
+      [
+        "type",
+        "\"Top Solder Mask\""
+      ],
+      [
+        "color",
+        "\"Green\""
+      ],
+      [
+        "thickness",
+        "0.01"
+      ]
+    ],
+    [
+      "layer",
+      "\"F.Cu\"",
+      [
+        "type",
+        "\"copper\""
+      ],
+      [
+        "thickness",
+        "0.035"
+      ]
+    ],
+    [
+      "layer",
+      "\"dielectric 1\"",
+      [
+        "type",
+        "\"prepreg\""
+      ],
+      [
+        "thickness",
+        "0.2104",
+        "locked"
+      ],
+      [
+        "material",
+        "\"NanYa NP-155F / 7628\""
+      ],
+      [
+        "epsilon_r",
+        "4.4"
+      ],
+      [
+        "loss_tangent",
+        "0.02"
+      ]
+    ],
+    [
+      "layer",
+      "\"In1.Cu\"",
+      [
+        "type",
+        "\"copper\""
+      ],
+      [
+        "thickness",
+        "0.0152"
+      ]
+    ],
+    [
+      "layer",
+      "\"dielectric 2\"",
+      [
+        "type",
+        "\"core\""
+      ],
+      [
+        "thickness",
+        "1.065",
+        "locked"
+      ],
+      [
+        "material",
+        "\"NanYa NP-155F core\""
+      ],
+      [
+        "epsilon_r",
+        "4.6"
+      ],
+      [
+        "loss_tangent",
+        "0.02"
+      ]
+    ],
+    [
+      "layer",
+      "\"In2.Cu\"",
+      [
+        "type",
+        "\"copper\""
+      ],
+      [
+        "thickness",
+        "0.0152"
+      ]
+    ],
+    [
+      "layer",
+      "\"dielectric 3\"",
+      [
+        "type",
+        "\"prepreg\""
+      ],
+      [
+        "thickness",
+        "0.2104",
+        "locked"
+      ],
+      [
+        "material",
+        "\"NanYa NP-155F / 7628\""
+      ],
+      [
+        "epsilon_r",
+        "4.4"
+      ],
+      [
+        "loss_tangent",
+        "0.02"
+      ]
+    ],
+    [
+      "layer",
+      "\"B.Cu\"",
+      [
+        "type",
+        "\"copper\""
+      ],
+      [
+        "thickness",
+        "0.035"
+      ]
+    ],
+    [
+      "layer",
+      "\"B.Mask\"",
+      [
+        "type",
+        "\"Bottom Solder Mask\""
+      ],
+      [
+        "color",
+        "\"Green\""
+      ],
+      [
+        "thickness",
+        "0.01"
+      ]
+    ],
+    [
+      "layer",
+      "\"B.Paste\"",
+      [
+        "type",
+        "\"Bottom Solder Paste\""
+      ]
+    ],
+    [
+      "layer",
+      "\"B.SilkS\"",
+      [
+        "type",
+        "\"Bottom Silk Screen\""
+      ],
+      [
+        "color",
+        "\"White\""
+      ]
+    ],
+    [
+      "copper_finish",
+      "\"ENIG\""
+    ],
+    [
+      "dielectric_constraints",
+      "no"
+    ]
+  ],
+  "known_vendor_layer_sum_mm": 1.5862,
+  "unverified_kicad_defaults": {
+    "mask_thickness_each_mm": 0.01,
+    "dielectric_loss_tangent": 0.02
+  },
+  "limits": [
+    "Mask thickness and loss tangent are not manufacturer requirements.",
+    "Dielectric constraints remain disabled; no fabrication job is released.",
+    "A later GUI stack edit can recalculate the native header; recheck both the stack and header."
+  ]
+}

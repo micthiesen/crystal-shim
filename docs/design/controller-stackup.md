@@ -12,6 +12,37 @@ records application and verification obligations; every native operation still
 needs saved-board evidence. No routing, detailed stackup or thermal/paste
 augmentation is complete merely because it appears in that declaration.
 
+## Applied native subset
+
+The adopted [KiCad project](../../pcb/controller/kicad/README.md) now contains
+the reviewed copper/dielectric thicknesses, material labels and Er values below,
+with green mask, white silk and ENIG. KiCad's GUI saved the detailed stack;
+native readback verifies the basic rules and Default/USB90 routing preferences.
+No tracks, vias or copper zones have been added.
+
+The known nominal copper and dielectric layers sum to **1.5862 mm**. KiCad adds
+its still-unverified **0.010 mm mask on each side**, giving a consistent saved
+stack and native board thickness of **1.6062 mm**. The tscircuit **1.6 mm** value
+continues to mean nominal ordering thickness. Do not force only the native header
+to 1.6 mm while retaining a different stack sum: mechanical exports and via-length
+calculations must describe the same native stack. Neither value proves the
+fabricated thickness; use the selected vendor tolerance for mechanical clearance.
+
+KiCad also retains an unverified **0.02 dielectric loss tangent**. Its dielectric
+constraints flag remains disabled. These placeholders are not supplier acceptance
+values and do not replace the separately recorded USB solver mask model. Resolve
+their fabrication-output treatment before generating a manufacturing package.
+
+Basic rules now read back as 0.15 mm clearance/minimum track, 0.20 mm minimum via
+drill, 0.35 mm minimum via diameter, 0.075 mm annulus, 0.20 mm hole-to-copper,
+0.09 mm mask-opening-to-other-copper and 0.10 mm mask merging threshold.
+The last setting merges close mask apertures when plotting; it does not independently
+prove a physical 0.10 mm mask web. Default uses 0.25 mm routing width and
+0.30/0.60 mm drill/pad preferences. All six USB nets use USB90's 0.24 mm width
+and 0.15 mm differential gap while retaining 0.15 mm ordinary clearance.
+The **0.50 mm grounded side spacing** remains a separate route requirement.
+Net-class routing preferences are not hard minimum-width enforcement.
+
 ## Stack and USB geometry
 
 The selected vendor template is `30726297697b4c18a0946278a48fb7d8`, displayed as

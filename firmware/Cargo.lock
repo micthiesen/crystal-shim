@@ -221,6 +221,7 @@ dependencies = [
 name = "crystal-shim-roughtime"
 version = "0.1.0"
 dependencies = [
+ "crystal-shim-core",
  "ed25519-dalek",
  "sha2",
 ]

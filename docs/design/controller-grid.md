@@ -1,4 +1,43 @@
-# Initial controller grid and native save
+# Controller grid, native save and adoption
+
+## Adopted project status
+
+The reviewed stage has been adopted at
+[`pcb/controller/kicad`](../../pcb/controller/kicad/), with
+[`design/handoff.lock.json`](../../pcb/controller/design/handoff.lock.json).
+The original 113 native files were copied byte-for-byte and verified against the
+stage before the lock was created.
+[`adoption.json`](../../pcb/controller/kicad/evidence/adoption.json) and the
+retained initial receipts record that sequence; their stage paths describe the
+original evidence, not the current library location.
+
+Both repository-local libraries now have native-saved `${KIPRJMOD}` URIs:
+`footprints/CrystalShim_Controller.pretty` and `CrystalShim_Controller.kicad_sym`.
+All eight adopted schematic sheets were saved and pass strict source/net cleanup
+with no ignored categories or findings, including exclusion severity. The report
+is `/tmp/crystal-shim-controller-adopted-cleanup.json`; its ERC SHA-256 is
+`157021c2c89a83522bdcd5703409f6ef180dbc6cd32759f9b0e8c8a343925050`.
+
+Basic native settings have been applied and independently reloaded: eight rule
+fields, including the 0.35 mm minimum via diameter and 0.10 mm mask-aperture merge
+threshold, plus routing preferences for all 51 nets. Six USB nets use 0.24 mm
+width and 0.15 mm pair gap; the remaining 45 retain Default preferences. This does
+not enforce the separate 2 mm power-spine or physical mask-web obligations.
+`/tmp/crystal-shim-controller-basic-settings` retains the application, fresh
+readback and DRC reports. That DRC has **216 unrouted items and zero violations**.
+
+The known vendor nominal stack layers have been entered through the GUI. The
+source-owned nominal 1.6 mm board-header correction and final saved-stack readback
+remain in progress; this record does not claim complete stackup evidence. The
+[stackup contract](controller-stackup.md) tracks the remaining details. Native
+thermal/paste/other augmentation, mated enclosure fit, complete design review,
+routing and fabrication remain open. Adoption and strict schematic cleanup are
+not manufacturing or operating acceptance.
+
+The sections below retain the preceding source and native-save experiments in
+order. Their stage-specific counts and limitations are historical evidence.
+
+## Initial grid transform
 
 The fresh initial exporter converts each schematic's electrical anchors onto the
 1.27 mm grid while preserving their strict order. It works on cloned typed graphs
@@ -35,16 +74,17 @@ only that merged wire group reproduced the failure. Reversing its endpoints did
 not fix it. Adding explicit dots at already connected branch nodes preserved
 native connectivity both before and after the exact native wire merges.
 
-The source adds 16 USB dots only where every incident wire was already connected
-by shared endpoints, positive-length collinear overlap or an existing explicit
-junction. It does not join an isolated T endpoint on another wire's interior or
+The initial grid fix added 16 USB dots only where every incident wire was already
+connected by shared endpoints, positive-length collinear overlap or an existing
+explicit junction. It does not join an isolated T endpoint on another wire's interior or
 a plain crossing. Tests cover those negative cases, four-way branches, unchanged
-wire geometry/UUIDs, coordinate arity and idempotence. All 443 source wires and
-34 original junctions remain, with 16 new dots. Other sheets need none.
+wire geometry/UUIDs, coordinate arity and idempotence. That version retained all
+443 source wires and 34 original junctions, with 16 new dots. Other sheets needed
+none.
 
 ## Evidence and limits
 
-The declaration-bound stage is
+The initial grid declaration-bound stage was
 `/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-g3sx3ru0`.
 All eight stage commands pass. The native output retains 95 electrical parts,
 99 physical footprints, 274 logical pins, 51 named nets with 254 connected pins
@@ -64,11 +104,10 @@ defect. Its six focused tests pass 5,493 assertions, including zero-length
 polyline and all-eight-sheet native-save checks. That scope excludes electrical
 design, remaining display overlap and downstream routing.
 
-The four initial ignored checks remain single_global_label, four_way_junction,
-simulation_model_issue and footprint_filter. Enabling them, J4 label legibility,
-remaining native augmentation, mechanics and routing are still required before
-adoption/release. Neither a clean enabled ERC nor this native-save proof is a
-fabrication authorization. No production board or handoff lock is adopted.
+At that stage, single_global_label, four_way_junction, simulation_model_issue
+and footprint_filter remained ignored, and J4 legibility was still open. The USB
+and module work below subsequently closed those schematic issues. This earlier
+native-save proof did not itself authorize adoption or fabrication.
 
 A subsequent native-GUI investigation enabled all four deferred checks in the
 same disposable copy, without changing the source stage or its declaration.
@@ -76,7 +115,7 @@ same disposable copy, without changing the source stage or its declaration.
 simulation_model_issue report zero findings. Seven single_global_label findings
 remain, all sheet-internal USB net names: USB_CC1, USB_CC2, USB_D_N_PORT,
 USB_D_P_PORT, USB_SWITCH_OE_N, USB_D_P_SWITCH and USB_D_N_SWITCH. Their naming and
-source-parity treatment need explicit resolution before promoting the policy.
+source-parity treatment required the source-layout correction below.
 This evidence does not silently remove the initial stage's declared exceptions.
 
 ## USB source layout and label evidence
@@ -109,7 +148,7 @@ branch. PCB lint, format, typecheck and 115 tests with 23,491 assertions pass.
 Native full-sheet renders and detailed J4/U9/U8/U7 views were inspected for the
 changed layout.
 
-The new declaration-bound stage is
+The USB-layout declaration-bound stage was
 `/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gae9l3qz`.
 All eight stage commands pass. Native schematic parity remains exact, enabled ERC
 and DRC violations are zero, and 216 unrouted items remain. Its four initially
@@ -130,14 +169,12 @@ were enabled and saved. The resulting `erc-strict.json` exits zero, contains
 actual rewrite, native readback and strict report; its ERC report SHA-256 is
 `59a4aa50d8a3c2c9d74ea4abea015aecb8b2819283bf93304373db92a5df8e90`.
 
-This verifies the saved schematic under strict policy. Fresh stages still inherit
-KiCad's four default ignored categories, so their initial policy remains explicit.
-Before-routing cleanup must reject an ignored category even when initial staging
-permits it. That gate is being independently audited before adoption. Root also
-inspected the full USB page and J4/U8 details. Existing module-page labels cross
-the left frame, and the R53 CHIP_EN label crosses its wire; source layout and
-complete-page acceptance remain open. No production board or handoff lock is
-adopted, and this evidence does not authorize routing or fabrication release.
+This verified the saved USB schematic under strict policy. Fresh stages retain
+KiCad's four explicit default ignored categories, while the before-routing cleanup
+gate rejects any ignored category. At this point the gate audit and module-page
+label/frame crossings remained open; the next section records their resolution.
+The full USB page and J4/U8 details were inspected. This intermediate proof did
+not authorize routing or fabrication release.
 
 
 ## Module page and strict cleanup gate
@@ -151,7 +188,7 @@ proves each one serves only C9.1, R53.2, R55.1 or U1.3; the old source fails tha
 regression. Current initial source has 427 wires and seven added branch dots;
 the grid algorithm is unchanged. Evidence is `/tmp/crystal-shim-module-layout`.
 
-The current guarded stage is
+The final pre-adoption guarded stage was
 `/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gaya1rm0`.
 All eight stage commands pass. Root opened its byte-copy at
 `/tmp/crystal-shim-controller-module-gui` through the native project editor,
@@ -175,6 +212,7 @@ old source fails the ignored-rule regression. Both shared Python suites pass
 no exclusion entries. The initial/default policy and strict cleanup policy remain
 separate, explicit stages.
 
-This closes the identified page defects and strict schematic-cleanup check for
-this candidate. Native board augmentation, mated enclosure fit, complete design
-review, routing and fabrication still remain; no board or lock has been adopted.
+This closed the identified page defects and strict schematic-cleanup check for
+the candidate subsequently adopted above. The adopted project retains this strict
+policy. Native board augmentation, mated enclosure fit, complete design review,
+routing and fabrication remain separate obligations.

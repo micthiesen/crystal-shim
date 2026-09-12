@@ -68,10 +68,14 @@ MbedTLS clock works only alongside that full-horizon restriction. Accepted
 authority generation, source epoch, expiry and rollback are checked throughout
 the operation; cancellation drops the complete session.
 
-The public Roughtime verifier remains offline. Provider agreement, UDP scheduling,
-source adoption and drift-policy selection remain integration work. The Pushover
-worker can use the existing CASE/USB authority and future accepted intervals.
-This does not enable a new time authority or periodic time flash writes.
+The public Roughtime verifier and its [request-owning two-provider agreement
+coordinator](unattended-time.md#offline-two-provider-agreement) remain offline.
+The coordinator returns a candidate interval with its original capture, explicit
+caller rate bound and a maximum 20-second hull at agreement. UDP scheduling,
+source/operator generation coupling, control adoption and hardware drift-policy
+selection remain integration work. The Pushover worker can use the existing
+CASE/USB authority and future accepted intervals. This does not enable a new time
+authority or periodic time flash writes.
 
 ## Verification
 

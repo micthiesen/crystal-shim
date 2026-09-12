@@ -1,0 +1,3973 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "befa314e-3e3d-45a3-a1fb-db402fdf0a2d")
+	(paper "A2")
+	(lib_symbols
+		(symbol "CrystalShim_Controller:Controller_C1"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 1.7204 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "22uF"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_C1"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "GRM32ER71E226ME15L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "C cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_C1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_C1_0_1"
+				(polyline
+					(pts
+						(xy -1.016 3.2896) (xy -1.016 1.27) (xy -1.016 0) (xy -1.016 -1.27) (xy -1.016 -2.9013)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 3.2896) (xy 0.762 1.27) (xy 0.762 0) (xy 0.762 -1.27) (xy 0.762 -2.9013)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_C1_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_C2"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 1.7204 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "22uF"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_C2"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "GRM32ER71E226ME15L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "C cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_C2"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_C2_0_1"
+				(polyline
+					(pts
+						(xy -1.016 2.429) (xy -1.016 0) (xy -1.016 -2.2945)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.429) (xy 0.762 0) (xy 0.762 -2.2945)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_C2_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_C3"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 2.2939 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "22uF"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_C3"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "GRM32ER71E226ME15L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "C cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_C3"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_C3_0_1"
+				(polyline
+					(pts
+						(xy -1.016 3.2896) (xy -1.016 1.27) (xy -1.016 0) (xy -1.016 -1.27) (xy -1.016 -2.9013)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 3.2896) (xy 1.016 1.27) (xy 1.016 0) (xy 1.016 -1.27) (xy 1.016 -2.9013)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 0) (xy 1.016 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_C3_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 0.0113)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_C4"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 2.2939 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "22uF"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_C4"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "GRM32ER71E226ME15L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "C cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_C4"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_C4_0_1"
+				(polyline
+					(pts
+						(xy -1.016 2.429) (xy -1.016 0) (xy -1.016 -2.2945)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 2.429) (xy 1.016 0) (xy 1.016 -2.2945)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 0) (xy 1.016 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_C4_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 0.0113)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_C7"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 1.7204 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "100nF"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_C7"
+				(at -1.7877 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "C1608X7R1H104K080AA"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "C cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_C7"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_C7_0_1"
+				(polyline
+					(pts
+						(xy -0.8467 2.2531) (xy -0.8467 0) (xy -0.8467 -2.4003)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.8467 0) (xy -1.27 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.2531) (xy 0.762 0) (xy 0.762 -2.4003)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_C7_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0121)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_C8"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 1.7204 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "100nF"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_C8"
+				(at -1.8363 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "C1608X7R1H104K080AA"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "C cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_C8"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_C8_0_1"
+				(polyline
+					(pts
+						(xy -0.9295 2.4003) (xy -0.9295 0) (xy -0.9295 -2.5435)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.9295 0) (xy -2.54 0) (xy -3.81 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.4003) (xy 0.762 0) (xy 0.762 -2.5435)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_C8_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0242)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_D1"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 1.8925 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "STPS2L40U"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_D1"
+				(at -1.8064 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.st.com/resource/en/datasheet/stps2l40.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "STPS2L40U"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_D1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_D1_0_1"
+				(polyline
+					(pts
+						(xy -9.144 -3.3114) (xy 0 -3.3114) (xy 8.382 -3.3114) (xy 8.382 -1.27) (xy 8.382 0) (xy 8.382 1.27)
+						(xy 8.382 3.7973) (xy 0 3.7973) (xy -9.144 3.7973) (xy -9.144 1.27) (xy -9.144 0) (xy -9.144 -1.27)
+						(xy -9.144 -3.3114)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Controller_D1_1_1"
+				(pin passive line
+					(at -15.24 0 0)
+					(length 6.096)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 13.97 0 180)
+					(length 5.588)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_D2"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 1.8925 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "STPS2L40U"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_D2"
+				(at -1.8064 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.st.com/resource/en/datasheet/stps2l40.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "STPS2L40U"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_D2"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_D2_0_1"
+				(polyline
+					(pts
+						(xy -9.144 -2.8677) (xy 0 -2.8677) (xy 8.382 -2.8677) (xy 8.382 0) (xy 8.382 3.0359) (xy 0 3.0359)
+						(xy -9.144 3.0359) (xy -9.144 0) (xy -9.144 -2.8677)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Controller_D2_1_1"
+				(pin passive line
+					(at -15.24 0 0)
+					(length 6.096)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 13.97 0 180)
+					(length 5.588)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_L1"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "L"
+				(at 1.9554 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "4.7µH"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_L1"
+				(at -1.7109 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "SRP5030TA-4R7M"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_L1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_L1_0_1"
+				(polyline
+					(pts
+						(xy -7.6104 1.27) (xy -5.7078 1.27) (xy -5.7078 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.7078 0) (xy -5.7067 0.056) (xy -5.7034 0.112) (xy -5.6979 0.1677) (xy -5.6902 0.2232) (xy -5.6804 0.2784)
+						(xy -5.6684 0.3331) (xy -5.6542 0.3873) (xy -5.638 0.441) (xy -5.6196 0.4939) (xy -5.5992 0.5461)
+						(xy -5.5767 0.5974) (xy -5.5523 0.6478) (xy -5.5259 0.6972) (xy -5.4975 0.7456) (xy -5.4673 0.7928)
+						(xy -5.4353 0.8387) (xy -5.4015 0.8834) (xy -5.3659 0.9267) (xy -5.3287 0.9686) (xy -5.2899 1.009)
+						(xy -5.2495 1.0478) (xy -5.2076 1.0851) (xy -5.1643 1.1206) (xy -5.1196 1.1544) (xy -5.0736 1.1865)
+						(xy -5.0264 1.2167) (xy -4.9781 1.245) (xy -4.9287 1.2714) (xy -4.8783 1.2959) (xy -4.8269 1.3183)
+						(xy -4.7747 1.3388) (xy -4.7218 1.3571) (xy -4.6682 1.3734) (xy -4.614 1.3875) (xy -4.5592 1.3995)
+						(xy -4.5041 1.4094) (xy -4.4486 1.4171) (xy -4.3928 1.4226) (xy -4.3369 1.4258) (xy -4.2808 1.427)
+						(xy -4.2248 1.4258) (xy -4.1689 1.4226) (xy -4.1131 1.4171) (xy -4.0576 1.4094) (xy -4.0025 1.3995)
+						(xy -3.9477 1.3875) (xy -3.8935 1.3734) (xy -3.8399 1.3571) (xy -3.787 1.3388) (xy -3.7348 1.3183)
+						(xy -3.6834 1.2959) (xy -3.633 1.2714) (xy -3.5836 1.245) (xy -3.5353 1.2167) (xy -3.4881 1.1865)
+						(xy -3.4421 1.1544) (xy -3.3974 1.1206) (xy -3.3541 1.0851) (xy -3.3122 1.0478) (xy -3.2718 1.009)
+						(xy -3.233 0.9686) (xy -3.1958 0.9267) (xy -3.1602 0.8834) (xy -3.1264 0.8387) (xy -3.0944 0.7928)
+						(xy -3.0642 0.7456) (xy -3.0358 0.6972) (xy -3.0094 0.6478) (xy -2.985 0.5974) (xy -2.9625 0.5461)
+						(xy -2.9421 0.4939) (xy -2.9237 0.441) (xy -2.9075 0.3873) (xy -2.8933 0.3331) (xy -2.8813 0.2784)
+						(xy -2.8715 0.2232) (xy -2.8638 0.1677) (xy -2.8583 0.112) (xy -2.855 0.056) (xy -2.8539 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.8539 0) (xy -2.8528 0.056) (xy -2.8495 0.112) (xy -2.844 0.1677) (xy -2.8363 0.2232) (xy -2.8265 0.2784)
+						(xy -2.8145 0.3331) (xy -2.8003 0.3873) (xy -2.7841 0.441) (xy -2.7657 0.4939) (xy -2.7453 0.5461)
+						(xy -2.7228 0.5974) (xy -2.6984 0.6478) (xy -2.672 0.6972) (xy -2.6436 0.7456) (xy -2.6134 0.7928)
+						(xy -2.5814 0.8387) (xy -2.5476 0.8834) (xy -2.512 0.9267) (xy -2.4748 0.9686) (xy -2.436 1.009)
+						(xy -2.3956 1.0478) (xy -2.3537 1.0851) (xy -2.3104 1.1206) (xy -2.2657 1.1544) (xy -2.2197 1.1865)
+						(xy -2.1725 1.2167) (xy -2.1242 1.245) (xy -2.0748 1.2714) (xy -2.0244 1.2959) (xy -1.973 1.3183)
+						(xy -1.9208 1.3388) (xy -1.8679 1.3571) (xy -1.8143 1.3734) (xy -1.7601 1.3875) (xy -1.7053 1.3995)
+						(xy -1.6502 1.4094) (xy -1.5947 1.4171) (xy -1.5389 1.4226) (xy -1.483 1.4258) (xy -1.4269 1.427)
+						(xy -1.3709 1.4258) (xy -1.315 1.4226) (xy -1.2592 1.4171) (xy -1.2037 1.4094) (xy -1.1486 1.3995)
+						(xy -1.0938 1.3875) (xy -1.0396 1.3734) (xy -0.986 1.3571) (xy -0.9331 1.3388) (xy -0.8809 1.3183)
+						(xy -0.8295 1.2959) (xy -0.7791 1.2714) (xy -0.7297 1.245) (xy -0.6814 1.2167) (xy -0.6342 1.1865)
+						(xy -0.5882 1.1544) (xy -0.5435 1.1206) (xy -0.5002 1.0851) (xy -0.4583 1.0478) (xy -0.4179 1.009)
+						(xy -0.3791 0.9686) (xy -0.3419 0.9267) (xy -0.3063 0.8834) (xy -0.2725 0.8387) (xy -0.2405 0.7928)
+						(xy -0.2103 0.7456) (xy -0.1819 0.6972) (xy -0.1555 0.6478) (xy -0.1311 0.5974) (xy -0.1086 0.5461)
+						(xy -0.0882 0.4939) (xy -0.0698 0.441) (xy -0.0536 0.3873) (xy -0.0394 0.3331) (xy -0.0274 0.2784)
+						(xy -0.0176 0.2232) (xy -0.0099 0.1677) (xy -0.0044 0.112) (xy -0.0011 0.056) (xy 0 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0.0011 0.056) (xy 0.0044 0.112) (xy 0.0099 0.1677) (xy 0.0176 0.2232) (xy 0.0274 0.2784)
+						(xy 0.0394 0.3331) (xy 0.0536 0.3873) (xy 0.0698 0.441) (xy 0.0882 0.4939) (xy 0.1086 0.5461)
+						(xy 0.1311 0.5974) (xy 0.1555 0.6478) (xy 0.1819 0.6972) (xy 0.2103 0.7456) (xy 0.2405 0.7928)
+						(xy 0.2725 0.8387) (xy 0.3063 0.8834) (xy 0.3419 0.9267) (xy 0.3791 0.9686) (xy 0.4179 1.009)
+						(xy 0.4583 1.0478) (xy 0.5002 1.0851) (xy 0.5435 1.1206) (xy 0.5882 1.1544) (xy 0.6342 1.1865)
+						(xy 0.6814 1.2167) (xy 0.7297 1.245) (xy 0.7791 1.2714) (xy 0.8295 1.2959) (xy 0.8809 1.3183)
+						(xy 0.9331 1.3388) (xy 0.986 1.3571) (xy 1.0396 1.3734) (xy 1.0938 1.3875) (xy 1.1486 1.3995)
+						(xy 1.2037 1.4094) (xy 1.2592 1.4171) (xy 1.315 1.4226) (xy 1.3709 1.4258) (xy 1.427 1.427) (xy 1.483 1.4258)
+						(xy 1.5389 1.4226) (xy 1.5947 1.4171) (xy 1.6502 1.4094) (xy 1.7053 1.3995) (xy 1.7601 1.3875)
+						(xy 1.8143 1.3734) (xy 1.8679 1.3571) (xy 1.9208 1.3388) (xy 1.973 1.3183) (xy 2.0244 1.2959)
+						(xy 2.0748 1.2714) (xy 2.1242 1.245) (xy 2.1725 1.2167) (xy 2.2197 1.1865) (xy 2.2657 1.1544)
+						(xy 2.3104 1.1206) (xy 2.3537 1.0851) (xy 2.3956 1.0478) (xy 2.436 1.009) (xy 2.4748 0.9686) (xy 2.512 0.9267)
+						(xy 2.5476 0.8834) (xy 2.5814 0.8387) (xy 2.6134 0.7928) (xy 2.6436 0.7456) (xy 2.672 0.6972)
+						(xy 2.6984 0.6478) (xy 2.7228 0.5974) (xy 2.7453 0.5461) (xy 2.7657 0.4939) (xy 2.7841 0.441)
+						(xy 2.8003 0.3873) (xy 2.8145 0.3331) (xy 2.8265 0.2784) (xy 2.8363 0.2232) (xy 2.844 0.1677)
+						(xy 2.8495 0.112) (xy 2.8528 0.056) (xy 2.8539 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.8539 0) (xy 2.855 0.056) (xy 2.8583 0.112) (xy 2.8638 0.1677) (xy 2.8715 0.2232) (xy 2.8813 0.2784)
+						(xy 2.8933 0.3331) (xy 2.9075 0.3873) (xy 2.9237 0.441) (xy 2.9421 0.4939) (xy 2.9625 0.5461)
+						(xy 2.985 0.5974) (xy 3.0094 0.6478) (xy 3.0358 0.6972) (xy 3.0642 0.7456) (xy 3.0944 0.7928)
+						(xy 3.1264 0.8387) (xy 3.1602 0.8834) (xy 3.1958 0.9267) (xy 3.233 0.9686) (xy 3.2718 1.009) (xy 3.3122 1.0478)
+						(xy 3.3541 1.0851) (xy 3.3974 1.1206) (xy 3.4421 1.1544) (xy 3.4881 1.1865) (xy 3.5353 1.2167)
+						(xy 3.5836 1.245) (xy 3.633 1.2714) (xy 3.6834 1.2959) (xy 3.7348 1.3183) (xy 3.787 1.3388) (xy 3.8399 1.3571)
+						(xy 3.8935 1.3734) (xy 3.9477 1.3875) (xy 4.0025 1.3995) (xy 4.0576 1.4094) (xy 4.1131 1.4171)
+						(xy 4.1689 1.4226) (xy 4.2248 1.4258) (xy 4.2809 1.427) (xy 4.3369 1.4258) (xy 4.3928 1.4226)
+						(xy 4.4486 1.4171) (xy 4.5041 1.4094) (xy 4.5592 1.3995) (xy 4.614 1.3875) (xy 4.6682 1.3734)
+						(xy 4.7218 1.3571) (xy 4.7747 1.3388) (xy 4.8269 1.3183) (xy 4.8783 1.2959) (xy 4.9287 1.2714)
+						(xy 4.9781 1.245) (xy 5.0264 1.2167) (xy 5.0736 1.1865) (xy 5.1196 1.1544) (xy 5.1643 1.1206)
+						(xy 5.2076 1.0851) (xy 5.2495 1.0478) (xy 5.2899 1.009) (xy 5.3287 0.9686) (xy 5.3659 0.9267)
+						(xy 5.4015 0.8834) (xy 5.4353 0.8387) (xy 5.4673 0.7928) (xy 5.4975 0.7456) (xy 5.5259 0.6972)
+						(xy 5.5523 0.6478) (xy 5.5767 0.5974) (xy 5.5992 0.5461) (xy 5.6196 0.4939) (xy 5.638 0.441) (xy 5.6542 0.3873)
+						(xy 5.6684 0.3331) (xy 5.6804 0.2784) (xy 5.6902 0.2232) (xy 5.6979 0.1677) (xy 5.7034 0.112)
+						(xy 5.7067 0.056) (xy 5.7078 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.6104 -1.27) (xy 5.7078 -1.27) (xy 5.7078 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_L1_1_1"
+				(pin passive line
+					(at -7.62 1.27 0)
+					(length 0.0096)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -1.27 180)
+					(length 0.0096)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_U2"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 2.0332 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "AP63203WU-7"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_U2"
+				(at -1.7791 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AP63203WU-7"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_U2"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_U2_0_1"
+				(polyline
+					(pts
+						(xy -10.5064 -6.5976) (xy 0 -6.5976) (xy 10.5064 -6.5976) (xy 10.5064 -3.81) (xy 10.5064 -2.54)
+						(xy 10.5064 -1.27) (xy 10.5064 0) (xy 10.5064 1.27) (xy 10.5064 3.81) (xy 10.5064 6.985) (xy 0 6.985)
+						(xy -10.5064 6.985) (xy -10.5064 3.81) (xy -10.5064 1.27) (xy -10.5064 0) (xy -10.5064 -1.27)
+						(xy -10.5064 -2.54) (xy -10.5064 -3.81) (xy -10.5064 -6.5976)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Controller_U2_1_1"
+				(pin input line
+					(at -16.51 3.81 0)
+					(length 6.0036)
+					(name "FB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -16.51 0 0)
+					(length 6.0036)
+					(name "EN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -16.51 -3.81 0)
+					(length 6.0036)
+					(name "VIN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 16.51 -3.81 180)
+					(length 6.0036)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 16.51 0 180)
+					(length 6.0036)
+					(name "SW"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 16.51 3.81 180)
+					(length 6.0036)
+					(name "BST"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:PWR_FLAG"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board no)
+			(in_pos_files no)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(junction
+		(at 278.13 210.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "10a0a3cd-77f4-479d-bed7-77d607d81bb8")
+	)
+	(junction
+		(at 487.68 151.13)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "92bd749e-2330-4965-ba6f-1df2b17c38f3")
+	)
+	(junction
+		(at 472.44 151.13)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b51bf33c-cf77-4ee0-a9f7-bb440ad82829")
+	)
+	(junction
+		(at 358.14 210.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ef9d3a33-1d95-4cb6-809f-0337d56206a9")
+	)
+	(junction
+		(at 203.2 151.13)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fe6b83df-6d36-45d6-994a-a86183f8ab4a")
+	)
+	(wire
+		(pts
+			(xy 101.6 151.13) (xy 101.6 158.75)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "0044e685-62d7-4ac2-baf5-9878ee5fdf37")
+	)
+	(wire
+		(pts
+			(xy 358.14 213.36) (xy 356.87 213.36)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "0175cbcb-734e-4fdd-8dcd-d23d17d70d88")
+	)
+	(wire
+		(pts
+			(xy 199.39 151.13) (xy 203.2 151.13)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "02d5a03b-ec2a-4837-b5de-43ce8d3b2644")
+	)
+	(wire
+		(pts
+			(xy 203.2 240.03) (xy 199.39 240.03)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "0aedac5a-30ed-4f59-b972-7a962b8a95f6")
+	)
+	(wire
+		(pts
+			(xy 491.49 151.13) (xy 491.49 152.4)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "123bbd40-cb5e-4fe1-ac86-a05d93e5bd49")
+	)
+	(wire
+		(pts
+			(xy 278.13 214.63) (xy 278.13 210.82)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "125a031f-0b84-45d4-881d-a32c73f169fc")
+	)
+	(wire
+		(pts
+			(xy 182.88 248.92) (xy 182.88 240.03)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "15235234-0657-4b20-9288-edf352045545")
+	)
+	(wire
+		(pts
+			(xy 134.62 240.03) (xy 140.97 240.03)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "1c758241-0476-49b7-bd4d-4db81cbf5b60")
+	)
+	(wire
+		(pts
+			(xy 257.81 284.48) (xy 257.81 278.13)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "260011fc-f9dc-4767-a65d-f29ea4c7fe0e")
+	)
+	(wire
+		(pts
+			(xy 487.68 151.13) (xy 491.49 151.13)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "31bd5d04-0404-4fc5-a001-e6829ab9acfb")
+	)
+	(wire
+		(pts
+			(xy 140.97 151.13) (xy 140.97 147.32)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "38604307-8b29-4ba2-b263-85ebf0b37a43")
+	)
+	(wire
+		(pts
+			(xy 203.2 151.13) (xy 207.01 151.13)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "38680623-91d6-4ef6-9607-ad6d973f3adc")
+	)
+	(wire
+		(pts
+			(xy 320.04 284.48) (xy 320.04 214.63)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "45cbd2db-9b2d-49bc-8bf7-493b53583fd4")
+	)
+	(wire
+		(pts
+			(xy 182.88 240.03) (xy 190.5 240.03)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "481f3212-2647-48b0-9a2a-1d5579d5f299")
+	)
+	(wire
+		(pts
+			(xy 140.97 240.03) (xy 140.97 236.22)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "4c37c054-a2ae-4477-bdd3-967bac78c0cf")
+	)
+	(wire
+		(pts
+			(xy 485.14 151.13) (xy 487.68 151.13)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "4e1102ca-81b4-4f59-b6c4-850fcb93d2cb")
+	)
+	(wire
+		(pts
+			(xy 416.56 212.09) (xy 412.75 212.09)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "4f597b28-d397-4d70-9dbe-9c389bec0290")
+	)
+	(wire
+		(pts
+			(xy 320.04 214.63) (xy 316.23 214.63)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "53257ae7-358e-4ec0-9123-f0c805d209c6")
+	)
+	(wire
+		(pts
+			(xy 474.98 151.13) (xy 472.44 151.13)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "53dd1863-7496-41e2-970a-8ff066dd899a")
+	)
+	(wire
+		(pts
+			(xy 274.32 284.48) (xy 320.04 284.48)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "60edb558-25c0-410e-bb4a-434e0579c64c")
+	)
+	(wire
+		(pts
+			(xy 487.68 240.03) (xy 485.14 240.03)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "645c023c-7a34-444d-8343-20386b04343e")
+	)
+	(wire
+		(pts
+			(xy 416.56 196.85) (xy 416.56 212.09)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "6515d5e9-a851-48a7-82e1-985abfc230eb")
+	)
+	(wire
+		(pts
+			(xy 283.21 207.01) (xy 280.67 207.01)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "66bce704-ace4-4728-a1ca-bbdf0d6b17e8")
+	)
+	(wire
+		(pts
+			(xy 316.23 210.82) (xy 358.14 210.82)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "6d618eb1-7a26-424a-aedb-c3dfbb390203")
+	)
+	(wire
+		(pts
+			(xy 472.44 151.13) (xy 472.44 240.03)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "7aeabae8-45e6-45ff-a72c-ae0bc0a4a6e6")
+	)
+	(wire
+		(pts
+			(xy 101.6 240.03) (xy 101.6 248.92)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "7b668a28-6aea-42ce-a801-3dc178ddae86")
+	)
+	(wire
+		(pts
+			(xy 397.51 210.82) (xy 397.51 209.55)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "7bc48234-aaf5-46ce-911f-4bdcd7344402")
+	)
+	(wire
+		(pts
+			(xy 207.01 151.13) (xy 207.01 152.4)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "7dd4d06f-f1da-4919-b2d4-3ab01e27977a")
+	)
+	(wire
+		(pts
+			(xy 358.14 210.82) (xy 397.51 210.82)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "8062394c-5ab0-4ce9-9c6f-deca5383e94f")
+	)
+	(wire
+		(pts
+			(xy 101.6 248.92) (xy 182.88 248.92)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "84391105-1971-4451-8804-6a77c1136cf5")
+	)
+	(wire
+		(pts
+			(xy 487.68 151.13) (xy 487.68 240.03)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "864ba034-52b8-4575-9a58-63764e4f59bf")
+	)
+	(wire
+		(pts
+			(xy 182.88 158.75) (xy 182.88 151.13)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "891657b7-36b4-4103-b697-72e22e5132ff")
+	)
+	(wire
+		(pts
+			(xy 101.6 158.75) (xy 182.88 158.75)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "9de9f0b8-0d8b-4d5a-b0b9-b39a45aad26e")
+	)
+	(wire
+		(pts
+			(xy 182.88 151.13) (xy 190.5 151.13)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "9fa662ed-4bf0-4c67-8fa1-a3f4432728d3")
+	)
+	(wire
+		(pts
+			(xy 105.41 240.03) (xy 101.6 240.03)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "9fd0acc8-e851-4017-9e66-74342ccd08c6")
+	)
+	(wire
+		(pts
+			(xy 265.43 284.48) (xy 257.81 284.48)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "a29fe152-626f-4734-aae5-d3f7fe51cca7")
+	)
+	(wire
+		(pts
+			(xy 278.13 210.82) (xy 283.21 210.82)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "b6ef8b2a-1c13-4bce-80c9-f0a4db373f40")
+	)
+	(wire
+		(pts
+			(xy 472.44 240.03) (xy 474.98 240.03)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "b6f94866-08fe-45f2-a486-83e2af48ef67")
+	)
+	(wire
+		(pts
+			(xy 358.14 210.82) (xy 358.14 213.36)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "c7b91f5d-eba9-4c66-a9b5-931a08701806")
+	)
+	(wire
+		(pts
+			(xy 278.13 210.82) (xy 269.24 210.82)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "caf71d65-9f5a-437e-80eb-42facdf268a5")
+	)
+	(wire
+		(pts
+			(xy 467.36 151.13) (xy 467.36 149.86)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "cfd20dda-772d-468a-a930-0da398204c61")
+	)
+	(wire
+		(pts
+			(xy 280.67 196.85) (xy 416.56 196.85)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "d2513ad4-f4df-45f7-a07e-a9eacfcd77a9")
+	)
+	(wire
+		(pts
+			(xy 105.41 151.13) (xy 101.6 151.13)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "dd8b28bd-ff60-44be-8289-f1321419aff7")
+	)
+	(wire
+		(pts
+			(xy 203.2 151.13) (xy 203.2 240.03)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "e04a0e5d-0f3c-4cf3-b48f-520209ee3436")
+	)
+	(wire
+		(pts
+			(xy 134.62 151.13) (xy 140.97 151.13)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "e38f35ad-21ee-41f0-91bf-f6ff6c3bbb2d")
+	)
+	(wire
+		(pts
+			(xy 472.44 151.13) (xy 467.36 151.13)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "e4c4d00b-835c-4e06-9a95-87499759d148")
+	)
+	(wire
+		(pts
+			(xy 283.21 214.63) (xy 278.13 214.63)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "ed0da199-4cb0-4483-b490-a19569aa4c14")
+	)
+	(wire
+		(pts
+			(xy 280.67 207.01) (xy 280.67 196.85)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "ff6438fb-6ffe-49ca-a3d8-174b958f8a76")
+	)
+	(global_label "V5_LOGIC"
+		(shape input)
+		(at 269.24 210.82 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0f6507dd-3a71-4696-850f-7fdbdc7dbdea")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 269.24 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BUCK_SW"
+		(shape input)
+		(at 356.87 213.36 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1a4e65da-53cc-4165-bc37-4ee0dc644c0b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 356.87 213.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_PSU"
+		(shape input)
+		(at 140.97 147.32 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2a1aefd0-ff0c-40b3-91e4-8f505fc14d68")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 140.97 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 207.01 152.4 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2bbb69d0-fb38-4294-9084-b406a7917593")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 207.01 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 320.04 284.48 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2bec5872-f691-47ab-993b-5e1403f10c3c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 320.04 284.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_LOGIC"
+		(shape input)
+		(at 182.88 240.03 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3ceaf754-7fed-4748-9625-ebbdf052c4a6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 182.88 240.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BUCK_BST"
+		(shape input)
+		(at 355.6 134.62 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "580631b2-e1af-4434-9e42-f7234ab3966c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 355.6 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 491.49 152.4 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "61ac7aba-b623-4ac5-94ab-8c019b1ac070")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 491.49 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_LOGIC"
+		(shape input)
+		(at 182.88 151.13 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "755f1ccc-e41e-4d6f-8789-b39dc68b3c3b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 182.88 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BUCK_SW"
+		(shape input)
+		(at 397.51 209.55 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "86edf566-838a-4fb7-9522-1aeb4f881ca7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 397.51 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_SERVICE"
+		(shape input)
+		(at 140.97 236.22 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b8e5818f-b391-478e-990e-5397d759b777")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 140.97 236.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BUCK_SW"
+		(shape input)
+		(at 364.49 134.62 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c7b2bcaf-ef38-42cd-9f1b-45d12bccb680")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 364.49 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_LOGIC"
+		(shape input)
+		(at 257.81 278.13 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c99318d3-0e1e-4466-849c-63c8db002e4d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 257.81 278.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V3V3"
+		(shape input)
+		(at 467.36 149.86 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d3b6d857-81d8-4e3d-be0c-9dc9ab16f703")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 467.36 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V3V3"
+		(shape input)
+		(at 280.67 196.85 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f0d4b410-eed4-4a73-a9a8-33f01459cc43")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 280.67 196.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BUCK_BST"
+		(shape input)
+		(at 316.23 207.01 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fb445686-c376-416b-9099-5752afbdd59b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 316.23 207.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_C7")
+		(at 270.51 284.48 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "099b8f5f-3269-4d92-95fd-7b7be27bc43b")
+		(property "Reference" "C7"
+			(at 270.51 281.1008 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "100nF"
+			(at 270.51 288.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_C7"
+			(at 268.7223 284.48 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+			(at 270.51 284.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 270.51 284.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "C1608X7R1H104K080AA"
+			(at 270.51 284.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "29749b53-89b0-49b3-87eb-0112d04ceb6d")
+		)
+		(pin "2"
+			(uuid "f162a33c-277c-4d10-aa7c-a56ebed071cf")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1"
+					(reference "C7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:PWR_FLAG")
+		(at 182.88 151.13 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "09db3c0c-bc92-4788-aa52-60c61276f899")
+		(property "Reference" "#FLG0101"
+			(at 182.88 146.2762 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 182.88 146.4776 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 182.88 151.13 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 182.88 151.13 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ERC annotation revision 1: V5_LOGIC; Passive PSU/service diode OR feeds the logic rail. ERC only; do not populate. Not a physical part."
+			(at 182.88 151.13 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8c3b9691-94fd-465e-bace-d2144c5aadff")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1"
+					(reference "#FLG0101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_D2")
+		(at 120.65 240.03 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0de08ba1-610e-41f7-af67-b3163285ce49")
+		(property "Reference" "D2"
+			(at 111.506 235.1189 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "STPS2L40U"
+			(at 111.506 244.7618 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_D2"
+			(at 118.8436 240.03 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stps2l40.pdf"
+			(at 120.65 240.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 120.65 240.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "STPS2L40U"
+			(at 120.65 240.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6a319271-b249-4117-a836-3a6d7c75c6f9")
+		)
+		(pin "2"
+			(uuid "f68de8e8-cbf7-4561-bd68-2f555c30bddd")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1"
+					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_C2")
+		(at 195.58 240.03 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "30459aba-9b20-4e01-b09e-99b3135b0ff2")
+		(property "Reference" "C2"
+			(at 195.58 236.387 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "22uF"
+			(at 195.58 243.4713 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_C2"
+			(at 193.5728 240.03 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647"
+			(at 195.58 240.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 195.58 240.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GRM32ER71E226ME15L"
+			(at 195.58 240.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "58cd4bf7-6d5e-48e9-a183-c3cf6b541846")
+		)
+		(pin "2"
+			(uuid "877b3290-e147-4918-ac9b-4ee1fd33612a")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1"
+					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_C1")
+		(at 195.58 151.13 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5a01a42f-cf51-413b-a6f9-8b3625e52129")
+		(property "Reference" "C1"
+			(at 195.58 146.7001 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "22uF"
+			(at 195.58 154.8518 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_C1"
+			(at 193.5728 151.13 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647"
+			(at 195.58 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 195.58 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GRM32ER71E226ME15L"
+			(at 195.58 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "abb911ec-a91e-4dcb-9646-1b54ccc5d6d1")
+		)
+		(pin "2"
+			(uuid "4b61485c-9c60-4f88-9bc7-9d8d58dca155")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1"
+					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:PWR_FLAG")
+		(at 280.67 196.85 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "71e66113-0c10-4083-a6b4-14a24903f705")
+		(property "Reference" "#FLG0102"
+			(at 280.67 192.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 280.67 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 280.67 196.85 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 280.67 196.85 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ERC annotation revision 1: V3V3; AP63203 output after L1 feeds 3.3 V. ERC only; do not populate. Not a physical part."
+			(at 280.67 196.85 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "362772eb-943a-4e22-a75b-ee05371a7e41")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1"
+					(reference "#FLG0102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_D1")
+		(at 120.65 151.13 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8352e885-2ef9-4502-8668-d50945b8a786")
+		(property "Reference" "D1"
+			(at 111.506 145.2696 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "STPS2L40U"
+			(at 111.506 155.775 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_D1"
+			(at 118.8436 151.13 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stps2l40.pdf"
+			(at 120.65 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 120.65 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "STPS2L40U"
+			(at 120.65 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4de2f9c9-9da3-4f33-91b2-c55a87097cbc")
+		)
+		(pin "2"
+			(uuid "436399ff-fb07-49ea-aaa4-2717bc3029aa")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_C4")
+		(at 480.06 240.03 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "958d6684-f71f-4b01-baa0-4fd2017eea4f")
+		(property "Reference" "C4"
+			(at 480.06 236.387 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "22uF"
+			(at 480.06 243.4713 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_C4"
+			(at 478.0528 240.03 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647"
+			(at 480.06 240.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 480.06 240.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GRM32ER71E226ME15L"
+			(at 480.06 240.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ff9fc174-fdc6-4bbf-937b-0d8d7b86718d")
+		)
+		(pin "2"
+			(uuid "7d5a13e4-a562-4e66-b0cf-d1070c18cead")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1"
+					(reference "C4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_C8")
+		(at 360.68 134.62 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "af299f57-d841-4143-abfb-6366c24a0b3e")
+		(property "Reference" "C8"
+			(at 360.68 131.02 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "100nF"
+			(at 360.68 138.4348 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_C8"
+			(at 358.8437 134.62 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+			(at 360.68 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 360.68 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "C1608X7R1H104K080AA"
+			(at 360.68 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "baea34d5-4076-460d-96df-401b8353b869")
+		)
+		(pin "2"
+			(uuid "e6165558-ae35-4cfa-bb7b-829c28c39829")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1"
+					(reference "C8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_U2")
+		(at 299.72 210.82 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b53b2169-a9ad-4358-a744-fcd32bcb6e03")
+		(property "Reference" "U2"
+			(at 289.2136 201.7713 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "AP63203WU-7"
+			(at 289.2136 219.2295 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_U2"
+			(at 297.9409 210.82 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf"
+			(at 299.72 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 299.72 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "AP63203WU-7"
+			(at 299.72 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4cc655f3-b945-4007-a594-b5940f648f20")
+		)
+		(pin "2"
+			(uuid "e251b58c-0192-4893-9c89-02b8e94d5958")
+		)
+		(pin "3"
+			(uuid "81eda926-e46a-431d-9ffb-899d682b810c")
+		)
+		(pin "4"
+			(uuid "01c4299e-e33e-4230-990d-c2952d986ca2")
+		)
+		(pin "5"
+			(uuid "504e4ada-6f56-4bb0-a0ac-36509c9fe750")
+		)
+		(pin "6"
+			(uuid "1aa2f455-e168-4aab-96ac-292f67a70630")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_L1")
+		(at 405.13 210.82 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "bd06bf2e-d321-42f0-9cc7-05f7de0eb9bc")
+		(property "Reference" "L1"
+			(at 405.1009 206.1548 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "4.7µH"
+			(at 405.0984 214.7147 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_L1"
+			(at 403.4191 210.82 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf"
+			(at 405.13 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Inductor"
+			(at 405.13 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SRP5030TA-4R7M"
+			(at 405.13 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f11696ff-d08b-431b-8903-a666d9968267")
+		)
+		(pin "2"
+			(uuid "472458ef-2af0-43ff-9edc-176a1fcc5ede")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1"
+					(reference "L1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_C3")
+		(at 480.06 151.13 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e664a3b9-e586-4f32-9223-ba2c33800c9a")
+		(property "Reference" "C3"
+			(at 480.06 146.7001 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "22uF"
+			(at 480.06 154.8518 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_C3"
+			(at 478.0528 151.13 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647"
+			(at 480.06 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 480.06 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GRM32ER71E226ME15L"
+			(at 480.06 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "958e936c-be1e-430d-82f9-e013716afa7f")
+		)
+		(pin "2"
+			(uuid "c3557adb-edc2-455d-996b-04b155d705ad")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

@@ -15,7 +15,8 @@ parts, firmware, PCB source, test evidence, and exported mechanical artifacts.
 - `firmware/matter/`: tested `no_std` Matter command and gated KV adapters.
 - `firmware/cli/`: host simulation; `firmware/app/`: separate ESP32-C6 workspace.
 - `pcb/`: Bun/TypeScript tscircuit authoring, then guarded KiCad routing and fabrication.
-  `sensor/`, `controller/`, and `mains/` start as requirements, not fabricated designs.
+  `controller/design/` owns source; `controller/kicad/` is its adopted, unrouted
+  native project. Sensor and mains capture remain partial. None is fabrication-ready.
 - `bom/bom.csv`: candidate/selected parts and independent purchase status.
 - `testing/test-matrix.csv`: commissioning criteria and actual evidence.
 - `cad/`: enclosure exports and the PCB attachment interface. The owner models

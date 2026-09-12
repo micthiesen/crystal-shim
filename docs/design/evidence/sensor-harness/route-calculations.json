@@ -1,0 +1,91 @@
+{
+  "flat": {
+    "radius_mm": 50,
+    "extra_north_straight_mm": 10,
+    "sensor_jacket_support_land_mm": 10,
+    "sensor_breakout_to_crimp_mm": 20,
+    "length_mm": 197.9455163397448,
+    "sensor_crimp_xyz_mm": [
+      95.5,
+      -93.4057,
+      0
+    ],
+    "z_coordinate": "relative to gland/cable axis",
+    "relative_to_wall_exit_xy_mm": [
+      -80,
+      -87
+    ],
+    "east_mirror_sensor_crimp_xyz_mm": [
+      255.5,
+      -93.4057,
+      0
+    ],
+    "family": {
+      "length_mm": "177.94551633974483 + a + b",
+      "conditions": "a >= 0; b >= 10; a + b <= 22.05448366025517 for length <= 200",
+      "west_sensor_crimp_xyz_mm": [
+        "105.5 - b",
+        "-83.4057 - a",
+        0
+      ],
+      "z_reference": "Zg: the actual aligned controller/gland and sensor crimp axes."
+    }
+  },
+  "shallow_lowpoint": {
+    "horizontal_radius_mm": 55,
+    "extra_north_straight_mm": 3,
+    "dip_mm": 3,
+    "sensor_jacket_support_land_mm": 10,
+    "sensor_breakout_to_crimp_mm": 20,
+    "profile_horizontal_arclength_mm": 89.39379797371932,
+    "profile_actual_arclength_mm": 89.64169594405408,
+    "length_mm": 199.04739594405407,
+    "conservative_min_3d_centerline_radius_mm": 50.93224091154657,
+    "conservative_min_inner_radius_mm": 48.60814091154657,
+    "margin_to_200mm": 0.9526040559459261,
+    "margin_to_203_2mm": 4.152604055945915,
+    "sensor_crimp_xyz_mm": [
+      90.5,
+      -91.4057,
+      0
+    ],
+    "east_mirror_sensor_crimp_xyz_mm": [
+      260.5,
+      -91.4057,
+      0
+    ],
+    "derivation": {
+      "profile": "z(u) = -d * sin(pi*u/S)^2, d = 3 mm, S = 3 + pi*55/2 mm; zero slope at u=0 and u=S.",
+      "profile_placement": "After the first 5 mm straight outside the gland, across the remaining 3 mm straight and the quarter arc; ends before the final 10 mm straight sensor jacket support land.",
+      "length": "74.4057 + 5 + integral_0^S sqrt(1 + (dz/du)^2) du + 10 + 20",
+      "integration": "Composite Simpson rule, 20000 equal subintervals.",
+      "curvature_bound": "kappa <= sqrt((1/55)^2 + (2*d*pi^2/S^2)^2); minimum radius >= 1/kappa.",
+      "bound_reason": "The horizontal path is parameterized by arclength and has curvature <=1/55. Vertical profile adds |z_second|<=2*d*pi^2/S^2; the full 3D curvature denominator can only reduce this conservative bound."
+    }
+  },
+  "assumptions": [
+    "Existing approximate wire-exit/wall coordinates; actual crimp offset <= 14 mm requires CAD confirmation.",
+    "Gland and sensor crimp axes equal height; glass plane offset and support height remain to determine.",
+    "Proposed sensor jacket support land 10 mm and breakout 20 mm; clamp/clip mechanism is not designed.",
+    "R50  is the minimum centreline design radius; the optional R55  route has a conservative 3D curvature bound above R50 .",
+    "Low point geometry does not establish splash or ingress acceptance."
+  ],
+  "captured_date": "2026-09-12",
+  "status": "Hypothetical laid harness centreline; end allocations and mated geometry are not physically verified.",
+  "inputs": {
+    "controller_cable_axis_x_mm": 175.5,
+    "nominal_wire_exit_y_mm": 32,
+    "nominal_outer_wall_y_mm": -6.4057,
+    "controller_crimp_to_wire_exit_allocation_mm": 14,
+    "gland_projection_max_mm": 22,
+    "straight_after_gland_mm": 5,
+    "sensor_breakout_to_crimp_allocation_mm": 20,
+    "minimum_sensor_straight_support_land_mm": 10,
+    "minimum_design_centerline_radius_mm": 50,
+    "cable_jacket_max_od_mm": 4.6482,
+    "alpha_10d_at_max_od_mm": 46.482,
+    "planning_finished_length_max_mm": 200,
+    "hard_harness_length_max_mm": 203.2
+  },
+  "height_relation": "support_surface_height = rim_height + sensor_crimp_height_above_rim - installed_gland_axis_height_above_support; includes base/feet offset."
+}

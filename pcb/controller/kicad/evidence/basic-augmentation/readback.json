@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "status": "verified-partial-augmentation-on-adopted-unrouted-board",
+  "board_sha256": "61f0d86d7133a6524ccca8029c78c25675ba2a42fadbf4d77f3697c75f0f0fe4",
+  "project_sha256": "e2a88ebb7b7fca28ebcefeb304c8885182aaef057bb159a76448d61277b83858",
+  "augmentation_sha256": "c09931487ac2134e47990cb9b5eb282bfb1c11f0f08a3a4d018dc0f99cfc018f",
+  "snapshot_sha256": "2bc6ab7838e5de156d2889462b692e11c721cad6bf98be1b4261b1ff5e8f4222",
+  "initial_lock_sha256": "993ae2ed917e532d74acdd2583e32d6c0dfd872fd77dbb1d43113f6a10832030",
+  "native_library_relocation": {
+    "write_channel": "KiCad 10.0.5 GUI Project Specific library dialogs",
+    "tables": {
+      "sym-lib-table": {
+        "uri": "${KIPRJMOD}/CrystalShim_Controller.kicad_sym",
+        "sha256": "30774edf85e5524d260a3fc2c4be66fcadea243d4d768c11077e09755ad8c4cc"
+      },
+      "fp-lib-table": {
+        "uri": "${KIPRJMOD}/footprints/CrystalShim_Controller.pretty",
+        "sha256": "aa2440b9dc22dad04099a30d46680961f22d24b4df3cd125e52f6ad0a1eba571"
+      }
+    }
+  },
+  "stack": {
+    "write_channel": "KiCad GUI Physical Stackup and native SaveBoard consistency correction",
+    "layers": {
+      "F.SilkS": {
+        "type": [
+          "Top Silk Screen"
+        ],
+        "color": [
+          "White"
+        ]
+      },
+      "F.Paste": {
+        "type": [
+          "Top Solder Paste"
+        ]
+      },
+      "F.Mask": {
+        "type": [
+          "Top Solder Mask"
+        ],
+        "color": [
+          "Green"
+        ],
+        "thickness": [
+          "0.01"
+        ]
+      },
+      "F.Cu": {
+        "type": [
+          "copper"
+        ],
+        "thickness": [
+          "0.035"
+        ]
+      },
+      "dielectric 1": {
+        "type": [
+          "prepreg"
+        ],
+        "thickness": [
+          "0.2104",
+          "locked"
+        ],
+        "material": [
+          "NanYa NP-155F / 7628"
+        ],
+        "epsilon_r": [
+          "4.4"
+        ],
+        "loss_tangent": [
+          "0.02"
+        ]
+      },
+      "In1.Cu": {
+        "type": [
+          "copper"
+        ],
+        "thickness": [
+          "0.0152"
+        ]
+      },
+      "dielectric 2": {
+        "type": [
+          "core"
+        ],
+        "thickness": [
+          "1.065",
+          "locked"
+        ],
+        "material": [
+          "NanYa NP-155F core"
+        ],
+        "epsilon_r": [
+          "4.6"
+        ],
+        "loss_tangent": [
+          "0.02"
+        ]
+      },
+      "In2.Cu": {
+        "type": [
+          "copper"
+        ],
+        "thickness": [
+          "0.0152"
+        ]
+      },
+      "dielectric 3": {
+        "type": [
+          "prepreg"
+        ],
+        "thickness": [
+          "0.2104",
+          "locked"
+        ],
+        "material": [
+          "NanYa NP-155F / 7628"
+        ],
+        "epsilon_r": [
+          "4.4"
+        ],
+        "loss_tangent": [
+          "0.02"
+        ]
+      },
+      "B.Cu": {
+        "type": [
+          "copper"
+        ],
+        "thickness": [
+          "0.035"
+        ]
+      },
+      "B.Mask": {
+        "type": [
+          "Bottom Solder Mask"
+        ],
+        "color": [
+          "Green"
+        ],
+        "thickness": [
+          "0.01"
+        ]
+      },
+      "B.Paste": {
+        "type": [
+          "Bottom Solder Paste"
+        ]
+      },
+      "B.SilkS": {
+        "type": [
+          "Bottom Silk Screen"
+        ],
+        "color": [
+          "White"
+        ]
+      }
+    },
+    "header_and_stack_total_mm": 1.6062,
+    "source_nominal_ordering_mm": 1.6,
+    "unverified_defaults": {
+      "mask_thickness_each_mm": 0.01,
+      "dielectric_loss_tangent": 0.02,
+      "dielectric_constraints": false,
+      "release_limit": "These KiCad defaults are placeholders, not vendor requirements or the separate USB solver mask model. Resolve before fabrication output."
+    },
+    "before_gui_board_sha256": "987487bd6c3fd4411f4cde3172f67afd8e2780201d54b4f3bae0538d16a945fe",
+    "only_changed_board_semantics_from_pre_stack": [
+      "setup.stackup",
+      "general.thickness"
+    ],
+    "project_unchanged_by_stack": true
+  },
+  "preservation": {
+    "plan_scope": "one augmentation change; rules category only; no source changes or drift",
+    "before_snapshot_limitation": "Historical extractor omitted thickness; after snapshot uses fixed design-settings API. Complete stack separately checked here.",
+    "source_and_schematic_semantics_preserved": true,
+    "all_other_kicad_categories_preserved": true
+  },
+  "drc": {
+    "violations": 0,
+    "unconnected_items": 216
+  },
+  "render_review": "Current native F.Cu/F.SilkS/F.Fab/Edge.Cuts render inspected; unrouted placement preserved, final silkscreen and route review remain open.",
+  "limits": [
+    "Initial lock remains historical seed baseline; partial augmentation evidence does not reaccept an altered initial receipt.",
+    "Mask/loss defaults, power routing, keepouts, zones, special vias, paste, mechanical fit and complete fabrication remain open.",
+    "Archived native operation scripts are one-time audit records with machine-specific guarded paths, not commands to rerun on the current board.",
+    "No hardware acceptance, manufacturing files or new source-owned geometry is implied."
+  ],
+  "evidence_sha256": {
+    "after-snapshot.json": "2bc6ab7838e5de156d2889462b692e11c721cad6bf98be1b4261b1ff5e8f4222",
+    "before-snapshot.json": "c21ae3f133c57f2cadeb10b3783887891635924f656a85246674e2f20fde033f",
+    "augmentation-plan.json": "c5dfa952a817e5c6c0bd1e3c96e441317a2fd3aaaa5d66132d49585908fef645",
+    "preservation.json": "45e11555c7117ff4a6f7b2f0201d1350fec4c45d058e6ffc8335bf35cf1ac126",
+    "schematic-cleanup.json": "0dab202eba78cb60c155f38f96506a2c748128280deac94e86cb2fdc62478fa3",
+    "drc.json": "938eb3a0f11748a2949074c2c5a330e7a158e25ad84dd2876eec4e245dd0838e",
+    "pcb-top.svg": "8b19f604cd129f5d87cfb0c7a5924e9d8afd2925731e9564d8352d683924c073",
+    "native-thickness-consistency.json": "3c5b5d332c06ec17b5d623bfdaad8247d4eddec92526284aeed42c046d2ec5be",
+    "native-readback.json": "aba1217fd852c37a5f086c0e6cee3560810d418ca85cbd2fb5b2ffaf78f6e443",
+    "native-basic-application.json": "ae9d1c802acfc01188d08886146eae7319ee85edc1a92c12a9ff7a19278accba",
+    "native-mask-application.json": "9808d071d7e45cd2a0c4cebe3d8c009467b728998a132170adfcd9211ddb1038",
+    "native-basic-operation.py": "a0192dcd999d0e16b3a70dc96c89e89753de4745d56daefb963c9564a54d77fb",
+    "native-mask-operation.py": "2048d6444725258d74ce296bb8fc34f235cd9cfbca62ea46dc4a887bda0897b2",
+    "native-thickness-operation.py": "32be66b2270019c3cd27d525ad3adef0ef6f04bdd27f1af5ffd46f5b35b1e502"
+  },
+  "archive_script_sha256": "f46a2b34c1af9a12edf884653b61021a0e3dde318443816fe5b47bd6ad8d9136"
+}

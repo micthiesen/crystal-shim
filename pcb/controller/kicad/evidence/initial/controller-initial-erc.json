@@ -1,0 +1,71 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-09-12T13:46:24",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.5",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/7735a600-af6b-4d00-9433-d112f3abe6b9",
+            "violations": []
+        },
+        {
+            "path": "/Relay permission and mains-board harness/",
+            "uuid_path": "/7735a600-af6b-4d00-9433-d112f3abe6b9/96a5bfbb-4ec8-41a2-b2ae-336e2b2d2c45",
+            "violations": []
+        },
+        {
+            "path": "/Logic power/",
+            "uuid_path": "/7735a600-af6b-4d00-9433-d112f3abe6b9/bf180fb2-480c-4132-92fc-229599c791b1",
+            "violations": []
+        },
+        {
+            "path": "/Protected isolated service input/",
+            "uuid_path": "/7735a600-af6b-4d00-9433-d112f3abe6b9/2189f28f-777b-4621-ae9c-e2593ce2e5aa",
+            "violations": []
+        },
+        {
+            "path": "/ESP module and local controls/",
+            "uuid_path": "/7735a600-af6b-4d00-9433-d112f3abe6b9/eea8e43b-03ef-4903-9b9c-fc1cb37a5456",
+            "violations": []
+        },
+        {
+            "path": "/Self-powered USB data interface/",
+            "uuid_path": "/7735a600-af6b-4d00-9433-d112f3abe6b9/7036901f-5f9d-4df7-bf6a-c859c2892904",
+            "violations": []
+        },
+        {
+            "path": "/Protected sensor feed and buffered bus/",
+            "uuid_path": "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b",
+            "violations": []
+        },
+        {
+            "path": "/Test and UART service pads/",
+            "uuid_path": "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a",
+            "violations": []
+        }
+    ],
+    "source": "controller.kicad_sch"
+}

@@ -1,9 +1,10 @@
 # PCB workspace
 
 The three product boards have sourced design bases and selected interfaces.
-[Controller component capture](controller/design/README.md) has started; complete
-product schematics, placement, fabrication profiles and accepted KiCad handoffs
-remain outstanding.
+The [controller source](controller/design/README.md) is captured and its
+[KiCad project](controller/kicad/README.md) is adopted, with strict schematic
+cleanup and partial native augmentation. Sensor/mains capture, remaining layout,
+mechanical fit and fabrication outputs remain work.
 
 Design the three boards as one final-use set for a single fabrication cycle.
 Complete part, interface, enclosure and source/layout reviews before release.
@@ -43,14 +44,14 @@ bun run test:handoff
 `fixtures/tooling-smoke.circuit.tsx` is a TOOLING-only, arbitrary RC circuit. Its
 parts, values, dimensions and nets are unrelated to Crystal Shim. It checks that
 the installed TSX compiler, placement, netlist and multi-file KiCad schematic
-export work. Outputs go under ignored `dist/`; no generated product KiCad seed is
-committed. `bun run dev:smoke` opens the local fixture viewer when needed.
+export work. Fixture outputs go under ignored `dist/`; they are unrelated to the
+adopted controller. `bun run dev:smoke` opens the local fixture viewer when needed.
 
 The Python tests exercise generic handoff protections using self-contained
 synthetic fixtures. Passing this gate proves tooling behavior, not electrical
 safety, sensor performance, real KiCad handoff parity, ERC/DRC, or fabrication
-readiness. Native handoff requires the local KiCad macOS bundle and must be run
-against each actual board later. See [tools](tools/README.md).
+readiness. Native handoff requires the local KiCad macOS bundle and separate
+evidence for each actual board. See [tools](tools/README.md).
 
 The pinned build currently emits missing schematic reference-designator styling
 warnings for the fixture's built-in R1/C1 symbols. The exported KiCad sheet is

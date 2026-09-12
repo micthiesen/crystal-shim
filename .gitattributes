@@ -2,3 +2,6 @@
 *.STEP binary
 *.step binary
 *.stp binary
+
+# Preserve the exact KiCad-rendered bytes bound by handoff/evidence hashes.
+pcb/controller/kicad/evidence/**/*.svg -whitespace linguist-generated=true

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "scope": "initial-project-npth-clearance-only",
+  "applied_operation": "controller.augment.npth-clearance",
+  "minimum_hole_to_copper_mm": 0.2,
+  "project": "controller.kicad_pro",
+  "project_sha256": "6b81a49d1948af724d685e0de86c3455143bd766364736406ed53596c13e7e2c",
+  "native_files": {
+    "controller.kicad_prl": "79c537cb7ea30e31bc290a295cfa2d9e7edbbbdfc28391c5bca6c4092e8cf0eb",
+    "controller.kicad_pro": "6b81a49d1948af724d685e0de86c3455143bd766364736406ed53596c13e7e2c"
+  },
+  "kicad_version": "10.0.5",
+  "existing_files_unchanged": true,
+  "script_sha256": "20af10acf0fe1a8fffaeb47f49abc720dad57e2ec8c23afd49e650eef080f8da"
+}

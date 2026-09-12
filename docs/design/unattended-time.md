@@ -1,10 +1,11 @@
 # Unattended authenticated time
 
-The offline [Roughtime crate](../../firmware/roughtime/src/lib.rs) implements one
-pinned draft-19 exchange. It is a host workspace member and builds for C6 without
-`std` or allocation. It is **not linked into the application or enabled as a clock
-authority**. Current operating UTC remains the [control-accepted CASE/operator
-path](trusted-utc.md); unattended final-unit availability remains unresolved.
+The offline [Roughtime crate](../../firmware/roughtime/src/lib.rs) implements
+pinned draft-19 response verification and request-owning two-provider agreement.
+It is a host workspace member and builds for C6 without `std` or allocation. It is
+**not linked into the application or enabled as a clock authority**. Current
+operating UTC remains the [control-accepted CASE/operator path](trusted-utc.md);
+unattended final-unit availability remains unresolved.
 
 ## Protocol and bootstrap contract
 
@@ -70,19 +71,47 @@ completion before receipt, backward time and arithmetic rollover reject the
 result. This check handles a ready operation winning a work-first async timeout.
 It never stamps the result with completion time. The two-second deadline is in
 the caller's monotonic domain; the supplied elapsed upper bound separately limits
-transport error. A future coordinator still needs its own original total deadline
-and source/operator-generation checks around every await and before adoption.
+transport error. The offline agreement coordinator also checks its original total
+deadline. Source/operator-generation checks around network awaits and before
+control adoption remain the future app caller's responsibility.
 
-The next interval coordinator should project both providers to one original
-capture with outward-rounded elapsed bounds, require overlap, and preserve the
-**hull**, not the intersection. Under the assumption that at least one accepted
-source interval contains true UTC, the hull also contains it; an adversarial narrow
-interval can make an intersection exclude it. Propose an explicit **20-second
-maximum hull width** for separate review. A 10-second threshold would reject the
-observed valid pair. No single-provider fallback or silent radius reduction is
-proposed. This two-source agreement policy deliberately differs from draft
-sections 8.1/8.2's at-least-three-provider, twice-chained query process. It does not
-implement that process or claim a complete transferable malfeasance proof.
+## Offline two-provider agreement
+
+[`AgreementRound`](../../firmware/roughtime/src/agreement.rs) owns one request for
+each compiled provider. `new(started_at_ms, deadline_ms, rate)` requires an explicit
+original absolute deadline and `ClockRateBound`; neither has a production default.
+`begin(provider, nonce, started_at_ms)` constructs and retains the exact request.
+The caller supplies distinct fresh CSPRNG nonces and still owns uniqueness across
+rounds and boots. No public API imports an externally constructed
+`VerifiedResponse` or replaces either pinned root.
+
+`receive(provider, datagram, received_at_ms, now)` passes the datagram through the
+real verifier with a transport upper bound derived from the supplied rate and
+quantization model. It preserves the original receive capture, while reading
+actual monotonic time before and after verification. Historical captures can be
+processed in either order; actual operation clock reads must remain monotonic.
+The individual two-second deadline and immutable round deadline include completed
+verification. Invalid, duplicate or unstarted responses, repeated nonces and time
+failures close the entire round. No single-provider fallback or retry retaining
+one old sample is available.
+
+After both responses verify, `finish(completion_now)` consumes the round. It
+projects both intervals to the latest original receive capture using outward
+elapsed bounds, requires inclusive overlap, and retains the full **hull**. The
+implemented maximum hull width is **20,000 ms**, inclusive, after drift and
+quantization projection. Later observation aging may widen the bounds further;
+the width limit applies when agreement is formed. Completion is checked after
+this work, including original-observation expiry, and cannot refresh the capture.
+The returned `Agreement` exposes a candidate `UtcObservation`, each original
+provider capture and each projected interval. It does not adopt a clock.
+
+Under the assumption that at least one accepted source interval contains true UTC,
+the hull also contains it; an adversarial narrow interval can make an intersection
+exclude it. A 10-second threshold would reject the observed valid pair. The
+assumption includes historical delegated-key security described above. This
+two-source policy deliberately differs from draft sections 8.1/8.2's
+at-least-three-provider, twice-chained query process. It does not implement that
+process or claim a complete transferable malfeasance proof.
 
 ## Evidence and limits
 
@@ -135,6 +164,19 @@ measurement of this parser or a running service. No app manifest or ELF is chang
 by this offline crate. The full crate builds for C6 as a release library; final
 integration still needs actual linked size, peak stack and execution-latency checks.
 
+The project crate has **31 tests** covering the verifier and agreement coordinator,
+including both captured public signatures, request ownership, failed-round closure,
+overlap/hull boundaries, original captures, exact deadlines, rollback and checked
+projection. Independent read-only review found no actionable API or Cargo defect.
+A scratch copy passed all 31 project tests plus three adversarial tests, including
+24 independently modelled clock/response-order combinations. An additional external
+integration test exercised the production public API and pinned roots without
+test-root overrides. The dependency audit found all 204 existing lockfile package
+versions, sources and checksums unchanged; the only new dependency edge is to the
+local core crate. Review, test sources, logs and exact hashes are retained in
+`/tmp/crystal-shim-time-agreement-review`. These checks used no live time requests
+and do not establish hardware timing or app authority adoption.
+
 ## Pending clock and TLS integration
 
 The actual Embassy driver follows `esp-rtos::now` to HAL SystemTimer Unit0.
@@ -148,6 +190,27 @@ bound covering temperature, aging and every power state. No oscillator calibrati
 has been measured. A proposed 100 ppm engineering allowance would be a tenfold
 margin over the design recommendation, **an explicit operating assumption**, not
 a manufacturer guarantee or an implemented default.
+
+The 2026-09-12 pinned-source audit confirms that TIMG0 supplies RTOS wakeups;
+timestamps instead use the nominal 16 MHz crystal-derived SystemTimer and a
+1 MHz Embassy tick conversion. The [C6 TRM](https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf)
+v1.2, sections 13.3/13.5.4 and register 8.21, distinguishes the XTAL/RC_FAST
+selector, Unit0 running/stall state and separate sleep compensation. An application
+policy must check its supported fixed mode and revoke before a source/sleep change.
+Integer conversion alone has less than 1 ms error between same-grid captures;
+HAL's competing latch/read path can return an older counter value. Review a short
+capture-only critical section or otherwise bound that race before adopting a
+quantization allowance. Interrupt delay is not quantization. No cryptography,
+networking or storage belongs in that capture section.
+
+The planned verification context is the thread-mode network UserTask with interrupts
+enabled, outside the Priority3 control and Priority2 sensor executors. Synchronous
+Ed25519 work blocks sibling thread futures during that poll; async timeout cannot
+interrupt it. Preserve pre/post time and generation checks and yield between
+provider work. Final-device preemption/cadence, stack and crypto-latency evidence
+remain required. Exact pinned symbols and primary-source receipts are retained in
+`/tmp/crystal-shim-unattended-clock-policy`; this audit selects no ppm default and
+does not enable an unattended authority.
 
 For a justified relative error bound `p` ppm, a measured age `a` can be projected
 using `floor(a*1e6/(1e6+p))` for the lower elapsed bound and
@@ -191,10 +254,11 @@ control-accepted original interval for
 schedule/TLS, preserve USB generation precedence, expire the old anchor first,
 and ensure source loss/revocation cannot clear a newer operator authority or wait
 behind storage Busy. The existing shared UDP/RNG owners should be reused without
-periodic flash writes. Runtime query backoff, source agreement, total deadlines,
-generation coupling, interval-aware CASE/operator input and final-device service
-availability remain implementation work. The public probe does not establish that
-an Apple Home hub supplies a usable CASE time server.
+periodic flash writes. App query scheduling/backoff, integration of the offline
+agreement and its original deadlines, generation coupling, interval-aware
+CASE/operator input and final-device service availability remain implementation
+work. The public probe does not establish that an Apple Home hub supplies a usable
+CASE time server.
 Synchronous signature verification also needs measured C6 latency and a reviewed
 runtime execution context. An after-verification deadline check cannot itself
 guarantee that cryptography leaves the 20 ms local control path available.

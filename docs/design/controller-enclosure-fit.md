@@ -77,6 +77,9 @@ invented latch mesh.
   withdrawal stroke. Exact three-pair cable, gland, minimum bend radius and installed
   reach remain to select. **Total harness length remains at most 203.2 mm**,
   including internal routing; straight enclosure-to-tank separation is not enough.
+  The [sensor harness study](sensor-harness.md) records cable/gland candidates
+  and a sideways sensor-header route within 200 mm. Crimp manufacture, actual
+  mated/support datums, gland fit and drip handling remain release checks.
 - J2 pin 1 is (165.5,131), facing south. Its nominal wire exit is around Y147.57;
   the enlarged envelope reaches Y147.82. Its 1.586 mm wall gap does not accommodate
   a wire bend. The shared service opening below clears an 8 x 12 mm straight

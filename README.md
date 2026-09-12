@@ -18,11 +18,12 @@ commission the assembled unit. No separate prototype phase is planned.
 **Status:** detailed design and firmware implementation are in progress. The
 [design basis](docs/design/README.md) records sourced parts, interfaces and open
 engineering checks. The C6 application binds sensing, relay/watchdog control,
-retained state, private Matter provisioning and the local settings service.
-The controller schematic and placement are captured; its guarded initial export
-preserves connectivity through native KiCad Save. Mains integration, sensor
-geometry, board routing and the live Pushover worker remain work. No fabrication
-release or final-unit commissioning has passed.
+retained state, private Matter provisioning, local settings and bounded verified-TLS
+Pushover delivery. The controller schematic and placement are captured and adopted
+in KiCad, with strict schematic cleanup and partially applied native rules/stackup.
+Mains integration, sensor geometry, remaining board constraints, routing and
+unattended time acquisition remain work. No fabrication release or final-unit
+commissioning has passed.
 
 Start with [the overview](docs/overview.md) and [current state](docs/STATE.md).
 The [decision register](docs/decisions.md) tracks open inputs and release gates.

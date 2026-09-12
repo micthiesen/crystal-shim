@@ -7,7 +7,10 @@
 //! A valid signature authenticates a server's claim, not its accuracy. The caller
 //! must supply fresh CSPRNG nonces, conservative transport timing and an authority
 //! agreement policy before using an interval as trusted UTC.
+//! The [`agreement`] module supplies a request-owning two-provider policy while
+//! leaving hardware error bounds, acquisition and clock adoption to the caller.
 
+pub mod agreement;
 mod wire;
 
 use ed25519_dalek::{Signature, VerifyingKey};
