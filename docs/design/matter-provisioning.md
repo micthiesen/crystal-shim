@@ -257,8 +257,9 @@ An explicit valid CONFIG must have completed first. Calibration may remain absen
 Provisioning never invents configuration, calibration or UTC. A never-configured
 runtime can acknowledge maintenance only as Applied; the writer rejects it as
 `Unconfigured`, because no durable maintenance record exists. The ordinary CONFIG
-command accepts the canonical CSCF hex record; a convenient host configuration
-encoder remains separate work. The [settings webpage](settings.md) can edit an
+command accepts the canonical CSCF hex record. The
+[first-configuration workflow](first-configuration.md) creates, validates and sends
+that record through this existing transaction. The [settings webpage](settings.md) can edit an
 already configured device after network provisioning.
 
 `PROVISION_BEGIN` submits an owned `EnterMaintenance` through the existing ingress.

@@ -2,10 +2,15 @@
 
 Implemented in
 [`firmware/core/src/configuration.rs`](../../firmware/core/src/configuration.rs).
-The module provides one allocation-free configuration model for the future USB,
-local HTTP, storage, schedule, sensor and notification adapters. It validates a
+The module provides one allocation-free configuration model shared by USB,
+local HTTP, storage, schedule and sensor adapters, with fields for the pending
+notification worker. It validates a
 complete candidate before any runtime component can observe it. It does not supply
 production thresholds, calibration values, schedule entries, timezone or credentials.
+
+The [first-configuration tool](first-configuration.md) uses this codec directly
+for a private revision-1 record and one USB transaction. Subsequent settings saves
+use the same validation and next-revision contract.
 
 ## Runtime model
 

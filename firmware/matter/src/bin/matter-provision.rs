@@ -1,6 +1,10 @@
-//! Host-only private provisioning. Serial writes require explicit `send`; no flash/network tools.
+//! Host-only private provisioning. Serial writes require explicit send commands.
 #[path = "provision/cd.rs"]
 mod cd;
+#[path = "provision/config_sender.rs"]
+mod config_sender;
+#[path = "provision/configuration.rs"]
+mod configuration;
 #[path = "provision/crypto.rs"]
 mod crypto;
 #[path = "provision/files.rs"]
@@ -27,8 +31,13 @@ use std::{
     path::{Path, PathBuf},
 };
 
-const HELP: &str = "Private Matter provisioning (host tool; only send opens the explicitly named USB port)\n\
-Commands: issue-dev, import, validate, send\n\
+const HELP: &str = "Private provisioning (only send/config-send open the explicitly named USB port)\n\
+Commands: issue-dev, import, validate, send, config-create, config-validate, config-send\n\
+config-create required: --parameters FILE --out NEW_DIRECTORY\n\
+config-validate required: --record FILE\n\
+config-send required: --record FILE --serial /absolute/device\n\
+Configuration parameters require stop_level, restart_level, max_sample_age_ms, timezone_rule as key=value lines. Optional run_duration_seconds defaults to 900; low_confirmation_ms/recovery_ms/minimum_off_ms default to provisional 1000/10000/30000.\n\
+Configuration is revision 1 with a fresh private settings token, no calibration, schedules or Pushover credentials. config-send sends once, requires a durable reply, and never retries, exits maintenance or reboots. See docs/design/first-configuration.md.\n\
 issue-dev/import required: --metadata FILE --pai-cert FILE --cd FILE --paa-cert FILE --cd-signer FILE --out NEW_DIRECTORY\n\
 issue-dev also requires: --pai-key FILE (fresh device key; explicit development VID FFF1-FFF4)\n\
 import also requires: --dac-cert FILE --dac-key FILE (unencrypted P-256 PEM)\n\
@@ -55,7 +64,16 @@ fn main() {
 }
 fn run(args: &[std::ffi::OsString]) -> Result<&'static str> {
     let command = args[0].to_str().ok_or("invalid command")?;
-    if !matches!(command, "issue-dev" | "import" | "validate" | "send") {
+    if !matches!(
+        command,
+        "issue-dev"
+            | "import"
+            | "validate"
+            | "send"
+            | "config-create"
+            | "config-validate"
+            | "config-send"
+    ) {
         return Err("unknown command; use --help");
     }
     let mut options = BTreeMap::new();
@@ -96,6 +114,9 @@ fn run(args: &[std::ffi::OsString]) -> Result<&'static str> {
             "--out",
         ],
         "send" => &["--record", "--paa-cert", "--cd-signer", "--serial"],
+        "config-create" => &["--parameters", "--out"],
+        "config-validate" => &["--record"],
+        "config-send" => &["--record", "--serial"],
         _ => &["--record", "--paa-cert", "--cd-signer"],
     };
     if expected.len() != options.len() || expected.iter().any(|key| !options.contains_key(key)) {
@@ -107,6 +128,32 @@ fn run(args: &[std::ffi::OsString]) -> Result<&'static str> {
             .map(PathBuf::as_path)
             .ok_or("missing option")
     };
+    if command == "config-create" {
+        configuration::create(path("--parameters")?, path("--out")?)?;
+        return Ok("private first-configuration files created; no device opened; no credentials are printed");
+    }
+    if matches!(command, "config-validate" | "config-send") {
+        let bytes = configuration::load(path("--record")?)?;
+        if command == "config-send" {
+            // Decode/profile validation and randomness precede even serial inspection.
+            let random = crypto::random(4)?;
+            let id = u32::from_le_bytes(
+                random
+                    .0
+                    .as_slice()
+                    .try_into()
+                    .map_err(|_| "request ID length")?,
+            );
+            if id == 0 {
+                return Err("random request ID rejected; no serial device opened");
+            }
+            let mut port = serial::Serial::open(path("--serial")?)?;
+            config_sender::send(&mut port, &bytes.0, id)
+                .map_err(config_sender::Failure::message)?;
+            return Ok("first configuration acknowledged durable; maintenance remains active; no exit or reboot requested");
+        }
+        return Ok("offline first-configuration validation complete; no device opened; no credentials are printed");
+    }
     if matches!(command, "validate" | "send") {
         let bytes = files::read(path("--record")?, true, provisioning::MAX_BYTES)?;
         let record =

@@ -28,9 +28,10 @@ The physical USB commands are `<id> SETTINGS_TOKEN` and
 caller-generated random token and the normal next-revision CONFIG transaction.
 It enters maintenance and needs a durable acknowledgment. The caller supplies
 cryptographic randomness; an arbitrary hex string is not evidence of entropy.
-Rotation cannot be invoked by HTTP. The first valid configuration and private
-Matter identity still arrive through USB provisioning; the host configuration
-encoder remains separate work.
+Rotation cannot be invoked by HTTP. The [first-configuration tool](first-configuration.md)
+creates the private token and revision-1 record, validates it offline and sends
+one USB CONFIG. Complete that durable transaction before installing the private
+Matter identity and commissioning the network.
 
 The page edits stop/restart thresholds, shared run duration, low confirmation,
 stable recovery, minimum off time, maximum sample age, POSIX timezone, up to 16

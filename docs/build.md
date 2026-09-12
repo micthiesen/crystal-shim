@@ -35,7 +35,11 @@ Physical calibration and acceptance use the final boards after assembly.
 5. **Calibrate and commission the final low-voltage hardware.** With mains
    disconnected and a reviewed isolated low-voltage power arrangement, verify
    supplies, USB combinations, default-off drive, sensor faults, retained state
-   and watchdog behavior. Fit the final sensor to the aquarium; measure rising and
+   and watchdog behavior. Create and deliver the private
+   [first configuration](design/first-configuration.md), then install the
+   [Matter identity](design/matter-provisioning.md) and commission networking.
+   Initial configuration leaves calibration absent, schedules empty and maintenance
+   active. Fit the final sensor to the aquarium; measure rising and
    falling water, receding wet glass, clip pressure/gaps and reseating. Record raw
    capacitances and set stop/restart margins and freshness limits through firmware.
    Verify Matter/HomeKit, window suppression, override expiry, settings persistence

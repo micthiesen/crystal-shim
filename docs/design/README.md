@@ -23,6 +23,8 @@ release or commissioning evidence. Their explicit open items remain work to fini
 - [Calibration](calibration.md): measured TI response normalization, integer arithmetic,
   raw envelopes, frame ordering and validity checks.
 - [Configuration](configuration.md): validated settings and canonical bounded storage format.
+- [First configuration](first-configuration.md): private initial record creation,
+  offline validation and one-shot USB delivery before Matter commissioning.
 - [Local settings](settings.md): actual HTTP service, browser UI and durable command admission.
 - [TLS restriction](tls-restriction.md): borrowed rejection-only certificate callback and vendor provenance.
 - [Controller grid](controller-grid.md): initial coordinate conversion and verified native-save connectivity.

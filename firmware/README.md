@@ -134,8 +134,10 @@ All thresholds and timers are explicit configuration. The CLI supports them at
 startup; `Supervisor::reconfigure` clamps an active deadline when duration decreases
 and never extends it when duration increases. The runtime's configuration-save
 transaction deliberately enters maintenance, preserves deadline history and
-requires an explicit durable exit. The future settings webpage must show this
-consequence. No configuration UI or commissioned final Matter node exists yet.
+requires an explicit durable exit. The implemented [settings webpage](../docs/design/settings.md)
+shows this consequence and keeps maintenance exit separate. Use the private
+[first-configuration workflow](../docs/design/first-configuration.md) before Matter
+commissioning. No final Matter node has been physically commissioned yet.
 The generated async Matter handler reports the observed relay command and waits
 for control-applied replies. Source-owned tokens prevent stale replies or another
 producer from consuming them. Toggle resolves inside control. The linked radio

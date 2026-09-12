@@ -1175,6 +1175,36 @@ all three severities. Evidence is [the native record](controller-grid.md),
 firmware behavior and its linked image are unchanged from the timing checkpoint.
 No routed board, lock or fabrication release is implied.
 
+## First-configuration host workflow, 2026-09-12
+
+The existing `matter-provision` binary now creates a private revision-1 bootstrap
+record, validates it through the production codec and sends exactly one USB CONFIG.
+The record has a fresh settings token, explicit thresholds/freshness/timezone,
+provisional duration/dwell defaults and no calibration, schedules or Pushover keys.
+Only the matching durable reply after both runtime writes reports success.
+
+Root review caught whole-line UTF-8 decoding losing attribution of a malformed
+matching reply. The corrected parser matches the ASCII envelope first and retains
+attribution while draining overflow. Both malformed cases remain uncertain even
+if a later Durable follows. The new regression fails against a scratch copy of
+the former parser and passes against current source. An independent reviewer
+then found no remaining material issue in the six-file implementation/document
+scope, including private files, CLI options, bytes loaded before port opening,
+durability, partial writes, fixed deadlines and unknown outcomes.
+
+Tests use the actual codec, Receiver, Ingress and Runtime, plus owned pseudo
+terminals. A test-only descriptor correction sets CLOEXEC on those terminals;
+the disconnect case now observes EOF instead of a ten-second timeout caused by
+inheriting its own master. Final macOS and OrbStack Linux focused checks pass 19
+binary tests, five configuration CLI/PTY tests and five existing identity CLI
+regressions, with all-target Clippy on both. The full
+project gate passes; the final descriptor-only test change was checked separately.
+The C6 ELF remains `8ccf75f857532380a7881bb47f741cd655304bf05fc5d8253052035f7c895fe4`.
+Evidence is in `/tmp/crystal-shim-first-config-implementation` and
+`/tmp/crystal-shim-first-config-full-check.log`. No real serial device, flash,
+radio, live credentials or notification was used. This is a scoped host workflow
+review, with all physical commissioning rows still Not run.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.
