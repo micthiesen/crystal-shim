@@ -13,6 +13,8 @@ const CONFIG = {
   revision: 7, stop_level: 200, restart_level: 400, duration_seconds: 900,
   timezone: "PST8PDT,M3.2.0,M11.1.0", entries: [{ id: 19, days: 65, start_second: 43201 }],
   calibrated: true, pushover_configured: true,
+  low_confirmation_ms: "1000", recovery_ms: "10000", minimum_off_ms: "30000",
+  max_sample_age_ms: "500", minimum_sample_age_ms: "100",
 };
 const STATUS = {
   revision: 7, relay_on: false, maintenance: true, durable_maintenance: true,
@@ -66,6 +68,7 @@ test("configuration form matches the exact bounded backend contract", () => {
   const form = buildConfigForm(draft, CONFIG.revision);
   assert.deepEqual(Object.fromEntries(form), {
     revision: "7", stop_level: "200", restart_level: "400", duration_seconds: "900",
+    low_confirmation_ms: "1000", recovery_ms: "10000", minimum_off_ms: "30000", max_sample_age_ms: "500",
     timezone: CONFIG.timezone, entry_count: "1", entry0_id: "19", entry0_days: "65",
     entry0_start_second: "43201", pushover_action: "keep",
   });
@@ -415,4 +418,64 @@ test("DOM enables Off after an ambiguous write settles without requiring refetch
   await off;
   assert.equal(document.nodes.get("off").disabled, false);
   assert.deepEqual(calls, ["/api/config", "/api/status", "/api/maintenance", "/api/off"]);
+});
+
+
+test("timing form preserves full u64 decimal precision and enforces freshness floor", () => {
+  const draft = configToDraft(CONFIG);
+  for (const key of ["low_confirmation_ms", "recovery_ms", "minimum_off_ms", "max_sample_age_ms"]) {
+    for (const value of ["9007199254740993", "18446744073709551615"]) {
+      assert.equal(buildConfigForm({ ...draft, [key]: value }, 7).get(key), value);
+    }
+    for (const value of [0, 100, "0", "", "-1", "+1", "1.5", "1e3", "18446744073709551616", " ", "01.0", 9007199254740993]) {
+      assert.throws(() => buildConfigForm({ ...draft, [key]: value }, 7));
+    }
+  }
+  assert.throws(() => buildConfigForm({ ...draft, max_sample_age_ms: "99" }, 7), /frame-duration/);
+  assert.equal(buildConfigForm({ ...draft, max_sample_age_ms: "100" }, 7).get("max_sample_age_ms"), "100");
+  const maximum = buildConfigForm({ ...draft,
+    low_confirmation_ms: "18446744073709551615", recovery_ms: "18446744073709551615",
+    minimum_off_ms: "18446744073709551615", max_sample_age_ms: "18446744073709551615",
+    timezone: "+".repeat(128), duration_seconds: 86400, stop_level: 999, restart_level: 1000,
+    entries: Array.from({ length: 16 }, (_, i) => ({ id: 4080 + i, days: 127, time: "23:59:59" })),
+    pushover_action: "replace", pushover_application_token: APP_KEY, pushover_user_key: USER_KEY, pushover_device: "a".repeat(25),
+  }, 4294967294);
+  assert.ok(maximum.size <= 64);
+  assert.ok(maximum.toString().length <= 2048, maximum.toString().length);
+});
+
+test("the session rejects imprecise numeric timing JSON instead of silently rounding it", async () => {
+  const { session } = harness(undefined, { ...CONFIG, low_confirmation_ms: 9007199254740993 });
+  session.unlock(TOKEN);
+  await assert.rejects(session.refresh());
+  assert.equal(session.snapshot.needsRefetch, true);
+  assert.equal(session.snapshot.config, null);
+});
+
+test("the rendered timing inputs load and submit exact values through the real form handler", async () => {
+  const document = fakeDocument(await readFile(new URL("./index.html", import.meta.url), "utf8"));
+  const calls = [];
+  bootstrap(document, async (path, options) => {
+    if (options.method === "POST") { calls.push(new URLSearchParams(options.body)); return reply({ outcome: "durable", revision: 8 }); }
+    return reply(path === "/api/config" ? { ...CONFIG, entries: [] } : STATUS);
+  });
+  document.nodes.get("access-token").value = TOKEN;
+  document.nodes.get("unlock-form").listeners.get("submit")({ preventDefault() {} });
+  await pause();
+  assert.equal(document.nodes.get("low-confirmation").value, "1000");
+  assert.equal(document.nodes.get("recovery").value, "10000");
+  assert.equal(document.nodes.get("minimum-off").value, "30000");
+  assert.equal(document.nodes.get("sample-age").value, "500");
+  document.nodes.get("low-confirmation").value = "9007199254740993";
+  document.nodes.get("recovery").value = "12345";
+  document.nodes.get("minimum-off").value = "54321";
+  document.nodes.get("sample-age").value = "100";
+  document.nodes.get("settings-form").listeners.get("submit")({ preventDefault() {} });
+  await pause();
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].get("low_confirmation_ms"), "9007199254740993");
+  assert.equal(calls[0].get("recovery_ms"), "12345");
+  assert.equal(calls[0].get("minimum_off_ms"), "54321");
+  assert.equal(calls[0].get("max_sample_age_ms"), "100");
+  assert.equal(calls[0].has("minimum_sample_age_ms"), false);
 });

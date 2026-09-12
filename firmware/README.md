@@ -18,8 +18,9 @@ and suppression, and accepts bounded physical USB administration. The Matter
 command and shared KV adapters, Wi-Fi/BLE commissioning and private credential
 provisioning are implemented. The private switch profile follows D-22; Apple Home
 pairing and behavior have not been exercised. The authenticated
-[settings service](../docs/design/settings.md) is linked; calibration/timing UI
-and the live Pushover worker remain work. The external coil
+[settings service](../docs/design/settings.md) includes schedule, threshold and
+response timing controls; its calibration workflow and the live Pushover worker
+remain work. The external coil
 pull-down must establish off before application entry and during reset; a build
 cannot verify that physical behavior.
 

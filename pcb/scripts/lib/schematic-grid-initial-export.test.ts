@@ -268,10 +268,12 @@ test("controller topology, identities, types and standalone cache survive grid a
     joinedInductorLibraryId: "CrystalShim_Controller:Controller_L1",
   });
   expect(before.map((s) => s.getString())).toEqual(strings);
-  expect(output.report.reduce((n, r) => n + r.wires, 0)).toBe(443);
+  // The sixteen USB signal islands shorten source wires; native XML still
+  // preserves all 71 net names and all 274 exact endpoint/type memberships.
+  expect(output.report.reduce((n, r) => n + r.wires, 0)).toBe(408);
   expect(output.report.reduce((n, r) => n + r.pins, 0)).toBe(278);
   expect(output.library).toHaveLength(96);
-  expect(output.report.reduce((n, r) => n + r.addedBranchJunctions, 0)).toBe(16);
+  expect(output.report.reduce((n, r) => n + r.addedBranchJunctions, 0)).toBe(6);
   for (const [index, s] of output.sheets.entries()) {
     const prior = before[index]!;
     expect(incidence(s, new Set(prior.junctions.map((j) => j.uuid!.value)))).toEqual(
@@ -314,7 +316,7 @@ test("controller topology, identities, types and standalone cache survive grid a
   // Hierarchy filename/UUID generation is randomized between compiles. Exact
   // native membership is separately compared in the fresh guarded stage.
   const actual = full.schematicFiles.map((f) => parseKicadSch(f.content));
-  expect(actual.reduce((n, s) => n + s.wires.length, 0)).toBe(443);
+  expect(actual.reduce((n, s) => n + s.wires.length, 0)).toBe(408);
   const emittedLibrary = parseKicadSym(full.symbolLibraryFile.content);
   for (const sheet of actual) {
     for (const w of sheet.wires)

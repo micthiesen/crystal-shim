@@ -1,4 +1,11 @@
 export const LIMITS = Object.freeze({ entries: 16, entryId: 4095, level: 1000, duration: 86400, revision: 4294967295 });
+const TIMING_FIELDS = [["low_confirmation_ms", "low-confirmation", "Low-water confirmation"], ["recovery_ms", "recovery", "Stable recovery"], ["minimum_off_ms", "minimum-off", "Minimum off period"], ["max_sample_age_ms", "sample-age", "Maximum sample age"]];
+function millis(value, label) {
+  if (typeof value !== "string" || !/^[0-9]{1,20}$/.test(value)) throw new Error(`${label} must be a positive whole number of milliseconds.`);
+  const result = BigInt(value);
+  if (result < 1n || result > 18446744073709551615n) throw new Error(`${label} is outside the supported range.`);
+  return result.toString();
+}
 const DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const READ_PATHS = new Set(["/api/config", "/api/status"]);
 const WRITE_PATHS = new Set(["/api/config", "/api/off", "/api/maintenance", "/api/exit"]);
@@ -38,6 +45,8 @@ export function configToDraft(config) {
   return {
     stop_level: config.stop_level, restart_level: config.restart_level,
     duration_seconds: config.duration_seconds, timezone: config.timezone,
+    ...Object.fromEntries(TIMING_FIELDS.map(([key]) => [key, config[key]])),
+    minimum_sample_age_ms: config.minimum_sample_age_ms,
     entries: config.entries.map(entry => ({ id: entry.id, days: entry.days, time: secondsToTime(entry.start_second) })),
     pushover_action: "keep", pushover_application_token: "", pushover_user_key: "", pushover_device: "",
   };
@@ -51,6 +60,8 @@ export function buildConfigForm(draft, revision) {
   form.set("stop_level", String(stop));
   form.set("restart_level", String(restart));
   form.set("duration_seconds", String(integer(draft.duration_seconds, 1, LIMITS.duration, "Run duration")));
+  for (const [key, , label] of TIMING_FIELDS) form.set(key, millis(draft[key], label));
+  if (BigInt(form.get("max_sample_age_ms")) < BigInt(millis(draft.minimum_sample_age_ms, "Minimum sample age"))) throw new Error("Maximum sample age must cover the configured frame-duration limit.");
   if (typeof draft.timezone !== "string" || !/^[\x21-\x7e]{1,128}$/.test(draft.timezone)) throw new Error("Enter a POSIX timezone rule of 1 to 128 ASCII characters, without spaces. The device validates the rule.");
   form.set("timezone", draft.timezone);
   if (!Array.isArray(draft.entries) || draft.entries.length > LIMITS.entries) throw new Error("Use no more than 16 scheduled starts.");
@@ -111,6 +122,8 @@ function readConfig(value) {
     revision: integer(value.revision, 1, LIMITS.revision, "Revision"),
     stop_level: Number(value.stop_level), restart_level: Number(value.restart_level),
     duration_seconds: Number(value.duration_seconds), timezone: value.timezone,
+    ...Object.fromEntries(TIMING_FIELDS.map(([key, , label]) => [key, millis(value[key], label)])),
+    minimum_sample_age_ms: millis(value.minimum_sample_age_ms, "Minimum sample age"),
     entries: value.entries.map(entry => ({ id: Number(entry.id), days: Number(entry.days), start_second: Number(entry.start_second) })),
     calibrated: value.calibrated, pushover_configured: value.pushover_configured,
   };
@@ -276,6 +289,8 @@ export function bootstrap(document, fetcher) {
     return {
       stop_level: byId("stop-level").value, restart_level: byId("restart-level").value,
       duration_seconds: byId("duration").value, timezone: byId("timezone").value,
+      ...Object.fromEntries(TIMING_FIELDS.map(([key, id]) => [key, byId(id).value])),
+      minimum_sample_age_ms: session.snapshot.config?.minimum_sample_age_ms,
       entries: [...byId("entries").children].map(row => ({
         id: Number(row.dataset.entryId), time: row.querySelector('input[type="time"]').value,
         days: [...row.querySelectorAll('input[type="checkbox"]')].reduce((mask, input, day) => mask | (input.checked ? 1 << day : 0), 0),
@@ -325,6 +340,8 @@ export function bootstrap(document, fetcher) {
     for (const [id, key] of [["stop-level", "stop_level"], ["restart-level", "restart_level"], ["duration", "duration_seconds"], ["timezone", "timezone"]]) byId(id).value = draft[key];
     byId("entries").replaceChildren(); retiredIds = [];
     draft.entries.forEach(addEntry); updateEntryCount();
+    for (const [key, id] of TIMING_FIELDS) byId(id).value = draft[key];
+    byId("sample-age-help").textContent = `Maximum sample age also limits gaps in local control. The configured frame-duration limit requires at least ${config.minimum_sample_age_ms} ms.`;
     byId("calibration-status").textContent = config.calibrated ? "Calibration is stored. The device also checks thresholds against its calibrated range." : "Calibration is not stored. Calibration is configured through commissioning, outside this page.";
     byId("pushover-status").textContent = config.pushover_configured ? "Credentials are configured." : "Credentials are not configured.";
   }

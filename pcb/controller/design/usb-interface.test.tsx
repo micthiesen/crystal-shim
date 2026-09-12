@@ -277,3 +277,63 @@ test("all USB schematic pins reach their electrical labels and NC pins stay isol
     ]),
   ).toEqual([]);
 });
+
+// Independent electrical island partition. A repeated label must name a different
+// physical wire island, not merely hide single_global_label on an existing wire.
+const signalIslands: Record<string, string[][]> = {
+  USB_CC1: [["J4.A5"], ["R40.1"]],
+  USB_CC2: [["J4.B5"], ["R41.1"]],
+  USB_D_P_PORT: [["J4.A6", "J4.B6"], ["U9.1", "U9.6"], ["U8.3"]],
+  USB_D_N_PORT: [["J4.A7", "J4.B7"], ["U9.3", "U9.4"], ["U8.4"]],
+  USB_SWITCH_OE_N: [["U7.4"], ["U8.10", "R46.2"]],
+  USB_D_P_SWITCH: [["U8.7"], ["R45.1"]],
+  USB_D_N_SWITCH: [["U8.6"], ["R44.1"]],
+};
+
+test("sixteen signal labels each name exactly one distinct useful USB wire island", async () => {
+  const json = await fixture();
+  const before = schematicConnectivity(json);
+  expect(schematicConnectivityErrors(json)).toEqual([]);
+  const labels = json
+    .filter((e) => e.type === "schematic_net_label")
+    .filter((e) => e.text in signalIslands);
+  expect(labels).toHaveLength(16);
+  for (const [net, groups] of Object.entries(signalIslands)) {
+    const cuts: string[][] = [];
+    const named = labels.filter((l) => l.text === net);
+    expect(named, net).toHaveLength(groups.length);
+    for (const label of named) {
+      const cut = schematicConnectivity(json.filter((e) => e !== label));
+      const lost: string[] = [];
+      for (const [pin, prior] of before) {
+        const after = cut.get(pin);
+        if (JSON.stringify(after) !== JSON.stringify(prior)) {
+          expect(prior, pin).toEqual([net]);
+          expect(after, pin).toEqual([]);
+          lost.push(pin);
+        }
+      }
+      cuts.push(lost.sort());
+      expect(
+        lost.length,
+        `${net}: label must serve a real distinct island`,
+      ).toBeGreaterThan(0);
+    }
+    expect(cuts.sort(), net).toEqual(groups.map((g) => [...g].sort()).sort());
+  }
+});
+
+test("J4 uses horizontal ground labels with one explicit A12/B1 branch", async () => {
+  const json = await fixture();
+  const labels = json
+    .filter((e) => e.type === "schematic_net_label")
+    .filter((e) => e.text === "GND" && e.anchor_position?.x === -13);
+  expect(labels.map((l) => [l.anchor_position?.y, l.anchor_side]).sort()).toEqual([
+    [-0.7, "right"],
+    [0.8, "right"],
+  ]);
+  const lower = labels.find((l) => l.anchor_position?.y === -0.7)!;
+  const cut = schematicConnectivity(json.filter((e) => e !== lower));
+  for (const pin of expectedNets.GND!)
+    expect(cut.get(pin), pin).toEqual(["J4.A12", "J4.B1"].includes(pin) ? [] : ["GND"]);
+});

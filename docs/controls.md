@@ -48,8 +48,10 @@ missing calibration must keep the relay off. The webpage and its network/storage
 work must not block sensor sampling or local control. The
 [implemented page](design/settings.md) edits schedule, timezone, duration,
 thresholds and Pushover credential actions through authenticated durable
-transactions. Calibration workflow and timing/freshness form controls remain
-work; the existing values are preserved. First configuration and token discovery
+transactions. Low confirmation, recovery, minimum-off and freshness timings are
+also editable. Freshness updates both control and calibrated frame validation,
+without changing measured coefficients, and must cover the stored frame-duration
+limit. The calibration workflow remains work. First configuration and token discovery
 use physical USB; no default calibration or live credentials are supplied.
 
 ## Run windows and HomeKit
@@ -158,7 +160,7 @@ commands and schedule evaluation from explicit UTC observations are implemented.
 The Matter radio/command adapter and bounded CASE time-source reader are linked;
 private credential provisioning is implemented. Apple Home pairing and a usable
 hub time source have not been demonstrated on hardware. The settings service is
-linked; its calibration/timing UI, unattended signed-time integration and Pushover
+linked; its calibration workflow, unattended signed-time integration and Pushover
 worker remain work. Stored Pushover
 credentials have a validated format but are not used by a network sender.
 

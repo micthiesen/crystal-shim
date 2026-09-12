@@ -1120,6 +1120,34 @@ assertions. Exact current linked-memory evidence belongs in [STATE](../STATE.md)
 All commissioning rows remain Not run. These bounded reviews do not complete
 three-board manufacture or final-unit acceptance.
 
+## Timing settings and USB label layout
+
+Independent settings delta review found no actionable defect in field agreement,
+positive u64 parsing, decimal-string JSON, browser BigInt handling, calibration
+preservation, matching freshness limits, durable persistence or request bounds.
+The 31 Rust and 26 Node tests include 16 schedule entries with maximum timing
+values and replacement credentials, and actual form-input wiring. Regression
+copies using the previous source fail. A real 520-pixel browser fixture edited,
+saved and refetched all four timing values, then rejected freshness below the
+stored frame-duration floor without a second POST. No live device was involved.
+
+The USB source replaces seven single-label networks with sixteen distinct labeled
+wire islands. Tests remove each label independently and prove only the expected
+island loses its name. Complete source manifest, all 1,194 PCB JSON records and
+native 71 nets/274 pin memberships match the baseline. Actual KiCad Save rewrites
+all eight sheets without any component, library or net membership change. The
+saved copy passes ERC with no ignored categories and no violations; the source
+stage retains its explicit initial defaults. Current PCB checks pass 115 tests /
+23,491 assertions and 36 shared handoff tests. Independent USB delta review found no actionable topology, endpoint or physical
+placement defect. Root visual review retains existing module page-border and R53 label
+crossing fixes as open work; the USB layout itself is clear.
+
+The integrated `sh scripts/check.sh` passes; evidence is
+`/tmp/crystal-shim-timing-usb-full-check.log`, the timing browser evidence and
+`/tmp/crystal-shim-controller-usb-gui/native-gui-receipt.json`. No fabrication or
+operating gate is passed. The before-routing cleanup gate is separately under
+review for its handling of inherited ignored ERC categories.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

@@ -32,12 +32,18 @@ Rotation cannot be invoked by HTTP. The first valid configuration and private
 Matter identity still arrive through USB provisioning; the host configuration
 encoder remains separate work.
 
-The page edits stop/restart thresholds, shared run duration, POSIX timezone,
-up to 16 schedule starts and Pushover credential keep/clear/replace actions.
+The page edits stop/restart thresholds, shared run duration, low confirmation,
+stable recovery, minimum off time, maximum sample age, POSIX timezone, up to 16
+schedule starts and Pushover credential keep/clear/replace actions.
 Existing secrets are never returned or prefilled. Threshold units are calibrated
-thousandths of the sensing range. Existing calibration, timing and sample-age
-settings are preserved by this form; physical calibration remains separate.
-The browser does not reinterpret starts in its own timezone.
+thousandths of the sensing range. Timing fields use positive whole milliseconds;
+the API returns decimal strings and the browser uses checked BigInt conversion
+so values above JavaScript's exact Number range cannot be silently rounded.
+Maximum sample age changes the matching calibration frame-age limit in the same
+validated transaction; measured coefficients and every other calibration limit
+remain unchanged. It cannot fall below the stored maximum frame-duration limit,
+which is shown on the page. Physical calibration remains separate. The browser
+does not reinterpret starts in its own timezone.
 
 Saving stops the current run and enters maintenance. Success requires the
 matching durable configuration acknowledgment. Maintenance exit is an explicit
@@ -120,3 +126,16 @@ worker is running.
 `sh scripts/check.sh` includes the Rust tests, Node UI tests, feature guard,
 embedded build and the existing project checks. The UI can be exercised with
 synthetic local fixtures without provisioning or contacting the real device.
+
+The timing extension passes 31 Rust and 26 Node tests, including exact u64
+round-trips, malformed/missing-field rejection before admission, the 16-entry
+request size/field limit, calibration preservation and actual form input wiring.
+An isolated copy using the pre-feature source fails the new behavior regressions.
+A real browser at approximately 520-pixel width edited 1000/10000/30000/500 ms to
+1500/11000/31000/600, saved and refetched those exact values, and blocked 99 ms
+freshness below a 100 ms frame-duration floor without another POST. The synthetic
+fixture and its own tab were closed. Evidence is in
+`/tmp/crystal-shim-settings-timing-browser`. This is browser/host evidence, not a
+physical timing or browser-to-ESP result. Independent delta review found no
+actionable defect in parsing, precision, calibration preservation, persistence,
+request capacity or browser wiring.

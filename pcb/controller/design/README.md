@@ -23,13 +23,15 @@ It is not an adopted board, clean final ERC/DRC or a manufacturing package. Do
 not create a lock or start routing until the remaining project gates are met.
 Native cleanup has resolved unconnected pins, redundant wire overlaps, library
 identity and missing power-source annotations. The initial grid transform now
-removes all 542 off-grid findings. Sixteen explicit USB junctions preserve existing
-branch connections through actual KiCad Save. Initial ERC has zero enabled
-findings; DRC has 216 unrouted items with zero other violations. Page framing and
-legibility, including overlapping J4 GND labels, remain obligations before acceptance. The
-initial project still ignores the footprint-filter ERC check; exact library
-filters do not count as having enabled and passed it. See current source-bound
-stage evidence in [STATE](../../../docs/STATE.md).
+removes all 542 off-grid findings. The revised USB source uses sixteen meaningful
+signal islands and six explicit branch dots, preserving every native connection
+through actual KiCad Save. Initial ERC has zero enabled findings; DRC has 216
+unrouted items with zero other violations. A disposable copy saved through KiCad
+passes all ERC categories with no ignored checks and exact component/net parity.
+Fresh stages retain their declared initial defaults; the before-routing gate and
+remaining module-page frame/label overlap need closure. See
+[the native evidence](../../../docs/design/controller-grid.md) and
+[STATE](../../../docs/STATE.md).
 
 The [augmentation contract](kicad-augment.json) and
 [fabrication design basis](../../../docs/design/controller-stackup.md) retain

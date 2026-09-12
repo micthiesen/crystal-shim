@@ -4,6 +4,7 @@ use core::fmt::Write;
 use crystal_shim_core::configuration::{
     PushoverCredentials, RawDeviceConfig, RawScheduleEntry, ValidatedDeviceConfig,
 };
+use crystal_shim_core::Timing;
 use heapless::{String, Vec};
 
 pub struct Form<'a> {
@@ -43,6 +44,13 @@ impl<'a> Form<'a> {
     }
     pub fn number(&mut self, name: &str) -> Result<u32, Error> {
         number(self.take(name)?.as_bytes())
+    }
+    pub fn millis(&mut self, name: &str) -> Result<u64, Error> {
+        let value = number_u64(self.take(name)?.as_bytes())?;
+        if value == 0 {
+            return Err(Error::BadRequest);
+        }
+        Ok(value)
     }
     pub fn finish(&self) -> Result<(), Error> {
         if self.fields.iter().all(|(_, _, used)| *used) {
@@ -87,13 +95,16 @@ fn hex(b: u8) -> Result<u8, Error> {
     }
 }
 pub(crate) fn number(bytes: &[u8]) -> Result<u32, Error> {
+    number_u64(bytes)?.try_into().map_err(|_| Error::BadRequest)
+}
+fn number_u64(bytes: &[u8]) -> Result<u64, Error> {
     if bytes.is_empty() || !bytes.iter().all(u8::is_ascii_digit) {
         return Err(Error::BadRequest);
     }
     bytes
         .iter()
-        .try_fold(0u32, |value, b| {
-            value.checked_mul(10)?.checked_add(u32::from(b - b'0'))
+        .try_fold(0u64, |value, b| {
+            value.checked_mul(10)?.checked_add(u64::from(b - b'0'))
         })
         .ok_or(Error::BadRequest)
 }
@@ -114,6 +125,19 @@ pub fn edit(
         .try_into()
         .map_err(|_| Error::BadRequest)?;
     let duration = form.number("duration_seconds")?;
+    let max_sample_age_ms = form.millis("max_sample_age_ms")?;
+    let timing = Timing {
+        low_confirmation_ms: form.millis("low_confirmation_ms")?,
+        recovery_ms: form.millis("recovery_ms")?,
+        minimum_off_ms: form.millis("minimum_off_ms")?,
+    };
+    // Freshness is one setting shared by the interlock and calibrated frame
+    // validator. Preserve every measured coefficient and other sensor limit.
+    let calibration = base.calibration().map(|c| {
+        let mut data = *c.data();
+        data.max_frame_age_ms = max_sample_age_ms;
+        data
+    });
     let timezone = form.take("timezone")?;
     let count = form.number("entry_count")?;
     if count > 16 {
@@ -167,8 +191,8 @@ pub fn edit(
         next_revision(base)?,
         stop,
         restart,
-        base.max_sample_age_ms(),
-        base.timing(),
+        max_sample_age_ms,
+        timing,
         duration,
         *base.settings_auth_token().as_bytes(),
     )
@@ -176,7 +200,7 @@ pub fn edit(
     .map_err(|_| Error::BadRequest)?
     .timezone_rule(timezone)
     .map_err(|_| Error::BadRequest)?
-    .calibration(base.calibration().map(|c| *c.data()))
+    .calibration(calibration)
     .pushover(pushover)
     .build();
     ValidatedDeviceConfig::from_raw(raw).map_err(|_| Error::BadRequest)

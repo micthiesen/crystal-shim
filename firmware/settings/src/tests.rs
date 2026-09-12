@@ -266,7 +266,7 @@ fn post(path: &str, body: &str) -> Vec<u8> {
     format!("POST {path} HTTP/1.1\r\nHost: 192.0.2.1\r\nOrigin: http://192.0.2.1\r\nAuthorization: Bearer {AUTH}\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: {}\r\n\r\n{body}",body.len()).into_bytes()
 }
 fn save_body() -> &'static str {
-    "revision=1&stop_level=200&restart_level=800&duration_seconds=600&timezone=UTC0&entry_count=1&entry0_id=4&entry0_days=127&entry0_start_second=1000&pushover_action=keep"
+    "revision=1&stop_level=200&restart_level=800&duration_seconds=600&low_confirmation_ms=100&recovery_ms=100&minimum_off_ms=100&max_sample_age_ms=500&timezone=UTC0&entry_count=1&entry0_id=4&entry0_days=127&entry0_start_second=1000&pushover_action=keep"
 }
 fn serve_one(model: &Model, io: &mut Io<'_>) -> Result<(), Error> {
     let mut buffers = Buffers::new();
@@ -826,4 +826,188 @@ fn cancelling_before_control_dispatch_removes_only_that_request() {
             }
         )
         .is_some());
+}
+
+#[test]
+fn response_timings_and_full_width_freshness_are_durable_and_return_decimal_strings() {
+    let m = Model::new();
+    let body = save_body()
+        .replace(
+            "low_confirmation_ms=100",
+            "low_confirmation_ms=9007199254740993",
+        )
+        .replace("recovery_ms=100", "recovery_ms=10001")
+        .replace("minimum_off_ms=100", "minimum_off_ms=30001")
+        .replace(
+            "max_sample_age_ms=500",
+            "max_sample_age_ms=18446744073709551615",
+        );
+    let mut io = Io::new(&m, post("/api/config", &body));
+    serve_one(&m, &mut io).unwrap();
+    assert!(io.output().starts_with("HTTP/1.1 200"));
+    assert!(io.output().contains("durable"));
+    assert!(m.status.get().durable_maintenance);
+    let saved = m.published.get().unwrap();
+    assert_eq!(
+        saved.timing(),
+        Timing {
+            low_confirmation_ms: 9_007_199_254_740_993,
+            recovery_ms: 10_001,
+            minimum_off_ms: 30_001
+        }
+    );
+    assert_eq!(saved.max_sample_age_ms(), u64::MAX);
+    let snapshot = Snapshot {
+        configuration: saved,
+        status: m.status.get(),
+    };
+    let mut bytes = [0; http::BODY_BYTES];
+    let len = snapshot.config_json(&mut bytes).unwrap();
+    let json = core::str::from_utf8(&bytes[..len]).unwrap();
+    assert!(json.contains("\"low_confirmation_ms\":\"9007199254740993\""));
+    assert!(json.contains("\"max_sample_age_ms\":\"18446744073709551615\""));
+    assert!(json.contains("\"minimum_sample_age_ms\":\"1\""));
+}
+
+#[test]
+fn malformed_or_missing_response_timing_never_reaches_admission() {
+    for (key, original) in [
+        ("low_confirmation_ms", "100"),
+        ("recovery_ms", "100"),
+        ("minimum_off_ms", "100"),
+        ("max_sample_age_ms", "500"),
+    ] {
+        for value in ["", "0", "-1", "%2B1", "1.5", "1e3", "18446744073709551616"] {
+            let m = Model::new();
+            let body = save_body().replace(&format!("{key}={original}"), &format!("{key}={value}"));
+            let mut io = Io::new(&m, post("/api/config", &body));
+            serve_one(&m, &mut io).unwrap();
+            assert!(io.output().starts_with("HTTP/1.1 400"), "{key}={value}");
+            assert_eq!(m.commands.get(), 0);
+            assert_eq!(m.writes.get(), 0);
+        }
+        let m = Model::new();
+        let body = save_body().replace(&format!("&{key}={original}"), "");
+        let mut io = Io::new(&m, post("/api/config", &body));
+        serve_one(&m, &mut io).unwrap();
+        assert!(io.output().starts_with("HTTP/1.1 400"));
+        assert_eq!(m.commands.get(), 0);
+    }
+}
+
+#[test]
+fn freshness_edit_preserves_measured_calibration_and_its_frame_duration_floor() {
+    use crystal_shim_core::calibration::{
+        CalibrationData, ChannelLimits, Channels, CountsRange, LevelDomain, MinimumRatioSpan,
+        ReferenceSign,
+    };
+    // Synthetic arithmetic fixture, not a tank calibration.
+    let limits = ChannelLimits {
+        envelope: CountsRange {
+            min: -5_000,
+            max: 5_000,
+        },
+        max_slew_counts_per_second: 70_000,
+    };
+    let data = CalibrationData {
+        level_empty_counts: 1_000,
+        low_endpoint: Channels {
+            level: 1_200,
+            wet_reference: 700,
+            dry_reference: 300,
+        },
+        high_endpoint: Channels {
+            level: 2_500,
+            wet_reference: 900,
+            dry_reference: 300,
+        },
+        channels: Channels {
+            level: limits,
+            wet_reference: limits,
+            dry_reference: limits,
+        },
+        reference_sign: ReferenceSign::Positive,
+        minimum_reference_span_counts: 100,
+        minimum_endpoint_ratio_span: MinimumRatioSpan {
+            numerator: 1,
+            denominator: 10,
+        },
+        supported_level: LevelDomain {
+            min: Level::new(100).unwrap(),
+            max: Level::new(900).unwrap(),
+        },
+        max_frame_age_ms: 500,
+        max_frame_duration_ms: 100,
+        max_level_slew_per_second: 8_000,
+    };
+    let base = ValidatedDeviceConfig::from_raw(
+        RawDeviceConfig::builder(1, 200, 800, 500, config().timing(), 900, [0x11; 32])
+            .timezone_rule("UTC0")
+            .unwrap()
+            .calibration(Some(data))
+            .build(),
+    )
+    .unwrap();
+    for age in [100, 600, u64::MAX] {
+        let mut body = save_body()
+            .replace("max_sample_age_ms=500", &format!("max_sample_age_ms={age}"))
+            .into_bytes();
+        let saved = form::edit(base, &mut form::Form::parse(&mut body).unwrap()).unwrap();
+        let mut expected = data;
+        expected.max_frame_age_ms = age;
+        assert_eq!(*saved.calibration().unwrap().data(), expected);
+        assert_eq!(saved.max_sample_age_ms(), age);
+        let mut bytes = [0; http::BODY_BYTES];
+        let len = Snapshot {
+            configuration: saved,
+            status: Status::EMPTY,
+        }
+        .config_json(&mut bytes)
+        .unwrap();
+        assert!(core::str::from_utf8(&bytes[..len])
+            .unwrap()
+            .contains("\"minimum_sample_age_ms\":\"100\""));
+    }
+    let mut body = save_body()
+        .replace("max_sample_age_ms=500", "max_sample_age_ms=99")
+        .into_bytes();
+    assert!(matches!(
+        form::edit(base, &mut form::Form::parse(&mut body).unwrap()),
+        Err(Error::BadRequest)
+    ));
+}
+
+#[test]
+fn all_sixteen_entries_timings_and_replacement_credentials_fit_bounded_request_and_view() {
+    let m = Model::new();
+    let timezone = format!("%3C{}%3E0", "%2B".repeat(125));
+    let mut body = format!("revision=1&stop_level=999&restart_level=1000&duration_seconds=86400&low_confirmation_ms={0}&recovery_ms={0}&minimum_off_ms={0}&max_sample_age_ms={0}&timezone={timezone}&entry_count=16", u64::MAX);
+    for i in 0..16 {
+        body.push_str(&format!(
+            "&entry{i}_id={}&entry{i}_days=127&entry{i}_start_second=86399",
+            4080 + i
+        ));
+    }
+    body.push_str(&format!("&pushover_action=replace&pushover_application_token={}&pushover_user_key={}&pushover_device={}", "C".repeat(30), "D".repeat(30), "a".repeat(25)));
+    assert_eq!(body.split('&').count(), 62);
+    assert!(body.len() <= http::BODY_BYTES);
+    let mut io = Io::new(&m, post("/api/config", &body));
+    serve_one(&m, &mut io).unwrap();
+    assert!(io.output().starts_with("HTTP/1.1 200"), "{}", io.output());
+    let config = m.published.get().unwrap();
+    assert_eq!(config.schedule().entries().len(), 16);
+    assert_eq!(config.timezone_rule().len(), 128);
+    assert_eq!(config.timing().low_confirmation_ms, u64::MAX);
+    assert!(config.pushover().is_some());
+    let mut bytes = [0; http::BODY_BYTES];
+    let len = Snapshot {
+        configuration: config,
+        status: m.status.get(),
+    }
+    .config_json(&mut bytes)
+    .unwrap();
+    assert!(len <= http::BODY_BYTES);
+    assert!(!core::str::from_utf8(&bytes[..len])
+        .unwrap()
+        .contains(&"C".repeat(30)));
 }

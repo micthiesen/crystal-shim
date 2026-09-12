@@ -73,6 +73,21 @@ impl Snapshot {
         let (stop, restart) = c.thresholds();
         write!(out,"{{\"revision\":{},\"stop_level\":{stop},\"restart_level\":{restart},\"duration_seconds\":{},\"calibrated\":{},\"pushover_configured\":{},\"timezone\":",c.revision(),c.schedule().run_duration_seconds(),c.calibration().is_some(),c.pushover().is_some()).map_err(|_|Error::TooLarge)?;
         out.string(c.timezone_rule()).map_err(|_| Error::TooLarge)?;
+        let timing = c.timing();
+        for (name, value) in [
+            ("max_sample_age_ms", c.max_sample_age_ms()),
+            (
+                "minimum_sample_age_ms",
+                c.calibration()
+                    .map_or(1, |c| c.data().max_frame_duration_ms),
+            ),
+            ("low_confirmation_ms", timing.low_confirmation_ms),
+            ("recovery_ms", timing.recovery_ms),
+            ("minimum_off_ms", timing.minimum_off_ms),
+        ] {
+            // JSON decimal strings retain the complete u64 domain in browsers.
+            write!(out, ",\"{name}\":\"{value}\"").map_err(|_| Error::TooLarge)?;
+        }
         out.write_str(",\"entries\":[")
             .map_err(|_| Error::TooLarge)?;
         for (i, e) in c.schedule().entries().iter().enumerate() {

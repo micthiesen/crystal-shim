@@ -36,66 +36,147 @@ export function ControllerUsbInterface() {
         }}
         noConnect={["A8", "B8"]}
       />
-      {/* The pinned schematic router needs these explicit GND labels to avoid
-          a disconnected connector wire island. Keep every contact explicit. */}
-      <netlabel net="GND" connectsTo=".J4 > .pin1" schX={-13} schY={0.8} />
-      <netlabel net="GND" connectsTo=".J4 > .pin8" schX={-13} schY={-0.6} />
-      <netlabel net="GND" connectsTo=".J4 > .pin9" schX={-13} schY={-0.8} />
-      {/* Use actual anchored net labels for signal wire islands. The pinned
-          router can otherwise render their names as non-electrical inline text. */}
+      {/* Short, separately named wire islands preserve flat net names without
+          routing signal loops between every part. Each label serves real pins. */}
+      <netlabel
+        net="GND"
+        connectsTo=".J4 > .pin1"
+        schX={-13}
+        schY={0.8}
+        anchorSide="right"
+      />
+      <netlabel
+        net="GND"
+        connectsTo={[".J4 > .pin8", ".J4 > .pin9"]}
+        schX={-13}
+        schY={-0.7}
+        anchorSide="right"
+      />
+      <netlabel
+        net="GND"
+        connectsTo=".U8 > .pin2"
+        schX={2.5}
+        schY={0.2}
+        anchorSide="right"
+      />
+      <netlabel
+        net="GND"
+        connectsTo=".U8 > .pin5"
+        schX={2.5}
+        schY={-0.4}
+        anchorSide="right"
+      />
       <netlabel
         net="USB_CC1"
-        connectsTo={[".J4 > .pin3", ".R40 > .pin1"]}
+        connectsTo=".J4 > .pin3"
         schX={-14}
-        schY={2}
+        schY={0.4}
+        anchorSide="right"
+      />
+      <netlabel
+        net="USB_CC1"
+        connectsTo=".R40 > .pin1"
+        schX={-12}
+        schY={5.5}
+        anchorSide="bottom"
       />
       <netlabel
         net="USB_CC2"
-        connectsTo={[".J4 > .pin11", ".R41 > .pin1"]}
-        schX={-7}
-        schY={3}
+        connectsTo=".J4 > .pin11"
+        schX={-8.5}
+        schY={-0.5}
+        anchorSide="left"
+      />
+      <netlabel
+        net="USB_CC2"
+        connectsTo=".R41 > .pin1"
+        schX={-6}
+        schY={5.5}
+        anchorSide="bottom"
       />
       <netlabel
         net="USB_D_P_PORT"
-        connectsTo={[
-          ".J4 > .pin4",
-          ".J4 > .pin12",
-          ".U9 > .pin1",
-          ".U9 > .pin6",
-          ".U8 > .pin3",
-        ]}
-        schX={-5}
-        schY={2}
+        connectsTo={[".J4 > .pin4", ".J4 > .pin12"]}
+        schX={-8.5}
+        schY={1.8}
+        anchorSide="left"
+      />
+      <netlabel
+        net="USB_D_P_PORT"
+        connectsTo={[".U9 > .pin1", ".U9 > .pin6"]}
+        schX={-3.5}
+        schY={1.5}
+        anchorSide="bottom"
+      />
+      <netlabel
+        net="USB_D_P_PORT"
+        connectsTo=".U8 > .pin3"
+        schX={1.5}
+        schY={0}
+        anchorSide="right"
       />
       <netlabel
         net="USB_D_N_PORT"
-        connectsTo={[
-          ".J4 > .pin5",
-          ".J4 > .pin13",
-          ".U9 > .pin3",
-          ".U9 > .pin4",
-          ".U8 > .pin4",
-        ]}
-        schX={-6}
+        connectsTo={[".J4 > .pin5", ".J4 > .pin13"]}
+        schX={-7.5}
         schY={-2}
+        anchorSide="left"
+      />
+      <netlabel
+        net="USB_D_N_PORT"
+        connectsTo={[".U9 > .pin3", ".U9 > .pin4"]}
+        schX={-3.5}
+        schY={-1.5}
+        anchorSide="top"
+      />
+      <netlabel
+        net="USB_D_N_PORT"
+        connectsTo=".U8 > .pin4"
+        schX={1.5}
+        schY={-0.2}
+        anchorSide="right"
       />
       <netlabel
         net="USB_SWITCH_OE_N"
-        connectsTo={[".U7 > .pin4", ".U8 > .pin10", ".R46 > .pin2"]}
-        schX={2}
-        schY={-4}
+        connectsTo=".U7 > .pin4"
+        schX={-1}
+        schY={-8.1}
+        anchorSide="left"
+      />
+      <netlabel
+        net="USB_SWITCH_OE_N"
+        connectsTo={[".U8 > .pin10", ".R46 > .pin2"]}
+        schX={7}
+        schY={1.5}
+        anchorSide="left"
       />
       <netlabel
         net="USB_D_N_SWITCH"
-        connectsTo={[".U8 > .pin6", ".R44 > .pin1"]}
+        connectsTo=".U8 > .pin6"
+        schX={7}
+        schY={-1.2}
+        anchorSide="left"
+      />
+      <netlabel
+        net="USB_D_N_SWITCH"
+        connectsTo=".R44 > .pin1"
         schX={9}
         schY={-2}
+        anchorSide="right"
       />
       <netlabel
         net="USB_D_P_SWITCH"
-        connectsTo={[".U8 > .pin7", ".R45 > .pin1"]}
+        connectsTo=".U8 > .pin7"
+        schX={7}
+        schY={-0.2}
+        anchorSide="left"
+      />
+      <netlabel
+        net="USB_D_P_SWITCH"
+        connectsTo=".R45 > .pin1"
         schX={9}
         schY={2}
+        anchorSide="right"
       />
       <netlabel net="USB_D_N" connectsTo=".R44 > .pin2" schX={14} schY={-2} />
       <netlabel net="USB_D_P" connectsTo=".R45 > .pin2" schX={14} schY={2} />
@@ -225,8 +306,8 @@ export function ControllerUsbInterface() {
         name="R46"
         {...controllerPlacements.R46}
         value="10k"
-        schX={4.5}
-        schY={-8}
+        schX={7}
+        schY={3}
         schOrientation="vertical"
         schSheetName="USB"
         connections={{ pin1: "net.V3V3", pin2: "net.USB_SWITCH_OE_N" }}

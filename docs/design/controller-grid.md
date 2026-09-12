@@ -79,28 +79,62 @@ USB_D_P_PORT, USB_SWITCH_OE_N, USB_D_P_SWITCH and USB_D_N_SWITCH. Their naming a
 source-parity treatment need explicit resolution before promoting the policy.
 This evidence does not silently remove the initial stage's declared exceptions.
 
-## Next source layout
+## USB source layout and label evidence
 
-A source-only CC1 experiment separates J4.A5 and R40.1 into two short labeled
-wire islands. Removing either sole label unnames only that island's endpoint,
-so these are meaningful connections rather than duplicate annotations on one
-wire. The complete manifest and native 71-net/274-node memberships remain exact;
-strict ERC with identical settings reduces single-global-label findings from
-seven to six, with only USB_CC1 removed. A second source experiment uses a
-horizontal A1 ground label and one horizontal A12/B1 ground branch. It removes
-the visible J4 overlap while preserving the complete manifest/native netlist.
+The USB source now separates CC1/CC2, connector/ESD/switch data sections,
+switch-enable and both switch-to-series-resistor nets into sixteen meaningful
+labeled wire islands. Paired J4 contacts and paired U9 contacts remain physically
+wired together within their respective islands. Each repeated label names a
+different wire island; removing one label leaves exactly that island's intended
+pins unnamed and preserves every other endpoint. Flat net names are unchanged.
+The pinned public netlabel API has no local/global scope option; this layout
+uses its native global labels without adding a hierarchy-name adapter.
 
-Apply that source pattern to CC1/CC2, connector/ESD/switch data sections,
-switch-enable and both switch-to-series-resistor nets. Keep paired J4 and U9
-contacts explicitly connected within their islands, all source net names and
-physical placements unchanged. The proposed sixteen labels represent actual
-component-level islands. Use negative label-removal tests, full native renders,
-strict ERC and native Save readback to validate the complete implementation.
-The pinned public netlabel API has no local/global scope option; an additional
-local-label adapter would introduce hierarchy naming work and leave crowding.
+J4.A1 has a horizontal ground label. J4.A12/B1 share one short branch and one
+horizontal ground label, replacing the overlapping annotations. U8.SEL/GND use
+separate short horizontal ground stubs, keeping the data labels clear. R46 moves
+only on the schematic, beside U8.OE_N. Every physical placement, footprint and
+source identity is unchanged. The shorter USB routing leaves 408 wires and six
+added branch dots across the complete initial schematic, versus 443 and sixteen
+in the earlier grid proof. The grid algorithm and both audited cleanup motifs
+are unchanged.
 
-The scratch evidence is `/tmp/crystal-shim-usb-label-plan`. Those unregistered,
-never-GUI-saved initial experiments also retain the same nine four-way-junction
-and library-link findings; only the CC1 warning delta is proven. They do not
-supersede the guarded stage or establish complete strict ERC. The other six
-signal layouts and final native validation remain the next implementation task.
+The source-label discriminator and initial CC1-only experiment remain in
+`/tmp/crystal-shim-usb-label-plan`. The complete implementation evidence is in
+`/tmp/crystal-shim-usb-layout-implementation`. Exact comparisons preserve the
+complete source manifest, all 1,194 PCB JSON records, and all native 71 net names
+with their 274 ref/pin/function/type memberships. Fifteen focused tests pass
+5,689 assertions, including every individual label removal and the shared ground
+branch. PCB lint, format, typecheck and 115 tests with 23,491 assertions pass.
+Native full-sheet renders and detailed J4/U9/U8/U7 views were inspected for the
+changed layout.
+
+The new declaration-bound stage is
+`/private/tmp/crystal-shim-controller-handoff/stillair-controller.board.main-handoff-gae9l3qz`.
+All eight stage commands pass. Native schematic parity remains exact, enabled ERC
+and DRC violations are zero, and 216 unrouted items remain. Its four initially
+ignored ERC categories and augmentation policy are unchanged.
+
+A separate new initial seed uses an unchanged byte-copy of the previously
+GUI-saved strict project settings. With `ignored_checks=[]`, all seven
+single_global_label findings are eliminated. That unregistered, never-GUI-saved
+seed still reports ten four_way_junction, 95 footprint_link_issues and 99
+lib_symbol_issues findings; it exits 5 and does not establish clean strict ERC.
+`strict-diagnostic.json` records the exact policy hash and unchanged input bytes.
+Root then opened a byte-copy of the guarded stage in the KiCad 10.0.5 project
+editor at `/tmp/crystal-shim-controller-usb-gui` and saved all eight sheets.
+Every component, library definition and all 71 net names with 274 complete pin
+memberships remain exact. Through Schematic Setup, all four deferred categories
+were enabled and saved. The resulting `erc-strict.json` exits zero, contains
+`ignored_checks=[]` and has no violations. `native-gui-receipt.json` binds the
+actual rewrite, native readback and strict report; its ERC report SHA-256 is
+`59a4aa50d8a3c2c9d74ea4abea015aecb8b2819283bf93304373db92a5df8e90`.
+
+This verifies the saved schematic under strict policy. Fresh stages still inherit
+KiCad's four default ignored categories, so their initial policy remains explicit.
+Before-routing cleanup must reject an ignored category even when initial staging
+permits it. That gate is being independently audited before adoption. Root also
+inspected the full USB page and J4/U8 details. Existing module-page labels cross
+the left frame, and the R53 CHIP_EN label crosses its wire; source layout and
+complete-page acceptance remain open. No production board or handoff lock is
+adopted, and this evidence does not authorize routing or fabrication release.
