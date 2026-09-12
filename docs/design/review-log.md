@@ -1,6 +1,6 @@
 # Design and implementation review record
 
-Date: 2026-09-11. This records bounded adversarial review, root triage and evidence.
+Date: 2026-09-12. This records bounded adversarial review, root triage and evidence.
 It does not release a board or substitute for the commissioning matrix. All product
 PCB capture, routing and physical acceptance checks remain outstanding.
 
@@ -118,7 +118,7 @@ The first integrated pass then found these items:
 | The proposed 2/6-position Mini-Fit header suffixes do not establish the intended single-row parts | Replaced the set with exact Sabre 43160/44441/43375 capture candidates. Removed the Sigma TPA entries. |
 | Adjacent 4.2 mm Mini-Fit pins cannot meet the proposed 3.2 mm copper-spacing rule | Replaced with Sabre 7.493 mm pitch and proposed 3.5 mm pads, giving 3.993 mm nominal copper gap. Final DRC and exposed-metal/insulation checks remain required. |
 | Distinct circuit counts were claimed to prove non-intermateability | Corrected. Check partial/cross-mating in CAD and the received parts; the catalog alone does not prove it. |
-| IRM OVP threshold can exceed the coil's maximum voltage | Accepted and open. It is a fault threshold, not normal load voltage. A dedicated adjustable coil LDO is researched; hot pickup, dropout and reverse-current requirements must be resolved before adoption. |
+| IRM OVP threshold can exceed the coil's maximum voltage | Accepted. The selected TPS259470 now cuts off the common secondary; exact networks and static margins are documented. Hot pickup and transient voltage/time/energy closure remain before release. The earlier coil-only LDO was not adopted. |
 | Nominal-only coil current and buck input omitted normal tolerance/ripple/temperature | Corrected to 110 mA coil and 635 mA buck allocations, 850 mA system budget. Lowered the supervisor divider to preserve startup margin. The documented assumptions still require final component and waveform validation. |
 | Enabled TCA9517A can reflect the unpowered cable's floating/low state onto the ESP bus | Fixed in the design basis with independent GPIO0 bus enable and a pulldown. Disconnect before sensor power-off and through startup; discard aborted transfers and reinitialize. Verify in schematic and final waveforms. |
 | Enclosure allocation had no fit margin or controller outline | Added 10 mm total end margin and a 70 x 110 mm controller outline/hole allocation. Actual connector overhang, fasteners and wire bends remain CAD work. |
@@ -131,6 +131,41 @@ pattern 180 degrees matches the native symbol and manufacturer functions. The
 manufacturer labels no numeric pins; the project table now adopts the native
 1 AC/N, 2 AC/L, 3 -Vo, 4 +Vo convention. No whole-design review convergence or
 manufacturing readiness is claimed.
+
+## Secondary and sensor power revision
+
+The supply is now IRM-10-5, whose inspected drawing preserves the prior board
+envelope and pin geometry. Its 2 A rating exceeds the complete selected eFuse
+current-limit band while the normal system allocation remains 850 mA. The
+[secondary circuit](power-protection-review.md) records threshold tolerances,
+current/ramp networks, possible power-cycle recovery, stored-energy behavior and
+explicit transient limits still needing layout review and final-unit measurement.
+
+The independent secondary-power reviewer recomputed the static/current/ramp
+margins and found missing BOM/capture entries for the eFuse's three capacitors
+and rail bleeder. Root added explicit C2/C3/C4/R7 references and exact MPNs,
+plus the full R2-R7/C2-C5 mains table. The 22 uF output capacitor has its own
+mains quantity, separate from the five controller capacitors. The exact 0.1%
+bleeder has 2.5 mA reserved for its normal draw. The input capacitor's bias curve
+was inspected. A second review then found that TI's 443 uA leakage figure is
+tested with VOUT greater than VIN and cannot bound a live overvoltage input with
+a discharged output. Root removed the claimed off-state guarantee and retained
+only a conditional estimate. PWR-05 now explicitly requires a source-supported
+forward-leakage bound or measured total leakage/backfeed, V5_PSU below 1.0 V,
+and observed PSU_GOOD/dropout timing before operating acceptance.
+The final independent re-read checked the pin network, source limits, static
+thresholds, current/ramp arithmetic, capacitance, BOM and protected-rail interface
+and found no additional actionable issue within that scope.
+
+A separate sensor-power reviewer found that the initial LT3042 budget had cited
+5 mA GND current at the wrong load. Rev C specifies 7 mA maximum at 50 mA load.
+Root corrected overhead to 7.3 mA, normal daughterboard allocation to below
+11.92 mA, available output-load allocation to 22.7 mA and calculated dissipation
+to below 0.130 W. The reviewer recomputed these values and the discharge timing,
+then found no further actionable pinmap, headroom, capacitance, current, startup
+or interface issue in this scope. Firmware now waits 200 ms after sensor power-on.
+The full local gate passes. Physical startup, thermal and sensing results remain
+unrun; neither this component review nor host tests approve a manufactured board.
 
 ## Verified TLS provider
 
@@ -145,7 +180,7 @@ full local gate run it and check production/test crypto-profile parity.
 The [provider report](tls-provider.md) distinguishes the initial live handshake
 and construction-size evidence from the current build and offline tests. The second
 independent pass found no surviving actionable defect in this scope and reran all
-11 tests successfully. The app main remains inert and does not yet integrate
+11 tests successfully. The current app cannot request a pump run and does not yet integrate
 the provider or Matter network; current C6 heap/cadence evidence remains work.
 
 ## References used to triage

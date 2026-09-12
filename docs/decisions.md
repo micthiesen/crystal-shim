@@ -37,7 +37,7 @@ are not a released electrical design.
 | D-03 | Stop low / automatic restart after refill | Owner confirmed; only within unsuppressed scheduled windows, with explicit timed manual override exception | Product behavior locked |
 | D-04 | Existing Stillair connector family | Resolved from BOM: Micro-Fit 3.0, received parts; see sources | Family continuity only |
 | D-05 | Six-position sensor header/contact set and wire | Capture candidates: `43045-0600` / `43025-0600` / `43030-0007`, 24 AWG; exact cable and mating drawings owed | Pinout, harness, orderable set |
-| D-06 | FDC1004 VSSOP, ESP32-C6-WROOM-1, IRM-05-5 | Capture candidates: FDC1004DGSR, ESP32-C6-WROOM-1-N8, IRM-05-5; footprint/capture review owed | Schematics and power budget |
+| D-06 | FDC1004 VSSOP, ESP32-C6-WROOM-1, IRM-10-5 | Capture candidates: FDC1004DGSR, ESP32-C6-WROOM-1-N8, IRM-10-5; footprint/capture review owed | Schematics and power budget |
 | D-07 | G5RL-1A-TV8 5 V coil | G5RL-1A-TV8 DC5 sourced motor rating and pin map; design review and final-unit start tests owed | Relay selection and commissioning |
 | D-08 | FN2090 filter variant | FN2090A-1-06 / 802490-SF capture candidate | Attenuation, leakage, enclosure fit |
 | D-09 | Fuse/MOV/RC/regulators and internal mains connector set | Sourced candidates and calculations in the detailed design basis; integrated schematic review owed | Protection and source capture |

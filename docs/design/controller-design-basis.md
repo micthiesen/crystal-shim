@@ -1,6 +1,6 @@
 # Controller design basis
 
-Status: design for schematic capture, 2026-09-11. These selections have source
+Status: design for schematic capture, 2026-09-12. These selections have source
 evidence and calculations; they are not an accepted layout or fabrication release.
 The board carries isolated low voltage only. Physical checks remain unrun.
 
@@ -51,19 +51,20 @@ Place the antenna end at the enclosure's low-voltage outer edge.
 
 Keep three distinct net names:
 
-- `V5_PSU`: the IRM-05-5 secondary, also feeding the relay coil on the mains board.
+- `V5_PSU`: the protected IRM-10-5 secondary, also feeding the relay coil. The
+  mains-board TPS259470 separates it from V5_RAW; raw output never enters this board.
 - `V5_LOGIC`: the diode-OR of V5_PSU and V5_SERVICE, feeding the controller buck and
   sensor supply. Its nominal voltage is below 5 V by a diode drop.
 - `3V3`: the controller regulator output. The sensor has its own 3.3 V regulator.
 
-Use two **STPS1L40A** Schottky diodes in SMA, each with its anode at its respective
+Use two **STPS2L40U** Schottky diodes in SMB, each with its anode at its respective
 source and both cathodes at V5_LOGIC. There is no direct connection from USB VBUS
 or V5_LOGIC back to V5_PSU. USB VBUS has no power connection to either input.
 This topology prevents the service supply from powering the relay coil and
 prevents either supply from driving the other through a forward-biased diode.
 Finite reverse leakage still exists; source-combination testing must verify that
 it does not raise an unpowered rail enough to operate a connected device.
-[ST datasheet, Tables 1-4 and package section](https://www.st.com/resource/en/datasheet/stps1l40.pdf).
+[ST datasheet, Tables 1-4 and package section](https://www.st.com/resource/en/datasheet/stps2l40.pdf).
 
 | Sources present | Logic/sensor supply | Coil supply | Relay eligibility |
 | --- | --- | --- | --- |
@@ -167,18 +168,19 @@ subtract or add the entire 200 mV ripple allowance and 37.5 mV temperature drift
 from 25 C. This gives **4.6375-5.3625 V** at the PSU terminals; do not add its
 5.75-6.75 V fault-protection threshold to this normal envelope.
 
-Allocate at most 50 mV total supply/return harness loss at peak load and 0.60 V
-for the OR diode over the design temperature range. That gives V5_LOGIC at least
-3.9875 V. Use **3.9 V** for budgeting, above AP63203's 3.8 V minimum input:
+Allocate 38.25 mV eFuse loss, at most 50 mV total supply/return harness loss
+at peak load and 0.45 V for the OR diode over 0-50 C. That gives V5_LOGIC at least
+4.09925 V under this engineering model. Use **3.9 V** for budgeting, above
+AP63203's 3.8 V minimum input:
 600 mA at 3.3 V and an assumed 80% efficiency requires **635 mA** input.
 With 30 mA sensor, 110 mA cold-coil allowance and 75 mA reserve, the complete
-system allocation is **850 mA**, leaving 150 mA of the 1 A nameplate unallocated.
-The 80% efficiency, 0.60 V diode loss and 50 mV harness drop are design allowances,
+system allocation is **850 mA**, leaving 1150 mA of the 2 A nameplate unallocated.
+The 80% efficiency, 0.45 V diode loss and 50 mV harness drop are design allowances,
 not guaranteed combined performance. Validate the final diode curve, complete
 harness/contact resistance and regulator startup/load steps before release and
 measure the resulting rails on the final unit. The supply's temperature derating
 still applies above 50 C.
-[Mean Well IRM-05 specification, output notes and temperature coefficient](https://www.meanwell.com/Upload/PDF/IRM-05/IRM-05-SPEC.pdf).
+[Mean Well IRM-10 specification, output notes and temperature coefficient](https://www.meanwell.com/Upload/PDF/IRM-10/IRM-10-SPEC.pdf).
 At VIN = 5.125 V, L = 4.7 uH and 1.1 MHz, the ideal inductor ripple estimate is
 0.227 A peak-to-peak; include inductance tolerance and frequency spread in review.
 
@@ -204,7 +206,7 @@ release delay; pin 5 SENSE at the divider; pin 6 at 3V3 with 100 nF bypass.
 Including ±2% threshold and independent 0.1% resistor tolerances, the falling
 threshold spans 4.172-4.358 V. Applying the maximum 3% hysteresis to the upper
 case gives a maximum rising threshold of 4.489 V. The power-envelope calculation
-permits 4.5875 V at this node after harness loss, leaving about 98 mV above
+permits 4.54925 V at this node after eFuse/harness loss, leaving about 60 mV above
 the worst rising threshold. The earlier 100 kohm divider had essentially no
 margin once ripple, temperature and wiring were included. Check hot-coil pickup
 and measured power transitions before approving this threshold.
@@ -212,7 +214,7 @@ and measured power transitions before approving this threshold.
 The AND gate combines PSU_GOOD and RELAY_REQUEST, then drives the gate resistor.
 DBV pin 1 A = request, 2 B = PSU_GOOD, 3 GND, 4 Y = gated request, 5 VCC = 3V3.
 Use 100 nF bypass and the request pulldown. This makes service-only coil operation
-impossible through the intended supply path, and removes drive when the raw
+impossible through the intended supply path, and removes drive when the protected
 supply is below threshold. It does not detect welded relay contacts or constitute
 an independent safety controller. Firmware reads PSU_GOOD and treats its loss as
 hardware-off so restored supply cannot resume a stale manual override.
@@ -255,13 +257,15 @@ limits continuously and has thermal/reverse-voltage protection. The firmware
 turns EN off after a fault; do not substitute a latch-off suffix without review.
 [TI TPS2553 Rev F, pin table, protection behavior and Table 2](https://www.ti.com/lit/ds/symlink/tps2553.pdf).
 
-Fit a 10 kohm bleeder on V5_SENSOR at the controller and another on 3V3_SENSOR
-at the daughterboard. Each rail's complete maximum capacitance, including MLCC
-tolerance, must stay below 20 uF for the recovery discharge calculation. With
-10 kohm 1% resistors the maximum time constant is 202 ms; a 2-second off interval
-also covers the two cascaded rail decays. Confirm discharge below 0.3 V on both
-rails on the final unit. Include the additional 0.5 mA and 0.33 mA bleed loads in
-the sensor budget; normal load remains below the 30 mA allocation.
+Fit a 10 kohm / 1% bleeder on V5_SENSOR at the controller and 3.01 kohm / 1%
+on 3V3_SENSOR at the daughterboard. The latter keeps LT3042 loaded above 1 mA
+for its accuracy specification. Each rail's complete maximum capacitance,
+including MLCC tolerance, must stay below 20 uF. The maximum individual time
+constants are 202 ms and 60.802 ms. Preserve the 2-second off interval for both
+cascaded decays; confirm both rails below 0.3 V on the final unit. Include
+0.54 mA input bleed, about 1.14 mA output bleed and 7.3 mA LDO overhead in the
+30 mA sensor allocation. Exact capacitor and regulator calculations are in the
+[sensor basis](sensor-design-basis.md#passives-and-power-nets).
 
 On an acquisition timeout, malformed frame or asserted power fault, publish
 invalid input immediately. The separate control task turns the relay off without
@@ -271,8 +275,10 @@ the 2-second discharge interval and subsequent supply startup. This isolates the
 unpowered cable's floating/low inputs from the ESP segment. GPIO0 is independent
 of the power-enable GPIO so the buffer cannot reconnect during the rail ramp.
 
-After restoring sensor power, wait at least 100 ms with the buffer disabled;
-verify this startup allowance against the selected regulator/capacitance limits.
+After restoring sensor power, wait at least 200 ms with the buffer disabled.
+The LT3042 SET-network calculation permits 99.9% settling within 136 ms;
+the 200 ms allowance also covers the current-limited feed ramp. Verify the
+assembled startup waveform during commissioning.
 Release both ESP bus pins, enable the buffer between transactions, check both
 lines high within a bounded timeout, and then reinitialize the FDC before
 accepting an entirely new frame. Normal EN changes occur with an idle bus as TI

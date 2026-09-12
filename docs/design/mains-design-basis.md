@@ -1,6 +1,6 @@
 # Mains board and enclosure design basis
 
-Status: preferred design for schematic and mechanical capture, 2026-09-11. The
+Status: preferred design for schematic and mechanical capture, 2026-09-12. The
 parts and calculations below establish a concrete pre-fabrication baseline for a
 single 120 VAC, 60 Hz, 4 W OASE CrystalSkim 350. They do not certify the assembled
 product or replace review and measurements on the final unit. No pump current,
@@ -37,7 +37,8 @@ IEC C14 PE -> dedicated PE star stud
 PE star stud -> output pigtail green
 PE star stud -> FN2090 earth terminal/case
 
-IRM +V -> V5_PSU -> K1 coil pin 1 and controller harness J5.1
+IRM +V -> V5_RAW -> U2 TPS259470 IN
+U2 OUT -> V5_PSU -> K1 coil pin 1 and controller harness J5.1
 IRM -V -> GND_ISO -> controller harness J5.2
 K1 coil pin 5 -> COIL_DRAIN -> controller harness J5.3
 D1 cathode -> K1 pin 1; D1 anode -> K1 pin 5
@@ -65,16 +66,16 @@ fuse does not nuisance-open. Keep those results in the commissioning matrix.
 
 ## Isolated supply and power budget
 
-Use the exact Mean Well `IRM-05-5`. The
-[manufacturer specification](https://www.meanwell.com/Upload/PDF/IRM-05/IRM-05-SPEC.pdf)
-gives 5 V at 1 A, 5 W, with 71% typical efficiency. Its input is 85 to 305 VAC,
-47 to 440 Hz; typical input current is 0.12 A at 115 VAC. Cold-start input inrush
+Use the exact Mean Well `IRM-10-5`. The
+[manufacturer specification](https://www.meanwell.com/Upload/PDF/IRM-10/IRM-10-SPEC.pdf)
+gives 5 V at 2 A, 10 W, with 77% typical efficiency. Its input is 85 to 305 VAC,
+47 to 440 Hz; typical input current is 0.25 A at 115 VAC. Cold-start input inrush
 is 20 A typical at 115 VAC. Mean Well gives no inrush pulse duration or I-squared-t,
 so the fuse cannot be proven from the peak alone.
 
 The module is Class II and potted in a UL 94V-0 case. Its input-to-output test is
 4.2 kVAC, leakage is less than 0.25 mA at 277 VAC, and its listed protections are
-hiccup overload at 115 to 260% and 5.75 to 6.75 V output overvoltage. The data
+hiccup overload at 115 to 190% and 5.75 to 6.75 V output overvoltage. The data
 sheet calls for final-system EMC confirmation even though the module itself has
 Class B test results.
 
@@ -98,17 +99,19 @@ current, but hot pickup needs a separate check. The integrated budget is:
 | Controller buck input | 635 mA | controller design assumption at 3.9 V and 80% efficiency |
 | Sensor | 30 mA | controller design allocation |
 | Harness/supervisor and unallocated transient reserve | 75 mA | design allowance |
-| **Design allocation** | **850 mA** | 85% of IRM nameplate current |
-| **Unallocated nameplate margin** | **150 mA** | not a guaranteed transient response margin |
+| **Design allocation** | **850 mA** | 42.5% of IRM nameplate current |
+| **Unallocated nameplate margin** | **1150 mA** | not a guaranteed transient response margin |
 
 The 850 mA limit is the whole-system PSU allocation, including the coil that does
 not pass through the controller connector. Update it only from
 the integrated controller calculation. Keep enclosure air at or below 50 C for
-the full 5 W rating; the IRM graph derates above 50 C to 5% load at 85 C. At full
-5 W output, its 71% typical efficiency implies about 2.04 W loss. This is a
-typical thermal planning value, not a maximum guarantee.
+the full 10 W rating; the IRM graph derates above 50 C to 10% load at 85 C. At full
+10 W output, its 77% typical efficiency implies about 2.99 W loss. Efficiency at
+the allocated 4.25 W load is not guaranteed to remain 77%; use the actual load
+curve and final temperature measurements. The supply has the same footprint as
+IRM-05-5 but enough current margin for the [secondary eFuse](power-protection-review.md).
 
-### `IRM-05-5` footprint
+### `IRM-10-5` footprint
 
 The body is 45.7 x 25.4 x 21.5 mm with plus or minus 0.5 mm dimensional tolerance.
 Pins are 1.0 mm diameter and project 3.5 plus or minus 1 mm. The manufacturer
@@ -122,10 +125,12 @@ view, `+x` along the 45.7 mm side and `+y` along the 25.4 mm side, use:
 | 1 | `AC/N` | `(42.10, 14.20)` |
 | 2 | `AC/L` | `(42.10, 3.45)` |
 | 3 | `-V` / `GND_ISO` | `(3.60, 3.45)` |
-| 4 | `+V` / `V5_PSU` | `(3.60, 11.45)` |
+| 4 | `+V` / `V5_RAW` | `(3.60, 11.45)` |
 
 The manufacturer drawing labels functions, not numeric pins. The numbers above
-adopt KiCad's native `IRM-05-5` symbol convention. Its stock
+retain KiCad's native `IRM-05-5` symbol numbering, with the component value
+changed to `IRM-10-5`. The IRM-10 manufacturer drawing was visually checked
+and matches the IRM-05 body, hole centres and lead diameter. The stock
 `Converter_ACDC_MeanWell_IRM-05-xx_THT` footprint is a physically exact candidate:
 rotate the stock local coordinates 180 degrees and translate by (42.10,14.20)
 to obtain this table. No output-pad swap or custom geometry is required. The
@@ -171,24 +176,21 @@ TV-8 is a television-load test, not a statement of CrystalSkim motor life.
 Because actual pump start behavior is unpublished, the final repeated-start and
 contact-transient evidence remains mandatory.
 
-### Coil overvoltage design still open
+### Protected coil rail
 
-The IRM's **5.75-6.75 V** overvoltage threshold describes a supply fault, not its
-normal output tolerance. Its upper limit exceeds this relay's **6.5 V at 23 C**
-maximum coil voltage. The flyback diode protects the driver from turn-off
-inductance; it does not protect the coil against a high supply. Resolve a protected
-coil rail or a compatible supply/relay selection before schematic release.
+U2 **TPS259470ARPWR** cuts off the common secondary before the relay and
+controller. Its exact networks, current/ramp calculations, leakage bleeder and
+negative clamp are in [secondary power protection](power-protection-review.md).
+The selected static OVLO band is 5.695-5.927 V; the module's 5.75-6.75 V OVP
+threshold is separate from its normal envelope. Both coil and controller use
+protected V5_PSU. The raw module output is V5_RAW.
 
-A dedicated **TPS7A2401DBVR** adjustable coil LDO is a researched option, not yet
-adopted into the netlist or BOM. It accepts 18 V and supplies 200 mA in SOT-23-5.
-An approximately 4.97 V setting would normally operate in dropout at low input;
-an approximately 4.25 V setting avoids that but has less hot-coil pickup margin.
-Do not approve the lower setting using only the 3.5 V must-operate limit specified
-at 23 C. Any adopted circuit must account for hot restart, dropout recovery,
-OUT-to-IN reverse-current protection, effective capacitance and thermal loss.
-TI's active overshoot pulldown is not an absolute transient clamp. Resolve the
-source design before fabrication; measure actual transitions on the final unit.
-[TI TPS7A24, pin table and sections 7.3, 7.4 and 8](https://www.ti.com/lit/ds/symlink/tps7a24.pdf).
+Transient closure remains a release obligation. The eFuse's 1.2 us typical OVLO
+response has no published maximum; a static cutoff is not an absolute clamp.
+Omron's maximum coil voltage of 130% is specified at 23 C and does not establish
+its 50 C limit. Bound hot pickup and fault voltage/time/energy from the final
+circuit before release, then measure its actual transitions on the final unit.
+The flyback diode suppresses turn-off inductance, not supply overvoltage.
 
 ### `G5RL-1A-TV8` footprint and pin map
 
@@ -624,18 +626,28 @@ backstop, not a substitute for PCB creepage and clearance. Use flame-rated sheet
 and mechanically retained, insulated penetrations; confirm the final lid closure
 and conductor bend radii in CAD and on the assembled unit.
 
-The IRM's typical full-load loss is about 2.04 W and the filter data sheet lists
+The IRM's typical full-load loss is about 2.99 W and the filter data sheet lists
 1.8 W loss at its full 1 A rating. Actual system losses will be load dependent.
 Measure the closed-enclosure internal temperature at maximum controller radio
 activity, continuous relay operation and worst expected ambient. The IRM air
-temperature must remain at or below 50 C for the undiminished 5 W rating, and the
+temperature must remain at or below 50 C for the undiminished 10 W rating, and the
 Schurter inlet must remain within 70 C.
 
 ## Capture parts table
 
 | Ref / item | Exact manufacturer part | Quantity | Rating / physical basis | Capture disposition |
 | --- | --- | ---: | --- | --- |
-| `U1` | Mean Well `IRM-05-5` | 1 | 5 V, 1 A; 45.7 x 25.4 x 21.5 mm | exact four-pin footprint above |
+| `U1` | Mean Well `IRM-10-5` | 1 | 5 V, 2 A; 45.7 x 25.4 x 21.5 mm | exact four-pin footprint above |
+| `U2` | TI `TPS259470ARPWR` | 1 | 2 x 2 mm RPW0010A; reverse-blocking eFuse | exact ten-pad source and network in secondary protection document |
+| `D2` | ST `STPS2L40U` | 1 | SMB; output negative clamp | anode GND_ISO; cathode V5_PSU; transient review owed |
+| `R2/R3` | Panasonic `ERA3AEB2612V` / `ERA3AEB103V` | 1 each | 26.1k / 10k; 0.1%, 25 ppm/C, 0603 | UV divider; top to V5_RAW, bottom to GND_ISO; midpoint U2.1 |
+| `R4/R5` | Panasonic `ERA3AEB3832V` / `ERA3AEB103V` | 1 each | 38.3k / 10k; 0.1%, 25 ppm/C, 0603 | OV divider; top to V5_RAW, bottom to GND_ISO; midpoint U2.2 |
+| `R6` | Panasonic `ERA3AEB2871V` | 1 | 2.87k; 0.1%, 25 ppm/C, 0603 | U2.9 to GND_ISO, short Kelvin return |
+| `R7` | Panasonic `ERA6AEB222V` | 1 | 2.20k; 0.1%, 25 ppm/C, 0805, 0.125 W | protected V5_PSU discharge to GND_ISO |
+| `C2` | TDK `C2012X7R1E105K125AB` | 1 | 1 uF, 25 V, X7R, 10%, 0805 | V5_RAW input bypass at U2.5/8 |
+| `C3` | TDK `C1608X7R1H104K080AA` | 1 | 100 nF, 50 V, X7R, 10%, 0603 | closest input HF bypass at U2.5/8 |
+| `C4` | Murata `GRM32ER71E226ME15L` | 1 | 22 uF, 25 V, X7R, 20%, 1210 | V5_PSU bulk at U2.6/8; separate mains-board quantity |
+| `C5` | TDK `C1608C0G1H472J080AA` | 1 | 4.7 nF, 50 V, C0G, 5%, 0603 | U2.7 to GND_ISO, short Kelvin return |
 | `K1` | Omron `G5RL-1A-TV8 DC5` | 1 | SPST-NO, 5 V/80 mA coil; 29 x 12.7 x 15.7 mm max | pins 1/5 coil, 3/4 contact |
 | `D1` | Vishay `1N4007-E3/54` | 1 | 1 A, 1000 V, DO-204AL | cathode to `V5_PSU` |
 | `RV1` | Littelfuse `TMOV14RP175E` | 1 | 175 VAC MCOV, thermally protected, 7.5 mm pitch | fused input L-N before branch split |

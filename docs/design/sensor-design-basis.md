@@ -259,39 +259,125 @@ calibration and removal/reseat testing.
 | `U1` | TI `FDC1004DGSR` | DGS, VSSOP-10, 0.50 mm pitch | 8 | `3V3_SENSOR` | Local decoupling at pin |
 | `U1` | TI `FDC1004DGSR` | DGS, VSSOP-10, 0.50 mm pitch | 9 | `I2C_SCL` | Open-drain bus, local pull-up |
 | `U1` | TI `FDC1004DGSR` | DGS, VSSOP-10, 0.50 mm pitch | 10 | `I2C_SDA` | Open-drain bus, local pull-up |
-| `U2` | TI `TPS7A2033PDBVR` | DBV, SOT-23-5 | 1 | `V5_SENSOR` | 4.0 V to 5 V expected input |
-| `U2` | TI `TPS7A2033PDBVR` | DBV, SOT-23-5 | 2 | `GND` | Ground |
-| `U2` | TI `TPS7A2033PDBVR` | DBV, SOT-23-5 | 3 | `V5_SENSOR` | Tie EN directly to IN |
-| `U2` | TI `TPS7A2033PDBVR` | DBV, SOT-23-5 | 4 | `NC` | No connection |
-| `U2` | TI `TPS7A2033PDBVR` | DBV, SOT-23-5 | 5 | `3V3_SENSOR` | 3.3 V output |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE, MSOP-10 with exposed pad, 0.50 mm pitch | 1 | `V5_SENSOR` | IN; local input bypass |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE | 2 | `V5_SENSOR` | IN; join pin 1 |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE | 3 | `V5_SENSOR` | EN/UV tied directly to IN |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE | 4 | `NC_PG` | PG unused; leave open |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE | 5 | `LDO_ILIM` | Current-limit resistor to GND |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE | 6 | `V5_SENSOR` | PGFB tied to IN; fast startup disabled |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE | 7 | `LDO_SET` | Setting resistor and bypass capacitor to GND |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE | 8 | `GND` | Join exposed pad directly |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE | 9 | `3V3_SENSOR` | OUTS; Kelvin route to positive pad of `c_ldo_out` |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE | 10 | `3V3_SENSOR` | OUT; local output bypass |
+| `U2` | ADI `LT3042IMSE#PBF` | MSE exposed pad | 11 | `GND` | Solder to PCB ground; electrical and thermal connection |
 
 `FDC1004DGSR` is the active large-reel VSSOP orderable. `FDC1004DGST` is listed
 obsolete in TI's package addendum and must not be substituted. The VSSOP has no
 exposed DAP.
 
-`TPS7A2033PDBVR` accepts 1.6 V to 6.0 V, and TI recommends at least 0.3 V of
-headroom. It therefore regulates correctly from the controller's expected
-4.0 V minimum `V5_SENSOR`. Its 3.3 V version has at most 145 mV dropout at the
-full 300 mA DBV rating, far beyond this board's load, and its low noise/high PSRR
-is appropriate for the capacitance converter.
+`LT3042IMSE#PBF` replaces the earlier TPS7A20 candidate so the sensor regulator's
+input rating covers the isolated module's 6.75 V fault envelope. Its electrical
+characteristics cover 2 V to 20 V input, and its input absolute maximum is
+plus or minus 22 V. The I grade guarantees the specified temperature limits
+over -40 to 125 degrees C, covering cold startup and the 0 to 50 degrees C
+design environment. This is a component-rating margin; it does not prove the
+complete rail's response to a fast overvoltage step.
+
+Use MSE drawing `05-08-1664 Rev I`: 3.00 x 3.00 mm body, 4.90 mm nominal lead
+span, 1.10 mm maximum height and 1.68 x 1.88 mm exposed pad. The candidate
+KiCad mapping is `Package_SO:MSOP-10-1EP_3x3mm_P0.5mm_EP1.68x1.88mm`.
+The exposed pad must be soldered, including for hand-assisted assembly. Exact
+lands, stencil apertures and any thermal vias remain part of the
+[footprint audit](footprint-audit.md) and capture review.
 
 ### Passives and power nets
 
 | Stable ID | Value / class | From | To | Placement |
 | --- | --- | --- | --- | --- |
-| `c_ldo_in` | 1.0 uF, X7R, 0603, at least 10 V | `V5_SENSOR` | `GND` | At `U2.1/U2.2` |
-| `c_ldo_out` | 2.2 uF, X7R, 0603, at least 6.3 V | `3V3_SENSOR` | `GND` | At `U2.5/U2.2` |
-| `c_fdc_hf` | 0.10 uF, X7R, 0603, at least 6.3 V | `3V3_SENSOR` | `GND` | Closest capacitor to `U1.8/U1.7` |
-| `c_fdc_bulk` | 1.0 uF, X7R, 0603, at least 6.3 V | `3V3_SENSOR` | `GND` | Beside `c_fdc_hf`, after it |
+| `c_ldo_in` | TDK `C3216X7R1E106K160AB`, 10 uF, 10%, X7R, 25 V, 1206 | `V5_SENSOR` | `GND` | At `U2.1/U2.2` and `U2.8` |
+| `c_ldo_out` | TDK `C3216X7R1E106K160AB`, 10 uF, 10%, X7R, 25 V, 1206 | `3V3_SENSOR` | `GND` | At `U2.10/U2.8`; separate Kelvin route from `U2.9` |
+| `r_ldo_set` | Panasonic `ERA3AEB333V`, 33.0 kohm, 0.1%, 25 ppm/K, 0603 | `LDO_SET` | `GND` | Kelvin ground return to the load |
+| `c_ldo_set` | TDK `C2012X7R1E474K125AA`, 0.47 uF, 10%, X7R, 25 V, 0805 | `LDO_SET` | `GND` | Ground directly at `c_ldo_out` ground |
+| `r_ldo_ilim` | Panasonic `ERA3AEB2491V`, 2.49 kohm, 0.1%, 25 ppm/K, 0603 | `LDO_ILIM` | `GND` | Kelvin return directly to `U2.8` |
+| `c_fdc_hf` | 0.10 uF, 10%, X7R, 0603, at least 6.3 V | `3V3_SENSOR` | `GND` | Closest capacitor to `U1.8/U1.7` |
+| `c_fdc_bulk` | 1.0 uF, 10%, X7R, 0603, at least 6.3 V | `3V3_SENSOR` | `GND` | Beside `c_fdc_hf`, after it |
 | `r_sda_pullup` | 2.70 kohm, 1%, 0603 | `I2C_SDA` | `3V3_SENSOR` | Sensor board only |
 | `r_scl_pullup` | 2.70 kohm, 1%, 0603 | `I2C_SCL` | `3V3_SENSOR` | Sensor board only |
-| `r_sensor_discharge` | 10.0 kohm, 1%, 0603 | `3V3_SENSOR` | `GND` | Discharges local rail for controlled recovery |
+| `r_sensor_discharge` | 3.01 kohm, 1%, 0603 | `3V3_SENSOR` | `GND` | Discharges local rail and maintains at least 1 mA load |
 
-The LDO data sheet requires at least 0.47 uF effective output capacitance and
-recommends nominal 1 uF input and output capacitors. The values above allow DC
-bias derating and also retain the FDC1004's separately required 0.1 uF plus
-1 uF bypass pair. Do not treat the LDO output capacitor as a replacement for the
-two capacitors at `U1`.
+The 2.49 kohm current-limit resistor supersedes the earlier 2.50 kohm proposal.
+Keep the input and output bypass ground pads close. Guard `LDO_SET` with
+`3V3_SENSOR` copper and clean flux residue; 100 nA of unwanted SET current
+changes the output by about 3.31 mV. Do not treat `c_ldo_out` as a replacement
+for the two bypass capacitors at `U1`.
+
+### Voltage, capacitance and recovery margins
+
+The nominal output is `100 uA * 33.0 kohm = 3.300 V`. Using the full-temperature
+98 to 102 uA SET-current limits and +/-2 mV output offset gives
+`3.228766..3.371366 V` with the resistor's initial 0.1% tolerance. Allowing
+another +/-0.25% for resistor temperature drift, conservatively covering a
+100-degree displacement from its reference temperature, gives
+`3.220681..3.379781 V`. Including a +/-100 nA SET-leakage allocation expands the
+design envelope to `3.217..3.384 V`. The 3.01 kohm bleeder draws at least
+`3.217 / (3010 * 1.01) = 1.058 mA`, satisfying the 1 mA minimum load used for
+the accuracy specifications even when the converter is idle.
+
+ADI specifies at most 300 mV dropout at 1 mA and 50 mA across temperature.
+Using that bound for this board's smaller load leaves
+`4.000 - 3.384 - 0.300 = 0.316 V` additional headroom at minimum sensor input.
+This includes static regulation corners; final-board startup and transient
+measurements remain required. With 0.47 uF SET capacitance the data sheet gives
+1.9 uV RMS typical output noise over 10 Hz to 100 kHz. Noise and PSRR are
+layout-dependent characteristics, not guaranteed final-sensor performance.
+
+The LDO requires at least 4.7 uF effective output capacitance, ESR below 50 mohm
+and ESL below 2 nH. Use 4.7 uF as the input effective-capacitance floor as well.
+TDK's exact 10 uF part has a published model of 1.5 mohm and 0.75 nH before PCB
+interconnect. Its visually inspected bias curve shows approximately 5% loss
+near 3.384 V, 14% near 5.363 V and 22% near 6.75 V. The adopted calculation is
+`Ceff = 10 uF * 0.90 initial tolerance * 0.85 temperature * bias factor *
+0.85 aging`:
+
+| Location / maximum voltage | Allocated bias loss | Calculated effective capacitance |
+| --- | ---: | ---: |
+| `c_ldo_out`, 3.384 V | 10% | 5.852 uF |
+| `c_ldo_in`, 5.363 V normal | 20% | 5.202 uF |
+| `c_ldo_in`, 6.75 V module fault | 25% | 4.877 uF |
+
+Bias curves are manufacturer characterization, not production guarantees.
+The 15% aging allowance is a design allocation, not a part-specific lifetime
+guarantee. Each rail retains its 20 uF maximum capacitance budget. Positive
+initial/temperature tolerances give `10 * 1.10 * 1.15 = 12.65 uF` for the
+local input capacitor and `(10 + 1 + 0.1) * 1.10 * 1.15 = 14.0415 uF` on the
+output. Even reserving the SET capacitor's maximum 0.59455 uF against the
+output budget keeps it below 14.64 uF. Count controller-side capacitance and
+any later additions against the complete `V5_SENSOR` rail's 20 uF limit.
+
+Leave fast startup disabled through the PGFB-to-IN connection. With the
+largest setting resistor and capacitor, the natural SET time constant is
+`33000 * 1.0035 * 0.47 uF * 1.10 * 1.15 = 19.689 ms`; 99.9% settling takes
+`ln(1000) * 19.689 = 136.006 ms`. Firmware therefore waits **200 ms** after
+enabling sensor power before enabling the bus and initializing the FDC1004.
+This allowance includes the short input-capacitor charge interval and must be
+confirmed with the final current-limited feed and assembled sensor.
+
+Preserve the **2 s off interval** with the bus buffer disabled and both bus
+lines released. The controller's 10 kohm, 1% `V5_SENSOR` bleeder discharges a
+conservative 20 uF from 6.75 V to 0.3 V in
+`20 uF * 10100 * ln(6.75 / 0.3) = 0.629 s`. Subsequently discharging another
+20 uF on `3V3_SENSOR` from 3.384 V to 0.3 V through the 3.01 kohm, 1% bleeder
+takes at most 0.147 s. This deliberately sequential bound is below 0.777 s,
+leaving more than 1.22 s inside the off interval. SET discharges through its
+33 kohm resistor with at most the 19.689 ms time constant. This calculation
+requires the documented bus isolation and excludes an external backfeed fault;
+measure both rails during final-board recovery.
+
+The exact 1206 capacitor body is 3.20 +/-0.20 by 1.60 +/-0.20 mm, with
+1.60 +/-0.20 mm height. Its candidate `Capacitor_SMD:C_1206_3216Metric`
+footprint uses IPC lands rather than an exact copy of TDK's reflow land
+recommendation. Preserve the manufacturer's PA/PB/PC dimensions in the
+footprint audit and resolve the land/stencil choice during capture review.
 
 The sensor board owns the only I2C pull-ups on the cable segment. Tying them to
 `3V3_SENSOR` prevents an unpowered sensor from being fed through controller-side
@@ -302,19 +388,36 @@ power is absent, controller firmware releases both open-drain lines and treats
 the missing address as a sensor fault. Its cable-side 22 ohm series resistors
 and ESD network add no pull-up to that segment.
 
-At 3.3 V, the 2.70 kohm pull-up asks a device sinking low to carry at most
-`(3.3 - 0.4) / 2700 = 1.07 mA`, below the FDC1004's 3 mA `VOL` test condition.
+At the 3.384 V rail ceiling and minimum pull-up resistance, the 2.70 kohm,
+1% pull-up asks a device at the specified low level to sink
+`(3.384 - 0.4) / 2673 = 1.117 mA`, below the FDC1004's 3 mA `VOL` test condition.
 TI application report SLVA689 gives `tr = 0.8473 Rp Cb`; 2.70 kohm meets the
 1 us Standard-mode rise time through about 437 pF. Use 100 kHz initially. Do not
 raise the bus to 400 kHz without measuring total harness, connector, ESD and pin
 capacitance; at the 300 ns Fast-mode limit the same pull-up permits only about
 131 pF.
 
-The converter's maximum conversion current is 0.95 mA. Both I2C lines held low,
-the regulator and the local discharge resistor keep the expected daughterboard
-load under 4 mA plus capacitor charging. The controller's TPS2553 feed limits at
-50-100 mA; the normal design allocation is 30 mA. Its controlled off interval
-and rail-capacitance limits are specified in the controller design.
+The converter's maximum conversion current is 0.95 mA. Budget both I2C lines
+at zero volts and use minimum resistor values: the converter, pull-ups and
+bleeder draw at most
+`0.95 + 2 * 3.384 / 2673 * 1000 + 3.384 / 2979.9 * 1000 = 4.618 mA`.
+Reserve 7.3 mA for the LT3042, including its 7 mA worst-case GND-pin current
+at the higher 50 mA load and its SET/ILIM overhead. The resulting daughterboard
+allocation is below 11.92 mA before capacitor charging, within the 30 mA system
+allocation. The broader allocation permits at most 22.7 mA of total 3.3 V
+loads after regulator overhead, including the bleeder and pull-ups.
+
+`ILIM = 125 mA*kohm / 2.49 kohm = 50.2008 mA` nominal. Scaling ADI's
+45 to 55 mA limits at 2.50 kohm by the selected resistor gives
+`45.136..55.276 mA` with initial resistor tolerance, or
+`45.023..55.415 mA` including the conservative +/-0.25% drift allocation.
+The controller's TPS2553 feed limits at 50 to 100 mA and still protects the
+cable; either limiter may act first on an output fault. These fault currents
+are not part of the 30 mA normal-load allocation. At the maximum allocated
+22.7 mA output load and 6.75 V input, regulator dissipation is bounded for
+design by `(6.75 - 3.217) * 0.0227 + 6.75 * 0.0073 < 0.130 W`.
+The data-sheet 33 degrees C/W MSE thermal metric predicts about 4.3 degrees C
+rise; it is not a substitute for the final copper layout and temperature check.
 
 ## Harness contract
 
@@ -375,9 +478,11 @@ Before fabrication release:
 
 1. Render both copper layers and verify every rectangle, gap, back-shield
    overhang, rim datum and no-copper region against the tables above.
-2. Validate the exact DGS-10 and DBV-5 pad numbers against the current TI package
-   drawings; validate `43045-0600` pad numbers and component-side orientation
-   against the Molex sales drawing.
+2. Validate DGS-10 against TI's drawing and MSE-10 plus exposed ground pad 11
+   against ADI drawing `05-08-1664 Rev I`, including the LT3042 Kelvin routes
+   and exposed-pad soldering. Resolve the exact passive lands/stencil in the
+   footprint audit. Validate `43045-0600` pad numbers and component-side
+   orientation against the Molex sales drawing.
 3. Extract actual CIN-to-shield, CIN-to-ground and SHLD-to-ground capacitances
    from the routed board or a field model. Confirm `<115 pF` on each input,
    `|CHA-CHB| <15 pF`, and `<400 pF` on each shield with margin.
@@ -414,9 +519,23 @@ document does not pass that gate.
 - [TI TIDA-00317 PCB layout plots, TIDRCS2](https://www.ti.com/lit/pdf/tidrcs2)
   and [assembly drawing, TIDRCS1](https://www.ti.com/lit/pdf/tidrcs1): source
   geometry inspected for electrode, shield and outline proportions.
-- [TI TPS7A20 data sheet, Rev. H](https://www.ti.com/lit/ds/symlink/tps7a20.pdf):
-  DBV pinout on page 4, capacitor and input limits on page 5, capacitor guidance
-  on pages 24-25, and power recommendations on page 31.
+- [ADI LT3042 data sheet, Rev. C](https://www.analog.com/media/en/technical-documentation/data-sheets/lt3042.pdf):
+  ratings, orderables and electrical limits on pages 2-5; pin functions on
+  pages 12-13; SET, Kelvin layout and output stability on pages 14-15; input
+  capacitance and startup on pages 17-19; MSE package drawing on page 30.
+- [TDK C3216X7R1E106K160AB](https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C3216X7R1E106K160AB),
+  [bias and temperature characterization](https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf)
+  ([manufacturer mirror inspected](https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf)),
+  and [equivalent circuit model, page 5](https://product.tdk.com/system/files/dam/technicalsupport/tvcl/pdf/capacitor_mlcc_com_general_c3216_ecm.pdf):
+  exact 10 uF part, dimensions, recommended lands and derating basis.
+- [TDK C2012X7R1E474K125AA](https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C2012X7R1E474K125AA):
+  exact 0.47 uF SET capacitor, 25 V, 10%, X7R, 0805.
+- [TDK capacitor aging explanation](https://product.tdk.com/en/contact/faq/capacitors-0043.html):
+  logarithmic Class II capacitance loss; the 15% allowance above is an explicit
+  project allocation rather than a guaranteed lifetime specification.
+- [Panasonic ERA3AEB333V](https://industrial.panasonic.com/ww/products/pt/high-precision-chip-resistors/models/ERA3AEB333V)
+  and [ERA3AEB2491V](https://industrial.panasonic.com/ww/products/pt/high-precision-chip-resistors/models/ERA3AEB2491V):
+  exact 33.0 kohm and 2.49 kohm resistors, 0.1%, 25 ppm/K, 0603, 0.1 W.
 - [TI I2C Bus Pull-Up Resistor Calculation, SLVA689](https://www.ti.com/lit/an/slva689/slva689.pdf):
   pull-up minimum/maximum equations and the `0.8473 Rp Cb` rise-time relation on
   pages 1-3.

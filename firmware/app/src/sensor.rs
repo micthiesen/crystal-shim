@@ -108,7 +108,8 @@ pub async fn run(hardware: SensorHardware, calibration: Option<Calibration>) {
         }
         driver = Fdc1004::new(bus);
         power.set_high();
-        Timer::after(Duration::from_millis(100)).await;
+        // LT3042 SET network needs about 136 ms for 99.9% settling.
+        Timer::after(Duration::from_millis(200)).await;
         if fault.level() != Level::High || sda.level() != Level::High || scl.level() != Level::High
         {
             record_failure(None);

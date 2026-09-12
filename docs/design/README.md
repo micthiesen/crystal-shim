@@ -10,8 +10,8 @@ release or commissioning evidence. Their explicit open items remain work to fini
   USB attach gating, relay driver, power-good interlock and harnesses.
 - [Mains and enclosure](mains-design-basis.md): PSU, relay, filter, fuse/MOV/RC,
   mains harness, PE, spacing and enclosure allocation.
-- [Secondary protection review](power-protection-review.md): rejected coil-only
-  options and the reverse-blocking cutoff candidate awaiting circuit closure.
+- [Secondary power protection](power-protection-review.md): selected 2 A supply,
+  reverse-blocking eFuse networks, static margins and remaining transient review.
 - [Firmware integration](firmware-integration.md): schedule/retained state,
   executor ownership, Matter, HTTP, Pushover, storage, USB and resource gates.
 - [Calibration](calibration.md): measured TI response normalization, integer arithmetic,

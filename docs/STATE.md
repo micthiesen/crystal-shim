@@ -1,6 +1,6 @@
 # Current state
 
-Last updated: 2026-09-11
+Last updated: 2026-09-12
 
 ## Now
 
@@ -37,8 +37,9 @@ and Pushover transition alerts remain the [control contract](controls.md).
   work. It has not sent a Pushover notification.
 - USB is a self-powered data port with hardware VBUS gating and a separate
   isolated 5 V service input. The sensor has a controlled current-limited feed
-  and independently enabled bus buffer for power recovery. The raw PSU rail
-  alone powers the relay coil. Exact candidate circuits are in the controller basis.
+  and independently enabled bus buffer for power recovery. The protected PSU
+  rail powers the relay coil; service power only feeds logic. LT3042 sensor
+  regulation now has exact capacitors and a 200 ms firmware startup allowance.
 - The locked mains branch split is preserved: fuse/MOV then separate IRM and
   pump-filter branches. PE bypasses board connectors. Exact parts and provisional
   mechanical allocations are in the mains basis; physical results remain unrun.
@@ -54,11 +55,16 @@ and Pushover transition alerts remain the [control contract](controls.md).
 2. Mains connectors are now exact Molex Sabre candidates with wider pitch;
    partial/cross-mating, exposed metal and final layout still require checks.
    The normal PSU envelope now includes ripple, temperature and wiring, with an
-   850 mA system allocation and revised supervisor divider. **Coil overvoltage
-   protection remains open**. The [secondary protection review](design/power-protection-review.md)
-   now favors a reverse-blocking TPS259470 eFuse ahead of both coil and controller.
-   Exact threshold/current/ramp networks and package assembly remain to close;
-   the LDO and non-reverse-blocking cutoff options were not adopted.
+   850 mA system allocation and revised supervisor divider. The
+   [secondary protection circuit](design/power-protection-review.md) now selects
+   same-footprint IRM-10-5 and TPS259470 ahead of coil and controller, with
+   calculated UV/OV/current/ramp networks. STPS2L40U OR diodes preserve the
+   low-input budget. The eFuse's exact passive ordering codes, references and
+   quantities are now in the BOM and mains capture table. Lands and transient/thermal
+   closure remain before schematic release. The static cutoff is not a guaranteed
+   transient clamp. Forward off-state leakage is not bounded by TI's reverse-polarity
+   leakage test; PWR-05 must verify discharge/backfeed and shutdown timing.
+   No physical overvoltage or dropout result is claimed.
 3. The [footprint audit](design/footprint-audit.md) identifies missing/exact-import
    candidates. Visual source rechecks refuted the Bourns and IRM mismatch claims;
    stock geometry matches when the native IRM pin functions and rotation are
@@ -74,9 +80,12 @@ and Pushover transition alerts remain the [control contract](controls.md).
    Root corrected partition-buffer sizing and enabled MD5 validation. Review fixed
    an interrupt-enable guard and custom-partition panic; host regressions cover
    the actual selection code. Configuration/timezone reviews and a fresh final
-   flash pass found no remaining actionable defect in this scope. Power-circuit
-   closure is underway; the 1 A supply/current-limit tolerance conflict is being
-   checked against the concrete IRM-10-5 alternative before adopting a circuit.
+   flash pass found no remaining actionable defect in this scope. The IRM-10-5
+   choice resolves the earlier 1 A supply/current-limit tolerance conflict without
+   increasing the board envelope or normal load allocation. Independent power
+   and sensor reviews fixed a GND-current budget error, missing passive inventory
+   and an unsupported leakage guarantee. Final rereads found no further actionable
+   issues in these component scopes; source capture and physical gates remain open.
 
 ## Owner input pending
 
@@ -90,7 +99,8 @@ prototype or final-unit calibration before fabrication.
 
 ## Verification
 
-`sh scripts/check.sh` passes at the configuration/storage checkpoint: 79 core tests,
+`sh scripts/check.sh` passes after the power-circuit and 200 ms sensor-startup
+changes: 79 core tests,
 nine driver tests, one CLI test, three production-code partition regressions,
 11 deterministic TLS tests on Linux through OrbStack with crypto-profile parity,
 host and embedded fmt/clippy, C6 release build, PCB source fixture, two Bun tests
@@ -98,11 +108,10 @@ and 28 handoff tests. Two existing tscircuit fixture reference-text warnings
 remain documented tooling output. Documentation checks pass for the new design
 records. The TLS provider report separates its historical app build from the linked
 provider probe and the live host checks; no C6 runtime result is implied.
-GitHub documentation and firmware CI passed for the preceding runtime checkpoint
-`81c128b`, including the Linux TLS harness and ESP target build. The
-[firmware run](https://github.com/micthiesen/crystal-shim/actions/runs/34666376445)
-records those hosted checks. Hosted results for the current storage changes follow
-the next push. The local release ELF reports text 611,742 / data 6,628 / bss 8,524
+GitHub documentation and firmware CI passed for configuration/storage checkpoint
+`3abf894`, including the three partition regressions, Linux TLS harness and ESP target
+build. The [firmware run](https://github.com/micthiesen/crystal-shim/actions/runs/34667891185)
+records those hosted checks. The local release ELF reports text 611,742 / data 6,628 / bss 8,524
 bytes; this is not the complete SRAM/stack budget or physical runtime evidence.
 
 Every [physical commissioning result](../testing/test-matrix.csv) remains Not run.
@@ -110,8 +119,10 @@ No parts were bought, hardware flashed, mains energized or live alerts sent.
 
 ## Next after current reviews
 
-Close the coil-protection and remaining exact-part calculations, then capture
-the controller and mains source while implementing ESP adapters. Controller
+Complete exact footprint/land validation, remaining controller small parts and
+the layout-dependent power calculations, then capture controller and mains source
+while implementing ESP adapters. The secondary topology and passive ordering
+codes are now selected; transient and off-state behavior remain explicit gates. Controller
 capture is the preferred next board step because its pin/power interfaces unblock
 complete firmware integration and the mains LV boundary. The next firmware unit
 is runtime configuration/retained transactions and schedule/command ingress,

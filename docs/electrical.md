@@ -10,18 +10,19 @@ initial choices below; no layout or fabrication gate has passed.
 | Function | Proposed choice | Remaining work |
 | --- | --- | --- |
 | MCU | ESP32-C6-WROOM-1 module | Exact flash option, footprint, pin map, antenna keepout |
-| Isolated PSU | Mean Well IRM-05-5, PCB mount | Thermal/current budget, input protection, approved isolation layout |
+| Isolated PSU | Mean Well IRM-10-5, PCB mount | Thermal/current budget, input protection, approved isolation layout |
 | Rails | 5 V relay + daughterboard; regulated 3.3 V ESP | Regulator selection, transient margin, decoupling |
 | Relay driver | Logic-level MOSFET, gate pulldown, coil suppression | Part/value selection, dropout behavior, reset tests |
 | Programming | Native USB | USB/external-supply backfeed prevention and defined power modes |
 | Local UI | Status LED and maintenance/off button | Pin assignments, debounce, indications and explicit exit action |
 
-IRM-05-5 is a 5 V, 1 A isolated encapsulated module. Use the module rather than
+IRM-10-5 is a 5 V, 2 A isolated encapsulated module, selected to provide margin
+above the secondary current limit. Use the module rather than
 designing a discrete mains converter; component approvals do not certify this
 controller. Keep its primary on the mains board and its secondary clearly
 separated. Account for ESP radio peaks, relay pickup/hold current, sensor, regulator
 losses, and enclosure temperature in the power budget.
-[Mean Well specification](https://www.meanwell.com/Upload/PDF/IRM-05/IRM-05-SPEC.pdf).
+[Mean Well specification](https://www.meanwell.com/Upload/PDF/IRM-10/IRM-10-SPEC.pdf).
 
 The WROOM-1 module avoids custom RF matching. Follow its actual antenna placement,
 power and strapping constraints; Stillair's C6 MINI module footprint/pin map is not
@@ -29,8 +30,11 @@ interchangeable. [Espressif module datasheet](https://www.espressif.com/sites/de
 
 The low-voltage board contains the MOSFET driver; the mains board contains the
 relay and PSU. A low-voltage harness carries isolated 5 V, return and the coil
-drive connection with a documented suppression-current path. Exact connectors
-and topology remain schematic work. Mains/low-voltage separation applies to every
+drive connection with a documented suppression-current path. The
+[secondary protection circuit](design/power-protection-review.md) puts a
+TPS259470 between the raw module output and both coil/controller branches.
+Exact source capture and transient review remain work. Mains/low-voltage
+separation applies to every
 track, pad, mounting point and harness, including the relay coil region.
 
 ## Switching and interference control

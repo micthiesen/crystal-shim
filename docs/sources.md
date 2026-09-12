@@ -9,7 +9,7 @@ do not certify the assembly or constitute measured Crystal Shim results.
 | [OASE CrystalSkim 350, North America](https://www.oase.com/en-US/aquarium/crystalskim-350) | 120 V / 60 Hz / 4 W load identity; do not substitute European model ratings |
 | [TI FDC1004](https://www.ti.com/lit/ds/symlink/fdc1004.pdf) | Supply, four inputs, active shields, VSSOP-10 and package/pin data |
 | [TI TIDA-00317](https://www.ti.com/tool/TIDA-00317) and [TIDU736A](https://www.ti.com/lit/ug/tidu736a/tidu736a.pdf) | Continuous liquid-level, matched references, shield geometry and design files |
-| [Mean Well IRM-05 specification](https://www.meanwell.com/Upload/PDF/IRM-05/IRM-05-SPEC.pdf) | 5 V / 1 A variant, isolation and module approvals |
+| [Mean Well IRM-10 specification](https://www.meanwell.com/Upload/PDF/IRM-10/IRM-10-SPEC.pdf) | 5 V / 2 A variant; same mechanical envelope as the initial IRM-05; isolation and module approvals |
 | [Espressif ESP32-C6-WROOM-1/-1U](https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf) | Module-specific mechanical, pin and RF constraints |
 | [Omron-origin G5RL family](https://components.omron.com/us-en/products/relays/G5RL) | Candidate family; exact contact/load/coil rating still requires variant review |
 | [Relay precautions K337-E1](https://components.omron.com/us-en/system/files/2026-05/ds_related_pdf/K337-E1.pdf) | RC/varistor suppression and actual-load validation |
