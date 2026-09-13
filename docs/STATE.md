@@ -34,8 +34,15 @@ Last updated: 2026-09-12
   the 135 x 75 mm [placement proposal](design/mains-placement.md). Three sheets
   preserve 66 logical pins, 14 nets, 81 lands and ten unused pins. The MOV has
   a [project assembly envelope](design/mov-capture.md), not a manufacturer fit
-  guarantee. Mated/partition/enclosure fit, native preparation and handoff remain
-  work. The [BOM](../bom/bom.csv) is not ready to order;
+  guarantee. Initial [native preparation](design/mains-native-handoff.md) now
+  corrects origins, PTH mask margins, J5 shape and U2 anchors in memory, with
+  stable H1-H4 and a complete source manifest. Product net admission and strict
+  J5 physical checks reject incorrect input before correction. Native fields,
+  library/NC/grid preparation, mated fit and handoff remain work.
+  The [enclosure candidate](design/mains-enclosure-fit.md) clears the case after
+  a 1.5 mm whole-carrier shift, with a reviewed J5 service/portal allocation.
+  Complete mated J3 primary occupancy and guard/retention remain open.
+  The [BOM](../bom/bom.csv) is not ready to order;
   all 34 commissioning rows remain Not run.
 
 ## Owner input pending
@@ -46,6 +53,23 @@ pending. The 38 x 86 mm proposal puts a 10 mm dry band below the rim and permits
 11-50 mm surface travel; it is not accepted geometry. Other work is independent.
 
 ## Verification and recent learning
+
+The mains manifest passes shared normalization and binds all 27 initial
+footprints, including identified/excluded mounting holes. New admission checks
+compare the complete electrical contract with source, drawing and every native
+pad/net ID, then validate every J5 land/locator before physical correction.
+Independent follow-up closes both original findings, with no actionable residual
+within the production path. Fresh manifest/render review also found none. The shared origin matcher
+extraction leaves the complete controller manifest byte-identical; no adopted
+controller native file changed. Native fields, pin types, NC/grid/library work
+and augmentation are still required before staging/adoption.
+
+Independent enclosure review reproduced the 1.5 mm carrier-position correction,
+0.715 mm board-to-case allowance gap and 14 x 10 mm J5 portal. The moving housing
+has 1.45 mm lateral / 0.50 mm vertical allowance clearance. Fixed J3 primary
+occupancy retains 9.765 mm to the isolated service volume; full mated geometry
+is explicitly unresolved. These are nominal CAD results and proposed assembly
+constraints, not physical fit or whole-enclosure isolation acceptance.
 
 The complete mains circuit passes independent electrical integration review and
 31 scoped tests with 2,662 assertions. Tests exercise a drawn isolation short,
@@ -86,9 +110,9 @@ The initial lock remains historical provenance; the recorded later augmentation
 does not rewrite the initial receipt or claim all operations complete.
 
 `sh scripts/check.sh` passes, including the embedded release build, 157 core tests,
-31 Roughtime tests, the existing TLS/actual-worker suite, 126 PCB tests with 24,602
+31 Roughtime tests, the existing TLS/actual-worker suite, 208 PCB tests with 30,058
 assertions and 38 shared handoff tests. The same 38 handoff tests pass in Stillair.
-Current log: `/tmp/crystal-shim-mains-integration-full-check.log`. The controller's
+Current log: `/tmp/crystal-shim-mains-native-final-full-check.log`. The controller's
 prior native cleanup, stack/
 rule readback, preservation, DRC and current top-render inspection also pass within
 the partial scope above. No physical hardware, live notifications or mains actions
@@ -96,15 +120,17 @@ were used; firmware runtime memory/timing and all commissioning criteria remain 
 
 ## Next
 
-Prepare the complete mains design's native manifest, electrical metadata,
-origin/mask/paste/thermal adapters and augmentation declaration, alongside the
-mated connector/partition fit. This substantial G-02/G-03/G-04 work turns the
+Prepare the mains native electrical metadata, fields/project libraries, NC/grid
+cleanup, paste/thermal plan and augmentation declaration, then the guarded stage
+wrapper, alongside complete mated J3 and guard/carrier fit. Source manifest,
+origin/mask/J5/mount preparation and the nominal service allocation are now
+implemented. This substantial G-02/G-03/G-04 work turns the
 verified source into a reviewable KiCad handoff without depending on the pending
 sensor rim measurement or fabricated hardware. Start from
 [the mains placement](design/mains-placement.md) and
 [component source](../pcb/mains/design/README.md); preserve the independent
-mains/isolated-low-voltage barrier and off-board fuse/filter/PE scheme. J5 mating
-and partition research is underway; the board/enclosure poses remain provisional.
+mains/isolated-low-voltage barrier and off-board fuse/filter/PE scheme. Exact J3
+mating research is underway; the board/enclosure poses remain provisional.
 
 In parallel, establish the explicit clock/error/execution policy for unattended
 acquisition and continue controller mated fit/native augmentation. Final calibration

@@ -8,3 +8,10 @@ review artifacts, not released machining files. Final STEP/DXF and the sensor PC
 attachment interface remain work. The owner models the separate sensor clip.
 No fabricated mechanical part or production drawing is released yet.
 Requirements live in [docs/mechanical.md](../docs/mechanical.md).
+
+The [mains/J5 service drawing](mains-fit/service-fit.svg) and CAD results in
+`mains-fit/` retain the corrected carrier-position and partition-opening screen.
+The [design contract](../docs/design/mains-enclosure-fit.md) distinguishes exact
+part inputs, proposed assembly limits and the unresolved complete mated J3
+isolation envelope. These are conditional review artifacts with input/output
+hashes, not production carrier, guard or machining files.

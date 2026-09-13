@@ -40,8 +40,10 @@ two MOV pads, with independent integration tests for all 81 physical lands and
 the authored placement datums. Four 3.2 mm corner mounting holes are centred
 5 mm from the edges,
 with an assumed 8 mm diameter hardware/tool reserve. J5 contributes the fifth
-NPTH. Board/filter floor allocation keeps the specified board size and a nominal
-10 mm gap; full enclosure fit is still required.
+NPTH. The [nominal enclosure screen](mains-enclosure-fit.md) moves the complete
+carrier 1.5 mm east to floor origin (9.5, 4), PCB top Z28. This clears the actual
+case model without changing any source coordinates. Filter/full harness and
+complete mated enclosure fit remain required.
 
 ## Integrated source coordinates
 
@@ -86,15 +88,16 @@ parts on the top side.
   The housing table requires at least 16.88 mm mated depth at J1 and 17.69 mm
   at J2-J4 with 0.50 mm edge margins. The current header-only proposal does not
   prove those deeper, still-unlocated envelopes fit.
-- Check J5's mated housing, cable bend/withdrawal and partition opening. Its
-  right-facing orientation alone does not establish enclosure clearance.
+- Apply the [J5 service allocation](mains-enclosure-fit.md), including its
+  14 x 10 mm portal, received-part height and hardware constraints. Complete
+  mated J3 primary occupancy, latch access and guard/retention remain open.
 - Retain the supply and relay's internal isolation qualifications and keep primary
   routes out of the isolated region and bridge component output/coil sides.
 - Recheck the 3.2 mm primary-net and 8 mm primary/secondary rules using complete
   copper, solder, hardware, fabrication tolerances and routed native geometry.
   The MOV's nominal 3.40 mm gap has only 0.20 mm above the primary-net rule.
-- Complete source/native origin and mask/paste adapters, electrical metadata,
-  guarded handoff and native review before routing. No fabrication, assembly
+- Complete source/native preparation, electrical metadata, mask/paste/thermal
+  process, guarded handoff and native review before routing. No fabrication, assembly
   or operating gate is passed by this feasibility result.
 
 The source-derived models, distance calculation, compiled-coordinate comparison,

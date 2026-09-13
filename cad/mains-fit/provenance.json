@@ -1,0 +1,54 @@
+{
+  "scope": "Conditional mains/J5 nominal CAD screen, not production mechanical files or complete isolation acceptance.",
+  "source_hashes": {
+    "/tmp/crystal-shim-controller-mechanical-fit/1554V.stp": "f7baa2bc11586616cab7917a449a8d683e9d542ec7e0a5ad0aa8310acb3bac6e",
+    "/tmp/crystal-shim-controller-mechanical-fit/proposed-support-envelope.step": "423a411aab32819cf09d61ecc19dfdde57a9be029c240cb5e256e590720d8330",
+    "/Users/michael/Code/crystal-shim/docs/design/controller-enclosure-fit.md": "3f2922dd887f4a0447f39cbaa2afdccea76f7dc3aa238eb741fd5c3fbaacd853",
+    "/Users/michael/Code/crystal-shim/docs/design/mains-header-capture.md": "a062a491efbba7076bafc9c67cdabfd868191eb9cfb747876458f1e39ec27c98",
+    "/Users/michael/Code/crystal-shim/docs/design/mov-capture.md": "b952a21d3b42bb00c51dd64127056a31c4f4f31005a8463f576e0ce8a03cdbfe",
+    "/Users/michael/Code/crystal-shim/pcb/mains/design/placements.ts": "3bc2f8beef85c1c0a4b0753ddcc938332268a9af3c5026b2a2df0b08b987bc57",
+    "/Users/michael/Code/crystal-shim/pcb/mains/design/power-components.tsx": "09be07bf09b91b5c3eb1840c92975b9f54328080dafca3210749569ad596dc01",
+    "/Users/michael/Code/crystal-shim/pcb/mains/design/mains-headers.tsx": "4e9794d44044aafe1610877a454511c49d6c693f58cde11ac1899c48900a79c7",
+    "/Users/michael/Code/crystal-shim/pcb/mains/design/mov-component.tsx": "44d124f98f0d4231d75b03068301e8de6d252df2c5421d71fbd388745f486e31",
+    "/Users/michael/Code/crystal-shim/pcb/controller/design/placements.ts": "03e20258dd60f04b14eb35328281d9d9d2056ef6e5b41929cf2a991afe1d81c7",
+    "/Users/michael/Code/crystal-shim/pcb/controller/design/ic-physical-models.ts": "8928b71f67ae2249a0b3c7f31e4b4e17e4a2c314b505b54a54662dcb5e8680a5",
+    "/Users/michael/Code/crystal-shim/pcb/controller/design/passive-physical-models.ts": "15dc2cd9625c8800bfcd13abb5094510c8b706bc3c5ea9e5fb591c52dec37d16",
+    "/tmp/crystal-shim-mains-placement-independent/placement-results.json": "20095478bc1e45c4a5cc6177ea42c6e86412086cdc3cd9b91e3c948f6ae4228a",
+    "/tmp/crystal-shim-mains-j5-service-model/model.py": "5faae2e90c1405f0ec762bccc795de33f814e12245f6d3599972e75f8fe59857"
+  },
+  "retained_artifact_sha256": {
+    "service-fit.svg": "bae16553d171873fb990ad9df9d79431afb2af896f5ce62844f20ca033fc0015",
+    "preferred-results.json": "db39a51ea81bb44c647519ad4069079aac40757ed9bc4ce0a7c170c1d7d77f6d",
+    "validation.json": "981f00256f6799f7a00391e1f9c4de49e7b7b354e90fb07f2e11987cfc73f7e2",
+    "independent-review.json": "e3031dc22ac4ed49b0afe3fce65e93416d90c3f57e43247393f517aa9b27e194"
+  },
+  "scratch_report_sha256": "4e1f45217d26a4ae75f4189ed1935638c86e4c7f2a85135d2adff075505167dc",
+  "scratch_directory": "/tmp/crystal-shim-mains-j5-service-model",
+  "scratch_artifact_sha256": {
+    "REPORT.md": "4e1f45217d26a4ae75f4189ed1935638c86e4c7f2a85135d2adff075505167dc",
+    "model.py": "5faae2e90c1405f0ec762bccc795de33f814e12245f6d3599972e75f8fe59857",
+    "corner_probe.py": "394afed3a6ccb8109990c5e01f735ea52e5d482496fce50d38cb47c69bbd8a02",
+    "adjusted.py": "f947573c00ec140a3cc28d46f9feef30de66843c2924a48670f65c6e214e8287",
+    "preferred.py": "49b6b010194f5defa74d103477f667c630be7597471bf7f994e4a8bc3fc60a5c",
+    "validate.py": "27f22af848f1dfacbcb39648ab43a8aaa4d608656f6c572fa84c7fd848f2102c",
+    "draw.py": "df41a7c733a7bef0b35c075d32ecb9c5ee468fc999079a5cbf9c0587221b35b9",
+    "results.json": "2299220de82107a37740a7bd8897a027b07700bd80cbb5bab67710e92365f920",
+    "corner-probe.json": "89821b13f5cc814f13cef71b26f9998735af6143a9e9dd17c9a99c330c6c11d0",
+    "adjusted-results.json": "deec7ba6cc8ee9772a988348b16dd9e6f649ffa4e1b6d5532ffc0c177593e34c",
+    "preferred-results.json": "db39a51ea81bb44c647519ad4069079aac40757ed9bc4ce0a7c170c1d7d77f6d",
+    "validation.json": "981f00256f6799f7a00391e1f9c4de49e7b7b354e90fb07f2e11987cfc73f7e2",
+    "source-hashes.json": "d3f1e271d1d0706804233057c9160178f39b83c23923ef98183f9286494f8215",
+    "service-fit.svg": "dbeda122db9617f84df1d05de8d03abac5aca26b3a631e7a7d25211dc92c878b",
+    "service-fit.png": "33ad0a63c8ae95e3709446a9c3d277b94a70998b074857bdba8b11e1dd468414",
+    "preferred-service-screen.step": "3f6490ff924bc1a74cc9375e7e6958fbb3bf560572c462e6bf9526856c01c255"
+  },
+  "independent_review": {
+    "scope": "Inverse-transform independent CAD/allowance calculation and negative controls; complete mated J3 isolation remains open.",
+    "report_path": "/tmp/crystal-shim-mains-enclosure-adversarial/REPORT.md",
+    "report_sha256": "add4206b49b818e2f318655834259058826ccd6be94f35ef156b0a597ffe7ae0",
+    "script_sha256": "67dab7f1dd931d242d26619e4b1f480e0ed8126f9b1a34473d8518057b7d24f6"
+  },
+  "retained_artifact_transform": {
+    "service-fit.svg": "Removed trailing line whitespace; parsed SVG tags, normalized attributes and text are identical. Original scratch hash remains in scratch_artifact_sha256."
+  }
+}

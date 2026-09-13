@@ -1,0 +1,1475 @@
+{
+  "scope": "Corrected carrier-only placement candidate. Source PCB geometry unchanged; fit and external-isolation checks are conditional on declared envelopes.",
+  "bounds_mm": {
+    "j5_mated_acceptance": [
+      128.84,
+      148.01,
+      56.95,
+      67.05,
+      28,
+      36
+    ],
+    "j5_withdraw_acceptance": [
+      128.84,
+      162.01,
+      56.95,
+      67.05,
+      28,
+      36
+    ],
+    "IRM_source_height": [
+      63.55,
+      89.45,
+      22.89999999999999,
+      69.1,
+      28,
+      50
+    ],
+    "IRM_general_tolerance_screen": [
+      63.55,
+      89.45,
+      22.89999999999999,
+      69.1,
+      28,
+      50.5
+    ],
+    "MOV_assembly_reserve": [
+      30.5,
+      58.5,
+      23.0,
+      51.0,
+      28,
+      54.5
+    ],
+    "relay_max": [
+      91.64999999999999,
+      104.35,
+      36.5,
+      65.5,
+      28,
+      43.7
+    ],
+    "J1_mated_height_column": [
+      27.795,
+      49.205,
+      7.164999999999999,
+      20.835,
+      28,
+      58.69
+    ],
+    "J1_wire_headroom_15": [
+      27.795,
+      49.205,
+      7.164999999999999,
+      20.835,
+      28,
+      73.69
+    ],
+    "J1_wire_headroom_depth_sensitivity_5": [
+      27.795,
+      49.205,
+      2.164999999999999,
+      25.835,
+      28,
+      73.69
+    ],
+    "J2_mated_height_column": [
+      14.165,
+      27.835,
+      23.545,
+      52.455,
+      28,
+      58.69
+    ],
+    "J2_wire_headroom_15": [
+      14.165,
+      27.835,
+      23.545,
+      52.455,
+      28,
+      73.69
+    ],
+    "J2_wire_headroom_depth_sensitivity_5": [
+      9.165,
+      32.835,
+      23.545,
+      52.455,
+      28,
+      73.69
+    ],
+    "J3_mated_height_column": [
+      106.30000000000001,
+      142.70000000000002,
+      31.165000000000003,
+      44.835,
+      28,
+      58.69
+    ],
+    "J3_wire_headroom_15": [
+      106.30000000000001,
+      142.70000000000002,
+      31.165000000000003,
+      44.835,
+      28,
+      73.69
+    ],
+    "J3_wire_headroom_depth_sensitivity_5": [
+      106.30000000000001,
+      142.70000000000002,
+      26.165000000000003,
+      49.835,
+      28,
+      73.69
+    ],
+    "J4_mated_height_column": [
+      74.81,
+      126.19,
+      7.164999999999999,
+      20.835,
+      28,
+      58.69
+    ],
+    "J4_wire_headroom_15": [
+      74.81,
+      126.19,
+      7.164999999999999,
+      20.835,
+      28,
+      73.69
+    ],
+    "J4_wire_headroom_depth_sensitivity_5": [
+      74.81,
+      126.19,
+      2.164999999999999,
+      25.835,
+      28,
+      73.69
+    ],
+    "mains_pcb": [
+      9.5,
+      144.5,
+      4,
+      79,
+      26.4,
+      28
+    ],
+    "service_reserve": [
+      128,
+      163,
+      55,
+      69,
+      27,
+      37
+    ],
+    "off_board_corridor": [
+      144.5,
+      163,
+      55,
+      69,
+      27,
+      37
+    ],
+    "portal": [
+      146,
+      151,
+      55,
+      69,
+      27,
+      37
+    ]
+  },
+  "nominal": {
+    "j5_mated_acceptance": {
+      "enclosure": {
+        "distance_mm": 27.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 46.99999999999993,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 27.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 9.17388140320116,
+        "intersection_mm3": 0.0
+      }
+    },
+    "j5_withdraw_acceptance": {
+      "enclosure": {
+        "distance_mm": 27.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 46.999999999999915,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 27.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 8.0,
+        "intersection_mm3": 0.0
+      },
+      "controller_obstacles": {
+        "controller_pcb": {
+          "distance_mm": 6.399999999999999,
+          "intersection_mm3": 0.0
+        },
+        "Q1_max": {
+          "distance_mm": 5.149999999999999,
+          "intersection_mm3": 0.0
+        },
+        "R11_max": {
+          "distance_mm": 5.850000000000001,
+          "intersection_mm3": 0.0
+        },
+        "H1_hardware_max": {
+          "distance_mm": 3.3999999999999986,
+          "intersection_mm3": 0.0
+        },
+        "controller_J1_mated_reference": {
+          "distance_mm": 6.290000000000006,
+          "intersection_mm3": 0.0
+        }
+      },
+      "partition": {
+        "distance_mm": 1.0,
+        "intersection_mm3": 0.0
+      }
+    },
+    "IRM_source_height": {
+      "enclosure": {
+        "distance_mm": 24.175702071849237,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 30.5640311477397,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 24.175702071849237,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 63.555507235801365,
+        "intersection_mm3": 0.0
+      }
+    },
+    "IRM_general_tolerance_screen": {
+      "enclosure": {
+        "distance_mm": 24.175702071849237,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 30.28877679933613,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 24.175702071849237,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 63.555507235801365,
+        "intersection_mm3": 0.0
+      }
+    },
+    "MOV_assembly_reserve": {
+      "enclosure": {
+        "distance_mm": 25.023012130299026,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 27.09178083964438,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 25.023012130299026,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 95.19523161527525,
+        "intersection_mm3": 0.0
+      }
+    },
+    "relay_max": {
+      "enclosure": {
+        "distance_mm": 27.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 39.29999999999994,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 27.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 48.810065560291974,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J1_mated_height_column": {
+      "enclosure": {
+        "distance_mm": 10.653549240081345,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 12.746306327717111,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 10.653549240081345,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 111.1717781183696,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J1_wire_headroom_15": {
+      "enclosure": {
+        "distance_mm": 9.309999999999988,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 9.309999999999988,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 10.653549240081345,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 111.1717781183696,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J1_wire_headroom_depth_sensitivity_5": {
+      "enclosure": {
+        "distance_mm": 4.606441848610323,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 4.606441848610323,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 5.653977602211308,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 109.51033855303344,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J2_mated_height_column": {
+      "enclosure": {
+        "distance_mm": 12.069311931903695,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 13.850707205387703,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 12.069311931903695,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 125.3433654008061,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J2_wire_headroom_15": {
+      "enclosure": {
+        "distance_mm": 9.309999999999988,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 9.309999999999988,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 12.069311931903695,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 125.3433654008061,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J2_wire_headroom_depth_sensitivity_5": {
+      "enclosure": {
+        "distance_mm": 8.208335169339877,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 8.208335169339877,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 9.25569948253368,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 120.4130775705031,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J3_mated_height_column": {
+      "enclosure": {
+        "distance_mm": 24.30999999999993,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 24.30999999999993,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 27.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 21.185030985928062,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J3_wire_headroom_15": {
+      "enclosure": {
+        "distance_mm": 9.309999999999931,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 9.309999999999931,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 27.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 21.185030985928062,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J3_wire_headroom_depth_sensitivity_5": {
+      "enclosure": {
+        "distance_mm": 9.309999999999931,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 9.309999999999931,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 27.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 17.688409252565332,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J4_mated_height_column": {
+      "enclosure": {
+        "distance_mm": 8.440917763336087,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 12.746306327717091,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 8.440917763336087,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 49.39597710757195,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J4_wire_headroom_15": {
+      "enclosure": {
+        "distance_mm": 8.440917763336087,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 9.309999999999945,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 8.440917763336087,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 49.39597710757195,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J4_wire_headroom_depth_sensitivity_5": {
+      "enclosure": {
+        "distance_mm": 3.440986302098954,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 4.606441848610323,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 3.440986302098954,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 45.44634131089904,
+        "intersection_mm3": 0.0
+      }
+    },
+    "mains_pcb": {
+      "enclosure": {
+        "distance_mm": 0.9684339111643729,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 39.0,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 0.9684339111643729,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 10.244998779892557,
+        "intersection_mm3": 0.0
+      }
+    },
+    "service_reserve": {
+      "enclosure": {
+        "distance_mm": 26.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 45.999999999999915,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 26.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 7.0,
+        "intersection_mm3": 0.0
+      },
+      "controller_obstacles": {
+        "controller_pcb": {
+          "distance_mm": 5.399999999999999,
+          "intersection_mm3": 0.0
+        },
+        "Q1_max": {
+          "distance_mm": 4.149999999999999,
+          "intersection_mm3": 0.0
+        },
+        "R11_max": {
+          "distance_mm": 4.850000000000001,
+          "intersection_mm3": 0.0
+        },
+        "H1_hardware_max": {
+          "distance_mm": 2.3999999999999986,
+          "intersection_mm3": 0.0
+        },
+        "controller_J1_mated_reference": {
+          "distance_mm": 4.340000000000003,
+          "intersection_mm3": 0.0
+        }
+      },
+      "partition": {
+        "distance_mm": 0.0,
+        "intersection_mm3": 0.0
+      }
+    },
+    "off_board_corridor": {
+      "enclosure": {
+        "distance_mm": 26.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 45.999999999999915,
+        "intersection_mm3": 0.0
+      },
+      "base": {
+        "distance_mm": 26.999999999999982,
+        "intersection_mm3": 0.0
+      },
+      "carrier": {
+        "distance_mm": 7.0,
+        "intersection_mm3": 0.0
+      },
+      "controller_obstacles": {
+        "controller_pcb": {
+          "distance_mm": 5.399999999999999,
+          "intersection_mm3": 0.0
+        },
+        "Q1_max": {
+          "distance_mm": 4.149999999999999,
+          "intersection_mm3": 0.0
+        },
+        "R11_max": {
+          "distance_mm": 4.850000000000001,
+          "intersection_mm3": 0.0
+        },
+        "H1_hardware_max": {
+          "distance_mm": 2.3999999999999986,
+          "intersection_mm3": 0.0
+        },
+        "controller_J1_mated_reference": {
+          "distance_mm": 4.340000000000003,
+          "intersection_mm3": 0.0
+        }
+      },
+      "partition": {
+        "distance_mm": 0.0,
+        "intersection_mm3": 0.0
+      }
+    }
+  },
+  "corner": {
+    "j5_mated_acceptance": {
+      "enclosure": {
+        "distance_mm": 27.799999999999983,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 46.799999999999926,
+        "intersection_mm3": 0.0
+      }
+    },
+    "j5_withdraw_acceptance": {
+      "enclosure": {
+        "distance_mm": 27.799999999999983,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 46.79999999999991,
+        "intersection_mm3": 0.0
+      }
+    },
+    "IRM_source_height": {
+      "enclosure": {
+        "distance_mm": 23.97465762063347,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 30.28663071389755,
+        "intersection_mm3": 0.0
+      }
+    },
+    "IRM_general_tolerance_screen": {
+      "enclosure": {
+        "distance_mm": 23.97465762063347,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 30.01216420053713,
+        "intersection_mm3": 0.0
+      }
+    },
+    "MOV_assembly_reserve": {
+      "enclosure": {
+        "distance_mm": 24.754196888721598,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 26.76336845421622,
+        "intersection_mm3": 0.0
+      }
+    },
+    "relay_max": {
+      "enclosure": {
+        "distance_mm": 27.799999999999983,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 39.09999999999994,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J1_mated_height_column": {
+      "enclosure": {
+        "distance_mm": 10.450948455452275,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 12.464281968890191,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J1_wire_headroom_15": {
+      "enclosure": {
+        "distance_mm": 9.109999999999985,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 9.109999999999985,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J1_wire_headroom_depth_sensitivity_5": {
+      "enclosure": {
+        "distance_mm": 4.4047041568978145,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 4.4047041568978145,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J2_mated_height_column": {
+      "enclosure": {
+        "distance_mm": 11.784611469071383,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 13.505024649242456,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J2_wire_headroom_15": {
+      "enclosure": {
+        "distance_mm": 9.109999999999985,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 9.109999999999985,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J2_wire_headroom_depth_sensitivity_5": {
+      "enclosure": {
+        "distance_mm": 7.937803392518261,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 7.937803392518261,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J3_mated_height_column": {
+      "enclosure": {
+        "distance_mm": 24.10999999999993,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 24.10999999999993,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J3_wire_headroom_15": {
+      "enclosure": {
+        "distance_mm": 9.109999999999928,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 9.109999999999928,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J3_wire_headroom_depth_sensitivity_5": {
+      "enclosure": {
+        "distance_mm": 9.109999999999928,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 9.109999999999928,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J4_mated_height_column": {
+      "enclosure": {
+        "distance_mm": 8.239873312120318,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 12.464281968890175,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J4_wire_headroom_15": {
+      "enclosure": {
+        "distance_mm": 8.239873312120318,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 9.109999999999943,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J4_wire_headroom_depth_sensitivity_5": {
+      "enclosure": {
+        "distance_mm": 3.239941850883185,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 4.4047041568978145,
+        "intersection_mm3": 0.0
+      }
+    },
+    "mains_pcb": {
+      "enclosure": {
+        "distance_mm": 0.7145284505994683,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 38.8,
+        "intersection_mm3": 0.0
+      }
+    },
+    "service_reserve": {
+      "enclosure": {
+        "distance_mm": 26.799999999999983,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 45.79999999999991,
+        "intersection_mm3": 0.0
+      },
+      "controller_obstacles": {
+        "controller_pcb": {
+          "distance_mm": 5.0,
+          "intersection_mm3": 0.0
+        },
+        "Q1_max": {
+          "distance_mm": 3.75,
+          "intersection_mm3": 0.0
+        },
+        "R11_max": {
+          "distance_mm": 4.450000000000003,
+          "intersection_mm3": 0.0
+        }
+      },
+      "H1_hardware_outer_box": {
+        "distance_mm": 2.0,
+        "intersection_mm3": 0.0
+      },
+      "carrier_up_0_2": {
+        "distance_mm": 6.600000000000001,
+        "intersection_mm3": 0.0
+      }
+    },
+    "off_board_corridor": {
+      "enclosure": {
+        "distance_mm": 26.799999999999983,
+        "intersection_mm3": 0.0
+      },
+      "lid": {
+        "distance_mm": 45.79999999999991,
+        "intersection_mm3": 0.0
+      }
+    },
+    "portal": {
+      "withdrawal": {
+        "distance_mm": 0.5,
+        "intersection_mm3": 0.0
+      },
+      "minimum_y_gap_mm": 1.4500000000000028,
+      "minimum_z_gap_mm": 0.5,
+      "minimum_x_to_reserve_end_mm": 0.7900000000000205
+    }
+  },
+  "nominal_isolation": {
+    "partition_material": [
+      {
+        "source": "J3",
+        "distance_mm": 3.299999999999983,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 8.510499999999979,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 8.510499999999979,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 16.003499999999974,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 16.003499999999974,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "C1",
+        "distance_mm": 19.0,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "service_volume": [
+      {
+        "source": "J3",
+        "distance_mm": 10.165,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 12.369999999999997,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 12.369999999999997,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.2.tail3",
+        "distance_mm": 13.536188985456723,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 15.549999999999997,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 15.549999999999997,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "portal_void": [
+      {
+        "source": "J3",
+        "distance_mm": 10.687245903412155,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 15.01484299784715,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 17.72656510015405,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 20.22693531531653,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 22.31399812337536,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.2.tail3",
+        "distance_mm": 26.55376455890953,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "controller_pcb": [
+      {
+        "source": "J3",
+        "distance_mm": 10.88117640698834,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 14.138745002651381,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 14.138745002651381,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 21.587276628838545,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 21.587276628838545,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "C1.2.tail1",
+        "distance_mm": 25.754902445942207,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "Q1_max": [
+      {
+        "source": "J3",
+        "distance_mm": 20.81974673236924,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 25.78458109510409,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 27.510183973394277,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 32.49122192608334,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 33.876911049415334,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.2.tail3",
+        "distance_mm": 39.481698041624306,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "R11_max": [
+      {
+        "source": "J3",
+        "distance_mm": 18.773777590032314,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 23.41194161640591,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 25.299893482977335,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 29.944088101827354,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 31.442232939948756,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.2.tail3",
+        "distance_mm": 36.84383140024934,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "H1_hardware_max": [
+      {
+        "source": "J3",
+        "distance_mm": 19.908931108292382,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 24.60202807931632,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 27.049985672299417,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 30.04574000150384,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 32.12669390146292,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.2.tail3",
+        "distance_mm": 36.15518537187944,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "controller_J1_mated_reference": [
+      {
+        "source": "J3",
+        "distance_mm": 11.324999999999989,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 16.535499999999985,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 16.535499999999985,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 24.02849999999998,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 24.02849999999998,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "C1",
+        "distance_mm": 27.273054926062102,
+        "intersection_mm3": 0.0
+      }
+    ]
+  },
+  "corner_isolation": {
+    "service_volume": [
+      {
+        "source": "J3",
+        "distance_mm": 9.764999999999993,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 11.969999999999992,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 11.969999999999992,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.2.tail3",
+        "distance_mm": 13.009812152756076,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 15.149999999999991,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 15.149999999999991,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "portal_void": [
+      {
+        "source": "J3",
+        "distance_mm": 10.062416459280538,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 14.320091139723923,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 17.049064791066975,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 19.52576278279543,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 21.606966752647146,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.2.tail3",
+        "distance_mm": 25.8792564083669,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "controller_pcb": [
+      {
+        "source": "J3",
+        "distance_mm": 10.322790320451157,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 13.692907297210482,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 13.692907297210482,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 21.156741531956186,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 21.156741531956186,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "C1.2.tail1",
+        "distance_mm": 25.23083431042264,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "Q1_max": [
+      {
+        "source": "J3",
+        "distance_mm": 20.18889432336502,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 25.23176217092259,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 26.945564055146445,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 31.960636762273683,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 33.330225055495795,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.2.tail3",
+        "distance_mm": 38.96938388337697,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "R11_max": [
+      {
+        "source": "J3",
+        "distance_mm": 18.11857403329523,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 22.83888373476252,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 24.719146632721767,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 29.396421759288998,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 30.8799483848338,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.2.tail3",
+        "distance_mm": 36.31769144989808,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "H1_hardware_outer_box": [
+      {
+        "source": "J3",
+        "distance_mm": 17.758525417387556,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 22.393025928846683,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 24.88954017755249,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 27.86656800271608,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 29.909650821265025,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.2.tail3",
+        "distance_mm": 34.11647274045194,
+        "intersection_mm3": 0.0
+      }
+    ],
+    "controller_J1_mated_reference": [
+      {
+        "source": "J3",
+        "distance_mm": 10.925000000000011,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail6",
+        "distance_mm": 16.135500000000008,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.4.tail7",
+        "distance_mm": 16.135500000000008,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail4",
+        "distance_mm": 23.628500000000003,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "J3.3.tail5",
+        "distance_mm": 23.628500000000003,
+        "intersection_mm3": 0.0
+      },
+      {
+        "source": "C1",
+        "distance_mm": 26.825054053999608,
+        "intersection_mm3": 0.0
+      }
+    ]
+  },
+  "conditional_mated_sensitivity": {
+    "J1": {
+      "service_volume": {
+        "distance_mm": 84.0193385477415,
+        "intersection_mm3": 0.0
+      },
+      "portal_void": {
+        "distance_mm": 101.09336897146123,
+        "intersection_mm3": 0.0
+      },
+      "controller_pcb": {
+        "distance_mm": 102.90395643511478,
+        "intersection_mm3": 0.0
+      },
+      "controller_J1_mated_reference": {
+        "distance_mm": 105.01125951534911,
+        "intersection_mm3": 0.0
+      },
+      "partition_material": {
+        "distance_mm": 96.795,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J2": {
+      "service_volume": {
+        "distance_mm": 95.19902441727015,
+        "intersection_mm3": 0.0
+      },
+      "portal_void": {
+        "distance_mm": 113.19361399831706,
+        "intersection_mm3": 0.0
+      },
+      "controller_pcb": {
+        "distance_mm": 118.83746137056276,
+        "intersection_mm3": 0.0
+      },
+      "controller_J1_mated_reference": {
+        "distance_mm": 121.19,
+        "intersection_mm3": 0.0
+      },
+      "partition_material": {
+        "distance_mm": 113.16499999999999,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J3": {
+      "service_volume": {
+        "distance_mm": 5.164999999999999,
+        "intersection_mm3": 0.0
+      },
+      "portal_void": {
+        "distance_mm": 6.1292107974844425,
+        "intersection_mm3": 0.0
+      },
+      "controller_pcb": {
+        "distance_mm": 10.88117640698834,
+        "intersection_mm3": 0.0
+      },
+      "controller_J1_mated_reference": {
+        "distance_mm": 11.324999999999989,
+        "intersection_mm3": 0.0
+      },
+      "partition_material": {
+        "distance_mm": 3.299999999999983,
+        "intersection_mm3": 0.0
+      }
+    },
+    "J4": {
+      "service_volume": {
+        "distance_mm": 29.221110947395548,
+        "intersection_mm3": 0.0
+      },
+      "portal_void": {
+        "distance_mm": 35.2566777362814,
+        "intersection_mm3": 0.0
+      },
+      "controller_pcb": {
+        "distance_mm": 27.668634317580622,
+        "intersection_mm3": 0.0
+      },
+      "controller_J1_mated_reference": {
+        "distance_mm": 28.54679404066244,
+        "intersection_mm3": 0.0
+      },
+      "partition_material": {
+        "distance_mm": 19.810000000000002,
+        "intersection_mm3": 0.0
+      }
+    }
+  },
+  "failure_controls": {
+    "original_mains_pcb": {
+      "distance_mm": 0.0,
+      "intersection_mm3": 6.0161605499060675
+    },
+    "H1_hardware_top_28_5": {
+      "distance_mm": 0.0,
+      "intersection_mm3": 75.39822368615505
+    }
+  },
+  "derived_future_primary_occupancy_limit": {
+    "nearest_header": "J3",
+    "maximum_nominal_y_for_8mm_to_portal_with_allowances": 46.5,
+    "known_header_envelope_max_y": 44.835,
+    "remaining_southward_allowance_mm": 1.665,
+    "exact_complete_mated_primary_pose_known": false
+  },
+  "status": "CONDITIONAL_J5_SERVICE_FIT_PASS; ORIGINAL_PCB_POSE_FAIL; COMPLETE_MATED_MAINS_ISOLATION_OPEN",
+  "tolerance_basis": "Independent project +/-0.20 XYZ component/carrier location envelopes, additional +/-0.05 XY finished board half-dimension and1.6+/-0.10 thickness with PCBtop location independent; H1 radius4/top24.6 maximum. Portal centre +/-0.20 YZ plus full aperture minimum dimension -0.20 (inward edge envelope .30). No enclosure manufacturing tolerance or exact mated Sabre datum inferred."
+}

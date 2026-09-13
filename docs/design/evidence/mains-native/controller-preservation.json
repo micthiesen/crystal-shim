@@ -1,0 +1,23 @@
+{
+  "status": "scoped origin extraction verified",
+  "controller_manifest_bytes": 120953,
+  "controller_manifest_sha256": "ec2730407fac833e15c48b17f3dcbec7de0b8e0bf3e04556e261f58044b64aac",
+  "controller_manifest_byte_identical": true,
+  "matching_algorithm_text_identical_except_signature": true,
+  "tests": {
+    "passed": 8,
+    "assertions": 1374
+  },
+  "scope": [
+    "pcb/scripts/lib/footprint-origin-initial-export.ts",
+    "pcb/scripts/lib/footprint-origin-initial-export.test.ts",
+    "pcb/controller/design/footprint-origin-initial-export.ts"
+  ],
+  "no_native_writes": true,
+  "checks": [
+    "scoped TypeScript",
+    "scoped oxlint",
+    "scoped oxfmt",
+    "git diff --check"
+  ]
+}

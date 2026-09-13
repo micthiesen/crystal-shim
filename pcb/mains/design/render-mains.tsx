@@ -4,7 +4,8 @@ import {
   convertCircuitJsonToSchematicSvg,
   convertCircuitJsonToStackedSchematicSheetsSvg,
 } from "circuit-to-svg";
-import { schematicConnectivityErrors } from "../../controller/design/schematic-connectivity-check";
+import { mainsSchematicConnectivityErrors } from "./schematic-connectivity-check";
+import { createMainsManifest } from "./design-manifest";
 import MainsCircuit from "./mains.circuit";
 
 const circuit = new Circuit();
@@ -13,12 +14,17 @@ await circuit.renderUntilSettled();
 const json = circuit.getCircuitJson();
 const errors = [
   ...json.filter((e) => "error_type" in e || e.type.endsWith("_error")),
-  ...schematicConnectivityErrors(json),
+  ...mainsSchematicConnectivityErrors(json),
 ];
 if (errors.length) throw new Error(`Mains source errors: ${JSON.stringify(errors)}`);
+const manifest = createMainsManifest(json);
 const output = "dist/mains/design";
 await mkdir(output, { recursive: true });
 await Bun.write(`${output}/circuit.json`, `${JSON.stringify(json, null, 2)}\n`);
+await Bun.write(
+  `${output}/design-manifest.json`,
+  `${JSON.stringify(manifest, null, 2)}\n`,
+);
 await Bun.write(`${output}/pcb.svg`, await circuit.getSvg({ view: "pcb" }));
 // Circuit.getSvg shows only the first sheet. Render the actual full circuit at
 // each sheet index so review never silently omits secondary power or suppression.

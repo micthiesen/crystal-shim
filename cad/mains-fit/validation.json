@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "scope": "Declared nominal source envelopes, explicit location/thickness corners, negative collision controls, and independent generated STEP reload. No hardware or full mated-isolation acceptance.",
+  "reloaded_step_solids": 29,
+  "all_reloaded_solids_valid": true,
+  "original_pcb_collision_mm3": 6.0161605499060675,
+  "preferred_pcb_corner_gap_mm": 0.7145284505994683,
+  "primary_service_corner_gap_mm": 9.764999999999993,
+  "source_hashes_unchanged": {
+    "/tmp/crystal-shim-controller-mechanical-fit/1554V.stp": true,
+    "/tmp/crystal-shim-controller-mechanical-fit/proposed-support-envelope.step": true,
+    "/Users/michael/Code/crystal-shim/docs/design/controller-enclosure-fit.md": true,
+    "/Users/michael/Code/crystal-shim/docs/design/mains-header-capture.md": true,
+    "/Users/michael/Code/crystal-shim/docs/design/mov-capture.md": true,
+    "/Users/michael/Code/crystal-shim/pcb/mains/design/placements.ts": true,
+    "/Users/michael/Code/crystal-shim/pcb/mains/design/power-components.tsx": true,
+    "/Users/michael/Code/crystal-shim/pcb/mains/design/mains-headers.tsx": true,
+    "/Users/michael/Code/crystal-shim/pcb/mains/design/mov-component.tsx": true,
+    "/Users/michael/Code/crystal-shim/pcb/controller/design/placements.ts": true,
+    "/Users/michael/Code/crystal-shim/pcb/controller/design/ic-physical-models.ts": true,
+    "/Users/michael/Code/crystal-shim/pcb/controller/design/passive-physical-models.ts": true,
+    "/tmp/crystal-shim-mains-placement-independent/placement-results.json": true
+  }
+}

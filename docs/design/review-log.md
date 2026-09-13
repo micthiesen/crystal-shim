@@ -1412,6 +1412,84 @@ handoff tests. Log: `/tmp/crystal-shim-mains-integration-full-check.log`.
 All 34 commissioning rows remain Not run; no purchase, flashing, live notification
 or mains operation occurred.
 
+## Mains initial graph preparation and enclosure screen, 2026-09-12
+
+The shared footprint-origin matcher was extracted without changing the
+controller's registry or algorithm. Its generated manifest remains byte-identical,
+SHA-256 `ec2730407fac833e15c48b17f3dcbec7de0b8e0bf3e04556e261f58044b64aac`;
+[the receipt](evidence/mains-native/controller-preservation.json) records the
+comparison. Independent origin review found no actionable issue. Mains origins
+use eleven exact part patterns and complete land/locator multisets, including
+repeated Sabre tails and the MOV's offset round/slot geometry.
+
+Initial typed PCB preparation restores all 49 PTH mask margins while preserving
+native copper/drills/nets, applies J5's declared rounded land and U2's corner
+anchors, and identifies four board-only mounting holes. Exact R1/C1 order codes
+are bound from validated source because their converter Value fields retain
+only quantities. kicadts property/child-array getters return copies: tests and
+production changes use setters and inspect serialized output. Native THTs have
+no paste; source paste records remain part of the geometry identity.
+
+Adversarial review found two gaps in initial graph admission. Unique pad nets
+were not compared with the product contract, and the reused connector helper
+did not fully validate J5's remaining lands/locator or paste graphics. Repairs
+put complete source/drawn electrical admission and every native pad net/ID check
+at the product wrapper, and add a read-only exact J5 physical check before the
+existing mask/shape correction. The geometry-only mask adapter preserves nets;
+it does not duplicate the electrical registry. Negative tests cover a coordinated
+source/drawing rename, NC changes, orphan identities, wrong native net IDs and
+all J5 physical encodings. No adopted native file is loaded or changed by this path.
+
+The independent follow-up closed both original findings with no actionable
+production-reachable residual. It reproduced every NC intent change, unique and
+repeated native net changes, and the actual J5 production sequence's geometry/
+layer/paste failures. Mount identity changes preserve geometry and UUIDs and fail
+atomically. Scoped checks pass 70 tests with 3,372 assertions, lint, format and
+typecheck. Unsupported mutations of already-converted graphs are outside these
+fresh-source helper APIs; saved-native parity and staging remain separate gates.
+Report: `/tmp/crystal-shim-mains-admission-adversarial/report.md`.
+
+The source manifest passes the shared Python normalizer and ECO classification
+tests. It binds 27 stable component identities, 14 nets, 66 logical pins,
+81 physical land numbers and five NPTHs. Generated-ID renaming preserves its
+identities; owned and unowned source geometry changes alter their hashes even
+when the converter ignores the changed record. All 27 initial geometry hashes
+use the same prepared graph path as later export. The
+[receipt](evidence/mains-native/initial-manifest.json) retains source/tool and
+generated-file hashes. Native fields, electrical types, libraries, schematic
+cleanup, augmentation, staging/adoption and routing remain work.
+
+Fresh independent manifest/render review found no actionable defect. Eight
+additional actual-source mutations confirmed that invalid ownership, voltage
+and MPN substitutions reject, while moved/reassigned/duplicated owned geometry
+and deleted unowned paste produce high-risk changes through the real normalizer
+and ECO classifier. Input immutability and exact part metadata were checked.
+Report: `/tmp/crystal-shim-mains-manifest-adversarial/REPORT.md`.
+
+The integrated `sh scripts/check.sh` gate passes, including host/TLS suites,
+embedded release, 208 PCB tests with 30,058 assertions and 38 shared handoff
+tests. `render:mains` and shared manifest normalization pass. Current log:
+`/tmp/crystal-shim-mains-native-final-full-check.log`. No hardware, live
+notification, purchase or mains action occurred; all 34 commissioning rows
+remain Not run.
+
+The [mains enclosure candidate](mains-enclosure-fit.md) moves the whole carrier
+1.5 mm east to floor origin (9.5, 4), top Z28. The original position collided
+with Hammond's actual base model by 6.016 mm³; the revised position leaves
+0.968 mm nominal / 0.715 mm with the stated allowances. A 14 x 10 mm portal
+passes the moving female housing with 1.45 mm lateral / 0.50 mm vertical
+allowance clearance. The fixed wider header is not the moving portal payload.
+
+An independent inverse-transform CAD review reproduced those results and
+negative collision controls without new findings. Scoped fixed J3 primary
+occupancy remains 9.765 mm from the isolated service volume with allowances.
+Complete mated J3 housing/contact/wire geometry is still an isolation gate;
+the hypothetical larger housing is explicitly a sensitivity. New height and
+mounting-hardware limits are project acceptance constraints, not manufacturer
+guarantees. Actual fit, guard/retention, complete harness and all commissioning
+remain open. Retained [CAD evidence](../../cad/mains-fit/provenance.json) binds
+inputs, output and independent review measurements.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

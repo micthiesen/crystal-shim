@@ -19,7 +19,10 @@ guarantee of the unpublished body datum. No fabricated F.Fab datum is drawn.
 
 Run `bun run render:mains`, `bun run build:mains` and `bun run check:mains` from
 `pcb/`. Rendering writes each actual schematic sheet, a stacked overview, PCB
-preview and source JSON to ignored `dist/mains/design`. The pinned source,
+preview, source JSON and the stable source manifest to ignored `dist/mains/design`.
+The manifest binds all 27 footprint identities, pin/land/hole coverage, selected
+parts and complete source/initial geometry. The shared normalizer accepts it.
+The pinned source,
 netlist, pin, schematic-placement and placement commands report no errors.
 Their electrical metadata and connector-orientation warnings remain to resolve
 in the complete native preparation; passive reference labels are present in the
@@ -30,8 +33,14 @@ Independent integration tests check complete net membership, physical land
 multiplicity, unused contacts, placement datums and failure injection across the
 isolation boundary. A temporary initial four-file KiCad schematic also parses and
 retains all 56 connected and ten intentionally unused pins. This is a scoped
-netlist proof, not an adopted mains project or clean-ERC claim. Native manifest,
-augmentation declarations, origin/mask/paste adapters and guarded handoff remain.
+netlist proof, not an adopted mains project or clean-ERC claim. The
+[native preparation](../../../docs/design/mains-native-handoff.md) now corrects
+origins, THT mask margins, J5's rounded land and U2's anchors on initial in-memory
+graphs, and identifies H1-H4 without changing geometry. Product source/drawn nets
+and every native pad net/ID are checked before correction; all J5 raw physical
+geometry and paste exclusions are checked before its mask/shape adapter.
+Complete native fields/libraries, NC/grid cleanup, augmentation and guarded
+handoff remain.
 
 ## Component review sources
 
@@ -73,16 +82,16 @@ inference for final package-fit review. The supply's full placement reserve is
 The shared THT renderer accepts each board's explicit physical declaration;
 controller callers retain their existing default declarations. Tests compare
 compiled and initial native pad geometry at four rotations and preserve all
-eight separate nets. The converter's recentered component origins, PTH mask
-margin and unwanted automatic paste still require board-specific initial/native
-adapters before a mains handoff. No raw review seed is accepted. Neither THT
-part gets stencil paste; both are hand-soldered after reflow.
+eight separate nets. The origin and PTH mask corrections now compose in the
+initial mains graph. All 49 native PTHs have no stencil paste; generated source
+paste records do not equal native apertures. No raw review seed is accepted.
+Neither THT part gets stencil paste; both are hand-soldered after reflow.
 
 The secondary has eight named nets and 35 pins, including exactly three unused
 eFuse pins (3, 4, 10). Its UV/OV dividers use `V5_RAW`; the negative clamp,
 bleeder, output capacitor and J5 use `V5_PSU`. The controller's different
-reverse-input circuit is not copied here. RPW anchor/paste/thermal operations
-and J5 native geometry remain required before handoff.
+reverse-input circuit is not copied here. The shared RPW anchor and J5 native
+geometry adapters are applied; RPW stencil/thermal operations remain before release.
 
 Suppression uses the exact 1N4007-E3/54, PR02FS0201000KA100 and
 B32921C3473K000. D1 pin 1 is the cathode on `V5_PSU`, with the anode on

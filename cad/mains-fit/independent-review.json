@@ -1,0 +1,81 @@
+{
+  "original_pcb": {
+    "distance_mm": 0.0,
+    "intersection_mm3": 6.016160549906071
+  },
+  "preferred_pcb": {
+    "distance_mm": 0.9684339111643725,
+    "intersection_mm3": 0.0
+  },
+  "preferred_pcb_allocation_corner": {
+    "distance_mm": 0.7145284505994671,
+    "intersection_mm3": 0.0
+  },
+  "service_corner": {
+    "distance_mm": 26.79999999999999,
+    "intersection_mm3": 0.0
+  },
+  "J5_floor_pins": [
+    [
+      130.5,
+      59.0
+    ],
+    [
+      130.5,
+      62.0
+    ],
+    [
+      130.5,
+      65.0
+    ]
+  ],
+  "J5_floor_locator": [
+    134.82,
+    62.0
+  ],
+  "moving_vs_worst_portal": {
+    "distance_mm": 0.5,
+    "intersection_mm3": 0.0
+  },
+  "portal_lateral_gaps": [
+    1.4500000000000028,
+    1.4500000000000028
+  ],
+  "wide_moving_negative": {
+    "distance_mm": 0.0,
+    "intersection_mm3": 25.199999999999743
+  },
+  "service_vs_h1_outer": 2.0,
+  "high_h1_negative": {
+    "distance_mm": 0.0,
+    "intersection_mm3": 75.39822368615505
+  },
+  "primary_fixed_j3_service_gap": 10.165,
+  "primary_fixed_j3_service_corner_gap": 9.764999999999993,
+  "primary_fixed_j3_portal_corner_gap": 10.062416459280547,
+  "conditional_j3_five_mm_sensitivity_gap": 5.164999999999999,
+  "nominal_primary_max_y_requirement": 46.5,
+  "wire_candidate": {
+    "od": 1.7526000000000002,
+    "required_5D": 8.763000000000002,
+    "inside_R10": 9.1237,
+    "vertical": 13.8763
+  },
+  "source_receipts_still_match": {
+    "/tmp/crystal-shim-controller-mechanical-fit/1554V.stp": true,
+    "/tmp/crystal-shim-controller-mechanical-fit/proposed-support-envelope.step": true,
+    "/Users/michael/Code/crystal-shim/docs/design/controller-enclosure-fit.md": true,
+    "/Users/michael/Code/crystal-shim/docs/design/mains-header-capture.md": true,
+    "/Users/michael/Code/crystal-shim/docs/design/mov-capture.md": true,
+    "/Users/michael/Code/crystal-shim/pcb/mains/design/placements.ts": true,
+    "/Users/michael/Code/crystal-shim/pcb/mains/design/power-components.tsx": true,
+    "/Users/michael/Code/crystal-shim/pcb/mains/design/mains-headers.tsx": true,
+    "/Users/michael/Code/crystal-shim/pcb/mains/design/mov-component.tsx": true,
+    "/Users/michael/Code/crystal-shim/pcb/controller/design/placements.ts": true,
+    "/Users/michael/Code/crystal-shim/pcb/controller/design/ic-physical-models.ts": true,
+    "/Users/michael/Code/crystal-shim/pcb/controller/design/passive-physical-models.ts": true,
+    "/tmp/crystal-shim-mains-placement-independent/placement-results.json": true,
+    "/tmp/crystal-shim-mains-j5-service-model/model.py": true
+  },
+  "scoped_status": "PASS; conditional assumptions unchanged, no full mating/insulation release"
+}

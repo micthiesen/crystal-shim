@@ -59,3 +59,10 @@ now covers antenna clearance, mating/insertion, a covered service opening and a
 retained insulating carrier allocation. Exact cover/strain-relief/hardware selection
 and the complete mains/controller enclosure assembly remain work. No fabricated
 mechanical part or released machining file exists.
+
+The [mains/J5 CAD screen](design/mains-enclosure-fit.md) adds a conditional
+carrier origin (9.5, 4), PCB top Z28 and 14 x 10 mm partition portal. It resolves
+a measured collision at the earlier whole-board position while preserving PCB
+source. J5 service clears the controller under explicit assembly allowances;
+complete mated J3 primary occupancy, guard/retention and full harness fit remain
+open. Both board studies use the same floor coordinate system.
