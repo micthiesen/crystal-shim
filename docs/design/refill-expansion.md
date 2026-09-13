@@ -33,9 +33,9 @@ the existing entropy arrangement.
 | --- | --- |
 | GPIO1, module pad 9 | `EXT_SDA`, separate 3.3 V open-drain expansion data |
 | GPIO2, module pad 27 | `EXT_SCL`, separate 3.3 V open-drain expansion clock |
-| GPIO3, module pad 26 | `EXT_ENABLE_REQUEST`, active high with external pulldown; export `EXT_ENABLE` only after hardware qualification by existing `PSU_GOOD` |
-| Power and return | Protected `V5_EXT` logic supply derived from `V5_LOGIC`, plus isolated GND; nominal 5 V minus existing path losses, not a regulated 5 V promise |
-| Physical connection | Reserve a locking, polarized connector for those five functions and a second ground contact; select exact header, mating housing, contacts and numbering before capture |
+| GPIO3, module pad 26 | Active-high `EXT_ENABLE` with default-off pulldown; additional supply qualification is a review candidate, not a settled requirement |
+| Power and return | Dedicated isolated expansion-power output from the mains/power board, sized for all three pumps and extension electronics; voltage/current envelope remains to select |
+| Physical connection | Controller signal connector for data, clock, enable and isolated reference; separate power-board connector for motor/electronics power. Exact parts and numbering remain to select |
 
 These names describe intended future nets; they do not exist in the accepted
 manifest. Do not reinterpret any existing connector pin or service test pad.
@@ -61,10 +61,11 @@ compatible with the reservoir sensor. Pump flyback, motor decoupling, current
 paths, keyed pump outputs and optional input conditioning belong there. Reserve
 `EXT_ENABLE` as a direct hardware inhibit independent of expander register state:
 power loss, reset or a disconnected cable must disable every motor even if an
-expander output was left asserted. Qualify GPIO3 request with the existing
-`PSU_GOOD` in hardware before exporting `EXT_ENABLE`, so service-only power cannot
-authorize separately powered motors. Require a receiving-board pulldown as well
-as the controller request pulldown; an unplugged cable must not float the enable. Later circuitry must bound enable duration or
+expander output was left asserted. The proposed `PSU_GOOD` enable gate must be
+reassessed against the common-supply topology before capture; a service-only
+scenario that cannot physically power motors does not by itself justify the gate.
+Require a receiving-board pulldown as well as the controller request pulldown; an
+unplugged cable must not float the enable. Later circuitry must bound enable duration or
 otherwise fail off on lost control; a static high level alone is not a watchdog.
 Neither a port fault nor waiting on the future bus may stall local skimmer control.
 
@@ -78,49 +79,62 @@ and disconnect/isolate the unpowered expansion bus without touching the tank bus
 
 ## Power reservation
 
-Reserve **50 mA maximum normal input current at V5_EXT for extension electronics**,
-including the reservoir sensor supply, I/O expander, pullups and local regulation.
-This is a design target to close before fabrication, not available power today.
-The future board must fit this ceiling or power its electronics from its separate
-isolated pump supply. Do not export controller 3.3 V for motor or sensor loads.
+**The present mains/power board must supply the controller, extension electronics
+and all three future pumps. No separate external pump supply or replacement power
+PCB is the planned solution.** This owner clarification supersedes the earlier
+separate-supply choice. Select the common isolated supply and any secondary rail
+conversion before the present board order, allowing later pump selection within
+an explicit voltage/current envelope. Pump-specific drivers can remain on later
+extension boards.
 
 The existing [power budget](controller-design-basis.md#33-v-regulator-and-design-budget)
-is 850 mA for the complete system. Adding this reservation makes the design target
-900 mA. The [secondary eFuse](power-protection-review.md) minimum limit is
-1.0438 A; the old startup envelope adds up to 117 mA, leaving only 26.8 mA if all
-loads start together. That subtraction does not qualify the new design. Keep
-extension power off during base startup and bound its later charging and fault
-current; recalculate total current, capacitance, path loss and thermal margins for
-both mains and service operation before accepting the branch. Retain the original
-75 mA system reserve. Do not count the IRM-10-5's 2 A nameplate or the old 194 mA
-arithmetic gap as an allocated accessory supply.
+is 850 mA, with a 5 V / 2 A IRM-10-5 and a [secondary eFuse](power-protection-review.md)
+minimum limit of 1.0438 A. These are existing skimmer-design values, not a qualified
+three-pump power provision. The prior 50 mA electronics-only target does not cover
+this requirement and is no longer the expansion power contract.
 
-The controller-side branch must have its own current limiting and controlled
-startup, reverse/backfeed protection as required by the chosen topology, and
-powered-off signal isolation. A short on the extension must not collapse the base
-logic rail. Select the limit tolerance and transient response against remaining
-upstream margin; a 50 mA operating allocation is not a current-limit setting.
-Verify the future board cannot feed V5_EXT or the GPIOs when independently powered.
-Service power may support the reserved electronics, but must not energize pumps.
+Before freezing the power board, establish a practical pump envelope from candidate
+transfer and dosing pumps: operating voltage, running current, startup/stall
+current, supported simultaneous loads and duty. This is interface sizing, not
+implementation of the refill or chemistry specification. Size the isolated supply,
+secondary conversion, protection, connectors, copper and enclosure allowance for
+that envelope plus the base load. Publish the accepted limits so future pumps can
+be selected without redesigning or reordering the present boards. Do not assume
+any arbitrary later pump will fit, or increase the eFuse limit without checking
+the complete path. Selection and sizing are still open.
 
-**Pump power is a separate, later, isolated low-voltage supply connected directly
-to the extension motor board.** Its voltage and current depend on later pump
-selection. Reserve physical entry and cable space in the low-voltage enclosure;
-do not add a mains tap, enlarge the present mains PCB, route motor current through
-the controller connector, or assume the existing skimmer supply can run pumps.
-Join the isolated signal reference where the eventual interface requires it;
-route motor return directly to its supply and away from sensor/controller returns.
-This choice removes unknown pump ratings from the present mains-board design.
+Provide a dedicated low-voltage power output from the power board to the future
+motor board. Motor current and its return must bypass the controller/sensor
+connector and sensitive return paths. Expansion electronics may derive power from
+that output with local regulation on the later board. Do not require a duplicate
+controller-side 50 mA supply branch just for convenience. Keep the isolated
+signal reference common as required by the chosen interface.
+
+Use proportionate protection for the selected supply and wiring. Compare existing
+supply protections, a fuse or simple current limiter and firmware load sequencing
+before mandating another eFuse, independent rail supervisor or timed power stage.
+Account for a real motor stall/short and controller reset; do not turn every
+recoverable low-voltage fault into a requirement that the rest of the system must
+continue operating. A fail-off reset with explicit recovery can be acceptable.
+No existing captured protection is removed by this requirements correction.
+
+Service power need only support controller setup and calibration. Powering the
+future pumps or the whole extension from service power is not required. Under the
+chosen topology, check backfeed and unpowered signal behavior and document a
+simple service connection procedure; do not demand arbitrary source combinations
+unless they are an intended supported use.
 
 ## Closure before the present board order
 
 This reservation is now part of G-02/G-03/G-04. It is not closed by writing this
 page. Before controller routing and the final enclosure allocation:
 
-1. Resolve the separate-bus implementation, select the connector and branch
-   protection, and prove the 50 mA power target under the source combinations.
-2. Capture the connector, three GPIO nets, pulldowns, PSU_GOOD enable gate, power and signal protection,
-   decoupling and placement in authoritative tscircuit. Update exact BOM and harness
+1. Resolve the separate-bus implementation and pump power envelope. Select the
+   common isolated supply/rails and both signal and power connectors; close the
+   base-plus-extension load, startup/stall, wiring and thermal budgets.
+2. Capture the controller signal connector, three GPIO nets, default-off provisions
+   and the power-board output/supply changes in authoritative tscircuit. Select
+   protection and decoupling from the reviewed topology. Update exact BOM and harness
    mating drawings; preserve base interfaces and the mains isolation boundary.
 3. Apply the source delta to the adopted controller through a reviewed ECO and
    native KiCad workflow. Preserve unrelated native state and update the handoff

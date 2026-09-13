@@ -134,8 +134,11 @@ Preserve concurrent changes. Do not purchase parts, flash hardware, or energize 
 as a side effect of setup. Keep durable knowledge in this repository, not personal
 memory.
 Preserve the [future refill attachment reservation](docs/design/refill-expansion.md):
-GPIO1/2/3, separate bus, hardware inhibit and protected logic power must be captured
-before controller routing/fabrication. The linked external artifact owns the future
-feature; do not implement refill/conditioning or add its pump loads to the present
-mains supply as part of this reservation.
+GPIO1/2/3, separate bus and default-off enable must be captured before controller
+routing/fabrication. The present power board must supply all three future pumps
+and extension electronics; size and capture its supply/rails and output before
+ordering so later work does not need a replacement power PCB or external supply.
+The linked artifact owns the future feature; do not implement refill/conditioning
+now. Prefer proportionate protection for credible failures; review redundant
+hardware and unsupported source combinations before adding cost or complexity.
 Update these living instructions as project conventions emerge.

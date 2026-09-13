@@ -13,9 +13,10 @@ Physical calibration and acceptance use the final boards after assembly.
    document assumptions and checks owed on the assembled unit. No sensor hardware
    measurement is required to proceed with controller or mains design.
    Close the [refill attachment reservation](design/refill-expansion.md) before
-   controller routing: connector, separate bus, hardware inhibit and protected
-   electronics power. Later refill boards and feature implementation remain outside
-   this three-board fabrication cycle.
+   controller routing: connector, separate bus and default-off enable. Size and
+   capture the common power-board supply/output for future pumps and electronics
+   before its placement freeze and the present order. Later refill boards and feature
+   implementation remain outside this three-board fabrication cycle.
 2. **Capture and review the complete design.** Author all three boards in
    tscircuit using `$pcb`, including explicit placement, geometry and augmentation
    manifests. Check schematic and PCB renders, datasheet pin/pad mappings, the

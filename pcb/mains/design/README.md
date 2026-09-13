@@ -1,5 +1,11 @@
 # Mains circuit source
 
+The current capture below is the skimmer-only power design. The
+[future refill reservation](../../../docs/design/refill-expansion.md#power-reservation)
+requires this power board to supply all future pumps and extension electronics.
+Size and capture the common supply/rails and expansion output before the present
+order; current counts, placement and power budget do not close that requirement.
+
 `mains.circuit.tsx` integrates all **23 parts, 66 logical pins, 14 named nets and
 81 numbered physical lands** on the proposed 135 x 75 mm, nominal 1.6 mm two-layer
 board. Two layers are the engineering starting choice, not an approved fabrication

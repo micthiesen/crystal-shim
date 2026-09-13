@@ -6,12 +6,14 @@ Last updated: 2026-09-12
 
 - New scope: [future refill attachment reservation](design/refill-expansion.md),
   referencing the external Executor artifact without importing its full spec.
-  GPIO1/2/3, a separate bus, hardware inhibit and protected 50 mA electronics target
-  are reserved as requirements. No source/native circuit has changed; controller
-  capture/ECO, power closure and connector fit are required before routing/order.
-  Later pump drivers and their separate isolated supply remain extension work.
-  Independent interface review completed; `sh scripts/check.sh` passed after this
-  documentation change. Physical expansion capture and hardware tests remain open.
+  GPIO1/2/3, a separate bus and default-off enable are reserved as requirements.
+  Owner correction: the present power board must supply all three future pumps
+  and extension electronics; no separate external pump supply is planned. Pump
+  voltage/current envelope, common supply/rails and power output must be sized
+  before ordering. The old 50 mA controller branch is superseded. No source/native
+  circuit changed; controller ECO, power capture and fit remain open.
+  The prior documentation revision passed `sh scripts/check.sh`; this power-scope
+  correction has document checks only, not electrical or hardware validation.
 
 - The [original full delivery goal](goal.md) remains active. This is one fabrication
   cycle for three final-use boards, actual ESP firmware and final-unit commissioning.
@@ -51,8 +53,8 @@ Last updated: 2026-09-12
 Close the [refill attachment interface](design/refill-expansion.md#closure-before-the-present-board-order)
 in controller source and a guarded ECO before controller routing. This narrowly
 adds physical expansion provisions; do not implement the refill feature. The
-existing mains staging task below can continue independently because pump power
-will not use the present mains board.
+mains preparation tooling review below can continue independently, but its current
+power design cannot be released until the shared pump-power provision is captured.
 
 Finish independent review of the saved mains thermal/stencil proposal, integrated
 augmentation and staging wrapper/native helpers. Reconcile initial ignored-check

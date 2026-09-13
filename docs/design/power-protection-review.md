@@ -134,10 +134,11 @@ application at 850 mA is a loss model, not a new guaranteed test point. Publishe
 thermal resistances use four-layer test boards; they do not establish the
 temperature on this project's final layout.
 
-The [future refill logic-power reservation](refill-expansion.md#power-reservation)
-adds a 50 mA design target that is not covered by this existing calculation.
-Its protected branch, source combinations and startup/fault margins must be
-closed before fabrication; future pumps use a separate isolated supply.
+The [future refill power reservation](refill-expansion.md#power-reservation)
+requires this power board to supply all future pumps and extension electronics.
+The existing calculation does not cover those loads. Supply/rail selection and
+the pump running/startup/stall envelope must close before fabrication; a separate
+external pump supply or later replacement power PCB is not the planned solution.
 
 ## Startup and fault behavior
 
