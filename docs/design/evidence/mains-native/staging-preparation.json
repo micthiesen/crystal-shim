@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "board_id": "mains.board.main",
+  "scope": "Guarded mains stage/helper implementation and draft thermal/augmentation contract. Host disposable initial-file tests only; native helper chain, product staging, ERC/DRC, adoption and fabrication not run.",
+  "baseline_commit": "b6ef1f7247e99ef00875211d48cb69ba0b30b806",
+  "source_and_evidence_sha256": {
+    "pcb/mains/design/stage-mains-export.ts": "f9ec5a0b09da81b74dda0dc71cac22e00a6109c98a4d1236078eb948de844f2c",
+    "pcb/mains/design/stage-mains-export.test.tsx": "b447fd441d103edc25abb184293bb69449d19b27f979bdf28399feaf7c64bf69",
+    "pcb/mains/design/verify-initial-geometry.ts": "6a3d566749adbd3f9b8e9fcfcc019b579a947d172f84809eb928fc577f0da49a",
+    "pcb/mains/design/export-native-footprints.py": "56795f9e2195137707124b6788789590aaafbe7753c2f23b11977382dc80ab44",
+    "pcb/mains/design/register-mains-library.py": "3df60149a1eb39c3ae331046f40b0b6a9a9930567cc1880d72d9e666b4dfbca5",
+    "pcb/mains/design/apply-mains-initial-rules.py": "da9ac2cebb3c1e756536e5bf402e936ca112b45114a44277d39ad47aba65ceae",
+    "pcb/mains/design/native-helpers.test.py": "09ade18eca78967a26243319ce4ea722ff7ed11d63a36a3eaec150f46544e15f",
+    "pcb/mains/design/native-helpers.test.tsx": "7cc6e8834404f7b3d9bab304d32a027f5bbe765f802371c756b0aa6736235aaa",
+    "pcb/mains/design/kicad-augment.json": "263f5b6c8fe0be3d02336fc1167b5ff65deea288970a90d23c74f58530a32a9b",
+    "pcb/controller/design/stage-controller-export.ts": "96bf3e1644fa9ac0a9189844eb4f19262016d1296a2d88aef1ab7e909f575bc8",
+    "pcb/controller/design/stage-controller-export.test.tsx": "d18cf25345b190adda31da72662371065771b6416fb9a1e6ff5e6fe1333c3805",
+    "docs/design/mains-thermal-stencil.md": "e8b1d09d1040f81077bb2864cd149b8aa2b6319d77d818a51902cd65ceb2a341",
+    "docs/design/mains-design-basis.md": "bd5b7f5267d4400067c954536013d10b0e38fb99224a2e7c4834ad1b06325972",
+    "docs/design/evidence/mains-thermal-stencil/calculate.py": "2ff159f078b2e7cf7e9fd96bde2d5106ab2a745a2b876b26ae90f2e09a674bc5",
+    "docs/design/evidence/mains-thermal-stencil/calculations.json": "65e767fafe5be240c3eb65f7cae6aedfc0dc3992f79ccc997ae865aad6b00138",
+    "docs/design/evidence/mains-thermal-stencil/collect-source.ts": "db81a2df2e91b1ec750b5fafbeadb946d839f8d0c146ad0ecf33da76d20ed08d",
+    "docs/design/evidence/mains-thermal-stencil/geometry-review.svg": "d3e1ddce61c61d5eeaf0493d1748eef3a8b8993e12151402299f5d1cabfd937f",
+    "docs/design/evidence/mains-thermal-stencil/primary-sources.json": "277e4ea4af3ae72870eda0acec7b3205b4bcbd39ecd193aafa7d668735a7956e",
+    "docs/design/evidence/mains-thermal-stencil/recommended-operations.json": "f6c063dc497c98ccf5caf6b96bfe57f127b8c8b92b67d86b4c0405a864b62003",
+    "docs/design/evidence/mains-thermal-stencil/source-geometry.json": "ad761a45ff791a100fda6b27aba4d124dfde33a7576a0c21928c2a300074e87b"
+  },
+  "source_render": {
+    "all_seven_prior_artifacts_byte_identical": true,
+    "comparison_receipt": "docs/design/evidence/mains-native/initial-manifest.json",
+    "comparison_receipt_sha256": "bc37492da25ec9fee2a57204fa341a9c6558402a5c136bcdfe73a0789a706172",
+    "files": {
+      "design-manifest.json": true,
+      "design-manifest.normalized.json": true,
+      "pcb.svg": true,
+      "schematic.svg": true,
+      "schematic-primary.svg": true,
+      "schematic-secondary.svg": true,
+      "schematic-suppression.svg": true
+    }
+  },
+  "host_stage_tests": {
+    "status": "pass",
+    "tests": 30,
+    "assertions": 285,
+    "log": "/tmp/crystal-shim-mains-stage-host-tests.log",
+    "log_sha256": "b6f2ff7c6ae65507767653a5310cbbbd10293df993fc308dd33547e395f30ab5"
+  },
+  "native_helper_host_tests": {
+    "python_tests": 10,
+    "bun_wrapper_tests": 1,
+    "status": "pass",
+    "worker_receipt": "/tmp/crystal-shim-mains-native-helpers/verification.json",
+    "worker_receipt_sha256": "d9627c38854d70d02d4b71c6bf3272668e6269ba47e78ee2e13c4688e966332d"
+  },
+  "thermal_reproduction": {
+    "compiled_source": "byte-identical",
+    "calculate_check": "pass",
+    "geometry_illustration": "root visually inspected",
+    "independent_adversarial_review": "pending"
+  },
+  "source_checks": {
+    "status": "pass with existing warnings",
+    "errors": 0,
+    "pin_metadata_warnings": 29,
+    "connector_orientation_warnings": 3,
+    "log": "/tmp/crystal-shim-mains-stage-source-check.log"
+  },
+  "required_full_check": {
+    "status": "pass",
+    "command": "sh scripts/check.sh",
+    "log": "/tmp/crystal-shim-mains-staging-wrap-full-check.log",
+    "log_sha256": "23e57eae4d4132f170354273324aa850900cc0f3e84edab29023246c3c483a00",
+    "pcb_tests": 242,
+    "pcb_assertions": 31630,
+    "shared_handoff_tests": 38,
+    "includes": "host Rust fmt/clippy/tests, Linux TLS, partition tests, embedded fmt/clippy/release build, Matter/settings feature and UI checks, PCB lint/format/typecheck/source/tooling, documentation"
+  },
+  "reviews": {
+    "initial_requirements": {
+      "report": "/tmp/crystal-shim-mains-augmentation-review/REPORT.md",
+      "sha256": "693b02075c75ffc9094ba43433cf5a3b03459588b4aec954183ed5bf94b007ca",
+      "scope": "requirements mapping before final thermal integration"
+    },
+    "followup_wrapper": "incomplete: reviewer stopped at account usage limit",
+    "final_augmentation": "incomplete: reviewer stopped at account usage limit",
+    "thermal": "not completed"
+  },
+  "resolved_initial_findings": [
+    "Explicitly apply 8 mm barrier to all eight isolated nets and unused primary conductors.",
+    "Label 1 oz and nominal construction as process allocations; no inferred two-layer thermal impedance.",
+    "Include shared origin matcher in controller future-stage fingerprints."
+  ],
+  "required_next": [
+    "Finish independent wrapper/helper, augmentation and thermal reviews.",
+    "Reconcile initial default ignored categories using installed KiCad and actual mains reports.",
+    "Add package handoff commands only after review, then execute native parse/parity/ERC/DRC/render gates.",
+    "Complete mated J3 conductor/crimp/wire occupancy and guard/retention."
+  ],
+  "native_readback_expectations": {
+    "footprints": 27,
+    "numbered_lands": 81,
+    "npth": 5,
+    "cardinal_rotation_comparisons": 108,
+    "symbol_library_entries": 24,
+    "schematic_sheets": 4,
+    "initial_npth_clearance_mm": 0.2
+  },
+  "physical_commissioning": "All 34 rows Not run; no physical measurements or live operations.",
+  "augmentation_validation": {
+    "status": "pass",
+    "operations": 14,
+    "all_referenced_thermal_sha256_match": true,
+    "scope": "schema/source-target validation only; detailed native application and final independent review remain pending"
+  }
+}

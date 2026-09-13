@@ -1,0 +1,42 @@
+{
+  "retrieved": "2026-09-12",
+  "raw_files_are_scratch_only": true,
+  "sources": [
+    {
+      "title": "TI TPS25947 SLVSFC9C Rev C, May 2026",
+      "url": "https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+      "sha256": "8f96de389903091650d4f462dcfad3210071c3ae7093623a7978f34baf8a65b4",
+      "local_path": "/tmp/crystal-shim-controller-stackup-research/tps25947.pdf",
+      "method": "Reused downloaded manufacturer PDF; current TI URL independently read and same revision verified. Local pages 18 and 74 visually inspected.",
+      "evidence": "Pin table pp5-6; thermal fixtures and 125C operating limit p8; RON/IQ/electrical timing pp8-12; typical thermal curves p18; OTP/retry pp37-38; startup equations pp44-45; layout pp62-63; RPW0010A copper/stencil pp73-74 drawing 4225183/A 08/2019."
+    },
+    {
+      "title": "JLCPCB rigid PCB capabilities",
+      "url": "https://jlcpcb.com/capabilities/pcb-capabilities",
+      "sha256": "f12aa3ec74c25ed1a1ba03e135b5b8e2374449583065b166521dbd730201831d",
+      "local_path": "/tmp/crystal-shim-mains-thermal-stencil/capabilities.html",
+      "evidence": "Two-layer FR4, 1oz copper option, nominal1.6mm finished1.44-1.76mm, via min0.15/0.25 with preferred drill0.20; 1oz trace/space0.10/0.10. Vendor limits are not this board's acceptance."
+    },
+    {
+      "title": "JLCPCB VIA-in-PAD Design Guidelines",
+      "url": "https://jlcpcb.com/blog/via-in-pad-design-deep-dive",
+      "sha256": "8b39728e4da0d54865741d07528e513b81297a38f770ac0e08661fcfe11e491d",
+      "local_path": "/tmp/crystal-shim-mains-thermal-stencil/via-in-pad.html",
+      "evidence": "POFV production hole0.20-0.50mm, recommended0.25-0.35mm; recommended aspect<=8:1, maximum10:1; filled and plated cap required for solderable in-pad surface. No explicit two-layer POFV acceptance is established."
+    },
+    {
+      "title": "JLCPCB BGA Design Guidelines, updated2026-09-09",
+      "url": "https://jlcpcb.com/help/article/bga-design-guidelines---pcb-layout-recommendations-for-bga-packages",
+      "sha256": "9b28ab8eb7e365c79250788f9e7e008828dbff0b9c59d09dece51ec185db1625",
+      "local_path": "/tmp/crystal-shim-mains-thermal-stencil/bga-guidelines.html",
+      "evidence": "Separate two-layer conventional ink-plugging table and advanced multilayer filling/capping guidance. Free POFV is advertised for6-20 layers. This is not a prohibition on paid two-layer POFV, nor proof it is accepted."
+    },
+    {
+      "title": "JLCPCB Via Covering, updated2026-09-09",
+      "url": "https://jlcpcb.com/help/article/pcb-via-covering",
+      "sha256": "e568bc959d2bc30139b3d208bfabb76fc8edf94d42439500aca7b343a2f79d4c",
+      "local_path": "/tmp/crystal-shim-mains-thermal-stencil/via-covering.html",
+      "evidence": "Tented vias preferably<=0.4mm hole, maximum0.5mm; sufficient spacing needed for cover. Tenting and ink plugging are distinct from epoxy/copper-filled and capped vias; ordinary tenting may leave material inside the hole."
+    }
+  ]
+}

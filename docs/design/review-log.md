@@ -1566,6 +1566,56 @@ strict ERC/netlist parity, augmentation, mated fit and handoff remain open;
 these reviews do not approve the mains design or fabrication. All commissioning
 rows remain Not run.
 
+## Mains staging and thermal preparation, 2026-09-12
+
+The guarded wrapper and three native helpers are implemented for the exact mains
+board. Host tests cover all four environment guards, canonical external stages,
+symlinks/FIFOs, preexisting outputs, stale manifests, changed stage identity,
+exclusive hierarchy emission, failed native subprocesses and receipt binding.
+The new Python helper tests admit the actual compiled manifest and reject
+incorrect refs, pad/locator multisets and augmentation identity without importing
+or invoking native KiCad. Controller source fingerprints now include the shared
+origin matcher omitted during its extraction; no adopted native file changed.
+
+Initial independent augmentation requirements review found an incomplete written
+isolated-net list and an unspecified copper-weight field. The electrical basis
+now explicitly covers all eight isolated nets plus unused primary blades/tails.
+The thermal proposal supplies a labelled 1 oz process allocation with actual
+construction and thermal acceptance still open. Root review reconciled the
+10 mm source copper-free strip, native Y106.5-116.5, and the shared staging tool's
+limited applied operations. Generic augmentation JSON is a work contract, not
+proof that native isolation, copper, paste or stack rules have been applied.
+
+The [thermal/stencil proposal](mains-thermal-stencil.md) provides source-bound
+U2 copper/via geometry, twelve TI-derived apertures and reproducible normal,
+startup, OV-recovery and fault sensitivity calculations. Root inspected the
+geometry illustration and reproduced the compiled source receipt and calculations.
+The two-layer copper areas and external vias are allocations, not measured
+thermal impedance or guaranteed current-limit accuracy. Primary route widths
+also remain allocations pending actual surge/fuse-clearing assessment.
+
+The follow-up independent wrapper/augmentation reviews and the new thermal review
+**did not complete** before wrap; reviewer agents stopped at an account usage
+limit. The initial requirements report remains useful, but it is not a final
+review of the integrated draft. Its recommendation for empty initial ignored
+categories also needs reconciliation: the current draft lists observed installed
+controller defaults, with no actual mains report yet. Require strict all-category
+saved ERC before routing; do not call these declarations release waivers.
+
+The saved [receipt](evidence/mains-native/staging-preparation.json) records checks
+and exact remaining scope. Thirty root/controller stage tests pass with 285
+assertions; ten Python admission tests pass through the Bun test wrapper.
+`check:mains` reports zero source errors, with the existing 29 pin-metadata and
+three connector-orientation warnings. Source rendering and thermal reproduction
+pass. The full `sh scripts/check.sh` gate passes, including host/Linux TLS tests, the
+embedded release build, 242 PCB tests with 31,630 assertions and 38 shared handoff
+tests. Log: `/tmp/crystal-shim-mains-staging-wrap-full-check.log`. The shared
+validator accepts all 14 draft augmentation operations and their source targets;
+all referenced thermal hashes match. This is schema/provenance validation only.
+Product native helpers, mains ERC/DRC, native renders, registration, adoption
+and physical commissioning were not run. No package handoff commands or lock were
+added, and all 34 commissioning rows remain Not run.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

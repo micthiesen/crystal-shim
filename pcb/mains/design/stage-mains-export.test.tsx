@@ -1,4 +1,4 @@
-import { controllerPlacements } from "./placements";
+import { mainsPlacements } from "./placements";
 import { afterAll, beforeAll, expect, test } from "bun:test";
 import {
   chmod,
@@ -18,31 +18,31 @@ import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { Circuit } from "tscircuit";
 import { parseKicadPcb, parseKicadSch } from "kicadts";
-import ControllerCircuit from "./controller.circuit";
-import { controllerBoardId, createControllerManifest } from "./design-manifest";
+import MainsCircuit from "./mains.circuit";
+import { mainsBoardId, createMainsManifest } from "./design-manifest";
 import {
-  guardControllerStage,
-  prepareControllerStage,
-  validateControllerInitialRules,
-  validateControllerRegistration,
-  writeControllerInitialFiles,
-} from "./stage-controller-export";
+  guardMainsStage,
+  prepareMainsStage,
+  validateMainsInitialRules,
+  validateMainsRegistration,
+  writeMainsInitialFiles,
+} from "./stage-mains-export";
 
 const scratch = await realpath(
-  await mkdtemp(join(tmpdir(), "crystal-shim-controller-stage-test-")),
+  await mkdtemp(join(tmpdir(), "crystal-shim-mains-stage-test-")),
 );
 const manifestName = "source-manifest.normalized.json";
 const augmentationName = "kicad-augmentation.normalized.json";
 const inputs = [augmentationName, manifestName].sort();
-const wrapper = join(import.meta.dir, "stage-controller-export.ts");
+const wrapper = join(import.meta.dir, "stage-mains-export.ts");
 const pcbRoot = resolve(import.meta.dir, "../..");
-let manifest: ReturnType<typeof createControllerManifest>;
-let prepared: Awaited<ReturnType<typeof prepareControllerStage>>;
+let manifest: ReturnType<typeof createMainsManifest>;
+let prepared: Awaited<ReturnType<typeof prepareMainsStage>>;
 
 function environment(stage: string) {
   return {
     ...process.env,
-    STILLAIR_HANDOFF_BOARD: controllerBoardId,
+    STILLAIR_HANDOFF_BOARD: mainsBoardId,
     STILLAIR_HANDOFF_STAGE: stage,
     STILLAIR_HANDOFF_MANIFEST: join(stage, manifestName),
     STILLAIR_HANDOFF_AUGMENTATION: join(stage, augmentationName),
@@ -50,7 +50,7 @@ function environment(stage: string) {
 }
 
 async function freshStage() {
-  const stage = await mkdtemp(join(scratch, `stillair-${controllerBoardId}-handoff-`));
+  const stage = await mkdtemp(join(scratch, `stillair-${mainsBoardId}-handoff-`));
   const normalized = spawnSync(
     "python3",
     [
@@ -63,21 +63,21 @@ async function freshStage() {
   await writeFile(join(stage, manifestName), normalized.stdout);
   await writeFile(
     join(stage, augmentationName),
-    JSON.stringify({ schema_version: 1, board_id: controllerBoardId, operations: [] }),
+    JSON.stringify({ schema_version: 1, board_id: mainsBoardId, operations: [] }),
   );
   return environment(stage);
 }
 
 async function planFor(env: ReturnType<typeof environment>) {
-  return { ...prepared, guard: await guardControllerStage(env) };
+  return { ...prepared, guard: await guardMainsStage(env) };
 }
 
 beforeAll(async () => {
   const circuit = new Circuit();
-  circuit.add(<ControllerCircuit />);
+  circuit.add(<MainsCircuit />);
   await circuit.renderUntilSettled();
-  manifest = createControllerManifest(circuit.getCircuitJson());
-  prepared = await prepareControllerStage(await freshStage());
+  manifest = createMainsManifest(circuit.getCircuitJson());
+  prepared = await prepareMainsStage(await freshStage());
 }, 30_000);
 
 afterAll(async () => {
@@ -85,12 +85,19 @@ afterAll(async () => {
 });
 
 test("initial source fingerprint includes the shared origin matcher", async () => {
-  const name = "scripts/lib/footprint-origin-initial-export.ts";
-  expect(prepared.sourceHashes[name]).toBe(
-    createHash("sha256")
-      .update(await readFile(join(pcbRoot, name)))
-      .digest("hex"),
-  );
+  for (const name of [
+    "scripts/lib/footprint-origin-initial-export.ts",
+    "scripts/lib/schematic-grid-initial-export.ts",
+    "controller/design/footprint-geometry-identity.ts",
+    "controller/design/pin-electrical-contract.ts",
+    "mains/design/mains-initial-export.ts",
+    "mains/design/verify-initial-geometry.ts",
+  ])
+    expect(prepared.sourceHashes[name]).toBe(
+      createHash("sha256")
+        .update(await readFile(join(pcbRoot, name)))
+        .digest("hex"),
+    );
 });
 
 test("requires every exact shared guard before creating output", async () => {
@@ -102,17 +109,17 @@ test("requires every exact shared guard before creating output", async () => {
     "STILLAIR_HANDOFF_AUGMENTATION",
   ] as const) {
     const changed = { ...env, [key]: undefined };
-    await expect(guardControllerStage(changed)).rejects.toThrow("complete shared");
+    await expect(guardMainsStage(changed)).rejects.toThrow("complete shared");
   }
   await expect(
-    guardControllerStage({ ...env, STILLAIR_HANDOFF_BOARD: "mains.board.main" }),
+    guardMainsStage({ ...env, STILLAIR_HANDOFF_BOARD: "controller.board.main" }),
   ).rejects.toThrow();
   for (const key of [
     "STILLAIR_HANDOFF_MANIFEST",
     "STILLAIR_HANDOFF_AUGMENTATION",
   ] as const)
     await expect(
-      guardControllerStage({ ...env, [key]: join(scratch, "outside.json") }),
+      guardMainsStage({ ...env, [key]: join(scratch, "outside.json") }),
     ).rejects.toThrow("exact targets");
   expect((await readdir(env.STILLAIR_HANDOFF_STAGE)).sort()).toEqual(inputs);
 });
@@ -121,15 +128,15 @@ test("rejects stage aliases, non-stage directories and symlinked input files", a
   const env = await freshStage();
   const alias = join(scratch, "stage-alias");
   await symlink(env.STILLAIR_HANDOFF_STAGE, alias);
-  await expect(guardControllerStage(environment(alias))).rejects.toThrow("canonical");
+  await expect(guardMainsStage(environment(alias))).rejects.toThrow("canonical");
   await expect(
-    guardControllerStage(environment(`${env.STILLAIR_HANDOFF_STAGE}/.`)),
+    guardMainsStage(environment(`${env.STILLAIR_HANDOFF_STAGE}/.`)),
   ).rejects.toThrow();
-  await expect(guardControllerStage(environment(scratch))).rejects.toThrow("canonical");
+  await expect(guardMainsStage(environment(scratch))).rejects.toThrow("canonical");
   const parentAlias = join(scratch, "parent-alias");
   await symlink(scratch, parentAlias);
   await expect(
-    guardControllerStage(
+    guardMainsStage(
       environment(join(parentAlias, env.STILLAIR_HANDOFF_STAGE.split("/").at(-1)!)),
     ),
   ).rejects.toThrow("canonical");
@@ -138,7 +145,7 @@ test("rejects stage aliases, non-stage directories and symlinked input files", a
     const target = join(candidate.STILLAIR_HANDOFF_STAGE, name);
     await rm(target);
     await symlink(join(env.STILLAIR_HANDOFF_STAGE, name), target);
-    await expect(guardControllerStage(candidate)).rejects.toThrow("non-symlink");
+    await expect(guardMainsStage(candidate)).rejects.toThrow("non-symlink");
     expect((await readdir(candidate.STILLAIR_HANDOFF_STAGE)).sort()).toEqual(inputs);
   }
 });
@@ -148,7 +155,7 @@ test("rejects nonregular manifest before opening a FIFO", async () => {
   const target = env.STILLAIR_HANDOFF_MANIFEST;
   await rm(target);
   expect(spawnSync("mkfifo", [target]).status).toBe(0);
-  await expect(guardControllerStage(env)).rejects.toThrow("regular");
+  await expect(guardMainsStage(env)).rejects.toThrow("regular");
 });
 
 test("preexisting outputs and link targets remain byte-identical on rejection", async () => {
@@ -156,20 +163,20 @@ test("preexisting outputs and link targets remain byte-identical on rejection", 
   // A sentinel is deliberately not a native design and must never be parsed.
   await writeFile(outside, "unintended sentinel");
   for (const name of [
-    "controller.kicad_pcb",
-    "controller.kicad_sch",
-    "controller-initial-export-receipt.json",
+    "mains.kicad_pcb",
+    "mains.kicad_sch",
+    "mains-initial-export-receipt.json",
     "fp-lib-table",
     "native-library-registration.json",
-    "controller.kicad_pro",
-    "controller.kicad_prl",
+    "mains.kicad_pro",
+    "mains.kicad_prl",
     "native-initial-rules.json",
     "footprints",
     "unexpected.txt",
   ]) {
     const env = await freshStage();
     await symlink(outside, join(env.STILLAIR_HANDOFF_STAGE, name));
-    await expect(guardControllerStage(env)).rejects.toThrow("Fresh stage");
+    await expect(guardMainsStage(env)).rejects.toThrow("Fresh stage");
     expect(await readFile(outside, "utf8")).toBe("unintended sentinel");
     expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(3);
   }
@@ -180,9 +187,7 @@ test("regenerated source rejects a stale normalized manifest before native emiss
   const changed = JSON.parse(await readFile(env.STILLAIR_HANDOFF_MANIFEST, "utf8"));
   changed.components[0].value = "stale component value";
   await writeFile(env.STILLAIR_HANDOFF_MANIFEST, JSON.stringify(changed));
-  await expect(prepareControllerStage(env)).rejects.toThrow(
-    "Regenerated source differs",
-  );
+  await expect(prepareMainsStage(env)).rejects.toThrow("Regenerated source differs");
   expect((await readdir(env.STILLAIR_HANDOFF_STAGE)).sort()).toEqual(inputs);
 }, 20_000);
 
@@ -192,7 +197,7 @@ test("augmentation cannot target another board", async () => {
     env.STILLAIR_HANDOFF_AUGMENTATION,
     JSON.stringify({ board_id: "another-board", operations: [] }),
   );
-  await expect(prepareControllerStage(env)).rejects.toThrow("does not match");
+  await expect(prepareMainsStage(env)).rejects.toThrow("does not match");
   expect((await readdir(env.STILLAIR_HANDOFF_STAGE)).sort()).toEqual(inputs);
 }, 20_000);
 
@@ -201,16 +206,14 @@ test("detects changed inputs and outputs added after source preparation", async 
     const env = await freshStage();
     const plan = await planFor(env);
     await writeFile(join(env.STILLAIR_HANDOFF_STAGE, name), "changed input");
-    await expect(writeControllerInitialFiles(plan)).rejects.toThrow(
-      "changed during export",
-    );
+    await expect(writeMainsInitialFiles(plan)).rejects.toThrow("changed during export");
     expect((await readdir(env.STILLAIR_HANDOFF_STAGE)).sort()).toEqual(inputs);
   }
   const env = await freshStage();
   const plan = await planFor(env);
   const target = join(env.STILLAIR_HANDOFF_STAGE, "unexpected.txt");
   await writeFile(target, "preexisting sentinel");
-  await expect(writeControllerInitialFiles(plan)).rejects.toThrow("already exists");
+  await expect(writeMainsInitialFiles(plan)).rejects.toThrow("already exists");
   expect(await readFile(target, "utf8")).toBe("preexisting sentinel");
   expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(3);
 });
@@ -220,15 +223,15 @@ test("validates every generated filename before the first write", async () => {
     "../escape.kicad_sch",
     "/tmp/escape.kicad_sch",
     "child\\escape.kicad_sch",
-    "controller.kicad_pro",
-    "controller.kicad_pcb",
+    "mains.kicad_pro",
+    "mains.kicad_pcb",
   ]) {
     const env = await freshStage();
     const plan = await planFor(env);
     plan.files = plan.files.map((file, index) =>
       index === 1 ? { ...file, filename } : file,
     );
-    await expect(writeControllerInitialFiles(plan)).rejects.toThrow("output file set");
+    await expect(writeMainsInitialFiles(plan)).rejects.toThrow("output file set");
     expect((await readdir(env.STILLAIR_HANDOFF_STAGE)).sort()).toEqual(inputs);
   }
 });
@@ -244,9 +247,7 @@ test("rejects a stage directory replaced after source preparation", async () => 
       join(env.STILLAIR_HANDOFF_STAGE, name),
       await readFile(join(original, name)),
     );
-  await expect(writeControllerInitialFiles(plan)).rejects.toThrow(
-    "changed during export",
-  );
+  await expect(writeMainsInitialFiles(plan)).rejects.toThrow("changed during export");
   expect((await readdir(env.STILLAIR_HANDOFF_STAGE)).sort()).toEqual(inputs);
   expect((await readdir(original)).sort()).toEqual(inputs);
 });
@@ -254,12 +255,12 @@ test("rejects a stage directory replaced after source preparation", async () => 
 test("writes the actual complete initial hierarchy once without adoption", async () => {
   const env = await freshStage();
   const plan = await planFor(env);
-  await writeControllerInitialFiles(plan);
-  expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(12);
+  await writeMainsInitialFiles(plan);
+  expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(8);
   const pcb = parseKicadPcb(
-    await readFile(join(env.STILLAIR_HANDOFF_STAGE, "controller.kicad_pcb"), "utf8"),
+    await readFile(join(env.STILLAIR_HANDOFF_STAGE, "mains.kicad_pcb"), "utf8"),
   );
-  expect(pcb.footprints).toHaveLength(99);
+  expect(pcb.footprints).toHaveLength(27);
   const refs = pcb.footprints.map(
     (fp) => fp.properties.find((p) => p.key === "Reference")?.value,
   );
@@ -270,15 +271,15 @@ test("writes the actual complete initial hierarchy once without adoption", async
     symbols += parseKicadSch(
       await readFile(join(env.STILLAIR_HANDOFF_STAGE, file.filename), "utf8"),
     ).symbols.length;
-  expect(symbols).toBe(99); // 95 physical parts and four excluded ERC flags.
+  expect(symbols).toBe(25); // 23 physical parts and two excluded ERC flags.
   for (const file of plan.files)
     expect(
       await readFile(join(env.STILLAIR_HANDOFF_STAGE, file.filename), "utf8"),
     ).toBe(file.content);
-  await expect(writeControllerInitialFiles(plan)).rejects.toThrow("already exists");
+  await expect(writeMainsInitialFiles(plan)).rejects.toThrow("already exists");
   expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).not.toContain("handoff.lock.json");
   expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).not.toContain(
-    "controller-initial-export-receipt.json",
+    "mains-initial-export-receipt.json",
   );
 });
 
@@ -299,8 +300,8 @@ test("native exporter failure leaves no success receipt and cannot be retried", 
   ]);
   expect(code).not.toBe(0);
   expect(stderr).toContain("Initial native footprint export failed (23)");
-  expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(12);
-  await expect(guardControllerStage(env)).rejects.toThrow("Fresh stage");
+  expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(8);
+  await expect(guardMainsStage(env)).rejects.toThrow("Fresh stage");
 }, 20_000);
 
 test("CLI rejects supplied target paths", async () => {
@@ -318,7 +319,7 @@ test("registration evidence binds exact stage, native table and pinned tool prov
   const symbolTable = Buffer.from([2, 4, 6, 8]);
   const symbolLibrary = Buffer.from([8, 6, 4, 2]);
   const scriptHash = "a".repeat(64);
-  const library = join(scratch, "footprints/CrystalShim_Controller.pretty");
+  const library = join(scratch, "footprints/CrystalShim_Mains.pretty");
   const receipt = {
     schema_version: 2,
     scope: "initial-project-library-registration-only",
@@ -331,14 +332,14 @@ test("registration evidence binds exact stage, native table and pinned tool prov
     symbol_table: "sym-lib-table",
     symbol_table_sha256: createHash("sha256").update(symbolTable).digest("hex"),
     symbol_library: {
-      path: "CrystalShim_Controller.kicad_sym",
+      path: "CrystalShim_Mains.kicad_sym",
       sha256: createHash("sha256").update(symbolLibrary).digest("hex"),
     },
     symbol_inventory: {
-      library: join(scratch, "CrystalShim_Controller.kicad_sym"),
-      count: 96,
+      library: join(scratch, "CrystalShim_Mains.kicad_sym"),
+      count: 24,
       symbols: [
-        ...Object.keys(controllerPlacements).map((ref) => `Controller_${ref}`),
+        ...Object.keys(mainsPlacements).map((ref) => `Mains_${ref}`),
         "PWR_FLAG",
       ],
     },
@@ -346,11 +347,11 @@ test("registration evidence binds exact stage, native table and pinned tool prov
       count: 1,
       libraries: [
         {
-          nickname: "CrystalShim_Controller",
+          nickname: "CrystalShim_Mains",
           scope: "project",
           type: "KiCad",
-          path: join(scratch, "CrystalShim_Controller.kicad_sym"),
-          uri: join(scratch, "CrystalShim_Controller.kicad_sym"),
+          path: join(scratch, "CrystalShim_Mains.kicad_sym"),
+          uri: join(scratch, "CrystalShim_Mains.kicad_sym"),
         },
       ],
     },
@@ -358,7 +359,7 @@ test("registration evidence binds exact stage, native table and pinned tool prov
       count: 1,
       libraries: [
         {
-          nickname: "CrystalShim_Controller",
+          nickname: "CrystalShim_Mains",
           scope: "project",
           type: "KiCad",
           path: library,
@@ -368,7 +369,7 @@ test("registration evidence binds exact stage, native table and pinned tool prov
     },
   };
   const check = (value: unknown, bytes = table, script = scriptHash) =>
-    validateControllerRegistration(
+    validateMainsRegistration(
       scratch,
       Buffer.from(JSON.stringify(value)),
       bytes,
@@ -419,7 +420,7 @@ test("registration evidence binds exact stage, native table and pinned tool prov
       }),
     ).toThrow("does not bind");
   expect(() =>
-    validateControllerRegistration(
+    validateMainsRegistration(
       scratch,
       Buffer.from(JSON.stringify(receipt)),
       table,
@@ -429,7 +430,7 @@ test("registration evidence binds exact stage, native table and pinned tool prov
     ),
   ).toThrow("does not bind");
   expect(() =>
-    validateControllerRegistration(
+    validateMainsRegistration(
       scratch,
       Buffer.from(JSON.stringify(receipt)),
       table,
@@ -454,11 +455,11 @@ test("initial rules evidence requires the declared value and unchanged project/t
   const receipt = {
     schema_version: 1,
     scope: "initial-project-npth-clearance-only",
-    applied_operation: "controller.augment.npth-clearance",
+    applied_operation: "mains.augment.npth-clearance",
     minimum_hole_to_copper_mm: 0.2,
-    project: "controller.kicad_pro",
+    project: "mains.kicad_pro",
     project_sha256: hash(project),
-    native_files: { "controller.kicad_pro": hash(project) },
+    native_files: { "mains.kicad_pro": hash(project) },
     script_sha256: scriptHash,
     kicad_version: "10.0.5",
     existing_files_unchanged: true,
@@ -470,7 +471,7 @@ test("initial rules evidence requires the declared value and unchanged project/t
     version = "10.0.5",
     localSettings?: Buffer,
   ) =>
-    validateControllerInitialRules(
+    validateMainsInitialRules(
       Buffer.from(JSON.stringify(value)),
       bytes,
       script,
@@ -482,13 +483,13 @@ test("initial rules evidence requires the declared value and unchanged project/t
     { scope: "adopted" },
     { applied_operation: "another-rule" },
     { minimum_hole_to_copper_mm: 0.1 },
-    { project: "../controller.kicad_pro" },
+    { project: "../mains.kicad_pro" },
     { project_sha256: "b".repeat(64) },
     { script_sha256: "b".repeat(64) },
     { kicad_version: "another" },
     { existing_files_unchanged: false },
     { native_files: { "unexpected.kicad_pro": hash(project) } },
-    { native_files: { "controller.kicad_pro": "b".repeat(64) } },
+    { native_files: { "mains.kicad_pro": "b".repeat(64) } },
   ])
     expect(() => check({ ...receipt, ...override })).toThrow("does not bind");
   const wrongRule = Buffer.from(project.toString().replace("0.2", "0.1"));
@@ -497,7 +498,7 @@ test("initial rules evidence requires the declared value and unchanged project/t
       {
         ...receipt,
         project_sha256: hash(wrongRule),
-        native_files: { "controller.kicad_pro": hash(wrongRule) },
+        native_files: { "mains.kicad_pro": hash(wrongRule) },
       },
       wrongRule,
     ),
@@ -512,7 +513,7 @@ test("initial rules evidence requires the declared value and unchanged project/t
     ...receipt,
     native_files: {
       ...receipt.native_files,
-      "controller.kicad_prl": hash(localSettings),
+      "mains.kicad_prl": hash(localSettings),
     },
   };
   expect(

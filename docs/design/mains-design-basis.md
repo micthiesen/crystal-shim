@@ -593,9 +593,11 @@ The IRM body straddles that boundary only in accordance with its pin arrangement
 the relay straddles it only through its internal coil-contact isolation. Use
 these conservative capture constraints:
 
-- at least 8.0 mm creepage and 8.0 mm clearance between any mains net and
-  `V5_PSU`, `GND_ISO`, `COIL_DRAIN`, secondary connector copper, test points,
-  mounting hardware or controller conductors;
+- at least 8.0 mm creepage and 8.0 mm clearance between any mains conductor and
+  all isolated nets (`V5_RAW`, `V5_PSU`, `GND_ISO`, `COIL_DRAIN`, `EFUSE_UV`,
+  `EFUSE_OV`, `EFUSE_ILM`, `EFUSE_DVDT`), secondary connector copper, test points,
+  mounting hardware or controller conductors. Unused primary connector blades and
+  both solder tails remain primary metal even though they have no net ID;
 - at least 3.2 mm creepage and clearance between line and neutral, filtered and
   unfiltered mains, and the two sides of the open relay contact;
 - no soldermask or conformal coating credit; no copper, vias, test pads or plated

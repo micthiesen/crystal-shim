@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "board_id": "mains.board.main",
+  "operations": [
+    {
+      "id": "mains.augment.coordinates",
+      "kind": "coordinate_transform",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "tscircuit_center_mm": [
+          0,
+          0
+        ],
+        "kicad_center_mm": [
+          100,
+          100
+        ],
+        "x_axis": "same",
+        "y_axis": "invert"
+      }
+    },
+    {
+      "id": "mains.augment.native-footprints",
+      "kind": "footprint_override",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "scope": "All 27 manifest components: 23 electrical and H1-H4",
+        "library": "CrystalShim_Mains",
+        "mapping": "Mains_<exact manifest reference>",
+        "reason": "Preserve source-derived physical geometry through native FootprintSave/FootprintLoad; no stock substitution.",
+        "verification": "Bind source and effective initial hashes, per-ref native library receipt, all 81 numbered lands/49 PTH/32 SMT and five NPTHs, every net, pose and cardinal rotation. Register project libraries through verified Konnect before initial ERC/DRC.",
+        "status": "Declared; native application and saved evidence pending."
+      }
+    },
+    {
+      "id": "mains.augment.stackup",
+      "kind": "stackup",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "layer_count": 2,
+        "copper_weight_oz": 1,
+        "thickness_mm": 1.6,
+        "layers": [
+          "F.Cu: primary and isolated circuits in separate regions",
+          "B.Cu: separate primary routes and isolated power/return spreading"
+        ],
+        "thickness_basis": "1.6 mm is source/order nominal. Native header must equal the actual saved physical stack sum; record vendor construction and finished thickness limits before fabrication.",
+        "requirements": [
+          "FR-4 with flame/material declarations and reviewed dielectric construction; no inferred CTI/material group.",
+          "Do not copy the controller four-layer stack or impedance template. No controlled-impedance net exists on this board.",
+          "Do not treat mask thickness/loss/material defaults as qualified fabrication data."
+        ],
+        "verification": "Saved stack/header/layer readback, vendor construction and insulation/thermal review.",
+        "status": "Declared; native application and saved evidence pending.",
+        "allocation_status": "1 oz outer copper, ENIG and nominal 1.6 mm are selected process allocations supported by published fabricator capabilities. Actual construction, finished tolerances and thermal/insulation acceptance remain open.",
+        "design_basis": "docs/design/mains-thermal-stencil.md"
+      }
+    },
+    {
+      "id": "mains.augment.npth-clearance",
+      "kind": "custom_rule",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "minimum_hole_to_copper_mm": 0.2,
+        "basis": "JLC rigid-board NPTH-to-copper capability; stricter mains/hardware separation still controls.",
+        "application": "apply-mains-initial-rules.py creates mains.kicad_pro with native m_HoleClearance only.",
+        "verification": "Native settings and project-file readback, full initial DRC; retain J5 locator and H1-H4.",
+        "status": "Declared; native application and saved evidence pending."
+      }
+    },
+    {
+      "id": "mains.augment.mains-separation",
+      "kind": "custom_rule",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "primary_nets": [
+          "AC_L_FUSED",
+          "AC_N",
+          "PUMP_L_FILTERED",
+          "PUMP_N_FILTERED",
+          "PUMP_L_SW",
+          "SNUBBER_RC"
+        ],
+        "isolated_nets": [
+          "V5_RAW",
+          "V5_PSU",
+          "COIL_DRAIN",
+          "GND_ISO",
+          "EFUSE_UV",
+          "EFUSE_OV",
+          "EFUSE_ILM",
+          "EFUSE_DVDT"
+        ],
+        "primary_to_isolated_clearance_mm": 8,
+        "primary_to_isolated_creepage_mm": 8,
+        "distinct_primary_clearance_mm": 3.2,
+        "distinct_primary_creepage_mm": 3.2,
+        "primary_unconnected_pins": [
+          "J2.3",
+          "J3.3",
+          "J3.4",
+          "J4.3",
+          "J4.4",
+          "J4.5",
+          "J4.6"
+        ],
+        "isolated_unconnected_pins": [
+          "U2.3",
+          "U2.4",
+          "U2.10"
+        ],
+        "requirements": [
+          "Classify every unused blade and both solder tails as real primary metal, even though it has no net ID. Unused secondary pins remain isolated-region conductors.",
+          "Enforce across both copper layers, vias, pads, fills and exposed/assembled solder; do not rely solely on same-layer net-class DRC.",
+          "Include primary-to-hardware/controller/cable conductors and shortest paths around edges/holes. No soldermask or coating insulation credit.",
+          "U1 crosses the boundary only through its qualified input/output construction; K1 only through qualified coil/contact construction. Never route across the barrier beneath them.",
+          "Any needed isolation slot changes source-owned outline/hole geometry and requires a source revision/ECO, not an undeclared native cut."
+        ],
+        "basis": "Conservative project constraints in docs/design/mains-design-basis.md, not a determination of the applicable product standard. Material group, pollution degree, overvoltage category, altitude and actual assembled geometry require review before fabrication.",
+        "verification": "Native rule/net readback plus explicit complete-conductor clearance/creepage and 3D assembly review; no nominal placement screen substitutes for these measurements.",
+        "status": "Declared; native application and saved evidence pending."
+      }
+    },
+    {
+      "id": "mains.augment.isolation-and-mounts",
+      "kind": "keepout",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "source_copper_free_strip_y_mm": [
+          -16.5,
+          -6.5
+        ],
+        "native_copper_free_strip_y_mm": [
+          106.5,
+          116.5
+        ],
+        "strip_scope": "Full board width on every copper layer; no tracks, vias, fills, pads or plated holes. Component bodies may bridge only as separately qualified; this is not a universal metal-free volume.",
+        "mounts": [
+          "H1",
+          "H2",
+          "H3",
+          "H4"
+        ],
+        "mount_hole_mm": 3.2,
+        "mount_hardware_radius_allocation_mm": 4,
+        "requirements": [
+          "Preserve all source mounting and locator holes. Confirm actual hardware height/material and tool access against the carrier/enclosure, without conducting hardware across the isolation boundary.",
+          "Apply measured J5 service and partition-portal limits; complete mated J3 metal/crimp/wire occupancy and guard retention remain release requirements.",
+          "Primary filter LINE/LOAD wiring stays separated; no extra PCB holes, wider outline or shifted component poses without source revision and repeated fit review."
+        ],
+        "verification": "Native keepout/outline/hole readback and all-layer copper render; assembled board/carrier/guard/connector fit from exact retained geometry.",
+        "status": "Declared; native application and saved evidence pending."
+      }
+    },
+    {
+      "id": "mains.augment.routing-classes",
+      "kind": "net_class",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "primary_nets": [
+          "AC_L_FUSED",
+          "AC_N",
+          "PUMP_L_FILTERED",
+          "PUMP_N_FILTERED",
+          "PUMP_L_SW",
+          "SNUBBER_RC"
+        ],
+        "isolated_power_nets": [
+          "V5_RAW",
+          "V5_PSU",
+          "GND_ISO",
+          "COIL_DRAIN"
+        ],
+        "isolated_control_nets": [
+          "EFUSE_UV",
+          "EFUSE_OV",
+          "EFUSE_ILM",
+          "EFUSE_DVDT"
+        ],
+        "requirements": [
+          "Use distinct primary/isolated net classes; the separate 8/3.2 mm rules override ordinary low-voltage fabrication clearances.",
+          "Current/width/via/thermal allocations are specified by the mains thermal/stencil design before routing. No controller USB or buck nets/classes are imported.",
+          "Keep RV1 loop at J1 and RC beside J4; filter LINE and LOAD pairs remain at opposite edges and do not share a surge return through the isolated region.",
+          "Route U2 programming returns separately from IN/OUT and clamp-current loops; join near GND pin8.",
+          "The 0.15 mm ordinary isolated clearance stays below the 0.1995 mm computed lower bound for U2 escapes; the 8/3.2 mm isolation and primary rules always override it.",
+          "Use 2 mm primary routes and widen J1-RV1 surge paths to at least 3 mm where pad transitions allow. Join both Sabre tails per blade with solid copper. These are initial routing allocations; fuse-clearing integral, inrush duration and MOV pulse survival require separate routed-copper verification."
+        ],
+        "verification": "Saved class assignments and actual route, current, return and thermal review.",
+        "status": "Declared routing allocations; independent final review, native application and current/fault acceptance pending.",
+        "u2_contract": {
+          "path": "docs/design/evidence/mains-thermal-stencil/recommended-operations.json",
+          "sha256": "f6c063dc497c98ccf5caf6b96bfe57f127b8c8b92b67d86b4c0405a864b62003",
+          "coordinate_system": "U2 body/footprint local, top view, +X right +Y down; transform by native footprint pose"
+        },
+        "isolated_power_spine_width_mm": 2,
+        "u2_neck_width_mm": 0.3,
+        "isolated_control_width_mm": 0.25,
+        "isolated_clearance_mm": 0.15,
+        "primary_width_mm": 2,
+        "input_mov_loop_width_mm": 3,
+        "ordinary_via_drill_mm": 0.3,
+        "ordinary_via_diameter_mm": 0.6
+      }
+    },
+    {
+      "id": "mains.augment.secondary-copper",
+      "kind": "zone",
+      "owner": "kicad",
+      "target": {
+        "net_stable_id": "mains.net.gnd_iso"
+      },
+      "params": {
+        "scope": "Only isolated region; IN5 and OUT6 are distinct power spreading areas, never GND pads.",
+        "requirements": [
+          "Exact top/bottom copper and via geometry follows the mains thermal/stencil contract.",
+          "No ground or power zone crosses the mains barrier or primary body/unused-contact clearances.",
+          "Remove floating islands; measure connected useful copper area after all clearances and track cutouts.",
+          "The named GND_ISO target covers isolated return copper only. The explicit V5_RAW and V5_PSU areas and vias retain their own named nets; never apply the GND target to U2 power lands."
+        ],
+        "verification": "Native zone net/layer/fill/copper-area readback, DRC and actual thermal/current acceptance.",
+        "status": "Declared design allocation; native application, whole-board clearance, filled copper area and thermal acceptance pending.",
+        "u2_contract": {
+          "path": "docs/design/evidence/mains-thermal-stencil/recommended-operations.json",
+          "sha256": "f6c063dc497c98ccf5caf6b96bfe57f127b8c8b92b67d86b4c0405a864b62003",
+          "coordinate_system": "U2 body/footprint local, top view, +X right +Y down; transform by native footprint pose"
+        },
+        "power_net_targets": [
+          "mains.net.v5_raw",
+          "mains.net.v5_psu"
+        ],
+        "thermal_copper": {
+          "continuous_current_design_A": 1.7,
+          "fine_pitch_necks": [
+            {
+              "length_mm": 1.7863961030678928,
+              "native_local_points_mm": [
+                [
+                  -0.25,
+                  -1.1
+                ],
+                [
+                  -0.25,
+                  -1.45
+                ],
+                [
+                  -0.7,
+                  -1.9
+                ],
+                [
+                  -0.7,
+                  -2.7
+                ]
+              ],
+              "net": "V5_RAW",
+              "other_source_copper_gap_lower_bound_mm": 0.19949999999999998,
+              "pin": "5",
+              "width_mm": 0.3
+            },
+            {
+              "length_mm": 1.7863961030678928,
+              "native_local_points_mm": [
+                [
+                  -0.25,
+                  1.1
+                ],
+                [
+                  -0.25,
+                  1.45
+                ],
+                [
+                  -0.7,
+                  1.9
+                ],
+                [
+                  -0.7,
+                  2.7
+                ]
+              ],
+              "net": "V5_RAW",
+              "other_source_copper_gap_lower_bound_mm": 0.19949999999999998,
+              "pin": "5",
+              "width_mm": 0.3
+            },
+            {
+              "length_mm": 1.7863961030678928,
+              "native_local_points_mm": [
+                [
+                  0.25,
+                  -1.1
+                ],
+                [
+                  0.25,
+                  -1.45
+                ],
+                [
+                  0.7,
+                  -1.9
+                ],
+                [
+                  0.7,
+                  -2.7
+                ]
+              ],
+              "net": "V5_PSU",
+              "other_source_copper_gap_lower_bound_mm": 0.19949999999999998,
+              "pin": "6",
+              "width_mm": 0.3
+            },
+            {
+              "length_mm": 1.7863961030678928,
+              "native_local_points_mm": [
+                [
+                  0.25,
+                  1.1
+                ],
+                [
+                  0.25,
+                  1.45
+                ],
+                [
+                  0.7,
+                  1.9
+                ],
+                [
+                  0.7,
+                  2.7
+                ]
+              ],
+              "net": "V5_PSU",
+              "other_source_copper_gap_lower_bound_mm": 0.19949999999999998,
+              "pin": "6",
+              "width_mm": 0.3
+            }
+          ],
+          "per_net_min_connected_area_mm2_after_fill": {
+            "B.Cu": 50,
+            "F.Cu": 10
+          },
+          "requirements": [
+            "Join both ends of each power land to its same-net copper.",
+            "Widen beyond the eight-via local cluster to the 2 mm spine; verify current sharing and clearance.",
+            "Subtract other nets/holes/keepouts before counting connected area; never count an isolated island.",
+            "Keep IN5/V5_RAW and OUT6/V5_PSU electrically separate on both layers.",
+            "Keep all thermal structures at least 8 mm from complete primary occupancy; mask earns no insulation credit.",
+            "Keep analog programming return at quiet GND8; no power or clamp current through its star connection."
+          ],
+          "seed_rectangles_native_local_mm": {
+            "V5_PSU": {
+              "B.Cu": [
+                0.3,
+                -4,
+                8,
+                4
+              ],
+              "F.Cu": [
+                1.5,
+                -3.5,
+                4.5,
+                3.5
+              ]
+            },
+            "V5_RAW": {
+              "B.Cu": [
+                -8,
+                -4,
+                -0.3,
+                4
+              ],
+              "F.Cu": [
+                -4.5,
+                -3.5,
+                -1.5,
+                3.5
+              ]
+            }
+          },
+          "spines_width_min_mm": 2,
+          "zone_connection": "solid to assigned power vias and routed escapes; no thermal spokes"
+        },
+        "power_vias": {
+          "added_mask_openings": 0,
+          "added_paste_apertures": 0,
+          "capped": false,
+          "centers": [
+            {
+              "net": "V5_RAW",
+              "pin": "5",
+              "x": -0.7,
+              "y": -2.7
+            },
+            {
+              "net": "V5_RAW",
+              "pin": "5",
+              "x": -0.7,
+              "y": -1.9
+            },
+            {
+              "net": "V5_RAW",
+              "pin": "5",
+              "x": -0.7,
+              "y": 1.9
+            },
+            {
+              "net": "V5_RAW",
+              "pin": "5",
+              "x": -0.7,
+              "y": 2.7
+            },
+            {
+              "net": "V5_PSU",
+              "pin": "6",
+              "x": 0.7,
+              "y": -2.7
+            },
+            {
+              "net": "V5_PSU",
+              "pin": "6",
+              "x": 0.7,
+              "y": -1.9
+            },
+            {
+              "net": "V5_PSU",
+              "pin": "6",
+              "x": 0.7,
+              "y": 1.9
+            },
+            {
+              "net": "V5_PSU",
+              "pin": "6",
+              "x": 0.7,
+              "y": 2.7
+            }
+          ],
+          "diameter_mm": 0.6,
+          "drill_mm": 0.3,
+          "filled": false,
+          "layers": [
+            "F.Cu",
+            "B.Cu"
+          ],
+          "tent_back": true,
+          "tent_front": true,
+          "type": "through"
+        }
+      }
+    },
+    {
+      "id": "mains.augment.stencil",
+      "kind": "paste_override",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "stencil_thickness_mm": 0.1,
+        "scope": "U2 exact TI RPW0010A reduced L/corner and split IN/OUT apertures plus ordinary SMT apertures.",
+        "requirements": [
+          "No paste on U1,K1,J1-J5,D1,R1,C1,RV1,H1-H4 or any NPTH; hand-solder THT after SMT.",
+          "Keep IN5/OUT6 aperture unions separate; source solder-paste records are not automatically correct native stencil apertures.",
+          "The final via process must not add unintended paste or solder-wicking openings."
+        ],
+        "verification": "Exact native aperture polygons and physical Gerber unions/areas, with assembly process review.",
+        "status": "Declared from TI RPW0010A drawing; native application, aperture-union readback and assembly process acceptance pending.",
+        "u2_contract": {
+          "path": "docs/design/evidence/mains-thermal-stencil/recommended-operations.json",
+          "sha256": "f6c063dc497c98ccf5caf6b96bfe57f127b8c8b92b67d86b4c0405a864b62003",
+          "coordinate_system": "U2 body/footprint local, top view, +X right +Y down; transform by native footprint pose"
+        },
+        "physical_u2_apertures": 12,
+        "u2_paste_area_mm2": 2.7567387093687796,
+        "replacement_policy": "Validate exact TPS259470ARPWR/U2 geometry, disable automatic paste on all ten pads and replace only its footprint-owned F.Paste with the twelve referenced apertures. Preserve copper, mask and unrelated paste; verify physical Gerber unions."
+      }
+    },
+    {
+      "id": "mains.augment.pth-mask-and-slot",
+      "kind": "mask_override",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "numbered_pad_mask_margin_mm": 0.05,
+        "rv1_plated_slot_drill_mm": [
+          3.7,
+          1.3
+        ],
+        "rv1_slot_copper_mm": [
+          5.3,
+          2.9
+        ],
+        "requirements": [
+          "Preserve source U1.1/K1.1/D1.1 square lands, repeated Sabre tails, J5 rounded pin1 and locator, and U2 L-land anchors.",
+          "Retain no paste on all 49 PTH and five NPTH holes; all 32 SMT mask margins stay 0.05 mm.",
+          "Confirm plated-slot support and drill/slot/mask tolerances before fabrication; the 3.40 mm nominal MOV inter-net gap has only 0.20 mm above the 3.2 mm rule.",
+          "Inspect physical mask-opening unions and minimum webs; soldermask gives no insulation credit."
+        ],
+        "verification": "Saved pad shape/layer/drill/mask/paste and slot readback, native DRC plus fabrication CAM review.",
+        "status": "Declared; native application and saved evidence pending."
+      }
+    },
+    {
+      "id": "mains.augment.final-silkscreen",
+      "kind": "silkscreen",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "requirements": [
+          "Mark primary/isolated regions, J1 fused input, J2 filter LINE, J3 filter LOAD, J4 switched output and J5 isolated harness.",
+          "Show pin1, line/neutral, D1 cathode, relay coil and supply polarities; identify all unused connector cavities without suggesting they are protective earth.",
+          "Keep readable reference/function labels off copper, holes and board edges. No PE path or live measurement point is invented."
+        ],
+        "verification": "Complete front/back render and final Gerber/assembly inspection; native silk/text DRC.",
+        "status": "Declared; native application and saved evidence pending."
+      }
+    },
+    {
+      "id": "mains.augment.schematic-cleanup",
+      "kind": "schematic_cleanup",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "allowed_initial_erc_types": [],
+        "allowed_initial_erc_ignored_checks": [
+          "footprint_filter",
+          "four_way_junction",
+          "simulation_model_issue",
+          "single_global_label"
+        ],
+        "allowed_initial_semantic_differences": [],
+        "requirements": [
+          "Preserve four sheets, 23 exact parts/MPNs/values/datasheets/footprint fields, 66 logical pins, 14 named nets, 56 connected endpoints and ten NCs.",
+          "Register CrystalShim_Mains project library with 23 exact per-ref entries plus PWR_FLAG. Keep exact Library:Footprint filters and all electrical pin types.",
+          "Preserve U1.1/2 power_in and U1.3/4 power_out; unused U2.3/4 remain open_collector and U2.10 passive.",
+          "Only #FLG0201 at U1.1 AC_N and #FLG0202 at U1.2 AC_L_FUSED; verify direct/single-wire labels and no real power_out conflicts. Exclude flags from physical/BOM/position output.",
+          "Use shared monotone 1.27 mm grid with independently quantized native coordinates. Preserve wire/pin/label/junction/NC incidence and two-field NC/junction syntax; no controller wire repairs.",
+          "Fit and inspect every full rendered page, all margins/titleblocks, symbols, fields and wiring. Enable every ERC category after native Save and rerun with error/warning/exclusion severities."
+        ],
+        "verification": "Exact saved source/native XML parity and strict clean ERC with all categories enabled before routing; initial default ignored categories are not release waivers.",
+        "status": "In-memory preparation implemented and reviewed; native registration/Save/parity/ERC/render verification pending."
+      }
+    },
+    {
+      "id": "mains.augment.production-routing",
+      "kind": "fabrication_note",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "category": "routing",
+        "allowed_initial_drc_ignored_checks": [
+          "footprint_filters_mismatch",
+          "footprint_type_mismatch",
+          "missing_courtyard",
+          "track_not_centered_on_via",
+          "tuning_profile_track_geometries"
+        ],
+        "text": "KiCad owns tracks/vias/fills. Unconnected items are permitted only for the initial unrouted stage. No copper, hole, slot, library or insulation finding is waived.",
+        "verification": "Before fabrication enable relevant checks or justify individual categories; require zero unconnected items, exact source parity and clean DRC, then inspect actual clearances and return paths.",
+        "status": "Declared; native application and saved evidence pending."
+      }
+    },
+    {
+      "id": "mains.augment.manufacturing-delivery",
+      "kind": "fabrication_note",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "category": "fabrication_export",
+        "finish": "ENIG",
+        "mask": "green",
+        "silkscreen": "white",
+        "text": "Release all three final boards together after G-02/G-03/G-04. Supply Gerbers, PTH/NPTH/plated-slot drills, assembly BOM/CPL exclusions, stencil, exact construction/process notes, harness pin/mating drawings and reviewed enclosure/clip interfaces. Fuse/filter/PE remain off-board. No purchase, fabrication order, flashing or mains energizing is implied.",
+        "verification": "Project kicad-manufacture gates and independent CAM/assembly review; final sensor, load, temperature and interference commissioning remains separate.",
+        "status": "Declared; native application and saved evidence pending."
+      }
+    }
+  ],
+  "review_status": "Draft native work contract. Initial requirements review completed; final augmentation, thermal and staging follow-up reviews remain incomplete. Do not run the product stage until those reviews and the initial ignored-category policy are reconciled."
+}

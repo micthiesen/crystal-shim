@@ -44,8 +44,14 @@ project symbols, ten NC markers and two external AC flags in memory. It grids
 all four schematic files and the standalone library. Initial annotation checks
 use native coordinate rounding and the actual AC witness label paths; independent
 topology review preserves all 66 pins. Source previews/manifests are unchanged.
-The complete augmentation declaration, paste/thermal design, native library
-registration, strict ERC/parity and guarded handoff remain.
+The guarded staging wrapper and native footprint, library-registration and initial
+rule helpers are implemented and host-tested. The
+[thermal/stencil proposal](../../../docs/design/mains-thermal-stencil.md) and
+`kicad-augment.json` are saved as a draft. Their final independent reviews remain
+open, including the initial ignored-check policy. The native helper chain,
+strict ERC/parity, full native visual review and product handoff have not run.
+No package handoff command or accepted lock exists yet; follow the remaining
+sequence in the native preparation document before first use.
 
 ## Component review sources
 

@@ -43,7 +43,8 @@ U1.1, K1.1 and D1.1; both Sabre tails; and the RV1 oval 3.7 x 1.3 mm plated slot
 with 5.3 x 2.9 mm copper. Require no paste on any PTH/NPTH. The four mounting
 footprints gain stable H1-H4 identities and board-only/BOM/CPL exclusions after
 their exact 3.2 mm NPTH geometry and positions are validated. Pads, positions and
-UUIDs stay fixed. Per-ref local library entries remain work.
+UUIDs stay fixed. Per-ref native library helpers are implemented but have not
+been run on a product stage.
 
 R1 and C1 retain only `100Ω` and `47nF` as converter Values. The wrapper checks
 their exact source MPNs and quantities, then binds native MPN properties before
@@ -64,6 +65,58 @@ reduced RPW apertures with native readback. IN5 and OUT6 are separate power
 spreading regions; neither is a ground pad. Determine the two-layer copper/via
 design from the mains eFuse's power budget. The controller's four-layer thermal
 implementation is a reference, not an automatic mains-board requirement.
+
+## Guarded staging implementation
+
+`stage-mains-export.ts` now binds the complete shared handoff environment to a
+canonical fresh directory outside the repository. It accepts only the normalized
+manifest and augmentation inputs, regenerates and compares the actual source,
+and exclusively creates the PCB, four-sheet hierarchy and symbol library.
+Input bytes, directory identity and generator hashes are checked again between
+the native steps. An incomplete stage has no success receipt and is never reused.
+
+The native helper sequence is implemented but **has not been executed**:
+
+1. `export-native-footprints.py` uses native FootprintSave/FootprintLoad for
+   27 per-ref entries, requiring 81 numbered lands, five NPTHs, exact physical
+   pad multisets and 108 cardinal-rotation comparisons. The read-only
+   `verify-initial-geometry.ts` binds the serialized seed to every manifest hash.
+2. `register-mains-library.py` uses the previously verified Konnect 0.2.1 library
+   operations for `CrystalShim_Mains`, requiring 27 footprints and 24 symbols
+   (23 part definitions plus PWR_FLAG), exact saved tables and unchanged inputs.
+3. `apply-mains-initial-rules.py` uses KiCad's native settings manager to create
+   only the declared 0.20 mm NPTH clearance. The wrapper binds native receipts,
+   file inventories and preserved bytes before recording initial-export success.
+
+Mains fingerprints include borrowed controller component/geometry modules and
+both shared origin/grid helpers. The controller fingerprint also now includes
+the shared origin matcher, which its previous extraction omitted. No adopted
+controller file changed.
+
+The [augmentation draft](../../pcb/mains/design/kicad-augment.json) covers all
+14 declared operations. It includes all eight isolated nets and unused
+primary blades/tails, the exact copper-free strip transform, the
+[thermal/stencil proposal](mains-thermal-stencil.md), and source-owned geometry
+preservation. Detailed operations remain declarative: the shared staging tool
+only applies coordinate/footprint/alias transformations, and the initial helper
+only adds the NPTH preference. JSON validation does not implement isolation,
+thermal copper, paste, routing or manufacturing rules.
+
+**Before the first product stage**, finish independent review of the thermal
+proposal, wrapper/helpers and integrated augmentation. Reconcile the draft's
+initial ignored-check categories against the installed KiCad defaults and actual
+mains reports. They currently match observed controller defaults, not measured
+mains evidence. No ordinary ERC findings or semantic differences are allowed;
+strict saved schematic cleanup must enable all ERC checks before routing.
+Do not treat initial default-category declarations as final fabrication waivers.
+Add `export:kicad:mains` and `handoff:mains` package commands only after this
+review. They are intentionally absent at this wrap point. Do not create an
+accepted lock until a reviewed stage is actually adopted.
+
+Host tests exercised exclusive initial hierarchy creation in disposable staging
+and removed those files. They did not invoke the native helper chain, perform
+product ERC/DRC, register libraries or adopt a mains project. See the
+[session receipt](evidence/mains-native/staging-preparation.json).
 
 ## Schematic and handoff sequence
 
@@ -124,14 +177,14 @@ by manifest generation.
 3. Run the implemented field/NC/flag/grid sequence. Preserve exactly J2.3,
    J3.3/4, J4.3/4/5/6 and U2.3/4/10 as unused, with their original electrical
    types. The shared grid helper has no controller-only repair option here.
-4. Complete `kicad-augment.json` for the mains board: 8 mm primary/secondary
+4. Finish independent review of the draft `kicad-augment.json`: 8 mm primary/secondary
    separation on every layer, 3.2 mm between distinct primary nets, edge/hardware
    reserves, two-layer stack, U2 mask/paste/thermal process, THT paste exclusion,
    plated-slot capability, polarity/connector marks, routing and final fit.
    Count unused connector metal and solder as conductors. Mask provides no
    insulation credit. Fuse/filter/PE remain off-board.
-5. Add an exclusive-create, hash-bound staging wrapper, 27 per-ref footprint
-   exports and project-local library registration. Existing controller scripts
+5. Review and exercise the implemented exclusive-create, hash-bound staging
+   wrapper, 27 per-ref footprint exports and project-local library registration. Existing controller scripts
    contain board-specific identities/counts and cannot be called unchanged.
    Use their native API pattern; never edit protected KiCad files as text.
 6. Validate complete source/native parity, native library parsing, all saved

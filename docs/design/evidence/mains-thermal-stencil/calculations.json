@@ -1,0 +1,746 @@
+{
+  "assumptions": {
+    "continuous_load_allocation_A": 0.85,
+    "enclosure_air_C": [
+      0,
+      50
+    ],
+    "finished_thickness_model_mm": [
+      1.44,
+      1.76
+    ],
+    "junction_design_limit_C": 125,
+    "layers": 2,
+    "nominal_board_thickness_mm": 1.6,
+    "outer_copper_nominal_mm": 0.035,
+    "quiescent_max_A": 0.00061,
+    "ron_model_ohm": 0.045,
+    "startup_capacitance_max_allocation_F": 0.00015,
+    "voltage_normal_V": [
+      4.6375,
+      5.3625
+    ]
+  },
+  "copper_gradient_proxy": {
+    "both_end_feed_worst_centre_gradient_V_at_850mA": 0.0009360975200000001,
+    "both_land_loss_W_at_850mA": 0.001591365784,
+    "copper_resistivity_at_50C_ohm_m": 1.9272596000000003e-08,
+    "end_to_end_power_land_resistance_ohm": 0.004405164800000001,
+    "gradient_at_1_7A_with_same_reductions_V": 0.0029253047499999997,
+    "gradient_with_20pct_width_and_thickness_reduction_V": 0.0014626523749999999
+  },
+  "current_limit_A": [
+    1.0438090367960426,
+    1.2799195905890628
+  ],
+  "current_limit_with_program_resistor_up_to_125C_sensitivity_A": [
+    1.041858720957485,
+    1.2823278687951385
+  ],
+  "fault": {
+    "energy_J_per_10ms_at_normal_vin_short": 0.0686683992953385,
+    "highest_static_ovlo_voltage_5_927V_power_W": 7.5896988834213746,
+    "normal_vin_short_power_W": 6.86683992953385,
+    "normal_vin_short_power_with_hot_program_resistor_W": 6.87975432141393,
+    "retry_sensitivity_not_guarantee": [
+      {
+        "average_W": 0.06183395319399864,
+        "cooldown_ms_assumed": 0,
+        "off_ms_typical": 110,
+        "on_ms": 1
+      },
+      {
+        "average_W": 0.5719640670444874,
+        "cooldown_ms_assumed": 0,
+        "off_ms_typical": 110,
+        "on_ms": 10
+      },
+      {
+        "average_W": 3.268366097397071,
+        "cooldown_ms_assumed": 0,
+        "off_ms_typical": 110,
+        "on_ms": 100
+      }
+    ],
+    "unclamped_6_75V_sensitivity_power_W": 8.643574736476173
+  },
+  "normal": {
+    "device_power_model_W": 0.03578362499999999,
+    "max_effective_theta_for_125C_at_50C_C_per_W": 2095.9307504480057,
+    "theta_sensitivity_not_board_prediction": [
+      {
+        "junction_C": 51.4921771625,
+        "theta_C_per_W": 41.7
+      },
+      {
+        "junction_C": 52.6658800625,
+        "theta_C_per_W": 74.5
+      },
+      {
+        "junction_C": 55.367543749999996,
+        "theta_C_per_W": 150
+      },
+      {
+        "junction_C": 60.7350875,
+        "theta_C_per_W": 300
+      }
+    ],
+    "voltage_drop_model_V": 0.03825
+  },
+  "ov_recovery_850mA_constant_load_model": [
+    {
+      "current_limit_A": 1.0438090367960426,
+      "device_energy_J": 0.011629209874038806,
+      "duration_ms": 4.150348267023761,
+      "peak_device_power_W": 5.600697084818779
+    },
+    {
+      "current_limit_A": 1.2799195905890628,
+      "device_energy_J": 0.006426952505140445,
+      "duration_ms": 1.8709894073397995,
+      "peak_device_power_W": 6.86683992953385
+    }
+  ],
+  "schema": "crystal-shim.mains-thermal-calculation.v1",
+  "source_receipt_sha256": "ad761a45ff791a100fda6b27aba4d124dfde33a7576a0c21928c2a300074e87b",
+  "startup": [
+    {
+      "average_device_power_W": 2.3420734783881634,
+      "capacitive_current_A": 0.022280598000247565,
+      "corner": "slow",
+      "device_energy_J": 0.0845536261709648,
+      "duration_ms": 36.10203819444443,
+      "margin_to_min_current_limit_A": 0.17152843879579516,
+      "peak_device_power_W": 4.680875831776327,
+      "slew_V_per_ms": 0.14853732000165043,
+      "total_current_A": 0.8722805980002475
+    },
+    {
+      "average_device_power_W": 2.4534772420212767,
+      "capacitive_current_A": 0.06382978723404255,
+      "corner": "nominal",
+      "device_energy_J": 0.030918413519296875,
+      "duration_ms": 12.601875,
+      "margin_to_min_current_limit_A": 0.12997924956200013,
+      "peak_device_power_W": 4.903683359042553,
+      "slew_V_per_ms": 0.425531914893617,
+      "total_current_A": 0.9138297872340425
+    },
+    {
+      "average_device_power_W": 2.5937261551363546,
+      "capacitive_current_A": 0.11613707417672899,
+      "corner": "fast",
+      "device_energy_J": 0.01796436229194978,
+      "duration_ms": 6.926082869764398,
+      "margin_to_min_current_limit_A": 0.07767196261931364,
+      "peak_device_power_W": 5.18418118527271,
+      "slew_V_per_ms": 0.7742471611781934,
+      "total_current_A": 0.966137074176729
+    }
+  ],
+  "stencil": {
+    "corner_copper_area_mm2": 0.264801714074246,
+    "corner_coverage_percent": 93.15525578700816,
+    "corner_paste_area_mm2": 0.24667671407424585,
+    "corner_pin1_polygon_mm": [
+      [
+        -0.825,
+        -1.15
+      ],
+      [
+        -0.824759236,
+        -1.154900857
+      ],
+      [
+        -0.824039264,
+        -1.159754516
+      ],
+      [
+        -0.822847017,
+        -1.164514234
+      ],
+      [
+        -0.821193977,
+        -1.169134172
+      ],
+      [
+        -0.819096063,
+        -1.173569837
+      ],
+      [
+        -0.816573481,
+        -1.177778512
+      ],
+      [
+        -0.813650523,
+        -1.181719664
+      ],
+      [
+        -0.810355339,
+        -1.185355339
+      ],
+      [
+        -0.806719664,
+        -1.188650523
+      ],
+      [
+        -0.802778512,
+        -1.191573481
+      ],
+      [
+        -0.798569837,
+        -1.194096063
+      ],
+      [
+        -0.794134172,
+        -1.196193977
+      ],
+      [
+        -0.789514234,
+        -1.197847017
+      ],
+      [
+        -0.784754516,
+        -1.199039264
+      ],
+      [
+        -0.779900857,
+        -1.199759236
+      ],
+      [
+        -0.775,
+        -1.2
+      ],
+      [
+        -0.65,
+        -1.2
+      ],
+      [
+        -0.645099143,
+        -1.199759236
+      ],
+      [
+        -0.640245484,
+        -1.199039264
+      ],
+      [
+        -0.635485766,
+        -1.197847017
+      ],
+      [
+        -0.630865828,
+        -1.196193977
+      ],
+      [
+        -0.626430163,
+        -1.194096063
+      ],
+      [
+        -0.622221488,
+        -1.191573481
+      ],
+      [
+        -0.618280336,
+        -1.188650523
+      ],
+      [
+        -0.614644661,
+        -1.185355339
+      ],
+      [
+        -0.611349477,
+        -1.181719664
+      ],
+      [
+        -0.608426519,
+        -1.177778512
+      ],
+      [
+        -0.605903937,
+        -1.173569837
+      ],
+      [
+        -0.603806023,
+        -1.169134172
+      ],
+      [
+        -0.602152983,
+        -1.164514234
+      ],
+      [
+        -0.600960736,
+        -1.159754516
+      ],
+      [
+        -0.600240764,
+        -1.154900857
+      ],
+      [
+        -0.6,
+        -1.15
+      ],
+      [
+        -0.6,
+        -0.6
+      ],
+      [
+        -0.600240764,
+        -0.595099143
+      ],
+      [
+        -0.600960736,
+        -0.590245484
+      ],
+      [
+        -0.602152983,
+        -0.585485766
+      ],
+      [
+        -0.603806023,
+        -0.580865828
+      ],
+      [
+        -0.605903937,
+        -0.576430163
+      ],
+      [
+        -0.608426519,
+        -0.572221488
+      ],
+      [
+        -0.611349477,
+        -0.568280336
+      ],
+      [
+        -0.614644661,
+        -0.564644661
+      ],
+      [
+        -0.618280336,
+        -0.561349477
+      ],
+      [
+        -0.622221488,
+        -0.558426519
+      ],
+      [
+        -0.626430163,
+        -0.555903937
+      ],
+      [
+        -0.630865828,
+        -0.553806023
+      ],
+      [
+        -0.635485766,
+        -0.552152983
+      ],
+      [
+        -0.640245484,
+        -0.550960736
+      ],
+      [
+        -0.645099143,
+        -0.550240764
+      ],
+      [
+        -0.65,
+        -0.55
+      ],
+      [
+        -1.15,
+        -0.55
+      ],
+      [
+        -1.154900857,
+        -0.550240764
+      ],
+      [
+        -1.159754516,
+        -0.550960736
+      ],
+      [
+        -1.164514234,
+        -0.552152983
+      ],
+      [
+        -1.169134172,
+        -0.553806023
+      ],
+      [
+        -1.173569837,
+        -0.555903937
+      ],
+      [
+        -1.177778512,
+        -0.558426519
+      ],
+      [
+        -1.181719664,
+        -0.561349477
+      ],
+      [
+        -1.185355339,
+        -0.564644661
+      ],
+      [
+        -1.188650523,
+        -0.568280336
+      ],
+      [
+        -1.191573481,
+        -0.572221488
+      ],
+      [
+        -1.194096063,
+        -0.576430163
+      ],
+      [
+        -1.196193977,
+        -0.580865828
+      ],
+      [
+        -1.197847017,
+        -0.585485766
+      ],
+      [
+        -1.199039264,
+        -0.590245484
+      ],
+      [
+        -1.199759236,
+        -0.595099143
+      ],
+      [
+        -1.2,
+        -0.6
+      ],
+      [
+        -1.2,
+        -0.775
+      ],
+      [
+        -1.199759236,
+        -0.779900857
+      ],
+      [
+        -1.199039264,
+        -0.784754516
+      ],
+      [
+        -1.197847017,
+        -0.789514234
+      ],
+      [
+        -1.196193977,
+        -0.794134172
+      ],
+      [
+        -1.194096063,
+        -0.798569837
+      ],
+      [
+        -1.191573481,
+        -0.802778512
+      ],
+      [
+        -1.188650523,
+        -0.806719664
+      ],
+      [
+        -1.185355339,
+        -0.810355339
+      ],
+      [
+        -1.181719664,
+        -0.813650523
+      ],
+      [
+        -1.177778512,
+        -0.816573481
+      ],
+      [
+        -1.173569837,
+        -0.819096063
+      ],
+      [
+        -1.169134172,
+        -0.821193977
+      ],
+      [
+        -1.164514234,
+        -0.822847017
+      ],
+      [
+        -1.159754516,
+        -0.824039264
+      ],
+      [
+        -1.154900857,
+        -0.824759236
+      ],
+      [
+        -1.15,
+        -0.825
+      ],
+      [
+        -0.825,
+        -0.825
+      ]
+    ],
+    "opposite_power_window_gap_mm": 0.22,
+    "physical_apertures": 12,
+    "power_copper_area_mm2": 0.7178539816339744,
+    "power_coverage_percent": 82.0930131120218,
+    "power_paste_area_per_pin_mm2": 0.5893079632679491,
+    "power_window_area_mm2": 0.29465398163397455,
+    "power_window_volume_mm3": 0.029465398163397456,
+    "signal_paste_area_mm2": 0.14785398163397448,
+    "split_power_window_gap_mm": 0.2,
+    "thickness_mm": 0.1,
+    "total_nominal_wet_paste_volume_mm3": 0.27567387093687795,
+    "total_paste_area_mm2": 2.7567387093687796
+  },
+  "top_escapes": [
+    {
+      "length_mm": 1.7863961030678928,
+      "native_local_points_mm": [
+        [
+          -0.25,
+          -1.1
+        ],
+        [
+          -0.25,
+          -1.45
+        ],
+        [
+          -0.7,
+          -1.9
+        ],
+        [
+          -0.7,
+          -2.7
+        ]
+      ],
+      "net": "V5_RAW",
+      "other_source_copper_gap_lower_bound_mm": 0.19949999999999998,
+      "pin": "5",
+      "width_mm": 0.3
+    },
+    {
+      "length_mm": 1.7863961030678928,
+      "native_local_points_mm": [
+        [
+          -0.25,
+          1.1
+        ],
+        [
+          -0.25,
+          1.45
+        ],
+        [
+          -0.7,
+          1.9
+        ],
+        [
+          -0.7,
+          2.7
+        ]
+      ],
+      "net": "V5_RAW",
+      "other_source_copper_gap_lower_bound_mm": 0.19949999999999998,
+      "pin": "5",
+      "width_mm": 0.3
+    },
+    {
+      "length_mm": 1.7863961030678928,
+      "native_local_points_mm": [
+        [
+          0.25,
+          -1.1
+        ],
+        [
+          0.25,
+          -1.45
+        ],
+        [
+          0.7,
+          -1.9
+        ],
+        [
+          0.7,
+          -2.7
+        ]
+      ],
+      "net": "V5_PSU",
+      "other_source_copper_gap_lower_bound_mm": 0.19949999999999998,
+      "pin": "6",
+      "width_mm": 0.3
+    },
+    {
+      "length_mm": 1.7863961030678928,
+      "native_local_points_mm": [
+        [
+          0.25,
+          1.1
+        ],
+        [
+          0.25,
+          1.45
+        ],
+        [
+          0.7,
+          1.9
+        ],
+        [
+          0.7,
+          2.7
+        ]
+      ],
+      "net": "V5_PSU",
+      "other_source_copper_gap_lower_bound_mm": 0.19949999999999998,
+      "pin": "6",
+      "width_mm": 0.3
+    }
+  ],
+  "via_aspect_ratio_max_thickness": 5.866666666666667,
+  "via_aspect_ratio_nominal": 5.333333333333334,
+  "vias": [
+    {
+      "copper_to_source_copper_mm": 1.2000000000000002,
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "drill_to_source_mask_mm": 1.3000000000000003,
+      "nearest_source_pin": "1",
+      "net": "V5_RAW",
+      "other_net_via_copper_gap_mm": 0.7999999999999999,
+      "pin": "5",
+      "source_xy_mm": [
+        -21.7,
+        -24.3
+      ],
+      "via_copper_to_source_mask_mm": 1.1500000000000001,
+      "x": -0.7,
+      "y": -2.7
+    },
+    {
+      "copper_to_source_copper_mm": 0.39999999999999997,
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "drill_to_source_mask_mm": 0.49999999999999994,
+      "nearest_source_pin": "1",
+      "net": "V5_RAW",
+      "other_net_via_copper_gap_mm": 0.7999999999999999,
+      "pin": "5",
+      "source_xy_mm": [
+        -21.7,
+        -25.1
+      ],
+      "via_copper_to_source_mask_mm": 0.35,
+      "x": -0.7,
+      "y": -1.9
+    },
+    {
+      "copper_to_source_copper_mm": 0.39999999999999997,
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "drill_to_source_mask_mm": 0.49999999999999994,
+      "nearest_source_pin": "4",
+      "net": "V5_RAW",
+      "other_net_via_copper_gap_mm": 0.7999999999999999,
+      "pin": "5",
+      "source_xy_mm": [
+        -21.7,
+        -28.9
+      ],
+      "via_copper_to_source_mask_mm": 0.35,
+      "x": -0.7,
+      "y": 1.9
+    },
+    {
+      "copper_to_source_copper_mm": 1.2000000000000002,
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "drill_to_source_mask_mm": 1.3000000000000003,
+      "nearest_source_pin": "4",
+      "net": "V5_RAW",
+      "other_net_via_copper_gap_mm": 0.7999999999999999,
+      "pin": "5",
+      "source_xy_mm": [
+        -21.7,
+        -29.7
+      ],
+      "via_copper_to_source_mask_mm": 1.1500000000000001,
+      "x": -0.7,
+      "y": 2.7
+    },
+    {
+      "copper_to_source_copper_mm": 1.2000000000000002,
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "drill_to_source_mask_mm": 1.3000000000000003,
+      "nearest_source_pin": "10",
+      "net": "V5_PSU",
+      "other_net_via_copper_gap_mm": 0.7999999999999999,
+      "pin": "6",
+      "source_xy_mm": [
+        -20.3,
+        -24.3
+      ],
+      "via_copper_to_source_mask_mm": 1.1500000000000001,
+      "x": 0.7,
+      "y": -2.7
+    },
+    {
+      "copper_to_source_copper_mm": 0.39999999999999997,
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "drill_to_source_mask_mm": 0.49999999999999994,
+      "nearest_source_pin": "10",
+      "net": "V5_PSU",
+      "other_net_via_copper_gap_mm": 0.7999999999999999,
+      "pin": "6",
+      "source_xy_mm": [
+        -20.3,
+        -25.1
+      ],
+      "via_copper_to_source_mask_mm": 0.35,
+      "x": 0.7,
+      "y": -1.9
+    },
+    {
+      "copper_to_source_copper_mm": 0.39999999999999997,
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "drill_to_source_mask_mm": 0.49999999999999994,
+      "nearest_source_pin": "7",
+      "net": "V5_PSU",
+      "other_net_via_copper_gap_mm": 0.7999999999999999,
+      "pin": "6",
+      "source_xy_mm": [
+        -20.3,
+        -28.9
+      ],
+      "via_copper_to_source_mask_mm": 0.35,
+      "x": 0.7,
+      "y": 1.9
+    },
+    {
+      "copper_to_source_copper_mm": 1.2000000000000002,
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "drill_to_source_mask_mm": 1.3000000000000003,
+      "nearest_source_pin": "7",
+      "net": "V5_PSU",
+      "other_net_via_copper_gap_mm": 0.7999999999999999,
+      "pin": "6",
+      "source_xy_mm": [
+        -20.3,
+        -29.7
+      ],
+      "via_copper_to_source_mask_mm": 1.1500000000000001,
+      "x": 0.7,
+      "y": 2.7
+    }
+  ]
+}
