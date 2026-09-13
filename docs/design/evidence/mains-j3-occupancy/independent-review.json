@@ -1,0 +1,69 @@
+{
+  "exact_decimal": {
+    "min_overhang": "-0.87",
+    "max_overhang": "0.97",
+    "conditional_south": "45.805",
+    "nominal_overhang": "0.05",
+    "residual_to_46p5": "0.695",
+    "service_nominal": "9.195",
+    "service_with_offsets": "8.795",
+    "portal_with_offsets": "8.695",
+    "moving_with_offsets": "10.745",
+    "mated_top": "58.69"
+  },
+  "all_eight_adverse_dimension_corners": [
+    {
+      "C": "15.41",
+      "E": "4.34",
+      "D": "11.38",
+      "overhang": "-0.31"
+    },
+    {
+      "C": "15.41",
+      "E": "4.34",
+      "D": "11.68",
+      "overhang": "-0.61"
+    },
+    {
+      "C": "15.41",
+      "E": "4.60",
+      "D": "11.38",
+      "overhang": "-0.57"
+    },
+    {
+      "C": "15.41",
+      "E": "4.60",
+      "D": "11.68",
+      "overhang": "-0.87"
+    },
+    {
+      "C": "16.69",
+      "E": "4.34",
+      "D": "11.38",
+      "overhang": "0.97"
+    },
+    {
+      "C": "16.69",
+      "E": "4.34",
+      "D": "11.68",
+      "overhang": "0.67"
+    },
+    {
+      "C": "16.69",
+      "E": "4.60",
+      "D": "11.38",
+      "overhang": "0.71"
+    },
+    {
+      "C": "16.69",
+      "E": "4.60",
+      "D": "11.68",
+      "overhang": "0.41"
+    }
+  ],
+  "input_calculation_sha256": "ebcb4ecae0a0bf056769cffb6b67654f82fe1a6170103b1f0360f0005394e49f",
+  "inference_negative_control": {
+    "header_south_extra_0p70": "7.995",
+    "note": "Adding 0.70mm unbounded header-pose error reduces the gap below8mm. Current conclusion must remain conditional."
+  }
+}

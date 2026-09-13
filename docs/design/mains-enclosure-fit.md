@@ -108,6 +108,12 @@ depth leaves only 5.165 mm to the service volume; this sensitivity is not an
 established part failure. Diagonal clearance can be evaluated once exact geometry
 exists. The carrier shift preserves internal PCB clearances.
 
+The subsequent [J3 drawing study](mains-j3-occupancy.md) establishes a conditional
+plastic south bound Y45.805 and 8.695 mm Y-only portal gap with allowances.
+It uses the dimensioned northward mating offset. The header mounting datum and
+installed contact/crimp/wire volumes remain unresolved, so the complete isolation
+gate is unchanged.
+
 ## Evidence and remaining work
 
 The model imports all 15 original Hammond solids and the existing controller

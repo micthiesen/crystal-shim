@@ -1,0 +1,30 @@
+{
+  "scope": "Conditional J3 housing plastic only; complete mounted metal, crimp and wire occupancy remain open.",
+  "calculation_file": "calculations.json",
+  "calculation_sha256": "ebcb4ecae0a0bf056769cffb6b67654f82fe1a6170103b1f0360f0005394e49f",
+  "scratch_report": "/tmp/crystal-shim-mains-j3-mated-occupancy/REPORT.md",
+  "scratch_report_sha256": "3d4204b6f965824c01fc32fb0f1bd40de4370b03af5c767192bcb86d0d7f9979",
+  "scratch_calculator_sha256": "9ee416932e1616c3006f4143374fcc18416c2636a94c9eacb8d55edd545544ab",
+  "retained_primary_files": {
+    "/tmp/crystal-shim-mains-sabre-capture-research/header-megastar.pdf": "249d83521d452abfae030237405456be0e05ec06e08c629489d60fa035962fa7",
+    "/tmp/crystal-shim-mains-j3-mated-occupancy/housing-allelco.pdf": "fc55816966d9c8196833cf4cefa8c140b90c392e070e1cc9300c04f4d81a1d0b",
+    "/tmp/crystal-shim-mains-j3-mated-occupancy/housing-part.pdf": "07c7b880fc69d82dd13a10120ab7f7df33e9cccf19f55f6543accc5c9d9028f9"
+  },
+  "header_url": "https://www.megastar.com/content/pdfs/431601102_sd.pdf",
+  "housing_url": "https://www.allelcoelec.pt/datasheets.aa/0444411003.pdf",
+  "contact_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/433/43375/433752001_sd.pdf",
+  "contact_evidence": "Primary PDF text readable through web; no locally retained verified PDF or usable web screenshot. Standalone dimensions not mapped to installed axes.",
+  "review_status": "Scoped clean: exact part/dimension views and eight decimal tolerance corners independently verified; no complete installed occupancy approval.",
+  "independent_review": {
+    "file": "independent-review.json",
+    "sha256": "3753933f51ed8f0b4b0fbe5f3ec6ba76d9c76b953f7a282c5e80cb243dbfcc1e",
+    "report": "/tmp/crystal-shim-mains-j3-occupancy-review/REPORT.md",
+    "report_sha256": "557db5b874eae97eb8998f95d130f6fdd3a62ca99d159c306f8d52203f26bdab"
+  },
+  "source_geometry_sha256": {
+    "pcb/mains/design/placements.ts": "3bc2f8beef85c1c0a4b0753ddcc938332268a9af3c5026b2a2df0b08b987bc57",
+    "pcb/mains/design/mains-headers.tsx": "4e9794d44044aafe1610877a454511c49d6c693f58cde11ac1899c48900a79c7",
+    "docs/design/mains-header-capture.md": "a062a491efbba7076bafc9c67cdabfd868191eb9cfb747876458f1e39ec27c98",
+    "cad/mains-fit/preferred-results.json": "db39a51ea81bb44c647519ad4069079aac40757ed9bc4ce0a7c170c1d7d77f6d"
+  }
+}

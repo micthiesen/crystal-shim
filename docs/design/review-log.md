@@ -1490,6 +1490,28 @@ guarantees. Actual fit, guard/retention, complete harness and all commissioning
 remain open. Retained [CAD evidence](../../cad/mains-fit/provenance.json) binds
 inputs, output and independent review measurements.
 
+## J3 conditional mated housing study, 2026-09-12
+
+The [drawing study](mains-j3-occupancy.md) resolves the selected four-circuit
+housing's dimensioned northward mating projection. It produces a maximum
+0.970 mm south overhang and conditional floor Y45.805 bound, leaving 8.695 mm
+to the portal with the stated allowances. No shared housing/header centre or
+installed terminal datum was assumed. Exact 43160-0104, 44441-2004 and
+43375-2001 part identities were checked against manufacturer drawings.
+
+Fresh independent review confirmed the source views and all eight tolerance
+corners using decimal arithmetic, with no actionable finding. A negative
+control adding 0.70 mm to the unresolved header position leaves only 7.995 mm
+clearance. The existing header-to-tail inference and full blade/contact/TPA/
+crimp/wire occupancy remain required evidence. No whole-mated clearance,
+placement or fabrication gate was closed. The
+[receipt](evidence/mains-j3-occupancy/provenance.json) retains source hashes,
+calculations and independent reproduction. Research and review reports live at
+`/tmp/crystal-shim-mains-j3-mated-occupancy` and
+`/tmp/crystal-shim-mains-j3-occupancy-review`. Only documentation/evidence changed;
+document checks and diff checks pass. No additional firmware/PCB test run was
+needed after the passing implementation gate.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

@@ -41,7 +41,9 @@ Last updated: 2026-09-12
   library/NC/grid preparation, mated fit and handoff remain work.
   The [enclosure candidate](design/mains-enclosure-fit.md) clears the case after
   a 1.5 mm whole-carrier shift, with a reviewed J5 service/portal allocation.
-  Complete mated J3 primary occupancy and guard/retention remain open.
+  The [J3 drawing study](design/mains-j3-occupancy.md) gives a conditional
+  housing-plastic bound; complete mounted metal/crimp/wire occupancy and
+  guard/retention remain open.
   The [BOM](../bom/bom.csv) is not ready to order;
   all 34 commissioning rows remain Not run.
 
@@ -70,6 +72,12 @@ has 1.45 mm lateral / 0.50 mm vertical allowance clearance. Fixed J3 primary
 occupancy retains 9.765 mm to the isolated service volume; full mated geometry
 is explicitly unresolved. These are nominal CAD results and proposed assembly
 constraints, not physical fit or whole-enclosure isolation acceptance.
+
+J3's dimensioned mating offset gives a maximum 0.970 mm housing south overhang,
+conditional on the still-inferred header datum. Its resulting Y45.805 plastic
+bound leaves 8.695 mm to the portal with the stated allowances. No centred
+housing or installed contact/wire pose is assumed; this does not close mated
+primary occupancy.
 
 The complete mains circuit passes independent electrical integration review and
 31 scoped tests with 2,662 assertions. Tests exercise a drawn isolation short,
@@ -112,7 +120,8 @@ does not rewrite the initial receipt or claim all operations complete.
 `sh scripts/check.sh` passes, including the embedded release build, 157 core tests,
 31 Roughtime tests, the existing TLS/actual-worker suite, 208 PCB tests with 30,058
 assertions and 38 shared handoff tests. The same 38 handoff tests pass in Stillair.
-Current log: `/tmp/crystal-shim-mains-native-final-full-check.log`. The controller's
+Current log: `/tmp/crystal-shim-mains-native-final-full-check.log`. GitHub PCB and
+documentation CI pass for the `37905c7` implementation checkpoint. The controller's
 prior native cleanup, stack/
 rule readback, preservation, DRC and current top-render inspection also pass within
 the partial scope above. No physical hardware, live notifications or mains actions
@@ -129,8 +138,9 @@ verified source into a reviewable KiCad handoff without depending on the pending
 sensor rim measurement or fabricated hardware. Start from
 [the mains placement](design/mains-placement.md) and
 [component source](../pcb/mains/design/README.md); preserve the independent
-mains/isolated-low-voltage barrier and off-board fuse/filter/PE scheme. Exact J3
-mating research is underway; the board/enclosure poses remain provisional.
+mains/isolated-low-voltage barrier and off-board fuse/filter/PE scheme. J3's
+remaining evidence is the actual header/housing registration and complete
+installed metal/crimp/wire envelope; board/enclosure poses remain provisional.
 
 In parallel, establish the explicit clock/error/execution policy for unattended
 acquisition and continue controller mated fit/native augmentation. Final calibration

@@ -1,0 +1,98 @@
+{
+  "units": "mm",
+  "conditional_on": [
+    "Header source south edge 44.835 is a valid maximum envelope, although source itself qualifies body-to-tail pose as an inference.",
+    "E=4.47 means housing northmost plastic to header main-shroud north face in the vertical mated view; 0.13 is the drawing general tolerance.",
+    "Housing C is full north/south plastic depth; contact/wire occupancy and mating play are not added."
+  ],
+  "source_origin": [
+    36.2605,
+    0.62
+  ],
+  "floor_origin": [
+    113.2605,
+    40.88
+  ],
+  "pad_centers_floor": [
+    [
+      113.2605,
+      37.7
+    ],
+    [
+      113.2605,
+      40.88
+    ],
+    [
+      120.75349999999999,
+      37.7
+    ],
+    [
+      120.75349999999999,
+      40.88
+    ],
+    [
+      128.2465,
+      37.7
+    ],
+    [
+      128.2465,
+      40.88
+    ],
+    [
+      135.7395,
+      37.7
+    ],
+    [
+      135.7395,
+      40.88
+    ]
+  ],
+  "source_pad_copper_diameter": 3.5,
+  "header_source_envelope_floor": {
+    "x": [
+      106.3,
+      142.7
+    ],
+    "y": [
+      31.165,
+      44.835
+    ]
+  },
+  "C_housing_depth": [
+    16.05,
+    0.64
+  ],
+  "E_northward_mated_projection": [
+    4.47,
+    0.13
+  ],
+  "D_header_main_shroud_depth": [
+    11.53,
+    0.15
+  ],
+  "housing_south_overhang_nominal": 0.05000000000000249,
+  "housing_south_overhang_interval": [
+    -0.8699999999999992,
+    0.9700000000000024
+  ],
+  "conditional_housing_south_upper_bound": 45.80500000000001,
+  "margin_to_sufficient_46p5_limit": 0.6949999999999932,
+  "service_volume_y_only_gap": 9.194999999999993,
+  "service_volume_y_only_gap_with_two_0p2_assembly_offsets": 8.794999999999993,
+  "portal_y_only_gap_with_0p3_edge_and_0p2_primary_offsets": 8.694999999999993,
+  "moving_j5_y_only_gap": 11.144999999999996,
+  "moving_j5_y_only_gap_with_two_0p2_offsets": 10.744999999999996,
+  "known_fixed_header_service_xy_gap": 10.165,
+  "known_fixed_header_portal_xy_gap": 10.687245903412164,
+  "conditional_nominal_housing_y_using_source_shroud_inference": [
+    28.760000000000005,
+    44.81
+  ],
+  "mated_top_z_upper_bound": 58.69,
+  "scope_limits": [
+    "No exact housing X registration established.",
+    "No exact terminal/crimp-to-housing X/Y/Z datum established.",
+    "No certified all-primary occupied volume or final electrical clearance result.",
+    "No harness bend direction, service motion or release stroke inferred."
+  ]
+}
