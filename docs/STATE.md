@@ -4,6 +4,12 @@ Last updated: 2026-09-13
 
 ## Now
 
+The proposed [shared stacked-board target](design/stacked-board-target.md) is
+150 × 110 mm, controller above mains, matching M3 holes 7 mm from each corner
+and a 45 mm inter-board gap. This is a dimensional recommendation for visual
+discussion, not an accepted placement or stack-fit result. Native boards remain
+unchanged by this proposal. The owner confirmed retaining four controller layers.
+
 The owner has selected a new [sensor visual target](design/sensor-visual-target.md):
 slim horizontal pad segments, entirely below the rim, thin adhesive mounting and
 a left-exiting cable. Water stays at least 10 mm below the rim. Discuss the other
