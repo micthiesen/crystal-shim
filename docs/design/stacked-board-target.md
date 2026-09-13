@@ -1,6 +1,7 @@
 # Shared stacked-board size proposal
 
-2026-09-13: recommended planning target for owner discussion. No outlines,
+2026-09-13: sizing study, subsequently accepted as the
+[visual design target](stacked-board-visual-target.md). No outlines,
 footprints, connectors or component positions have been changed. The controller's
 four-layer stack is retained, as confirmed by the owner. The sensor has its
 separate [accepted visual target](sensor-visual-target.md).
