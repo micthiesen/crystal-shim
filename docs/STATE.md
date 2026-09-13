@@ -37,8 +37,10 @@ Last updated: 2026-09-12
   guarantee. Initial [native preparation](design/mains-native-handoff.md) now
   corrects origins, PTH mask margins, J5 shape and U2 anchors in memory, with
   stable H1-H4 and a complete source manifest. Product net admission and strict
-  J5 physical checks reject incorrect input before correction. Native fields,
-  library/NC/grid preparation, mated fit and handoff remain work.
+  J5 physical checks reject incorrect input before correction. The complete
+  in-memory schematic path now supplies exact pin types/fields, per-ref symbols,
+  ten NC markers, two AC flags and gridded sheets/library. Native registration,
+  strict ERC/parity, augmentation, mated fit and handoff remain work.
   The [enclosure candidate](design/mains-enclosure-fit.md) clears the case after
   a 1.5 mm whole-carrier shift, with a reviewed J5 service/portal allocation.
   The [J3 drawing study](design/mains-j3-occupancy.md) gives a conditional
@@ -63,8 +65,18 @@ pad/net ID, then validate every J5 land/locator before physical correction.
 Independent follow-up closes both original findings, with no actionable residual
 within the production path. Fresh manifest/render review also found none. The shared origin matcher
 extraction leaves the complete controller manifest byte-identical; no adopted
-controller native file changed. Native fields, pin types, NC/grid/library work
-and augmentation are still required before staging/adoption.
+controller native file changed. The subsequent schematic adapters preserve the
+seven generated source artifacts byte-for-byte. In-memory pin, field, NC/grid
+and symbol-library preparation is now implemented; native registration,
+augmentation and staging/adoption remain work.
+
+Adversarial schematic review corrected native-coordinate rounding in NC/flag
+anchors and required exact U1 power-witness placement with the expected label
+directly at the pin or through its single wire. A global label elsewhere on the
+sheet is insufficient.
+Independent topology reconstruction preserves all 66 pins, 14 named nets,
+56 connected endpoints and exactly ten unused pins. These are initial graph
+checks, not native ERC, adopted-board or fabrication acceptance.
 
 Independent enclosure review reproduced the 1.5 mm carrier-position correction,
 0.715 mm board-to-case allowance gap and 14 x 10 mm J5 portal. The moving housing
@@ -118,10 +130,9 @@ The initial lock remains historical provenance; the recorded later augmentation
 does not rewrite the initial receipt or claim all operations complete.
 
 `sh scripts/check.sh` passes, including the embedded release build, 157 core tests,
-31 Roughtime tests, the existing TLS/actual-worker suite, 208 PCB tests with 30,058
+31 Roughtime tests, the existing TLS/actual-worker suite, 225 PCB tests with 31,484
 assertions and 38 shared handoff tests. The same 38 handoff tests pass in Stillair.
-Current log: `/tmp/crystal-shim-mains-native-final-full-check.log`. GitHub PCB and
-documentation CI pass for the `37905c7` implementation checkpoint. The controller's
+Current log: `/tmp/crystal-shim-mains-schematic-final-full-check.log`. The controller's
 prior native cleanup, stack/
 rule readback, preservation, DRC and current top-render inspection also pass within
 the partial scope above. No physical hardware, live notifications or mains actions
@@ -129,10 +140,10 @@ were used; firmware runtime memory/timing and all commissioning criteria remain 
 
 ## Next
 
-Prepare the mains native electrical metadata, fields/project libraries, NC/grid
-cleanup, paste/thermal plan and augmentation declaration, then the guarded stage
-wrapper, alongside complete mated J3 and guard/carrier fit. Source manifest,
-origin/mask/J5/mount preparation and the nominal service allocation are now
+Complete the mains paste/thermal plan and augmentation declaration, then the
+guarded stage wrapper and native project-library registration, alongside
+complete mated J3 and guard/carrier fit. Source manifest, initial PCB and
+schematic graph preparation and the nominal service allocation are now
 implemented. This substantial G-02/G-03/G-04 work turns the
 verified source into a reviewable KiCad handoff without depending on the pending
 sensor rim measurement or fabricated hardware. Start from

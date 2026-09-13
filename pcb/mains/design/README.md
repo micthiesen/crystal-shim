@@ -39,8 +39,13 @@ origins, THT mask margins, J5's rounded land and U2's anchors on initial in-memo
 graphs, and identifies H1-H4 without changing geometry. Product source/drawn nets
 and every native pad net/ID are checked before correction; all J5 raw physical
 geometry and paste exclusions are checked before its mask/shape adapter.
-Complete native fields/libraries, NC/grid cleanup, augmentation and guarded
-handoff remain.
+`createMainsInitialGraphs` also prepares exact pin types and fields, 23 mains
+project symbols, ten NC markers and two external AC flags in memory. It grids
+all four schematic files and the standalone library. Initial annotation checks
+use native coordinate rounding and the actual AC witness label paths; independent
+topology review preserves all 66 pins. Source previews/manifests are unchanged.
+The complete augmentation declaration, paste/thermal design, native library
+registration, strict ERC/parity and guarded handoff remain.
 
 ## Component review sources
 

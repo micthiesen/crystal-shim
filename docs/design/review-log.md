@@ -1512,6 +1512,60 @@ calculations and independent reproduction. Research and review reports live at
 document checks and diff checks pass. No additional firmware/PCB test run was
 needed after the passing implementation gate.
 
+## Mains initial schematic preparation, 2026-09-12
+
+The full initial graph path now prepares all four schematic sheets, 23 exact
+component symbols/fields, 66 electrical pins, ten NC markers and two external
+AC flags. The standalone library contains 23 per-ref symbols plus PWR_FLAG.
+All caches are refreshed after gridding. Source admission precedes conversion;
+each adapter validates its entire batch before mutation. This is an in-memory
+preparation path with no native file I/O, staging or adoption.
+
+Independent electrical review confirms U1.1/2 power inputs and both isolated
+U1.3/4 output terminals as power outputs. U2, D2 and J5 reuse the exact existing
+contracts. All other terminals remain passive. NC markers preserve the actual
+eFuse open-collector/passive pin types. Only the two externally supplied AC nets
+need flags; isolated rails already contain real power outputs.
+
+Three findings were corrected:
+
+- Flag positions originally followed the first matching global label, despite
+  naming U1 as the witness. They now attach at the exact U1.1/U1.2 pin anchors.
+- Floating addition before native rounding could detach an NC by one KiCad unit,
+  later enlarged by gridding. A wire displaced by 0.00004 mm could also round
+  onto a pin after passing the collision check. Anchors and collision checks now
+  use independently quantized native units. Regressions cover fractional origins
+  and pins, wires, labels, junctions and the final ten-pin NC bijection.
+- Manifest membership plus a same-name label elsewhere did not prove the actual
+  power witness net. A scratch U1.2 label change to AC_N was incorrectly accepted.
+  The final guard verifies the actual line label at the pin and the neutral label
+  through its unique first straight wire, rejecting missing/changed/conflicting
+  labels and ambiguous pin wiring. Other wires may continue from the neutral
+  label; complete net parity remains a separate gate.
+
+Independent follow-up reproduced each correction with no remaining actionable
+finding in these scopes. The late U1.2-only rewrite now fails after valid U1.1
+admission without adding either flag or cache. Separate integer-coordinate
+topology reconstruction preserves all 66 pin memberships, 14 named nets,
+56 connected endpoints and exactly ten unused pins before and after the complete
+graph pipeline. Source inputs and all seven generated source artifacts are
+unchanged. Field/library tests preserve geometry, defaults, pin UUIDs, hierarchy
+and serialized instance fields; incompatible late inputs fail atomically.
+
+The final focused batch passes 17 tests with 1,426 assertions. The complete
+`sh scripts/check.sh` gate passes, including host/TLS, embedded release,
+225 PCB tests with 31,484 assertions and 38 shared handoff tests. Log:
+`/tmp/crystal-shim-mains-schematic-final-full-check.log`. Reports are in
+`/tmp/crystal-shim-mains-pin-contract-review`,
+`/tmp/crystal-shim-mains-pin-adapter-review`,
+`/tmp/crystal-shim-mains-field-review` and
+`/tmp/crystal-shim-mains-nc-review`. The
+[receipt](evidence/mains-native/initial-schematic-preparation.json) binds source,
+reviews, topology and unchanged source artifacts. Native library registration,
+strict ERC/netlist parity, augmentation, mated fit and handoff remain open;
+these reviews do not approve the mains design or fabrication. All commissioning
+rows remain Not run.
+
 ## References used to triage
 
 - [TI TIDRCS2 copper layout](https://www.ti.com/lit/pdf/tidrcs2), first page.

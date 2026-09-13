@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "scope": "In-memory initial mains schematic preparation. No native file I/O, stage, library registration, ERC, adoption, routing or fabrication acceptance.",
+  "baseline_commit": "3bfd7d1c6e263b9cd9f14fc63949487de298a445",
+  "board_id": "mains.board.main",
+  "baseline_source_receipt": {
+    "path": "docs/design/evidence/mains-native/initial-manifest.json",
+    "sha256": "bc37492da25ec9fee2a57204fa341a9c6558402a5c136bcdfe73a0789a706172",
+    "all_recorded_source_and_tool_inputs_unchanged": true,
+    "all_seven_source_artifacts_byte_identical": true
+  },
+  "additional_source_and_test_sha256": {
+    "pcb/mains/design/fields-initial-export.ts": "ea6e42711fdc11511806b3bf80ca38969e4f48a3aa23eb2f89c249a0a6316fa9",
+    "pcb/mains/design/fields-initial-export.test.tsx": "8311d2a40d2012f5447fca4e9745f827e75b86d4fb617240573618663982225a",
+    "pcb/mains/design/mains-initial-export.ts": "ce9f83cab23d8cb0d60b3abb5fc266288f56b9597cbcb552c15fb6e157f79d19",
+    "pcb/mains/design/pin-electrical-contract.ts": "039c651f8a3b8b79b4ad60037b96b706799387326f1465ebd0e36f368c5082d6",
+    "pcb/mains/design/pin-electrical-initial-export.ts": "b00ac9eba8b50b70d501ed8338f9e1a5c8c5570e07cee4c40e6aad690b85398d",
+    "pcb/mains/design/pin-electrical-initial-export.test.tsx": "232926298fadd0fa3af7f8caeb811a551c54aebb9d6451dc7ce918c106c4986e",
+    "pcb/mains/design/project-symbol-library-initial-export.ts": "fb43b8fa9a85d64ebe416dea2cf5dab4c607fb9c6caf1721b2d5a5847b720360",
+    "pcb/mains/design/project-symbol-library-initial-export.test.tsx": "1beed8e24bf918ae202d449f3926ed92e19828da08bedf91cdf0bbc70a29a561",
+    "pcb/mains/design/schematic-cleanup-initial-export.ts": "d9b069282d074b1475977a36b98b2e3d62af2d781e3979c284a467eb90c2f54e",
+    "pcb/mains/design/schematic-cleanup-initial-export.test.tsx": "8591c8e72f2159a92d8333c76ec02d5ac709a9005d822f593de3405f632e7053"
+  },
+  "graph_contract": {
+    "schematic_files": [
+      "mains.kicad_sch",
+      "primary.kicad_sch",
+      "secondary.kicad_sch",
+      "suppression.kicad_sch"
+    ],
+    "electrical_components": 23,
+    "logical_pins": 66,
+    "named_nets": 14,
+    "connected_endpoints": 56,
+    "unused_pins": [
+      "J2.3",
+      "J3.3",
+      "J3.4",
+      "J4.3",
+      "J4.4",
+      "J4.5",
+      "J4.6",
+      "U2.3",
+      "U2.4",
+      "U2.10"
+    ],
+    "standalone_symbol_count": 24,
+    "power_flags": {
+      "#FLG0201": "U1.1 AC_N, unique first wire to matching label",
+      "#FLG0202": "U1.2 AC_L_FUSED, directly matching label"
+    }
+  },
+  "independent_topology": {
+    "source_immutable": true,
+    "all_66_pins_match_manifest_before_and_after": true,
+    "named_net_count": 14,
+    "connected_endpoints": 56,
+    "unconnected_endpoints": [
+      "J2.3",
+      "J3.3",
+      "J3.4",
+      "J4.3",
+      "J4.4",
+      "J4.5",
+      "J4.6",
+      "U2.10",
+      "U2.3",
+      "U2.4"
+    ],
+    "note": "Independent integer-coordinate union of continuous wires, shared ends, positive collinear overlaps and explicit pin/label/junction anchors; labels join by name."
+  },
+  "reviews": {
+    "electrical_contract": {
+      "report": "/tmp/crystal-shim-mains-pin-contract-review/report.md",
+      "sha256": "aad9fe1e5cd2fbd8c2239bfc5eeda615e943a5d3c3d34af4ad8504aaa9ff337a"
+    },
+    "pin_adapter": {
+      "report": "/tmp/crystal-shim-mains-pin-adapter-review/REPORT.md",
+      "sha256": "7fe9f76090aef6fe6eb56ce93b0b87684c0ffd4f984ade5596a3d381c1943613"
+    },
+    "fields_library_flags": {
+      "report": "/tmp/crystal-shim-mains-field-review/REPORT.md",
+      "sha256": "a4139893d77db04dbbf7778d6f375a78a3175c876788ce184f8fc89a3e70eed7"
+    },
+    "nc_grid_orchestration": {
+      "report": "/tmp/crystal-shim-mains-nc-review/REPORT.md",
+      "sha256": "18c0feb354aae70bda87903541fc031340f76be2cf88351b5f0d2443e7ddc2a7"
+    }
+  },
+  "resolved_findings": [
+    "Flag placement depended on label order instead of exact U1 witness.",
+    "Floating NC position/collision comparisons differed from independently rounded native coordinates.",
+    "A page-wide label did not prove the actual native power witness net."
+  ],
+  "review_disposition": "All three implementation review scopes have no remaining actionable finding after independent fix verification. Electrical pin rationale confirmed; whole-product/native/physical release remains open.",
+  "focused_checks": {
+    "tests": 17,
+    "assertions": 1426,
+    "failures": 0,
+    "log": "/tmp/crystal-shim-mains-schematic-adapters-final.log"
+  },
+  "native_files_written": false,
+  "commissioning": "All 34 rows remain Not run.",
+  "full_checks": {
+    "command": "sh scripts/check.sh",
+    "exit_code": 0,
+    "pcb_tests": 225,
+    "pcb_assertions": 31484,
+    "shared_handoff_tests": 38,
+    "includes": [
+      "host fmt/clippy/tests",
+      "verified TLS policy and actual worker tests",
+      "embedded fmt/clippy/release",
+      "PCB lint/format/typecheck and tests",
+      "repository documents"
+    ],
+    "log": "/tmp/crystal-shim-mains-schematic-final-full-check.log"
+  }
+}

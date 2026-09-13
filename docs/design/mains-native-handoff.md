@@ -67,6 +67,40 @@ implementation is a reference, not an automatic mains-board requirement.
 
 ## Schematic and handoff sequence
 
+`createMainsInitialGraphs` now prepares the complete four-sheet hierarchy in
+memory, together with the unchanged initial PCB graph. It normalizes source
+power graphics into electrical labels, assigns exact component pin types, binds
+23 per-reference project symbols and part fields, annotates ten unused pins,
+adds two AC input flags and grids every sheet and standalone library. All four
+converter cache strings are refreshed. It performs no native file I/O.
+
+U1 pins 1/2 are `power_in`; isolated return 3 and output 4 are `power_out`.
+Independent review confirms that both output types match KiCad's IRM convention
+and the manufacturer's terminal functions. U2, D2 and J5 reuse their exact
+controller contracts. Other component pins remain passive. Unused eFuse pins
+3/4 stay open-collector and pin 10 stays passive, with separate NC markers.
+Instance pins retain only their original number/UUID references; electrical
+types belong to every cached library definition.
+
+`#FLG0201` and `#FLG0202` attach directly at U1.1/AC_N and
+U1.2/AC_L_FUSED. Line carries its global label directly; neutral reaches its
+label through one straight wire. Each witness requires the expected label on
+that exact path, with no conflicting local/global label. The annotations
+are excluded from physical/BOM/assembly outputs. No flags are added to isolated
+rails with real power outputs. These declarations describe external AC entry,
+not a test of the fuse, supply, isolation or delivered voltage.
+
+NC and flag positions compose the independently rounded native symbol-origin
+and local-pin coordinates. NC collision checks also use native integer units.
+Adversarial review found that adding floating coordinates first could move a
+marker by one native unit, subsequently enlarged by gridding, or miss a nearby
+wire that rounds onto the pin. Regression tests cover both cases, labels and
+junctions, exact final NC attachment and source immutability. A separate witness
+review caught reliance on label order and a changed U1 label hidden by another
+same-name label elsewhere; exact pin placement and direct/single-wire admission now
+reject both. Native parse, strict ERC and saved-netlist parity remain separate
+staging gates. See [the review record](review-log.md).
+
 `createMainsManifest` and `render:mains` now generate the source manifest.
 The shared Python normalizer accepts it. It retains 27 initial native geometry
 hashes, 66 logical pin names/NC flags, all 81 physical land numbers, five hole
@@ -84,18 +118,12 @@ by manifest generation.
    two layers and nominal 1.6 mm FR4. Preserve compiled source geometry, even
    converter-ignored records. Apply per-ref `CrystalShim_Mains:Mains_<REF>` native
    symbols/footprints so exact instance geometry survives library registration.
-2. Apply a mains-specific electrical contract. Reuse the exact eFuse, Schottky
-   and three-pin Micro-Fit metadata. Relay, MOV, flyback, Sabre and passive-part
-   pins remain passive. U1 AC terminals are power inputs; its isolated output
-   and return are proposed power outputs. Review that return type explicitly.
-   With both output terminals typed as sources, only AC_L_FUSED and AC_N need
-   external PWR_FLAG annotations, witnessed at U1.2 and U1.1. Do not copy the
-   controller's flags or invent them merely to silence ERC.
-3. Restore exact fields/library filters and exactly ten NC markers: J2.3,
-   J3.3/4, J4.3/4/5/6 and U2.3/4/10. Check that no conductor/label/other pin
-   touches an NC. Preserve U2.3/4 open-collector and U2.10 passive metadata.
-   Grid all four sheets and the standalone symbol library with the shared grid
-   helper. Do not import controller-only wire repairs or its inductor option.
+2. Run the implemented mains pin-type and project-library adapters on fresh
+   converter graphs. Preserve the reviewed contract and two exact AC witnesses
+   above; reject any unexpected source, instance or cache identity.
+3. Run the implemented field/NC/flag/grid sequence. Preserve exactly J2.3,
+   J3.3/4, J4.3/4/5/6 and U2.3/4/10 as unused, with their original electrical
+   types. The shared grid helper has no controller-only repair option here.
 4. Complete `kicad-augment.json` for the mains board: 8 mm primary/secondary
    separation on every layer, 3.2 mm between distinct primary nets, edge/hardware
    reserves, two-layer stack, U2 mask/paste/thermal process, THT paste exclusion,
