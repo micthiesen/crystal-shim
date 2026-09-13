@@ -12,7 +12,7 @@ for the completed milestone and its evidence.
 1. Resolve parts, footprints, sensor geometry, all board/harness interfaces,
    power/protection calculations, isolation and mechanical fit from primary
    references. Preserve freshwater, 5 mm glass, the 50 mm physical sensing span,
-   the owner's separate clip and the 203.2 mm harness limit.
+   thin adhesive mounting below the rim and the 203.2 mm harness limit.
 2. Implement all three tscircuit designs and placements. Complete the guarded
    KiCad handoff, routing, source parity, ERC/DRC and visual review. Deliver
    fabrication files, assembly BOMs, harness drawings and mechanical interfaces
@@ -31,7 +31,7 @@ for the completed milestone and its evidence.
 5. Run the project checks and applicable release gates, inspect actual outputs,
    update the decision register/BOM/commissioning matrix/state, and commit and
    push completed work directly to main.
-6. Supply concrete procurement, assembly, clip-interface, provisioning, pairing,
+6. Supply concrete procurement, assembly, adhesive-interface, provisioning, pairing,
    calibration and commissioning instructions. Physical measurements remain
    outstanding until the final hardware exists and the owner performs them with
    appropriate equipment and authorization. Source checks cannot substitute for

@@ -1,5 +1,9 @@
 # J3 mated housing bound
 
+Historical vertical-J3/old-enclosure occupancy study, superseded by the
+right-angle J3 and [stacked mechanical layout](../mechanical.md). Numeric bounds
+below must not be applied to the current board.
+
 The manufacturer drawings support a **conditional housing-plastic south bound
 of floor Y45.805 mm**, giving an **8.695 mm Y-only gap** to the J5 portal with
 the stated allowances. This narrows the [enclosure study](mains-enclosure-fit.md).

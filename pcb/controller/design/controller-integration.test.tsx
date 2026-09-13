@@ -145,7 +145,7 @@ test("controller schematic preserves power separation, hardware permission and b
   const crowded = structuredClone(json);
   const probe = crowded.find((e) => e.type === "pcb_courtyard_circle")!;
   if (probe.type !== "pcb_courtyard_circle") throw new Error("Missing probe circle");
-  probe.center = { x: -30, y: 26 };
+  probe.center = { x: -68, y: 48 };
   expect(
     controllerPlacementErrors(crowded).some((e) => e.includes("mounting reserve")),
   ).toBe(true);

@@ -5,10 +5,10 @@ import { mainsChipElectricalContracts } from "./pin-electrical-contract";
 import { mainsSchematicConnectivityErrors } from "./schematic-connectivity-check";
 
 const chipMpns: Readonly<Record<string, string>> = {
-  J1: "43160-0102",
-  J2: "43160-0103",
-  J3: "43160-0104",
-  J4: "43160-0106",
+  J1: "43160-1102",
+  J2: "43160-1103",
+  J3: "43160-1104",
+  J4: "43160-1106",
   J5: "43650-0300",
   U1: "IRM-45-12",
   U2: "AP63205WU-7",

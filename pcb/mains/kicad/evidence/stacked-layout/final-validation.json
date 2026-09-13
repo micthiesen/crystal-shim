@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "board": "mains",
+  "source_tests": {
+    "passed": 144,
+    "assertions": 9743
+  },
+  "native_drc": {
+    "violations": 0,
+    "schematic_parity": 0,
+    "unconnected_items": 31
+  },
+  "native_routing_probes": {
+    "passed": true,
+    "count": 5
+  },
+  "source_pad_position_audit": "pad-position-audit.json",
+  "schematic_fields": "schematic-field-audit.json",
+  "strict_erc_cleanup": "schematic-cleanup.json",
+  "preservation": "preservation.json",
+  "acceptance": "eco-application.json",
+  "owner_routing_remaining": true
+}

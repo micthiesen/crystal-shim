@@ -1,5 +1,10 @@
 # Mains native handoff
 
+Historical shared-power handoff record before stacked compaction. Its dimensions,
+J1 move, unconnected counts and acceptance receipts below describe that earlier
+geometry. Current source/native acceptance is recorded in [STATE](../STATE.md);
+the [routing guide](routing-guardrails.md) governs current routing.
+
 The IRM-45-12/AP63205 shared-power board is adopted and ready for routing at
 `pcb/mains/kicad`. Final ECO acceptance is recorded in
 `pcb/mains/design/evidence/final-eco-receipt.json`; the accepted source/native lock

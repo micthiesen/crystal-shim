@@ -6,7 +6,6 @@ import {
   controllerSourceGeometrySha256 as sourceHash,
 } from "../../controller/design/footprint-geometry-identity";
 import { controllerCapacitors } from "../../controller/design/passive-components";
-import { microFitEvidence } from "../../controller/design/micro-fit-components";
 import { esds312 } from "../../controller/design/cable-protection-land-patterns";
 import { stps2l40u } from "../../controller/design/protection-land-patterns";
 import { panasonic0603 } from "../../controller/design/passive-land-patterns";
@@ -22,7 +21,7 @@ export const sensorNativeFootprint = (ref: string) =>
 export const sensorProjectSymbol = sensorNativeFootprint;
 export const sensorExpectedNc = ["U1.4", "U1.5", "U3.1", "U3.3"];
 export const sensorParts = {
-  J1: { mpn: "43045-0600", url: microFitEvidence.sensor.url },
+  J1: { mpn: "PCB-SENSOR-PIGTAIL-6", url: "" },
   U1: { mpn: "FDC1004DGSR", url: fdcPattern.source.url },
   U2: { mpn: "TPS7A2433DBVR", url: ldoPattern.source.url },
   U3: { mpn: "ESDS312DBVR", url: esds312.source.url },
@@ -66,8 +65,36 @@ export const sensorParts = {
 export function sensorSchematicConnectivityErrors(json: CircuitJson) {
   const errors: string[] = [];
   const source = json.filter((e) => e.type === "source_component");
-  const ports = json.filter((e) => e.type === "source_port");
+  const ports = json
+    .filter((e) => e.type === "source_port")
+    .filter((e) => e.pin_number !== undefined);
   const drawn = schematicPortNetNames(json);
+  const internalPorts = json
+    .filter((e) => e.type === "source_port")
+    .filter((e) => e.pin_number === undefined);
+  for (const port of internalPorts) {
+    const owner = source.find(
+      (s) => s.source_component_id === port.source_component_id,
+    );
+    const terminal = ports.find(
+      (p) => p.source_component_id === port.source_component_id && p.pin_number === 1,
+    );
+    const declared = json
+      .filter((e) => e.type === "source_component_internal_connection")
+      .some(
+        (c) =>
+          c.source_component_id === port.source_component_id &&
+          c.source_port_ids.includes(port.source_port_id) &&
+          terminal &&
+          c.source_port_ids.includes(terminal.source_port_id),
+      );
+    if (
+      owner?.name !== "E1" ||
+      !/^pin1_internal_[1-9]$/.test(port.name ?? "") ||
+      !declared
+    )
+      errors.push("Unexpected unnumbered source terminal");
+  }
   if (source.length !== 16 || new Set(source.map((e) => e.name)).size !== 16)
     errors.push("Expected16 unique sensor references");
   for (const s of source) {
@@ -98,16 +125,18 @@ export function createSensorManifest(json: CircuitJson) {
   const board = json.find((e) => e.type === "pcb_board");
   if (
     !board ||
-    board.width !== 38 ||
-    board.height !== 86 ||
-    board.num_layers !== 2 ||
+    board.width !== 18 ||
+    board.height !== 64 ||
+    board.num_layers !== 4 ||
     board.thickness !== 1.6
   )
     throw new Error("Sensor board envelope changed");
   const normalized = prepareSensorInitialJson(json);
   const native = createSensorInitialPcb(json);
   const source = json.filter((e) => e.type === "source_component");
-  const ports = json.filter((e) => e.type === "source_port");
+  const ports = json
+    .filter((e) => e.type === "source_port")
+    .filter((e) => e.pin_number !== undefined);
   const drawn = schematicPortNetNames(json);
   const components = source.map((s) => {
     const p = normalized.find(
@@ -141,7 +170,9 @@ export function createSensorManifest(json: CircuitJson) {
       fields: {
         manufacturer_part_number: sensorParts[s.name]!.mpn,
         datasheet_url: sensorParts[s.name]!.url,
-        ...(s.name === "E1" ? { exclude_from_bom: true, exclude_from_cpl: true } : {}),
+        ...(["E1", "J1"].includes(s.name)
+          ? { exclude_from_bom: true, exclude_from_cpl: true }
+          : {}),
       },
       footprint: {
         tscircuit: `tscircuit:${p.metadata?.kicad_footprint?.footprintName}`,
@@ -188,9 +219,9 @@ export function createSensorManifest(json: CircuitJson) {
     schema_version: 1,
     board: {
       stable_id: "sensor.board.main",
-      width_mm: 38,
-      height_mm: 86,
-      layer_count: 2,
+      width_mm: 18,
+      height_mm: 64,
+      layer_count: 4,
       coordinate_system: "center-x-right-y-up",
       kicad_origin_mm: [100, 100],
       specs: {
@@ -199,7 +230,7 @@ export function createSensorManifest(json: CircuitJson) {
         assembly_sides: ["front"],
         compiled_board_sha256: sourceHash([board], { x: 0, y: 0 }),
       },
-      outline: { kind: "rectangle", center_mm: [0, 0], width_mm: 38, height_mm: 86 },
+      outline: { kind: "rectangle", center_mm: [0, 0], width_mm: 18, height_mm: 64 },
       holes: json
         .filter((e) => e.type === "pcb_hole")
         .map((h, i) => ({

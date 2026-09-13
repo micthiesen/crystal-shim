@@ -36,8 +36,9 @@ resistors use 1% ERJ parts; the PSU supervisor divider retains precision ERA par
   retains TPS2553DBVR, with separate passive branch filtering.
 - Molex 43045-0200 motor and service headers share a family but different voltage
   functions. Assembly labels and pin-1 polarity must match the wiring drawing.
-  Three 43045-0600 headers across the current controller/sensor assembly share
-  one electrical sensor pinout. 43650-0300 carries the 5 V/return/coil harness.
+  Two 43045-0600 headers on the controller share one electrical sensor pinout;
+  the tank sensor uses six numbered solder lands for its pigtail instead of a
+  header. 43650-0300 carries the 5 V/return/coil harness.
 - TP1–TP14 are PCB copper, not purchased components. TP12/TP13 expose GPIO4/5,
   and TP14 provides their nearby return; TP11 remains the UART service ground.
 
@@ -56,7 +57,7 @@ B32921C3473K000 is the 47 nF X2 snubber capacitor; PR02FS0201000KA100 is its
 100 ohm flameproof resistor. Formed leads and installed bodies must fit the
 captured assembly envelope. 1N4007-E3/54 is the relay-coil flyback diode.
 
-The four Sabre headers are individually 43160-0102, -0103, -0104 and -0106.
+The four right-angle Sabre headers are individually 43160-1102, -1103, -1104 and -1106.
 Their 7.493 mm pitch and unused metal are part of the mains spacing review;
 unused mating cavities do not remove header copper. Refer to the
 [mains design basis](mains-design-basis.md) and actual manufacturer drawings.

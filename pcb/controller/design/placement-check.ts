@@ -58,8 +58,8 @@ export function controllerPlacementErrors(json: CircuitJson): string[] {
     const bottom = ref === "J4" ? -55.575 : -55;
     const top = ref === "U1" ? 61.6 : 55;
     if (
-      box.left < -55 - 1e-6 ||
-      box.right > 55 + 1e-6 ||
+      box.left < -75 - 1e-6 ||
+      box.right > 75 + 1e-6 ||
       box.bottom < bottom - 1e-6 ||
       box.top > top + 1e-6
     )

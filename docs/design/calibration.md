@@ -26,7 +26,7 @@ fraction_thousandths = 1000 * (q - q_low) / (q_high - q_low)
 not millimetres and do not promise linear physical height between those points.
 A commissioned supported domain can exclude part of this normalized span.
 
-Measure both dry baselines with the final glass/coating/clip stack and unchanged
+Measure both dry baselines with the final glass/soldermask/adhesive stack and unchanged
 acquisition settings, before wetting either sensing region. RL must remain wet
 throughout the accepted operating range. Its measured wet-minus-dry response
 normalizes LEVEL response for the installed liquid. No electrode area assumption,
@@ -64,11 +64,11 @@ derived coefficients for diagnostics and a future persisted record.
 
 The final-unit calibration workflow must retain the raw measurement log, known
 water positions, sensor/board identity and revision, acquisition configuration,
-glass/coating/clip stack, and the evidence behind every envelope/rate limit.
+glass/soldermask/adhesive stack, and the evidence behind every envelope/rate limit.
 Those metadata and storage responsibilities belong to the eventual calibration
 workflow. Capture both dry baselines with the same dielectric stack. Capture lower/upper
 and intermediate points in both directions with RL wet, then validate temperature,
-receding film, deposits, reseating, clip pressure, hands, cable motion and pump
+receding film, deposits, adhesive replacement/gaps, hands, cable motion and pump
 switching. No such physical evidence exists merely because this code passes.
 
 ## Runtime contract
@@ -151,6 +151,6 @@ confirmation after an invalid frame. Test measurements are explicitly synthetic.
 Run from `firmware/`: `cargo fmt --check`,
 `cargo clippy --locked --all-targets -- -D warnings`, and `cargo test --locked`.
 This verifies the calculation and rejection behavior. It cannot establish that
-RL is wet, stored dry baselines remain representative, geometry is suitable, or the glass/clip system needs no
+RL is wet, stored dry baselines remain representative, geometry is suitable, or the glass/adhesive system needs no
 routine cleaning. See the [sensor design basis](sensor-design-basis.md) for those
 physical assumptions and acceptance checks.

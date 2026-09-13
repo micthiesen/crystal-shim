@@ -1,5 +1,9 @@
 # Controller test and UART service pads
 
+The test-point electrical/mask contract remains applicable. Numeric placement
+and enclosure positions below are historical; current source datums are in
+[controller placement](controller-placement.md) for the 150 × 110 mm top board.
+
 Status: connected source section, 2026-09-12. The pad bank implements the
 [controller design basis](controller-design-basis.md) observability and UART
 service requirements. It now shares the complete source placement within the

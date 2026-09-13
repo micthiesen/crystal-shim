@@ -757,21 +757,692 @@
     },
     "sensor": {
       "nets": {},
-      "forbid_vias_on_rail_nets": true,
       "sensor_field": {
         "rectangle_mm": [
-          81,
-          79,
-          119,
-          143
+          91,
+          68,
+          109,
+          132
+        ],
+        "routing_layers": [
+          "F.Cu",
+          "In1.Cu"
         ],
         "allowed_nets": [
           "CIN_LEVEL",
           "CIN_RL",
           "SHLD1",
           "SHLD2"
+        ],
+        "via_gap_mm": [
+          100.2,
+          68.5,
+          101,
+          131.5
+        ],
+        "fixed_electrodes": [
+          {
+            "number": "2",
+            "net": "CIN_LEVEL",
+            "layer": "B.Cu",
+            "center_mm": [
+              104.675,
+              71.275
+            ],
+            "size_mm": [
+              6.35,
+              4.55
+            ]
+          },
+          {
+            "number": "2",
+            "net": "CIN_LEVEL",
+            "layer": "B.Cu",
+            "center_mm": [
+              104.675,
+              76.325
+            ],
+            "size_mm": [
+              6.35,
+              4.55
+            ]
+          },
+          {
+            "number": "2",
+            "net": "CIN_LEVEL",
+            "layer": "B.Cu",
+            "center_mm": [
+              104.675,
+              81.375
+            ],
+            "size_mm": [
+              6.35,
+              4.549999999999999
+            ]
+          },
+          {
+            "number": "2",
+            "net": "CIN_LEVEL",
+            "layer": "B.Cu",
+            "center_mm": [
+              104.675,
+              86.425
+            ],
+            "size_mm": [
+              6.35,
+              4.550000000000001
+            ]
+          },
+          {
+            "number": "2",
+            "net": "CIN_LEVEL",
+            "layer": "B.Cu",
+            "center_mm": [
+              104.675,
+              91.475
+            ],
+            "size_mm": [
+              6.35,
+              4.550000000000001
+            ]
+          },
+          {
+            "number": "2",
+            "net": "CIN_LEVEL",
+            "layer": "B.Cu",
+            "center_mm": [
+              104.675,
+              96.525
+            ],
+            "size_mm": [
+              6.35,
+              4.550000000000001
+            ]
+          },
+          {
+            "number": "2",
+            "net": "CIN_LEVEL",
+            "layer": "B.Cu",
+            "center_mm": [
+              104.675,
+              101.57499999999999
+            ],
+            "size_mm": [
+              6.35,
+              4.549999999999997
+            ]
+          },
+          {
+            "number": "2",
+            "net": "CIN_LEVEL",
+            "layer": "B.Cu",
+            "center_mm": [
+              104.675,
+              106.625
+            ],
+            "size_mm": [
+              6.35,
+              4.549999999999997
+            ]
+          },
+          {
+            "number": "2",
+            "net": "CIN_LEVEL",
+            "layer": "B.Cu",
+            "center_mm": [
+              104.675,
+              111.675
+            ],
+            "size_mm": [
+              6.35,
+              4.549999999999997
+            ]
+          },
+          {
+            "number": "2",
+            "net": "CIN_LEVEL",
+            "layer": "B.Cu",
+            "center_mm": [
+              104.675,
+              116.725
+            ],
+            "size_mm": [
+              6.35,
+              4.549999999999997
+            ]
+          },
+          {
+            "number": "1",
+            "net": "SHLD2",
+            "layer": "B.Cu",
+            "center_mm": [
+              95.325,
+              71.275
+            ],
+            "size_mm": [
+              6.350000000000001,
+              4.55
+            ]
+          },
+          {
+            "number": "1",
+            "net": "SHLD2",
+            "layer": "B.Cu",
+            "center_mm": [
+              95.325,
+              76.325
+            ],
+            "size_mm": [
+              6.350000000000001,
+              4.55
+            ]
+          },
+          {
+            "number": "1",
+            "net": "SHLD2",
+            "layer": "B.Cu",
+            "center_mm": [
+              95.325,
+              81.375
+            ],
+            "size_mm": [
+              6.350000000000001,
+              4.549999999999999
+            ]
+          },
+          {
+            "number": "1",
+            "net": "SHLD2",
+            "layer": "B.Cu",
+            "center_mm": [
+              95.325,
+              86.425
+            ],
+            "size_mm": [
+              6.350000000000001,
+              4.550000000000001
+            ]
+          },
+          {
+            "number": "1",
+            "net": "SHLD2",
+            "layer": "B.Cu",
+            "center_mm": [
+              95.325,
+              91.475
+            ],
+            "size_mm": [
+              6.350000000000001,
+              4.550000000000001
+            ]
+          },
+          {
+            "number": "1",
+            "net": "SHLD2",
+            "layer": "B.Cu",
+            "center_mm": [
+              95.325,
+              96.525
+            ],
+            "size_mm": [
+              6.350000000000001,
+              4.550000000000001
+            ]
+          },
+          {
+            "number": "1",
+            "net": "SHLD2",
+            "layer": "B.Cu",
+            "center_mm": [
+              95.325,
+              101.57499999999999
+            ],
+            "size_mm": [
+              6.350000000000001,
+              4.549999999999997
+            ]
+          },
+          {
+            "number": "1",
+            "net": "SHLD2",
+            "layer": "B.Cu",
+            "center_mm": [
+              95.325,
+              106.625
+            ],
+            "size_mm": [
+              6.350000000000001,
+              4.549999999999997
+            ]
+          },
+          {
+            "number": "1",
+            "net": "SHLD2",
+            "layer": "B.Cu",
+            "center_mm": [
+              95.325,
+              111.675
+            ],
+            "size_mm": [
+              6.350000000000001,
+              4.549999999999997
+            ]
+          },
+          {
+            "number": "1",
+            "net": "SHLD2",
+            "layer": "B.Cu",
+            "center_mm": [
+              95.325,
+              116.725
+            ],
+            "size_mm": [
+              6.350000000000001,
+              4.549999999999997
+            ]
+          },
+          {
+            "number": "2",
+            "net": "CIN_LEVEL",
+            "layer": "B.Cu",
+            "center_mm": [
+              107.775,
+              94.0
+            ],
+            "size_mm": [
+              0.15000000000000013,
+              50
+            ]
+          },
+          {
+            "number": "13",
+            "net": "SHLD2",
+            "layer": "B.Cu",
+            "center_mm": [
+              92.225,
+              100.0
+            ],
+            "size_mm": [
+              0.15000000000000213,
+              62
+            ]
+          },
+          {
+            "number": "3",
+            "net": "CIN_RL",
+            "layer": "B.Cu",
+            "center_mm": [
+              104.675,
+              126.0
+            ],
+            "size_mm": [
+              6.35,
+              10
+            ]
+          },
+          {
+            "number": "4",
+            "net": "SHLD2",
+            "layer": "B.Cu",
+            "center_mm": [
+              95.325,
+              126.0
+            ],
+            "size_mm": [
+              6.350000000000001,
+              10
+            ]
+          },
+          {
+            "number": "5",
+            "net": "CIN_RL",
+            "layer": "B.Cu",
+            "center_mm": [
+              100.0,
+              97.5375
+            ],
+            "size_mm": [
+              0.14999999999999858,
+              57.075
+            ]
+          },
+          {
+            "number": "6",
+            "net": "CIN_RL",
+            "layer": "B.Cu",
+            "center_mm": [
+              100.75,
+              126.0
+            ],
+            "size_mm": [
+              1.6499999999999995,
+              0.15000000000000568
+            ]
+          },
+          {
+            "number": "8",
+            "net": "SHLD1",
+            "layer": "In2.Cu",
+            "center_mm": [
+              104.675,
+              93.75
+            ],
+            "size_mm": [
+              7.35,
+              50.5
+            ]
+          },
+          {
+            "number": "9",
+            "net": "SHLD1",
+            "layer": "In2.Cu",
+            "center_mm": [
+              104.675,
+              125.25
+            ],
+            "size_mm": [
+              7.35,
+              12.5
+            ]
+          },
+          {
+            "number": "7",
+            "net": "SHLD2",
+            "layer": "In2.Cu",
+            "center_mm": [
+              95.325,
+              93.75
+            ],
+            "size_mm": [
+              7.350000000000001,
+              50.5
+            ]
+          },
+          {
+            "number": "10",
+            "net": "SHLD2",
+            "layer": "In2.Cu",
+            "center_mm": [
+              95.325,
+              125.25
+            ],
+            "size_mm": [
+              7.350000000000001,
+              12.5
+            ]
+          },
+          {
+            "number": "11",
+            "net": "SHLD1",
+            "layer": "In2.Cu",
+            "center_mm": [
+              100.0,
+              97.3875
+            ],
+            "size_mm": [
+              0.3000000000000007,
+              57.775
+            ]
+          },
+          {
+            "number": "12",
+            "net": "SHLD1",
+            "layer": "In2.Cu",
+            "center_mm": [
+              100.5,
+              126.0
+            ],
+            "size_mm": [
+              1.5500000000000007,
+              0.5499999999999972
+            ]
+          }
+        ],
+        "prepared_vias": [
+          {
+            "drill_mm": 0.2,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "CIN_LEVEL",
+            "position_mm": [
+              100.6,
+              95
+            ],
+            "uuid": "1ea06056-5dc7-4cd1-9c74-f26135425b0f",
+            "width_mm": 0.45
+          },
+          {
+            "drill_mm": 0.2,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "CIN_RL",
+            "position_mm": [
+              100.6,
+              94
+            ],
+            "uuid": "1f029c7e-57c8-473d-8357-04161b1966fc",
+            "width_mm": 0.45
+          },
+          {
+            "drill_mm": 0.2,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "GND",
+            "position_mm": [
+              100.575,
+              77
+            ],
+            "uuid": "2152aa70-9ac3-4743-8490-0598b89446d9",
+            "width_mm": 0.45
+          },
+          {
+            "drill_mm": 0.2,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "GND",
+            "position_mm": [
+              100.575,
+              82
+            ],
+            "uuid": "681039b2-962d-4fb8-acdc-f5444d6adbbb",
+            "width_mm": 0.45
+          },
+          {
+            "drill_mm": 0.3,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "SHLD1",
+            "position_mm": [
+              101,
+              97
+            ],
+            "uuid": "891c29e4-e7ef-4260-9318-0a410539f31c",
+            "width_mm": 0.6
+          },
+          {
+            "drill_mm": 0.3,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "SHLD2",
+            "position_mm": [
+              99,
+              97
+            ],
+            "uuid": "7bec58d2-9f37-4bba-86f5-3d78c04d3218",
+            "width_mm": 0.6
+          }
+        ],
+        "bottom_tracks": [
+          {
+            "end_mm": [
+              100,
+              94
+            ],
+            "layer": "B.Cu",
+            "net": "CIN_RL",
+            "position_mm": [
+              100.6,
+              94
+            ],
+            "start_mm": [
+              100.6,
+              94
+            ],
+            "uuid": "5d043b14-2f79-49e7-bdc0-8dfafb2dda50",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              101.7,
+              95
+            ],
+            "layer": "B.Cu",
+            "net": "CIN_LEVEL",
+            "position_mm": [
+              100.6,
+              95
+            ],
+            "start_mm": [
+              100.6,
+              95
+            ],
+            "uuid": "80824db9-697d-4b5a-8239-f08de6e309c8",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              98.3,
+              97
+            ],
+            "layer": "B.Cu",
+            "net": "SHLD2",
+            "position_mm": [
+              99,
+              97
+            ],
+            "start_mm": [
+              99,
+              97
+            ],
+            "uuid": "e4728d38-ad8c-4fc0-a296-14067a8cc45b",
+            "width_mm": 0.15
+          }
+        ],
+        "ground_layers": [
+          "F.Cu",
+          "In1.Cu"
         ]
-      }
+      },
+      "native_drc_exclusions": [
+        {
+          "type": "padstack",
+          "description": "Padstack is questionable (SMD pad has no outer layers)",
+          "severity": "warning",
+          "items": [
+            {
+              "description": "Pad 7 [SHLD2] of E1 on In2.Cu",
+              "pos": {
+                "x": 95.325,
+                "y": 93.75
+              },
+              "uuid": "9a9b2dcd-c6ff-4bea-8fab-546195d855a8"
+            }
+          ]
+        },
+        {
+          "type": "padstack",
+          "description": "Padstack is questionable (SMD pad has no outer layers)",
+          "severity": "warning",
+          "items": [
+            {
+              "description": "Pad 8 [SHLD1] of E1 on In2.Cu",
+              "pos": {
+                "x": 104.675,
+                "y": 93.75
+              },
+              "uuid": "0c382945-a7cd-4f50-a85a-7dfd1dc849ef"
+            }
+          ]
+        },
+        {
+          "type": "padstack",
+          "description": "Padstack is questionable (SMD pad has no outer layers)",
+          "severity": "warning",
+          "items": [
+            {
+              "description": "Pad 9 [SHLD1] of E1 on In2.Cu",
+              "pos": {
+                "x": 104.675,
+                "y": 125.25
+              },
+              "uuid": "bd3af467-90f4-45fa-b2f7-60409c03deb7"
+            }
+          ]
+        },
+        {
+          "type": "padstack",
+          "description": "Padstack is questionable (SMD pad has no outer layers)",
+          "severity": "warning",
+          "items": [
+            {
+              "description": "Pad 10 [SHLD2] of E1 on In2.Cu",
+              "pos": {
+                "x": 95.325,
+                "y": 125.25
+              },
+              "uuid": "b94abd73-9b5e-469b-8cd8-9bf897d677bb"
+            }
+          ]
+        },
+        {
+          "type": "padstack",
+          "description": "Padstack is questionable (SMD pad has no outer layers)",
+          "severity": "warning",
+          "items": [
+            {
+              "description": "Pad 11 [SHLD1] of E1 on In2.Cu",
+              "pos": {
+                "x": 100.0,
+                "y": 97.3875
+              },
+              "uuid": "42d61e86-f7af-43ce-a501-835b7d7a4bbb"
+            }
+          ]
+        },
+        {
+          "type": "padstack",
+          "description": "Padstack is questionable (SMD pad has no outer layers)",
+          "severity": "warning",
+          "items": [
+            {
+              "description": "Pad 12 [SHLD1] of E1 on In2.Cu",
+              "pos": {
+                "x": 100.5,
+                "y": 126.0
+              },
+              "uuid": "eb200628-73f0-4852-b871-8c50e51bea59"
+            }
+          ]
+        }
+      ]
     }
   }
 }

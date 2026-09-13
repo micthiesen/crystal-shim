@@ -23,8 +23,8 @@ are not a released electrical design.
   override even at valid low water. No indefinite run. All control tuning is configurable.
 - Pushover alerts on confirmed high-to-low and low-to-high water changes, independent
   of pump activity; notification delivery cannot gate local control.
-- Freshwater tank. A separate owner-designed clip holds the compact sensor PCB
-  snug against glass; this project defines the PCB attachment interface only.
+- Freshwater tank. An 18 × 64 mm four-layer sensor adheres below the rim with
+  thin uniform film; its outward pigtail exits left. No separate mount is required.
 - Controller enclosure sits on a spacious flat surface behind the tank within
   8 inches of the sensor. Settings and scheduling use a local webpage on the ESP.
 
@@ -33,23 +33,23 @@ are not a released electrical design.
 | ID | Input/choice | Current state | Resolves |
 | --- | --- | --- | --- |
 | D-01 | Glass thickness | Confirmed by owner: 5 mm, 2026-09-11 | Sensor sensitivity and geometry |
-| D-02 | Desired vertical detection range and mounting datum | Confirmed: 50 mm down from top of tank rim; padding at top/bottom allowed; PCB stays outside glass while separate mount clips over it | Stick outline and reference margins remain to design |
+| D-02 | Physical detection span and mounting datum | 50 mm LEVEL span, board top 2 mm below rim; LEVEL 3..53 mm and wet RL 55..65 mm below rim; top 7 mm LEVEL remains dry at highest water | Physical span retained; usable water travel set by calibration |
 | D-03 | Stop low / automatic restart after refill | Owner confirmed; only within unsuppressed scheduled windows, with explicit timed manual override exception | Product behavior locked |
 | D-04 | Existing Stillair connector family | Resolved from BOM: Micro-Fit 3.0, received parts; see sources | Family continuity only |
-| D-05 | Six-position sensor header/contact set and wire | Capture candidates: `43045-0600` / `43025-0600` / `43030-0007`, 24 AWG; [78073 cable and sideways route study](design/sensor-harness.md) retains mated-fit and qualified crimp-manufacture checks | Pinout, harness, orderable set |
+| D-05 | Six-position sensor termination and wire | Sensor J1 six outward solder lands and left-exiting 24 AWG pigtail; controller retains `43045-0600` / `43025-0600` / `43030-0007`; [harness](design/sensor-harness.md) retains cable/crimp evidence | Controller pinout retained; complete harness ≤203.2 mm |
 | D-06 | Converter, MCU and power module | FDC1004DGSR, ESP32-C6-WROOM-1-N8 and IRM-45-12 selected in source; AP63205 makes 5 V on the mains board | Schematics and fixed power budget |
 | D-07 | G5RL-1A-TV8 5 V coil | G5RL-1A-TV8 DC5 sourced motor rating and pin map; design review and final-unit start tests owed | Relay selection and commissioning |
 | D-08 | FN2090 filter variant | FN2090A-1-06 / 802490-SF capture candidate | Attenuation, leakage, enclosure fit |
 | D-09 | Fuse/MOV/RC/regulators and internal mains connector set | Complete 22-part mains source: 2 A inlet fuse, 1 A filter-branch fuse and 3 A motor-branch fuse; MOV and physical envelopes retained | Protection and source capture; native release remains separate |
-| D-10 | Enclosure, insulation/spacing and earth scheme | Hammond 1590ZGRP243 with separate mains/controller bays; manufacturer STEP and expanded envelope checks in [mechanical design](mechanical.md) | Practical board mounting and partition; final assembly remains untested |
+| D-10 | Enclosure, insulation/spacing and earth scheme | Matching 150 × 110 mm boards, four-layer controller above two-layer mains, 45 mm clear gap and insulating separator; Hammond 1590ZGRP243 retained candidate per [mechanical design](mechanical.md) | Aligned M3 holes inset 7 mm; old side-by-side CAD evidence superseded |
 | D-11 | Thresholds, calibration limits and freshness timeout | Open; 1/10/30 s timing seeds provisional | Sensor and firmware tuning |
 | D-12 | Retained state and network interface | Matter-over-Wi-Fi selected; runtime schedule/retained transactions, actual command/KV adapters, Wi-Fi/BLE, shared TCP stack, bounded USB provisioning writer/sender and original-capture CASE/USB UTC implemented; unattended time-source compatibility and actual pairing remain work | Hardware firmware |
 | D-13 | Run duration and daily schedule | Default 15 min shared by schedule and override, all adjustable; exact daily times/count/timezone open | Local scheduler and configuration |
 | D-14 | Water-transition notifications | Pushover worker linked; silent first baseline; eight RAM events, 15-minute expiry, three attempts, verified interval TLS and credential suspension; reboot discards queued work | Live API/phone delivery, RF timing and runtime memory remain G-05/G-06 |
 | D-15 | Settings interface | Confirmed and linked: ESP-hosted local settings, schedule, thresholds, response timing and Pushover credential actions; private first-configuration encoder/sender implemented; physical calibration workflow remains | Schedule, calibration, timing and Pushover provisioning workflow |
-| D-16 | Aquarium water and mounting envelope | Confirmed: freshwater, ample width with reasonably compact sensor PCB, snug contact via owner's separate gravity/friction clip; other hardware on spacious flat surface behind tank within 8 inches | PCB attachment interface remains project work; printed clip design is out of scope |
+| D-16 | Aquarium water and mounting envelope | Freshwater, 5 mm glass, 18 × 64 mm adhesive-mounted board, entirely below rim, outward electronics/left cable; other hardware within complete 8-inch harness reach | Thin uniform film without bracket; mounting durability and sensitivity require calibration |
 | D-17 | Build strategy | Owner confirmed: one-shot final-use build of all three boards; no separate prototype or planned respin | Complete design/review before fabrication; physical calibration and acceptance afterward |
-| D-18 | Normal-full surface datum | No owner datum required for PCB geometry. Omit optional live RE and OoP_RE; use LEVEL and wet RL with commissioned dry baselines across the 50 mm span | Removes the dry-electrode placement constraint; physical calibration still required |
+| D-18 | Normal-full surface datum | Water always at least 10 mm below rim; retain LEVEL/wet RL and stored dry baselines, no live dry-reference channel | Ten common-net horizontal bars per LEVEL column; no added measurement channels |
 | D-19 | USB and service power | Self-powered USB with VBUS data gating; known GST18U05-P1J adapter through a 2 A fused service lead and existing diode OR | Mains-disconnected setup only; [service design](design/service-input.md); no eFuse, arbitrary supplies or hot mating requirement |
 | D-20 | Sensor bus power sequencing | TCA9517A separates pullup domains; independent GPIO0 enable disconnects the cable during recovery/startup | Prevent sensor backfeed and isolate the unpowered cable's low/floating bus |
 | D-21 | Controlled sensor recovery | Existing TPS2553 and GPIO22/23 power/fault control shared by two sensor ports; separate 6.8 ohm feed resistors and input bleeders; fixed TPS7A2433 sensor regulator with output-to-input diode | Bounded recovery and invalid/stale fail-off retained; no live dry-reference channel or LT3042 PGFB network |

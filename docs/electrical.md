@@ -79,8 +79,8 @@ survive repeated switching; a cleaner bench waveform alone does not pass `EMI-*`
 | --- | --- |
 | Enclosure input | IEC C14 inlet, appropriate enclosed/guarded termination |
 | Skimmer output | Rated mains receptacle or strain-relieved female pigtail, original pump cord intact |
-| Internal mains input/output | Molex Sabre 7.50 mm: `43160-0102/-0103/-0104/-0106` headers, `44441-2002/-2003/-2004/-2006` housings and `43375-2001` contacts; L1/N2 |
-| Sensor cable | Micro-Fit 3.0, six positions, locking/polarized; housing candidate `43025-0600` |
+| Internal mains input/output | Molex Sabre 7.50 mm: `43160-1102/-1103/-1104/-1106` right-angle headers, `44441-2002/-2003/-2004/-2006` housings and `43375-2001` contacts; L1/N2 |
+| Sensor cable | Six solder lands on sensor J1 with left-exiting 24 AWG pigtail; six-position locking/polarized Micro-Fit at controller, housing `43025-0600` |
 
 The Sabre product specification reports 600 V AC RMS under CSA and 16 A fully
 loaded for the 43160 header series, subject to the exact part, wire, cavity

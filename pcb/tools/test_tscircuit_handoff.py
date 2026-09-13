@@ -1026,6 +1026,196 @@ class PlanTests(unittest.TestCase):
                               handoff.preservation_report(plan, before, after)["errors"])
 
 
+
+class RoutingClearTests(unittest.TestCase):
+    def setUp(self):
+        self.manifest = handoff.normalize_manifest(manifest())
+        self.before = snapshot(routed=True)
+        self.set_tracks(self.before, [{"uuid": "track-1", "width_mm": 2}, {"uuid": "track-2", "width_mm": 1}])
+        self.augment = augmentation()
+        self.augment["operations"].append({
+            "id": "pcb03.clear-owner-routes", "kind": "routing_clear", "target": {},
+            "params": {"before_snapshot_sha256": handoff.digest(self.before),
+                       "track_uuids": ["track-1"], "reason": "Owner requested route clearing"},
+        })
+        self.validated = handoff.validate_augmentation(self.augment, self.manifest)
+        self.lock = lock_for(manifest(), snap=self.before)
+        self.plan = handoff.build_plan(self.manifest, self.validated, self.lock, self.before, True, True)
+
+    @staticmethod
+    def set_tracks(snap, details):
+        snap["kicad_owned"]["tracks"] = {"details": details, "sha256": handoff.digest(details)}
+
+    def test_only_declared_deletion_passes_and_other_categories_stay_guarded(self):
+        after = copy.deepcopy(self.before)
+        self.set_tracks(after, [{"uuid": "track-2", "width_mm": 1}])
+        self.assertTrue(handoff.preservation_report(self.plan, self.before, after)["passed"])
+        self.assertNotIn("tracks", self.plan["authorized_kicad_owned_changes"])
+        after["kicad_owned"]["vias"] = "unexpected-via-change"
+        self.assertIn("unauthorized KiCad-owned vias change", handoff.preservation_report(self.plan, self.before, after)["errors"])
+
+    def test_add_modify_remove_extra_and_skip_deletion_fail(self):
+        for details in [[], [{"uuid": "track-2", "width_mm": .2}],
+                        [{"uuid": "track-2", "width_mm": 1}, {"uuid": "new", "width_mm": 1}],
+                        self.before["kicad_owned"]["tracks"]["details"]]:
+            with self.subTest(details=details):
+                after = copy.deepcopy(self.before)
+                self.set_tracks(after, details)
+                self.assertFalse(handoff.preservation_report(self.plan, self.before, after)["passed"])
+
+    def test_stale_snapshot_missing_uuid_and_missing_override_fail(self):
+        for key, value in [("before_snapshot_sha256", "0" * 64), ("track_uuids", ["missing"])]:
+            aug = copy.deepcopy(self.augment)
+            aug["operations"][-1]["params"][key] = value
+            with self.assertRaises(handoff.HandoffError):
+                handoff.build_plan(self.manifest, handoff.validate_augmentation(aug, self.manifest), self.lock, self.before, True, True)
+        plan = handoff.build_plan(self.manifest, self.validated, self.lock, self.before, False, True)
+        self.assertTrue(plan["blocked"])
+        stale = copy.deepcopy(self.before)
+        stale["kicad_owned"]["vias"] = "changed"
+        self.assertFalse(handoff.preservation_report(self.plan, stale, self.before)["passed"])
+
+    def test_unchanged_declaration_cannot_be_reused(self):
+        lock = lock_for(manifest(), augment=self.augment, snap=self.before)
+        plan = handoff.build_plan(self.manifest, self.validated, lock, self.before, True, True)
+        self.assertNotIn("authorized_track_removals", plan)
+        after = copy.deepcopy(self.before)
+        self.set_tracks(after, [{"uuid": "track-2", "width_mm": 1}])
+        self.assertFalse(handoff.preservation_report(plan, self.before, after)["passed"])
+
+    def test_multiple_operations_cannot_authorize_the_same_removed_uuid(self):
+        aug = copy.deepcopy(self.augment)
+        duplicate = copy.deepcopy(aug["operations"][-1])
+        duplicate["id"] = "pcb03.duplicate-clear"
+        aug["operations"].append(duplicate)
+        with self.assertRaisesRegex(handoff.HandoffError, "authorizes a track UUID twice"):
+            handoff.build_plan(self.manifest, handoff.validate_augmentation(aug, self.manifest), self.lock, self.before, True, True)
+
+    def test_malformed_or_tampered_authorization_rejected(self):
+        for names in [[], ["track-1", "track-1"], [42]]:
+            aug = copy.deepcopy(self.augment)
+            aug["operations"][-1]["params"]["track_uuids"] = names
+            with self.assertRaises(handoff.HandoffError):
+                handoff.validate_augmentation(aug, self.manifest)
+        plan = copy.deepcopy(self.plan)
+        plan["authorized_track_removals"][0]["track_uuids"] = ["track-2"]
+        self.assertFalse(handoff.preservation_report(plan, self.before, self.before)["passed"])
+        broken = copy.deepcopy(self.before)
+        broken["kicad_owned"]["tracks"]["sha256"] = "bad"
+        with self.assertRaises(handoff.HandoffError):
+            handoff.routing_clear_tracks(broken)
+
+
+class RoutingAddTests(unittest.TestCase):
+    def setUp(self):
+        self.manifest = handoff.normalize_manifest(manifest())
+        self.before = snapshot(routed=True)
+        RoutingClearTests.set_tracks(self.before, [{"uuid": "track-existing", "width_mm": 2}])
+        self.track = {"uuid": "track-new", "net": "DATA", "layer": "B.Cu", "width_mm": .15,
+                      "position_mm": [1, 2], "start_mm": [1, 2], "end_mm": [2, 2]}
+        self.augment = augmentation()
+        self.augment["operations"].append({"id": "pcb03.breakouts", "kind": "routing_add", "target": {},
+            "params": {"before_snapshot_sha256": handoff.digest(self.before), "tracks": [self.track],
+                       "tracks_sha256": handoff.digest([self.track]), "reason": "Fixed sensor electrode breakouts"}})
+        self.lock = lock_for(manifest(), snap=self.before)
+        self.validated = handoff.validate_augmentation(self.augment, self.manifest)
+        self.plan = handoff.build_plan(self.manifest, self.validated, self.lock, self.before, True, True)
+
+    def test_exact_addition_passes_but_modified_added_or_existing_geometry_fails(self):
+        after = copy.deepcopy(self.before)
+        details = copy.deepcopy(self.before["kicad_owned"]["tracks"]["details"]) + [copy.deepcopy(self.track)]
+        RoutingClearTests.set_tracks(after, details)
+        self.assertTrue(handoff.preservation_report(self.plan, self.before, after)["passed"])
+        self.assertNotIn("tracks", self.plan["authorized_kicad_owned_changes"])
+        variants = [details[:1], details[1:]]
+        for index, key, value in [(0, "width_mm", 1), (1, "width_mm", .2), (1, "net", "AGND"),
+                                  (1, "mid_mm", [1.5, 3]), (1, "uuid", "different")]:
+            variant = copy.deepcopy(details)
+            variant[index][key] = value
+            variants.append(variant)
+        for variant in variants:
+            with self.subTest(variant=variant):
+                RoutingClearTests.set_tracks(after, variant)
+                self.assertFalse(handoff.preservation_report(self.plan, self.before, after)["passed"])
+
+    def test_stale_before_existing_uuid_and_unchanged_declaration_fail(self):
+        stale = copy.deepcopy(self.before)
+        stale["kicad_owned"]["vias"] = "changed"
+        with self.assertRaises(handoff.HandoffError):
+            handoff.build_plan(self.manifest, self.validated, self.lock, stale, True, True)
+        aug = copy.deepcopy(self.augment)
+        params = aug["operations"][-1]["params"]
+        params["tracks"][0]["uuid"] = "track-existing"
+        params["tracks_sha256"] = handoff.digest(params["tracks"])
+        with self.assertRaises(handoff.HandoffError):
+            handoff.build_plan(self.manifest, handoff.validate_augmentation(aug, self.manifest), self.lock, self.before, True, True)
+        plan = handoff.build_plan(self.manifest, self.validated,
+                                 lock_for(manifest(), augment=self.augment, snap=self.before), self.before, True, True)
+        self.assertNotIn("authorized_track_additions", plan)
+        self.assertTrue(handoff.build_plan(self.manifest, self.validated, self.lock, self.before, False, True)["blocked"])
+
+    def test_added_track_cannot_reuse_any_existing_snapshot_identity(self):
+        for category in ("vias", "zones", "graphics", "source", "uuid_map"):
+            with self.subTest(category=category):
+                before = copy.deepcopy(self.before)
+                if category == "source":
+                    uid = before["source_owned"]["components"][0]["uuid"]
+                elif category == "uuid_map":
+                    uid = "identity-only-in-map"
+                    before["uuid_map"]["retained-item"] = uid
+                else:
+                    uid = "existing-" + category
+                    items = [{"uuid": uid}]
+                    before["kicad_owned"][category] = {"details": items, "sha256": handoff.digest(items)}
+                aug = copy.deepcopy(self.augment)
+                params = aug["operations"][-1]["params"]
+                params["before_snapshot_sha256"] = handoff.digest(before)
+                params["tracks"][0]["uuid"] = uid
+                params["tracks_sha256"] = handoff.digest(params["tracks"])
+                with self.assertRaisesRegex(handoff.HandoffError, "collides with an existing snapshot item"):
+                    handoff.build_plan(self.manifest, handoff.validate_augmentation(aug, self.manifest),
+                                       lock_for(manifest(), snap=before), before, True, True)
+
+    def test_after_snapshot_cannot_share_added_track_uuid_with_new_zone(self):
+        after = copy.deepcopy(self.before)
+        RoutingClearTests.set_tracks(after, after["kicad_owned"]["tracks"]["details"] + [self.track])
+        zones = [{"uuid": self.track["uuid"]}]
+        after["kicad_owned"]["zones"] = {"details": zones, "sha256": handoff.digest(zones)}
+        plan = copy.deepcopy(self.plan)
+        # Even an independently authorized zone change cannot reuse the track ID.
+        plan["authorized_kicad_owned_changes"].append("zones")
+        report = handoff.preservation_report(plan, self.before, after)
+        self.assertFalse(report["passed"])
+        self.assertTrue(any("UUID collides" in error for error in report["errors"]))
+
+    def test_multiple_operations_cannot_authorize_the_same_added_uuid(self):
+        aug = copy.deepcopy(self.augment)
+        duplicate = copy.deepcopy(aug["operations"][-1])
+        duplicate["id"] = "pcb03.duplicate-breakout"
+        aug["operations"].append(duplicate)
+        with self.assertRaisesRegex(handoff.HandoffError, "authorizes a track UUID twice"):
+            handoff.build_plan(self.manifest, handoff.validate_augmentation(aug, self.manifest), self.lock, self.before, True, True)
+
+    def test_invalid_geometry_hash_net_layer_duplicate_and_arc_declarations_fail(self):
+        for key, value in [("net", "UNKNOWN"), ("layer", "F.SilkS"), ("width_mm", 0),
+                           ("start_mm", [1]), ("mid_mm", [1.5, 3]), ("position_mm", [0, 0])]:
+            aug = copy.deepcopy(self.augment)
+            params = aug["operations"][-1]["params"]
+            params["tracks"][0][key] = value
+            params["tracks_sha256"] = handoff.digest(params["tracks"])
+            with self.subTest(key=key), self.assertRaises(handoff.HandoffError):
+                handoff.validate_augmentation(aug, self.manifest)
+        for duplicate in (False, True):
+            aug = copy.deepcopy(self.augment)
+            params = aug["operations"][-1]["params"]
+            if duplicate:
+                params["tracks"] *= 2
+                params["tracks_sha256"] = handoff.digest(params["tracks"])
+            else:
+                params["tracks_sha256"] = "bad"
+            with self.assertRaises(handoff.HandoffError):
+                handoff.validate_augmentation(aug, self.manifest)
+
 class ProtectedTreeTests(unittest.TestCase):
     def test_local_history_is_excluded_without_hiding_project_or_library_files(self):
         with tempfile.TemporaryDirectory(prefix="stillair-protected-tree-") as raw:

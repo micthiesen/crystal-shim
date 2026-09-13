@@ -148,8 +148,8 @@ export function createSensorInitialGraphs(input: CircuitJson) {
         }
       }
       instance.libraryId = new SymbolLibId(id);
-      instance.inBom = reference !== "E1";
-      instance.inPosFiles = reference !== "E1";
+      instance.inBom = !["E1", "J1"].includes(reference!);
+      instance.inPosFiles = !["E1", "J1"].includes(reference!);
       lib.inBom = instance.inBom;
       lib.inPosFiles = instance.inPosFiles;
       const footprintFilter = lib.properties.find((p) => p.key === "ki_fp_filters");

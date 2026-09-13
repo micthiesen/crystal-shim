@@ -1,15 +1,12 @@
 # PCB workspace
 
-All three product boards have complete schematic/source placement and selected
-interfaces. The [controller](controller/kicad/README.md) has an accepted native
-ECO and is ready for routing. The sensor is also accepted: 16 footprints,
-41 unrouted connections and zero strict ERC/ordinary DRC/parity findings. The
-mains board is accepted with 26 footprints, 39 unrouted connections and the same
-clean checks. All three boards are ready for routing; [STATE](../docs/STATE.md)
-records per-board receipts.
-The shared enclosure fit and fixed accessory-power provisions are documented.
-Routing, copper/return-path inspection, final DRC and fabrication outputs follow
-this handoff; no board is fabrication-ready merely because it is ready to route.
+All three product boards have accepted native schematic/placement handoffs with
+prepared pours, routing widths and native DRC rules. Controller and mains share
+150 × 110 mm outlines and aligned mounts; the adhesive sensor is 18 × 64 mm.
+Expected unrouted connections are controller 166, mains 31 and sensor 21.
+[STATE](../docs/STATE.md) records current per-board receipts and the six exact
+sensor inner-shield padstack exceptions. Routing, final checks and fabrication
+exports follow; physical commissioning remains separate.
 
 Design the three boards as one final-use set for a single fabrication cycle.
 Complete part, interface, enclosure and source/layout reviews before release.

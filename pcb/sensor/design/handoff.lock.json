@@ -21,6 +21,440 @@
         "target": {}
       },
       {
+        "id": "sensor.augment.embedded-shield-padstack",
+        "kind": "custom_rule",
+        "owner": "kicad",
+        "params": {
+          "excluded_findings": [
+            {
+              "description": "Padstack is questionable (SMD pad has no outer layers)",
+              "items": [
+                {
+                  "description": "Pad 7 [SHLD2] of E1 on In2.Cu",
+                  "pos": {
+                    "x": 95.325,
+                    "y": 93.75
+                  },
+                  "uuid": "9a9b2dcd-c6ff-4bea-8fab-546195d855a8"
+                }
+              ],
+              "severity": "warning",
+              "type": "padstack"
+            },
+            {
+              "description": "Padstack is questionable (SMD pad has no outer layers)",
+              "items": [
+                {
+                  "description": "Pad 8 [SHLD1] of E1 on In2.Cu",
+                  "pos": {
+                    "x": 104.675,
+                    "y": 93.75
+                  },
+                  "uuid": "0c382945-a7cd-4f50-a85a-7dfd1dc849ef"
+                }
+              ],
+              "severity": "warning",
+              "type": "padstack"
+            },
+            {
+              "description": "Padstack is questionable (SMD pad has no outer layers)",
+              "items": [
+                {
+                  "description": "Pad 9 [SHLD1] of E1 on In2.Cu",
+                  "pos": {
+                    "x": 104.675,
+                    "y": 125.25
+                  },
+                  "uuid": "bd3af467-90f4-45fa-b2f7-60409c03deb7"
+                }
+              ],
+              "severity": "warning",
+              "type": "padstack"
+            },
+            {
+              "description": "Padstack is questionable (SMD pad has no outer layers)",
+              "items": [
+                {
+                  "description": "Pad 10 [SHLD2] of E1 on In2.Cu",
+                  "pos": {
+                    "x": 95.325,
+                    "y": 125.25
+                  },
+                  "uuid": "b94abd73-9b5e-469b-8cd8-9bf897d677bb"
+                }
+              ],
+              "severity": "warning",
+              "type": "padstack"
+            },
+            {
+              "description": "Padstack is questionable (SMD pad has no outer layers)",
+              "items": [
+                {
+                  "description": "Pad 11 [SHLD1] of E1 on In2.Cu",
+                  "pos": {
+                    "x": 100,
+                    "y": 97.3875
+                  },
+                  "uuid": "42d61e86-f7af-43ce-a501-835b7d7a4bbb"
+                }
+              ],
+              "severity": "warning",
+              "type": "padstack"
+            },
+            {
+              "description": "Padstack is questionable (SMD pad has no outer layers)",
+              "items": [
+                {
+                  "description": "Pad 12 [SHLD1] of E1 on In2.Cu",
+                  "pos": {
+                    "x": 100.5,
+                    "y": 126
+                  },
+                  "uuid": "eb200628-73f0-4852-b871-8c50e51bea59"
+                }
+              ],
+              "severity": "warning",
+              "type": "padstack"
+            }
+          ],
+          "rule": "Six exact UUID-bound padstack warnings are intentional embedded E1 shield copper, not assembled SMD components. No other warning is waived. Native layer/net/size checks and copper plots verify the intended geometry."
+        },
+        "target": {}
+      },
+      {
+        "id": "sensor.augment.final-silkscreen",
+        "kind": "silkscreen",
+        "owner": "kicad",
+        "params": {
+          "labels": [
+            [
+              "1",
+              95.8,
+              69.5
+            ],
+            [
+              "2",
+              95.8,
+              72.5
+            ],
+            [
+              "3",
+              95.8,
+              75.5
+            ],
+            [
+              "4",
+              95.8,
+              78.5
+            ],
+            [
+              "5",
+              95.8,
+              81.5
+            ],
+            [
+              "6",
+              95.8,
+              84.5
+            ],
+            [
+              "RIM",
+              102,
+              69
+            ]
+          ],
+          "requirements": [
+            "Outward J1 pad numbers 1 through 6 and top RIM orientation; no glass-facing silkscreen."
+          ],
+          "status": "Applied during final preparation.",
+          "verification": "Native saved readback and DRC, F.SilkS render."
+        },
+        "target": {}
+      },
+      {
+        "id": "sensor.augment.fixed-breakout-routing",
+        "kind": "routing_add",
+        "owner": "kicad",
+        "params": {
+          "before_snapshot_sha256": "15345a026a59d6d5b5c18592aa9dcc7469b0cf14437237412da825119bb8135a",
+          "reason": "Connect the fixed sensor electrodes and inner driven shields to U1 before owner routing.",
+          "tracks": [
+            {
+              "end_mm": [
+                100,
+                94
+              ],
+              "layer": "B.Cu",
+              "net": "CIN_RL",
+              "position_mm": [
+                100.6,
+                94
+              ],
+              "start_mm": [
+                100.6,
+                94
+              ],
+              "uuid": "5d043b14-2f79-49e7-bdc0-8dfafb2dda50",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                100.6,
+                94
+              ],
+              "layer": "F.Cu",
+              "net": "CIN_RL",
+              "position_mm": [
+                98.5,
+                94
+              ],
+              "start_mm": [
+                98.5,
+                94
+              ],
+              "uuid": "671340fe-29b0-4cae-92d3-85e15a843fc4",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                100.6,
+                95
+              ],
+              "layer": "F.Cu",
+              "net": "CIN_LEVEL",
+              "position_mm": [
+                97.9,
+                95
+              ],
+              "start_mm": [
+                97.9,
+                95
+              ],
+              "uuid": "d84bd873-64a0-45ed-98d4-198ac0e66ec7",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                101,
+                97
+              ],
+              "layer": "F.Cu",
+              "net": "SHLD1",
+              "position_mm": [
+                101.5,
+                97
+              ],
+              "start_mm": [
+                101.5,
+                97
+              ],
+              "uuid": "99b5d695-710f-4214-872a-396cd5bca6b0",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                101.5,
+                91
+              ],
+              "layer": "F.Cu",
+              "net": "SHLD1",
+              "position_mm": [
+                99.8,
+                91
+              ],
+              "start_mm": [
+                99.8,
+                91
+              ],
+              "uuid": "46d95e41-428a-40c0-8958-bf392227fd29",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                101.5,
+                97
+              ],
+              "layer": "F.Cu",
+              "net": "SHLD1",
+              "position_mm": [
+                101.5,
+                91
+              ],
+              "start_mm": [
+                101.5,
+                91
+              ],
+              "uuid": "ac5e3143-1332-4447-ab92-b85b77408286",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                101.7,
+                95
+              ],
+              "layer": "B.Cu",
+              "net": "CIN_LEVEL",
+              "position_mm": [
+                100.6,
+                95
+              ],
+              "start_mm": [
+                100.6,
+                95
+              ],
+              "uuid": "80824db9-697d-4b5a-8239-f08de6e309c8",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                104.2,
+                98.5
+              ],
+              "layer": "F.Cu",
+              "net": "SHLD2",
+              "position_mm": [
+                104.2,
+                93
+              ],
+              "start_mm": [
+                104.2,
+                93
+              ],
+              "uuid": "1142bcfc-6138-4d56-86fd-5664284d4f1b",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                97.9,
+                91.5
+              ],
+              "layer": "F.Cu",
+              "net": "CIN_LEVEL",
+              "position_mm": [
+                99.8,
+                91.5
+              ],
+              "start_mm": [
+                99.8,
+                91.5
+              ],
+              "uuid": "e382a71a-beba-4ce5-ab32-dce2e70e687f",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                97.9,
+                95
+              ],
+              "layer": "F.Cu",
+              "net": "CIN_LEVEL",
+              "position_mm": [
+                97.9,
+                91.5
+              ],
+              "start_mm": [
+                97.9,
+                91.5
+              ],
+              "uuid": "eb4e7a43-936f-4d64-8006-b41ebf45e15b",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                98.3,
+                97
+              ],
+              "layer": "B.Cu",
+              "net": "SHLD2",
+              "position_mm": [
+                99,
+                97
+              ],
+              "start_mm": [
+                99,
+                97
+              ],
+              "uuid": "e4728d38-ad8c-4fc0-a296-14067a8cc45b",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                98.5,
+                92
+              ],
+              "layer": "F.Cu",
+              "net": "CIN_RL",
+              "position_mm": [
+                99.8,
+                92
+              ],
+              "start_mm": [
+                99.8,
+                92
+              ],
+              "uuid": "ca7d9564-f87d-4cbb-9c8c-0437d05f595b",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                98.5,
+                94
+              ],
+              "layer": "F.Cu",
+              "net": "CIN_RL",
+              "position_mm": [
+                98.5,
+                92
+              ],
+              "start_mm": [
+                98.5,
+                92
+              ],
+              "uuid": "28c4b0c7-b7f2-4cfe-8174-9d612fbcfc1b",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                99,
+                97
+              ],
+              "layer": "F.Cu",
+              "net": "SHLD2",
+              "position_mm": [
+                99,
+                98.5
+              ],
+              "start_mm": [
+                99,
+                98.5
+              ],
+              "uuid": "3de14cc8-5eb9-4f55-8061-54fb2ae62833",
+              "width_mm": 0.15
+            },
+            {
+              "end_mm": [
+                99,
+                98.5
+              ],
+              "layer": "F.Cu",
+              "net": "SHLD2",
+              "position_mm": [
+                104.2,
+                98.5
+              ],
+              "start_mm": [
+                104.2,
+                98.5
+              ],
+              "uuid": "67ad9d8a-760d-46e4-8cf1-ce39c77bc4bf",
+              "width_mm": 0.15
+            }
+          ],
+          "tracks_sha256": "e158078fe043d9c52b032e3402d1b084c2c3d665fd5fb529e99a0736b7defd23"
+        },
+        "target": {}
+      },
+      {
         "id": "sensor.augment.native-footprints",
         "kind": "footprint_override",
         "owner": "kicad",
@@ -28,7 +462,7 @@
           "library": "CrystalShim_Sensor",
           "mapping": "Sensor_<ref>",
           "scope": "All16 references, including copper-only E1",
-          "verification": "Source/native pad geometry, net and placement parity;13 E1 copper-only mask-covered pads;E1 excluded from assembly/BOM."
+          "verification": "Exact source/native pad multiset, net, placement and geometry parity. E1 has 32 copper primitives on 13 schematic terminals. E1 and J1 are excluded from assembly BOM/CPL."
         },
         "target": {}
       },
@@ -65,10 +499,10 @@
             "minimum_clearance_mm": 0.15,
             "minimum_track_width_mm": 0.15,
             "ordinary_net_class_clearance_mm": 0.2,
-            "via_diameter_mm": 0.6,
-            "via_drill_mm": 0.3
+            "via_diameter_mm": 0.45,
+            "via_drill_mm": 0.2
           },
-          "rule": "Join each same-net electrode/shield island at head;SHLD1 behind CIN routes;keepCIN3/4 open;short local decoupling and clamp-return paths;ordinary0.2mm signal clearances outside0.15mm electrode lead geometry. No certification claim."
+          "rule": "E1 spines connect bars. Native prepared CIN and shield breakouts joinU1;keepCIN3/4open. F/In1 ordinaryrouting, no unrelatedB/In2tracks.0.15mm sensorbreakouts;0.45/0.20mm smallthroughvias fitshieldgap."
         },
         "target": {}
       },
@@ -89,7 +523,7 @@
         "params": {
           "policy": "Enforce routing defaults and exact power/USB/ground-reference/sensing constraints using native DRC plus pcb/tools/check_routing.py. No hardware or firmware scope change.",
           "policy_file": "pcb/tools/routing-policy.json",
-          "policy_sha256": "3e90a16f1b042b4e27c0214fde997d79add3320076229729dd818b86066b57cc",
+          "policy_sha256": "e5762fa4609104c806ca32dc7fbf0a99ede511862da433ce993c786bb07061c2",
           "status": "Apply through native settings/GUI, exercise with intentionally bad scratch traces.",
           "verification": "Native negative DRC tests and check-routing.sh; full narrow-segment containment supplements native intersectsArea."
         },
@@ -104,49 +538,19 @@
         "params": {
           "placements_native_xy_diameter_drill_mm": [
             [
-              84,
-              69.2,
-              0.6,
-              0.3
+              100.575,
+              77,
+              0.45,
+              0.2
             ],
             [
-              94,
-              69.2,
-              0.6,
-              0.3
-            ],
-            [
-              86.8,
-              72,
-              0.6,
-              0.3
-            ],
-            [
-              108.5,
-              75.3,
-              0.6,
-              0.3
-            ],
-            [
-              109.5,
-              73.4,
-              0.6,
-              0.3
-            ],
-            [
-              112,
-              73,
-              0.6,
-              0.3
-            ],
-            [
-              113.8,
-              62,
-              0.6,
-              0.3
+              100.575,
+              82,
+              0.45,
+              0.2
             ]
           ],
-          "status": "Declared GND stitching/thermal vias; preserve source pads and every existing route.",
+          "status": "Prepared GND vias join F.Cu and In1.Cu through the central gap; native DRC passes.",
           "tenting": "both sides"
         },
         "target": {
@@ -158,77 +562,47 @@
         "kind": "zone",
         "owner": "kicad",
         "params": {
-          "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove all floating islands. In2 remains available for power/signal routing; no arbitrary split power plane.",
+          "connection": "SolidSMD/via connections;0.2mmclearance; remove floatingislands. In2only drivenSHLD1/2fixedcopper,Bonlyelectrodes and declaredbreakouts.",
           "planes": {
             "layers": [
               "F.Cu",
-              "B.Cu"
+              "In1.Cu"
             ],
             "net": "GND",
             "outline": [
               [
-                81,
-                57
+                91.3,
+                68.3
               ],
               [
-                119,
-                57
+                108.7,
+                68.3
               ],
               [
-                119,
-                78.8
+                108.7,
+                131.7
               ],
               [
-                81,
-                78.8
+                91.3,
+                131.7
               ]
             ],
             "vias": [
               [
-                84,
-                69.2,
-                0.6,
-                0.3
+                100.575,
+                77,
+                0.45,
+                0.2
               ],
               [
-                94,
-                69.2,
-                0.6,
-                0.3
-              ],
-              [
-                86.8,
-                72,
-                0.6,
-                0.3
-              ],
-              [
-                108.5,
-                75.3,
-                0.6,
-                0.3
-              ],
-              [
-                109.5,
-                73.4,
-                0.6,
-                0.3
-              ],
-              [
-                112,
-                73,
-                0.6,
-                0.3
-              ],
-              [
-                113.8,
-                62,
-                0.6,
-                0.3
+                100.575,
+                82,
+                0.45,
+                0.2
               ]
             ]
           },
-          "status": "Apply through native API and fill; verify saved zone connectivity/DRC."
+          "status": "Native ground pours filled and verified on F.Cu and In1.Cu."
         },
         "target": {
           "net_stable_id": "sensor.net.gnd"
@@ -260,15 +634,15 @@
         "kind": "custom_rule",
         "owner": "kicad",
         "params": {
-          "native_application": "apply-sensor-routing-rules.py: both copper layers prohibit vias and zone fills;electrode pads and short trace entry remain allowed. Route at head, not across sensing field.",
+          "native_application": "Native SENSOR_FIXED_ELECTRODES_NO_POURS prohibits zonefills onB.Cu/In2.Cu, retains exact E1pads and declared breakouts.",
           "native_rectangle_mm": [
-            81,
-            79,
-            119,
-            143
+            91,
+            68,
+            109,
+            132
           ],
-          "region": "rim-relative y0..64,entire38mm width",
-          "rule": "No unrelated copper,ground,holes,vias,paste or exposed mask on glass-facing side. Retain exact E1 geometry. Only declared electrodes and SHLD1/2 copper permitted. All layer changes occur above rim."
+          "region": "Entire18x64mm board onB.Cu andIn2.Cu",
+          "rule": "No zone pours onB.Cu/In2.Cu. Fixed E1 copper-only geometry. Outward F.Cu/In1.Cu routing; only declared CIN breakouts and tented vias reach glass face."
         },
         "target": {}
       },
@@ -278,58 +652,251 @@
         "owner": "kicad",
         "params": {
           "copper_weight_oz": 1,
-          "layer_count": 2,
+          "layer_count": 4,
           "material": "FR4",
           "surface_finish": "ENIG",
           "thickness_mm": 1.6,
-          "verification": "Native physical stackup and board header both total 1.6 mm; two 0.035 mm copper layers; final readback required."
+          "verification": "Four-layer JLC7628 construction: 35 um outer and 15.2 um inner copper; 0.2104/1.065/0.2104 mm dielectrics. Physical total 1.6062 mm, nominal order thickness 1.6 mm."
+        },
+        "target": {}
+      },
+      {
+        "id": "sensor.augment.stencil-process",
+        "kind": "fabrication_note",
+        "owner": "kicad",
+        "params": {
+          "aperture_source": "Native F.Paste, 42 apertures, effective pad paste margins zero",
+          "criterion": "A / (perimeter * thickness) >= 0.66",
+          "minimum_aperture": "U1 pads 1 through 10, rounded rectangle 1.45 x 0.30 mm, radius 0.05 mm",
+          "minimum_area_ratio": 1.2678201220014331,
+          "status": "100 micrometre stencil selected by native geometry calculation; paste printing and assembly remain unmeasured. E1 and J1 have no paste apertures.",
+          "stencil_thickness_mm": 0.1
+        },
+        "target": {}
+      },
+      {
+        "id": "sensor.augment.visual-target-breakouts",
+        "kind": "fabrication_note",
+        "owner": "kicad",
+        "params": {
+          "category": "routing",
+          "text": "Prepared through vias and short CIN/shield routes preserve fixed mask-covered electrodes. Standard through vias are tented on both sides; no filled/capped process.",
+          "tracks": [
+            {
+              "layer": "B.Cu",
+              "net": "CIN_LEVEL",
+              "points_mm": [
+                [
+                  100.6,
+                  95
+                ],
+                [
+                  101.7,
+                  95
+                ]
+              ],
+              "width_mm": 0.15
+            },
+            {
+              "layer": "B.Cu",
+              "net": "CIN_RL",
+              "points_mm": [
+                [
+                  100.6,
+                  94
+                ],
+                [
+                  100,
+                  94
+                ]
+              ],
+              "width_mm": 0.15
+            },
+            {
+              "layer": "F.Cu",
+              "net": "CIN_LEVEL",
+              "points_mm": [
+                [
+                  99.8,
+                  91.5
+                ],
+                [
+                  97.9,
+                  91.5
+                ],
+                [
+                  97.9,
+                  95
+                ],
+                [
+                  100.6,
+                  95
+                ]
+              ],
+              "width_mm": 0.15
+            },
+            {
+              "layer": "F.Cu",
+              "net": "CIN_RL",
+              "points_mm": [
+                [
+                  99.8,
+                  92
+                ],
+                [
+                  98.5,
+                  92
+                ],
+                [
+                  98.5,
+                  94
+                ],
+                [
+                  100.6,
+                  94
+                ]
+              ],
+              "width_mm": 0.15
+            },
+            {
+              "layer": "F.Cu",
+              "net": "SHLD1",
+              "points_mm": [
+                [
+                  99.8,
+                  91
+                ],
+                [
+                  101.5,
+                  91
+                ],
+                [
+                  101.5,
+                  97
+                ],
+                [
+                  101,
+                  97
+                ]
+              ],
+              "width_mm": 0.15
+            },
+            {
+              "layer": "F.Cu",
+              "net": "SHLD2",
+              "points_mm": [
+                [
+                  104.2,
+                  93
+                ],
+                [
+                  104.2,
+                  98.5
+                ],
+                [
+                  99,
+                  98.5
+                ],
+                [
+                  99,
+                  97
+                ]
+              ],
+              "width_mm": 0.15
+            },
+            {
+              "layer": "B.Cu",
+              "net": "SHLD2",
+              "points_mm": [
+                [
+                  99,
+                  97
+                ],
+                [
+                  98.3,
+                  97
+                ]
+              ],
+              "width_mm": 0.15
+            }
+          ],
+          "vias": [
+            {
+              "diameter_mm": 0.45,
+              "drill_mm": 0.2,
+              "net": "CIN_LEVEL",
+              "xy_mm": [
+                100.6,
+                95
+              ]
+            },
+            {
+              "diameter_mm": 0.45,
+              "drill_mm": 0.2,
+              "net": "CIN_RL",
+              "xy_mm": [
+                100.6,
+                94
+              ]
+            },
+            {
+              "diameter_mm": 0.6,
+              "drill_mm": 0.3,
+              "net": "SHLD1",
+              "xy_mm": [
+                101,
+                97
+              ]
+            },
+            {
+              "diameter_mm": 0.6,
+              "drill_mm": 0.3,
+              "net": "SHLD2",
+              "xy_mm": [
+                99,
+                97
+              ]
+            }
+          ]
         },
         "target": {}
       }
     ],
     "schema_version": 1
   },
-  "augmentation_sha256": "d49069bfdbd356b72c16b78b0f298d82fd25211e210f0fddf70609a429a2185c",
+  "augmentation_sha256": "05de440fe238f285bbe0c2c13b87d4ad00255b85f3ef7b68c16af3aa45074535",
   "board_id": "sensor.board.main",
-  "eco_receipt_sha256": "366188e256b2fe9af75c153626eb9078587473502a79514d74e0a43ea16ab105",
+  "eco_receipt_sha256": "d3681bc8cdd6b825c2ebe92d1702d1dd5d09fbb203953839834780d99ac53d8f",
   "initial_handoff_receipt_sha256": "36efff3ff1f4307b5852de878750d190a647a157a856c1817d2d5e60975e19f7",
   "manifest": {
     "board": {
       "coordinate_system": "center-x-right-y-up",
-      "height_mm": 86,
-      "holes": [
-        {
-          "drill_mm": 3,
-          "ref": "J1",
-          "stable_id": "sensor.hole.j1.locator-1",
-          "x_mm": 3,
-          "y_mm": 39.32
-        }
-      ],
+      "height_mm": 64,
+      "holes": [],
       "kicad_origin_mm": [
         100,
         100
       ],
-      "layer_count": 2,
+      "layer_count": 4,
       "outline": {
         "center_mm": [
           0,
           0
         ],
-        "height_mm": 86,
+        "height_mm": 64,
         "kind": "rectangle",
-        "width_mm": 38
+        "width_mm": 18
       },
       "specs": {
         "assembly_sides": [
           "front"
         ],
-        "compiled_board_sha256": "ec8280c83a93feb36cb0fe7d198eb5708015fa9003d70493175b4b4afa1eec39",
+        "compiled_board_sha256": "2b7f9148008b3d873dc51c61ee4cece69b8c811ab2dabe36f3560c380dabc236",
         "material": "FR4",
         "thickness_mm": 1.6
       },
       "stable_id": "sensor.board.main",
-      "width_mm": 38
+      "width_mm": 18
     },
     "components": [
       {
@@ -344,14 +911,14 @@
             "1",
             "2"
           ],
-          "source_geometry_sha256": "a2cd974c86491f8fc3d26cecebf6e20068b252e102f4dcf7785e7f4e5398293c",
+          "source_geometry_sha256": "a11dcd82710db9be6dd9bea8e3c9c3c0a39a5d01ecddf7dc15d599628643a785",
           "tscircuit": "tscircuit:CrystalShim:TDK_C3216"
         },
         "placement": {
           "rotation_deg": 90,
           "side": "front",
-          "x_mm": -16,
-          "y_mm": 28
+          "x_mm": -2,
+          "y_mm": 23
         },
         "ref": "C1",
         "stable_id": "sensor.component.c1",
@@ -370,14 +937,14 @@
             "1",
             "2"
           ],
-          "source_geometry_sha256": "7ece0dbfa76b3e89a06eed704906fe3049f88dfe4c9199445dcc37535c5d321b",
+          "source_geometry_sha256": "246982de6cfbe33e77202b2dd5c62f23d684c95d320ca8bff34e6f307ca7a441",
           "tscircuit": "tscircuit:CrystalShim:TDK_C3216"
         },
         "placement": {
           "rotation_deg": 90,
           "side": "front",
-          "x_mm": -6,
-          "y_mm": 28
+          "x_mm": 6,
+          "y_mm": 23
         },
         "ref": "C2",
         "stable_id": "sensor.component.c2",
@@ -396,14 +963,14 @@
             "1",
             "2"
           ],
-          "source_geometry_sha256": "2d365d5289b3b66f0055e4e932fe2ff2c8fc169ad67e1ce4cc7324dc46d1ce11",
+          "source_geometry_sha256": "f6856b7f1e0d935240dfe65461b37a25fa09a007898fbe6815af35045ff0e278",
           "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
         },
         "placement": {
           "rotation_deg": 90,
           "side": "front",
-          "x_mm": 9.5,
-          "y_mm": 25
+          "x_mm": 6.5,
+          "y_mm": 8
         },
         "ref": "C3",
         "stable_id": "sensor.component.c3",
@@ -422,14 +989,14 @@
             "1",
             "2"
           ],
-          "source_geometry_sha256": "61cacc6b67b93aeafd86f73050da2ea04d8384ce4b36b13272109393321ae9ac",
+          "source_geometry_sha256": "202034d3b333b5e8c896c1311cd5ea9803e10df2745cd3e028caf1ca5253f0d5",
           "tscircuit": "tscircuit:CrystalShim:TDK_C2012"
         },
         "placement": {
           "rotation_deg": 90,
           "side": "front",
-          "x_mm": 12,
-          "y_mm": 25
+          "x_mm": 6.5,
+          "y_mm": 12
         },
         "ref": "C4",
         "stable_id": "sensor.component.c4",
@@ -448,14 +1015,14 @@
             "1",
             "2"
           ],
-          "source_geometry_sha256": "3daae9c7a6657ef14964f1eae1fd75b73e92e3ebbda2249671b9c5fa6c267f27",
+          "source_geometry_sha256": "e53dea6035ac31d8b99286cded74ed207b4e4e04edaf2f5d1ded0a679e336355",
           "tscircuit": "tscircuit:CrystalShim:STPS2L40U_SMB"
         },
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": -11,
-          "y_mm": 34
+          "x_mm": 2,
+          "y_mm": 29
         },
         "ref": "D2",
         "stable_id": "sensor.component.d2",
@@ -470,7 +1037,7 @@
           "manufacturer_part_number": "PCB-COPPER-OOP-50"
         },
         "footprint": {
-          "initial_geometry_sha256": "4b11b337dd12bcb0cd4d535962cc86abe2cff28543ee2a69e41cb599b198865e",
+          "initial_geometry_sha256": "95ab1321aef9b9f8aa85011752baa03ad7e512138034682512a89e219bc89a3e",
           "kicad": "CrystalShim_Sensor:Sensor_E1",
           "pad_numbers": [
             "1",
@@ -487,14 +1054,14 @@
             "8",
             "9"
           ],
-          "source_geometry_sha256": "e4152441d4e9d5606a28bb6abdfd105a01a509fbb7bce33b5c72027a8ea00f04",
+          "source_geometry_sha256": "2828a04ff256631850a52bd35dcaac84b62d308771704ae2218c0a201faec59e",
           "tscircuit": "tscircuit:CrystalShim_Sensor:Tank_Electrodes"
         },
         "placement": {
           "rotation_deg": 0,
           "side": "front",
           "x_mm": 0,
-          "y_mm": -10
+          "y_mm": 0
         },
         "ref": "E1",
         "stable_id": "sensor.component.e1",
@@ -503,11 +1070,13 @@
       },
       {
         "fields": {
-          "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf",
-          "manufacturer_part_number": "43045-0600"
+          "datasheet_url": "",
+          "exclude_from_bom": true,
+          "exclude_from_cpl": true,
+          "manufacturer_part_number": "PCB-SENSOR-PIGTAIL-6"
         },
         "footprint": {
-          "initial_geometry_sha256": "d72064b1c8ab0d6df17b96ad3ce316448241f658f20e5273b833ef0b6d5fc5de",
+          "initial_geometry_sha256": "8bb4496b916828d3e1f9def6403f8311f8e1ec210b6649809d8d573d1e1f75b3",
           "kicad": "CrystalShim_Sensor:Sensor_J1",
           "pad_numbers": [
             "1",
@@ -517,19 +1086,19 @@
             "5",
             "6"
           ],
-          "source_geometry_sha256": "2924536f675a68bfbb3411e0a0bb469cece29fd7e3d206be54fb33c29b85a171",
-          "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43045-0600_2x03_P3.00mm_Horizontal"
+          "source_geometry_sha256": "d5b6ac7f04f9c486ae3c311f7a9c9f56166fce60c2c23d763b030f9eebc8b750",
+          "tscircuit": "tscircuit:CrystalShim_Sensor:Sensor_Pigtail_6"
         },
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 0,
-          "y_mm": 35
+          "x_mm": -6.5,
+          "y_mm": 23
         },
         "ref": "J1",
         "stable_id": "sensor.component.j1",
         "symbol": "CrystalShim_Sensor:Sensor_J1",
-        "value": "43045-0600"
+        "value": "PCB-SENSOR-PIGTAIL-6"
       },
       {
         "fields": {
@@ -537,20 +1106,20 @@
           "manufacturer_part_number": "ERJ3EKF22R0V"
         },
         "footprint": {
-          "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+          "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
           "kicad": "CrystalShim_Sensor:Sensor_R1",
           "pad_numbers": [
             "1",
             "2"
           ],
-          "source_geometry_sha256": "ed2d00a101d9956bd31da60f78641f3aed4899d0e3eaf2a23db857ec02ef43aa",
+          "source_geometry_sha256": "d6f8c7448851a9131c60628f94c5b16af284b4ba35ac5215807da9769a942c9e",
           "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
         },
         "placement": {
-          "rotation_deg": 90,
+          "rotation_deg": 0,
           "side": "front",
-          "x_mm": 14,
-          "y_mm": 33
+          "x_mm": -4,
+          "y_mm": 10
         },
         "ref": "R1",
         "stable_id": "sensor.component.r1",
@@ -563,20 +1132,20 @@
           "manufacturer_part_number": "ERJ3EKF22R0V"
         },
         "footprint": {
-          "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+          "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
           "kicad": "CrystalShim_Sensor:Sensor_R2",
           "pad_numbers": [
             "1",
             "2"
           ],
-          "source_geometry_sha256": "e62d3f7e0ff3b98b5c4b8755934c0441ddeb94656bf1cdcf50b9f6e973c39e55",
+          "source_geometry_sha256": "cfd85d18f599c27f10afb312c1d46e983bdbd1790f57238f068757d3e607a4bf",
           "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
         },
         "placement": {
-          "rotation_deg": 90,
+          "rotation_deg": 0,
           "side": "front",
-          "x_mm": 16.5,
-          "y_mm": 33
+          "x_mm": -4,
+          "y_mm": 7
         },
         "ref": "R2",
         "stable_id": "sensor.component.r2",
@@ -595,14 +1164,14 @@
             "1",
             "2"
           ],
-          "source_geometry_sha256": "a77b4ec781475ec9d34f940d3ffbb870f712af01d51d1321214140c9fbe4f872",
+          "source_geometry_sha256": "13faf7e055bfdb78d0042fb77c7a5ec8d7928692ea9f6c2a9ec7c313c26fbdc3",
           "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
         },
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 10,
-          "y_mm": 28
+          "x_mm": 2,
+          "y_mm": 15
         },
         "ref": "R3",
         "stable_id": "sensor.component.r3",
@@ -615,20 +1184,20 @@
           "manufacturer_part_number": "ERJ3EKF2701V"
         },
         "footprint": {
-          "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+          "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
           "kicad": "CrystalShim_Sensor:Sensor_R4",
           "pad_numbers": [
             "1",
             "2"
           ],
-          "source_geometry_sha256": "2ceedfe4714966dfddb6ace97a39c146f0f3cb434297bf66a400444926c17e52",
+          "source_geometry_sha256": "43a575b91ba7a6879df2fb098de3c0e1dc794ca682e5d8577be44a9184f4c99a",
           "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
         },
         "placement": {
-          "rotation_deg": 0,
+          "rotation_deg": 90,
           "side": "front",
-          "x_mm": 15,
-          "y_mm": 28
+          "x_mm": 6.5,
+          "y_mm": 16
         },
         "ref": "R4",
         "stable_id": "sensor.component.r4",
@@ -641,20 +1210,20 @@
           "manufacturer_part_number": "ERJ3EKF1002V"
         },
         "footprint": {
-          "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+          "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
           "kicad": "CrystalShim_Sensor:Sensor_R5",
           "pad_numbers": [
             "1",
             "2"
           ],
-          "source_geometry_sha256": "83546464c8c3addeb3a3dc8d2759e0b7abbb578602302fce5c351f78254b25cf",
+          "source_geometry_sha256": "242eb62d58e2a7f61ba68a1a1fa9f602fccffd94bd76e86e68c5472325b17e90",
           "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
         },
         "placement": {
-          "rotation_deg": 90,
+          "rotation_deg": 0,
           "side": "front",
-          "x_mm": -11,
-          "y_mm": 24
+          "x_mm": -2,
+          "y_mm": 19
         },
         "ref": "R5",
         "stable_id": "sensor.component.r5",
@@ -667,20 +1236,20 @@
           "manufacturer_part_number": "ERJ3EKF3011V"
         },
         "footprint": {
-          "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+          "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
           "kicad": "CrystalShim_Sensor:Sensor_R6",
           "pad_numbers": [
             "1",
             "2"
           ],
-          "source_geometry_sha256": "f3c258205ba857a6fefd3b60ba378a9dc456c3b2e9245dd281a32c8f85da0325",
+          "source_geometry_sha256": "1ec8d40109228bb2fed83def1127d359b3e860069f6aff7e50ce4859dae1bc26",
           "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
         },
         "placement": {
-          "rotation_deg": 90,
+          "rotation_deg": 0,
           "side": "front",
-          "x_mm": -1,
-          "y_mm": 25
+          "x_mm": 6.5,
+          "y_mm": 19
         },
         "ref": "R6",
         "stable_id": "sensor.component.r6",
@@ -707,14 +1276,14 @@
             "8",
             "9"
           ],
-          "source_geometry_sha256": "9bf5c24df7f6a0f96644c66c4fa340df213e7587f5101eed636c076c5427dd1e",
+          "source_geometry_sha256": "676c15c4e74585401e21b7dc84ca9bac8ed9a20c8c76a79fa6e34ab84c539813",
           "tscircuit": "tscircuit:CrystalShim_Sensor:FDC1004_DGS10"
         },
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 5,
-          "y_mm": 25
+          "x_mm": 2,
+          "y_mm": 8
         },
         "ref": "U1",
         "stable_id": "sensor.component.u1",
@@ -736,14 +1305,14 @@
             "4",
             "5"
           ],
-          "source_geometry_sha256": "11e348fbbc3fd76ce9dc2bbcef205edb66509d7ddda5970b83412abf09ecfdcf",
+          "source_geometry_sha256": "9f46de905b5eaf4fb82487e0834d187038e567f2d3db121d9a62847a901718ec",
           "tscircuit": "tscircuit:CrystalShim_Sensor:TPS7A2433_DBV5"
         },
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": -11,
-          "y_mm": 28
+          "x_mm": 2,
+          "y_mm": 23
         },
         "ref": "U2",
         "stable_id": "sensor.component.u2",
@@ -765,14 +1334,14 @@
             "4",
             "5"
           ],
-          "source_geometry_sha256": "5efd69df6181e55a400a691bbb0910d4f94f8a2cc777d029bc9868bcc2119994",
+          "source_geometry_sha256": "44208db4f4fb7395477659796a073581e829c1d0032e7795e8658bcc7dd8b3ce",
           "tscircuit": "tscircuit:CrystalShim:ESDS312_DBV5"
         },
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 14,
-          "y_mm": 38
+          "x_mm": -2,
+          "y_mm": 15
         },
         "ref": "U3",
         "stable_id": "sensor.component.u3",
@@ -783,121 +1352,292 @@
     "metadata": {
       "electrode_geometry": [
         [
-          "sen_oop_level",
-          4,
-          "bottom",
-          1.8,
-          8.15,
-          0,
-          50
-        ],
-        [
-          "sen_level",
+          "level_bar_1",
           1,
           "bottom",
-          11.15,
-          17.5,
-          0,
-          50
+          1.15,
+          7.5,
+          1,
+          5.55
+        ],
+        [
+          "level_bar_2",
+          1,
+          "bottom",
+          1.15,
+          7.5,
+          6.05,
+          10.6
+        ],
+        [
+          "level_bar_3",
+          1,
+          "bottom",
+          1.15,
+          7.5,
+          11.1,
+          15.649999999999999
+        ],
+        [
+          "level_bar_4",
+          1,
+          "bottom",
+          1.15,
+          7.5,
+          16.15,
+          20.7
+        ],
+        [
+          "level_bar_5",
+          1,
+          "bottom",
+          1.15,
+          7.5,
+          21.2,
+          25.75
+        ],
+        [
+          "level_bar_6",
+          1,
+          "bottom",
+          1.15,
+          7.5,
+          26.25,
+          30.8
+        ],
+        [
+          "level_bar_7",
+          1,
+          "bottom",
+          1.15,
+          7.5,
+          31.299999999999997,
+          35.849999999999994
+        ],
+        [
+          "level_bar_8",
+          1,
+          "bottom",
+          1.15,
+          7.5,
+          36.35,
+          40.9
+        ],
+        [
+          "level_bar_9",
+          1,
+          "bottom",
+          1.15,
+          7.5,
+          41.4,
+          45.949999999999996
+        ],
+        [
+          "level_bar_10",
+          1,
+          "bottom",
+          1.15,
+          7.5,
+          46.449999999999996,
+          50.99999999999999
+        ],
+        [
+          "oop_bar_1",
+          4,
+          "bottom",
+          10.5,
+          16.85,
+          1,
+          5.55
+        ],
+        [
+          "oop_bar_2",
+          4,
+          "bottom",
+          10.5,
+          16.85,
+          6.05,
+          10.6
+        ],
+        [
+          "oop_bar_3",
+          4,
+          "bottom",
+          10.5,
+          16.85,
+          11.1,
+          15.649999999999999
+        ],
+        [
+          "oop_bar_4",
+          4,
+          "bottom",
+          10.5,
+          16.85,
+          16.15,
+          20.7
+        ],
+        [
+          "oop_bar_5",
+          4,
+          "bottom",
+          10.5,
+          16.85,
+          21.2,
+          25.75
+        ],
+        [
+          "oop_bar_6",
+          4,
+          "bottom",
+          10.5,
+          16.85,
+          26.25,
+          30.8
+        ],
+        [
+          "oop_bar_7",
+          4,
+          "bottom",
+          10.5,
+          16.85,
+          31.299999999999997,
+          35.849999999999994
+        ],
+        [
+          "oop_bar_8",
+          4,
+          "bottom",
+          10.5,
+          16.85,
+          36.35,
+          40.9
+        ],
+        [
+          "oop_bar_9",
+          4,
+          "bottom",
+          10.5,
+          16.85,
+          41.4,
+          45.949999999999996
+        ],
+        [
+          "oop_bar_10",
+          4,
+          "bottom",
+          10.5,
+          16.85,
+          46.449999999999996,
+          50.99999999999999
+        ],
+        [
+          "level_spine",
+          1,
+          "bottom",
+          1.15,
+          1.3,
+          1,
+          51
+        ],
+        [
+          "oop_spine",
+          4,
+          "bottom",
+          16.7,
+          16.85,
+          1,
+          63
         ],
         [
           "sen_rl",
           2,
           "bottom",
-          20.5,
-          26.85,
-          52,
-          62
+          1.15,
+          7.5,
+          53,
+          63
         ],
         [
           "sen_oop_rl",
           4,
           "bottom",
-          29.85,
-          36.2,
-          52,
-          62
+          10.5,
+          16.85,
+          53,
+          63
         ],
         [
           "trace_rl_vertical",
           2,
           "bottom",
-          18.775,
-          18.925,
-          0,
-          57.075
+          8.925,
+          9.075,
+          1,
+          58.075
         ],
         [
           "trace_rl_horizontal",
           2,
           "bottom",
-          18.775,
-          20.575,
-          56.925,
-          57.075
+          7.425,
+          9.075,
+          57.925,
+          58.075
         ],
         [
-          "shield2_level_back",
-          4,
-          "top",
-          0.8,
-          9.15,
-          0,
-          62
-        ],
-        [
-          "shield1_level_back",
+          "shield1_back",
           3,
-          "top",
-          10.15,
-          18.5,
-          0,
-          62
+          "inner2",
+          0.65,
+          8,
+          0.5,
+          51
         ],
         [
           "shield1_ref_back",
           3,
-          "top",
-          19.5,
-          27.85,
-          0,
-          62
+          "inner2",
+          0.65,
+          8,
+          51,
+          63.5
+        ],
+        [
+          "shield2_back",
+          4,
+          "inner2",
+          10,
+          17.35,
+          0.5,
+          51
         ],
         [
           "shield2_ref_back",
           4,
-          "top",
-          28.85,
-          37.2,
-          0,
-          62
+          "inner2",
+          10,
+          17.35,
+          51,
+          63.5
         ],
         [
-          "shield1_rl_trace_vertical",
+          "shield1_rl_trace",
           3,
-          "top",
-          18.65,
-          19.05,
-          0,
-          57.2
+          "inner2",
+          8.85,
+          9.15,
+          0.5,
+          58.275
         ],
         [
-          "shield1_rl_trace_horizontal",
+          "shield1_rl_link",
           3,
-          "top",
-          18.65,
-          20.7,
-          56.8,
-          57.2
-        ],
-        [
-          "trace_oop_rl_vertical",
-          4,
-          "bottom",
-          32.95,
-          33.1,
-          0,
-          52.075
+          "inner2",
+          7.725,
+          9.275,
+          57.725,
+          58.275
         ]
       ],
       "glass_thickness_mm": 5,
@@ -1210,47 +1950,461 @@
       "tscircuit": "0.0.2465"
     }
   },
-  "manifest_sha256": "05d6f0bf8be1e2edb99ff6532cedf902f5d9a390af59f77347bbf9412f3de125",
+  "manifest_sha256": "66d28ee6adc23478c19bda6aa2e0cf9297f9d51b548f62111cacf24a804099b8",
   "schema_version": 1,
   "snapshot": {
     "board_id": "sensor.board.main",
     "kicad_owned": {
       "graphics": {
-        "details": [],
-        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        "details": [
+          {
+            "bbox_mm": [
+              100.807381,
+              68.26875,
+              2.385238,
+              1.4625
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              102,
+              69
+            ],
+            "text": "RIM",
+            "uuid": "b576c656-3372-4570-bc81-392a4ea0dac5"
+          },
+          {
+            "bbox_mm": [
+              95.274048,
+              68.76875,
+              1.051905,
+              1.4625
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              95.8,
+              69.5
+            ],
+            "text": "1",
+            "uuid": "2c224726-3e60-4ad5-ad99-5c377ab9f592"
+          },
+          {
+            "bbox_mm": [
+              95.274048,
+              71.76875,
+              1.051905,
+              1.4625
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              95.8,
+              72.5
+            ],
+            "text": "2",
+            "uuid": "5b32f728-f4b5-4ac4-8f0a-8fa60e75bec3"
+          },
+          {
+            "bbox_mm": [
+              95.274048,
+              74.76875,
+              1.051905,
+              1.4625
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              95.8,
+              75.5
+            ],
+            "text": "3",
+            "uuid": "8c977fb4-bfda-46ec-aec2-d4e90616202d"
+          },
+          {
+            "bbox_mm": [
+              95.274048,
+              77.76875,
+              1.051905,
+              1.4625
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              95.8,
+              78.5
+            ],
+            "text": "4",
+            "uuid": "38d97d5d-6051-4e9b-ae83-2b9ef898d415"
+          },
+          {
+            "bbox_mm": [
+              95.274048,
+              80.76875,
+              1.051905,
+              1.4625
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              95.8,
+              81.5
+            ],
+            "text": "5",
+            "uuid": "3bdb6e78-4a3c-4cb1-ab46-eda5dbbe62ef"
+          },
+          {
+            "bbox_mm": [
+              95.274048,
+              83.76875,
+              1.051905,
+              1.4625
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              95.8,
+              84.5
+            ],
+            "text": "6",
+            "uuid": "854afdfc-c5f6-4079-a5fd-719c54f33942"
+          }
+        ],
+        "sha256": "b6b96e04fc1e4b9b95268adae1d0cca9a0caa8fc35a6cd810f602682bcb31e71"
       },
       "rules": {
         "details": [
           {
             "board_setup": {
-              "copper_layer_count": 2,
+              "copper_layer_count": 4,
               "minimum_clearance_mm": 0.15,
               "minimum_hole_to_hole_mm": 0.25,
               "minimum_track_width_mm": 0.15,
-              "minimum_via_drill_mm": 0.3,
-              "minimum_via_size_mm": 0.5,
-              "thickness_mm": 1.6
+              "minimum_via_drill_mm": 0.2,
+              "minimum_via_size_mm": 0.45,
+              "thickness_mm": 1.6062
             }
           },
           {
             "path": "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_dru",
-            "sha256": "a81abd6425ada34cbe178a5427ed4f99c0f498def68e1321c2fe8fc8723b7753"
+            "sha256": "6f4bdfb611f6eab7cb5d6be420452a3b5fc5e9d412e1d2d840f461661dc97486"
           },
           {
             "path": "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_pro",
-            "sha256": "10669a5c2233963ffd83a1119f7c6fd9b3052bc357f14d9a13fa55c281fc2e6b"
+            "sha256": "dd02892573ac026dc9c472231b77190ebcf82ecc3ea53cef6087b850f3433988"
           }
         ],
-        "sha256": "c5935fbc61ba3bc81e45fbbb948389cc674940ba27856d92817ecb9dd50cd2d4"
+        "sha256": "0bfc91650bc960821fd05cba075cbd40008d3a0006202862f1974512530fa01e"
       },
       "tracks": {
-        "details": [],
-        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        "details": [
+          {
+            "end_mm": [
+              100,
+              94
+            ],
+            "layer": "B.Cu",
+            "net": "CIN_RL",
+            "position_mm": [
+              100.6,
+              94
+            ],
+            "start_mm": [
+              100.6,
+              94
+            ],
+            "uuid": "5d043b14-2f79-49e7-bdc0-8dfafb2dda50",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              100.6,
+              94
+            ],
+            "layer": "F.Cu",
+            "net": "CIN_RL",
+            "position_mm": [
+              98.5,
+              94
+            ],
+            "start_mm": [
+              98.5,
+              94
+            ],
+            "uuid": "671340fe-29b0-4cae-92d3-85e15a843fc4",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              100.6,
+              95
+            ],
+            "layer": "F.Cu",
+            "net": "CIN_LEVEL",
+            "position_mm": [
+              97.9,
+              95
+            ],
+            "start_mm": [
+              97.9,
+              95
+            ],
+            "uuid": "d84bd873-64a0-45ed-98d4-198ac0e66ec7",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              101,
+              97
+            ],
+            "layer": "F.Cu",
+            "net": "SHLD1",
+            "position_mm": [
+              101.5,
+              97
+            ],
+            "start_mm": [
+              101.5,
+              97
+            ],
+            "uuid": "99b5d695-710f-4214-872a-396cd5bca6b0",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              101.5,
+              91
+            ],
+            "layer": "F.Cu",
+            "net": "SHLD1",
+            "position_mm": [
+              99.8,
+              91
+            ],
+            "start_mm": [
+              99.8,
+              91
+            ],
+            "uuid": "46d95e41-428a-40c0-8958-bf392227fd29",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              101.5,
+              97
+            ],
+            "layer": "F.Cu",
+            "net": "SHLD1",
+            "position_mm": [
+              101.5,
+              91
+            ],
+            "start_mm": [
+              101.5,
+              91
+            ],
+            "uuid": "ac5e3143-1332-4447-ab92-b85b77408286",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              101.7,
+              95
+            ],
+            "layer": "B.Cu",
+            "net": "CIN_LEVEL",
+            "position_mm": [
+              100.6,
+              95
+            ],
+            "start_mm": [
+              100.6,
+              95
+            ],
+            "uuid": "80824db9-697d-4b5a-8239-f08de6e309c8",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              104.2,
+              98.5
+            ],
+            "layer": "F.Cu",
+            "net": "SHLD2",
+            "position_mm": [
+              104.2,
+              93
+            ],
+            "start_mm": [
+              104.2,
+              93
+            ],
+            "uuid": "1142bcfc-6138-4d56-86fd-5664284d4f1b",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              97.9,
+              91.5
+            ],
+            "layer": "F.Cu",
+            "net": "CIN_LEVEL",
+            "position_mm": [
+              99.8,
+              91.5
+            ],
+            "start_mm": [
+              99.8,
+              91.5
+            ],
+            "uuid": "e382a71a-beba-4ce5-ab32-dce2e70e687f",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              97.9,
+              95
+            ],
+            "layer": "F.Cu",
+            "net": "CIN_LEVEL",
+            "position_mm": [
+              97.9,
+              91.5
+            ],
+            "start_mm": [
+              97.9,
+              91.5
+            ],
+            "uuid": "eb4e7a43-936f-4d64-8006-b41ebf45e15b",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              98.3,
+              97
+            ],
+            "layer": "B.Cu",
+            "net": "SHLD2",
+            "position_mm": [
+              99,
+              97
+            ],
+            "start_mm": [
+              99,
+              97
+            ],
+            "uuid": "e4728d38-ad8c-4fc0-a296-14067a8cc45b",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              98.5,
+              92
+            ],
+            "layer": "F.Cu",
+            "net": "CIN_RL",
+            "position_mm": [
+              99.8,
+              92
+            ],
+            "start_mm": [
+              99.8,
+              92
+            ],
+            "uuid": "ca7d9564-f87d-4cbb-9c8c-0437d05f595b",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              98.5,
+              94
+            ],
+            "layer": "F.Cu",
+            "net": "CIN_RL",
+            "position_mm": [
+              98.5,
+              92
+            ],
+            "start_mm": [
+              98.5,
+              92
+            ],
+            "uuid": "28c4b0c7-b7f2-4cfe-8174-9d612fbcfc1b",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              99,
+              97
+            ],
+            "layer": "F.Cu",
+            "net": "SHLD2",
+            "position_mm": [
+              99,
+              98.5
+            ],
+            "start_mm": [
+              99,
+              98.5
+            ],
+            "uuid": "3de14cc8-5eb9-4f55-8061-54fb2ae62833",
+            "width_mm": 0.15
+          },
+          {
+            "end_mm": [
+              99,
+              98.5
+            ],
+            "layer": "F.Cu",
+            "net": "SHLD2",
+            "position_mm": [
+              104.2,
+              98.5
+            ],
+            "start_mm": [
+              104.2,
+              98.5
+            ],
+            "uuid": "67ad9d8a-760d-46e4-8cf1-ce39c77bc4bf",
+            "width_mm": 0.15
+          }
+        ],
+        "sha256": "e158078fe043d9c52b032e3402d1b084c2c3d665fd5fb529e99a0736b7defd23"
       },
       "vias": {
         "details": [
           {
-            "drill_mm": 0.3,
+            "drill_mm": 0.2,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "CIN_LEVEL",
+            "position_mm": [
+              100.6,
+              95
+            ],
+            "uuid": "1ea06056-5dc7-4cd1-9c74-f26135425b0f",
+            "width_mm": 0.45
+          },
+          {
+            "drill_mm": 0.2,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "CIN_RL",
+            "position_mm": [
+              100.6,
+              94
+            ],
+            "uuid": "1f029c7e-57c8-473d-8357-04161b1966fc",
+            "width_mm": 0.45
+          },
+          {
+            "drill_mm": 0.2,
             "layer": "F.Cu",
             "layer_pair": [
               "F.Cu",
@@ -1258,10 +2412,40 @@
             ],
             "net": "GND",
             "position_mm": [
-              108.5,
-              75.3
+              100.575,
+              77
             ],
-            "uuid": "bdfb9204-1125-48a9-b171-155c915ffea3",
+            "uuid": "2152aa70-9ac3-4743-8490-0598b89446d9",
+            "width_mm": 0.45
+          },
+          {
+            "drill_mm": 0.2,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "GND",
+            "position_mm": [
+              100.575,
+              82
+            ],
+            "uuid": "681039b2-962d-4fb8-acdc-f5444d6adbbb",
+            "width_mm": 0.45
+          },
+          {
+            "drill_mm": 0.3,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "SHLD1",
+            "position_mm": [
+              101,
+              97
+            ],
+            "uuid": "891c29e4-e7ef-4260-9318-0a410539f31c",
             "width_mm": 0.6
           },
           {
@@ -1271,202 +2455,127 @@
               "F.Cu",
               "B.Cu"
             ],
-            "net": "GND",
+            "net": "SHLD2",
             "position_mm": [
-              109.5,
-              73.4
+              99,
+              97
             ],
-            "uuid": "a2bb09e9-c676-4070-b939-21908dc6934e",
-            "width_mm": 0.6
-          },
-          {
-            "drill_mm": 0.3,
-            "layer": "F.Cu",
-            "layer_pair": [
-              "F.Cu",
-              "B.Cu"
-            ],
-            "net": "GND",
-            "position_mm": [
-              112,
-              73
-            ],
-            "uuid": "59d348e6-013c-452e-9cc4-021ae30df5b3",
-            "width_mm": 0.6
-          },
-          {
-            "drill_mm": 0.3,
-            "layer": "F.Cu",
-            "layer_pair": [
-              "F.Cu",
-              "B.Cu"
-            ],
-            "net": "GND",
-            "position_mm": [
-              113.8,
-              62
-            ],
-            "uuid": "450f841d-c4fd-4908-b8d6-22c6273e24b6",
-            "width_mm": 0.6
-          },
-          {
-            "drill_mm": 0.3,
-            "layer": "F.Cu",
-            "layer_pair": [
-              "F.Cu",
-              "B.Cu"
-            ],
-            "net": "GND",
-            "position_mm": [
-              84,
-              69.2
-            ],
-            "uuid": "8f51b69e-e688-467e-a8ea-6ec9171d281b",
-            "width_mm": 0.6
-          },
-          {
-            "drill_mm": 0.3,
-            "layer": "F.Cu",
-            "layer_pair": [
-              "F.Cu",
-              "B.Cu"
-            ],
-            "net": "GND",
-            "position_mm": [
-              86.8,
-              72
-            ],
-            "uuid": "85748dfd-f50d-4eec-a0f8-d3a584c811c1",
-            "width_mm": 0.6
-          },
-          {
-            "drill_mm": 0.3,
-            "layer": "F.Cu",
-            "layer_pair": [
-              "F.Cu",
-              "B.Cu"
-            ],
-            "net": "GND",
-            "position_mm": [
-              94,
-              69.2
-            ],
-            "uuid": "6804ee08-54b4-401a-9c8e-942af688ef02",
+            "uuid": "7bec58d2-9f37-4bba-86f5-3d78c04d3218",
             "width_mm": 0.6
           }
         ],
-        "sha256": "425ab70c4f4ebe946e9ac660b81ac91ee3a1217a253c346f11f2b9365b7952e4"
+        "sha256": "ae0e97d25ac81fa10d18a80c3b12cf1de5884449c500953a731b37d5a82e17e3"
       },
       "zones": {
         "details": [
           {
             "bbox_mm": [
-              81,
-              57,
-              38,
-              21.8
-            ],
-            "layers": [
-              "B.Cu"
-            ],
-            "name": "sensor GND B.Cu",
-            "net": "GND",
-            "outline_mm": [
-              [
-                [
-                  81,
-                  57
-                ],
-                [
-                  119,
-                  57
-                ],
-                [
-                  119,
-                  78.8
-                ],
-                [
-                  81,
-                  78.8
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "956260b5-9295-4e99-b36a-bf44859c6a84"
-          },
-          {
-            "bbox_mm": [
-              81,
-              57,
-              38,
-              21.8
-            ],
-            "layers": [
-              "F.Cu"
-            ],
-            "name": "sensor GND F.Cu",
-            "net": "GND",
-            "outline_mm": [
-              [
-                [
-                  81,
-                  57
-                ],
-                [
-                  119,
-                  57
-                ],
-                [
-                  119,
-                  78.8
-                ],
-                [
-                  81,
-                  78.8
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "ba4b1745-8889-45d5-b3ad-6dd0d06b1ecb"
-          },
-          {
-            "bbox_mm": [
-              81,
-              79,
-              38,
+              91,
+              68,
+              18,
               64
             ],
             "layers": [
               "B.Cu",
-              "F.Cu"
+              "In2.Cu"
             ],
-            "name": "SENSOR_WINDOW_NO_ROUTING",
+            "name": "SENSOR_FIXED_ELECTRODES_NO_POURS",
             "net": "",
             "outline_mm": [
               [
                 [
-                  81,
-                  79
+                  91,
+                  68
                 ],
                 [
-                  119,
-                  79
+                  109,
+                  68
                 ],
                 [
-                  119,
-                  143
+                  109,
+                  132
                 ],
                 [
-                  81,
-                  143
+                  91,
+                  132
                 ]
               ]
             ],
             "priority": 0,
-            "uuid": "db2e70c1-68c5-4603-9020-77bef46d3f3c"
+            "uuid": "9c4df799-3bb2-4e5e-a221-ea5bf391c3ef"
+          },
+          {
+            "bbox_mm": [
+              91.3,
+              68.3,
+              17.4,
+              63.399999
+            ],
+            "layers": [
+              "F.Cu"
+            ],
+            "name": "SENSOR_GND_FRONT",
+            "net": "GND",
+            "outline_mm": [
+              [
+                [
+                  91.3,
+                  68.3
+                ],
+                [
+                  108.7,
+                  68.3
+                ],
+                [
+                  108.7,
+                  131.699999
+                ],
+                [
+                  91.3,
+                  131.699999
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "910fa035-e2ee-4b07-8940-830c066f480f"
+          },
+          {
+            "bbox_mm": [
+              91.3,
+              68.3,
+              17.4,
+              63.399999
+            ],
+            "layers": [
+              "In1.Cu"
+            ],
+            "name": "SENSOR_GND_IN1",
+            "net": "GND",
+            "outline_mm": [
+              [
+                [
+                  91.3,
+                  68.3
+                ],
+                [
+                  108.7,
+                  68.3
+                ],
+                [
+                  108.7,
+                  131.699999
+                ],
+                [
+                  91.3,
+                  131.699999
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "7a4d2d6d-4464-4fb3-b485-579b5d697879"
           }
         ],
-        "sha256": "9d580c38da5875e6f701be62d074e17146aa3857f3733d649c6a4277d8f8aad7"
+        "sha256": "4e9a8f5831cbb7b886927d783baea1d2a8de83c2aae4ed04c827bd6908f72546"
       }
     },
     "routed": true,
@@ -1556,9 +2665,9 @@
           "value": "PCB-COPPER-OOP-50"
         },
         {
-          "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf",
+          "datasheet": "",
           "footprint": "CrystalShim_Sensor:Sensor_J1",
-          "manufacturer_part_number": "43045-0600",
+          "manufacturer_part_number": "PCB-SENSOR-PIGTAIL-6",
           "pins": [
             "1",
             "2",
@@ -1569,7 +2678,7 @@
           ],
           "ref": "J1",
           "symbol": "CrystalShim_Sensor:Sensor_J1",
-          "value": "43045-0600"
+          "value": "PCB-SENSOR-PIGTAIL-6"
         },
         {
           "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
@@ -1996,8 +3105,8 @@
           ],
           "placement": {
             "position_mm": [
-              84,
-              72
+              98,
+              77
             ],
             "rotation_deg": 90,
             "side": "front"
@@ -2021,8 +3130,8 @@
           ],
           "placement": {
             "position_mm": [
-              94,
-              72
+              106,
+              77
             ],
             "rotation_deg": 90,
             "side": "front"
@@ -2046,8 +3155,8 @@
           ],
           "placement": {
             "position_mm": [
-              109.5,
-              75
+              106.5,
+              92
             ],
             "rotation_deg": 90,
             "side": "front"
@@ -2071,8 +3180,8 @@
           ],
           "placement": {
             "position_mm": [
-              112,
-              75
+              106.5,
+              88
             ],
             "rotation_deg": 90,
             "side": "front"
@@ -2096,8 +3205,8 @@
           ],
           "placement": {
             "position_mm": [
-              89,
-              66
+              102,
+              71
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -2110,6 +3219,42 @@
         {
           "footprint": "CrystalShim_Sensor:Sensor_E1",
           "pads": [
+            {
+              "net": "SHLD2",
+              "number": "1"
+            },
+            {
+              "net": "SHLD2",
+              "number": "1"
+            },
+            {
+              "net": "SHLD2",
+              "number": "1"
+            },
+            {
+              "net": "SHLD2",
+              "number": "1"
+            },
+            {
+              "net": "SHLD2",
+              "number": "1"
+            },
+            {
+              "net": "SHLD2",
+              "number": "1"
+            },
+            {
+              "net": "SHLD2",
+              "number": "1"
+            },
+            {
+              "net": "SHLD2",
+              "number": "1"
+            },
+            {
+              "net": "SHLD2",
+              "number": "1"
+            },
             {
               "net": "SHLD2",
               "number": "1"
@@ -2129,6 +3274,46 @@
             {
               "net": "SHLD2",
               "number": "13"
+            },
+            {
+              "net": "CIN_LEVEL",
+              "number": "2"
+            },
+            {
+              "net": "CIN_LEVEL",
+              "number": "2"
+            },
+            {
+              "net": "CIN_LEVEL",
+              "number": "2"
+            },
+            {
+              "net": "CIN_LEVEL",
+              "number": "2"
+            },
+            {
+              "net": "CIN_LEVEL",
+              "number": "2"
+            },
+            {
+              "net": "CIN_LEVEL",
+              "number": "2"
+            },
+            {
+              "net": "CIN_LEVEL",
+              "number": "2"
+            },
+            {
+              "net": "CIN_LEVEL",
+              "number": "2"
+            },
+            {
+              "net": "CIN_LEVEL",
+              "number": "2"
+            },
+            {
+              "net": "CIN_LEVEL",
+              "number": "2"
             },
             {
               "net": "CIN_LEVEL",
@@ -2166,14 +3351,14 @@
           "placement": {
             "position_mm": [
               100,
-              110
+              100
             ],
             "rotation_deg": 0,
             "side": "front"
           },
           "ref": "E1",
           "stable_id": "sensor.component.e1",
-          "uuid": "1c58dc51-c1e1-48d8-a730-36a36ae4248d",
+          "uuid": "df8b2509-a2d5-4dd8-b896-4d16d2778afe",
           "value": "PCB-COPPER-OOP-50"
         },
         {
@@ -2206,16 +3391,16 @@
           ],
           "placement": {
             "position_mm": [
-              100,
-              65
+              93.5,
+              77
             ],
             "rotation_deg": 0,
             "side": "front"
           },
           "ref": "J1",
           "stable_id": "sensor.component.j1",
-          "uuid": "95b86222-ddc9-46eb-a1b9-07d7652cb0f0",
-          "value": "43045-0600"
+          "uuid": "26cbb430-c9db-4ecb-88cd-d4ed064cebb3",
+          "value": "PCB-SENSOR-PIGTAIL-6"
         },
         {
           "footprint": "CrystalShim_Sensor:Sensor_R1",
@@ -2231,10 +3416,10 @@
           ],
           "placement": {
             "position_mm": [
-              114,
-              67
+              96,
+              90
             ],
-            "rotation_deg": 90,
+            "rotation_deg": 0,
             "side": "front"
           },
           "ref": "R1",
@@ -2256,10 +3441,10 @@
           ],
           "placement": {
             "position_mm": [
-              116.5,
-              67
+              96,
+              93
             ],
-            "rotation_deg": 90,
+            "rotation_deg": 0,
             "side": "front"
           },
           "ref": "R2",
@@ -2281,8 +3466,8 @@
           ],
           "placement": {
             "position_mm": [
-              110,
-              72
+              102,
+              85
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -2306,10 +3491,10 @@
           ],
           "placement": {
             "position_mm": [
-              115,
-              72
+              106.5,
+              84
             ],
-            "rotation_deg": 0,
+            "rotation_deg": 90,
             "side": "front"
           },
           "ref": "R4",
@@ -2331,10 +3516,10 @@
           ],
           "placement": {
             "position_mm": [
-              89,
-              76
+              98,
+              81
             ],
-            "rotation_deg": 90,
+            "rotation_deg": 0,
             "side": "front"
           },
           "ref": "R5",
@@ -2356,10 +3541,10 @@
           ],
           "placement": {
             "position_mm": [
-              99,
-              75
+              106.5,
+              81
             ],
-            "rotation_deg": 90,
+            "rotation_deg": 0,
             "side": "front"
           },
           "ref": "R6",
@@ -2413,8 +3598,8 @@
           ],
           "placement": {
             "position_mm": [
-              105,
-              75
+              102,
+              92
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -2450,8 +3635,8 @@
           ],
           "placement": {
             "position_mm": [
-              89,
-              72
+              102,
+              77
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -2487,8 +3672,8 @@
           ],
           "placement": {
             "position_mm": [
-              114,
-              62
+              98,
+              85
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -2499,113 +3684,99 @@
           "value": "ESDS312DBVR"
         }
       ],
-      "holes": [
-        {
-          "drill_mm": [
-            3,
-            3
-          ],
-          "footprint_ref": "J1",
-          "pad": "",
-          "position_mm": [
-            103,
-            60.68
-          ],
-          "uuid": "c02b65c7-1235-418d-a957-85d509d5d2ea"
-        }
-      ],
+      "holes": [],
       "outline": [
         {
           "bbox_mm": [
-            118.95,
-            56.95,
-            0.1,
-            86.1
+            108.975,
+            67.975,
+            0.05,
+            64.05
           ],
           "class": "PCB_SHAPE",
           "end_mm": [
-            119,
-            57
+            109,
+            132
           ],
           "layer": "Edge.Cuts",
           "position_mm": [
-            119,
-            143
+            109,
+            68
           ],
           "start_mm": [
-            119,
-            143
+            109,
+            68
           ],
-          "uuid": "0b0e08c1-2b75-4026-bf05-1306c0c23010"
+          "uuid": "0d236c03-204e-48cb-bf96-a298b61dad5b"
         },
         {
           "bbox_mm": [
-            80.95,
-            142.95,
-            38.1,
-            0.1
+            90.975,
+            131.975,
+            18.05,
+            0.05
           ],
           "class": "PCB_SHAPE",
           "end_mm": [
-            119,
-            143
+            91,
+            132
           ],
           "layer": "Edge.Cuts",
           "position_mm": [
-            81,
-            143
+            109,
+            132
           ],
           "start_mm": [
-            81,
-            143
+            109,
+            132
           ],
-          "uuid": "534131f5-8b94-4f3d-b1d5-63e5c4b9fab5"
+          "uuid": "04b228bf-0566-4b09-8285-6356cad8483d"
         },
         {
           "bbox_mm": [
-            80.95,
-            56.95,
-            0.1,
-            86.1
+            90.975,
+            67.975,
+            0.05,
+            64.05
           ],
           "class": "PCB_SHAPE",
           "end_mm": [
-            81,
-            143
+            91,
+            68
           ],
           "layer": "Edge.Cuts",
           "position_mm": [
-            81,
-            57
+            91,
+            132
           ],
           "start_mm": [
-            81,
-            57
+            91,
+            132
           ],
-          "uuid": "9a2e923b-2104-4694-a726-e0115661d43e"
+          "uuid": "39ac7dba-32b0-4157-ab9a-25b8d2d03a0f"
         },
         {
           "bbox_mm": [
-            80.95,
-            56.95,
-            38.1,
-            0.1
+            90.975,
+            67.975,
+            18.05,
+            0.05
           ],
           "class": "PCB_SHAPE",
           "end_mm": [
-            81,
-            57
+            109,
+            68
           ],
           "layer": "Edge.Cuts",
           "position_mm": [
-            119,
-            57
+            91,
+            68
           ],
           "start_mm": [
-            119,
-            57
+            91,
+            68
           ],
-          "uuid": "d1fe286b-9197-45ba-b5c8-03dd12e5f78c"
+          "uuid": "42be93cf-bb62-418d-aa72-7b6858d1a782"
         }
       ]
     },
@@ -2615,8 +3786,8 @@
       "sensor.component.c3": "5ec5e035-5aa5-4dc6-8cf8-1a2f41efb32f",
       "sensor.component.c4": "2bd1dfb2-3292-4e7a-87dc-025fa20663f0",
       "sensor.component.d2": "61e69fcb-4d91-426c-912c-82dd0da2a99d",
-      "sensor.component.e1": "1c58dc51-c1e1-48d8-a730-36a36ae4248d",
-      "sensor.component.j1": "95b86222-ddc9-46eb-a1b9-07d7652cb0f0",
+      "sensor.component.e1": "df8b2509-a2d5-4dd8-b896-4d16d2778afe",
+      "sensor.component.j1": "26cbb430-c9db-4ecb-88cd-d4ed064cebb3",
       "sensor.component.r1": "a25ec3fb-465a-4fbc-ae7e-da4f75a25d79",
       "sensor.component.r2": "c9cd055c-30ad-401e-96f1-5fad687d1247",
       "sensor.component.r3": "af0c0940-d6cd-4170-96ad-18eb00f09d88",
@@ -2628,5 +3799,5 @@
       "sensor.component.u3": "dcf85d20-f5da-4e0b-81f7-36d6068070a5"
     }
   },
-  "snapshot_sha256": "2ff4158f1f5840dc108ee7768278276d28ddd57ecb2c704925df46a4ea00617f"
+  "snapshot_sha256": "21cefccaf2aade3e5f322198e3f834ea2881caecff1f4d26f961b8894f4130e0"
 }

@@ -1,10 +1,10 @@
 import { Fragment } from "react";
-import { SensorHeader } from "../../controller/design/micro-fit-components";
+import { SensorPigtail } from "./pigtail";
 import { ControllerCapacitor } from "../../controller/design/passive-components";
 import { CableSignalEsd } from "../../controller/design/cable-protection-components";
 import { PowerSchottky } from "../../controller/design/protection-components";
 import { Fdc1004, SensorLdo, SensorResistor } from "./components";
-import { Electrodes, electrodeRectangles, electrodeNets } from "./electrodes";
+import { Electrodes, electrodeTerminals, electrodeNets } from "./electrodes";
 import { sensorPlacements as p } from "./placements";
 export const sensorConnections: Record<string, Record<string, string>> = {
   J1: {
@@ -39,7 +39,7 @@ export const sensorConnections: Record<string, Record<string, string>> = {
   R5: { pin1: "V5_SENSOR", pin2: "GND" },
   R6: { pin1: "V3V3_SENSOR", pin2: "GND" },
   E1: Object.fromEntries(
-    electrodeRectangles.map(([id, pin]) => [id, electrodeNets[pin]]),
+    electrodeTerminals.map(([id, pin]) => [id, electrodeNets[pin]]),
   ),
 };
 const conn = (ref: string) =>
@@ -49,9 +49,9 @@ const conn = (ref: string) =>
 export default function SensorCircuit() {
   return (
     <board
-      width={38}
-      height={86}
-      layers={2}
+      width={18}
+      height={64}
+      layers={4}
       thickness={1.6}
       material="fr4"
       routingDisabled
@@ -65,7 +65,7 @@ export default function SensorCircuit() {
         sheetHeight={280}
       />
       <group name="Sensor" schSheetName="TankSensor">
-        <SensorHeader
+        <SensorPigtail
           name="J1"
           {...p.J1}
           schX={-16}

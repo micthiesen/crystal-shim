@@ -1,11 +1,13 @@
 # Sensor source and placement
 
 `SensorCircuit` in `sensor.circuit.tsx` owns the 16 schematic components,
-including copper-only E1, the 38 x86 mm two-layer board and explicit placement.
+including copper-only E1, the 18 × 64 mm four-layer board and explicit placement.
 `components.tsx` records exact TI lands and source receipts. `electrodes.tsx`
-owns thirteen mask-covered copper primitives with no assembly paste. E1 is not a
+owns 32 mask-covered copper primitives on thirteen schematic terminals with no assembly paste. E1 is not a
 purchased or placed accessory: its numbered lands let native parity track each
-piece and net. Same-net connections at the head remain routing work.
+piece and net. Common-net spines connect the bars. Native preparation owns the
+short CIN/shield breakout connections and their tented vias. J1 is an outward-face
+solder pigtail, also excluded from the purchased/placed parts list.
 
 Run from `pcb`: `bun sensor/design/render-sensor.tsx` and
 `bun test sensor/design`. Outputs are in `dist/sensor/design` and include both
@@ -13,7 +15,7 @@ copper views, schematic, Circuit JSON and the source manifest. The render reject
 source errors and actual drawn-pin/net mismatches.
 
 `sensor-initial-pcb.ts` creates a fresh typed initial KiCad graph in memory,
-normalizes J1's pin1 origin, restores connector physical details and removes
+preserves the outward pigtail lands and removes
 mask/paste exposure from electrode lands. It does not read, write or replace an
 adopted native project. Stage/adopt only under the project's guarded workflow.
 

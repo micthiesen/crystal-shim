@@ -19,6 +19,14 @@ POLICY = Path(__file__).with_name("routing-policy.json")
 EPS = 1e-7
 
 
+def escape_width_rule(net, label, minimum, trunk):
+    """Allow a bounded neck without making that neck the router's default."""
+    if not 0 < minimum <= trunk:
+        raise ValueError('Escape width must be positive and no larger than trunk')
+    return (f"A.NetName == '{net}' && A.enclosedByArea('{label}')",
+            f'(constraint track_width (min {minimum}mm) (opt {trunk}mm))')
+
+
 def interval_in_box(start, end, box):
     """Closed parameter interval of a line inside a rectangle, or None."""
     lo, hi = 0.0, 1.0
@@ -105,12 +113,81 @@ def audit(board, policy, pcbnew):
                     allowed = segment_in_boxes(point(item.GetStart()), point(item.GetEnd()), boxes)
                 if not allowed:
                     findings.append(f"{net} track {ident}: {width:g} mm below {rule['minimum_width_mm']:g} mm outside approved pad escapes")
-        field = policy.get('sensor_field')
-        if field and (is_via or net not in field['allowed_nets']):
-            b = rect(item.GetBoundingBox())
-            f = field['rectangle_mm']
-            if b[0] <= f[2] and b[2] >= f[0] and b[1] <= f[3] and b[3] >= f[1]:
-                findings.append(f"{net} item {ident}: prohibited copper or via in sensor field")
+    if policy.get('sensor_field'):
+        findings += sensor_geometry_findings(board, policy['sensor_field'], pcbnew)
+    return findings
+
+
+def sensor_geometry_findings(board, field, pcbnew):
+    """Protect fixed sensor copper while leaving outward routing available."""
+    mm = pcbnew.ToMM
+    xy = lambda p: [mm(p.x), mm(p.y)]
+    near = lambda a,b: len(a) == len(b) and all(abs(x-y) < .002 for x,y in zip(a,b))
+    findings = []
+    if board.GetCopperLayerCount() != 4:
+        findings.append('Sensor requires four copper layers')
+    electrodes = [p for f in board.GetFootprints() if f.GetReference() == 'E1' for p in f.Pads()]
+    for footprint in board.GetFootprints():
+        if footprint.GetReference() != 'E1' and any(p.GetLayerSet().Contains(pcbnew.B_Cu) for p in footprint.Pads()):
+            findings.append('Sensor mounting face has an unrelated component pad or through hole')
+    remaining = list(electrodes)
+    for expected in field['fixed_electrodes']:
+        matches = [p for p in remaining if p.GetNumber() == expected['number']
+                   and p.GetNetname() == expected['net']
+                   and p.GetShape() == pcbnew.PAD_SHAPE_RECT
+                   and abs(p.GetOrientationDegrees()) < EPS
+                   and [board.GetLayerName(l) for l in p.GetLayerSet().Seq()] == [expected['layer']]
+                   and near(xy(p.GetPosition()), expected['center_mm'])
+                   and near(xy(p.GetSize()), expected['size_mm'])]
+        if len(matches) != 1:
+            findings.append(f"Fixed sensor electrode {expected['number']} geometry/net/layer changed")
+        else:
+            remaining.remove(matches[0])
+    if remaining:
+        findings.append('Unexpected sensor electrode copper primitives')
+    actual_vias = {t.m_Uuid.AsString():t for t in board.GetTracks() if isinstance(t,pcbnew.PCB_VIA)}
+    for expected in field['prepared_vias']:
+        via = actual_vias.get(expected['uuid'])
+        if (via is None or via.GetNetname() != expected['net']
+                or not near(xy(via.GetPosition()),expected['position_mm'])
+                or abs(mm(via.GetWidth(pcbnew.F_Cu))-expected['width_mm']) > EPS
+                or abs(mm(via.GetDrillValue())-expected['drill_mm']) > EPS):
+            findings.append('Prepared sensor breakout via changed or missing')
+    bottom = []
+    for item in board.GetTracks():
+        if isinstance(item, pcbnew.PCB_VIA):
+            if item.m_Uuid.AsString() in {v['uuid'] for v in field['prepared_vias']}:
+                continue
+            x,y = xy(item.GetPosition()); r=mm(item.GetWidth(pcbnew.F_Cu))/2
+            if not box_inside((x-r,y-r,x+r,y+r),field['via_gap_mm']):
+                findings.append('Additional sensor via leaves the central shield gap')
+        else:
+            layer=board.GetLayerName(item.GetLayer())
+            if layer == 'In2.Cu':
+                findings.append('Fixed sensor inner shields prohibit routed tracks')
+            if layer == 'B.Cu':
+                bottom.append(item)
+    for expected in field['bottom_tracks']:
+        matches=[t for t in bottom if t.GetNetname()==expected['net']
+                 and near(xy(t.GetStart()),expected['start_mm']) and near(xy(t.GetEnd()),expected['end_mm'])
+                 and abs(mm(t.GetWidth())-expected['width_mm']) < EPS]
+        if len(matches)!=1:
+            findings.append('Prepared glass-face breakout changed or missing')
+        else:
+            bottom.remove(matches[0])
+    if bottom:
+        findings.append('Unrelated or undeclared track on sensor glass face')
+    ground_layers=set()
+    for zone in board.Zones():
+        if zone.GetIsRuleArea():
+            continue
+        layers={board.GetLayerName(l) for l in zone.GetLayerSet().Seq()}
+        if layers & {'B.Cu','In2.Cu'}:
+            findings.append('Sensor face and driven-shield layers prohibit zone pours')
+        if zone.GetNetname()=='GND':
+            ground_layers |= layers
+    if not set(field['ground_layers']) <= ground_layers:
+        findings.append('Sensor outward ground planes missing')
     return findings
 
 
@@ -128,6 +205,18 @@ def usb_length_findings(board, policy, pcbnew):
             mismatch = abs(lengths[net] - lengths[negative])
             if mismatch > 0.5 + EPS:
                 findings.append(f"USB {net}/{negative}: total routed copper mismatch {mismatch:.3f} mm exceeds 0.5 mm")
+    return findings
+
+
+def nonwaived_drc_findings(report, policy):
+    """Only explicit item-bound intentional copper warnings can be excluded."""
+    allowed=policy.get('native_drc_exclusions',[])
+    findings=[]
+    for item in report.get('violations',[]) + report.get('schematic_parity',[]):
+        identity={k:item.get(k) for k in ('type','description','severity','items')}
+        if item.get('excluded') is True and identity in allowed:
+            continue
+        findings.append(item)
     return findings
 
 
@@ -152,9 +241,14 @@ def main():
         findings += usb_length_findings(board, data['boards'][args.board], pcbnew)
         with tempfile.TemporaryDirectory(prefix='crystal-shim-routing-drc-') as directory:
             out = Path(directory) / 'drc.json'
-            result = subprocess.run(['kicad-cli','pcb','drc','--exit-code-violations','--refill-zones','--schematic-parity','--severity-all','--format','json','--output',str(out),str(path)], capture_output=True, text=True)
-            if result.returncode:
+            result = subprocess.run(['kicad-cli','pcb','drc','--refill-zones','--schematic-parity','--severity-all','--format','json','--output',str(out),str(path)], capture_output=True, text=True)
+            if result.returncode or not out.exists():
                 findings.append(f"Native final DRC failed (exit {result.returncode}): {result.stdout.strip()} {result.stderr.strip()}")
+            else:
+                report=json.loads(out.read_text())
+                failures=nonwaived_drc_findings(report,data['boards'][args.board])+report.get('unconnected_items',[])
+                if failures:
+                    findings.append(f"Native final DRC has {len(failures)} unwaived findings or unconnected items")
     print(json.dumps({'board':args.board,'final':args.final,'findings':findings,'passed':not findings},indent=2))
     return 1 if findings else 0
 

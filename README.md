@@ -8,20 +8,15 @@ It runs on configurable 15-minute schedules when the water level permits, with
 bounded HomeKit overrides. Every run ends automatically. See [behavior](docs/controls.md).
 Pushover alerts report confirmed water-level transitions in either direction.
 An ESP-hosted local webpage implements settings and schedules. The sensor
-targets a freshwater tank with 5 mm glass and is held snug by the owner's separate
-clip; this project supplies the PCB attachment interface.
+targets a freshwater tank with 5 mm glass. Its slim board adheres below the rim
+with thin mounting film and a left-exiting pigtail.
 
 **Build approach:** one complete design and fabrication cycle for all three
 final-use boards. Complete design reviews before fabrication, then calibrate and
 commission the assembled unit. No separate prototype phase is planned.
 
-**Status:** the shared-power controller ECO is accepted and ready for routing.
-Its schematic passes strict ERC; native PCB checks report zero ordinary DRC
-violations and zero schematic parity differences, with 253 connections to route.
-The sensor is also accepted for routing: 16 footprints, 41 unrouted connections
-and zero strict ERC, ordinary DRC or parity findings. The mains board is accepted
-with 26 footprints, 39 unrouted connections and the same clean checks. All three
-boards are ready for routing. See [current state](docs/STATE.md) for receipts.
+**Status:** the compact three-board designs are prepared for owner routing.
+See [current state](docs/STATE.md) for current checks and accepted handoff receipts.
 The C6 application includes sensing, relay/watchdog control, retained state,
 private Matter provisioning, local settings and verified-TLS Pushover delivery.
 The present hardware includes fixed 12 V power, three future pump drivers and a

@@ -1,0 +1,23 @@
+{
+  "controller": {
+    "receipt": "pcb/controller/kicad/evidence/pre-routing-preparation/eco-receipt.json",
+    "receipt_sha256": "07cd045d9f754761303da512a804059429b936e46082798a1e77cb68c7c7539e",
+    "native_file_count": 241,
+    "native_file_hash_mismatches": [],
+    "augmentation_matches_lock": true
+  },
+  "mains": {
+    "receipt": "pcb/mains/kicad/evidence/final-preparation/eco-application.json",
+    "receipt_sha256": "a09d14a35204d22c879e10a73fd11846bf65ee5081ddd943c1b272c1e9c2c236",
+    "native_file_count": 38,
+    "native_file_hash_mismatches": [],
+    "augmentation_matches_lock": true
+  },
+  "sensor": {
+    "receipt": "pcb/sensor/design/evidence/stencil-process/acceptance.json",
+    "receipt_sha256": "4faac3a6ab308e0fa4dafc68b8a68e2d8c9bc008ff0d2e155f0eb02762266812",
+    "native_file_count": 26,
+    "native_file_hash_mismatches": [],
+    "augmentation_matches_lock": true
+  }
+}

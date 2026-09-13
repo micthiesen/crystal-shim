@@ -1,0 +1,112 @@
+{
+  "date": "2026-09-13",
+  "scope": "Compact visual-design implementation and native routing preparation, not routed fabrication acceptance",
+  "status": "Accepted native routing preparation",
+  "project_gate": {
+    "command": "sh scripts/check.sh",
+    "exit_code": 0,
+    "pcb_tests": 253,
+    "pcb_assertions": 33548,
+    "handoff_tests": 57,
+    "ui_tests": 26,
+    "log": "project-check.log",
+    "notes": "Two native-only test classes skip under host Python; all 19 routing tests pass separately under KiCad Python with no skips. Expected ERROR lines in handoff tests exercise rejection paths."
+  },
+  "native_routing_unit_tests": {
+    "command": "sh pcb/tools/kicad_python.sh -m unittest discover -s pcb/tools -p test_check_routing.py",
+    "tests": 19,
+    "failures": 0,
+    "skips": 0
+  },
+  "physical_commissioning": "Not run",
+  "stillair_shared_tool_commit": "51efeaf",
+  "routing_artifact": "https://mcp.syas.ca/boris/artifacts/art_e9fv40epjxmu078n9c",
+  "routing_gate": {
+    "command": "sh scripts/check-routing.sh",
+    "exit_code": 0,
+    "ordinary_drc_and_schematic_parity_findings": 0,
+    "supplement_findings": 0,
+    "unconnected": {
+      "controller": 166,
+      "mains": 31,
+      "sensor": 21
+    },
+    "sensor_exact_padstack_exclusions": 6,
+    "final_routed_gate": "Not run as a passing release gate: boards intentionally remain unrouted."
+  },
+  "native_probes": {
+    "command": "sh pcb/tools/kicad_python.sh pcb/tools/test_native_routing_rules.py controller mains sensor",
+    "exit_code": 0,
+    "native_drc_probes": 13,
+    "usb_pair_recognition_checks": 6,
+    "report": "native-probes.json"
+  },
+  "native_receipts": {
+    "controller": {
+      "receipt": "pcb/controller/kicad/evidence/pre-routing-preparation/eco-receipt.json",
+      "receipt_sha256": "07cd045d9f754761303da512a804059429b936e46082798a1e77cb68c7c7539e",
+      "native_file_count": 241,
+      "native_file_hash_mismatches": [],
+      "augmentation_matches_lock": true
+    },
+    "mains": {
+      "receipt": "pcb/mains/kicad/evidence/final-preparation/eco-application.json",
+      "receipt_sha256": "a09d14a35204d22c879e10a73fd11846bf65ee5081ddd943c1b272c1e9c2c236",
+      "native_file_count": 38,
+      "native_file_hash_mismatches": [],
+      "augmentation_matches_lock": true
+    },
+    "sensor": {
+      "receipt": "pcb/sensor/design/evidence/stencil-process/acceptance.json",
+      "receipt_sha256": "4faac3a6ab308e0fa4dafc68b8a68e2d8c9bc008ff0d2e155f0eb02762266812",
+      "native_file_count": 26,
+      "native_file_hash_mismatches": [],
+      "augmentation_matches_lock": true
+    }
+  },
+  "review": [
+    {
+      "scope": "Controller source/native placement, stack and enclosure",
+      "result": "Exact positions/pads/nets preserved except authorized moves; all-layer pours/rules and mechanical allocations validated. Independent CAD/handoff review completed."
+    },
+    {
+      "scope": "Mains source/native and connector correctness",
+      "result": "Right-angle manufacturer geometry and MPN/value fields verified. Exact 106-track deletion authorization; 11 ground vias and isolated pours retained at new positions; strict ERC and source/native parity clean."
+    },
+    {
+      "scope": "Independent sensor geometry/native review",
+      "result": "No blocking findings: 32 E1 primitives, 13 logical terminals, six F-only pigtail lands, four-layer shield topology, 15 prepared segments and six exact padstack exclusions verified. No added protection/components."
+    },
+    {
+      "scope": "Adversarial generic preservation review",
+      "result": "Surviving cross-category UUID collision finding fixed and tested. Proposed routing-add clearance finding dismissed as misplaced responsibility: native DRC remains a mandatory separate gate and was run."
+    },
+    {
+      "scope": "Final native preparation audit",
+      "result": "Controller USB shell/duplicate paste corrected, existing labels completed; mains service labels completed; sensor pad/RIM labels and 100um stencil selected. All existing mask/paste/via processes audited and acceptance refreshed."
+    },
+    {
+      "scope": "Root final review",
+      "result": "Canonical specs/assembly export profile and key source/tool diffs inspected; actual controller assembly and mains front renders viewed; complete current native file hashes match accepted receipts. Explicit BOM CLI labels corrected after help verification."
+    }
+  ],
+  "images_retained": [
+    "docs/design/sensor-visual-target.png",
+    "docs/design/stacked-board-visual-target.png"
+  ],
+  "superseded_documents_removed": [
+    "docs/design/sensor-visual-target.md",
+    "docs/design/stacked-board-target.md",
+    "docs/design/stacked-board-visual-target.md"
+  ],
+  "limits": [
+    "Owner routing remains; final connectivity must reach zero before export.",
+    "Five existing initial DRC categories retain default ignore settings; applicable final fabrication categories must be enabled for release checks.",
+    "Six intentional item-bound sensor In2 padstack warnings are the only new finding exclusions; exact geometry/net checks cover them.",
+    "No physical calibration, adhesive, thermal, RF, EMI or mains commissioning result is claimed."
+  ],
+  "diff_review": {
+    "authored_files_whitespace_check": "pass",
+    "native_svg_note": "KiCad-exported SVG evidence retains exporter trailing whitespace so acceptance-bound render hashes remain exact; no authored-code whitespace errors."
+  }
+}

@@ -1,104 +1,117 @@
 # Enclosure, mounting and assembly
 
-Use one **Hammond 1590ZGRP243** enclosure for the controller and mains board,
-with a straight insulating partition and the manufactured filter on the mains
-side. Its glass-reinforced polyester body is UL94 V-0 and its unmodified gasketed
-assembly is IP66. Nominal outside dimensions are 400 × 250 × 120 mm; the drawing
-specifies 384.85 × 235.26 × 109.20 mm inside. Cable entries must use suitable
-strain-relief glands. The enclosure rating does not qualify unfinished cutouts.
-[Manufacturer](https://www.hammfg.com/part/1590ZGRP243),
+## Shared controller and mains stack
+
+Use matching **150 × 110 mm** boards, with the four-layer controller above the
+two-layer mains/power board. Both are nominal 1.6 mm FR4 with components upward.
+This is the accepted compact layout: the mains board shrinks from 180 mm wide,
+while the controller grows from 110 mm to share its outline. The stacked bare
+PCB footprint is 16,500 mm², approximately 48% below the former combined board
+area. Connectors, cables, antenna, external filter and enclosure add space.
+
+![Accepted stacked-board appearance](design/stacked-board-visual-target.png)
+
+The generated visual reference is illustrative. Component appearances, connector
+counts and relay markings do not change the BOM. The selected 5 V relay and
+power architecture remain authoritative; no extra rendered capacitors or parts
+are added. Source placement and native checks govern exact geometry.
+
+| Mounting feature | Requirement |
+| --- | --- |
+| Holes on both boards | Four aligned 3.2 mm NPTH holes |
+| Centres from upper-left, X right/Y down | (7,7), (143,7), (7,103), (143,103) mm |
+| Source-centred coordinates | X=±68 mm, Y=±48 mm |
+| Centre spacing | 136 × 96 mm |
+| Hardware | M3 insulating screws, washers and standoffs |
+| Hardware reservation | At least 4 mm radius per hole, no component/copper occupancy |
+| Clear separation | 45 mm from lower PCB top face to upper PCB underside |
+
+Match effective spacer length after washers and separator supports. Reserve
+approximately 75–80 mm overall assembly height including floor standoffs and
+upper access, subject to final enclosure geometry. Support the 195 g supply
+without excessive board flex. Keep exactly four aligned mounting columns.
+
+The retained IRM-45-12 sets the minimum practical stack volume: 87 × 52 mm nominal
+body, 88 × 53 mm source allocation and 30.5 mm maximum allocated height. The
+45 mm gap leaves 14.5 mm before upper underside projections, separator and
+tolerances. The MOV has a 29 × 29 mm courtyard and 26.5 mm height reserve; the
+relay has a 29 × 12.7 mm envelope and 15.7 mm height. These allocations explain
+the common board size; they do not establish thermal or physical assembly tests.
+
+Use right-angle Sabre headers on lower-board J1–J4: **43160-1102, -1103, -1104,
+-1106**, retaining the corresponding 44441-200n housings, 43375-2001 contacts and
+unused-contact assignments. Use their actual right-angle footprint and mating
+geometry, not a rotated vertical header. Lower J5/J6 already use right-angle
+Micro-Fit interfaces. Keep mating, latch release and withdrawal paths outward
+from accessible edges. Separate filter LINE/LOAD wiring. Controller buttons,
+USB and test points remain accessible from above or an edge.
+
+Preserve the controller antenna overhang and 15 mm three-dimensional reserve
+from lower components, copper, wiring, conductive hardware and enclosure walls.
+The intact dielectric separator has a separately recorded 11.1 mm antenna gap;
+its RF influence remains unmeasured. Keep the inner controller
+ground reference and USB geometry in [the stack contract](design/controller-stackup.md).
+Retain an insulating separator between mains and controller with mechanically
+secured supports and edges. Check primary wires, solder tails and unused metal
+as well as board copper against the existing 8 mm primary-to-SELV and 3.2 mm
+different-primary-net requirements. Spacer length alone is not insulation
+acceptance. Keep ventilation and final-unit temperature checks for the stack.
+
+## Enclosure and wiring
+
+The retained enclosure candidate is **Hammond 1590ZGRP243**: 400 × 250 × 120 mm
+nominal outside, 384.85 × 235.26 × 109.20 mm inside per drawing. Its unmodified
+glass-reinforced polyester assembly is UL94 V-0/IP66; cutouts and glands require
+their own suitable installation. [Manufacturer](https://www.hammfg.com/part/1590ZGRP243),
 [retained drawing](../cad/shared-enclosure/source/1590ZGRP243.pdf).
 
-The [current fit screen](../cad/shared-enclosure/README.md) replaces the smaller
-1554V2GY arrangement. Using inside-floor coordinates X east, Y south, Z up:
+The [current shared CAD screen](../cad/shared-enclosure/README.md) verifies the
+stack against retained manufacturer enclosure solids. Matching boards occupy
+X100..250, Y65..175 mm. Lower board top is Z16.6 mm and upper underside Z61.6 mm.
+The intact 158 × 118 × 2 mm separator sits at Z50.1..52.1 mm, above the allocated
+supply body. Outward connector/wiring reserves extend 35 mm. The separate filter
+reserve clears the enclosure by 5.40 mm nominally and 4.00 mm with the recorded
+fit allowance. These are occupied-volume checks, not measured thermal or RF
+performance. Final supports, glands and cable construction use this stack;
+former side-by-side evidence is superseded.
 
-| Allocation | Position in mm |
-| --- | --- |
-| 180 × 110 mains PCB | X25..205, Y25..135; PCB top Z28 |
-| 110 × 110 controller | X245..355, Y25..135; PCB top Z28 |
-| 3 mm insulating partition | X225..228, Y10..225, Z5..100 |
-| Filter, terminals and wire bends | X25..155, Y150..225, Z5..45 |
+The manufactured filter remains beside the stack with separate dirty LINE and
+clean LOAD routing, away from sensor wiring and the ESP antenna. Preserve its
+terminal and wire-bend allocation; board size is not the complete mains assembly
+footprint. Use insulating carriers rather than a common steel panel. Keep mains
+terminations inaccessible, provide strain relief and drip management, use GFCI
+protection, and retain continuous PE to the filter case, output and any conductive
+parts requiring bonding. Disconnect mains before opening or servicing.
 
-Rotate the controller 90 degrees clockwise within the enclosure so its sensor
-connector and antenna face the east wall beside the tank. This installation
-rotation does not change board source coordinates. Reserve at most 60 mm of the
-203.2 mm complete sensor harness inside/through the enclosure, leaving at most
-143.2 mm outside. Position the case close enough to the clip to satisfy that
-actual cable length. The future reservoir sensor can sit equally close.
+Place the enclosure on the available flat surface behind the tank with its sensor
+connection within the **203.2 mm complete harness limit**, including internal
+routing. No old enclosure rotation, gland coordinate or 60 mm internal allowance
+is an accepted measurement for this stack. Final strain relief and cable geometry
+must establish reach without pulling the sensor off the glass.
 
-Use the existing board holes with ordinary M3 insulating standoffs and simple
-insulating mounting brackets/carriers secured to enclosure mounting points.
-PCB top Z28 leaves room for solder tails below and the supply/connector bodies
-above. No common steel inner panel is selected. The partition is a wiring
-separator, not an independently touchproof live-service compartment; disconnect
-the single mains plug before opening or servicing. Only isolated power/control
-wires cross to the controller. Mechanical mounting and gland drilling follow the
-final connector and enclosure hardware, without changing the PCB outlines.
+## Sensor adhesive interface
 
-The enclosure sits on the available flat surface behind the tank. Its sensor
-connector side must be within the complete 8-inch sensor-harness reach; the
-400 mm case length itself need not fit inside that radius. Do not optimize
-the enclosure for minimum size at the expense of separation or service access.
-Arrange connector positions and cable routing to meet the existing 8-inch maximum
-sensor harness length, including the routing needed for strain relief.
+Use the **18 × 64 mm** four-layer sensor entirely below the rim on the outside of
+5 mm freshwater aquarium glass. Top edge is 2 mm below the rim; water is at least
+10 mm below it. The mask-covered B.Cu sensing face adheres to glass with thin,
+uniform mounting tape or transfer film. No clip, rail, bracket or mounting plate
+sits between PCB and glass. Avoid foam and trapped air; the owner selects tape
+and its installed thickness becomes part of final calibration.
 
-Protect mains terminations against access, provide cable strain relief and drip
-loops, use GFCI protection, and maintain the protective-earth connections required
-by the inlet, filter case, output and any conductive enclosure parts. PE remains
-continuous during ordinary connector or board service and is never relay-switched.
-Review the actual bonding/service arrangement before release.
+Electronics and six pigtail solder lands face outward. The cable exits left when
+viewed from outside, with outward-side strain relief. Preserve a flat glass-facing
+surface without exposed solder, through-hole connector tails or mounting holes.
+The [sensor specification](sensor.md) defines the 50 mm physical electrode span
+and lower wet reference. The accepted image remains a visual reference, not a
+claim of measured sensitivity, adhesive durability or usable travel.
 
-Route the filter's dirty input and clean output apart. Keep pump/mains wiring away
-from the ESP antenna and the sensor cable. Include antenna keepout, USB/button
-access, fuse service access while de-energized, insulated mounting and thermal headroom
-in the enclosure review. Do not choose mains separation dimensions without the
-applicable insulation review.
+Protect the board from splashes and cable loads. Measure gap/adhesive effects,
+replacement repeatability and final calibration on the assembled unit. No owner
+clip CAD is required. This project owns its board/adhesive/pigtail interface.
 
-Hold the active sensor snug against the outside of the freshwater tank's **5 mm
-glass**. The owner will separately model a simple 3D-printed clip that extends
-over the glass and is retained by gravity and friction. Designing or printing that
-mount is outside this project. Adhesive is no longer the mounting assumption.
+## Verification boundary
 
-The project owns the PCB attachment interface: provide a reasonably compact board
-with a practical retention feature or clamp region, a flat glass-facing area,
-and a dimensioned interface showing thickness, rim datum, contact/keepout regions
-and component/connector clearance. The owner can design the clip around that
-interface. Exact features follow electrode/shield design; width is available and
-there is no owner-imposed numerical maximum.
-
-Electrodes face the glass and components face outward, with electronics near the
-top. The PCB itself does not wrap over the rim. The **50 mm sensing span down
-from the top of the rim** is unchanged, and board padding at both ends is allowed.
-Total height may exceed 50 mm; keep the rim datum distinct from the board edge.
-Protect the daughterboard and cable from splashes and mechanical loads. Validate
-contact repeatability, any protective interface, and clip removal/reseating as
-part of calibration; a snug mount is not evidence that gaps have no effect.
-
-Favor through-hole power parts, accessible low-voltage test points and larger
-passives over minimum area. Record test point orientation and ground domain in a
-board-specific probing guide once a real board exists. Stillair's fan probing
-map must never be used here. Follow one power-off hookup at a time for later
-guided bench work; no exposed-mains measurement procedure is supplied by setup.
-
-`cad/` holds reviewed enclosure and PCB-interface drawings/exports and their
-provenance when available. The owner's separate clip CAD is outside scope.
-The [current shared-enclosure CAD screen](../cad/shared-enclosure/README.md)
-imports the fresh manufacturer model and tests six declared board/assembly,
-filter/wire and partition envelopes. All nominal intersections are zero; the
-closest enclosure gap is 3.2 mm. Enlarging each allocation by 1 mm while lowering
-the lid assembly 1 mm still leaves 2.2 mm minimum clearance. The lowered-lid
-check covers the discrepancy between the old manufacturer STEP's 121.25 mm
-outside height and the current drawing's 120.25 mm height. It is a fit sensitivity,
-not a claimed manufacturer tolerance. Collision negative controls and independent
-STEP reload pass.
-
-The earlier [controller](design/controller-enclosure-fit.md) and
-[mains/J5](design/mains-enclosure-fit.md) studies remain historical evidence for
-the old enclosure and board sizes. Their carrier positions, service portal and
-mated-distance results do not apply to this arrangement.
-
-Gross enclosure fit is established for board placement. Exact connector mates,
-crimps, carriers/partition fixings, gland machining and finished harness lengths
-remain assembly-detail work. Full load temperature and actual skimmer switching
-interference remain final-unit commissioning checks. The CAD screen does not
-claim those measurements or release machining files.
+Use current source/native placement, planes, routing rules and rendered geometry
+before routing. Final routed ERC/DRC and manufacturing checks remain mandatory;
+actual temperature, skimmer interference, sensor calibration and mounting durability
+remain commissioning tests. A source or CAD screen cannot pass those measurements.

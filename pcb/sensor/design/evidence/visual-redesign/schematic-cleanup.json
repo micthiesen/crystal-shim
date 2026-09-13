@@ -1,0 +1,609 @@
+{
+  "augmentation_sha256": "2d3525583b43d6167ec23231c6992699c7fe4d95db69737ffb0f345c3f30ebd9",
+  "board_id": "sensor.board.main",
+  "commands": [
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "sch",
+        "export",
+        "netlist",
+        "--format",
+        "kicadxml",
+        "--output",
+        "/var/folders/37/7y1z4kxn5mv9bkbckqxrnzy40000gn/T/stillair-schematic-cleanup-09kvgq8h/schematic.netlist.xml",
+        "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_sch"
+      ],
+      "returncode": 0,
+      "stderr": "Fontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 19: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 20: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 23: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 42: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 43: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 46: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 68: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 69: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 72: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 88: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 89: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 92: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 108: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 109: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 112: invalid constant used : math\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 120: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 121: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 124: invalid constant used : system-ui\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 132: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 133: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 136: invalid constant used : cursive\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 144: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 145: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 148: invalid constant used : fantasy\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 156: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 157: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 160: invalid constant used : ui-sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 168: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 169: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 172: invalid constant used : ui-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 180: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 181: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 184: invalid constant used : ui-monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 192: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 193: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 196: invalid constant used : ui-rounded\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 204: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 205: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 208: invalid constant used : fangsong\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-spacing.conf\", line 14: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 10: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 18: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 26: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 34: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 42: invalid constant used : math\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "sch",
+        "erc",
+        "--format",
+        "json",
+        "--severity-all",
+        "--output",
+        "/var/folders/37/7y1z4kxn5mv9bkbckqxrnzy40000gn/T/stillair-schematic-cleanup-09kvgq8h/schematic-erc.json",
+        "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_sch"
+      ],
+      "returncode": 0,
+      "stderr": "Fontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 19: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 20: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 23: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 42: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 43: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 46: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 68: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 69: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 72: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 88: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 89: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 92: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 108: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 109: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 112: invalid constant used : math\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 120: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 121: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 124: invalid constant used : system-ui\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 132: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 133: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 136: invalid constant used : cursive\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 144: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 145: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 148: invalid constant used : fantasy\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 156: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 157: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 160: invalid constant used : ui-sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 168: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 169: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 172: invalid constant used : ui-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 180: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 181: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 184: invalid constant used : ui-monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 192: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 193: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 196: invalid constant used : ui-rounded\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 204: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 205: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 208: invalid constant used : fangsong\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-spacing.conf\", line 14: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 10: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 18: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 26: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 34: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 42: invalid constant used : math\n",
+      "stdout": "Found 0 violations\nSaved ERC Report to /var/folders/37/7y1z4kxn5mv9bkbckqxrnzy40000gn/T/stillair-schematic-cleanup-09kvgq8h/schematic-erc.json\n"
+    }
+  ],
+  "erc_report": {
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-09-13T12:36:48",
+    "ignored_checks": [],
+    "included_severities": [
+      "error",
+      "warning",
+      "exclusion"
+    ],
+    "kicad_version": "10.0.5",
+    "sheets": [
+      {
+        "path": "/",
+        "uuid_path": "/055eb627-cb3d-4a2c-a59b-3b15b3684b3a",
+        "violations": []
+      },
+      {
+        "path": "/Tank sensor, local 3.3 V and stored dry baseline/",
+        "uuid_path": "/055eb627-cb3d-4a2c-a59b-3b15b3684b3a/2eb505f5-a26e-4106-8e87-fb24497d65e1",
+        "violations": []
+      }
+    ],
+    "source": "sensor.kicad_sch"
+  },
+  "erc_report_sha256": "36cea5b7ad599f4605307b73f4dd407b1ce861589aaa66331f68aa876204a99c",
+  "errors": [],
+  "manifest_sha256": "66d28ee6adc23478c19bda6aa2e0cf9297f9d51b548f62111cacf24a804099b8",
+  "native_files": {
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/CrystalShim_Sensor.kicad_sym": "16c9e009380d34a8be5455c8937da2f21aad0a0441855370f7693ae0e3775052",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_C1.kicad_mod": "69880ad43f63eb0a8682f2ca52eb2129b9d3467fac5a2eb8e9276c8e7d57bab7",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_C2.kicad_mod": "6f9aa79555e12de74bf3fa69cd5ee044bde20d65fe3a9f06def9aacee85cd155",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_C3.kicad_mod": "ad417f7fbddda2cd158bc0cc62b3ecd4931e3dfb574bbe3baf18fb25716baf94",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_C4.kicad_mod": "8213f3500ae0981d906b0d52c5e627668fed297513704cbadc8670f9927c0dff",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_D2.kicad_mod": "78ec43e04eaf2393b1b4c9d908508f936efa41e8adf42ced818b78400a411296",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_E1.kicad_mod": "164cc7b8e5e9ec37a1aa6d07be64a82c95fd102613360fc83972f9bcaa2bf4fc",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_J1.kicad_mod": "fbca93418d82c082f216b518d56ad39d6fea5f383a8f70ed9fbeb419d841fb90",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_R1.kicad_mod": "9ec58b5b6634c8a5d07cb3547532f097e65396d866bc244022010817ecd91581",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_R2.kicad_mod": "3e54fff0cc4c0de77ef9e6b28564557fbcae7d7688df4fd5ad4b6a9bdf185ac8",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_R3.kicad_mod": "103e935371e960ce5fbacb8d3c8ceab591a0a42a9ec585b2fe9d12d038aab2f9",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_R4.kicad_mod": "9ab6f0c2878367379a5bb1aadbb9d4fad506f1898f58a05b7b230f7523507d81",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_R5.kicad_mod": "b5fa50d10b45fec33f77504f1fa8939cfe6ec6c64acdb9485268103bf73d5b77",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_R6.kicad_mod": "7806e4525895007f2510aa4ee3a12c75daf664684805d72aa977ccd8bd0a8eb8",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_U1.kicad_mod": "c17a11f5cb8045eb774f680a9dbddeab573a975f762ff41d80b987495aca7a5a",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_U2.kicad_mod": "53249c58e984326eb44ec8503401f37a427af562cf96b638020e7288edfd3030",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_U3.kicad_mod": "8c2d6ea9ec038a06014f5aa1ae68b333d8129bae1449c50eb9d314d0c7bc2b71",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/fp-lib-table": "7ae17aad939b9cc6a592704d141b999d6761fe3198262c8211a48556cce6cb84",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/libraries-v2/CrystalShim_Sensor.kicad_sym": "96dbfc90bca530f2fb25cf9dc8f38de6864c541e3477018b8d026e8811c5448d",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_dru": "6f4bdfb611f6eab7cb5d6be420452a3b5fc5e9d412e1d2d840f461661dc97486",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_pcb": "c7fedcb4c2de9dd12f104aaef4c547ea21814eed1847b821001eeef412a61fa0",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_prl": "1432d6bc13201025af1f61a29fba6908808c041e4fe1a2a71770136c0e5dcadc",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_pro": "dd02892573ac026dc9c472231b77190ebcf82ecc3ea53cef6087b850f3433988",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_sch": "41af7cc2142d25fcc4e5e17fa10a5f9a4115f065b03830a3a7f4f3550cfc1f29",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sym-lib-table": "09c2184ff2eeb45a2c4462d8f68dddc063943567ee5ad372887ed985676794ae",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/tanksensor.kicad_sch": "99e8ee689da746a468750afe48d0ecf2bb17b359e07d3d24faba29ec8aa7d29a"
+  },
+  "passed": true,
+  "root_schematic": "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_sch",
+  "root_schematic_sha256": "41af7cc2142d25fcc4e5e17fa10a5f9a4115f065b03830a3a7f4f3550cfc1f29",
+  "schema_version": 1,
+  "schematic_netlist_sha256": "26c04a67d7308c3315e095f82cf4ae541ac9c4732d3cc4350c93341bb5189a00",
+  "schematic_owned": {
+    "components": [
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_C1",
+        "manufacturer_part_number": "C3216X7R1E106K160AB",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C1",
+        "symbol": "CrystalShim_Sensor:Sensor_C1",
+        "value": "10uF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_C2",
+        "manufacturer_part_number": "C3216X7R1E106K160AB",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C2",
+        "symbol": "CrystalShim_Sensor:Sensor_C2",
+        "value": "10uF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_C3",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C3",
+        "symbol": "CrystalShim_Sensor:Sensor_C3",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_C4",
+        "manufacturer_part_number": "C2012X7R1E105K125AB",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C4",
+        "symbol": "CrystalShim_Sensor:Sensor_C4",
+        "value": "1uF"
+      },
+      {
+        "datasheet": "https://www.ic-components.pl/files/fe/STPS2L40AF.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_D2",
+        "manufacturer_part_number": "STPS2L40U",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "D2",
+        "symbol": "CrystalShim_Sensor:Sensor_D2",
+        "value": "STPS2L40U"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ug/tidu736a/tidu736a.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_E1",
+        "manufacturer_part_number": "PCB-COPPER-OOP-50",
+        "pins": [
+          "1",
+          "10",
+          "11",
+          "12",
+          "13",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "ref": "E1",
+        "symbol": "CrystalShim_Sensor:Sensor_E1",
+        "value": "PCB-COPPER-OOP-50"
+      },
+      {
+        "datasheet": "",
+        "footprint": "CrystalShim_Sensor:Sensor_J1",
+        "manufacturer_part_number": "PCB-SENSOR-PIGTAIL-6",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "ref": "J1",
+        "symbol": "CrystalShim_Sensor:Sensor_J1",
+        "value": "PCB-SENSOR-PIGTAIL-6"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_R1",
+        "manufacturer_part_number": "ERJ3EKF22R0V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R1",
+        "symbol": "CrystalShim_Sensor:Sensor_R1",
+        "value": "22\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_R2",
+        "manufacturer_part_number": "ERJ3EKF22R0V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R2",
+        "symbol": "CrystalShim_Sensor:Sensor_R2",
+        "value": "22\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_R3",
+        "manufacturer_part_number": "ERJ3EKF2701V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R3",
+        "symbol": "CrystalShim_Sensor:Sensor_R3",
+        "value": "2.7k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_R4",
+        "manufacturer_part_number": "ERJ3EKF2701V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R4",
+        "symbol": "CrystalShim_Sensor:Sensor_R4",
+        "value": "2.7k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_R5",
+        "manufacturer_part_number": "ERJ3EKF1002V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R5",
+        "symbol": "CrystalShim_Sensor:Sensor_R5",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_R6",
+        "manufacturer_part_number": "ERJ3EKF3011V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R6",
+        "symbol": "CrystalShim_Sensor:Sensor_R6",
+        "value": "3.01k\u03a9"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/fdc1004.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_U1",
+        "manufacturer_part_number": "FDC1004DGSR",
+        "pins": [
+          "1",
+          "10",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "ref": "U1",
+        "symbol": "CrystalShim_Sensor:Sensor_U1",
+        "value": "FDC1004DGSR"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/tps7a24.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_U2",
+        "manufacturer_part_number": "TPS7A2433DBVR",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "ref": "U2",
+        "symbol": "CrystalShim_Sensor:Sensor_U2",
+        "value": "TPS7A2433DBVR"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/esds312.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_U3",
+        "manufacturer_part_number": "ESDS312DBVR",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "ref": "U3",
+        "symbol": "CrystalShim_Sensor:Sensor_U3",
+        "value": "ESDS312DBVR"
+      }
+    ],
+    "nets": [
+      {
+        "endpoints": [
+          [
+            "E1",
+            "2"
+          ],
+          [
+            "U1",
+            "2"
+          ]
+        ],
+        "name": "CIN_LEVEL"
+      },
+      {
+        "endpoints": [
+          [
+            "E1",
+            "3"
+          ],
+          [
+            "E1",
+            "5"
+          ],
+          [
+            "E1",
+            "6"
+          ],
+          [
+            "U1",
+            "3"
+          ]
+        ],
+        "name": "CIN_RL"
+      },
+      {
+        "endpoints": [
+          [
+            "C1",
+            "2"
+          ],
+          [
+            "C2",
+            "2"
+          ],
+          [
+            "C3",
+            "2"
+          ],
+          [
+            "C4",
+            "2"
+          ],
+          [
+            "J1",
+            "4"
+          ],
+          [
+            "J1",
+            "5"
+          ],
+          [
+            "J1",
+            "6"
+          ],
+          [
+            "R5",
+            "2"
+          ],
+          [
+            "R6",
+            "2"
+          ],
+          [
+            "U1",
+            "7"
+          ],
+          [
+            "U2",
+            "2"
+          ],
+          [
+            "U2",
+            "4"
+          ],
+          [
+            "U3",
+            "2"
+          ]
+        ],
+        "name": "GND"
+      },
+      {
+        "endpoints": [
+          [
+            "R2",
+            "2"
+          ],
+          [
+            "R4",
+            "2"
+          ],
+          [
+            "U1",
+            "10"
+          ]
+        ],
+        "name": "I2C_SCL"
+      },
+      {
+        "endpoints": [
+          [
+            "R1",
+            "2"
+          ],
+          [
+            "R3",
+            "2"
+          ],
+          [
+            "U1",
+            "9"
+          ]
+        ],
+        "name": "I2C_SDA"
+      },
+      {
+        "endpoints": [
+          [
+            "J1",
+            "3"
+          ],
+          [
+            "R2",
+            "1"
+          ],
+          [
+            "U3",
+            "5"
+          ]
+        ],
+        "name": "SCL_CABLE"
+      },
+      {
+        "endpoints": [
+          [
+            "J1",
+            "2"
+          ],
+          [
+            "R1",
+            "1"
+          ],
+          [
+            "U3",
+            "4"
+          ]
+        ],
+        "name": "SDA_CABLE"
+      },
+      {
+        "endpoints": [
+          [
+            "E1",
+            "11"
+          ],
+          [
+            "E1",
+            "12"
+          ],
+          [
+            "E1",
+            "8"
+          ],
+          [
+            "E1",
+            "9"
+          ],
+          [
+            "U1",
+            "1"
+          ]
+        ],
+        "name": "SHLD1"
+      },
+      {
+        "endpoints": [
+          [
+            "E1",
+            "1"
+          ],
+          [
+            "E1",
+            "10"
+          ],
+          [
+            "E1",
+            "13"
+          ],
+          [
+            "E1",
+            "4"
+          ],
+          [
+            "E1",
+            "7"
+          ],
+          [
+            "U1",
+            "6"
+          ]
+        ],
+        "name": "SHLD2"
+      },
+      {
+        "endpoints": [
+          [
+            "C2",
+            "1"
+          ],
+          [
+            "C3",
+            "1"
+          ],
+          [
+            "C4",
+            "1"
+          ],
+          [
+            "D2",
+            "2"
+          ],
+          [
+            "R3",
+            "1"
+          ],
+          [
+            "R4",
+            "1"
+          ],
+          [
+            "R6",
+            "1"
+          ],
+          [
+            "U1",
+            "8"
+          ],
+          [
+            "U2",
+            "5"
+          ]
+        ],
+        "name": "V3V3_SENSOR"
+      },
+      {
+        "endpoints": [
+          [
+            "C1",
+            "1"
+          ],
+          [
+            "D2",
+            "1"
+          ],
+          [
+            "J1",
+            "1"
+          ],
+          [
+            "R5",
+            "1"
+          ],
+          [
+            "U2",
+            "1"
+          ],
+          [
+            "U2",
+            "3"
+          ]
+        ],
+        "name": "V5_SENSOR"
+      }
+    ]
+  }
+}

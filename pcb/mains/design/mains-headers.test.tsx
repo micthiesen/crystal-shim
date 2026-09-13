@@ -65,7 +65,7 @@ for (const rotation of [0, 90, 180, 270]) {
     let connectedTails = 0;
     for (const [i, ref] of refs.entries()) {
       const part = source.find((e) => e.name === ref)!;
-      expect(part.manufacturer_part_number).toBe(`43160-010${counts[i]}`);
+      expect(part.manufacturer_part_number).toBe(`43160-110${counts[i]}`);
       const fp = native.footprints.find((e) =>
         e.properties.some((p) => p.key === "Reference" && p.value === ref),
       )!;
@@ -148,16 +148,16 @@ test("Sabre mechanical bounds distinguish seated body, protruding latch and mate
     const declaration = mainsHeaderPhysical(ref);
     const pattern = mainsHeaderPattern(ref);
     const geometry = landPatternPhysicalGeometry(pattern, declaration)!;
-    expect(declaration.body.thicknessMax).toBe(14.86);
-    expect(declaration.envelope.height).toBe(13.67);
+    expect(declaration.body.thicknessMax).toBe(13.67);
+    expect(declaration.envelope.height).toBe(21.5);
     expect(geometry.courtyard.width).toBeGreaterThanOrEqual(
       mainsHeaderDefinitions[ref].bodyWidth + 1.33,
     );
-    expect(geometry.courtyard.height).toBeGreaterThanOrEqual(14.67);
+    expect(geometry.courtyard.height).toBeGreaterThanOrEqual(22.5);
     const maxBottom = declaration.envelopeCenter!.y + declaration.envelope.height / 2;
     const maxTop = declaration.envelopeCenter!.y - declaration.envelope.height / 2;
-    expect(maxBottom).toBeCloseTo(3.955, 8);
-    expect(maxTop).toBeCloseTo(-9.715, 8);
+    expect(maxBottom).toBeCloseTo(17.25, 8);
+    expect(maxTop).toBeCloseTo(-4.25, 8);
     expect((3.5 - 1.86) / 2).toBeCloseTo(0.82, 8);
     expect(pattern.holes ?? []).toEqual([]);
   }

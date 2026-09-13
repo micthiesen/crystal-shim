@@ -1,6 +1,23 @@
 # Sensor harness design candidate
 
-Status: researched proposal, not a released harness or BOM selection. Use
+Current interface: the 18 × 64 mm sensor has six outward solder lands and a
+left-exiting 24 AWG pigtail. Only the controller end retains its six-position
+Micro-Fit plug. The total sensor-solder-to-controller-crimp length remains at most
+203.2 mm, including internal routing, strain relief and cable ends. The sensor
+sits entirely below the rim with its top 2 mm below it, fixed by thin adhesive.
+Use [the canonical sensor](../sensor.md) and [mechanical stack](../mechanical.md).
+
+The following 2026-09-12 cable/gland/crimp research is retained as historical
+candidate evidence. Cable material and applicable controller-crimp specifications
+remain useful; old crimp-to-crimp lengths, gland coordinates, sensor-header
+withdrawal paths, above-rim datum and clip support are superseded. They do not
+validate the soldered pigtail or the stacked enclosure route. Establish the final
+manufactured cut length and outward-side strain relief for this interface.
+
+
+## Historical cable and route study
+
+Status at the time: researched proposal, not a released harness or BOM selection. Use
 **Alpha Wire 78073** with a **LAPP 53111100 gland and 53119000 locknut** as the
 working mechanical candidate. Prefer a sideways sensor-header exit from the
 upper electronics region. This permits a route at the controller exit's height

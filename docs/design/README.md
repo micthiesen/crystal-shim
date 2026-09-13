@@ -5,7 +5,7 @@ schematic and firmware implementation. They are candidates under review, not fab
 release or commissioning evidence. Their explicit open items remain work to finish.
 
 - [Sensor](sensor-design-basis.md): TI OoP topology, glass/rim geometry, references,
-  local regulation, I2C and clip interface.
+  local regulation, I2C, adhesive interface and retained visual reference.
 - [Sensor-cable protection](sensor-cable-protection.md): exact ESD selections,
   bus loading and final-system immunity limits.
 - [Sensor power refinement](sensor-power-refinement.md): RC protection, PGFB diode,
@@ -41,6 +41,7 @@ release or commissioning evidence. Their explicit open items remain work to fini
   live endpoint checks, measured linked size and remaining runtime evidence.
 - [Footprint audit](footprint-audit.md): installed-library candidates, manufacturer
   comparisons and exact patterns still required before capture release.
+- [Manufacturing output profile](manufacturing-output.md): three-board assembly split, order construction, export path and final checks.
 - [Review record](review-log.md): findings, corrections, rejected claims and
   scopes that still require review.
 

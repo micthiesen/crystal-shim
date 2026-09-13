@@ -1,0 +1,20 @@
+{
+  "native_drc_unwaived": 0,
+  "unconnected": 21,
+  "strict_erc": 0,
+  "labels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "RIM"
+  ],
+  "layer": "F.SilkS",
+  "label_size_mm": 0.8,
+  "stroke_mm": 0.15,
+  "render_inspected": "sensor-F_Silkscreen.svg",
+  "mask_paste_audit": "E1 all 32 copper-only; J1 six F.Mask/no paste/no drill; prepared vias inherit front/back tenting yes",
+  "legacy_generator": "sensor --refresh exits 2 before board load or mutation"
+}

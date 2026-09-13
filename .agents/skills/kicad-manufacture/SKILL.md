@@ -5,10 +5,11 @@ description: "Generate and validate downstream KiCad fabrication outputs for Cry
 
 # KiCad fabrication
 
-The project currently has requirements-only boards and no fabrication profile.
-Do not run or copy Stillair's board-specific `jlc_fab.py` profiles. Add a profile
-and reviewed export path only after the actual board, assembly split and order
-requirements exist. Tooling smoke checks do not establish fabrication readiness.
+Use the canonical [manufacturing output profile](../../../docs/design/manufacturing-output.md)
+for all three accepted native boards: board construction, assembly split, exact
+exclusions, sourcing and KiCad CLI export paths. Do not run or copy Stillair's
+board-specific `jlc_fab.py` profiles. Tooling smoke checks do not establish
+fabrication readiness.
 
 Fabrication starts after the local [PCB skill](../pcb/SKILL.md) routed-KiCad review
 passes. Require current source-to-KiCad parity and verified implementation of each

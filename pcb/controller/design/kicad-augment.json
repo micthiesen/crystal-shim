@@ -50,7 +50,7 @@
           "mask_thickness_each_mm": 0.01,
           "dielectric_loss_tangent": 0.02,
           "dielectric_constraints": false,
-          "release_limit": "These KiCad defaults are placeholders, not vendor requirements or the separate USB solver mask model. Resolve before fabrication output."
+          "release_limit": "Nonbinding CAD visualization metadata only. Manufacture to JLC04161H-7628 and the explicit 81-99 ohm USB requirement; do not promote native mask thickness/loss tangent or Gerber-job stack metadata into supplier acceptance values. The separate recorded vendor USB solver mask model remains authoritative for routing."
         },
         "vendor_stack": "JLC04161H-7628",
         "vendor_template_id": "30726297697b4c18a0946278a48fb7d8",
@@ -81,7 +81,7 @@
         ],
         "solver_finished_outer_copper_mm": 0.04064,
         "verification": "Apply detailed stack through native KiCad settings, query the saved stack and fabrication notes. Do not rescale pressed dielectric to force a 1.600 mm sum. See docs/design/controller-stackup.md.",
-        "status": "partially applied: reviewed copper/dielectric thicknesses, Er, material labels and finish saved through KiCad; unverified defaults and final fabrication notes remain open"
+        "status": "Preparation complete: reviewed copper/dielectric thicknesses, Er, labels and finish saved; native defaults explicitly excluded from supplier requirements in the persistent fabrication note. Final stack/order matching is an export verification."
       }
     },
     {
@@ -264,11 +264,11 @@
         "mounting_hole_reserve_radius_mm": 4,
         "requirements": [
           "No baseboard copper, vias, zones, support or wiring under the antenna overhang.",
-          "Keep carrier, connectors and cables outside the enclosure-fit antenna exclusion volume.",
+          "Keep lower-board components, metal, connectors, cables and mounting supports outside the 15 mm three-dimensional antenna reserve. The intact dielectric separator has 11.1 mm minimum vertical antenna clearance in the stacked CAD allocation; its RF influence remains unmeasured and does not authorize copper or metal in the antenna exclusion.",
           "Retain all four H1-H4 source locations and clear screw/spacer/tool access."
         ],
-        "verification": "All-layer native render/zone inspection and full 3D assembly/mating sweep against controller-enclosure-fit.md; final carrier/support tolerances remain open.",
-        "status": "Keepouts applied in saved native board; routed exclusion and final assembly verification remain open"
+        "verification": "All-layer native render/zone inspection and stacked 3D assembly/mating review; mounts are at source (+/-68,+/-48) mm and retain 4 mm radial exclusion. Final separator and support tolerances remain open.",
+        "status": "Native antenna and mounting copper exclusions applied. Stacked CAD preserves 15 mm to lower parts and external harnesses; dielectric separator RF performance and final assembled support verification remain open."
       }
     },
     {
@@ -282,11 +282,12 @@
         "j4_ground_windows": "One R0.25 0.60 x 1.15 aperture per shared A1+B12 and A12+B1 area, two total; remaining VBUS/data apertures retain source geometry.",
         "requirements": [
           "No paste on J1/J2/J3/J5/J6/J7/J8/J9, SW1/SW2/SW3, D4, H1-H4 or TP1-TP14. Hand-solder through-hole items after SMT.",
-          "Remove F.Paste from J4 shell slots for the selected shell hand-solder process; never double-print shared A/B copper.",
-          "Resolve all other package-specific apertures against source physical-model declarations, using 0.100 mm as the board process rather than silently claiming the 0.125 mm DBV example."
+          "No F.Paste or B.Paste on J4 shell slots for shell hand-soldering. Only A1/A4/A9/A12 carry paste for their shared copper areas; B12/B9/B4/B1 suppress duplicate apertures without changing copper or mask.",
+          "Use a 0.100 mm laser-cut stencil and native 1:1 copper-shaped apertures with zero local paste margins for every remaining active SMT pad. This is the selected board process, not a claim to reproduce TI's separate 0.125 mm DBV example. Check actual aperture area ratios and preserve nine independent U1 ground windows."
         ],
         "verification": "Saved native pad layers/margins and exact paste polygons, Gerber stencil union/area counts and assembly process review.",
-        "status": "declared; package-by-package native aperture/process closure still required"
+        "status": "Native preparation selected and applied: shell/duplicate USB paste suppression; remaining active SMT pads use explicit 1:1 apertures at 0.100 mm stencil thickness. Aperture readback/diagnostic plots are retained; final CAM and assembly inspection are verification gates.",
+        "process_note": "Aperture release calculation screens every populated SMT aperture using its native shape at 0.100 mm thickness; it is a design check, not measured paste-transfer or solder-joint performance."
       }
     },
     {
@@ -301,7 +302,7 @@
           "Move reference/value text only for final legibility without changing source placement; keep text off pads, holes and board edges."
         ],
         "verification": "Inspect front/back 2D renders and final Gerbers; run native text/silk DRC.",
-        "status": "declared; pending routing/assembly review"
+        "status": "Applied native connector, input voltage/pin-1, USB, RESET/BOOT/MAINTENANCE function labels; existing test-point function labels retained. Saved render and native silk DRC audited. Final CAM inspection is verification."
       }
     },
     {
@@ -420,7 +421,7 @@
         "finish": "ENIG",
         "mask": "green",
         "silkscreen": "white",
-        "text": "Export all three final boards together after G-02/G-03/G-04: Gerbers, PTH/NPTH drills, assembly BOM/CPL with exact exclusions, stencil, netlist/rule receipts, harness drawings and reviewed mechanical interface. State the exact stack, 81-99 ohm USB acceptance, U1 tenting. No part purchase or fabrication order is implied.",
+        "text": "Export all three final boards together after G-02/G-03/G-04: Gerbers, PTH/NPTH drills, assembly BOM/CPL with exact exclusions, stencil, netlist/rule receipts, harness drawings and reviewed mechanical interface. State the exact stack, 81-99 ohm USB acceptance, U1 tenting. No part purchase or fabrication order is implied. Native User.Comments fabrication note states the ordering stack and nonbinding visualization defaults; preserve it in the fabrication drawing/requirements rather than importing native default mask/loss values as order constraints.",
         "verification": "Use project kicad-manufacture checks and independent CAM/assembly review; source/simulation tests do not establish electrical or operating acceptance.",
         "status": "declared; no manufacturing package released"
       }
@@ -442,19 +443,19 @@
           ],
           "outline": [
             [
-              45,
+              25,
               45
             ],
             [
-              155,
+              175,
               45
             ],
             [
-              155,
+              175,
               155
             ],
             [
-              45,
+              25,
               155
             ]
           ],
@@ -556,55 +557,55 @@
               0.2
             ],
             [
-              137,
+              157,
               135.39999999999998,
               0.6,
               0.3
             ],
             [
-              137,
+              157,
               136.2,
               0.6,
               0.3
             ],
             [
-              137,
+              157,
               137.0,
               0.6,
               0.3
             ],
             [
-              137,
+              157,
               117.4,
               0.6,
               0.3
             ],
             [
-              137,
+              157,
               118.2,
               0.6,
               0.3
             ],
             [
-              137,
+              157,
               119.0,
               0.6,
               0.3
             ],
             [
-              137,
+              157,
               99.4,
               0.6,
               0.3
             ],
             [
-              137,
+              157,
               100.2,
               0.6,
               0.3
             ],
             [
-              137,
+              157,
               101.0,
               0.6,
               0.3
@@ -612,7 +613,7 @@
           ]
         },
         "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove all floating islands. In2 remains available for power/signal routing; no arbitrary split power plane.",
-        "status": "Apply through native API and fill; verify saved zone connectivity/DRC."
+        "status": "Applied with native API and project-aware refill; saved planes and zone DRC verified. Refill and inspect useful copper again after owner routing."
       }
     },
     {
@@ -721,62 +722,62 @@
             0.2
           ],
           [
-            137,
+            157,
             135.39999999999998,
             0.6,
             0.3
           ],
           [
-            137,
+            157,
             136.2,
             0.6,
             0.3
           ],
           [
-            137,
+            157,
             137.0,
             0.6,
             0.3
           ],
           [
-            137,
+            157,
             117.4,
             0.6,
             0.3
           ],
           [
-            137,
+            157,
             118.2,
             0.6,
             0.3
           ],
           [
-            137,
+            157,
             119.0,
             0.6,
             0.3
           ],
           [
-            137,
+            157,
             99.4,
             0.6,
             0.3
           ],
           [
-            137,
+            157,
             100.2,
             0.6,
             0.3
           ],
           [
-            137,
+            157,
             101.0,
             0.6,
             0.3
           ]
         ],
         "tenting": "both sides",
-        "status": "Declared GND stitching/thermal vias; preserve source pads and every existing route."
+        "status": "Applied and native readback verified; GND stitching/thermal vias and source pads preserved through the placement ECO."
       }
     },
     {
@@ -788,9 +789,9 @@
       },
       "params": {
         "policy": "Enforce routing defaults and exact power/USB/ground-reference/sensing constraints using native DRC plus pcb/tools/check_routing.py. No hardware or firmware scope change.",
-        "status": "Apply through native settings/GUI, exercise with intentionally bad scratch traces.",
+        "status": "Installed through native settings/GUI and saved; exact generated-rule comparison and native negative routing checks verify enforcement.",
         "policy_file": "pcb/tools/routing-policy.json",
-        "verification": "Native negative DRC tests and check-routing.sh; full narrow-segment containment supplements native intersectsArea.",
+        "verification": "Native negative DRC tests and check-routing.sh; enclosedByArea confines each neck and the trunk remains the router optimum. Full narrow-segment containment is also audited.",
         "policy_sha256": "610604c6737b631b08ab1073978cb0e701418032858b0956ec4648ba9ebe07a5"
       }
     },

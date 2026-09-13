@@ -3,11 +3,11 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(property "Reference" "REF**"
+	(property "Reference" "J1"
 		(at 0 -3 0)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "4fd8d484-d334-4b2f-9414-5237bf96473c")
+		(uuid "3e91501a-737a-4ad9-b83f-1188d1ff129a")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15,11 +15,11 @@
 			)
 		)
 	)
-	(property "Value" "Sensor_J1"
+	(property "Value" "PCB-SENSOR-PIGTAIL-6"
 		(at 0 3 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "e024ff32-b72f-4b84-88f6-d5544c321185")
+		(uuid "9a1c0fca-d514-4a71-87a4-cc8e3819a943")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -31,7 +31,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "75a8a79b-8377-4244-b704-b1e0e9f34d4d")
+		(uuid "3d9f3ef9-41e5-480a-84a1-c96269f53ba6")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -39,11 +39,11 @@
 			)
 		)
 	)
-	(property "Description" ""
+	(property "Description" "Six solder pads for left-exiting sensor pigtail"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "e0a8b757-6d14-4cc9-8c15-9ad65ab38b84")
+		(uuid "d682dd29-12e6-4339-b6ed-9fa2bc6997c8")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -55,7 +55,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "004a928c-621d-6f94-3b7a-8e4c26ed73d4")
+		(uuid "e49099c4-7777-440c-8a61-670f2ce00f3d")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -63,120 +63,65 @@
 			)
 		)
 	)
+	(property "StableID" "sensor.component.j1"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "83eaf226-432d-41c5-9027-4af7543ac8ad")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "MPN" "PCB-SENSOR-PIGTAIL-6"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "6e07a50f-3559-497b-8ad0-e30c0687b485")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr board_only exclude_from_pos_files exclude_from_bom)
 	(duplicate_pad_numbers_are_jumpers no)
-	(fp_poly
-		(pts
-			(xy -4.5 -9.75) (xy 10.5 -9.75) (xy 10.5 4.4) (xy -4.5 4.4) (xy -4.5 -9.75)
-		)
-		(stroke
-			(width 0.05)
-			(type default)
-		)
-		(fill no)
-		(layer "F.CrtYd")
-		(uuid "49fa15e0-42ae-f8a1-30a7-f8de5c0115a3")
+	(pad "1" smd rect
+		(at 0 -7.5)
+		(size 3 2)
+		(layers "F.Cu" "F.Mask")
+		(uuid "5d468da0-b004-4fb3-b0a9-1c8dd775163c")
 	)
-	(fp_line
-		(start -3.575 -8.92)
-		(end 9.575 -8.92)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(layer "F.Fab")
-		(uuid "569c4baa-01c6-4300-96c8-dbaae68ddff1")
+	(pad "2" smd rect
+		(at 0 -4.5)
+		(size 3 2)
+		(layers "F.Cu" "F.Mask")
+		(uuid "4662fc46-c5b0-4153-8a93-03f8384e2e4e")
 	)
-	(fp_line
-		(start -3.575 0.99)
-		(end -3.575 -8.92)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(layer "F.Fab")
-		(uuid "7c7f16cc-0a77-4d89-86b5-26058b9dc807")
+	(pad "3" smd rect
+		(at 0 -1.5)
+		(size 3 2)
+		(layers "F.Cu" "F.Mask")
+		(uuid "04567058-8d36-4d48-82b0-feed22a97c1c")
 	)
-	(fp_line
-		(start 9.575 -8.92)
-		(end 9.575 0.99)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(layer "F.Fab")
-		(uuid "428ed12b-b216-458b-81ea-15e3306d19e7")
+	(pad "4" smd rect
+		(at 0 1.5)
+		(size 3 2)
+		(layers "F.Cu" "F.Mask")
+		(uuid "41d8ed6c-0820-4e5b-b064-de4dafca8887")
 	)
-	(fp_line
-		(start 9.575 0.99)
-		(end -3.575 0.99)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(layer "F.Fab")
-		(uuid "d48f4002-0891-48a3-a769-8efee24a5888")
+	(pad "5" smd rect
+		(at 0 4.5)
+		(size 3 2)
+		(layers "F.Cu" "F.Mask")
+		(uuid "7c6bb5bf-7fcc-42a9-bea7-65f0d13d226a")
 	)
-	(pad "" np_thru_hole circle
-		(at 3 -4.32)
-		(size 3 3)
-		(drill 3)
-		(layers "*.Cu" "*.Mask")
-		(uuid "dad4986f-f29d-4ee7-aab2-85c4213eaf9d")
-	)
-	(pad "1" thru_hole roundrect
-		(at 0 0)
-		(size 1.5 1.5)
-		(drill 1.02)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(roundrect_rratio 0.1666666667)
-		(solder_mask_margin 0.05)
-		(uuid "5dbb9b58-3fdc-6288-228b-9f987b0c5e48")
-	)
-	(pad "2" thru_hole circle
-		(at 3 0)
-		(size 1.5 1.5)
-		(drill 1.02)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(solder_mask_margin 0.05)
-		(uuid "3e29b1e0-5f6e-4c00-02f9-b6206561b840")
-	)
-	(pad "3" thru_hole circle
-		(at 6 0)
-		(size 1.5 1.5)
-		(drill 1.02)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(solder_mask_margin 0.05)
-		(uuid "1e97c868-7f00-3578-1c98-335845cfcec8")
-	)
-	(pad "4" thru_hole circle
-		(at 0 3)
-		(size 1.5 1.5)
-		(drill 1.02)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(solder_mask_margin 0.05)
-		(uuid "2ed5861c-3392-7c04-6a05-81dc079d7fbc")
-	)
-	(pad "5" thru_hole circle
-		(at 3 3)
-		(size 1.5 1.5)
-		(drill 1.02)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(solder_mask_margin 0.05)
-		(uuid "4e676f94-1400-928c-7668-94ac272f6934")
-	)
-	(pad "6" thru_hole circle
-		(at 6 3)
-		(size 1.5 1.5)
-		(drill 1.02)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(solder_mask_margin 0.05)
-		(uuid "6df9590c-0b91-56ec-56d6-ab3446c152ac")
+	(pad "6" smd rect
+		(at 0 7.5)
+		(size 3 2)
+		(layers "F.Cu" "F.Mask")
+		(uuid "6142c600-f055-498d-8be4-48db7eced9c4")
 	)
 	(embedded_fonts no)
 )

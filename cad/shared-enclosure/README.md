@@ -1,43 +1,55 @@
 # Shared enclosure fit
 
-Current enclosure: **Hammond 1590ZGRP243**, for the enlarged 180 × 110 mm mains
-board and 110 × 110 mm controller. The previous `controller-fit/` and `mains-fit/`
-receipts concern the superseded 1554V2GY arrangement and do not validate this one.
+The retained **Hammond 1590ZGRP243** accommodates the matching **150 × 110 mm**
+boards as a stack, controller above mains, with **45 mm clear board-face spacing**.
+The separate mains filter remains beside the stack. This screen uses actual
+manufacturer enclosure solids and declared rectangular assembly/access reserves;
+it does not establish exact component, cable, insulation or thermal acceptance.
 
-- [Plan](fit-plan.svg): practical board/partition/filter allocations.
-- [Fit results](fit-results.json): actual nominal solid collisions, clearances,
-  1 mm allocation sensitivity, negative controls and source/export hashes.
-- [CAD screen](fit-screen.step): manufacturer enclosure plus declared bounding
-  envelopes. Colored component-level assembly is not implied by this STEP.
+- [Fit results](fit-results.json): dimensions, clearances, sensitivity and negative controls.
+- [CAD screen](fit-screen.step): enclosure and current stacked reserve solids.
 - [Manufacturer drawing](source/1590ZGRP243.pdf) and original STEP ZIP are retained.
 - [Reproduction script](check_fit.py): requires CadQuery; run
-  `python cad/shared-enclosure/check_fit.py` from any directory.
+  `python cad/shared-enclosure/check_fit.py`.
+- [Old side-by-side plan](fit-plan.svg): historical, superseded by this stack.
 
-The manufacturer STEP contains eight valid solids, including an optional steel
-inner panel. That panel is excluded; no common conductive carrier is selected.
-The other seven solids remain. Our six allocation solids bring the independently
-reloaded export to thirteen valid solids. Coordinate translation is recorded in
-JSON. The nominal STEP is 1 mm taller than the present drawing; lowering the lid,
-cover screws and gasket by 1 mm is included in the sensitivity check.
+Both board outlines occupy X100..250, Y65..175 mm in enclosure-floor coordinates.
+Mains PCB bottom/top are Z15/16.6; controller bottom/top are Z61.6/63.2.
+Four aligned mounting columns have centres **(107,72), (243,72), (107,168),
+(243,168)**. Use insulating M3 hardware within the 8 mm maximum reserved diameter.
+Exact spacer, washer, carrier attachment and board-load details remain to select.
 
-Use existing PCB mounting holes with ordinary M3 insulating standoffs, retaining
-PCB top at Z28. Support these on uncomplicated insulating carriers or brackets
-fixed to the enclosure's mounting points. This screen reserves the board underside
-down to Z21; it does not specify carrier machining, adhesive attachment, bracket
-hole locations or mounting tolerances. Do not substitute the supplied steel-panel
-model without separately resolving PE bonding and isolation underneath the boards.
+An **intact 158 × 118 × 2 mm insulating separator** occupies X96..254,
+Y61..179, Z50.1..52.1. Its lower face is 3 mm above the allocated 30.5 mm supply
+height; it leaves 6.5 mm to the upper assembly's underside reserve at Z58.6.
+This is a geometric allocation. Material, retention, primary-guard edges,
+wire routing and electrical insulation acceptance remain engineering checks.
+No RF notch is selected.
 
-The straight partition allocation is 3 mm thick at X225..228, Y10..225, Z5..100.
-It separates primary/filter wiring from the controller. Its edge gaps and fixing
-feet are not a touchproof service compartment; unplug mains before opening or
-servicing the enclosure. Keep primary cables wholly on the mains side. Only
-isolated power/control harnesses cross the partition, in a retained opening near
-the relevant connector, whose exact machining follows final mating hardware.
+Allow **35 mm outward mating/wiring depth** at each used edge. Lower primary
+headers exit left and south; lower isolated headers exit right. Upper sensor
+headers exit north, service connectors south and pump outputs right. The north
+reserve stays left of the antenna. These are space allocations, not measured
+housing withdrawal distances, cable bend radii or exact crimp models.
 
-The 130 × 75 × 40 mm filter/wire reserve contains a 73 × 53 × 25 mm maximum
-filter body allocation and space for terminals and bends. It is not a measured
-Faston housing/crimp geometry. Route marked LINE and LOAD pairs separately.
+The filter/wiring reserve is rotated to **75 × 130 × 40 mm**, at X292..367,
+Y40..170, Z10..50. Its nominal enclosure clearance is **5.40 mm**; expanding the
+reserve by 1 mm and lowering the lid/hardware 1 mm leaves **4.00 mm**. Keep LINE
+and LOAD wiring separate. This reserve contains the retained external filter and
+its cable allowance, not an added component or a final mounting drawing.
 
-These results establish ample gross fit for routing allocation. They do not
-release fabrication, enclosure machining or electrical operation. See
-[mechanical requirements](../../docs/mechanical.md) for what remains.
+The module's actual antenna envelope remains beyond the upper board's north
+edge. Its minimum distance to the lower assembly reserve is **16.1 mm**. The
+screen checks at least 15 mm to the enclosure, lower components, filter and
+external harness reserves. The intact dielectric separator is tracked separately;
+its influence on RF performance remains unmeasured. The board's local copper
+exclusion and module support rules remain authoritative.
+
+The optional manufacturer steel inner panel is excluded. Base, lid, screws and
+gasket remain in every enclosure test. All nominal reserve volumes and the 1 mm
+expanded reserves clear the enclosure, including a lid lowered 1 mm to account
+for the STEP/drawing height discrepancy. Independent reserves do not intersect;
+intentional mating interfaces may touch. Three negative controls detect wall,
+lid and lowered-separator collisions. The exported STEP reloads as **19 valid
+solids**. No route, fabrication, machining or assembled ingress rating follows
+from this gross-fit result.

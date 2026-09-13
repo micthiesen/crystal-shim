@@ -1,0 +1,40 @@
+{
+  "differential_pairs": [
+    [
+      "USB_D_N",
+      "USB_D_P"
+    ],
+    [
+      "USB_D_P",
+      "USB_D_N"
+    ],
+    [
+      "USB_D_PORT_N",
+      "USB_D_PORT_P"
+    ],
+    [
+      "USB_D_PORT_P",
+      "USB_D_PORT_N"
+    ],
+    [
+      "USB_D_SWITCH_N",
+      "USB_D_SWITCH_P"
+    ],
+    [
+      "USB_D_SWITCH_P",
+      "USB_D_SWITCH_N"
+    ]
+  ],
+  "controller": {
+    "probes": 6,
+    "passed": true
+  },
+  "mains": {
+    "probes": 5,
+    "passed": true
+  },
+  "sensor": {
+    "probes": 2,
+    "passed": true
+  }
+}

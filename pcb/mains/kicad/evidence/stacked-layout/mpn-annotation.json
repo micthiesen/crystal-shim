@@ -1,0 +1,27 @@
+{
+  "before_sha256": "bb09158d27016cdf38a92c41711ef86d8ff90980848b66e0b4dab48684569fd4",
+  "after_sha256": "105fc2f6c914284a2d002a2348ba5966122487d6e5f234478c47f06a5882ed08",
+  "results": [
+    {
+      "added_property": "MPN",
+      "reference": "J1",
+      "value": "43160-1102"
+    },
+    {
+      "added_property": "MPN",
+      "reference": "J2",
+      "value": "43160-1103"
+    },
+    {
+      "added_property": "MPN",
+      "reference": "J3",
+      "value": "43160-1104"
+    },
+    {
+      "added_property": "MPN",
+      "reference": "J4",
+      "value": "43160-1106"
+    }
+  ],
+  "requires_native_GUI_save_to_canonicalize_duplicates": true
+}

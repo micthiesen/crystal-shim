@@ -1,7 +1,7 @@
 # Mains power layout and assembly
 
 The current mains U2 is **AP63205WU-7**, a six-lead TSOT26 buck, and the board
-is 180 ×110 mm. The former TPS259470 ten-pad thermal/stencil contract and
+is 150 × 110 mm beneath the matching controller. The former TPS259470 ten-pad thermal/stencil contract and
 `evidence/mains-thermal-stencil/recommended-operations.json` describe removed
 hardware. They are historical evidence, not operations to apply to this board.
 There is no special eFuse split-land, eight-via or twelve-aperture requirement.

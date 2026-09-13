@@ -15,147 +15,468 @@
   "model_drawing_height_discrepancy_mm": 1,
   "bounds_mm": {
     "mains_pcb": [
-      25,
-      205,
-      25,
-      135,
-      26.4,
-      28
+      100,
+      250,
+      65,
+      175,
+      15,
+      16.6
     ],
     "controller_pcb": [
-      245,
-      355,
-      25,
-      135,
-      26.4,
-      28
+      100,
+      250,
+      65,
+      175,
+      61.6,
+      63.2
     ],
-    "mains_assembly_and_wire_reserve": [
-      25,
-      205,
-      25,
-      135,
-      21,
-      75
+    "mains_assembly_reserve": [
+      100,
+      250,
+      65,
+      175,
+      12,
+      47.1
     ],
     "controller_assembly_and_access_reserve": [
-      245,
-      355,
-      25,
-      135,
-      21,
-      65
+      100,
+      250,
+      65,
+      175,
+      58.6,
+      85
     ],
     "filter_and_wire_reserve": [
-      25,
-      155,
-      150,
-      225,
-      5,
-      45
-    ],
-    "partition": [
-      225,
-      228,
+      292,
+      367,
+      40,
+      170,
       10,
-      225,
-      5,
-      100
+      50
+    ],
+    "separator": [
+      96,
+      254,
+      61,
+      179,
+      50.1,
+      52.1
+    ],
+    "mains_left_harness_reserve": [
+      65,
+      100,
+      75,
+      145,
+      12,
+      42
+    ],
+    "mains_south_harness_reserve": [
+      100,
+      250,
+      175,
+      210,
+      12,
+      42
+    ],
+    "mains_right_harness_reserve": [
+      250,
+      285,
+      78,
+      145,
+      12,
+      42
+    ],
+    "controller_north_harness_reserve": [
+      123,
+      169,
+      30,
+      65,
+      61.6,
+      85
+    ],
+    "controller_south_harness_reserve": [
+      120,
+      205,
+      175,
+      210,
+      58.6,
+      85
+    ],
+    "controller_right_harness_reserve": [
+      250,
+      285,
+      105,
+      169,
+      58.6,
+      85
     ]
   },
-  "nominal": {
-    "mains_pcb": {
-      "distance_mm": 12.839700437020655,
+  "board_face_gap_mm": 45,
+  "mount_centres_xy_mm": [
+    [
+      107,
+      72
+    ],
+    [
+      243,
+      72
+    ],
+    [
+      107,
+      168
+    ],
+    [
+      243,
+      168
+    ]
+  ],
+  "mount_hardware_max_diameter_mm": 8,
+  "separator_thickness_mm": 2,
+  "supply_to_separator_gap_mm": 3,
+  "outward_harness_depth_mm": 35,
+  "antenna_envelope_mm": [
+    186.1,
+    204.3,
+    58.9,
+    65.1,
+    63.2,
+    65.6
+  ],
+  "antenna_to_enclosure_lower_parts_and_harnesses": {
+    "enclosure": {
+      "distance_mm": 45.400000000000006,
       "intersection_mm3": 0.0
     },
-    "controller_pcb": {
-      "distance_mm": 17.489963749473677,
-      "intersection_mm3": 0.0
-    },
-    "mains_assembly_and_wire_reserve": {
-      "distance_mm": 12.79257714532928,
-      "intersection_mm3": 0.0
-    },
-    "controller_assembly_and_access_reserve": {
-      "distance_mm": 17.442840457782335,
+    "mains_assembly_reserve": {
+      "distance_mm": 16.1,
       "intersection_mm3": 0.0
     },
     "filter_and_wire_reserve": {
-      "distance_mm": 3.200000000000003,
+      "distance_mm": 88.68782329046078,
       "intersection_mm3": 0.0
     },
-    "partition": {
-      "distance_mm": 3.200000000000003,
+    "mains_left_harness_reserve": {
+      "distance_mm": 89.22253078679174,
+      "intersection_mm3": 0.0
+    },
+    "mains_south_harness_reserve": {
+      "distance_mm": 111.92609168554043,
+      "intersection_mm3": 0.0
+    },
+    "mains_right_harness_reserve": {
+      "distance_mm": 52.0032691280077,
+      "intersection_mm3": 0.0
+    },
+    "controller_north_harness_reserve": {
+      "distance_mm": 17.099999999999994,
+      "intersection_mm3": 0.0
+    },
+    "controller_south_harness_reserve": {
+      "distance_mm": 109.9,
+      "intersection_mm3": 0.0
+    },
+    "controller_right_harness_reserve": {
+      "distance_mm": 60.667124540396664,
+      "intersection_mm3": 0.0
+    }
+  },
+  "nominal": {
+    "mains_pcb": {
+      "distance_mm": 13.200000000000003,
+      "intersection_mm3": 0.0
+    },
+    "controller_pcb": {
+      "distance_mm": 47.8,
+      "intersection_mm3": 0.0
+    },
+    "mains_assembly_reserve": {
+      "distance_mm": 10.200000000000003,
+      "intersection_mm3": 0.0
+    },
+    "controller_assembly_and_access_reserve": {
+      "distance_mm": 26.0,
+      "intersection_mm3": 0.0
+    },
+    "filter_and_wire_reserve": {
+      "distance_mm": 5.397463601537677,
+      "intersection_mm3": 0.0
+    },
+    "separator": {
+      "distance_mm": 48.300000000000004,
+      "intersection_mm3": 0.0
+    },
+    "mains_left_harness_reserve": {
+      "distance_mm": 10.200000000000003,
+      "intersection_mm3": 0.0
+    },
+    "mains_south_harness_reserve": {
+      "distance_mm": 10.200000000000003,
+      "intersection_mm3": 0.0
+    },
+    "mains_right_harness_reserve": {
+      "distance_mm": 10.200000000000003,
+      "intersection_mm3": 0.0
+    },
+    "controller_north_harness_reserve": {
+      "distance_mm": 26.0,
+      "intersection_mm3": 0.0
+    },
+    "controller_south_harness_reserve": {
+      "distance_mm": 24.089186370651888,
+      "intersection_mm3": 0.0
+    },
+    "controller_right_harness_reserve": {
+      "distance_mm": 26.0,
       "intersection_mm3": 0.0
     }
   },
   "one_mm_expansion_and_reduced_lid": {
     "mains_pcb": {
-      "distance_mm": 11.579164589227886,
+      "distance_mm": 12.200000000000003,
       "intersection_mm3": 0.0
     },
     "controller_pcb": {
-      "distance_mm": 16.265197579524056,
+      "distance_mm": 45.8,
       "intersection_mm3": 0.0
     },
-    "mains_assembly_and_wire_reserve": {
-      "distance_mm": 11.532041297536514,
+    "mains_assembly_reserve": {
+      "distance_mm": 9.200000000000003,
       "intersection_mm3": 0.0
     },
     "controller_assembly_and_access_reserve": {
-      "distance_mm": 16.21807428783267,
+      "distance_mm": 24.0,
       "intersection_mm3": 0.0
     },
     "filter_and_wire_reserve": {
-      "distance_mm": 2.200000000000003,
+      "distance_mm": 4.004932776439083,
       "intersection_mm3": 0.0
     },
-    "partition": {
-      "distance_mm": 2.200000000000003,
+    "separator": {
+      "distance_mm": 47.300000000000004,
+      "intersection_mm3": 0.0
+    },
+    "mains_left_harness_reserve": {
+      "distance_mm": 9.200000000000003,
+      "intersection_mm3": 0.0
+    },
+    "mains_south_harness_reserve": {
+      "distance_mm": 9.200000000000003,
+      "intersection_mm3": 0.0
+    },
+    "mains_right_harness_reserve": {
+      "distance_mm": 9.200000000000003,
+      "intersection_mm3": 0.0
+    },
+    "controller_north_harness_reserve": {
+      "distance_mm": 24.0,
+      "intersection_mm3": 0.0
+    },
+    "controller_south_harness_reserve": {
+      "distance_mm": 22.685433652456386,
+      "intersection_mm3": 0.0
+    },
+    "controller_right_harness_reserve": {
+      "distance_mm": 24.0,
       "intersection_mm3": 0.0
     }
   },
   "mutual": {
-    "mains_assembly_and_wire_reserve / controller_assembly_and_access_reserve": {
-      "distance_mm": 40.0,
+    "mains_assembly_reserve / controller_assembly_and_access_reserve": {
+      "distance_mm": 11.5,
       "intersection_mm3": 0.0
     },
-    "mains_assembly_and_wire_reserve / filter_and_wire_reserve": {
-      "distance_mm": 15.0,
+    "mains_assembly_reserve / filter_and_wire_reserve": {
+      "distance_mm": 42.0,
       "intersection_mm3": 0.0
     },
-    "mains_assembly_and_wire_reserve / partition": {
-      "distance_mm": 20.0,
+    "mains_assembly_reserve / separator": {
+      "distance_mm": 3.0,
+      "intersection_mm3": 0.0
+    },
+    "mains_assembly_reserve / mains_left_harness_reserve": {
+      "distance_mm": 0.0,
+      "intersection_mm3": 0.0
+    },
+    "mains_assembly_reserve / mains_south_harness_reserve": {
+      "distance_mm": 0.0,
+      "intersection_mm3": 0.0
+    },
+    "mains_assembly_reserve / mains_right_harness_reserve": {
+      "distance_mm": 0.0,
+      "intersection_mm3": 0.0
+    },
+    "mains_assembly_reserve / controller_north_harness_reserve": {
+      "distance_mm": 14.5,
+      "intersection_mm3": 0.0
+    },
+    "mains_assembly_reserve / controller_south_harness_reserve": {
+      "distance_mm": 11.5,
+      "intersection_mm3": 0.0
+    },
+    "mains_assembly_reserve / controller_right_harness_reserve": {
+      "distance_mm": 11.5,
       "intersection_mm3": 0.0
     },
     "controller_assembly_and_access_reserve / filter_and_wire_reserve": {
-      "distance_mm": 91.2414379544733,
+      "distance_mm": 42.87143571190496,
       "intersection_mm3": 0.0
     },
-    "controller_assembly_and_access_reserve / partition": {
-      "distance_mm": 17.0,
+    "controller_assembly_and_access_reserve / separator": {
+      "distance_mm": 6.5,
       "intersection_mm3": 0.0
     },
-    "filter_and_wire_reserve / partition": {
-      "distance_mm": 70.0,
+    "controller_assembly_and_access_reserve / mains_left_harness_reserve": {
+      "distance_mm": 16.6,
+      "intersection_mm3": 0.0
+    },
+    "controller_assembly_and_access_reserve / mains_south_harness_reserve": {
+      "distance_mm": 16.6,
+      "intersection_mm3": 0.0
+    },
+    "controller_assembly_and_access_reserve / mains_right_harness_reserve": {
+      "distance_mm": 16.6,
+      "intersection_mm3": 0.0
+    },
+    "controller_assembly_and_access_reserve / controller_north_harness_reserve": {
+      "distance_mm": 0.0,
+      "intersection_mm3": 0.0
+    },
+    "controller_assembly_and_access_reserve / controller_south_harness_reserve": {
+      "distance_mm": 0.0,
+      "intersection_mm3": 0.0
+    },
+    "controller_assembly_and_access_reserve / controller_right_harness_reserve": {
+      "distance_mm": 0.0,
+      "intersection_mm3": 0.0
+    },
+    "filter_and_wire_reserve / separator": {
+      "distance_mm": 38.00013157871957,
+      "intersection_mm3": 0.0
+    },
+    "filter_and_wire_reserve / mains_left_harness_reserve": {
+      "distance_mm": 192.0,
+      "intersection_mm3": 0.0
+    },
+    "filter_and_wire_reserve / mains_south_harness_reserve": {
+      "distance_mm": 42.2965719651132,
+      "intersection_mm3": 0.0
+    },
+    "filter_and_wire_reserve / mains_right_harness_reserve": {
+      "distance_mm": 7.0,
+      "intersection_mm3": 0.0
+    },
+    "filter_and_wire_reserve / controller_north_harness_reserve": {
+      "distance_mm": 123.54578098826362,
+      "intersection_mm3": 0.0
+    },
+    "filter_and_wire_reserve / controller_south_harness_reserve": {
+      "distance_mm": 87.56688871942409,
+      "intersection_mm3": 0.0
+    },
+    "filter_and_wire_reserve / controller_right_harness_reserve": {
+      "distance_mm": 11.088733020503291,
+      "intersection_mm3": 0.0
+    },
+    "separator / mains_left_harness_reserve": {
+      "distance_mm": 8.100000000000001,
+      "intersection_mm3": 0.0
+    },
+    "separator / mains_south_harness_reserve": {
+      "distance_mm": 8.100000000000001,
+      "intersection_mm3": 0.0
+    },
+    "separator / mains_right_harness_reserve": {
+      "distance_mm": 8.100000000000001,
+      "intersection_mm3": 0.0
+    },
+    "separator / controller_north_harness_reserve": {
+      "distance_mm": 9.5,
+      "intersection_mm3": 0.0
+    },
+    "separator / controller_south_harness_reserve": {
+      "distance_mm": 6.5,
+      "intersection_mm3": 0.0
+    },
+    "separator / controller_right_harness_reserve": {
+      "distance_mm": 6.5,
+      "intersection_mm3": 0.0
+    },
+    "mains_left_harness_reserve / mains_south_harness_reserve": {
+      "distance_mm": 30.0,
+      "intersection_mm3": 0.0
+    },
+    "mains_left_harness_reserve / mains_right_harness_reserve": {
+      "distance_mm": 150.0,
+      "intersection_mm3": 0.0
+    },
+    "mains_left_harness_reserve / controller_north_harness_reserve": {
+      "distance_mm": 31.83017436333015,
+      "intersection_mm3": 0.0
+    },
+    "mains_left_harness_reserve / controller_south_harness_reserve": {
+      "distance_mm": 39.69332437576878,
+      "intersection_mm3": 0.0
+    },
+    "mains_left_harness_reserve / controller_right_harness_reserve": {
+      "distance_mm": 150.91573807923413,
+      "intersection_mm3": 0.0
+    },
+    "mains_south_harness_reserve / mains_right_harness_reserve": {
+      "distance_mm": 30.0,
+      "intersection_mm3": 0.0
+    },
+    "mains_south_harness_reserve / controller_north_harness_reserve": {
+      "distance_mm": 111.73253778555286,
+      "intersection_mm3": 0.0
+    },
+    "mains_south_harness_reserve / controller_south_harness_reserve": {
+      "distance_mm": 16.6,
+      "intersection_mm3": 0.0
+    },
+    "mains_south_harness_reserve / controller_right_harness_reserve": {
+      "distance_mm": 17.651062290978413,
+      "intersection_mm3": 0.0
+    },
+    "mains_right_harness_reserve / controller_north_harness_reserve": {
+      "distance_mm": 84.34548002116058,
+      "intersection_mm3": 0.0
+    },
+    "mains_right_harness_reserve / controller_south_harness_reserve": {
+      "distance_mm": 56.5734920258596,
+      "intersection_mm3": 0.0
+    },
+    "mains_right_harness_reserve / controller_right_harness_reserve": {
+      "distance_mm": 16.6,
+      "intersection_mm3": 0.0
+    },
+    "controller_north_harness_reserve / controller_south_harness_reserve": {
+      "distance_mm": 110.0,
+      "intersection_mm3": 0.0
+    },
+    "controller_north_harness_reserve / controller_right_harness_reserve": {
+      "distance_mm": 90.33825324855468,
+      "intersection_mm3": 0.0
+    },
+    "controller_south_harness_reserve / controller_right_harness_reserve": {
+      "distance_mm": 45.39823785126467,
       "intersection_mm3": 0.0
     }
   },
   "negative_controls": {
-    "oversize_mains_hits_wall": {
+    "oversize_stack_hits_wall": {
       "distance_mm": 0.0,
-      "intersection_mm3": 39334.995297297006
+      "intersection_mm3": 50939.383741800535
     },
     "too_tall_controller_hits_lid": {
-      "distance_mm": 0.0,
-      "intersection_mm3": 63525.0
+      "distance_mm": 1.4210854715202004e-14,
+      "intersection_mm3": 86625.0
     },
-    "misplaced_controller_hits_partition": {
+    "separator_hits_supply_if_lowered": {
       "distance_mm": 0.0,
-      "intersection_mm3": 14520.0
+      "intersection_mm3": 33000.0
     }
   },
-  "reload_valid_solids": 13,
+  "reload_valid_solids": 19,
   "source_receipts": [
     {
       "url": "https://www.hammfg.com/files/parts/stp/1590ZGRP243.zip?v=1697661993",
@@ -169,11 +490,12 @@
     }
   ],
   "source_step_sha256": "c44881ef623315ffbccaa5e705a3ec12974a3cd2dda27fff8a0494578bfc8b2d",
-  "script_sha256": "85f8820e55c47b30cd1482c80251bdd453271a3944f3485ad5d07fff0f50ddd3",
-  "export_sha256": "87c8d643a6f2cbe662b5e563e809c646503d0ec425ac632f94731654baaf29c0",
+  "script_sha256": "11e6ff45d427ef4a8d6d9ab2e04be35218db355400d48f4e41073288cff997a0",
+  "export_sha256": "0a0e6bda598d79a891f2790a036c54850d088ff382502f0ef3e59f4a7669d53b",
   "not_tested": [
     "Exact placed component models or mated terminal and crimp shapes",
-    "Mounting bracket/carrier holes, partition feet and retention",
+    "Exact insulating spacer/washer shapes, separator retention and primary-guard edge coverage",
+    "Dielectric separator influence on antenna performance; no RF notch is approved",
     "Finished gland/cutout machining and assembled ingress rating",
     "Actual sensor cable length including crimps and strain relief",
     "Thermal performance and installed skimmer interference"

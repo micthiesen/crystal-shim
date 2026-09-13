@@ -58,7 +58,7 @@ export function createControllerManifest(json: CircuitJson) {
   if (
     boards.length !== 1 ||
     !board ||
-    board.width !== 110 ||
+    board.width !== 150 ||
     board.height !== 110 ||
     board.num_layers !== 4 ||
     board.thickness !== 1.6 ||
@@ -279,7 +279,7 @@ export function createControllerManifest(json: CircuitJson) {
     schema_version: 1,
     board: {
       stable_id: controllerBoardId,
-      width_mm: 110,
+      width_mm: 150,
       height_mm: 110,
       layer_count: 4,
       coordinate_system: "center-x-right-y-up",
@@ -294,7 +294,7 @@ export function createControllerManifest(json: CircuitJson) {
           { x: 0, y: 0 },
         ),
       },
-      outline: { kind: "rectangle", center_mm: [0, 0], width_mm: 110, height_mm: 110 },
+      outline: { kind: "rectangle", center_mm: [0, 0], width_mm: 150, height_mm: 110 },
       holes,
     },
     versions: {

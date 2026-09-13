@@ -1,0 +1,1539 @@
+{
+  "board": {
+    "coordinate_system": "center-x-right-y-up",
+    "height_mm": 110,
+    "layer_count": 2,
+    "specs": {
+      "assembly_sides": [
+        "front"
+      ],
+      "compiled_board_sha256": "f7b552b53594a80dfc7b13eb1e79ef3e4391edd84521d46e207844ef688837f4",
+      "material": "FR4",
+      "thickness_mm": 1.6,
+      "unowned_physical_geometry_sha256": "57a9b81008e5db408b03cfd0e849a336e23304ab3db6122d447ae38ed763eb86"
+    },
+    "stable_id": "mains.board.main",
+    "width_mm": 150,
+    "kicad_origin_mm": [
+      100,
+      100
+    ],
+    "holes": [
+      {
+        "drill_mm": 3.2,
+        "ref": "H1",
+        "stable_id": "mains.hole.h1",
+        "x_mm": -68,
+        "y_mm": 48
+      },
+      {
+        "drill_mm": 3.2,
+        "ref": "H2",
+        "stable_id": "mains.hole.h2",
+        "x_mm": 68,
+        "y_mm": 48
+      },
+      {
+        "drill_mm": 3.2,
+        "ref": "H3",
+        "stable_id": "mains.hole.h3",
+        "x_mm": -68,
+        "y_mm": -48
+      },
+      {
+        "drill_mm": 3.2,
+        "ref": "H4",
+        "stable_id": "mains.hole.h4",
+        "x_mm": 68,
+        "y_mm": -48
+      },
+      {
+        "drill_mm": 3,
+        "ref": "J5",
+        "stable_id": "mains.hole.j5.locator-1",
+        "x_mm": 68.32,
+        "y_mm": 25
+      },
+      {
+        "drill_mm": 3,
+        "ref": "J6",
+        "stable_id": "mains.hole.j6.locator-1",
+        "x_mm": 68.32,
+        "y_mm": 6.999999999999999
+      }
+    ],
+    "outline": {
+      "center_mm": [
+        0,
+        0
+      ],
+      "height_mm": 110,
+      "kind": "rectangle",
+      "width_mm": 150
+    }
+  },
+  "components": [
+    {
+      "fields": {
+        "datasheet_url": "https://www.tdk-electronics.tdk.com/inf/20/20/db/fc_2009/X2_B32921_928.pdf",
+        "manufacturer_part_number": "B32921C3473K000"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_C1",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:B32921C3473K000_P10",
+        "source_geometry_sha256": "a3b8c677dba6484a77834c477fe7124a0d9b90207be69674dd9b070856e6cd9c",
+        "initial_geometry_sha256": "69180bc4bfa4d165b549a1b7565d811739f71e3274ec7e48ca9deff0c92f0dcc"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -15,
+        "y_mm": -32
+      },
+      "ref": "C1",
+      "stable_id": "mains.component.c1",
+      "value": "47nF",
+      "symbol": "CrystalShim_Mains:Mains_C1"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "manufacturer_part_number": "GRM32ER71E226ME15L"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_C2",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow",
+        "source_geometry_sha256": "ce337ee2769be5c50f4d6ed34ba189c16e4df1b85930f779004da80f5e53cf57",
+        "initial_geometry_sha256": "ae04005733b773b0f2a9ae1431f16f57ea28d3dbdd9e53f8748aac70cdf3b72e"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 44,
+        "y_mm": -6
+      },
+      "ref": "C2",
+      "stable_id": "mains.component.c2",
+      "value": "22uF",
+      "symbol": "CrystalShim_Mains:Mains_C2"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "manufacturer_part_number": "GRM32ER71E226ME15L"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_C3",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow",
+        "source_geometry_sha256": "ce337ee2769be5c50f4d6ed34ba189c16e4df1b85930f779004da80f5e53cf57",
+        "initial_geometry_sha256": "ae04005733b773b0f2a9ae1431f16f57ea28d3dbdd9e53f8748aac70cdf3b72e"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 44,
+        "y_mm": 1
+      },
+      "ref": "C3",
+      "stable_id": "mains.component.c3",
+      "value": "22uF",
+      "symbol": "CrystalShim_Mains:Mains_C3"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "manufacturer_part_number": "GRM32ER71E226ME15L"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_C4",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow",
+        "source_geometry_sha256": "ce337ee2769be5c50f4d6ed34ba189c16e4df1b85930f779004da80f5e53cf57",
+        "initial_geometry_sha256": "ae04005733b773b0f2a9ae1431f16f57ea28d3dbdd9e53f8748aac70cdf3b72e"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 65,
+        "y_mm": -9
+      },
+      "ref": "C4",
+      "stable_id": "mains.component.c4",
+      "value": "22uF",
+      "symbol": "CrystalShim_Mains:Mains_C4"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_C5",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608",
+        "source_geometry_sha256": "883e465b7ad274552d4105fff40f71c2d805d5841ebe749d8b2edb295c925aa3",
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 51,
+        "y_mm": -4
+      },
+      "ref": "C5",
+      "stable_id": "mains.component.c5",
+      "value": "100nF",
+      "symbol": "CrystalShim_Mains:Mains_C5"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "manufacturer_part_number": "GRM32ER71E226ME15L"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_C6",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow",
+        "source_geometry_sha256": "ce337ee2769be5c50f4d6ed34ba189c16e4df1b85930f779004da80f5e53cf57",
+        "initial_geometry_sha256": "ae04005733b773b0f2a9ae1431f16f57ea28d3dbdd9e53f8748aac70cdf3b72e"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 65,
+        "y_mm": -17
+      },
+      "ref": "C6",
+      "stable_id": "mains.component.c6",
+      "value": "22uF",
+      "symbol": "CrystalShim_Mains:Mains_C6"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_C7",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608",
+        "source_geometry_sha256": "883e465b7ad274552d4105fff40f71c2d805d5841ebe749d8b2edb295c925aa3",
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 43,
+        "y_mm": -12
+      },
+      "ref": "C7",
+      "stable_id": "mains.component.c7",
+      "value": "100nF",
+      "symbol": "CrystalShim_Mains:Mains_C7"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.vishay.com/docs/88503/1n4001.pdf",
+        "manufacturer_part_number": "1N4007-E3/54"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_D1",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:1N4007_DO41_P10_16",
+        "source_geometry_sha256": "1ffd735a7f1fcc6d54a933f311c62d14ad178fcdd4edba3f07fd59655a6d5d92",
+        "initial_geometry_sha256": "1bc35c7f68edfd6f5f34cb2f0a03dfc293d132b907429638b012d82cde446b78"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 45,
+        "y_mm": -25
+      },
+      "ref": "D1",
+      "stable_id": "mains.component.d1",
+      "value": "1N4007-E3/54",
+      "symbol": "CrystalShim_Mains:Mains_D1"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.littelfuse.com/assetdocs/fuse-451-and-453-datasheet?assetguid=533cd5cc-956c-4243-867f-6ab5a62f6ba1",
+        "manufacturer_part_number": "0451003.MRL"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_F2",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:Littelfuse_451",
+        "source_geometry_sha256": "7a557828f62bb2256cc5c7a7f839ce1f9bd54d1ac98c5558731096c595238bfd",
+        "initial_geometry_sha256": "1acf1823a0cdd02e572414085b8d74dfe017b73326b456c915ebf095b08af1ae"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 49,
+        "y_mm": 7
+      },
+      "ref": "F2",
+      "stable_id": "mains.component.f2",
+      "value": "0451003.MRL",
+      "symbol": "CrystalShim_Mains:Mains_F2"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.littelfuse.com/assetdocs/littelfuse_fuse_215_datasheet?assetguid=990f7193-d9a2-48e4-b760-2b43514249cf",
+        "manufacturer_part_number": "0215001.MXEP"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_F3",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:Littelfuse_215_Axial_P30_48",
+        "source_geometry_sha256": "4ccab783e14cd93340313b4372a932d577303856207c9f30da090418c98a24cc",
+        "initial_geometry_sha256": "b5e8ba7d444ad01c9ab742d64d9d06a28ca31a254f2017a70d37a031bc8ed8c1"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -16,
+        "y_mm": -9
+      },
+      "ref": "F3",
+      "stable_id": "mains.component.f3",
+      "value": "0215001.MXEP",
+      "symbol": "CrystalShim_Mains:Mains_F3"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_H1",
+        "pad_numbers": [],
+        "tscircuit": "tscircuit:CrystalShim_Mains:MountingHole_3.2mm_NPTH",
+        "source_geometry_sha256": "8b19db8d1419496b10bed2e4f9a0a8644435160cbcdf7a66f24dc78784c67794",
+        "initial_geometry_sha256": "3197cb3083387f668c1da8cddb862fb849a065d8dc876e79a307652fbd3ed0c7"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -68,
+        "y_mm": 48
+      },
+      "ref": "H1",
+      "stable_id": "mains.component.h1",
+      "value": "3.2mm NPTH",
+      "symbol": "Mechanical:MountingHole"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_H2",
+        "pad_numbers": [],
+        "tscircuit": "tscircuit:CrystalShim_Mains:MountingHole_3.2mm_NPTH",
+        "source_geometry_sha256": "8b19db8d1419496b10bed2e4f9a0a8644435160cbcdf7a66f24dc78784c67794",
+        "initial_geometry_sha256": "3197cb3083387f668c1da8cddb862fb849a065d8dc876e79a307652fbd3ed0c7"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 68,
+        "y_mm": 48
+      },
+      "ref": "H2",
+      "stable_id": "mains.component.h2",
+      "value": "3.2mm NPTH",
+      "symbol": "Mechanical:MountingHole"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_H3",
+        "pad_numbers": [],
+        "tscircuit": "tscircuit:CrystalShim_Mains:MountingHole_3.2mm_NPTH",
+        "source_geometry_sha256": "8b19db8d1419496b10bed2e4f9a0a8644435160cbcdf7a66f24dc78784c67794",
+        "initial_geometry_sha256": "3197cb3083387f668c1da8cddb862fb849a065d8dc876e79a307652fbd3ed0c7"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -68,
+        "y_mm": -48
+      },
+      "ref": "H3",
+      "stable_id": "mains.component.h3",
+      "value": "3.2mm NPTH",
+      "symbol": "Mechanical:MountingHole"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_H4",
+        "pad_numbers": [],
+        "tscircuit": "tscircuit:CrystalShim_Mains:MountingHole_3.2mm_NPTH",
+        "source_geometry_sha256": "8b19db8d1419496b10bed2e4f9a0a8644435160cbcdf7a66f24dc78784c67794",
+        "initial_geometry_sha256": "3197cb3083387f668c1da8cddb862fb849a065d8dc876e79a307652fbd3ed0c7"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 68,
+        "y_mm": -48
+      },
+      "ref": "H4",
+      "stable_id": "mains.component.h4",
+      "value": "3.2mm NPTH",
+      "symbol": "Mechanical:MountingHole"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+        "manufacturer_part_number": "43160-1102"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_J1",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-1102",
+        "source_geometry_sha256": "f9e05e9a4b662fb2ac924b660febb68dbb5ee1945c4614c8fd35469380cfb880",
+        "initial_geometry_sha256": "b1a84735aaf1fe42a2a5aa510fcd1ef9ae34d48a8cb557cd94b5357dd297ecea"
+      },
+      "placement": {
+        "rotation_deg": 270,
+        "side": "front",
+        "x_mm": -59,
+        "y_mm": 35
+      },
+      "ref": "J1",
+      "stable_id": "mains.component.j1",
+      "value": "43160-1102",
+      "symbol": "CrystalShim_Mains:Mains_J1"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+        "manufacturer_part_number": "43160-1103"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_J2",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-1103",
+        "source_geometry_sha256": "64971f4a651595e9a23e5d7511f768c9e8f7ceb59ac734a272fcd7a531f57110",
+        "initial_geometry_sha256": "d171ef8141492df08f3cbed1b6d3b44277bd186faa75414b9b6cefd46a32d65c"
+      },
+      "placement": {
+        "rotation_deg": 270,
+        "side": "front",
+        "x_mm": -59,
+        "y_mm": 8
+      },
+      "ref": "J2",
+      "stable_id": "mains.component.j2",
+      "value": "43160-1103",
+      "symbol": "CrystalShim_Mains:Mains_J2"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+        "manufacturer_part_number": "43160-1104"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_J3",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-1104",
+        "source_geometry_sha256": "48348463ce0c7f3174640a3a8a6c8aad7b236c10448e4c0d0528486a740e00be",
+        "initial_geometry_sha256": "19112a9913e215b651473711f4f3eab62172cd63f19526303cfca30d4e6ca75d"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -54,
+        "y_mm": -41
+      },
+      "ref": "J3",
+      "stable_id": "mains.component.j3",
+      "value": "43160-1104",
+      "symbol": "CrystalShim_Mains:Mains_J3"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+        "manufacturer_part_number": "43160-1106"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_J4",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-1106",
+        "source_geometry_sha256": "a16e69991797fa1b6061df3b061a0d56d904b50fea0fb0abb54f2e08c6245721",
+        "initial_geometry_sha256": "101916cee51d1cbc0f338e4277c9308e03ec30102e9e80158e6841a3034618cd"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 1,
+        "y_mm": -41
+      },
+      "ref": "J4",
+      "stable_id": "mains.component.j4",
+      "value": "43160-1106",
+      "symbol": "CrystalShim_Mains:Mains_J4"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/436/43650/436501200_sd.pdf",
+        "manufacturer_part_number": "43650-0300"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_J5",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3"
+        ],
+        "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43650-0300_1x03_P3.00mm_Horizontal",
+        "source_geometry_sha256": "96d7b01cfccc45fb67803cd6043f79a338979d4980ec9f02264caa586ccbf1fe",
+        "initial_geometry_sha256": "3729df5864aedc0cefb1eeaed0309e52330492e9b11a06f394b309c00a747883"
+      },
+      "placement": {
+        "rotation_deg": 270,
+        "side": "front",
+        "x_mm": 64,
+        "y_mm": 28
+      },
+      "ref": "J5",
+      "stable_id": "mains.component.j5",
+      "value": "43650-0300",
+      "symbol": "CrystalShim_Mains:Mains_J5"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf",
+        "manufacturer_part_number": "43045-0200"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_J6",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal",
+        "source_geometry_sha256": "e5b881fcd47ea834ebac964c1cb3d686e62fdb454ca7833b1faabb044715a498",
+        "initial_geometry_sha256": "66a56d11ac85fc33f1709d539b30a233816d5dd8ab57e62db24664d4e7ad5de5"
+      },
+      "placement": {
+        "rotation_deg": 270,
+        "side": "front",
+        "x_mm": 64,
+        "y_mm": 7
+      },
+      "ref": "J6",
+      "stable_id": "mains.component.j6",
+      "value": "43045-0200",
+      "symbol": "CrystalShim_Mains:Mains_J6"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5rl.pdf",
+        "manufacturer_part_number": "G5RL-1A-TV8 DC5"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_K1",
+        "pad_numbers": [
+          "1",
+          "3",
+          "4",
+          "5"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:G5RL_1A_TV8",
+        "source_geometry_sha256": "f9c092b7398b9503b6c390747999eed3e93138e2e091a04b429c2dc6571ff308",
+        "initial_geometry_sha256": "f04987e729da2754baa9c5cc324dd30019e5074e87c032530053e929e333a1f9"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 10,
+        "y_mm": -17
+      },
+      "ref": "K1",
+      "stable_id": "mains.component.k1",
+      "value": "G5RL-1A-TV8 DC5",
+      "symbol": "CrystalShim_Mains:Mains_K1"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf",
+        "manufacturer_part_number": "SRP5030TA-4R7M"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_L1",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:SRP5030TA",
+        "source_geometry_sha256": "8f363c2a07eb12bd1989216e3890d2e97c71f69796d908cd3a8c64904ca07849",
+        "initial_geometry_sha256": "73a8dc30ee72bfb43d4510f14b4e6e76b6a12954b4ef5c99aa21a5c6e5ce2f94"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 57,
+        "y_mm": -9
+      },
+      "ref": "L1",
+      "stable_id": "mains.component.l1",
+      "value": "4.7\u00b5H",
+      "symbol": "CrystalShim_Mains:Mains_L1"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.vishay.com/docs/28915/pr02fs.pdf",
+        "manufacturer_part_number": "PR02FS0201000KA100"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_R1",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:PR02FS_P15_24",
+        "source_geometry_sha256": "ef4cebccb093ce1f6dafb085791d9fd4c2fd3bf16943a077e6b1930277828c47",
+        "initial_geometry_sha256": "76a5677b67e0cc3853e586da1db6f6eaafc387214e4ae9c9203b2d4d635d24a9"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -15,
+        "y_mm": -25
+      },
+      "ref": "R1",
+      "stable_id": "mains.component.r1",
+      "value": "100\u03a9",
+      "symbol": "CrystalShim_Mains:Mains_R1"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05",
+        "manufacturer_part_number": "TMOV14RP175EL2T7"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_RV1",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:TMOV14RP175EL2T7_RoundSlot",
+        "source_geometry_sha256": "d767c391a70d593de692b51bfbb8f341e23ba622cf3afa19b9473be4b160ff93",
+        "initial_geometry_sha256": "945eea69107c4087c580c46faffed4042eaec4459d4a349ca1554d368734d37f"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -39.75,
+        "y_mm": -20
+      },
+      "ref": "RV1",
+      "stable_id": "mains.component.rv1",
+      "value": "TMOV14RP175EL2T7",
+      "symbol": "CrystalShim_Mains:Mains_RV1"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.meanwell.com/Upload/PDF/IRM-45/IRM-45-SPEC.PDF",
+        "manufacturer_part_number": "IRM-45-12"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_U1",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:IRM_45_12",
+        "source_geometry_sha256": "b4944b157e07cabc10c1b3c4b657d218b795ec6c88b7881e8fdd6d939bfb62fc",
+        "initial_geometry_sha256": "e743f17c908fe2c054ffee9cc37d6f44a3593fb1040fe80b0f2ecf93abb1bf8d"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -47,
+        "y_mm": 48
+      },
+      "ref": "U1",
+      "stable_id": "mains.component.u1",
+      "value": "IRM-45-12",
+      "symbol": "CrystalShim_Mains:Mains_U1"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf",
+        "manufacturer_part_number": "AP63205WU-7"
+      },
+      "footprint": {
+        "kicad": "CrystalShim_Mains:Mains_U2",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "tscircuit": "tscircuit:CrystalShim:AP63205_TSOT26",
+        "source_geometry_sha256": "2a0da6aeaf3f220457ff48f2e35ebf292d84da9dd2b4dc899aeacfef5e2b7ea3",
+        "initial_geometry_sha256": "e7361aea469a6086152d4977da33aedc8faa8152f52c601da12acab6e18d3935"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 49,
+        "y_mm": -9
+      },
+      "ref": "U2",
+      "stable_id": "mains.component.u2",
+      "value": "AP63205WU-7",
+      "symbol": "CrystalShim_Mains:Mains_U2"
+    }
+  ],
+  "nets": [
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.f3",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.j1",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.rv1",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.u1",
+          "pad": "2"
+        }
+      ],
+      "name": "AC_L_FUSED",
+      "stable_id": "mains.net.ac_l_fused"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.j1",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.j2",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.rv1",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.u1",
+          "pad": "1"
+        }
+      ],
+      "name": "AC_N",
+      "stable_id": "mains.net.ac_n"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.c5",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.u2",
+          "pad": "6"
+        }
+      ],
+      "name": "BUCK5_BST",
+      "stable_id": "mains.net.buck5_bst"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.c5",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.l1",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.u2",
+          "pad": "5"
+        }
+      ],
+      "name": "BUCK5_SW",
+      "stable_id": "mains.net.buck5_sw"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.d1",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.j5",
+          "pad": "3"
+        },
+        {
+          "component": "mains.component.k1",
+          "pad": "5"
+        }
+      ],
+      "name": "COIL_DRAIN",
+      "stable_id": "mains.net.coil_drain"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.f3",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.j2",
+          "pad": "1"
+        }
+      ],
+      "name": "FILTER_LINE_L",
+      "stable_id": "mains.net.filter_line_l"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.c2",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.c3",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.c4",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.c6",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.c7",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.j5",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.j6",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.u1",
+          "pad": "3"
+        },
+        {
+          "component": "mains.component.u2",
+          "pad": "4"
+        }
+      ],
+      "name": "GND_ISO",
+      "stable_id": "mains.net.gnd_iso"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.j3",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.k1",
+          "pad": "3"
+        }
+      ],
+      "name": "PUMP_L_FILTERED",
+      "stable_id": "mains.net.pump_l_filtered"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.j4",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.k1",
+          "pad": "4"
+        },
+        {
+          "component": "mains.component.r1",
+          "pad": "1"
+        }
+      ],
+      "name": "PUMP_L_SW",
+      "stable_id": "mains.net.pump_l_sw"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.c1",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.j3",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.j4",
+          "pad": "2"
+        }
+      ],
+      "name": "PUMP_N_FILTERED",
+      "stable_id": "mains.net.pump_n_filtered"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.c1",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.r1",
+          "pad": "2"
+        }
+      ],
+      "name": "SNUBBER_RC",
+      "stable_id": "mains.net.snubber_rc"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.f2",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.j6",
+          "pad": "1"
+        }
+      ],
+      "name": "V12_MOTOR",
+      "stable_id": "mains.net.v12_motor"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.c2",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.c3",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.c7",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.f2",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.u1",
+          "pad": "4"
+        },
+        {
+          "component": "mains.component.u2",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.u2",
+          "pad": "3"
+        }
+      ],
+      "name": "V12_RAW",
+      "stable_id": "mains.net.v12_raw"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "mains.component.c4",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.c6",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.d1",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.j5",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.k1",
+          "pad": "1"
+        },
+        {
+          "component": "mains.component.l1",
+          "pad": "2"
+        },
+        {
+          "component": "mains.component.u2",
+          "pad": "1"
+        }
+      ],
+      "name": "V5_PSU",
+      "stable_id": "mains.net.v5_psu"
+    }
+  ],
+  "schema_version": 1,
+  "versions": {
+    "bun": "1.3.11",
+    "circuit_json_to_kicad": "0.0.205",
+    "node": "24.3.0",
+    "tscircuit": "0.0.2465"
+  },
+  "metadata": {
+    "board_designator": "Mains",
+    "connected_logical_pin_count": 53,
+    "logical_pins": {
+      "C1": [
+        {
+          "name": "pin1",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "pin2",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "C2": [
+        {
+          "name": "pin1",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "pin2",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "C3": [
+        {
+          "name": "pin1",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "pin2",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "C4": [
+        {
+          "name": "pin1",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "pin2",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "C5": [
+        {
+          "name": "pin1",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "pin2",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "C6": [
+        {
+          "name": "pin1",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "pin2",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "C7": [
+        {
+          "name": "pin1",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "pin2",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "D1": [
+        {
+          "name": "K",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "A",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "F2": [
+        {
+          "name": "IN",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "OUT",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "F3": [
+        {
+          "name": "IN",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "OUT",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "J1": [
+        {
+          "name": "LINE",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "NEUTRAL",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "J2": [
+        {
+          "name": "LINE",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "NEUTRAL",
+          "no_connect": false,
+          "number": "2"
+        },
+        {
+          "name": "UNUSED_3",
+          "no_connect": true,
+          "number": "3"
+        }
+      ],
+      "J3": [
+        {
+          "name": "LINE",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "NEUTRAL",
+          "no_connect": false,
+          "number": "2"
+        },
+        {
+          "name": "UNUSED_3",
+          "no_connect": true,
+          "number": "3"
+        },
+        {
+          "name": "UNUSED_4",
+          "no_connect": true,
+          "number": "4"
+        }
+      ],
+      "J4": [
+        {
+          "name": "LINE",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "NEUTRAL",
+          "no_connect": false,
+          "number": "2"
+        },
+        {
+          "name": "UNUSED_3",
+          "no_connect": true,
+          "number": "3"
+        },
+        {
+          "name": "UNUSED_4",
+          "no_connect": true,
+          "number": "4"
+        },
+        {
+          "name": "UNUSED_5",
+          "no_connect": true,
+          "number": "5"
+        },
+        {
+          "name": "UNUSED_6",
+          "no_connect": true,
+          "number": "6"
+        }
+      ],
+      "J5": [
+        {
+          "name": "V5_PSU",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "GND",
+          "no_connect": false,
+          "number": "2"
+        },
+        {
+          "name": "COIL_DRAIN",
+          "no_connect": false,
+          "number": "3"
+        }
+      ],
+      "J6": [
+        {
+          "name": "POSITIVE",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "RETURN",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "K1": [
+        {
+          "name": "COIL_HIGH",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "CONTACT_FIXED",
+          "no_connect": false,
+          "number": "3"
+        },
+        {
+          "name": "CONTACT_MOVING",
+          "no_connect": false,
+          "number": "4"
+        },
+        {
+          "name": "COIL_LOW",
+          "no_connect": false,
+          "number": "5"
+        }
+      ],
+      "L1": [
+        {
+          "name": "pin1",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "pin2",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "R1": [
+        {
+          "name": "pin1",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "pin2",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "RV1": [
+        {
+          "name": "LINE",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "NEUTRAL",
+          "no_connect": false,
+          "number": "2"
+        }
+      ],
+      "U1": [
+        {
+          "name": "AC_N",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "AC_L",
+          "no_connect": false,
+          "number": "2"
+        },
+        {
+          "name": "GND_ISO",
+          "no_connect": false,
+          "number": "3"
+        },
+        {
+          "name": "V12_RAW",
+          "no_connect": false,
+          "number": "4"
+        }
+      ],
+      "U2": [
+        {
+          "name": "FB",
+          "no_connect": false,
+          "number": "1"
+        },
+        {
+          "name": "EN",
+          "no_connect": false,
+          "number": "2"
+        },
+        {
+          "name": "VIN",
+          "no_connect": false,
+          "number": "3"
+        },
+        {
+          "name": "GND",
+          "no_connect": false,
+          "number": "4"
+        },
+        {
+          "name": "SW",
+          "no_connect": false,
+          "number": "5"
+        },
+        {
+          "name": "BST",
+          "no_connect": false,
+          "number": "6"
+        }
+      ]
+    },
+    "native_footprint_policy": "Per-reference source-derived native library; never substitute stock geometry.",
+    "physical_numbered_pad_count": 75,
+    "physical_pad_numbers": {
+      "C1": [
+        "1",
+        "2"
+      ],
+      "C2": [
+        "1",
+        "2"
+      ],
+      "C3": [
+        "1",
+        "2"
+      ],
+      "C4": [
+        "1",
+        "2"
+      ],
+      "C5": [
+        "1",
+        "2"
+      ],
+      "C6": [
+        "1",
+        "2"
+      ],
+      "C7": [
+        "1",
+        "2"
+      ],
+      "D1": [
+        "1",
+        "2"
+      ],
+      "F2": [
+        "1",
+        "2"
+      ],
+      "F3": [
+        "1",
+        "2"
+      ],
+      "J1": [
+        "1",
+        "1",
+        "2",
+        "2"
+      ],
+      "J2": [
+        "1",
+        "1",
+        "2",
+        "2",
+        "3",
+        "3"
+      ],
+      "J3": [
+        "1",
+        "1",
+        "2",
+        "2",
+        "3",
+        "3",
+        "4",
+        "4"
+      ],
+      "J4": [
+        "1",
+        "1",
+        "2",
+        "2",
+        "3",
+        "3",
+        "4",
+        "4",
+        "5",
+        "5",
+        "6",
+        "6"
+      ],
+      "J5": [
+        "1",
+        "2",
+        "3"
+      ],
+      "J6": [
+        "1",
+        "2"
+      ],
+      "K1": [
+        "1",
+        "3",
+        "4",
+        "5"
+      ],
+      "L1": [
+        "1",
+        "2"
+      ],
+      "R1": [
+        "1",
+        "2"
+      ],
+      "RV1": [
+        "1",
+        "2"
+      ],
+      "U1": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "U2": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    "source_paste_record_count": 118,
+    "status": "Source manifest only; augmentation, clean ERC/DRC and accepted handoff remain open.",
+    "title": "Crystal Shim isolated mains switching",
+    "unused_logical_pin_count": 7
+  }
+}

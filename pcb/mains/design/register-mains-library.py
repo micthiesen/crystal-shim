@@ -73,7 +73,7 @@ def guarded_stage() -> Path:
 
 def validate_mains_manifest(manifest: dict) -> None:
     board = manifest["board"]
-    if (board["stable_id"] != BOARD_ID or board["width_mm"] != 180 or board["height_mm"] != 110
+    if (board["stable_id"] != BOARD_ID or board["width_mm"] != 150 or board["height_mm"] != 110
             or board["layer_count"] != 2 or board.get("kicad_origin_mm") != [100, 100]):
         raise ValueError("requires the exact mains board manifest")
     components = manifest["components"]

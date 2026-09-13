@@ -16,7 +16,7 @@ import { ControllerReservoirInterface } from "./reservoir-interface";
 export default function ControllerCircuit() {
   return (
     <board
-      width={110}
+      width={150}
       height={110}
       thickness={1.6}
       layers={4}

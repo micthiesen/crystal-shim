@@ -5763,9 +5763,9 @@
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(in_pos_files yes)
+		(in_pos_files no)
 		(dnp no)
 		(uuid "4435c721-9220-4959-87b4-65f0de58c313")
 		(property "Reference" "J1"
@@ -5779,7 +5779,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "43045-0600"
+		(property "Value" "PCB-SENSOR-PIGTAIL-6"
 			(at 185.0335 189.8858 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5801,8 +5801,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf"
-			(at 199.39 181.61 0)
+		(property "Datasheet" ""
+			(at 0 0 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5812,18 +5812,7 @@
 				)
 			)
 		)
-		(property "Description" "Integrated Circuit"
-			(at 199.39 181.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "43045-0600"
+		(property "Description" "Six solder pads for left-exiting sensor pigtail"
 			(at 199.39 181.61 0)
 			(hide yes)
 			(show_name no)
@@ -5836,6 +5825,17 @@
 		)
 		(property "StableID" "sensor.component.j1"
 			(at 199.39 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "PCB-SENSOR-PIGTAIL-6"
+			(at 0 0 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

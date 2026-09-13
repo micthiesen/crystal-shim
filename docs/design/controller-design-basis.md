@@ -299,8 +299,9 @@ or pump behavior to this firmware change.
 
 ## Harness and placement interface
 
-Sensor cable: matching **43045-0600** right-angle headers, **43025-0600** housings
-and **43030-0007** loose-piece female tin contacts for 20-24 AWG. Use 24 AWG
+Sensor cable: controller **43045-0600** right-angle header, **43025-0600** housing
+and **43030-0007** loose-piece female tin contacts for 20-24 AWG. Sensor J1 is
+six outward solder lands with a left-exiting pigtail, not a second header. Use 24 AWG
 three-pair cable, subject to insulation diameter and exact cable capacitance
 checks. The overall harness remains at most 203.2 mm including connector routing.
 
@@ -315,10 +316,10 @@ checks. The overall harness remains at most 203.2 mm including connector routing
 name this harness segment, reached through separate TCA A pins and 22 ohm
 resistors. They must never collapse into one net across the buffer.
 
-Wire circuit number to the same circuit number at the opposite end. Molex's
+Wire each controller circuit number to the same numbered sensor solder land. Molex's
 component-side PCB drawing numbers rows 1/2/3 and 4/5/6; do not substitute the
 odd/even numbering of a generic two-row connector. Produce mating-face and
-wire-entry drawings during capture. The drawing's 10.16 mm maximum mating-edge
+wire-entry drawings during capture. At the controller, the drawing's 10.16 mm maximum mating-edge
 distance is measured from the locator centre, which lies 4.32 mm ahead of pin 1.
 Preserve board material around the locator and reserve the mate/latch/wire sweep
 separately; the pin-1-to-edge distance is not the quoted dimension.
@@ -336,19 +337,19 @@ internal mains connectors.
 Put the regulator and relay driver at the harness side, the antenna at the
 opposite outer edge, and the USB connector/buttons at the service edge. Provide
 accessible isolated-ground, V5_PSU, V5_LOGIC, 3V3, SDA, SCL, PSU_GOOD and gated
-relay test points. Allocate a **110 x 110 mm**, 1.6 mm nominal controller PCB with
-four 3.2 mm non-plated mounting holes at (25,29), (85,29), (25,105) and
-(85,105) mm from its upper-left corner. Reserve a 4 mm radius around each hole
+relay test points. Allocate a **150 × 110 mm**, 1.6 mm nominal controller PCB with
+four 3.2 mm non-plated mounting holes at (7,7), (143,7), (7,103) and
+(143,103) mm from its upper-left corner. Reserve a 4 mm radius around each hole
 for mounting hardware and tool access. Source selects four layers with a
 continuous L2 ground reference, nominal 1.6 mm FR4 and top assembly. The exact
 stack and USB routing geometry are selected in the
 [fabrication contract](controller-stackup.md), with native verification separate.
 The [placement basis](controller-placement.md) owns positions and routing intent.
-Use the current [1590ZGRP243 enclosure fit](../../cad/shared-enclosure/README.md)
-and [mechanical coordinates](../mechanical.md). The controller is rotated
-90 degrees in the enclosure to face the tank. Exact mounting hardware, mating
-access and final harness lengths remain assembly details; old 1554V2GY receipts
-do not validate this board.
+Use the [canonical mechanical stack](../mechanical.md): controller above mains,
+45 mm clear board-face gap, matching insulating mounts and retained separator.
+The [1590ZGRP243 CAD records](../../cad/shared-enclosure/README.md) distinguish old
+side-by-side fit from new evidence. Mating access and final harness lengths must
+use the current stack; historical enclosure rotations do not govern it.
 
 ## Capture and downstream verification
 

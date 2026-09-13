@@ -1,10 +1,13 @@
 # Mains source design
 
-Tscircuit owns this 180 ×110 mm, two-layer, 1.6 mm FR4 shared-supply source.
+Tscircuit owns this 150 × 110 mm, two-layer, 1.6 mm FR4 shared-supply source.
 The four-file schematic hierarchy is root plus Primary, Secondary and Suppression.
 It contains 22 exact electrical parts, 60 logical pins, 75 numbered physical lands,
 14 nets with 53 endpoints and seven unused Sabre pins. Four mounting footprints
 make 26 native footprints; four mounts and J5/J6 locators make six NPTHs.
+The matching controller mounts above on (±68,±48) source holes, with 45 mm clear
+spacing. J1–J4 use right-angle 43160-1102/-1103/-1104/-1106 headers. The circuit
+and numbered pin map are unchanged.
 
 - `mains.circuit.tsx`, `primary.tsx`, `secondary-power.tsx`, `suppression.tsx`:
   product circuit and named nets.

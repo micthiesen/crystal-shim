@@ -77,7 +77,7 @@
         "stillair"
       ],
       "mode": "judgment",
-      "notes": "Shared downstream fabrication checks and exclusion of unreliable Konnect manufacturing output. Crystal Shim defers board-specific profiles until a reviewed board exists; Stillair has released profiles."
+      "notes": "Shared downstream fabrication checks and exclusion of unreliable Konnect manufacturing output. Crystal Shim has a project-specific three-board output profile in docs/design/manufacturing-output.md for the accepted compact boards; Stillair has its own released board profiles. Neither project ports board selections or release evidence."
     },
     {
       "path": ".agents/skills/next/",

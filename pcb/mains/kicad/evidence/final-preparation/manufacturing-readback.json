@@ -1,0 +1,3431 @@
+{
+  "settings": {
+    "m_AllowSoldermaskBridgesInFPs": "False",
+    "m_MinSilkTextThickness": "80000",
+    "m_SolderMaskExpansion": "0",
+    "m_SolderMaskMinWidth": "0",
+    "m_SolderMaskToCopperClearance": "0",
+    "m_SolderPasteMargin": "0",
+    "m_SolderPasteMarginRatio": "0.0"
+  },
+  "pads": [
+    {
+      "ref": "RV1",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.3,
+        1.3
+      ],
+      "size": [
+        2.9,
+        2.9
+      ]
+    },
+    {
+      "ref": "RV1",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        3.7,
+        1.3
+      ],
+      "size": [
+        5.3,
+        2.9
+      ]
+    },
+    {
+      "ref": "F2",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        1.96,
+        3.15
+      ]
+    },
+    {
+      "ref": "F2",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        1.96,
+        3.15
+      ]
+    },
+    {
+      "ref": "H1",
+      "number": "",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "None",
+      "drill": [
+        3.2,
+        3.2
+      ],
+      "size": [
+        3.2,
+        3.2
+      ]
+    },
+    {
+      "ref": "C3",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        2.05,
+        1.1
+      ]
+    },
+    {
+      "ref": "C3",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        2.05,
+        1.1
+      ]
+    },
+    {
+      "ref": "K1",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.3,
+        1.3
+      ],
+      "size": [
+        2.8,
+        2.8
+      ]
+    },
+    {
+      "ref": "K1",
+      "number": "3",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.3,
+        1.3
+      ],
+      "size": [
+        2.8,
+        2.8
+      ]
+    },
+    {
+      "ref": "K1",
+      "number": "4",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.3,
+        1.3
+      ],
+      "size": [
+        2.8,
+        2.8
+      ]
+    },
+    {
+      "ref": "K1",
+      "number": "5",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.3,
+        1.3
+      ],
+      "size": [
+        2.8,
+        2.8
+      ]
+    },
+    {
+      "ref": "J4",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J4",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J4",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J4",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J4",
+      "number": "3",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J4",
+      "number": "3",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J4",
+      "number": "4",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J4",
+      "number": "4",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J4",
+      "number": "5",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J4",
+      "number": "5",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J4",
+      "number": "6",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J4",
+      "number": "6",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "H4",
+      "number": "",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "None",
+      "drill": [
+        3.2,
+        3.2
+      ],
+      "size": [
+        3.2,
+        3.2
+      ]
+    },
+    {
+      "ref": "H3",
+      "number": "",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "None",
+      "drill": [
+        3.2,
+        3.2
+      ],
+      "size": [
+        3.2,
+        3.2
+      ]
+    },
+    {
+      "ref": "L1",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        2.0,
+        1.8
+      ]
+    },
+    {
+      "ref": "L1",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        2.0,
+        1.8
+      ]
+    },
+    {
+      "ref": "D1",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.1,
+        1.1
+      ],
+      "size": [
+        2.6,
+        2.6
+      ]
+    },
+    {
+      "ref": "D1",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.1,
+        1.1
+      ],
+      "size": [
+        2.6,
+        2.6
+      ]
+    },
+    {
+      "ref": "C1",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.3,
+        1.3
+      ],
+      "size": [
+        2.9,
+        2.9
+      ]
+    },
+    {
+      "ref": "C1",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.3,
+        1.3
+      ],
+      "size": [
+        2.9,
+        2.9
+      ]
+    },
+    {
+      "ref": "J5",
+      "number": "",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "None",
+      "drill": [
+        3.0,
+        3.0
+      ],
+      "size": [
+        3.0,
+        3.0
+      ]
+    },
+    {
+      "ref": "J5",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.02,
+        1.02
+      ],
+      "size": [
+        1.5,
+        2.02
+      ]
+    },
+    {
+      "ref": "J5",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.02,
+        1.02
+      ],
+      "size": [
+        1.5,
+        2.02
+      ]
+    },
+    {
+      "ref": "J5",
+      "number": "3",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.02,
+        1.02
+      ],
+      "size": [
+        1.5,
+        2.02
+      ]
+    },
+    {
+      "ref": "C2",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        2.05,
+        1.1
+      ]
+    },
+    {
+      "ref": "C2",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        2.05,
+        1.1
+      ]
+    },
+    {
+      "ref": "C6",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        2.05,
+        1.1
+      ]
+    },
+    {
+      "ref": "C6",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        2.05,
+        1.1
+      ]
+    },
+    {
+      "ref": "H2",
+      "number": "",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "None",
+      "drill": [
+        3.2,
+        3.2
+      ],
+      "size": [
+        3.2,
+        3.2
+      ]
+    },
+    {
+      "ref": "J6",
+      "number": "",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "None",
+      "drill": [
+        3.0,
+        3.0
+      ],
+      "size": [
+        3.0,
+        3.0
+      ]
+    },
+    {
+      "ref": "J6",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.02,
+        1.02
+      ],
+      "size": [
+        1.5,
+        1.5
+      ]
+    },
+    {
+      "ref": "J6",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.02,
+        1.02
+      ],
+      "size": [
+        1.5,
+        1.5
+      ]
+    },
+    {
+      "ref": "J3",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J3",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J3",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J3",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J3",
+      "number": "3",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J3",
+      "number": "3",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J3",
+      "number": "4",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J3",
+      "number": "4",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "F3",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.1,
+        1.1
+      ],
+      "size": [
+        2.5,
+        2.5
+      ]
+    },
+    {
+      "ref": "F3",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.1,
+        1.1
+      ],
+      "size": [
+        2.5,
+        2.5
+      ]
+    },
+    {
+      "ref": "C7",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "ref": "C7",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "ref": "U2",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        1.0,
+        0.7
+      ]
+    },
+    {
+      "ref": "U2",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        1.0,
+        0.7
+      ]
+    },
+    {
+      "ref": "U2",
+      "number": "3",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        1.0,
+        0.7
+      ]
+    },
+    {
+      "ref": "U2",
+      "number": "4",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        1.0,
+        0.7
+      ]
+    },
+    {
+      "ref": "U2",
+      "number": "5",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        1.0,
+        0.7
+      ]
+    },
+    {
+      "ref": "U2",
+      "number": "6",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        1.0,
+        0.7
+      ]
+    },
+    {
+      "ref": "R1",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.1,
+        1.1
+      ],
+      "size": [
+        2.6,
+        2.6
+      ]
+    },
+    {
+      "ref": "R1",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.1,
+        1.1
+      ],
+      "size": [
+        2.6,
+        2.6
+      ]
+    },
+    {
+      "ref": "C5",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "ref": "C5",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "ref": "C4",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        2.05,
+        1.1
+      ]
+    },
+    {
+      "ref": "C4",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "mask": "50000",
+      "drill": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        2.05,
+        1.1
+      ]
+    },
+    {
+      "ref": "U1",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.5,
+        1.5
+      ],
+      "size": [
+        3.0,
+        3.0
+      ]
+    },
+    {
+      "ref": "U1",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.5,
+        1.5
+      ],
+      "size": [
+        3.0,
+        3.0
+      ]
+    },
+    {
+      "ref": "U1",
+      "number": "3",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        2.5,
+        2.5
+      ],
+      "size": [
+        4.5,
+        4.5
+      ]
+    },
+    {
+      "ref": "U1",
+      "number": "4",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        2.5,
+        2.5
+      ],
+      "size": [
+        4.5,
+        4.5
+      ]
+    },
+    {
+      "ref": "J2",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J2",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J2",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J2",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J2",
+      "number": "3",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J2",
+      "number": "3",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J1",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J1",
+      "number": "1",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J1",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    },
+    {
+      "ref": "J1",
+      "number": "2",
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "B.Cu",
+        "B.Mask",
+        "In1.Cu",
+        "In2.Cu",
+        "In3.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In30.Cu"
+      ],
+      "mask": "50000",
+      "drill": [
+        1.78,
+        1.78
+      ],
+      "size": [
+        3.5,
+        3.5
+      ]
+    }
+  ],
+  "texts": [
+    {
+      "text": "J2 FILTER LINE",
+      "pos": [
+        44.0,
+        82.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "1 L   2 N   3 NC",
+      "pos": [
+        44.0,
+        84.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "J1 T2A FUSED INPUT",
+      "pos": [
+        45.0,
+        54.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "1 L   2 N",
+      "pos": [
+        45.0,
+        56.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "J3 FILTER LOAD",
+      "pos": [
+        47.0,
+        130.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "1 L  2 N  3-4 NC",
+      "pos": [
+        47.0,
+        132.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "F3 T1A",
+      "pos": [
+        83.0,
+        96.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "NC CAVITIES ARE NOT PE",
+      "pos": [
+        85.0,
+        151.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "PRIMARY",
+      "pos": [
+        90.0,
+        49.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "J4 SWITCHED PUMP",
+      "pos": [
+        101.0,
+        130.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "1 L  2 N  3-6 NC",
+      "pos": [
+        101.0,
+        135.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "D1 K=+5V",
+      "pos": [
+        145.0,
+        131.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "ISOLATED 12V / 5V",
+      "pos": [
+        148.0,
+        49.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "F2 3A",
+      "pos": [
+        149.0,
+        90.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "J5 1:+5V 2:RET 3:COIL",
+      "pos": [
+        150.0,
+        63.0
+      ],
+      "layer": "F.Silkscreen"
+    },
+    {
+      "text": "J6 1:+12V 2:RET",
+      "pos": [
+        158.0,
+        99.0
+      ],
+      "layer": "F.Silkscreen"
+    }
+  ],
+  "readback_scope": "Native saved pads, board text, and mask/paste settings; physical stack remains accepted stacked-layout native stack."
+}

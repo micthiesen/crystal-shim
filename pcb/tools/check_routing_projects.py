@@ -4,6 +4,7 @@ import argparse
 import json
 import subprocess
 import tempfile
+from check_routing import nonwaived_drc_findings, POLICY
 
 ROOT = Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
@@ -19,7 +20,7 @@ for name in [args.board] if args.board else ['controller', 'mains', 'sensor']:
         if run.returncode or not report.exists():
             raise SystemExit(run.stdout + run.stderr)
         data = json.loads(report.read_text())
-        findings = data['violations'] + data['schematic_parity']
+        findings = nonwaived_drc_findings(data, json.loads(POLICY.read_text())['boards'][name])
         if args.final:
             findings += data['unconnected_items']
         print(f"{name}: {len(findings)} DRC/parity findings; {len(data['unconnected_items'])} unconnected")

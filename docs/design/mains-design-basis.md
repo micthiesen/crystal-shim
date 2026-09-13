@@ -177,7 +177,7 @@ filter's current rating. Keep LINE and LOAD pairs apart. The OASE CrystalSkim350
 Commission actual current, starts and relay opening behavior; 4 W/120 V is only
 unity-power-factor current, not a fuse-selection measurement.
 
-J1/J2/J3/J4 retain Molex Sabre headers **43160-0102/-0103/-0104/-0106**, respective
+J1/J2/J3/J4 use right-angle Molex Sabre headers **43160-1102/-1103/-1104/-1106**, respective
 **44441-2002/-2003/-2004/-2006** housings and **43375-2001** contacts. Circuits 1/2
 are line/neutral; higher-numbered metal blades remain intentionally unconnected.
 Retain both solder tails on every blade and all occupied-metal clearance rules.
@@ -185,8 +185,9 @@ Keep the selected Schurter inlet/cord, insulated TE 2-520184-2 Faston terminals,
 Americord 1112.048.005350 output pigtail and Heyco M3231 gland described in the
 [harness specification](../electrical.md). Do not alter the pump's original cord.
 
-The source board is **180 ×110 mm**, two layers, nominal 1.6 mm FR4. Four 3.2 mm
-mounts are 5 mm from each edge. The old 135 ×75 mm screen and Hammond1554V2GY
+The source board is **150 × 110 mm**, two layers, nominal 1.6 mm FR4. Four 3.2 mm
+mounts are 7 mm from each edge, matching the controller above at 45 mm clear
+board-face spacing. See the [canonical stack](../mechanical.md). The old 135 ×75 mm screen and Hammond1554V2GY
 arrangement are superseded; they are not evidence that the new shared-supply
 assembly fits. Use the revised enclosure allocation and preserve the mains/SELV
 partition, 8 mm primary-to-isolated and 3.2 mm different-primary-net clearance

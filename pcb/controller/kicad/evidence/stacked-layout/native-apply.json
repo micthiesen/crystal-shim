@@ -1,0 +1,111 @@
+{
+  "operation": "pcbnew stacked controller placement ECO",
+  "script_sha256": "88cc2d9c66ce8d6639d037fa24ba4c5355d836424d6967638d657474abff6f47",
+  "plan_sha256": "f95d7fd28a51be59ea201af364789fc7bdb91b63f3d10dca3b7c67567015d8cc",
+  "board_sha256": "c3bf4a35300dc7db2bba14c1238a8f2287e168241a2574fa0a581ce28a28dc8c",
+  "moves_native_mm": {
+    "D10": [
+      20,
+      0
+    ],
+    "D11": [
+      20,
+      0
+    ],
+    "D9": [
+      20,
+      0
+    ],
+    "H1": [
+      -38,
+      -22
+    ],
+    "H2": [
+      38,
+      -22
+    ],
+    "H3": [
+      -38,
+      -2
+    ],
+    "H4": [
+      38,
+      -2
+    ],
+    "J7": [
+      20,
+      0
+    ],
+    "J8": [
+      20,
+      0
+    ],
+    "J9": [
+      20,
+      0
+    ],
+    "Q2": [
+      20,
+      0
+    ],
+    "Q3": [
+      20,
+      0
+    ],
+    "Q4": [
+      20,
+      0
+    ],
+    "R80": [
+      20,
+      0
+    ],
+    "R81": [
+      20,
+      0
+    ],
+    "R82": [
+      20,
+      0
+    ],
+    "R83": [
+      20,
+      0
+    ],
+    "R84": [
+      20,
+      0
+    ],
+    "R85": [
+      20,
+      0
+    ]
+  },
+  "via_moves": 9,
+  "zones_changed": [
+    "controller GND F.Cu",
+    "Neck CHLORINE_DRAIN J8.2.0",
+    "Neck TRANSFER_DRAIN Q2.3.0",
+    "Neck V12_PUMP J7.1.0",
+    "Neck DECHLOR_DRAIN Q4.3.0",
+    "Neck V12_PUMP J8.1.0",
+    "Neck V12_PUMP D9.1.0",
+    "Neck V12_PUMP J9.1.0",
+    "Neck DECHLOR_DRAIN D11.2.0",
+    "Neck V12_PUMP D11.1.0",
+    "Neck CHLORINE_DRAIN D10.2.0",
+    "Neck DECHLOR_DRAIN J9.2.0",
+    "Neck V12_PUMP D10.1.0",
+    "Neck CHLORINE_DRAIN Q3.3.0",
+    "Neck TRANSFER_DRAIN D9.2.0",
+    "Neck TRANSFER_DRAIN J7.2.0",
+    "H4 mounting copper reserve",
+    "H2 mounting copper reserve",
+    "H3 mounting copper reserve",
+    "H1 mounting copper reserve",
+    "controller GND B.Cu",
+    "controller GND In1.Cu"
+  ],
+  "preserved_native_geometry_uuid_sets": true,
+  "schematic_files_changed": false
+}

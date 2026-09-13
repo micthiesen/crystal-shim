@@ -1,0 +1,42 @@
+{
+  "status": "Native ECO accepted; routing ready",
+  "source_tests": {
+    "command": "bun test sensor/design",
+    "tests_passed": 10,
+    "assertions": 420
+  },
+  "native_parity_errors": [],
+  "strict_schematic_cleanup_passed": true,
+  "native_erc_violations": 0,
+  "native_drc_remaining": {
+    "unwaived_findings": 0,
+    "exact_excluded_internal_padstack_warnings": 6,
+    "ordinary_unconnected_items": 21
+  },
+  "inspected_layers": [
+    "B.Cu",
+    "In2.Cu"
+  ],
+  "geometry": {
+    "width_mm": 18,
+    "height_mm": 64,
+    "layers": 4,
+    "E1_primitive_count": 32,
+    "E1_logical_terminals": 13,
+    "J1_termination": "six outward solder lands, left-exiting pigtail"
+  },
+  "notes": [
+    "Exact native netlist nets unchanged after J1 field ECO.",
+    "Internal shield pads are intentional copper primitives, not assembled components.",
+    "PCB library E1 and J1 saved through KiCad native FootprintSave.",
+    "No native project export replaced production board; E1/J1 footprint ECO and placements applied through pcbnew."
+  ],
+  "finish_audit": {
+    "E1_all_32_primitives": "copper only; no paste or mask openings",
+    "J1_all_six_lands": "F.Cu and F.Mask; no paste or drill",
+    "vias": "all six inherit board front/back tenting yes",
+    "silkscreen": "Final-preparation follow-up adds outward J1 1..6 and RIM labels; no glass-face silkscreen."
+  },
+  "acceptance_receipt": "acceptance.json",
+  "independent_review": "review.json"
+}

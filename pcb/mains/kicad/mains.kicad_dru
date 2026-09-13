@@ -1,6 +1,6 @@
 (version 1)
 
-# Generated reference; install through KiCad Board Setup > Custom Rules.
+# Generated from reviewed stacked source; install through native Board Setup.
 
 (rule "Ordinary through vias"
   (condition "A.Type == 'Via'")
@@ -14,305 +14,270 @@
   (condition "A.NetName == 'AC_L_FUSED'")
   (constraint track_width (min 3mm) (opt 3mm)))
 
-(rule "AC_L_FUSED outer copper only"
-  (condition "A.NetName == 'AC_L_FUSED' && A.Layer == 'In*.Cu'")
-  (constraint disallow track via))
-
 (rule "AC_L_FUSED no single power via"
   (condition "A.NetName == 'AC_L_FUSED'")
   (constraint disallow via))
 
 (rule "Neck AC_L_FUSED F3.1.0"
-  (condition "A.NetName == 'AC_L_FUSED' && A.intersectsArea('Neck AC_L_FUSED F3.1.0')")
-  (constraint track_width (min 1mm) (opt 1mm)))
+  (condition "A.NetName == 'AC_L_FUSED' && A.enclosedByArea('Neck AC_L_FUSED F3.1.0')")
+  (constraint track_width (min 1mm) (opt 3mm)))
 
 (rule "Neck AC_L_FUSED J1.1.0"
-  (condition "A.NetName == 'AC_L_FUSED' && A.intersectsArea('Neck AC_L_FUSED J1.1.0')")
+  (condition "A.NetName == 'AC_L_FUSED' && A.enclosedByArea('Neck AC_L_FUSED J1.1.0')")
   (constraint track_width (min 3mm) (opt 3mm)))
 
 (rule "Neck AC_L_FUSED J1.1.1"
-  (condition "A.NetName == 'AC_L_FUSED' && A.intersectsArea('Neck AC_L_FUSED J1.1.1')")
+  (condition "A.NetName == 'AC_L_FUSED' && A.enclosedByArea('Neck AC_L_FUSED J1.1.1')")
   (constraint track_width (min 3mm) (opt 3mm)))
 
 (rule "Neck AC_L_FUSED RV1.1.0"
-  (condition "A.NetName == 'AC_L_FUSED' && A.intersectsArea('Neck AC_L_FUSED RV1.1.0')")
-  (constraint track_width (min 1mm) (opt 1mm)))
+  (condition "A.NetName == 'AC_L_FUSED' && A.enclosedByArea('Neck AC_L_FUSED RV1.1.0')")
+  (constraint track_width (min 1mm) (opt 3mm)))
 
 (rule "Neck AC_L_FUSED U1.2.0"
-  (condition "A.NetName == 'AC_L_FUSED' && A.intersectsArea('Neck AC_L_FUSED U1.2.0')")
+  (condition "A.NetName == 'AC_L_FUSED' && A.enclosedByArea('Neck AC_L_FUSED U1.2.0')")
   (constraint track_width (min 3mm) (opt 3mm)))
 
 (rule "AC_N routing width"
   (condition "A.NetName == 'AC_N'")
   (constraint track_width (min 3mm) (opt 3mm)))
 
-(rule "AC_N outer copper only"
-  (condition "A.NetName == 'AC_N' && A.Layer == 'In*.Cu'")
-  (constraint disallow track via))
-
 (rule "AC_N no single power via"
   (condition "A.NetName == 'AC_N'")
   (constraint disallow via))
 
 (rule "Neck AC_N J1.2.0"
-  (condition "A.NetName == 'AC_N' && A.intersectsArea('Neck AC_N J1.2.0')")
+  (condition "A.NetName == 'AC_N' && A.enclosedByArea('Neck AC_N J1.2.0')")
   (constraint track_width (min 3mm) (opt 3mm)))
 
 (rule "Neck AC_N J1.2.1"
-  (condition "A.NetName == 'AC_N' && A.intersectsArea('Neck AC_N J1.2.1')")
+  (condition "A.NetName == 'AC_N' && A.enclosedByArea('Neck AC_N J1.2.1')")
   (constraint track_width (min 3mm) (opt 3mm)))
 
 (rule "Neck AC_N J2.2.0"
-  (condition "A.NetName == 'AC_N' && A.intersectsArea('Neck AC_N J2.2.0')")
+  (condition "A.NetName == 'AC_N' && A.enclosedByArea('Neck AC_N J2.2.0')")
   (constraint track_width (min 3mm) (opt 3mm)))
 
 (rule "Neck AC_N J2.2.1"
-  (condition "A.NetName == 'AC_N' && A.intersectsArea('Neck AC_N J2.2.1')")
+  (condition "A.NetName == 'AC_N' && A.enclosedByArea('Neck AC_N J2.2.1')")
   (constraint track_width (min 3mm) (opt 3mm)))
 
 (rule "Neck AC_N RV1.2.0"
-  (condition "A.NetName == 'AC_N' && A.intersectsArea('Neck AC_N RV1.2.0')")
-  (constraint track_width (min 1mm) (opt 1mm)))
+  (condition "A.NetName == 'AC_N' && A.enclosedByArea('Neck AC_N RV1.2.0')")
+  (constraint track_width (min 1mm) (opt 3mm)))
 
 (rule "Neck AC_N U1.1.0"
-  (condition "A.NetName == 'AC_N' && A.intersectsArea('Neck AC_N U1.1.0')")
+  (condition "A.NetName == 'AC_N' && A.enclosedByArea('Neck AC_N U1.1.0')")
   (constraint track_width (min 3mm) (opt 3mm)))
 
 (rule "FILTER_LINE_L routing width"
   (condition "A.NetName == 'FILTER_LINE_L'")
   (constraint track_width (min 2mm) (opt 2mm)))
 
-(rule "FILTER_LINE_L outer copper only"
-  (condition "A.NetName == 'FILTER_LINE_L' && A.Layer == 'In*.Cu'")
-  (constraint disallow track via))
-
 (rule "FILTER_LINE_L no single power via"
   (condition "A.NetName == 'FILTER_LINE_L'")
   (constraint disallow via))
 
 (rule "Neck FILTER_LINE_L F3.2.0"
-  (condition "A.NetName == 'FILTER_LINE_L' && A.intersectsArea('Neck FILTER_LINE_L F3.2.0')")
+  (condition "A.NetName == 'FILTER_LINE_L' && A.enclosedByArea('Neck FILTER_LINE_L F3.2.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck FILTER_LINE_L J2.1.0"
-  (condition "A.NetName == 'FILTER_LINE_L' && A.intersectsArea('Neck FILTER_LINE_L J2.1.0')")
+  (condition "A.NetName == 'FILTER_LINE_L' && A.enclosedByArea('Neck FILTER_LINE_L J2.1.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck FILTER_LINE_L J2.1.1"
-  (condition "A.NetName == 'FILTER_LINE_L' && A.intersectsArea('Neck FILTER_LINE_L J2.1.1')")
+  (condition "A.NetName == 'FILTER_LINE_L' && A.enclosedByArea('Neck FILTER_LINE_L J2.1.1')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "PUMP_L_FILTERED routing width"
   (condition "A.NetName == 'PUMP_L_FILTERED'")
   (constraint track_width (min 2mm) (opt 2mm)))
 
-(rule "PUMP_L_FILTERED outer copper only"
-  (condition "A.NetName == 'PUMP_L_FILTERED' && A.Layer == 'In*.Cu'")
-  (constraint disallow track via))
-
 (rule "PUMP_L_FILTERED no single power via"
   (condition "A.NetName == 'PUMP_L_FILTERED'")
   (constraint disallow via))
 
 (rule "Neck PUMP_L_FILTERED J3.1.0"
-  (condition "A.NetName == 'PUMP_L_FILTERED' && A.intersectsArea('Neck PUMP_L_FILTERED J3.1.0')")
+  (condition "A.NetName == 'PUMP_L_FILTERED' && A.enclosedByArea('Neck PUMP_L_FILTERED J3.1.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck PUMP_L_FILTERED J3.1.1"
-  (condition "A.NetName == 'PUMP_L_FILTERED' && A.intersectsArea('Neck PUMP_L_FILTERED J3.1.1')")
+  (condition "A.NetName == 'PUMP_L_FILTERED' && A.enclosedByArea('Neck PUMP_L_FILTERED J3.1.1')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck PUMP_L_FILTERED K1.3.0"
-  (condition "A.NetName == 'PUMP_L_FILTERED' && A.intersectsArea('Neck PUMP_L_FILTERED K1.3.0')")
+  (condition "A.NetName == 'PUMP_L_FILTERED' && A.enclosedByArea('Neck PUMP_L_FILTERED K1.3.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "PUMP_N_FILTERED routing width"
   (condition "A.NetName == 'PUMP_N_FILTERED'")
   (constraint track_width (min 2mm) (opt 2mm)))
 
-(rule "PUMP_N_FILTERED outer copper only"
-  (condition "A.NetName == 'PUMP_N_FILTERED' && A.Layer == 'In*.Cu'")
-  (constraint disallow track via))
-
 (rule "PUMP_N_FILTERED no single power via"
   (condition "A.NetName == 'PUMP_N_FILTERED'")
   (constraint disallow via))
 
 (rule "Neck PUMP_N_FILTERED C1.2.0"
-  (condition "A.NetName == 'PUMP_N_FILTERED' && A.intersectsArea('Neck PUMP_N_FILTERED C1.2.0')")
+  (condition "A.NetName == 'PUMP_N_FILTERED' && A.enclosedByArea('Neck PUMP_N_FILTERED C1.2.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck PUMP_N_FILTERED J3.2.0"
-  (condition "A.NetName == 'PUMP_N_FILTERED' && A.intersectsArea('Neck PUMP_N_FILTERED J3.2.0')")
+  (condition "A.NetName == 'PUMP_N_FILTERED' && A.enclosedByArea('Neck PUMP_N_FILTERED J3.2.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck PUMP_N_FILTERED J3.2.1"
-  (condition "A.NetName == 'PUMP_N_FILTERED' && A.intersectsArea('Neck PUMP_N_FILTERED J3.2.1')")
+  (condition "A.NetName == 'PUMP_N_FILTERED' && A.enclosedByArea('Neck PUMP_N_FILTERED J3.2.1')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck PUMP_N_FILTERED J4.2.0"
-  (condition "A.NetName == 'PUMP_N_FILTERED' && A.intersectsArea('Neck PUMP_N_FILTERED J4.2.0')")
+  (condition "A.NetName == 'PUMP_N_FILTERED' && A.enclosedByArea('Neck PUMP_N_FILTERED J4.2.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck PUMP_N_FILTERED J4.2.1"
-  (condition "A.NetName == 'PUMP_N_FILTERED' && A.intersectsArea('Neck PUMP_N_FILTERED J4.2.1')")
+  (condition "A.NetName == 'PUMP_N_FILTERED' && A.enclosedByArea('Neck PUMP_N_FILTERED J4.2.1')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "PUMP_L_SW routing width"
   (condition "A.NetName == 'PUMP_L_SW'")
   (constraint track_width (min 2mm) (opt 2mm)))
 
-(rule "PUMP_L_SW outer copper only"
-  (condition "A.NetName == 'PUMP_L_SW' && A.Layer == 'In*.Cu'")
-  (constraint disallow track via))
-
 (rule "PUMP_L_SW no single power via"
   (condition "A.NetName == 'PUMP_L_SW'")
   (constraint disallow via))
 
 (rule "Neck PUMP_L_SW J4.1.0"
-  (condition "A.NetName == 'PUMP_L_SW' && A.intersectsArea('Neck PUMP_L_SW J4.1.0')")
+  (condition "A.NetName == 'PUMP_L_SW' && A.enclosedByArea('Neck PUMP_L_SW J4.1.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck PUMP_L_SW J4.1.1"
-  (condition "A.NetName == 'PUMP_L_SW' && A.intersectsArea('Neck PUMP_L_SW J4.1.1')")
+  (condition "A.NetName == 'PUMP_L_SW' && A.enclosedByArea('Neck PUMP_L_SW J4.1.1')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck PUMP_L_SW K1.4.0"
-  (condition "A.NetName == 'PUMP_L_SW' && A.intersectsArea('Neck PUMP_L_SW K1.4.0')")
+  (condition "A.NetName == 'PUMP_L_SW' && A.enclosedByArea('Neck PUMP_L_SW K1.4.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck PUMP_L_SW R1.1.0"
-  (condition "A.NetName == 'PUMP_L_SW' && A.intersectsArea('Neck PUMP_L_SW R1.1.0')")
+  (condition "A.NetName == 'PUMP_L_SW' && A.enclosedByArea('Neck PUMP_L_SW R1.1.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "SNUBBER_RC routing width"
   (condition "A.NetName == 'SNUBBER_RC'")
   (constraint track_width (min 2mm) (opt 2mm)))
 
-(rule "SNUBBER_RC outer copper only"
-  (condition "A.NetName == 'SNUBBER_RC' && A.Layer == 'In*.Cu'")
-  (constraint disallow track via))
-
 (rule "SNUBBER_RC no single power via"
   (condition "A.NetName == 'SNUBBER_RC'")
   (constraint disallow via))
 
 (rule "Neck SNUBBER_RC C1.1.0"
-  (condition "A.NetName == 'SNUBBER_RC' && A.intersectsArea('Neck SNUBBER_RC C1.1.0')")
+  (condition "A.NetName == 'SNUBBER_RC' && A.enclosedByArea('Neck SNUBBER_RC C1.1.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck SNUBBER_RC R1.2.0"
-  (condition "A.NetName == 'SNUBBER_RC' && A.intersectsArea('Neck SNUBBER_RC R1.2.0')")
+  (condition "A.NetName == 'SNUBBER_RC' && A.enclosedByArea('Neck SNUBBER_RC R1.2.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "V12_RAW routing width"
   (condition "A.NetName == 'V12_RAW'")
   (constraint track_width (min 3mm) (opt 3mm)))
 
-(rule "V12_RAW outer copper only"
-  (condition "A.NetName == 'V12_RAW' && A.Layer == 'In*.Cu'")
-  (constraint disallow track via))
-
 (rule "V12_RAW no single power via"
   (condition "A.NetName == 'V12_RAW'")
   (constraint disallow via))
 
 (rule "Neck V12_RAW C2.1.0"
-  (condition "A.NetName == 'V12_RAW' && A.intersectsArea('Neck V12_RAW C2.1.0')")
-  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+  (condition "A.NetName == 'V12_RAW' && A.enclosedByArea('Neck V12_RAW C2.1.0')")
+  (constraint track_width (min 0.3mm) (opt 3mm)))
 
 (rule "Neck V12_RAW C3.1.0"
-  (condition "A.NetName == 'V12_RAW' && A.intersectsArea('Neck V12_RAW C3.1.0')")
-  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+  (condition "A.NetName == 'V12_RAW' && A.enclosedByArea('Neck V12_RAW C3.1.0')")
+  (constraint track_width (min 0.3mm) (opt 3mm)))
 
 (rule "Neck V12_RAW C7.1.0"
-  (condition "A.NetName == 'V12_RAW' && A.intersectsArea('Neck V12_RAW C7.1.0')")
-  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+  (condition "A.NetName == 'V12_RAW' && A.enclosedByArea('Neck V12_RAW C7.1.0')")
+  (constraint track_width (min 0.3mm) (opt 3mm)))
 
 (rule "Neck V12_RAW F2.1.0"
-  (condition "A.NetName == 'V12_RAW' && A.intersectsArea('Neck V12_RAW F2.1.0')")
-  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+  (condition "A.NetName == 'V12_RAW' && A.enclosedByArea('Neck V12_RAW F2.1.0')")
+  (constraint track_width (min 0.6mm) (opt 3mm)))
 
 (rule "Neck V12_RAW U1.4.0"
-  (condition "A.NetName == 'V12_RAW' && A.intersectsArea('Neck V12_RAW U1.4.0')")
+  (condition "A.NetName == 'V12_RAW' && A.enclosedByArea('Neck V12_RAW U1.4.0')")
   (constraint track_width (min 3mm) (opt 3mm)))
 
 (rule "Neck V12_RAW U2.2.0"
-  (condition "A.NetName == 'V12_RAW' && A.intersectsArea('Neck V12_RAW U2.2.0')")
-  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+  (condition "A.NetName == 'V12_RAW' && A.enclosedByArea('Neck V12_RAW U2.2.0')")
+  (constraint track_width (min 0.3mm) (opt 3mm)))
 
 (rule "Neck V12_RAW U2.3.0"
-  (condition "A.NetName == 'V12_RAW' && A.intersectsArea('Neck V12_RAW U2.3.0')")
-  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+  (condition "A.NetName == 'V12_RAW' && A.enclosedByArea('Neck V12_RAW U2.3.0')")
+  (constraint track_width (min 0.3mm) (opt 3mm)))
 
 (rule "V12_MOTOR routing width"
   (condition "A.NetName == 'V12_MOTOR'")
   (constraint track_width (min 3mm) (opt 3mm)))
-
-(rule "V12_MOTOR outer copper only"
-  (condition "A.NetName == 'V12_MOTOR' && A.Layer == 'In*.Cu'")
-  (constraint disallow track via))
 
 (rule "V12_MOTOR no single power via"
   (condition "A.NetName == 'V12_MOTOR'")
   (constraint disallow via))
 
 (rule "Neck V12_MOTOR F2.2.0"
-  (condition "A.NetName == 'V12_MOTOR' && A.intersectsArea('Neck V12_MOTOR F2.2.0')")
-  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+  (condition "A.NetName == 'V12_MOTOR' && A.enclosedByArea('Neck V12_MOTOR F2.2.0')")
+  (constraint track_width (min 0.6mm) (opt 3mm)))
 
 (rule "Neck V12_MOTOR J6.1.0"
-  (condition "A.NetName == 'V12_MOTOR' && A.intersectsArea('Neck V12_MOTOR J6.1.0')")
-  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+  (condition "A.NetName == 'V12_MOTOR' && A.enclosedByArea('Neck V12_MOTOR J6.1.0')")
+  (constraint track_width (min 0.6mm) (opt 3mm)))
 
 (rule "V5_PSU routing width"
   (condition "A.NetName == 'V5_PSU'")
   (constraint track_width (min 2mm) (opt 2mm)))
-
-(rule "V5_PSU outer copper only"
-  (condition "A.NetName == 'V5_PSU' && A.Layer == 'In*.Cu'")
-  (constraint disallow track via))
 
 (rule "V5_PSU no single power via"
   (condition "A.NetName == 'V5_PSU'")
   (constraint disallow via))
 
 (rule "Neck V5_PSU C4.1.0"
-  (condition "A.NetName == 'V5_PSU' && A.intersectsArea('Neck V5_PSU C4.1.0')")
-  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+  (condition "A.NetName == 'V5_PSU' && A.enclosedByArea('Neck V5_PSU C4.1.0')")
+  (constraint track_width (min 0.3mm) (opt 2mm)))
 
 (rule "Neck V5_PSU C6.1.0"
-  (condition "A.NetName == 'V5_PSU' && A.intersectsArea('Neck V5_PSU C6.1.0')")
-  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+  (condition "A.NetName == 'V5_PSU' && A.enclosedByArea('Neck V5_PSU C6.1.0')")
+  (constraint track_width (min 0.3mm) (opt 2mm)))
 
 (rule "Neck V5_PSU D1.1.0"
-  (condition "A.NetName == 'V5_PSU' && A.intersectsArea('Neck V5_PSU D1.1.0')")
+  (condition "A.NetName == 'V5_PSU' && A.enclosedByArea('Neck V5_PSU D1.1.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck V5_PSU J5.1.0"
-  (condition "A.NetName == 'V5_PSU' && A.intersectsArea('Neck V5_PSU J5.1.0')")
-  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+  (condition "A.NetName == 'V5_PSU' && A.enclosedByArea('Neck V5_PSU J5.1.0')")
+  (constraint track_width (min 0.6mm) (opt 2mm)))
 
 (rule "Neck V5_PSU K1.1.0"
-  (condition "A.NetName == 'V5_PSU' && A.intersectsArea('Neck V5_PSU K1.1.0')")
+  (condition "A.NetName == 'V5_PSU' && A.enclosedByArea('Neck V5_PSU K1.1.0')")
   (constraint track_width (min 2mm) (opt 2mm)))
 
 (rule "Neck V5_PSU L1.2.0"
-  (condition "A.NetName == 'V5_PSU' && A.intersectsArea('Neck V5_PSU L1.2.0')")
-  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+  (condition "A.NetName == 'V5_PSU' && A.enclosedByArea('Neck V5_PSU L1.2.0')")
+  (constraint track_width (min 0.6mm) (opt 2mm)))
 
 (rule "Neck V5_PSU U2.1.0"
-  (condition "A.NetName == 'V5_PSU' && A.intersectsArea('Neck V5_PSU U2.1.0')")
-  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+  (condition "A.NetName == 'V5_PSU' && A.enclosedByArea('Neck V5_PSU U2.1.0')")
+  (constraint track_width (min 0.3mm) (opt 2mm)))
 
+# Paste this complete body through KiCad Board Setup > Custom Rules.
+# This text is review input, not a native project file.
+# https://docs.kicad.org/10.0/en/pcbnew/pcbnew.html#custom_design_rules
+# Unused mains connector contacts remain primary by footprint membership.
+# No component-footprint clearance exceptions are required by this placement.
 
 (rule "PRIMARY_DIFFERENT_NET_3_2MM"
- (condition "(A.NetName == 'AC_L_FUSED' || A.NetName == 'FILTER_LINE_L' || A.NetName == 'AC_N' || A.NetName == 'PUMP_L_FILTERED' || A.NetName == 'PUMP_N_FILTERED' || A.NetName == 'PUMP_L_SW' || A.NetName == 'SNUBBER_RC' || A.memberOfFootprint('J1') || A.memberOfFootprint('J2') || A.memberOfFootprint('J3') || A.memberOfFootprint('J4')) && (B.NetName == 'AC_L_FUSED' || B.NetName == 'FILTER_LINE_L' || B.NetName == 'AC_N' || B.NetName == 'PUMP_L_FILTERED' || B.NetName == 'PUMP_N_FILTERED' || B.NetName == 'PUMP_L_SW' || B.NetName == 'SNUBBER_RC' || B.memberOfFootprint('J1') || B.memberOfFootprint('J2') || B.memberOfFootprint('J3') || B.memberOfFootprint('J4'))")
- (constraint clearance (min 3.2mm)))
+  (condition "(A.NetName == 'AC_L_FUSED' || A.NetName == 'FILTER_LINE_L' || A.NetName == 'AC_N' || A.NetName == 'PUMP_L_FILTERED' || A.NetName == 'PUMP_N_FILTERED' || A.NetName == 'PUMP_L_SW' || A.NetName == 'SNUBBER_RC' || A.memberOfFootprint('J1') || A.memberOfFootprint('J2') || A.memberOfFootprint('J3') || A.memberOfFootprint('J4')) && (B.NetName == 'AC_L_FUSED' || B.NetName == 'FILTER_LINE_L' || B.NetName == 'AC_N' || B.NetName == 'PUMP_L_FILTERED' || B.NetName == 'PUMP_N_FILTERED' || B.NetName == 'PUMP_L_SW' || B.NetName == 'SNUBBER_RC' || B.memberOfFootprint('J1') || B.memberOfFootprint('J2') || B.memberOfFootprint('J3') || B.memberOfFootprint('J4'))")
+  (constraint clearance (min 3.2mm)))
 (rule "PRIMARY_TO_SELV_8MM"
- (condition "((A.NetName == 'AC_L_FUSED' || A.NetName == 'FILTER_LINE_L' || A.NetName == 'AC_N' || A.NetName == 'PUMP_L_FILTERED' || A.NetName == 'PUMP_N_FILTERED' || A.NetName == 'PUMP_L_SW' || A.NetName == 'SNUBBER_RC' || A.memberOfFootprint('J1') || A.memberOfFootprint('J2') || A.memberOfFootprint('J3') || A.memberOfFootprint('J4')) && (B.NetName == 'V12_RAW' || B.NetName == 'V12_MOTOR' || B.NetName == 'V5_PSU' || B.NetName == 'GND_ISO' || B.NetName == 'COIL_DRAIN' || B.NetName == 'BUCK5_SW' || B.NetName == 'BUCK5_BST')) || ((B.NetName == 'AC_L_FUSED' || B.NetName == 'FILTER_LINE_L' || B.NetName == 'AC_N' || B.NetName == 'PUMP_L_FILTERED' || B.NetName == 'PUMP_N_FILTERED' || B.NetName == 'PUMP_L_SW' || B.NetName == 'SNUBBER_RC' || B.memberOfFootprint('J1') || B.memberOfFootprint('J2') || B.memberOfFootprint('J3') || B.memberOfFootprint('J4')) && (A.NetName == 'V12_RAW' || A.NetName == 'V12_MOTOR' || A.NetName == 'V5_PSU' || A.NetName == 'GND_ISO' || A.NetName == 'COIL_DRAIN' || A.NetName == 'BUCK5_SW' || A.NetName == 'BUCK5_BST'))")
- (constraint clearance (min 8mm)))
+  (condition "((A.NetName == 'AC_L_FUSED' || A.NetName == 'FILTER_LINE_L' || A.NetName == 'AC_N' || A.NetName == 'PUMP_L_FILTERED' || A.NetName == 'PUMP_N_FILTERED' || A.NetName == 'PUMP_L_SW' || A.NetName == 'SNUBBER_RC' || A.memberOfFootprint('J1') || A.memberOfFootprint('J2') || A.memberOfFootprint('J3') || A.memberOfFootprint('J4')) && (B.NetName == 'V12_RAW' || B.NetName == 'V12_MOTOR' || B.NetName == 'V5_PSU' || B.NetName == 'GND_ISO' || B.NetName == 'COIL_DRAIN' || B.NetName == 'BUCK5_SW' || B.NetName == 'BUCK5_BST')) || ((B.NetName == 'AC_L_FUSED' || B.NetName == 'FILTER_LINE_L' || B.NetName == 'AC_N' || B.NetName == 'PUMP_L_FILTERED' || B.NetName == 'PUMP_N_FILTERED' || B.NetName == 'PUMP_L_SW' || B.NetName == 'SNUBBER_RC' || B.memberOfFootprint('J1') || B.memberOfFootprint('J2') || B.memberOfFootprint('J3') || B.memberOfFootprint('J4')) && (A.NetName == 'V12_RAW' || A.NetName == 'V12_MOTOR' || A.NetName == 'V5_PSU' || A.NetName == 'GND_ISO' || A.NetName == 'COIL_DRAIN' || A.NetName == 'BUCK5_SW' || A.NetName == 'BUCK5_BST'))")
+  (constraint clearance (min 8mm)))
 
 
 (rule "Buck switch width"

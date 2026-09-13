@@ -222,34 +222,34 @@ test("every authored position and four board holes survive full-sheet compilatio
   const json = await compile();
   const board = json.find((e) => e.type === "pcb_board");
   if (board?.type !== "pcb_board") throw new Error("Missing mains board");
-  expect(board.width).toBe(180);
+  expect(board.width).toBe(150);
   expect(board.height).toBe(110);
   expect(board.thickness).toBe(1.6);
   expect(board.num_layers).toBe(2);
   // Independent transcription of mains-placement.md, not body-centre inference.
   const expected: Record<string, readonly [number, number, number]> = {
-    U1: [-77.5, 45.0, 0],
-    K1: [30.0, -15.0, 0],
-    J1: [-73.0, -42.0, 0],
-    J2: [-79.0, -22.0, 0],
-    J3: [-12.0, -42.0, 0],
-    J4: [35.0, -42.0, 0],
-    R1: [7, -26, 0],
-    C1: [-9, -24, 0],
-    F3: [-47.0, -15.0, 0],
-    RV1: [-42.0, -35.0, 0],
-    D1: [55.0, -5.0, 0],
-    J5: [79.0, 5.0, 270],
-    J6: [79.0, 29.0, 270],
-    F2: [57.0, 29.0, 0],
-    U2: [32.0, 16.0, 0],
-    L1: [42.0, 16.0, 0],
-    C2: [23.0, 18.0, 90],
-    C3: [23.0, 25.0, 90],
-    C4: [51.0, 16.0, 90],
-    C5: [36.0, 21.0, 0],
-    C6: [57.0, 16.0, 90],
-    C7: [28.0, 13.0, 0],
+    U1: [-47, 48, 0],
+    K1: [10, -17, 0],
+    J1: [-59, 35, 270],
+    J2: [-59, 8, 270],
+    J3: [-54, -41, 0],
+    J4: [1, -41, 0],
+    R1: [-15, -25, 0],
+    C1: [-15, -32, 0],
+    F3: [-16, -9, 0],
+    RV1: [-39.75, -20, 0],
+    D1: [45, -25, 0],
+    J5: [64, 28, 270],
+    J6: [64, 7, 270],
+    F2: [49, 7, 0],
+    U2: [49, -9, 0],
+    L1: [57, -9, 0],
+    C2: [44, -6, 90],
+    C3: [44, 1, 90],
+    C4: [65, -9, 90],
+    C5: [51, -4, 0],
+    C6: [65, -17, 90],
+    C7: [43, -12, 0],
   };
   // Numeric datum definitions are component-side +Y down, from the audited
   // exact part models. Every selected pin-1 datum except U1 is at local (0,0);
@@ -322,10 +322,10 @@ test("every authored position and four board holes survive full-sheet compilatio
     expect(placed.do_not_place).toBe(false);
   }
   expect(mainsMountingHoles).toEqual([
-    { ref: "H1", x: -85, y: 50 },
-    { ref: "H2", x: 85, y: 50 },
-    { ref: "H3", x: -85, y: -50 },
-    { ref: "H4", x: 85, y: -50 },
+    { ref: "H1", x: -68, y: 48 },
+    { ref: "H2", x: 68, y: 48 },
+    { ref: "H3", x: -68, y: -48 },
+    { ref: "H4", x: 68, y: -48 },
   ]);
   const holes = json.filter((e) => e.type === "pcb_hole");
   expect(holes).toHaveLength(6); // board holes plus J5/J6 locators
@@ -399,10 +399,19 @@ test("mains header occupied envelopes clear all 8 mm insulating mount reservatio
   for (const ref of ["J1", "J2", "J3", "J4"] as MainsHeaderRef[]) {
     const pose = mainsPlacements[ref];
     const physical = mainsHeaderPhysical(ref);
-    const x = pose.pcbX + physical.envelopeCenter!.x;
-    const y = pose.pcbY + physical.envelopeCenter!.y;
-    const dx = physical.envelope.width / 2;
-    const dy = physical.envelope.height / 2;
+    const a = (pose.pcbRotation * Math.PI) / 180;
+    const cx = physical.envelopeCenter!.x;
+    const cy = physical.envelopeCenter!.y;
+    const x = pose.pcbX + cx * Math.cos(a) + cy * Math.sin(a);
+    const y = pose.pcbY + cx * Math.sin(a) - cy * Math.cos(a);
+    const dx =
+      (Math.abs(Math.cos(a)) * physical.envelope.width +
+        Math.abs(Math.sin(a)) * physical.envelope.height) /
+      2;
+    const dy =
+      (Math.abs(Math.sin(a)) * physical.envelope.width +
+        Math.abs(Math.cos(a)) * physical.envelope.height) /
+      2;
     for (const hole of mainsMountingHoles) {
       expect(Math.abs(x - hole.x) >= dx + 4 || Math.abs(y - hole.y) >= dy + 4).toBe(
         true,

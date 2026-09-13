@@ -32,6 +32,12 @@ design margins, then measured during final-assembly commissioning.
 | ESP controller | Low-voltage enclosure section | ESP32-C6, 3.3 V rail, USB programming, relay driver, three reserved pump drivers, two sensor ports, status LED, maintenance button |
 | Mains board | Mains enclosure section | Protected input, isolated PSU, relay contacts and coil, pump output suppression |
 
+The sensor is 18 × 64 mm with common-net horizontal sensing bars, thin adhesive
+mounting entirely below the rim and a left-exiting pigtail. The controller and
+mains boards share 150 × 110 mm outlines and aligned M3 mounts; the controller
+sits above mains with 45 mm clear separation. See [mechanical design](mechanical.md)
+for the retained visual references and exact interface requirements.
+
 The manufactured two-stage EMI filter sits alongside the mains board. The PSU is
 always powered when mains is present, regardless of relay state. Its secondary
 and the relay coil occupy a defined low-voltage region on the mains board; their

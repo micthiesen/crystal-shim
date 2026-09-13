@@ -31,8 +31,13 @@ fabricated thickness; use the selected vendor tolerance for mechanical clearance
 
 KiCad also retains an unverified **0.02 dielectric loss tangent**. Its dielectric
 constraints flag remains disabled. These placeholders are not supplier acceptance
-values and do not replace the separately recorded USB solver mask model. Resolve
-their fabrication-output treatment before generating a manufacturing package.
+values and do not replace the separately recorded USB solver mask model. Their
+output treatment is fixed: retain them only as CAD visualization metadata; exclude
+native/Gerber-job default mask thickness and loss tangent from supplier order
+constraints. The persistent native User.Comments fabrication note states the
+reviewed vendor stack, nominal order thickness and explicit USB acceptance. Include
+that note in the fabrication drawing/requirements. Verify the final order against
+these requirements during export, without treating native defaults as measured values.
 
 Basic rules now read back as 0.15 mm clearance/minimum track, 0.20 mm minimum via
 drill, 0.35 mm minimum via diameter, 0.075 mm annulus, 0.20 mm hole-to-copper,
@@ -112,6 +117,32 @@ initial rules enforce 0.20 mm hole-to-copper spacing without a subminimum waiver
 
 ![USB locator and thermal-via review](evidence/controller-stackup/geometry-review.svg)
 
+## Saved stencil and assembly preparation
+
+The selected process is a **0.100 mm laser-cut stencil** with the source-shaped,
+1:1 apertures on active SMT lands. This preserves the package land patterns and
+nine independent U1 ground windows; it does not reproduce TI's separate 0.125 mm
+DBV stencil example. J4's four shell slots have neither front nor back paste and
+are hand soldered. Overlapping USB contacts carry one aperture per physical area:
+A1/A4/A9/A12 retain paste, while B12/B9/B4/B1 suppress duplicate openings. Copper,
+mask, drills, pad identities and nets are unchanged.
+
+Saved native readback and diagnostic Gerbers contain **271 front apertures and no
+back apertures**. The minimum aperture area divided by wall area at 0.100 mm
+thickness is **1.2275**, above the 0.66 release screen in
+[Indium's stencil guidance](https://www.indium.com/wp-content/uploads/2025/03/Powder-Choice-and-Stencil-Design-Guidelines-APPNOTE-97742-R4-1.pdf).
+That calculation screens release geometry, not actual paste transfer or solder
+beading. Indium also discusses aperture reductions for discrete/fine-pitch parts;
+this board explicitly retains its package-derived apertures instead of applying
+a blanket reduction. Paste chemistry and reflow execution remain assembly-process
+verification, with actual joints inspected after assembly.
+
+Native silk now identifies all external connector functions and input pin-1
+voltages, USB and RESET/BOOT/MAINTENANCE buttons. Existing test-point function
+labels remain. The [pre-routing preparation evidence](../../pcb/controller/kicad/evidence/pre-routing-preparation/)
+records the saved aperture readback, diagnostic plots, native DRC and acceptance.
+These are preparation checks, not production fabrication files.
+
 ## Thermal copper and vias
 
 **U2 AP63203:** reserve bottom GND beneath source X=-32..-2, Y=-5..15 mm,
@@ -148,8 +179,8 @@ Preserve the [Espressif land pattern and antenna exclusion](https://www.espressi
 
 ## Application and evidence still owed
 
-Apply and query the saved native stack, impedance/net classes, zones, via nets,
-mask/paste, keepouts and route geometry. Measure useful copper after clearances,
+After owner routing, recheck the saved native stack, impedance/net classes, zones,
+via nets, mask/paste, keepouts and route geometry. Measure useful copper after clearances,
 preserve the USB reference and the direct motor return. Inspect the
 stencil as physical aperture unions, including shared USB contacts.
 

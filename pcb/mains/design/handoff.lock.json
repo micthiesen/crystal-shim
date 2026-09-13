@@ -25,12 +25,94 @@
         "kind": "silkscreen",
         "owner": "kicad",
         "params": {
+          "labels": [
+            [
+              "PRIMARY",
+              90,
+              49
+            ],
+            [
+              "ISOLATED 12V / 5V",
+              148,
+              49
+            ],
+            [
+              "J1 T2A FUSED INPUT",
+              45,
+              54
+            ],
+            [
+              "1 L   2 N",
+              45,
+              56
+            ],
+            [
+              "J2 FILTER LINE",
+              44,
+              82
+            ],
+            [
+              "1 L   2 N   3 NC",
+              44,
+              84
+            ],
+            [
+              "F3 T1A",
+              83,
+              96
+            ],
+            [
+              "J3 FILTER LOAD",
+              47,
+              130
+            ],
+            [
+              "1 L  2 N  3-4 NC",
+              47,
+              132
+            ],
+            [
+              "J4 SWITCHED PUMP",
+              101,
+              130
+            ],
+            [
+              "1 L  2 N  3-6 NC",
+              101,
+              135
+            ],
+            [
+              "J5 1:+5V 2:RET 3:COIL",
+              150,
+              63
+            ],
+            [
+              "J6 1:+12V 2:RET",
+              158,
+              99
+            ],
+            [
+              "F2 3A",
+              149,
+              90
+            ],
+            [
+              "D1 K=+5V",
+              145,
+              131
+            ],
+            [
+              "NC CAVITIES ARE NOT PE",
+              85,
+              151
+            ]
+          ],
           "requirements": [
             "Mark primary/isolated regions, J1 T2A fused input, F3 T1A branch/J2 filter LINE, J3 filter LOAD, J4 switched pump, J5 5V/coil and J6 12V motor feed.",
             "Show pin1, line/neutral, D1 cathode and positive/return. Label F2 3A and both internal 12V harness ends.",
             "Unused connector cavities are not PE; keep text clear of copper and holes."
           ],
-          "status": "Declared; native application and saved evidence pending.",
+          "status": "Applied native final-preparation ECO; labels verified through saved readback and ordinary DRC.",
           "verification": "Complete front/back render and final Gerber/assembly inspection; native silk/text DRC."
         },
         "target": {}
@@ -48,40 +130,28 @@
             "H3",
             "H4"
           ],
-          "rectangle_coordinates": "Each [xmin,ymin,xmax,ymax] is source +X right/+Y up, centre (0,0). Apply all four on F.Cu/B.Cu; tracks/vias/fills/pads prohibited, qualified component bodies allowed.",
+          "rectangle_coordinates": "Each [xmin,ymin,xmax,ymax] is source +X right/+Y up. Apply both on F.Cu/B.Cu; tracks/vias/fills/pads prohibited, qualified component bodies allowed.",
           "requirements": [
             "Maintain 8 mm primary-to-isolated separation around U1 and K1 and all connector metal.",
-            "Preserve source holes/outline; confirm the enlarged enclosure and both J5/J6 partition portals.",
+            "Preserve aligned holes at source (+/-68,+/-48), 150 x 110 outline and outward right-angle connector access.",
             "Keep filter LINE and LOAD harnesses apart."
           ],
           "scope": "All copper layers and full assembled occupied metal. The boundary turns from the IRM primary side toward relay contact/coil separation; no obsolete fixed horizontal strip.",
           "source_copper_free_rectangles_mm": [
             [
-              -20,
-              -12,
-              -12,
+              19,
+              -27,
+              27,
               55
             ],
             [
-              -20,
-              -12,
-              46,
-              -4
-            ],
-            [
-              38,
+              19,
               -35,
-              46,
-              -4
-            ],
-            [
-              38,
-              -35,
-              90,
+              75,
               -27
             ]
           ],
-          "status": "Applied: four strict F.Cu/B.Cu insulation areas plus four 8x8 mm insulating-mount routing areas. Mount areas allow existing NPTH pads; source body envelopes and final DRC verified.",
+          "status": "Stacked-layout ECO: rebuild two isolation areas and four 8 mm mount reservations for matching 150 x 110 mm boards.",
           "verification": "Native all-layer copper/occupied-metal and enlarged enclosure fit review."
         },
         "target": {}
@@ -145,7 +215,7 @@
           "finish": "ENIG",
           "mask": "green",
           "silkscreen": "white",
-          "status": "Declared; native application and saved evidence pending.",
+          "status": "ENIG/green mask/white silk are selected order specifications. Remaining delivery is post-routing checks and fabrication export, not native preparation.",
           "text": "Release all final boards together through project manufacture gates. Include exact assembly/BOM/CPL, stencil, drills, harness and revised enclosure interfaces. F1 inlet/filter/PE are offboard; F2 motor and F3 branch fuses are on the mains PCB. No order or energizing implied.",
           "verification": "Project kicad-manufacture gates and independent CAM/assembly review; final sensor, load, temperature and interference commissioning remains separate."
         },
@@ -160,7 +230,7 @@
           "mapping": "Mains_<exact manifest reference>",
           "reason": "Preserve source-derived physical geometry through native FootprintSave/FootprintLoad; no stock substitution.",
           "scope": "All 26 manifest components: 22 electrical and H1-H4",
-          "status": "Declared; native application and saved evidence pending.",
+          "status": "Stacked-layout ECO: retain all pad geometries and reference IDs; update J1-J4 right-angle body/courtyard/value/MPN and native library definitions.",
           "verification": "Exact source/native geometry, all 75 numbered lands (53 PTH/22 SMT), six NPTHs, nets and poses; register source-derived library through guarded Konnect."
         },
         "target": {}
@@ -191,9 +261,9 @@
             "tuning_profile_track_geometries"
           ],
           "category": "routing",
-          "status": "Declared; native application and saved evidence pending.",
+          "status": "Native checks enabled and pre-routing DRC/parity clean. Owner routes, then runs final checks and export; no deferred native setup.",
           "text": "KiCad owns tracks/vias/fills. Unconnected items are permitted only for the initial unrouted stage. No copper, hole, slot, library or insulation finding is waived.",
-          "verification": "Before fabrication enable relevant checks or justify individual categories; require zero unconnected items, exact source parity and clean DRC, then inspect actual clearances and return paths."
+          "verification": "Require zero unconnected items, source parity and clean all-severity DRC, then inspect routed clearances and return paths."
         },
         "target": {}
       },
@@ -216,7 +286,7 @@
             5.3,
             2.9
           ],
-          "status": "Declared; native application and saved evidence pending.",
+          "status": "Native readback complete: numbered pads 0.05 mm mask; 53 PTH and six NPTH without paste; RV1 pad2 3.7 x 1.3 mm plated slot inside 5.3 x 2.9 mm copper.",
           "verification": "Saved pad shape/layer/drill/mask/paste and slot readback, native DRC plus fabrication CAM review."
         },
         "target": {}
@@ -283,7 +353,7 @@
           "policy_file": "pcb/tools/routing-policy.json",
           "policy_sha256": "dd0085e3ae30f79d0cb61dd71c377b8f6ba74e327b639b0869c817c11d904756",
           "status": "Apply through native settings/GUI, exercise with intentionally bad scratch traces.",
-          "verification": "Native negative DRC tests and check-routing.sh; full narrow-segment containment supplements native intersectsArea."
+          "verification": "Native negative DRC tests and check-routing.sh; enclosedByArea bounds local escapes and all opt widths retain full trunk defaults."
         },
         "target": {
           "net_stable_id": "mains.net.gnd_iso"
@@ -296,73 +366,73 @@
         "params": {
           "placements_native_xy_diameter_drill_mm": [
             [
-              122.3,
-              72.3,
+              143.3,
+              96.3,
               0.6,
               0.3
             ],
             [
-              123.7,
-              72.3,
+              144.7,
+              96.3,
               0.6,
               0.3
             ],
             [
-              122.3,
-              79.3,
+              143.3,
+              103.3,
               0.6,
               0.3
             ],
             [
-              123.7,
-              79.3,
+              144.7,
+              103.3,
               0.6,
               0.3
             ],
             [
-              150.3,
-              81.3,
+              164.3,
+              106.3,
               0.6,
               0.3
             ],
             [
-              151.7,
-              81.3,
+              165.7,
+              106.3,
               0.6,
               0.3
             ],
             [
-              156.3,
-              81.3,
+              164.3,
+              114.3,
               0.6,
               0.3
             ],
             [
-              157.7,
-              81.3,
+              165.7,
+              114.3,
               0.6,
               0.3
             ],
             [
-              129.5,
-              87,
+              144.5,
+              112,
               0.6,
               0.3
             ],
             [
-              134.3,
-              84.7,
+              151.3,
+              109.7,
               0.6,
               0.3
             ],
             [
-              134.3,
-              85.5,
+              151.3,
+              110.5,
               0.6,
               0.3
             ]
           ],
-          "status": "Declared GND stitching/thermal vias; preserve source pads and every existing route.",
+          "status": "Replace previous ground-via positions to follow compact buck cluster; user authorized clearing previous routing.",
           "tenting": "both sides"
         },
         "target": {
@@ -374,7 +444,7 @@
         "kind": "zone",
         "owner": "kicad",
         "params": {
-          "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove all floating islands. In2 remains available for power/signal routing; no arbitrary split power plane.",
+          "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove floating islands. Both layers retain isolated ground only.",
           "planes": {
             "layers": [
               "F.Cu",
@@ -383,94 +453,86 @@
             "net": "GND_ISO",
             "outline": [
               [
-                88,
+                127,
                 45
               ],
               [
-                190,
+                175,
                 45
               ],
               [
-                190,
+                175,
                 127
               ],
               [
-                146,
+                127,
                 127
-              ],
-              [
-                146,
-                104
-              ],
-              [
-                88,
-                104
               ]
             ],
             "vias": [
               [
-                122.3,
-                72.3,
+                143.3,
+                96.3,
                 0.6,
                 0.3
               ],
               [
-                123.7,
-                72.3,
+                144.7,
+                96.3,
                 0.6,
                 0.3
               ],
               [
-                122.3,
-                79.3,
+                143.3,
+                103.3,
                 0.6,
                 0.3
               ],
               [
-                123.7,
-                79.3,
+                144.7,
+                103.3,
                 0.6,
                 0.3
               ],
               [
-                150.3,
-                81.3,
+                164.3,
+                106.3,
                 0.6,
                 0.3
               ],
               [
-                151.7,
-                81.3,
+                165.7,
+                106.3,
                 0.6,
                 0.3
               ],
               [
-                156.3,
-                81.3,
+                164.3,
+                114.3,
                 0.6,
                 0.3
               ],
               [
-                157.7,
-                81.3,
+                165.7,
+                114.3,
                 0.6,
                 0.3
               ],
               [
-                129.5,
-                87,
+                144.5,
+                112,
                 0.6,
                 0.3
               ],
               [
-                134.3,
-                84.7,
+                151.3,
+                109.7,
                 0.6,
                 0.3
               ],
               [
-                134.3,
-                85.5,
+                151.3,
+                110.5,
                 0.6,
                 0.3
               ]
@@ -525,6 +587,124 @@
         }
       },
       {
+        "id": "mains.augment.stacked-layout-route-clear",
+        "kind": "routing_clear",
+        "owner": "kicad",
+        "params": {
+          "before_snapshot_sha256": "7b178f91ebcae04b54cc92b31db629256e3aa6f7614baca7fb0952286c71a9d9",
+          "reason": "Owner explicitly requested clearing all previously routed mains tracks before compact stacked redesign.",
+          "track_uuids": [
+            "ac7ea777-6675-4978-b68c-a6e7776ef0fc",
+            "3890d9b9-8835-4c30-b002-2e18f99c8cc9",
+            "02212da4-3596-433d-b9fe-6baf4c02019e",
+            "7a7f5d02-fb92-45c2-8f8c-3de2d654b744",
+            "90b33282-52bb-4f5a-8ea7-313c6256088f",
+            "34c2059c-a45c-49ca-8165-f78d5eda9f57",
+            "963fa03c-c55d-466c-ad7c-d5a631181091",
+            "110dc1d8-25f9-473e-9ab6-56219f3135f1",
+            "5d44687a-6baa-4f04-b9b4-57a034f2e438",
+            "3cc7fb3c-be99-4c06-8928-daf4afb4b08b",
+            "d3ce0454-8eea-4c33-84f8-047f5124b514",
+            "b0e6111a-38d5-423a-8194-d6888bf10250",
+            "7d176832-93be-4b2d-84f8-0463c9353f05",
+            "b86e19d7-79cc-4527-80f5-d199e6758927",
+            "aa8cd155-55a2-4da2-89ee-c8191391cbb8",
+            "bf0a5d35-4270-4ef1-b2f2-959540c65019",
+            "4057fea3-bd0b-4ab2-ae62-802472e57f6a",
+            "4f19544d-96d1-43ca-ab28-331b5a27f646",
+            "db308980-7421-4b1e-8dbd-3c334512db1b",
+            "879fdfa6-a8a2-4915-a3b6-28af97b687dd",
+            "a70225a6-5ff8-492e-8157-7a93f5e83e9d",
+            "e0a05ec9-689c-4a39-89d8-4f5a038e8d6c",
+            "0384fc83-6d70-47f5-b992-05b0aece9869",
+            "ac7e54e7-7f05-466c-9a51-823d4eb6868c",
+            "5a9e90c1-2105-451a-a63d-9a7e7ba4dc23",
+            "a1c21568-a23b-4923-8513-12ae0368b0fe",
+            "bfeef4d8-d0b3-432e-b18b-f0305f75650f",
+            "0f6b59b3-9714-4f7a-a8df-15ccf5ecb3f9",
+            "c7e25c79-e223-45f5-b463-1e08ffe9da9e",
+            "1df1ab37-6c42-4928-80fc-9356e833dd36",
+            "a212305d-ba41-4b6f-891b-79d79fa51cc0",
+            "3a4847ed-3f98-4d78-b206-33d688f79065",
+            "9b7ded5b-19d9-47dc-9701-27458c63d7f9",
+            "27f38f4f-0e19-4f02-a7af-953a091666e3",
+            "49524256-5bde-4611-b5fb-b87d912fa04a",
+            "2d18d880-3815-4444-bd0b-d5af83f7e80d",
+            "01321044-4fbc-4ba0-a96e-97270e399321",
+            "a3619fdb-0a8e-4f1d-aa3a-66074bbe7245",
+            "415e1547-a205-43ad-9078-b3578923011b",
+            "3bd16e7f-c49c-47f4-9791-dea31c4d5835",
+            "178763ae-4ed1-4b46-8feb-b303dd341922",
+            "b6e068c6-64d9-4943-8fbf-92df04c2e2e2",
+            "b13653df-fce8-4239-bb84-36cf37187add",
+            "f216ec45-d81b-4370-9e93-81a264c130b6",
+            "b516510f-f75f-4209-b206-90eaa44fb3bd",
+            "68130508-c0fa-4ccf-a32e-496a947e22fb",
+            "e49b0a38-b304-4a2f-a161-35522fa4b5ea",
+            "caa71756-3142-4f18-9b20-518cfb5f5d87",
+            "0cdf52c7-dc93-4e1a-9fbf-5049171b4537",
+            "f016c060-16a1-4644-bd09-49de34c52e40",
+            "3a9f90e3-d8e0-4bec-9c54-7911e882e289",
+            "c092d964-64ae-40b6-8c06-b909c60ec8d2",
+            "886bf005-faf4-4255-b40a-8379f66eed25",
+            "1b6d52cf-c628-4117-a62a-91bf47f11aa2",
+            "d0ac8d45-5688-406f-82e9-ce13b171ad13",
+            "63050065-9296-4fdb-9980-4aa176e8387b",
+            "2e18971c-fe04-4e66-bc4a-3f2ddc06527f",
+            "f95ee056-b9a8-4c6c-acc8-81b9d19a786c",
+            "e48ccfd8-03ba-49eb-b779-a5065bfd9fdd",
+            "551cee28-0f22-4fa0-bb5e-ff81d5914150",
+            "454621e4-ba71-42ba-94f2-5476d7b6146c",
+            "1f08795c-b303-4e41-a20c-b1b5ad1d9390",
+            "ed682d3b-4096-4496-8797-ec435e42eb03",
+            "43f6d4fc-f3e7-48de-bc96-fabc9d6743ab",
+            "66eb2753-521c-4760-a119-08ba56befbe6",
+            "b8530534-eb8c-4561-a067-ef14c095bca5",
+            "75a714c0-e3e0-45ca-b4a9-25fdc3720ce9",
+            "24091515-69b9-427f-a3d4-52eaaf0b359f",
+            "3c2a70fd-0fce-4caa-8271-eba8ad9d7096",
+            "7663f6ab-fa2f-4d8c-9080-17b0c0122149",
+            "5547c470-5288-46ac-8bd0-ad0cecc2ad93",
+            "b116c6cc-ca94-4536-9f5d-72e2d6233b52",
+            "c50ccbb5-2005-4782-83de-d5b7676993a0",
+            "ccfc4ebe-6830-499c-8882-23b5f891ec97",
+            "47c22ca8-d782-4a90-97fc-c97d9ba40b0c",
+            "479e3a8f-01fb-4925-860a-b114f2d8f1f8",
+            "0f3bb57e-f0ed-4182-9f1b-d3995ef8fd7b",
+            "8b42ce5c-b371-4e5a-8535-32647001d038",
+            "eb896890-199a-490a-b041-6a7db453702a",
+            "1d2f947a-f84e-4a70-8db2-e57528c019d1",
+            "743e0a42-65bf-45f7-8348-6a639a57682c",
+            "95c5629f-d874-45ca-83a7-a16b34093b52",
+            "5b070ed6-7b8f-45e7-a1f8-d10129c4b28e",
+            "cdb6e7f3-5898-4d70-b641-bf6c7cb8d848",
+            "44934d06-3926-4ed4-bcbf-e7e4b113d11c",
+            "00f434de-b7a6-4a98-9e31-90c110c135ed",
+            "852caab3-9fac-4f37-a031-39ebcaa4e2b3",
+            "db02ba7f-03b3-4470-aa53-c7b2eacf2c9d",
+            "00ec6e21-de98-4129-870e-26a7e5fabd35",
+            "5483bba9-da3d-41e2-aedd-6d1a2551182f",
+            "ad7a3d64-ab8c-4dea-989e-dc66a30e7b62",
+            "f440f086-d8dd-4343-a34a-80e738b8970a",
+            "d974a6d4-a14d-4b54-bf5e-0acfc32fc9b5",
+            "9f05d6be-af7d-43d3-af4a-02edf4a1d13c",
+            "335452ea-da13-41fc-9bb6-1868f0c32bc1",
+            "bdbb3e9d-dc75-4eae-88e7-188aff1108b4",
+            "a1497701-e7ca-44f9-8677-54a9361076a6",
+            "94554758-ba3c-4bb1-a4ec-115a7c32b3c6",
+            "0f574245-bf03-4793-bf5b-c1ec21a651e5",
+            "f87e0a2b-c5dd-45ef-8364-4b858f6dff88",
+            "e249977d-ef4d-45b6-aa82-113f0251d9af",
+            "b49334bd-4f6b-4e0d-ab6a-6c4d5dd5e33c",
+            "08dcc2f5-aeb9-4e64-9fbf-e9dc9ae3fef9",
+            "d6a7bc6f-7daa-4837-a5fc-27d69636e023",
+            "436e9d62-8d38-4bfc-b2a8-5f87088297ac",
+            "a5353ea1-eb94-4a2a-b866-866899a4c9aa"
+          ]
+        },
+        "target": {}
+      },
+      {
         "id": "mains.augment.stackup",
         "kind": "stackup",
         "owner": "kicad",
@@ -560,7 +740,7 @@
             "Inspect final aperture unions and mask webs against actual assembler process."
           ],
           "scope": "Ordinary U2 TSOT26, L1, F2 and C2-C7 SMT apertures.",
-          "status": "Starting process allocation; final assembly review pending.",
+          "status": "Native aperture readback complete: exactly 22 SMT paste pads; PTH/NPTH have no paste. Order 0.10 mm stencil; final exported CAM review remains a release check.",
           "stencil_thickness_mm": 0.1,
           "verification": "Final stencil CAM/assembly inspection."
         },
@@ -569,9 +749,9 @@
     ],
     "schema_version": 1
   },
-  "augmentation_sha256": "37fdd50ed1f0ce9ab4e0c7dd3e9b485661c3e70a75a8d6b401906b197c10c27e",
+  "augmentation_sha256": "6dbd3a8ddce052293777782b13bbbcd573eae6ac5c346caa500ce1a488fb7d97",
   "board_id": "mains.board.main",
-  "eco_receipt_sha256": "3afebd24f3ac8b54e7a6560ecd5280f7cbb4abbffab26d9d78f53c0e5d94243a",
+  "eco_receipt_sha256": "2890fcf8da2daedac65dc48945e2814082c4d12e71ecf84c90519e4561a1d90f",
   "initial_handoff_receipt_sha256": "7f77ebdfcd91923fed0cbed8bc41b45c4b88332f3a66fc19a959beeac6678017",
   "manifest": {
     "board": {
@@ -582,43 +762,43 @@
           "drill_mm": 3.2,
           "ref": "H1",
           "stable_id": "mains.hole.h1",
-          "x_mm": -85,
-          "y_mm": 50
+          "x_mm": -68,
+          "y_mm": 48
         },
         {
           "drill_mm": 3.2,
           "ref": "H2",
           "stable_id": "mains.hole.h2",
-          "x_mm": 85,
-          "y_mm": 50
+          "x_mm": 68,
+          "y_mm": 48
         },
         {
           "drill_mm": 3.2,
           "ref": "H3",
           "stable_id": "mains.hole.h3",
-          "x_mm": -85,
-          "y_mm": -50
+          "x_mm": -68,
+          "y_mm": -48
         },
         {
           "drill_mm": 3.2,
           "ref": "H4",
           "stable_id": "mains.hole.h4",
-          "x_mm": 85,
-          "y_mm": -50
+          "x_mm": 68,
+          "y_mm": -48
         },
         {
           "drill_mm": 3,
           "ref": "J5",
           "stable_id": "mains.hole.j5.locator-1",
-          "x_mm": 83.32,
-          "y_mm": 1.9999999999999991
+          "x_mm": 68.32,
+          "y_mm": 25
         },
         {
           "drill_mm": 3,
           "ref": "J6",
           "stable_id": "mains.hole.j6.locator-1",
-          "x_mm": 83.32,
-          "y_mm": 29
+          "x_mm": 68.32,
+          "y_mm": 6.999999999999999
         }
       ],
       "kicad_origin_mm": [
@@ -633,19 +813,19 @@
         ],
         "height_mm": 110,
         "kind": "rectangle",
-        "width_mm": 180
+        "width_mm": 150
       },
       "specs": {
         "assembly_sides": [
           "front"
         ],
-        "compiled_board_sha256": "ff3d157f9e35d1af37c0e2854c6915277dee9c3d34171be5b3b50fb278cde47c",
+        "compiled_board_sha256": "f7b552b53594a80dfc7b13eb1e79ef3e4391edd84521d46e207844ef688837f4",
         "material": "FR4",
         "thickness_mm": 1.6,
-        "unowned_physical_geometry_sha256": "b3e62d9952958d681e48c59e9b21a49c0f354d98a3cb6df4a3bac682e48b13d7"
+        "unowned_physical_geometry_sha256": "57a9b81008e5db408b03cfd0e849a336e23304ab3db6122d447ae38ed763eb86"
       },
       "stable_id": "mains.board.main",
-      "width_mm": 180
+      "width_mm": 150
     },
     "components": [
       {
@@ -666,8 +846,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": -9,
-          "y_mm": -24
+          "x_mm": -15,
+          "y_mm": -32
         },
         "ref": "C1",
         "stable_id": "mains.component.c1",
@@ -692,8 +872,8 @@
         "placement": {
           "rotation_deg": 90,
           "side": "front",
-          "x_mm": 23,
-          "y_mm": 18
+          "x_mm": 44,
+          "y_mm": -6
         },
         "ref": "C2",
         "stable_id": "mains.component.c2",
@@ -718,8 +898,8 @@
         "placement": {
           "rotation_deg": 90,
           "side": "front",
-          "x_mm": 23,
-          "y_mm": 25
+          "x_mm": 44,
+          "y_mm": 1
         },
         "ref": "C3",
         "stable_id": "mains.component.c3",
@@ -744,8 +924,8 @@
         "placement": {
           "rotation_deg": 90,
           "side": "front",
-          "x_mm": 51,
-          "y_mm": 16
+          "x_mm": 65,
+          "y_mm": -9
         },
         "ref": "C4",
         "stable_id": "mains.component.c4",
@@ -770,8 +950,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 36,
-          "y_mm": 21
+          "x_mm": 51,
+          "y_mm": -4
         },
         "ref": "C5",
         "stable_id": "mains.component.c5",
@@ -796,8 +976,8 @@
         "placement": {
           "rotation_deg": 90,
           "side": "front",
-          "x_mm": 57,
-          "y_mm": 16
+          "x_mm": 65,
+          "y_mm": -17
         },
         "ref": "C6",
         "stable_id": "mains.component.c6",
@@ -822,8 +1002,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 28,
-          "y_mm": 13
+          "x_mm": 43,
+          "y_mm": -12
         },
         "ref": "C7",
         "stable_id": "mains.component.c7",
@@ -848,8 +1028,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 55,
-          "y_mm": -5
+          "x_mm": 45,
+          "y_mm": -25
         },
         "ref": "D1",
         "stable_id": "mains.component.d1",
@@ -874,8 +1054,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 57,
-          "y_mm": 29
+          "x_mm": 49,
+          "y_mm": 7
         },
         "ref": "F2",
         "stable_id": "mains.component.f2",
@@ -900,8 +1080,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": -47,
-          "y_mm": -15
+          "x_mm": -16,
+          "y_mm": -9
         },
         "ref": "F3",
         "stable_id": "mains.component.f3",
@@ -923,8 +1103,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": -85,
-          "y_mm": 50
+          "x_mm": -68,
+          "y_mm": 48
         },
         "ref": "H1",
         "stable_id": "mains.component.h1",
@@ -946,8 +1126,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 85,
-          "y_mm": 50
+          "x_mm": 68,
+          "y_mm": 48
         },
         "ref": "H2",
         "stable_id": "mains.component.h2",
@@ -969,8 +1149,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": -85,
-          "y_mm": -50
+          "x_mm": -68,
+          "y_mm": -48
         },
         "ref": "H3",
         "stable_id": "mains.component.h3",
@@ -992,8 +1172,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 85,
-          "y_mm": -50
+          "x_mm": 68,
+          "y_mm": -48
         },
         "ref": "H4",
         "stable_id": "mains.component.h4",
@@ -1003,63 +1183,63 @@
       {
         "fields": {
           "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
-          "manufacturer_part_number": "43160-0102"
+          "manufacturer_part_number": "43160-1102"
         },
         "footprint": {
-          "initial_geometry_sha256": "0f30207fb273f9d650566e78ff6795d988a83b8b6d67d7f66bb3220046d3241a",
+          "initial_geometry_sha256": "b1a84735aaf1fe42a2a5aa510fcd1ef9ae34d48a8cb557cd94b5357dd297ecea",
           "kicad": "CrystalShim_Mains:Mains_J1",
           "pad_numbers": [
             "1",
             "2"
           ],
-          "source_geometry_sha256": "29cb32fdc96b586e26aa90ad5c485a9ba7cc412f3baa21506ac811b38586c2dd",
-          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-0102"
+          "source_geometry_sha256": "f9e05e9a4b662fb2ac924b660febb68dbb5ee1945c4614c8fd35469380cfb880",
+          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-1102"
         },
         "placement": {
-          "rotation_deg": 0,
+          "rotation_deg": 270,
           "side": "front",
-          "x_mm": -73,
-          "y_mm": -42
+          "x_mm": -59,
+          "y_mm": 35
         },
         "ref": "J1",
         "stable_id": "mains.component.j1",
         "symbol": "CrystalShim_Mains:Mains_J1",
-        "value": "43160-0102"
+        "value": "43160-1102"
       },
       {
         "fields": {
           "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
-          "manufacturer_part_number": "43160-0103"
+          "manufacturer_part_number": "43160-1103"
         },
         "footprint": {
-          "initial_geometry_sha256": "d166a624fb6dbef56875f4c559695713577013dc61b883a26f818d0c895a5764",
+          "initial_geometry_sha256": "d171ef8141492df08f3cbed1b6d3b44277bd186faa75414b9b6cefd46a32d65c",
           "kicad": "CrystalShim_Mains:Mains_J2",
           "pad_numbers": [
             "1",
             "2",
             "3"
           ],
-          "source_geometry_sha256": "30f5310d1d251255010c900b4e388208843b3b024760f836017eb70012d13682",
-          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-0103"
+          "source_geometry_sha256": "64971f4a651595e9a23e5d7511f768c9e8f7ceb59ac734a272fcd7a531f57110",
+          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-1103"
         },
         "placement": {
-          "rotation_deg": 0,
+          "rotation_deg": 270,
           "side": "front",
-          "x_mm": -79,
-          "y_mm": -22
+          "x_mm": -59,
+          "y_mm": 8
         },
         "ref": "J2",
         "stable_id": "mains.component.j2",
         "symbol": "CrystalShim_Mains:Mains_J2",
-        "value": "43160-0103"
+        "value": "43160-1103"
       },
       {
         "fields": {
           "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
-          "manufacturer_part_number": "43160-0104"
+          "manufacturer_part_number": "43160-1104"
         },
         "footprint": {
-          "initial_geometry_sha256": "ae68fa3db8cdb2b8bc0d2e7878f49982150f604c9e1756d561832b6b4ba5293f",
+          "initial_geometry_sha256": "19112a9913e215b651473711f4f3eab62172cd63f19526303cfca30d4e6ca75d",
           "kicad": "CrystalShim_Mains:Mains_J3",
           "pad_numbers": [
             "1",
@@ -1067,27 +1247,27 @@
             "3",
             "4"
           ],
-          "source_geometry_sha256": "6a1ec863e8806038fb885281f89dc5c143f2919094a6bcdced0cc61d71e39c22",
-          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-0104"
+          "source_geometry_sha256": "48348463ce0c7f3174640a3a8a6c8aad7b236c10448e4c0d0528486a740e00be",
+          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-1104"
         },
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": -12,
-          "y_mm": -42
+          "x_mm": -54,
+          "y_mm": -41
         },
         "ref": "J3",
         "stable_id": "mains.component.j3",
         "symbol": "CrystalShim_Mains:Mains_J3",
-        "value": "43160-0104"
+        "value": "43160-1104"
       },
       {
         "fields": {
           "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
-          "manufacturer_part_number": "43160-0106"
+          "manufacturer_part_number": "43160-1106"
         },
         "footprint": {
-          "initial_geometry_sha256": "dc411d657837f4811460809550182a96fa1d17bfc511580cf802176e19221594",
+          "initial_geometry_sha256": "101916cee51d1cbc0f338e4277c9308e03ec30102e9e80158e6841a3034618cd",
           "kicad": "CrystalShim_Mains:Mains_J4",
           "pad_numbers": [
             "1",
@@ -1097,19 +1277,19 @@
             "5",
             "6"
           ],
-          "source_geometry_sha256": "22c3f213238d8a9923a5e949511a27e1aff4f7133db19c3b0bb4f4f981266a1b",
-          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-0106"
+          "source_geometry_sha256": "a16e69991797fa1b6061df3b061a0d56d904b50fea0fb0abb54f2e08c6245721",
+          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-1106"
         },
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 35,
-          "y_mm": -42
+          "x_mm": 1,
+          "y_mm": -41
         },
         "ref": "J4",
         "stable_id": "mains.component.j4",
         "symbol": "CrystalShim_Mains:Mains_J4",
-        "value": "43160-0106"
+        "value": "43160-1106"
       },
       {
         "fields": {
@@ -1130,8 +1310,8 @@
         "placement": {
           "rotation_deg": 270,
           "side": "front",
-          "x_mm": 79,
-          "y_mm": 5
+          "x_mm": 64,
+          "y_mm": 28
         },
         "ref": "J5",
         "stable_id": "mains.component.j5",
@@ -1156,8 +1336,8 @@
         "placement": {
           "rotation_deg": 270,
           "side": "front",
-          "x_mm": 79,
-          "y_mm": 29
+          "x_mm": 64,
+          "y_mm": 7
         },
         "ref": "J6",
         "stable_id": "mains.component.j6",
@@ -1184,8 +1364,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 30,
-          "y_mm": -15
+          "x_mm": 10,
+          "y_mm": -17
         },
         "ref": "K1",
         "stable_id": "mains.component.k1",
@@ -1210,8 +1390,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 42,
-          "y_mm": 16
+          "x_mm": 57,
+          "y_mm": -9
         },
         "ref": "L1",
         "stable_id": "mains.component.l1",
@@ -1236,8 +1416,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 7,
-          "y_mm": -26
+          "x_mm": -15,
+          "y_mm": -25
         },
         "ref": "R1",
         "stable_id": "mains.component.r1",
@@ -1262,8 +1442,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": -42,
-          "y_mm": -35
+          "x_mm": -39.75,
+          "y_mm": -20
         },
         "ref": "RV1",
         "stable_id": "mains.component.rv1",
@@ -1290,8 +1470,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": -77.5,
-          "y_mm": 45
+          "x_mm": -47,
+          "y_mm": 48
         },
         "ref": "U1",
         "stable_id": "mains.component.u1",
@@ -1320,8 +1500,8 @@
         "placement": {
           "rotation_deg": 0,
           "side": "front",
-          "x_mm": 32,
-          "y_mm": 16
+          "x_mm": 49,
+          "y_mm": -9
         },
         "ref": "U2",
         "stable_id": "mains.component.u2",
@@ -2112,14 +2292,271 @@
       "tscircuit": "0.0.2465"
     }
   },
-  "manifest_sha256": "2070c5bbba933171d358291e3bd58e6d5dd3fd11b42e6edd0f16744cb6c8dd00",
+  "manifest_sha256": "3083daced8b092665598c90513da6b54665086b9e439605b1ffef2b8f1815874",
   "schema_version": 1,
   "snapshot": {
     "board_id": "mains.board.main",
     "kicad_owned": {
       "graphics": {
-        "details": [],
-        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        "details": [
+          {
+            "bbox_mm": [
+              141.7,
+              130.3214,
+              6.6,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              145,
+              131
+            ],
+            "text": "D1 K=+5V",
+            "uuid": "6c960a00-f28c-467a-91f0-02b78097fb14"
+          },
+          {
+            "bbox_mm": [
+              142.014286,
+              48.3214,
+              11.971429,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              148,
+              49
+            ],
+            "text": "ISOLATED 12V / 5V",
+            "uuid": "f0fadcfc-aa92-4e5c-b416-9f8563cad39c"
+          },
+          {
+            "bbox_mm": [
+              142.966667,
+              62.3214,
+              14.066667,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              150,
+              63
+            ],
+            "text": "J5 1:+5V 2:RET 3:COIL",
+            "uuid": "2607391b-76a8-4a89-ab6e-f79dffa99a9c"
+          },
+          {
+            "bbox_mm": [
+              147.147619,
+              89.3214,
+              3.704762,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              149,
+              90
+            ],
+            "text": "F2 3A",
+            "uuid": "e21498fc-b3fb-4786-be53-339a5603b8df"
+          },
+          {
+            "bbox_mm": [
+              152.795238,
+              98.3214,
+              10.409525,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              158,
+              99
+            ],
+            "text": "J6 1:+12V 2:RET",
+            "uuid": "b7c3b7de-642e-412a-9b33-cecbbb19d564"
+          },
+          {
+            "bbox_mm": [
+              38.45238,
+              83.3214,
+              11.09524,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              44,
+              84
+            ],
+            "text": "1 L   2 N   3 NC",
+            "uuid": "38d39e3c-c02a-4013-acc3-186360a420d5"
+          },
+          {
+            "bbox_mm": [
+              38.633333,
+              53.3214,
+              12.733334,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              45,
+              54
+            ],
+            "text": "J1 T2A FUSED INPUT",
+            "uuid": "ff8305db-cfbd-4937-8d7b-698459c12ab2"
+          },
+          {
+            "bbox_mm": [
+              39.385714,
+              81.3214,
+              9.228572,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              44,
+              82
+            ],
+            "text": "J2 FILTER LINE",
+            "uuid": "4ef614cf-5e20-462c-ba0d-01c5b5713ee9"
+          },
+          {
+            "bbox_mm": [
+              41.185714,
+              131.3214,
+              11.628573,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              47,
+              132
+            ],
+            "text": "1 L  2 N  3-4 NC",
+            "uuid": "02f7bf9d-71ed-4699-bff5-92c9c62cc735"
+          },
+          {
+            "bbox_mm": [
+              41.871428,
+              55.3214,
+              6.257144,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              45,
+              56
+            ],
+            "text": "1 L   2 N",
+            "uuid": "11994ba5-6ba5-41da-a4c6-7eddbd41e5b4"
+          },
+          {
+            "bbox_mm": [
+              42.195238,
+              129.3214,
+              9.609524,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              47,
+              130
+            ],
+            "text": "J3 FILTER LOAD",
+            "uuid": "e996948c-984d-4e82-a5e5-aa061bc561db"
+          },
+          {
+            "bbox_mm": [
+              77.338095,
+              150.3214,
+              15.32381,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              85,
+              151
+            ],
+            "text": "NC CAVITIES ARE NOT PE",
+            "uuid": "a00a003e-b72e-4384-9f6a-5f4865d6b747"
+          },
+          {
+            "bbox_mm": [
+              80.842857,
+              95.3214,
+              4.314286,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              83,
+              96
+            ],
+            "text": "F3 T1A",
+            "uuid": "c1238440-1c0b-4a6e-8793-2a4c1512aa1d"
+          },
+          {
+            "bbox_mm": [
+              87.366667,
+              48.3214,
+              5.266666,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              90,
+              49
+            ],
+            "text": "PRIMARY",
+            "uuid": "262006b4-cd9a-4feb-9585-ec8e6c99cd0b"
+          },
+          {
+            "bbox_mm": [
+              95.014285,
+              129.3214,
+              11.97143,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              101,
+              130
+            ],
+            "text": "J4 SWITCHED PUMP",
+            "uuid": "b9eb1f59-4a90-4499-8671-09dfc1f94dea"
+          },
+          {
+            "bbox_mm": [
+              95.185714,
+              134.3214,
+              11.628573,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              101,
+              135
+            ],
+            "text": "1 L  2 N  3-6 NC",
+            "uuid": "fc7a9b1a-5108-4465-9fcb-3e81755e9c2f"
+          }
+        ],
+        "sha256": "e5447e570af09879f462a945d5d23aeb85ab164adee165fcaee5154fcbc7d58f"
       },
       "rules": {
         "details": [
@@ -2136,14 +2573,14 @@
           },
           {
             "path": "/Users/michael/Code/crystal-shim/pcb/mains/kicad/mains.kicad_dru",
-            "sha256": "a4294c32082398d12bd248420c71ecd102a7050aa80799cf62f0c1a07ab4e819"
+            "sha256": "c167105a4929bc0646427951da49ba5565bf40f54aff7b45432d5a4726af2ffc"
           },
           {
             "path": "/Users/michael/Code/crystal-shim/pcb/mains/kicad/mains.kicad_pro",
-            "sha256": "3400bd09bbd78ceb5d39ef792e9cddc1f153c63911c78445daa29e1016fbabe4"
+            "sha256": "e7d84877002929a03aa44062e9c1c357cf9c1212a3b5170210142e6bcef079bb"
           }
         ],
-        "sha256": "03aad557c2185d0df8bec355ea7c651c284b5b27256c550ce82f5cdd6fc0c3fd"
+        "sha256": "d644f88cf957a7827b084019b4e5378cd2e9298421ce749ebd074fb0e4aa10f2"
       },
       "tracks": {
         "details": [],
@@ -2160,10 +2597,10 @@
             ],
             "net": "GND_ISO",
             "position_mm": [
-              122.3,
-              72.3
+              143.3,
+              103.3
             ],
-            "uuid": "5909c241-9d51-4a7a-8476-dd064ce88012",
+            "uuid": "c92ab1ba-ab43-4d4a-9110-b8495861cecd",
             "width_mm": 0.6
           },
           {
@@ -2175,10 +2612,10 @@
             ],
             "net": "GND_ISO",
             "position_mm": [
-              122.3,
-              79.3
+              143.3,
+              96.3
             ],
-            "uuid": "3643747c-c2cd-4ed7-8aa5-9b51b0311a13",
+            "uuid": "94ec4dd5-4509-4213-8743-11bd4b79e57c",
             "width_mm": 0.6
           },
           {
@@ -2190,10 +2627,10 @@
             ],
             "net": "GND_ISO",
             "position_mm": [
-              123.7,
-              72.3
+              144.5,
+              112
             ],
-            "uuid": "c7157836-adbc-4ddf-ad21-c63eb6b236a5",
+            "uuid": "75df47fb-0217-4ab5-afad-9a269e0e8f4f",
             "width_mm": 0.6
           },
           {
@@ -2205,10 +2642,10 @@
             ],
             "net": "GND_ISO",
             "position_mm": [
-              123.7,
-              79.3
+              144.7,
+              103.3
             ],
-            "uuid": "c7ca876a-52ed-44d4-9bce-acd3a39423f0",
+            "uuid": "210a770f-5b71-4cf5-868b-3dd1ff347784",
             "width_mm": 0.6
           },
           {
@@ -2220,10 +2657,10 @@
             ],
             "net": "GND_ISO",
             "position_mm": [
-              129.5,
-              87
+              144.7,
+              96.3
             ],
-            "uuid": "eb09783f-9170-469a-b75a-9d3125f387c5",
+            "uuid": "69de5a2f-8c97-465a-83fb-d5a70f726083",
             "width_mm": 0.6
           },
           {
@@ -2235,10 +2672,10 @@
             ],
             "net": "GND_ISO",
             "position_mm": [
-              134.3,
-              84.7
+              151.3,
+              109.7
             ],
-            "uuid": "d2c30467-deb2-49fa-ae90-8bc7b1a2cec4",
+            "uuid": "2c2126c1-c706-4f3b-b38e-1da1b3d05508",
             "width_mm": 0.6
           },
           {
@@ -2250,10 +2687,10 @@
             ],
             "net": "GND_ISO",
             "position_mm": [
-              134.3,
-              85.5
+              151.3,
+              110.5
             ],
-            "uuid": "87cdfdc5-986d-41f3-a813-7233c7895182",
+            "uuid": "46044fd3-aa92-4b97-ab63-6ac3c3ac3591",
             "width_mm": 0.6
           },
           {
@@ -2265,10 +2702,10 @@
             ],
             "net": "GND_ISO",
             "position_mm": [
-              150.3,
-              81.3
+              164.3,
+              106.3
             ],
-            "uuid": "37a85096-e80f-4d03-869c-b0e115a8a035",
+            "uuid": "f57eae07-3167-43dd-aa93-b4669ce3aa42",
             "width_mm": 0.6
           },
           {
@@ -2280,10 +2717,10 @@
             ],
             "net": "GND_ISO",
             "position_mm": [
-              151.7,
-              81.3
+              164.3,
+              114.3
             ],
-            "uuid": "870ffdcc-09e8-43be-8f56-851102cde909",
+            "uuid": "2dd5649e-3dbc-4138-9644-71e572016282",
             "width_mm": 0.6
           },
           {
@@ -2295,10 +2732,10 @@
             ],
             "net": "GND_ISO",
             "position_mm": [
-              156.3,
-              81.3
+              165.7,
+              106.3
             ],
-            "uuid": "e4d1756a-faa7-42c1-9ac2-638c824b4c81",
+            "uuid": "08104545-7e3f-4eb8-81a7-5e6333b132ba",
             "width_mm": 0.6
           },
           {
@@ -2310,633 +2747,21 @@
             ],
             "net": "GND_ISO",
             "position_mm": [
-              157.7,
-              81.3
+              165.7,
+              114.3
             ],
-            "uuid": "1db037e7-92c2-4daa-b08f-8896da602184",
+            "uuid": "946de00a-0b94-4c96-8dee-1732f1475040",
             "width_mm": 0.6
           }
         ],
-        "sha256": "79ccbd2453b9638df111a364141c0036b12a1bed8ffe5cca6c212810e1712ce3"
+        "sha256": "9e3f76c76903ea935dea73b1b6a34a75678ef454770e39a6424e93e9cb9b837c"
       },
       "zones": {
         "details": [
           {
             "bbox_mm": [
-              100.55,
-              98,
-              6.5,
-              6.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V12_RAW U1.4.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  100.55,
-                  98
-                ],
-                [
-                  107.05,
-                  98
-                ],
-                [
-                  107.05,
-                  104.5
-                ],
-                [
-                  100.55,
-                  104.5
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "55ee40dd-83c1-4844-9c01-df833be14487"
-          },
-          {
-            "bbox_mm": [
-              104.7,
-              123.7,
-              4.6,
-              4.6
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck PUMP_L_SW R1.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  104.7,
-                  123.7
-                ],
-                [
-                  109.3,
-                  123.7
-                ],
-                [
-                  109.3,
-                  128.3
-                ],
-                [
-                  104.7,
-                  128.3
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "91601006-e92a-4e8f-ad91-aade12db0ad6"
-          },
-          {
-            "bbox_mm": [
-              11,
-              146,
-              8,
-              8
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "MOUNT_H3_INSULATING_HARDWARE",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  11,
-                  146
-                ],
-                [
-                  19,
-                  146
-                ],
-                [
-                  19,
-                  154
-                ],
-                [
-                  11,
-                  154
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "42105aaa-ed03-4fe6-a8ab-6d74557c5632"
-          },
-          {
-            "bbox_mm": [
-              11,
-              46,
-              8,
-              8
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "MOUNT_H1_INSULATING_HARDWARE",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  11,
-                  46
-                ],
-                [
-                  19,
-                  46
-                ],
-                [
-                  19,
-                  54
-                ],
-                [
-                  11,
-                  54
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "5762afa5-986f-46f6-bd5e-694512266c7e"
-          },
-          {
-            "bbox_mm": [
-              119.94,
-              123.7,
-              4.6,
-              4.6
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck SNUBBER_RC R1.2.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  119.94,
-                  123.7
-                ],
-                [
-                  124.54,
-                  123.7
-                ],
-                [
-                  124.54,
-                  128.3
-                ],
-                [
-                  119.94,
-                  128.3
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "044b34e2-99b3-4d94-8d22-b3037268b320"
-          },
-          {
-            "bbox_mm": [
-              120.975,
-              75.1,
-              4.05,
-              3.1
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V12_RAW C3.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  120.975,
-                  75.1
-                ],
-                [
-                  125.025,
-                  75.1
-                ],
-                [
-                  125.025,
-                  78.2
-                ],
-                [
-                  120.975,
-                  78.2
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "b6b677d8-7cff-40ef-a145-7606f7310e65"
-          },
-          {
-            "bbox_mm": [
-              120.975,
-              82.1,
-              4.05,
-              3.1
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V12_RAW C2.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  120.975,
-                  82.1
-                ],
-                [
-                  125.025,
-                  82.1
-                ],
-                [
-                  125.025,
-                  85.2
-                ],
-                [
-                  120.975,
-                  85.2
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "7fb44af2-b49e-4cc7-9d9f-5be33bd550ae"
-          },
-          {
-            "bbox_mm": [
-              125.95,
-              85.65,
-              2.7,
-              2.7
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V12_RAW C7.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  125.95,
-                  85.65
-                ],
-                [
-                  128.65,
-                  85.65
-                ],
-                [
-                  128.65,
-                  88.35
-                ],
-                [
-                  125.95,
-                  88.35
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "89f943e6-db3d-4a22-8151-93cd9c4529fe"
-          },
-          {
-            "bbox_mm": [
-              127.4,
-              79.7,
-              7,
-              6.7
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V5_PSU U2.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  127.4,
-                  79.7
-                ],
-                [
-                  134.4,
-                  79.7
-                ],
-                [
-                  134.4,
-                  86.4
-                ],
-                [
-                  127.4,
-                  86.4
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "dd7197c0-9377-438f-8ca9-bd6b4818fcc7"
-          },
-          {
-            "bbox_mm": [
-              127.4,
-              80.65,
-              7,
-              6.7
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V12_RAW U2.2.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  127.4,
-                  80.65
-                ],
-                [
-                  134.4,
-                  80.65
-                ],
-                [
-                  134.4,
-                  87.35
-                ],
-                [
-                  127.4,
-                  87.35
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "55f1ea60-c9cd-44d8-bcbf-21f50411ec9f"
-          },
-          {
-            "bbox_mm": [
-              127.6,
-              112.6,
-              4.8,
-              4.8
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck PUMP_L_FILTERED K1.3.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  127.6,
-                  112.6
-                ],
-                [
-                  132.4,
-                  112.6
-                ],
-                [
-                  132.4,
-                  117.4
-                ],
-                [
-                  127.6,
-                  117.4
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "9514eb0f-d665-46a2-b3b5-4726cc766467"
-          },
-          {
-            "bbox_mm": [
-              129.4,
-              83.6,
-              3,
-              2.7
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V12_RAW U2.3.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  129.4,
-                  83.6
-                ],
-                [
-                  132.4,
-                  83.6
-                ],
-                [
-                  132.4,
-                  86.3
-                ],
-                [
-                  129.4,
-                  86.3
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "68551324-8a4a-433f-bcde-a30f5aac30ed"
-          },
-          {
-            "bbox_mm": [
-              131.1,
-              120.1,
-              4.8,
-              4.8
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck PUMP_L_SW K1.4.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  131.1,
-                  120.1
-                ],
-                [
-                  135.9,
-                  120.1
-                ],
-                [
-                  135.9,
-                  124.9
-                ],
-                [
-                  131.1,
-                  124.9
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "4c32a754-3d17-46cf-b331-afcfbf27efa0"
-          },
-          {
-            "bbox_mm": [
-              132.25,
-              136.07,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck PUMP_L_SW J4.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  132.25,
-                  136.07
-                ],
-                [
-                  137.75,
-                  136.07
-                ],
-                [
-                  137.75,
-                  141.57
-                ],
-                [
-                  132.25,
-                  141.57
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "c58e7ddf-50ea-47e1-bb65-734de6558bac"
-          },
-          {
-            "bbox_mm": [
-              132.25,
-              139.25,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck PUMP_L_SW J4.1.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  132.25,
-                  139.25
-                ],
-                [
-                  137.75,
-                  139.25
-                ],
-                [
-                  137.75,
-                  144.75
-                ],
-                [
-                  132.25,
-                  144.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "a75fc7a3-6f8a-4cc3-9f05-de118472424d"
-          },
-          {
-            "bbox_mm": [
-              138,
-              104,
-              8,
-              31
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "MAINS_ISOLATION_3",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  138,
-                  135
-                ],
-                [
-                  146,
-                  135
-                ],
-                [
-                  146,
-                  104
-                ],
-                [
-                  138,
-                  104
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "3854befe-c8fc-4ba0-8b57-fa3509d5dcd5"
-          },
-          {
-            "bbox_mm": [
-              138,
-              127,
-              52,
-              8
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "MAINS_ISOLATION_4",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  138,
-                  135
-                ],
-                [
-                  190,
-                  135
-                ],
-                [
-                  190,
-                  127
-                ],
-                [
-                  138,
-                  127
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "46f5d76e-9140-4b66-b3ad-73de646d7912"
-          },
-          {
-            "bbox_mm": [
-              139.743,
-              136.07,
+              105.743,
+              135.07,
               5.5,
               5.5
             ],
@@ -2949,30 +2774,30 @@
             "outline_mm": [
               [
                 [
-                  139.743,
-                  136.07
+                  105.743,
+                  135.07
                 ],
                 [
-                  145.243,
-                  136.07
+                  111.243,
+                  135.07
                 ],
                 [
-                  145.243,
-                  141.57
+                  111.243,
+                  140.57
                 ],
                 [
-                  139.743,
-                  141.57
+                  105.743,
+                  140.57
                 ]
               ]
             ],
             "priority": 0,
-            "uuid": "a52aff4b-8801-484e-8884-c0fb289e0ae6"
+            "uuid": "00719d07-acee-47b2-bdb3-5ae51cf132d9"
           },
           {
             "bbox_mm": [
-              139.743,
-              139.25,
+              105.743,
+              138.25,
               5.5,
               5.5
             ],
@@ -2985,102 +2810,30 @@
             "outline_mm": [
               [
                 [
-                  139.743,
-                  139.25
+                  105.743,
+                  138.25
                 ],
                 [
-                  145.243,
-                  139.25
+                  111.243,
+                  138.25
                 ],
                 [
-                  145.243,
-                  144.75
+                  111.243,
+                  143.75
                 ],
                 [
-                  139.743,
-                  144.75
+                  105.743,
+                  143.75
                 ]
               ]
             ],
             "priority": 0,
-            "uuid": "f76e60f4-4dce-46f4-a2e0-80c75a5701d1"
+            "uuid": "4d0095a0-0a23-4671-90d1-798b405244c4"
           },
           {
             "bbox_mm": [
-              142.25,
-              82.1,
-              4,
-              3.8
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V5_PSU L1.2.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  142.25,
-                  82.1
-                ],
-                [
-                  146.25,
-                  82.1
-                ],
-                [
-                  146.25,
-                  85.9
-                ],
-                [
-                  142.25,
-                  85.9
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "3f2cf467-16de-48e1-bac8-e237007c94d2"
-          },
-          {
-            "bbox_mm": [
-              148.975,
-              84.1,
-              4.05,
-              3.1
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V5_PSU C4.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  148.975,
-                  84.1
-                ],
-                [
-                  153.025,
-                  84.1
-                ],
-                [
-                  153.025,
-                  87.2
-                ],
-                [
-                  148.975,
-                  87.2
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "17af543a-44f0-45e6-9ac5-59ea54511141"
-          },
-          {
-            "bbox_mm": [
-              151.1,
-              112.6,
+              107.6,
+              114.6,
               4.8,
               4.8
             ],
@@ -3088,863 +2841,71 @@
               "B.Cu",
               "F.Cu"
             ],
-            "name": "Neck V5_PSU K1.1.0",
+            "name": "Neck PUMP_L_FILTERED K1.3.0",
             "net": "",
             "outline_mm": [
               [
                 [
-                  151.1,
-                  112.6
+                  107.6,
+                  114.6
                 ],
                 [
-                  155.9,
-                  112.6
+                  112.4,
+                  114.6
                 ],
                 [
-                  155.9,
-                  117.4
+                  112.4,
+                  119.4
                 ],
                 [
-                  151.1,
-                  117.4
+                  107.6,
+                  119.4
                 ]
               ]
             ],
             "priority": 0,
-            "uuid": "b01e0964-5cdd-4aa0-af60-88943e16474a"
+            "uuid": "b3ad9d21-ef23-409c-95cd-99a6df4a2d4a"
           },
           {
             "bbox_mm": [
-              152.57,
-              68.425,
-              3.96,
-              5.15
+              111.1,
+              122.1,
+              4.8,
+              4.8
             ],
             "layers": [
               "B.Cu",
               "F.Cu"
             ],
-            "name": "Neck V12_RAW F2.1.0",
+            "name": "Neck PUMP_L_SW K1.4.0",
             "net": "",
             "outline_mm": [
               [
                 [
-                  152.57,
-                  68.425
+                  111.1,
+                  122.1
                 ],
                 [
-                  156.53,
-                  68.425
+                  115.9,
+                  122.1
                 ],
                 [
-                  156.53,
-                  73.575
+                  115.9,
+                  126.9
                 ],
                 [
-                  152.57,
-                  73.575
+                  111.1,
+                  126.9
                 ]
               ]
             ],
             "priority": 0,
-            "uuid": "ab383add-0000-4763-90f2-5224a1d4fa0d"
+            "uuid": "ea50b8b7-3ac9-4721-8a0c-2b1e3a312746"
           },
           {
             "bbox_mm": [
-              152.7,
-              102.7,
-              4.6,
-              4.6
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V5_PSU D1.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  152.7,
-                  102.7
-                ],
-                [
-                  157.3,
-                  102.7
-                ],
-                [
-                  157.3,
-                  107.3
-                ],
-                [
-                  152.7,
-                  107.3
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "240d02fe-e482-483e-a530-07f8ef762ba5"
-          },
-          {
-            "bbox_mm": [
-              154.975,
-              84.1,
-              4.05,
-              3.1
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V5_PSU C6.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  154.975,
-                  84.1
-                ],
-                [
-                  159.025,
-                  84.1
-                ],
-                [
-                  159.025,
-                  87.2
-                ],
-                [
-                  154.975,
-                  87.2
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "b65b7954-f2be-4939-9d86-6c7568b849f6"
-          },
-          {
-            "bbox_mm": [
-              157.47,
-              68.425,
-              3.96,
-              5.15
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V12_MOTOR F2.2.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  157.47,
-                  68.425
-                ],
-                [
-                  161.43,
-                  68.425
-                ],
-                [
-                  161.43,
-                  73.575
-                ],
-                [
-                  157.47,
-                  73.575
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "4ccf0822-dc32-4a46-80bd-a2e9ffae849d"
-          },
-          {
-            "bbox_mm": [
-              176.99,
-              93.25,
-              4.02,
-              3.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V5_PSU J5.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  176.99,
-                  93.25
-                ],
-                [
-                  181.01,
-                  93.25
-                ],
-                [
-                  181.01,
-                  96.75
-                ],
-                [
-                  176.99,
-                  96.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "ee660766-6947-4021-861e-d783fb353f68"
-          },
-          {
-            "bbox_mm": [
-              177.25,
-              69.25,
-              3.5,
-              3.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck V12_MOTOR J6.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  177.25,
-                  69.25
-                ],
-                [
-                  180.75,
-                  69.25
-                ],
-                [
-                  180.75,
-                  72.75
-                ],
-                [
-                  177.25,
-                  72.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "40887cf4-f964-4a70-baf1-80d187652970"
-          },
-          {
-            "bbox_mm": [
-              18.25,
-              116.07,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck FILTER_LINE_L J2.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  18.25,
-                  116.07
-                ],
-                [
-                  23.75,
-                  116.07
-                ],
-                [
-                  23.75,
-                  121.57
-                ],
-                [
-                  18.25,
-                  121.57
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "17b06374-7492-4fad-816a-737ba66681af"
-          },
-          {
-            "bbox_mm": [
-              18.25,
-              119.25,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck FILTER_LINE_L J2.1.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  18.25,
-                  119.25
-                ],
-                [
-                  23.75,
-                  119.25
-                ],
-                [
-                  23.75,
-                  124.75
-                ],
-                [
-                  18.25,
-                  124.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "c0af1869-b13b-47a0-a3a9-b841274e1657"
-          },
-          {
-            "bbox_mm": [
-              181,
-              146,
-              8,
-              8
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "MOUNT_H4_INSULATING_HARDWARE",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  181,
-                  146
-                ],
-                [
-                  189,
-                  146
-                ],
-                [
-                  189,
-                  154
-                ],
-                [
-                  181,
-                  154
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "c4004645-a595-4c1c-b1b3-221a1832efbf"
-          },
-          {
-            "bbox_mm": [
-              181,
-              46,
-              8,
-              8
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "MOUNT_H2_INSULATING_HARDWARE",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  181,
-                  46
-                ],
-                [
-                  189,
-                  46
-                ],
-                [
-                  189,
-                  54
-                ],
-                [
-                  181,
-                  54
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "1610973b-00e9-4e71-942c-c58be85e78fd"
-          },
-          {
-            "bbox_mm": [
-              24.25,
-              136.07,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_L_FUSED J1.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  24.25,
-                  136.07
-                ],
-                [
-                  29.75,
-                  136.07
-                ],
-                [
-                  29.75,
-                  141.57
-                ],
-                [
-                  24.25,
-                  141.57
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "07671d2f-1391-4f4a-8199-20eb2e0e94aa"
-          },
-          {
-            "bbox_mm": [
-              24.25,
-              139.25,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_L_FUSED J1.1.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  24.25,
-                  139.25
-                ],
-                [
-                  29.75,
-                  139.25
-                ],
-                [
-                  29.75,
-                  144.75
-                ],
-                [
-                  24.25,
-                  144.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "ed58d8c9-2633-4a81-bc67-702a38bf786e"
-          },
-          {
-            "bbox_mm": [
-              25.3,
-              57.5,
-              5,
-              5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_L_FUSED U1.2.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  25.3,
-                  57.5
-                ],
-                [
-                  30.3,
-                  57.5
-                ],
-                [
-                  30.3,
-                  62.5
-                ],
-                [
-                  25.3,
-                  62.5
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "489dfbf0-2e72-4a96-b358-76a52eba3f83"
-          },
-          {
-            "bbox_mm": [
-              25.3,
-              64.25,
-              5,
-              5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_N U1.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  25.3,
-                  64.25
-                ],
-                [
-                  30.3,
-                  64.25
-                ],
-                [
-                  30.3,
-                  69.25
-                ],
-                [
-                  25.3,
-                  69.25
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "7e938d86-1a9b-4c21-a0f3-48bb9edd3fb4"
-          },
-          {
-            "bbox_mm": [
-              25.743,
-              116.07,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_N J2.2.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  25.743,
-                  116.07
-                ],
-                [
-                  31.243,
-                  116.07
-                ],
-                [
-                  31.243,
-                  121.57
-                ],
-                [
-                  25.743,
-                  121.57
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "6bd707da-7c4b-4cf3-aed4-4e97f53ef763"
-          },
-          {
-            "bbox_mm": [
-              25.743,
-              119.25,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_N J2.2.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  25.743,
-                  119.25
-                ],
-                [
-                  31.243,
-                  119.25
-                ],
-                [
-                  31.243,
-                  124.75
-                ],
-                [
-                  25.743,
-                  124.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "14f05a27-babc-42d6-9294-b04b0ae634fb"
-          },
-          {
-            "bbox_mm": [
-              31.743,
-              136.07,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_N J1.2.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  31.743,
-                  136.07
-                ],
-                [
-                  37.243,
-                  136.07
-                ],
-                [
-                  37.243,
-                  141.57
-                ],
-                [
-                  31.743,
-                  141.57
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "f228b554-9b2d-4f01-9a67-d11a62255f24"
-          },
-          {
-            "bbox_mm": [
-              31.743,
-              139.25,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_N J1.2.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  31.743,
-                  139.25
-                ],
-                [
-                  37.243,
-                  139.25
-                ],
-                [
-                  37.243,
-                  144.75
-                ],
-                [
-                  31.743,
-                  144.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "d718b488-9948-454b-87d6-5d898638520c"
-          },
-          {
-            "bbox_mm": [
-              50.75,
-              112.75,
-              4.5,
-              4.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_L_FUSED F3.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  50.75,
-                  112.75
-                ],
-                [
-                  55.25,
-                  112.75
-                ],
-                [
-                  55.25,
-                  117.25
-                ],
-                [
-                  50.75,
-                  117.25
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "6b4be050-75db-4176-915c-1eab5ddd5834"
-          },
-          {
-            "bbox_mm": [
-              55.55,
-              132.55,
-              4.9,
-              4.9
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_L_FUSED RV1.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  55.55,
-                  132.55
-                ],
-                [
-                  60.45,
-                  132.55
-                ],
-                [
-                  60.45,
-                  137.45
-                ],
-                [
-                  55.55,
-                  137.45
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "ca4b8e05-064d-43cd-9ee9-2c7c30f69246"
-          },
-          {
-            "bbox_mm": [
-              61.85,
-              132.55,
-              7.3,
-              4.9
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_N RV1.2.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  61.85,
-                  132.55
-                ],
-                [
-                  69.15,
-                  132.55
-                ],
-                [
-                  69.15,
-                  137.45
-                ],
-                [
-                  61.85,
-                  137.45
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "0469a93d-2cd2-4608-800f-a08a1fbdba0b"
-          },
-          {
-            "bbox_mm": [
-              80,
-              104,
-              66,
-              8
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "MAINS_ISOLATION_2",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  80,
-                  112
-                ],
-                [
-                  146,
-                  112
-                ],
-                [
-                  146,
-                  104
-                ],
-                [
-                  80,
-                  104
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "bcbbcda6-1489-41e8-893c-04e3f764a389"
-          },
-          {
-            "bbox_mm": [
-              80,
-              45,
-              8,
-              67
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "MAINS_ISOLATION_1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  80,
-                  112
-                ],
-                [
-                  88,
-                  112
-                ],
-                [
-                  88,
-                  45
-                ],
-                [
-                  80,
-                  45
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "f83f718f-b40f-49ae-a83f-dd85516ae52e"
-          },
-          {
-            "bbox_mm": [
-              81.23,
-              112.75,
+              112.23,
+              106.75,
               4.5,
               4.5
             ],
@@ -3957,30 +2918,1180 @@
             "outline_mm": [
               [
                 [
-                  81.23,
-                  112.75
+                  112.23,
+                  106.75
                 ],
                 [
-                  85.73,
-                  112.75
+                  116.73,
+                  106.75
                 ],
                 [
-                  85.73,
-                  117.25
+                  116.73,
+                  111.25
                 ],
                 [
-                  81.23,
-                  117.25
+                  112.23,
+                  111.25
                 ]
               ]
             ],
             "priority": 0,
-            "uuid": "9b42bfb7-7612-47eb-bc2a-3ed50d4a3153"
+            "uuid": "ef69763d-cf50-41d1-b70d-94c2c666a038"
           },
           {
             "bbox_mm": [
-              85.25,
-              136.07,
+              119,
+              127,
+              56,
+              8
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "MAINS_ISOLATION_2",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  119,
+                  135
+                ],
+                [
+                  175,
+                  135
+                ],
+                [
+                  175,
+                  127
+                ],
+                [
+                  119,
+                  127
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "9238d10a-c714-453a-9c85-079adb62ad24"
+          },
+          {
+            "bbox_mm": [
+              119,
+              45,
+              8,
+              82
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "MAINS_ISOLATION_1",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  119,
+                  127
+                ],
+                [
+                  127,
+                  127
+                ],
+                [
+                  127,
+                  45
+                ],
+                [
+                  119,
+                  45
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "84035bc3-d0b8-4b8f-967d-227058ea6160"
+          },
+          {
+            "bbox_mm": [
+              127,
+              45,
+              48,
+              82
+            ],
+            "layers": [
+              "B.Cu"
+            ],
+            "name": "mains GND_ISO B.Cu",
+            "net": "GND_ISO",
+            "outline_mm": [
+              [
+                [
+                  127,
+                  45
+                ],
+                [
+                  175,
+                  45
+                ],
+                [
+                  175,
+                  127
+                ],
+                [
+                  127,
+                  127
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "f326a018-0f18-4cd2-bfad-93660e296bf8"
+          },
+          {
+            "bbox_mm": [
+              127,
+              45,
+              48,
+              82
+            ],
+            "layers": [
+              "F.Cu"
+            ],
+            "name": "mains GND_ISO F.Cu",
+            "net": "GND_ISO",
+            "outline_mm": [
+              [
+                [
+                  127,
+                  45
+                ],
+                [
+                  175,
+                  45
+                ],
+                [
+                  175,
+                  127
+                ],
+                [
+                  127,
+                  127
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "c9883153-e79b-47ed-ae67-d2b496d8ea71"
+          },
+          {
+            "bbox_mm": [
+              131.05,
+              95,
+              6.5,
+              6.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V12_RAW U1.4.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  131.05,
+                  95
+                ],
+                [
+                  137.55,
+                  95
+                ],
+                [
+                  137.55,
+                  101.5
+                ],
+                [
+                  131.05,
+                  101.5
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "7861402b-a22c-4336-ac73-206163e55043"
+          },
+          {
+            "bbox_mm": [
+              131.1,
+              114.6,
+              4.8,
+              4.8
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V5_PSU K1.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  131.1,
+                  114.6
+                ],
+                [
+                  135.9,
+                  114.6
+                ],
+                [
+                  135.9,
+                  119.4
+                ],
+                [
+                  131.1,
+                  119.4
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "2843ade1-825f-4ec9-a875-70b7dea70867"
+          },
+          {
+            "bbox_mm": [
+              140.95,
+              110.65,
+              2.7,
+              2.7
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V12_RAW C7.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  140.95,
+                  110.65
+                ],
+                [
+                  143.65,
+                  110.65
+                ],
+                [
+                  143.65,
+                  113.35
+                ],
+                [
+                  140.95,
+                  113.35
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "94e2aeb7-37c6-4055-bbed-580216ba475a"
+          },
+          {
+            "bbox_mm": [
+              141.975,
+              106.1,
+              4.05,
+              3.1
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V12_RAW C2.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  141.975,
+                  106.1
+                ],
+                [
+                  146.025,
+                  106.1
+                ],
+                [
+                  146.025,
+                  109.2
+                ],
+                [
+                  141.975,
+                  109.2
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "34f591cf-e1bb-4105-a562-99ede6049c5b"
+          },
+          {
+            "bbox_mm": [
+              141.975,
+              99.1,
+              4.05,
+              3.1
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V12_RAW C3.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  141.975,
+                  99.1
+                ],
+                [
+                  146.025,
+                  99.1
+                ],
+                [
+                  146.025,
+                  102.2
+                ],
+                [
+                  141.975,
+                  102.2
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "7e55f0a9-7164-4436-a289-2c63863ef92d"
+          },
+          {
+            "bbox_mm": [
+              142.7,
+              122.7,
+              4.6,
+              4.6
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V5_PSU D1.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  142.7,
+                  122.7
+                ],
+                [
+                  147.3,
+                  122.7
+                ],
+                [
+                  147.3,
+                  127.3
+                ],
+                [
+                  142.7,
+                  127.3
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "70efbd4c-65e6-4a68-a707-fc8b7f3924a1"
+          },
+          {
+            "bbox_mm": [
+              144.4,
+              104.7,
+              7,
+              6.7
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V5_PSU U2.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  144.4,
+                  104.7
+                ],
+                [
+                  151.4,
+                  104.7
+                ],
+                [
+                  151.4,
+                  111.4
+                ],
+                [
+                  144.4,
+                  111.4
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "ec6d0abc-3e5e-4a7b-ad7f-0c9e0331a4db"
+          },
+          {
+            "bbox_mm": [
+              144.4,
+              105.65,
+              7,
+              6.7
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V12_RAW U2.2.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  144.4,
+                  105.65
+                ],
+                [
+                  151.4,
+                  105.65
+                ],
+                [
+                  151.4,
+                  112.35
+                ],
+                [
+                  144.4,
+                  112.35
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "07589d8d-7897-4078-a074-17767ddfbd36"
+          },
+          {
+            "bbox_mm": [
+              144.57,
+              90.425,
+              3.96,
+              5.15
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V12_RAW F2.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  144.57,
+                  90.425
+                ],
+                [
+                  148.53,
+                  90.425
+                ],
+                [
+                  148.53,
+                  95.575
+                ],
+                [
+                  144.57,
+                  95.575
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "ebb940c0-c3e5-4ce5-a832-a3861848bfba"
+          },
+          {
+            "bbox_mm": [
+              146.4,
+              108.6,
+              3,
+              2.7
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V12_RAW U2.3.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  146.4,
+                  108.6
+                ],
+                [
+                  149.4,
+                  108.6
+                ],
+                [
+                  149.4,
+                  111.3
+                ],
+                [
+                  146.4,
+                  111.3
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "f4792a77-56c3-4590-8d49-d480f70c7bb3"
+          },
+          {
+            "bbox_mm": [
+              149.47,
+              90.425,
+              3.96,
+              5.15
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V12_MOTOR F2.2.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  149.47,
+                  90.425
+                ],
+                [
+                  153.43,
+                  90.425
+                ],
+                [
+                  153.43,
+                  95.575
+                ],
+                [
+                  149.47,
+                  95.575
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "c3116636-8ea1-4702-816e-59549a6bd9df"
+          },
+          {
+            "bbox_mm": [
+              157.25,
+              107.1,
+              4,
+              3.8
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V5_PSU L1.2.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  157.25,
+                  107.1
+                ],
+                [
+                  161.25,
+                  107.1
+                ],
+                [
+                  161.25,
+                  110.9
+                ],
+                [
+                  157.25,
+                  110.9
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "f5a1a711-6e98-486a-a5c8-0ec0fb273de3"
+          },
+          {
+            "bbox_mm": [
+              161.99,
+              70.25,
+              4.02,
+              3.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V5_PSU J5.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  161.99,
+                  70.25
+                ],
+                [
+                  166.01,
+                  70.25
+                ],
+                [
+                  166.01,
+                  73.75
+                ],
+                [
+                  161.99,
+                  73.75
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "5fd2116f-78c6-479d-acb3-1932cbef9161"
+          },
+          {
+            "bbox_mm": [
+              162.25,
+              91.25,
+              3.5,
+              3.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V12_MOTOR J6.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  162.25,
+                  91.25
+                ],
+                [
+                  165.75,
+                  91.25
+                ],
+                [
+                  165.75,
+                  94.75
+                ],
+                [
+                  162.25,
+                  94.75
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "9a4463bf-cc15-4c87-a308-c342ed02a58f"
+          },
+          {
+            "bbox_mm": [
+              162.975,
+              109.1,
+              4.05,
+              3.1
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V5_PSU C4.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  162.975,
+                  109.1
+                ],
+                [
+                  167.025,
+                  109.1
+                ],
+                [
+                  167.025,
+                  112.2
+                ],
+                [
+                  162.975,
+                  112.2
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "12603abf-dfa3-42d0-adee-6b8204922069"
+          },
+          {
+            "bbox_mm": [
+              162.975,
+              117.1,
+              4.05,
+              3.1
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck V5_PSU C6.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  162.975,
+                  117.1
+                ],
+                [
+                  167.025,
+                  117.1
+                ],
+                [
+                  167.025,
+                  120.2
+                ],
+                [
+                  162.975,
+                  120.2
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "bae53233-5a9d-40cd-b6d2-3e6c73a18ab4"
+          },
+          {
+            "bbox_mm": [
+              164,
+              144,
+              8,
+              8
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "MOUNT_H4_INSULATING_HARDWARE",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  164,
+                  144
+                ],
+                [
+                  172,
+                  144
+                ],
+                [
+                  172,
+                  152
+                ],
+                [
+                  164,
+                  152
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "e5a1439d-6b9f-48af-992b-e5448c366815"
+          },
+          {
+            "bbox_mm": [
+              164,
+              48,
+              8,
+              8
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "MOUNT_H2_INSULATING_HARDWARE",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  164,
+                  48
+                ],
+                [
+                  172,
+                  48
+                ],
+                [
+                  172,
+                  56
+                ],
+                [
+                  164,
+                  56
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "c2064ea1-4fbf-4cac-87a3-6a3f7d4bae57"
+          },
+          {
+            "bbox_mm": [
+              28,
+              144,
+              8,
+              8
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "MOUNT_H3_INSULATING_HARDWARE",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  28,
+                  144
+                ],
+                [
+                  36,
+                  144
+                ],
+                [
+                  36,
+                  152
+                ],
+                [
+                  28,
+                  152
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "005dbaa6-f469-48d8-908e-c1a0cfecad33"
+          },
+          {
+            "bbox_mm": [
+              28,
+              48,
+              8,
+              8
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "MOUNT_H1_INSULATING_HARDWARE",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  28,
+                  48
+                ],
+                [
+                  36,
+                  48
+                ],
+                [
+                  36,
+                  56
+                ],
+                [
+                  28,
+                  56
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "a0e1fbda-c50d-441f-8523-525fb54c8824"
+          },
+          {
+            "bbox_mm": [
+              38.25,
+              62.25,
+              5.5,
+              5.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck AC_L_FUSED J1.1.1",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  38.25,
+                  62.25
+                ],
+                [
+                  43.75,
+                  62.25
+                ],
+                [
+                  43.75,
+                  67.75
+                ],
+                [
+                  38.25,
+                  67.75
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "24226bb4-2ded-41e3-857e-885ea7ebfd9c"
+          },
+          {
+            "bbox_mm": [
+              38.25,
+              69.743,
+              5.5,
+              5.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck AC_N J1.2.1",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  38.25,
+                  69.743
+                ],
+                [
+                  43.75,
+                  69.743
+                ],
+                [
+                  43.75,
+                  75.243
+                ],
+                [
+                  38.25,
+                  75.243
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "6dcfd6e6-ae6c-485d-93e6-706f557ff063"
+          },
+          {
+            "bbox_mm": [
+              38.25,
+              89.25,
+              5.5,
+              5.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck FILTER_LINE_L J2.1.1",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  38.25,
+                  89.25
+                ],
+                [
+                  43.75,
+                  89.25
+                ],
+                [
+                  43.75,
+                  94.75
+                ],
+                [
+                  38.25,
+                  94.75
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "09f3a72d-2641-42f0-8a6b-689937b7509a"
+          },
+          {
+            "bbox_mm": [
+              38.25,
+              96.743,
+              5.5,
+              5.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck AC_N J2.2.1",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  38.25,
+                  96.743
+                ],
+                [
+                  43.75,
+                  96.743
+                ],
+                [
+                  43.75,
+                  102.243
+                ],
+                [
+                  38.25,
+                  102.243
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "919ee4e9-f8ee-4839-b758-44f34254dde0"
+          },
+          {
+            "bbox_mm": [
+              41.43,
+              62.25,
+              5.5,
+              5.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck AC_L_FUSED J1.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  41.43,
+                  62.25
+                ],
+                [
+                  46.93,
+                  62.25
+                ],
+                [
+                  46.93,
+                  67.75
+                ],
+                [
+                  41.43,
+                  67.75
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "a10ad736-80bb-408b-a91f-4de21a8417d9"
+          },
+          {
+            "bbox_mm": [
+              41.43,
+              69.743,
+              5.5,
+              5.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck AC_N J1.2.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  41.43,
+                  69.743
+                ],
+                [
+                  46.93,
+                  69.743
+                ],
+                [
+                  46.93,
+                  75.243
+                ],
+                [
+                  41.43,
+                  75.243
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "2fb50dd4-4526-408d-9738-a4618dd0e9bd"
+          },
+          {
+            "bbox_mm": [
+              41.43,
+              89.25,
+              5.5,
+              5.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck FILTER_LINE_L J2.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  41.43,
+                  89.25
+                ],
+                [
+                  46.93,
+                  89.25
+                ],
+                [
+                  46.93,
+                  94.75
+                ],
+                [
+                  41.43,
+                  94.75
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "33f31123-4e68-4dd1-866e-8f3d00a73c88"
+          },
+          {
+            "bbox_mm": [
+              41.43,
+              96.743,
+              5.5,
+              5.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck AC_N J2.2.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  41.43,
+                  96.743
+                ],
+                [
+                  46.93,
+                  96.743
+                ],
+                [
+                  46.93,
+                  102.243
+                ],
+                [
+                  41.43,
+                  102.243
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "ee47fafc-e02d-464c-8b43-d231f7866bae"
+          },
+          {
+            "bbox_mm": [
+              43.25,
+              135.07,
               5.5,
               5.5
             ],
@@ -3993,30 +4104,30 @@
             "outline_mm": [
               [
                 [
-                  85.25,
-                  136.07
+                  43.25,
+                  135.07
                 ],
                 [
-                  90.75,
-                  136.07
+                  48.75,
+                  135.07
                 ],
                 [
-                  90.75,
-                  141.57
+                  48.75,
+                  140.57
                 ],
                 [
-                  85.25,
-                  141.57
+                  43.25,
+                  140.57
                 ]
               ]
             ],
             "priority": 0,
-            "uuid": "86bb1d96-2171-4b8c-9030-0eba0bd1aec9"
+            "uuid": "94a9071c-6dad-4a92-9c3f-f84e47907524"
           },
           {
             "bbox_mm": [
-              85.25,
-              139.25,
+              43.25,
+              138.25,
               5.5,
               5.5
             ],
@@ -4029,152 +4140,30 @@
             "outline_mm": [
               [
                 [
-                  85.25,
-                  139.25
+                  43.25,
+                  138.25
                 ],
                 [
-                  90.75,
-                  139.25
+                  48.75,
+                  138.25
                 ],
                 [
-                  90.75,
-                  144.75
+                  48.75,
+                  143.75
                 ],
                 [
-                  85.25,
-                  144.75
+                  43.25,
+                  143.75
                 ]
               ]
             ],
             "priority": 0,
-            "uuid": "34a8e7f8-f8b5-4001-905e-48ba54645708"
+            "uuid": "643f9c8d-fd82-4477-9ace-25266f7124da"
           },
           {
             "bbox_mm": [
-              88,
-              45,
-              102,
-              82
-            ],
-            "layers": [
-              "B.Cu"
-            ],
-            "name": "mains GND_ISO B.Cu",
-            "net": "GND_ISO",
-            "outline_mm": [
-              [
-                [
-                  88,
-                  45
-                ],
-                [
-                  190,
-                  45
-                ],
-                [
-                  190,
-                  127
-                ],
-                [
-                  146,
-                  127
-                ],
-                [
-                  146,
-                  104
-                ],
-                [
-                  88,
-                  104
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "bc836aff-74a0-4292-849f-e81031a2b411"
-          },
-          {
-            "bbox_mm": [
-              88,
-              45,
-              102,
-              82
-            ],
-            "layers": [
-              "F.Cu"
-            ],
-            "name": "mains GND_ISO F.Cu",
-            "net": "GND_ISO",
-            "outline_mm": [
-              [
-                [
-                  88,
-                  45
-                ],
-                [
-                  190,
-                  45
-                ],
-                [
-                  190,
-                  127
-                ],
-                [
-                  146,
-                  127
-                ],
-                [
-                  146,
-                  104
-                ],
-                [
-                  88,
-                  104
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "0424d4bf-7f0f-4830-9a4f-ea52887ad991"
-          },
-          {
-            "bbox_mm": [
-              88.55,
-              121.55,
-              4.9,
-              4.9
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck SNUBBER_RC C1.1.0",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  88.55,
-                  121.55
-                ],
-                [
-                  93.45,
-                  121.55
-                ],
-                [
-                  93.45,
-                  126.45
-                ],
-                [
-                  88.55,
-                  126.45
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "3a5140a6-6098-40c6-838f-e2181dce58da"
-          },
-          {
-            "bbox_mm": [
-              92.743,
-              136.07,
+              50.743,
+              135.07,
               5.5,
               5.5
             ],
@@ -4187,30 +4176,30 @@
             "outline_mm": [
               [
                 [
-                  92.743,
-                  136.07
+                  50.743,
+                  135.07
                 ],
                 [
-                  98.243,
-                  136.07
+                  56.243,
+                  135.07
                 ],
                 [
-                  98.243,
-                  141.57
+                  56.243,
+                  140.57
                 ],
                 [
-                  92.743,
-                  141.57
+                  50.743,
+                  140.57
                 ]
               ]
             ],
             "priority": 0,
-            "uuid": "c9ede260-fbcf-4223-9cd2-f7e990ad5312"
+            "uuid": "e29035e7-3795-4085-8596-51674079afc8"
           },
           {
             "bbox_mm": [
-              92.743,
-              139.25,
+              50.743,
+              138.25,
               5.5,
               5.5
             ],
@@ -4223,30 +4212,282 @@
             "outline_mm": [
               [
                 [
-                  92.743,
-                  139.25
+                  50.743,
+                  138.25
                 ],
                 [
-                  98.243,
-                  139.25
+                  56.243,
+                  138.25
                 ],
                 [
-                  98.243,
-                  144.75
+                  56.243,
+                  143.75
                 ],
                 [
-                  92.743,
-                  144.75
+                  50.743,
+                  143.75
                 ]
               ]
             ],
             "priority": 0,
-            "uuid": "78962088-77cb-451f-a346-b66cf7075e48"
+            "uuid": "233dd1aa-8ab1-4143-91eb-7dbd24f3d38e"
           },
           {
             "bbox_mm": [
-              98.55,
-              121.55,
+              55.8,
+              54.5,
+              5,
+              5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck AC_L_FUSED U1.2.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  55.8,
+                  54.5
+                ],
+                [
+                  60.8,
+                  54.5
+                ],
+                [
+                  60.8,
+                  59.5
+                ],
+                [
+                  55.8,
+                  59.5
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "7c0926c6-554d-46a9-959e-7a7d3db0f9b5"
+          },
+          {
+            "bbox_mm": [
+              55.8,
+              61.25,
+              5,
+              5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck AC_N U1.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  55.8,
+                  61.25
+                ],
+                [
+                  60.8,
+                  61.25
+                ],
+                [
+                  60.8,
+                  66.25
+                ],
+                [
+                  55.8,
+                  66.25
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "2c09074d-d63a-481b-b9d4-80dae0f514df"
+          },
+          {
+            "bbox_mm": [
+              57.8,
+              117.55,
+              4.9,
+              4.9
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck AC_L_FUSED RV1.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  57.8,
+                  117.55
+                ],
+                [
+                  62.7,
+                  117.55
+                ],
+                [
+                  62.7,
+                  122.45
+                ],
+                [
+                  57.8,
+                  122.45
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "64c73e57-5b4d-46d6-af60-a9229fe59f98"
+          },
+          {
+            "bbox_mm": [
+              64.099999,
+              117.55,
+              7.300001,
+              4.9
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck AC_N RV1.2.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  64.099999,
+                  117.55
+                ],
+                [
+                  71.4,
+                  117.55
+                ],
+                [
+                  71.4,
+                  122.45
+                ],
+                [
+                  64.099999,
+                  122.45
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "7a72d412-b6a2-4baa-bada-0f30459c6fd6"
+          },
+          {
+            "bbox_mm": [
+              81.75,
+              106.75,
+              4.5,
+              4.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck AC_L_FUSED F3.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  81.75,
+                  106.75
+                ],
+                [
+                  86.25,
+                  106.75
+                ],
+                [
+                  86.25,
+                  111.25
+                ],
+                [
+                  81.75,
+                  111.25
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "455ef5bf-46e0-4c5e-a792-ddccd77167ed"
+          },
+          {
+            "bbox_mm": [
+              82.55,
+              129.55,
+              4.9,
+              4.9
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck SNUBBER_RC C1.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  82.55,
+                  129.55
+                ],
+                [
+                  87.45,
+                  129.55
+                ],
+                [
+                  87.45,
+                  134.45
+                ],
+                [
+                  82.55,
+                  134.45
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "b5b1f3f4-5209-4af4-abd1-72186174de5b"
+          },
+          {
+            "bbox_mm": [
+              82.7,
+              122.7,
+              4.6,
+              4.6
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck PUMP_L_SW R1.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  82.7,
+                  122.7
+                ],
+                [
+                  87.3,
+                  122.7
+                ],
+                [
+                  87.3,
+                  127.3
+                ],
+                [
+                  82.7,
+                  127.3
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "74c7def5-f40f-4987-96d9-3440dcb334ff"
+          },
+          {
+            "bbox_mm": [
+              92.55,
+              129.55,
               4.9,
               4.9
             ],
@@ -4259,28 +4500,136 @@
             "outline_mm": [
               [
                 [
-                  98.55,
-                  121.55
+                  92.55,
+                  129.55
                 ],
                 [
-                  103.45,
-                  121.55
+                  97.45,
+                  129.55
                 ],
                 [
-                  103.45,
-                  126.45
+                  97.45,
+                  134.45
                 ],
                 [
-                  98.55,
-                  126.45
+                  92.55,
+                  134.45
                 ]
               ]
             ],
             "priority": 0,
-            "uuid": "fe14d27e-a023-4fd8-a205-013847ff46d8"
+            "uuid": "1fd199ae-f87e-4a92-a6a8-cf3cf8ac993f"
+          },
+          {
+            "bbox_mm": [
+              97.94,
+              122.7,
+              4.6,
+              4.6
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck SNUBBER_RC R1.2.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  97.94,
+                  122.7
+                ],
+                [
+                  102.54,
+                  122.7
+                ],
+                [
+                  102.54,
+                  127.3
+                ],
+                [
+                  97.94,
+                  127.3
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "ada4bb35-0bc8-403e-b64d-2a6a5a2879d6"
+          },
+          {
+            "bbox_mm": [
+              98.25,
+              135.07,
+              5.5,
+              5.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck PUMP_L_SW J4.1.0",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  98.25,
+                  135.07
+                ],
+                [
+                  103.75,
+                  135.07
+                ],
+                [
+                  103.75,
+                  140.57
+                ],
+                [
+                  98.25,
+                  140.57
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "4e8555e7-2349-4a69-be14-d90c21d34aae"
+          },
+          {
+            "bbox_mm": [
+              98.25,
+              138.25,
+              5.5,
+              5.5
+            ],
+            "layers": [
+              "B.Cu",
+              "F.Cu"
+            ],
+            "name": "Neck PUMP_L_SW J4.1.1",
+            "net": "",
+            "outline_mm": [
+              [
+                [
+                  98.25,
+                  138.25
+                ],
+                [
+                  103.75,
+                  138.25
+                ],
+                [
+                  103.75,
+                  143.75
+                ],
+                [
+                  98.25,
+                  143.75
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "d277cf5c-d7fb-4bf8-a2fd-e52d5d94491f"
           }
         ],
-        "sha256": "e475524f6ec5a137fc1b58007e8b6b974aa3a9df058df5693f47ef35280214ee"
+        "sha256": "aea0bb82b2af00b542088fbf259e0c0d154bcefc723fea5c1726a967c0b51dac"
       }
     },
     "routed": true,
@@ -4409,19 +4758,19 @@
         {
           "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
           "footprint": "CrystalShim_Mains:Mains_J1",
-          "manufacturer_part_number": "43160-0102",
+          "manufacturer_part_number": "43160-1102",
           "pins": [
             "1",
             "2"
           ],
           "ref": "J1",
           "symbol": "CrystalShim_Mains:Mains_J1",
-          "value": "43160-0102"
+          "value": "43160-1102"
         },
         {
           "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
           "footprint": "CrystalShim_Mains:Mains_J2",
-          "manufacturer_part_number": "43160-0103",
+          "manufacturer_part_number": "43160-1103",
           "pins": [
             "1",
             "2",
@@ -4429,12 +4778,12 @@
           ],
           "ref": "J2",
           "symbol": "CrystalShim_Mains:Mains_J2",
-          "value": "43160-0103"
+          "value": "43160-1103"
         },
         {
           "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
           "footprint": "CrystalShim_Mains:Mains_J3",
-          "manufacturer_part_number": "43160-0104",
+          "manufacturer_part_number": "43160-1104",
           "pins": [
             "1",
             "2",
@@ -4443,12 +4792,12 @@
           ],
           "ref": "J3",
           "symbol": "CrystalShim_Mains:Mains_J3",
-          "value": "43160-0104"
+          "value": "43160-1104"
         },
         {
           "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
           "footprint": "CrystalShim_Mains:Mains_J4",
-          "manufacturer_part_number": "43160-0106",
+          "manufacturer_part_number": "43160-1106",
           "pins": [
             "1",
             "2",
@@ -4459,7 +4808,7 @@
           ],
           "ref": "J4",
           "symbol": "CrystalShim_Mains:Mains_J4",
-          "value": "43160-0106"
+          "value": "43160-1106"
         },
         {
           "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/436/43650/436501200_sd.pdf",
@@ -4868,8 +5217,8 @@
           ],
           "placement": {
             "position_mm": [
-              91,
-              124
+              85,
+              132
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -4893,8 +5242,8 @@
           ],
           "placement": {
             "position_mm": [
-              123,
-              82
+              144,
+              106
             ],
             "rotation_deg": 90,
             "side": "front"
@@ -4918,8 +5267,8 @@
           ],
           "placement": {
             "position_mm": [
-              123,
-              75
+              144,
+              99
             ],
             "rotation_deg": 90,
             "side": "front"
@@ -4943,8 +5292,8 @@
           ],
           "placement": {
             "position_mm": [
-              151,
-              84
+              165,
+              109
             ],
             "rotation_deg": 90,
             "side": "front"
@@ -4968,8 +5317,8 @@
           ],
           "placement": {
             "position_mm": [
-              136,
-              79
+              151,
+              104
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -4993,8 +5342,8 @@
           ],
           "placement": {
             "position_mm": [
-              157,
-              84
+              165,
+              117
             ],
             "rotation_deg": 90,
             "side": "front"
@@ -5018,8 +5367,8 @@
           ],
           "placement": {
             "position_mm": [
-              128,
-              87
+              143,
+              112
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5043,8 +5392,8 @@
           ],
           "placement": {
             "position_mm": [
-              155,
-              105
+              145,
+              125
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5068,8 +5417,8 @@
           ],
           "placement": {
             "position_mm": [
-              157,
-              71
+              149,
+              93
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5093,8 +5442,8 @@
           ],
           "placement": {
             "position_mm": [
-              53,
-              115
+              84,
+              109
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5109,8 +5458,8 @@
           "pads": [],
           "placement": {
             "position_mm": [
-              15,
-              50
+              32,
+              52
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5125,8 +5474,8 @@
           "pads": [],
           "placement": {
             "position_mm": [
-              185,
-              50
+              168,
+              52
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5141,8 +5490,8 @@
           "pads": [],
           "placement": {
             "position_mm": [
-              15,
-              150
+              32,
+              148
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5157,8 +5506,8 @@
           "pads": [],
           "placement": {
             "position_mm": [
-              185,
-              150
+              168,
+              148
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5190,16 +5539,16 @@
           ],
           "placement": {
             "position_mm": [
-              27,
-              142
+              41,
+              65
             ],
-            "rotation_deg": 0,
+            "rotation_deg": 270,
             "side": "front"
           },
           "ref": "J1",
           "stable_id": "mains.component.j1",
           "uuid": "fdd113e4-b483-4966-8e8e-594e249d8da6",
-          "value": "43160-0102"
+          "value": "43160-1102"
         },
         {
           "footprint": "CrystalShim_Mains:Mains_J2",
@@ -5231,16 +5580,16 @@
           ],
           "placement": {
             "position_mm": [
-              21,
-              122
+              41,
+              92
             ],
-            "rotation_deg": 0,
+            "rotation_deg": 270,
             "side": "front"
           },
           "ref": "J2",
           "stable_id": "mains.component.j2",
           "uuid": "f9bd9824-adc3-46eb-9161-0563d8a9d5e0",
-          "value": "43160-0103"
+          "value": "43160-1103"
         },
         {
           "footprint": "CrystalShim_Mains:Mains_J3",
@@ -5280,8 +5629,8 @@
           ],
           "placement": {
             "position_mm": [
-              88,
-              142
+              46,
+              141
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5289,7 +5638,7 @@
           "ref": "J3",
           "stable_id": "mains.component.j3",
           "uuid": "a2a0148b-5172-4ca9-97c2-cfe00c39a9db",
-          "value": "43160-0104"
+          "value": "43160-1104"
         },
         {
           "footprint": "CrystalShim_Mains:Mains_J4",
@@ -5345,8 +5694,8 @@
           ],
           "placement": {
             "position_mm": [
-              135,
-              142
+              101,
+              141
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5354,7 +5703,7 @@
           "ref": "J4",
           "stable_id": "mains.component.j4",
           "uuid": "5722fae4-eeba-4e2e-87bc-0bc2b635e630",
-          "value": "43160-0106"
+          "value": "43160-1106"
         },
         {
           "footprint": "CrystalShim_Mains:Mains_J5",
@@ -5374,8 +5723,8 @@
           ],
           "placement": {
             "position_mm": [
-              179,
-              95
+              164,
+              72
             ],
             "rotation_deg": 270,
             "side": "front"
@@ -5399,8 +5748,8 @@
           ],
           "placement": {
             "position_mm": [
-              179,
-              71
+              164,
+              93
             ],
             "rotation_deg": 270,
             "side": "front"
@@ -5432,8 +5781,8 @@
           ],
           "placement": {
             "position_mm": [
-              130,
-              115
+              110,
+              117
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5457,8 +5806,8 @@
           ],
           "placement": {
             "position_mm": [
-              142,
-              84
+              157,
+              109
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5482,8 +5831,8 @@
           ],
           "placement": {
             "position_mm": [
-              107,
-              126
+              85,
+              125
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5507,8 +5856,8 @@
           ],
           "placement": {
             "position_mm": [
-              58,
-              135
+              60.25,
+              120
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5540,8 +5889,8 @@
           ],
           "placement": {
             "position_mm": [
-              22.5,
-              55
+              53,
+              52
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5581,8 +5930,8 @@
           ],
           "placement": {
             "position_mm": [
-              132,
-              84
+              149,
+              109
             ],
             "rotation_deg": 0,
             "side": "front"
@@ -5602,8 +5951,8 @@
           "footprint_ref": "J5",
           "pad": "",
           "position_mm": [
-            183.32,
-            98
+            168.32,
+            75
           ],
           "uuid": "54bd77e7-554b-4a95-81be-c4f3b9087f8f"
         },
@@ -5615,8 +5964,8 @@
           "footprint_ref": "J6",
           "pad": "",
           "position_mm": [
-            183.32,
-            71
+            168.32,
+            93
           ],
           "uuid": "05a2fbf8-3343-4c79-a4eb-370d69f349e4"
         },
@@ -5628,8 +5977,8 @@
           "footprint_ref": "H1",
           "pad": "",
           "position_mm": [
-            15,
-            50
+            32,
+            52
           ],
           "uuid": "c5d518f4-7f06-46b2-940c-0d6f729a1109"
         },
@@ -5641,8 +5990,8 @@
           "footprint_ref": "H2",
           "pad": "",
           "position_mm": [
-            185,
-            50
+            168,
+            52
           ],
           "uuid": "6b2c2e11-3186-4160-a101-e2e7c9e98129"
         },
@@ -5654,8 +6003,8 @@
           "footprint_ref": "H3",
           "pad": "",
           "position_mm": [
-            15,
-            150
+            32,
+            148
           ],
           "uuid": "ec4b4a4a-8c63-4376-9a0c-51341818624f"
         },
@@ -5667,8 +6016,8 @@
           "footprint_ref": "H4",
           "pad": "",
           "position_mm": [
-            185,
-            150
+            168,
+            148
           ],
           "uuid": "274028c7-5427-4c1d-a04b-8930815e4d0c"
         }
@@ -5676,95 +6025,95 @@
       "outline": [
         {
           "bbox_mm": [
-            189.95,
-            44.95,
-            0.1,
-            110.1
+            174.975,
+            44.975,
+            0.05,
+            110.05
           ],
           "class": "PCB_SHAPE",
           "end_mm": [
-            190,
-            45
+            175,
+            155
           ],
           "layer": "Edge.Cuts",
           "position_mm": [
-            190,
-            155
+            175,
+            45
           ],
           "start_mm": [
-            190,
-            155
+            175,
+            45
           ],
-          "uuid": "7a8dc8fa-9ae6-4b11-ba34-922f27fdb526"
+          "uuid": "a2b70237-72ee-422b-b766-713d70b6ffaa"
         },
         {
           "bbox_mm": [
-            9.95,
-            154.95,
-            180.1,
-            0.1
+            24.975,
+            154.975,
+            150.05,
+            0.05
           ],
           "class": "PCB_SHAPE",
           "end_mm": [
-            190,
+            25,
             155
           ],
           "layer": "Edge.Cuts",
           "position_mm": [
-            10,
+            175,
             155
           ],
           "start_mm": [
-            10,
+            175,
             155
           ],
-          "uuid": "543337da-5c35-40cd-aac2-381aea0727b6"
+          "uuid": "da92156e-73bd-4125-bd71-e690e766145d"
         },
         {
           "bbox_mm": [
-            9.95,
-            44.95,
-            0.1,
-            110.1
+            24.975,
+            44.975,
+            0.05,
+            110.05
           ],
           "class": "PCB_SHAPE",
           "end_mm": [
-            10,
-            155
+            25,
+            45
           ],
           "layer": "Edge.Cuts",
           "position_mm": [
-            10,
-            45
+            25,
+            155
           ],
           "start_mm": [
-            10,
-            45
+            25,
+            155
           ],
-          "uuid": "429bef35-902f-4812-a9cc-d46258313699"
+          "uuid": "2dc7fa51-b612-45d7-b45e-855163f3579f"
         },
         {
           "bbox_mm": [
-            9.95,
-            44.95,
-            180.1,
-            0.1
+            24.975,
+            44.975,
+            150.05,
+            0.05
           ],
           "class": "PCB_SHAPE",
           "end_mm": [
-            10,
+            175,
             45
           ],
           "layer": "Edge.Cuts",
           "position_mm": [
-            190,
+            25,
             45
           ],
           "start_mm": [
-            190,
+            25,
             45
           ],
-          "uuid": "38d2b17d-922b-4605-a683-7915754e7b74"
+          "uuid": "90c32aff-533b-4060-b75f-a9350fddfbdb"
         }
       ]
     },
@@ -5797,5 +6146,5 @@
       "mains.component.u2": "cdf7500d-9648-4055-8e37-f336be0f366b"
     }
   },
-  "snapshot_sha256": "b283aa16fd765edea184012ec8269d9851ff343ef99f019bba3c780ffac441be"
+  "snapshot_sha256": "1109ce5aea5abeb881ff2bf9f978626b239220adb8bf669bf84dfddcb2b855cd"
 }

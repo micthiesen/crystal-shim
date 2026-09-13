@@ -11,6 +11,7 @@ import argparse
 import json
 import tempfile
 import tscircuit_handoff as handoff
+from check_routing import escape_width_rule
 import wx
 import pcbnew
 
@@ -18,6 +19,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('board', choices=['controller', 'mains', 'sensor'])
 parser.add_argument('--refresh', action='store_true')
 args = parser.parse_args()
+if args.board == 'sensor':
+    parser.error('Sensor four-layer geometry is already prepared. This legacy generator cannot refresh it; use a reviewed native ECO for changes.')
 root = Path(__file__).resolve().parents[2]
 name = args.board
 folder = root / 'pcb' / name
@@ -139,7 +142,7 @@ for net, net_policy in policy['nets'].items():
             x0, y0, x1, y1 = [pcbnew.ToMM(v) for v in [box.GetLeft()-inf, box.GetTop()-inf, box.GetRight()+inf, box.GetBottom()+inf]]
             label = f'Neck {net} {e["ref"]}.{e["pad"]}.{i}'
             zone(label, [[x0,y0],[x1,y0],[x1,y1],[x0,y1]], pcbnew.F_Cu, True)
-            rule(label, condition + f" && A.intersectsArea('{label}')", f'(constraint track_width (min {e["minimum_width_mm"]}mm) (opt {e["minimum_width_mm"]}mm))')
+            rule(label, *escape_width_rule(net, label, e['minimum_width_mm'], width))
 
 if name == 'controller':
     rule('L2 ground reference', "A.NetName != 'GND'", '(constraint disallow track zone)', 'In1.Cu')

@@ -70,8 +70,8 @@ def guarded_stage() -> Path:
 
 def validate_sensor_manifest(manifest: dict) -> None:
     board = manifest["board"]
-    if (board["stable_id"] != BOARD_ID or board["width_mm"] != 38 or board["height_mm"] != 86
-            or board["layer_count"] != 2 or board.get("kicad_origin_mm") != [100, 100]):
+    if (board["stable_id"] != BOARD_ID or board["width_mm"] != 18 or board["height_mm"] != 64
+            or board["layer_count"] != 4 or board.get("kicad_origin_mm") != [100, 100]):
         raise ValueError("requires the exact sensor board manifest")
     components = manifest["components"]
     if len(components) != 16 or {c["ref"] for c in components} != set(EXPECTED_PINS):
@@ -89,8 +89,9 @@ def validate_sensor_manifest(manifest: dict) -> None:
 
 def validate_native_pad_numbers(ref: str, numbers: list[str]) -> None:
     expected = list(EXPECTED_PINS[ref])
-    if ref == "J1":
-        expected.append("")
+    if ref == "E1":
+        # Ten OoP bars share terminal1; tenLEVEL bars plusspine share terminal2.
+        expected = ["1"] * 10 + ["2"] * 11 + [str(i) for i in range(3,14)]
     if sorted(numbers) != sorted(expected):
         raise ValueError(f"{ref}: exact physical pad/locator multiset changed")
 

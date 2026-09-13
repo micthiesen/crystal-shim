@@ -74,6 +74,8 @@ ALLOWED_AUGMENTATIONS = {
     "paste_override",
     "pofv",
     "schematic_cleanup",
+    "routing_clear",
+    "routing_add",
     "silkscreen",
     "stackup",
     "via",
@@ -433,7 +435,51 @@ def validate_augmentation(raw: Any, manifest: dict[str, Any]) -> dict[str, Any]:
             raise HandoffError(
                 f"{where} attempts to override tscircuit-owned fields: {sorted(forbidden)}"
             )
-        if kind == "net_alias":
+        if kind == "routing_clear":
+            if target:
+                raise HandoffError(f"{where} routing_clear target must be empty")
+            checksum = require_string(params.get("before_snapshot_sha256"), f"{where}.params.before_snapshot_sha256")
+            if not re.fullmatch(r"[0-9a-f]{64}", checksum):
+                raise HandoffError(f"{where} routing_clear requires a snapshot SHA-256")
+            uuids = require_list(params.get("track_uuids"), f"{where}.params.track_uuids")
+            if not uuids or not all(isinstance(uid, str) and uid for uid in uuids) or len(set(uuids)) != len(uuids):
+                raise HandoffError(f"{where} routing_clear requires unique nonempty track UUIDs")
+            require_string(params.get("reason"), f"{where}.params.reason")
+        elif kind == "routing_add":
+            if target:
+                raise HandoffError(f"{where} routing_add target must be empty")
+            checksum = require_string(params.get("before_snapshot_sha256"), f"{where}.params.before_snapshot_sha256")
+            if not re.fullmatch(r"[0-9a-f]{64}", checksum):
+                raise HandoffError(f"{where} routing_add requires a snapshot SHA-256")
+            tracks = require_list(params.get("tracks"), f"{where}.params.tracks")
+            if not tracks or params.get("tracks_sha256") != digest(tracks):
+                raise HandoffError(f"{where} routing_add requires nonempty, checksum-bound tracks")
+            uuids = set()
+            copper = {"F.Cu", "B.Cu"} | {f"In{i}.Cu" for i in range(1, manifest["board"]["layer_count"] - 1)}
+            for track in tracks:
+                track = require_object(track, f"{where}.track")
+                if set(track) != {"uuid", "layer", "net", "width_mm", "position_mm", "start_mm", "end_mm"}:
+                    raise HandoffError(f"{where} routing_add accepts exact straight-track records only")
+                uid = require_string(track.get("uuid"), f"{where}.track.uuid")
+                if uid in uuids:
+                    raise HandoffError(f"{where} routing_add has duplicate track UUIDs")
+                uuids.add(uid)
+                require_string(track["net"], f"{where}.track.net")
+                require_string(track["layer"], f"{where}.track.layer")
+                if track["net"] not in {net["name"] for net in manifest["nets"]} or track["layer"] not in copper:
+                    raise HandoffError(f"{where} routing_add track has unknown net or copper layer")
+                if finite_number(track["width_mm"], f"{where}.track.width_mm") <= 0:
+                    raise HandoffError(f"{where} routing_add track width must be positive")
+                for key in ("position_mm", "start_mm", "end_mm"):
+                    point = require_list(track[key], f"{where}.track.{key}")
+                    if len(point) != 2:
+                        raise HandoffError(f"{where} routing_add track points must be two-dimensional")
+                    for number in point:
+                        finite_number(number, f"{where}.track.{key}")
+                if track["position_mm"] != track["start_mm"] or track["start_mm"] == track["end_mm"]:
+                    raise HandoffError(f"{where} routing_add requires nonzero straight tracks at their start datum")
+            require_string(params.get("reason"), f"{where}.params.reason")
+        elif kind == "net_alias":
             if net_id is None:
                 raise HandoffError(f"{where} net_alias requires target.net_stable_id")
             require_string(params.get("source_name"), f"{where}.params.source_name")
@@ -1334,6 +1380,10 @@ def extract_kicad_data(
                     "end_mm": _point_mm(pcbnew, item.GetEnd()),
                 }
             )
+            # Arc curvature must remain observable: a declared straight segment
+            # cannot be replaced by an arc sharing endpoints and width.
+            if isinstance(item, getattr(pcbnew, "PCB_ARC", ())):
+                common["mid_mm"] = _point_mm(pcbnew, item.GetMid())
             tracks.append(common)
 
     zones = []
@@ -1601,6 +1651,8 @@ def build_plan(
         changes.append(change("augmentation", manifest["board"]["stable_id"], old_augmentation, augmentation, "high", "changes KiCad-owned augmentation instructions"))
 
     authorized_kicad_owned_changes: set[str] = set()
+    authorized_track_removals = []
+    authorized_track_additions = []
     if {item["kind"] for item in changes} & {
         "component_add", "component_remove", "footprint", "placement", "reference", "value"
     }:
@@ -1619,6 +1671,28 @@ def build_plan(
             for operation in (old_operations.get(operation_id), new_operations.get(operation_id))
             if operation is not None
         }
+        for operation_id in sorted(changed_operation_ids):
+            operation = new_operations.get(operation_id)
+            if operation is not None and operation["kind"] == "routing_clear":
+                params = operation["params"]
+                if snapshot is None or digest(snapshot) != params["before_snapshot_sha256"]:
+                    raise HandoffError("routing_clear before snapshot does not match its declaration")
+                tracks = routing_clear_tracks(snapshot)
+                if not set(params["track_uuids"]) <= tracks.keys():
+                    raise HandoffError("routing_clear names tracks absent from the before snapshot")
+                if set(params["track_uuids"]) & {uid for prior in authorized_track_removals for uid in prior["track_uuids"]}:
+                    raise HandoffError("routing_clear authorizes a track UUID twice")
+                authorized_track_removals.append({"operation_id": operation_id, **params})
+            if operation is not None and operation["kind"] == "routing_add":
+                params = operation["params"]
+                if snapshot is None or digest(snapshot) != params["before_snapshot_sha256"]:
+                    raise HandoffError("routing_add before snapshot does not match its declaration")
+                tracks = routing_clear_tracks(snapshot)
+                if {track["uuid"] for track in params["tracks"]} & snapshot_uuids(snapshot):
+                    raise HandoffError("routing_add UUID collides with an existing snapshot item")
+                if {track["uuid"] for track in params["tracks"]} & {track["uuid"] for prior in authorized_track_additions for track in prior["tracks"]}:
+                    raise HandoffError("routing_add authorizes a track UUID twice")
+                authorized_track_additions.append({"operation_id": operation_id, **params})
         if operation_kinds & {"zone", "keepout"}:
             authorized_kicad_owned_changes.add("zones")
         if "via" in operation_kinds:
@@ -1666,6 +1740,8 @@ def build_plan(
     return {
         "augmentation_sha256": digest(augmentation),
         "authorized_kicad_owned_changes": sorted(authorized_kicad_owned_changes),
+        **({"authorized_track_removals": authorized_track_removals} if authorized_track_removals else {}),
+        **({"authorized_track_additions": authorized_track_additions} if authorized_track_additions else {}),
         "blocked": bool(blockers),
         "blockers": blockers,
         "board_id": manifest["board"]["stable_id"],
@@ -2501,6 +2577,46 @@ def command_plan(args: argparse.Namespace) -> int:
     return 2 if plan["blocked"] else 0
 
 
+def snapshot_uuids(snapshot: dict[str, Any], *, include_tracks: bool = True) -> set[str]:
+    """Collect recorded identities across source, copper, graphics and schematics."""
+    identities: set[str] = set()
+
+    def collect(value: Any) -> None:
+        if isinstance(value, dict):
+            uid = value.get("uuid")
+            if isinstance(uid, str) and uid:
+                identities.add(uid)
+            for child in value.values():
+                collect(child)
+        elif isinstance(value, list):
+            for child in value:
+                collect(child)
+
+    collect(snapshot.get("source_owned", {}))
+    collect(snapshot.get("schematic_owned", {}))
+    collect({key: value for key, value in snapshot.get("kicad_owned", {}).items()
+             if include_tracks or key != "tracks"})
+    identities.update(uid for uid in snapshot.get("uuid_map", {}).values()
+                      if isinstance(uid, str) and uid)
+    return identities
+
+
+def routing_clear_tracks(snapshot: dict[str, Any]) -> dict[str, Any]:
+    """Require content-bound track details for a narrowly authorized deletion."""
+    category = require_object(snapshot["kicad_owned"].get("tracks"), "snapshot tracks")
+    details = require_list(category.get("details"), "snapshot track details")
+    if category.get("sha256") != digest(details):
+        raise HandoffError("routing_clear track details checksum mismatch")
+    tracks = {}
+    for item in details:
+        item = require_object(item, "snapshot track")
+        uid = require_string(item.get("uuid"), "snapshot track UUID")
+        if uid in tracks:
+            raise HandoffError("routing_clear duplicate track UUID in snapshot")
+        tracks[uid] = item
+    return tracks
+
+
 def preservation_report(
     plan: dict[str, Any], before: dict[str, Any], after: dict[str, Any]
 ) -> dict[str, Any]:
@@ -2536,7 +2652,46 @@ def preservation_report(
             "plan.authorized_kicad_owned_changes",
         )
     )
+    clearances = plan.get("authorized_track_removals", [])
+    additions = plan.get("authorized_track_additions", [])
+    if clearances or additions:
+        try:
+            old_tracks = routing_clear_tracks(before)
+            new_tracks = routing_clear_tracks(after)
+            removed = set()
+            operations = {op["id"]: op for op in target_augmentation["operations"]}
+            for clearance in require_list(clearances, "plan.authorized_track_removals"):
+                clearance = require_object(clearance, "plan track removal")
+                operation = operations.get(clearance.get("operation_id"))
+                if operation is None or operation["kind"] != "routing_clear" or operation["params"] != {k: v for k, v in clearance.items() if k != "operation_id"}:
+                    raise HandoffError("routing_clear authorization differs from declared operation")
+                if digest(before) != clearance["before_snapshot_sha256"]:
+                    raise HandoffError("routing_clear before snapshot does not match its declaration")
+                names = set(clearance["track_uuids"])
+                if not names <= old_tracks.keys() or removed & names:
+                    raise HandoffError("routing_clear track UUIDs are missing or authorized twice")
+                removed.update(names)
+            expected = {uid: item for uid, item in old_tracks.items() if uid not in removed}
+            reserved_uuids = snapshot_uuids(before) | snapshot_uuids(after, include_tracks=False)
+            for addition in require_list(additions, "plan.authorized_track_additions"):
+                addition = require_object(addition, "plan track addition")
+                operation = operations.get(addition.get("operation_id"))
+                if operation is None or operation["kind"] != "routing_add" or operation["params"] != {k: v for k, v in addition.items() if k != "operation_id"}:
+                    raise HandoffError("routing_add authorization differs from declared operation")
+                if digest(before) != addition["before_snapshot_sha256"]:
+                    raise HandoffError("routing_add before snapshot does not match its declaration")
+                for track in addition["tracks"]:
+                    uid = track["uuid"]
+                    if uid in reserved_uuids or uid in expected:
+                        raise HandoffError("routing_add UUID collides with a snapshot item or is authorized twice")
+                    expected[uid] = track
+            if new_tracks != expected:
+                errors.append("routing change permits only the exact declared track additions and deletions")
+        except HandoffError as exc:
+            errors.append(str(exc))
     for category in sorted(set(before["kicad_owned"]) | set(after["kicad_owned"])):
+        if category == "tracks" and (clearances or additions):
+            continue
         if category not in authorized and before["kicad_owned"].get(category) != after["kicad_owned"].get(category):
             errors.append(f"unauthorized KiCad-owned {category} change")
     if plan.get("blocked"):

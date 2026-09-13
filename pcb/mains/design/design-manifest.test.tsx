@@ -91,7 +91,7 @@ test("mains manifest normalizes to the shared schema with 26 stable refs, all lo
   const normalized = shared(manifest);
   expect(normalized.board).toMatchObject({
     stable_id: "mains.board.main",
-    width_mm: 180,
+    width_mm: 150,
     height_mm: 110,
     layer_count: 2,
     coordinate_system: "center-x-right-y-up",
@@ -145,22 +145,22 @@ test("mains manifest normalizes to the shared schema with 26 stable refs, all lo
       y_mm: Number(h.y_mm.toFixed(6)),
     })),
   ).toEqual([
-    { stable_id: "mains.hole.h1", ref: "H1", x_mm: -85, y_mm: 50, drill_mm: 3.2 },
-    { stable_id: "mains.hole.h2", ref: "H2", x_mm: 85, y_mm: 50, drill_mm: 3.2 },
-    { stable_id: "mains.hole.h3", ref: "H3", x_mm: -85, y_mm: -50, drill_mm: 3.2 },
-    { stable_id: "mains.hole.h4", ref: "H4", x_mm: 85, y_mm: -50, drill_mm: 3.2 },
+    { stable_id: "mains.hole.h1", ref: "H1", x_mm: -68, y_mm: 48, drill_mm: 3.2 },
+    { stable_id: "mains.hole.h2", ref: "H2", x_mm: 68, y_mm: 48, drill_mm: 3.2 },
+    { stable_id: "mains.hole.h3", ref: "H3", x_mm: -68, y_mm: -48, drill_mm: 3.2 },
+    { stable_id: "mains.hole.h4", ref: "H4", x_mm: 68, y_mm: -48, drill_mm: 3.2 },
     {
       stable_id: "mains.hole.j5.locator-1",
       ref: "J5",
-      x_mm: 83.32,
-      y_mm: 2,
+      x_mm: 68.32,
+      y_mm: 25,
       drill_mm: 3,
     },
     {
       stable_id: "mains.hole.j6.locator-1",
       ref: "J6",
-      x_mm: 83.32,
-      y_mm: 29,
+      x_mm: 68.32,
+      y_mm: 7,
       drill_mm: 3,
     },
   ]);

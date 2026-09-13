@@ -7,7 +7,7 @@ import {
   sensorSchematicConnectivityErrors,
 } from "./design-manifest";
 import { createSensorInitialPcb } from "./sensor-initial-pcb";
-import { electrodeRectangles } from "./electrodes";
+import { electrodeRectangles, electrodePadNumbers, electrodeNets } from "./electrodes";
 let json: CircuitJson;
 beforeAll(async () => {
   const c = new Circuit();
@@ -22,8 +22,8 @@ test("complete source has no capture or placement errors and only two sensing ch
   expect(sensorSchematicConnectivityErrors(json)).toEqual([]);
   const manifest = createSensorManifest(json);
   expect(manifest.components).toHaveLength(16);
-  expect(manifest.board.width_mm).toBe(38);
-  expect(manifest.board.height_mm).toBe(86);
+  expect(manifest.board.width_mm).toBe(18);
+  expect(manifest.board.height_mm).toBe(64);
   const u = json.find((e) => e.type === "source_component" && e.name === "U1");
   if (!u || u.type !== "source_component") throw new Error("U1 missing");
   expect(
@@ -57,13 +57,13 @@ test("electrode copper uses exact rim transform, same-net overlaps, covered mask
   const pads = json.filter(
     (e) => e.type === "pcb_smtpad" && e.pcb_component_id === p.pcb_component_id,
   );
-  expect(pads).toHaveLength(13);
+  expect(pads).toHaveLength(electrodeRectangles.length);
   for (const [i, [, , layer, x0, x1, y0, y1]] of electrodeRectangles.entries()) {
     const pad = pads[i];
     if (!pad || pad.type !== "pcb_smtpad" || pad.shape !== "rect")
       throw new Error("rectangle");
-    expect(pad.x).toBeCloseTo(19 - (x0 + x1) / 2, 8);
-    expect(pad.y).toBeCloseTo(21 - (y0 + y1) / 2, 8);
+    expect(pad.x).toBeCloseTo(9 - (x0 + x1) / 2, 8);
+    expect(pad.y).toBeCloseTo(32 - (y0 + y1) / 2, 8);
     expect(pad.width).toBeCloseTo(x1 - x0, 8);
     expect(pad.height).toBeCloseTo(y1 - y0, 8);
     expect(pad.layer).toBe(layer);
@@ -72,10 +72,14 @@ test("electrode copper uses exact rim transform, same-net overlaps, covered mask
   const board = createSensorInitialPcb(json);
   const ep = board.footprints.find((e) => e.properties.some((p) => p.value === "E1"));
   expect(ep).toBeDefined();
-  for (const pad of ep!.fpPads) {
+  for (const [i, pad] of ep!.fpPads.entries()) {
     expect(pad.layers?.layers).toHaveLength(1);
-    expect(pad.layers?.layers[0]).toMatch(/^[FB]\.Cu$/);
-    expect(pad.net?.name).not.toBe("");
+    expect(pad.layers?.layers[0]).toMatch(/^(F|B|In2)\.Cu$/);
+    expect(pad.net?.name).toBe(electrodeNets[electrodeRectangles[i]![1] as 1]);
+    expect(pad.number).toBe(String(electrodePadNumbers[i]));
+    expect(pad.layers?.layers[0]).toBe(
+      electrodeRectangles[i]![2] === "inner2" ? "In2.Cu" : "B.Cu",
+    );
   }
 });
 test("ordinary source changes do not mutate original Circuit JSON during native preparation", () => {
@@ -137,7 +141,7 @@ test("each electrode copper island reaches the head without a via on the glass f
         }
       }
     }
-    expect([...reachable].some((i) => electrodeRectangles[i]![5] === 0)).toBe(true);
+    expect([...reachable].some((i) => electrodeRectangles[i]![5] <= 1)).toBe(true);
   }
 });
 
@@ -150,4 +154,54 @@ test("stage writer refuses repository and incomplete guard inputs", async () => 
       STILLAIR_HANDOFF_BOARD: "sensor.board.main",
     }),
   ).rejects.toThrow();
+});
+
+test("flush adhesive mount has no through holes and the pigtail stays outward", () => {
+  expect(
+    json.filter((e) => e.type === "pcb_hole" || e.type === "pcb_plated_hole"),
+  ).toEqual([]);
+  const native = createSensorInitialPcb(json);
+  const pigtail = native.footprints.find((f) =>
+    f.properties.some((p) => p.value === "J1"),
+  )!;
+  expect(pigtail.fpPads).toHaveLength(6);
+  for (const pad of pigtail.fpPads) {
+    expect(pad.layers!.layers).toEqual(["F.Cu", "F.Mask"]);
+  }
+});
+
+test("segmentation retains 50 mm span, matched OoP faces and a wet reference below it", () => {
+  const level = electrodeRectangles.filter((r) => r[0].startsWith("level_bar_"));
+  const oop = electrodeRectangles.filter((r) => r[0].startsWith("oop_bar_"));
+  expect(level).toHaveLength(10);
+  expect(oop).toHaveLength(10);
+  expect(level[0]![5]).toBe(1);
+  expect(level[9]![6]).toBeCloseTo(51, 8);
+  for (let i = 0; i < level.length; i++) {
+    const a = level[i]!,
+      b = oop[i]!;
+    expect(a[4] - a[3]).toBeCloseTo(b[4] - b[3], 8);
+    expect([a[5], a[6]]).toEqual([b[5], b[6]]);
+    expect(b[3] - a[4]).toBe(3);
+  }
+  expect(electrodeRectangles.find((r) => r[0] === "sen_rl")!.slice(5)).toEqual([
+    53, 63,
+  ]);
+  expect(createSensorManifest(json).board.layer_count).toBe(4);
+});
+
+test("missing physical bar fails even when its logical terminal survives", () => {
+  const mutated = structuredClone(json);
+  const e = mutated.find((e) => e.type === "source_component" && e.name === "E1")!;
+  if (e.type !== "source_component") throw new Error("E1 missing");
+  const p = mutated.find(
+    (p) =>
+      p.type === "pcb_component" && p.source_component_id === e.source_component_id,
+  )!;
+  if (p.type !== "pcb_component") throw new Error("E1 placement missing");
+  const i = mutated.findIndex(
+    (x) => x.type === "pcb_smtpad" && x.pcb_component_id === p.pcb_component_id,
+  );
+  mutated.splice(i, 1);
+  expect(() => createSensorInitialPcb(mutated)).toThrow("Electrode copper incomplete");
 });

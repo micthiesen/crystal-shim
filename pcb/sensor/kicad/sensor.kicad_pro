@@ -70,7 +70,32 @@
         }
       },
       "diff_pair_dimensions": [],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "padstack|100000000|97387500|42d61e86-f7af-43ce-a501-835b7d7a4bbb|00000000-0000-0000-0000-000000000000",
+          "Intentional E1 embedded driven-shield copper, not an assembled SMD component. Exact geometry/layer/net checked by sensor routing audit."
+        ],
+        [
+          "padstack|100500000|126000000|eb200628-73f0-4852-b871-8c50e51bea59|00000000-0000-0000-0000-000000000000",
+          "Intentional E1 embedded driven-shield copper, not an assembled SMD component. Exact geometry/layer/net checked by sensor routing audit."
+        ],
+        [
+          "padstack|104675000|125250000|bd3af467-90f4-45fa-b2f7-60409c03deb7|00000000-0000-0000-0000-000000000000",
+          "Intentional E1 embedded driven-shield copper, not an assembled SMD component. Exact geometry/layer/net checked by sensor routing audit."
+        ],
+        [
+          "padstack|104675000|93750000|0c382945-a7cd-4f50-a85a-7dfd1dc849ef|00000000-0000-0000-0000-000000000000",
+          "Intentional E1 embedded driven-shield copper, not an assembled SMD component. Exact geometry/layer/net checked by sensor routing audit."
+        ],
+        [
+          "padstack|95325000|125250000|b94abd73-9b5e-469b-8cd8-9bf897d677bb|00000000-0000-0000-0000-000000000000",
+          "Intentional E1 embedded driven-shield copper, not an assembled SMD component. Exact geometry/layer/net checked by sensor routing audit."
+        ],
+        [
+          "padstack|95325000|93750000|9a9b2dcd-c6ff-4bea-8fab-546195d855a8|00000000-0000-0000-0000-000000000000",
+          "Intentional E1 embedded driven-shield copper, not an assembled SMD component. Exact geometry/layer/net checked by sensor routing audit."
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -152,10 +177,10 @@
         "min_silk_clearance": 0.0,
         "min_text_height": 0.8,
         "min_text_thickness": 0.08,
-        "min_through_hole_diameter": 0.3,
+        "min_through_hole_diameter": 0.2,
         "min_track_width": 0.15,
         "min_via_annular_width": 0.1,
-        "min_via_diameter": 0.5,
+        "min_via_diameter": 0.45,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
@@ -508,8 +533,8 @@
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.2,
         "tuning_profile": "",
-        "via_diameter": 0.6,
-        "via_drill": 0.3,
+        "via_diameter": 0.45,
+        "via_drill": 0.2,
         "wire_width": 6
       },
       {
@@ -526,8 +551,8 @@
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.15,
         "tuning_profile": "",
-        "via_diameter": 0.6,
-        "via_drill": 0.3,
+        "via_diameter": 0.45,
+        "via_drill": 0.2,
         "wire_width": 6
       }
     ],

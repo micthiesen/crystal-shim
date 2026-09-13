@@ -12,7 +12,7 @@ import {
 async function initial() {
   const circuit = new Circuit();
   circuit.add(
-    <board width={70} height={110} layers={4} routingDisabled>
+    <board width={150} height={110} layers={4} routingDisabled>
       {controllerMountingHoles.map((hole) => (
         <Fragment key={hole.ref}>
           <hole pcbX={hole.x} pcbY={hole.y} diameter={3.2} />

@@ -6,8 +6,8 @@ There is no separate sensor prototype, evaluation-board phase or planned respin.
 Physical calibration and acceptance use the final boards after assembly.
 
 1. **Complete the design basis and interfaces.** Adapt TI's sensor geometry to
-   freshwater, 5 mm glass and a 50 mm sensing span down from the rim. Define the
-   compact PCB's attachment interface for the owner's separate clip. Select exact
+   freshwater, 5 mm glass and a 50 mm physical sensing span. Define the
+   18 × 64 mm below-rim PCB's thin adhesive and left-pigtail interface. Select exact
    components, footprints, mating connectors, harness pinouts, rails and GPIOs
    across all three boards. Calculate power, sensing and protection margins;
    document assumptions and checks owed on the assembled unit. No sensor hardware
@@ -26,20 +26,20 @@ Physical calibration and acceptance use the final boards after assembly.
    RC network and filter from documented ratings and calculations before release;
    actual-load verification follows assembly.
 3. **Route the accepted native boards and prepare fabrication files.** The
-   controller shared-power ECO, sensor and mains boards are accepted for routing;
+   compact controller, sensor and mains ECOs are accepted for routing;
    use each board's final
    native acceptance in [STATE](STATE.md), not an old initial-export receipt.
    Sensor acquisition, calibration storage, local control, retained maintenance,
    Matter/HomeKit, schedules, settings and Pushover firmware are implemented;
    physical operation still needs commissioning. Route all board connections,
-   preserve the specified return paths and isolation, and apply routing-dependent
-   copper/via/paste declarations. Run final ERC/DRC and fabrication review using
+   preserve the prepared planes, vias, mask/paste and isolation, and finish the
+   routing-dependent return-path and USB stitching requirements. Run final ERC/DRC and fabrication review using
    `$kicad-manufacture`. Release coherent BOMs, assembly and harness drawings,
    enclosure/PCB interfaces and manufacturing outputs. G-02/G-03/G-04 govern
    fabrication release, separately from permission to start routing.
 4. **Fabricate and assemble the final board set.** Use the reviewed release to
    order and assemble the three boards, enclosure and harnesses as one complete
-   build. The owner supplies the separately modeled sensor clip. There is no
+   build, including the sensor's thin adhesive mounting. There is no
    intermediate sensor-board order or measurement-driven second fabrication phase.
 5. **Calibrate and commission the final low-voltage hardware.** With mains
    disconnected and a reviewed isolated low-voltage power arrangement, verify
@@ -49,7 +49,7 @@ Physical calibration and acceptance use the final boards after assembly.
    [Matter identity](design/matter-provisioning.md) and commission networking.
    Initial configuration leaves calibration absent, schedules empty and maintenance
    active. Fit the final sensor to the aquarium; measure rising and
-   falling water, receding wet glass, clip pressure/gaps and reseating. Record raw
+   falling water, receding wet glass, adhesive gaps and mounting replacement. Record raw
    capacitances and set stop/restart margins and freshness limits through firmware.
    Verify Matter/HomeKit, window suppression, override expiry, settings persistence
    and control independence during clock/configuration/network changes. Provision

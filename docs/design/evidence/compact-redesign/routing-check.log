@@ -1,0 +1,21 @@
+{
+  "board": "controller",
+  "final": false,
+  "findings": [],
+  "passed": true
+}
+{
+  "board": "mains",
+  "final": false,
+  "findings": [],
+  "passed": true
+}
+{
+  "board": "sensor",
+  "final": false,
+  "findings": [],
+  "passed": true
+}
+controller: 0 DRC/parity findings; 166 unconnected
+mains: 0 DRC/parity findings; 31 unconnected
+sensor: 0 DRC/parity findings; 21 unconnected

@@ -5,6 +5,7 @@ Run with sh pcb/tools/kicad_python.sh pcb/tools/test_native_routing_rules.py.
 Findings are matched to deliberately inserted item UUIDs and rule names. Existing
 unconnected routing work does not make these negative tests pass or fail.
 """
+import argparse
 import json
 from pathlib import Path
 import shutil
@@ -13,6 +14,7 @@ import tempfile
 
 import pcbnew
 import wx
+from check_routing import escape_width_rule
 
 ROOT = Path(__file__).resolve().parents[2]
 PROBE_NETS = {}
@@ -55,18 +57,26 @@ def require_finding(report, uuid, rule, kind=None):
         raise AssertionError(f'Missing {rule!r}/{kind} for {uuid}: {json.dumps(actual, indent=2)}')
 
 
-def run():
+def run(names=("controller", "mains", "sensor")):
     app = wx.App(False)
     quiet = wx.LogNull()
     results = {}
     with tempfile.TemporaryDirectory(prefix='crystal-shim-native-rule-tests-') as tmp:
-        for name in ('controller', 'mains', 'sensor'):
+        for name in names:
             destination = Path(tmp) / name
             shutil.copytree(ROOT / 'pcb' / name / 'kicad', destination,
                             ignore=shutil.ignore_patterns('evidence', 'review-renders', '*-backups', '*.lck'))
             path = destination / f'{name}.kicad_pcb'
             board = pcbnew.LoadBoard(str(path))
             expectations = []
+            accepted_widths = []
+            # Net-only constraints apply outside the outline too. Put these
+            # synthetic probes beyond all existing items, avoiding dependence
+            # on placement, planes, or local pad escape areas.
+            bounds = board.ComputeBoundingBox()
+            bx = pcbnew.ToMM(bounds.GetRight()) + 20
+            by = pcbnew.ToMM(bounds.GetBottom()) + 20
+            pos = lambda x, y: (bx+x, by+y)
             if name == 'controller':
                 pairs = []
                 for stem in ('USB_D', 'USB_D_PORT', 'USB_D_SWITCH'):
@@ -78,26 +88,52 @@ def run():
                         pairs.append([str(net.GetNetname()),str(coupled.GetNetname())])
                 results['differential_pairs'] = pairs
                 expectations = [
-                    (track(board,'V12_PUMP',(95,130),(105,130)), 'V12_PUMP routing width','track_width'),
-                    (track(board,'USB_D_PORT_N',(95,135),(100,135),.3), 'USB routing geometry','track_width'),
-                    (track(board,'USB_D_SWITCH_P',(105,135),(110,135),.24,pcbnew.B_Cu), 'USB front only','items_not_allowed'),
-                    (via(board,'GND',(115,135)), 'Ordinary through vias',None),
+                    (track(board,'V12_PUMP',pos(0,0),pos(10,0)), 'V12_PUMP routing width','track_width'),
+                    (track(board,'USB_D_PORT_N',pos(0,10),pos(5,10),.3), 'USB routing geometry','track_width'),
+                    (track(board,'USB_D_SWITCH_P',pos(10,10),pos(15,10),.24,pcbnew.B_Cu), 'USB front only','items_not_allowed'),
+                    (track(board,'V3V3',pos(0,20),pos(5,20),1,pcbnew.In1_Cu), 'L2 ground reference','items_not_allowed'),
+                    (via(board,'GND',pos(20,10)), 'Ordinary through vias',None),
+                    (via(board,'V12_PUMP',pos(30,10)), 'V12_PUMP no single power via','items_not_allowed'),
                 ]
             elif name == 'mains':
+                # Use actual pad coordinates so board compaction cannot move the
+                # probes away from the intended neck. The installed native rule
+                # must preserve the trunk default and bound the whole segment.
+                label = 'Neck V12_RAW C2.1.0'
+                condition, constraint = escape_width_rule('V12_RAW', label, .3, 3)
+                installed = path.with_suffix('.kicad_dru').read_text()
+                expected_rule = f'(rule "{label}"\n  (condition "{condition}")\n  {constraint})'
+                assert expected_rule in installed, 'Install regenerated bounded-neck rules through Board Setup first'
+                pad = next(p for f in board.GetFootprints() if f.GetReference() == 'C2'
+                           for p in f.Pads() if p.GetNumber() == '1')
+                assert pad.GetNetname() == 'V12_RAW'
+                # Probe outside the pad copper, inside its 1 mm inflated neck.
+                # This cannot pass merely because the whole track is in a pad.
+                x = pcbnew.ToMM(pad.GetBoundingBox().GetRight()) + .2
+                y = pcbnew.ToMM(pad.GetPosition().y)
+                short = track(board, 'V12_RAW', (x,y), (x+.2,y), .3)
+                long = track(board, 'V12_RAW', (x,y), (x+10,y), .3)
+                accepted_widths.append(short)
                 # Deliberately unrelated track pairs, away from neck exception areas.
-                primary = track(board,'AC_L_FUSED',(40,65),(45,65),3)
-                track(board,'AC_N',(40,69),(45,69),3)
-                isolated = track(board,'V12_RAW',(55,70),(60,70),3)
-                track(board,'AC_N',(55,65),(60,65),3)
+                primary = track(board,'AC_L_FUSED',pos(0,0),pos(5,0),3)
+                track(board,'AC_N',pos(0,4),pos(5,4),3)
+                isolated = track(board,'V12_RAW',pos(20,5),pos(25,5),3)
+                track(board,'AC_N',pos(20,0),pos(25,0),3)
                 expectations = [
+                    (long, 'V12_RAW routing width', 'track_width'),
                     (primary,'PRIMARY_DIFFERENT_NET_3_2MM','clearance'),
                     (isolated,'PRIMARY_TO_SELV_8MM','clearance'),
-                    (track(board,'V12_MOTOR',(160,55),(170,55),.3),'V12_MOTOR routing width','track_width'),
+                    (track(board,'V12_MOTOR',pos(40,0),pos(50,0),.3),'V12_MOTOR routing width','track_width'),
                 ]
             else:
-                expectations = [(track(board,'GND',(90.5,100),(90.5,105),.2), 'Sensing field only electrodes', 'items_not_allowed')]
+                expectations = [
+                    (track(board,'GND',pos(0,0),pos(2,0),.2,pcbnew.B_Cu),
+                     'Glass face only sensor copper','items_not_allowed'),
+                    (track(board,'SHLD1',pos(0,5),pos(2,5),.15,pcbnew.In2_Cu),
+                     'Fixed inner driven shields','items_not_allowed'),
+                ]
             assert path.is_relative_to(Path(tmp))
-            probe_ids = {uuid for uuid, _, _ in expectations}
+            probe_ids = {uuid for uuid, _, _ in expectations} | set(accepted_widths)
             expected_nets = {uuid: PROBE_NETS[uuid] for uuid in probe_ids}
             pcbnew.SaveBoard(str(path),board)
             saved = pcbnew.LoadBoard(str(path))
@@ -112,9 +148,16 @@ def run():
             report = json.loads(output.read_text())
             for uuid, rule, kind in expectations:
                 require_finding(report,uuid,rule,kind)
-            results[name] = {'probes':len(expectations),'passed':True}
+            for uuid in accepted_widths:
+                unexpected = [v for v in report['violations'] if v['type'] == 'track_width'
+                              and any(i.get('uuid') == uuid for i in v.get('items', []))]
+                assert not unexpected, f'Valid short pad escape rejected: {unexpected}'
+            results[name] = {'probes':len(expectations) + len(accepted_widths),'passed':True}
     print(json.dumps(results,indent=2))
 
 
 if __name__ == '__main__':
-    run()
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('boards',nargs='*',choices=['controller','mains','sensor'])
+    args=parser.parse_args()
+    run(args.boards or ('controller','mains','sensor'))

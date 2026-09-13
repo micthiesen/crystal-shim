@@ -1,0 +1,494 @@
+{
+  "headers": {
+    "J1": {
+      "pattern": {
+        "id": "CrystalShim:Molex_Sabre_43160-1102",
+        "pads": [
+          {
+            "number": "1",
+            "x": 0,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "1",
+            "x": 0,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "2",
+            "x": 7.493,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "2",
+            "x": 7.493,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          }
+        ]
+      },
+      "physical": {
+        "declaration": {
+          "packageCenter": {
+            "x": 3.7465,
+            "y": 9.03
+          },
+          "envelopeCenter": {
+            "x": 3.7465,
+            "y": 6.5
+          },
+          "body": {
+            "width": 21.08,
+            "height": 14.76,
+            "thicknessMax": 13.67,
+            "basis": "Right-angle shroud: width +/-0.33, depth 14.76 +/-0.10, height 11.53 +/-0.15 plus latch 1.86 +/-0.13. Body Y pose bounded by the 19.78 +/-0.38 overall depth, 3.18 tail rows and 13.13 board-lock datum in drawing sheets 3/4; conservative whole-header reserve governs fit."
+          },
+          "envelope": {
+            "width": 21.409999999999997,
+            "height": 21.5,
+            "basis": "Whole right-angle header allocation Y=-4.25..17.25 about front tail row, including rear tails and assembly allowance. Maximum width per drawing. Mated housing extends farther outward; reserve 35 mm beyond PCB edge for mating, release and cable access; maximum mated height allocation 17 mm."
+          },
+          "solderMask": {
+            "expansion": 0.05,
+            "basis": "Project PTH opening allowance. No mask is counted as mains insulation."
+          },
+          "nativeAssembly": {
+            "paste": "Hand-solder all tails after reflow; no stencil paste. Finished holes 1.78 +/-0.08 mm. Project 3.50 mm copper, two same-number tails per circuit. Short tails 3.81 +/-0.28 mm. Native origin/mask/paste and circuit-1 Fab/silk marker remain declared handoff work.",
+            "thermal": "Preserve unused blades/tails and empty harness cavities. Reserve insulation clearance from all metal, plus right-angle mating and latch access outside the board edge. Confirm body pose, housing numbering, latch/wire access and partial-mating risk before placement approval; pole counts alone do not prove coding. PE bypasses these headers."
+          },
+          "source": {
+            "url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+            "sha256": "249d83521d452abfae030237405456be0e05ec06e08c629489d60fa035962fa7",
+            "drawing": "431600001-SD PSD000 A1, released 2020-05-26, sheets 3/4/5. Verified manufacturer PDF mirror: https://www.megastar.com/content/pdfs/431601102_sd.pdf. Circuit pitch 7.493 +/-0.13 non-accumulative; tail-row pitch 3.18 +/-0.13 mm. No manufacturer copper diameter specified. See docs/design/mains-header-capture.md for orientation and datum qualifications."
+          }
+        },
+        "bodyCenter": {
+          "x": 3.7465,
+          "y": 9.03
+        },
+        "courtyard": {
+          "width": 22.5,
+          "height": 23.2,
+          "center": {
+            "x": 3.75,
+            "y": 6.15
+          }
+        }
+      }
+    },
+    "J2": {
+      "pattern": {
+        "id": "CrystalShim:Molex_Sabre_43160-1103",
+        "pads": [
+          {
+            "number": "1",
+            "x": 0,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "1",
+            "x": 0,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "2",
+            "x": 7.493,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "2",
+            "x": 7.493,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "3",
+            "x": 14.986,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "3",
+            "x": 14.986,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          }
+        ]
+      },
+      "physical": {
+        "declaration": {
+          "packageCenter": {
+            "x": 7.493,
+            "y": 9.03
+          },
+          "envelopeCenter": {
+            "x": 7.493,
+            "y": 6.5
+          },
+          "body": {
+            "width": 28.58,
+            "height": 14.76,
+            "thicknessMax": 13.67,
+            "basis": "Right-angle shroud: width +/-0.33, depth 14.76 +/-0.10, height 11.53 +/-0.15 plus latch 1.86 +/-0.13. Body Y pose bounded by the 19.78 +/-0.38 overall depth, 3.18 tail rows and 13.13 board-lock datum in drawing sheets 3/4; conservative whole-header reserve governs fit."
+          },
+          "envelope": {
+            "width": 28.909999999999997,
+            "height": 21.5,
+            "basis": "Whole right-angle header allocation Y=-4.25..17.25 about front tail row, including rear tails and assembly allowance. Maximum width per drawing. Mated housing extends farther outward; reserve 35 mm beyond PCB edge for mating, release and cable access; maximum mated height allocation 17 mm."
+          },
+          "solderMask": {
+            "expansion": 0.05,
+            "basis": "Project PTH opening allowance. No mask is counted as mains insulation."
+          },
+          "nativeAssembly": {
+            "paste": "Hand-solder all tails after reflow; no stencil paste. Finished holes 1.78 +/-0.08 mm. Project 3.50 mm copper, two same-number tails per circuit. Short tails 3.81 +/-0.28 mm. Native origin/mask/paste and circuit-1 Fab/silk marker remain declared handoff work.",
+            "thermal": "Preserve unused blades/tails and empty harness cavities. Reserve insulation clearance from all metal, plus right-angle mating and latch access outside the board edge. Confirm body pose, housing numbering, latch/wire access and partial-mating risk before placement approval; pole counts alone do not prove coding. PE bypasses these headers."
+          },
+          "source": {
+            "url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+            "sha256": "249d83521d452abfae030237405456be0e05ec06e08c629489d60fa035962fa7",
+            "drawing": "431600001-SD PSD000 A1, released 2020-05-26, sheets 3/4/5. Verified manufacturer PDF mirror: https://www.megastar.com/content/pdfs/431601102_sd.pdf. Circuit pitch 7.493 +/-0.13 non-accumulative; tail-row pitch 3.18 +/-0.13 mm. No manufacturer copper diameter specified. See docs/design/mains-header-capture.md for orientation and datum qualifications."
+          }
+        },
+        "bodyCenter": {
+          "x": 7.493,
+          "y": 9.03
+        },
+        "courtyard": {
+          "width": 29.950000000000003,
+          "height": 23.2,
+          "center": {
+            "x": 7.475000000000001,
+            "y": 6.15
+          }
+        }
+      }
+    },
+    "J3": {
+      "pattern": {
+        "id": "CrystalShim:Molex_Sabre_43160-1104",
+        "pads": [
+          {
+            "number": "1",
+            "x": 0,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "1",
+            "x": 0,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "2",
+            "x": 7.493,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "2",
+            "x": 7.493,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "3",
+            "x": 14.986,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "3",
+            "x": 14.986,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "4",
+            "x": 22.479,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "4",
+            "x": 22.479,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          }
+        ]
+      },
+      "physical": {
+        "declaration": {
+          "packageCenter": {
+            "x": 11.2395,
+            "y": 9.03
+          },
+          "envelopeCenter": {
+            "x": 11.2395,
+            "y": 6.5
+          },
+          "body": {
+            "width": 36.07,
+            "height": 14.76,
+            "thicknessMax": 13.67,
+            "basis": "Right-angle shroud: width +/-0.33, depth 14.76 +/-0.10, height 11.53 +/-0.15 plus latch 1.86 +/-0.13. Body Y pose bounded by the 19.78 +/-0.38 overall depth, 3.18 tail rows and 13.13 board-lock datum in drawing sheets 3/4; conservative whole-header reserve governs fit."
+          },
+          "envelope": {
+            "width": 36.4,
+            "height": 21.5,
+            "basis": "Whole right-angle header allocation Y=-4.25..17.25 about front tail row, including rear tails and assembly allowance. Maximum width per drawing. Mated housing extends farther outward; reserve 35 mm beyond PCB edge for mating, release and cable access; maximum mated height allocation 17 mm."
+          },
+          "solderMask": {
+            "expansion": 0.05,
+            "basis": "Project PTH opening allowance. No mask is counted as mains insulation."
+          },
+          "nativeAssembly": {
+            "paste": "Hand-solder all tails after reflow; no stencil paste. Finished holes 1.78 +/-0.08 mm. Project 3.50 mm copper, two same-number tails per circuit. Short tails 3.81 +/-0.28 mm. Native origin/mask/paste and circuit-1 Fab/silk marker remain declared handoff work.",
+            "thermal": "Preserve unused blades/tails and empty harness cavities. Reserve insulation clearance from all metal, plus right-angle mating and latch access outside the board edge. Confirm body pose, housing numbering, latch/wire access and partial-mating risk before placement approval; pole counts alone do not prove coding. PE bypasses these headers."
+          },
+          "source": {
+            "url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+            "sha256": "249d83521d452abfae030237405456be0e05ec06e08c629489d60fa035962fa7",
+            "drawing": "431600001-SD PSD000 A1, released 2020-05-26, sheets 3/4/5. Verified manufacturer PDF mirror: https://www.megastar.com/content/pdfs/431601102_sd.pdf. Circuit pitch 7.493 +/-0.13 non-accumulative; tail-row pitch 3.18 +/-0.13 mm. No manufacturer copper diameter specified. See docs/design/mains-header-capture.md for orientation and datum qualifications."
+          }
+        },
+        "bodyCenter": {
+          "x": 11.2395,
+          "y": 9.03
+        },
+        "courtyard": {
+          "width": 37.45,
+          "height": 23.2,
+          "center": {
+            "x": 11.225000000000001,
+            "y": 6.15
+          }
+        }
+      }
+    },
+    "J4": {
+      "pattern": {
+        "id": "CrystalShim:Molex_Sabre_43160-1106",
+        "pads": [
+          {
+            "number": "1",
+            "x": 0,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "1",
+            "x": 0,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "2",
+            "x": 7.493,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "2",
+            "x": 7.493,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "3",
+            "x": 14.986,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "3",
+            "x": 14.986,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "4",
+            "x": 22.479,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "4",
+            "x": 22.479,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "5",
+            "x": 29.972,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "5",
+            "x": 29.972,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "6",
+            "x": 37.465,
+            "y": -3.18,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          },
+          {
+            "number": "6",
+            "x": 37.465,
+            "y": 0,
+            "drill": 1.78,
+            "width": 3.5,
+            "height": 3.5,
+            "shape": "circle"
+          }
+        ]
+      },
+      "physical": {
+        "declaration": {
+          "packageCenter": {
+            "x": 18.7325,
+            "y": 9.03
+          },
+          "envelopeCenter": {
+            "x": 18.7325,
+            "y": 6.5
+          },
+          "body": {
+            "width": 51.05,
+            "height": 14.76,
+            "thicknessMax": 13.67,
+            "basis": "Right-angle shroud: width +/-0.33, depth 14.76 +/-0.10, height 11.53 +/-0.15 plus latch 1.86 +/-0.13. Body Y pose bounded by the 19.78 +/-0.38 overall depth, 3.18 tail rows and 13.13 board-lock datum in drawing sheets 3/4; conservative whole-header reserve governs fit."
+          },
+          "envelope": {
+            "width": 51.379999999999995,
+            "height": 21.5,
+            "basis": "Whole right-angle header allocation Y=-4.25..17.25 about front tail row, including rear tails and assembly allowance. Maximum width per drawing. Mated housing extends farther outward; reserve 35 mm beyond PCB edge for mating, release and cable access; maximum mated height allocation 17 mm."
+          },
+          "solderMask": {
+            "expansion": 0.05,
+            "basis": "Project PTH opening allowance. No mask is counted as mains insulation."
+          },
+          "nativeAssembly": {
+            "paste": "Hand-solder all tails after reflow; no stencil paste. Finished holes 1.78 +/-0.08 mm. Project 3.50 mm copper, two same-number tails per circuit. Short tails 3.81 +/-0.28 mm. Native origin/mask/paste and circuit-1 Fab/silk marker remain declared handoff work.",
+            "thermal": "Preserve unused blades/tails and empty harness cavities. Reserve insulation clearance from all metal, plus right-angle mating and latch access outside the board edge. Confirm body pose, housing numbering, latch/wire access and partial-mating risk before placement approval; pole counts alone do not prove coding. PE bypasses these headers."
+          },
+          "source": {
+            "url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+            "sha256": "249d83521d452abfae030237405456be0e05ec06e08c629489d60fa035962fa7",
+            "drawing": "431600001-SD PSD000 A1, released 2020-05-26, sheets 3/4/5. Verified manufacturer PDF mirror: https://www.megastar.com/content/pdfs/431601102_sd.pdf. Circuit pitch 7.493 +/-0.13 non-accumulative; tail-row pitch 3.18 +/-0.13 mm. No manufacturer copper diameter specified. See docs/design/mains-header-capture.md for orientation and datum qualifications."
+          }
+        },
+        "bodyCenter": {
+          "x": 18.7325,
+          "y": 9.03
+        },
+        "courtyard": {
+          "width": 52.45,
+          "height": 23.2,
+          "center": {
+            "x": 18.725,
+            "y": 6.15
+          }
+        }
+      }
+    }
+  }
+}

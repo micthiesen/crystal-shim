@@ -19,14 +19,25 @@ PDF_URL = 'https://www.hammfg.com/files/parts/pdf/1590ZGRP243.pdf?v=1697661942'
 # Interior floor datum: manufacturer's X/Y centre plus half drawn interior
 # dimensions; floor plane is manufacturer Z=-91 (5 mm above model base bottom).
 TRANSLATION = (192.425, 117.63, 91)
+# Enclosure coordinates X/Y on the floor, Z upward. Matching PCB outlines;
+# 16.6 -> 61.6 is the exact 45 mm clear board-face gap.
 BOUNDS = {
-    'mains_pcb': [25, 205, 25, 135, 26.4, 28],
-    'controller_pcb': [245, 355, 25, 135, 26.4, 28],
-    'mains_assembly_and_wire_reserve': [25, 205, 25, 135, 21, 75],
-    'controller_assembly_and_access_reserve': [245, 355, 25, 135, 21, 65],
-    'filter_and_wire_reserve': [25, 155, 150, 225, 5, 45],
-    'partition': [225, 228, 10, 225, 5, 100],
+    'mains_pcb': [100, 250, 65, 175, 15, 16.6],
+    'controller_pcb': [100, 250, 65, 175, 61.6, 63.2],
+    'mains_assembly_reserve': [100, 250, 65, 175, 12, 47.1],
+    'controller_assembly_and_access_reserve': [100, 250, 65, 175, 58.6, 85],
+    'filter_and_wire_reserve': [292, 367, 40, 170, 10, 50],
+    'separator': [96, 254, 61, 179, 50.1, 52.1],
+    'mains_left_harness_reserve': [65, 100, 75, 145, 12, 42],
+    'mains_south_harness_reserve': [100, 250, 175, 210, 12, 42],
+    'mains_right_harness_reserve': [250, 285, 78, 145, 12, 42],
+    'controller_north_harness_reserve': [123, 169, 30, 65, 61.6, 85],
+    'controller_south_harness_reserve': [120, 205, 175, 210, 58.6, 85],
+    'controller_right_harness_reserve': [250, 285, 105, 169, 58.6, 85],
 }
+ANTENNA = [186.1, 204.3, 58.9, 65.1, 63.2, 65.6]
+MOUNT_CENTRES = [(107,72), (243,72), (107,168), (243,168)]
+
 
 
 def sha(path):
@@ -71,25 +82,34 @@ def run():
         for i, s in enumerate(normalized) if i != 1
     ])
     allowance = {name: comparison(box(grown(b)), reduced) for name, b in BOUNDS.items()}
-    separate = ['mains_assembly_and_wire_reserve', 'controller_assembly_and_access_reserve',
-                'filter_and_wire_reserve', 'partition']
+    separate = [name for name in BOUNDS if not name.endswith('_pcb')]
     mutual = {f'{a} / {b}': comparison(solids[a], solids[b])
               for i, a in enumerate(separate) for b in separate[i+1:]}
-    for result in [*nominal.values(), *allowance.values(), *mutual.values()]:
-        assert result['intersection_mm3'] < 1e-6, result
-        assert result['distance_mm'] > 0, result
+    for stage, results in [('nominal', nominal), ('allowance', allowance), ('mutual', mutual)]:
+        for name, result in results.items():
+            assert result['intersection_mm3'] < 1e-6, (stage, name, result)
+            assert result['distance_mm'] >= 0, (stage, name, result)
+    assert BOUNDS['controller_pcb'][4] - BOUNDS['mains_pcb'][5] == 45
+    antenna = box(ANTENNA)
+    # RF reserve applies to enclosure/metal, lower components and harnesses.
+    # An intact insulating separator is modeled separately: its dielectric RF
+    # influence remains a physical test, not a reason to cut a primary guard.
+    rf_objects = {'enclosure': enclosure, 'mains_assembly_reserve': solids['mains_assembly_reserve']}
+    rf_objects.update({name: solid for name, solid in solids.items() if 'harness' in name or name == 'filter_and_wire_reserve'})
+    rf_clearances = {name: comparison(antenna, solid) for name, solid in rf_objects.items()}
+    assert all(r['distance_mm'] >= 15 for r in rf_clearances.values()), rf_clearances
     # Negative controls establish that collisions and inadequate separation are
     # observable, rather than accepting empty or incorrectly placed CAD inputs.
     controls = {
-        'oversize_mains_hits_wall': comparison(box([25, 405, 25, 135, 21, 75]), enclosure),
-        'too_tall_controller_hits_lid': comparison(box([245, 355, 25, 135, 21, 120]), enclosure),
-        'misplaced_controller_hits_partition': comparison(box([215, 325, 25, 135, 21, 65]), solids['partition']),
+        'oversize_stack_hits_wall': comparison(box([100, 405, 65, 175, 12, 85]), enclosure),
+        'too_tall_controller_hits_lid': comparison(box([100, 250, 65, 175, 58.6, 120]), enclosure),
+        'separator_hits_supply_if_lowered': comparison(box([96,254,61,179,45,47]), solids['mains_assembly_reserve']),
     }
     assert all(r['intersection_mm3'] > 1 for r in controls.values())
     assembly = cq.Compound.makeCompound([enclosure, *solids.values()])
     cq.exporters.export(assembly, str(HERE / 'fit-screen.step'))
     reloaded = cq.importers.importStep(str(HERE / 'fit-screen.step')).solids().vals()
-    assert len(reloaded) == 13 and all(s.isValid() for s in reloaded)
+    assert len(reloaded) == 7 + len(BOUNDS) and all(s.isValid() for s in reloaded)
     result = {
         'scope': 'Nominal enclosure and allocated assembly-envelope fit only; not exact component, mate, carrier or cable geometry.',
         'enclosure': 'Hammond 1590ZGRP243',
@@ -98,6 +118,14 @@ def run():
         'excluded_manufacturer_solid': '1: optional steel panel; no conductive common panel selected',
         'model_drawing_height_discrepancy_mm': 1,
         'bounds_mm': BOUNDS,
+        'board_face_gap_mm': 45,
+        'mount_centres_xy_mm': MOUNT_CENTRES,
+        'mount_hardware_max_diameter_mm': 8,
+        'separator_thickness_mm': 2,
+        'supply_to_separator_gap_mm': 3,
+        'outward_harness_depth_mm': 35,
+        'antenna_envelope_mm': ANTENNA,
+        'antenna_to_enclosure_lower_parts_and_harnesses': rf_clearances,
         'nominal': nominal,
         'one_mm_expansion_and_reduced_lid': allowance,
         'mutual': mutual,
@@ -112,7 +140,8 @@ def run():
         'export_sha256': sha(HERE/'fit-screen.step'),
         'not_tested': [
             'Exact placed component models or mated terminal and crimp shapes',
-            'Mounting bracket/carrier holes, partition feet and retention',
+            'Exact insulating spacer/washer shapes, separator retention and primary-guard edge coverage',
+            'Dielectric separator influence on antenna performance; no RF notch is approved',
             'Finished gland/cutout machining and assembled ingress rating',
             'Actual sensor cable length including crimps and strain relief',
             'Thermal performance and installed skimmer interference',

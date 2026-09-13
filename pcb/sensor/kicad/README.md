@@ -1,32 +1,31 @@
-Current routing preparation: planes, fills, ground/thermal vias and enforced
-routing rules are applied. Follow the [routing guide](../../../docs/design/routing-guardrails.md)
-and run `sh scripts/check-routing.sh sensor`. The current ECO receipt is
-[evidence/routing-guardrails/eco-acceptance.json](evidence/routing-guardrails/eco-acceptance.json).
-Earlier evidence/counts below describe the pre-fill placement milestone.
+# Sensor routing handoff
 
-# Sensor native routing project
+Open [sensor.kicad_pro](sensor.kicad_pro). The compact sensor is **18 × 64 mm,
+four layers**, with 16 footprints and 21 remaining unrouted connections. Mount
+its mask-covered glass face with thin adhesive film, top 2 mm below the rim.
+J1 is six outward-face solder pads; the pigtail exits left when looking at the
+electronics. No component lead or mount sits between electrode copper and glass.
 
-The complete source-derived seed was adopted from the verified initial stage on
-2026-09-12. Open `sensor.kicad_pro`. The root schematic references
-`tanksensor.kicad_sch`; project-local symbol and footprint libraries travel with it.
+The glass-facing B.Cu electrodes and In2.Cu driven shields are fixed geometry.
+F.Cu holds electronics and ordinary routing; In1.Cu provides ground and permitted
+routing. F.Cu/In1.Cu ground pours, six tented vias and 15 CIN/shield connection
+segments are already prepared. Preserve them while routing local power,
+decoupling, I2C and the pigtail. Through vias default to 0.45/0.20 mm.
 
-The initial lock is `../design/handoff.lock.json`. Its original manifest,
-augmentation, snapshot and reports are preserved under `../design/evidence/initial`.
-`../design/evidence/native-completion-plan.json` records the unblocked plan before
-native metadata synchronization. Description fields and unique no-connect net names
-were then synchronized from the native schematic netlist through KiCad's API.
+Strict ERC and schematic parity are clean. Six exact, UUID-bound padstack
+warnings are excluded because the intentional driven-shield pads exist only on
+In2.Cu. Their complete geometry/net contract is checked separately; unrelated
+padstack warnings remain enabled. See the
+[routing guide](../../../docs/design/routing-guardrails.md),
+[design basis](../../../docs/design/sensor-design-basis.md) and
+[handoff lock](../design/handoff.lock.json) for current acceptance and evidence.
+[Final preparation](../design/evidence/final-preparation/) records the outward
+pad-number/RIM labels and native mask/paste/via verification. The subsequent
+[stencil receipt](../design/evidence/stencil-process/acceptance.json) selects the
+100 µm process without changing native geometry.
+Older two-layer and above-rim instructions are superseded.
 
-The native completion ECO is accepted. `evidence/routing-ready/` contains strict
-ERC with no ignored categories, schematic/board/source parity, preservation,
-physical stackup readback and reviewed schematic/copper renders. The final DRC has
-zero ordinary violations and 41 unrouted connections. Five standard DRC categories
-remain at KiCad defaults; no ERC category is waived. The current library is the
-portable `libraries-v2/CrystalShim_Sensor.kicad_sym` with exact footprint filters.
-
-Route the electronics above native y=79 mm. Preserve the sensing-window rule area:
-no vias or zone fills within (81,79)..(119,143) mm on either copper layer. Connect
-each same-net electrode/shield island at its head; retain mask covering on E1 and
-keep CIN3/CIN4 open. Ordinary tracks use 0.20 mm clearance; the four electrode and
-shield nets use 0.15 mm. Layer changes belong above the sensing window. Follow
-[the routing contract](../../../docs/design/sensor-design-basis.md) and close
-unconnected nets and fabrication checks after routing.
+Keep this project, its custom rules and local libraries together. Route, refill
+with **B**, save and run `sh scripts/check-routing.sh sensor --final` before
+fabrication checks/export. Unconnected items are allowed without `--final`.
+Physical capacitance and adhesive response remain commissioning measurements.

@@ -1,0 +1,4860 @@
+{
+  "board": {
+    "coordinate_system": "center-x-right-y-up",
+    "height_mm": 110,
+    "holes": [
+      {
+        "drill_mm": 3.2,
+        "ref": "H1",
+        "stable_id": "controller.hole.h1",
+        "x_mm": -30,
+        "y_mm": 26
+      },
+      {
+        "drill_mm": 3.2,
+        "ref": "H2",
+        "stable_id": "controller.hole.h2",
+        "x_mm": 30,
+        "y_mm": 26
+      },
+      {
+        "drill_mm": 3.2,
+        "ref": "H3",
+        "stable_id": "controller.hole.h3",
+        "x_mm": -30,
+        "y_mm": -50
+      },
+      {
+        "drill_mm": 3.2,
+        "ref": "H4",
+        "stable_id": "controller.hole.h4",
+        "x_mm": 30,
+        "y_mm": -50
+      },
+      {
+        "drill_mm": 3,
+        "ref": "J1",
+        "stable_id": "controller.hole.j1.locator-1",
+        "x_mm": -26,
+        "y_mm": 45.32
+      },
+      {
+        "drill_mm": 3,
+        "ref": "J2",
+        "stable_id": "controller.hole.j2.locator-1",
+        "x_mm": -21,
+        "y_mm": -45.32
+      },
+      {
+        "drill_mm": 3,
+        "ref": "J3",
+        "stable_id": "controller.hole.j3.locator-1",
+        "x_mm": -11,
+        "y_mm": 45.32
+      },
+      {
+        "drill_mm": 0.65,
+        "ref": "J4",
+        "stable_id": "controller.hole.j4.locator-1",
+        "x_mm": 8.11,
+        "y_mm": -48.720000000000006
+      },
+      {
+        "drill_mm": 0.65,
+        "ref": "J4",
+        "stable_id": "controller.hole.j4.locator-2",
+        "x_mm": 13.89,
+        "y_mm": -48.720000000000006
+      },
+      {
+        "drill_mm": 3,
+        "ref": "J5",
+        "stable_id": "controller.hole.j5.locator-1",
+        "x_mm": -41,
+        "y_mm": 45.32
+      },
+      {
+        "drill_mm": 3,
+        "ref": "J6",
+        "stable_id": "controller.hole.j6.locator-1",
+        "x_mm": -44,
+        "y_mm": -45.32
+      },
+      {
+        "drill_mm": 3,
+        "ref": "J7",
+        "stable_id": "controller.hole.j7.locator-1",
+        "x_mm": 48.32,
+        "y_mm": -35
+      },
+      {
+        "drill_mm": 3,
+        "ref": "J8",
+        "stable_id": "controller.hole.j8.locator-1",
+        "x_mm": 48.32,
+        "y_mm": -17
+      },
+      {
+        "drill_mm": 3,
+        "ref": "J9",
+        "stable_id": "controller.hole.j9.locator-1",
+        "x_mm": 48.32,
+        "y_mm": 0.9999999999999992
+      }
+    ],
+    "kicad_origin_mm": [
+      100,
+      100
+    ],
+    "layer_count": 4,
+    "outline": {
+      "center_mm": [
+        0,
+        0
+      ],
+      "height_mm": 110,
+      "kind": "rectangle",
+      "width_mm": 110
+    },
+    "specs": {
+      "assembly_sides": [
+        "front"
+      ],
+      "compiled_board_sha256": "fe14712c2319f8b28f6d3ad407ede85539626a17fb099efbb4933dede7d59f8b",
+      "material": "FR4",
+      "thickness_mm": 1.6,
+      "unowned_physical_geometry_sha256": "ae42000b78c74a83287bd30b97e339b720ccc7f6fd199fab7457bccf57b32c7e"
+    },
+    "stable_id": "controller.board.main",
+    "width_mm": 110
+  },
+  "components": [
+    {
+      "fields": {
+        "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "manufacturer_part_number": "GRM32ER71E226ME15L"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "61972025019977f1b354dfbc03493c531bb0aa79daf2a6a57480aeb39e367900",
+        "kicad": "CrystalShim_Controller:Controller_C1",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "19527eecf0e761160a28c871d66a6214dbff08fc67f2aa0165ff16f2cf3e8417",
+        "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -22,
+        "y_mm": -1.4
+      },
+      "ref": "C1",
+      "stable_id": "controller.component.c1",
+      "symbol": "CrystalShim_Controller:Controller_C1",
+      "value": "22uF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C11",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "a675735b7b5dffc0e9d785a9124158af9c62a74578107b76c059c90ba2a0c499",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": -28,
+        "y_mm": 19
+      },
+      "ref": "C11",
+      "stable_id": "controller.component.c11",
+      "symbol": "CrystalShim_Controller:Controller_C11",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C12",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "a675735b7b5dffc0e9d785a9124158af9c62a74578107b76c059c90ba2a0c499",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": -24,
+        "y_mm": 25.5
+      },
+      "ref": "C12",
+      "stable_id": "controller.component.c12",
+      "symbol": "CrystalShim_Controller:Controller_C12",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "manufacturer_part_number": "GRM32ER71E226ME15L"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "61972025019977f1b354dfbc03493c531bb0aa79daf2a6a57480aeb39e367900",
+        "kicad": "CrystalShim_Controller:Controller_C2",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "19527eecf0e761160a28c871d66a6214dbff08fc67f2aa0165ff16f2cf3e8417",
+        "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -28,
+        "y_mm": -1.4
+      },
+      "ref": "C2",
+      "stable_id": "controller.component.c2",
+      "symbol": "CrystalShim_Controller:Controller_C2",
+      "value": "22uF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf",
+        "manufacturer_part_number": "C2012X7R1E105K125AB"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "e7c94ea99c39e3f16f46e47c4519a557a572685a225eda2c5746dfa399742b1a",
+        "kicad": "CrystalShim_Controller:Controller_C20",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d59d2dd4b8583b5147561c6eb6420414922322db6eac9310ec33a1aacb384a3f",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C2012"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -8.7,
+        "y_mm": -38
+      },
+      "ref": "C20",
+      "stable_id": "controller.component.c20",
+      "symbol": "CrystalShim_Controller:Controller_C20",
+      "value": "1uF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C21",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "883e465b7ad274552d4105fff40f71c2d805d5841ebe749d8b2edb295c925aa3",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -12,
+        "y_mm": -34.9
+      },
+      "ref": "C21",
+      "stable_id": "controller.component.c21",
+      "symbol": "CrystalShim_Controller:Controller_C21",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "manufacturer_part_number": "GRM32ER71E226ME15L"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "61972025019977f1b354dfbc03493c531bb0aa79daf2a6a57480aeb39e367900",
+        "kicad": "CrystalShim_Controller:Controller_C3",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "19527eecf0e761160a28c871d66a6214dbff08fc67f2aa0165ff16f2cf3e8417",
+        "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -5.3,
+        "y_mm": 5
+      },
+      "ref": "C3",
+      "stable_id": "controller.component.c3",
+      "symbol": "CrystalShim_Controller:Controller_C3",
+      "value": "22uF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C30",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "883e465b7ad274552d4105fff40f71c2d805d5841ebe749d8b2edb295c925aa3",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 20,
+        "y_mm": -38.5
+      },
+      "ref": "C30",
+      "stable_id": "controller.component.c30",
+      "symbol": "CrystalShim_Controller:Controller_C30",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C31",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "a675735b7b5dffc0e9d785a9124158af9c62a74578107b76c059c90ba2a0c499",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": 6.5,
+        "y_mm": -37.4
+      },
+      "ref": "C31",
+      "stable_id": "controller.component.c31",
+      "symbol": "CrystalShim_Controller:Controller_C31",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "manufacturer_part_number": "GRM32ER71E226ME15L"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "61972025019977f1b354dfbc03493c531bb0aa79daf2a6a57480aeb39e367900",
+        "kicad": "CrystalShim_Controller:Controller_C4",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "19527eecf0e761160a28c871d66a6214dbff08fc67f2aa0165ff16f2cf3e8417",
+        "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -5.3,
+        "y_mm": 0.5
+      },
+      "ref": "C4",
+      "stable_id": "controller.component.c4",
+      "symbol": "CrystalShim_Controller:Controller_C4",
+      "value": "22uF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C40",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "3688969f7fdcbdbd1a16aad245cc69ebaed5d0987f208e4127876882142b6367",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -5.5,
+        "y_mm": 23
+      },
+      "ref": "C40",
+      "stable_id": "controller.component.c40",
+      "symbol": "CrystalShim_Controller:Controller_C40",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C41",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "3688969f7fdcbdbd1a16aad245cc69ebaed5d0987f208e4127876882142b6367",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 5.5,
+        "y_mm": 23
+      },
+      "ref": "C41",
+      "stable_id": "controller.component.c41",
+      "symbol": "CrystalShim_Controller:Controller_C41",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C42",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "3688969f7fdcbdbd1a16aad245cc69ebaed5d0987f208e4127876882142b6367",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -17.75,
+        "y_mm": 20.5
+      },
+      "ref": "C42",
+      "stable_id": "controller.component.c42",
+      "symbol": "CrystalShim_Controller:Controller_C42",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf",
+        "manufacturer_part_number": "C2012X7R1E105K125AB"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "e7c94ea99c39e3f16f46e47c4519a557a572685a225eda2c5746dfa399742b1a",
+        "kicad": "CrystalShim_Controller:Controller_C43",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d59d2dd4b8583b5147561c6eb6420414922322db6eac9310ec33a1aacb384a3f",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C2012"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -9.4,
+        "y_mm": 20.5
+      },
+      "ref": "C43",
+      "stable_id": "controller.component.c43",
+      "symbol": "CrystalShim_Controller:Controller_C43",
+      "value": "1uF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf",
+        "manufacturer_part_number": "C3216X7R1E106K160AB"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "1ff90f0e6cd07cc1a314d143cb75f2d4cb00f6dc871c14763836180862d18276",
+        "kicad": "CrystalShim_Controller:Controller_C44",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "7c951bfac279413b25195485ad822de1e3fb5b5524c43da22e209056af735a1d",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C3216"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -14,
+        "y_mm": 13.5
+      },
+      "ref": "C44",
+      "stable_id": "controller.component.c44",
+      "symbol": "CrystalShim_Controller:Controller_C44",
+      "value": "10uF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C45",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "3688969f7fdcbdbd1a16aad245cc69ebaed5d0987f208e4127876882142b6367",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -49.5,
+        "y_mm": 21
+      },
+      "ref": "C45",
+      "stable_id": "controller.component.c45",
+      "symbol": "CrystalShim_Controller:Controller_C45",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C46",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "3688969f7fdcbdbd1a16aad245cc69ebaed5d0987f208e4127876882142b6367",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -38.5,
+        "y_mm": 21
+      },
+      "ref": "C46",
+      "stable_id": "controller.component.c46",
+      "symbol": "CrystalShim_Controller:Controller_C46",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "manufacturer_part_number": "GRM32ER71E226ME15L"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "61972025019977f1b354dfbc03493c531bb0aa79daf2a6a57480aeb39e367900",
+        "kicad": "CrystalShim_Controller:Controller_C47",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "19527eecf0e761160a28c871d66a6214dbff08fc67f2aa0165ff16f2cf3e8417",
+        "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -43,
+        "y_mm": -31
+      },
+      "ref": "C47",
+      "stable_id": "controller.component.c47",
+      "symbol": "CrystalShim_Controller:Controller_C47",
+      "value": "22uF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "manufacturer_part_number": "GRM32ER71E226ME15L"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "61972025019977f1b354dfbc03493c531bb0aa79daf2a6a57480aeb39e367900",
+        "kicad": "CrystalShim_Controller:Controller_C5",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "6e7582941e82eb3eb201dec782195597c8c5b7054090b835ecf2b5ed65612421",
+        "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": 3.3,
+        "y_mm": 49.5
+      },
+      "ref": "C5",
+      "stable_id": "controller.component.c5",
+      "symbol": "CrystalShim_Controller:Controller_C5",
+      "value": "22uF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C6",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "a675735b7b5dffc0e9d785a9124158af9c62a74578107b76c059c90ba2a0c499",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": 8.6,
+        "y_mm": 52.25
+      },
+      "ref": "C6",
+      "stable_id": "controller.component.c6",
+      "symbol": "CrystalShim_Controller:Controller_C6",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C7",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "883e465b7ad274552d4105fff40f71c2d805d5841ebe749d8b2edb295c925aa3",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -20,
+        "y_mm": 1.7
+      },
+      "ref": "C7",
+      "stable_id": "controller.component.c7",
+      "symbol": "CrystalShim_Controller:Controller_C7",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "manufacturer_part_number": "C1608X7R1H104K080AA"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+        "kicad": "CrystalShim_Controller:Controller_C8",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "ecb2ce358e22c9e0f224c3330e7fd4e3feb20cc1d45fd9a275e244904b9651ce",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+      },
+      "placement": {
+        "rotation_deg": 270,
+        "side": "front",
+        "x_mm": -16.9,
+        "y_mm": 5.5
+      },
+      "ref": "C8",
+      "stable_id": "controller.component.c8",
+      "symbol": "CrystalShim_Controller:Controller_C8",
+      "value": "100nF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf",
+        "manufacturer_part_number": "C2012X7R1E105K125AB"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "e7c94ea99c39e3f16f46e47c4519a557a572685a225eda2c5746dfa399742b1a",
+        "kicad": "CrystalShim_Controller:Controller_C9",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "cdee782d92c35e171bd56e31ea7a3dd5ad24854bde8c6cccd406660119f62de6",
+        "tscircuit": "tscircuit:CrystalShim:TDK_C2012"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": 8.2,
+        "y_mm": 48.5
+      },
+      "ref": "C9",
+      "stable_id": "controller.component.c9",
+      "symbol": "CrystalShim_Controller:Controller_C9",
+      "value": "1uF"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.st.com/resource/en/datasheet/stps2l40.pdf",
+        "manufacturer_part_number": "STPS2L40U"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "4f719da2c8b484f40a8d48b5c094911b1ad4c3229b18b67baffe783c9a2b4180",
+        "kicad": "CrystalShim_Controller:Controller_D1",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "a9f8a16383998b30fec5170da65d8a5b549176c6fdc125b40df6bf875b159c6e",
+        "tscircuit": "tscircuit:CrystalShim:STPS2L40U_SMB"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": -29,
+        "y_mm": 6.4
+      },
+      "ref": "D1",
+      "stable_id": "controller.component.d1",
+      "symbol": "CrystalShim_Controller:Controller_D1",
+      "value": "STPS2L40U"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.st.com/resource/en/datasheet/stps2l40.pdf",
+        "manufacturer_part_number": "STPS2L40U"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "e3f1d87d8429adc8f48fb5f18d74e5b6b60861ddf5b06caaf139e9661800022a",
+        "kicad": "CrystalShim_Controller:Controller_D10",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "df2bc931e2da63b70303618770432464875db8b195b3ae2dfce4ffc68474696a",
+        "tscircuit": "tscircuit:CrystalShim:STPS2L40U_SMB"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 36,
+        "y_mm": -11
+      },
+      "ref": "D10",
+      "stable_id": "controller.component.d10",
+      "symbol": "CrystalShim_Controller:Controller_D10",
+      "value": "STPS2L40U"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.st.com/resource/en/datasheet/stps2l40.pdf",
+        "manufacturer_part_number": "STPS2L40U"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "e3f1d87d8429adc8f48fb5f18d74e5b6b60861ddf5b06caaf139e9661800022a",
+        "kicad": "CrystalShim_Controller:Controller_D11",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "df2bc931e2da63b70303618770432464875db8b195b3ae2dfce4ffc68474696a",
+        "tscircuit": "tscircuit:CrystalShim:STPS2L40U_SMB"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 36,
+        "y_mm": 7
+      },
+      "ref": "D11",
+      "stable_id": "controller.component.d11",
+      "symbol": "CrystalShim_Controller:Controller_D11",
+      "value": "STPS2L40U"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.st.com/resource/en/datasheet/stps2l40.pdf",
+        "manufacturer_part_number": "STPS2L40U"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "e3f1d87d8429adc8f48fb5f18d74e5b6b60861ddf5b06caaf139e9661800022a",
+        "kicad": "CrystalShim_Controller:Controller_D2",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "f63077c21133c808825a7bc391167efb8072599b0da36591cf346aeffbc4c8b0",
+        "tscircuit": "tscircuit:CrystalShim:STPS2L40U_SMB"
+      },
+      "placement": {
+        "rotation_deg": 270,
+        "side": "front",
+        "x_mm": -25,
+        "y_mm": -6.9
+      },
+      "ref": "D2",
+      "stable_id": "controller.component.d2",
+      "symbol": "CrystalShim_Controller:Controller_D2",
+      "value": "STPS2L40U"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.kingbrightusa.com/images/catalog/SPEC/WP710A10LGD.pdf",
+        "manufacturer_part_number": "WP710A10LGD"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "2bf1886d27e8ecfbb4088385b2d2e382efc1269875892392bb4cc1491c117898",
+        "kicad": "CrystalShim_Controller:Controller_D4",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "58529e5302220e5c3fe17769d41cd6caa9ce931bd022e388f1b04263c7754e8f",
+        "tscircuit": "tscircuit:LED_THT:LED_D3.0mm"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 24,
+        "y_mm": 14
+      },
+      "ref": "D4",
+      "stable_id": "controller.component.d4",
+      "symbol": "CrystalShim_Controller:Controller_D4",
+      "value": "WP710A10LGD"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.littelfuse.com/assetdocs/tvs-diodes-smbj-series-datasheet?assetguid=ba555e99-a12d-4f72-a0b6-86b06c67171e",
+        "manufacturer_part_number": "SMBJ7.0A"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "2a1f58b92181e2c92acc042066f6fa24cdc6906ec8f826ba903443ebe5d87ed2",
+        "kicad": "CrystalShim_Controller:Controller_D7",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "03e0b130eb5e1675c62362ea58d9e908342dc3a7414fde33a2018cf8ff297c7c",
+        "tscircuit": "tscircuit:CrystalShim:SMBJ7_0A"
+      },
+      "placement": {
+        "rotation_deg": 270,
+        "side": "front",
+        "x_mm": -18.9,
+        "y_mm": 32.3
+      },
+      "ref": "D7",
+      "stable_id": "controller.component.d7",
+      "symbol": "CrystalShim_Controller:Controller_D7",
+      "value": "SMBJ7.0A"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.littelfuse.com/assetdocs/tvs-diodes-smbj-series-datasheet?assetguid=ba555e99-a12d-4f72-a0b6-86b06c67171e",
+        "manufacturer_part_number": "SMBJ7.0A"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "2a1f58b92181e2c92acc042066f6fa24cdc6906ec8f826ba903443ebe5d87ed2",
+        "kicad": "CrystalShim_Controller:Controller_D8",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "03e0b130eb5e1675c62362ea58d9e908342dc3a7414fde33a2018cf8ff297c7c",
+        "tscircuit": "tscircuit:CrystalShim:SMBJ7_0A"
+      },
+      "placement": {
+        "rotation_deg": 270,
+        "side": "front",
+        "x_mm": -51.5,
+        "y_mm": 33
+      },
+      "ref": "D8",
+      "stable_id": "controller.component.d8",
+      "symbol": "CrystalShim_Controller:Controller_D8",
+      "value": "SMBJ7.0A"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.st.com/resource/en/datasheet/stps2l40.pdf",
+        "manufacturer_part_number": "STPS2L40U"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "e3f1d87d8429adc8f48fb5f18d74e5b6b60861ddf5b06caaf139e9661800022a",
+        "kicad": "CrystalShim_Controller:Controller_D9",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "df2bc931e2da63b70303618770432464875db8b195b3ae2dfce4ffc68474696a",
+        "tscircuit": "tscircuit:CrystalShim:STPS2L40U_SMB"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 36,
+        "y_mm": -29
+      },
+      "ref": "D9",
+      "stable_id": "controller.component.d9",
+      "symbol": "CrystalShim_Controller:Controller_D9",
+      "value": "STPS2L40U"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "212b737d726de3e43a9379d24aaa195c87c6db3ddcc9f5581d4806985ff58024",
+        "kicad": "CrystalShim_Controller:Controller_H1",
+        "pad_numbers": [],
+        "source_geometry_sha256": "6bfb9c82c9011f0cff31d28a213f491418289d1882cd1c5d93aed2806e609e1b",
+        "tscircuit": "tscircuit:CrystalShim:MountingHole_3.2mm_NPTH"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -30,
+        "y_mm": 26
+      },
+      "ref": "H1",
+      "stable_id": "controller.component.h1",
+      "symbol": "Mechanical:MountingHole",
+      "value": "3.2mm NPTH"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "212b737d726de3e43a9379d24aaa195c87c6db3ddcc9f5581d4806985ff58024",
+        "kicad": "CrystalShim_Controller:Controller_H2",
+        "pad_numbers": [],
+        "source_geometry_sha256": "510c1745361921213c5720afc421e4101bba782b8329a6b6e1d284a8c24bc972",
+        "tscircuit": "tscircuit:CrystalShim:MountingHole_3.2mm_NPTH"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 30,
+        "y_mm": 26
+      },
+      "ref": "H2",
+      "stable_id": "controller.component.h2",
+      "symbol": "Mechanical:MountingHole",
+      "value": "3.2mm NPTH"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "212b737d726de3e43a9379d24aaa195c87c6db3ddcc9f5581d4806985ff58024",
+        "kicad": "CrystalShim_Controller:Controller_H3",
+        "pad_numbers": [],
+        "source_geometry_sha256": "6cfbb5e64408be1ee7dbd33ff1ec7092a8305037321d668e2b88784642444b46",
+        "tscircuit": "tscircuit:CrystalShim:MountingHole_3.2mm_NPTH"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -30,
+        "y_mm": -50
+      },
+      "ref": "H3",
+      "stable_id": "controller.component.h3",
+      "symbol": "Mechanical:MountingHole",
+      "value": "3.2mm NPTH"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "212b737d726de3e43a9379d24aaa195c87c6db3ddcc9f5581d4806985ff58024",
+        "kicad": "CrystalShim_Controller:Controller_H4",
+        "pad_numbers": [],
+        "source_geometry_sha256": "a03fb11360175e77435c7150804e48f42620bab1faf8faa11de07b97c5dcce06",
+        "tscircuit": "tscircuit:CrystalShim:MountingHole_3.2mm_NPTH"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 30,
+        "y_mm": -50
+      },
+      "ref": "H4",
+      "stable_id": "controller.component.h4",
+      "symbol": "Mechanical:MountingHole",
+      "value": "3.2mm NPTH"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/436/43650/436501200_sd.pdf",
+        "manufacturer_part_number": "43650-0300"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7031d76dd1273991e833308df6c4c7332e61a3d92b595749719371af584739d6",
+        "kicad": "CrystalShim_Controller:Controller_J1",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3"
+        ],
+        "source_geometry_sha256": "291c70d44bb91e83c8fabd64f02b0a0de62ca4329ed5ca06a81a62c2f7cc708a",
+        "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43650-0300_1x03_P3.00mm_Horizontal"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -29,
+        "y_mm": 41
+      },
+      "ref": "J1",
+      "stable_id": "controller.component.j1",
+      "symbol": "CrystalShim_Controller:Controller_J1",
+      "value": "43650-0300"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf",
+        "manufacturer_part_number": "43045-0200"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "3afb7b51cc4c04c28dcf44bf268995e21c1e2b5ebbf5be19a7d597f5035fab30",
+        "kicad": "CrystalShim_Controller:Controller_J2",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "ace1b8e8adcde9a0d787885539bd31a0c0c7745de6c57cc98101284d24a15b8f",
+        "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": -21,
+        "y_mm": -41
+      },
+      "ref": "J2",
+      "stable_id": "controller.component.j2",
+      "symbol": "CrystalShim_Controller:Controller_J2",
+      "value": "43045-0200"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf",
+        "manufacturer_part_number": "43045-0600"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "d72064b1c8ab0d6df17b96ad3ce316448241f658f20e5273b833ef0b6d5fc5de",
+        "kicad": "CrystalShim_Controller:Controller_J3",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_geometry_sha256": "5675aede9f50ff3c41ac41c051515e684a9bd2c0db84ec658d68d9c88db7a726",
+        "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43045-0600_2x03_P3.00mm_Horizontal"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -14,
+        "y_mm": 41
+      },
+      "ref": "J3",
+      "stable_id": "controller.component.j3",
+      "symbol": "CrystalShim_Controller:Controller_J3",
+      "value": "43045-0600"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://gct.co/files/drawings/usb4105.pdf",
+        "manufacturer_part_number": "USB4105-GF-A"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "1e164f2ef5124c7b9c1f6fed99c13bb659f5276f0df7ea64d5009c4408d96e52",
+        "kicad": "CrystalShim_Controller:Controller_J4",
+        "pad_numbers": [
+          "A1",
+          "A12",
+          "A4",
+          "A5",
+          "A6",
+          "A7",
+          "A8",
+          "A9",
+          "B1",
+          "B12",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B9",
+          "SH"
+        ],
+        "source_geometry_sha256": "b47cf9e0946863c30662bb9a2f131d190df5c548417ede7dd4a70c9c0fa08f1d",
+        "tscircuit": "tscircuit:Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 11,
+        "y_mm": -51.325
+      },
+      "ref": "J4",
+      "stable_id": "controller.component.j4",
+      "symbol": "CrystalShim_Controller:Controller_J4",
+      "value": "USB4105-GF-A"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf",
+        "manufacturer_part_number": "43045-0600"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "d72064b1c8ab0d6df17b96ad3ce316448241f658f20e5273b833ef0b6d5fc5de",
+        "kicad": "CrystalShim_Controller:Controller_J5",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_geometry_sha256": "5675aede9f50ff3c41ac41c051515e684a9bd2c0db84ec658d68d9c88db7a726",
+        "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43045-0600_2x03_P3.00mm_Horizontal"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -44,
+        "y_mm": 41
+      },
+      "ref": "J5",
+      "stable_id": "controller.component.j5",
+      "symbol": "CrystalShim_Controller:Controller_J5",
+      "value": "43045-0600"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf",
+        "manufacturer_part_number": "43045-0200"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "3afb7b51cc4c04c28dcf44bf268995e21c1e2b5ebbf5be19a7d597f5035fab30",
+        "kicad": "CrystalShim_Controller:Controller_J6",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "ace1b8e8adcde9a0d787885539bd31a0c0c7745de6c57cc98101284d24a15b8f",
+        "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": -44,
+        "y_mm": -41
+      },
+      "ref": "J6",
+      "stable_id": "controller.component.j6",
+      "symbol": "CrystalShim_Controller:Controller_J6",
+      "value": "43045-0200"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf",
+        "manufacturer_part_number": "43045-0200"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "66a56d11ac85fc33f1709d539b30a233816d5dd8ab57e62db24664d4e7ad5de5",
+        "kicad": "CrystalShim_Controller:Controller_J7",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "f560533001d52ff967ebf49ac56d8d5f1964b40488740af4586812ec31af0c67",
+        "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal"
+      },
+      "placement": {
+        "rotation_deg": 270,
+        "side": "front",
+        "x_mm": 44,
+        "y_mm": -35
+      },
+      "ref": "J7",
+      "stable_id": "controller.component.j7",
+      "symbol": "CrystalShim_Controller:Controller_J7",
+      "value": "43045-0200"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf",
+        "manufacturer_part_number": "43045-0200"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "66a56d11ac85fc33f1709d539b30a233816d5dd8ab57e62db24664d4e7ad5de5",
+        "kicad": "CrystalShim_Controller:Controller_J8",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "f560533001d52ff967ebf49ac56d8d5f1964b40488740af4586812ec31af0c67",
+        "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal"
+      },
+      "placement": {
+        "rotation_deg": 270,
+        "side": "front",
+        "x_mm": 44,
+        "y_mm": -17
+      },
+      "ref": "J8",
+      "stable_id": "controller.component.j8",
+      "symbol": "CrystalShim_Controller:Controller_J8",
+      "value": "43045-0200"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf",
+        "manufacturer_part_number": "43045-0200"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "66a56d11ac85fc33f1709d539b30a233816d5dd8ab57e62db24664d4e7ad5de5",
+        "kicad": "CrystalShim_Controller:Controller_J9",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "f560533001d52ff967ebf49ac56d8d5f1964b40488740af4586812ec31af0c67",
+        "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal"
+      },
+      "placement": {
+        "rotation_deg": 270,
+        "side": "front",
+        "x_mm": 44,
+        "y_mm": 1
+      },
+      "ref": "J9",
+      "stable_id": "controller.component.j9",
+      "symbol": "CrystalShim_Controller:Controller_J9",
+      "value": "43045-0200"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf",
+        "manufacturer_part_number": "SRP5030TA-4R7M"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "73a8dc30ee72bfb43d4510f14b4e6e76b6a12954b4ef5c99aa21a5c6e5ce2f94",
+        "kicad": "CrystalShim_Controller:Controller_L1",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "8f363c2a07eb12bd1989216e3890d2e97c71f69796d908cd3a8c64904ca07849",
+        "tscircuit": "tscircuit:CrystalShim:SRP5030TA"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -12,
+        "y_mm": 5
+      },
+      "ref": "L1",
+      "stable_id": "controller.component.l1",
+      "symbol": "CrystalShim_Controller:Controller_L1",
+      "value": "4.7\u00b5H"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.aosmd.com/res/data_sheets/AO3400A.pdf",
+        "manufacturer_part_number": "AO3400A"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "99220ae0f6a44b6c10ee2a1f85bada1c2eabaa14e32ba8dc54edceb0becdbe2b",
+        "kicad": "CrystalShim_Controller:Controller_Q1",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3"
+        ],
+        "source_geometry_sha256": "db2297f353483801f007196de27dc53943b4cb8c81ce2ca88797364dcb3472e9",
+        "tscircuit": "tscircuit:CrystalShim:AO3400A_SOT23"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -25,
+        "y_mm": 33
+      },
+      "ref": "Q1",
+      "stable_id": "controller.component.q1",
+      "symbol": "CrystalShim_Controller:Controller_Q1",
+      "value": "AO3400A"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.aosmd.com/res/data_sheets/AO3400A.pdf",
+        "manufacturer_part_number": "AO3400A"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "99220ae0f6a44b6c10ee2a1f85bada1c2eabaa14e32ba8dc54edceb0becdbe2b",
+        "kicad": "CrystalShim_Controller:Controller_Q2",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3"
+        ],
+        "source_geometry_sha256": "db2297f353483801f007196de27dc53943b4cb8c81ce2ca88797364dcb3472e9",
+        "tscircuit": "tscircuit:CrystalShim:AO3400A_SOT23"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 35,
+        "y_mm": -35
+      },
+      "ref": "Q2",
+      "stable_id": "controller.component.q2",
+      "symbol": "CrystalShim_Controller:Controller_Q2",
+      "value": "AO3400A"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.aosmd.com/res/data_sheets/AO3400A.pdf",
+        "manufacturer_part_number": "AO3400A"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "99220ae0f6a44b6c10ee2a1f85bada1c2eabaa14e32ba8dc54edceb0becdbe2b",
+        "kicad": "CrystalShim_Controller:Controller_Q3",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3"
+        ],
+        "source_geometry_sha256": "db2297f353483801f007196de27dc53943b4cb8c81ce2ca88797364dcb3472e9",
+        "tscircuit": "tscircuit:CrystalShim:AO3400A_SOT23"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 35,
+        "y_mm": -17
+      },
+      "ref": "Q3",
+      "stable_id": "controller.component.q3",
+      "symbol": "CrystalShim_Controller:Controller_Q3",
+      "value": "AO3400A"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.aosmd.com/res/data_sheets/AO3400A.pdf",
+        "manufacturer_part_number": "AO3400A"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "99220ae0f6a44b6c10ee2a1f85bada1c2eabaa14e32ba8dc54edceb0becdbe2b",
+        "kicad": "CrystalShim_Controller:Controller_Q4",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3"
+        ],
+        "source_geometry_sha256": "db2297f353483801f007196de27dc53943b4cb8c81ce2ca88797364dcb3472e9",
+        "tscircuit": "tscircuit:CrystalShim:AO3400A_SOT23"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 35,
+        "y_mm": 1
+      },
+      "ref": "Q4",
+      "stable_id": "controller.component.q4",
+      "symbol": "CrystalShim_Controller:Controller_Q4",
+      "value": "AO3400A"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R11",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -29,
+        "y_mm": 33.6
+      },
+      "ref": "R11",
+      "stable_id": "controller.component.r11",
+      "symbol": "CrystalShim_Controller:Controller_R11",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R12",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -32.3,
+        "y_mm": 17
+      },
+      "ref": "R12",
+      "stable_id": "controller.component.r12",
+      "symbol": "CrystalShim_Controller:Controller_R12",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERA3AEB9532V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R14",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "0c74e3ddc5d9ae85563267a0e3b1e171fa36fd19c1c2e085dfdcb93e39d10f61",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": -23.4,
+        "y_mm": 16.2
+      },
+      "ref": "R14",
+      "stable_id": "controller.component.r14",
+      "symbol": "CrystalShim_Controller:Controller_R14",
+      "value": "95.3k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERA3AEB103V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R15",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -23.4,
+        "y_mm": 13.7
+      },
+      "ref": "R15",
+      "stable_id": "controller.component.r15",
+      "symbol": "CrystalShim_Controller:Controller_R15",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R2",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "0c74e3ddc5d9ae85563267a0e3b1e171fa36fd19c1c2e085dfdcb93e39d10f61",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": -23.5,
+        "y_mm": 21.7
+      },
+      "ref": "R2",
+      "stable_id": "controller.component.r2",
+      "symbol": "CrystalShim_Controller:Controller_R2",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1000V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R20",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -24,
+        "y_mm": 28.4
+      },
+      "ref": "R20",
+      "stable_id": "controller.component.r20",
+      "symbol": "CrystalShim_Controller:Controller_R20",
+      "value": "100\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF5101V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R40",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 4.3,
+        "y_mm": -46.8
+      },
+      "ref": "R40",
+      "stable_id": "controller.component.r40",
+      "symbol": "CrystalShim_Controller:Controller_R40",
+      "value": "5.1k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF5101V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R41",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 17.7,
+        "y_mm": -46.8
+      },
+      "ref": "R41",
+      "stable_id": "controller.component.r41",
+      "symbol": "CrystalShim_Controller:Controller_R41",
+      "value": "5.1k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1001V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R42",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 21,
+        "y_mm": -43
+      },
+      "ref": "R42",
+      "stable_id": "controller.component.r42",
+      "symbol": "CrystalShim_Controller:Controller_R42",
+      "value": "1k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1003V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R43",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 25,
+        "y_mm": -40
+      },
+      "ref": "R43",
+      "stable_id": "controller.component.r43",
+      "symbol": "CrystalShim_Controller:Controller_R43",
+      "value": "100k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF22R0V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R44",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 8.5,
+        "y_mm": 36.75
+      },
+      "ref": "R44",
+      "stable_id": "controller.component.r44",
+      "symbol": "CrystalShim_Controller:Controller_R44",
+      "value": "22\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF22R0V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R45",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 8.5,
+        "y_mm": 34.25
+      },
+      "ref": "R45",
+      "stable_id": "controller.component.r45",
+      "symbol": "CrystalShim_Controller:Controller_R45",
+      "value": "22\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R46",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 7,
+        "y_mm": -32.6
+      },
+      "ref": "R46",
+      "stable_id": "controller.component.r46",
+      "symbol": "CrystalShim_Controller:Controller_R46",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R50",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 8.5,
+        "y_mm": 39.5
+      },
+      "ref": "R50",
+      "stable_id": "controller.component.r50",
+      "symbol": "CrystalShim_Controller:Controller_R50",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R51",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "0c74e3ddc5d9ae85563267a0e3b1e171fa36fd19c1c2e085dfdcb93e39d10f61",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": 32,
+        "y_mm": 36.9
+      },
+      "ref": "R51",
+      "stable_id": "controller.component.r51",
+      "symbol": "CrystalShim_Controller:Controller_R51",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R52",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 8.5,
+        "y_mm": 42
+      },
+      "ref": "R52",
+      "stable_id": "controller.component.r52",
+      "symbol": "CrystalShim_Controller:Controller_R52",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R53",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 8.5,
+        "y_mm": 46
+      },
+      "ref": "R53",
+      "stable_id": "controller.component.r53",
+      "symbol": "CrystalShim_Controller:Controller_R53",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF6800V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R54",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 32,
+        "y_mm": 42
+      },
+      "ref": "R54",
+      "stable_id": "controller.component.r54",
+      "symbol": "CrystalShim_Controller:Controller_R54",
+      "value": "680\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF3300V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R55",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 4.2,
+        "y_mm": 44.5
+      },
+      "ref": "R55",
+      "stable_id": "controller.component.r55",
+      "symbol": "CrystalShim_Controller:Controller_R55",
+      "value": "330\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF2701V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R60",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 3,
+        "y_mm": 18
+      },
+      "ref": "R60",
+      "stable_id": "controller.component.r60",
+      "symbol": "CrystalShim_Controller:Controller_R60",
+      "value": "2.7k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF2701V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R61",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 6.5,
+        "y_mm": 18
+      },
+      "ref": "R61",
+      "stable_id": "controller.component.r61",
+      "symbol": "CrystalShim_Controller:Controller_R61",
+      "value": "2.7k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF22R0V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R62",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -1,
+        "y_mm": 28.5
+      },
+      "ref": "R62",
+      "stable_id": "controller.component.r62",
+      "symbol": "CrystalShim_Controller:Controller_R62",
+      "value": "22\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF22R0V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R63",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -4.5,
+        "y_mm": 28.5
+      },
+      "ref": "R63",
+      "stable_id": "controller.component.r63",
+      "symbol": "CrystalShim_Controller:Controller_R63",
+      "value": "22\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R64",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -0.5,
+        "y_mm": 18
+      },
+      "ref": "R64",
+      "stable_id": "controller.component.r64",
+      "symbol": "CrystalShim_Controller:Controller_R64",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R65",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -14,
+        "y_mm": 17
+      },
+      "ref": "R65",
+      "stable_id": "controller.component.r65",
+      "symbol": "CrystalShim_Controller:Controller_R65",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R66",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -9.5,
+        "y_mm": 14
+      },
+      "ref": "R66",
+      "stable_id": "controller.component.r66",
+      "symbol": "CrystalShim_Controller:Controller_R66",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R67",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -9.4,
+        "y_mm": 17
+      },
+      "ref": "R67",
+      "stable_id": "controller.component.r67",
+      "symbol": "CrystalShim_Controller:Controller_R67",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+        "manufacturer_part_number": "CRCW25126R80FKEGHP"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "8d238c40540cceb882cd515d06254897a682eb4b249737afb528ed771fc964b0",
+        "kicad": "CrystalShim_Controller:Controller_R68",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "63297c64204da81350f0de334465a399152788001b9c6c60baff1cc2c12e3f55",
+        "tscircuit": "tscircuit:CrystalShim:Vishay_CRCW2512_HP"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -14,
+        "y_mm": 28.5
+      },
+      "ref": "R68",
+      "stable_id": "controller.component.r68",
+      "symbol": "CrystalShim_Controller:Controller_R68",
+      "value": "6.8\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.vishay.com/docs/20043/crcwhpe3.pdf",
+        "manufacturer_part_number": "CRCW25126R80FKEGHP"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "536ca8093714390b14fbcaef54d52a9260839ec59fb70f9b85f93b554f0b3fab",
+        "kicad": "CrystalShim_Controller:Controller_R69",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "be1cfc3125bc8a428a261d592221530a6e616b7cb466c26f799d4bc0c302b5de",
+        "tscircuit": "tscircuit:CrystalShim:Vishay_CRCW2512_HP"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -44,
+        "y_mm": 11
+      },
+      "ref": "R69",
+      "stable_id": "controller.component.r69",
+      "symbol": "CrystalShim_Controller:Controller_R69",
+      "value": "6.8\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF22R0V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R70",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -45.5,
+        "y_mm": 28
+      },
+      "ref": "R70",
+      "stable_id": "controller.component.r70",
+      "symbol": "CrystalShim_Controller:Controller_R70",
+      "value": "22\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF22R0V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R71",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -42,
+        "y_mm": 28
+      },
+      "ref": "R71",
+      "stable_id": "controller.component.r71",
+      "symbol": "CrystalShim_Controller:Controller_R71",
+      "value": "22\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF2701V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R72",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -46,
+        "y_mm": 17
+      },
+      "ref": "R72",
+      "stable_id": "controller.component.r72",
+      "symbol": "CrystalShim_Controller:Controller_R72",
+      "value": "2.7k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF2701V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+        "kicad": "CrystalShim_Controller:Controller_R73",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "307c5fa21440e8d04cabf2fc3a589900db9a71ee381e93531578204c93f9751c",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -42.5,
+        "y_mm": 17
+      },
+      "ref": "R73",
+      "stable_id": "controller.component.r73",
+      "symbol": "CrystalShim_Controller:Controller_R73",
+      "value": "2.7k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1000V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R80",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 34,
+        "y_mm": -39
+      },
+      "ref": "R80",
+      "stable_id": "controller.component.r80",
+      "symbol": "CrystalShim_Controller:Controller_R80",
+      "value": "100\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R81",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 34,
+        "y_mm": -42
+      },
+      "ref": "R81",
+      "stable_id": "controller.component.r81",
+      "symbol": "CrystalShim_Controller:Controller_R81",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1000V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R82",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 34,
+        "y_mm": -21
+      },
+      "ref": "R82",
+      "stable_id": "controller.component.r82",
+      "symbol": "CrystalShim_Controller:Controller_R82",
+      "value": "100\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R83",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 34,
+        "y_mm": -24
+      },
+      "ref": "R83",
+      "stable_id": "controller.component.r83",
+      "symbol": "CrystalShim_Controller:Controller_R83",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1000V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R84",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 34,
+        "y_mm": -3
+      },
+      "ref": "R84",
+      "stable_id": "controller.component.r84",
+      "symbol": "CrystalShim_Controller:Controller_R84",
+      "value": "100\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "manufacturer_part_number": "ERJ3EKF1002V"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+        "kicad": "CrystalShim_Controller:Controller_R85",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "d83810663f0d9335e340f192271d44f0774aef8d398eda2c04dc50345ee340e3",
+        "tscircuit": "tscircuit:CrystalShim:Panasonic_0603"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 34,
+        "y_mm": -6
+      },
+      "ref": "R85",
+      "stable_id": "controller.component.r85",
+      "symbol": "CrystalShim_Controller:Controller_R85",
+      "value": "10k\u03a9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3f.pdf",
+        "manufacturer_part_number": "B3F-1002-G"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "818d59dc8cb99b64fcf9f3888d607eb33441be42eec7e2fad170c4f3fb5b348d",
+        "kicad": "CrystalShim_Controller:Controller_SW1",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "6a59cbe78ca281eef760806fdbdf432792fafd6c5c4bde7ac1495080252ba005",
+        "tscircuit": "tscircuit:Button_Switch_THT:SW_PUSH_6mm_H4.3mm"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 24,
+        "y_mm": -26
+      },
+      "ref": "SW1",
+      "stable_id": "controller.component.sw1",
+      "symbol": "CrystalShim_Controller:Controller_SW1",
+      "value": "B3F-1002-G"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3f.pdf",
+        "manufacturer_part_number": "B3F-1002-G"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "818d59dc8cb99b64fcf9f3888d607eb33441be42eec7e2fad170c4f3fb5b348d",
+        "kicad": "CrystalShim_Controller:Controller_SW2",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "6a59cbe78ca281eef760806fdbdf432792fafd6c5c4bde7ac1495080252ba005",
+        "tscircuit": "tscircuit:Button_Switch_THT:SW_PUSH_6mm_H4.3mm"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 24,
+        "y_mm": -14
+      },
+      "ref": "SW2",
+      "stable_id": "controller.component.sw2",
+      "symbol": "CrystalShim_Controller:Controller_SW2",
+      "value": "B3F-1002-G"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3f.pdf",
+        "manufacturer_part_number": "B3F-1002-G"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "818d59dc8cb99b64fcf9f3888d607eb33441be42eec7e2fad170c4f3fb5b348d",
+        "kicad": "CrystalShim_Controller:Controller_SW3",
+        "pad_numbers": [
+          "1",
+          "2"
+        ],
+        "source_geometry_sha256": "6a59cbe78ca281eef760806fdbdf432792fafd6c5c4bde7ac1495080252ba005",
+        "tscircuit": "tscircuit:Button_Switch_THT:SW_PUSH_6mm_H4.3mm"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 24,
+        "y_mm": -2
+      },
+      "ref": "SW3",
+      "stable_id": "controller.component.sw3",
+      "symbol": "CrystalShim_Controller:Controller_SW3",
+      "value": "B3F-1002-G"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "32432662581b74989e0586cd5041d6d05fb1998287a9b5bfccea62b964746092",
+        "kicad": "CrystalShim_Controller:Controller_TP1",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "b339f9744acd5a25c27892128cdcb6454c21f003da0333c7d5bee5a3f04b0d85",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -30.5,
+        "y_mm": -10
+      },
+      "ref": "TP1",
+      "stable_id": "controller.component.tp1",
+      "symbol": "CrystalShim_Controller:Controller_TP1",
+      "value": "TP1"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "65ffb3956c1cfecc560f15445f42add1398e3b45623970069d8a5c74778ec4a8",
+        "kicad": "CrystalShim_Controller:Controller_TP10",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "929978675d8fea59efcf04f406ebf38bd4abfe54d18de2eb8e544e1ba98f0159",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 15,
+        "y_mm": -21
+      },
+      "ref": "TP10",
+      "stable_id": "controller.component.tp10",
+      "symbol": "CrystalShim_Controller:Controller_TP10",
+      "value": "TP10"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "0bfcf916ff05b4230a3913791f3a5f8f20351e2293c81739828614dcb135c3ca",
+        "kicad": "CrystalShim_Controller:Controller_TP11",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "d942e74965e78a5f310d6cfbb813bd8f17cbf6d1926476d66152dfef13f3cc75",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 15,
+        "y_mm": -5
+      },
+      "ref": "TP11",
+      "stable_id": "controller.component.tp11",
+      "symbol": "CrystalShim_Controller:Controller_TP11",
+      "value": "TP11"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "a9f4f917f9c378310ee88d0220733037274382d543aceb926abd484690363600",
+        "kicad": "CrystalShim_Controller:Controller_TP12",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "f4ed95c48949fcc0cc1b9d609a34a67c61c9954c076954c75a78920c382f5b39",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -10,
+        "y_mm": -49
+      },
+      "ref": "TP12",
+      "stable_id": "controller.component.tp12",
+      "symbol": "CrystalShim_Controller:Controller_TP12",
+      "value": "TP12"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "c26e0a3931556f173eb0d913ccfd5568da76149b3408f800043c62dac3597c1f",
+        "kicad": "CrystalShim_Controller:Controller_TP13",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "712d45aa4e16e6497f5a8132e44888e62c6e10acad3456e08663a6d68dca27fa",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -2,
+        "y_mm": -49
+      },
+      "ref": "TP13",
+      "stable_id": "controller.component.tp13",
+      "symbol": "CrystalShim_Controller:Controller_TP13",
+      "value": "TP13"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "6be8247442add777c2467f02e0c246fb2cc9e238c064f87e10094202b72e0179",
+        "kicad": "CrystalShim_Controller:Controller_TP14",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "cd8e1a762d48e72a1fe51f6db601bfb21388fd1737ef14b879ad172308b2e1ea",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -2,
+        "y_mm": -41
+      },
+      "ref": "TP14",
+      "stable_id": "controller.component.tp14",
+      "symbol": "CrystalShim_Controller:Controller_TP14",
+      "value": "TP14"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "de31a361705f2c5c35508a29839fc62a7bd169655cf675748cc89cef60986aef",
+        "kicad": "CrystalShim_Controller:Controller_TP2",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "c108fa44565807f6ae4baf5f468edf797116f9fb27d1fc9b6e100ceb23558dfe",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -18,
+        "y_mm": -10
+      },
+      "ref": "TP2",
+      "stable_id": "controller.component.tp2",
+      "symbol": "CrystalShim_Controller:Controller_TP2",
+      "value": "TP2"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "f651c58c5b0bd7f6ea148f0f49785695ec83512ddfe2e6762d8e699bed493dae",
+        "kicad": "CrystalShim_Controller:Controller_TP3",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "93ba001c8f0fde968f21a078524cb24a2247911439bbfd01232fb94100f6b849",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -10,
+        "y_mm": -10
+      },
+      "ref": "TP3",
+      "stable_id": "controller.component.tp3",
+      "symbol": "CrystalShim_Controller:Controller_TP3",
+      "value": "TP3"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "c92cf106255e3fb43b620600b3e86cd79e45443a0312e761354901e78fb97350",
+        "kicad": "CrystalShim_Controller:Controller_TP4",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "33640feb1098f0b261c782675e2bce67281a0839ff5f62a34ad12626cf208a22",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -2,
+        "y_mm": -10
+      },
+      "ref": "TP4",
+      "stable_id": "controller.component.tp4",
+      "symbol": "CrystalShim_Controller:Controller_TP4",
+      "value": "TP4"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "d314f65b8186d2da56c951c4de7aca64f76217baa8b763fb49c330d74eb360d6",
+        "kicad": "CrystalShim_Controller:Controller_TP5",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "88d40f7d10fbd51d503343c39cd5a7d3fdfef92cdf7087a61aa32d412508e935",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -26,
+        "y_mm": -18
+      },
+      "ref": "TP5",
+      "stable_id": "controller.component.tp5",
+      "symbol": "CrystalShim_Controller:Controller_TP5",
+      "value": "TP5"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "2009516b1b15c78d553734d112fdac1e2ea94bd54934c28a6dd015bc3e07ee52",
+        "kicad": "CrystalShim_Controller:Controller_TP6",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "e116b415c2f0267a102ced62893cae64905559094e1cb002813661a42e5c6683",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -18,
+        "y_mm": -18
+      },
+      "ref": "TP6",
+      "stable_id": "controller.component.tp6",
+      "symbol": "CrystalShim_Controller:Controller_TP6",
+      "value": "TP6"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "56c4b42639637ea68102045278e8e8907340140d9e040ca653c8f08b7395325c",
+        "kicad": "CrystalShim_Controller:Controller_TP7",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "1ca50ae58af8c307cefa33e688876f15f16586374db1b4e03780362b3738f6d2",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -10,
+        "y_mm": -18
+      },
+      "ref": "TP7",
+      "stable_id": "controller.component.tp7",
+      "symbol": "CrystalShim_Controller:Controller_TP7",
+      "value": "TP7"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "005e92a3448186f218e56b2d720ddb3b169854609cabaf244c6711d876921411",
+        "kicad": "CrystalShim_Controller:Controller_TP8",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "fd282f2f03990533f094d0386ddf7f7d9ce65a1621acb774891d773bab648f33",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -2,
+        "y_mm": -18
+      },
+      "ref": "TP8",
+      "stable_id": "controller.component.tp8",
+      "symbol": "CrystalShim_Controller:Controller_TP8",
+      "value": "TP8"
+    },
+    {
+      "fields": {
+        "exclude_from_bom": true,
+        "exclude_from_cpl": true
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bbbcf652f6d1ebc1f000e30ccb5722b844ac51ab9c433d67ae6817b052e6b8cc",
+        "kicad": "CrystalShim_Controller:Controller_TP9",
+        "pad_numbers": [
+          "1"
+        ],
+        "source_geometry_sha256": "4f26a5f69713a20506ce02fa7a4823fcc69f239c9b5612fb011bce897aedd06e",
+        "tscircuit": "tscircuit:CrystalShim:TestPoint_Pad_D2.0mm_NoPaste"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 15,
+        "y_mm": -13
+      },
+      "ref": "TP9",
+      "stable_id": "controller.component.tp9",
+      "symbol": "CrystalShim_Controller:Controller_TP9",
+      "value": "TP9"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf",
+        "manufacturer_part_number": "ESP32-C6-WROOM-1-N8"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "bd46284bba81765b6a6376643f1cbd8b620c04b8262368ddf1901b7385cc7b60",
+        "kicad": "CrystalShim_Controller:Controller_U1",
+        "pad_numbers": [
+          "1",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "2",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "source_geometry_sha256": "67d1c101046334ae2b10853be9c8c9ace208434a87387ad44101c154df131d8e",
+        "tscircuit": "tscircuit:Espressif:ESP32-C6-WROOM-1"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 20.2,
+        "y_mm": 45.25
+      },
+      "ref": "U1",
+      "stable_id": "controller.component.u1",
+      "symbol": "CrystalShim_Controller:Controller_U1",
+      "value": "ESP32-C6-WROOM-1-N8"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.ti.com/lit/ds/symlink/esds312.pdf",
+        "manufacturer_part_number": "ESDS312DBVR"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "6ed4a6d02ddbab76665e166c8c1f9a57d02a4b158bf3cd65b4e60a795bbf03d7",
+        "kicad": "CrystalShim_Controller:Controller_U11",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "source_geometry_sha256": "2285fd1692bb9d470df8623ab68003279517cf1faa9ce51d2450429faf0a5ce6",
+        "tscircuit": "tscircuit:CrystalShim:ESDS312_DBV5"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -7,
+        "y_mm": 33.6
+      },
+      "ref": "U11",
+      "stable_id": "controller.component.u11",
+      "symbol": "CrystalShim_Controller:Controller_U11",
+      "value": "ESDS312DBVR"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.ti.com/lit/ds/symlink/tca9517a.pdf",
+        "manufacturer_part_number": "TCA9517ADGKR"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "ef448bf1cbeadd6b44ec13b4bfdb2f49d1df8cc3b5e03aaabd8e749dce9e5756",
+        "kicad": "CrystalShim_Controller:Controller_U12",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "source_geometry_sha256": "94f5d35a4e045886949ac86f3e6e69d0ef0d9f723641f21b0a5d540636fce70f",
+        "tscircuit": "tscircuit:CrystalShim:TCA9517A_DGK8"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -44,
+        "y_mm": 22
+      },
+      "ref": "U12",
+      "stable_id": "controller.component.u12",
+      "symbol": "CrystalShim_Controller:Controller_U12",
+      "value": "TCA9517ADGKR"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.ti.com/lit/ds/symlink/esds312.pdf",
+        "manufacturer_part_number": "ESDS312DBVR"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "6ed4a6d02ddbab76665e166c8c1f9a57d02a4b158bf3cd65b4e60a795bbf03d7",
+        "kicad": "CrystalShim_Controller:Controller_U13",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "source_geometry_sha256": "2285fd1692bb9d470df8623ab68003279517cf1faa9ce51d2450429faf0a5ce6",
+        "tscircuit": "tscircuit:CrystalShim:ESDS312_DBV5"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -44,
+        "y_mm": 33
+      },
+      "ref": "U13",
+      "stable_id": "controller.component.u13",
+      "symbol": "CrystalShim_Controller:Controller_U13",
+      "value": "ESDS312DBVR"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf",
+        "manufacturer_part_number": "AP63203WU-7"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "3dcba52299ed364df27c06dfd9a9c39cd40dab7ce230570b6f5696d5a3f91e53",
+        "kicad": "CrystalShim_Controller:Controller_U2",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_geometry_sha256": "2a0da6aeaf3f220457ff48f2e35ebf292d84da9dd2b4dc899aeacfef5e2b7ea3",
+        "tscircuit": "tscircuit:CrystalShim:AP63203_TSOT26"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -20,
+        "y_mm": 5
+      },
+      "ref": "U2",
+      "stable_id": "controller.component.u2",
+      "symbol": "CrystalShim_Controller:Controller_U2",
+      "value": "AP63203WU-7"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.ti.com/lit/ds/symlink/tca9517a.pdf",
+        "manufacturer_part_number": "TCA9517ADGKR"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "ef448bf1cbeadd6b44ec13b4bfdb2f49d1df8cc3b5e03aaabd8e749dce9e5756",
+        "kicad": "CrystalShim_Controller:Controller_U3",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "source_geometry_sha256": "94f5d35a4e045886949ac86f3e6e69d0ef0d9f723641f21b0a5d540636fce70f",
+        "tscircuit": "tscircuit:CrystalShim:TCA9517A_DGK8"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": 0,
+        "y_mm": 22
+      },
+      "ref": "U3",
+      "stable_id": "controller.component.u3",
+      "symbol": "CrystalShim_Controller:Controller_U3",
+      "value": "TCA9517ADGKR"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+        "manufacturer_part_number": "TPS3808G01DBVR"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "66a450eebca552fee76284b54f82c46f83c2845a8ef9555bf90f4cbc6f952065",
+        "kicad": "CrystalShim_Controller:Controller_U4",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_geometry_sha256": "50b8cad5b59f0acfe2d3c4f7b2fd129c268da180f4ae7e7ddac32e2cd6600b0f",
+        "tscircuit": "tscircuit:CrystalShim:TI_DBV6"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -28,
+        "y_mm": 15
+      },
+      "ref": "U4",
+      "stable_id": "controller.component.u4",
+      "symbol": "CrystalShim_Controller:Controller_U4",
+      "value": "TPS3808G01DBVR"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.ti.com/lit/ds/symlink/tps2553.pdf",
+        "manufacturer_part_number": "TPS2553DBVR"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "66a450eebca552fee76284b54f82c46f83c2845a8ef9555bf90f4cbc6f952065",
+        "kicad": "CrystalShim_Controller:Controller_U5",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_geometry_sha256": "50b8cad5b59f0acfe2d3c4f7b2fd129c268da180f4ae7e7ddac32e2cd6600b0f",
+        "tscircuit": "tscircuit:CrystalShim:TI_DBV6"
+      },
+      "placement": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -14,
+        "y_mm": 20.5
+      },
+      "ref": "U5",
+      "stable_id": "controller.component.u5",
+      "symbol": "CrystalShim_Controller:Controller_U5",
+      "value": "TPS2553DBVR"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf",
+        "manufacturer_part_number": "SN74LVC1G08DBVR"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "c798aeba132f1e558885d46d098b520bb8f1beef5999332df1259176ce023fe3",
+        "kicad": "CrystalShim_Controller:Controller_U6",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "source_geometry_sha256": "2285fd1692bb9d470df8623ab68003279517cf1faa9ce51d2450429faf0a5ce6",
+        "tscircuit": "tscircuit:CrystalShim:TI_DBV5"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": -19.5,
+        "y_mm": 25.5
+      },
+      "ref": "U6",
+      "stable_id": "controller.component.u6",
+      "symbol": "CrystalShim_Controller:Controller_U6",
+      "value": "SN74LVC1G08DBVR"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.ti.com/lit/ds/symlink/sn74lvc1g14.pdf",
+        "manufacturer_part_number": "SN74LVC1G14DBVR"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "2028a6e11bd95d85580faa40cba25a5116ab4ee134a17aa73af2fc2564d25783",
+        "kicad": "CrystalShim_Controller:Controller_U7",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "source_geometry_sha256": "4284363b96e2f00217029f5a7421c5d7b5665ea77d58e084a6f0d13cf9da7e43",
+        "tscircuit": "tscircuit:CrystalShim:TI_DBV5"
+      },
+      "placement": {
+        "rotation_deg": 180,
+        "side": "front",
+        "x_mm": 20,
+        "y_mm": -35
+      },
+      "ref": "U7",
+      "stable_id": "controller.component.u7",
+      "symbol": "CrystalShim_Controller:Controller_U7",
+      "value": "SN74LVC1G14DBVR"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.onsemi.com/download/data-sheet/pdf/fsusb42-d.pdf",
+        "manufacturer_part_number": "FSUSB42MUX"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "ca9551a4be4bcf5a458034ad02b6e00f1d6470b6e7265505d39c97e8e9f3b26d",
+        "kicad": "CrystalShim_Controller:Controller_U8",
+        "pad_numbers": [
+          "1",
+          "10",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "source_geometry_sha256": "6deb18c058176fdd64ad7e326eb7f42db22e003a687092e86912ca90ba33fab8",
+        "tscircuit": "tscircuit:CrystalShim:FSUSB42_MSOP10"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 11,
+        "y_mm": -35
+      },
+      "ref": "U8",
+      "stable_id": "controller.component.u8",
+      "symbol": "CrystalShim_Controller:Controller_U8",
+      "value": "FSUSB42MUX"
+    },
+    {
+      "fields": {
+        "datasheet_url": "https://www.st.com/resource/en/datasheet/usblc6-2.pdf",
+        "manufacturer_part_number": "USBLC6-2SC6"
+      },
+      "footprint": {
+        "initial_geometry_sha256": "cb2754f086a5441ca15d1f41679c5e37c297c935f9bbd4f9214c1ef6feb217ca",
+        "kicad": "CrystalShim_Controller:Controller_U9",
+        "pad_numbers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_geometry_sha256": "5213151d9b66377a0b1c6f9bebe87a725983418db4757af658320c0a03bc8e09",
+        "tscircuit": "tscircuit:CrystalShim:USBLC6_2SC6_SOT23_6L"
+      },
+      "placement": {
+        "rotation_deg": 90,
+        "side": "front",
+        "x_mm": 11,
+        "y_mm": -43
+      },
+      "ref": "U9",
+      "stable_id": "controller.component.u9",
+      "symbol": "CrystalShim_Controller:Controller_U9",
+      "value": "USBLC6-2SC6"
+    }
+  ],
+  "metadata": {
+    "board_designator": "Controller",
+    "connected_logical_pin_count": 303,
+    "native_footprint_policy": "Per-reference source-derived native library; never substitute stock geometry.",
+    "physical_numbered_pad_count": 332,
+    "status": "Source manifest only; augmentation, clean ERC/DRC and accepted handoff remain open.",
+    "title": "Crystal Shim isolated controller",
+    "unused_logical_pin_count": 12
+  },
+  "nets": [
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.tp12",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "4"
+        }
+      ],
+      "name": "ACCESSORY_INPUT1",
+      "stable_id": "controller.net.accessory_input1"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.tp13",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "5"
+        }
+      ],
+      "name": "ACCESSORY_INPUT2",
+      "stable_id": "controller.net.accessory_input2"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r51",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.sw2",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "15"
+        }
+      ],
+      "name": "BOOT_N",
+      "stable_id": "controller.net.boot_n"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r52",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "10"
+        }
+      ],
+      "name": "BOOT_STRAP8",
+      "stable_id": "controller.net.boot_strap8"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.c8",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u2",
+          "pad": "6"
+        }
+      ],
+      "name": "BUCK_BST",
+      "stable_id": "controller.net.buck_bst"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.c8",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.l1",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u2",
+          "pad": "5"
+        }
+      ],
+      "name": "BUCK_SW",
+      "stable_id": "controller.net.buck_sw"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.c9",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r53",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r55",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "3"
+        },
+        {
+          "component": "controller.component.u4",
+          "pad": "3"
+        }
+      ],
+      "name": "CHIP_EN",
+      "stable_id": "controller.net.chip_en"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.d10",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.j8",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.q3",
+          "pad": "3"
+        }
+      ],
+      "name": "CHLORINE_DRAIN",
+      "stable_id": "controller.net.chlorine_drain"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.q3",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r82",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r83",
+          "pad": "1"
+        }
+      ],
+      "name": "CHLORINE_GATE",
+      "stable_id": "controller.net.chlorine_gate"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.j1",
+          "pad": "3"
+        },
+        {
+          "component": "controller.component.q1",
+          "pad": "3"
+        }
+      ],
+      "name": "COIL_DRAIN",
+      "stable_id": "controller.net.coil_drain"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.d11",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.j9",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.q4",
+          "pad": "3"
+        }
+      ],
+      "name": "DECHLOR_DRAIN",
+      "stable_id": "controller.net.dechlor_drain"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.q4",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r84",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r85",
+          "pad": "1"
+        }
+      ],
+      "name": "DECHLOR_GATE",
+      "stable_id": "controller.net.dechlor_gate"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.c1",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c11",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c12",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c2",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c20",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c21",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c3",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c30",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c31",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c4",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c40",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c41",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c42",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c43",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c44",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c45",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c46",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c47",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c5",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c6",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c7",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.c9",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.d4",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.d7",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.d8",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.j1",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.j2",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.j3",
+          "pad": "4"
+        },
+        {
+          "component": "controller.component.j3",
+          "pad": "5"
+        },
+        {
+          "component": "controller.component.j3",
+          "pad": "6"
+        },
+        {
+          "component": "controller.component.j4",
+          "pad": "A1"
+        },
+        {
+          "component": "controller.component.j4",
+          "pad": "A12"
+        },
+        {
+          "component": "controller.component.j4",
+          "pad": "B1"
+        },
+        {
+          "component": "controller.component.j4",
+          "pad": "B12"
+        },
+        {
+          "component": "controller.component.j4",
+          "pad": "SH"
+        },
+        {
+          "component": "controller.component.j5",
+          "pad": "4"
+        },
+        {
+          "component": "controller.component.j5",
+          "pad": "5"
+        },
+        {
+          "component": "controller.component.j5",
+          "pad": "6"
+        },
+        {
+          "component": "controller.component.j6",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.q1",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.q2",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.q3",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.q4",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r11",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r15",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r2",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r40",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r41",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r43",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r64",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r65",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r67",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r81",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r83",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r85",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.sw1",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.sw2",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.sw3",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.tp1",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.tp11",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.tp14",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "28"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "29"
+        },
+        {
+          "component": "controller.component.u11",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u12",
+          "pad": "4"
+        },
+        {
+          "component": "controller.component.u13",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u2",
+          "pad": "4"
+        },
+        {
+          "component": "controller.component.u3",
+          "pad": "4"
+        },
+        {
+          "component": "controller.component.u4",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u5",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u6",
+          "pad": "3"
+        },
+        {
+          "component": "controller.component.u7",
+          "pad": "3"
+        },
+        {
+          "component": "controller.component.u8",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u8",
+          "pad": "5"
+        },
+        {
+          "component": "controller.component.u9",
+          "pad": "2"
+        }
+      ],
+      "name": "GND",
+      "stable_id": "controller.net.gnd"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.d4",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r54",
+          "pad": "2"
+        }
+      ],
+      "name": "LED_ANODE",
+      "stable_id": "controller.net.led_anode"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r50",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.sw1",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "12"
+        }
+      ],
+      "name": "MAINTENANCE_N",
+      "stable_id": "controller.net.maintenance_n"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.q1",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r11",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r20",
+          "pad": "2"
+        }
+      ],
+      "name": "MOS_GATE",
+      "stable_id": "controller.net.mos_gate"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r12",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.tp7",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "19"
+        },
+        {
+          "component": "controller.component.u4",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u6",
+          "pad": "2"
+        }
+      ],
+      "name": "PSU_GOOD",
+      "stable_id": "controller.net.psu_good"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r14",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r15",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u4",
+          "pad": "5"
+        }
+      ],
+      "name": "PSU_SENSE",
+      "stable_id": "controller.net.psu_sense"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r82",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "27"
+        }
+      ],
+      "name": "PUMP_CHLORINE",
+      "stable_id": "controller.net.pump_chlorine"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r84",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "26"
+        }
+      ],
+      "name": "PUMP_DECHLOR",
+      "stable_id": "controller.net.pump_dechlor"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r80",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "9"
+        }
+      ],
+      "name": "PUMP_TRANSFER",
+      "stable_id": "controller.net.pump_transfer"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r20",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.tp8",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u6",
+          "pad": "4"
+        }
+      ],
+      "name": "RELAY_GATED",
+      "stable_id": "controller.net.relay_gated"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r2",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "11"
+        },
+        {
+          "component": "controller.component.u6",
+          "pad": "1"
+        }
+      ],
+      "name": "RELAY_REQUEST",
+      "stable_id": "controller.net.relay_request"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r73",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "7"
+        },
+        {
+          "component": "controller.component.u12",
+          "pad": "7"
+        }
+      ],
+      "name": "RESERVOIR_SCL",
+      "stable_id": "controller.net.reservoir_scl"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.j5",
+          "pad": "3"
+        },
+        {
+          "component": "controller.component.r71",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u13",
+          "pad": "5"
+        }
+      ],
+      "name": "RESERVOIR_SCL_CABLE",
+      "stable_id": "controller.net.reservoir_scl_cable"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r71",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u12",
+          "pad": "2"
+        }
+      ],
+      "name": "RESERVOIR_SCL_PROTECTED",
+      "stable_id": "controller.net.reservoir_scl_protected"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r72",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "6"
+        },
+        {
+          "component": "controller.component.u12",
+          "pad": "6"
+        }
+      ],
+      "name": "RESERVOIR_SDA",
+      "stable_id": "controller.net.reservoir_sda"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.j5",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r70",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u13",
+          "pad": "4"
+        }
+      ],
+      "name": "RESERVOIR_SDA_CABLE",
+      "stable_id": "controller.net.reservoir_sda_cable"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r70",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u12",
+          "pad": "3"
+        }
+      ],
+      "name": "RESERVOIR_SDA_PROTECTED",
+      "stable_id": "controller.net.reservoir_sda_protected"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r55",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.sw3",
+          "pad": "1"
+        }
+      ],
+      "name": "RESET_CONTACT",
+      "stable_id": "controller.net.reset_contact"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r63",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u3",
+          "pad": "2"
+        }
+      ],
+      "name": "SCL_BUFFER_A",
+      "stable_id": "controller.net.scl_buffer_a"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.j3",
+          "pad": "3"
+        },
+        {
+          "component": "controller.component.r63",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u11",
+          "pad": "5"
+        }
+      ],
+      "name": "SCL_CABLE",
+      "stable_id": "controller.net.scl_cable"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r62",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u3",
+          "pad": "3"
+        }
+      ],
+      "name": "SDA_BUFFER_A",
+      "stable_id": "controller.net.sda_buffer_a"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.j3",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r62",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u11",
+          "pad": "4"
+        }
+      ],
+      "name": "SDA_CABLE",
+      "stable_id": "controller.net.sda_cable"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r64",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "8"
+        },
+        {
+          "component": "controller.component.u12",
+          "pad": "5"
+        },
+        {
+          "component": "controller.component.u3",
+          "pad": "5"
+        }
+      ],
+      "name": "SENSOR_BUS_EN",
+      "stable_id": "controller.net.sensor_bus_en"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r65",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "20"
+        },
+        {
+          "component": "controller.component.u5",
+          "pad": "3"
+        }
+      ],
+      "name": "SENSOR_POWER_EN",
+      "stable_id": "controller.net.sensor_power_en"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r66",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "21"
+        },
+        {
+          "component": "controller.component.u5",
+          "pad": "4"
+        }
+      ],
+      "name": "SENSOR_POWER_FAULT_N",
+      "stable_id": "controller.net.sensor_power_fault_n"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r61",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.tp6",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "17"
+        },
+        {
+          "component": "controller.component.u3",
+          "pad": "7"
+        }
+      ],
+      "name": "SENSOR_SCL",
+      "stable_id": "controller.net.sensor_scl"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r60",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.tp5",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "16"
+        },
+        {
+          "component": "controller.component.u3",
+          "pad": "6"
+        }
+      ],
+      "name": "SENSOR_SDA",
+      "stable_id": "controller.net.sensor_sda"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r54",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "18"
+        }
+      ],
+      "name": "STATUS_LED",
+      "stable_id": "controller.net.status_led"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.d9",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.j7",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.q2",
+          "pad": "3"
+        }
+      ],
+      "name": "TRANSFER_DRAIN",
+      "stable_id": "controller.net.transfer_drain"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.q2",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r80",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r81",
+          "pad": "1"
+        }
+      ],
+      "name": "TRANSFER_GATE",
+      "stable_id": "controller.net.transfer_gate"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.tp9",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "24"
+        }
+      ],
+      "name": "UART0_RX",
+      "stable_id": "controller.net.uart0_rx"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.tp10",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "25"
+        }
+      ],
+      "name": "UART0_TX",
+      "stable_id": "controller.net.uart0_tx"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.j4",
+          "pad": "A5"
+        },
+        {
+          "component": "controller.component.r40",
+          "pad": "1"
+        }
+      ],
+      "name": "USB_CC1",
+      "stable_id": "controller.net.usb_cc1"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.j4",
+          "pad": "B5"
+        },
+        {
+          "component": "controller.component.r41",
+          "pad": "1"
+        }
+      ],
+      "name": "USB_CC2",
+      "stable_id": "controller.net.usb_cc2"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r44",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "13"
+        }
+      ],
+      "name": "USB_D_N",
+      "stable_id": "controller.net.usb_d_n"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.j4",
+          "pad": "A7"
+        },
+        {
+          "component": "controller.component.j4",
+          "pad": "B7"
+        },
+        {
+          "component": "controller.component.u8",
+          "pad": "4"
+        },
+        {
+          "component": "controller.component.u9",
+          "pad": "3"
+        },
+        {
+          "component": "controller.component.u9",
+          "pad": "4"
+        }
+      ],
+      "name": "USB_D_PORT_N",
+      "stable_id": "controller.net.usb_d_n_port"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r44",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u8",
+          "pad": "6"
+        }
+      ],
+      "name": "USB_D_SWITCH_N",
+      "stable_id": "controller.net.usb_d_n_switch"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r45",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "14"
+        }
+      ],
+      "name": "USB_D_P",
+      "stable_id": "controller.net.usb_d_p"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.j4",
+          "pad": "A6"
+        },
+        {
+          "component": "controller.component.j4",
+          "pad": "B6"
+        },
+        {
+          "component": "controller.component.u8",
+          "pad": "3"
+        },
+        {
+          "component": "controller.component.u9",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u9",
+          "pad": "6"
+        }
+      ],
+      "name": "USB_D_PORT_P",
+      "stable_id": "controller.net.usb_d_p_port"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r45",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u8",
+          "pad": "7"
+        }
+      ],
+      "name": "USB_D_SWITCH_P",
+      "stable_id": "controller.net.usb_d_p_switch"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r46",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u7",
+          "pad": "4"
+        },
+        {
+          "component": "controller.component.u8",
+          "pad": "10"
+        }
+      ],
+      "name": "USB_SWITCH_OE_N",
+      "stable_id": "controller.net.usb_switch_oe_n"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.j4",
+          "pad": "A4"
+        },
+        {
+          "component": "controller.component.j4",
+          "pad": "A9"
+        },
+        {
+          "component": "controller.component.j4",
+          "pad": "B4"
+        },
+        {
+          "component": "controller.component.j4",
+          "pad": "B9"
+        },
+        {
+          "component": "controller.component.r42",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u9",
+          "pad": "5"
+        }
+      ],
+      "name": "USB_VBUS",
+      "stable_id": "controller.net.usb_vbus"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.r42",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r43",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u7",
+          "pad": "2"
+        }
+      ],
+      "name": "USB_VBUS_SENSE",
+      "stable_id": "controller.net.usb_vbus_sense"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.c47",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.d10",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.d11",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.d9",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.j6",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.j7",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.j8",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.j9",
+          "pad": "1"
+        }
+      ],
+      "name": "V12_PUMP",
+      "stable_id": "controller.net.v12_pump"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.c11",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c12",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c3",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c30",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c31",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c4",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c40",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c41",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c45",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c46",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c5",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c6",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.l1",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.r12",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r46",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r50",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r51",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r52",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r53",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r60",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r61",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r66",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r72",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r73",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.tp4",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u1",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u12",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u12",
+          "pad": "8"
+        },
+        {
+          "component": "controller.component.u2",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u3",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u3",
+          "pad": "8"
+        },
+        {
+          "component": "controller.component.u4",
+          "pad": "6"
+        },
+        {
+          "component": "controller.component.u6",
+          "pad": "5"
+        },
+        {
+          "component": "controller.component.u7",
+          "pad": "5"
+        },
+        {
+          "component": "controller.component.u8",
+          "pad": "1"
+        }
+      ],
+      "name": "V3V3",
+      "stable_id": "controller.net.v3v3"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.c1",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c2",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c42",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c7",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.d1",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.d2",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.tp3",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u2",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.u2",
+          "pad": "3"
+        },
+        {
+          "component": "controller.component.u5",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u5",
+          "pad": "5"
+        }
+      ],
+      "name": "V5_LOGIC",
+      "stable_id": "controller.net.v5_logic"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.d1",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.j1",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r14",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.tp2",
+          "pad": "1"
+        }
+      ],
+      "name": "V5_PSU",
+      "stable_id": "controller.net.v5_psu"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.d8",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.j5",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r69",
+          "pad": "2"
+        }
+      ],
+      "name": "V5_RESERVOIR",
+      "stable_id": "controller.net.v5_reservoir"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.d7",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.j3",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r68",
+          "pad": "2"
+        }
+      ],
+      "name": "V5_SENSOR",
+      "stable_id": "controller.net.v5_sensor"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.c43",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c44",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r67",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r68",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.r69",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.u5",
+          "pad": "6"
+        }
+      ],
+      "name": "V5_SENSOR_SW",
+      "stable_id": "controller.net.v5_sensor_sw"
+    },
+    {
+      "endpoints": [
+        {
+          "component": "controller.component.c20",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.c21",
+          "pad": "1"
+        },
+        {
+          "component": "controller.component.d2",
+          "pad": "2"
+        },
+        {
+          "component": "controller.component.j2",
+          "pad": "1"
+        }
+      ],
+      "name": "V5_SERVICE",
+      "stable_id": "controller.net.v5_service"
+    }
+  ],
+  "schema_version": 1,
+  "versions": {
+    "bun": "1.3.11",
+    "circuit_json_to_kicad": "0.0.205",
+    "node": "24.3.0",
+    "tscircuit": "0.0.2465"
+  }
+}

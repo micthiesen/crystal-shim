@@ -25,6 +25,19 @@ test("controller source manifest retains stable refs, full logical nets and all 
     }
   }
 
+  expect(manifest.board.width_mm).toBe(150);
+  expect(manifest.board.height_mm).toBe(110);
+  expect(manifest.board.layer_count).toBe(4);
+  expect(
+    manifest.board.holes
+      .filter((hole) => /^H[1-4]$/.test(hole.ref))
+      .map((hole) => [hole.ref, hole.x_mm, hole.y_mm, hole.drill_mm]),
+  ).toEqual([
+    ["H1", -68, 48, 3.2],
+    ["H2", 68, 48, 3.2],
+    ["H3", -68, -48, 3.2],
+    ["H4", 68, -48, 3.2],
+  ]);
   expect(manifest.board.holes).toHaveLength(14);
   expect(
     manifest.board.holes.filter((h) => h.ref === "J4").map((h) => h.stable_id),
