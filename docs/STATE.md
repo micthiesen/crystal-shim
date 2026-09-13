@@ -4,6 +4,13 @@ Last updated: 2026-09-13
 
 ## Now
 
+The owner has selected a new [sensor visual target](design/sensor-visual-target.md):
+slim horizontal pad segments, entirely below the rim, thin adhesive mounting and
+a left-exiting cable. Water stays at least 10 mm below the rim. Discuss the other
+boards visually before resizing or placement work. The target supersedes the old
+sensor clip/above-rim requirements; implementation and electrical verification
+are pending. The routing handoffs below still describe the existing geometry.
+
 The agreed simplified design is captured in the specifications, BOM, firmware
 bindings, all three tscircuit schematics and placements, and native KiCad projects.
 The current milestone is routing preparation, not fabrication or commissioning.

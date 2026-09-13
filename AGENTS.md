@@ -21,8 +21,8 @@ parts, firmware, PCB source, test evidence, and exported mechanical artifacts.
   STATE. Routing and fabrication acceptance remain distinct.
 - `bom/bom.csv`: candidate/selected parts and independent purchase status.
 - `testing/test-matrix.csv`: commissioning criteria and actual evidence.
-- `cad/`: enclosure exports and the PCB attachment interface. The owner models
-  the separate sensor clip outside this project.
+- `cad/`: enclosure exports and the PCB attachment interface. The new sensor
+  visual target uses adhesive mounting without a separate clip.
 
 ## Design rules
 
@@ -41,10 +41,13 @@ carry only isolated low voltage. PE is continuous and never switched. Switch hot
 neutral is never switched alone. The pump remains connected to household mains
 through a filter and relay, without an isolation transformer.
 
-Design for freshwater, 5 mm glass and a 50 mm sensing span down from the rim. Keep
-the sensor reasonably compact and provide an attachment interface for the owner's
-separate printed clip, which holds it snug against glass by gravity/friction.
-The PCB stays outside the glass; the clip may go over it. Adhesive is not required.
+Design for freshwater, 5 mm glass and a 50 mm physical sensing span. Follow the
+accepted sensor visual target in docs/design/sensor-visual-target.md: slim board
+entirely below the rim, thin adhesive film between the sensing face and glass,
+no separate mount, and cable exiting left when looking at the outward electronics.
+Water stays at least 10 mm below the rim. Reconcile span and reference placement
+during redesign; the 18 × 64 mm envelope is a target pending engineering checks.
+Discuss all board visual targets before resizing or moving components.
 Other hardware sits on a spacious flat surface behind the tank within 8 inches;
 preserve the sensor harness length limit. The ESP hosts the local settings and
 schedule webpage; its implementation must not block local control.

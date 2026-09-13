@@ -1,5 +1,10 @@
 # Active sensor daughterboard
 
+The next design follows the accepted [visual target](design/sensor-visual-target.md)
+for a slim, adhesive-mounted, entirely below-rim board with a left-exiting cable.
+The description below records the existing implementation pending redesign;
+its above-rim head and clip requirements are superseded by that target.
+
 The final tank board uses one FDC1004DGSR, a fixed 3.3 V TPS7A2433DBVR regulator,
 one continuous 50 mm level electrode and one wet/liquid reference. Its local
 converter communicates with the ESP over the existing short 6-pin5 V/I2C harness.
