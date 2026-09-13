@@ -54,6 +54,7 @@ are not a released electrical design.
 | D-20 | Sensor bus power sequencing | TCA9517A separates pullup domains; independent GPIO0 enable disconnects the cable during recovery/startup | Prevent sensor backfeed and isolate the unpowered cable's low/floating bus |
 | D-21 | Controlled sensor recovery | TPS2553 with GPIO22 enable/GPIO23 fault; 6.8 ohm cable feed with local 1+10 uF bulk, separate input bleeders and LT3042 PGFB isolation diode per the [reviewed power design](design/sensor-power-refinement.md). Complete input budget 30 uF; output 20 uF; 200 ms startup and 2 s off | Recover transient sensor faults without blocking control; persistent faults stay off; final source-order/transient evidence remains owed |
 | D-22 | Private Matter accessory behavior | Use controlled-load `0x010A` identity for Apple Home interoperability, retaining boot-off and bounded leases. Expose only implemented commands; document deviation from the complete plug profile rather than claim conformance. Certification is outside this personal build | Radio implementation can proceed; actual Apple Home pairing/behavior remains G-05 |
+| D-23 | Future refill attachment | Reserve GPIO1/2/3, separate digital bus, direct hardware inhibit and protected 50 mA logic-power target per [interface contract](design/refill-expansion.md); later motor board uses its own isolated pump supply. Full extension spec and implementation deferred | Controller source/ECO, power and enclosure evidence required before routing/fabrication; present boards currently lack the interface |
 
 The confirmed inputs do not establish electrode geometry or physical thresholds.
 Set geometry from TI's reference, the installation constraints and documented
@@ -71,8 +72,10 @@ must answer before work can proceed.
 
 ## Release gates
 
-Gate IDs are stable references, not execution order. G-02/G-03/G-04 are required
-for fabrication release of the complete board set. G-01/G-05/G-06 use the final
+Gate IDs are stable references, not execution order. The D-23 attachment
+reservation is included in G-02/G-03/G-04 and must be physically captured before
+the present boards are ordered; the future refill feature is not a release gate.
+G-02/G-03/G-04 are required for fabrication release of the complete board set. G-01/G-05/G-06 use the final
 hardware after assembly; their measurements are not pre-fabrication requirements.
 
 | Gate | Stage | Evidence needed |

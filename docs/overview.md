@@ -12,6 +12,10 @@ component selection through reference research, calculations and design review
 before fabrication; calibrate and verify actual performance on the final assembly.
 See [the build sequence](build.md).
 
+The present boards must reserve the [future refill expansion interface](design/refill-expansion.md)
+before fabrication. The refill/conditioning feature and later expansion boards
+remain deferred; its full specification stays in the linked Executor artifact.
+
 The North American skimmer is specified at 120 VAC, 60 Hz, 4 W. Starting behavior
 must be accounted for in relay and fuse selection from documented ratings and
 design margins, then measured during final-assembly commissioning.

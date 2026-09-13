@@ -1,5 +1,10 @@
 # Controller component source
 
+The [future refill interface](../../../docs/design/refill-expansion.md) is a new
+pre-routing requirement, not part of this accepted source/handoff. GPIO1/2/3 remain
+NC and no expansion connector/power branch exists yet. Follow the declared ECO
+workflow to close that reservation before fabrication.
+
 The controller is adopted at [`../kicad/`](../kicad/) with
 [`handoff.lock.json`](handoff.lock.json). The original 113 native files were
 copied byte-for-byte from the reviewed stage and verified before lock creation;

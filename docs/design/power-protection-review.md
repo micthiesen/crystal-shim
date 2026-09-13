@@ -134,6 +134,11 @@ application at 850 mA is a loss model, not a new guaranteed test point. Publishe
 thermal resistances use four-layer test boards; they do not establish the
 temperature on this project's final layout.
 
+The [future refill logic-power reservation](refill-expansion.md#power-reservation)
+adds a 50 mA design target that is not covered by this existing calculation.
+Its protected branch, source combinations and startup/fault margins must be
+closed before fabrication; future pumps use a separate isolated supply.
+
 ## Startup and fault behavior
 
 The 4.7 nF ramp capacitor gives about 0.426 V/ms nominal. Scaling TI's typical

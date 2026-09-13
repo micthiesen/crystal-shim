@@ -5,6 +5,12 @@ calculations now live in the [controller](design/controller-design-basis.md) and
 [mains](design/mains-design-basis.md) design basis. Those documents refine the
 initial choices below; no layout or fabrication gate has passed.
 
+The [future refill interface reservation](design/refill-expansion.md) adds a separate
+digital expansion bus, hardware disable and protected 50 mA logic-power target to
+the controller design requirements. These are not yet captured. Later pumps use
+a separate isolated supply on their expansion board; the current mains board
+does not gain pump outputs or an unbudgeted power export.
+
 ## Power and controller
 
 | Function | Proposed choice | Remaining work |

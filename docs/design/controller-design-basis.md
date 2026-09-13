@@ -41,7 +41,11 @@ leaving the peripheral available to the Matter entropy source used by Stillair.
 | Reserved UART0 | 16, 17 | 25, 24 | Accessible unpopulated service pads; no required external UART bridge |
 | NC | n/a | 22 | No connection |
 
-Other GPIOs remain explicitly unused in the schematic and manifest. See
+Other GPIOs remain explicitly unused in the schematic and manifest.
+GPIO1/2/3 are now reserved for the [future expansion interface](refill-expansion.md),
+but remain NC in the current source/adopted board until its required ECO. The
+50 mA expansion logic target is additional to the existing budget below and
+requires its own protected branch and updated source-combination analysis. See
 [module datasheet v1.4, Tables 3-1 and 4-3, and sections 9-11](https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf).
 The module body is 18 x 25.5 mm; its final antenna position must satisfy the
 manufacturer keepout and remain away from the filter, mains wiring and tank.

@@ -132,4 +132,10 @@ This is a personal project: commit and push completed work directly to `main`, w
 a PR or repeated confirmation. If no remote exists, commit locally and report that.
 Preserve concurrent changes. Do not purchase parts, flash hardware, or energize mains
 as a side effect of setup. Keep durable knowledge in this repository, not personal
-memory. Update these living instructions as project conventions emerge.
+memory.
+Preserve the [future refill attachment reservation](docs/design/refill-expansion.md):
+GPIO1/2/3, separate bus, hardware inhibit and protected logic power must be captured
+before controller routing/fabrication. The linked external artifact owns the future
+feature; do not implement refill/conditioning or add its pump loads to the present
+mains supply as part of this reservation.
+Update these living instructions as project conventions emerge.

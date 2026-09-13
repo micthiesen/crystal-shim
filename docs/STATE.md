@@ -4,6 +4,15 @@ Last updated: 2026-09-12
 
 ## Now
 
+- New scope: [future refill attachment reservation](design/refill-expansion.md),
+  referencing the external Executor artifact without importing its full spec.
+  GPIO1/2/3, a separate bus, hardware inhibit and protected 50 mA electronics target
+  are reserved as requirements. No source/native circuit has changed; controller
+  capture/ECO, power closure and connector fit are required before routing/order.
+  Later pump drivers and their separate isolated supply remain extension work.
+  Independent interface review completed; `sh scripts/check.sh` passed after this
+  documentation change. Physical expansion capture and hardware tests remain open.
+
 - The [original full delivery goal](goal.md) remains active. This is one fabrication
   cycle for three final-use boards, actual ESP firmware and final-unit commissioning.
   No fabrication or operating gate has passed; all 34 commissioning rows remain
@@ -38,6 +47,12 @@ Last updated: 2026-09-12
   do not repeat the question or make other work depend on it.
 
 ## Next
+
+Close the [refill attachment interface](design/refill-expansion.md#closure-before-the-present-board-order)
+in controller source and a guarded ECO before controller routing. This narrowly
+adds physical expansion provisions; do not implement the refill feature. The
+existing mains staging task below can continue independently because pump power
+will not use the present mains board.
 
 Finish independent review of the saved mains thermal/stencil proposal, integrated
 augmentation and staging wrapper/native helpers. Reconcile initial ignored-check
