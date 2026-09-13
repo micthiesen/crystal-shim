@@ -36,3 +36,8 @@ node --test firmware/settings/ui/app.test.mjs
 )
 
 python3 -m unittest discover -s pcb/tools -p test_check_routing.py
+python3 -m unittest discover -s pcb/tools -p test_kicad_native.py
+python3 -m unittest discover -s pcb/tools -p test_kicad_native_integration.py
+python3 -m unittest discover -s pcb/tools -p test_kicad_schematic.py
+python3 -m unittest discover -s pcb/tools -p test_pcb_readiness.py
+python3 -m unittest discover -s pcb/tools -p test_pcb_workflow.py

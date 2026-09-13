@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "readiness_profiles": "pcb/tools/readiness-profiles.json",
+  "native_python": [
+    "sh",
+    "pcb/tools/kicad_python.sh"
+  ],
+  "boards": {
+    "controller": {
+      "native_dir": "pcb/controller/kicad",
+      "basename": "controller",
+      "manifest": "pcb/dist/controller/design/design-manifest.json",
+      "augmentation": "pcb/controller/design/kicad-augment.json",
+      "lock": "pcb/controller/design/handoff.lock.json",
+      "source_cwd": "pcb",
+      "source_roots": [
+        "pcb/controller/design",
+        "pcb/scripts/lib",
+        "pcb/package.json",
+        "pcb/bun.lock"
+      ],
+      "build": [
+        "bun",
+        "run",
+        "render:controller"
+      ],
+      "source_checks": [
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "source",
+          "controller/design/controller.circuit.tsx"
+        ],
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "pin_specification",
+          "controller/design/controller.circuit.tsx"
+        ],
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "schematic-placement",
+          "controller/design/controller.circuit.tsx"
+        ],
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "netlist",
+          "controller/design/controller.circuit.tsx"
+        ],
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "placement",
+          "controller/design/controller.circuit.tsx"
+        ]
+      ],
+      "contract": [
+        "docs/mechanical.md",
+        "docs/design/controller-design-basis.md",
+        "docs/design/manufacturing-output.md"
+      ],
+      "visual_targets": [
+        "docs/design/stacked-board-visual-target.png"
+      ]
+    },
+    "mains": {
+      "native_dir": "pcb/mains/kicad",
+      "basename": "mains",
+      "manifest": "pcb/dist/mains/design/design-manifest.json",
+      "augmentation": "pcb/mains/design/kicad-augment.json",
+      "lock": "pcb/mains/design/handoff.lock.json",
+      "source_cwd": "pcb",
+      "source_roots": [
+        "pcb/mains/design",
+        "pcb/scripts/lib",
+        "pcb/package.json",
+        "pcb/bun.lock",
+        "pcb/controller/design"
+      ],
+      "build": [
+        "bun",
+        "run",
+        "render:mains"
+      ],
+      "source_checks": [
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "source",
+          "mains/design/mains.circuit.tsx"
+        ],
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "pin_specification",
+          "mains/design/mains.circuit.tsx"
+        ],
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "schematic-placement",
+          "mains/design/mains.circuit.tsx"
+        ],
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "netlist",
+          "mains/design/mains.circuit.tsx"
+        ],
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "placement",
+          "mains/design/mains.circuit.tsx"
+        ]
+      ],
+      "contract": [
+        "docs/mechanical.md",
+        "docs/design/mains-design-basis.md",
+        "docs/design/manufacturing-output.md"
+      ],
+      "visual_targets": [
+        "docs/design/stacked-board-visual-target.png"
+      ]
+    },
+    "sensor": {
+      "native_dir": "pcb/sensor/kicad",
+      "basename": "sensor",
+      "manifest": "pcb/dist/sensor/design/design-manifest.json",
+      "augmentation": "pcb/sensor/design/kicad-augment.json",
+      "lock": "pcb/sensor/design/handoff.lock.json",
+      "source_cwd": "pcb",
+      "source_roots": [
+        "pcb/sensor/design",
+        "pcb/scripts/lib",
+        "pcb/package.json",
+        "pcb/bun.lock",
+        "pcb/controller/design"
+      ],
+      "build": [
+        "bun",
+        "run",
+        "render:sensor"
+      ],
+      "source_checks": [
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "source",
+          "sensor/design/sensor.circuit.tsx"
+        ],
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "pin_specification",
+          "sensor/design/sensor.circuit.tsx"
+        ],
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "schematic-placement",
+          "sensor/design/sensor.circuit.tsx"
+        ],
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "netlist",
+          "sensor/design/sensor.circuit.tsx"
+        ],
+        [
+          "bunx",
+          "tsci",
+          "check",
+          "placement",
+          "sensor/design/sensor.circuit.tsx"
+        ]
+      ],
+      "contract": [
+        "docs/mechanical.md",
+        "docs/design/sensor-design-basis.md",
+        "docs/design/manufacturing-output.md"
+      ],
+      "visual_targets": [
+        "docs/design/sensor-visual-target.png"
+      ],
+      "source_check_limitations": {
+        "4": {
+          "argv": [
+            "bunx",
+            "tsci",
+            "check",
+            "placement",
+            "sensor/design/sensor.circuit.tsx"
+          ],
+          "returncode": 1,
+          "stdout_sha256": "34e560ab84dd19cb4b6f939791adddb9258fb5c907083682cb1c6e5968f82715",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "reason": "Pinned tsci placement treats copper-only E1 as a top-side connector body and reports 15 false body intrusions across its full multilayer bounding box. Its own placement DRC reports 0 errors and 0 warnings. Require the exact report, native copper DRC and layer-aware readiness; do not resize the accepted electrode to satisfy this model.",
+          "countercheck": "native_drc_and_preparation"
+        }
+      }
+    }
+  }
+}

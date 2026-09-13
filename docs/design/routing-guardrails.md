@@ -64,6 +64,12 @@ disabled. Rule `opt` values keep the full trunk width even when starting at a
 small pad. Select a smaller width only for a short pad escape, then return to
 netclass width. DRC minimums still apply if a toolbar override is selected.
 
+These are editor-session choices. The native board API's in-memory defaults do
+not prove the GUI choices were saved; available `.kicad_prl` preferences are
+reported separately by the preparation audit. Netclass values and native rule
+minimums/optimums are checked from the saved project and rules. A session
+preference report does not prove which width an unsaved open editor will choose.
+
 | Route | Default / main-route minimum |
 | --- | --- |
 | Controller ordinary signal | 0.25 mm default; 0.15 mm fabrication minimum allows fine-pitch escapes |

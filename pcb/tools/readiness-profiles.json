@@ -1,0 +1,480 @@
+{
+  "schema_version": 1,
+  "boards": {
+    "controller": {
+      "schema_version": 1,
+      "board": "controller",
+      "lock": "pcb/controller/design/handoff.lock.json",
+      "augmentation": "pcb/controller/design/kicad-augment.json",
+      "policy": "pcb/tools/routing-policy.json",
+      "rules_source": "pcb/controller/design/routing-guardrails-rules.txt",
+      "checks": {
+        "geometry": {
+          "basis": "accepted_manifest"
+        },
+        "stackup": {
+          "copper_mm": [
+            0.035,
+            0.0152,
+            0.0152,
+            0.035
+          ],
+          "dielectric_mm": [
+            0.2104,
+            1.065,
+            0.2104
+          ],
+          "dielectric_er": [
+            4.4,
+            4.6,
+            4.4
+          ],
+          "finish": "ENIG",
+          "nominal_order_mm": 1.6,
+          "order_note_tokens": [
+            "ENIG",
+            "Stencil",
+            "JLC04161H-7628",
+            "81-99 ohm",
+            "0.100 mm"
+          ],
+          "process_document": "docs/design/manufacturing-output.md"
+        },
+        "planes": {
+          "operation": "routing-guardrails-zone",
+          "clearance_mm": 0.15,
+          "minimum_thickness_mm": 0.2,
+          "pad_connection": "tht_thermal",
+          "thermal_gap_mm": 0.3,
+          "thermal_spoke_mm": 0.5
+        },
+        "vias": {
+          "operation": "routing-guardrails-via",
+          "tent_all": true,
+          "extra_policy_vias": false
+        },
+        "rules": {
+          "exact_generated_file": true,
+          "audit_escapes": true
+        },
+        "routing": {
+          "default_width_mm": 0.25,
+          "default_via_mm": [
+            0.6,
+            0.3
+          ],
+          "classes": {
+            "Default": {
+              "track_width": 0.25,
+              "clearance": 0.15,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            },
+            "BuckSwitch": {
+              "track_width": 1.0,
+              "clearance": 0.15,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            },
+            "Logic3V3": {
+              "track_width": 1.0,
+              "clearance": 0.15,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            },
+            "LogicPower": {
+              "track_width": 2.0,
+              "clearance": 0.15,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            },
+            "MotorChannel": {
+              "track_width": 1.0,
+              "clearance": 0.15,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            },
+            "MotorTrunk": {
+              "track_width": 2.0,
+              "clearance": 0.15,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            },
+            "USB90": {
+              "track_width": 0.24,
+              "diff_pair_width": 0.24,
+              "diff_pair_gap": 0.15
+            }
+          },
+          "callback": {
+            "module": "pcb/tools/check_routing.py",
+            "function": "audit"
+          },
+          "netclass_assignments": {
+            "USB_D_N": "USB90",
+            "USB_D_PORT_N": "USB90",
+            "USB_D_SWITCH_N": "USB90",
+            "USB_D_P": "USB90",
+            "USB_D_PORT_P": "USB90",
+            "USB_D_SWITCH_P": "USB90",
+            "BUCK_SW": "BuckSwitch"
+          }
+        },
+        "paste": {
+          "operation": "stencil",
+          "expected_front_apertures": 271,
+          "minimum_area_ratio": 0.66,
+          "no_paste_refs": [
+            "J1",
+            "J2",
+            "J3",
+            "J5",
+            "J6",
+            "J7",
+            "J8",
+            "J9",
+            "SW1",
+            "SW2",
+            "SW3",
+            "D4",
+            "H1",
+            "H2",
+            "H3",
+            "H4",
+            "TP1",
+            "TP2",
+            "TP3",
+            "TP4",
+            "TP5",
+            "TP6",
+            "TP7",
+            "TP8",
+            "TP9",
+            "TP10",
+            "TP11",
+            "TP12",
+            "TP13",
+            "TP14"
+          ],
+          "no_paste_pads": {
+            "J4": [
+              "SH",
+              "B1",
+              "B4",
+              "B9",
+              "B12"
+            ]
+          },
+          "masked_only_refs": [],
+          "hand_solder_refs": [],
+          "forbidden_layers": [],
+          "special_windows": [
+            {
+              "ref": "U1",
+              "pad": "29",
+              "count": 9,
+              "size_mm": [
+                0.8,
+                0.8
+              ]
+            }
+          ],
+          "assembly_exclusions": []
+        },
+        "labels": {
+          "operation": "final-silkscreen",
+          "required_text": [
+            "J5 RESERVOIR",
+            "J1 PSU/RELAY",
+            "J3 SENSOR",
+            "J6 12V IN",
+            "J2 SERVICE 5V",
+            "J9 DECHLOR",
+            "J8 CHLORINE",
+            "J7 TRANSFER",
+            "RESET",
+            "BOOT",
+            "MAINTENANCE",
+            "USB",
+            "1 +5V",
+            "1 +12V"
+          ],
+          "forbidden_layers": []
+        },
+        "exclusions": {
+          "exact_policy": true,
+          "ignored_checks_operation": "production-routing"
+        }
+      }
+    },
+    "mains": {
+      "schema_version": 1,
+      "board": "mains",
+      "lock": "pcb/mains/design/handoff.lock.json",
+      "augmentation": "pcb/mains/design/kicad-augment.json",
+      "policy": "pcb/tools/routing-policy.json",
+      "rules_source": "pcb/mains/design/routing-guardrails-rules.txt",
+      "checks": {
+        "geometry": {
+          "basis": "accepted_manifest"
+        },
+        "stackup": {
+          "copper_mm": [
+            0.035,
+            0.035
+          ],
+          "dielectric_mm": [
+            1.51
+          ],
+          "dielectric_er": [
+            4.5
+          ],
+          "finish": "ENIG",
+          "nominal_order_mm": 1.6,
+          "order_note_tokens": [
+            "ENIG",
+            "Stencil"
+          ],
+          "process_document": "docs/design/manufacturing-output.md"
+        },
+        "planes": {
+          "operation": "routing-guardrails-zone",
+          "clearance_mm": 0.15,
+          "minimum_thickness_mm": 0.2,
+          "pad_connection": "tht_thermal",
+          "thermal_gap_mm": 0.3,
+          "thermal_spoke_mm": 0.5
+        },
+        "vias": {
+          "operation": "routing-guardrails-via",
+          "tent_all": true,
+          "extra_policy_vias": false
+        },
+        "rules": {
+          "exact_generated_file": true,
+          "audit_escapes": true
+        },
+        "routing": {
+          "default_width_mm": 0.3,
+          "default_via_mm": [
+            0.6,
+            0.3
+          ],
+          "classes": {
+            "Default": {
+              "track_width": 0.3,
+              "clearance": 0.15,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            },
+            "BuckSwitch": {
+              "track_width": 1.0,
+              "clearance": 0.15,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            },
+            "Coil": {
+              "track_width": 0.3,
+              "clearance": 0.15,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            },
+            "LogicPower": {
+              "track_width": 2.0,
+              "clearance": 0.15,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            },
+            "Motor": {
+              "track_width": 3.0,
+              "clearance": 0.15,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            },
+            "Primary": {
+              "track_width": 2.0,
+              "clearance": 3.2,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            },
+            "PrimaryInput": {
+              "track_width": 3.0,
+              "clearance": 3.2,
+              "via_diameter": 0.6,
+              "via_drill": 0.3
+            }
+          },
+          "callback": {
+            "module": "pcb/tools/check_routing.py",
+            "function": "audit"
+          },
+          "netclass_assignments": {
+            "BUCK5_SW": "BuckSwitch"
+          }
+        },
+        "paste": {
+          "operation": "stencil",
+          "expected_front_apertures": 22,
+          "minimum_area_ratio": 0.66,
+          "no_paste_refs": [
+            "U1",
+            "K1",
+            "J1",
+            "J2",
+            "J3",
+            "J4",
+            "J5",
+            "J6",
+            "F3",
+            "D1",
+            "R1",
+            "C1",
+            "RV1",
+            "H1",
+            "H2",
+            "H3",
+            "H4"
+          ],
+          "no_paste_pads": {},
+          "masked_only_refs": [],
+          "hand_solder_refs": [],
+          "forbidden_layers": [],
+          "special_windows": [],
+          "assembly_exclusions": []
+        },
+        "labels": {
+          "operation": "final-silkscreen",
+          "required_text": [],
+          "forbidden_layers": []
+        },
+        "exclusions": {
+          "exact_policy": true,
+          "ignored_checks_operation": "production-routing"
+        }
+      }
+    },
+    "sensor": {
+      "schema_version": 1,
+      "board": "sensor",
+      "lock": "pcb/sensor/design/handoff.lock.json",
+      "augmentation": "pcb/sensor/design/kicad-augment.json",
+      "policy": "pcb/tools/routing-policy.json",
+      "rules_source": "pcb/sensor/design/routing-guardrails-rules.txt",
+      "checks": {
+        "geometry": {
+          "basis": "accepted_manifest"
+        },
+        "stackup": {
+          "copper_mm": [
+            0.035,
+            0.0152,
+            0.0152,
+            0.035
+          ],
+          "dielectric_mm": [
+            0.2104,
+            1.065,
+            0.2104
+          ],
+          "dielectric_er": [
+            4.4,
+            4.6,
+            4.4
+          ],
+          "finish": "ENIG",
+          "nominal_order_mm": 1.6,
+          "order_note_tokens": [
+            "ENIG",
+            "Stencil"
+          ],
+          "process_document": "docs/design/manufacturing-output.md"
+        },
+        "planes": {
+          "operation": "routing-guardrails-zone",
+          "clearance_mm": 0.2,
+          "minimum_thickness_mm": 0.25,
+          "pad_connection": "solid",
+          "thermal_gap_mm": 0.3,
+          "thermal_spoke_mm": 0.3
+        },
+        "vias": {
+          "operation": "routing-guardrails-via",
+          "tent_all": true,
+          "extra_policy_vias": true
+        },
+        "rules": {
+          "exact_generated_file": true,
+          "audit_escapes": true
+        },
+        "routing": {
+          "default_width_mm": 0.2,
+          "default_via_mm": [
+            0.45,
+            0.2
+          ],
+          "classes": {
+            "Default": {
+              "track_width": 0.2,
+              "clearance": 0.2,
+              "via_diameter": 0.45,
+              "via_drill": 0.2
+            },
+            "Electrode": {
+              "track_width": 0.15,
+              "clearance": 0.15,
+              "via_diameter": 0.45,
+              "via_drill": 0.2
+            }
+          },
+          "callback": {
+            "module": "pcb/tools/check_routing.py",
+            "function": "audit"
+          },
+          "netclass_assignments": {
+            "CIN_LEVEL": "Electrode",
+            "CIN_RL": "Electrode",
+            "SHLD1": "Electrode",
+            "SHLD2": "Electrode"
+          }
+        },
+        "paste": {
+          "operation": "stencil-process",
+          "expected_front_apertures": 42,
+          "minimum_area_ratio": 0.66,
+          "no_paste_refs": [
+            "E1",
+            "J1"
+          ],
+          "no_paste_pads": {},
+          "masked_only_refs": [
+            "E1"
+          ],
+          "hand_solder_refs": [
+            "J1"
+          ],
+          "forbidden_layers": [
+            "B.Mask",
+            "B.Paste",
+            "B.SilkS"
+          ],
+          "special_windows": [],
+          "assembly_exclusions": [
+            "E1",
+            "J1"
+          ]
+        },
+        "labels": {
+          "operation": "final-silkscreen",
+          "required_text": [],
+          "forbidden_layers": [
+            "B.SilkS"
+          ]
+        },
+        "exclusions": {
+          "exact_policy": true,
+          "ignored_checks_operation": "production-routing"
+        }
+      }
+    }
+  }
+}

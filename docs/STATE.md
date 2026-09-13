@@ -74,6 +74,36 @@ before snapshot, rejects stale/tampered authorization and cross-category UUID
 collisions. The two shared tooling files were synced to Stillair in `51efeaf`;
 57 handoff tests pass in both repositories.
 
+## Workflow hardening
+
+The [retrospective](design/pcb-workflow-retrospective.md) records what worked,
+the avoidable GUI/script work and the confirmed tool limitations. The
+[checked workflow](../pcb/tools/README.md) now provides baseline capture, planning,
+explicit native transactions, full preparation audits, review and final acceptance.
+Content-addressed evidence binds source dependencies, native inputs, canonical
+contracts and checker code. Stale evidence cannot advance the comparison lock.
+
+Native edits are preflighted on copied projects, compared against the requested
+result, saved, reopened and checked before publication. A guarded Konnect batch
+wrapper replaces existing schematic fields without duplicating properties or
+accepting partial success. The historical one-off pour writer is retired.
+
+All three boards have project-owned preparation profiles. Sensor source placement
+retains one exact-output limitation because tscircuit models copper-only E1 as a
+component body; native DRC and layer-aware preparation checks remain required.
+The GUI's saved local width preference is reported separately from the verified
+netclasses and rule widths. An in-memory board setting does not prove the GUI
+preference persisted. Physical stack, custom-rule installation and interactive
+router-preference writes still use the documented verified fallback.
+
+Generic helpers, tests and skill guidance are shared with Stillair through the
+reciprocal sync maps. Its board profiles and production files remain its own.
+This tooling work did not alter the accepted Crystal Shim native boards or locks.
+The [validation receipt](design/evidence/pcb-workflow/validation.json) records the
+full project gate, 151 focused test executions, three actual-board preparation
+passes, copied-board mutation/rejection probes and an accepted temporary-copy
+workflow rehearsal. No routing or fabrication acceptance was advanced.
+
 ## Next
 
 The owner routes the remaining connections. Use `sh scripts/check-routing.sh`
