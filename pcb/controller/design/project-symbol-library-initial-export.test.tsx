@@ -56,7 +56,7 @@ beforeAll(async () => {
   raw = sheets.map((s) => s.getString());
 }, 30_000);
 
-test("95 unique library entries preserve all symbol geometry, pins, types and instance syntax", () => {
+test("113 unique library entries preserve all symbol geometry, pins, types and instance syntax", () => {
   const sheets = fresh(),
     before = fresh();
   const library = applyControllerProjectSymbolsForInitialExport(
@@ -64,8 +64,8 @@ test("95 unique library entries preserve all symbol geometry, pins, types and in
     sheets,
     manifest,
   );
-  expect(library).toHaveLength(95);
-  expect(new Set(library.map((s) => s.libraryId)).size).toBe(95);
+  expect(library).toHaveLength(113);
+  expect(new Set(library.map((s) => s.libraryId)).size).toBe(113);
   for (const [i, sheet] of sheets.entries()) {
     const read = parseKicadSch(sheet.getString());
     expect(read.symbols).toHaveLength(before[i]!.symbols.length);
@@ -165,7 +165,7 @@ test("four declared annotations add zero-length power_out pins and no physical p
   );
   const before = sheets.map((s) => s.getString());
   lib.push(addControllerPowerFlagsForInitialExport(sheets, manifest));
-  expect(lib).toHaveLength(96);
+  expect(lib).toHaveLength(114);
   const flagLibrary = parseKicadSym(
     new KicadSym({ symbols: [controllerPowerFlagDefinition()] }).getString(),
   ).symbols[0]!;
@@ -219,7 +219,7 @@ test("four declared annotations add zero-length power_out pins and no physical p
   const actual = controllerGeometryIdentities(full.pcb);
   for (const component of manifest.components)
     expect(actual.get(component.ref)).toBe(component.footprint.initial_geometry_sha256);
-  expect(parseKicadSym(full.symbolLibraryFile.content).symbols).toHaveLength(96);
+  expect(parseKicadSym(full.symbolLibraryFile.content).symbols).toHaveLength(114);
 });
 
 test("missing power witness, changed rail, preexisting flag and real output conflicts cannot be hidden", () => {

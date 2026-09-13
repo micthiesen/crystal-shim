@@ -13,18 +13,18 @@ test("controller source manifest retains stable refs, full logical nets and all 
   const manifest = createControllerManifest(json);
   expect(JSON.stringify(json)).toBe(before);
   expect(createControllerManifest([...json].reverse())).toEqual(manifest);
-  expect(manifest.components).toHaveLength(99);
-  expect(new Set(manifest.components.map((c) => c.footprint.kicad)).size).toBe(99);
-  expect(manifest.nets).toHaveLength(51);
-  expect(manifest.board.holes).toHaveLength(9);
+  expect(manifest.components).toHaveLength(117);
+  expect(new Set(manifest.components.map((c) => c.footprint.kicad)).size).toBe(117);
+  expect(manifest.nets).toHaveLength(63);
+  expect(manifest.board.holes).toHaveLength(14);
   expect(
     manifest.board.holes.filter((h) => h.ref === "J4").map((h) => h.stable_id),
   ).toEqual(["controller.hole.j4.locator-1", "controller.hole.j4.locator-2"]);
   expect(
     manifest.components.reduce((n, c) => n + c.footprint.pad_numbers.length, 0),
-  ).toBe(274);
-  expect(manifest.nets.reduce((n, net) => n + net.endpoints.length, 0)).toBe(254);
-  expect(manifest.components.filter((c) => c.fields.exclude_from_bom)).toHaveLength(15);
+  ).toBe(315);
+  expect(manifest.nets.reduce((n, net) => n + net.endpoints.length, 0)).toBe(303);
+  expect(manifest.components.filter((c) => c.fields.exclude_from_bom)).toHaveLength(18);
   const net = (name: string) =>
     manifest.nets
       .find((n) => n.name === name)!
@@ -44,9 +44,9 @@ test("controller source manifest retains stable refs, full logical nets and all 
     "u1.28",
     "u1.29",
   ]);
-  const fields = manifest.components.find((c) => c.ref === "C23")!.fields;
+  const fields = manifest.components.find((c) => c.ref === "C21")!.fields;
   expect("datasheet_url" in fields && fields.datasheet_url).toContain(
-    "c1608c0g1h472j080aa",
+    "c1608x7r1h104k080aa",
   );
 
   // Exercise the actual shared schema, including two locators under one ref
@@ -69,9 +69,9 @@ test("controller source manifest retains stable refs, full logical nets and all 
   );
   expect(normalized.status).toBe(0);
   const shared = JSON.parse(normalized.stdout);
-  expect(shared.components).toHaveLength(99);
-  expect(shared.board.holes).toHaveLength(9);
-  expect(shared.nets).toHaveLength(51);
+  expect(shared.components).toHaveLength(117);
+  expect(shared.board.holes).toHaveLength(14);
+  expect(shared.nets).toHaveLength(63);
   expect(shared.components[0].footprint.source_geometry_sha256).toMatch(
     /^[0-9a-f]{64}$/,
   );
@@ -177,9 +177,9 @@ test("controller source manifest retains stable refs, full logical nets and all 
   const paste = unowned.find(
     (e) => e.type === "pcb_solder_paste" && !e.pcb_component_id,
   )!;
-  if (paste.type !== "pcb_solder_paste" || !("width" in paste))
+  if (paste.type !== "pcb_solder_paste" || !("radius" in paste))
     throw new Error("Missing unowned paste");
-  paste.width += 0.1;
+  paste.radius += 0.1;
   expect(
     createControllerManifest(unowned).board.specs.unowned_physical_geometry_sha256,
   ).not.toBe(manifest.board.specs.unowned_physical_geometry_sha256);

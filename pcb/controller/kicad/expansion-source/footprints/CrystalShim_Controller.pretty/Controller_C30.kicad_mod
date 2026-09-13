@@ -1,0 +1,134 @@
+(footprint "Controller_C30"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -3 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "5ea1a2af-93e4-4145-9be3-4e56c405f0ff")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Controller_C30"
+		(at 0 3 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4dfc7d02-2cb9-487d-b533-cb1bf123f062")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "55394480-0acb-4945-9b10-cd10f9362127")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "622aff9f-a036-48f2-a443-5555e4f7adb6")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Supplier Part Number" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4835a9a0-32cd-eb9f-1d66-2d9e07fe6f9d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_poly
+		(pts
+			(xy -1.55 -0.95) (xy 1.55 -0.95) (xy 1.55 0.95) (xy -1.55 0.95) (xy -1.55 -0.95)
+		)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "1afb1ab0-2373-dc30-2bec-9db034655f30")
+	)
+	(fp_line
+		(start -0.8 -0.4)
+		(end 0.8 -0.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "b540ff6b-4fdc-44fe-8853-15e89039262d")
+	)
+	(fp_line
+		(start -0.8 0.4)
+		(end -0.8 -0.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "fec46d4e-4cfd-4ad2-9cd5-a0a91767d345")
+	)
+	(fp_line
+		(start 0.8 -0.4)
+		(end 0.8 0.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "0abe5ba7-b511-4eb8-a901-6d4a6e41ddff")
+	)
+	(fp_line
+		(start 0.8 0.4)
+		(end -0.8 0.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "617f1dab-8062-4053-a1e9-a6f27dd9bc61")
+	)
+	(pad "1" smd rect
+		(at -0.7 0)
+		(size 0.7 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.05)
+		(uuid "1bdd98c6-0872-a606-0af8-4cba1e633f7a")
+	)
+	(pad "2" smd rect
+		(at 0.7 0)
+		(size 0.7 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.05)
+		(uuid "53eefe60-01fa-b3a1-4ff9-971e5e121e23")
+	)
+	(embedded_fonts no)
+)

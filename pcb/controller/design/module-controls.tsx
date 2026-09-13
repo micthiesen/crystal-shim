@@ -21,6 +21,13 @@ export function ControllerModuleControls() {
           V3V3: "net.V3V3",
           EN: "net.CHIP_EN",
           IO0: "net.SENSOR_BUS_EN",
+          IO1: "net.PUMP_TRANSFER",
+          IO2: "net.PUMP_CHLORINE",
+          IO3: "net.PUMP_DECHLOR",
+          IO4: "net.ACCESSORY_INPUT1",
+          IO5: "net.ACCESSORY_INPUT2",
+          IO6: "net.RESERVOIR_SDA",
+          IO7: "net.RESERVOIR_SCL",
           IO8: "net.BOOT_STRAP8",
           IO10: "net.RELAY_REQUEST",
           IO11: "net.MAINTENANCE_N",
@@ -38,7 +45,7 @@ export function ControllerModuleControls() {
           GND_28: "net.GND",
           GND_EP: "net.GND",
         }}
-        noConnect={["IO4", "IO5", "IO6", "IO7", "IO1", "IO15", "IO3", "IO2"]}
+        noConnect={["IO15"]}
       />
       <ControllerButton
         name="SW1"
@@ -263,6 +270,13 @@ export function ControllerModuleControls() {
         ["GND", ".U1 > .pin1"],
         ["V3V3", ".U1 > .pin2"],
         ["SENSOR_BUS_EN", ".U1 > .pin8"],
+        ["PUMP_TRANSFER", ".U1 > .pin9"],
+        ["PUMP_CHLORINE", ".U1 > .pin27"],
+        ["PUMP_DECHLOR", ".U1 > .pin26"],
+        ["ACCESSORY_INPUT1", ".U1 > .pin4"],
+        ["ACCESSORY_INPUT2", ".U1 > .pin5"],
+        ["RESERVOIR_SDA", ".U1 > .pin6"],
+        ["RESERVOIR_SCL", ".U1 > .pin7"],
         ["BOOT_STRAP8", ".U1 > .pin10"],
         ["RELAY_REQUEST", ".U1 > .pin11"],
         ["MAINTENANCE_N", ".U1 > .pin12"],

@@ -1,7 +1,6 @@
 import type { CircuitJson } from "circuit-json";
 import { CircuitJsonToKicadPcbConverter } from "circuit-json-to-kicad";
 import { Property } from "kicadts";
-import { anchorServiceEfuseForInitialExport } from "../../controller/design/service-protection-initial-export";
 import { applyConnectorPhysicalForInitialExport } from "../../controller/design/connector-physical-initial-export";
 import { prepareMainsFootprintOriginsForInitialExport } from "./footprint-origin-initial-export";
 import { applyMainsPhysicalForInitialExport } from "./physical-initial-export";
@@ -66,9 +65,8 @@ export function createMainsInitialPcb(input: CircuitJson) {
       }),
     ];
   }
-  anchorServiceEfuseForInitialExport(board, ["U2"]);
   assertMainsJ5PhysicalForInitialExport(board);
-  applyConnectorPhysicalForInitialExport(board, ["J5"]);
+  applyConnectorPhysicalForInitialExport(board, ["J5", "J6"]);
   applyMainsPhysicalForInitialExport(board);
   identifyMainsMountsForInitialExport(board);
   return board;

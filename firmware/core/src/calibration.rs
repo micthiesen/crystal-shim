@@ -1,4 +1,4 @@
-//! TI TIDU736A Eq. 2 with measured endpoint normalization and commissioned validity limits.
+//! Stored-dry-baseline wet-reference normalization and commissioned validity limits.
 //! Counts are signed FDC1004 differential results in units of 2^-19 pF, CAPDAC disabled.
 use crate::{Fault, Level, Millis, Reading};
 
@@ -9,14 +9,12 @@ pub const CONVERTER_LIMIT_COUNTS: i32 = 15 * (1 << 19);
 pub enum Channel {
     Level,
     WetReference,
-    DryReference,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct Channels<T> {
     pub level: T,
     pub wet_reference: T,
-    pub dry_reference: T,
 }
 
 impl<T: Copy> Channels<T> {
@@ -24,12 +22,11 @@ impl<T: Copy> Channels<T> {
         match channel {
             Channel::Level => self.level,
             Channel::WetReference => self.wet_reference,
-            Channel::DryReference => self.dry_reference,
         }
     }
 }
 
-const CHANNELS: [Channel; 3] = [Channel::Level, Channel::WetReference, Channel::DryReference];
+const CHANNELS: [Channel; 2] = [Channel::Level, Channel::WetReference];
 pub type RawChannels = Channels<i32>;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -75,10 +72,12 @@ pub struct MinimumRatioSpan {
 /// Final mounted-unit measurements and accepted limits. There are deliberately no defaults.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct CalibrationData {
-    /// TI C_LEVEL(0): measured with the LEVEL electrode's sensing region empty/dry.
-    /// It is not C_RE and need not lie in the normal operating envelope.
+    /// Measured with the LEVEL electrode's sensing region empty/dry.
+    /// Dry baselines need not lie in the normal operating envelopes.
     pub level_empty_counts: i32,
-    /// Measured lower/upper water endpoint triples. Their ratio response maps to 0/1000.
+    /// Measured RL baseline with its sensing region empty/dry in the final stack.
+    pub wet_reference_empty_counts: i32,
+    /// Measured lower/upper water endpoint pairs. Their ratio response maps to 0/1000.
     pub low_endpoint: RawChannels,
     pub high_endpoint: RawChannels,
     pub channels: Channels<ChannelLimits>,
@@ -101,6 +100,7 @@ pub enum Endpoint {
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum CalibrationConfigError {
     EmptyLevelOutsideConverterRange,
+    EmptyWetReferenceOutsideConverterRange,
     InvalidEnvelope(Channel),
     ZeroSlewLimit,
     InvalidReferenceMinimum,
@@ -195,7 +195,7 @@ impl CalibrationError {
     }
 }
 
-/// Exact TI response ratio. The denominator is positive after applying the calibrated sign.
+/// Exact baseline-subtracted response ratio. The denominator is positive after applying the calibrated sign.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct Ratio {
     pub numerator: i64,
@@ -218,6 +218,9 @@ impl Calibration {
     pub fn new(data: CalibrationData) -> Result<Self, CalibrationConfigError> {
         if !inside_converter(data.level_empty_counts) {
             return Err(CalibrationConfigError::EmptyLevelOutsideConverterRange);
+        }
+        if !inside_converter(data.wet_reference_empty_counts) {
+            return Err(CalibrationConfigError::EmptyWetReferenceOutsideConverterRange);
         }
         for channel in CHANNELS {
             let limits = data.channels.get(channel);
@@ -305,7 +308,7 @@ impl Calibration {
                 });
             }
         }
-        let span = i64::from(channels.wet_reference) - i64::from(channels.dry_reference);
+        let span = i64::from(channels.wet_reference) - i64::from(data.wet_reference_empty_counts);
         if span == 0 || span.unsigned_abs() < u64::from(data.minimum_reference_span_counts) {
             return Err(CalibrationError::ReferenceCollapsed {
                 span_counts: span,
@@ -512,11 +515,10 @@ impl CalibrationStage {
 mod tests {
     use super::*;
 
-    fn raw(level: i32, wet_reference: i32, dry_reference: i32) -> RawChannels {
+    fn raw(level: i32, wet_reference: i32) -> RawChannels {
         Channels {
             level,
             wet_reference,
-            dry_reference,
         }
     }
 
@@ -531,12 +533,12 @@ mod tests {
         };
         CalibrationData {
             level_empty_counts: 1000,
-            low_endpoint: raw(1200, 700, 300),
-            high_endpoint: raw(2500, 900, 300),
+            wet_reference_empty_counts: 300,
+            low_endpoint: raw(1200, 700),
+            high_endpoint: raw(2500, 900),
             channels: Channels {
                 level: limits,
                 wet_reference: limits,
-                dry_reference: limits,
             },
             reference_sign: ReferenceSign::Positive,
             minimum_reference_span_counts: 100,
@@ -577,7 +579,7 @@ mod tests {
     }
 
     #[test]
-    fn ti_ratio_uses_measured_empty_baseline_and_both_live_references() {
+    fn ratio_uses_stored_dry_baselines_and_live_wet_reference() {
         let calibration = Calibration::new(data()).unwrap();
         assert_eq!(
             calibration.endpoint_ratios(),
@@ -595,7 +597,7 @@ mod tests {
         let mut stage = stage(data());
         for (sequence, channels, expected) in [
             (0, data().low_endpoint, 0),
-            (1, raw(1750, 800, 300), 500),
+            (1, raw(1750, 800), 500),
             (2, data().high_endpoint, 1000),
         ] {
             let start = sequence * 100;
@@ -612,14 +614,48 @@ mod tests {
     }
 
     #[test]
+    fn separate_dry_offsets_cancel_only_when_commissioned_with_the_same_stack() {
+        let mut values = data();
+        // Different static parasitic offsets on LEVEL and RL must not be treated
+        // as one shared environment reading. Both are synthetic counts.
+        values.level_empty_counts += 400;
+        values.wet_reference_empty_counts -= 200;
+        values.low_endpoint.level += 400;
+        values.high_endpoint.level += 400;
+        values.low_endpoint.wet_reference -= 200;
+        values.high_endpoint.wet_reference -= 200;
+        let result = process(&mut stage(values), 0, 0, raw(2150, 600));
+        assert_eq!(
+            result.reading,
+            Reading::Valid {
+                level: Level(500),
+                observed_at: Millis(0),
+            }
+        );
+        for counts in [
+            -CONVERTER_LIMIT_COUNTS,
+            CONVERTER_LIMIT_COUNTS,
+            i32::MIN,
+            i32::MAX,
+        ] {
+            values.wet_reference_empty_counts = counts;
+            assert_eq!(
+                Calibration::new(values),
+                Err(CalibrationConfigError::EmptyWetReferenceOutsideConverterRange)
+            );
+        }
+    }
+
+    #[test]
     fn commissioned_negative_reference_sign_preserves_level_orientation() {
         let mut values = data();
         values.reference_sign = ReferenceSign::Negative;
         values.level_empty_counts = -1000;
-        values.low_endpoint = raw(-1200, -700, -300);
-        values.high_endpoint = raw(-2500, -900, -300);
+        values.wet_reference_empty_counts = -300;
+        values.low_endpoint = raw(-1200, -700);
+        values.high_endpoint = raw(-2500, -900);
         assert_eq!(
-            process(&mut stage(values), 0, 0, raw(-1750, -800, -300)).reading,
+            process(&mut stage(values), 0, 0, raw(-1750, -800)).reading,
             Reading::Valid {
                 level: Level(500),
                 observed_at: Millis(0)
@@ -632,12 +668,12 @@ mod tests {
         let mut values = data();
         let limit = CONVERTER_LIMIT_COUNTS - 1;
         values.level_empty_counts = -limit;
-        values.low_endpoint = raw(-limit, limit, -limit);
-        values.high_endpoint = raw(limit, limit, -limit);
+        values.wet_reference_empty_counts = -limit;
+        values.low_endpoint = raw(-limit, limit);
+        values.high_endpoint = raw(limit, limit);
         for target in [
             &mut values.channels.level,
             &mut values.channels.wet_reference,
-            &mut values.channels.dry_reference,
         ] {
             target.envelope = CountsRange {
                 min: -limit,
@@ -657,7 +693,7 @@ mod tests {
             }
         );
         assert_eq!(
-            process(&mut stage, 1, 100, raw(0, limit, -limit)).reading,
+            process(&mut stage, 1, 100, raw(0, limit)).reading,
             Reading::Valid {
                 level: Level(500),
                 observed_at: Millis(100)
@@ -677,7 +713,7 @@ mod tests {
         let mutations: [fn(&mut CalibrationData); 13] = [
             |d| d.level_empty_counts = i32::MIN,
             |d| d.channels.level.envelope.min = d.channels.level.envelope.max,
-            |d| d.channels.dry_reference.envelope.max = CONVERTER_LIMIT_COUNTS,
+            |d| d.wet_reference_empty_counts = CONVERTER_LIMIT_COUNTS,
             |d| d.channels.wet_reference.max_slew_counts_per_second = 0,
             |d| d.max_level_slew_per_second = 0,
             |d| d.minimum_reference_span_counts = 0,
@@ -700,7 +736,7 @@ mod tests {
             Calibration::new(values),
             Err(CalibrationConfigError::ReversedOrCollapsedEndpoints)
         );
-        values.high_endpoint = raw(1100, 700, 300);
+        values.high_endpoint = raw(1100, 700);
         assert_eq!(
             Calibration::new(values),
             Err(CalibrationConfigError::ReversedOrCollapsedEndpoints)
@@ -718,11 +754,7 @@ mod tests {
 
     #[test]
     fn collapsed_and_reversed_references_are_faults_not_low_water() {
-        for channels in [
-            raw(1750, 300, 300),
-            raw(1750, 350, 300),
-            raw(1750, 100, 300),
-        ] {
+        for channels in [raw(1750, 300), raw(1750, 350), raw(1750, 100)] {
             let result = process(&mut stage(data()), 0, 0, channels);
             assert_eq!(result.reading, Reading::Invalid(Fault::OutOfRange));
             assert!(matches!(
@@ -745,11 +777,10 @@ mod tests {
                 -CONVERTER_LIMIT_COUNTS,
                 CONVERTER_LIMIT_COUNTS,
             ] {
-                let mut channels = raw(1750, 800, 300);
+                let mut channels = raw(1750, 800);
                 match channel {
                     Channel::Level => channels.level = counts,
                     Channel::WetReference => channels.wet_reference = counts,
-                    Channel::DryReference => channels.dry_reference = counts,
                 }
                 let result = process(&mut stage(data()), 0, 0, channels);
                 assert_eq!(result.reading, Reading::Invalid(Fault::OutOfRange));
@@ -767,12 +798,12 @@ mod tests {
     fn exact_output_domain_is_checked_before_rounding() {
         let mut values = data();
         values.level_empty_counts = 0;
-        values.low_endpoint = raw(100_000, 1_000_000, 0);
-        values.high_endpoint = raw(1_100_000, 1_000_000, 0);
+        values.wet_reference_empty_counts = 0;
+        values.low_endpoint = raw(100_000, 1_000_000);
+        values.high_endpoint = raw(1_100_000, 1_000_000);
         for target in [
             &mut values.channels.level,
             &mut values.channels.wet_reference,
-            &mut values.channels.dry_reference,
         ] {
             target.envelope = CountsRange {
                 min: -2_000_000,
@@ -780,7 +811,7 @@ mod tests {
             };
         }
         for level in [99_999, 1_100_001] {
-            let result = process(&mut stage(values), 0, 0, raw(level, 1_000_000, 0));
+            let result = process(&mut stage(values), 0, 0, raw(level, 1_000_000));
             assert!(matches!(
                 result.error,
                 Some(CalibrationError::OutsideLevelDomain { .. })
@@ -796,14 +827,14 @@ mod tests {
             Some(CalibrationError::OutsideLevelDomain { .. })
         ));
         assert_eq!(
-            process(&mut stage(values), 0, 0, raw(1750, 800, 300)).error,
+            process(&mut stage(values), 0, 0, raw(1750, 800)).error,
             None
         );
     }
 
     #[test]
     fn freshness_uses_frame_start_and_rejected_frames_cannot_be_replayed() {
-        let channels = raw(1750, 800, 300);
+        let channels = raw(1750, 800);
         let mut stage = stage(data());
         let old = frame(5, 0, channels);
         assert_eq!(
@@ -832,7 +863,7 @@ mod tests {
 
     #[test]
     fn future_backwards_overlapping_and_excessive_duration_frames_fail_closed() {
-        let channels = raw(1750, 800, 300);
+        let channels = raw(1750, 800);
         let mut stage = stage(data());
         assert!(matches!(
             stage.process(Millis(0), frame(0, 0, channels)).error,
@@ -870,7 +901,7 @@ mod tests {
     fn invalid_frames_do_not_erase_channel_slew_history() {
         for channel in CHANNELS {
             let mut values = data();
-            let mut changed = raw(1750, 800, 300);
+            let mut changed = raw(1750, 800);
             match channel {
                 Channel::Level => {
                     values.channels.level.max_slew_counts_per_second = 100;
@@ -880,13 +911,9 @@ mod tests {
                     values.channels.wet_reference.max_slew_counts_per_second = 100;
                     changed.wet_reference += 50;
                 }
-                Channel::DryReference => {
-                    values.channels.dry_reference.max_slew_counts_per_second = 100;
-                    changed.dry_reference += 50;
-                }
             }
             let mut stage = stage(values);
-            assert_eq!(process(&mut stage, 0, 0, raw(1750, 800, 300)).error, None);
+            assert_eq!(process(&mut stage, 0, 0, raw(1750, 800)).error, None);
             for (sequence, start) in [(1, 100), (2, 200)] {
                 assert!(
                     matches!(process(&mut stage, sequence, start, changed).error, Some(CalibrationError::ChannelSlew { channel: observed, .. }) if observed == channel)
@@ -901,16 +928,16 @@ mod tests {
         let mut values = data();
         values.max_level_slew_per_second = 100;
         let mut stage = stage(values);
-        process(&mut stage, 0, 0, raw(1750, 800, 300));
+        process(&mut stage, 0, 0, raw(1750, 800));
         assert_eq!(
-            process(&mut stage, 1, 100, raw(1800, 800, 300)).error,
+            process(&mut stage, 1, 100, raw(1800, 800)).error,
             Some(CalibrationError::LevelSlew {
                 delta_thousandths: 50,
                 elapsed_ms: 100,
                 maximum_per_second: 100
             })
         );
-        assert_eq!(process(&mut stage, 2, 500, raw(1800, 800, 300)).error, None);
+        assert_eq!(process(&mut stage, 2, 500, raw(1800, 800)).error, None);
     }
 
     #[test]
@@ -935,7 +962,7 @@ mod tests {
         assert_eq!(water.state, Some(crate::WaterState::High));
         for start in (300..600).step_by(50) {
             let channels = if start == 400 {
-                raw(1200, 300, 300)
+                raw(1200, 300)
             } else {
                 data().low_endpoint
             };

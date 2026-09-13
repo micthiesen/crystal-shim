@@ -155,7 +155,7 @@ On exiting maintenance, require fresh recovery and the off delay.
 
 ## Diagnostics and resilience
 
-Retain raw level/wet/dry capacitances, calculated level, sensor validity and fault
+Retain raw level/wet capacitances, calculated level, sensor validity and fault
 reason, sample age, calibration revision, relay command, state/timer status and
 reset reason. Raw conversion, calibrated validity, watchdog service and boot loading
 of saved configuration are implemented. Runtime settings/persistence, bounded USB

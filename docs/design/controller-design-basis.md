@@ -15,7 +15,7 @@ before importing it. The installed KiCad 10.0.5 stock RF library has C6-MINI but
 does not supply this WROOM footprint.
 
 The following allocation uses module pad numbers, not bare-chip pad numbers.
-It avoids GPIO4/5/8/9/15 strapping functions for application controls and keeps
+It preserves boot straps GPIO8/9/15 and keeps
 GPIO12/13 for native USB. GPIO18/19 use the regular I2C peripheral's GPIO matrix;
 they are not a claim to use the LP-I2C fixed pins. No ADC channel is consumed,
 leaving the peripheral available to the Matter entropy source used by Stillair.
@@ -41,13 +41,13 @@ leaving the peripheral available to the Matter entropy source used by Stillair.
 | Reserved UART0 | 16, 17 | 25, 24 | Accessible unpopulated service pads; no required external UART bridge |
 | NC | n/a | 22 | No connection |
 
-Other GPIOs remain explicitly unused in the schematic and manifest.
-GPIO1/2/3 are now reserved for the [future expansion interface](refill-expansion.md),
-but remain NC in the current source/adopted board until its required ECO. The
-extension power must come from the mains/power board through a separately sized
-power output. The existing budget below does not include future pumps; no
-additional controller-side electronics-power branch is required by default. See
-[module datasheet v1.4, Tables 3-1 and 4-3, and sections 9-11](https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf).
+GPIO1/2/3 drive the three future pump channels. GPIO6/7 carry the independent
+reservoir sensor bus, relinquishing external JTAG on that pair. GPIO4/5 reach
+accessible accessory input pads with a nearby ground pad. Their straps select
+SDIO clock edges only; this project does not use SDIO. SPI boot uses GPIO8/9 and
+JTAG source selection uses GPIO15. See the full
+[attachment pin and power contract](refill-expansion.md) and
+[module datasheet Tables 3-1 and 4-3/4-4](https://documentation.espressif.com/esp32-c6-wroom-1_wroom-1u_datasheet_en.html).
 The module body is 18 x 25.5 mm; its final antenna position must satisfy the
 manufacturer keepout and remain away from the filter, mains wiring and tank.
 Place the antenna end at the enclosure's low-voltage outer edge.
@@ -56,12 +56,12 @@ Place the antenna end at the enclosure's low-voltage outer edge.
 
 Keep these distinct power nets:
 
-- `V5_PSU`: the protected IRM-10-5 secondary, also feeding the relay coil. The
-  mains-board TPS259470 separates it from V5_RAW; raw output never enters this board.
-- `V5_LOGIC`: the diode-OR of V5_PSU and V5_SERVICE, feeding the controller buck and
-  sensor supply. Its nominal voltage is below 5 V by a diode drop.
-- `V5_SERVICE_RAW`: the service adapter connector, ahead of controller protection.
-- `V5_SERVICE`: the service eFuse output, ahead of its OR diode.
+- `V5_PSU`: mains-board fixed 5 V buck output, also feeding the relay coil.
+- `V5_LOGIC`: diode OR of V5_PSU and V5_SERVICE, feeding the controller buck and
+  shared sensor supply, below 5 V by the OR diode drop.
+- `V5_SERVICE`: known regulated 5 V adapter input, C20/C21 and D2 anode.
+- `V12_PUMP`: separate fused motor supply; no connection to 5 V except through
+  the mains-board buck's intended conversion path.
 - `3V3`: the controller regulator output. Its tscircuit net spelling is `V3V3`;
   use that one common net when integrating source sections. The sensor has its own regulator.
 
@@ -70,8 +70,8 @@ source and both cathodes at V5_LOGIC. There is no direct connection from USB VBU
 or V5_LOGIC back to V5_PSU. USB VBUS has no power connection to either input.
 This topology prevents the service supply from powering the relay coil and
 prevents either supply from driving the other through a forward-biased diode.
-Finite reverse leakage still exists; source-combination testing must verify that
-it does not raise an unpowered rail enough to operate a connected device.
+Finite reverse leakage still exists; verify that service power leaves the
+unpowered coil rail below its operating threshold.
 [ST datasheet, Tables 1-4 and package section](https://www.st.com/resource/en/datasheet/stps2l40.pdf).
 
 | Sources present | Logic/sensor supply | Coil supply | Relay eligibility |
@@ -80,7 +80,7 @@ it does not raise an unpowered rail enough to operate a connected device.
 | USB only | Off | Off | Off; USB does not power the board |
 | Service 5 V, with or without USB | V5_LOGIC from service input | Off | Blocked in hardware and firmware |
 | PSU only | V5_LOGIC from PSU | V5_PSU | Requires PSU_GOOD and a valid timed request |
-| PSU and service supply, with or without USB | Higher effective diode input supplies V5_LOGIC | V5_PSU | Same local interlocks; service power cannot bypass them |
+| PSU and service together | Unsupported service procedure | Disconnect mains before service | No simultaneous-source qualification required |
 
 Use a **GCT USB4105-GF-A** USB-C receptacle for USB 2.0, with separate 5.1 kohm
 CC1/CC2 pulldowns. Join A6/B6 as D+ and A7/B7 as D- at the connector; do not join
@@ -96,12 +96,11 @@ sensor or relay load, removing radio current and input bulk charging from the
 host's budget. Its only steady load is the hardware presence detector. A separate
 regulated isolated **5 V service supply, at least 1 A**, connects to a two-position
 Micro-Fit `43045-0200` header through `43025-0200` and `43030-0007` contacts:
-circuit 1 V5_SERVICE_RAW, circuit 2 GND. This cannot mate with the three-position
-coil/PSU harness or six-position sensor harness. Use the selected
-[GST18U05-P1J adapter, Tensility pigtail and service protection](service-input.md).
-A second TPS259470, with service-specific 470 kohm control-pin resistors and
-input TVS, feeds V5_SERVICE before the OR diode. Its thresholds and reverse-input
-conditions differ from the mains eFuse. Source and transient closure remain work.
+circuit 1 V5_SERVICE, circuit 2 GND. It differs in position count from the
+three-position coil/PSU harness and six-position sensor harness, but shares its
+housing with the new 12 V ports: label and verify all harnesses before connection.
+Use the [known adapter and fused service lead](service-input.md).
+The former U10 service protection network is removed; C20/C21 and D2 remain.
 Put USB and the clearly marked 5 V service input behind the low-voltage service cover. Disconnect the mains cord
 for programming and calibration; the final board runs its full radio and sensor
 functions from service power while the coil remains unpowered.
@@ -121,8 +120,8 @@ with 100 kohm from A to GND; pin 4 Y drives OE. Pin 1 is NC, 3 GND, 5 3V3 with
 100 nF bypass. Its Schmitt input accepts up to 5.5 V independently of VCC and
 supports partial power-down. VBUS present makes OE low; removal makes OE high.
 The detector draws about 50 uA at 5 V plus input leakage. This is independent of
-ESP firmware, including ROM download and reset. Verify all supply ramp orders,
-host-off leakage and attach/detach waveforms on the assembled board. The ESP
+ESP firmware, including ROM download and reset. Verify supported source arrangements,
+host-off leakage and USB attach/detach waveforms on the assembled board. The ESP
 has no hardware VBUS input for native USB Serial/JTAG; a software-only detach
 scheme cannot cover its default ROM pullup.
 [TI SN74LVC1G14 input limits and pinout](https://www.ti.com/lit/ds/symlink/sn74lvc1g14.pdf).
@@ -162,15 +161,16 @@ not manufacturer-guaranteed combined limits. Retain the exact part through
 capture; verify startup, ripple and load-transient response on the final board.
 [ROHM 61AN104E Rev 004, page 5 and Figure 6](https://fscdn.rohm.com/en/products/databook/applinote/ic/power/switching_regulator/capacitor_calculation_appli-e.pdf).
 
-Use TDK C1608X7R1H104K080AA for the ten 100 nF bypass/bootstrap positions and
-C2012X7R1E105K125AB for CHIP_EN and sensor-feed OUT (two 1 uF positions).
+Use TDK C1608X7R1H104K080AA for the thirteen 100 nF bypass/bootstrap positions
+and C2012X7R1E105K125AB for CHIP_EN, service input and sensor-feed OUT
+(three 1 uF positions).
 The [small-parts inventory](controller-small-parts.md) enumerates their uses,
 resistor ordering codes and effective-capacitance allowances. Do not substitute
 the smaller or differently rated Murata series on nominal capacitance alone.
 
 Use one Kingbright WP710A10LGD green THT LED through 680 ohm from GPIO20 and
 three Omron B3F-1002-G gold-contact buttons for maintenance, BOOT and reset.
-Fit ERA3AEB331V, 330 ohm, in series with the reset button to bound discharge of
+Fit ERJ3EKF3300V, 330 ohm, in series with the reset button to bound discharge of
 the CHIP_EN capacitor. Its initial current is below 11 mA and peak resistor loss
 below 40 mW. Including the TPS3808 MR internal pullup, held CHIP_EN remains below
 0.132 V at a 3.6 V rail. The sourced calculation permits reset after 1 ms stable
@@ -185,26 +185,21 @@ capability and documents 382 mA in the highest listed Wi-Fi transmit condition.
 [Espressif power/USB guidance](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32c6/schematic-checklist.html),
 [module datasheet Table 6-4](https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf).
 
-Use a **0-50 C enclosure-air design range** for the normal power calculation.
-The IRM specifies +/-2.5% output tolerance (including line/load regulation),
-200 mV peak-to-peak ripple and +/-0.03%/C temperature coefficient. Conservatively
-subtract or add the entire 200 mV ripple allowance and 37.5 mV temperature drift
-from 25 C. This gives **4.6375-5.3625 V** at the PSU terminals; do not add its
-5.75-6.75 V fault-protection threshold to this normal envelope.
-
-Allocate 38.25 mV eFuse loss, at most 50 mV total supply/return harness loss
-at peak load and 0.45 V for the OR diode over 0-50 C. That gives V5_LOGIC at least
-4.09925 V under this engineering model. Use **3.9 V** for budgeting, above
-AP63203's 3.8 V minimum input:
-600 mA at 3.3 V and an assumed 80% efficiency requires **635 mA** input.
-With 30 mA sensor, 110 mA cold-coil allowance and 75 mA reserve, the complete
-system allocation is **850 mA**, leaving 1150 mA of the 2 A nameplate unallocated.
-The 80% efficiency, 0.45 V diode loss and 50 mV harness drop are design allowances,
-not guaranteed combined performance. Validate the final diode curve, complete
-harness/contact resistance and regulator startup/load steps before release and
-measure the resulting rails on the final unit. The supply's temperature derating
-still applies above 50 C.
-[Mean Well IRM-10 specification, output notes and temperature coefficient](https://www.meanwell.com/Upload/PDF/IRM-10/IRM-10-SPEC.pdf).
+Use a **0–50 °C enclosure-air design range** for normal power budgeting.
+The common supply and fixed 5 V buck are specified in the
+[mains basis](mains-design-basis.md). Allocate at most 50 mV total harness drop
+and 0.45 V OR-diode loss. Retain **3.9 V** as the conservative logic input budget,
+above AP63203's 3.8 V minimum. The mains 5 V acceptance allocation is
+4.8–5.2 V: AP63205 CCM static limits are 4.95–5.05 V plus a project
+150 mV dynamic allowance each way. This is a commissioning acceptance bound,
+not a guaranteed PFM/startup specification. After 50 mV harness and 450 mV
+diode allowances the normal logic floor is 4.3 V. At 600 mA / 3.3 V and 80% assumed efficiency,
+controller input is 635 mA. Two sensor boards have a combined 20 mA normal limit,
+within the retained 30 mA sensor-feed allowance. With 110 mA cold-coil allowance
+and 75 mA reserve the rounded base allocation remains **850 mA**.
+Future 12 V loads have their own 2 A continuous allocation. The previous 2 A / 5 V
+IRM rating and eFuse voltage-drop model are superseded. Efficiency, diode loss
+and harness drop are design allowances; commission actual rails and load steps.
 At VIN = 5.125 V, L = 4.7 uH and 1.1 MHz, the ideal inductor ripple estimate is
 0.227 A peak-to-peak; include inductance tolerance and frequency spread in review.
 
@@ -230,16 +225,16 @@ release delay; pin 5 SENSE at the divider; pin 6 at 3V3 with 100 nF bypass.
 Including ±2% threshold and independent 0.1% resistor tolerances, the falling
 threshold spans 4.172-4.358 V. Applying the maximum 3% hysteresis to the upper
 case gives a maximum rising threshold of 4.489 V. The power-envelope calculation
-permits 4.54925 V at this node after eFuse/harness loss, leaving about 60 mV above
-the worst rising threshold. The earlier 100 kohm divider had essentially no
+permits 4.75 V at this node after the 50 mV harness allowance, leaving 261 mV
+above the worst rising threshold. The earlier 100 kohm divider had essentially no
 margin once ripple, temperature and wiring were included. Check hot-coil pickup
 and measured power transitions before approving this threshold.
 
 The AND gate combines PSU_GOOD and RELAY_REQUEST, then drives the gate resistor.
 DBV pin 1 A = request, 2 B = PSU_GOOD, 3 GND, 4 Y = gated request, 5 VCC = 3V3.
 Use 100 nF bypass and the request pulldown. This makes service-only coil operation
-impossible through the intended supply path, and removes drive when the protected
-supply is below threshold. It does not detect welded relay contacts or constitute
+impossible through the intended supply path, and removes drive when the mains-board
+5 V supply is below threshold. It does not detect welded relay contacts or constitute
 an independent safety controller. Firmware reads PSU_GOOD and treats its loss as
 hardware-off so restored supply cannot resume a stale manual override.
 [TI TPS3808 Rev N, pin table and electrical characteristics](https://www.ti.com/lit/ds/symlink/tps3808.pdf),
@@ -278,7 +273,7 @@ to `V5_SENSOR_SW`. Add 100 nF at IN and the existing 1 uF plus a new
 `C3216X7R1E106K160AB` 10 uF at OUT. A `CRCW25126R80FKEGHP` 6.8 ohm resistor
 connects OUT to cable-side `V5_SENSOR`; its SMBJ7.0A cathode is on the cable side,
 anode at isolated GND. The [reviewed refinement](sensor-power-refinement.md)
-defines both-polarity pulse calculations, finite backfeed and layout limits.
+defines shared recovery, source-collapse behavior and layout limits.
 With ILIM shorted to IN, TI's
 Table 2 specifies 50/75/100 mA minimum/typical/maximum limiting. The 30 mA normal
 budget is below the minimum limit; it is not the protection threshold. This part
@@ -288,43 +283,19 @@ turns EN off after a fault; do not substitute a latch-off suffix without review.
 
 Fit a 10 kohm bleeder on `V5_SENSOR_SW` at the controller and another on
 `V5_SENSOR` at the daughterboard, so unplugging leaves each board a discharge path.
-Retain 3.01 kohm on `3V3_SENSOR` to keep LT3042 loaded above 1 mA. The complete
-sensor input network, both names together and including MLCC tolerance, has a
-**30 uF maximum**; `3V3_SENSOR` remains at 20 uF. The conservative sequential
-discharge bound is 1.092 s, within the unchanged 2 s off interval. Confirm both
-rails below 0.3 V on the final unit. Both input bleeders draw at most 1.085 mA
-normally. Including 7.3 mA LDO overhead, a 2 mA TVS hot-leakage allocation and
-signal-protection leakage leaves 19.61 mA for general 3.3 V loads within the
-unchanged 30 mA branch budget. The actual circuit uses about 4.618 mA on 3.3 V.
-The service-envelope model now gives 3.7986 V at the sensor input, 114.6 mV above
-the output-plus-dropout allowance. Exact capacitor and regulator calculations are in the
-[sensor basis](sensor-design-basis.md#passives-and-power-nets).
+Each sensor uses TPS7A2433DBVR, 10 µF input/output, 3.01 kΩ output bleed and
+10 kΩ input bleed. Its normal allocation is at most 10 mA, including cable
+pullups; both ports fit within the 30 mA feed allowance. The reservoir branch
+mirrors the tank branch's resistor, clamp, buffered bus and bypassing. GPIO0
+disables both buffers and GPIO22 powers both sensors together. Independent
+fault-isolated sensor uptime is not required.
 
-On an acquisition timeout, malformed frame or asserted power fault, publish
-invalid input immediately. The separate control task turns the relay off without
-awaiting recovery. Abort the HAL transaction, release SDA/SCL and lower
-SENSOR_BUS_EN before turning sensor power off. Keep the buffer disabled throughout
-the 2-second discharge interval and subsequent supply startup. This isolates the
-unpowered cable's floating/low inputs from the ESP segment. GPIO0 is independent
-of the power-enable GPIO so the buffer cannot reconnect during the rail ramp.
-
-After restoring sensor power, wait at least 200 ms with the buffer disabled.
-The LT3042 SET-network calculation permits 99.9% settling within 136 ms;
-the 200 ms allowance also covers the current-limited feed ramp. Verify the
-assembled startup waveform during commissioning.
-The firmware observes the recovery fault epoch after this wait, before checking
-FAULT/SDA/SCL high. A charging flag may clear while readings remain invalid;
-persistent or later faults still reject the initialized fresh frame.
-Release both ESP bus pins, enable the buffer between transactions, check both
-lines high within a bounded timeout, and then reinitialize the FDC before
-accepting an entirely new frame. Normal EN changes occur with an idle bus as TI
-requires. Disconnecting a stuck bus is deliberate transaction cancellation;
-never continue the old transfer after reconnecting. Limit automatic recovery to
-three attempts per minute. A persistent cable short remains a reported fault
-and keeps the relay off; power cycling cannot repair it. ESDS312DBVR signal arrays
-and SMBJ7.0A power suppressors are selected at both cable ends, with the reviewed
-RC and daughterboard PGFB diode refinement. Full transient/return-path and final
-assembly immunity evidence remain required.
+Retain 200 ms startup and 2 s power-off recovery. The combined capacitance,
+sequential discharge bound and voltage limits are in
+[sensor power refinement](sensor-power-refinement.md). The old LT3042 SET-network
+settling and load model no longer applies. Firmware uses LEVEL and RL with stored
+dry baselines; live RE is not captured. Do not add future reservoir acquisition
+or pump behavior to this firmware change.
 
 ## Harness and placement interface
 
@@ -365,32 +336,32 @@ internal mains connectors.
 Put the regulator and relay driver at the harness side, the antenna at the
 opposite outer edge, and the USB connector/buttons at the service edge. Provide
 accessible isolated-ground, V5_PSU, V5_LOGIC, 3V3, SDA, SCL, PSU_GOOD and gated
-relay test points. Allocate a **70 x 110 mm**, 1.6 mm nominal controller PCB with
-four 3.2 mm non-plated mounting holes at (5,29), (65,29), (5,105) and (65,105) mm
-from its upper-left corner. The 70 mm axis spans the 75 mm controller bay.
-The upper holes moved down 24 mm to clear the harness/antenna arrangement; reserve
-a 4 mm radius around each hole for mounting hardware and access. Source selects
-four layers with a continuous L2 ground reference, 1.6 mm FR4 and top assembly.
-Exact fabricated stackup, copper weights and USB routing dimensions remain to select.
-The [placement basis](controller-placement.md) records all positions and routing intent.
-The [nominal enclosure screen](controller-enclosure-fit.md) checks the actual
-Hammond reference STEP, mate envelopes and service opening, with an insulating
-carrier allocation. Current-production tolerances, exact support/cover hardware
-and cable reach still need completion within the
-[enclosure coordinates](mains-design-basis.md#enclosure-and-layout).
+relay test points. Allocate a **110 x 110 mm**, 1.6 mm nominal controller PCB with
+four 3.2 mm non-plated mounting holes at (25,29), (85,29), (25,105) and
+(85,105) mm from its upper-left corner. Reserve a 4 mm radius around each hole
+for mounting hardware and tool access. Source selects four layers with a
+continuous L2 ground reference, nominal 1.6 mm FR4 and top assembly. The exact
+stack and USB routing geometry are selected in the
+[fabrication contract](controller-stackup.md), with native verification separate.
+The [placement basis](controller-placement.md) owns positions and routing intent.
+Use the current [1590ZGRP243 enclosure fit](../../cad/shared-enclosure/README.md)
+and [mechanical coordinates](../mechanical.md). The controller is rotated
+90 degrees in the enclosure to face the tank. Exact mounting hardware, mating
+access and final harness lengths remain assembly details; old 1554V2GY receipts
+do not validate this board.
 
-## Capture work still owed
+## Capture and downstream verification
 
-The source now includes USB4105-GF-A, TPS259470 and SMBJ8.0CA copper/pin models.
-Connected sections capture the relay-permission circuit, buck/diode OR, protected
-service input, USB data gate, module/local controls, sensor interface and test pads.
-The complete 95-component schematic joins these sections and a shared placement
-table now locates every part. Source tests compare
-the drawn schematic with named nets; native readback remains a separate gate.
-USB origin/pin normalization and eFuse custom-pad anchor correction are tested
-at the initial-export boundary; complete-board integration and native parity are
-still required. The selected sensor RC/ESD design and PGFB diode are now in the
-circuit contracts and BOM. Complete the return-path/parasitic review, connector
-mating drawings, native assembly details, placement review and enclosure
-fit. Physical declarations now cover all 27 purchased-part models. Review the schematic and transient
-power combinations before adopting these selections as a fabrication baseline.
+The complete 113-component source joins the relay-permission circuit, buck/diode
+OR, known-adapter service input, USB data gate, module/local controls, two sensor
+ports, three future pump drivers and fourteen test pads. A shared placement table
+locates every component. U10, its threshold network and service clamps are absent;
+the sensor uses a fixed regulator without PGFB circuitry.
+
+Source tests compare the drawn schematic with named nets. USB origin/contact
+normalization remains tested at the initial-export boundary. Native parity,
+strict schematic ERC, pre-route DRC and physical renders remain separate evidence.
+Complete return-path review, connector mating access and native assembly details
+against the current enclosure. The [BOM](../../bom/bom.csv) lists exact current
+MPNs and quantities. Actual rail, thermal and interference measurements follow
+assembly; source capture is not a fabrication release.

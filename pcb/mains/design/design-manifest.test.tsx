@@ -62,7 +62,7 @@ function physical(json: CircuitJson, ref: string) {
   return found;
 }
 
-test("mains manifest normalizes to the shared schema with 27 stable refs, all logical nets and five NPTHs", () => {
+test("mains manifest normalizes to the shared schema with 26 stable refs, all logical nets and six NPTHs", () => {
   const untouched = JSON.stringify(source);
   expect(createMainsManifest([...source].reverse())).toEqual(manifest);
   const ids = [
@@ -91,22 +91,22 @@ test("mains manifest normalizes to the shared schema with 27 stable refs, all lo
   const normalized = shared(manifest);
   expect(normalized.board).toMatchObject({
     stable_id: "mains.board.main",
-    width_mm: 135,
-    height_mm: 75,
+    width_mm: 180,
+    height_mm: 110,
     layer_count: 2,
     coordinate_system: "center-x-right-y-up",
     kicad_origin_mm: [100, 100],
     specs: { material: "FR4", thickness_mm: 1.6, assembly_sides: ["front"] },
   });
-  expect(normalized.components).toHaveLength(27);
-  expect(new Set(manifest.components.map((c) => c.footprint.kicad)).size).toBe(27);
+  expect(normalized.components).toHaveLength(26);
+  expect(new Set(manifest.components.map((c) => c.footprint.kicad)).size).toBe(26);
   expect(
     manifest.components.reduce((sum, c) => sum + c.footprint.pad_numbers.length, 0),
-  ).toBe(66);
+  ).toBe(60);
   expect(manifest.nets).toHaveLength(14);
-  expect(manifest.nets.reduce((sum, n) => sum + n.endpoints.length, 0)).toBe(56);
-  expect(manifest.metadata.physical_numbered_pad_count).toBe(81);
-  expect(Object.values(manifest.metadata.physical_pad_numbers).flat()).toHaveLength(81);
+  expect(manifest.nets.reduce((sum, n) => sum + n.endpoints.length, 0)).toBe(53);
+  expect(manifest.metadata.physical_numbered_pad_count).toBe(75);
+  expect(Object.values(manifest.metadata.physical_pad_numbers).flat()).toHaveLength(75);
   expect(manifest.metadata.physical_pad_numbers.J4).toEqual([
     "1",
     "1",
@@ -122,12 +122,12 @@ test("mains manifest normalizes to the shared schema with 27 stable refs, all lo
     "6",
   ]);
   expect(manifest.metadata.source_paste_record_count).toBe(118);
-  expect(Object.values(manifest.metadata.logical_pins).flat()).toHaveLength(66);
+  expect(Object.values(manifest.metadata.logical_pins).flat()).toHaveLength(60);
   expect(
     Object.values(manifest.metadata.logical_pins)
       .flat()
       .filter((p) => p.no_connect),
-  ).toHaveLength(10);
+  ).toHaveLength(7);
   expect(manifest.metadata.logical_pins.K1).toEqual([
     { number: "1", name: "COIL_HIGH", no_connect: false },
     { number: "3", name: "CONTACT_FIXED", no_connect: false },
@@ -138,16 +138,29 @@ test("mains manifest normalizes to the shared schema with 27 stable refs, all lo
   expect(normalized.metadata.physical_pad_numbers).toEqual(
     manifest.metadata.physical_pad_numbers,
   );
-  expect(normalized.board.holes).toEqual([
-    { stable_id: "mains.hole.h1", ref: "H1", x_mm: -62.5, y_mm: 32.5, drill_mm: 3.2 },
-    { stable_id: "mains.hole.h2", ref: "H2", x_mm: 62.5, y_mm: 32.5, drill_mm: 3.2 },
-    { stable_id: "mains.hole.h3", ref: "H3", x_mm: -62.5, y_mm: -32.5, drill_mm: 3.2 },
-    { stable_id: "mains.hole.h4", ref: "H4", x_mm: 62.5, y_mm: -32.5, drill_mm: 3.2 },
+  expect(
+    normalized.board.holes.map((h: { x_mm: number; y_mm: number }) => ({
+      ...h,
+      x_mm: Number(h.x_mm.toFixed(6)),
+      y_mm: Number(h.y_mm.toFixed(6)),
+    })),
+  ).toEqual([
+    { stable_id: "mains.hole.h1", ref: "H1", x_mm: -85, y_mm: 50, drill_mm: 3.2 },
+    { stable_id: "mains.hole.h2", ref: "H2", x_mm: 85, y_mm: 50, drill_mm: 3.2 },
+    { stable_id: "mains.hole.h3", ref: "H3", x_mm: -85, y_mm: -50, drill_mm: 3.2 },
+    { stable_id: "mains.hole.h4", ref: "H4", x_mm: 85, y_mm: -50, drill_mm: 3.2 },
     {
       stable_id: "mains.hole.j5.locator-1",
       ref: "J5",
-      x_mm: 57.82,
-      y_mm: -20.5,
+      x_mm: 83.32,
+      y_mm: 2,
+      drill_mm: 3,
+    },
+    {
+      stable_id: "mains.hole.j6.locator-1",
+      ref: "J6",
+      x_mm: 83.32,
+      y_mm: 29,
       drill_mm: 3,
     },
   ]);
@@ -161,19 +174,19 @@ test("mains manifest normalizes to the shared schema with 27 stable refs, all lo
       .find((n) => n.name === name)!
       .endpoints.map((p) => `${p.component.split(".").at(-1)}.${p.pad}`)
       .sort();
-  expect(net("AC_L_FUSED")).toEqual(["j1.1", "j2.1", "rv1.1", "u1.2"]);
+  expect(net("AC_L_FUSED")).toEqual(["f3.1", "j1.1", "rv1.1", "u1.2"]);
   expect(net("COIL_DRAIN")).toEqual(["d1.2", "j5.3", "k1.5"]);
   expect(net("SNUBBER_RC")).toEqual(["c1.1", "r1.2"]);
   expect(
     manifest.components.find((c) => c.ref === "K1")!.footprint.pad_numbers,
   ).toEqual(["1", "3", "4", "5"]);
-  expect(manifest.components.find((c) => c.ref === "C3")!.fields).toMatchObject({
+  expect(manifest.components.find((c) => c.ref === "C7")!.fields).toMatchObject({
     manufacturer_part_number: "C1608X7R1H104K080AA",
     datasheet_url: expect.stringContaining("c1608x7r1h104k080aa"),
   });
   expect(manifest.components.find((c) => c.ref === "C5")!.fields).toMatchObject({
-    manufacturer_part_number: "C1608C0G1H472J080AA",
-    datasheet_url: expect.stringContaining("c1608c0g1h472j080aa"),
+    manufacturer_part_number: "C1608X7R1H104K080AA",
+    datasheet_url: expect.stringContaining("c1608x7r1h104k080aa"),
   });
   const native = createMainsInitialPcb(source);
   for (const c of manifest.components) {
@@ -189,7 +202,7 @@ test("mains manifest normalizes to the shared schema with 27 stable refs, all lo
 });
 
 test("source receipts retain SMT copper, mask, paste and graphics even when the converter ignores them", () => {
-  const before = manifest.components.find((c) => c.ref === "R2")!;
+  const before = manifest.components.find((c) => c.ref === "C2")!;
   for (const [type, field, delta] of [
     ["pcb_smtpad", "width", 0.1],
     ["pcb_smtpad", "soldermask_margin", 0.01],
@@ -197,7 +210,7 @@ test("source receipts retain SMT copper, mask, paste and graphics even when the 
     ["pcb_fabrication_note_path", "stroke_width", 0.01],
   ] as const) {
     const edited = structuredClone(source);
-    const id = physical(edited, "R2").pcb_component_id;
+    const id = physical(edited, "C2").pcb_component_id;
     const item = edited.find(
       (e) => e.type === type && "pcb_component_id" in e && e.pcb_component_id === id,
     ) as unknown as Record<string, unknown>;
@@ -206,7 +219,7 @@ test("source receipts retain SMT copper, mask, paste and graphics even when the 
     item[field] = (item[field] as number) + delta;
     const changed = createMainsManifest(edited);
     expect(
-      changed.components.find((c) => c.ref === "R2")!.footprint.source_geometry_sha256,
+      changed.components.find((c) => c.ref === "C2")!.footprint.source_geometry_sha256,
     ).not.toBe(before.footprint.source_geometry_sha256);
     expect(
       shared([manifest, changed], true).some(
@@ -272,25 +285,25 @@ test("malformed identities, lost physical lands, changed pins/nets and moved pla
     [
       "duplicate ref",
       (j) => {
-        component(j, "R2").name = "R3";
+        component(j, "C2").name = "C3";
       },
     ],
     [
       "unknown ref",
       (j) => {
-        component(j, "R2").name = "R99";
+        component(j, "C2").name = "R99";
       },
     ],
     [
       "duplicate source ID",
       (j) => {
-        component(j, "R2").source_component_id = component(j, "R3").source_component_id;
+        component(j, "C2").source_component_id = component(j, "C3").source_component_id;
       },
     ],
     [
       "duplicate physical ID",
       (j) => {
-        physical(j, "R2").pcb_component_id = physical(j, "R3").pcb_component_id;
+        physical(j, "C2").pcb_component_id = physical(j, "C3").pcb_component_id;
       },
     ],
     [
@@ -305,17 +318,17 @@ test("malformed identities, lost physical lands, changed pins/nets and moved pla
     [
       "selected quantity",
       (j) => {
-        const p = component(j, "R2");
-        if (p.ftype !== "simple_resistor") throw new Error("wrong kind");
-        p.resistance = 26000;
+        const p = component(j, "C2");
+        if (p.ftype !== "simple_capacitor") throw new Error("wrong kind");
+        p.capacitance = 21e-6;
       },
     ],
     [
       "selected display value",
       (j) => {
-        const p = component(j, "R2");
-        if (p.ftype !== "simple_resistor") throw new Error("wrong kind");
-        p.display_resistance = "25kΩ";
+        const p = component(j, "C2");
+        if (p.ftype !== "simple_capacitor") throw new Error("wrong kind");
+        p.display_capacitance = "21uF";
       },
     ],
     [
@@ -334,19 +347,19 @@ test("malformed identities, lost physical lands, changed pins/nets and moved pla
     [
       "rotation",
       (j) => {
-        physical(j, "R2").rotation = 90;
+        physical(j, "C2").rotation = 180;
       },
     ],
     [
       "side",
       (j) => {
-        physical(j, "R2").layer = "bottom";
+        physical(j, "C2").layer = "bottom";
       },
     ],
     [
       "do not place",
       (j) => {
-        physical(j, "R2").do_not_place = true;
+        physical(j, "C2").do_not_place = true;
       },
     ],
     [
@@ -420,7 +433,7 @@ test("malformed identities, lost physical lands, changed pins/nets and moved pla
     [
       "changed NC",
       (j) => {
-        const id = component(j, "U2").source_component_id;
+        const id = component(j, "J4").source_component_id;
         j
           .filter((e) => e.type === "source_port")
           .find(

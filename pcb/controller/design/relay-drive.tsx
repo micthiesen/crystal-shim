@@ -50,6 +50,7 @@ export function ControllerRelayDrive() {
       />
       <ControllerResistor
         name="R15"
+        precision
         {...controllerPlacements.R15}
         value="10k"
         schX={-9}

@@ -1,5 +1,5 @@
 import type { CircuitJson } from "circuit-json";
-import { controllerMountingHoles } from "./placements";
+import { controllerMountingHoles, controllerPlacements } from "./placements";
 
 type Bounds = { ref: string; left: number; right: number; bottom: number; top: number };
 
@@ -58,8 +58,8 @@ export function controllerPlacementErrors(json: CircuitJson): string[] {
     const bottom = ref === "J4" ? -55.575 : -55;
     const top = ref === "U1" ? 61.6 : 55;
     if (
-      box.left < -35 - 1e-6 ||
-      box.right > 35 + 1e-6 ||
+      box.left < -55 - 1e-6 ||
+      box.right > 55 + 1e-6 ||
       box.bottom < bottom - 1e-6 ||
       box.top > top + 1e-6
     )
@@ -71,7 +71,8 @@ export function controllerPlacementErrors(json: CircuitJson): string[] {
         errors.push(`${ref}: courtyard enters ${hole.ref} 4 mm mounting reserve`);
     }
   }
-  if (bounds.length !== 95) errors.push("Expected 95 component courtyards");
+  if (bounds.length !== Object.keys(controllerPlacements).length)
+    errors.push("Expected all component courtyards");
   for (const [i, a] of bounds.entries()) {
     for (const b of bounds.slice(i + 1)) {
       if (

@@ -10,28 +10,27 @@ const chipMpns: Readonly<Record<string, string>> = {
   J3: "43160-0104",
   J4: "43160-0106",
   J5: "43650-0300",
-  U1: "IRM-10-5",
-  U2: "TPS259470ARPWR",
+  U1: "IRM-45-12",
+  U2: "AP63205WU-7",
   K1: "G5RL-1A-TV8 DC5",
   RV1: "TMOV14RP175EL2T7",
   D1: "1N4007-E3/54",
-  D2: "STPS2L40U",
+  F2: "0451003.MRL",
+  F3: "0215001.MXEP",
+  J6: "43045-0200",
 };
 // Ref-bound population. A different known resistor/capacitor is not an admitted
 // replacement merely because its electrical pin types would also be passive.
 const passives = {
   R1: ["simple_resistor", "PR02FS0201000KA100", "100Ω", 100],
-  R2: ["simple_resistor", "ERA3AEB2612V", "26.1kΩ", 26100],
-  R3: ["simple_resistor", "ERA3AEB103V", "10kΩ", 10000],
-  R4: ["simple_resistor", "ERA3AEB3832V", "38.3kΩ", 38300],
-  R5: ["simple_resistor", "ERA3AEB103V", "10kΩ", 10000],
-  R6: ["simple_resistor", "ERA3AEB2871V", "2.87kΩ", 2870],
-  R7: ["simple_resistor", "ERA6AEB222V", "2.2kΩ", 2200],
   C1: ["simple_capacitor", "B32921C3473K000", "47nF", 47e-9],
-  C2: ["simple_capacitor", "C2012X7R1E105K125AB", "1uF", 1e-6],
-  C3: ["simple_capacitor", "C1608X7R1H104K080AA", "100nF", 100e-9],
+  C2: ["simple_capacitor", "GRM32ER71E226ME15L", "22uF", 22e-6],
+  C3: ["simple_capacitor", "GRM32ER71E226ME15L", "22uF", 22e-6],
   C4: ["simple_capacitor", "GRM32ER71E226ME15L", "22uF", 22e-6],
-  C5: ["simple_capacitor", "C1608C0G1H472J080AA", "4.7nF", 4.7e-9],
+  C5: ["simple_capacitor", "C1608X7R1H104K080AA", "100nF", 100e-9],
+  C6: ["simple_capacitor", "GRM32ER71E226ME15L", "22uF", 22e-6],
+  C7: ["simple_capacitor", "C1608X7R1H104K080AA", "100nF", 100e-9],
+  L1: ["simple_inductor", "SRP5030TA-4R7M", "4.7µH", "4.7uH"],
 } as const;
 const passivePair = {
   "1": { name: "1", type: "passive" },
@@ -68,14 +67,14 @@ export function applyMainsPinTypesForInitialExport(
   const ports = json.filter((e) => e.type === "source_port");
   const byRef = new Map(sources.map((s) => [s.name, s]));
   if (
-    sources.length !== 23 ||
-    byRef.size !== 23 ||
-    ports.length !== 66 ||
+    sources.length !== 22 ||
+    byRef.size !== 22 ||
+    ports.length !== 60 ||
     sources.some((s) => !s.source_component_id?.trim()) ||
     ports.some((p) => !p.source_port_id?.trim())
   )
     throw new Error(
-      "Mains electrical source must contain 23 parts and 66 identified pins",
+      "Mains electrical source must contain 22 parts and 60 identified pins",
     );
 
   const declarations = new Map<string, Readonly<Record<string, ElectricalPin>>>();
@@ -119,8 +118,15 @@ export function applyMainsPinTypesForInitialExport(
             ? source.resistance
             : source.ftype === "simple_capacitor"
               ? source.capacitance
-              : undefined;
-        const family = part[0] === "simple_resistor" ? "boxresistor" : "capacitor";
+              : source.ftype === "simple_inductor"
+                ? source.inductance
+                : undefined;
+        const family =
+          part[0] === "simple_resistor"
+            ? "boxresistor"
+            : part[0] === "simple_inductor"
+              ? "inductor"
+              : "capacitor";
         if (
           quantity !== part[3] ||
           !["up", "down", "left", "right"].some(
@@ -177,8 +183,8 @@ export function applyMainsPinTypesForInitialExport(
       declarations.set(libraryId, expected);
     }
   }
-  if (seen.size !== 23 || logicalPins !== 66)
-    throw new Error("Initial mains electrical coverage must be 23 parts and 66 pins");
+  if (seen.size !== 22 || logicalPins !== 60)
+    throw new Error("Initial mains electrical coverage must be 22 parts and 60 pins");
 
   const plans = new Map<SymbolPin, ElectricalPin["type"]>();
   // The pinned converter caches repeated passive definitions, including copies

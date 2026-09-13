@@ -1,7 +1,6 @@
 import type { CircuitJson } from "circuit-json";
 import { CircuitJsonToKicadPcbConverter } from "circuit-json-to-kicad";
 import { mapUsbPcbForInitialExport } from "./usb-initial-export";
-import { anchorServiceEfuseForInitialExport } from "./service-protection-initial-export";
 import { applyConnectorPhysicalForInitialExport } from "./connector-physical-initial-export";
 import { omitTestPointPasteForInitialExport } from "./test-points";
 import { identifyControllerMountsForInitialExport } from "./mounting-holes-initial-export";
@@ -14,12 +13,16 @@ export function createControllerInitialPcb(prepared: CircuitJson) {
   converter.runUntilFinished();
   const pcb = converter.getOutput();
   mapUsbPcbForInitialExport(pcb, ["J4"]);
-  anchorServiceEfuseForInitialExport(pcb, ["U10"]);
   applyConnectorPhysicalForInitialExport(pcb, [
     "J1",
     "J2",
     "J3",
     "J4",
+    "J5",
+    "J6",
+    "J7",
+    "J8",
+    "J9",
     "D4",
     "SW1",
     "SW2",

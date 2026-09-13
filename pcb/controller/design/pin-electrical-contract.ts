@@ -241,8 +241,8 @@ export const chipElectricalContracts: Readonly<Record<string, ChipElectricalCont
     },
     "43045-0200": {
       pins: pins([
-        ["V5_SERVICE_RAW", "passive"],
-        ["GND", "passive"],
+        ["POSITIVE", "passive"],
+        ["RETURN", "passive"],
       ]),
       basis: "Molex passive connector; external service supply is separately declared.",
     },

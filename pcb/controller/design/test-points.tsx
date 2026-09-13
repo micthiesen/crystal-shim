@@ -17,6 +17,9 @@ export const controllerTestPoints = (
     { ref: "TP9", net: "UART0_RX", label: "RX 3V3" },
     { ref: "TP10", net: "UART0_TX", label: "TX 3V3" },
     { ref: "TP11", net: "GND", label: "GND" },
+    { ref: "TP12", net: "ACCESSORY_INPUT1", label: "GPIO4" },
+    { ref: "TP13", net: "ACCESSORY_INPUT2", label: "GPIO5" },
+    { ref: "TP14", net: "GND", label: "GND" },
   ] as const
 ).map((point) => ({
   ...point,
@@ -100,8 +103,8 @@ export function ControllerTestPoints() {
               pcbX={point.x}
               pcbY={point.y}
               layer="top"
-              schX={-9 + (index % 3) * 9}
-              schY={8 - Math.floor(index / 3) * 5}
+              schX={-8 + (index % 3) * 8}
+              schY={6 - Math.floor(index / 3) * 4}
               schSheetName="TestPoints"
               connections={{ pin1: `net.${point.net}` }}
               kicadFootprintMetadata={{

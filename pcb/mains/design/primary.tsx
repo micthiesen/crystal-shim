@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { MainsHeader, mainsHeaderNets } from "./mains-headers";
-import { IsolatedSupply, PumpRelay } from "./power-components";
+import { IsolatedSupply, PumpRelay, BranchFuse } from "./power-components";
 import { mainsPlacements } from "./placements";
 import { ThermallyProtectedMov } from "./mov-component";
 
@@ -55,6 +55,15 @@ export function MainsPrimary() {
         schHeight={4}
         schPinArrangement={{ leftSide: [2, 1], rightSide: [4, 3] }}
       />
+      <BranchFuse
+        name="F3"
+        {...mainsPlacements.F3}
+        schX={-18}
+        schY={2}
+        schWidth={4}
+        schHeight={2}
+        schPinArrangement={{ leftSide: [1], rightSide: [2] }}
+      />
       <PumpRelay
         name="K1"
         {...mainsPlacements.K1}
@@ -81,9 +90,11 @@ export function MainsPrimary() {
       ))}
       {(
         [
+          ["AC_L_FUSED", ".F3 > .IN"],
+          ["FILTER_LINE_L", ".F3 > .OUT"],
           ["AC_L_FUSED", ".U1 > .AC_L"],
           ["AC_N", ".U1 > .AC_N"],
-          ["V5_RAW", ".U1 > .V5_RAW"],
+          ["V12_RAW", ".U1 > .V12_RAW"],
           ["GND_ISO", ".U1 > .GND_ISO"],
           ["PUMP_L_FILTERED", ".K1 > .CONTACT_FIXED"],
           ["PUMP_L_SW", ".K1 > .CONTACT_MOVING"],
@@ -98,7 +109,7 @@ export function MainsPrimary() {
         </Fragment>
       ))}
       <schematictext
-        text="J1: fused inlet. J2: filter LINE. J3: filter LOAD. J4: pump. PE remains off-board."
+        text="J1: fused inlet. F3: T1A branch. J2: filter LINE. J3: filter LOAD. J4: pump. PE remains off-board."
         schX={0}
         schY={15}
         fontSize={0.65}

@@ -5,8 +5,8 @@ import { PowerSchottky } from "./protection-components";
 import { BuckInductor } from "./assembly-components";
 import { ControllerCapacitor } from "./passive-components";
 
-// Final controller's diode OR and buck section. Both input nets are downstream
-// of their respective eFuses. USB_VBUS has no power connection to this section.
+// Diode OR joins mains-board 5 V and the known-adapter fused service input.
+// USB_VBUS has no power connection to this section.
 export function ControllerLogicPower() {
   return (
     <group name="LogicPower" schSheetName="Power">

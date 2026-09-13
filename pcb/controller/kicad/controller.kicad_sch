@@ -6,6 +6,52 @@
 	(paper "A4")
 	(lib_symbols)
 	(sheet
+		(at 145.4 135.4)
+		(size 40 25)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "11dc341a-8ce3-4464-9e1a-904b83a2a019")
+		(property "Sheetname" "Reservoir sensor"
+			(at 145.4 134.6884 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "expansion-source/reservoir.kicad_sch"
+			(at 145.4 160.9846 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9"
+					(page "10")
+				)
+			)
+		)
+	)
+	(sheet
 		(at 145.4 25.4)
 		(size 40 25)
 		(exclude_from_sim no)
@@ -21,8 +67,8 @@
 			(color 0 0 0 0)
 		)
 		(uuid "2189f28f-777b-4621-ae9c-e2593ce2e5aa")
-		(property "Sheetname" "Protected isolated service input"
-			(at 145.4 24.7 0)
+		(property "Sheetname" "Known-adapter service input"
+			(at 145.4 24.5614 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -32,8 +78,8 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "service.kicad_sch"
-			(at 145.4 51.1 0)
+		(property "Sheetfile" "expansion-source/service.kicad_sch"
+			(at 145.4 51.0862 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -46,7 +92,7 @@
 		(instances
 			(project "controller"
 				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9"
-					(page "4")
+					(page "2")
 				)
 			)
 		)
@@ -68,7 +114,7 @@
 		)
 		(uuid "3d1ee42e-92c1-4480-aab7-55acbd6dea7b")
 		(property "Sheetname" "Protected sensor feed and buffered bus"
-			(at 145.4 79.7 0)
+			(at 145.4 79.5614 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -78,8 +124,8 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "sensorinterface.kicad_sch"
-			(at 145.4 106.1 0)
+		(property "Sheetfile" "expansion-source/sensorinterface.kicad_sch"
+			(at 145.4 106.0862 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -92,7 +138,7 @@
 		(instances
 			(project "controller"
 				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9"
-					(page "7")
+					(page "3")
 				)
 			)
 		)
@@ -114,7 +160,7 @@
 		)
 		(uuid "7036901f-5f9d-4df7-bf6a-c859c2892904")
 		(property "Sheetname" "Self-powered USB data interface"
-			(at 85.4 79.7 0)
+			(at 85.4 79.5614 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -124,8 +170,8 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "usb.kicad_sch"
-			(at 85.4 106.1 0)
+		(property "Sheetfile" "expansion-source/usb.kicad_sch"
+			(at 85.4 106.0862 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -138,7 +184,53 @@
 		(instances
 			(project "controller"
 				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9"
-					(page "6")
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 85.4 125.4)
+		(size 40 25)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "95ee6e75-c0c5-4110-b9a0-6be26918f5e1")
+		(property "Sheetname" "Future pump outputs"
+			(at 85.4 124.6884 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "expansion-source/pumps.kicad_sch"
+			(at 85.4 150.9846 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9"
+					(page "9")
 				)
 			)
 		)
@@ -160,7 +252,7 @@
 		)
 		(uuid "96a5bfbb-4ec8-41a2-b2ae-336e2b2d2c45")
 		(property "Sheetname" "Relay permission and mains-board harness"
-			(at 25.4 24.7 0)
+			(at 25.4 24.5614 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -170,8 +262,8 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "relay.kicad_sch"
-			(at 25.4 51.1 0)
+		(property "Sheetfile" "expansion-source/relay.kicad_sch"
+			(at 25.4 51.0862 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -184,7 +276,7 @@
 		(instances
 			(project "controller"
 				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9"
-					(page "2")
+					(page "5")
 				)
 			)
 		)
@@ -206,7 +298,7 @@
 		)
 		(uuid "9bbcaf94-4fed-41e6-ac48-fd91a079746a")
 		(property "Sheetname" "Test and UART service pads"
-			(at 25.4 134.7 0)
+			(at 25.4 134.5614 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -216,8 +308,8 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "testpoints.kicad_sch"
-			(at 25.4 161.1 0)
+		(property "Sheetfile" "expansion-source/testpoints.kicad_sch"
+			(at 25.4 161.0862 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -230,7 +322,7 @@
 		(instances
 			(project "controller"
 				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9"
-					(page "8")
+					(page "6")
 				)
 			)
 		)
@@ -252,7 +344,7 @@
 		)
 		(uuid "bf180fb2-480c-4132-92fc-229599c791b1")
 		(property "Sheetname" "Logic power"
-			(at 85.4 24.7 0)
+			(at 85.4 24.5614 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -262,8 +354,8 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "power.kicad_sch"
-			(at 85.4 51.1 0)
+		(property "Sheetfile" "expansion-source/power.kicad_sch"
+			(at 85.4 51.0862 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -276,7 +368,7 @@
 		(instances
 			(project "controller"
 				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9"
-					(page "3")
+					(page "7")
 				)
 			)
 		)
@@ -298,7 +390,7 @@
 		)
 		(uuid "eea8e43b-03ef-4903-9b9c-fc1cb37a5456")
 		(property "Sheetname" "ESP module and local controls"
-			(at 25.4 79.7 0)
+			(at 25.4 79.5614 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -308,8 +400,8 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "module.kicad_sch"
-			(at 25.4 106.1 0)
+		(property "Sheetfile" "expansion-source/module.kicad_sch"
+			(at 25.4 106.0862 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -322,7 +414,7 @@
 		(instances
 			(project "controller"
 				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9"
-					(page "5")
+					(page "8")
 				)
 			)
 		)

@@ -18,15 +18,15 @@ function passivePins(
 export const mainsChipElectricalContracts: Readonly<
   Record<string, ChipElectricalContract>
 > = {
-  "IRM-10-5": {
+  "IRM-45-12": {
     pins: {
       "1": { name: "AC_N", type: "power_in" },
       "2": { name: "AC_L", type: "power_in" },
       "3": { name: "GND_ISO", type: "power_out" },
-      "4": { name: "V5_RAW", type: "power_out" },
+      "4": { name: "V12_RAW", type: "power_out" },
     },
     basis:
-      "Mean Well IRM-10 specification, Case222A bottom-view functions: AC/N, AC/L, -V and +V. Source adopts native IRM-05 numbering 1/2/3/4; the manufacturer labels functions rather than numbers. Both isolated output terminals supply the secondary circuit, including its return. This ERC declaration does not establish isolation, converter operation or power sequencing.",
+      "Mean Well IRM-45 specification, Case IRM60 bottom-view functions: AC/N, AC/L, -V and +V. Source adopts native IRM-05 numbering 1/2/3/4; the manufacturer labels functions rather than numbers. Both isolated output terminals supply the secondary circuit, including its return. This ERC declaration does not establish isolation, converter operation or power sequencing.",
   },
   "G5RL-1A-TV8 DC5": {
     pins: {
@@ -75,7 +75,15 @@ export const mainsChipElectricalContracts: Readonly<
     basis:
       "Vishay 88503 1N4007 rectifier: cathode band; adopted source numbering 1 cathode / 2 anode. Passive coil flyback terminals, with no power-source declaration.",
   },
-  TPS259470ARPWR: chipElectricalContracts.TPS259470ARPWR!,
-  STPS2L40U: chipElectricalContracts.STPS2L40U!,
+  "AP63205WU-7": chipElectricalContracts["AP63203WU-7"]!,
+  "0215001.MXEP": {
+    pins: passivePins(["IN", "OUT"]),
+    basis: "Littelfuse 215 axial fuse, passive series current path.",
+  },
+  "0451003.MRL": {
+    pins: passivePins(["IN", "OUT"]),
+    basis: "Littelfuse 451 fuse, passive series current path.",
+  },
+  "43045-0200": chipElectricalContracts["43045-0200"]!,
   "43650-0300": chipElectricalContracts["43650-0300"]!,
 };

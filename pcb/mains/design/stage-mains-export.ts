@@ -68,7 +68,7 @@ export function validateMainsRegistration(
     receipt.symbol_library?.path !== mainsSymbolLibraryFilename ||
     receipt.symbol_library?.sha256 !== sha256(symbolLibraryBytes) ||
     receipt.symbol_inventory?.library !== symbolLibrary ||
-    receipt.symbol_inventory?.count !== 24 ||
+    receipt.symbol_inventory?.count !== 23 ||
     !Array.isArray(receipt.symbol_inventory?.symbols) ||
     JSON.stringify([...receipt.symbol_inventory.symbols].sort()) !==
       JSON.stringify(
@@ -442,7 +442,7 @@ export async function stageMainsExport(
   const libraryReceipt = JSON.parse(libraryReceiptBytes.toString());
   if (
     libraryReceipt.status !== "validated-native-library-only" ||
-    libraryReceipt.footprints !== 27 ||
+    libraryReceipt.footprints !== 26 ||
     libraryReceipt.source.sha256.board !== sha256(plan.files[0]!.content) ||
     libraryReceipt.source.sha256.manifest !== sha256(plan.guard.manifest)
   )
@@ -555,6 +555,30 @@ export async function stageMainsExport(
     libraryReceipt.kicad_version,
     hasLocalSettings ? await readRegular(join(stage, "mains.kicad_prl")) : undefined,
   );
+  await runInitialTool(
+    [
+      "sh",
+      join(pcbRoot, "tools/kicad_python.sh"),
+      join(pcbRoot, "mains/design/apply-mains-isolation-areas.py"),
+    ],
+    env,
+    "Native mains isolation areas",
+    60_000,
+  );
+  await verifyInputs(plan);
+  const isolationBytes = await readRegular(join(stage, "native-isolation-areas.json"));
+  const isolation = JSON.parse(isolationBytes.toString());
+  const boardFile = initialFiles.find((f) => f.path === "mains.kicad_pcb")!;
+  if (
+    isolation.board_sha256_before !== boardFile.sha256 ||
+    isolation.board_sha256_after !==
+      sha256(await readRegular(join(stage, boardFile.path))) ||
+    isolation.source_pads_preserved !== true ||
+    isolation.script_sha256 !==
+      plan.sourceHashes["mains/design/apply-mains-isolation-areas.py"]
+  )
+    throw new Error("Native isolation receipt does not bind this initial board");
+  boardFile.sha256 = isolation.board_sha256_after;
   const receipt = await open(join(stage, receiptName), "wx", 0o600);
   try {
     await receipt.writeFile(
@@ -576,6 +600,10 @@ export async function stageMainsExport(
           },
           native_library_registration: registrationEvidence,
           native_initial_rules: initialRulesEvidence,
+          native_isolation_areas: {
+            path: "native-isolation-areas.json",
+            sha256: sha256(isolationBytes),
+          },
           limitations:
             "Initial project libraries, two source power annotations, monotone schematic grid and the declared NPTH rule applied; no adoption, handoff lock, completed augmentation, ERC/DRC or fabrication acceptance.",
         },

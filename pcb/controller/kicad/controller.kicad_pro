@@ -513,6 +513,63 @@
         "wire_width": 6
       },
       {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "LogicPower",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": -1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 2.0,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MotorChannel",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": -1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 1.0,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MotorTrunk",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": -1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 2.0,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
         "diff_pair_gap": 0.15,
         "diff_pair_width": 0.24,
         "name": "USB90",
@@ -552,6 +609,34 @@
       {
         "netclass": "USB90",
         "pattern": "USB_D_P_SWITCH"
+      },
+      {
+        "netclass": "LogicPower",
+        "pattern": "V5_PSU"
+      },
+      {
+        "netclass": "LogicPower",
+        "pattern": "V5_SERVICE"
+      },
+      {
+        "netclass": "LogicPower",
+        "pattern": "V5_LOGIC"
+      },
+      {
+        "netclass": "MotorTrunk",
+        "pattern": "V12_PUMP"
+      },
+      {
+        "netclass": "MotorChannel",
+        "pattern": "TRANSFER_DRAIN"
+      },
+      {
+        "netclass": "MotorChannel",
+        "pattern": "CHLORINE_DRAIN"
+      },
+      {
+        "netclass": "MotorChannel",
+        "pattern": "DECHLOR_DRAIN"
       }
     ]
   },
@@ -705,32 +790,40 @@
       "controller"
     ],
     [
-      "96a5bfbb-4ec8-41a2-b2ae-336e2b2d2c45",
-      "Relay permission and mains-board harness"
-    ],
-    [
-      "bf180fb2-480c-4132-92fc-229599c791b1",
-      "Logic power"
-    ],
-    [
       "2189f28f-777b-4621-ae9c-e2593ce2e5aa",
-      "Protected isolated service input"
-    ],
-    [
-      "eea8e43b-03ef-4903-9b9c-fc1cb37a5456",
-      "ESP module and local controls"
-    ],
-    [
-      "7036901f-5f9d-4df7-bf6a-c859c2892904",
-      "Self-powered USB data interface"
+      "Known-adapter service input"
     ],
     [
       "3d1ee42e-92c1-4480-aab7-55acbd6dea7b",
       "Protected sensor feed and buffered bus"
     ],
     [
+      "7036901f-5f9d-4df7-bf6a-c859c2892904",
+      "Self-powered USB data interface"
+    ],
+    [
+      "96a5bfbb-4ec8-41a2-b2ae-336e2b2d2c45",
+      "Relay permission and mains-board harness"
+    ],
+    [
       "9bbcaf94-4fed-41e6-ac48-fd91a079746a",
       "Test and UART service pads"
+    ],
+    [
+      "bf180fb2-480c-4132-92fc-229599c791b1",
+      "Logic power"
+    ],
+    [
+      "eea8e43b-03ef-4903-9b9c-fc1cb37a5456",
+      "ESP module and local controls"
+    ],
+    [
+      "95ee6e75-c0c5-4110-b9a0-6be26918f5e1",
+      "Future pump outputs"
+    ],
+    [
+      "11dc341a-8ce3-4464-9e1a-904b83a2a019",
+      "Reservoir sensor"
     ]
   ],
   "text_variables": {},

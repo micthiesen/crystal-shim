@@ -255,11 +255,11 @@ test("writes the actual complete initial hierarchy once without adoption", async
   const env = await freshStage();
   const plan = await planFor(env);
   await writeControllerInitialFiles(plan);
-  expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(12);
+  expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(14);
   const pcb = parseKicadPcb(
     await readFile(join(env.STILLAIR_HANDOFF_STAGE, "controller.kicad_pcb"), "utf8"),
   );
-  expect(pcb.footprints).toHaveLength(99);
+  expect(pcb.footprints).toHaveLength(117);
   const refs = pcb.footprints.map(
     (fp) => fp.properties.find((p) => p.key === "Reference")?.value,
   );
@@ -270,7 +270,7 @@ test("writes the actual complete initial hierarchy once without adoption", async
     symbols += parseKicadSch(
       await readFile(join(env.STILLAIR_HANDOFF_STAGE, file.filename), "utf8"),
     ).symbols.length;
-  expect(symbols).toBe(99); // 95 physical parts and four excluded ERC flags.
+  expect(symbols).toBe(117); // 110 physical parts and four excluded ERC flags.
   for (const file of plan.files)
     expect(
       await readFile(join(env.STILLAIR_HANDOFF_STAGE, file.filename), "utf8"),
@@ -299,7 +299,7 @@ test("native exporter failure leaves no success receipt and cannot be retried", 
   ]);
   expect(code).not.toBe(0);
   expect(stderr).toContain("Initial native footprint export failed (23)");
-  expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(12);
+  expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(14);
   await expect(guardControllerStage(env)).rejects.toThrow("Fresh stage");
 }, 20_000);
 
@@ -336,7 +336,7 @@ test("registration evidence binds exact stage, native table and pinned tool prov
     },
     symbol_inventory: {
       library: join(scratch, "CrystalShim_Controller.kicad_sym"),
-      count: 96,
+      count: 114,
       symbols: [
         ...Object.keys(controllerPlacements).map((ref) => `Controller_${ref}`),
         "PWR_FLAG",

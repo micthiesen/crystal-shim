@@ -58,7 +58,7 @@ export function createControllerManifest(json: CircuitJson) {
   if (
     boards.length !== 1 ||
     !board ||
-    board.width !== 70 ||
+    board.width !== 110 ||
     board.height !== 110 ||
     board.num_layers !== 4 ||
     board.thickness !== 1.6 ||
@@ -73,7 +73,7 @@ export function createControllerManifest(json: CircuitJson) {
     .filter((e) => e.pin_number !== undefined);
   const normalized = prepareFootprintOriginsForInitialExport(
     prepareUsbForInitialExport(json, ["J4"]),
-    ["U1", "J1", "J2", "J3", "D4", "SW1", "SW2", "SW3"],
+    ["U1", "J1", "J2", "J3", "J5", "J6", "J7", "J8", "J9", "D4", "SW1", "SW2", "SW3"],
   );
   const geometry = controllerGeometryIdentities(createControllerInitialPcb(normalized));
   const physical = normalized.filter((e) => e.type === "pcb_component");
@@ -98,8 +98,8 @@ export function createControllerManifest(json: CircuitJson) {
     (e) => !("pcb_component_id" in e) || !e.pcb_component_id,
   );
   const schematics = json.filter((e) => e.type === "schematic_component");
-  if (sources.length !== 95 || new Set(sources.map((e) => e.name)).size !== 95)
-    throw new Error("Expected 95 unique controller source references");
+  if (sources.length !== 113 || new Set(sources.map((e) => e.name)).size !== 113)
+    throw new Error("Expected 113 unique controller source references");
   const pin = (ref: string, number: number) => {
     if (ref !== "J4") return String(number);
     const native = (usbConnectorPins as Record<string, string>)[`pin${number}`];
@@ -191,8 +191,8 @@ export function createControllerManifest(json: CircuitJson) {
   const componentBySource = new Map(sources.map((s) => [s.source_component_id, s]));
   const drawn = schematicPortNetNames(json);
   const sourceNets = json.filter((e) => e.type === "source_net");
-  if (sourceNets.length !== 51 || new Set(sourceNets.map((n) => n.name)).size !== 51)
-    throw new Error("Expected 51 unique named controller nets");
+  if (sourceNets.length !== 63 || new Set(sourceNets.map((n) => n.name)).size !== 63)
+    throw new Error("Expected 61 unique named controller nets");
   const nets = sourceNets
     .map((net) => ({
       stable_id: `controller.net.${net.name.toLowerCase()}`,
@@ -214,7 +214,7 @@ export function createControllerManifest(json: CircuitJson) {
     .sort((a, b) => a.stable_id.localeCompare(b.stable_id));
   if (
     nets.some((net) => net.endpoints.length === 0) ||
-    nets.reduce((n, net) => n + net.endpoints.length, 0) !== 254
+    nets.reduce((n, net) => n + net.endpoints.length, 0) !== 303
   )
     throw new Error("Controller named-net endpoint coverage changed");
   const holes = json
@@ -247,8 +247,8 @@ export function createControllerManifest(json: CircuitJson) {
       };
     })
     .sort((a, b) => a.stable_id.localeCompare(b.stable_id));
-  if (holes.length !== 9 || new Set(holes.map((h) => h.stable_id)).size !== 9)
-    throw new Error("Expected nine individually identified controller NPTHs");
+  if (holes.length !== 14 || new Set(holes.map((h) => h.stable_id)).size !== 14)
+    throw new Error("Expected fourteen individually identified controller NPTHs");
   const mechanical = controllerMountingHoles.map((hole) => ({
     stable_id: controllerComponentId(hole.ref),
     ref: hole.ref,
@@ -271,7 +271,7 @@ export function createControllerManifest(json: CircuitJson) {
     schema_version: 1,
     board: {
       stable_id: controllerBoardId,
-      width_mm: 70,
+      width_mm: 110,
       height_mm: 110,
       layer_count: 4,
       coordinate_system: "center-x-right-y-up",
@@ -286,7 +286,7 @@ export function createControllerManifest(json: CircuitJson) {
           { x: 0, y: 0 },
         ),
       },
-      outline: { kind: "rectangle", center_mm: [0, 0], width_mm: 70, height_mm: 110 },
+      outline: { kind: "rectangle", center_mm: [0, 0], width_mm: 110, height_mm: 110 },
       holes,
     },
     versions: {
@@ -302,9 +302,9 @@ export function createControllerManifest(json: CircuitJson) {
     metadata: {
       board_designator: "Controller",
       title: "Crystal Shim isolated controller",
-      physical_numbered_pad_count: 291,
-      connected_logical_pin_count: 254,
-      unused_logical_pin_count: 20,
+      physical_numbered_pad_count: 332,
+      connected_logical_pin_count: 303,
+      unused_logical_pin_count: 12,
       native_footprint_policy:
         "Per-reference source-derived native library; never substitute stock geometry.",
       status:

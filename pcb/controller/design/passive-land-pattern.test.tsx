@@ -226,7 +226,7 @@ test("selected passive values retain manufacturer codes and reviewed copper afte
   const pads = json.filter((e) => e.type === "pcb_smtpad");
   for (const [ref, mpn, x, y, width, height] of [
     ["R1", "ERJ3EKF22R0V", -20.725, 0, 0.65, 0.9],
-    ["R2", "ERA3AEB331V", -10, -0.725, 0.9, 0.65],
+    ["R2", "ERJ3EKF3300V", -10, -0.725, 0.9, 0.65],
     ["C1", "C1608X7R1H104K080AA", -0.7, 0, 0.7, 0.7],
     ["C2", "C2012X7R1E105K125AB", 9.075, 0, 0.8, 1.05],
     ["C3", "GRM32ER71E226ME15L", 18.35, 0, 1.1, 2.05],
@@ -396,7 +396,7 @@ test("Micro-Fit source preserves circuit numbering, round drills and non-plated 
     ],
     [
       "J2",
-      ["V5_SERVICE_RAW", "GND"],
+      ["POSITIVE", "RETURN"],
       [
         [0, 0],
         [0, -3],

@@ -7,6 +7,8 @@ import {
   mainsHeaderPhysical,
 } from "./mains-headers";
 import {
+  branchFusePattern,
+  branchFusePhysical,
   isolatedSupplyPattern,
   isolatedSupplyPhysical,
   pumpRelayPattern,
@@ -42,8 +44,13 @@ const models: Readonly<Record<string, Model>> = {
       },
     ]),
   ),
+  F3: {
+    part: "0215001.MXEP",
+    pattern: branchFusePattern,
+    margin: branchFusePhysical.solderMask.expansion,
+  },
   U1: {
-    part: "IRM-10-5",
+    part: "IRM-45-12",
     pattern: isolatedSupplyPattern,
     margin: isolatedSupplyPhysical.solderMask.expansion,
   },
@@ -213,7 +220,7 @@ export function applyMainsPhysicalForInitialExport(board: KicadPcb) {
     }
     if (remaining.size) fail("unexpected physical pads");
   }
-  if (plans.length !== 46)
+  if (plans.length !== 48)
     throw new Error("Mains PTH batch changed; refuse mains initial export");
   // Validate the entire batch before changing even its first mask margin.
   for (const { pad, margin } of plans) pad.solderMaskMargin = margin;

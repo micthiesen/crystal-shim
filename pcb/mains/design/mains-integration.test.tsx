@@ -1,3 +1,5 @@
+import { mainsHeaderPhysical, type MainsHeaderRef } from "./mains-headers";
+import { mainsPlacementIsolationErrors } from "./placement-check";
 import { expect, test } from "bun:test";
 import type { CircuitJson } from "circuit-json";
 import { Circuit } from "tscircuit";
@@ -11,33 +13,20 @@ import { mainsMountingHoles, mainsPlacements } from "./placements";
 // Independent contract: mains-design-basis.md architecture and pin maps, plus
 // power-protection-review.md. The fuse, filter and continuous PE are off-board.
 const expectedNets = {
-  AC_L_FUSED: ["J1.1", "J2.1", "RV1.1", "U1.2"],
+  FILTER_LINE_L: ["F3.2", "J2.1"],
+  AC_L_FUSED: ["F3.1", "J1.1", "RV1.1", "U1.2"],
   AC_N: ["J1.2", "J2.2", "RV1.2", "U1.1"],
   PUMP_L_FILTERED: ["J3.1", "K1.3"],
   PUMP_N_FILTERED: ["C1.2", "J3.2", "J4.2"],
   PUMP_L_SW: ["J4.1", "K1.4", "R1.1"],
   SNUBBER_RC: ["C1.1", "R1.2"],
-  V5_RAW: ["C2.1", "C3.1", "R2.1", "R4.1", "U1.4", "U2.5"],
-  V5_PSU: ["C4.1", "D1.1", "D2.1", "J5.1", "K1.1", "R7.1", "U2.6"],
+  V12_RAW: ["C2.1", "C3.1", "C7.1", "F2.1", "U1.4", "U2.2", "U2.3"],
+  V12_MOTOR: ["F2.2", "J6.1"],
+  V5_PSU: ["C4.1", "C6.1", "D1.1", "J5.1", "K1.1", "L1.2", "U2.1"],
   COIL_DRAIN: ["D1.2", "J5.3", "K1.5"],
-  GND_ISO: [
-    "C2.2",
-    "C3.2",
-    "C4.2",
-    "C5.2",
-    "D2.2",
-    "J5.2",
-    "R3.2",
-    "R5.2",
-    "R6.2",
-    "R7.2",
-    "U1.3",
-    "U2.8",
-  ],
-  EFUSE_UV: ["R2.2", "R3.1", "U2.1"],
-  EFUSE_OV: ["R4.2", "R5.1", "U2.2"],
-  EFUSE_ILM: ["R6.1", "U2.9"],
-  EFUSE_DVDT: ["C5.1", "U2.7"],
+  GND_ISO: ["C2.2", "C3.2", "C4.2", "C6.2", "C7.2", "J5.2", "J6.2", "U1.3", "U2.4"],
+  BUCK5_SW: ["C5.2", "L1.1", "U2.5"],
+  BUCK5_BST: ["C5.1", "U2.6"],
 } as const;
 const expectedPins = {
   C1: [1, 2],
@@ -45,37 +34,25 @@ const expectedPins = {
   C3: [1, 2],
   C4: [1, 2],
   C5: [1, 2],
+  C6: [1, 2],
+  C7: [1, 2],
   D1: [1, 2],
-  D2: [1, 2],
+  F3: [1, 2],
+  F2: [1, 2],
   J1: [1, 2],
   J2: [1, 2, 3],
   J3: [1, 2, 3, 4],
   J4: [1, 2, 3, 4, 5, 6],
   J5: [1, 2, 3],
+  J6: [1, 2],
   K1: [1, 3, 4, 5],
+  L1: [1, 2],
   R1: [1, 2],
-  R2: [1, 2],
-  R3: [1, 2],
-  R4: [1, 2],
-  R5: [1, 2],
-  R6: [1, 2],
-  R7: [1, 2],
   RV1: [1, 2],
   U1: [1, 2, 3, 4],
-  U2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  U2: [1, 2, 3, 4, 5, 6],
 } as const;
-const expectedNc = [
-  "J2.3",
-  "J3.3",
-  "J3.4",
-  "J4.3",
-  "J4.4",
-  "J4.5",
-  "J4.6",
-  "U2.3",
-  "U2.4",
-  "U2.10",
-].sort();
+const expectedNc = ["J2.3", "J3.3", "J3.4", "J4.3", "J4.4", "J4.5", "J4.6"].sort();
 
 let compiled: Promise<CircuitJson> | undefined;
 function compile() {
@@ -109,13 +86,13 @@ function schematicPin(json: CircuitJson, endpoint: string) {
   return pin;
 }
 
-test("full mains source retains 23 parts and every connected or intentionally unused pin", async () => {
+test("full mains source retains 22 parts and every connected or intentionally unused pin", async () => {
   const json = await compile();
   const parts = json.filter((e) => e.type === "source_component");
   const ports = json.filter((e) => e.type === "source_port");
   expect(parts.map((p) => p.name).sort()).toEqual(Object.keys(expectedPins).sort());
-  expect(parts).toHaveLength(23);
-  expect(ports).toHaveLength(66);
+  expect(parts).toHaveLength(22);
+  expect(ports).toHaveLength(60);
   for (const part of parts) {
     const pins = ports.filter(
       (p) => p.source_component_id === part.source_component_id,
@@ -179,7 +156,7 @@ test("whole-board source and drawn nets preserve isolation, raw/protected power 
       expect(drawn.get(id)).toEqual([name]);
     }
   }
-  expect(assigned.size).toBe(56);
+  expect(assigned.size).toBe(53);
   for (const port of ports) {
     expect(assigned.has(port.source_port_id)).toBe(!port.do_not_connect);
     if (port.do_not_connect) {
@@ -201,7 +178,7 @@ test("full assembly preserves 30 Sabre tails including 14 tails of seven unused 
   const lands = json.filter(
     (e) => e.type === "pcb_plated_hole" || e.type === "pcb_smtpad",
   );
-  expect(lands).toHaveLength(81);
+  expect(lands).toHaveLength(75);
   for (const port of pcbPorts) {
     const endpoint = names.get(port.source_port_id);
     if (!endpoint) throw new Error(`Missing source identity for ${port.pcb_port_id}`);
@@ -245,47 +222,48 @@ test("every authored position and four board holes survive full-sheet compilatio
   const json = await compile();
   const board = json.find((e) => e.type === "pcb_board");
   if (board?.type !== "pcb_board") throw new Error("Missing mains board");
-  expect(board.width).toBe(135);
-  expect(board.height).toBe(75);
+  expect(board.width).toBe(180);
+  expect(board.height).toBe(110);
   expect(board.thickness).toBe(1.6);
   expect(board.num_layers).toBe(2);
   // Independent transcription of mains-placement.md, not body-centre inference.
-  const expected = {
-    U1: [-13.2, -27.35, 90],
-    K1: [24.75, 1.9, 270],
-    J1: [-42.2465, 24.62, 0],
-    J2: [-53.12, -3.993, 90],
-    J3: [36.2605, 0.62, 0],
-    J4: [4.7675, 24.62, 0],
-    R1: [16.08, 14.5, 0],
-    C1: [38.5, 15.5, 0],
-    D1: [26.08, -28.5, 180],
-    J5: [53.5, -17.5, 270],
-    U2: [-21, -27, 0],
-    D2: [-27, -32, 0],
-    R2: [-25, -21.5, 0],
-    R3: [-25, -24.5, 0],
-    R4: [-29, -21.5, 0],
-    R5: [-29, -24.5, 0],
-    R6: [-20.5, -32.5, 0],
-    R7: [37.5, -28.5, 0],
-    C2: [-17, -21, 0],
-    C3: [-17, -24, 0],
-    C4: [-12, -31.5, 0],
-    C5: [-16.8, -28, 0],
-    RV1: [-36.25, 4.5, 0],
+  const expected: Record<string, readonly [number, number, number]> = {
+    U1: [-77.5, 45.0, 0],
+    K1: [30.0, -15.0, 0],
+    J1: [-73.0, -42.0, 0],
+    J2: [-79.0, -22.0, 0],
+    J3: [-12.0, -42.0, 0],
+    J4: [35.0, -42.0, 0],
+    R1: [7, -26, 0],
+    C1: [-9, -24, 0],
+    F3: [-47.0, -15.0, 0],
+    RV1: [-42.0, -35.0, 0],
+    D1: [55.0, -5.0, 0],
+    J5: [79.0, 5.0, 270],
+    J6: [79.0, 29.0, 270],
+    F2: [57.0, 29.0, 0],
+    U2: [32.0, 16.0, 0],
+    L1: [42.0, 16.0, 0],
+    C2: [23.0, 18.0, 90],
+    C3: [23.0, 25.0, 90],
+    C4: [51.0, 16.0, 90],
+    C5: [36.0, 21.0, 0],
+    C6: [57.0, 16.0, 90],
+    C7: [28.0, 13.0, 0],
   };
   // Numeric datum definitions are component-side +Y down, from the audited
   // exact part models. Every selected pin-1 datum except U1 is at local (0,0);
   // K1 uses contact pin 3. Sabre's second same-number tail is not this datum.
   const originAnchors: Record<string, readonly [number, number, number]> = {
-    U1: [1, 42.1, 14.2],
+    U1: [1, 5.3, 11.75],
     K1: [3, 0, 0],
     J1: [1, 0, 0],
     J2: [1, 0, 0],
     J3: [1, 0, 0],
     J4: [1, 0, 0],
     J5: [1, 0, 0],
+    J6: [1, 0, 0],
+    F3: [1, 0, 0],
     R1: [1, 0, 0],
     C1: [1, 0, 0],
     D1: [1, 0, 0],
@@ -293,7 +271,7 @@ test("every authored position and four board holes survive full-sheet compilatio
   };
   const parts = json.filter((e) => e.type === "source_component");
   expect(Object.keys(mainsPlacements).sort()).toEqual(Object.keys(expected).sort());
-  expect(json.filter((e) => e.type === "pcb_component")).toHaveLength(23);
+  expect(json.filter((e) => e.type === "pcb_component")).toHaveLength(22);
   for (const [ref, [x, y, rotation]] of Object.entries(expected)) {
     const authored = mainsPlacements[ref as keyof typeof mainsPlacements];
     const authoredPose: number[] = [authored.pcbX, authored.pcbY, authored.pcbRotation];
@@ -344,13 +322,13 @@ test("every authored position and four board holes survive full-sheet compilatio
     expect(placed.do_not_place).toBe(false);
   }
   expect(mainsMountingHoles).toEqual([
-    { ref: "H1", x: -62.5, y: 32.5 },
-    { ref: "H2", x: 62.5, y: 32.5 },
-    { ref: "H3", x: -62.5, y: -32.5 },
-    { ref: "H4", x: 62.5, y: -32.5 },
+    { ref: "H1", x: -85, y: 50 },
+    { ref: "H2", x: 85, y: 50 },
+    { ref: "H3", x: -85, y: -50 },
+    { ref: "H4", x: 85, y: -50 },
   ]);
   const holes = json.filter((e) => e.type === "pcb_hole");
-  expect(holes).toHaveLength(5); // board holes plus J5 locator
+  expect(holes).toHaveLength(6); // board holes plus J5/J6 locators
   const mounting = holes.filter((e) => !e.pcb_component_id);
   expect(mounting).toHaveLength(4);
   for (const hole of mainsMountingHoles) {
@@ -389,4 +367,46 @@ test("a drawn primary/secondary short and missing load-neutral labels fail conne
   expect(schematicConnectivityErrors(missing).some((e) => e.startsWith("C1."))).toBe(
     true,
   );
+});
+
+test("mains pads preserve 8 mm isolation and 3.2 mm primary separation including unused blades", async () => {
+  const json = await compile();
+  expect(mainsPlacementIsolationErrors(json)).toEqual([]);
+  const changed = structuredClone(json);
+  const owner = changed.find((e) => e.type === "source_component" && e.name === "R1")!;
+  if (owner.type !== "source_component") throw new Error("Missing R1");
+  const physical = changed.find(
+    (e) =>
+      e.type === "pcb_component" && e.source_component_id === owner.source_component_id,
+  )!;
+  if (physical.type !== "pcb_component") throw new Error("Missing R1 footprint");
+  for (const e of changed)
+    if (
+      e.type === "pcb_plated_hole" &&
+      e.pcb_component_id === physical.pcb_component_id
+    ) {
+      e.x += 26;
+      e.y -= 3;
+    }
+  expect(
+    mainsPlacementIsolationErrors(changed).some(
+      (e) => e.includes("R1.2") && e.includes("K1.5"),
+    ),
+  ).toBe(true);
+});
+
+test("mains header occupied envelopes clear all 8 mm insulating mount reservations", () => {
+  for (const ref of ["J1", "J2", "J3", "J4"] as MainsHeaderRef[]) {
+    const pose = mainsPlacements[ref];
+    const physical = mainsHeaderPhysical(ref);
+    const x = pose.pcbX + physical.envelopeCenter!.x;
+    const y = pose.pcbY + physical.envelopeCenter!.y;
+    const dx = physical.envelope.width / 2;
+    const dy = physical.envelope.height / 2;
+    for (const hole of mainsMountingHoles) {
+      expect(Math.abs(x - hole.x) >= dx + 4 || Math.abs(y - hole.y) >= dy + 4).toBe(
+        true,
+      );
+    }
+  }
 });

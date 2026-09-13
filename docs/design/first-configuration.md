@@ -64,7 +64,7 @@ Creation uses OpenSSL's random source for the 32-byte token, rejects an all-zero
 result and validates through the production builder, encoder and decoder. It
 creates a 0700 directory outside Git working trees and 0600 files:
 
-* `record.bin`: canonical CSCF format 1, containing the private settings token.
+* `record.bin`: canonical CSCF format 2, containing the private settings token.
 * `settings-token.txt`: the token as 64 hex characters, for the settings page.
 * `parameters.txt`: the resolved input values, including provisional defaults.
 * `validation.txt`: format/profile and unverified physical-validation status.

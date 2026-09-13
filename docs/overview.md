@@ -13,8 +13,11 @@ before fabrication; calibrate and verify actual performance on the final assembl
 See [the build sequence](build.md).
 
 The present boards must reserve the [future refill expansion interface](design/refill-expansion.md)
-before fabrication. The refill/conditioning feature and later expansion boards
-remain deferred; its full specification stays in the linked Executor artifact.
+before fabrication. Three future pump drivers and two sensor ports belong on the
+controller; the mains board supplies fixed 12 V accessory power and regulated 5 V
+base power. Only accessories and a reservoir sensor board are added later. The
+refill/conditioning feature remains deferred; its specification stays in the linked
+Executor artifact.
 
 The North American skimmer is specified at 120 VAC, 60 Hz, 4 W. Starting behavior
 must be accounted for in relay and fuse selection from documented ratings and
@@ -25,8 +28,8 @@ design margins, then measured during final-assembly commissioning.
 
 | Board | Location | Responsibility |
 | --- | --- | --- |
-| Sensor daughterboard | Outside aquarium glass | Continuous level electrode, wet/dry references, FDC1004, local 3.3 V regulation |
-| ESP controller | Low-voltage enclosure section | ESP32-C6, 3.3 V rail, USB programming, relay driver, status LED, maintenance button |
+| Sensor daughterboard | Outside aquarium glass | Continuous level electrode, wet reference and stored dry baselines, FDC1004, local 3.3 V regulation |
+| ESP controller | Low-voltage enclosure section | ESP32-C6, 3.3 V rail, USB programming, relay driver, three reserved pump drivers, two sensor ports, status LED, maintenance button |
 | Mains board | Mains enclosure section | Protected input, isolated PSU, relay contacts and coil, pump output suppression |
 
 The manufactured two-stage EMI filter sits alongside the mains board. The PSU is
@@ -37,7 +40,7 @@ connections to the controller cross no exposed mains conductors.
 ```mermaid
 flowchart TD
   IN[120 VAC input] --> PROTECT[Fuse and protected surge suppression]
-  PROTECT --> PSU[Isolated 5 V PSU on mains board]
+  PROTECT --> PSU[Isolated 12 V PSU and 5 V buck on mains board]
   PSU --> ESP[ESP controller board]
   ESP -->|5 V and 3.3 V I2C, cable at most 8 inches| SENSOR[Active sensor daughterboard]
   PROTECT --> FILTER[Two-stage manufactured EMI filter, L and N]

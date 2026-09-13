@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "board_id": "sensor.board.main",
+  "operations": [
+    {
+      "id": "sensor.augment.coordinates",
+      "kind": "coordinate_transform",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "tscircuit_center_mm": [
+          0,
+          0
+        ],
+        "kicad_center_mm": [
+          100,
+          100
+        ],
+        "x_axis": "same",
+        "y_axis": "invert"
+      }
+    },
+    {
+      "id": "sensor.augment.native-footprints",
+      "kind": "footprint_override",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "scope": "All16 references, including copper-only E1",
+        "library": "CrystalShim_Sensor",
+        "mapping": "Sensor_<ref>",
+        "verification": "Source/native pad geometry, net and placement parity;13 E1 copper-only mask-covered pads;E1 excluded from assembly/BOM."
+      }
+    },
+    {
+      "id": "sensor.augment.stackup",
+      "kind": "stackup",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "layer_count": 2,
+        "thickness_mm": 1.6,
+        "copper_weight_oz": 1,
+        "material": "FR4",
+        "surface_finish": "ENIG",
+        "verification": "Native physical stackup and board header both total 1.6 mm; two 0.035 mm copper layers; final readback required."
+      }
+    },
+    {
+      "id": "sensor.augment.sensing-window",
+      "kind": "custom_rule",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "region": "rim-relative y0..64,entire38mm width",
+        "rule": "No unrelated copper,ground,holes,vias,paste or exposed mask on glass-facing side. Retain exact E1 geometry. Only declared electrodes and SHLD1/2 copper permitted. All layer changes occur above rim.",
+        "native_rectangle_mm": [
+          81,
+          79,
+          119,
+          143
+        ],
+        "native_application": "apply-sensor-routing-rules.py: both copper layers prohibit vias and zone fills;electrode pads and short trace entry remain allowed. Route at head, not across sensing field."
+      }
+    },
+    {
+      "id": "sensor.augment.routing",
+      "kind": "custom_rule",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "rule": "Join each same-net electrode/shield island at head;SHLD1 behind CIN routes;keepCIN3/4 open;short local decoupling and clamp-return paths;ordinary0.2mm signal clearances outside0.15mm electrode lead geometry. No certification claim.",
+        "native_settings": {
+          "minimum_clearance_mm": 0.15,
+          "minimum_track_width_mm": 0.15,
+          "ordinary_net_class_clearance_mm": 0.2,
+          "electrode_net_class_clearance_mm": 0.15,
+          "electrode_nets": [
+            "CIN_LEVEL",
+            "CIN_RL",
+            "SHLD1",
+            "SHLD2"
+          ],
+          "via_diameter_mm": 0.6,
+          "via_drill_mm": 0.3
+        }
+      }
+    },
+    {
+      "id": "sensor.augment.schematic-cleanup",
+      "kind": "schematic_cleanup",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "allowed_initial_erc_types": [],
+        "allowed_initial_erc_ignored_checks": [
+          "footprint_filter",
+          "four_way_junction",
+          "simulation_model_issue",
+          "single_global_label"
+        ],
+        "allowed_initial_semantic_differences": [],
+        "requirements": [
+          "Exact16ref per-reference symbol library,source fields/pin types and4 intentionalNC pins;external5V/GND power flags only;grid and source connectivity parity.",
+          "Initial ignored checks are KiCad defaults, not final waivers."
+        ],
+        "verification": "Strict native schematic parity and ERC before routing."
+      }
+    },
+    {
+      "id": "sensor.augment.production-routing",
+      "kind": "fabrication_note",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "allowed_initial_drc_ignored_checks": [
+          "footprint_filters_mismatch",
+          "footprint_type_mismatch",
+          "missing_courtyard",
+          "track_not_centered_on_via",
+          "tuning_profile_track_geometries"
+        ],
+        "text": "Unconnected items allowed only for initial unrouted placement. Native enabled checks and source parity still required before routing;zero unconnected for fabrication.",
+        "category": "routing"
+      }
+    }
+  ]
+}

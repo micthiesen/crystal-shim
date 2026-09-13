@@ -26,12 +26,15 @@ const expectedNets = {
   TP9: "UART0_RX",
   TP10: "UART0_TX",
   TP11: "GND",
+  TP12: "ACCESSORY_INPUT1",
+  TP13: "ACCESSORY_INPUT2",
+  TP14: "GND",
 };
 
 async function fixture() {
   const circuit = new Circuit();
   circuit.add(
-    <board width={70} height={110} routingDisabled>
+    <board width={110} height={110} routingDisabled>
       <schematicsheet
         name="TestPoints"
         displayName="Controller test and UART service pads"
@@ -55,8 +58,8 @@ test("service pads expose every required net with probe room and no purchased or
   expect(components.map((e) => e.name).sort()).toEqual(
     Object.keys(expectedNets).sort(),
   );
-  expect(pads).toHaveLength(11);
-  expect(sourcePorts).toHaveLength(11);
+  expect(pads).toHaveLength(14);
+  expect(sourcePorts).toHaveLength(14);
   expect(
     json.filter(
       (e) =>
@@ -100,11 +103,11 @@ test("service pads expose every required net with probe room and no purchased or
     expect(2 * (pad.radius + pad.soldermask_margin!)).toBe(2.1);
     const placement = controllerTestPoints.find((p) => p.ref === ref)!;
     expect([pad.x, pad.y]).toEqual([placement.x, placement.y]);
-    expect(Math.abs(pad.x) + 2).toBeLessThan(35);
+    expect(Math.abs(pad.x) + 2).toBeLessThan(55);
     expect(Math.abs(pad.y) + 2).toBeLessThan(55);
   }
   const courtyards = json.filter((e) => e.type === "pcb_courtyard_circle");
-  expect(courtyards).toHaveLength(11);
+  expect(courtyards).toHaveLength(14);
   for (const courtyard of courtyards) expect(courtyard.radius).toBe(2);
   for (const [i, a] of pads.entries())
     for (const b of pads.slice(i + 1)) {
@@ -174,7 +177,7 @@ test("initial KiCad export preserves exact pad copper, mask, nets and BOM exclus
     .filter((symbol) =>
       symbol.properties.some((p) => p.key === "Reference" && p.value.startsWith("TP")),
     );
-  expect(symbols).toHaveLength(11);
+  expect(symbols).toHaveLength(14);
   for (const symbol of symbols) {
     const ref = symbol.properties.find((p) => p.key === "Reference")!.value;
     expect(symbol.libraryId).toBe(`Custom:ControllerTestPoint_${ref}`);

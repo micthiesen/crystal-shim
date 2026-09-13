@@ -162,7 +162,7 @@ def export(args: argparse.Namespace) -> Path:
     registration.validate_mains_manifest(manifest)
     validator.load_augmentation(stage / "kicad-augmentation.normalized.json", manifest)
     components = manifest["components"]
-    require(len(components) == 27, "Expected 23 electrical components and four mounting holes")
+    require(len(components) == 26, "Expected 22 electrical components and four mounting holes")
     source_hashes = {"board": sha256(board_path), "manifest": sha256(manifest_path)}
     geometry_verifier = Path(__file__).with_name("verify-initial-geometry.ts")
     verification = subprocess.run(
@@ -182,8 +182,8 @@ def export(args: argparse.Namespace) -> Path:
     require(not list(board.GetTracks()), "Expected an unrouted initial seed without tracks or vias")
     footprints = list(board.GetFootprints())
     references = [fp.GetReference() for fp in footprints]
-    require(len(references) == 27 and len(set(references)) == 27 and all(references),
-            "Seed must contain exactly 27 unique nonempty references")
+    require(len(references) == 26 and len(set(references)) == 26 and all(references),
+            "Seed must contain exactly 26 unique nonempty references")
     require(set(references) == {component["ref"] for component in components},
             "Seed and manifest references differ")
     by_ref = {fp.GetReference(): fp for fp in footprints}
@@ -215,9 +215,9 @@ def export(args: argparse.Namespace) -> Path:
             pad.SetNetCode(0)
         plans.append((ref, name, source_id, clone, footprint_snapshot(clone, pcbnew)))
     total_pads = sum(bool(p.GetNumber()) for fp in footprints for p in fp.Pads())
-    require(total_pads == 81, "Expected all 81 numbered physical lands, including repeated pads")
-    require(sum(p.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH for fp in footprints for p in fp.Pads()) == 5,
-            "Expected four mounting and one connector NPTH")
+    require(total_pads == 75, "Expected all 75 numbered physical lands, including repeated pads")
+    require(sum(p.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH for fp in footprints for p in fp.Pads()) == 6,
+            "Expected four mounting and two connector NPTHs")
     require(registration.tree_hashes(stage) == before_files and stage_identity == (stage.stat().st_dev, stage.stat().st_ino),
             "Stage changed while native footprint export was planned")
 
@@ -265,7 +265,7 @@ def export(args: argparse.Namespace) -> Path:
             "Native footprint export changed files outside its new library")
     require(registration.guarded_stage() == stage and stage_identity == (stage.stat().st_dev, stage.stat().st_ino),
             "Stage directory changed during native footprint export")
-    require(rotation_comparisons == 108, "Expected all 108 cardinal rotation comparisons")
+    require(rotation_comparisons == 104, "Expected all 104 cardinal rotation comparisons")
     receipt = output / "native-footprints-receipt.json"
     with receipt.open("x") as handle:
         json.dump({"schema_version": 1, "status": "validated-native-library-only",
@@ -276,7 +276,7 @@ def export(args: argparse.Namespace) -> Path:
                    "geometry_verifier_sha256": sha256(geometry_verifier),
                    "geometry_canonicalizer_sha256": sha256(Path(__file__).resolve().parents[2] / "controller/design/footprint-geometry-identity.ts"),
                    "source_versions": manifest.get("versions", {}),
-                   "footprints": 27, "numbered_physical_pads": total_pads, "npth": 5,
+                   "footprints": 26, "numbered_physical_pads": total_pads, "npth": 6,
                    "cardinal_rotation_comparisons": rotation_comparisons, "entries": entries,
                    "board_id": registration.BOARD_ID, "stage_inputs_sha256": before_files,
                    "existing_files_unchanged": True}, handle, indent=2)
@@ -296,7 +296,7 @@ def main() -> int:
     except Exception as error:
         print(f"Native footprint export failed: {error}", file=sys.stderr)
         return 1
-    print(f"Validated 27 source-derived native footprints: {receipt}")
+    print(f"Validated 26 source-derived native footprints: {receipt}")
     return 0
 
 

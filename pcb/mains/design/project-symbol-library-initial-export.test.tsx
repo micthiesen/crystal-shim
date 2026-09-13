@@ -4,7 +4,6 @@ import type { CircuitJson } from "circuit-json";
 import { CircuitJsonToKicadSchConverter } from "circuit-json-to-kicad";
 import {
   KicadSym,
-  Xy,
   SymbolLibId,
   parseKicadSch,
   parseKicadSym,
@@ -68,12 +67,12 @@ beforeAll(async () => {
   raw = sheets.map((s) => s.getString());
 }, 30_000);
 
-test("23 unique library entries preserve all symbol geometry, pins, types and instance syntax", () => {
+test("22 unique library entries preserve all symbol geometry, pins, types and instance syntax", () => {
   const sheets = fresh(),
     before = fresh();
   const library = applyMainsProjectSymbolsForInitialExport(source, sheets, manifest);
-  expect(library).toHaveLength(23);
-  expect(new Set(library.map((s) => s.libraryId)).size).toBe(23);
+  expect(library).toHaveLength(22);
+  expect(new Set(library.map((s) => s.libraryId)).size).toBe(22);
   expect(library.some((s) => s.getString().includes("Controller"))).toBe(false);
   for (const [i, sheet] of sheets.entries()) {
     const read = parseKicadSch(sheet.getString());
@@ -172,8 +171,8 @@ test("late bad IDs, incompatible duplicate definitions and pin-type edits fail a
     if (mode === "cache")
       sheet.libSymbols!.symbols = [...sheet.libSymbols!.symbols, clone(lib)];
     if (mode === "geometry") {
-      const secondary = forRef(sheets, "R2");
-      const resistor = secondary.symbols.find((s) => reference(s) === "R2")!;
+      const secondary = forRef(sheets, "C2");
+      const resistor = secondary.symbols.find((s) => reference(s) === "C2")!;
       const pair = secondary.libSymbols!.symbols.filter(
         (l) => l.libraryId === resistor.libraryId,
       );
@@ -200,7 +199,7 @@ test("two declared annotations add zero-length power_out pins and no physical pa
   const lib = applyMainsProjectSymbolsForInitialExport(source, sheets, manifest);
   const before = sheets.map((s) => s.getString());
   lib.push(addMainsPowerFlagsForInitialExport(sheets, manifest));
-  expect(lib).toHaveLength(24);
+  expect(lib).toHaveLength(23);
   const flagLibrary = parseKicadSym(
     new KicadSym({ symbols: [mainsPowerFlagDefinition()] }).getString(),
   ).symbols[0]!;
@@ -274,14 +273,8 @@ test("power annotations remain on exact witness pins after native rounding and l
   }
 });
 
-test("neutral witness needs its actual single-wire label, not another matching label on the page", () => {
-  for (const mode of [
-    "rename",
-    "remove-wire",
-    "disconnect-wire",
-    "duplicate-wire",
-    "conflicting-label",
-  ] as const) {
+test("neutral witness needs its actual attached label, not another matching label on the page", () => {
+  for (const mode of ["rename", "disconnect", "conflicting-label"] as const) {
     const sheets = fresh();
     applyMainsProjectSymbolsForInitialExport(source, sheets, manifest);
     const sheet = forRef(sheets, "U1");
@@ -292,25 +285,12 @@ test("neutral witness needs its actual single-wire label, not another matching l
     const pin = pins(library).find((p) => p.numberString === "1")!;
     const x = witness.at!.x + pin.at!.x,
       y = witness.at!.y - pin.at!.y;
-    const wire = sheet.wires.find((w) =>
-      w.points!.points.some(
-        (p) => p instanceof Xy && Math.abs(p.x - x) < 1e-8 && Math.abs(p.y - y) < 1e-8,
-      ),
-    )!;
-    const end = (wire.points!.points as Xy[]).find(
-      (p) => Math.abs(p.x - x) > 1e-8 || Math.abs(p.y - y) > 1e-8,
-    )!;
     const label = sheet.globalLabels.find(
-      (l) => l.at && Math.abs(l.at.x - end.x) < 1e-8 && Math.abs(l.at.y - end.y) < 1e-8,
+      (l) => l.at && Math.abs(l.at.x - x) < 1e-8 && Math.abs(l.at.y - y) < 1e-8,
     )!;
     expect(label.value).toBe("AC_N");
     if (mode === "rename") label.value = "AC_L_FUSED";
-    if (mode === "remove-wire") sheet.wires = sheet.wires.filter((w) => w !== wire);
-    if (mode === "disconnect-wire") {
-      const start = (wire.points!.points as Xy[]).find((p) => p !== end)!;
-      start.x += 0.0001;
-    }
-    if (mode === "duplicate-wire") sheet.wires = [...sheet.wires, wire];
+    if (mode === "disconnect") label.at!.x += 0.0001;
     if (mode === "conflicting-label")
       sheet.globalLabels.find((l) => l !== label && l.value === "AC_L_FUSED")!.at =
         label.at;

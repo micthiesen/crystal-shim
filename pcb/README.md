@@ -1,10 +1,15 @@
 # PCB workspace
 
-The three product boards have sourced design bases and selected interfaces.
-The [controller source](controller/design/README.md) is captured and its
-[KiCad project](controller/kicad/README.md) is adopted, with strict schematic
-cleanup and partial native augmentation. Sensor/mains capture, remaining layout,
-mechanical fit and fabrication outputs remain work.
+All three product boards have complete schematic/source placement and selected
+interfaces. The [controller](controller/kicad/README.md) has an accepted native
+ECO and is ready for routing. The sensor is also accepted: 16 footprints,
+41 unrouted connections and zero strict ERC/ordinary DRC/parity findings. The
+mains board is accepted with 26 footprints, 39 unrouted connections and the same
+clean checks. All three boards are ready for routing; [STATE](../docs/STATE.md)
+records per-board receipts.
+The shared enclosure fit and fixed accessory-power provisions are documented.
+Routing, copper/return-path inspection, final DRC and fabrication outputs follow
+this handoff; no board is fabrication-ready merely because it is ready to route.
 
 Design the three boards as one final-use set for a single fabrication cycle.
 Complete part, interface, enclosure and source/layout reviews before release.
@@ -15,13 +20,13 @@ block the complete design's fabrication release. See [build order](../docs/build
 | Board | Role | Requirements |
 | --- | --- | --- |
 | [sensor](sensor/README.md) | External active capacitance sensor stick | [Sensor](../docs/sensor.md) |
-| [controller](controller/README.md) | Low-voltage ESP, relay driver and USB power control | [Electrical](../docs/electrical.md) |
+| [controller](controller/README.md) | Low-voltage ESP, relay and future pump drivers, two sensor ports and USB | [Electrical](../docs/electrical.md) |
 | [mains](mains/README.md) | Protected power input, isolated supply and pump switching | [Electrical](../docs/electrical.md) |
 
 Use the local [PCB skill](../.agents/skills/pcb/SKILL.md) for product authoring, then
 [Konnect](../.agents/skills/konnect/SKILL.md) and
 [fabrication](../.agents/skills/kicad-manufacture/SKILL.md) for downstream work.
-Tscircuit will own schematic, specifications, and placement; KiCad will own routing
+Tscircuit owns schematic, specifications, and placement; KiCad owns routing
 and declared manufacturing additions. Do not create a fabrication profile before
 the corresponding board and order requirements exist.
 

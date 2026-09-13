@@ -18,7 +18,7 @@ const refs: MainsHeaderRef[] = ["J1", "J2", "J3", "J4"];
 const counts = [2, 3, 4, 6];
 const expectedNets = [
   ["AC_L_FUSED", "AC_N"],
-  ["AC_L_FUSED", "AC_N"],
+  ["FILTER_LINE_L", "AC_N"],
   ["PUMP_L_FILTERED", "PUMP_N_FILTERED"],
   ["PUMP_L_SW", "PUMP_N_FILTERED"],
 ];

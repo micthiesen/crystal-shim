@@ -1,0 +1,17 @@
+{
+  "command": "sh scripts/check.sh",
+  "exit_code": 0,
+  "log": "check.log",
+  "log_sha256": "bce0ad78e0a88fc17c8d9fb7f3d44544a95a941716ab82765b2241abbfccad03",
+  "pcb_tests": 250,
+  "pcb_assertions": 33263,
+  "handoff_tests": 42,
+  "ui_tests": 26,
+  "physical_tests": "Not run",
+  "scope": "All source/firmware/tooling changes; subsequent native acceptance and documentation checked separately.",
+  "native_acceptance_receipts": [
+    "pcb/controller/kicad/evidence/shared-power/eco-acceptance.json",
+    "pcb/sensor/kicad/evidence/routing-ready/eco-acceptance.json",
+    "pcb/mains/design/evidence/final-eco-receipt.json"
+  ]
+}

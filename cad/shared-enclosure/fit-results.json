@@ -1,0 +1,181 @@
+{
+  "scope": "Nominal enclosure and allocated assembly-envelope fit only; not exact component, mate, carrier or cable geometry.",
+  "enclosure": "Hammond 1590ZGRP243",
+  "interior_drawing_mm": [
+    384.85,
+    235.26,
+    109.2
+  ],
+  "manufacturer_translation_mm": [
+    192.425,
+    117.63,
+    91
+  ],
+  "excluded_manufacturer_solid": "1: optional steel panel; no conductive common panel selected",
+  "model_drawing_height_discrepancy_mm": 1,
+  "bounds_mm": {
+    "mains_pcb": [
+      25,
+      205,
+      25,
+      135,
+      26.4,
+      28
+    ],
+    "controller_pcb": [
+      245,
+      355,
+      25,
+      135,
+      26.4,
+      28
+    ],
+    "mains_assembly_and_wire_reserve": [
+      25,
+      205,
+      25,
+      135,
+      21,
+      75
+    ],
+    "controller_assembly_and_access_reserve": [
+      245,
+      355,
+      25,
+      135,
+      21,
+      65
+    ],
+    "filter_and_wire_reserve": [
+      25,
+      155,
+      150,
+      225,
+      5,
+      45
+    ],
+    "partition": [
+      225,
+      228,
+      10,
+      225,
+      5,
+      100
+    ]
+  },
+  "nominal": {
+    "mains_pcb": {
+      "distance_mm": 12.839700437020655,
+      "intersection_mm3": 0.0
+    },
+    "controller_pcb": {
+      "distance_mm": 17.489963749473677,
+      "intersection_mm3": 0.0
+    },
+    "mains_assembly_and_wire_reserve": {
+      "distance_mm": 12.79257714532928,
+      "intersection_mm3": 0.0
+    },
+    "controller_assembly_and_access_reserve": {
+      "distance_mm": 17.442840457782335,
+      "intersection_mm3": 0.0
+    },
+    "filter_and_wire_reserve": {
+      "distance_mm": 3.200000000000003,
+      "intersection_mm3": 0.0
+    },
+    "partition": {
+      "distance_mm": 3.200000000000003,
+      "intersection_mm3": 0.0
+    }
+  },
+  "one_mm_expansion_and_reduced_lid": {
+    "mains_pcb": {
+      "distance_mm": 11.579164589227886,
+      "intersection_mm3": 0.0
+    },
+    "controller_pcb": {
+      "distance_mm": 16.265197579524056,
+      "intersection_mm3": 0.0
+    },
+    "mains_assembly_and_wire_reserve": {
+      "distance_mm": 11.532041297536514,
+      "intersection_mm3": 0.0
+    },
+    "controller_assembly_and_access_reserve": {
+      "distance_mm": 16.21807428783267,
+      "intersection_mm3": 0.0
+    },
+    "filter_and_wire_reserve": {
+      "distance_mm": 2.200000000000003,
+      "intersection_mm3": 0.0
+    },
+    "partition": {
+      "distance_mm": 2.200000000000003,
+      "intersection_mm3": 0.0
+    }
+  },
+  "mutual": {
+    "mains_assembly_and_wire_reserve / controller_assembly_and_access_reserve": {
+      "distance_mm": 40.0,
+      "intersection_mm3": 0.0
+    },
+    "mains_assembly_and_wire_reserve / filter_and_wire_reserve": {
+      "distance_mm": 15.0,
+      "intersection_mm3": 0.0
+    },
+    "mains_assembly_and_wire_reserve / partition": {
+      "distance_mm": 20.0,
+      "intersection_mm3": 0.0
+    },
+    "controller_assembly_and_access_reserve / filter_and_wire_reserve": {
+      "distance_mm": 91.2414379544733,
+      "intersection_mm3": 0.0
+    },
+    "controller_assembly_and_access_reserve / partition": {
+      "distance_mm": 17.0,
+      "intersection_mm3": 0.0
+    },
+    "filter_and_wire_reserve / partition": {
+      "distance_mm": 70.0,
+      "intersection_mm3": 0.0
+    }
+  },
+  "negative_controls": {
+    "oversize_mains_hits_wall": {
+      "distance_mm": 0.0,
+      "intersection_mm3": 39334.995297297006
+    },
+    "too_tall_controller_hits_lid": {
+      "distance_mm": 0.0,
+      "intersection_mm3": 63525.0
+    },
+    "misplaced_controller_hits_partition": {
+      "distance_mm": 0.0,
+      "intersection_mm3": 14520.0
+    }
+  },
+  "reload_valid_solids": 13,
+  "source_receipts": [
+    {
+      "url": "https://www.hammfg.com/files/parts/stp/1590ZGRP243.zip?v=1697661993",
+      "file": "source/1590ZGRP243.zip",
+      "sha256": "3419b0f8e9963fdd8140a41f7c5ce7af250884cb09e6ad9c1b7703d55a3cf50d"
+    },
+    {
+      "url": "https://www.hammfg.com/files/parts/pdf/1590ZGRP243.pdf?v=1697661942",
+      "file": "source/1590ZGRP243.pdf",
+      "sha256": "9455aaffb744adeff33b55f9ff8b3888280390ad0da59e2e25e577fbcb47808d"
+    }
+  ],
+  "source_step_sha256": "c44881ef623315ffbccaa5e705a3ec12974a3cd2dda27fff8a0494578bfc8b2d",
+  "script_sha256": "85f8820e55c47b30cd1482c80251bdd453271a3944f3485ad5d07fff0f50ddd3",
+  "export_sha256": "87c8d643a6f2cbe662b5e563e809c646503d0ec425ac632f94731654baaf29c0",
+  "not_tested": [
+    "Exact placed component models or mated terminal and crimp shapes",
+    "Mounting bracket/carrier holes, partition feet and retention",
+    "Finished gland/cutout machining and assembled ingress rating",
+    "Actual sensor cable length including crimps and strain relief",
+    "Thermal performance and installed skimmer interference"
+  ]
+}

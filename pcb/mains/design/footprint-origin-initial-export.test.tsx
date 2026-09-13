@@ -3,10 +3,10 @@ import type { CircuitJson } from "circuit-json";
 import { Circuit } from "tscircuit";
 import { CircuitJsonToKicadPcbConverter } from "circuit-json-to-kicad";
 import { At, parseKicadPcb } from "kicadts";
-import { PsuHeader } from "../../controller/design/micro-fit-components";
+import { PsuHeader, ServiceHeader } from "../../controller/design/micro-fit-components";
 import MainsCircuit from "./mains.circuit";
 import { MainsHeader } from "./mains-headers";
-import { IsolatedSupply, PumpRelay } from "./power-components";
+import { IsolatedSupply, PumpRelay, BranchFuse } from "./power-components";
 import {
   CoilFlyback,
   SnubberCapacitor,
@@ -16,7 +16,21 @@ import { ThermallyProtectedMov } from "./mov-component";
 import { mainsPlacements } from "./placements";
 import { prepareMainsFootprintOriginsForInitialExport } from "./footprint-origin-initial-export";
 
-const refs = ["U1", "K1", "J1", "J2", "J3", "J4", "J5", "D1", "R1", "C1", "RV1"];
+const refs = [
+  "U1",
+  "K1",
+  "J1",
+  "J2",
+  "J3",
+  "J4",
+  "J5",
+  "D1",
+  "R1",
+  "C1",
+  "RV1",
+  "J6",
+  "F3",
+];
 
 function sourceComponent(json: CircuitJson, ref: string) {
   const source = json.find((e) => e.type === "source_component" && e.name === ref);
@@ -52,14 +66,14 @@ test("complete mains origins match authored datums without changing any other so
     expect(actual.center.x).toBeCloseTo(placement.pcbX, 7);
     expect(actual.center.y).toBeCloseTo(placement.pcbY, 7);
   }
-  // Only floating point roundoff in the eleven corrected centres is normalized
+  // Only floating point roundoff in the thirteen corrected centres is normalized
   // for comparison. Nets, hole shapes, mask/paste, graphics and SMT are untouched.
   const rounded = structuredClone(prepared);
   for (const ref of refs)
     sourceComponent(rounded, ref).center = sourceComponent(expected, ref).center;
   expect(rounded).toEqual(expected);
   expect(prepareMainsFootprintOriginsForInitialExport(prepared)).toEqual(prepared);
-  expect(prepared.filter((e) => e.type === "pcb_component")).toHaveLength(23);
+  expect(prepared.filter((e) => e.type === "pcb_component")).toHaveLength(22);
 
   // The former raw export had displaced native footprint origins despite
   // correct global copper. This assertion fails if preparation is bypassed.
@@ -67,7 +81,7 @@ test("complete mains origins match authored datums without changing any other so
     sourceComponent(prepared, "U1").center,
   );
   const native = convert(prepared);
-  expect(native.footprints).toHaveLength(27); // four separate mounting holes
+  expect(native.footprints).toHaveLength(26); // four separate mounting holes
   for (const ref of refs) {
     const fp = native.footprints.find((f) =>
       f.properties.some((p) => p.key === "Reference" && p.value === ref),
@@ -89,7 +103,7 @@ async function gallery(rotation: number) {
   });
   const circuit = new Circuit();
   circuit.add(
-    <board width={500} height={250} routingDisabled pcbRelative>
+    <board width={750} height={500} routingDisabled pcbRelative>
       <IsolatedSupply name="U1" {...place(0)} />
       <PumpRelay name="K1" {...place(1)} />
       <MainsHeader name="J1" {...place(2)} />
@@ -101,6 +115,8 @@ async function gallery(rotation: number) {
       <SnubberResistor name="R1" {...place(8)} />
       <SnubberCapacitor name="C1" {...place(9)} />
       <ThermallyProtectedMov name="RV1" {...place(10)} />
+      <ServiceHeader name="J6" {...place(11)} />
+      <BranchFuse name="F3" {...place(12)} />
     </board>,
   );
   await circuit.renderUntilSettled();
@@ -159,7 +175,7 @@ for (const rotation of [0, 90, 180, 270]) {
     }
     // 49 numbered through-hole lands, including both tails on all 15 blades,
     // plus J5's one locator. No duplicate pad may disappear during normalization.
-    expect(native.footprints.flatMap((fp) => fp.fpPads)).toHaveLength(50);
+    expect(native.footprints.flatMap((fp) => fp.fpPads)).toHaveLength(55);
   });
 }
 

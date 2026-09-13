@@ -1,0 +1,60 @@
+(footprint "Mains_H2"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "28b747cc-4a26-49b6-9e44-084eeb73184d")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Value" "Mains_H2"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2b1dbf23-a08a-4586-8e59-384603c2f79d")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fc062115-5ad2-42e0-b5c8-df57dab95d9b")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "13877655-3f43-4c99-99ff-de5e4704527a")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr board_only exclude_from_pos_files exclude_from_bom)
+	(duplicate_pad_numbers_are_jumpers no)
+	(pad "" np_thru_hole circle
+		(at 0 0)
+		(size 3.2 3.2)
+		(drill 3.2)
+		(layers "*.Cu" "*.Mask")
+		(uuid "5dfbdd3e-d6c9-42a9-b188-15f8c6ba1feb")
+	)
+	(embedded_fonts no)
+)

@@ -15,15 +15,19 @@ clip; this project supplies the PCB attachment interface.
 final-use boards. Complete design reviews before fabrication, then calibrate and
 commission the assembled unit. No separate prototype phase is planned.
 
-**Status:** detailed design and firmware implementation are in progress. The
-[design basis](docs/design/README.md) records sourced parts, interfaces and open
-engineering checks. The C6 application binds sensing, relay/watchdog control,
-retained state, private Matter provisioning, local settings and bounded verified-TLS
-Pushover delivery. The controller schematic and placement are captured and adopted
-in KiCad, with strict schematic cleanup and partially applied native rules/stackup.
-Mains integration, sensor geometry, remaining board constraints, routing and
-unattended time acquisition remain work. No fabrication release or final-unit
-commissioning has passed.
+**Status:** the shared-power controller ECO is accepted and ready for routing.
+Its schematic passes strict ERC; native PCB checks report zero ordinary DRC
+violations and zero schematic parity differences, with 253 connections to route.
+The sensor is also accepted for routing: 16 footprints, 41 unrouted connections
+and zero strict ERC, ordinary DRC or parity findings. The mains board is accepted
+with 26 footprints, 39 unrouted connections and the same clean checks. All three
+boards are ready for routing. See [current state](docs/STATE.md) for receipts.
+The C6 application includes sensing, relay/watchdog control, retained state,
+private Matter provisioning, local settings and verified-TLS Pushover delivery.
+The present hardware includes fixed 12 V power, three future pump drivers and a
+second sensor port under the [refill attachment contract](docs/design/refill-expansion.md).
+Future refill/conditioning behavior is deferred. Routing, fabrication release and
+physical calibration/commissioning remain separate work.
 
 Start with [the overview](docs/overview.md) and [current state](docs/STATE.md).
 The [decision register](docs/decisions.md) tracks open inputs and release gates.
@@ -31,7 +35,7 @@ The [decision register](docs/decisions.md) tracks open inputs and release gates.
 - [Design dossier](docs/README.md)
 - [Firmware and simulator](firmware/README.md)
 - [PCB tooling and three board areas](pcb/README.md)
-- [Candidate BOM](bom/README.md)
+- [Bill of materials](bom/README.md)
 - [Commissioning matrix](testing/README.md)
 - [Build sequence](docs/build.md)
 

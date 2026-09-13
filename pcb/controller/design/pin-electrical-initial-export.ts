@@ -1,9 +1,17 @@
 import type { CircuitJson } from "circuit-json";
 import type { KicadSch, SchematicSymbol, SymbolPin } from "kicadts";
 import { chipElectricalContracts, type ElectricalPin } from "./pin-electrical-contract";
-import { controllerCapacitors, controllerResistors } from "./passive-components";
+import {
+  controllerCapacitors,
+  controllerResistors,
+  precisionResistors,
+} from "./passive-components";
 
-const resistors = new Set<string>(Object.values(controllerResistors).map((p) => p.mpn));
+const resistors = new Set<string>(
+  [...Object.values(controllerResistors), ...Object.values(precisionResistors)].map(
+    (p) => p.mpn,
+  ),
+);
 const capacitors = new Set<string>(
   Object.values(controllerCapacitors).map((p) => p.mpn),
 );

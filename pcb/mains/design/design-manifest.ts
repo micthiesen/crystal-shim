@@ -10,18 +10,20 @@ import {
   mainsExpectedNc,
 } from "./schematic-connectivity-check";
 import { controllerDatasheets } from "../../controller/design/manifest-parts";
+import { controllerCapacitors } from "../../controller/design/passive-components";
 import {
-  controllerCapacitors,
-  controllerResistors,
-} from "../../controller/design/passive-components";
-import { psuHeaderPattern } from "../../controller/design/micro-fit-components";
-import { mainsMountingHoles, mainsPlacements } from "./placements";
+  psuHeaderPattern,
+  serviceHeaderPattern,
+} from "../../controller/design/micro-fit-components";
+import { mainsMountingHoles, mainsPlacements, mainsBoardSize } from "./placements";
 import {
   mainsHeaderDefinitions,
   mainsHeaderPattern,
   mainsHeaderPhysical,
 } from "./mains-headers";
 import {
+  branchFusePattern,
+  branchFusePhysical,
   isolatedSupplyPattern,
   isolatedSupplyPhysical,
   pumpRelayPattern,
@@ -35,6 +37,8 @@ import {
   snubberCapacitorPattern,
   snubberCapacitorPhysical,
 } from "./suppression-components";
+import { buckInductorPattern } from "../../controller/design/assembly-components";
+import { mainsBuckPattern, motorFusePattern } from "./secondary-components";
 import { movCapture } from "./mov-component";
 import { prepareMainsFootprintOriginsForInitialExport } from "./footprint-origin-initial-export";
 import { createMainsInitialPcb } from "./mains-initial-pcb";
@@ -69,7 +73,7 @@ type Part = {
   datasheet: string;
   pins: readonly number[];
   value?: string;
-  quantity?: number;
+  quantity?: number | string;
   voltage?: number;
 };
 // Ref-bound selected parts, never merely any known part of the same family.
@@ -88,7 +92,7 @@ const parts: Readonly<Record<string, Part>> = {
     ]),
   ),
   U1: {
-    mpn: "IRM-10-5",
+    mpn: "IRM-45-12",
     footprint: isolatedSupplyPattern.id,
     datasheet: isolatedSupplyPhysical.source.url,
     pins: [1, 2, 3, 4],
@@ -135,49 +139,46 @@ const parts: Readonly<Record<string, Part>> = {
     pins: [1, 2, 3],
   },
   U2: {
-    mpn: "TPS259470ARPWR",
-    footprint: "CrystalShim:TPS259470A_RPW0010A",
-    datasheet: controllerDatasheets.TPS259470ARPWR!,
-    pins: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    mpn: "AP63205WU-7",
+    footprint: mainsBuckPattern.id,
+    datasheet: mainsBuckPattern.source.url,
+    pins: [1, 2, 3, 4, 5, 6],
   },
-  D2: {
-    mpn: "STPS2L40U",
-    footprint: "CrystalShim:STPS2L40U_SMB",
-    datasheet: controllerDatasheets.STPS2L40U!,
+  L1: {
+    mpn: "SRP5030TA-4R7M",
+    footprint: buckInductorPattern.id,
+    datasheet: buckInductorPattern.source.url,
+    pins: [1, 2],
+    value: "4.7µH",
+    quantity: "4.7uH",
+  },
+  F3: {
+    mpn: "0215001.MXEP",
+    footprint: branchFusePattern.id,
+    datasheet: branchFusePhysical.source.url,
+    pins: [1, 2],
+  },
+  F2: {
+    mpn: "0451003.MRL",
+    footprint: motorFusePattern.id,
+    datasheet: motorFusePattern.source.url,
+    pins: [1, 2],
+  },
+  J6: {
+    mpn: "43045-0200",
+    footprint: serviceHeaderPattern.id,
+    datasheet: controllerDatasheets["43045-0200"]!,
     pins: [1, 2],
   },
   ...Object.fromEntries(
     (
       [
-        ["R2", "26.1k", 26100],
-        ["R3", "10k", 10000],
-        ["R4", "38.3k", 38300],
-        ["R5", "10k", 10000],
-        ["R6", "2.87k", 2870],
-        ["R7", "2.2k", 2200],
-      ] as const
-    ).map(([ref, value, quantity]) => {
-      const part = controllerResistors[value];
-      return [
-        ref,
-        {
-          mpn: part.mpn,
-          footprint: part.pattern.id,
-          datasheet: part.pattern.source.url,
-          pins: [1, 2],
-          value: `${value}Ω`,
-          quantity,
-        },
-      ];
-    }),
-  ),
-  ...Object.fromEntries(
-    (
-      [
-        ["C2", "1uF", 1e-6, 25],
-        ["C3", "100nF", 100e-9, 50],
+        ["C2", "22uF", 22e-6, 25],
+        ["C3", "22uF", 22e-6, 25],
         ["C4", "22uF", 22e-6, 25],
-        ["C5", "4.7nF", 4.7e-9, 50],
+        ["C5", "100nF", 100e-9, 50],
+        ["C6", "22uF", 22e-6, 25],
+        ["C7", "100nF", 100e-9, 50],
       ] as const
     ).map(([ref, value, quantity, voltage]) => {
       const part = controllerCapacitors[value];
@@ -241,8 +242,8 @@ export function createMainsManifest(json: CircuitJson) {
   if (
     boards.length !== 1 ||
     !board ||
-    board.width !== 135 ||
-    board.height !== 75 ||
+    board.width !== mainsBoardSize.width ||
+    board.height !== mainsBoardSize.height ||
     board.num_layers !== 2 ||
     board.thickness !== 1.6 ||
     board.material !== "fr4" ||
@@ -254,11 +255,11 @@ export function createMainsManifest(json: CircuitJson) {
     throw new Error("Mains board specification changed");
   const sources = json.filter((e) => e.type === "source_component");
   if (
-    sources.length !== 23 ||
-    new Set(sources.map((e) => e.name)).size !== 23 ||
+    sources.length !== 22 ||
+    new Set(sources.map((e) => e.name)).size !== 22 ||
     sources.some((e) => !Object.hasOwn(parts, e.name))
   )
-    throw new Error("Expected exactly 23 unique mains source references");
+    throw new Error("Expected exactly 22 unique mains source references");
   const bySource = new Map(sources.map((e) => [e.source_component_id, e]));
   const ports = json.filter((e) => e.type === "source_port");
   const schematics = json.filter((e) => e.type === "schematic_component");
@@ -267,10 +268,10 @@ export function createMainsManifest(json: CircuitJson) {
     (e) => e.type === "pcb_smtpad" || e.type === "pcb_plated_hole",
   );
   if (
-    ports.length !== 66 ||
-    physicalPorts.length !== 66 ||
-    schematics.length !== 23 ||
-    allLands.length !== 81 ||
+    ports.length !== 60 ||
+    physicalPorts.length !== 60 ||
+    schematics.length !== 22 ||
+    allLands.length !== 75 ||
     ports.some(
       (p) =>
         !bySource.has(p.source_component_id ?? "") || !Number.isInteger(p.pin_number),
@@ -280,7 +281,7 @@ export function createMainsManifest(json: CircuitJson) {
   const normalized = prepareMainsFootprintOriginsForInitialExport(json);
   const physical = normalized.filter((e) => e.type === "pcb_component");
   if (
-    physical.length !== 23 ||
+    physical.length !== 22 ||
     physical.some((p) => !bySource.has(p.source_component_id))
   )
     throw new Error("Mains physical component coverage changed");
@@ -311,7 +312,7 @@ export function createMainsManifest(json: CircuitJson) {
       return [[names[0]!.value, fp] as const];
     }),
   );
-  if (nativeByRef.size !== 27 || native.footprints.length !== 27)
+  if (nativeByRef.size !== 26 || native.footprints.length !== 26)
     throw new Error("Mains native footprint coverage changed");
   const drawn = schematicPortNetNames(json);
   const physicalPadNumbers: Record<string, string[]> = {};
@@ -335,19 +336,25 @@ export function createMainsManifest(json: CircuitJson) {
         ? "simple_chip"
         : ref.startsWith("R")
           ? "simple_resistor"
-          : "simple_capacitor";
+          : ref.startsWith("L")
+            ? "simple_inductor"
+            : "simple_capacitor";
     const value =
       source.ftype === "simple_resistor"
         ? source.display_resistance
         : source.ftype === "simple_capacitor"
           ? source.display_capacitance
-          : source.manufacturer_part_number;
+          : source.ftype === "simple_inductor"
+            ? source.display_inductance
+            : source.manufacturer_part_number;
     const quantity =
       source.ftype === "simple_resistor"
         ? source.resistance
         : source.ftype === "simple_capacitor"
           ? source.capacitance
-          : undefined;
+          : source.ftype === "simple_inductor"
+            ? source.inductance
+            : undefined;
     if (
       source.manufacturer_part_number !== selected.mpn ||
       source.ftype !== expectedKind ||
@@ -478,7 +485,7 @@ export function createMainsManifest(json: CircuitJson) {
     .sort((a, b) => a.stable_id.localeCompare(b.stable_id));
   if (
     nets.some((n) => !n.endpoints.length) ||
-    nets.reduce((sum, n) => sum + n.endpoints.length, 0) !== 56
+    nets.reduce((sum, n) => sum + n.endpoints.length, 0) !== 53
   )
     throw new Error("Mains named-net endpoint coverage changed");
   const sourceHoles = normalized.filter((e) => e.type === "pcb_hole");
@@ -492,7 +499,7 @@ export function createMainsManifest(json: CircuitJson) {
       const owner = placed && bySource.get(placed.source_component_id)?.name;
       const ref = mount ? mount.ref : owner;
       if (
-        (!mount && owner !== "J5") ||
+        (!mount && owner !== "J5" && owner !== "J6") ||
         !ref ||
         hole.hole_diameter !== (mount ? 3.2 : 3) ||
         hole.is_covered_with_solder_mask
@@ -501,7 +508,7 @@ export function createMainsManifest(json: CircuitJson) {
       return {
         stable_id: mount
           ? `mains.hole.${ref.toLowerCase()}`
-          : "mains.hole.j5.locator-1",
+          : `mains.hole.${ref.toLowerCase()}.locator-1`,
         ref,
         x_mm: hole.x,
         y_mm: hole.y,
@@ -510,8 +517,8 @@ export function createMainsManifest(json: CircuitJson) {
       };
     })
     .sort((a, b) => a.stable_id.localeCompare(b.stable_id));
-  if (holes.length !== 5 || new Set(holes.map((h) => h.stable_id)).size !== 5)
-    throw new Error("Expected five unique mains NPTH identities");
+  if (holes.length !== 6 || new Set(holes.map((h) => h.stable_id)).size !== 6)
+    throw new Error("Expected six unique mains NPTH identities");
   const mechanical = mainsMountingHoles.map((hole) => {
     // The shared initial PCB path has validated and identified this exact hole
     // before hashing, including its board-only/BOM/CPL attributes.
@@ -543,8 +550,8 @@ export function createMainsManifest(json: CircuitJson) {
     schema_version: 1,
     board: {
       stable_id: mainsBoardId,
-      width_mm: 135,
-      height_mm: 75,
+      width_mm: mainsBoardSize.width,
+      height_mm: mainsBoardSize.height,
       layer_count: 2,
       coordinate_system: "center-x-right-y-up",
       kicad_origin_mm: [100, 100],
@@ -555,7 +562,12 @@ export function createMainsManifest(json: CircuitJson) {
         compiled_board_sha256: sourceGeometrySha256([board], { x: 0, y: 0 }),
         unowned_physical_geometry_sha256: sourceGeometrySha256(unowned, { x: 0, y: 0 }),
       },
-      outline: { kind: "rectangle", center_mm: [0, 0], width_mm: 135, height_mm: 75 },
+      outline: {
+        kind: "rectangle",
+        center_mm: [0, 0],
+        width_mm: mainsBoardSize.width,
+        height_mm: mainsBoardSize.height,
+      },
       holes,
     },
     versions: {
@@ -571,9 +583,9 @@ export function createMainsManifest(json: CircuitJson) {
     metadata: {
       board_designator: "Mains",
       title: "Crystal Shim isolated mains switching",
-      physical_numbered_pad_count: 81,
-      connected_logical_pin_count: 56,
-      unused_logical_pin_count: 10,
+      physical_numbered_pad_count: 75,
+      connected_logical_pin_count: 53,
+      unused_logical_pin_count: 7,
       physical_pad_numbers: Object.fromEntries(
         Object.entries(physicalPadNumbers).sort(([a], [b]) => a.localeCompare(b)),
       ),

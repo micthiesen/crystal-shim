@@ -161,7 +161,7 @@ def export(args: argparse.Namespace) -> Path:
     manifest = validator.load_manifest(manifest_path)
     require(manifest["board"]["stable_id"] == "controller.board.main", "Expected controller manifest")
     components = manifest["components"]
-    require(len(components) == 99, "Expected 95 electrical components and four mounting holes")
+    require(len(components) == 117, "Expected 113 electrical components and four mounting holes")
     source_hashes = {"board": sha256(board_path), "manifest": sha256(manifest_path)}
     geometry_verifier = Path(__file__).with_name("verify-initial-geometry.ts")
     verification = subprocess.run(
@@ -181,8 +181,8 @@ def export(args: argparse.Namespace) -> Path:
     require(not list(board.GetTracks()), "Expected an unrouted initial seed without tracks or vias")
     footprints = list(board.GetFootprints())
     references = [fp.GetReference() for fp in footprints]
-    require(len(references) == 99 and len(set(references)) == 99 and all(references),
-            "Seed must contain exactly 99 unique nonempty references")
+    require(len(references) == 117 and len(set(references)) == 117 and all(references),
+            "Seed must contain exactly 117 unique nonempty references")
     require(set(references) == {component["ref"] for component in components},
             "Seed and manifest references differ")
     by_ref = {fp.GetReference(): fp for fp in footprints}
@@ -213,8 +213,8 @@ def export(args: argparse.Namespace) -> Path:
             pad.SetNetCode(0)
         plans.append((ref, name, source_id, clone, footprint_snapshot(clone, pcbnew)))
     total_pads = sum(bool(p.GetNumber()) for fp in footprints for p in fp.Pads())
-    require(total_pads == 291, "Expected all 291 numbered physical lands, including repeated pads")
-    require(sum(p.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH for fp in footprints for p in fp.Pads()) == 9,
+    require(total_pads == 332, "Expected all 332 numbered physical lands, including repeated pads")
+    require(sum(p.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH for fp in footprints for p in fp.Pads()) == 14,
             "Expected four mounting and five connector NPTHs")
 
     output.mkdir(parents=True, exist_ok=False)
@@ -262,7 +262,7 @@ def export(args: argparse.Namespace) -> Path:
                    "geometry_verifier_sha256": sha256(geometry_verifier),
                    "geometry_canonicalizer_sha256": sha256(Path(__file__).with_name("footprint-geometry-identity.ts")),
                    "source_versions": manifest.get("versions", {}),
-                   "footprints": 99, "numbered_physical_pads": total_pads, "npth": 9,
+                   "footprints": 117, "numbered_physical_pads": total_pads, "npth": 14,
                    "cardinal_rotation_comparisons": 396, "entries": entries}, handle, indent=2)
         handle.write("\n")
     # Keep native runtime owners alive until all clones/readback work has finished.
@@ -280,7 +280,7 @@ def main() -> int:
     except Exception as error:
         print(f"Native footprint export failed: {error}", file=sys.stderr)
         return 1
-    print(f"Validated 99 source-derived native footprints: {receipt}")
+    print(f"Validated 117 source-derived native footprints: {receipt}")
     return 0
 
 

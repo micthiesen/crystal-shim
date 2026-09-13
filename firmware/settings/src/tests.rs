@@ -711,7 +711,26 @@ fn form_rejects_duplicate_unknown_bad_percent_and_out_of_range_values() {
 }
 #[test]
 fn explicit_pushover_clear_and_replace_do_not_require_echoing_secrets() {
-    for mode in ["clear","replace&pushover_application_token=CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC&pushover_user_key=DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD&pushover_device="]{let m=Model::new();let mut io=Io::new(&m,post("/api/config",&save_body().replace("pushover_action=keep",&format!("pushover_action={mode}"))));serve_one(&m,&mut io).unwrap();assert!(io.output().starts_with("HTTP/1.1 200"));assert!(!io.output().contains("CCCCCCCC"));assert_eq!(m.published.get().unwrap().pushover().is_some(),mode!="clear");}
+    for mode in [
+        "clear",
+        "replace&pushover_application_token=CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC&pushover_user_key=DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD&pushover_device=",
+    ] {
+        let m = Model::new();
+        let mut io = Io::new(
+            &m,
+            post(
+                "/api/config",
+                &save_body().replace("pushover_action=keep", &format!("pushover_action={mode}")),
+            ),
+        );
+        serve_one(&m, &mut io).unwrap();
+        assert!(io.output().starts_with("HTTP/1.1 200"));
+        assert!(!io.output().contains("CCCCCCCC"));
+        assert_eq!(
+            m.published.get().unwrap().pushover().is_some(),
+            mode != "clear"
+        );
+    }
 }
 #[test]
 fn token_rotation_revalidates_next_revision_preserves_settings_and_rejects_bad_input() {
@@ -911,20 +930,18 @@ fn freshness_edit_preserves_measured_calibration_and_its_frame_duration_floor() 
     };
     let data = CalibrationData {
         level_empty_counts: 1_000,
+        wet_reference_empty_counts: 300,
         low_endpoint: Channels {
             level: 1_200,
             wet_reference: 700,
-            dry_reference: 300,
         },
         high_endpoint: Channels {
             level: 2_500,
             wet_reference: 900,
-            dry_reference: 300,
         },
         channels: Channels {
             level: limits,
             wet_reference: limits,
-            dry_reference: limits,
         },
         reference_sign: ReferenceSign::Positive,
         minimum_reference_span_counts: 100,
@@ -981,7 +998,10 @@ fn freshness_edit_preserves_measured_calibration_and_its_frame_duration_floor() 
 fn all_sixteen_entries_timings_and_replacement_credentials_fit_bounded_request_and_view() {
     let m = Model::new();
     let timezone = format!("%3C{}%3E0", "%2B".repeat(125));
-    let mut body = format!("revision=1&stop_level=999&restart_level=1000&duration_seconds=86400&low_confirmation_ms={0}&recovery_ms={0}&minimum_off_ms={0}&max_sample_age_ms={0}&timezone={timezone}&entry_count=16", u64::MAX);
+    let mut body = format!(
+        "revision=1&stop_level=999&restart_level=1000&duration_seconds=86400&low_confirmation_ms={0}&recovery_ms={0}&minimum_off_ms={0}&max_sample_age_ms={0}&timezone={timezone}&entry_count=16",
+        u64::MAX
+    );
     for i in 0..16 {
         body.push_str(&format!(
             "&entry{i}_id={}&entry{i}_days=127&entry{i}_start_second=86399",

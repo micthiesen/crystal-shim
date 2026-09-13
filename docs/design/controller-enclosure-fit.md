@@ -1,5 +1,10 @@
 # Controller enclosure fit
 
+Historical fit evidence, superseded by the [shared enclosure](../../cad/shared-enclosure/README.md)
+for the 110 × 110 mm controller and 180 × 110 mm mains board. The dimensions and
+open requirements below describe the old enclosure only and are not current
+placement constraints.
+
 Nominal CAD proposal reviewed 2026-09-12. It preserves the complete controller
 placement and 70 x 110 x 1.6 mm board. The [drawing](../../cad/controller-fit/mechanical-fit.svg)
 and [measured distances](../../cad/controller-fit/fit-results.json) record the

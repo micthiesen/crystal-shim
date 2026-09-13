@@ -6,6 +6,7 @@ import {
 } from "circuit-to-svg";
 import { mainsSchematicConnectivityErrors } from "./schematic-connectivity-check";
 import { createMainsManifest } from "./design-manifest";
+import { mainsPlacementIsolationErrors } from "./placement-check";
 import MainsCircuit from "./mains.circuit";
 
 const circuit = new Circuit();
@@ -15,6 +16,7 @@ const json = circuit.getCircuitJson();
 const errors = [
   ...json.filter((e) => "error_type" in e || e.type.endsWith("_error")),
   ...mainsSchematicConnectivityErrors(json),
+  ...mainsPlacementIsolationErrors(json),
 ];
 if (errors.length) throw new Error(`Mains source errors: ${JSON.stringify(errors)}`);
 const manifest = createMainsManifest(json);

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="790" viewBox="0 0 1100 790">
+<rect width="1100" height="790" fill="#f7f7f2"/>
+<g font-family="Arial,sans-serif" fill="#18292c">
+<text x="44" y="45" font-size="26" font-weight="bold">Shared enclosure: power, control and accessory outputs</text>
+<text x="44" y="75" font-size="16">Hammond 1590ZGRP243 · 400 × 250 × 120 mm nominal · planning fit, not machining</text>
+<g transform="translate(75 120) scale(2.2)">
+<rect x="-7.575" y="-7.37" width="400" height="250" rx="8" fill="#e3e6e2" stroke="#506367" stroke-width="1"/>
+<rect width="384.85" height="235.26" rx="6" fill="#fff" stroke="#506367" stroke-dasharray="3 2" stroke-width=".8"/>
+<rect x="25" y="25" width="180" height="110" rx="1" fill="#f6d4b5" stroke="#9b5825"/>
+<rect x="245" y="25" width="110" height="110" rx="1" fill="#c4e6e0" stroke="#276b63"/>
+<rect x="25" y="150" width="130" height="75" fill="#f8e8d8" stroke="#9b5825" stroke-dasharray="3 2"/>
+<rect x="50" y="162" width="73" height="53" fill="#aeb6b6" stroke="#526164"/>
+<rect x="225" y="10" width="3" height="215" fill="#51446b"/>
+<text x="115" y="68" text-anchor="middle" font-size="9">POWER PCB</text>
+<text x="115" y="82" text-anchor="middle" font-size="8">180 × 110 mm</text>
+<text x="115" y="96" text-anchor="middle" font-size="7">PCB top Z28 · assembly reserve to Z75</text>
+<text x="300" y="67" text-anchor="middle" font-size="9">CONTROLLER PCB</text>
+<text x="300" y="82" text-anchor="middle" font-size="8">110 × 110 mm</text>
+<text x="300" y="96" text-anchor="middle" font-size="7">Rotate 90° clockwise in enclosure</text>
+<text x="86.5" y="184" text-anchor="middle" font-size="8">EMI FILTER</text>
+<text x="86.5" y="198" text-anchor="middle" font-size="6.5">73 × 53 × 25 reserve</text>
+<text x="90" y="221" text-anchor="middle" font-size="6.5">130 × 75 terminal + wire allocation</text>
+<text x="260" y="165" font-size="7">Low-voltage accessory cables only</text>
+<text x="260" y="179" font-size="7">on this side of the partition</text>
+<path d="M 343 52 L 385 52 L 414 52" stroke="#276b63" stroke-width="1.5" fill="none"/>
+<path d="M 410 49 L 416 52 L 410 55" stroke="#276b63" fill="none"/>
+<text x="340" y="43" text-anchor="middle" font-size="6.5">Sensor exit toward tank</text>
+<text x="25" y="-12" font-size="7">Origin: inside floor northwest corner; X right, Y down, Z upward</text>
+</g>
+<text x="44" y="704" font-size="16">Keep dirty and clean filter pairs separate. No shared metal mounting panel is selected.</text>
+<text x="44" y="730" font-size="15">Complete sensor cable ≤203.2 mm: allocate ≤60 mm inside/through enclosure and ≤143.2 mm beyond.</text>
+<text x="44" y="756" font-size="14">CAD checks allocated envelopes against manufacturer enclosure solids; exact crimps, glands and mounting remain assembly work.</text>
+</g></svg>

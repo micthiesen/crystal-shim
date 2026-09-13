@@ -8,36 +8,31 @@ geometry has passed commissioning.
 
 ## Measurement model
 
-TI TIDU736A section 4.1, Equation 2 gives liquid height as
-`h_RL * (C_LEVEL - C_LEVEL(empty)) / (C_RL - C_RE)`. It identifies the empty LEVEL
-measurement separately from the environment reference and requires matching RL
-and RE sensor dimensions. The final glass/clip stack must still be tested.
-[TI design guide, page 7](https://www.ti.com/lit/ug/tidu736a/tidu736a.pdf).
-
-The implementation keeps the dimensionless TI response:
+The board keeps LEVEL and the always-wet liquid reference RL. It omits the
+optional live environment reference RE and its out-of-phase electrode. TI's
+reference design explains the live-reference approach; this project's simplified
+model instead subtracts separately commissioned dry baselines for LEVEL and RL.
+It does not claim live environment compensation.
+[TI design guide](https://www.ti.com/lit/ug/tidu736a/tidu736a.pdf).
 
 ```text
-q       = (C_LEVEL - C_LEVEL(empty)) / (C_RL - C_RE)
-q_low   = q evaluated from the measured lower-water endpoint triple
-q_high  = q evaluated from the measured upper-water endpoint triple
+q       = (C_LEVEL - C_LEVEL(dry)) / (C_RL - C_RL(dry))
+q_low   = q evaluated from the measured lower-water endpoint pair
+q_high  = q evaluated from the measured upper-water endpoint pair
 fraction_thousandths = 1000 * (q - q_low) / (q_high - q_low)
 ```
 
-`0` and `1000` mean the lower and upper measured response endpoints, respectively.
-They are not millimetres and do not promise linear physical height between those
-points. This meaning remains stable while the exact electrode geometry and
-usable physical range are resolved. A commissioned supported domain can exclude
-part of this normalized span.
+`0` and `1000` mean the lower and upper measured response endpoints. They are
+not millimetres and do not promise linear physical height between those points.
+A commissioned supported domain can exclude part of this normalized span.
 
-The empty LEVEL baseline is measured explicitly. It is neither zero nor replaced
-with live RE. Matching electrode geometry does not establish equal parasitic
-offsets. Static RL/RE mismatch remains in the measured denominator and endpoint
-ratios; this implementation does not invent an independent reference-offset or
-temperature-compensation fit. Endpoint normalization cannot prove that such a
-mismatch stays harmless as conditions change. If measured intermediate levels,
-temperature changes or common shifts fail the model, commissioning fails until
-the cause/model is resolved. Widening envelopes is not evidence that the model is
-correct.
+Measure both dry baselines with the final glass/coating/clip stack and unchanged
+acquisition settings, before wetting either sensing region. RL must remain wet
+throughout the accepted operating range. Its measured wet-minus-dry response
+normalizes LEVEL response for the installed liquid. No electrode area assumption,
+fabricated offset or live RE reading supplies either baseline. Static baseline
+drift is a limitation to evaluate during final-unit commissioning; widening
+limits does not establish that the model is correct.
 
 Inputs are signed differential counts in units of `2^-19 pF`, with CAPDAC disabled
 and the approved gain/offset register configuration. All counts must be strictly
@@ -50,9 +45,9 @@ channel envelope. [TI FDC1004 data sheet, differential mode and measurement conv
 `CalibrationData` contains all measured coefficients and chosen validity limits;
 there is no `Default` or fabricated production example:
 
-- The measured empty LEVEL count and full raw lower/upper endpoint triples.
+- The measured dry LEVEL and RL counts and raw lower/upper endpoint pairs.
 - An inclusive absolute count envelope and maximum count slew rate for each
-  of LEVEL, RL and RE. Envelopes must be strictly inside the converter limit.
+  of LEVEL and RL. Envelopes must be strictly inside the converter limit.
 - The expected reference-difference sign and minimum nonzero magnitude.
 - A positive rational minimum separation of the two endpoint responses, chosen
   from the measured signal/noise margin.
@@ -71,16 +66,15 @@ The final-unit calibration workflow must retain the raw measurement log, known
 water positions, sensor/board identity and revision, acquisition configuration,
 glass/coating/clip stack, and the evidence behind every envelope/rate limit.
 Those metadata and storage responsibilities belong to the eventual calibration
-workflow. Capture the empty LEVEL baseline with the same dielectric stack; do
-not derive it from electrode area or RE. Capture lower/upper and intermediate
-points in both directions with RL wet and RE dry, then validate temperature,
+workflow. Capture both dry baselines with the same dielectric stack. Capture lower/upper
+and intermediate points in both directions with RL wet, then validate temperature,
 receding film, deposits, reseating, clip pressure, hands, cable motion and pump
 switching. No such physical evidence exists merely because this code passes.
 
 ## Runtime contract
 
 The adapter constructs `RawFrame { channels, sequence, started_at, completed_at }`
-only from a complete, successful three-channel driver frame. Incomplete
+only from a complete, successful two-channel driver frame. Incomplete
 acquisitions and I²C errors remain invalid readings outside this API. One
 `CalibrationStage` instance lives for the boot/session and remains in place
 through sensor power or bus recovery.
@@ -91,7 +85,7 @@ CalibrationStage::new(calibration, now)
 stage.process(now, raw_frame) -> CalibrationResult
 ```
 
-The result includes `Reading`, the unchanged raw frame, the exact TI ratio on
+The result includes `Reading`, the unchanged raw frame, the exact baseline-subtracted ratio on
 success, and a detailed `CalibrationError` on failure. Errors include the
 offending channel/count, span, timing, domain rational, or slew measurement.
 `CalibrationError::fault()` provides the coarse supervisor fault. A valid result
@@ -157,6 +151,6 @@ confirmation after an invalid frame. Test measurements are explicitly synthetic.
 Run from `firmware/`: `cargo fmt --check`,
 `cargo clippy --locked --all-targets -- -D warnings`, and `cargo test --locked`.
 This verifies the calculation and rejection behavior. It cannot establish that
-RL is wet, RE is dry, geometry is suitable, or the glass/clip system needs no
+RL is wet, stored dry baselines remain representative, geometry is suitable, or the glass/clip system needs no
 routine cleaning. See the [sensor design basis](sensor-design-basis.md) for those
 physical assumptions and acceptance checks.

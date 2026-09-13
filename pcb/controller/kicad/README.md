@@ -1,41 +1,31 @@
-# Adopted controller KiCad project
+# Controller KiCad routing handoff
 
-Open [controller.kicad_pro](controller.kicad_pro). This is the production working
-directory for the controller, still **unrouted**. Tscircuit continues to own its
-schematic, component identity, outline and placement. Never export a fresh seed
-over this directory; use the [guarded ECO workflow](../../../.agents/skills/pcb/references/kicad-handoff.md).
+Open [controller.kicad_pro](controller.kicad_pro). The accepted shared-power ECO
+is ready for routing: **117 footprints, 253 unrouted connections, zero strict ERC
+findings, zero ordinary PCB DRC violations and zero schematic parity differences**.
+Tscircuit owns schematic identity, specifications and placement. Use a guarded
+native ECO for further source changes; never export a fresh seed over this directory.
 
-The reviewed initial stage's 113 native files were copied byte-for-byte and
-verified before creating [handoff.lock.json](../design/handoff.lock.json).
-[Initial adoption](evidence/adoption.json) binds that event. Files under
-`evidence/initial/` describe the historical stage and retain its original absolute
-paths. They are provenance, not a dependency on that temporary directory.
-The current symbol and footprint tables use `${KIPRJMOD}` and the libraries here.
-KiCad's GUI made those relocation changes and saved all eight schematic sheets.
+The [current acceptance](evidence/shared-power/eco-acceptance.json),
+[strict cleanup](evidence/shared-power/final-cleanup.json),
+[DRC report](evidence/shared-power/final-drc.json) and
+[preservation result](evidence/shared-power/final-preservation.json) bind the saved
+native handoff. [handoff.lock.json](../design/handoff.lock.json) retains initial
+provenance and records the later ECO separately. Files under `evidence/initial/`
+and the [initial adoption](evidence/adoption.json) describe historical capture;
+they are not current design acceptance. Native symbol/footprint tables use
+`${KIPRJMOD}` and the libraries in this directory.
 
-Strict schematic cleanup passes with no ignored categories or ERC findings.
-Source geometry and connectivity are preserved: 99 footprints, 51 named board
-nets, 71 total schematic nets and 274 logical pin memberships. The board has
-216 unconnected items, zero tracks/vias/zones and zero ordinary DRC violations.
-Zero violations on this unrouted board does not establish routing readiness or
-fabrication readiness.
+Basic fabrication rules, stack/USB preferences, power net classes and antenna/
+mounting keepouts are applied. The [augmentation declaration](../design/kicad-augment.json)
+and [stack contract](../../../docs/design/controller-stackup.md) identify the
+remaining routed copper, useful thermal area, vias, mask/paste and manufacturing
+checks. Native board/stack thickness is 1.6062 mm; 1.6 mm is nominal ordering data.
+Keep the matching `.kicad_pro` when reading the board so snapshots retain its
+actual rule settings.
 
-The [augmentation contract](../design/kicad-augment.json) now has a partially
-applied subset: basic fabrication rules, Default/USB90 routing preferences and
-known stack layers/material labels/finish. Read the precise scope and unverified
-mask/loss-tangent placeholders in [the stackup contract](../../../docs/design/controller-stackup.md).
-The native header and stack total are both 1.6062 mm; source 1.6 mm is nominal
-ordering data. The initial handoff lock remains the seed baseline. Subsequent
-augmentation and preservation evidence records changes against it; it must not
-be rewritten as if those later changes were part of the original receipt.
-The [current operation record](evidence/basic-augmentation/readback.json) binds
-the exact saved board/project, native readbacks, augmentation plan, preservation,
-ERC/DRC and inspected render. Its `native-*-operation.py` files are archived
-one-time audit records with machine-specific guards, not commands to rerun.
-Keep the adjacent `.kicad_pro` when taking a native snapshot: loading the board
-alone can return default minimum rules. The retained snapshot and explicit
-project-attached readback agree for this complete directory.
-
-Power-route constraints, keepouts, copper zones, special vias, mask/paste details,
-routing, mechanical fit, final DRC and manufacturing outputs remain work.
+Route all connections, preserving the USB reference, short motor flyback loops,
+direct 12 V return and sensor separation. Complete routing-dependent augmentation
+and final ERC/DRC before fabrication outputs. This handoff does not claim physical
+thermal, EMI, sensor or mains commissioning results.
 Local `.kicad_prl` preferences, locks and backup archives are not delivery files.

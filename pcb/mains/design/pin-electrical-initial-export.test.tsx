@@ -102,16 +102,16 @@ function fresh(normalize = true) {
   return { json, sheets };
 }
 
-test("all 23 parts and 66 logical pins receive component ERC semantics, only in libraries", () => {
+test("all 22 parts and 60 logical pins receive component ERC semantics, only in libraries", () => {
   const { json, sheets } = fresh();
   const sourceBefore = structuredClone(json);
   const before = sheets.map((s) => s.getString());
   const instances = sheets.flatMap((s) => s.symbols).map((i) => i.getString());
   expect(sheets).toHaveLength(4);
   expect(applyMainsPinTypesForInitialExport(json, sheets)).toEqual({
-    components: 23,
-    logicalPins: 66,
-    libraryPins: 66,
+    components: 22,
+    logicalPins: 60,
+    libraryPins: 60,
   });
   const expectedActive = {
     "U1.1": "power_in",
@@ -120,11 +120,10 @@ test("all 23 parts and 66 logical pins receive component ERC semantics, only in 
     "U1.4": "power_out",
     "U2.1": "input",
     "U2.2": "input",
-    "U2.3": "open_collector",
-    "U2.4": "open_collector",
-    "U2.5": "power_in",
-    "U2.6": "power_out",
-    "U2.8": "power_in",
+    "U2.3": "power_in",
+    "U2.4": "power_in",
+    "U2.5": "power_out",
+    "U2.6": "passive",
   } as const;
   for (const instance of sheets.flatMap((s) => s.symbols)) {
     const ref = reference(instance)!;
@@ -146,12 +145,8 @@ test("all 23 parts and 66 logical pins receive component ERC semantics, only in 
     "4",
     "5",
   ]);
-  for (const number of [3, 4, 10])
-    expect(sourcePort(json, "U2", number).do_not_connect).toBe(true);
-  expect(
-    pins(librariesFor(sheets, "U2")[0]!).find((p) => p.numberString === "10")!
-      .pinElectricalType,
-  ).toBe("passive");
+  for (const number of [1, 2, 3, 4, 5, 6])
+    expect(sourcePort(json, "U2", number).do_not_connect).not.toBe(true);
   expect(sheets.flatMap((s) => s.symbols).map((i) => i.getString())).toEqual(instances);
   expect(json).toEqual(sourceBefore);
   expect(() => applyMainsPinTypesForInitialExport(json, sheets)).toThrow(
@@ -166,13 +161,13 @@ test("all 23 parts and 66 logical pins receive component ERC semantics, only in 
 });
 
 test("exact shared parts reuse controller contracts and source names match every chip", () => {
-  for (const mpn of ["TPS259470ARPWR", "STPS2L40U", "43650-0300"])
+  for (const mpn of ["43045-0200", "43650-0300"])
     expect(mainsChipElectricalContracts[mpn]).toBe(chipElectricalContracts[mpn]);
   const chips = source.filter(
     (e) => e.type === "source_component" && e.ftype === "simple_chip",
   );
-  expect(chips).toHaveLength(11);
-  expect(Object.keys(mainsChipElectricalContracts)).toHaveLength(11);
+  expect(chips).toHaveLength(13);
+  expect(Object.keys(mainsChipElectricalContracts)).toHaveLength(13);
   for (const chip of chips) {
     const contract = mainsChipElectricalContracts[chip.manufacturer_part_number!]!;
     const sourcePins = source
@@ -192,7 +187,7 @@ test("valid extra cached copies on other sheets are all typed", () => {
   const extra = cloneLibrary(librariesFor(sheets, "U1")[0]!);
   const last = sheetFor(sheets, "D1");
   last.libSymbols!.symbols = [...last.libSymbols!.symbols, extra];
-  expect(applyMainsPinTypesForInitialExport(json, sheets).libraryPins).toBe(70);
+  expect(applyMainsPinTypesForInitialExport(json, sheets).libraryPins).toBe(64);
   expect(pins(extra).map((p) => p.pinElectricalType)).toEqual([
     "power_in",
     "power_in",
@@ -210,7 +205,7 @@ test("source, instance and late cache drift fail without partial typing", () => 
       delete sourceFor(j, "R1").manufacturer_part_number;
     },
     "known wrong passive": (j) => {
-      sourceFor(j, "R2").manufacturer_part_number = "ERA3AEB103V";
+      sourceFor(j, "C2").manufacturer_part_number = "ERA3AEB103V";
     },
     "source ftype": (j) => {
       sourceFor(j, "D1").ftype = "simple_resistor";
@@ -226,7 +221,7 @@ test("source, instance and late cache drift fail without partial typing", () => 
       sourcePort(j, "K1", 5).pin_number = 2;
     },
     "source NC": (j) => {
-      sourcePort(j, "U2", 3).do_not_connect = false;
+      sourcePort(j, "J4", 6).do_not_connect = false;
     },
     "source net": (j) => {
       const n = j.find((e) => e.type === "source_net")!;
@@ -307,7 +302,7 @@ test("source, instance and late cache drift fail without partial typing", () => 
       pins(librariesFor(s, "D1")[0]!)[0]!.name = "A";
     },
     "late duplicate passive cache": (_j, s) => {
-      pins(librariesFor(s, "R2").at(-1)!)[0]!.name = "changed";
+      pins(librariesFor(s, "C2").at(-1)!)[0]!.name = "changed";
     },
     "late remote cache": (_j, s) => {
       const l = cloneLibrary(librariesFor(s, "U2")[0]!);

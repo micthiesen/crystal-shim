@@ -16,11 +16,11 @@ export function applyMainsFieldsForInitialExport(
   const instances = schematics.flatMap((s) => s.symbols);
   if (
     schematics.length !== 4 ||
-    expected.length !== 23 ||
-    new Set(expected.map((c) => c.ref)).size !== 23 ||
+    expected.length !== 22 ||
+    new Set(expected.map((c) => c.ref)).size !== 22 ||
     instances.length !== expected.length
   )
-    throw new Error("Mains field metadata requires all 23 schematic instances");
+    throw new Error("Mains field metadata requires all 22 schematic instances");
   const plans = expected.map((component) => {
     const matches = instances.filter((s) =>
       s.properties.some((p) => p.key === "Reference" && p.value === component.ref),

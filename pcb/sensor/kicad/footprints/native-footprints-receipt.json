@@ -1,0 +1,293 @@
+{
+  "schema_version": 1,
+  "status": "validated-native-library-only",
+  "kicad_version": "10.0.5",
+  "source": {
+    "board": "sensor.kicad_pcb",
+    "manifest": "source-manifest.normalized.json",
+    "sha256": {
+      "board": "6980c41365ea52b5412c79108d7d7a653575e81bc2bbb89f1f93356812ce8231",
+      "manifest": "0b61db1b14598ad3c4699df3ab6754aca62ad88a63fb7347b88132891ff37871"
+    }
+  },
+  "tool_sha256": "5cbbeb3b134c527cbd596047e9811d77ce396831752bb69179c939b61524b32a",
+  "validator_sha256": "4bd6e5abc7ecf3c3d045f26e59ba329086d2dfd69437b7e183def3b4dd44941b",
+  "geometry_verifier_sha256": "b7a700260b3589776ababffc8838d59ce5b70255d8aabd87d5cba34918ff918c",
+  "geometry_canonicalizer_sha256": "55835250c7424ed56a668950703e64dc3dc682a6083fe6b13cc26c225492884a",
+  "source_versions": {
+    "bun": "1.3.11",
+    "circuit_json_to_kicad": "0.0.205",
+    "node": "24.3.0",
+    "tscircuit": "0.0.2465"
+  },
+  "footprints": 16,
+  "numbered_physical_pads": 61,
+  "npth": 1,
+  "cardinal_rotation_comparisons": 64,
+  "entries": [
+    {
+      "ref": "C1",
+      "source_model": "tscircuit:CrystalShim:TDK_C3216",
+      "source_geometry_sha256": "a2cd974c86491f8fc3d26cecebf6e20068b252e102f4dcf7785e7f4e5398293c",
+      "initial_geometry_sha256": "4d2e6f0312dc7aef6b37948890db4d4a3a6b93f3d80a6015cb345fe8f5892098",
+      "library_id": "CrystalShim_Sensor:Sensor_C1",
+      "path": "CrystalShim_Sensor.pretty/Sensor_C1.kicad_mod",
+      "sha256": "69880ad43f63eb0a8682f2ca52eb2129b9d3467fac5a2eb8e9276c8e7d57bab7",
+      "geometry_sha256": "02b1b59698cdb400cd630382a1925c013e0ef74b939dab8ba902dde3f2d60209",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "C2",
+      "source_model": "tscircuit:CrystalShim:TDK_C3216",
+      "source_geometry_sha256": "7ece0dbfa76b3e89a06eed704906fe3049f88dfe4c9199445dcc37535c5d321b",
+      "initial_geometry_sha256": "4d2e6f0312dc7aef6b37948890db4d4a3a6b93f3d80a6015cb345fe8f5892098",
+      "library_id": "CrystalShim_Sensor:Sensor_C2",
+      "path": "CrystalShim_Sensor.pretty/Sensor_C2.kicad_mod",
+      "sha256": "6f9aa79555e12de74bf3fa69cd5ee044bde20d65fe3a9f06def9aacee85cd155",
+      "geometry_sha256": "5c2c05076a8cb30629accca530b0fe46e75ecb5be27484e9953a892dd0327709",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "C3",
+      "source_model": "tscircuit:CrystalShim:TDK_C1608",
+      "source_geometry_sha256": "2d365d5289b3b66f0055e4e932fe2ff2c8fc169ad67e1ce4cc7324dc46d1ce11",
+      "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+      "library_id": "CrystalShim_Sensor:Sensor_C3",
+      "path": "CrystalShim_Sensor.pretty/Sensor_C3.kicad_mod",
+      "sha256": "ad417f7fbddda2cd158bc0cc62b3ecd4931e3dfb574bbe3baf18fb25716baf94",
+      "geometry_sha256": "b6b8a33d63b9dfc19fb05f646200b2cf6af3faded576da18dd3a414211088331",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "C4",
+      "source_model": "tscircuit:CrystalShim:TDK_C2012",
+      "source_geometry_sha256": "61cacc6b67b93aeafd86f73050da2ea04d8384ce4b36b13272109393321ae9ac",
+      "initial_geometry_sha256": "6725bd11f277b5e53ac6ef3bfeccdf863c75ee8177b508c7d6453d22e1f831de",
+      "library_id": "CrystalShim_Sensor:Sensor_C4",
+      "path": "CrystalShim_Sensor.pretty/Sensor_C4.kicad_mod",
+      "sha256": "8213f3500ae0981d906b0d52c5e627668fed297513704cbadc8670f9927c0dff",
+      "geometry_sha256": "35542fc52320452aa45e5d64caaef83a29c55740520fd341beecb645c8b8e003",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "D2",
+      "source_model": "tscircuit:CrystalShim:STPS2L40U_SMB",
+      "source_geometry_sha256": "3daae9c7a6657ef14964f1eae1fd75b73e92e3ebbda2249671b9c5fa6c267f27",
+      "initial_geometry_sha256": "4f719da2c8b484f40a8d48b5c094911b1ad4c3229b18b67baffe783c9a2b4180",
+      "library_id": "CrystalShim_Sensor:Sensor_D2",
+      "path": "CrystalShim_Sensor.pretty/Sensor_D2.kicad_mod",
+      "sha256": "78ec43e04eaf2393b1b4c9d908508f936efa41e8adf42ced818b78400a411296",
+      "geometry_sha256": "1739b55ccbd665c098c4cba957a6d898b2c5d61a4b8705ca477b6c881f2341ff",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "E1",
+      "source_model": "tscircuit:CrystalShim_Sensor:Tank_Electrodes",
+      "source_geometry_sha256": "e4152441d4e9d5606a28bb6abdfd105a01a509fbb7bce33b5c72027a8ea00f04",
+      "initial_geometry_sha256": "4b11b337dd12bcb0cd4d535962cc86abe2cff28543ee2a69e41cb599b198865e",
+      "library_id": "CrystalShim_Sensor:Sensor_E1",
+      "path": "CrystalShim_Sensor.pretty/Sensor_E1.kicad_mod",
+      "sha256": "0514812fa32a6c13af962f1b73135b4f6d9ca9c3448d5e681090e08afc614047",
+      "geometry_sha256": "f692e253e6b98efa8a99ceaf52886901bd5c67f1f03e665b61dddfe53f7fb636",
+      "physical_pad_numbers": [
+        "1",
+        "10",
+        "11",
+        "12",
+        "13",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "ref": "J1",
+      "source_model": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43045-0600_2x03_P3.00mm_Horizontal",
+      "source_geometry_sha256": "2924536f675a68bfbb3411e0a0bb469cece29fd7e3d206be54fb33c29b85a171",
+      "initial_geometry_sha256": "d72064b1c8ab0d6df17b96ad3ce316448241f658f20e5273b833ef0b6d5fc5de",
+      "library_id": "CrystalShim_Sensor:Sensor_J1",
+      "path": "CrystalShim_Sensor.pretty/Sensor_J1.kicad_mod",
+      "sha256": "67dfa5ec9685aa9400583c959eec6fb945eac90e568d7eb732c47a8af38af0e3",
+      "geometry_sha256": "cb5c302940b53ee95e1614852646389e5cb7166a556e3a56739bf79436bbb04f",
+      "physical_pad_numbers": [
+        "",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "ref": "R1",
+      "source_model": "tscircuit:CrystalShim:Panasonic_0603",
+      "source_geometry_sha256": "ed2d00a101d9956bd31da60f78641f3aed4899d0e3eaf2a23db857ec02ef43aa",
+      "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+      "library_id": "CrystalShim_Sensor:Sensor_R1",
+      "path": "CrystalShim_Sensor.pretty/Sensor_R1.kicad_mod",
+      "sha256": "9ec58b5b6634c8a5d07cb3547532f097e65396d866bc244022010817ecd91581",
+      "geometry_sha256": "42f65e71cbb67f6bfdf052ffb20f69fef9a5193cd9f85af8bae7b215dcd3d454",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "R2",
+      "source_model": "tscircuit:CrystalShim:Panasonic_0603",
+      "source_geometry_sha256": "e62d3f7e0ff3b98b5c4b8755934c0441ddeb94656bf1cdcf50b9f6e973c39e55",
+      "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+      "library_id": "CrystalShim_Sensor:Sensor_R2",
+      "path": "CrystalShim_Sensor.pretty/Sensor_R2.kicad_mod",
+      "sha256": "3e54fff0cc4c0de77ef9e6b28564557fbcae7d7688df4fd5ad4b6a9bdf185ac8",
+      "geometry_sha256": "c63f3b24f36d54e5105e2775dbe068d575cd6046c4b539196f3c2e817d50ae8d",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "R3",
+      "source_model": "tscircuit:CrystalShim:Panasonic_0603",
+      "source_geometry_sha256": "a77b4ec781475ec9d34f940d3ffbb870f712af01d51d1321214140c9fbe4f872",
+      "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+      "library_id": "CrystalShim_Sensor:Sensor_R3",
+      "path": "CrystalShim_Sensor.pretty/Sensor_R3.kicad_mod",
+      "sha256": "103e935371e960ce5fbacb8d3c8ceab591a0a42a9ec585b2fe9d12d038aab2f9",
+      "geometry_sha256": "9b648a734264dad07cf5dec6d7548f21de623d58cc88deb97926b669bfa8615f",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "R4",
+      "source_model": "tscircuit:CrystalShim:Panasonic_0603",
+      "source_geometry_sha256": "2ceedfe4714966dfddb6ace97a39c146f0f3cb434297bf66a400444926c17e52",
+      "initial_geometry_sha256": "7d6e72b259afb9ba0644291809be0447cc2e61f0a78709f08d62db8c9be57c13",
+      "library_id": "CrystalShim_Sensor:Sensor_R4",
+      "path": "CrystalShim_Sensor.pretty/Sensor_R4.kicad_mod",
+      "sha256": "9ab6f0c2878367379a5bb1aadbb9d4fad506f1898f58a05b7b230f7523507d81",
+      "geometry_sha256": "d5c1e7a95fc93ecba6a869a2aaba0f301b806e853d95064ab708b64816682bd4",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "R5",
+      "source_model": "tscircuit:CrystalShim:Panasonic_0603",
+      "source_geometry_sha256": "83546464c8c3addeb3a3dc8d2759e0b7abbb578602302fce5c351f78254b25cf",
+      "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+      "library_id": "CrystalShim_Sensor:Sensor_R5",
+      "path": "CrystalShim_Sensor.pretty/Sensor_R5.kicad_mod",
+      "sha256": "b5fa50d10b45fec33f77504f1fa8939cfe6ec6c64acdb9485268103bf73d5b77",
+      "geometry_sha256": "00ae648e8b2be5c70199d3b8808bd5042fd0de346924550b4c0684e23f87336c",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "R6",
+      "source_model": "tscircuit:CrystalShim:Panasonic_0603",
+      "source_geometry_sha256": "f3c258205ba857a6fefd3b60ba378a9dc456c3b2e9245dd281a32c8f85da0325",
+      "initial_geometry_sha256": "05361c78e4aca43bc21fd765233eb4d8b9fa5629d4dd9d4198a48915db81dce7",
+      "library_id": "CrystalShim_Sensor:Sensor_R6",
+      "path": "CrystalShim_Sensor.pretty/Sensor_R6.kicad_mod",
+      "sha256": "7806e4525895007f2510aa4ee3a12c75daf664684805d72aa977ccd8bd0a8eb8",
+      "geometry_sha256": "df6f98dfef254d20a1f1552bfa6cfca23c4a48e0aa1447c472c3208c51b83524",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "U1",
+      "source_model": "tscircuit:CrystalShim_Sensor:FDC1004_DGS10",
+      "source_geometry_sha256": "9bf5c24df7f6a0f96644c66c4fa340df213e7587f5101eed636c076c5427dd1e",
+      "initial_geometry_sha256": "573ed73ebd12d2e4c208176e2997cfbbf62cd4d92ca819964aba5d2d2e7537a5",
+      "library_id": "CrystalShim_Sensor:Sensor_U1",
+      "path": "CrystalShim_Sensor.pretty/Sensor_U1.kicad_mod",
+      "sha256": "c17a11f5cb8045eb774f680a9dbddeab573a975f762ff41d80b987495aca7a5a",
+      "geometry_sha256": "8655c7cb13388df5beff813267d937fed95e5274b76d461afb275b26ade7fe33",
+      "physical_pad_numbers": [
+        "1",
+        "10",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "ref": "U2",
+      "source_model": "tscircuit:CrystalShim_Sensor:TPS7A2433_DBV5",
+      "source_geometry_sha256": "11e348fbbc3fd76ce9dc2bbcef205edb66509d7ddda5970b83412abf09ecfdcf",
+      "initial_geometry_sha256": "d8c463f9ec794741420217e03be66e845c29b1b321ec3e6f51eb0b62a4abac04",
+      "library_id": "CrystalShim_Sensor:Sensor_U2",
+      "path": "CrystalShim_Sensor.pretty/Sensor_U2.kicad_mod",
+      "sha256": "53249c58e984326eb44ec8503401f37a427af562cf96b638020e7288edfd3030",
+      "geometry_sha256": "78e77b98b31072eebb2b10834f7de8b0be2e6fe12a28e9d01b0155299c658bb4",
+      "physical_pad_numbers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "ref": "U3",
+      "source_model": "tscircuit:CrystalShim:ESDS312_DBV5",
+      "source_geometry_sha256": "5efd69df6181e55a400a691bbb0910d4f94f8a2cc777d029bc9868bcc2119994",
+      "initial_geometry_sha256": "dc649a22614521febc3113ddccbe3e637071c57a1177f1947048a119f2afb308",
+      "library_id": "CrystalShim_Sensor:Sensor_U3",
+      "path": "CrystalShim_Sensor.pretty/Sensor_U3.kicad_mod",
+      "sha256": "8c2d6ea9ec038a06014f5aa1ae68b333d8129bae1449c50eb9d314d0c7bc2b71",
+      "geometry_sha256": "2b0858a9163b6bcd42d8f3d90bd9024f5c8a3d874ba4bca218513575078b9782",
+      "physical_pad_numbers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    }
+  ],
+  "board_id": "sensor.board.main",
+  "stage_inputs_sha256": {
+    "tanksensor.kicad_sch": "c2ff5f66a21ef8f4d9ed5e5f88a5368e2fcf351a6c60b89f04a2ee3bb7c24274",
+    "sensor.kicad_sch": "dd3cf1b52bc061deb3b7a013c7f66abf8012958e93c6f1583066be162e9cf1fe",
+    "CrystalShim_Sensor.kicad_sym": "16c9e009380d34a8be5455c8937da2f21aad0a0441855370f7693ae0e3775052",
+    "source-manifest.normalized.json": "0b61db1b14598ad3c4699df3ab6754aca62ad88a63fb7347b88132891ff37871",
+    "sensor.kicad_pcb": "6980c41365ea52b5412c79108d7d7a653575e81bc2bbb89f1f93356812ce8231",
+    "kicad-augmentation.normalized.json": "cabaa10393616c0b204c8a0f448e0439105697ffba5fd8355fd4fce0f6e46bd6"
+  },
+  "existing_files_unchanged": true
+}

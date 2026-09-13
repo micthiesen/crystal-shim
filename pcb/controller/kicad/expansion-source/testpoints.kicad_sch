@@ -1,0 +1,3761 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "b4b62f8d-93bc-4e43-ba76-5c0a567254c6")
+	(paper "A2")
+	(lib_symbols
+		(symbol "CrystalShim_Controller:Controller_TP1"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 2.9001 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP1"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP1"
+				(at -1.7563 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP1_0_1"
+				(polyline
+					(pts
+						(xy -8.89 0) (xy -5.1858 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.9633 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP1"
+					(at 7.5416 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP1_1_1"
+				(pin passive line
+					(at -8.89 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP10"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 1.999 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP10"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP10"
+				(at -2.6559 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP10"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP10_0_1"
+				(polyline
+					(pts
+						(xy -10.16 0) (xy -6.4558 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -4.2333 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP10"
+					(at 6.2716 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP10_1_1"
+				(pin passive line
+					(at -10.16 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP11"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 2.014 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP11"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP11"
+				(at -2.6559 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP11"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP11_0_1"
+				(polyline
+					(pts
+						(xy -10.16 0) (xy -6.4558 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -4.2333 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP11"
+					(at 6.3184 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP11_1_1"
+				(pin passive line
+					(at -10.16 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP12"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 2.032 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP12"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP12"
+				(at -2.6559 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP12"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP12_0_1"
+				(polyline
+					(pts
+						(xy -10.16 0) (xy -6.4558 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -4.2333 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP12"
+					(at 6.375 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP12_1_1"
+				(pin passive line
+					(at -10.16 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP13"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 1.999 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP13"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP13"
+				(at -2.6559 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP13"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP13_0_1"
+				(polyline
+					(pts
+						(xy -10.16 0) (xy -6.4558 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -4.2333 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP13"
+					(at 6.2716 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP13_1_1"
+				(pin passive line
+					(at -10.16 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP14"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 2.014 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP14"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP14"
+				(at -2.6559 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP14"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP14_0_1"
+				(polyline
+					(pts
+						(xy -10.16 0) (xy -6.4558 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -4.2333 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP14"
+					(at 6.3184 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP14_1_1"
+				(pin passive line
+					(at -10.16 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP2"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 2.9123 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP2"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP2"
+				(at -1.7563 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP2"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP2_0_1"
+				(polyline
+					(pts
+						(xy -8.89 0) (xy -5.1858 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.9633 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP2"
+					(at 7.5884 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP2_1_1"
+				(pin passive line
+					(at -8.89 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP3"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 2.927 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP3"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP3"
+				(at -1.7563 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP3"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP3_0_1"
+				(polyline
+					(pts
+						(xy -8.89 0) (xy -5.1858 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.9633 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP3"
+					(at 7.645 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP3_1_1"
+				(pin passive line
+					(at -8.89 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP4"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 2.9001 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP4"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP4"
+				(at -1.7563 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP4"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP4_0_1"
+				(polyline
+					(pts
+						(xy -8.89 0) (xy -5.1858 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.9633 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP4"
+					(at 7.5416 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP4_1_1"
+				(pin passive line
+					(at -8.89 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP5"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 2.9123 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP5"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP5"
+				(at -1.7563 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP5"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP5_0_1"
+				(polyline
+					(pts
+						(xy -8.89 0) (xy -5.1858 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.9633 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP5"
+					(at 7.5884 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP5_1_1"
+				(pin passive line
+					(at -8.89 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP6"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 2.927 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP6"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP6"
+				(at -1.7563 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP6"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP6_0_1"
+				(polyline
+					(pts
+						(xy -8.89 0) (xy -5.1858 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.9633 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP6"
+					(at 7.645 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP6_1_1"
+				(pin passive line
+					(at -8.89 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP7"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 2.9001 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP7"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP7"
+				(at -1.7563 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP7"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP7_0_1"
+				(polyline
+					(pts
+						(xy -8.89 0) (xy -5.1858 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.9633 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP7"
+					(at 7.5416 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP7_1_1"
+				(pin passive line
+					(at -8.89 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP8"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 2.9123 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP8"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP8"
+				(at -1.7563 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP8"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP8_0_1"
+				(polyline
+					(pts
+						(xy -8.89 0) (xy -5.1858 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.9633 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP8"
+					(at 7.5884 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP8_1_1"
+				(pin passive line
+					(at -8.89 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_TP9"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 2.927 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP9"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_TP9"
+				(at -1.7563 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Component"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_TP9"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_TP9_0_1"
+				(polyline
+					(pts
+						(xy -8.89 0) (xy -5.1858 0)
+					)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.9633 0)
+					(radius 2.25)
+					(stroke
+						(width 0.45)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "TP9"
+					(at 7.645 0 0)
+					(effects
+						(font
+							(size 2.7 2.7)
+						)
+					)
+				)
+			)
+			(symbol "Controller_TP9_1_1"
+				(pin passive line
+					(at -8.89 0 0)
+					(length 0.0099)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(junction
+		(at 287.02 330.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "846e9ed8-f458-464a-a04a-9d03fd763055")
+	)
+	(wire
+		(pts
+			(xy 166.37 90.17) (xy 166.37 92.71)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "19842061-b186-4b1e-88f8-29249f5a9bce")
+	)
+	(wire
+		(pts
+			(xy 410.21 90.17) (xy 401.32 90.17)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "4bd11479-3349-430e-829e-a55817441871")
+	)
+	(wire
+		(pts
+			(xy 287.02 330.2) (xy 281.94 330.2)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "5ee1a30a-6cbf-41a4-a37c-2c452b51b3c3")
+	)
+	(wire
+		(pts
+			(xy 401.32 90.17) (xy 401.32 87.63)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "6cf46b8d-fb6c-4941-ba2e-e2af37029f25")
+	)
+	(wire
+		(pts
+			(xy 287.02 330.2) (xy 289.56 330.2)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "7e8f6e5d-012f-4956-aa54-49782fbe1552")
+	)
+	(wire
+		(pts
+			(xy 170.18 149.86) (xy 165.1 149.86)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "9ef144f8-2e3c-4c38-9f78-3757eef504d5")
+	)
+	(wire
+		(pts
+			(xy 287.02 270.51) (xy 287.02 330.2)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "a41b392e-a1f5-4b3f-9663-94b2dfcb100f")
+	)
+	(wire
+		(pts
+			(xy 165.1 149.86) (xy 165.1 147.32)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "ac899af0-3243-44c8-b19b-24198d5147a7")
+	)
+	(wire
+		(pts
+			(xy 170.18 90.17) (xy 166.37 90.17)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "b7593f7b-aa99-49fc-a327-faff5aaeb3b0")
+	)
+	(wire
+		(pts
+			(xy 283.21 90.17) (xy 283.21 87.63)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "bd4fae46-b456-482d-ae91-736bec66cba3")
+	)
+	(wire
+		(pts
+			(xy 289.56 90.17) (xy 283.21 90.17)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "db4975f8-6bdb-48d1-8a95-07a9a60c9e0e")
+	)
+	(wire
+		(pts
+			(xy 289.56 270.51) (xy 287.02 270.51)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "e9517d63-04bb-4dc1-9859-a85e50716cdf")
+	)
+	(global_label "V5_LOGIC"
+		(shape input)
+		(at 401.32 87.63 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "18d4ffdd-8da2-4e00-8e58-e143236c8d9d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 401.32 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "UART0_RX"
+		(shape input)
+		(at 410.21 209.55 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "390b850a-53cb-4e08-b569-0790c99a175e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 410.21 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "UART0_TX"
+		(shape input)
+		(at 170.18 270.51 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3d78a1ad-c610-4b3e-9ca9-b5fc00eae5c7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 170.18 270.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 281.94 330.2 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5abe56fe-43a0-4cef-ae31-3937eec2233e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 281.94 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SENSOR_SDA"
+		(shape input)
+		(at 289.56 149.86 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "68d3b0da-c899-44ed-bf88-dce10b7950e1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 289.56 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 289.56 330.2 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "69f103f4-bfec-4bd3-8597-46a660505d0a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 289.56 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V3V3"
+		(shape input)
+		(at 165.1 147.32 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7a8c6147-2601-4389-b4fc-8edf6d8d6f91")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SENSOR_SCL"
+		(shape input)
+		(at 410.21 149.86 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "84b13596-5529-4c1c-bcf7-50211aa9438d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 410.21 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 166.37 92.71 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a973f18f-3d09-430d-9c8a-ab82abb89bc4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 166.37 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "ACCESSORY_INPUT2"
+		(shape input)
+		(at 170.18 330.2 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c6389b71-b2ed-42b9-b655-e294e546f195")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 170.18 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "ACCESSORY_INPUT1"
+		(shape input)
+		(at 410.21 270.51 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e0a16aa4-98bf-4b62-a6eb-ff67e3ca4df2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 410.21 270.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_PSU"
+		(shape input)
+		(at 283.21 87.63 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f243f264-154b-42dd-83c9-36fcfa40c008")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 283.21 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "RELAY_GATED"
+		(shape input)
+		(at 289.56 209.55 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f7137c11-6610-4d2d-b1e8-68879a2e3c7e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 289.56 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "PSU_GOOD"
+		(shape input)
+		(at 170.18 209.55 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fa09aabf-cb4e-4209-82a4-194d820da7d7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 170.18 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP7")
+		(at 179.07 209.55 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "18f40d38-90f6-4b3d-a572-2596773b960a")
+		(property "Reference" "TP7"
+			(at 179.07 204.3271 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP7"
+			(at 179.07 214.884 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP7"
+			(at 177.3137 209.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 179.07 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 179.07 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ccc2f3dc-b189-4dd6-b900-886145e1f04b")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP7")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP1")
+		(at 179.07 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1b7de6cc-544c-40ea-8a14-9723dc0c47e3")
+		(property "Reference" "TP1"
+			(at 179.07 84.645 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP1"
+			(at 179.07 95.6487 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP1"
+			(at 177.3137 90.17 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 179.07 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 179.07 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a2a407ee-4f7e-4765-850f-d3dde9378727")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP10")
+		(at 180.34 270.51 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1eaee686-f40b-49e5-b792-accefaaeda24")
+		(property "Reference" "TP10"
+			(at 180.34 265.176 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP10"
+			(at 180.34 275.7329 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP10"
+			(at 177.6841 270.51 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 180.34 270.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 180.34 270.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 180.34 270.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8f0591c1-6210-473d-aa91-372a16ed4498")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP10")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP9")
+		(at 419.1 209.55 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7331c085-20c7-4cb3-8410-79d67ba85be7")
+		(property "Reference" "TP9"
+			(at 419.1 204.3271 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP9"
+			(at 419.1 214.884 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP9"
+			(at 417.3437 209.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 419.1 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 419.1 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 419.1 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d21513fe-a5ac-4b02-8273-7afde5566367")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP9")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP2")
+		(at 298.45 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "96951fd8-97ef-4b86-802d-b7c926777606")
+		(property "Reference" "TP2"
+			(at 298.45 84.645 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP2"
+			(at 298.45 95.6487 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP2"
+			(at 296.6937 90.17 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 298.45 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 298.45 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 298.45 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "af435cd6-544d-4e07-9c54-ae32246ee064")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP11")
+		(at 299.72 270.51 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "97fd2cc9-1783-4f79-a682-115f67432f70")
+		(property "Reference" "TP11"
+			(at 299.72 265.176 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP11"
+			(at 299.72 275.7329 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP11"
+			(at 297.0641 270.51 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 270.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 299.72 270.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 299.72 270.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f070351b-3623-49ec-a06d-e3de0b1198df")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP11")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP12")
+		(at 420.37 270.51 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b4ec8c77-47a6-41af-a3e3-e66425608df5")
+		(property "Reference" "TP12"
+			(at 420.37 265.176 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP12"
+			(at 420.37 275.7329 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP12"
+			(at 417.7141 270.51 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 420.37 270.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 420.37 270.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 420.37 270.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b9c29427-e0ae-4049-bff3-1b46247078c4")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP12")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP13")
+		(at 180.34 330.2 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b8c4b8f4-4eef-43b1-95a8-3864a383b3c1")
+		(property "Reference" "TP13"
+			(at 180.34 324.9771 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP13"
+			(at 180.34 335.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP13"
+			(at 177.6841 330.2 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 180.34 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 180.34 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 180.34 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cfaf5b1f-6df0-4252-8c8a-d89f568fa8ae")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP13")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP14")
+		(at 299.72 330.2 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "bd51cb4a-c7b5-44ac-b11c-33e1d80f150c")
+		(property "Reference" "TP14"
+			(at 299.72 324.9771 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP14"
+			(at 299.72 335.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP14"
+			(at 297.0641 330.2 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 299.72 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 299.72 330.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a28be5da-054b-4b67-84e2-7da9029b6fcb")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP14")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP6")
+		(at 419.1 149.86 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "dbe234a4-e0bf-4f38-b8d1-2186d4867a8f")
+		(property "Reference" "TP6"
+			(at 419.1 144.3813 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP6"
+			(at 419.1 155.0829 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP6"
+			(at 417.3437 149.86 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 419.1 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 419.1 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 419.1 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f1c9b8e2-a6fb-4c3c-9806-54ccccf592f9")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP6")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP8")
+		(at 298.45 209.55 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ee89fe3b-1542-4c48-a1b6-312b41f45491")
+		(property "Reference" "TP8"
+			(at 298.45 204.3271 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP8"
+			(at 298.45 214.884 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP8"
+			(at 296.6937 209.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 298.45 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 298.45 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 298.45 209.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ec1c3e27-9091-4b22-b50e-f2a8245dabce")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP8")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP3")
+		(at 419.1 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ef50101a-f367-452c-bbec-6771a559e54c")
+		(property "Reference" "TP3"
+			(at 419.1 84.645 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP3"
+			(at 419.1 95.6487 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP3"
+			(at 417.3437 90.17 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 419.1 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 419.1 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 419.1 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "09840a83-ffd2-4845-a6a0-e3ef7e47652a")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP3")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP5")
+		(at 298.45 149.86 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f06f9ae3-5df9-4b1c-9f67-dc22dc7945e1")
+		(property "Reference" "TP5"
+			(at 298.45 144.3813 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP5"
+			(at 298.45 155.0829 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP5"
+			(at 296.6937 149.86 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 298.45 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 298.45 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 298.45 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7c30452e-6ecc-4c41-84b5-211e172d9e09")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP5")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_TP4")
+		(at 179.07 149.86 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ff8d7ed4-0fb3-44f2-ade4-8412c4460a84")
+		(property "Reference" "TP4"
+			(at 179.07 144.3813 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP4"
+			(at 179.07 155.0829 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_TP4"
+			(at 177.3137 149.86 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpopulated exposed copper test pad; no purchased part"
+			(at 179.07 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" ""
+			(at 179.07 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d063e43d-7e82-44c0-8489-18a7284c2354")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/9bbcaf94-4fed-41e6-ac48-fd91a079746a"
+					(reference "TP4")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/719b66dc-7fb1-4468-9fda-06cb69a7ebd6"
+					(reference "TP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

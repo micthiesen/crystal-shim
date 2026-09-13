@@ -1,0 +1,97 @@
+(footprint "Controller_TP4"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -2.2 0)
+		(layer "F.SilkS")
+		(uuid "47c4134d-29b9-40bb-87cc-38ae88ca56d4")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Controller_TP4"
+		(at 0 3 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a23c2a08-3a64-428b-938b-97861fd66c0b")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f25895f1-ac52-4a84-8d9e-197cb51ced03")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bdd1e54f-2467-49ec-b0e8-cda19bbf7e31")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Supplier Part Number" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7401bea0-5e9a-009f-4932-429e33ca849d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd exclude_from_pos_files exclude_from_bom)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_circle
+		(center 0 0)
+		(end 2 0)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "e48e9f47-296f-4042-a8ef-2062e02159bd")
+	)
+	(fp_text user "3V3"
+		(at 0 2.2 0)
+		(layer "F.SilkS")
+		(uuid "a4a901fb-59ee-483d-a3b9-2e6487644f11")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd circle
+		(at 0 0)
+		(size 2 2)
+		(layers "F.Cu" "F.Mask")
+		(solder_mask_margin 0.05)
+		(uuid "1a738120-3df6-2adf-6178-d49e7b0481a3")
+	)
+	(embedded_fonts no)
+)

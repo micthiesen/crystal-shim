@@ -76,7 +76,7 @@ fn read(register: u8, value: u16) -> Step {
 }
 
 fn configuration() -> Vec<Step> {
-    vec![read(0x08, 0x0c00), read(0x09, 0x2c00), read(0x0a, 0x4c00)]
+    vec![read(0x08, 0x0c00), read(0x09, 0x2c00)]
 }
 
 fn boot() -> Vec<Step> {
@@ -88,7 +88,6 @@ fn boot() -> Vec<Step> {
         read(0x0c, 0),
         Step::Write(0x08, 0x0c00),
         Step::Write(0x09, 0x2c00),
-        Step::Write(0x0a, 0x4c00),
     ];
     steps.extend(configuration());
     steps
@@ -106,10 +105,6 @@ fn frame() -> Vec<Step> {
         read(0x0c, 0x0444),
         read(0x02, 0xff80),
         read(0x03, 0x0000), // -1/16 pF
-        Step::Write(0x0c, 0x0420),
-        read(0x0c, 0x0422),
-        read(0x04, 0x0000),
-        read(0x05, 0x0100), // smallest positive count
     ]);
     steps.extend(configuration());
     steps
@@ -125,7 +120,6 @@ fn reads_ordered_single_shots_and_preserves_signed_counts() {
     let frame = run(driver.acquire(&mut Delay(&clock), || clock.get())).unwrap();
     assert_eq!(frame.level.counts(), 1 << 19);
     assert_eq!(frame.wet_reference.counts(), -(1 << 15));
-    assert_eq!(frame.dry_reference.counts(), 1);
     assert_eq!(frame.started_ms, 101);
     assert_eq!(frame.completed_ms, 102);
     assert!(driver.bus.0.is_empty());
@@ -177,7 +171,7 @@ fn brownout_configuration_is_not_returned_as_zero_water() {
     let clock = Cell::new(0);
     let mut steps = boot();
     let mut readings = frame();
-    readings.truncate(readings.len() - 3);
+    readings.truncate(readings.len() - configuration().len());
     steps.extend(readings);
     steps.push(read(0x08, 0x1c00));
     let mut driver = Fdc1004::new(Bus(steps.into()));

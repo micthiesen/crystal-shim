@@ -121,11 +121,11 @@ function wireUnion(sheet: KicadSch) {
     .sort();
 }
 
-test("20 exact NC markers and two wire repairs preserve all physical anchors, pin types and wire union", () => {
+test("12 exact NC markers and two wire repairs preserve all physical anchors, pin types and wire union", () => {
   const sheets = fresh();
   const previous = fresh();
   expect(applyControllerSchematicCleanupForInitialExport(sheets, manifest)).toEqual({
-    noConnects: 20,
+    noConnects: 12,
     redundantWiresRemoved: 2,
     trunksSplit: 2,
   });
@@ -171,18 +171,10 @@ test("20 exact NC markers and two wire repairs preserve all physical anchors, pi
       "J4.B8",
       "U1.22",
       "U1.23",
-      "U1.26",
-      "U1.27",
-      "U1.4",
-      "U1.5",
-      "U1.6",
-      "U1.7",
-      "U1.9",
-      "U10.10",
-      "U10.3",
-      "U10.4",
       "U11.1",
       "U11.3",
+      "U13.1",
+      "U13.3",
       "U4.4",
       "U7.1",
       "U8.8",
@@ -202,10 +194,10 @@ test("full initial export refreshes every child cache with the cleanup", () => {
   const sheets = createControllerInitialGraphs(source).schematicFiles.map((f) =>
     parseKicadSch(f.content),
   );
-  expect(sheets.flatMap((s) => s.noConnects)).toHaveLength(20);
+  expect(sheets.flatMap((s) => s.noConnects)).toHaveLength(12);
   expect(
     sheets.flatMap((s) => s.symbols).filter((s) => !ref(s)?.startsWith("#")),
-  ).toHaveLength(95);
+  ).toHaveLength(113);
   expect(
     sheets.flatMap((s) => s.symbols).filter((s) => ref(s)?.startsWith("#FLG")),
   ).toHaveLength(4);

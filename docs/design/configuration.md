@@ -55,16 +55,16 @@ characters from `[A-Za-z0-9_-]`, matching the
 [Pushover Message API](https://pushover.net/api). Secret wrappers implement only a
 redacted `Debug`; the complete raw and encoded records have no `Debug` implementation.
 
-## Format version 1
+## Format version 2
 
 `ValidatedDeviceConfig::encode()` returns an `EncodedConfiguration` backed by a
-2,048-byte fixed array and exposing only its used slice. Version 1 currently uses at
-most 541 bytes. Integers are little-endian. The exact byte sequence is:
+2,048-byte fixed array and exposing only its used slice. Version 2 currently uses at
+most 525 bytes. Integers are little-endian. The exact byte sequence is:
 
 | Bytes | Field |
 | --- | --- |
 | 0..4 | Magic `CSCF` |
-| 4 | Format version, currently 1 |
+| 4 | Format version, currently 2 |
 | 5 | Flags: bit 0 calibration, bit 1 Pushover; every other bit is zero |
 | 6..8 | Exact total record length including CRC, `u16` |
 | 8..12 | Nonzero configuration revision, `u32` |
@@ -81,13 +81,15 @@ Each eight-byte entry is stable ID `u16`, weekday mask `u8`, reserved zero `u8`,
 local start second `u32`. Entries appear in strictly increasing ID order. The timezone
 immediately follows the entries and has the length declared in the header.
 
-The 104-byte calibration section, when flagged, contains every `CalibrationData`
-input in this order: empty LEVEL count; low and high LEVEL/RL/RE triples; the three
+The 88-byte calibration section, when flagged, contains every `CalibrationData`
+input in this order: dry LEVEL and dry RL counts; low and high LEVEL/RL pairs; the two
 channel envelope-minimum, envelope-maximum and maximum-slew triples; reference-sign
 tag plus three reserved zero bytes; minimum reference span; minimum endpoint-ratio
 numerator and denominator; supported-level minimum and maximum; maximum frame age;
 maximum frame duration; and maximum level slew. Decode reconstructs this exact record
 and calls `Calibration::new`; it never trusts encoded derived ratios.
+Version 1 records are rejected, not migrated: their three-channel live-RE model
+is incompatible with the two-channel board. No deployed calibration exists.
 
 The 89-byte Pushover section, when flagged, contains the 30-byte application token,
 30-byte user/group key, device length `u8`, three reserved zero bytes, and a fixed

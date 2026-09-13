@@ -3,10 +3,10 @@ import type { CircuitJson } from "circuit-json";
 import { Circuit } from "tscircuit";
 import { CircuitJsonToKicadPcbConverter } from "circuit-json-to-kicad";
 import { At, Layer, PadNet, Property, parseKicadPcb, type KicadPcb } from "kicadts";
-import { PsuHeader } from "../../controller/design/micro-fit-components";
+import { PsuHeader, ServiceHeader } from "../../controller/design/micro-fit-components";
 import MainsCircuit from "./mains.circuit";
 import { MainsHeader } from "./mains-headers";
-import { IsolatedSupply, PumpRelay } from "./power-components";
+import { IsolatedSupply, PumpRelay, BranchFuse } from "./power-components";
 import {
   CoilFlyback,
   SnubberCapacitor,
@@ -16,7 +16,7 @@ import { ThermallyProtectedMov } from "./mov-component";
 import { prepareMainsFootprintOriginsForInitialExport } from "./footprint-origin-initial-export";
 import { applyMainsPhysicalForInitialExport } from "./physical-initial-export";
 
-const refs = ["J1", "J2", "J3", "J4", "U1", "K1", "RV1", "D1", "R1", "C1"];
+const refs = ["J1", "J2", "J3", "J4", "U1", "K1", "RV1", "D1", "R1", "C1", "F3"];
 function footprint(board: KicadPcb, ref: string) {
   const fp = board.footprints.find((f) =>
     f.properties.some((p) => p.key === "Reference" && p.value === ref),
@@ -61,23 +61,23 @@ function verifyMaskOnly(board: KicadPcb) {
       changed++;
     }
   }
-  expect(changed).toBe(46);
+  expect(changed).toBe(48);
   applyMainsPhysicalForInitialExport(board);
-  // Whitelist only the 46 margins. This checks all UUIDs, nets, pad centres,
+  // Whitelist only the 48 margins. This checks all UUIDs, nets, pad centres,
   // angles, sizes, drills, layers, shapes, outlines and unrelated graph state.
   expect(board.getString()).toBe(expected.getString());
   applyMainsPhysicalForInitialExport(board);
   expect(board.getString()).toBe(expected.getString());
 }
 
-test("complete mains conversion restores exactly 46 PTH masks and preserves every other native field", () => {
+test("complete mains conversion restores exactly 48 PTH masks and preserves every other native field", () => {
   const sourceSnapshot = JSON.stringify(completeSource);
   const board = convert(completeSource);
-  expect(board.footprints).toHaveLength(27);
+  expect(board.footprints).toHaveLength(26);
   const pads = board.footprints.flatMap((fp) => fp.fpPads);
-  expect(pads.filter((pad) => pad.number)).toHaveLength(81);
-  expect(pads.filter((pad) => pad.padType === "thru_hole")).toHaveLength(49);
-  expect(pads.filter((pad) => pad.padType === "np_thru_hole")).toHaveLength(5);
+  expect(pads.filter((pad) => pad.number)).toHaveLength(75);
+  expect(pads.filter((pad) => pad.padType === "thru_hole")).toHaveLength(53);
+  expect(pads.filter((pad) => pad.padType === "np_thru_hole")).toHaveLength(6);
   verifyMaskOnly(board);
   expect(JSON.stringify(completeSource)).toBe(sourceSnapshot);
   expect(completeSource.filter((e) => e.type === "pcb_solder_paste")).toHaveLength(118);
@@ -122,7 +122,7 @@ async function gallery(rotation: number) {
   });
   const circuit = new Circuit();
   circuit.add(
-    <board width={500} height={250} routingDisabled pcbRelative>
+    <board width={750} height={500} routingDisabled pcbRelative>
       <MainsHeader name="J1" {...place(0)} />
       <MainsHeader name="J2" {...place(1)} />
       <MainsHeader name="J3" {...place(2)} />
@@ -134,6 +134,8 @@ async function gallery(rotation: number) {
       <SnubberResistor name="R1" {...place(8)} />
       <SnubberCapacitor name="C1" {...place(9)} />
       <PsuHeader name="J5" {...place(10)} />
+      <BranchFuse name="F3" {...place(11)} />
+      <ServiceHeader name="J6" {...place(12)} />
     </board>,
   );
   await circuit.renderUntilSettled();
@@ -152,6 +154,10 @@ type Land = [
   drillWidth?: number,
 ];
 const lands: Record<string, Land[]> = {
+  F3: [
+    ["1", 0, 0, 1.1, 2.5, 2.5, "circle"],
+    ["2", 30.48, 0, 1.1, 2.5, 2.5, "circle"],
+  ],
   ...Object.fromEntries(
     ([2, 3, 4, 6] as const).map((count, i) => [
       `J${i + 1}`,
@@ -169,10 +175,10 @@ const lands: Record<string, Land[]> = {
     ]),
   ),
   U1: [
-    ["1", 42.1, 14.2, 1.5, 3, 3, "rect"],
-    ["2", 42.1, 3.45, 1.5, 3, 3, "circle"],
-    ["3", 3.6, 3.45, 1.5, 3, 3, "circle"],
-    ["4", 3.6, 11.45, 1.5, 3, 3, "circle"],
+    ["1", 5.3, 11.75, 1.5, 3, 3, "rect"],
+    ["2", 5.3, 5, 1.5, 3, 3, "circle"],
+    ["3", 81.3, 40.75, 2.5, 4.5, 4.5, "circle"],
+    ["4", 81.3, 46.25, 2.5, 4.5, 4.5, "circle"],
   ],
   K1: [
     ["1", 23.5, 0, 1.3, 2.8, 2.8, "rect"],
@@ -204,7 +210,8 @@ for (const rotation of [0, 90, 180, 270]) {
     const board = convert(source);
     verifyMaskOnly(board);
     const native = parseKicadPcb(board.getString());
-    for (const [index, ref] of refs.entries()) {
+    for (const [refIndex, ref] of refs.entries()) {
+      const index = ref === "F3" ? 11 : refIndex;
       const fp = footprint(native, ref);
       const at = fp.position;
       if (!(at instanceof At)) throw new Error("Missing native placement");

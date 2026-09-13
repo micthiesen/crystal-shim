@@ -20,18 +20,10 @@ const unusedPins = [
   "J4.B8",
   "U1.22",
   "U1.23",
-  "U1.26",
-  "U1.27",
-  "U1.4",
-  "U1.5",
-  "U1.6",
-  "U1.7",
-  "U1.9",
-  "U10.10",
-  "U10.3",
-  "U10.4",
   "U11.1",
   "U11.3",
+  "U13.1",
+  "U13.3",
   "U4.4",
   "U7.1",
   "U8.8",
@@ -191,8 +183,8 @@ export function applyControllerSchematicCleanupForInitialExport(
     )
     .sort();
   if (
-    sheets.length !== 8 ||
-    components.length !== 95 ||
+    sheets.length !== 10 ||
+    components.length !== 113 ||
     JSON.stringify(unused) !== JSON.stringify(unusedPins)
   )
     throw new Error("Controller cleanup NC/source contract changed");
@@ -247,8 +239,8 @@ export function applyControllerSchematicCleanupForInitialExport(
       }
     }
   }
-  if (seen.size !== 95 || allPins.length !== 274)
-    throw new Error("Controller cleanup requires all 274 physical symbol pins");
+  if (seen.size !== 113 || allPins.length !== 315)
+    throw new Error("Controller cleanup requires all 312 physical symbol pins");
   const pin = (ref: string, number: string) =>
     allPins.find((p) => p.ref === ref && p.number === number)!;
   const markers = unusedPins.map((id) => {

@@ -9,8 +9,8 @@ export function applyControllerFieldsForInitialExport(
 ) {
   const expected = manifest.components.filter((c) => c.footprint.pad_numbers.length);
   const instances = schematics.flatMap((s) => s.symbols);
-  if (expected.length !== 95 || instances.length !== expected.length)
-    throw new Error("Controller field metadata requires all 95 schematic instances");
+  if (expected.length !== 113 || instances.length !== expected.length)
+    throw new Error("Controller field metadata requires all 113 schematic instances");
   const plans = expected.map((component) => {
     const matches = instances.filter((s) =>
       s.properties.some((p) => p.key === "Reference" && p.value === component.ref),

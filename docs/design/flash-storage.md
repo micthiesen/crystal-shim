@@ -70,7 +70,7 @@ the output off, with a credential-free USB error classification.
 
 | Key | Content |
 | --- | --- |
-| `0x4346` | Canonical `CSCF` device configuration, format 1, at most 2,048 bytes |
+| `0x4346` | Canonical `CSCF` device configuration, format 2, at most 2,048 bytes |
 | `0x4353` | Canonical `CSRT` retained safety state, format 1, 32 bytes |
 
 Both keys are in rs-matter's vendor range, above `0x1000`. Configuration decoding

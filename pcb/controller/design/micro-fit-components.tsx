@@ -77,7 +77,7 @@ export const sensorHeaderPins = {
   pin5: "GND_5",
   pin6: "GND_6",
 } as const;
-export const serviceHeaderPins = { pin1: "V5_SERVICE_RAW", pin2: "GND" } as const;
+export const serviceHeaderPins = { pin1: "POSITIVE", pin2: "RETURN" } as const;
 export const psuHeaderPins = {
   pin1: "V5_PSU",
   pin2: "GND",

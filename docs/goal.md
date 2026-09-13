@@ -1,10 +1,13 @@
-# Active project goal
+# Project delivery and current milestone
 
 Complete Crystal Shim as a one-shot final-use three-board controller, carrying the
 owner's requirements through implementation, independent adversarial review,
 verification, manufacturing delivery and final-unit commissioning support.
-The goal is active. A research dossier, scaffold or passing host tests alone do
-not complete it.
+The long-term delivery continues through routing, manufacture and commissioning.
+The current milestone is the simplified specification, complete schematics and
+placement, and verified native projects ready for the owner to route. It does not
+include routing, ordering or implementing the future refill feature. See [STATE](STATE.md)
+for the completed milestone and its evidence.
 
 1. Resolve parts, footprints, sensor geometry, all board/harness interfaces,
    power/protection calculations, isolation and mechanical fit from primary
@@ -19,12 +22,12 @@ not complete it.
    adjustable scheduling, bounded HomeKit overrides, the local settings webpage
    and verified-HTTPS Pushover transition delivery. Network/storage cannot delay
    protection or renew a run indefinitely.
-4. Review in bounded independent adversarial batches covering sensing, electrical
-   and mains design, timing and failure behavior, security/network integration,
-   mechanics and manufacture. Reproduce and triage findings, fix actionable
-   defects and repeat fresh review until no actionable findings remain and another
-   pass yields no useful new feedback. Record scope and evidence rather than
-   claiming the whole project reviewed after one clean component review.
+4. Use a few focused reviewers at meaningful stages, with adversarial root triage.
+   Fix demonstrated correctness defects and verify their consequences. Preserve
+   the agreed simple hardware and firmware contract; do not add redundant fault
+   protection or extraordinary qualification without a concrete requirement.
+   Record each review scope and evidence, and stop when its actionable findings
+   are resolved.
 5. Run the project checks and applicable release gates, inspect actual outputs,
    update the decision register/BOM/commissioning matrix/state, and commit and
    push completed work directly to main.

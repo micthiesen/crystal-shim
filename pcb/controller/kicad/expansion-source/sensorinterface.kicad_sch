@@ -1,0 +1,7115 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "72c75950-367c-4a44-97b4-259ab4ca0b5a")
+	(paper "A2")
+	(lib_symbols
+		(symbol "CrystalShim_Controller:Controller_C40"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 2.1641 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "100nF"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_C40"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "C1608X7R1H104K080AA"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "C cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_C40"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_C40_0_1"
+				(polyline
+					(pts
+						(xy -1.016 2.4167) (xy -1.016 0) (xy -1.016 -1.27) (xy -1.016 -2.73)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.9585 2.4167) (xy 0.9585 0) (xy 0.9585 -1.27) (xy 0.9585 -2.73)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 2.54 0) (xy 0.9585 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_C40_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 0.006)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_C41"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 2.2939 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "100nF"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_C41"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "C1608X7R1H104K080AA"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "C cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_C41"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_C41_0_1"
+				(polyline
+					(pts
+						(xy -1.016 2.4167) (xy -1.016 0) (xy -1.016 -1.27) (xy -1.016 -2.73)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 2.4167) (xy 1.016 0) (xy 1.016 -1.27) (xy 1.016 -2.73)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 0) (xy 1.016 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_C41_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 0.0113)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_C42"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 1.7204 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "100nF"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_C42"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "C1608X7R1H104K080AA"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "C cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_C42"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_C42_0_1"
+				(polyline
+					(pts
+						(xy -1.016 2.2531) (xy -1.016 0) (xy -1.016 -2.4148)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.2531) (xy 0.762 0) (xy 0.762 -2.4148)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_C42_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_C43"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 1.7204 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1uF"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_C43"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "C2012X7R1E105K125AB"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "C cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_C43"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_C43_0_1"
+				(polyline
+					(pts
+						(xy -1.016 3.9717) (xy -1.016 1.27) (xy -1.016 0) (xy -1.016 -1.3548)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 3.9717) (xy 0.762 1.27) (xy 0.762 0) (xy 0.762 -1.3548)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_C43_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_C44"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 1.7204 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "10uF"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_C44"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "C3216X7R1E106K160AB"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "C cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_C44"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_C44_0_1"
+				(polyline
+					(pts
+						(xy -1.016 2.7508) (xy -1.016 1.27) (xy -1.016 0) (xy -1.016 -2.3574)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.7508) (xy 0.762 1.27) (xy 0.762 0) (xy 0.762 -2.3574)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_C44_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_D7"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 1.7204 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SMBJ7.0A"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_D7"
+				(at -3.1837 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.littelfuse.com/assetdocs/tvs-diodes-smbj-series-datasheet?assetguid=ba555e99-a12d-4f72-a0b6-86b06c67171e"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "SMBJ7.0A"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_D7"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_D7_0_1"
+				(polyline
+					(pts
+						(xy -11.0229 -3.81) (xy -1.27 -3.81) (xy 0 -3.81) (xy 7.62 -3.81) (xy 7.62 0) (xy 7.62 2.54) (xy 0 2.54)
+						(xy -1.27 2.54) (xy -11.0229 2.54) (xy -11.0229 0) (xy -11.0229 -3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Controller_D7_1_1"
+				(pin passive line
+					(at -16.51 0 0)
+					(length 5.4871)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 13.97 0 180)
+					(length 6.35)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_J3"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 2.0891 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "43045-0600"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_J3"
+				(at -1.785 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "43045-0600"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_J3"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_J3_0_1"
+				(polyline
+					(pts
+						(xy -13.97 -6.7711) (xy -11.43 -6.7711) (xy 0 -6.7711) (xy 15.4214 -6.7711) (xy 15.4214 -3.81)
+						(xy 15.4214 0) (xy 15.4214 2.54) (xy 15.4214 5.0674) (xy 0 5.0674) (xy -11.43 5.0674) (xy -13.97 5.0674)
+						(xy -13.97 2.54) (xy -13.97 0) (xy -13.97 -3.81) (xy -13.97 -6.7711)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Controller_J3_1_1"
+				(pin passive line
+					(at -20.32 2.54 0)
+					(length 6.35)
+					(name "V5_SENSOR"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 0 0)
+					(length 6.35)
+					(name "SDA_CABLE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 -3.81 0)
+					(length 6.35)
+					(name "SCL_CABLE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 21.59 -3.81 180)
+					(length 6.1686)
+					(name "GND_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 21.59 0 180)
+					(length 6.1686)
+					(name "GND_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 21.59 2.54 180)
+					(length 6.1686)
+					(name "GND_6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_R60"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.2939 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "2.7kΩ"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_R60"
+				(at -1.5054 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "ERJ3EKF2701V"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_R60"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_R60_0_1"
+				(polyline
+					(pts
+						(xy 0 5.08) (xy 0 3.3863)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.5397) (xy 0 -3.81)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.3543 3.3863) (xy 1.3543 0) (xy 1.3543 -2.5397) (xy 0 -2.5397) (xy -1.0157 -2.5397) (xy -1.0157 0)
+						(xy -1.0157 3.3863) (xy 0 3.3863) (xy 1.3543 3.3863)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_R60_1_1"
+				(pin passive line
+					(at 0 5.08 270)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_R61"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.1505 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "2.7kΩ"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_R61"
+				(at -1.5054 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "ERJ3EKF2701V"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_R61"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_R61_0_1"
+				(polyline
+					(pts
+						(xy 0 5.08) (xy 0 3.3863)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.5397) (xy 0 -3.81)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.2697 3.3863) (xy 1.2697 0) (xy 1.2697 -2.5397) (xy 0 -2.5397) (xy -1.0157 -2.5397) (xy -1.0157 0)
+						(xy -1.0157 3.3863) (xy 0 3.3863) (xy 1.2697 3.3863)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_R61_1_1"
+				(pin passive line
+					(at 0 5.08 270)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_R62"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 1.7204 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "22Ω"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_R62"
+				(at -2.1505 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "ERJ3EKF22R0V"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_R62"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_R62_0_1"
+				(polyline
+					(pts
+						(xy -5.08 0) (xy -3.81 0) (xy -3.6282 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.6282 1.0157) (xy 0 1.0157) (xy 2.5397 1.0157) (xy 2.5397 0) (xy 2.5397 -2.0315) (xy 0 -2.0315)
+						(xy -3.6282 -2.0315) (xy -3.6282 0) (xy -3.6282 1.0157)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.5397 0) (xy 3.81 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_R62_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0094)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_R63"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 1.7204 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "22Ω"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_R63"
+				(at -2.1505 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "ERJ3EKF22R0V"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_R63"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_R63_0_1"
+				(polyline
+					(pts
+						(xy -5.08 0) (xy -3.81 0) (xy -3.6282 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.6282 1.2079) (xy 0 1.2079) (xy 2.5397 1.2079) (xy 2.5397 0) (xy 2.5397 -1.27) (xy 2.5397 -1.6581)
+						(xy 0 -1.6581) (xy -3.6282 -1.6581) (xy -3.6282 -1.27) (xy -3.6282 0) (xy -3.6282 1.2079)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.5397 0) (xy 3.81 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_R63_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0094)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_R64"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.2939 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "10kΩ"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_R64"
+				(at -1.5054 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "ERJ3EKF1002V"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_R64"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_R64_0_1"
+				(polyline
+					(pts
+						(xy 0 3.81) (xy 0 2.54) (xy 0 2.5397)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -3.8097) (xy 0 -5.08)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.3543 2.5397) (xy 1.3543 1.27) (xy 1.3543 0) (xy 1.3543 -2.54) (xy 1.3543 -3.8097) (xy 0 -3.8097)
+						(xy -1.0157 -3.8097) (xy -1.0157 -2.54) (xy -1.0157 0) (xy -1.0157 1.27) (xy -1.0157 2.5397) (xy 0 2.5397)
+						(xy 1.3543 2.5397)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_R64_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 0.0085)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_R65"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.2939 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "10kΩ"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_R65"
+				(at -1.5054 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "ERJ3EKF1002V"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_R65"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_R65_0_1"
+				(polyline
+					(pts
+						(xy 0 6.35) (xy 0 4.6507)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.6932) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.3543 4.6507) (xy 1.3543 1.27) (xy 1.3543 0) (xy 1.3543 -1.6932) (xy 0 -1.6932) (xy -1.0157 -1.6932)
+						(xy -1.0157 0) (xy -1.0157 1.27) (xy -1.0157 4.6507) (xy 0 4.6507) (xy 1.3543 4.6507)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_R65_1_1"
+				(pin passive line
+					(at 0 6.35 270)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 90)
+					(length 0.0056)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_R66"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.2939 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "10kΩ"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_R66"
+				(at -1.5054 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "ERJ3EKF1002V"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_R66"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_R66_0_1"
+				(polyline
+					(pts
+						(xy -3.81 0) (xy -2.5397 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.5397 1.6636) (xy 0 1.6636) (xy 3.3863 1.6636) (xy 3.3863 1.27) (xy 3.3863 0) (xy 3.3863 -1.1783)
+						(xy 0 -1.1783) (xy -2.5397 -1.1783) (xy -2.5397 0) (xy -2.5397 1.27) (xy -2.5397 1.6636)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.3863 0) (xy 5.08 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_R66_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 0.0085)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 0.0113)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_R67"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 1.7204 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "10kΩ"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_R67"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "ERJ3EKF1002V"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_R67"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_R67_0_1"
+				(polyline
+					(pts
+						(xy 0 5.08) (xy 0 3.3863)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.5397) (xy 0 -3.81)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.0157 3.3863) (xy 1.0157 0) (xy 1.0157 -2.5397) (xy 0 -2.5397) (xy -1.3543 -2.5397) (xy -1.3543 0)
+						(xy -1.3543 3.3863) (xy 0 3.3863) (xy 1.0157 3.3863)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_R67_1_1"
+				(pin passive line
+					(at 0 5.08 270)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_R68"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 1.7204 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "6.8Ω"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_R68"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.vishay.com/docs/20043/crcwhpe3.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "CRCW25126R80FKEGHP"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_R68"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_R68_0_1"
+				(polyline
+					(pts
+						(xy -5.08 0) (xy -3.3863 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.3863 1.0157) (xy 0 1.0157) (xy 2.5397 1.0157) (xy 2.5397 0) (xy 2.5397 -1.5236) (xy 0 -1.5236)
+						(xy -3.3863 -1.5236) (xy -3.3863 0) (xy -3.3863 1.0157)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.5397 0) (xy 3.81 0)
+					)
+					(stroke
+						(width 0.18)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Controller_R68_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 0.0113)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 0.0085)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_U11"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 2.2939 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "ESDS312DBVR"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_U11"
+				(at -1.7017 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/esds312.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "ESDS312DBVR"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_U11"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_U11_0_1"
+				(polyline
+					(pts
+						(xy -10.7674 -6.7511) (xy 0 -6.7511) (xy 2.54 -6.7511) (xy 11.684 -6.7511) (xy 11.684 -3.81) (xy 11.684 -1.27)
+						(xy 11.684 0) (xy 11.684 1.27) (xy 11.684 2.54) (xy 11.684 5.9267) (xy 2.54 5.9267) (xy 0 5.9267)
+						(xy -10.7674 5.9267) (xy -10.7674 2.54) (xy -10.7674 1.27) (xy -10.7674 0) (xy -10.7674 -1.27)
+						(xy -10.7674 -3.81) (xy -10.7674 -6.7511)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Controller_U11_1_1"
+				(pin no_connect line
+					(at -16.51 2.54 0)
+					(length 5.7426)
+					(name "NC_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -16.51 0 0)
+					(length 5.7426)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -16.51 -3.81 0)
+					(length 5.7426)
+					(name "NC_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 -1.27 180)
+					(length 6.096)
+					(name "IO1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 1.27 180)
+					(length 6.096)
+					(name "IO2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_U3"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 2.2939 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TCA9517ADGKR"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_U3"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tca9517a.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "TCA9517ADGKR"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_U3"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_U3_0_1"
+				(polyline
+					(pts
+						(xy -10.9682 -7.62) (xy -8.89 -7.62) (xy -5.08 -7.62) (xy 0 -7.62) (xy 5.08 -7.62) (xy 7.62 -7.62)
+						(xy 11.5277 -7.62) (xy 11.5277 -5.08) (xy 11.5277 -2.54) (xy 11.5277 0) (xy 11.5277 1.27) (xy 11.5277 2.54)
+						(xy 11.5277 3.81) (xy 11.5277 6.985) (xy 7.62 6.985) (xy 5.08 6.985) (xy 0 6.985) (xy -5.08 6.985)
+						(xy -8.89 6.985) (xy -10.9682 6.985) (xy -10.9682 3.81) (xy -10.9682 2.54) (xy -10.9682 1.27)
+						(xy -10.9682 0) (xy -10.9682 -2.54) (xy -10.9682 -5.08) (xy -10.9682 -7.62)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Controller_U3_1_1"
+				(pin power_in line
+					(at -16.51 3.81 0)
+					(length 5.5418)
+					(name "VCCA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -16.51 1.27 0)
+					(length 5.5418)
+					(name "SCLA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -16.51 -2.54 0)
+					(length 5.5418)
+					(name "SDAA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -16.51 -5.08 0)
+					(length 5.5418)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 17.78 -5.08 180)
+					(length 6.2523)
+					(name "EN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 -2.54 180)
+					(length 6.2523)
+					(name "SDAB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 1.27 180)
+					(length 6.2523)
+					(name "SCLB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 17.78 3.81 180)
+					(length 6.2523)
+					(name "VCCB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Controller:Controller_U5"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 2.2939 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TPS2553DBVR"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Controller:Controller_U5"
+				(at -2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps2553.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "TPS2553DBVR"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Controller:Controller_U5"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Controller_U5_0_1"
+				(polyline
+					(pts
+						(xy -13.0464 -7.783) (xy -8.89 -7.783) (xy -5.08 -7.783) (xy 0 -7.783) (xy 5.08 -7.783) (xy 7.62 -7.783)
+						(xy 13.8723 -7.783) (xy 13.8723 -5.08) (xy 13.8723 -3.81) (xy 13.8723 0) (xy 13.8723 2.54) (xy 13.8723 5.08)
+						(xy 13.8723 5.8436) (xy 7.62 5.8436) (xy 5.08 5.8436) (xy 0 5.8436) (xy -5.08 5.8436) (xy -8.89 5.8436)
+						(xy -13.0464 5.8436) (xy -13.0464 5.08) (xy -13.0464 2.54) (xy -13.0464 0) (xy -13.0464 -3.81)
+						(xy -13.0464 -5.08) (xy -13.0464 -7.783)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Controller_U5_1_1"
+				(pin power_in line
+					(at -17.78 2.54 0)
+					(length 4.7336)
+					(name "IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -17.78 0 0)
+					(length 4.7336)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -17.78 -3.81 0)
+					(length 4.7336)
+					(name "EN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin open_collector line
+					(at 19.05 -3.81 180)
+					(length 5.1777)
+					(name "FAULT_N"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 19.05 0 180)
+					(length 5.1777)
+					(name "ILIM"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 19.05 2.54 180)
+					(length 5.1777)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(junction
+		(at 279.4 105.41)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "08bad26b-42d8-4c5b-9432-f7e2d56f4779")
+	)
+	(junction
+		(at 294.64 149.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6e8a108d-c808-462a-a332-c75149c4ce68")
+	)
+	(junction
+		(at 505.46 208.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c4083b19-00e4-437f-8382-86418c2c1e75")
+	)
+	(no_connect
+		(at 389.89 295.91)
+		(uuid "ac1ba47e-51c1-43f2-8ab1-815a18c71f04")
+	)
+	(no_connect
+		(at 389.89 302.26)
+		(uuid "d9c1806f-76f8-4803-a725-2f05b9e7998f")
+	)
+	(wire
+		(pts
+			(xy 129.54 353.06) (xy 187.96 353.06)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "0138596c-a144-4c7b-982b-eabcdfecb3f0")
+	)
+	(wire
+		(pts
+			(xy 469.9 133.35) (xy 469.9 138.43)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "03abb4d8-785b-4d13-a3a4-fb030c94da9d")
+	)
+	(wire
+		(pts
+			(xy 441.96 208.28) (xy 441.96 299.72)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "0c99c92c-89db-4df6-89ba-e7a26f5690c0")
+	)
+	(wire
+		(pts
+			(xy 224.79 120.65) (xy 224.79 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "0cafd2c6-c76d-43cf-983a-c578390730cd")
+	)
+	(wire
+		(pts
+			(xy 204.47 344.17) (xy 201.93 344.17)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "0d09e895-2cf4-4cb2-9447-4c709f2f70d1")
+	)
+	(wire
+		(pts
+			(xy 106.68 97.79) (xy 100.33 97.79)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "10931e61-7840-4dd0-badf-d1b9922a20ae")
+	)
+	(wire
+		(pts
+			(xy 106.68 99.06) (xy 106.68 97.79)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "14f3a969-e57a-4a12-bb0a-3f3fb4e9cecb")
+	)
+	(wire
+		(pts
+			(xy 140.97 344.17) (xy 146.05 344.17)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "174eb207-fb80-44f6-abb9-064173811803")
+	)
+	(wire
+		(pts
+			(xy 273.05 280.67) (xy 287.02 280.67)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "187bf8c4-f532-4cfe-9058-58954b536562")
+	)
+	(wire
+		(pts
+			(xy 87.63 149.86) (xy 87.63 148.59)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "18865011-2aac-4b82-8b1b-4a7642b5c9a0")
+	)
+	(wire
+		(pts
+			(xy 279.4 105.41) (xy 266.7 105.41)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "207c2d20-1d38-4093-b05c-6a1fdb1ee708")
+	)
+	(wire
+		(pts
+			(xy 217.17 269.24) (xy 217.17 279.4)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "21cfda77-2663-47c9-8d98-d1ec05fcaf73")
+	)
+	(wire
+		(pts
+			(xy 176.53 130.81) (xy 176.53 120.65)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "23bb6649-e78c-4a92-b5a2-4562b014deac")
+	)
+	(wire
+		(pts
+			(xy 147.32 73.66) (xy 139.7 73.66)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "2473459a-42b9-44af-acf8-caadc251edeb")
+	)
+	(wire
+		(pts
+			(xy 106.68 189.23) (xy 106.68 186.69)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "257b45fa-4422-486c-99a2-91e676090734")
+	)
+	(wire
+		(pts
+			(xy 179.07 130.81) (xy 176.53 130.81)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "25d3258c-32c1-4e0f-8b4f-ac76aeb1f69e")
+	)
+	(wire
+		(pts
+			(xy 177.8 316.23) (xy 204.47 316.23)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "2754cd39-6684-4d2b-ac95-18f135ff0b87")
+	)
+	(wire
+		(pts
+			(xy 461.01 208.28) (xy 441.96 208.28)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "2b16590b-03cb-4b59-9c0a-7f816617fd5b")
+	)
+	(wire
+		(pts
+			(xy 180.34 288.29) (xy 177.8 288.29)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "2bc2ffdf-ef97-42c4-a709-0462ec9dcdfa")
+	)
+	(wire
+		(pts
+			(xy 87.63 149.86) (xy 102.87 149.86)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "3163dacc-b2ff-4ade-a748-6c83f28deca6")
+	)
+	(wire
+		(pts
+			(xy 204.47 316.23) (xy 204.47 344.17)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "396ba5d4-bd82-4311-b9aa-cba851018768")
+	)
+	(wire
+		(pts
+			(xy 502.92 205.74) (xy 505.46 205.74)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "399bf473-9b03-4dbe-87ec-60030c3f2968")
+	)
+	(wire
+		(pts
+			(xy 215.9 130.81) (xy 236.22 130.81)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "42d001f5-b5c6-4f84-a689-1bdf87d1bdf1")
+	)
+	(wire
+		(pts
+			(xy 129.54 344.17) (xy 129.54 353.06)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "44b1964c-4201-4b8e-9020-a68f57f6c523")
+	)
+	(wire
+		(pts
+			(xy 224.79 133.35) (xy 215.9 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "4fa1161c-92ac-498e-915f-f666acea45b1")
+	)
+	(wire
+		(pts
+			(xy 166.37 186.69) (xy 166.37 189.23)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "51a1a453-8e55-47b4-b8a4-1b5289653087")
+	)
+	(wire
+		(pts
+			(xy 294.64 149.86) (xy 290.83 149.86)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "57ac7028-99a9-4dcb-891e-143a2999e8ab")
+	)
+	(wire
+		(pts
+			(xy 389.89 298.45) (xy 273.05 298.45)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "5ada7e32-aede-449a-b3b5-5eb8e40726d5")
+	)
+	(wire
+		(pts
+			(xy 372.11 133.35) (xy 360.68 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "5c2583ea-16d6-47c2-b8ee-7290089b844d")
+	)
+	(wire
+		(pts
+			(xy 502.92 208.28) (xy 505.46 208.28)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "5c750c12-fb26-4cd6-b63f-93831ab45ec2")
+	)
+	(wire
+		(pts
+			(xy 166.37 198.12) (xy 166.37 199.39)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "651dabf5-0b7f-489f-93f3-e7c7ed3b1c73")
+	)
+	(wire
+		(pts
+			(xy 106.68 107.95) (xy 106.68 111.76)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "65bd93cc-06b7-462a-ac26-89f14f83fb01")
+	)
+	(wire
+		(pts
+			(xy 236.22 130.81) (xy 236.22 119.38)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "74e5efe6-d618-4b3b-99b7-9bd378db7d64")
+	)
+	(wire
+		(pts
+			(xy 187.96 344.17) (xy 191.77 344.17)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "7548c5a9-d502-47ab-8393-11f19c3f31ba")
+	)
+	(wire
+		(pts
+			(xy 273.05 298.45) (xy 273.05 280.67)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "7c446adb-4ebc-458a-ab95-3f8111982019")
+	)
+	(wire
+		(pts
+			(xy 177.8 279.4) (xy 177.8 269.24)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "84123229-9be5-46d0-b09c-059d49f167ef")
+	)
+	(wire
+		(pts
+			(xy 166.37 199.39) (xy 160.02 199.39)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "851aa1ae-78ba-4f83-991e-f70dabd9b058")
+	)
+	(wire
+		(pts
+			(xy 452.12 205.74) (xy 452.12 203.2)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "8b1ae70c-6f67-4349-93fe-812e9bd4c1bb")
+	)
+	(wire
+		(pts
+			(xy 287.02 280.67) (xy 287.02 198.12)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "8e9a482f-3cfe-4e73-b77f-c139c1e7f96e")
+	)
+	(wire
+		(pts
+			(xy 294.64 149.86) (xy 298.45 149.86)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "8ec68ccd-d4e1-4aac-aee0-a9c1e6c37d18")
+	)
+	(wire
+		(pts
+			(xy 166.37 133.35) (xy 166.37 73.66)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "9522d20a-ef30-4340-a34b-8c50b3051d1e")
+	)
+	(wire
+		(pts
+			(xy 106.68 186.69) (xy 166.37 186.69)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "9f2968a8-5c77-41b0-b578-10773a04d42a")
+	)
+	(wire
+		(pts
+			(xy 467.36 133.35) (xy 469.9 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "a124231f-c156-4920-b788-9360063fbe26")
+	)
+	(wire
+		(pts
+			(xy 139.7 73.66) (xy 139.7 67.31)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "a37a2145-efa3-4803-a611-749eae23a8ba")
+	)
+	(wire
+		(pts
+			(xy 441.96 299.72) (xy 424.18 299.72)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "a6c3e557-59fe-4666-ae28-98dcf4142c30")
+	)
+	(wire
+		(pts
+			(xy 95.25 111.76) (xy 95.25 290.83)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "aba4788c-d618-4b52-b5ac-c8e7bf40e92d")
+	)
+	(wire
+		(pts
+			(xy 360.68 133.35) (xy 360.68 128.27)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "af59ded5-5641-466c-b194-6c9a82d31524")
+	)
+	(wire
+		(pts
+			(xy 106.68 290.83) (xy 106.68 288.29)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "b133c988-e52a-4593-b0b2-4a6cb42fc686")
+	)
+	(wire
+		(pts
+			(xy 132.08 344.17) (xy 129.54 344.17)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "b264fc74-f2d7-4b3b-93f6-f1e29bd34636")
+	)
+	(wire
+		(pts
+			(xy 461.01 205.74) (xy 452.12 205.74)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "b7af8927-6638-435f-9e35-b2df91896950")
+	)
+	(wire
+		(pts
+			(xy 146.05 344.17) (xy 146.05 345.44)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "b9d104e5-6bd9-41d2-984d-08f469cda684")
+	)
+	(wire
+		(pts
+			(xy 505.46 205.74) (xy 505.46 208.28)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "c789e9a3-8fa4-4bed-bb3c-01c6d8fedeae")
+	)
+	(wire
+		(pts
+			(xy 95.25 290.83) (xy 106.68 290.83)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "c9bbead5-5f8c-48b3-b35b-2df5a1bea386")
+	)
+	(wire
+		(pts
+			(xy 177.8 288.29) (xy 177.8 316.23)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "c9e13f84-816a-4ddc-be51-9d3c9bf7756c")
+	)
+	(wire
+		(pts
+			(xy 279.4 105.41) (xy 279.4 149.86)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "ce2aba7f-b40a-437c-aeca-5d5a06f99d96")
+	)
+	(wire
+		(pts
+			(xy 279.4 149.86) (xy 281.94 149.86)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "cf7e72a4-59af-4ecf-9bf9-72232d2ba331")
+	)
+	(wire
+		(pts
+			(xy 177.8 269.24) (xy 217.17 269.24)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "d1fa9e3c-bcc2-426b-98b0-505f7a55ae78")
+	)
+	(wire
+		(pts
+			(xy 281.94 105.41) (xy 279.4 105.41)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "d383d0ee-c8e0-41cb-ba68-43a69e7fcdcc")
+	)
+	(wire
+		(pts
+			(xy 179.07 133.35) (xy 166.37 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "d3be0e33-8f0f-402e-b992-a62f6a7668a0")
+	)
+	(wire
+		(pts
+			(xy 294.64 105.41) (xy 294.64 149.86)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "d7377cfc-cb5c-4079-b345-770b81c642d3")
+	)
+	(wire
+		(pts
+			(xy 176.53 120.65) (xy 224.79 120.65)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "e14b67ac-13d7-4b13-9f8f-0486a33f97d8")
+	)
+	(wire
+		(pts
+			(xy 381 133.35) (xy 436.88 133.35)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "e26460f1-4ac2-496c-9414-346fc6d1f96b")
+	)
+	(wire
+		(pts
+			(xy 166.37 73.66) (xy 156.21 73.66)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "e47bfd31-d116-4acb-8f05-597613848bdb")
+	)
+	(wire
+		(pts
+			(xy 290.83 105.41) (xy 294.64 105.41)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "e4e4bf7e-8a55-43c8-bbf7-2b515fa9bade")
+	)
+	(wire
+		(pts
+			(xy 180.34 279.4) (xy 177.8 279.4)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "eab15042-0aa0-4f6f-9438-bca73b08daef")
+	)
+	(wire
+		(pts
+			(xy 505.46 212.09) (xy 502.92 212.09)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "eab5b488-0263-49b3-974e-39280e55325e")
+	)
+	(wire
+		(pts
+			(xy 505.46 208.28) (xy 505.46 212.09)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "ecdbb47c-d6dc-43aa-94a9-1d122cb91454")
+	)
+	(wire
+		(pts
+			(xy 187.96 353.06) (xy 187.96 344.17)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "f13f9ccb-d30c-42ae-947e-41466a6db9fb")
+	)
+	(wire
+		(pts
+			(xy 106.68 111.76) (xy 95.25 111.76)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "f9d5b82e-3df8-484f-85d9-95eb91ce10b0")
+	)
+	(wire
+		(pts
+			(xy 266.7 105.41) (xy 266.7 104.14)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "fa4bd365-cd21-435f-9717-200a397976ab")
+	)
+	(wire
+		(pts
+			(xy 217.17 279.4) (xy 214.63 279.4)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "fb3baed7-452f-4cec-9c71-1c9a6604003f")
+	)
+	(global_label "SENSOR_SDA"
+		(shape input)
+		(at 214.63 285.75 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "021270ad-be58-429a-b38b-48f0f739649b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 214.63 285.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V3V3"
+		(shape input)
+		(at 177.8 269.24 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0c847b4c-dfda-4d6e-9657-5b2f70f89eeb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 177.8 269.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SENSOR_POWER_EN"
+		(shape input)
+		(at 179.07 137.16 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1ca4f201-c829-46eb-b522-ed1b9b790956")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 179.07 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 273.05 298.45 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1f0f6d9f-bd68-4e80-9b1b-2f2a41bcd404")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 273.05 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 106.68 290.83 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "21887211-cb33-4c61-b80a-54315011d6dc")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 106.68 290.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V3V3"
+		(shape input)
+		(at 187.96 344.17 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "223fd48c-2b0c-4485-9353-6bc27208aee1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 187.96 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL_BUFFER_A"
+		(shape input)
+		(at 180.34 281.94 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "27090dc0-e9ff-497e-a1d4-94bf79fcd519")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 180.34 281.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 162.56 73.66 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2a45a49c-b178-497f-834e-5c5a0793e1bf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 162.56 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 177.8 316.23 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "34982db0-de6f-4bb3-a9ed-75d547e21865")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 177.8 316.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SENSOR_SCL"
+		(shape input)
+		(at 160.02 199.39 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3c911234-31a8-4f6c-b503-2cb283f3a383")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 160.02 199.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SENSOR_POWER_EN"
+		(shape input)
+		(at 100.33 97.79 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "40242483-6e21-4cb3-ad3c-eb26cbd5054f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 100.33 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SENSOR_BUS_EN"
+		(shape input)
+		(at 214.63 288.29 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4416b97e-a5b9-4327-b36d-0c3c9294c743")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 214.63 288.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SENSOR_BUS_EN"
+		(shape input)
+		(at 106.68 279.4 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4426f237-2b15-429a-91ba-937e2ee39374")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 106.68 279.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V3V3"
+		(shape input)
+		(at 106.68 186.69 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4d83f409-b988-4dee-9a9b-d3179b02bfa4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 106.68 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 469.9 138.43 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "54cc4273-26ff-43a1-b29f-843f36c65416")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 469.9 138.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V3V3"
+		(shape input)
+		(at 87.63 148.59 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "54e765bf-94a3-4809-91e8-b7dcc0b1a59f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 87.63 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL_CABLE"
+		(shape input)
+		(at 461.01 212.09 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "55cb3f51-c0df-4ac3-9f6a-9d712c4fdb70")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 461.01 212.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_LOGIC"
+		(shape input)
+		(at 176.53 120.65 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "585b1a06-5a56-4048-b5df-35a49cd67bb4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 176.53 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_SENSOR"
+		(shape input)
+		(at 452.12 203.2 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "59daa658-38db-4e47-ba1b-e935c369ff3b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 452.12 203.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL_BUFFER_A"
+		(shape input)
+		(at 297.18 344.17 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6c97aaa5-5287-498a-a2f1-b3711df238a7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 297.18 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_SENSOR_SW"
+		(shape input)
+		(at 287.02 189.23 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6ec26a61-af94-4d61-9484-f823105d801f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 287.02 189.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 298.45 149.86 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8ad0e646-c9ba-4d4c-9d3d-ac216d3fbcf9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 298.45 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL_CABLE"
+		(shape input)
+		(at 306.07 344.17 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a07c3f19-319f-4215-9644-c114bde4eeb3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 306.07 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 505.46 212.09 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a0dd4996-937f-4075-ab0c-b076595d88c9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 505.46 212.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_LOGIC"
+		(shape input)
+		(at 139.7 67.31 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a17ef12b-fdcf-4eb4-8828-e26fda2f1e89")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 139.7 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SENSOR_POWER_FAULT_N"
+		(shape input)
+		(at 215.9 137.16 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b1046166-e801-413f-b9ab-7671adea2864")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 215.9 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_SENSOR_SW"
+		(shape input)
+		(at 360.68 128.27 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b7157da5-bb4c-4e2c-9287-ac3d7c638505")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 360.68 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA_CABLE"
+		(shape input)
+		(at 306.07 283.21 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c0922add-6bd0-4602-982a-06b1e810446a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 306.07 283.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA_CABLE"
+		(shape input)
+		(at 441.96 208.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cea78789-8e54-4942-8907-e5a136aef6f2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 441.96 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_SENSOR_SW"
+		(shape input)
+		(at 236.22 119.38 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d0e32307-66da-451c-9bbd-a90c369afcdf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 236.22 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 146.05 345.44 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d28fe961-4f5b-43d2-ba56-8100df38a6fa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 146.05 345.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_SENSOR"
+		(shape input)
+		(at 408.94 133.35 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d43c8851-4458-425d-88c0-7a7b22bf5856")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 408.94 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SENSOR_POWER_FAULT_N"
+		(shape input)
+		(at 111.76 149.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d48e1757-9d73-4a34-b13e-d60728e31380")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 111.76 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL_CABLE"
+		(shape input)
+		(at 424.18 297.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d5976829-7476-471d-850c-9d11ede4e358")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 424.18 297.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA_BUFFER_A"
+		(shape input)
+		(at 297.18 283.21 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d6c50493-1ba4-46d4-8417-914542870b6a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 297.18 283.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA_BUFFER_A"
+		(shape input)
+		(at 180.34 285.75 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "de1ecc2a-997d-4fbd-8d82-56fcfda4a6c5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 180.34 285.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SENSOR_SDA"
+		(shape input)
+		(at 106.68 198.12 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e2938edd-1131-4f71-9ef5-fb255a468d92")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 106.68 198.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SENSOR_SCL"
+		(shape input)
+		(at 214.63 281.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "effa9c34-ddc3-41a3-b1f3-4ea884d8940e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 214.63 281.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_SENSOR_SW"
+		(shape input)
+		(at 266.7 104.14 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fd63afaf-56f0-4172-bfa5-7e814cb9dff1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 266.7 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_R67")
+		(at 287.02 194.31 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2105eb2e-42a6-4bb4-a55f-8ebf4a11e202")
+		(property "Reference" "R67"
+			(at 289.052 191.6007 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 289.052 196.342 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_R67"
+			(at 285.0128 194.31 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+			(at 287.02 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 287.02 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "ERJ3EKF1002V"
+			(at 287.02 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "06713f7b-9ce4-4307-925e-d92db9f425f1")
+		)
+		(pin "2"
+			(uuid "9b46d321-ad1d-42a1-8611-c50a15d84870")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "R67")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "R67")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_C44")
+		(at 287.02 149.86 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "34fd82b9-7823-4c40-8aa4-0f6105d04b6a")
+		(property "Reference" "C44"
+			(at 287.02 146.0228 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "10uF"
+			(at 287.02 153.3957 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_C44"
+			(at 285.0128 149.86 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf"
+			(at 287.02 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 287.02 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "C3216X7R1E106K160AB"
+			(at 287.02 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "73ac9ab0-28fc-49aa-8e9e-fdd88c703dd3")
+		)
+		(pin "2"
+			(uuid "ffddc984-f055-4660-ba37-28cc997583fc")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "C44")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "C44")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_R66")
+		(at 106.68 149.86 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "437ff0d5-1243-4973-9bac-6a19031e1d07")
+		(property "Reference" "R66"
+			(at 106.68 147.1095 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 106.68 152.2171 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_R66"
+			(at 105.1746 149.86 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+			(at 106.68 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 106.68 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "ERJ3EKF1002V"
+			(at 106.68 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "fda0722f-ab04-4404-939f-d52d0bd5e506")
+		)
+		(pin "2"
+			(uuid "3fca9644-6e9d-423f-926f-b08fec0b6387")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "R66")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "R66")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_C40")
+		(at 137.16 344.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "45ae3f7d-ec31-489a-9e30-686a60c433f5")
+		(property "Reference" "C40"
+			(at 137.16 340.5454 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "100nF"
+			(at 137.16 347.9711 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_C40"
+			(at 135.1528 344.17 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+			(at 137.16 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 137.16 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "C1608X7R1H104K080AA"
+			(at 137.16 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2b827cf7-7a83-4576-ba42-046ab4dcedff")
+		)
+		(pin "2"
+			(uuid "ed089612-5c7d-47c3-8905-f1544721f001")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "C40")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "C40")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_R68")
+		(at 377.19 133.35 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6af549ff-a4c1-419c-99a7-8ef1b2943e8a")
+		(property "Reference" "R68"
+			(at 377.19 131.318 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "6.8Ω"
+			(at 377.19 136.398 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_R68"
+			(at 375.1828 133.35 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/20043/crcwhpe3.pdf"
+			(at 377.19 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 377.19 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CRCW25126R80FKEGHP"
+			(at 377.19 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2a330fca-82f5-4db0-a458-9ac0ed2021b3")
+		)
+		(pin "2"
+			(uuid "2f1af119-dcfd-40b4-a1b3-a9c3dd881192")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "R68")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "R68")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_R60")
+		(at 106.68 194.31 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7211633d-37ab-495b-a155-68a6957119e4")
+		(property "Reference" "R60"
+			(at 109.3893 191.6007 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2.7kΩ"
+			(at 109.3893 196.342 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_R60"
+			(at 105.1746 194.31 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+			(at 106.68 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 106.68 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "ERJ3EKF2701V"
+			(at 106.68 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "df298514-408d-4e53-b8b8-3ce3dd6cb66d")
+		)
+		(pin "2"
+			(uuid "15ee1e27-4ea1-4b8b-9958-43a7bd24141a")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "R60")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "R60")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_R62")
+		(at 302.26 283.21 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "797d9335-1be1-46ed-b683-69f7abef7e3d")
+		(property "Reference" "R62"
+			(at 302.26 281.178 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "22Ω"
+			(at 302.26 286.512 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_R62"
+			(at 300.1095 283.21 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+			(at 302.26 283.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 302.26 283.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "ERJ3EKF22R0V"
+			(at 302.26 283.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d833416e-f24e-4e8c-bd20-0e290d547891")
+		)
+		(pin "2"
+			(uuid "e47a9818-18a3-4c14-a10f-02339c732298")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "R62")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "R62")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_C42")
+		(at 152.4 73.66 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7a848933-d14c-4b0b-9907-f0b1deda53f3")
+		(property "Reference" "C42"
+			(at 152.4 70.2808 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "100nF"
+			(at 152.4 77.2818 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_C42"
+			(at 150.3928 73.66 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+			(at 152.4 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 152.4 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "C1608X7R1H104K080AA"
+			(at 152.4 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b30f26b5-ce98-442d-a644-7e21c5254325")
+		)
+		(pin "2"
+			(uuid "602007d3-9fd6-4850-bf0c-ee7f80cab7f7")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "C42")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "C42")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_J3")
+		(at 481.33 208.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "82790855-4788-48be-badb-ca78f4141f5d")
+		(property "Reference" "J3"
+			(at 467.36 200.7177 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "43045-0600"
+			(at 467.36 216.9759 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_J3"
+			(at 479.545 208.28 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf"
+			(at 481.33 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 481.33 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "43045-0600"
+			(at 481.33 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "43565f22-c6fa-48df-8d84-d1ce14a37c4c")
+		)
+		(pin "2"
+			(uuid "0d71d41e-07f2-4eed-98c8-045292d6db9f")
+		)
+		(pin "3"
+			(uuid "2db7280e-346e-4c10-aa6d-3af5bf718605")
+		)
+		(pin "4"
+			(uuid "9e29d848-df40-4e37-b875-312f6e1a7a4c")
+		)
+		(pin "5"
+			(uuid "fde1c717-d8f2-4d55-9b00-e1c8b8d19405")
+		)
+		(pin "6"
+			(uuid "aa552151-80a6-4949-91c4-b29911589146")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_C43")
+		(at 287.02 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "888faeaf-1b64-45a3-96f7-3dbf648e6ee4")
+		(property "Reference" "C43"
+			(at 287.02 100.0794 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "1uF"
+			(at 287.02 107.442 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_C43"
+			(at 285.0128 105.41 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf"
+			(at 287.02 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 287.02 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "C2012X7R1E105K125AB"
+			(at 287.02 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6729120e-463e-461f-a27a-805b3a6dbd9b")
+		)
+		(pin "2"
+			(uuid "dc38f3d3-a8ea-4972-a6df-79b1cd6e7e85")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "C43")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "C43")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_U3")
+		(at 196.85 283.21 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8b259343-8681-4455-bd94-079ce9ab95f3")
+		(property "Reference" "U3"
+			(at 185.8818 274.1613 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TCA9517ADGKR"
+			(at 185.8818 293.0313 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_U3"
+			(at 194.8428 283.21 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tca9517a.pdf"
+			(at 196.85 283.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 196.85 283.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TCA9517ADGKR"
+			(at 196.85 283.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2730b659-5267-4b92-93ec-3bd154085cc5")
+		)
+		(pin "2"
+			(uuid "4ac3ec54-05aa-4189-94db-210d29f15c63")
+		)
+		(pin "3"
+			(uuid "c127d5a1-09b3-4ca9-bc7b-7a57ebf0ac9b")
+		)
+		(pin "4"
+			(uuid "49507994-fbd5-4228-8ae7-a87602ee2e30")
+		)
+		(pin "5"
+			(uuid "07ae5591-205a-439e-8aba-bb92468863e9")
+		)
+		(pin "6"
+			(uuid "314f0edb-560e-4b1b-bf8d-9792247f30b2")
+		)
+		(pin "7"
+			(uuid "9c34f2e5-0638-4489-905e-a40379276583")
+		)
+		(pin "8"
+			(uuid "573a8b35-a40c-4c7b-9912-477115011c11")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "U3")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_R61")
+		(at 166.37 194.31 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "9c7a0480-f42e-4e3d-b89d-29f764d7fc8a")
+		(property "Reference" "R61"
+			(at 168.91 191.6007 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2.7kΩ"
+			(at 168.91 196.342 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_R61"
+			(at 164.8646 194.31 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+			(at 166.37 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 166.37 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "ERJ3EKF2701V"
+			(at 166.37 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ac85a49b-02db-4d6f-8399-8108a39ecf77")
+		)
+		(pin "2"
+			(uuid "6722995c-a3c6-4730-a720-ded9cc429140")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "R61")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "R61")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_U11")
+		(at 406.4 298.45 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a5e4406c-34ac-4a9c-a6f9-8cd9d0ee6392")
+		(property "Reference" "U11"
+			(at 395.6326 290.449 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "ESDS312DBVR"
+			(at 395.6326 307.1127 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_U11"
+			(at 404.6983 298.45 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/esds312.pdf"
+			(at 406.4 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 406.4 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "ESDS312DBVR"
+			(at 406.4 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e19cd3df-071e-49b2-aaa3-f951f3e7b6c6")
+		)
+		(pin "2"
+			(uuid "413dc720-feff-493d-a77a-847aa8f0698c")
+		)
+		(pin "3"
+			(uuid "0ccae126-de3d-4197-93dc-6a9e0f5d8b46")
+		)
+		(pin "4"
+			(uuid "e4861aea-709c-4b89-ace8-ca8b850c043a")
+		)
+		(pin "5"
+			(uuid "5ccf9957-269b-4059-9d2f-ed6ba74ed898")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "U11")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "U11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_R64")
+		(at 106.68 283.21 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a9a1a7ce-02c7-4a1c-9f9f-6f6c22c43ddf")
+		(property "Reference" "R64"
+			(at 109.3893 281.178 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 109.3893 286.512 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_R64"
+			(at 105.1746 283.21 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+			(at 106.68 283.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 106.68 283.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "ERJ3EKF1002V"
+			(at 106.68 283.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "09c25558-b348-4781-8ed5-3ceb72bbeef6")
+		)
+		(pin "2"
+			(uuid "cde0c234-3bb2-491b-9e43-59d04f23f504")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "R64")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "R64")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_U5")
+		(at 196.85 133.35 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c4c99084-016c-482f-bd6b-ef2e1b9fceb2")
+		(property "Reference" "U5"
+			(at 183.8036 125.4807 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TPS2553DBVR"
+			(at 183.8036 142.8988 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_U5"
+			(at 194.8428 133.35 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps2553.pdf"
+			(at 196.85 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 196.85 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TPS2553DBVR"
+			(at 196.85 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ea3211ff-fc86-4074-be68-72ddafc471de")
+		)
+		(pin "2"
+			(uuid "ddab8606-b2ca-4964-83cf-c2ea1eb2a421")
+		)
+		(pin "3"
+			(uuid "915b170c-fef9-4822-b425-aff1b3ffb476")
+		)
+		(pin "4"
+			(uuid "fbfc9297-7427-4f9e-baae-09946cf936c2")
+		)
+		(pin "5"
+			(uuid "742d0ec3-bb53-4503-99d4-867e979cabd4")
+		)
+		(pin "6"
+			(uuid "83c5584b-9ded-4ff2-ba5f-17709f172e00")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "U5")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "U5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_R63")
+		(at 302.26 344.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cb7abeb2-a5b6-44d0-b6c7-887b7ace857c")
+		(property "Reference" "R63"
+			(at 302.26 341.7536 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "22Ω"
+			(at 302.26 346.8997 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_R63"
+			(at 300.1095 344.17 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+			(at 302.26 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 302.26 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "ERJ3EKF22R0V"
+			(at 302.26 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5d37c74a-c7f3-42d1-bd3c-6faf1e0f90a6")
+		)
+		(pin "2"
+			(uuid "74509b49-19eb-4bc0-a896-186c2ba1cf55")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "R63")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "R63")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_C41")
+		(at 196.85 344.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cec88525-9e68-435b-bf69-1c1e42c1afb6")
+		(property "Reference" "C41"
+			(at 196.85 340.5454 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "100nF"
+			(at 196.85 347.9711 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify top)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_C41"
+			(at 194.8428 344.17 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+			(at 196.85 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 196.85 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "C1608X7R1H104K080AA"
+			(at 196.85 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0dd1fe6d-8551-4ffe-a0ee-94988447b746")
+		)
+		(pin "2"
+			(uuid "b7bd6209-b73f-4fd5-a20b-04049be91c56")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "C41")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "C41")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_R65")
+		(at 106.68 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "dfb6a18f-2185-485c-8b50-9e652102392e")
+		(property "Reference" "R65"
+			(at 109.3893 101.4386 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 109.3893 106.7647 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_R65"
+			(at 105.1746 105.41 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+			(at 106.68 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 106.68 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "ERJ3EKF1002V"
+			(at 106.68 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e0a19af5-a9b2-4570-a57b-fa9d0b4bd2c5")
+		)
+		(pin "2"
+			(uuid "ce6842b0-5b80-4b56-926a-2e315b79affb")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "R65")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "R65")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Controller:Controller_D7")
+		(at 453.39 133.35 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e64142ee-647d-40a8-8866-4e6b2d68fc2b")
+		(property "Reference" "D7"
+			(at 442.3671 128.6232 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SMBJ7.0A"
+			(at 442.3671 140.1822 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Controller:Controller_D7"
+			(at 450.2063 133.35 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.littelfuse.com/assetdocs/tvs-diodes-smbj-series-datasheet?assetguid=ba555e99-a12d-4f72-a0b6-86b06c67171e"
+			(at 453.39 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 453.39 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SMBJ7.0A"
+			(at 453.39 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cb06ff09-d257-42a1-99c4-f1ddd5046269")
+		)
+		(pin "2"
+			(uuid "f2086c38-d590-4e4f-9867-7c2565ce1dac")
+		)
+		(instances
+			(project "controller"
+				(path "/7735a600-af6b-4d00-9433-d112f3abe6b9/3d1ee42e-92c1-4480-aab7-55acbd6dea7b"
+					(reference "D7")
+					(unit 1)
+				)
+			)
+			(project ""
+				(path "/973e1aa8-6380-4c12-91e7-a87d7ee53485/efa96572-3ea0-486e-b05a-b7c860479eb7"
+					(reference "D7")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

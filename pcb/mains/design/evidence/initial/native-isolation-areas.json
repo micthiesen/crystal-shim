@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "operation": "mains.augment.isolation-and-mounts",
+  "kicad_version": "10.0.5",
+  "source_rectangles_mm": [
+    [
+      -20,
+      -12,
+      -12,
+      55
+    ],
+    [
+      -20,
+      -12,
+      46,
+      -4
+    ],
+    [
+      38,
+      -35,
+      46,
+      -4
+    ],
+    [
+      38,
+      -35,
+      90,
+      -27
+    ]
+  ],
+  "layers": [
+    "F.Cu",
+    "B.Cu"
+  ],
+  "tracks_vias_pads_fills_prohibited": true,
+  "qualified_component_bodies_allowed": true,
+  "source_pads_preserved": true,
+  "board_sha256_before": "1d28c45f4da951787e8ead486237aa124a46f45b8f571589b843237a2717133a",
+  "board_sha256_after": "999fc8f4b70ba8503c232ca82e3f97781a79b5c8ef1557b98d15dd368f8170b4",
+  "project_sha256_before": "58b6c2281b130da6b064fc9e2d9aa013c7cffade49eb5fbb1caafc28fbfd25f7",
+  "project_sha256_after": "983c65f79cf79665a864e19b5a7a1e6dc32754b1d8913b99ea517957d544fe71",
+  "native_root_sheet_discovered": true,
+  "script_sha256": "0f6b1183696b6e1883dfad0fabd9b7fb13d940dd6063bb4cf5480ffd36fed647"
+}

@@ -1,0 +1,434 @@
+{
+  "schema_version": 1,
+  "status": "validated-native-library-only",
+  "kicad_version": "10.0.5",
+  "source": {
+    "board": "mains.kicad_pcb",
+    "manifest": "source-manifest.normalized.json",
+    "sha256": {
+      "board": "1d28c45f4da951787e8ead486237aa124a46f45b8f571589b843237a2717133a",
+      "manifest": "f094c0fc2748f86ae2287b7c9902a8361bc26b1f049776c1ee3c2e8ea7c1df94"
+    }
+  },
+  "tool_sha256": "7c28d088c73bd4361a8b19f7532808bc603d0b2659e1b854487339a2a7e66be9",
+  "validator_sha256": "674290e84b7be221686145c4a52f886a197808adcc1e4800b1471c0e16c17a4e",
+  "geometry_verifier_sha256": "706f0579a7f0557791eaa62f353002db33bceeeca5a26faf7e1cc29e96b7fd89",
+  "geometry_canonicalizer_sha256": "55835250c7424ed56a668950703e64dc3dc682a6083fe6b13cc26c225492884a",
+  "source_versions": {
+    "bun": "1.3.11",
+    "circuit_json_to_kicad": "0.0.205",
+    "node": "24.3.0",
+    "tscircuit": "0.0.2465"
+  },
+  "footprints": 26,
+  "numbered_physical_pads": 75,
+  "npth": 6,
+  "cardinal_rotation_comparisons": 104,
+  "entries": [
+    {
+      "ref": "C1",
+      "source_model": "tscircuit:CrystalShim:B32921C3473K000_P10",
+      "source_geometry_sha256": "a3b8c677dba6484a77834c477fe7124a0d9b90207be69674dd9b070856e6cd9c",
+      "initial_geometry_sha256": "69180bc4bfa4d165b549a1b7565d811739f71e3274ec7e48ca9deff0c92f0dcc",
+      "library_id": "CrystalShim_Mains:Mains_C1",
+      "path": "CrystalShim_Mains.pretty/Mains_C1.kicad_mod",
+      "sha256": "1257bea05277c622389eff51696faa4ca7e188f2ee292d7f973c8e1d9195ee77",
+      "geometry_sha256": "d2d0641f2097491a14797b811a58400d09f3cb598a85487af031d24c6aeba474",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "C2",
+      "source_model": "tscircuit:CrystalShim:Murata_GRM32_Reflow",
+      "source_geometry_sha256": "ce337ee2769be5c50f4d6ed34ba189c16e4df1b85930f779004da80f5e53cf57",
+      "initial_geometry_sha256": "ae04005733b773b0f2a9ae1431f16f57ea28d3dbdd9e53f8748aac70cdf3b72e",
+      "library_id": "CrystalShim_Mains:Mains_C2",
+      "path": "CrystalShim_Mains.pretty/Mains_C2.kicad_mod",
+      "sha256": "e66d7c11bcfcab200cea708fd21567a4a3ce121e3de6f44dd8f4460b3a8e1e0c",
+      "geometry_sha256": "b86101458207479210de2bfdb8b08faedb76d4980393b24f51585e3a75051905",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "C3",
+      "source_model": "tscircuit:CrystalShim:Murata_GRM32_Reflow",
+      "source_geometry_sha256": "ce337ee2769be5c50f4d6ed34ba189c16e4df1b85930f779004da80f5e53cf57",
+      "initial_geometry_sha256": "ae04005733b773b0f2a9ae1431f16f57ea28d3dbdd9e53f8748aac70cdf3b72e",
+      "library_id": "CrystalShim_Mains:Mains_C3",
+      "path": "CrystalShim_Mains.pretty/Mains_C3.kicad_mod",
+      "sha256": "9595e502520e36aa66ae2966b2f6db24a1aa0a11621bbf9485acf367a7be2c9d",
+      "geometry_sha256": "684f41e2b1d795e08848d5acd14d5bff76f3428276e4d9fdb7e85e71eecc2ba1",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "C4",
+      "source_model": "tscircuit:CrystalShim:Murata_GRM32_Reflow",
+      "source_geometry_sha256": "ce337ee2769be5c50f4d6ed34ba189c16e4df1b85930f779004da80f5e53cf57",
+      "initial_geometry_sha256": "ae04005733b773b0f2a9ae1431f16f57ea28d3dbdd9e53f8748aac70cdf3b72e",
+      "library_id": "CrystalShim_Mains:Mains_C4",
+      "path": "CrystalShim_Mains.pretty/Mains_C4.kicad_mod",
+      "sha256": "e1905ce71a2593aa8e64bc93be5619b3839c42ea92d7513f36e68811cb058383",
+      "geometry_sha256": "7e5eee6d58d4924aac07f475518d34df1021da541b367f74df6600f86f7ec0d0",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "C5",
+      "source_model": "tscircuit:CrystalShim:TDK_C1608",
+      "source_geometry_sha256": "883e465b7ad274552d4105fff40f71c2d805d5841ebe749d8b2edb295c925aa3",
+      "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+      "library_id": "CrystalShim_Mains:Mains_C5",
+      "path": "CrystalShim_Mains.pretty/Mains_C5.kicad_mod",
+      "sha256": "a7598cd5c7d9e7be8fabee6e4eb84307f1efd902e1761f033fcc4e388fd0c2e3",
+      "geometry_sha256": "455e77819ee1d24f782bacb8b049b56957b6f75f452e36e1d0929bd0439e3a64",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "C6",
+      "source_model": "tscircuit:CrystalShim:Murata_GRM32_Reflow",
+      "source_geometry_sha256": "ce337ee2769be5c50f4d6ed34ba189c16e4df1b85930f779004da80f5e53cf57",
+      "initial_geometry_sha256": "ae04005733b773b0f2a9ae1431f16f57ea28d3dbdd9e53f8748aac70cdf3b72e",
+      "library_id": "CrystalShim_Mains:Mains_C6",
+      "path": "CrystalShim_Mains.pretty/Mains_C6.kicad_mod",
+      "sha256": "9f9e31a15fd5d7d3dd190318b9701b482573340516ba079bc8ac1a596c0a9903",
+      "geometry_sha256": "ad93a31b80619de3e5ee676e8b6c3c32c21dc5f124e7dab84bb99ae8157a51cd",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "C7",
+      "source_model": "tscircuit:CrystalShim:TDK_C1608",
+      "source_geometry_sha256": "883e465b7ad274552d4105fff40f71c2d805d5841ebe749d8b2edb295c925aa3",
+      "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+      "library_id": "CrystalShim_Mains:Mains_C7",
+      "path": "CrystalShim_Mains.pretty/Mains_C7.kicad_mod",
+      "sha256": "82f3e9646c6706cc3812fd4089462a411fec2ed54f1ce8c4876dfb5defc8ca1f",
+      "geometry_sha256": "9f275a12409a4727c263963afd86eacacec555f8747f799aee2fea38ed9c0ee7",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "D1",
+      "source_model": "tscircuit:CrystalShim:1N4007_DO41_P10_16",
+      "source_geometry_sha256": "1ffd735a7f1fcc6d54a933f311c62d14ad178fcdd4edba3f07fd59655a6d5d92",
+      "initial_geometry_sha256": "1bc35c7f68edfd6f5f34cb2f0a03dfc293d132b907429638b012d82cde446b78",
+      "library_id": "CrystalShim_Mains:Mains_D1",
+      "path": "CrystalShim_Mains.pretty/Mains_D1.kicad_mod",
+      "sha256": "1d385d06f50c3409d3a4705183c40aa3bcefbbca75236c3e3eba56c9bf309761",
+      "geometry_sha256": "13fbeb966a0011c4f29887517d07ea3ca9cf6d0ae74ca7cf9d9a2fe6c22f0a0f",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "F2",
+      "source_model": "tscircuit:CrystalShim:Littelfuse_451",
+      "source_geometry_sha256": "7a557828f62bb2256cc5c7a7f839ce1f9bd54d1ac98c5558731096c595238bfd",
+      "initial_geometry_sha256": "1acf1823a0cdd02e572414085b8d74dfe017b73326b456c915ebf095b08af1ae",
+      "library_id": "CrystalShim_Mains:Mains_F2",
+      "path": "CrystalShim_Mains.pretty/Mains_F2.kicad_mod",
+      "sha256": "5226c41df9f12b052fa1602a40c17aff16d0d63d968308d54604ea24b8ab94d7",
+      "geometry_sha256": "df7254a39871e7648835d59a841ff7a030b44fbeeeecf5626081830d09e8a0b7",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "F3",
+      "source_model": "tscircuit:CrystalShim:Littelfuse_215_Axial_P30_48",
+      "source_geometry_sha256": "4ccab783e14cd93340313b4372a932d577303856207c9f30da090418c98a24cc",
+      "initial_geometry_sha256": "b5e8ba7d444ad01c9ab742d64d9d06a28ca31a254f2017a70d37a031bc8ed8c1",
+      "library_id": "CrystalShim_Mains:Mains_F3",
+      "path": "CrystalShim_Mains.pretty/Mains_F3.kicad_mod",
+      "sha256": "e2478380f777aa205f312d1729b4f5999b1324bf9267689b212b730c827da2a5",
+      "geometry_sha256": "98d2b8ef66c908a768c894caf7512fa0a4ea7e3b380d3fe17e877423ce559494",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "H1",
+      "source_model": "tscircuit:CrystalShim_Mains:MountingHole_3.2mm_NPTH",
+      "source_geometry_sha256": "8b19db8d1419496b10bed2e4f9a0a8644435160cbcdf7a66f24dc78784c67794",
+      "initial_geometry_sha256": "3197cb3083387f668c1da8cddb862fb849a065d8dc876e79a307652fbd3ed0c7",
+      "library_id": "CrystalShim_Mains:Mains_H1",
+      "path": "CrystalShim_Mains.pretty/Mains_H1.kicad_mod",
+      "sha256": "838f22fbe388360fec0d2d0a710caa71e266d0a528109e5349c85e2365f37856",
+      "geometry_sha256": "44bbc20b252faad7043721f8d16f7aa381dcd662b6381830a2f06cb78aea9efc",
+      "physical_pad_numbers": [
+        ""
+      ]
+    },
+    {
+      "ref": "H2",
+      "source_model": "tscircuit:CrystalShim_Mains:MountingHole_3.2mm_NPTH",
+      "source_geometry_sha256": "8b19db8d1419496b10bed2e4f9a0a8644435160cbcdf7a66f24dc78784c67794",
+      "initial_geometry_sha256": "3197cb3083387f668c1da8cddb862fb849a065d8dc876e79a307652fbd3ed0c7",
+      "library_id": "CrystalShim_Mains:Mains_H2",
+      "path": "CrystalShim_Mains.pretty/Mains_H2.kicad_mod",
+      "sha256": "d94ccf1de0bb7abb3b6c051858d570c7f9ae3ef12fa05ef37dedf1a0ac5a860d",
+      "geometry_sha256": "45915b2c51c287e3b03fe8a6311be92dd1699c777034ffc2694a5a04d05a0e7a",
+      "physical_pad_numbers": [
+        ""
+      ]
+    },
+    {
+      "ref": "H3",
+      "source_model": "tscircuit:CrystalShim_Mains:MountingHole_3.2mm_NPTH",
+      "source_geometry_sha256": "8b19db8d1419496b10bed2e4f9a0a8644435160cbcdf7a66f24dc78784c67794",
+      "initial_geometry_sha256": "3197cb3083387f668c1da8cddb862fb849a065d8dc876e79a307652fbd3ed0c7",
+      "library_id": "CrystalShim_Mains:Mains_H3",
+      "path": "CrystalShim_Mains.pretty/Mains_H3.kicad_mod",
+      "sha256": "7db97fa9e3743c56f25ab6b1d3c54921e7e2b42974a4764ff6c408d072c40e5a",
+      "geometry_sha256": "5048111e1d85725e8c3c59075d4b80168c0f2c4116bcb23e67bcadcf1beca642",
+      "physical_pad_numbers": [
+        ""
+      ]
+    },
+    {
+      "ref": "H4",
+      "source_model": "tscircuit:CrystalShim_Mains:MountingHole_3.2mm_NPTH",
+      "source_geometry_sha256": "8b19db8d1419496b10bed2e4f9a0a8644435160cbcdf7a66f24dc78784c67794",
+      "initial_geometry_sha256": "3197cb3083387f668c1da8cddb862fb849a065d8dc876e79a307652fbd3ed0c7",
+      "library_id": "CrystalShim_Mains:Mains_H4",
+      "path": "CrystalShim_Mains.pretty/Mains_H4.kicad_mod",
+      "sha256": "ccbd4765ecfaa19cba0ef3b7210f66f1292c0824e0667aa67ee686d5bfc16f65",
+      "geometry_sha256": "d72495427090a577a4d328b009ec335a2612837fd1157d79e1de400081eb2974",
+      "physical_pad_numbers": [
+        ""
+      ]
+    },
+    {
+      "ref": "J1",
+      "source_model": "tscircuit:CrystalShim:Molex_Sabre_43160-0102",
+      "source_geometry_sha256": "29cb32fdc96b586e26aa90ad5c485a9ba7cc412f3baa21506ac811b38586c2dd",
+      "initial_geometry_sha256": "0f30207fb273f9d650566e78ff6795d988a83b8b6d67d7f66bb3220046d3241a",
+      "library_id": "CrystalShim_Mains:Mains_J1",
+      "path": "CrystalShim_Mains.pretty/Mains_J1.kicad_mod",
+      "sha256": "9433a060e5ce2fb174d4b959c12f6e85f357a1bc5794317e277b5e5f4fa039b0",
+      "geometry_sha256": "e2eed848dc18baf5cc1aeddf1f778290bbe74d0ce364a78746673298eb320586",
+      "physical_pad_numbers": [
+        "1",
+        "1",
+        "2",
+        "2"
+      ]
+    },
+    {
+      "ref": "J2",
+      "source_model": "tscircuit:CrystalShim:Molex_Sabre_43160-0103",
+      "source_geometry_sha256": "30f5310d1d251255010c900b4e388208843b3b024760f836017eb70012d13682",
+      "initial_geometry_sha256": "d166a624fb6dbef56875f4c559695713577013dc61b883a26f818d0c895a5764",
+      "library_id": "CrystalShim_Mains:Mains_J2",
+      "path": "CrystalShim_Mains.pretty/Mains_J2.kicad_mod",
+      "sha256": "c85bb1421c9e80c796df03535932f1b6b1df6f1df5604ae918e2213b8f4b4f28",
+      "geometry_sha256": "78da89edf4915fff15a6149fb667822d4e44918f7a7773c84a666e64a07a5ce5",
+      "physical_pad_numbers": [
+        "1",
+        "1",
+        "2",
+        "2",
+        "3",
+        "3"
+      ]
+    },
+    {
+      "ref": "J3",
+      "source_model": "tscircuit:CrystalShim:Molex_Sabre_43160-0104",
+      "source_geometry_sha256": "6a1ec863e8806038fb885281f89dc5c143f2919094a6bcdced0cc61d71e39c22",
+      "initial_geometry_sha256": "ae68fa3db8cdb2b8bc0d2e7878f49982150f604c9e1756d561832b6b4ba5293f",
+      "library_id": "CrystalShim_Mains:Mains_J3",
+      "path": "CrystalShim_Mains.pretty/Mains_J3.kicad_mod",
+      "sha256": "dff2c071fff92bb7c8e5a2b44ef41e5399512a392514fdc5ae1da062eb9cb768",
+      "geometry_sha256": "a0ab284d874a3437222127d0df62846e28ba6981a52e165e918d10da0a6fca29",
+      "physical_pad_numbers": [
+        "1",
+        "1",
+        "2",
+        "2",
+        "3",
+        "3",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "ref": "J4",
+      "source_model": "tscircuit:CrystalShim:Molex_Sabre_43160-0106",
+      "source_geometry_sha256": "22c3f213238d8a9923a5e949511a27e1aff4f7133db19c3b0bb4f4f981266a1b",
+      "initial_geometry_sha256": "dc411d657837f4811460809550182a96fa1d17bfc511580cf802176e19221594",
+      "library_id": "CrystalShim_Mains:Mains_J4",
+      "path": "CrystalShim_Mains.pretty/Mains_J4.kicad_mod",
+      "sha256": "80eddfe9cbc5ea8f0aac95348cbaa1d687bc088ed7ed3f62a2d30a980a2ba2a1",
+      "geometry_sha256": "4494a51637d73a30b0ec5d20b68622cf8f1dda3166f06e144d476a309f43d740",
+      "physical_pad_numbers": [
+        "1",
+        "1",
+        "2",
+        "2",
+        "3",
+        "3",
+        "4",
+        "4",
+        "5",
+        "5",
+        "6",
+        "6"
+      ]
+    },
+    {
+      "ref": "J5",
+      "source_model": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43650-0300_1x03_P3.00mm_Horizontal",
+      "source_geometry_sha256": "96d7b01cfccc45fb67803cd6043f79a338979d4980ec9f02264caa586ccbf1fe",
+      "initial_geometry_sha256": "3729df5864aedc0cefb1eeaed0309e52330492e9b11a06f394b309c00a747883",
+      "library_id": "CrystalShim_Mains:Mains_J5",
+      "path": "CrystalShim_Mains.pretty/Mains_J5.kicad_mod",
+      "sha256": "e2211befcb259f3251e3a700b4049b111a2d64d874178eb411cb88154843594e",
+      "geometry_sha256": "bfb197e14f4e123e427f03305a9e7d3ce501eaa4e55fc96711364df1a202cea1",
+      "physical_pad_numbers": [
+        "",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "ref": "J6",
+      "source_model": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal",
+      "source_geometry_sha256": "e5b881fcd47ea834ebac964c1cb3d686e62fdb454ca7833b1faabb044715a498",
+      "initial_geometry_sha256": "66a56d11ac85fc33f1709d539b30a233816d5dd8ab57e62db24664d4e7ad5de5",
+      "library_id": "CrystalShim_Mains:Mains_J6",
+      "path": "CrystalShim_Mains.pretty/Mains_J6.kicad_mod",
+      "sha256": "fed7d3a89444c1efffc2291befe3eb33c90661d36e995bd386086bbc8d9b26f5",
+      "geometry_sha256": "ad71367ef6e5eb04ff9aa44e67121f6197159378ede6c1f055d1a261925abcbc",
+      "physical_pad_numbers": [
+        "",
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "K1",
+      "source_model": "tscircuit:CrystalShim:G5RL_1A_TV8",
+      "source_geometry_sha256": "f9c092b7398b9503b6c390747999eed3e93138e2e091a04b429c2dc6571ff308",
+      "initial_geometry_sha256": "f04987e729da2754baa9c5cc324dd30019e5074e87c032530053e929e333a1f9",
+      "library_id": "CrystalShim_Mains:Mains_K1",
+      "path": "CrystalShim_Mains.pretty/Mains_K1.kicad_mod",
+      "sha256": "6edd116b39c58b3c34194e8ed060c9775d6011eebab53f25c6c208768a6a6c2e",
+      "geometry_sha256": "5d5502cd9c64ba785ed016dc79358b081ee270a5bf8d8ba5d8a9249397ec88c1",
+      "physical_pad_numbers": [
+        "1",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "ref": "L1",
+      "source_model": "tscircuit:CrystalShim:SRP5030TA",
+      "source_geometry_sha256": "8f363c2a07eb12bd1989216e3890d2e97c71f69796d908cd3a8c64904ca07849",
+      "initial_geometry_sha256": "73a8dc30ee72bfb43d4510f14b4e6e76b6a12954b4ef5c99aa21a5c6e5ce2f94",
+      "library_id": "CrystalShim_Mains:Mains_L1",
+      "path": "CrystalShim_Mains.pretty/Mains_L1.kicad_mod",
+      "sha256": "30d6ca7943e70b8a9392f951bc37fc8ddb21bb551ec4201ce314206b2293dafb",
+      "geometry_sha256": "838103d58a5dbc58acf1b5722079faccb47f23ddde2c4615108f439516bb0fde",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "R1",
+      "source_model": "tscircuit:CrystalShim:PR02FS_P15_24",
+      "source_geometry_sha256": "ef4cebccb093ce1f6dafb085791d9fd4c2fd3bf16943a077e6b1930277828c47",
+      "initial_geometry_sha256": "76a5677b67e0cc3853e586da1db6f6eaafc387214e4ae9c9203b2d4d635d24a9",
+      "library_id": "CrystalShim_Mains:Mains_R1",
+      "path": "CrystalShim_Mains.pretty/Mains_R1.kicad_mod",
+      "sha256": "ac6e250ecf6ce8bd4d28ea23f677837339a24ca00e553a66b46effee1b02595f",
+      "geometry_sha256": "0a3dd55b901641442b14130ecd355c2e019bd8f27c15e577f5a54d25a42153ad",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "RV1",
+      "source_model": "tscircuit:CrystalShim:TMOV14RP175EL2T7_RoundSlot",
+      "source_geometry_sha256": "d767c391a70d593de692b51bfbb8f341e23ba622cf3afa19b9473be4b160ff93",
+      "initial_geometry_sha256": "945eea69107c4087c580c46faffed4042eaec4459d4a349ca1554d368734d37f",
+      "library_id": "CrystalShim_Mains:Mains_RV1",
+      "path": "CrystalShim_Mains.pretty/Mains_RV1.kicad_mod",
+      "sha256": "af2a93808787029c4ccf73a516e4f01bcb987cefc536bfbda8e5bf660a8cb195",
+      "geometry_sha256": "e0197b3f669c5894a8180a42539c4ddf2bff48dc647b3eeb9c9b655590c68db9",
+      "physical_pad_numbers": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "ref": "U1",
+      "source_model": "tscircuit:CrystalShim:IRM_45_12",
+      "source_geometry_sha256": "b4944b157e07cabc10c1b3c4b657d218b795ec6c88b7881e8fdd6d939bfb62fc",
+      "initial_geometry_sha256": "e743f17c908fe2c054ffee9cc37d6f44a3593fb1040fe80b0f2ecf93abb1bf8d",
+      "library_id": "CrystalShim_Mains:Mains_U1",
+      "path": "CrystalShim_Mains.pretty/Mains_U1.kicad_mod",
+      "sha256": "63b745872b4ef0be91290ad018da5e76e61b04f23c33725455c83b08039871a1",
+      "geometry_sha256": "2b4113eeeb992407d08c26e73ba53f8b0ba4a10b27b65b07731f5c669eb57008",
+      "physical_pad_numbers": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "ref": "U2",
+      "source_model": "tscircuit:CrystalShim:AP63205_TSOT26",
+      "source_geometry_sha256": "2a0da6aeaf3f220457ff48f2e35ebf292d84da9dd2b4dc899aeacfef5e2b7ea3",
+      "initial_geometry_sha256": "e7361aea469a6086152d4977da33aedc8faa8152f52c601da12acab6e18d3935",
+      "library_id": "CrystalShim_Mains:Mains_U2",
+      "path": "CrystalShim_Mains.pretty/Mains_U2.kicad_mod",
+      "sha256": "88dcf27f679f1a4f230b847b4f3256bdd932d02fcadf085ddb965127ac222073",
+      "geometry_sha256": "76925a13e538fcbfef2e02ecb38403d0772596b3be7638705575db34e939a1a1",
+      "physical_pad_numbers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    }
+  ],
+  "board_id": "mains.board.main",
+  "stage_inputs_sha256": {
+    "secondary.kicad_sch": "7974df870344b69a9a8617e4ec6322ecc45fca174682b4f6af44b1c0bd9f3390",
+    "mains.kicad_sch": "2dad847930e77a51e00914345f5bf878d6bec08287670d55f7fd2ea51bb88a3c",
+    "source-manifest.normalized.json": "f094c0fc2748f86ae2287b7c9902a8361bc26b1f049776c1ee3c2e8ea7c1df94",
+    "CrystalShim_Mains.kicad_sym": "e69830fe18e999664bb8f2124a372e45613c288a9575b21a057ad536d2b77c44",
+    "mains.kicad_pcb": "1d28c45f4da951787e8ead486237aa124a46f45b8f571589b843237a2717133a",
+    "suppression.kicad_sch": "a318e0b5d1bebc3adc87bccc05931525bb897794b17272e7bfaa8f1ba3c3d74e",
+    "primary.kicad_sch": "52f1cc9afc3390e0a74e90e26500df10b828fe00a02bbda63a128d2b748364b9",
+    "kicad-augmentation.normalized.json": "7d26d0e5e876d1234b9b4edfa935761530531c1525a65be8fe3dd0f2a2ddd0d4"
+  },
+  "existing_files_unchanged": true
+}

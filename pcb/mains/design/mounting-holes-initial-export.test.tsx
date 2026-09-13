@@ -36,7 +36,7 @@ test("mains mounts gain four board-only identities without changing physical geo
   expect(physical()).toEqual(before);
   expect(electrical.map((fp) => fp.getString())).toEqual(priorElectrical);
   const saved = parseKicadPcb(board.getString());
-  expect(saved.footprints).toHaveLength(27);
+  expect(saved.footprints).toHaveLength(26);
   for (const hole of mainsMountingHoles) {
     const matches = saved.footprints.filter((fp) =>
       fp.properties.some((p) => p.key === "Reference" && p.value === hole.ref),

@@ -13,10 +13,11 @@ Physical calibration and acceptance use the final boards after assembly.
    document assumptions and checks owed on the assembled unit. No sensor hardware
    measurement is required to proceed with controller or mains design.
    Close the [refill attachment reservation](design/refill-expansion.md) before
-   controller routing: connector, separate bus and default-off enable. Size and
-   capture the common power-board supply/output for future pumps and electronics
-   before its placement freeze and the present order. Later refill boards and feature
-   implementation remain outside this three-board fabrication cycle.
+   controller routing: three default-off pump drivers, a second buffered sensor bus
+   and two accessible input pads. Capture the IRM-45-12 and 5 V buck on the power
+   board, with a fused 12 V motor feed. Future accessories must fit the fixed
+   12 V / 2 A aggregate allocation. Only accessories and a reservoir sensor PCB
+   are added later; future feature implementation remains outside this cycle.
 2. **Capture and review the complete design.** Author all three boards in
    tscircuit using `$pcb`, including explicit placement, geometry and augmentation
    manifests. Check schematic and PCB renders, datasheet pin/pad mappings, the
@@ -24,23 +25,26 @@ Physical calibration and acceptance use the final boards after assembly.
    Review mains separation and protection before routing. Select the fuse, MOV,
    RC network and filter from documented ratings and calculations before release;
    actual-load verification follows assembly.
-3. **Prepare firmware and fabrication files.** Implement sensor acquisition,
-   calibration storage, local control, retained maintenance, Matter/HomeKit,
-   schedules, the local settings page and Pushover integration. Verify behavior
-   and failure modes with host tests; retain explicit hardware checks. Complete
-   staged KiCad handoff, parity, routing, ERC/DRC and fabrication review for every
-   board using `$kicad-manufacture`. Release one coherent set of BOMs, assembly
-   drawings, harness drawings, enclosure/PCB interface drawings and manufacturing
-   outputs. G-02/G-03/G-04 govern fabrication readiness; see
-   [the decision register](decisions.md).
+3. **Route the accepted native boards and prepare fabrication files.** The
+   controller shared-power ECO, sensor and mains boards are accepted for routing;
+   use each board's final
+   native acceptance in [STATE](STATE.md), not an old initial-export receipt.
+   Sensor acquisition, calibration storage, local control, retained maintenance,
+   Matter/HomeKit, schedules, settings and Pushover firmware are implemented;
+   physical operation still needs commissioning. Route all board connections,
+   preserve the specified return paths and isolation, and apply routing-dependent
+   copper/via/paste declarations. Run final ERC/DRC and fabrication review using
+   `$kicad-manufacture`. Release coherent BOMs, assembly and harness drawings,
+   enclosure/PCB interfaces and manufacturing outputs. G-02/G-03/G-04 govern
+   fabrication release, separately from permission to start routing.
 4. **Fabricate and assemble the final board set.** Use the reviewed release to
    order and assemble the three boards, enclosure and harnesses as one complete
    build. The owner supplies the separately modeled sensor clip. There is no
    intermediate sensor-board order or measurement-driven second fabrication phase.
 5. **Calibrate and commission the final low-voltage hardware.** With mains
    disconnected and a reviewed isolated low-voltage power arrangement, verify
-   supplies, USB combinations, default-off drive, sensor faults, retained state
-   and watchdog behavior. Create and deliver the private
+   supplies, supported USB/service arrangements, default-off drive, sensor faults,
+   retained state and watchdog behavior. Create and deliver the private
    [first configuration](design/first-configuration.md), then install the
    [Matter identity](design/matter-provisioning.md) and commission networking.
    Initial configuration leaves calibration absent, schedules empty and maintenance
@@ -64,6 +68,7 @@ the Rust toolchain installs the C6 target. [Firmware](../firmware/README.md) and
 for the offline checks. Matter/Wi-Fi commissioning and Pushover application/recipient
 keys are supplied privately during final-unit provisioning. Do not commit them or send setup test messages.
 
-Parts remain candidates until exact datasheets, footprints, mating systems and
-design ratings have been checked. The BOM records quantities for one complete
-unit and separates design selection from purchase status.
+The BOM records selected source parts and quantities for one complete unit,
+separately from purchase status. Exact harness cut lengths and ordinary mounting
+hardware are assembly details. No order or physical commissioning is performed
+by completing a native routing handoff.

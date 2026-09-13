@@ -1,0 +1,160 @@
+{
+  "native_keepouts": [
+    "H4 mounting copper reserve",
+    "H2 mounting copper reserve",
+    "Antenna copper exclusion",
+    "H3 mounting copper reserve",
+    "H1 mounting copper reserve"
+  ],
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Default",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2147483647,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.25,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "LogicPower",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": -1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 2.0,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MotorChannel",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": -1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 1.0,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "MotorTrunk",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": -1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 2.0,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "diff_pair_gap": 0.15,
+        "diff_pair_width": 0.24,
+        "name": "USB90",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.24,
+        "tuning_profile": ""
+      }
+    ],
+    "meta": {
+      "version": 5
+    },
+    "net_colors": null,
+    "netclass_assignments": null,
+    "netclass_patterns": [
+      {
+        "netclass": "USB90",
+        "pattern": "USB_D_N"
+      },
+      {
+        "netclass": "USB90",
+        "pattern": "USB_D_N_PORT"
+      },
+      {
+        "netclass": "USB90",
+        "pattern": "USB_D_N_SWITCH"
+      },
+      {
+        "netclass": "USB90",
+        "pattern": "USB_D_P"
+      },
+      {
+        "netclass": "USB90",
+        "pattern": "USB_D_P_PORT"
+      },
+      {
+        "netclass": "USB90",
+        "pattern": "USB_D_P_SWITCH"
+      },
+      {
+        "netclass": "LogicPower",
+        "pattern": "V5_PSU"
+      },
+      {
+        "netclass": "LogicPower",
+        "pattern": "V5_SERVICE"
+      },
+      {
+        "netclass": "LogicPower",
+        "pattern": "V5_LOGIC"
+      },
+      {
+        "netclass": "MotorTrunk",
+        "pattern": "V12_PUMP"
+      },
+      {
+        "netclass": "MotorChannel",
+        "pattern": "TRANSFER_DRAIN"
+      },
+      {
+        "netclass": "MotorChannel",
+        "pattern": "CHLORINE_DRAIN"
+      },
+      {
+        "netclass": "MotorChannel",
+        "pattern": "DECHLOR_DRAIN"
+      }
+    ]
+  },
+  "board_sha256": "9f30d655a810fcca42359f6072758e4fea058cc4d3b2e049a446edf902977c41",
+  "script_sha256": "0bd015f848d0738e0beb0b15754dd795d2e6b3b555f7fd6e86393a69db1e2a79"
+}

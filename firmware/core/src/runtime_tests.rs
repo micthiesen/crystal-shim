@@ -44,20 +44,18 @@ fn config_at_with_minimum_off(
     };
     let calibration = CalibrationData {
         level_empty_counts: 1_000,
+        wet_reference_empty_counts: 300,
         low_endpoint: Channels {
             level: 1_200,
             wet_reference: 700,
-            dry_reference: 300,
         },
         high_endpoint: Channels {
             level: 2_500,
             wet_reference: 900,
-            dry_reference: 300,
         },
         channels: Channels {
             level: limits,
             wet_reference: limits,
-            dry_reference: limits,
         },
         reference_sign: ReferenceSign::Positive,
         minimum_reference_span_counts: 100,

@@ -1,0 +1,152 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "3398af38-3486-40e8-a51d-d2dfe0c56816")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 25.4 80.4)
+		(size 40 25)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "3c5cdb7f-75b0-440b-ac32-d4363c859b21")
+		(property "Sheetname" "Suppression"
+			(at 25.4 79.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "suppression.kicad_sch"
+			(at 25.4 106.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 85.4 25.4)
+		(size 40 25)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "ab855a56-2586-493b-8e16-8a51352d115d")
+		(property "Sheetname" "Secondary"
+			(at 85.4 24.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "secondary.kicad_sch"
+			(at 85.4 51.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 25.4 25.4)
+		(size 40 25)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "f1d09619-0800-4ea2-89a5-3ca87f3e8523")
+		(property "Sheetname" "Primary"
+			(at 25.4 24.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "primary.kicad_sch"
+			(at 25.4 51.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

@@ -13,8 +13,8 @@ const actual = controllerGeometryIdentities(
 );
 if (
   manifest.board?.stable_id !== "mains.board.main" ||
-  manifest.components?.length !== 27 ||
-  actual.size !== 27
+  manifest.components?.length !== 26 ||
+  actual.size !== 26
 )
   throw new Error("Initial geometry verification requires the complete mains");
 const seen = new Set<string>();
@@ -31,4 +31,4 @@ for (const component of manifest.components) {
     );
   seen.add(component.ref);
 }
-console.log("All 27 initial footprint geometry identities match the source manifest");
+console.log("All 26 initial footprint geometry identities match the source manifest");

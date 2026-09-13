@@ -13,8 +13,8 @@ are not a released electrical design.
   Controller and mains share a physically partitioned enclosure.
 - Isolated controller/sensor power; filtered and relay-switched pump mains without
   an isolation transformer. Hot switched; PE continuous.
-- One FDC1004 with continuous level and wet/dry reference electrodes, using TI's
-  reference geometry as the design basis. No local sensor processor.
+- One FDC1004 with continuous level and wet reference electrodes, stored dry
+  baselines and TI's reference geometry as the design basis. No local sensor processor.
 - Rust host-testable core + separate C6 app; tscircuit source before KiCad routing.
 - Keep original skimmer cord and standard external mains connections.
 - Validate no routine cleaning and no interference-induced PC wake in the actual setup.
@@ -37,11 +37,11 @@ are not a released electrical design.
 | D-03 | Stop low / automatic restart after refill | Owner confirmed; only within unsuppressed scheduled windows, with explicit timed manual override exception | Product behavior locked |
 | D-04 | Existing Stillair connector family | Resolved from BOM: Micro-Fit 3.0, received parts; see sources | Family continuity only |
 | D-05 | Six-position sensor header/contact set and wire | Capture candidates: `43045-0600` / `43025-0600` / `43030-0007`, 24 AWG; [78073 cable and sideways route study](design/sensor-harness.md) retains mated-fit and qualified crimp-manufacture checks | Pinout, harness, orderable set |
-| D-06 | FDC1004 VSSOP, ESP32-C6-WROOM-1, IRM-10-5 | Capture candidates: FDC1004DGSR, ESP32-C6-WROOM-1-N8, IRM-10-5; footprint/capture review owed | Schematics and power budget |
+| D-06 | Converter, MCU and power module | FDC1004DGSR, ESP32-C6-WROOM-1-N8 and IRM-45-12 selected in source; AP63205 makes 5 V on the mains board | Schematics and fixed power budget |
 | D-07 | G5RL-1A-TV8 5 V coil | G5RL-1A-TV8 DC5 sourced motor rating and pin map; design review and final-unit start tests owed | Relay selection and commissioning |
 | D-08 | FN2090 filter variant | FN2090A-1-06 / 802490-SF capture candidate | Attenuation, leakage, enclosure fit |
-| D-09 | Fuse/MOV/RC/regulators and internal mains connector set | Complete 23-part mains source and proposed placement captured; MOV uses a project assembly envelope; native/fit/process review remains | Protection and source capture |
-| D-10 | Enclosure, insulation/spacing and earth scheme | Hammond 1554V2GY envelope and conservative spacing proposed; actual CAD/routed mains review owed | Physical safety |
+| D-09 | Fuse/MOV/RC/regulators and internal mains connector set | Complete 22-part mains source: 2 A inlet fuse, 1 A filter-branch fuse and 3 A motor-branch fuse; MOV and physical envelopes retained | Protection and source capture; native release remains separate |
+| D-10 | Enclosure, insulation/spacing and earth scheme | Hammond 1590ZGRP243 with separate mains/controller bays; manufacturer STEP and expanded envelope checks in [mechanical design](mechanical.md) | Practical board mounting and partition; final assembly remains untested |
 | D-11 | Thresholds, calibration limits and freshness timeout | Open; 1/10/30 s timing seeds provisional | Sensor and firmware tuning |
 | D-12 | Retained state and network interface | Matter-over-Wi-Fi selected; runtime schedule/retained transactions, actual command/KV adapters, Wi-Fi/BLE, shared TCP stack, bounded USB provisioning writer/sender and original-capture CASE/USB UTC implemented; unattended time-source compatibility and actual pairing remain work | Hardware firmware |
 | D-13 | Run duration and daily schedule | Default 15 min shared by schedule and override, all adjustable; exact daily times/count/timezone open | Local scheduler and configuration |
@@ -49,12 +49,12 @@ are not a released electrical design.
 | D-15 | Settings interface | Confirmed and linked: ESP-hosted local settings, schedule, thresholds, response timing and Pushover credential actions; private first-configuration encoder/sender implemented; physical calibration workflow remains | Schedule, calibration, timing and Pushover provisioning workflow |
 | D-16 | Aquarium water and mounting envelope | Confirmed: freshwater, ample width with reasonably compact sensor PCB, snug contact via owner's separate gravity/friction clip; other hardware on spacious flat surface behind tank within 8 inches | PCB attachment interface remains project work; printed clip design is out of scope |
 | D-17 | Build strategy | Owner confirmed: one-shot final-use build of all three boards; no separate prototype or planned respin | Complete design/review before fabrication; physical calibration and acceptance afterward |
-| D-18 | Normal-full water surface below glass rim | Owner measurement requested: proposed RE band requires at least 11 mm below rim | Final reference geometry and valid upper limit |
-| D-19 | USB and service power | Self-powered USB data port with hardware VBUS gating; GST18U05-P1J isolated service adapter through protected Micro-Fit input | Mains-disconnected programming/calibration; exact harness and service eFuse in [service design](design/service-input.md); transient evidence remains open |
+| D-18 | Normal-full surface datum | No owner datum required for PCB geometry. Omit optional live RE and OoP_RE; use LEVEL and wet RL with commissioned dry baselines across the 50 mm span | Removes the dry-electrode placement constraint; physical calibration still required |
+| D-19 | USB and service power | Self-powered USB with VBUS data gating; known GST18U05-P1J adapter through a 2 A fused service lead and existing diode OR | Mains-disconnected setup only; [service design](design/service-input.md); no eFuse, arbitrary supplies or hot mating requirement |
 | D-20 | Sensor bus power sequencing | TCA9517A separates pullup domains; independent GPIO0 enable disconnects the cable during recovery/startup | Prevent sensor backfeed and isolate the unpowered cable's low/floating bus |
-| D-21 | Controlled sensor recovery | TPS2553 with GPIO22 enable/GPIO23 fault; 6.8 ohm cable feed with local 1+10 uF bulk, separate input bleeders and LT3042 PGFB isolation diode per the [reviewed power design](design/sensor-power-refinement.md). Complete input budget 30 uF; output 20 uF; 200 ms startup and 2 s off | Recover transient sensor faults without blocking control; persistent faults stay off; final source-order/transient evidence remains owed |
+| D-21 | Controlled sensor recovery | Existing TPS2553 and GPIO22/23 power/fault control shared by two sensor ports; separate 6.8 ohm feed resistors and input bleeders; fixed TPS7A2433 sensor regulator with output-to-input diode | Bounded recovery and invalid/stale fail-off retained; no live dry-reference channel or LT3042 PGFB network |
 | D-22 | Private Matter accessory behavior | Use controlled-load `0x010A` identity for Apple Home interoperability, retaining boot-off and bounded leases. Expose only implemented commands; document deviation from the complete plug profile rather than claim conformance. Certification is outside this personal build | Radio implementation can proceed; actual Apple Home pairing/behavior remains G-05 |
-| D-23 | Future refill attachment | Reserve GPIO1/2/3, separate digital bus and default-off enable per [interface contract](design/refill-expansion.md); the present power board must supply all future pumps and electronics within an envelope sized before ordering. Full extension spec and implementation deferred | Controller source/ECO, power and enclosure evidence required before routing/fabrication; present boards currently lack the interface |
+| D-23 | Future refill attachment | Three 12 V pump outputs on GPIO1/2/3; reservoir bus GPIO6/7; GPIO4/5 input pads; fixed 2 A aggregate continuous and 1 A per-channel allocation per [interface contract](design/refill-expansion.md) | Present source captures common power and drivers; no later expansion controller PCB; future feature and reservoir board deferred |
 
 The confirmed inputs do not establish electrode geometry or physical thresholds.
 Set geometry from TI's reference, the installation constraints and documented
@@ -62,10 +62,9 @@ engineering analysis before fabrication. Set physical thresholds from measuremen
 on the final sensor during commissioning. Sensor measurements do not gate design
 or fabrication of the other boards.
 
-The original inputs were sufficient to begin design. TI reference placement now
-requires the normal-full surface datum (D-18) before fixing the sensor geometry.
-Other board and firmware work continues independently. Exact schedule entries
-can wait for the local settings page, and physical stop/restart thresholds need
+The inputs are sufficient to finish this hardware design. The optional live dry
+reference has been removed, so no further owner water-surface datum is required.
+Exact schedule entries can wait for the local settings page, and physical stop/restart thresholds need
 calibration. Exact part selection, protection values, GPIO allocation and
 insulation layout are engineering work, not a list of component choices the owner
 must answer before work can proceed.

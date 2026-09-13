@@ -1,0 +1,3365 @@
+(kicad_symbol_lib
+  (version 20231120)
+  (generator tscircuit)
+  (symbol "Sensor_J1"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "U"
+      (id 0)
+      (at 2.0944 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "43045-0600"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_J1"
+      (id 2)
+      (at -1.7017 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "43045-0600"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.j1"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_J1_0_1"
+      (polyline
+        (pts
+          (xy -14.3565 -6.331)
+          (xy 0 -6.331)
+          (xy 15.4609 -6.331)
+          (xy 15.4609 -2.54)
+          (xy 15.4609 -1.27)
+          (xy 15.4609 0)
+          (xy 15.4609 1.27)
+          (xy 15.4609 3.81)
+          (xy 15.4609 6.8459)
+          (xy 0 6.8459)
+          (xy -14.3565 6.8459)
+          (xy -14.3565 3.81)
+          (xy -14.3565 1.27)
+          (xy -14.3565 0)
+          (xy -14.3565 -1.27)
+          (xy -14.3565 -2.54)
+          (xy -14.3565 -6.331)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Sensor_J1_1_1"
+      (pin passive line
+        (at -20.32 3.81 0)
+        (length 5.9635)
+        (name "V5_SENSOR"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -20.32 0 0)
+        (length 5.9635)
+        (name "SDA_CABLE"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -20.32 -2.54 0)
+        (length 5.9635)
+        (name "SCL_CABLE"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 21.59 -2.54 180)
+        (length 6.1291)
+        (name "GND_4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 21.59 0 180)
+        (length 6.1291)
+        (name "GND_5"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "5"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 21.59 3.81 180)
+        (length 6.1291)
+        (name "GND_6"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "6"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_U1"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "U"
+      (id 0)
+      (at 1.9281 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "FDC1004DGSR"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_U1"
+      (id 2)
+      (at -1.7563 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/fdc1004.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "FDC1004DGSR"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.u1"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_U1_0_1"
+      (polyline
+        (pts
+          (xy -15.24 -8.89)
+          (xy -11.43 -8.89)
+          (xy -8.89 -8.89)
+          (xy 0 -8.89)
+          (xy 14.2328 -8.89)
+          (xy 14.2328 -7.62)
+          (xy 14.2328 -6.35)
+          (xy 14.2328 -5.08)
+          (xy 14.2328 -2.54)
+          (xy 14.2328 -1.27)
+          (xy 14.2328 0)
+          (xy 14.2328 1.27)
+          (xy 14.2328 2.54)
+          (xy 14.2328 5.08)
+          (xy 14.2328 6.35)
+          (xy 14.2328 7.62)
+          (xy 14.2328 8.89)
+          (xy 0 8.89)
+          (xy -8.89 8.89)
+          (xy -11.43 8.89)
+          (xy -15.24 8.89)
+          (xy -15.24 7.62)
+          (xy -15.24 6.35)
+          (xy -15.24 5.08)
+          (xy -15.24 2.54)
+          (xy -15.24 1.27)
+          (xy -15.24 0)
+          (xy -15.24 -1.27)
+          (xy -15.24 -2.54)
+          (xy -15.24 -5.08)
+          (xy -15.24 -6.35)
+          (xy -15.24 -7.62)
+          (xy -15.24 -8.89)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Sensor_U1_1_1"
+      (pin output line
+        (at -21.59 6.35 0)
+        (length 6.35)
+        (name "SHLD1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin input line
+        (at -21.59 2.54 0)
+        (length 6.35)
+        (name "CIN_LEVEL"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin input line
+        (at -21.59 0 0)
+        (length 6.35)
+        (name "CIN_RL"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin input line
+        (at -21.59 -2.54 0)
+        (length 6.35)
+        (name "CIN3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin input line
+        (at -21.59 -6.35 0)
+        (length 6.35)
+        (name "CIN4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "5"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin output line
+        (at 20.32 -6.35 180)
+        (length 6.0872)
+        (name "SHLD2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "6"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin power_in line
+        (at 20.32 -2.54 180)
+        (length 6.0872)
+        (name "GND"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "7"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin power_in line
+        (at 20.32 0 180)
+        (length 6.0872)
+        (name "VDD"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "8"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin bidirectional line
+        (at 20.32 2.54 180)
+        (length 6.0872)
+        (name "SDA"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "9"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin input line
+        (at 20.32 6.35 180)
+        (length 6.0872)
+        (name "SCL"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "10"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_U2"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "U"
+      (id 0)
+      (at 2.0645 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "TPS7A2433DBVR"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_U2"
+      (id 2)
+      (at -1.6559 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps7a24.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "TPS7A2433DBVR"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.u2"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_U2_0_1"
+      (polyline
+        (pts
+          (xy -9.779 -6.331)
+          (xy 0 -6.331)
+          (xy 10.668 -6.331)
+          (xy 10.668 -2.54)
+          (xy 10.668 -1.27)
+          (xy 10.668 0)
+          (xy 10.668 1.27)
+          (xy 10.668 3.81)
+          (xy 10.668 6.8459)
+          (xy 0 6.8459)
+          (xy -9.779 6.8459)
+          (xy -9.779 3.81)
+          (xy -9.779 1.27)
+          (xy -9.779 0)
+          (xy -9.779 -1.27)
+          (xy -9.779 -2.54)
+          (xy -9.779 -6.331)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Sensor_U2_1_1"
+      (pin power_in line
+        (at -16.51 3.81 0)
+        (length 6.731)
+        (name "IN"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin power_in line
+        (at -16.51 0 0)
+        (length 6.731)
+        (name "GND"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin input line
+        (at -16.51 -2.54 0)
+        (length 6.731)
+        (name "EN"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 16.51 -1.27 180)
+        (length 5.842)
+        (name "NC"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin power_out line
+        (at 16.51 1.27 180)
+        (length 5.842)
+        (name "OUT"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "5"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_U3"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "U"
+      (id 0)
+      (at 2.0944 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "ESDS312DBVR"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_U3"
+      (id 2)
+      (at -1.7017 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/esds312.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "ESDS312DBVR"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.u3"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_U3_0_1"
+      (polyline
+        (pts
+          (xy -10.7674 -6.331)
+          (xy 0 -6.331)
+          (xy 11.5957 -6.331)
+          (xy 11.5957 -2.54)
+          (xy 11.5957 -1.27)
+          (xy 11.5957 0)
+          (xy 11.5957 1.27)
+          (xy 11.5957 2.54)
+          (xy 11.5957 5.5545)
+          (xy 0 5.5545)
+          (xy -10.7674 5.5545)
+          (xy -10.7674 2.54)
+          (xy -10.7674 1.27)
+          (xy -10.7674 0)
+          (xy -10.7674 -1.27)
+          (xy -10.7674 -2.54)
+          (xy -10.7674 -6.331)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Sensor_U3_1_1"
+      (pin passive line
+        (at -16.51 2.54 0)
+        (length 5.7426)
+        (name "NC_1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -16.51 0 0)
+        (length 5.7426)
+        (name "GND"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -16.51 -2.54 0)
+        (length 5.7426)
+        (name "NC_3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 17.78 -1.27 180)
+        (length 6.1843)
+        (name "IO1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 17.78 1.27 180)
+        (length 6.1843)
+        (name "IO2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "5"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_D2"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "U"
+      (id 0)
+      (at 2.0645 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "STPS2L40U"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_D2"
+      (id 2)
+      (at -1.6559 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.ic-components.pl/files/fe/STPS2L40AF.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "STPS2L40U"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.d2"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_D2_0_1"
+      (polyline
+        (pts
+          (xy -8.382 -3.048)
+          (xy 0 -3.048)
+          (xy 9.144 -3.048)
+          (xy 9.144 0)
+          (xy 9.144 2.5274)
+          (xy 0 2.5274)
+          (xy -8.382 2.5274)
+          (xy -8.382 0)
+          (xy -8.382 -3.048)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Sensor_D2_1_1"
+      (pin passive line
+        (at -13.97 0 0)
+        (length 5.588)
+        (name "K"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 15.24 0 180)
+        (length 6.096)
+        (name "A"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_C1"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "C"
+      (id 0)
+      (at 1.7204 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "10uF"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_C1"
+      (id 2)
+      (at -2.0072 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Capacitor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "C cap capacitor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "C_*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "C3216X7R1E106K160AB"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.c1"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_C1_0_1"
+      (polyline
+        (pts
+          (xy 3.81 0)
+          (xy 0.762 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -1.016 0)
+          (xy -5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 0.762 2.7945)
+          (xy 0.762 1.27)
+          (xy 0.762 0)
+          (xy 0.762 -1.27)
+          (xy 0.762 -2.0323)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -1.016 2.7945)
+          (xy -1.016 1.27)
+          (xy -1.016 0)
+          (xy -1.016 -1.27)
+          (xy -1.016 -2.0323)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Sensor_C1_1_1"
+      (pin passive line
+        (at -5.08 0 0)
+        (length 0.0113)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 3.81 0 180)
+        (length 0.0085)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_C2"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "C"
+      (id 0)
+      (at 1.7204 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "10uF"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_C2"
+      (id 2)
+      (at -2.6108 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Capacitor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "C cap capacitor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "C_*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "C3216X7R1E106K160AB"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.c2"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_C2_0_1"
+      (polyline
+        (pts
+          (xy 3.81 0)
+          (xy 0.762 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -1.8143 0)
+          (xy -5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 0.762 2.7945)
+          (xy 0.762 1.27)
+          (xy 0.762 0)
+          (xy 0.762 -1.27)
+          (xy 0.762 -2.0323)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -1.8143 2.7945)
+          (xy -1.8143 1.27)
+          (xy -1.8143 0)
+          (xy -1.8143 -1.27)
+          (xy -1.8143 -2.0323)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Sensor_C2_1_1"
+      (pin passive line
+        (at -5.08 0 0)
+        (length 0.0091)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 3.81 0 180)
+        (length 0.0085)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_C3"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "C"
+      (id 0)
+      (at 1.7204 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "100nF"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_C3"
+      (id 2)
+      (at -2.0072 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Capacitor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "C cap capacitor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "C_*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "C1608X7R1H104K080AA"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.c3"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_C3_0_1"
+      (polyline
+        (pts
+          (xy 3.81 0)
+          (xy 0.762 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -1.016 0)
+          (xy -5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 0.762 2.4082)
+          (xy 0.762 0)
+          (xy 0.762 -1.27)
+          (xy 0.762 -2.73)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -1.016 2.4082)
+          (xy -1.016 0)
+          (xy -1.016 -1.27)
+          (xy -1.016 -2.73)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Sensor_C3_1_1"
+      (pin passive line
+        (at -5.08 0 0)
+        (length 0.0113)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 3.81 0 180)
+        (length 0.0085)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_C4"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "C"
+      (id 0)
+      (at 2.2939 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "1uF"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_C4"
+      (id 2)
+      (at -1.5054 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Capacitor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "C cap capacitor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "C_*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "C2012X7R1E105K125AB"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.c4"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_C4_0_1"
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy 1.016 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -0.762 0)
+          (xy -3.81 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 1.016 2.4082)
+          (xy 1.016 0)
+          (xy 1.016 -1.27)
+          (xy 1.016 -2.73)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -0.762 2.4082)
+          (xy -0.762 0)
+          (xy -0.762 -1.27)
+          (xy -0.762 -2.73)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Sensor_C4_1_1"
+      (pin passive line
+        (at -3.81 0 0)
+        (length 0.0085)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 5.08 0 180)
+        (length 0.0113)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_R1"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "R"
+      (id 0)
+      (at 2.2939 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "22Ω"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_R1"
+      (id 2)
+      (at -1.5054 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Resistor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "R res resistor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "R_*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "ERJ3EKF22R0V"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.r1"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_R1_0_1"
+      (polyline
+        (pts
+          (xy -3.81 0)
+          (xy -2.5397 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 3.3863 0)
+          (xy 5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -2.5397 1.1725)
+          (xy 0 1.1725)
+          (xy 3.3863 1.1725)
+          (xy 3.3863 0)
+          (xy 3.3863 -1.2189)
+          (xy 0 -1.2189)
+          (xy -2.5397 -1.2189)
+          (xy -2.5397 0)
+          (xy -2.5397 1.1725)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Sensor_R1_1_1"
+      (pin passive line
+        (at -3.81 0 0)
+        (length 0.0085)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 5.08 0 180)
+        (length 0.0113)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_R2"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "R"
+      (id 0)
+      (at 2.2939 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "22Ω"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_R2"
+      (id 2)
+      (at -1.5054 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Resistor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "R res resistor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "R_*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "ERJ3EKF22R0V"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.r2"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_R2_0_1"
+      (polyline
+        (pts
+          (xy -3.81 0)
+          (xy -2.5397 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 3.3863 0)
+          (xy 5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -2.5397 1.4469)
+          (xy 0 1.4469)
+          (xy 3.3863 1.4469)
+          (xy 3.3863 0)
+          (xy 3.3863 -1.1286)
+          (xy 0 -1.1286)
+          (xy -2.5397 -1.1286)
+          (xy -2.5397 0)
+          (xy -2.5397 1.4469)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Sensor_R2_1_1"
+      (pin passive line
+        (at -3.81 0 0)
+        (length 0.0085)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 5.08 0 180)
+        (length 0.0113)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_R3"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "R"
+      (id 0)
+      (at 2.2939 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "2.7kΩ"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_R3"
+      (id 2)
+      (at -1.5054 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Resistor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "R res resistor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "R_*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "ERJ3EKF2701V"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.r3"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_R3_0_1"
+      (polyline
+        (pts
+          (xy -3.81 0)
+          (xy -2.5397 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 3.3863 0)
+          (xy 5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -2.5397 1.1725)
+          (xy 0 1.1725)
+          (xy 3.3863 1.1725)
+          (xy 3.3863 0)
+          (xy 3.3863 -1.2189)
+          (xy 0 -1.2189)
+          (xy -2.5397 -1.2189)
+          (xy -2.5397 0)
+          (xy -2.5397 1.1725)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Sensor_R3_1_1"
+      (pin passive line
+        (at -3.81 0 0)
+        (length 0.0085)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 5.08 0 180)
+        (length 0.0113)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_R4"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "R"
+      (id 0)
+      (at 2.2939 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "2.7kΩ"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_R4"
+      (id 2)
+      (at -1.5054 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Resistor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "R res resistor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "R_*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "ERJ3EKF2701V"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.r4"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_R4_0_1"
+      (polyline
+        (pts
+          (xy -3.81 0)
+          (xy -2.5397 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 3.3863 0)
+          (xy 5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -2.5397 1.4469)
+          (xy 0 1.4469)
+          (xy 3.3863 1.4469)
+          (xy 3.3863 0)
+          (xy 3.3863 -1.1286)
+          (xy 0 -1.1286)
+          (xy -2.5397 -1.1286)
+          (xy -2.5397 0)
+          (xy -2.5397 1.4469)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Sensor_R4_1_1"
+      (pin passive line
+        (at -3.81 0 0)
+        (length 0.0085)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 5.08 0 180)
+        (length 0.0113)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_R5"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "R"
+      (id 0)
+      (at 1.7204 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "10kΩ"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_R5"
+      (id 2)
+      (at -2.0072 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Resistor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "R res resistor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "R_*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "ERJ3EKF1002V"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.r5"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_R5_0_1"
+      (polyline
+        (pts
+          (xy -5.08 0)
+          (xy -3.3863 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 2.5397 0)
+          (xy 3.81 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -3.3863 1.2189)
+          (xy 0 1.2189)
+          (xy 2.5397 1.2189)
+          (xy 2.5397 0)
+          (xy 2.5397 -1.1843)
+          (xy 0 -1.1843)
+          (xy -3.3863 -1.1843)
+          (xy -3.3863 0)
+          (xy -3.3863 1.2189)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Sensor_R5_1_1"
+      (pin passive line
+        (at -5.08 0 0)
+        (length 0.0113)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 3.81 0 180)
+        (length 0.0085)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_R6"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (in_pos_files yes)
+    (property "Reference" "R"
+      (id 0)
+      (at 3.7411 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "3.01kΩ"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_R6"
+      (id 2)
+      (at -2.7754 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Resistor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "R res resistor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "R_*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "ERJ3EKF3011V"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.r6"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_R6_0_1"
+      (polyline
+        (pts
+          (xy -5.08 0)
+          (xy -3.8097 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 5.0796 0)
+          (xy 5.08 0)
+          (xy 6.35 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -3.8097 1.0157)
+          (xy -2.54 1.0157)
+          (xy 0 1.0157)
+          (xy 1.27 1.0157)
+          (xy 2.54 1.0157)
+          (xy 3.81 1.0157)
+          (xy 5.0796 1.0157)
+          (xy 5.0796 0)
+          (xy 5.0796 -1.0157)
+          (xy 3.81 -1.0157)
+          (xy 2.54 -1.0157)
+          (xy 1.27 -1.0157)
+          (xy 0 -1.0157)
+          (xy -2.54 -1.0157)
+          (xy -3.8097 -1.0157)
+          (xy -3.8097 0)
+          (xy -3.8097 1.0157)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Sensor_R6_1_1"
+      (pin passive line
+        (at -5.08 0 0)
+        (length 0.0085)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 6.35 0 180)
+        (length 0.0085)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Sensor_E1"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board yes)
+    (in_pos_files no)
+    (property "Reference" "U"
+      (id 0)
+      (at 2.0276 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "PCB-COPPER-OOP-50"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Sensor:Sensor_E1"
+      (id 2)
+      (at -1.7275 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.ti.com/lit/ug/tidu736a/tidu736a.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "*"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "PCB-COPPER-OOP-50"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (property "StableID" "sensor.component.e1"
+      (at 0 0 0)
+      (hide yes)
+    )
+    (symbol "Sensor_E1_0_1"
+      (polyline
+        (pts
+          (xy -34.977 -11.7956)
+          (xy 0 -11.7956)
+          (xy 35.9229 -11.7956)
+          (xy 35.9229 -8.89)
+          (xy 35.9229 -7.62)
+          (xy 35.9229 -6.35)
+          (xy 35.9229 -5.08)
+          (xy 35.9229 -2.54)
+          (xy 35.9229 -1.27)
+          (xy 35.9229 0)
+          (xy 35.9229 1.27)
+          (xy 35.9229 2.54)
+          (xy 35.9229 5.08)
+          (xy 35.9229 6.35)
+          (xy 35.9229 7.62)
+          (xy 35.9229 8.89)
+          (xy 35.9229 12.065)
+          (xy 0 12.065)
+          (xy -34.977 12.065)
+          (xy -34.977 8.89)
+          (xy -34.977 7.62)
+          (xy -34.977 6.35)
+          (xy -34.977 5.08)
+          (xy -34.977 2.54)
+          (xy -34.977 1.27)
+          (xy -34.977 0)
+          (xy -34.977 -1.27)
+          (xy -34.977 -2.54)
+          (xy -34.977 -5.08)
+          (xy -34.977 -6.35)
+          (xy -34.977 -7.62)
+          (xy -34.977 -8.89)
+          (xy -34.977 -11.7956)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Sensor_E1_1_1"
+      (pin passive line
+        (at -39.37 8.89 0)
+        (length 4.393)
+        (name "sen_oop_level"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -39.37 6.35 0)
+        (length 4.393)
+        (name "sen_level"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -39.37 2.54 0)
+        (length 4.393)
+        (name "sen_rl"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -39.37 0 0)
+        (length 4.393)
+        (name "sen_oop_rl"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -39.37 -2.54 0)
+        (length 4.393)
+        (name "trace_rl_vertical"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "5"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -39.37 -6.35 0)
+        (length 4.393)
+        (name "trace_rl_horizontal"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "6"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -39.37 -8.89 0)
+        (length 4.393)
+        (name "shield2_level_back"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "7"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 41.91 -7.62 180)
+        (length 5.9871)
+        (name "shield1_level_back"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "8"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 41.91 -5.08 180)
+        (length 5.9871)
+        (name "shield1_ref_back"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "9"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 41.91 -1.27 180)
+        (length 5.9871)
+        (name "shield2_ref_back"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "10"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 41.91 1.27 180)
+        (length 5.9871)
+        (name "shield1_rl_trace_vertical"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "11"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 41.91 5.08 180)
+        (length 5.9871)
+        (name "shield1_rl_trace_horizontal"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "12"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 41.91 7.62 180)
+        (length 5.9871)
+        (name "trace_oop_rl_vertical"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "13"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "PWR_FLAG"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+      (hide yes)
+    )
+    (exclude_from_sim yes)
+    (in_bom no)
+    (on_board no)
+    (in_pos_files no)
+    (property "Reference" "#FLG"
+      (at 0 1.905 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "PWR_FLAG"
+      (at 0 3.81 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "PWR_FLAG_0_0"
+      (pin power_out line
+        (at 0 0 90)
+        (length 0)
+        (name ""
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (symbol "PWR_FLAG_0_1"
+      (polyline
+        (pts
+          (xy 0 0)
+          (xy 0 1.27)
+          (xy -1.016 1.905)
+          (xy 0 2.54)
+          (xy 1.016 1.905)
+          (xy 0 1.27)
+        )
+        (stroke
+          (width 0)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (power global)
+  )
+)

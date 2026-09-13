@@ -1,0 +1,391 @@
+{
+  "augmentation_sha256": "3c6c99d847cfaef7cb04d6fe8fdba364f4ac328fe9651acf7cf2aaf62877cce4",
+  "board_id": "sensor.board.main",
+  "commands": [
+    {
+      "argv": [
+        "bun",
+        "sensor/design/render-sensor.tsx"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Sensor source and placement rendered to dist/sensor/design\n"
+    },
+    {
+      "argv": [
+        "bun",
+        "sensor/design/stage-sensor-export.ts"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r\n"
+    },
+    {
+      "argv": [
+        "/Users/michael/Code/crystal-shim/pcb/tools/kicad_python.sh",
+        "/Users/michael/Code/crystal-shim/pcb/tools/tscircuit_handoff.py",
+        "augment-staged",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor.kicad_pcb",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/source-manifest.normalized.json",
+        "--augmentation",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/kicad-augmentation.normalized.json",
+        "--footprint-root",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints"
+      ],
+      "returncode": 0,
+      "stderr": "./src/common/stdpbase.cpp(59): assert \"\"traits\"\" failed in Get(): create wxApp before calling this\n",
+      "stdout": "augmented staged KiCad board /private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor.kicad_pcb\n"
+    },
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "sch",
+        "export",
+        "netlist",
+        "--format",
+        "kicadxml",
+        "--output",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/staged-schematic.netlist.xml",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor.kicad_sch"
+      ],
+      "returncode": 0,
+      "stderr": "Fontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 19: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 20: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 23: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 42: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 43: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 46: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 68: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 69: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 72: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 88: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 89: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 92: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 108: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 109: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 112: invalid constant used : math\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 120: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 121: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 124: invalid constant used : system-ui\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 132: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 133: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 136: invalid constant used : cursive\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 144: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 145: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 148: invalid constant used : fantasy\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 156: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 157: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 160: invalid constant used : ui-sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 168: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 169: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 172: invalid constant used : ui-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 180: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 181: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 184: invalid constant used : ui-monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 192: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 193: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 196: invalid constant used : ui-rounded\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 204: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 205: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 208: invalid constant used : fangsong\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-spacing.conf\", line 14: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 10: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 18: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 26: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 34: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 42: invalid constant used : math\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "sch",
+        "export",
+        "svg",
+        "--output",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/review-renders/schematic-svg",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor.kicad_sch"
+      ],
+      "returncode": 0,
+      "stderr": "Fontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 19: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 20: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 23: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 42: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 43: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 46: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 68: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 69: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 72: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 88: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 89: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 92: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 108: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 109: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 112: invalid constant used : math\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 120: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 121: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 124: invalid constant used : system-ui\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 132: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 133: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 136: invalid constant used : cursive\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 144: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 145: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 148: invalid constant used : fantasy\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 156: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 157: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 160: invalid constant used : ui-sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 168: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 169: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 172: invalid constant used : ui-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 180: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 181: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 184: invalid constant used : ui-monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 192: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 193: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 196: invalid constant used : ui-rounded\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 204: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 205: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 208: invalid constant used : fangsong\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-spacing.conf\", line 14: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 10: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 18: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 26: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 34: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 42: invalid constant used : math\n",
+      "stdout": "Plotted to '/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/review-renders/schematic-svg/sensor.svg'.\nPlotted to '/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/review-renders/schematic-svg/sensor-Tank sensor, local 3.3 V and stored dry baseline.svg'.\nDone.\n"
+    },
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "sch",
+        "export",
+        "pdf",
+        "--output",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/review-renders/schematic.pdf",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor.kicad_sch"
+      ],
+      "returncode": 0,
+      "stderr": "Fontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 19: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 20: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 23: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 42: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 43: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 46: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 68: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 69: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 72: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 88: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 89: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 92: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 108: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 109: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 112: invalid constant used : math\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 120: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 121: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 124: invalid constant used : system-ui\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 132: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 133: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 136: invalid constant used : cursive\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 144: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 145: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 148: invalid constant used : fantasy\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 156: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 157: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 160: invalid constant used : ui-sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 168: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 169: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 172: invalid constant used : ui-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 180: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 181: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 184: invalid constant used : ui-monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 192: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 193: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 196: invalid constant used : ui-rounded\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 204: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 205: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 208: invalid constant used : fangsong\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-spacing.conf\", line 14: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 10: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 18: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 26: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 34: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 42: invalid constant used : math\n",
+      "stdout": "Plotted to '/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/review-renders/schematic.pdf'.\nDone.\n"
+    },
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "pcb",
+        "render",
+        "--output",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/review-renders/pcb-top.png",
+        "--side",
+        "top",
+        "--quality",
+        "high",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor.kicad_pcb"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Loading\u2026\nBuild board outline\n\nCreate layers\nCreate tracks and vias\nCreate zones\nBuild Tech layers\nBuild Tech layer 11\nBuild Tech layer 9\nBuild Tech layer 15\nBuild Tech layer 13\nBuild Tech layer 7\nBuild Tech layer 5\nBuild Tech layer 3\nBuild Tech layer 1\nBuild Tech layer 17\nBuild Tech layer 19\nBuild Tech layer 21\nBuild Tech layer 23\nBuild Tech layer 39\nBuild Tech layer 41\nBuild Tech layer 43\nBuild Tech layer 45\nBuild Tech layer 47\nBuild Tech layer 49\nBuild Tech layer 51\nBuild Tech layer 53\nBuild Tech layer 55\nBuild Tech layer 57\nBuild Tech layer 59\nBuild Tech layer 61\nBuild Tech layer 63\nBuild Tech layer 65\nBuild Tech layer 67\nBuild Tech layer 69\nBuild Tech layer 71\nBuild Tech layer 73\nBuild Tech layer 75\nBuild Tech layer 77\nBuild Tech layer 79\nBuild Tech layer 81\nBuild Tech layer 83\nBuild Tech layer 85\nBuild Tech layer 87\nBuild Tech layer 89\nBuild Tech layer 91\nBuild Tech layer 93\nBuild Tech layer 95\nBuild Tech layer 97\nBuild Tech layer 99\nBuild Tech layer 101\nBuild Tech layer 103\nBuild Tech layer 105\nBuild Tech layer 107\nBuild Tech layer 109\nBuild Tech layer 111\nBuild Tech layer 113\nBuild Tech layer 115\nBuild Tech layer 117\nBuild Tech layer 119\nBuild Tech layer 121\nBuild Tech layer 123\nBuild Tech layer 125\nBuild Tech layer 127\nSimplifying copper layer polygons\nCalculating plated copper\nSimplify holes contours\nBuild BVH for holes and vias\nLoad Raytracing: board\nLoad Raytracing: layers\nLoading 3D models...\nReload time 0.013 s\nRendering: 46 %\nRendering: 93 %\nRendering: 100 %\nRendering: Post processing shader\nRendering time 0.924 s\nSuccessfully created 3D render image\n"
+    },
+    {
+      "argv": [
+        "/Users/michael/Code/crystal-shim/pcb/tools/kicad_python.sh",
+        "/Users/michael/Code/crystal-shim/pcb/tools/tscircuit_handoff.py",
+        "snapshot-kicad",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor.kicad_pcb",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/source-manifest.normalized.json",
+        "--augmentation",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/kicad-augmentation.normalized.json",
+        "--schematic-netlist",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/staged-schematic.netlist.xml",
+        "--output",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/staged-kicad-snapshot.json",
+        "--unrouted"
+      ],
+      "returncode": 0,
+      "stderr": "./src/common/stdpbase.cpp(59): assert \"\"traits\"\" failed in Get(): create wxApp before calling this\n",
+      "stdout": "snapshotted sensor.board.main -> /private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/staged-kicad-snapshot.json (16 components, routed=false)\n"
+    }
+  ],
+  "footprint_fingerprints": {
+    "CrystalShim_Sensor:Sensor_C1": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_C1.kicad_mod",
+      "sha256": "69880ad43f63eb0a8682f2ca52eb2129b9d3467fac5a2eb8e9276c8e7d57bab7"
+    },
+    "CrystalShim_Sensor:Sensor_C2": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_C2.kicad_mod",
+      "sha256": "6f9aa79555e12de74bf3fa69cd5ee044bde20d65fe3a9f06def9aacee85cd155"
+    },
+    "CrystalShim_Sensor:Sensor_C3": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_C3.kicad_mod",
+      "sha256": "ad417f7fbddda2cd158bc0cc62b3ecd4931e3dfb574bbe3baf18fb25716baf94"
+    },
+    "CrystalShim_Sensor:Sensor_C4": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_C4.kicad_mod",
+      "sha256": "8213f3500ae0981d906b0d52c5e627668fed297513704cbadc8670f9927c0dff"
+    },
+    "CrystalShim_Sensor:Sensor_D2": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_D2.kicad_mod",
+      "sha256": "78ec43e04eaf2393b1b4c9d908508f936efa41e8adf42ced818b78400a411296"
+    },
+    "CrystalShim_Sensor:Sensor_E1": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_E1.kicad_mod",
+      "sha256": "0514812fa32a6c13af962f1b73135b4f6d9ca9c3448d5e681090e08afc614047"
+    },
+    "CrystalShim_Sensor:Sensor_J1": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_J1.kicad_mod",
+      "sha256": "67dfa5ec9685aa9400583c959eec6fb945eac90e568d7eb732c47a8af38af0e3"
+    },
+    "CrystalShim_Sensor:Sensor_R1": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_R1.kicad_mod",
+      "sha256": "9ec58b5b6634c8a5d07cb3547532f097e65396d866bc244022010817ecd91581"
+    },
+    "CrystalShim_Sensor:Sensor_R2": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_R2.kicad_mod",
+      "sha256": "3e54fff0cc4c0de77ef9e6b28564557fbcae7d7688df4fd5ad4b6a9bdf185ac8"
+    },
+    "CrystalShim_Sensor:Sensor_R3": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_R3.kicad_mod",
+      "sha256": "103e935371e960ce5fbacb8d3c8ceab591a0a42a9ec585b2fe9d12d038aab2f9"
+    },
+    "CrystalShim_Sensor:Sensor_R4": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_R4.kicad_mod",
+      "sha256": "9ab6f0c2878367379a5bb1aadbb9d4fad506f1898f58a05b7b230f7523507d81"
+    },
+    "CrystalShim_Sensor:Sensor_R5": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_R5.kicad_mod",
+      "sha256": "b5fa50d10b45fec33f77504f1fa8939cfe6ec6c64acdb9485268103bf73d5b77"
+    },
+    "CrystalShim_Sensor:Sensor_R6": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_R6.kicad_mod",
+      "sha256": "7806e4525895007f2510aa4ee3a12c75daf664684805d72aa977ccd8bd0a8eb8"
+    },
+    "CrystalShim_Sensor:Sensor_U1": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_U1.kicad_mod",
+      "sha256": "c17a11f5cb8045eb774f680a9dbddeab573a975f762ff41d80b987495aca7a5a"
+    },
+    "CrystalShim_Sensor:Sensor_U2": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_U2.kicad_mod",
+      "sha256": "53249c58e984326eb44ec8503401f37a427af562cf96b638020e7288edfd3030"
+    },
+    "CrystalShim_Sensor:Sensor_U3": {
+      "path": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/footprints/CrystalShim_Sensor.pretty/Sensor_U3.kicad_mod",
+      "sha256": "8c2d6ea9ec038a06014f5aa1ae68b333d8129bae1449c50eb9d314d0c7bc2b71"
+    }
+  },
+  "generated_kicad": [
+    {
+      "path": "CrystalShim_Sensor.kicad_sym",
+      "sha256": "16c9e009380d34a8be5455c8937da2f21aad0a0441855370f7693ae0e3775052"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_C1.kicad_mod",
+      "sha256": "69880ad43f63eb0a8682f2ca52eb2129b9d3467fac5a2eb8e9276c8e7d57bab7"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_C2.kicad_mod",
+      "sha256": "6f9aa79555e12de74bf3fa69cd5ee044bde20d65fe3a9f06def9aacee85cd155"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_C3.kicad_mod",
+      "sha256": "ad417f7fbddda2cd158bc0cc62b3ecd4931e3dfb574bbe3baf18fb25716baf94"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_C4.kicad_mod",
+      "sha256": "8213f3500ae0981d906b0d52c5e627668fed297513704cbadc8670f9927c0dff"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_D2.kicad_mod",
+      "sha256": "78ec43e04eaf2393b1b4c9d908508f936efa41e8adf42ced818b78400a411296"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_E1.kicad_mod",
+      "sha256": "0514812fa32a6c13af962f1b73135b4f6d9ca9c3448d5e681090e08afc614047"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_J1.kicad_mod",
+      "sha256": "67dfa5ec9685aa9400583c959eec6fb945eac90e568d7eb732c47a8af38af0e3"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_R1.kicad_mod",
+      "sha256": "9ec58b5b6634c8a5d07cb3547532f097e65396d866bc244022010817ecd91581"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_R2.kicad_mod",
+      "sha256": "3e54fff0cc4c0de77ef9e6b28564557fbcae7d7688df4fd5ad4b6a9bdf185ac8"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_R3.kicad_mod",
+      "sha256": "103e935371e960ce5fbacb8d3c8ceab591a0a42a9ec585b2fe9d12d038aab2f9"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_R4.kicad_mod",
+      "sha256": "9ab6f0c2878367379a5bb1aadbb9d4fad506f1898f58a05b7b230f7523507d81"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_R5.kicad_mod",
+      "sha256": "b5fa50d10b45fec33f77504f1fa8939cfe6ec6c64acdb9485268103bf73d5b77"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_R6.kicad_mod",
+      "sha256": "7806e4525895007f2510aa4ee3a12c75daf664684805d72aa977ccd8bd0a8eb8"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_U1.kicad_mod",
+      "sha256": "c17a11f5cb8045eb774f680a9dbddeab573a975f762ff41d80b987495aca7a5a"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_U2.kicad_mod",
+      "sha256": "53249c58e984326eb44ec8503401f37a427af562cf96b638020e7288edfd3030"
+    },
+    {
+      "path": "footprints/CrystalShim_Sensor.pretty/Sensor_U3.kicad_mod",
+      "sha256": "8c2d6ea9ec038a06014f5aa1ae68b333d8129bae1449c50eb9d314d0c7bc2b71"
+    },
+    {
+      "path": "fp-lib-table",
+      "sha256": "94c97f8e3b7d10259508f13dc9442ba550f0b9ed5cbf760d97ebc10682f5d69d"
+    },
+    {
+      "path": "sensor.kicad_pcb",
+      "sha256": "d813516e87022dcde4eb5cdedbd636caee97eb5941ec8744d15782fa604bdc5e"
+    },
+    {
+      "path": "sensor.kicad_prl",
+      "sha256": "d07e61002ff34c7571dceea51b3f6ab156fc1820a86428cad199179c89a1d270"
+    },
+    {
+      "path": "sensor.kicad_pro",
+      "sha256": "ec4faf00b5703d7f79b8640f777e3fdff851304aa5816b52697b6a541ab83d2f"
+    },
+    {
+      "path": "sensor.kicad_sch",
+      "sha256": "dd3cf1b52bc061deb3b7a013c7f66abf8012958e93c6f1583066be162e9cf1fe"
+    },
+    {
+      "path": "sym-lib-table",
+      "sha256": "abfde244fed2dde9ccf96956f07e54521c5a370ea5948cb267780ea2c6f02654"
+    },
+    {
+      "path": "tanksensor.kicad_sch",
+      "sha256": "c2ff5f66a21ef8f4d9ed5e5f88a5368e2fcf351a6c60b89f04a2ee3bb7c24274"
+    }
+  ],
+  "kicad_parse_checks": [
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "pcb",
+        "drc",
+        "--format",
+        "json",
+        "--output",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor-initial-drc.json",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor.kicad_pcb"
+      ],
+      "clean": false,
+      "declared_findings": {
+        "unconnected_items": 41
+      },
+      "parsed": true,
+      "report": "sensor-initial-drc.json",
+      "report_sha256": "e8747956d840fff976e186bdef9935c9546543cc244695cc4a5f0b13c3ae3232",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Found 0 violations\nFound 41 unconnected items\nSaved DRC Report to /private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor-initial-drc.json\n"
+    },
+    {
+      "argv": [
+        "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+        "sch",
+        "erc",
+        "--format",
+        "json",
+        "--output",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor-initial-erc.json",
+        "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor.kicad_sch"
+      ],
+      "clean": true,
+      "declared_findings": {},
+      "parsed": true,
+      "report": "sensor-initial-erc.json",
+      "report_sha256": "6a6d33ffb8d109e1b4f8f7bf6418760ea77c5964fd9a8e69cee5d89d8b738723",
+      "returncode": 0,
+      "stderr": "Fontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 19: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 20: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 23: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 42: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 43: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 46: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 68: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 69: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 72: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 88: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 89: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 92: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 108: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 109: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 112: invalid constant used : math\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 120: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 121: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 124: invalid constant used : system-ui\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 132: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 133: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 136: invalid constant used : cursive\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 144: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 145: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 148: invalid constant used : fantasy\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 156: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 157: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 160: invalid constant used : ui-sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 168: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 169: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 172: invalid constant used : ui-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 180: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 181: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 184: invalid constant used : ui-monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 192: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 193: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 196: invalid constant used : ui-rounded\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 204: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 205: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 208: invalid constant used : fangsong\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-spacing.conf\", line 14: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 10: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 18: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 26: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 34: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 42: invalid constant used : math\n",
+      "stdout": "Found 0 violations\nSaved ERC Report to /private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r/sensor-initial-erc.json\n"
+    }
+  ],
+  "kicad_parse_verified": true,
+  "manifest_sha256": "05d6f0bf8be1e2edb99ff6532cedf902f5d9a390af59f77347bbf9412f3de125",
+  "parity_verified": true,
+  "review_renders": [
+    {
+      "path": "review-renders/pcb-top.png",
+      "sha256": "3877f9a1465683323d3b80ad91cec47c6d7fa2e3691e869de2cda2e7af5fd9fe"
+    },
+    {
+      "path": "review-renders/schematic-svg/sensor-Tank sensor, local 3.3 V and stored dry baseline.svg",
+      "sha256": "89f9c06ccbc8dd108d5bdff3c1b95b66ca19adfc90931083305d0ca590a33880"
+    },
+    {
+      "path": "review-renders/schematic-svg/sensor.svg",
+      "sha256": "93dea874f8b46cac91079d0343f4e67779d4a7c987515295db3a387f38fb3bf2"
+    },
+    {
+      "path": "review-renders/schematic.pdf",
+      "sha256": "e4848a27f2b2804255fd0793cc870e6092abb1fe8e97dc3bae6930f4cebaf781"
+    }
+  ],
+  "schema_version": 1,
+  "schematic_declared_differences": [],
+  "stage": "/private/tmp/crystal-shim-sensor-handoff/stillair-sensor.board.main-handoff-taex9t_r",
+  "staged_snapshot": "staged-kicad-snapshot.json",
+  "staged_snapshot_sha256": "33147972a48012fc2101484cd2270867e90dbf8231e2bd9052e46e9536bb3df0",
+  "tool_fingerprints": {
+    "bun": {
+      "path": "/Users/michael/.bun/bin/bun",
+      "returncode": 0,
+      "sha256": "1d77af7bfd811aebb7d37bec496a5eed14fe227ded3ab7866d2f39786e8107b6",
+      "version": "1.3.11"
+    },
+    "circuit_json_to_kicad": {
+      "code_sha256": "591171d865a2214467dc2273f0ebd17a980d46b701074a2fe9a0193093d6f787",
+      "package_sha256": "c7195f2f6459ca3df7cf51f92d7d21603ba31204ee4f4d490ac4fc8aa833600e",
+      "version": "0.0.205"
+    },
+    "kicad_cli": {
+      "path": "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
+      "returncode": 0,
+      "sha256": "852c180a8c923beb6173b54bd6cc0bd66714e52ebfdd451ef0e061224bc954f5",
+      "version": "10.0.5"
+    },
+    "kicad_python": {
+      "path": "/Users/michael/Code/crystal-shim/pcb/tools/kicad_python.sh",
+      "returncode": 0,
+      "sha256": "b79ad593b8744ede8f7c752c03300063cdbeb8e2beaca6a9a93ceb0bec7edb1d",
+      "version": "Python 3.9.13"
+    },
+    "tsci": {
+      "path": "/Users/michael/Code/crystal-shim/pcb/node_modules/tscircuit/cli.mjs",
+      "returncode": 0,
+      "sha256": "f4343ef47a49ba1ef342b82c8c3b2320f7b87d15af722ba1bc0e782622f7c65a",
+      "version": "0.0.2465"
+    }
+  },
+  "versions": {
+    "bun": "1.3.11",
+    "circuit_json_to_kicad": "0.0.205",
+    "node": "24.3.0",
+    "tscircuit": "0.0.2465"
+  }
+}

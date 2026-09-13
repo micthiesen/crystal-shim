@@ -24,7 +24,7 @@ import { applyControllerSchematicCleanupForInitialExport } from "./schematic-cle
 export function createControllerInitialGraphs(input: CircuitJson) {
   const json = prepareFootprintOriginsForInitialExport(
     prepareUsbForInitialExport(input, ["J4"]),
-    ["U1", "J1", "J2", "J3", "D4", "SW1", "SW2", "SW3"],
+    ["U1", "J1", "J2", "J3", "J5", "J6", "J7", "J8", "J9", "D4", "SW1", "SW2", "SW3"],
   );
   // Preserve actual electrical labels instead of the converter's unconnected
   // custom power graphics. Four reviewed project PWR_FLAG annotations follow.
@@ -52,8 +52,8 @@ export function createControllerInitialGraphs(input: CircuitJson) {
     kicadSch: KicadSch;
     content: string;
   }[];
-  if (!Array.isArray(initialFiles) || initialFiles.length !== 8)
-    throw new Error("Controller initial hierarchy must have root plus seven sheets");
+  if (!Array.isArray(initialFiles) || initialFiles.length !== 10)
+    throw new Error("Controller initial hierarchy must have root plus nine sheets");
   const usbSheets = initialFiles.filter((file) =>
     file.kicadSch.symbols.some((symbol) =>
       symbol.properties.some((p) => p.key === "Reference" && p.value === "J4"),
@@ -65,7 +65,7 @@ export function createControllerInitialGraphs(input: CircuitJson) {
     json,
     initialFiles.map((file) => file.kicadSch),
   );
-  if (pinTypes.components !== 95)
+  if (pinTypes.components !== 113)
     throw new Error("Controller initial component count changed");
   const manifest = createControllerManifest(input);
   const sheets = initialFiles.map((file) => file.kicadSch);

@@ -1,3 +1,4 @@
+import { repairMainsSwitchWire } from "./switch-wire-initial-export";
 import type { CircuitJson } from "circuit-json";
 import { CircuitJsonToKicadSchConverter } from "circuit-json-to-kicad";
 import { KicadSch, KicadSym } from "kicadts";
@@ -55,13 +56,14 @@ export function createMainsInitialGraphs(input: CircuitJson) {
   )
     throw new Error("Mains initial hierarchy must have root plus three sheets");
   const sheets = files.map((f) => f.kicadSch);
-  if (applyMainsPinTypesForInitialExport(json, sheets).components !== 23)
+  if (applyMainsPinTypesForInitialExport(json, sheets).components !== 22)
     throw new Error("Mains initial component count changed");
   applyMainsProjectSymbolsForInitialExport(json, sheets, manifest);
   applyMainsFieldsForInitialExport(sheets, manifest);
   applyMainsSchematicCleanupForInitialExport(sheets, manifest);
   addMainsPowerFlagsForInitialExport(sheets, manifest);
   const gridded = gridInitialSchematics(sheets);
+  repairMainsSwitchWire(gridded.sheets);
   for (const [index, file] of files.entries()) {
     file.kicadSch = gridded.sheets[index]!;
     file.content = file.kicadSch.getString();

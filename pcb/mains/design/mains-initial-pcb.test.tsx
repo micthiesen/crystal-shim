@@ -5,7 +5,7 @@ import MainsCircuit from "./mains.circuit";
 import { mainsMountingHoles, mainsPlacements } from "./placements";
 import { createMainsInitialPcb } from "./mains-initial-pcb";
 
-test("complete initial mains graph combines datums, PTH mask, J5 shape and U2 anchors", async () => {
+test("complete initial mains graph combines datums, PTH mask, connector shapes and buck nets", async () => {
   const circuit = new Circuit();
   circuit.add(<MainsCircuit />);
   await circuit.renderUntilSettled();
@@ -14,12 +14,12 @@ test("complete initial mains graph combines datums, PTH mask, J5 shape and U2 an
   // Serialization is in memory only. This does not create or adopt native files.
   const board = parseKicadPcb(createMainsInitialPcb(input).getString());
   expect(input).toEqual(unchanged);
-  expect(board.footprints).toHaveLength(27);
+  expect(board.footprints).toHaveLength(26);
   const pads = board.footprints.flatMap((fp) => fp.fpPads);
-  expect(pads.filter((p) => p.number)).toHaveLength(81);
-  expect(pads.filter((p) => p.padType === "np_thru_hole")).toHaveLength(5);
-  expect(pads.filter((p) => p.padType === "thru_hole")).toHaveLength(49);
-  expect(pads.filter((p) => p.padType === "smd")).toHaveLength(32);
+  expect(pads.filter((p) => p.number)).toHaveLength(75);
+  expect(pads.filter((p) => p.padType === "np_thru_hole")).toHaveLength(6);
+  expect(pads.filter((p) => p.padType === "thru_hole")).toHaveLength(53);
+  expect(pads.filter((p) => p.padType === "smd")).toHaveLength(22);
   for (const pad of pads) {
     if (pad.number) expect(pad.solderMaskMargin).toBe(0.05);
     if (pad.padType !== "smd") {
@@ -59,21 +59,18 @@ test("complete initial mains graph combines datums, PTH mask, J5 shape and U2 an
   expect(first.shape).toBe("roundrect");
   expect(first.roundrectRatio).toBeCloseTo(0.25 / 1.5, 7);
   expect(first.net?.name).toBe("V5_PSU");
-  const efuse = footprint("U2");
-  for (const [number, x, y] of [
-    ["1", -0.9, -0.7],
-    ["4", -0.9, 0.7],
-    ["7", 0.9, 0.7],
-    ["10", 0.9, -0.7],
-  ] as const) {
-    const pad = efuse.fpPads.find((p) => p.number === number)!;
-    expect(pad.shape).toBe("custom");
-    expect(pad.at?.x).toBe(x);
-    expect(pad.at?.y).toBe(y);
-  }
-  expect(efuse.fpPads.find((p) => p.number === "5")!.net?.name).toBe("V5_RAW");
-  expect(efuse.fpPads.find((p) => p.number === "6")!.net?.name).toBe("V5_PSU");
-  expect(efuse.fpPads.find((p) => p.number === "8")!.net?.name).toBe("GND_ISO");
+  const buck = footprint("U2");
+  expect(buck.fpPads).toHaveLength(6);
+  const buckNets = {
+    "1": "V5_PSU",
+    "2": "V12_RAW",
+    "3": "V12_RAW",
+    "4": "GND_ISO",
+    "5": "BUCK5_SW",
+    "6": "BUCK5_BST",
+  };
+  for (const pad of buck.fpPads)
+    expect(pad.net?.name).toBe(buckNets[pad.number as keyof typeof buckNets]);
   const mov = footprint("RV1");
   const slot = mov.fpPads.find((p) => p.number === "2")!;
   expect(slot.net?.name).toBe("AC_N");

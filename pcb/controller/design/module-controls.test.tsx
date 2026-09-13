@@ -76,6 +76,13 @@ test("module controls preserve GPIO allocation, separate buttons and current-lim
     SENSOR_SCL: ["U1.17"],
     USB_D_N: ["U1.13"],
     USB_D_P: ["U1.14"],
+    PUMP_TRANSFER: ["U1.9"],
+    PUMP_CHLORINE: ["U1.27"],
+    PUMP_DECHLOR: ["U1.26"],
+    ACCESSORY_INPUT1: ["U1.4"],
+    ACCESSORY_INPUT2: ["U1.5"],
+    RESERVOIR_SDA: ["U1.6"],
+    RESERVOIR_SCL: ["U1.7"],
     UART0_RX: ["U1.24"],
     UART0_TX: ["U1.25"],
   };
@@ -93,7 +100,7 @@ test("module controls preserve GPIO allocation, separate buttons and current-lim
     )
     .map((e) => e.pin_number)
     .sort((a, b) => a! - b!);
-  expect(unused).toEqual([4, 5, 6, 7, 9, 22, 23, 26, 27]);
+  expect(unused).toEqual([22, 23]);
   for (const [ref, ohms] of [
     ["R50", 10000],
     ["R51", 10000],

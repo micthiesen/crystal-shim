@@ -1,0 +1,2790 @@
+{
+  "augmentation_sha256": "d24f1bc12bf01befd375a3a626cd5df47b166f37a08701a710ccaaa60c36a2c7",
+  "authorized_kicad_owned_changes": [
+    "graphics",
+    "rules",
+    "zones"
+  ],
+  "blocked": false,
+  "blockers": [],
+  "board_id": "mains.board.main",
+  "changes": [
+    {
+      "after": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -73,
+        "y_mm": -42
+      },
+      "before": {
+        "rotation_deg": 0,
+        "side": "front",
+        "x_mm": -76,
+        "y_mm": -42
+      },
+      "kind": "placement",
+      "reason": "moves or rotates a footprint",
+      "risk": "medium",
+      "target": "mains.component.j1"
+    },
+    {
+      "after": {
+        "coordinate_system": "center-x-right-y-up",
+        "height_mm": 110,
+        "holes": [
+          {
+            "drill_mm": 3.2,
+            "ref": "H1",
+            "stable_id": "mains.hole.h1",
+            "x_mm": -85,
+            "y_mm": 50
+          },
+          {
+            "drill_mm": 3.2,
+            "ref": "H2",
+            "stable_id": "mains.hole.h2",
+            "x_mm": 85,
+            "y_mm": 50
+          },
+          {
+            "drill_mm": 3.2,
+            "ref": "H3",
+            "stable_id": "mains.hole.h3",
+            "x_mm": -85,
+            "y_mm": -50
+          },
+          {
+            "drill_mm": 3.2,
+            "ref": "H4",
+            "stable_id": "mains.hole.h4",
+            "x_mm": 85,
+            "y_mm": -50
+          },
+          {
+            "drill_mm": 3,
+            "ref": "J5",
+            "stable_id": "mains.hole.j5.locator-1",
+            "x_mm": 83.32,
+            "y_mm": 1.9999999999999991
+          },
+          {
+            "drill_mm": 3,
+            "ref": "J6",
+            "stable_id": "mains.hole.j6.locator-1",
+            "x_mm": 83.32,
+            "y_mm": 29
+          }
+        ],
+        "kicad_origin_mm": [
+          100,
+          100
+        ],
+        "layer_count": 2,
+        "outline": {
+          "center_mm": [
+            0,
+            0
+          ],
+          "height_mm": 110,
+          "kind": "rectangle",
+          "width_mm": 180
+        },
+        "specs": {
+          "assembly_sides": [
+            "front"
+          ],
+          "compiled_board_sha256": "ff3d157f9e35d1af37c0e2854c6915277dee9c3d34171be5b3b50fb278cde47c",
+          "material": "FR4",
+          "thickness_mm": 1.6,
+          "unowned_physical_geometry_sha256": "b3e62d9952958d681e48c59e9b21a49c0f354d98a3cb6df4a3bac682e48b13d7"
+        },
+        "stable_id": "mains.board.main",
+        "width_mm": 180
+      },
+      "before": {
+        "coordinate_system": "center-x-right-y-up",
+        "height_mm": 110,
+        "holes": [
+          {
+            "drill_mm": 3.2,
+            "ref": "H1",
+            "stable_id": "mains.hole.h1",
+            "x_mm": -85,
+            "y_mm": 50
+          },
+          {
+            "drill_mm": 3.2,
+            "ref": "H2",
+            "stable_id": "mains.hole.h2",
+            "x_mm": 85,
+            "y_mm": 50
+          },
+          {
+            "drill_mm": 3.2,
+            "ref": "H3",
+            "stable_id": "mains.hole.h3",
+            "x_mm": -85,
+            "y_mm": -50
+          },
+          {
+            "drill_mm": 3.2,
+            "ref": "H4",
+            "stable_id": "mains.hole.h4",
+            "x_mm": 85,
+            "y_mm": -50
+          },
+          {
+            "drill_mm": 3,
+            "ref": "J5",
+            "stable_id": "mains.hole.j5.locator-1",
+            "x_mm": 83.32,
+            "y_mm": 1.9999999999999991
+          },
+          {
+            "drill_mm": 3,
+            "ref": "J6",
+            "stable_id": "mains.hole.j6.locator-1",
+            "x_mm": 83.32,
+            "y_mm": 29
+          }
+        ],
+        "kicad_origin_mm": [
+          100,
+          100
+        ],
+        "layer_count": 2,
+        "outline": {
+          "center_mm": [
+            0,
+            0
+          ],
+          "height_mm": 110,
+          "kind": "rectangle",
+          "width_mm": 180
+        },
+        "specs": {
+          "assembly_sides": [
+            "front"
+          ],
+          "compiled_board_sha256": "ff3d157f9e35d1af37c0e2854c6915277dee9c3d34171be5b3b50fb278cde47c",
+          "material": "FR4",
+          "thickness_mm": 1.6,
+          "unowned_physical_geometry_sha256": "64229006d67b934284cb51ec225e4003d9f934648af1d28b996214416b9436da"
+        },
+        "stable_id": "mains.board.main",
+        "width_mm": 180
+      },
+      "kind": "board_spec",
+      "reason": "changes board-owned geometry or fabrication constraints",
+      "risk": "high",
+      "target": "mains.board.main"
+    },
+    {
+      "after": {
+        "board_id": "mains.board.main",
+        "operations": [
+          {
+            "id": "mains.augment.coordinates",
+            "kind": "coordinate_transform",
+            "owner": "kicad",
+            "params": {
+              "kicad_center_mm": [
+                100,
+                100
+              ],
+              "tscircuit_center_mm": [
+                0,
+                0
+              ],
+              "x_axis": "same",
+              "y_axis": "invert"
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.final-silkscreen",
+            "kind": "silkscreen",
+            "owner": "kicad",
+            "params": {
+              "requirements": [
+                "Mark primary/isolated regions, J1 T2A fused input, F3 T1A branch/J2 filter LINE, J3 filter LOAD, J4 switched pump, J5 5V/coil and J6 12V motor feed.",
+                "Show pin1, line/neutral, D1 cathode and positive/return. Label F2 3A and both internal 12V harness ends.",
+                "Unused connector cavities are not PE; keep text clear of copper and holes."
+              ],
+              "status": "Declared; native application and saved evidence pending.",
+              "verification": "Complete front/back render and final Gerber/assembly inspection; native silk/text DRC."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.isolation-and-mounts",
+            "kind": "keepout",
+            "owner": "kicad",
+            "params": {
+              "mount_hardware_radius_allocation_mm": 4,
+              "mount_hole_mm": 3.2,
+              "mounts": [
+                "H1",
+                "H2",
+                "H3",
+                "H4"
+              ],
+              "rectangle_coordinates": "Each [xmin,ymin,xmax,ymax] is source +X right/+Y up, centre (0,0). Apply all four on F.Cu/B.Cu; tracks/vias/fills/pads prohibited, qualified component bodies allowed.",
+              "requirements": [
+                "Maintain 8 mm primary-to-isolated separation around U1 and K1 and all connector metal.",
+                "Preserve source holes/outline; confirm the enlarged enclosure and both J5/J6 partition portals.",
+                "Keep filter LINE and LOAD harnesses apart."
+              ],
+              "scope": "All copper layers and full assembled occupied metal. The boundary turns from the IRM primary side toward relay contact/coil separation; no obsolete fixed horizontal strip.",
+              "source_copper_free_rectangles_mm": [
+                [
+                  -20,
+                  -12,
+                  -12,
+                  55
+                ],
+                [
+                  -20,
+                  -12,
+                  46,
+                  -4
+                ],
+                [
+                  38,
+                  -35,
+                  46,
+                  -4
+                ],
+                [
+                  38,
+                  -35,
+                  90,
+                  -27
+                ]
+              ],
+              "status": "Applied: four strict F.Cu/B.Cu insulation areas plus four 8x8 mm insulating-mount routing areas. Mount areas allow existing NPTH pads; source body envelopes and final DRC verified.",
+              "verification": "Native all-layer copper/occupied-metal and enlarged enclosure fit review."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.mains-separation",
+            "kind": "custom_rule",
+            "owner": "kicad",
+            "params": {
+              "basis": "Conservative project constraints in docs/design/mains-design-basis.md, not a determination of the applicable product standard. Material group, pollution degree, overvoltage category, altitude and actual assembled geometry require review before fabrication.",
+              "distinct_primary_clearance_mm": 3.2,
+              "distinct_primary_creepage_mm": 3.2,
+              "isolated_nets": [
+                "V12_RAW",
+                "V12_MOTOR",
+                "V5_PSU",
+                "GND_ISO",
+                "COIL_DRAIN",
+                "BUCK5_SW",
+                "BUCK5_BST"
+              ],
+              "isolated_unconnected_pins": [],
+              "primary_nets": [
+                "AC_L_FUSED",
+                "FILTER_LINE_L",
+                "AC_N",
+                "PUMP_L_FILTERED",
+                "PUMP_N_FILTERED",
+                "PUMP_L_SW",
+                "SNUBBER_RC"
+              ],
+              "primary_to_isolated_clearance_mm": 8,
+              "primary_to_isolated_creepage_mm": 8,
+              "primary_unconnected_pins": [
+                "J2.3",
+                "J3.3",
+                "J3.4",
+                "J4.3",
+                "J4.4",
+                "J4.5",
+                "J4.6"
+              ],
+              "requirements": [
+                "Classify every unused blade and both solder tails as real primary metal, even though it has no net ID. Unused secondary pins remain isolated-region conductors.",
+                "Enforce across both copper layers, vias, pads, fills and exposed/assembled solder; do not rely solely on same-layer net-class DRC.",
+                "Include primary-to-hardware/controller/cable conductors and shortest paths around edges/holes. No soldermask or coating insulation credit.",
+                "U1 crosses the boundary only through its qualified input/output construction; K1 only through qualified coil/contact construction. Never route across the barrier beneath them.",
+                "Any needed isolation slot changes source-owned outline/hole geometry and requires a source revision/ECO, not an undeclared native cut."
+              ],
+              "status": "Applied through KiCad Custom Rules GUI; syntax checked and final all-severity DRC passed. Exact conditions are in custom-routing-rules.txt; no footprint exceptions.",
+              "verification": "Native rule/net readback plus explicit complete-conductor clearance/creepage and 3D assembly review; no nominal placement screen substitutes for these measurements."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.manufacturing-delivery",
+            "kind": "fabrication_note",
+            "owner": "kicad",
+            "params": {
+              "category": "fabrication_export",
+              "finish": "ENIG",
+              "mask": "green",
+              "silkscreen": "white",
+              "status": "Declared; native application and saved evidence pending.",
+              "text": "Release all final boards together through project manufacture gates. Include exact assembly/BOM/CPL, stencil, drills, harness and revised enclosure interfaces. F1 inlet/filter/PE are offboard; F2 motor and F3 branch fuses are on the mains PCB. No order or energizing implied.",
+              "verification": "Project kicad-manufacture gates and independent CAM/assembly review; final sensor, load, temperature and interference commissioning remains separate."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.native-footprints",
+            "kind": "footprint_override",
+            "owner": "kicad",
+            "params": {
+              "library": "CrystalShim_Mains",
+              "mapping": "Mains_<exact manifest reference>",
+              "reason": "Preserve source-derived physical geometry through native FootprintSave/FootprintLoad; no stock substitution.",
+              "scope": "All 26 manifest components: 22 electrical and H1-H4",
+              "status": "Declared; native application and saved evidence pending.",
+              "verification": "Exact source/native geometry, all 75 numbered lands (53 PTH/22 SMT), six NPTHs, nets and poses; register source-derived library through guarded Konnect."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.npth-clearance",
+            "kind": "custom_rule",
+            "owner": "kicad",
+            "params": {
+              "application": "apply-mains-initial-rules.py creates mains.kicad_pro with native m_HoleClearance only.",
+              "basis": "JLC rigid-board NPTH-to-copper capability; stricter mains/hardware separation still controls.",
+              "minimum_hole_to_copper_mm": 0.2,
+              "status": "Applied natively; saved 0.20 mm hole-to-copper rule verified with final native DRC.",
+              "verification": "Native settings and project-file readback, full initial DRC; retain J5 locator and H1-H4."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.production-routing",
+            "kind": "fabrication_note",
+            "owner": "kicad",
+            "params": {
+              "allowed_initial_drc_ignored_checks": [
+                "footprint_filters_mismatch",
+                "footprint_type_mismatch",
+                "missing_courtyard",
+                "track_not_centered_on_via",
+                "tuning_profile_track_geometries"
+              ],
+              "category": "routing",
+              "status": "Declared; native application and saved evidence pending.",
+              "text": "KiCad owns tracks/vias/fills. Unconnected items are permitted only for the initial unrouted stage. No copper, hole, slot, library or insulation finding is waived.",
+              "verification": "Before fabrication enable relevant checks or justify individual categories; require zero unconnected items, exact source parity and clean DRC, then inspect actual clearances and return paths."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.pth-mask-and-slot",
+            "kind": "mask_override",
+            "owner": "kicad",
+            "params": {
+              "numbered_pad_mask_margin_mm": 0.05,
+              "requirements": [
+                "Preserve U1.1/K1.1/D1.1 square lands, paired Sabre tails, J5/J6 rounded pin1 and locator geometry.",
+                "All 53 PTH and six NPTH remain free of paste; 22 SMT masks retain 0.05 mm allowance.",
+                "Preserve RV1 plated slot and confirm final 3.2 mm different-net margin after fabrication tolerances."
+              ],
+              "rv1_plated_slot_drill_mm": [
+                3.7,
+                1.3
+              ],
+              "rv1_slot_copper_mm": [
+                5.3,
+                2.9
+              ],
+              "status": "Declared; native application and saved evidence pending.",
+              "verification": "Saved pad shape/layer/drill/mask/paste and slot readback, native DRC plus fabrication CAM review."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.routing-classes",
+            "kind": "net_class",
+            "owner": "kicad",
+            "params": {
+              "buck_neck_width_mm": 0.3,
+              "input_mov_loop_width_mm": 3,
+              "isolated_clearance_mm": 0.15,
+              "isolated_control_nets": [],
+              "isolated_power_nets": [
+                "V12_RAW",
+                "V12_MOTOR",
+                "V5_PSU",
+                "GND_ISO",
+                "COIL_DRAIN",
+                "BUCK5_SW",
+                "BUCK5_BST"
+              ],
+              "isolated_power_spine_width_mm": 2,
+              "motor_feed_return_width_mm": 3,
+              "ordinary_via_diameter_mm": 0.6,
+              "ordinary_via_drill_mm": 0.3,
+              "primary_nets": [
+                "AC_L_FUSED",
+                "FILTER_LINE_L",
+                "AC_N",
+                "PUMP_L_FILTERED",
+                "PUMP_N_FILTERED",
+                "PUMP_L_SW",
+                "SNUBBER_RC"
+              ],
+              "primary_width_mm": 2,
+              "requirements": [
+                "Maintain the separate 8/3.2 mm isolation and primary rules.",
+                "Use short VIN bypass and SW-inductor-output-capacitor loops; FB senses after L1.",
+                "Join both Sabre tails; size F1/F3 branch routes and MOV loops for their real current and pulse duties.",
+                "Motor return joins U1 return without sharing the buck/logic return path."
+              ],
+              "status": "Applied through native API and read back: Primary 2 mm, PrimaryInput 3 mm, Motor 3 mm, LogicPower 2 mm, short buck Default 0.3 mm; primary clearance 3.2 mm, isolated 0.15 mm, ordinary vias 0.6/0.3 mm. No routing added.",
+              "verification": "Saved routes, net classes and current/return review."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.schematic-cleanup",
+            "kind": "schematic_cleanup",
+            "owner": "kicad",
+            "params": {
+              "allowed_initial_erc_ignored_checks": [
+                "footprint_filter",
+                "four_way_junction",
+                "simulation_model_issue",
+                "single_global_label"
+              ],
+              "allowed_initial_erc_types": [],
+              "allowed_initial_semantic_differences": [],
+              "requirements": [
+                "Preserve four sheets, 22 exact parts, 60 logical pins, 14 nets, 53 connected endpoints and seven unused Sabre NCs.",
+                "Register 22 per-reference symbols plus PWR_FLAG, preserving exact electrical types and fields. U2 AP63205 has six connected pins.",
+                "Only #FLG0201 at U1 AC_N and #FLG0202 at U1 AC_L_FUSED; exclude from physical/BOM outputs.",
+                "Preserve wire/label/pin/NC incidence and 1.27 mm grid; inspect every full page before clean native ERC."
+              ],
+              "status": "Applied native Description/unique NC synchronization and concise hierarchy titles; strict ERC and exact source/XML parity passed 2026-09-12.",
+              "verification": "Exact saved source/native XML parity and strict clean ERC with all categories enabled before routing; initial default ignored categories are not release waivers."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.secondary-copper",
+            "kind": "zone",
+            "owner": "kicad",
+            "params": {
+              "requirements": [
+                "Keep switch-node copper small; avoid sensor/harness coupling.",
+                "No ground/power fill crosses mains separation; no floating islands.",
+                "AP63205 has no exposed pad; do not apply the removed TPS259470 split-land/via bank."
+              ],
+              "scope": "Isolated region only, grounded copper on both layers with ordinary through vias as useful.",
+              "status": "Declared; routing pending.",
+              "verification": "Native net/layer/clearance and final-unit thermal review."
+            },
+            "target": {
+              "net_stable_id": "mains.net.gnd_iso"
+            }
+          },
+          {
+            "id": "mains.augment.stackup",
+            "kind": "stackup",
+            "owner": "kicad",
+            "params": {
+              "allocation_status": "1 oz outer copper, ENIG and nominal 1.6 mm are selected process allocations supported by published fabricator capabilities. Actual construction, finished tolerances and thermal/insulation acceptance remain open.",
+              "copper_weight_oz": 1,
+              "design_basis": "docs/design/mains-thermal-stencil.md",
+              "layer_count": 2,
+              "layers": [
+                "F.Cu: primary and isolated circuits in separate regions",
+                "B.Cu: separate primary routes and isolated power/return spreading"
+              ],
+              "requirements": [
+                "FR-4 with flame/material declarations and reviewed dielectric construction; no inferred CTI/material group.",
+                "Do not copy the controller four-layer stack or impedance template. No controlled-impedance net exists on this board.",
+                "Do not treat mask thickness/loss/material defaults as qualified fabrication data."
+              ],
+              "status": "Applied and read back 2026-09-12: two layers; 0.035 mm outer copper, 1.51 mm FR4 core and 0.01 mm masks; stack/header both 1.6 mm; ENIG. Selected nominal construction, not physical fabrication evidence.",
+              "thickness_basis": "1.6 mm is source/order nominal. Native header must equal the actual saved physical stack sum; record vendor construction and finished thickness limits before fabrication.",
+              "thickness_mm": 1.6,
+              "verification": "Saved stack/header/layer readback, vendor construction and insulation/thermal review."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.stencil",
+            "kind": "paste_override",
+            "owner": "kicad",
+            "params": {
+              "requirements": [
+                "No paste on U1,K1,J1-J6,F3,D1,R1,C1,RV1,H1-H4 or locators.",
+                "Do not apply the obsolete TPS259470 twelve-aperture contract.",
+                "Inspect final aperture unions and mask webs against actual assembler process."
+              ],
+              "scope": "Ordinary U2 TSOT26, L1, F2 and C2-C7 SMT apertures.",
+              "status": "Starting process allocation; final assembly review pending.",
+              "stencil_thickness_mm": 0.1,
+              "verification": "Final stencil CAM/assembly inspection."
+            },
+            "target": {}
+          }
+        ],
+        "schema_version": 1
+      },
+      "before": {
+        "board_id": "mains.board.main",
+        "operations": [
+          {
+            "id": "mains.augment.coordinates",
+            "kind": "coordinate_transform",
+            "owner": "kicad",
+            "params": {
+              "kicad_center_mm": [
+                100,
+                100
+              ],
+              "tscircuit_center_mm": [
+                0,
+                0
+              ],
+              "x_axis": "same",
+              "y_axis": "invert"
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.final-silkscreen",
+            "kind": "silkscreen",
+            "owner": "kicad",
+            "params": {
+              "requirements": [
+                "Mark primary/isolated regions, J1 T2A fused input, F3 T1A branch/J2 filter LINE, J3 filter LOAD, J4 switched pump, J5 5V/coil and J6 12V motor feed.",
+                "Show pin1, line/neutral, D1 cathode and positive/return. Label F2 3A and both internal 12V harness ends.",
+                "Unused connector cavities are not PE; keep text clear of copper and holes."
+              ],
+              "status": "Declared; native application and saved evidence pending.",
+              "verification": "Complete front/back render and final Gerber/assembly inspection; native silk/text DRC."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.isolation-and-mounts",
+            "kind": "keepout",
+            "owner": "kicad",
+            "params": {
+              "mount_hardware_radius_allocation_mm": 4,
+              "mount_hole_mm": 3.2,
+              "mounts": [
+                "H1",
+                "H2",
+                "H3",
+                "H4"
+              ],
+              "rectangle_coordinates": "Each [xmin,ymin,xmax,ymax] is source +X right/+Y up, centre (0,0). Apply all four on F.Cu/B.Cu; tracks/vias/fills/pads prohibited, qualified component bodies allowed.",
+              "requirements": [
+                "Maintain 8 mm primary-to-isolated separation around U1 and K1 and all connector metal.",
+                "Preserve source holes/outline; confirm the enlarged enclosure and both J5/J6 partition portals.",
+                "Keep filter LINE and LOAD harnesses apart."
+              ],
+              "scope": "All copper layers and full assembled occupied metal. The boundary turns from the IRM primary side toward relay contact/coil separation; no obsolete fixed horizontal strip.",
+              "source_copper_free_rectangles_mm": [
+                [
+                  -20,
+                  -12,
+                  -12,
+                  55
+                ],
+                [
+                  -20,
+                  -12,
+                  46,
+                  -4
+                ],
+                [
+                  38,
+                  -35,
+                  46,
+                  -4
+                ],
+                [
+                  38,
+                  -35,
+                  90,
+                  -27
+                ]
+              ],
+              "status": "Declared; native application pending.",
+              "verification": "Native all-layer copper/occupied-metal and enlarged enclosure fit review."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.mains-separation",
+            "kind": "custom_rule",
+            "owner": "kicad",
+            "params": {
+              "basis": "Conservative project constraints in docs/design/mains-design-basis.md, not a determination of the applicable product standard. Material group, pollution degree, overvoltage category, altitude and actual assembled geometry require review before fabrication.",
+              "distinct_primary_clearance_mm": 3.2,
+              "distinct_primary_creepage_mm": 3.2,
+              "isolated_nets": [
+                "V12_RAW",
+                "V12_MOTOR",
+                "V5_PSU",
+                "GND_ISO",
+                "COIL_DRAIN",
+                "BUCK5_SW",
+                "BUCK5_BST"
+              ],
+              "isolated_unconnected_pins": [],
+              "primary_nets": [
+                "AC_L_FUSED",
+                "FILTER_LINE_L",
+                "AC_N",
+                "PUMP_L_FILTERED",
+                "PUMP_N_FILTERED",
+                "PUMP_L_SW",
+                "SNUBBER_RC"
+              ],
+              "primary_to_isolated_clearance_mm": 8,
+              "primary_to_isolated_creepage_mm": 8,
+              "primary_unconnected_pins": [
+                "J2.3",
+                "J3.3",
+                "J3.4",
+                "J4.3",
+                "J4.4",
+                "J4.5",
+                "J4.6"
+              ],
+              "requirements": [
+                "Classify every unused blade and both solder tails as real primary metal, even though it has no net ID. Unused secondary pins remain isolated-region conductors.",
+                "Enforce across both copper layers, vias, pads, fills and exposed/assembled solder; do not rely solely on same-layer net-class DRC.",
+                "Include primary-to-hardware/controller/cable conductors and shortest paths around edges/holes. No soldermask or coating insulation credit.",
+                "U1 crosses the boundary only through its qualified input/output construction; K1 only through qualified coil/contact construction. Never route across the barrier beneath them.",
+                "Any needed isolation slot changes source-owned outline/hole geometry and requires a source revision/ECO, not an undeclared native cut."
+              ],
+              "status": "Declared; native application and saved evidence pending.",
+              "verification": "Native rule/net readback plus explicit complete-conductor clearance/creepage and 3D assembly review; no nominal placement screen substitutes for these measurements."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.manufacturing-delivery",
+            "kind": "fabrication_note",
+            "owner": "kicad",
+            "params": {
+              "category": "fabrication_export",
+              "finish": "ENIG",
+              "mask": "green",
+              "silkscreen": "white",
+              "status": "Declared; native application and saved evidence pending.",
+              "text": "Release all final boards together through project manufacture gates. Include exact assembly/BOM/CPL, stencil, drills, harness and revised enclosure interfaces. F1 inlet/filter/PE are offboard; F2 motor and F3 branch fuses are on the mains PCB. No order or energizing implied.",
+              "verification": "Project kicad-manufacture gates and independent CAM/assembly review; final sensor, load, temperature and interference commissioning remains separate."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.native-footprints",
+            "kind": "footprint_override",
+            "owner": "kicad",
+            "params": {
+              "library": "CrystalShim_Mains",
+              "mapping": "Mains_<exact manifest reference>",
+              "reason": "Preserve source-derived physical geometry through native FootprintSave/FootprintLoad; no stock substitution.",
+              "scope": "All 26 manifest components: 22 electrical and H1-H4",
+              "status": "Declared; native application and saved evidence pending.",
+              "verification": "Exact source/native geometry, all 75 numbered lands (53 PTH/22 SMT), six NPTHs, nets and poses; register source-derived library through guarded Konnect."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.npth-clearance",
+            "kind": "custom_rule",
+            "owner": "kicad",
+            "params": {
+              "application": "apply-mains-initial-rules.py creates mains.kicad_pro with native m_HoleClearance only.",
+              "basis": "JLC rigid-board NPTH-to-copper capability; stricter mains/hardware separation still controls.",
+              "minimum_hole_to_copper_mm": 0.2,
+              "status": "Declared; native application and saved evidence pending.",
+              "verification": "Native settings and project-file readback, full initial DRC; retain J5 locator and H1-H4."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.production-routing",
+            "kind": "fabrication_note",
+            "owner": "kicad",
+            "params": {
+              "allowed_initial_drc_ignored_checks": [
+                "footprint_filters_mismatch",
+                "footprint_type_mismatch",
+                "missing_courtyard",
+                "track_not_centered_on_via",
+                "tuning_profile_track_geometries"
+              ],
+              "category": "routing",
+              "status": "Declared; native application and saved evidence pending.",
+              "text": "KiCad owns tracks/vias/fills. Unconnected items are permitted only for the initial unrouted stage. No copper, hole, slot, library or insulation finding is waived.",
+              "verification": "Before fabrication enable relevant checks or justify individual categories; require zero unconnected items, exact source parity and clean DRC, then inspect actual clearances and return paths."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.pth-mask-and-slot",
+            "kind": "mask_override",
+            "owner": "kicad",
+            "params": {
+              "numbered_pad_mask_margin_mm": 0.05,
+              "requirements": [
+                "Preserve U1.1/K1.1/D1.1 square lands, paired Sabre tails, J5/J6 rounded pin1 and locator geometry.",
+                "All 53 PTH and six NPTH remain free of paste; 22 SMT masks retain 0.05 mm allowance.",
+                "Preserve RV1 plated slot and confirm final 3.2 mm different-net margin after fabrication tolerances."
+              ],
+              "rv1_plated_slot_drill_mm": [
+                3.7,
+                1.3
+              ],
+              "rv1_slot_copper_mm": [
+                5.3,
+                2.9
+              ],
+              "status": "Declared; native application and saved evidence pending.",
+              "verification": "Saved pad shape/layer/drill/mask/paste and slot readback, native DRC plus fabrication CAM review."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.routing-classes",
+            "kind": "net_class",
+            "owner": "kicad",
+            "params": {
+              "buck_neck_width_mm": 0.3,
+              "input_mov_loop_width_mm": 3,
+              "isolated_clearance_mm": 0.15,
+              "isolated_control_nets": [],
+              "isolated_power_nets": [
+                "V12_RAW",
+                "V12_MOTOR",
+                "V5_PSU",
+                "GND_ISO",
+                "COIL_DRAIN",
+                "BUCK5_SW",
+                "BUCK5_BST"
+              ],
+              "isolated_power_spine_width_mm": 2,
+              "motor_feed_return_width_mm": 3,
+              "ordinary_via_diameter_mm": 0.6,
+              "ordinary_via_drill_mm": 0.3,
+              "primary_nets": [
+                "AC_L_FUSED",
+                "FILTER_LINE_L",
+                "AC_N",
+                "PUMP_L_FILTERED",
+                "PUMP_N_FILTERED",
+                "PUMP_L_SW",
+                "SNUBBER_RC"
+              ],
+              "primary_width_mm": 2,
+              "requirements": [
+                "Maintain the separate 8/3.2 mm isolation and primary rules.",
+                "Use short VIN bypass and SW-inductor-output-capacitor loops; FB senses after L1.",
+                "Join both Sabre tails; size F1/F3 branch routes and MOV loops for their real current and pulse duties.",
+                "Motor return joins U1 return without sharing the buck/logic return path."
+              ],
+              "status": "Starting layout allocations; native verification pending.",
+              "verification": "Saved routes, net classes and current/return review."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.schematic-cleanup",
+            "kind": "schematic_cleanup",
+            "owner": "kicad",
+            "params": {
+              "allowed_initial_erc_ignored_checks": [
+                "footprint_filter",
+                "four_way_junction",
+                "simulation_model_issue",
+                "single_global_label"
+              ],
+              "allowed_initial_erc_types": [],
+              "allowed_initial_semantic_differences": [],
+              "requirements": [
+                "Preserve four sheets, 22 exact parts, 60 logical pins, 14 nets, 53 connected endpoints and seven unused Sabre NCs.",
+                "Register 22 per-reference symbols plus PWR_FLAG, preserving exact electrical types and fields. U2 AP63205 has six connected pins.",
+                "Only #FLG0201 at U1 AC_N and #FLG0202 at U1 AC_L_FUSED; exclude from physical/BOM outputs.",
+                "Preserve wire/label/pin/NC incidence and 1.27 mm grid; inspect every full page before clean native ERC."
+              ],
+              "status": "In-memory preparation implemented and reviewed; native registration/Save/parity/ERC/render verification pending.",
+              "verification": "Exact saved source/native XML parity and strict clean ERC with all categories enabled before routing; initial default ignored categories are not release waivers."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.secondary-copper",
+            "kind": "zone",
+            "owner": "kicad",
+            "params": {
+              "requirements": [
+                "Keep switch-node copper small; avoid sensor/harness coupling.",
+                "No ground/power fill crosses mains separation; no floating islands.",
+                "AP63205 has no exposed pad; do not apply the removed TPS259470 split-land/via bank."
+              ],
+              "scope": "Isolated region only, grounded copper on both layers with ordinary through vias as useful.",
+              "status": "Declared; routing pending.",
+              "verification": "Native net/layer/clearance and final-unit thermal review."
+            },
+            "target": {
+              "net_stable_id": "mains.net.gnd_iso"
+            }
+          },
+          {
+            "id": "mains.augment.stackup",
+            "kind": "stackup",
+            "owner": "kicad",
+            "params": {
+              "allocation_status": "1 oz outer copper, ENIG and nominal 1.6 mm are selected process allocations supported by published fabricator capabilities. Actual construction, finished tolerances and thermal/insulation acceptance remain open.",
+              "copper_weight_oz": 1,
+              "design_basis": "docs/design/mains-thermal-stencil.md",
+              "layer_count": 2,
+              "layers": [
+                "F.Cu: primary and isolated circuits in separate regions",
+                "B.Cu: separate primary routes and isolated power/return spreading"
+              ],
+              "requirements": [
+                "FR-4 with flame/material declarations and reviewed dielectric construction; no inferred CTI/material group.",
+                "Do not copy the controller four-layer stack or impedance template. No controlled-impedance net exists on this board.",
+                "Do not treat mask thickness/loss/material defaults as qualified fabrication data."
+              ],
+              "status": "Declared; native application and saved evidence pending.",
+              "thickness_basis": "1.6 mm is source/order nominal. Native header must equal the actual saved physical stack sum; record vendor construction and finished thickness limits before fabrication.",
+              "thickness_mm": 1.6,
+              "verification": "Saved stack/header/layer readback, vendor construction and insulation/thermal review."
+            },
+            "target": {}
+          },
+          {
+            "id": "mains.augment.stencil",
+            "kind": "paste_override",
+            "owner": "kicad",
+            "params": {
+              "requirements": [
+                "No paste on U1,K1,J1-J6,F3,D1,R1,C1,RV1,H1-H4 or locators.",
+                "Do not apply the obsolete TPS259470 twelve-aperture contract.",
+                "Inspect final aperture unions and mask webs against actual assembler process."
+              ],
+              "scope": "Ordinary U2 TSOT26, L1, F2 and C2-C7 SMT apertures.",
+              "status": "Starting process allocation; final assembly review pending.",
+              "stencil_thickness_mm": 0.1,
+              "verification": "Final stencil CAM/assembly inspection."
+            },
+            "target": {}
+          }
+        ],
+        "schema_version": 1
+      },
+      "kind": "augmentation",
+      "reason": "changes KiCad-owned augmentation instructions",
+      "risk": "high",
+      "target": "mains.board.main"
+    }
+  ],
+  "current_manifest_sha256": "2070c5bbba933171d358291e3bd58e6d5dd3fd11b42e6edd0f16744cb6c8dd00",
+  "drift": [],
+  "locked_manifest_sha256": "d640611bc915f723e7bf2d5d62124f30e85c1d70af2e536aae7943cce2212b2a",
+  "overall_risk": "high",
+  "routed": false,
+  "schema_version": 1,
+  "target_augmentation": {
+    "board_id": "mains.board.main",
+    "operations": [
+      {
+        "id": "mains.augment.coordinates",
+        "kind": "coordinate_transform",
+        "owner": "kicad",
+        "params": {
+          "kicad_center_mm": [
+            100,
+            100
+          ],
+          "tscircuit_center_mm": [
+            0,
+            0
+          ],
+          "x_axis": "same",
+          "y_axis": "invert"
+        },
+        "target": {}
+      },
+      {
+        "id": "mains.augment.final-silkscreen",
+        "kind": "silkscreen",
+        "owner": "kicad",
+        "params": {
+          "requirements": [
+            "Mark primary/isolated regions, J1 T2A fused input, F3 T1A branch/J2 filter LINE, J3 filter LOAD, J4 switched pump, J5 5V/coil and J6 12V motor feed.",
+            "Show pin1, line/neutral, D1 cathode and positive/return. Label F2 3A and both internal 12V harness ends.",
+            "Unused connector cavities are not PE; keep text clear of copper and holes."
+          ],
+          "status": "Declared; native application and saved evidence pending.",
+          "verification": "Complete front/back render and final Gerber/assembly inspection; native silk/text DRC."
+        },
+        "target": {}
+      },
+      {
+        "id": "mains.augment.isolation-and-mounts",
+        "kind": "keepout",
+        "owner": "kicad",
+        "params": {
+          "mount_hardware_radius_allocation_mm": 4,
+          "mount_hole_mm": 3.2,
+          "mounts": [
+            "H1",
+            "H2",
+            "H3",
+            "H4"
+          ],
+          "rectangle_coordinates": "Each [xmin,ymin,xmax,ymax] is source +X right/+Y up, centre (0,0). Apply all four on F.Cu/B.Cu; tracks/vias/fills/pads prohibited, qualified component bodies allowed.",
+          "requirements": [
+            "Maintain 8 mm primary-to-isolated separation around U1 and K1 and all connector metal.",
+            "Preserve source holes/outline; confirm the enlarged enclosure and both J5/J6 partition portals.",
+            "Keep filter LINE and LOAD harnesses apart."
+          ],
+          "scope": "All copper layers and full assembled occupied metal. The boundary turns from the IRM primary side toward relay contact/coil separation; no obsolete fixed horizontal strip.",
+          "source_copper_free_rectangles_mm": [
+            [
+              -20,
+              -12,
+              -12,
+              55
+            ],
+            [
+              -20,
+              -12,
+              46,
+              -4
+            ],
+            [
+              38,
+              -35,
+              46,
+              -4
+            ],
+            [
+              38,
+              -35,
+              90,
+              -27
+            ]
+          ],
+          "status": "Applied: four strict F.Cu/B.Cu insulation areas plus four 8x8 mm insulating-mount routing areas. Mount areas allow existing NPTH pads; source body envelopes and final DRC verified.",
+          "verification": "Native all-layer copper/occupied-metal and enlarged enclosure fit review."
+        },
+        "target": {}
+      },
+      {
+        "id": "mains.augment.mains-separation",
+        "kind": "custom_rule",
+        "owner": "kicad",
+        "params": {
+          "basis": "Conservative project constraints in docs/design/mains-design-basis.md, not a determination of the applicable product standard. Material group, pollution degree, overvoltage category, altitude and actual assembled geometry require review before fabrication.",
+          "distinct_primary_clearance_mm": 3.2,
+          "distinct_primary_creepage_mm": 3.2,
+          "isolated_nets": [
+            "V12_RAW",
+            "V12_MOTOR",
+            "V5_PSU",
+            "GND_ISO",
+            "COIL_DRAIN",
+            "BUCK5_SW",
+            "BUCK5_BST"
+          ],
+          "isolated_unconnected_pins": [],
+          "primary_nets": [
+            "AC_L_FUSED",
+            "FILTER_LINE_L",
+            "AC_N",
+            "PUMP_L_FILTERED",
+            "PUMP_N_FILTERED",
+            "PUMP_L_SW",
+            "SNUBBER_RC"
+          ],
+          "primary_to_isolated_clearance_mm": 8,
+          "primary_to_isolated_creepage_mm": 8,
+          "primary_unconnected_pins": [
+            "J2.3",
+            "J3.3",
+            "J3.4",
+            "J4.3",
+            "J4.4",
+            "J4.5",
+            "J4.6"
+          ],
+          "requirements": [
+            "Classify every unused blade and both solder tails as real primary metal, even though it has no net ID. Unused secondary pins remain isolated-region conductors.",
+            "Enforce across both copper layers, vias, pads, fills and exposed/assembled solder; do not rely solely on same-layer net-class DRC.",
+            "Include primary-to-hardware/controller/cable conductors and shortest paths around edges/holes. No soldermask or coating insulation credit.",
+            "U1 crosses the boundary only through its qualified input/output construction; K1 only through qualified coil/contact construction. Never route across the barrier beneath them.",
+            "Any needed isolation slot changes source-owned outline/hole geometry and requires a source revision/ECO, not an undeclared native cut."
+          ],
+          "status": "Applied through KiCad Custom Rules GUI; syntax checked and final all-severity DRC passed. Exact conditions are in custom-routing-rules.txt; no footprint exceptions.",
+          "verification": "Native rule/net readback plus explicit complete-conductor clearance/creepage and 3D assembly review; no nominal placement screen substitutes for these measurements."
+        },
+        "target": {}
+      },
+      {
+        "id": "mains.augment.manufacturing-delivery",
+        "kind": "fabrication_note",
+        "owner": "kicad",
+        "params": {
+          "category": "fabrication_export",
+          "finish": "ENIG",
+          "mask": "green",
+          "silkscreen": "white",
+          "status": "Declared; native application and saved evidence pending.",
+          "text": "Release all final boards together through project manufacture gates. Include exact assembly/BOM/CPL, stencil, drills, harness and revised enclosure interfaces. F1 inlet/filter/PE are offboard; F2 motor and F3 branch fuses are on the mains PCB. No order or energizing implied.",
+          "verification": "Project kicad-manufacture gates and independent CAM/assembly review; final sensor, load, temperature and interference commissioning remains separate."
+        },
+        "target": {}
+      },
+      {
+        "id": "mains.augment.native-footprints",
+        "kind": "footprint_override",
+        "owner": "kicad",
+        "params": {
+          "library": "CrystalShim_Mains",
+          "mapping": "Mains_<exact manifest reference>",
+          "reason": "Preserve source-derived physical geometry through native FootprintSave/FootprintLoad; no stock substitution.",
+          "scope": "All 26 manifest components: 22 electrical and H1-H4",
+          "status": "Declared; native application and saved evidence pending.",
+          "verification": "Exact source/native geometry, all 75 numbered lands (53 PTH/22 SMT), six NPTHs, nets and poses; register source-derived library through guarded Konnect."
+        },
+        "target": {}
+      },
+      {
+        "id": "mains.augment.npth-clearance",
+        "kind": "custom_rule",
+        "owner": "kicad",
+        "params": {
+          "application": "apply-mains-initial-rules.py creates mains.kicad_pro with native m_HoleClearance only.",
+          "basis": "JLC rigid-board NPTH-to-copper capability; stricter mains/hardware separation still controls.",
+          "minimum_hole_to_copper_mm": 0.2,
+          "status": "Applied natively; saved 0.20 mm hole-to-copper rule verified with final native DRC.",
+          "verification": "Native settings and project-file readback, full initial DRC; retain J5 locator and H1-H4."
+        },
+        "target": {}
+      },
+      {
+        "id": "mains.augment.production-routing",
+        "kind": "fabrication_note",
+        "owner": "kicad",
+        "params": {
+          "allowed_initial_drc_ignored_checks": [
+            "footprint_filters_mismatch",
+            "footprint_type_mismatch",
+            "missing_courtyard",
+            "track_not_centered_on_via",
+            "tuning_profile_track_geometries"
+          ],
+          "category": "routing",
+          "status": "Declared; native application and saved evidence pending.",
+          "text": "KiCad owns tracks/vias/fills. Unconnected items are permitted only for the initial unrouted stage. No copper, hole, slot, library or insulation finding is waived.",
+          "verification": "Before fabrication enable relevant checks or justify individual categories; require zero unconnected items, exact source parity and clean DRC, then inspect actual clearances and return paths."
+        },
+        "target": {}
+      },
+      {
+        "id": "mains.augment.pth-mask-and-slot",
+        "kind": "mask_override",
+        "owner": "kicad",
+        "params": {
+          "numbered_pad_mask_margin_mm": 0.05,
+          "requirements": [
+            "Preserve U1.1/K1.1/D1.1 square lands, paired Sabre tails, J5/J6 rounded pin1 and locator geometry.",
+            "All 53 PTH and six NPTH remain free of paste; 22 SMT masks retain 0.05 mm allowance.",
+            "Preserve RV1 plated slot and confirm final 3.2 mm different-net margin after fabrication tolerances."
+          ],
+          "rv1_plated_slot_drill_mm": [
+            3.7,
+            1.3
+          ],
+          "rv1_slot_copper_mm": [
+            5.3,
+            2.9
+          ],
+          "status": "Declared; native application and saved evidence pending.",
+          "verification": "Saved pad shape/layer/drill/mask/paste and slot readback, native DRC plus fabrication CAM review."
+        },
+        "target": {}
+      },
+      {
+        "id": "mains.augment.routing-classes",
+        "kind": "net_class",
+        "owner": "kicad",
+        "params": {
+          "buck_neck_width_mm": 0.3,
+          "input_mov_loop_width_mm": 3,
+          "isolated_clearance_mm": 0.15,
+          "isolated_control_nets": [],
+          "isolated_power_nets": [
+            "V12_RAW",
+            "V12_MOTOR",
+            "V5_PSU",
+            "GND_ISO",
+            "COIL_DRAIN",
+            "BUCK5_SW",
+            "BUCK5_BST"
+          ],
+          "isolated_power_spine_width_mm": 2,
+          "motor_feed_return_width_mm": 3,
+          "ordinary_via_diameter_mm": 0.6,
+          "ordinary_via_drill_mm": 0.3,
+          "primary_nets": [
+            "AC_L_FUSED",
+            "FILTER_LINE_L",
+            "AC_N",
+            "PUMP_L_FILTERED",
+            "PUMP_N_FILTERED",
+            "PUMP_L_SW",
+            "SNUBBER_RC"
+          ],
+          "primary_width_mm": 2,
+          "requirements": [
+            "Maintain the separate 8/3.2 mm isolation and primary rules.",
+            "Use short VIN bypass and SW-inductor-output-capacitor loops; FB senses after L1.",
+            "Join both Sabre tails; size F1/F3 branch routes and MOV loops for their real current and pulse duties.",
+            "Motor return joins U1 return without sharing the buck/logic return path."
+          ],
+          "status": "Applied through native API and read back: Primary 2 mm, PrimaryInput 3 mm, Motor 3 mm, LogicPower 2 mm, short buck Default 0.3 mm; primary clearance 3.2 mm, isolated 0.15 mm, ordinary vias 0.6/0.3 mm. No routing added.",
+          "verification": "Saved routes, net classes and current/return review."
+        },
+        "target": {}
+      },
+      {
+        "id": "mains.augment.schematic-cleanup",
+        "kind": "schematic_cleanup",
+        "owner": "kicad",
+        "params": {
+          "allowed_initial_erc_ignored_checks": [
+            "footprint_filter",
+            "four_way_junction",
+            "simulation_model_issue",
+            "single_global_label"
+          ],
+          "allowed_initial_erc_types": [],
+          "allowed_initial_semantic_differences": [],
+          "requirements": [
+            "Preserve four sheets, 22 exact parts, 60 logical pins, 14 nets, 53 connected endpoints and seven unused Sabre NCs.",
+            "Register 22 per-reference symbols plus PWR_FLAG, preserving exact electrical types and fields. U2 AP63205 has six connected pins.",
+            "Only #FLG0201 at U1 AC_N and #FLG0202 at U1 AC_L_FUSED; exclude from physical/BOM outputs.",
+            "Preserve wire/label/pin/NC incidence and 1.27 mm grid; inspect every full page before clean native ERC."
+          ],
+          "status": "Applied native Description/unique NC synchronization and concise hierarchy titles; strict ERC and exact source/XML parity passed 2026-09-12.",
+          "verification": "Exact saved source/native XML parity and strict clean ERC with all categories enabled before routing; initial default ignored categories are not release waivers."
+        },
+        "target": {}
+      },
+      {
+        "id": "mains.augment.secondary-copper",
+        "kind": "zone",
+        "owner": "kicad",
+        "params": {
+          "requirements": [
+            "Keep switch-node copper small; avoid sensor/harness coupling.",
+            "No ground/power fill crosses mains separation; no floating islands.",
+            "AP63205 has no exposed pad; do not apply the removed TPS259470 split-land/via bank."
+          ],
+          "scope": "Isolated region only, grounded copper on both layers with ordinary through vias as useful.",
+          "status": "Declared; routing pending.",
+          "verification": "Native net/layer/clearance and final-unit thermal review."
+        },
+        "target": {
+          "net_stable_id": "mains.net.gnd_iso"
+        }
+      },
+      {
+        "id": "mains.augment.stackup",
+        "kind": "stackup",
+        "owner": "kicad",
+        "params": {
+          "allocation_status": "1 oz outer copper, ENIG and nominal 1.6 mm are selected process allocations supported by published fabricator capabilities. Actual construction, finished tolerances and thermal/insulation acceptance remain open.",
+          "copper_weight_oz": 1,
+          "design_basis": "docs/design/mains-thermal-stencil.md",
+          "layer_count": 2,
+          "layers": [
+            "F.Cu: primary and isolated circuits in separate regions",
+            "B.Cu: separate primary routes and isolated power/return spreading"
+          ],
+          "requirements": [
+            "FR-4 with flame/material declarations and reviewed dielectric construction; no inferred CTI/material group.",
+            "Do not copy the controller four-layer stack or impedance template. No controlled-impedance net exists on this board.",
+            "Do not treat mask thickness/loss/material defaults as qualified fabrication data."
+          ],
+          "status": "Applied and read back 2026-09-12: two layers; 0.035 mm outer copper, 1.51 mm FR4 core and 0.01 mm masks; stack/header both 1.6 mm; ENIG. Selected nominal construction, not physical fabrication evidence.",
+          "thickness_basis": "1.6 mm is source/order nominal. Native header must equal the actual saved physical stack sum; record vendor construction and finished thickness limits before fabrication.",
+          "thickness_mm": 1.6,
+          "verification": "Saved stack/header/layer readback, vendor construction and insulation/thermal review."
+        },
+        "target": {}
+      },
+      {
+        "id": "mains.augment.stencil",
+        "kind": "paste_override",
+        "owner": "kicad",
+        "params": {
+          "requirements": [
+            "No paste on U1,K1,J1-J6,F3,D1,R1,C1,RV1,H1-H4 or locators.",
+            "Do not apply the obsolete TPS259470 twelve-aperture contract.",
+            "Inspect final aperture unions and mask webs against actual assembler process."
+          ],
+          "scope": "Ordinary U2 TSOT26, L1, F2 and C2-C7 SMT apertures.",
+          "status": "Starting process allocation; final assembly review pending.",
+          "stencil_thickness_mm": 0.1,
+          "verification": "Final stencil CAM/assembly inspection."
+        },
+        "target": {}
+      }
+    ],
+    "schema_version": 1
+  },
+  "target_manifest": {
+    "board": {
+      "coordinate_system": "center-x-right-y-up",
+      "height_mm": 110,
+      "holes": [
+        {
+          "drill_mm": 3.2,
+          "ref": "H1",
+          "stable_id": "mains.hole.h1",
+          "x_mm": -85,
+          "y_mm": 50
+        },
+        {
+          "drill_mm": 3.2,
+          "ref": "H2",
+          "stable_id": "mains.hole.h2",
+          "x_mm": 85,
+          "y_mm": 50
+        },
+        {
+          "drill_mm": 3.2,
+          "ref": "H3",
+          "stable_id": "mains.hole.h3",
+          "x_mm": -85,
+          "y_mm": -50
+        },
+        {
+          "drill_mm": 3.2,
+          "ref": "H4",
+          "stable_id": "mains.hole.h4",
+          "x_mm": 85,
+          "y_mm": -50
+        },
+        {
+          "drill_mm": 3,
+          "ref": "J5",
+          "stable_id": "mains.hole.j5.locator-1",
+          "x_mm": 83.32,
+          "y_mm": 1.9999999999999991
+        },
+        {
+          "drill_mm": 3,
+          "ref": "J6",
+          "stable_id": "mains.hole.j6.locator-1",
+          "x_mm": 83.32,
+          "y_mm": 29
+        }
+      ],
+      "kicad_origin_mm": [
+        100,
+        100
+      ],
+      "layer_count": 2,
+      "outline": {
+        "center_mm": [
+          0,
+          0
+        ],
+        "height_mm": 110,
+        "kind": "rectangle",
+        "width_mm": 180
+      },
+      "specs": {
+        "assembly_sides": [
+          "front"
+        ],
+        "compiled_board_sha256": "ff3d157f9e35d1af37c0e2854c6915277dee9c3d34171be5b3b50fb278cde47c",
+        "material": "FR4",
+        "thickness_mm": 1.6,
+        "unowned_physical_geometry_sha256": "b3e62d9952958d681e48c59e9b21a49c0f354d98a3cb6df4a3bac682e48b13d7"
+      },
+      "stable_id": "mains.board.main",
+      "width_mm": 180
+    },
+    "components": [
+      {
+        "fields": {
+          "datasheet_url": "https://www.tdk-electronics.tdk.com/inf/20/20/db/fc_2009/X2_B32921_928.pdf",
+          "manufacturer_part_number": "B32921C3473K000"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "69180bc4bfa4d165b549a1b7565d811739f71e3274ec7e48ca9deff0c92f0dcc",
+          "kicad": "CrystalShim_Mains:Mains_C1",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "a3b8c677dba6484a77834c477fe7124a0d9b90207be69674dd9b070856e6cd9c",
+          "tscircuit": "tscircuit:CrystalShim:B32921C3473K000_P10"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": -9,
+          "y_mm": -24
+        },
+        "ref": "C1",
+        "stable_id": "mains.component.c1",
+        "symbol": "CrystalShim_Mains:Mains_C1",
+        "value": "47nF"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+          "manufacturer_part_number": "GRM32ER71E226ME15L"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "ae04005733b773b0f2a9ae1431f16f57ea28d3dbdd9e53f8748aac70cdf3b72e",
+          "kicad": "CrystalShim_Mains:Mains_C2",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "ce337ee2769be5c50f4d6ed34ba189c16e4df1b85930f779004da80f5e53cf57",
+          "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow"
+        },
+        "placement": {
+          "rotation_deg": 90,
+          "side": "front",
+          "x_mm": 23,
+          "y_mm": 18
+        },
+        "ref": "C2",
+        "stable_id": "mains.component.c2",
+        "symbol": "CrystalShim_Mains:Mains_C2",
+        "value": "22uF"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+          "manufacturer_part_number": "GRM32ER71E226ME15L"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "ae04005733b773b0f2a9ae1431f16f57ea28d3dbdd9e53f8748aac70cdf3b72e",
+          "kicad": "CrystalShim_Mains:Mains_C3",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "ce337ee2769be5c50f4d6ed34ba189c16e4df1b85930f779004da80f5e53cf57",
+          "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow"
+        },
+        "placement": {
+          "rotation_deg": 90,
+          "side": "front",
+          "x_mm": 23,
+          "y_mm": 25
+        },
+        "ref": "C3",
+        "stable_id": "mains.component.c3",
+        "symbol": "CrystalShim_Mains:Mains_C3",
+        "value": "22uF"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+          "manufacturer_part_number": "GRM32ER71E226ME15L"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "ae04005733b773b0f2a9ae1431f16f57ea28d3dbdd9e53f8748aac70cdf3b72e",
+          "kicad": "CrystalShim_Mains:Mains_C4",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "ce337ee2769be5c50f4d6ed34ba189c16e4df1b85930f779004da80f5e53cf57",
+          "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow"
+        },
+        "placement": {
+          "rotation_deg": 90,
+          "side": "front",
+          "x_mm": 51,
+          "y_mm": 16
+        },
+        "ref": "C4",
+        "stable_id": "mains.component.c4",
+        "symbol": "CrystalShim_Mains:Mains_C4",
+        "value": "22uF"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+          "manufacturer_part_number": "C1608X7R1H104K080AA"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+          "kicad": "CrystalShim_Mains:Mains_C5",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "883e465b7ad274552d4105fff40f71c2d805d5841ebe749d8b2edb295c925aa3",
+          "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": 36,
+          "y_mm": 21
+        },
+        "ref": "C5",
+        "stable_id": "mains.component.c5",
+        "symbol": "CrystalShim_Mains:Mains_C5",
+        "value": "100nF"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+          "manufacturer_part_number": "GRM32ER71E226ME15L"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "ae04005733b773b0f2a9ae1431f16f57ea28d3dbdd9e53f8748aac70cdf3b72e",
+          "kicad": "CrystalShim_Mains:Mains_C6",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "ce337ee2769be5c50f4d6ed34ba189c16e4df1b85930f779004da80f5e53cf57",
+          "tscircuit": "tscircuit:CrystalShim:Murata_GRM32_Reflow"
+        },
+        "placement": {
+          "rotation_deg": 90,
+          "side": "front",
+          "x_mm": 57,
+          "y_mm": 16
+        },
+        "ref": "C6",
+        "stable_id": "mains.component.c6",
+        "symbol": "CrystalShim_Mains:Mains_C6",
+        "value": "22uF"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+          "manufacturer_part_number": "C1608X7R1H104K080AA"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "bd004de3c3f5ebf0212e23d531e5b9388cb3d4378d13b5c808d652ba1a03bc12",
+          "kicad": "CrystalShim_Mains:Mains_C7",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "883e465b7ad274552d4105fff40f71c2d805d5841ebe749d8b2edb295c925aa3",
+          "tscircuit": "tscircuit:CrystalShim:TDK_C1608"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": 28,
+          "y_mm": 13
+        },
+        "ref": "C7",
+        "stable_id": "mains.component.c7",
+        "symbol": "CrystalShim_Mains:Mains_C7",
+        "value": "100nF"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.vishay.com/docs/88503/1n4001.pdf",
+          "manufacturer_part_number": "1N4007-E3/54"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "1bc35c7f68edfd6f5f34cb2f0a03dfc293d132b907429638b012d82cde446b78",
+          "kicad": "CrystalShim_Mains:Mains_D1",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "1ffd735a7f1fcc6d54a933f311c62d14ad178fcdd4edba3f07fd59655a6d5d92",
+          "tscircuit": "tscircuit:CrystalShim:1N4007_DO41_P10_16"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": 55,
+          "y_mm": -5
+        },
+        "ref": "D1",
+        "stable_id": "mains.component.d1",
+        "symbol": "CrystalShim_Mains:Mains_D1",
+        "value": "1N4007-E3/54"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.littelfuse.com/assetdocs/fuse-451-and-453-datasheet?assetguid=533cd5cc-956c-4243-867f-6ab5a62f6ba1",
+          "manufacturer_part_number": "0451003.MRL"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "1acf1823a0cdd02e572414085b8d74dfe017b73326b456c915ebf095b08af1ae",
+          "kicad": "CrystalShim_Mains:Mains_F2",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "7a557828f62bb2256cc5c7a7f839ce1f9bd54d1ac98c5558731096c595238bfd",
+          "tscircuit": "tscircuit:CrystalShim:Littelfuse_451"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": 57,
+          "y_mm": 29
+        },
+        "ref": "F2",
+        "stable_id": "mains.component.f2",
+        "symbol": "CrystalShim_Mains:Mains_F2",
+        "value": "0451003.MRL"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.littelfuse.com/assetdocs/littelfuse_fuse_215_datasheet?assetguid=990f7193-d9a2-48e4-b760-2b43514249cf",
+          "manufacturer_part_number": "0215001.MXEP"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "b5e8ba7d444ad01c9ab742d64d9d06a28ca31a254f2017a70d37a031bc8ed8c1",
+          "kicad": "CrystalShim_Mains:Mains_F3",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "4ccab783e14cd93340313b4372a932d577303856207c9f30da090418c98a24cc",
+          "tscircuit": "tscircuit:CrystalShim:Littelfuse_215_Axial_P30_48"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": -47,
+          "y_mm": -15
+        },
+        "ref": "F3",
+        "stable_id": "mains.component.f3",
+        "symbol": "CrystalShim_Mains:Mains_F3",
+        "value": "0215001.MXEP"
+      },
+      {
+        "fields": {
+          "exclude_from_bom": true,
+          "exclude_from_cpl": true
+        },
+        "footprint": {
+          "initial_geometry_sha256": "3197cb3083387f668c1da8cddb862fb849a065d8dc876e79a307652fbd3ed0c7",
+          "kicad": "CrystalShim_Mains:Mains_H1",
+          "pad_numbers": [],
+          "source_geometry_sha256": "8b19db8d1419496b10bed2e4f9a0a8644435160cbcdf7a66f24dc78784c67794",
+          "tscircuit": "tscircuit:CrystalShim_Mains:MountingHole_3.2mm_NPTH"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": -85,
+          "y_mm": 50
+        },
+        "ref": "H1",
+        "stable_id": "mains.component.h1",
+        "symbol": "Mechanical:MountingHole",
+        "value": "3.2mm NPTH"
+      },
+      {
+        "fields": {
+          "exclude_from_bom": true,
+          "exclude_from_cpl": true
+        },
+        "footprint": {
+          "initial_geometry_sha256": "3197cb3083387f668c1da8cddb862fb849a065d8dc876e79a307652fbd3ed0c7",
+          "kicad": "CrystalShim_Mains:Mains_H2",
+          "pad_numbers": [],
+          "source_geometry_sha256": "8b19db8d1419496b10bed2e4f9a0a8644435160cbcdf7a66f24dc78784c67794",
+          "tscircuit": "tscircuit:CrystalShim_Mains:MountingHole_3.2mm_NPTH"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": 85,
+          "y_mm": 50
+        },
+        "ref": "H2",
+        "stable_id": "mains.component.h2",
+        "symbol": "Mechanical:MountingHole",
+        "value": "3.2mm NPTH"
+      },
+      {
+        "fields": {
+          "exclude_from_bom": true,
+          "exclude_from_cpl": true
+        },
+        "footprint": {
+          "initial_geometry_sha256": "3197cb3083387f668c1da8cddb862fb849a065d8dc876e79a307652fbd3ed0c7",
+          "kicad": "CrystalShim_Mains:Mains_H3",
+          "pad_numbers": [],
+          "source_geometry_sha256": "8b19db8d1419496b10bed2e4f9a0a8644435160cbcdf7a66f24dc78784c67794",
+          "tscircuit": "tscircuit:CrystalShim_Mains:MountingHole_3.2mm_NPTH"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": -85,
+          "y_mm": -50
+        },
+        "ref": "H3",
+        "stable_id": "mains.component.h3",
+        "symbol": "Mechanical:MountingHole",
+        "value": "3.2mm NPTH"
+      },
+      {
+        "fields": {
+          "exclude_from_bom": true,
+          "exclude_from_cpl": true
+        },
+        "footprint": {
+          "initial_geometry_sha256": "3197cb3083387f668c1da8cddb862fb849a065d8dc876e79a307652fbd3ed0c7",
+          "kicad": "CrystalShim_Mains:Mains_H4",
+          "pad_numbers": [],
+          "source_geometry_sha256": "8b19db8d1419496b10bed2e4f9a0a8644435160cbcdf7a66f24dc78784c67794",
+          "tscircuit": "tscircuit:CrystalShim_Mains:MountingHole_3.2mm_NPTH"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": 85,
+          "y_mm": -50
+        },
+        "ref": "H4",
+        "stable_id": "mains.component.h4",
+        "symbol": "Mechanical:MountingHole",
+        "value": "3.2mm NPTH"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+          "manufacturer_part_number": "43160-0102"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "0f30207fb273f9d650566e78ff6795d988a83b8b6d67d7f66bb3220046d3241a",
+          "kicad": "CrystalShim_Mains:Mains_J1",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "29cb32fdc96b586e26aa90ad5c485a9ba7cc412f3baa21506ac811b38586c2dd",
+          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-0102"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": -73,
+          "y_mm": -42
+        },
+        "ref": "J1",
+        "stable_id": "mains.component.j1",
+        "symbol": "CrystalShim_Mains:Mains_J1",
+        "value": "43160-0102"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+          "manufacturer_part_number": "43160-0103"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "d166a624fb6dbef56875f4c559695713577013dc61b883a26f818d0c895a5764",
+          "kicad": "CrystalShim_Mains:Mains_J2",
+          "pad_numbers": [
+            "1",
+            "2",
+            "3"
+          ],
+          "source_geometry_sha256": "30f5310d1d251255010c900b4e388208843b3b024760f836017eb70012d13682",
+          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-0103"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": -79,
+          "y_mm": -22
+        },
+        "ref": "J2",
+        "stable_id": "mains.component.j2",
+        "symbol": "CrystalShim_Mains:Mains_J2",
+        "value": "43160-0103"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+          "manufacturer_part_number": "43160-0104"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "ae68fa3db8cdb2b8bc0d2e7878f49982150f604c9e1756d561832b6b4ba5293f",
+          "kicad": "CrystalShim_Mains:Mains_J3",
+          "pad_numbers": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "source_geometry_sha256": "6a1ec863e8806038fb885281f89dc5c143f2919094a6bcdced0cc61d71e39c22",
+          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-0104"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": -12,
+          "y_mm": -42
+        },
+        "ref": "J3",
+        "stable_id": "mains.component.j3",
+        "symbol": "CrystalShim_Mains:Mains_J3",
+        "value": "43160-0104"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+          "manufacturer_part_number": "43160-0106"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "dc411d657837f4811460809550182a96fa1d17bfc511580cf802176e19221594",
+          "kicad": "CrystalShim_Mains:Mains_J4",
+          "pad_numbers": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "source_geometry_sha256": "22c3f213238d8a9923a5e949511a27e1aff4f7133db19c3b0bb4f4f981266a1b",
+          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-0106"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": 35,
+          "y_mm": -42
+        },
+        "ref": "J4",
+        "stable_id": "mains.component.j4",
+        "symbol": "CrystalShim_Mains:Mains_J4",
+        "value": "43160-0106"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/436/43650/436501200_sd.pdf",
+          "manufacturer_part_number": "43650-0300"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "3729df5864aedc0cefb1eeaed0309e52330492e9b11a06f394b309c00a747883",
+          "kicad": "CrystalShim_Mains:Mains_J5",
+          "pad_numbers": [
+            "1",
+            "2",
+            "3"
+          ],
+          "source_geometry_sha256": "96d7b01cfccc45fb67803cd6043f79a338979d4980ec9f02264caa586ccbf1fe",
+          "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43650-0300_1x03_P3.00mm_Horizontal"
+        },
+        "placement": {
+          "rotation_deg": 270,
+          "side": "front",
+          "x_mm": 79,
+          "y_mm": 5
+        },
+        "ref": "J5",
+        "stable_id": "mains.component.j5",
+        "symbol": "CrystalShim_Mains:Mains_J5",
+        "value": "43650-0300"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf",
+          "manufacturer_part_number": "43045-0200"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "66a56d11ac85fc33f1709d539b30a233816d5dd8ab57e62db24664d4e7ad5de5",
+          "kicad": "CrystalShim_Mains:Mains_J6",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "e5b881fcd47ea834ebac964c1cb3d686e62fdb454ca7833b1faabb044715a498",
+          "tscircuit": "tscircuit:Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal"
+        },
+        "placement": {
+          "rotation_deg": 270,
+          "side": "front",
+          "x_mm": 79,
+          "y_mm": 29
+        },
+        "ref": "J6",
+        "stable_id": "mains.component.j6",
+        "symbol": "CrystalShim_Mains:Mains_J6",
+        "value": "43045-0200"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5rl.pdf",
+          "manufacturer_part_number": "G5RL-1A-TV8 DC5"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "f04987e729da2754baa9c5cc324dd30019e5074e87c032530053e929e333a1f9",
+          "kicad": "CrystalShim_Mains:Mains_K1",
+          "pad_numbers": [
+            "1",
+            "3",
+            "4",
+            "5"
+          ],
+          "source_geometry_sha256": "f9c092b7398b9503b6c390747999eed3e93138e2e091a04b429c2dc6571ff308",
+          "tscircuit": "tscircuit:CrystalShim:G5RL_1A_TV8"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": 30,
+          "y_mm": -15
+        },
+        "ref": "K1",
+        "stable_id": "mains.component.k1",
+        "symbol": "CrystalShim_Mains:Mains_K1",
+        "value": "G5RL-1A-TV8 DC5"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf",
+          "manufacturer_part_number": "SRP5030TA-4R7M"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "73a8dc30ee72bfb43d4510f14b4e6e76b6a12954b4ef5c99aa21a5c6e5ce2f94",
+          "kicad": "CrystalShim_Mains:Mains_L1",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "8f363c2a07eb12bd1989216e3890d2e97c71f69796d908cd3a8c64904ca07849",
+          "tscircuit": "tscircuit:CrystalShim:SRP5030TA"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": 42,
+          "y_mm": 16
+        },
+        "ref": "L1",
+        "stable_id": "mains.component.l1",
+        "symbol": "CrystalShim_Mains:Mains_L1",
+        "value": "4.7\u00b5H"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.vishay.com/docs/28915/pr02fs.pdf",
+          "manufacturer_part_number": "PR02FS0201000KA100"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "76a5677b67e0cc3853e586da1db6f6eaafc387214e4ae9c9203b2d4d635d24a9",
+          "kicad": "CrystalShim_Mains:Mains_R1",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "ef4cebccb093ce1f6dafb085791d9fd4c2fd3bf16943a077e6b1930277828c47",
+          "tscircuit": "tscircuit:CrystalShim:PR02FS_P15_24"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": 7,
+          "y_mm": -26
+        },
+        "ref": "R1",
+        "stable_id": "mains.component.r1",
+        "symbol": "CrystalShim_Mains:Mains_R1",
+        "value": "100\u03a9"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05",
+          "manufacturer_part_number": "TMOV14RP175EL2T7"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "945eea69107c4087c580c46faffed4042eaec4459d4a349ca1554d368734d37f",
+          "kicad": "CrystalShim_Mains:Mains_RV1",
+          "pad_numbers": [
+            "1",
+            "2"
+          ],
+          "source_geometry_sha256": "d767c391a70d593de692b51bfbb8f341e23ba622cf3afa19b9473be4b160ff93",
+          "tscircuit": "tscircuit:CrystalShim:TMOV14RP175EL2T7_RoundSlot"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": -42,
+          "y_mm": -35
+        },
+        "ref": "RV1",
+        "stable_id": "mains.component.rv1",
+        "symbol": "CrystalShim_Mains:Mains_RV1",
+        "value": "TMOV14RP175EL2T7"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.meanwell.com/Upload/PDF/IRM-45/IRM-45-SPEC.PDF",
+          "manufacturer_part_number": "IRM-45-12"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "e743f17c908fe2c054ffee9cc37d6f44a3593fb1040fe80b0f2ecf93abb1bf8d",
+          "kicad": "CrystalShim_Mains:Mains_U1",
+          "pad_numbers": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "source_geometry_sha256": "b4944b157e07cabc10c1b3c4b657d218b795ec6c88b7881e8fdd6d939bfb62fc",
+          "tscircuit": "tscircuit:CrystalShim:IRM_45_12"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": -77.5,
+          "y_mm": 45
+        },
+        "ref": "U1",
+        "stable_id": "mains.component.u1",
+        "symbol": "CrystalShim_Mains:Mains_U1",
+        "value": "IRM-45-12"
+      },
+      {
+        "fields": {
+          "datasheet_url": "https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf",
+          "manufacturer_part_number": "AP63205WU-7"
+        },
+        "footprint": {
+          "initial_geometry_sha256": "e7361aea469a6086152d4977da33aedc8faa8152f52c601da12acab6e18d3935",
+          "kicad": "CrystalShim_Mains:Mains_U2",
+          "pad_numbers": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "source_geometry_sha256": "2a0da6aeaf3f220457ff48f2e35ebf292d84da9dd2b4dc899aeacfef5e2b7ea3",
+          "tscircuit": "tscircuit:CrystalShim:AP63205_TSOT26"
+        },
+        "placement": {
+          "rotation_deg": 0,
+          "side": "front",
+          "x_mm": 32,
+          "y_mm": 16
+        },
+        "ref": "U2",
+        "stable_id": "mains.component.u2",
+        "symbol": "CrystalShim_Mains:Mains_U2",
+        "value": "AP63205WU-7"
+      }
+    ],
+    "metadata": {
+      "board_designator": "Mains",
+      "connected_logical_pin_count": 53,
+      "logical_pins": {
+        "C1": [
+          {
+            "name": "pin1",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "pin2",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "C2": [
+          {
+            "name": "pin1",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "pin2",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "C3": [
+          {
+            "name": "pin1",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "pin2",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "C4": [
+          {
+            "name": "pin1",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "pin2",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "C5": [
+          {
+            "name": "pin1",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "pin2",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "C6": [
+          {
+            "name": "pin1",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "pin2",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "C7": [
+          {
+            "name": "pin1",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "pin2",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "D1": [
+          {
+            "name": "K",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "A",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "F2": [
+          {
+            "name": "IN",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "OUT",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "F3": [
+          {
+            "name": "IN",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "OUT",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "J1": [
+          {
+            "name": "LINE",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "NEUTRAL",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "J2": [
+          {
+            "name": "LINE",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "NEUTRAL",
+            "no_connect": false,
+            "number": "2"
+          },
+          {
+            "name": "UNUSED_3",
+            "no_connect": true,
+            "number": "3"
+          }
+        ],
+        "J3": [
+          {
+            "name": "LINE",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "NEUTRAL",
+            "no_connect": false,
+            "number": "2"
+          },
+          {
+            "name": "UNUSED_3",
+            "no_connect": true,
+            "number": "3"
+          },
+          {
+            "name": "UNUSED_4",
+            "no_connect": true,
+            "number": "4"
+          }
+        ],
+        "J4": [
+          {
+            "name": "LINE",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "NEUTRAL",
+            "no_connect": false,
+            "number": "2"
+          },
+          {
+            "name": "UNUSED_3",
+            "no_connect": true,
+            "number": "3"
+          },
+          {
+            "name": "UNUSED_4",
+            "no_connect": true,
+            "number": "4"
+          },
+          {
+            "name": "UNUSED_5",
+            "no_connect": true,
+            "number": "5"
+          },
+          {
+            "name": "UNUSED_6",
+            "no_connect": true,
+            "number": "6"
+          }
+        ],
+        "J5": [
+          {
+            "name": "V5_PSU",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "GND",
+            "no_connect": false,
+            "number": "2"
+          },
+          {
+            "name": "COIL_DRAIN",
+            "no_connect": false,
+            "number": "3"
+          }
+        ],
+        "J6": [
+          {
+            "name": "POSITIVE",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "RETURN",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "K1": [
+          {
+            "name": "COIL_HIGH",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "CONTACT_FIXED",
+            "no_connect": false,
+            "number": "3"
+          },
+          {
+            "name": "CONTACT_MOVING",
+            "no_connect": false,
+            "number": "4"
+          },
+          {
+            "name": "COIL_LOW",
+            "no_connect": false,
+            "number": "5"
+          }
+        ],
+        "L1": [
+          {
+            "name": "pin1",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "pin2",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "R1": [
+          {
+            "name": "pin1",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "pin2",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "RV1": [
+          {
+            "name": "LINE",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "NEUTRAL",
+            "no_connect": false,
+            "number": "2"
+          }
+        ],
+        "U1": [
+          {
+            "name": "AC_N",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "AC_L",
+            "no_connect": false,
+            "number": "2"
+          },
+          {
+            "name": "GND_ISO",
+            "no_connect": false,
+            "number": "3"
+          },
+          {
+            "name": "V12_RAW",
+            "no_connect": false,
+            "number": "4"
+          }
+        ],
+        "U2": [
+          {
+            "name": "FB",
+            "no_connect": false,
+            "number": "1"
+          },
+          {
+            "name": "EN",
+            "no_connect": false,
+            "number": "2"
+          },
+          {
+            "name": "VIN",
+            "no_connect": false,
+            "number": "3"
+          },
+          {
+            "name": "GND",
+            "no_connect": false,
+            "number": "4"
+          },
+          {
+            "name": "SW",
+            "no_connect": false,
+            "number": "5"
+          },
+          {
+            "name": "BST",
+            "no_connect": false,
+            "number": "6"
+          }
+        ]
+      },
+      "native_footprint_policy": "Per-reference source-derived native library; never substitute stock geometry.",
+      "physical_numbered_pad_count": 75,
+      "physical_pad_numbers": {
+        "C1": [
+          "1",
+          "2"
+        ],
+        "C2": [
+          "1",
+          "2"
+        ],
+        "C3": [
+          "1",
+          "2"
+        ],
+        "C4": [
+          "1",
+          "2"
+        ],
+        "C5": [
+          "1",
+          "2"
+        ],
+        "C6": [
+          "1",
+          "2"
+        ],
+        "C7": [
+          "1",
+          "2"
+        ],
+        "D1": [
+          "1",
+          "2"
+        ],
+        "F2": [
+          "1",
+          "2"
+        ],
+        "F3": [
+          "1",
+          "2"
+        ],
+        "J1": [
+          "1",
+          "1",
+          "2",
+          "2"
+        ],
+        "J2": [
+          "1",
+          "1",
+          "2",
+          "2",
+          "3",
+          "3"
+        ],
+        "J3": [
+          "1",
+          "1",
+          "2",
+          "2",
+          "3",
+          "3",
+          "4",
+          "4"
+        ],
+        "J4": [
+          "1",
+          "1",
+          "2",
+          "2",
+          "3",
+          "3",
+          "4",
+          "4",
+          "5",
+          "5",
+          "6",
+          "6"
+        ],
+        "J5": [
+          "1",
+          "2",
+          "3"
+        ],
+        "J6": [
+          "1",
+          "2"
+        ],
+        "K1": [
+          "1",
+          "3",
+          "4",
+          "5"
+        ],
+        "L1": [
+          "1",
+          "2"
+        ],
+        "R1": [
+          "1",
+          "2"
+        ],
+        "RV1": [
+          "1",
+          "2"
+        ],
+        "U1": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "U2": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      "source_paste_record_count": 118,
+      "status": "Source manifest only; augmentation, clean ERC/DRC and accepted handoff remain open.",
+      "title": "Crystal Shim isolated mains switching",
+      "unused_logical_pin_count": 7
+    },
+    "nets": [
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.f3",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.j1",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.rv1",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.u1",
+            "pad": "2"
+          }
+        ],
+        "name": "AC_L_FUSED",
+        "stable_id": "mains.net.ac_l_fused"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.j1",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.j2",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.rv1",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.u1",
+            "pad": "1"
+          }
+        ],
+        "name": "AC_N",
+        "stable_id": "mains.net.ac_n"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.c5",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.u2",
+            "pad": "6"
+          }
+        ],
+        "name": "BUCK5_BST",
+        "stable_id": "mains.net.buck5_bst"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.c5",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.l1",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.u2",
+            "pad": "5"
+          }
+        ],
+        "name": "BUCK5_SW",
+        "stable_id": "mains.net.buck5_sw"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.d1",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.j5",
+            "pad": "3"
+          },
+          {
+            "component": "mains.component.k1",
+            "pad": "5"
+          }
+        ],
+        "name": "COIL_DRAIN",
+        "stable_id": "mains.net.coil_drain"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.f3",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.j2",
+            "pad": "1"
+          }
+        ],
+        "name": "FILTER_LINE_L",
+        "stable_id": "mains.net.filter_line_l"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.c2",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.c3",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.c4",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.c6",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.c7",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.j5",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.j6",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.u1",
+            "pad": "3"
+          },
+          {
+            "component": "mains.component.u2",
+            "pad": "4"
+          }
+        ],
+        "name": "GND_ISO",
+        "stable_id": "mains.net.gnd_iso"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.j3",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.k1",
+            "pad": "3"
+          }
+        ],
+        "name": "PUMP_L_FILTERED",
+        "stable_id": "mains.net.pump_l_filtered"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.j4",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.k1",
+            "pad": "4"
+          },
+          {
+            "component": "mains.component.r1",
+            "pad": "1"
+          }
+        ],
+        "name": "PUMP_L_SW",
+        "stable_id": "mains.net.pump_l_sw"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.c1",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.j3",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.j4",
+            "pad": "2"
+          }
+        ],
+        "name": "PUMP_N_FILTERED",
+        "stable_id": "mains.net.pump_n_filtered"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.c1",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.r1",
+            "pad": "2"
+          }
+        ],
+        "name": "SNUBBER_RC",
+        "stable_id": "mains.net.snubber_rc"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.f2",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.j6",
+            "pad": "1"
+          }
+        ],
+        "name": "V12_MOTOR",
+        "stable_id": "mains.net.v12_motor"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.c2",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.c3",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.c7",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.f2",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.u1",
+            "pad": "4"
+          },
+          {
+            "component": "mains.component.u2",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.u2",
+            "pad": "3"
+          }
+        ],
+        "name": "V12_RAW",
+        "stable_id": "mains.net.v12_raw"
+      },
+      {
+        "endpoints": [
+          {
+            "component": "mains.component.c4",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.c6",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.d1",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.j5",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.k1",
+            "pad": "1"
+          },
+          {
+            "component": "mains.component.l1",
+            "pad": "2"
+          },
+          {
+            "component": "mains.component.u2",
+            "pad": "1"
+          }
+        ],
+        "name": "V5_PSU",
+        "stable_id": "mains.net.v5_psu"
+      }
+    ],
+    "schema_version": 1,
+    "versions": {
+      "bun": "1.3.11",
+      "circuit_json_to_kicad": "0.0.205",
+      "node": "24.3.0",
+      "tscircuit": "0.0.2465"
+    }
+  }
+}

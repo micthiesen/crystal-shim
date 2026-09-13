@@ -71,3 +71,44 @@ over a routed project; use a reviewed ECO and verify preserved KiCad state.
 No Stillair motor migration, legacy placement planner or `jlc_fab.py` profile is
 included. Add board-specific fabrication tooling only after the routed-board
 review and order contract exist.
+
+### Accept an applied native ECO
+
+`accept-eco` advances an existing handoff lock after a native ECO. It does not
+export a replacement board or manufacture an initial-stage receipt. First retain
+the before snapshot and generate an explicit unblocked `plan` against the existing
+lock. Apply the ECO through the native workflow, then generate its after snapshot
+with the target manifest and augmentation.
+
+Run `verify-schematic-cleanup` again after the final native save. Its current
+receipt binds the target manifest/augmentation, complete native file hashes,
+strict schematic semantics and the ERC report. Older cleanup receipts without
+these fields cannot authorize ECO acceptance. Saved `.kicad_pro` ERC settings
+must have no ignored checks or exclusions. The board, root schematic and project
+must share one basename and directory.
+
+```sh
+pcb/tools/kicad_python.sh pcb/tools/tscircuit_handoff.py accept-eco target.json \
+  --augmentation kicad-augment.json --lock handoff.lock.json \
+  --plan eco-plan.json --before-snapshot before.json --after-snapshot after.json \
+  --board project/controller.kicad_pcb --schematic project/controller.kicad_sch \
+  --cleanup-receipt cleanup.json --receipt eco-receipt.json \
+  --render project/review.svg --render project/review.pdf --render project/board.png
+```
+
+The command revalidates all old lock checksums, reconstructs the plan, reads the
+actual saved board through `pcbnew`, checks strict source/schematic parity and
+reuses `verify-preservation` logic. Routed changes require the same explicit
+`--allow-routed-eco` / `--allow-routed-placement` flags used for planning.
+Additional snapshot rule files use repeatable `--rules`; the matching project
+and optional `.kicad_dru` are included automatically. Use the same rule-file
+selection as the after snapshot.
+
+`--render` is repeatable and optional; supplied nonempty render files must reside
+under the native project directory and their actual hashes are recorded. Their
+presence records review artifacts, not a claim of human visual acceptance. Native
+DRC, rendering and physical review remain the separate project handoff gates.
+The receipt includes the previous lock digest, plan, before/after digests,
+cleanup receipt digest, native file hashes and preservation result. The updated
+lock retains `initial_handoff_receipt_sha256` and adds `eco_receipt_sha256`.
+No native file is written. Failed validation leaves the comparison lock unchanged.

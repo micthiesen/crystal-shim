@@ -1,0 +1,3066 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "12aec2ac-6cff-42e8-9fcb-a614b1a5bc84")
+	(paper "A1")
+	(lib_symbols
+		(symbol "CrystalShim_Mains:Mains_F3"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "F"
+				(at 2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "0215001.MXEP"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Mains:Mains_F3"
+				(at -1.819 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_215_datasheet?assetguid=990f7193-d9a2-48e4-b760-2b43514249cf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "0215001.MXEP"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Mains:Mains_F3"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Mains_F3_0_1"
+				(polyline
+					(pts
+						(xy -30.6917 -15.0519) (xy 0 -15.0519) (xy 29.6333 -15.0519) (xy 29.6333 0) (xy 29.6333 15.0197)
+						(xy 0 15.0197) (xy -30.6917 15.0197) (xy -30.6917 0) (xy -30.6917 -15.0519)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Mains_F3_1_1"
+				(pin passive line
+					(at -36.83 0 0)
+					(length 6.1383)
+					(name "IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 35.56 0 180)
+					(length 5.9267)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Mains:Mains_J1"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "43160-0102"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Mains:Mains_J1"
+				(at -1.819 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "43160-0102"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Mains:Mains_J1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Mains_J1_0_1"
+				(polyline
+					(pts
+						(xy -38.354 -22.8016) (xy -36.83 -22.8016) (xy 0 -22.8016) (xy 35.56 -22.8016) (xy 37.084 -22.8016)
+						(xy 37.084 -2.54) (xy 37.084 -1.27) (xy 37.084 0) (xy 37.084 1.27) (xy 37.084 2.54) (xy 37.084 22.775)
+						(xy 35.56 22.775) (xy 0 22.775) (xy -36.83 22.775) (xy -38.354 22.775) (xy -38.354 2.54) (xy -38.354 1.27)
+						(xy -38.354 0) (xy -38.354 -1.27) (xy -38.354 -2.54) (xy -38.354 -22.8016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Mains_J1_1_1"
+				(pin passive line
+					(at -44.45 1.27 0)
+					(length 6.096)
+					(name "LINE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -44.45 -1.27 0)
+					(length 6.096)
+					(name "NEUTRAL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Mains:Mains_J2"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "43160-0103"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Mains:Mains_J2"
+				(at -1.819 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "43160-0103"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Mains:Mains_J2"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Mains_J2_0_1"
+				(polyline
+					(pts
+						(xy -38.354 -21.81) (xy -36.83 -21.81) (xy 0 -21.81) (xy 35.56 -21.81) (xy 37.084 -21.81) (xy 37.084 -3.81)
+						(xy 37.084 -1.27) (xy 37.084 0) (xy 37.084 1.27) (xy 37.084 2.54) (xy 37.084 5.08) (xy 37.084 22.9079)
+						(xy 35.56 22.9079) (xy 0 22.9079) (xy -36.83 22.9079) (xy -38.354 22.9079) (xy -38.354 5.08) (xy -38.354 2.54)
+						(xy -38.354 1.27) (xy -38.354 0) (xy -38.354 -1.27) (xy -38.354 -3.81) (xy -38.354 -21.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Mains_J2_1_1"
+				(pin passive line
+					(at -44.45 1.27 0)
+					(length 6.096)
+					(name "LINE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -44.45 -1.27 0)
+					(length 6.096)
+					(name "NEUTRAL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 43.18 0 180)
+					(length 6.096)
+					(name "UNUSED_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Mains:Mains_J3"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 1.8009 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "43160-0104"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Mains:Mains_J3"
+				(at -1.5474 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "43160-0104"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Mains:Mains_J3"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Mains_J3_0_1"
+				(polyline
+					(pts
+						(xy -37.1929 -29.31) (xy -1.27 -29.31) (xy 0 -29.31) (xy 1.27 -29.31) (xy 37.1929 -29.31) (xy 37.1929 -3.81)
+						(xy 37.1929 -1.27) (xy 37.1929 0) (xy 37.1929 1.27) (xy 37.1929 2.54) (xy 37.1929 5.08) (xy 37.1929 30.3362)
+						(xy 1.27 30.3362) (xy 0 30.3362) (xy -1.27 30.3362) (xy -37.1929 30.3362) (xy -37.1929 5.08) (xy -37.1929 2.54)
+						(xy -37.1929 1.27) (xy -37.1929 0) (xy -37.1929 -1.27) (xy -37.1929 -3.81) (xy -37.1929 -29.31)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Mains_J3_1_1"
+				(pin passive line
+					(at -43.18 1.27 0)
+					(length 5.9871)
+					(name "LINE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -43.18 -1.27 0)
+					(length 5.9871)
+					(name "NEUTRAL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 43.18 1.27 180)
+					(length 5.9871)
+					(name "UNUSED_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 43.18 -1.27 180)
+					(length 5.9871)
+					(name "UNUSED_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Mains:Mains_J4"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 2.0764 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "43160-0106"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Mains:Mains_J4"
+				(at -1.7649 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "43160-0106"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Mains:Mains_J4"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Mains_J4_0_1"
+				(polyline
+					(pts
+						(xy -37.2241 -36.81) (xy 0 -36.81) (xy 38.319 -36.81) (xy 38.319 -3.81) (xy 38.319 -1.27) (xy 38.319 0)
+						(xy 38.319 1.27) (xy 38.319 2.54) (xy 38.319 5.08) (xy 38.319 37.7645) (xy 0 37.7645) (xy -37.2241 37.7645)
+						(xy -37.2241 5.08) (xy -37.2241 2.54) (xy -37.2241 1.27) (xy -37.2241 0) (xy -37.2241 -1.27) (xy -37.2241 -3.81)
+						(xy -37.2241 -36.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Mains_J4_1_1"
+				(pin passive line
+					(at -43.18 1.27 0)
+					(length 5.9559)
+					(name "LINE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -43.18 -1.27 0)
+					(length 5.9559)
+					(name "NEUTRAL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 44.45 5.08 180)
+					(length 6.131)
+					(name "UNUSED_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 44.45 1.27 180)
+					(length 6.131)
+					(name "UNUSED_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 44.45 -1.27 180)
+					(length 6.131)
+					(name "UNUSED_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 44.45 -3.81 180)
+					(length 6.131)
+					(name "UNUSED_6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Mains:Mains_K1"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "K"
+				(at 2.024 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "G5RL-1A-TV8 DC5"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Mains:Mains_K1"
+				(at -1.9808 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5rl.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "G5RL-1A-TV8 DC5"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Mains:Mains_K1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Mains_K1_0_1"
+				(polyline
+					(pts
+						(xy -44.8129 -29.31) (xy -8.89 -29.31) (xy -1.27 -29.31) (xy 0 -29.31) (xy 44.8235 -29.31) (xy 44.8235 -3.81)
+						(xy 44.8235 -1.27) (xy 44.8235 0) (xy 44.8235 1.27) (xy 44.8235 2.54) (xy 44.8235 5.08) (xy 44.8235 30.3362)
+						(xy 0 30.3362) (xy -1.27 30.3362) (xy -8.89 30.3362) (xy -44.8129 30.3362) (xy -44.8129 5.08)
+						(xy -44.8129 2.54) (xy -44.8129 1.27) (xy -44.8129 0) (xy -44.8129 -1.27) (xy -44.8129 -3.81)
+						(xy -44.8129 -29.31)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Mains_K1_1_1"
+				(pin passive line
+					(at 50.8 1.27 180)
+					(length 5.9765)
+					(name "COIL_HIGH"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -50.8 1.27 0)
+					(length 5.9871)
+					(name "CONTACT_FIXED"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -50.8 -1.27 0)
+					(length 5.9871)
+					(name "CONTACT_MOVING"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 50.8 -1.27 180)
+					(length 5.9765)
+					(name "COIL_LOW"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Mains:Mains_RV1"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "RV"
+				(at 1.8009 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TMOV14RP175EL2T7"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Mains:Mains_RV1"
+				(at -1.8168 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "TMOV14RP175EL2T7"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Mains:Mains_RV1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Mains_RV1_0_1"
+				(polyline
+					(pts
+						(xy -38.319 -22.8016) (xy 0 -22.8016) (xy 1.27 -22.8016) (xy 37.1929 -22.8016) (xy 37.1929 -2.54)
+						(xy 37.1929 -1.27) (xy 37.1929 0) (xy 37.1929 1.27) (xy 37.1929 2.54) (xy 37.1929 22.775) (xy 1.27 22.775)
+						(xy 0 22.775) (xy -38.319 22.775) (xy -38.319 2.54) (xy -38.319 1.27) (xy -38.319 0) (xy -38.319 -1.27)
+						(xy -38.319 -2.54) (xy -38.319 -22.8016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Mains_RV1_1_1"
+				(pin passive line
+					(at -44.45 0 0)
+					(length 6.131)
+					(name "LINE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 43.18 0 180)
+					(length 5.9871)
+					(name "NEUTRAL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Mains:Mains_U1"
+			(pin_names
+				(offset 1.27)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 2.0072 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "IRM-45-12"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "CrystalShim_Mains:Mains_U1"
+				(at -1.8153 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.meanwell.com/Upload/PDF/IRM-45/IRM-45-SPEC.PDF"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Integrated Circuit"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "IRM-45-12"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "U IC chip"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CrystalShim_Mains:Mains_U1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Mains_U1_0_1"
+				(polyline
+					(pts
+						(xy -45.9441 -30.3114) (xy 0 -30.3114) (xy 8.89 -30.3114) (xy 44.8129 -30.3114) (xy 44.8129 -2.54)
+						(xy 44.8129 -1.27) (xy 44.8129 0) (xy 44.8129 1.27) (xy 44.8129 2.54) (xy 44.8129 30.275) (xy 8.89 30.275)
+						(xy 0 30.275) (xy -45.9441 30.275) (xy -45.9441 2.54) (xy -45.9441 1.27) (xy -45.9441 0) (xy -45.9441 -1.27)
+						(xy -45.9441 -2.54) (xy -45.9441 -30.3114)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Mains_U1_1_1"
+				(pin power_in line
+					(at -52.07 -1.27 0)
+					(length 6.1259)
+					(name "AC_N"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -52.07 1.27 0)
+					(length 6.1259)
+					(name "AC_L"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 50.8 -1.27 180)
+					(length 5.9871)
+					(name "GND_ISO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 50.8 1.27 180)
+					(length 5.9871)
+					(name "V12_RAW"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Mains:PWR_FLAG"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board no)
+			(in_pos_files no)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "J1: fused inlet. F3: T1A branch. J2: filter LINE. J3: filter LOAD. J4: pump. PE remains off-board."
+		(exclude_from_sim no)
+		(at 424.7851 97.685 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+		)
+		(uuid "06a806f6-7bef-48ed-8fbc-ddec07702570")
+	)
+	(no_connect
+		(at 765.81 397.51)
+		(uuid "1ebab122-6952-4e41-9ef0-379cb474eb64")
+	)
+	(no_connect
+		(at 765.81 400.05)
+		(uuid "3f903026-1470-47dd-8cc1-2e28fcaef804")
+	)
+	(no_connect
+		(at 195.58 398.78)
+		(uuid "699cccaa-4913-49ea-a526-06ad1287d4e4")
+	)
+	(no_connect
+		(at 765.81 393.7)
+		(uuid "8a1ce736-bc80-4271-8907-1c939afc0e48")
+	)
+	(no_connect
+		(at 389.89 400.05)
+		(uuid "aaac45a7-f473-433b-bfc7-737757380d47")
+	)
+	(no_connect
+		(at 389.89 397.51)
+		(uuid "c9f167bb-4376-47ec-9a63-714c5bdf1c6d")
+	)
+	(no_connect
+		(at 765.81 402.59)
+		(uuid "e9edadec-c4ef-4206-9820-16a2c777a9c4")
+	)
+	(wire
+		(pts
+			(xy 525.78 189.23) (xy 525.78 190.5)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "03ca597d-69e5-4fb9-8e57-d0004c6fdd34")
+	)
+	(wire
+		(pts
+			(xy 525.78 186.69) (xy 525.78 185.42)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "03f416e3-6f39-49ac-b618-4c0b7a1d0acf")
+	)
+	(wire
+		(pts
+			(xy 107.95 400.05) (xy 81.28 400.05)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "288f27e4-5946-4e53-8a6d-e5f7ea9b260a")
+	)
+	(wire
+		(pts
+			(xy 577.85 397.51) (xy 585.47 397.51)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "296f7ba5-17b8-41ff-8c62-c6b0bb966383")
+	)
+	(wire
+		(pts
+			(xy 347.98 354.33) (xy 347.98 187.96)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "35203766-d40f-44c8-b320-5072030e5efb")
+	)
+	(wire
+		(pts
+			(xy 81.28 400.05) (xy 81.28 354.33)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "3953bbfb-b2cd-4336-97e5-2544ceca1f1f")
+	)
+	(wire
+		(pts
+			(xy 518.16 189.23) (xy 525.78 189.23)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "3a81d1f5-a676-4172-b084-4d4e92ad5f19")
+	)
+	(wire
+		(pts
+			(xy 97.79 293.37) (xy 115.57 293.37)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "49b30d12-455d-4b4d-9fd3-c164ebdc2f4f")
+	)
+	(wire
+		(pts
+			(xy 347.98 187.96) (xy 345.44 187.96)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "53e84ccc-7714-458e-aad6-23f5502c09b6")
+	)
+	(wire
+		(pts
+			(xy 81.28 354.33) (xy 347.98 354.33)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "80ea2a2a-25af-454f-9735-c9faed720060")
+	)
+	(wire
+		(pts
+			(xy 585.47 397.51) (xy 585.47 396.24)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "876a1963-a772-4310-a24d-ea65db3e8425")
+	)
+	(wire
+		(pts
+			(xy 107.95 186.69) (xy 97.79 186.69)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "9454e5ba-e604-4de8-97eb-828dac4013cd")
+	)
+	(wire
+		(pts
+			(xy 518.16 186.69) (xy 525.78 186.69)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "c4453b73-7bf1-40e9-a475-88c476b3f9a4")
+	)
+	(wire
+		(pts
+			(xy 97.79 186.69) (xy 97.79 293.37)
+		)
+		(stroke
+			(width 0.254)
+			(type default)
+		)
+		(uuid "ca6ea639-85cc-4e7d-a758-107be0f5c711")
+	)
+	(global_label "GND_ISO"
+		(shape input)
+		(at 525.78 190.5 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "23daebec-f9cb-4855-98eb-c8b051b9914f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 525.78 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V12_RAW"
+		(shape input)
+		(at 525.78 185.42 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "372d18db-a0a3-484a-b9bb-d972ed20c401")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 525.78 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "PUMP_L_FILTERED"
+		(shape input)
+		(at 476.25 397.51 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "392c78c6-cf4a-4ee8-9740-f2957a6f84a7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 476.25 397.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "AC_L_FUSED"
+		(shape input)
+		(at 415.29 186.69 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4a9356e2-f3d5-4298-afac-499a2298a49d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 415.29 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "AC_N"
+		(shape input)
+		(at 415.29 189.23 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4c38b699-f3d1-4ef1-82eb-bf650cd17bca")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 415.29 189.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "PUMP_L_SW"
+		(shape input)
+		(at 476.25 400.05 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4e21974e-0151-4984-8195-2779c5a0ccb0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 476.25 400.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "AC_N"
+		(shape input)
+		(at 107.95 189.23 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4f0fa07a-b114-4fb1-a1ab-1fa9f997b609")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 107.95 189.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "AC_L_FUSED"
+		(shape input)
+		(at 115.57 293.37 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5969ec81-a62e-4639-a042-9e687fe25b76")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 115.57 293.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "FILTER_LINE_L"
+		(shape input)
+		(at 107.95 397.51 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6555b0e2-8bb4-473e-abab-7a0e6117e39e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 107.95 397.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "PUMP_N_FILTERED"
+		(shape input)
+		(at 303.53 400.05 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "793f290f-f420-48cc-846e-978ac24ce761")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 303.53 400.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "AC_L_FUSED"
+		(shape input)
+		(at 97.79 186.69 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "927ce16e-0c21-43ac-a40b-c37f8004b879")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 97.79 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "PUMP_N_FILTERED"
+		(shape input)
+		(at 678.18 400.05 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9ae6b5dc-31bc-44e7-932f-ae49b3b30fb8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 678.18 400.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "AC_N"
+		(shape input)
+		(at 81.28 400.05 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9d0b9b2a-82ef-4d58-bb95-b4dd49c1da88")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 81.28 400.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "PUMP_L_FILTERED"
+		(shape input)
+		(at 303.53 397.51 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a837c83c-00b2-4ca6-8fdc-620741c8923a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 303.53 397.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "PUMP_L_SW"
+		(shape input)
+		(at 678.18 397.51 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b52fa431-3aed-4ec6-a473-afd6a9333f43")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 678.18 397.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "V5_PSU"
+		(shape input)
+		(at 585.47 396.24 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d2510ff2-de19-484a-9dc1-5fe559c56aad")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 585.47 396.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "FILTER_LINE_L"
+		(shape input)
+		(at 187.96 293.37 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "df57008b-5328-447a-b595-e07a30ec3efe")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 187.96 293.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "COIL_DRAIN"
+		(shape input)
+		(at 577.85 400.05 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e176e902-8ac8-4cf0-97d4-ed497713b4e6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 577.85 400.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "AC_L_FUSED"
+		(shape input)
+		(at 257.81 187.96 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e180a075-cc15-4e1d-a5c0-06cb30e8aa41")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 257.81 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "AC_N"
+		(shape input)
+		(at 345.44 187.96 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e37ebe60-4847-4c13-8ef2-272fd7178465")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 345.44 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Mains:PWR_FLAG")
+		(at 415.29 186.69 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "04cfc886-1158-40e8-8ecc-e97fa21737c0")
+		(property "Reference" "#FLG0202"
+			(at 415.29 182.185 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 415.29 182.375 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 415.29 186.69 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 415.29 186.69 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ERC annotation revision 1: AC_L_FUSED; Externally fused mains line enters the isolated supply through J1. ERC only; do not populate. Not a physical part."
+			(at 415.29 186.69 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b1314ddf-7560-4dbc-90bc-b4742e81d56d")
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816/f1d09619-0800-4ea2-89a5-3ca87f3e8523"
+					(reference "#FLG0202")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Mains:Mains_K1")
+		(at 527.05 398.78 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "32508b76-e97f-4b3b-8e4c-043cda78a678")
+		(property "Reference" "K1"
+			(at 482.2371 366.5124 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "G5RL-1A-TV8 DC5"
+			(at 482.2371 430.04 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Mains:Mains_K1"
+			(at 525.0692 398.78 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5rl.pdf"
+			(at 527.05 398.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 527.05 398.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "G5RL-1A-TV8 DC5"
+			(at 527.05 398.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d9224ecc-6e0a-47de-8432-b89d41661818")
+		)
+		(pin "3"
+			(uuid "a1feafc6-dc62-46d4-b4b1-32f78400b8ca")
+		)
+		(pin "4"
+			(uuid "f06a6f51-549a-46e9-b9e0-a27a8f27613d")
+		)
+		(pin "5"
+			(uuid "1a14e603-3ab3-460b-ba54-cf785c8e5fa1")
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816/f1d09619-0800-4ea2-89a5-3ca87f3e8523"
+					(reference "K1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Mains:Mains_F3")
+		(at 152.4 293.37 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4f532c27-c864-4aab-bc9f-f4a67c570b59")
+		(property "Reference" "F3"
+			(at 121.7083 276.3977 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0215001.MXEP"
+			(at 121.7083 310.3786 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Mains:Mains_F3"
+			(at 150.581 293.37 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_215_datasheet?assetguid=990f7193-d9a2-48e4-b760-2b43514249cf"
+			(at 152.4 293.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 152.4 293.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "0215001.MXEP"
+			(at 152.4 293.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2ff93d87-0de5-43f1-8355-a39d1b500d10")
+		)
+		(pin "2"
+			(uuid "4c847ca7-941b-4c27-8734-56fb6a0dd090")
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816/f1d09619-0800-4ea2-89a5-3ca87f3e8523"
+					(reference "F3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Mains:Mains_J2")
+		(at 152.4 398.78 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "59dab1d4-ea7b-4ace-9d66-2ca7e2f62f64")
+		(property "Reference" "J2"
+			(at 114.046 373.9407 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "43160-0103"
+			(at 114.046 422.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Mains:Mains_J2"
+			(at 150.581 398.78 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+			(at 152.4 398.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 152.4 398.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "43160-0103"
+			(at 152.4 398.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "23122f15-3119-48c4-9e85-457b130191ca")
+		)
+		(pin "2"
+			(uuid "ba9b1ec0-a75b-43c9-928c-4cad299391f9")
+		)
+		(pin "3"
+			(uuid "dd99d0ca-c886-4f28-a02f-57568f40ce89")
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816/f1d09619-0800-4ea2-89a5-3ca87f3e8523"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Mains:Mains_J4")
+		(at 721.36 398.78 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "64a66bcc-225b-4ce3-96a5-33d7db7d6f11")
+		(property "Reference" "J4"
+			(at 684.1359 359.0841 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "43160-0106"
+			(at 684.1359 437.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Mains:Mains_J4"
+			(at 719.5951 398.78 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+			(at 721.36 398.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 721.36 398.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "43160-0106"
+			(at 721.36 398.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "91d47016-cf3f-436c-933b-032b30aefba0")
+		)
+		(pin "2"
+			(uuid "e19a7032-6f88-4e54-ba08-ccf7ada41608")
+		)
+		(pin "3"
+			(uuid "746fc145-50a3-4736-8d34-a80a962775bf")
+		)
+		(pin "4"
+			(uuid "1a878598-de16-430c-9c59-084e1af956ed")
+		)
+		(pin "5"
+			(uuid "a77882ec-0554-42ea-8277-08e05b6c72c4")
+		)
+		(pin "6"
+			(uuid "a3ba1627-fc46-49d5-bbd7-10f89b766567")
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816/f1d09619-0800-4ea2-89a5-3ca87f3e8523"
+					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Mains:Mains_U1")
+		(at 467.36 187.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "765801d5-2605-43b2-9c6c-ed41f7c20d64")
+		(property "Reference" "U1"
+			(at 421.4159 155.735 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRM-45-12"
+			(at 421.4159 220.224 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Mains:Mains_U1"
+			(at 465.5447 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.meanwell.com/Upload/PDF/IRM-45/IRM-45-SPEC.PDF"
+			(at 467.36 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 467.36 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "IRM-45-12"
+			(at 467.36 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a55b93d3-30c9-4ef8-afea-4e7d9389fd64")
+		)
+		(pin "2"
+			(uuid "d4f2ef84-bd79-4c30-960c-b2298f882bbc")
+		)
+		(pin "3"
+			(uuid "a27cec56-6754-4c10-9167-76036491345b")
+		)
+		(pin "4"
+			(uuid "34b29a3d-7a5b-4fa3-88d7-dd3f25c325e2")
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816/f1d09619-0800-4ea2-89a5-3ca87f3e8523"
+					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Mains:Mains_J1")
+		(at 152.4 187.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8477b2e1-50f3-4100-8ac7-413ddce5e3c1")
+		(property "Reference" "J1"
+			(at 114.046 163.235 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "43160-0102"
+			(at 114.046 212.7142 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Mains:Mains_J1"
+			(at 150.581 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+			(at 152.4 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 152.4 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "43160-0102"
+			(at 152.4 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a6b108b1-bfc4-44f5-84b8-ca4730bea5e6")
+		)
+		(pin "2"
+			(uuid "53f68646-224a-4a1a-ad24-243b0348a8f3")
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816/f1d09619-0800-4ea2-89a5-3ca87f3e8523"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Mains:Mains_RV1")
+		(at 302.26 187.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "84890434-1e4f-44b5-b680-fa6474b1787a")
+		(property "Reference" "RV1"
+			(at 263.941 163.235 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TMOV14RP175EL2T7"
+			(at 263.941 212.7142 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Mains:Mains_RV1"
+			(at 300.4432 187.96 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05"
+			(at 302.26 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 302.26 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TMOV14RP175EL2T7"
+			(at 302.26 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3985247f-07bd-4fae-ac83-91ed7b491917")
+		)
+		(pin "2"
+			(uuid "5d9f9f83-e047-45a8-b36e-81be9bb8fd88")
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816/f1d09619-0800-4ea2-89a5-3ca87f3e8523"
+					(reference "RV1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Mains:PWR_FLAG")
+		(at 415.29 189.23 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "991156df-3573-46ff-99a3-1aed6d0b9fbb")
+		(property "Reference" "#FLG0201"
+			(at 415.29 185.185 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 415.29 185.375 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 415.29 189.23 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 415.29 189.23 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "ERC annotation revision 1: AC_N; External mains neutral enters the isolated supply through J1. ERC only; do not populate. Not a physical part."
+			(at 415.29 189.23 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b461ba23-9a12-4782-bdd1-97569db3bf1b")
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816/f1d09619-0800-4ea2-89a5-3ca87f3e8523"
+					(reference "#FLG0201")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CrystalShim_Mains:Mains_J3")
+		(at 346.71 398.78 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f2430578-1079-4249-8117-24f2ee8b720c")
+		(property "Reference" "J3"
+			(at 309.5171 366.5124 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "43160-0104"
+			(at 309.5171 430.04 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CrystalShim_Mains:Mains_J3"
+			(at 345.1626 398.78 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+			(at 346.71 398.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Integrated Circuit"
+			(at 346.71 398.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "43160-0104"
+			(at 346.71 398.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4e5c0217-d75e-4226-8672-f8fed19aa4b5")
+		)
+		(pin "2"
+			(uuid "7bd66ae0-0240-4b85-a70f-b2f4c245df00")
+		)
+		(pin "3"
+			(uuid "7a327e0e-37da-4f23-b4b7-07b137e5c882")
+		)
+		(pin "4"
+			(uuid "73037426-bf3b-4219-8056-9328f07a319d")
+		)
+		(instances
+			(project "mains"
+				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816/f1d09619-0800-4ea2-89a5-3ca87f3e8523"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

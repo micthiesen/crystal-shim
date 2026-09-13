@@ -14,20 +14,24 @@ import {
 export const controllerResistors = {
   "6.8": { mpn: "CRCW25126R80FKEGHP", pattern: vishay2512hp },
   "22": { mpn: "ERJ3EKF22R0V", pattern: panasonic0603 },
-  "100": { mpn: "ERA3AEB101V", pattern: panasonic0603 },
-  "330": { mpn: "ERA3AEB331V", pattern: panasonic0603 },
-  "680": { mpn: "ERA3AEB681V", pattern: panasonic0603 },
-  "1k": { mpn: "ERA3AEB102V", pattern: panasonic0603 },
+  "100": { mpn: "ERJ3EKF1000V", pattern: panasonic0603 },
+  "330": { mpn: "ERJ3EKF3300V", pattern: panasonic0603 },
+  "680": { mpn: "ERJ3EKF6800V", pattern: panasonic0603 },
+  "1k": { mpn: "ERJ3EKF1001V", pattern: panasonic0603 },
   "2.2k": { mpn: "ERA6AEB222V", pattern: panasonic0805 },
-  "2.7k": { mpn: "ERA3AEB272V", pattern: panasonic0603 },
+  "2.7k": { mpn: "ERJ3EKF2701V", pattern: panasonic0603 },
   "2.87k": { mpn: "ERA3AEB2871V", pattern: panasonic0603 },
-  "5.1k": { mpn: "ERA3AEB512V", pattern: panasonic0603 },
-  "10k": { mpn: "ERA3AEB103V", pattern: panasonic0603 },
+  "5.1k": { mpn: "ERJ3EKF5101V", pattern: panasonic0603 },
+  "10k": { mpn: "ERJ3EKF1002V", pattern: panasonic0603 },
   "26.1k": { mpn: "ERA3AEB2612V", pattern: panasonic0603 },
   "38.3k": { mpn: "ERA3AEB3832V", pattern: panasonic0603 },
   "95.3k": { mpn: "ERA3AEB9532V", pattern: panasonic0603 },
-  "100k": { mpn: "ERA3AEB104V", pattern: panasonic0603 },
+  "100k": { mpn: "ERJ3EKF1003V", pattern: panasonic0603 },
   "470k": { mpn: "ERA6AEB474V", pattern: panasonic0805 },
+} as const;
+
+export const precisionResistors = {
+  "10k": { mpn: "ERA3AEB103V", pattern: panasonic0603 },
 } as const;
 
 type ResistorOptions = Omit<
@@ -38,10 +42,15 @@ type ResistorOptions = Omit<
   | "footprint"
   | "datasheetUrl"
   | "kicadFootprintMetadata"
-> & { value: keyof typeof controllerResistors };
+> & { value: keyof typeof controllerResistors; precision?: boolean };
 
-export function ControllerResistor({ value, ...props }: ResistorOptions) {
-  const part = controllerResistors[value];
+export function ControllerResistor({
+  value,
+  precision = false,
+  ...props
+}: ResistorOptions) {
+  if (precision && value !== "10k") throw new Error("Unselected precision resistor");
+  const part = precision ? precisionResistors["10k"] : controllerResistors[value];
   return (
     <resistor
       {...props}

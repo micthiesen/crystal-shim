@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_sch</source>
+    <date>2026-09-12T23:31:53</date>
+    <tool>Eeschema 10.0.5</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>sensor.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>tanksensor.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>10uF</value>
+      <footprint>CrystalShim_Sensor:Sensor_C1</footprint>
+      <datasheet>https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf</datasheet>
+      <description>Capacitor</description>
+      <fields>
+        <field name="MPN">C3216X7R1E106K160AB</field>
+        <field name="StableID">sensor.component.c1</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_C1</field>
+        <field name="Datasheet">https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf</field>
+        <field name="Description">Capacitor</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_C1" description="Capacitor"/>
+      <property name="MPN" value="C3216X7R1E106K160AB"/>
+      <property name="StableID" value="sensor.component.c1"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="C cap capacitor"/>
+      <property name="ki_fp_filters" value="Sensor_C1"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>6efc23f7-8de3-47e9-a300-52b6bca51437</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C2">
+      <value>10uF</value>
+      <footprint>CrystalShim_Sensor:Sensor_C2</footprint>
+      <datasheet>https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf</datasheet>
+      <description>Capacitor</description>
+      <fields>
+        <field name="MPN">C3216X7R1E106K160AB</field>
+        <field name="StableID">sensor.component.c2</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_C2</field>
+        <field name="Datasheet">https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf</field>
+        <field name="Description">Capacitor</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_C2" description="Capacitor"/>
+      <property name="MPN" value="C3216X7R1E106K160AB"/>
+      <property name="StableID" value="sensor.component.c2"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="C cap capacitor"/>
+      <property name="ki_fp_filters" value="Sensor_C2"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>d22f9d53-86fb-4184-af8f-bb9c08b69690</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C3">
+      <value>100nF</value>
+      <footprint>CrystalShim_Sensor:Sensor_C3</footprint>
+      <datasheet>https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf</datasheet>
+      <description>Capacitor</description>
+      <fields>
+        <field name="MPN">C1608X7R1H104K080AA</field>
+        <field name="StableID">sensor.component.c3</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_C3</field>
+        <field name="Datasheet">https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf</field>
+        <field name="Description">Capacitor</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_C3" description="Capacitor"/>
+      <property name="MPN" value="C1608X7R1H104K080AA"/>
+      <property name="StableID" value="sensor.component.c3"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="C cap capacitor"/>
+      <property name="ki_fp_filters" value="Sensor_C3"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>0228c7cf-2b4f-4d33-9304-220637e0b8ea</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C4">
+      <value>1uF</value>
+      <footprint>CrystalShim_Sensor:Sensor_C4</footprint>
+      <datasheet>https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf</datasheet>
+      <description>Capacitor</description>
+      <fields>
+        <field name="MPN">C2012X7R1E105K125AB</field>
+        <field name="StableID">sensor.component.c4</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_C4</field>
+        <field name="Datasheet">https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf</field>
+        <field name="Description">Capacitor</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_C4" description="Capacitor"/>
+      <property name="MPN" value="C2012X7R1E105K125AB"/>
+      <property name="StableID" value="sensor.component.c4"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="C cap capacitor"/>
+      <property name="ki_fp_filters" value="Sensor_C4"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>afa2e0d2-cb3a-4481-ba8d-c1b6e39e74bf</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D2">
+      <value>STPS2L40U</value>
+      <footprint>CrystalShim_Sensor:Sensor_D2</footprint>
+      <datasheet>https://www.ic-components.pl/files/fe/STPS2L40AF.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">STPS2L40U</field>
+        <field name="StableID">sensor.component.d2</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_D2</field>
+        <field name="Datasheet">https://www.ic-components.pl/files/fe/STPS2L40AF.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_D2" description="Integrated Circuit"/>
+      <property name="MPN" value="STPS2L40U"/>
+      <property name="StableID" value="sensor.component.d2"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="Sensor_D2"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>900379ca-92b2-4009-b233-df46e30eb2d7</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="E1">
+      <value>PCB-COPPER-OOP-50</value>
+      <footprint>CrystalShim_Sensor:Sensor_E1</footprint>
+      <datasheet>https://www.ti.com/lit/ug/tidu736a/tidu736a.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">PCB-COPPER-OOP-50</field>
+        <field name="StableID">sensor.component.e1</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_E1</field>
+        <field name="Datasheet">https://www.ti.com/lit/ug/tidu736a/tidu736a.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_E1" description="Integrated Circuit"/>
+      <property name="MPN" value="PCB-COPPER-OOP-50"/>
+      <property name="StableID" value="sensor.component.e1"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="exclude_from_pos_files"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="Sensor_E1"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>e659ffd2-a690-4f04-a3d0-5fc3e7a6eef9</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="13"/>
+            <pin num="12"/>
+            <pin num="11"/>
+            <pin num="10"/>
+            <pin num="9"/>
+            <pin num="8"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J1">
+      <value>43045-0600</value>
+      <footprint>CrystalShim_Sensor:Sensor_J1</footprint>
+      <datasheet>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">43045-0600</field>
+        <field name="StableID">sensor.component.j1</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_J1</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_J1" description="Integrated Circuit"/>
+      <property name="MPN" value="43045-0600"/>
+      <property name="StableID" value="sensor.component.j1"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="Sensor_J1"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>4435c721-9220-4959-87b4-65f0de58c313</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="6"/>
+            <pin num="5"/>
+            <pin num="4"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R1">
+      <value>22Ω</value>
+      <footprint>CrystalShim_Sensor:Sensor_R1</footprint>
+      <datasheet>https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="MPN">ERJ3EKF22R0V</field>
+        <field name="StableID">sensor.component.r1</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_R1</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_R1" description="Resistor"/>
+      <property name="MPN" value="ERJ3EKF22R0V"/>
+      <property name="StableID" value="sensor.component.r1"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="Sensor_R1"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>5e715a8f-4801-4a1c-826a-014269fa2328</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R2">
+      <value>22Ω</value>
+      <footprint>CrystalShim_Sensor:Sensor_R2</footprint>
+      <datasheet>https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="MPN">ERJ3EKF22R0V</field>
+        <field name="StableID">sensor.component.r2</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_R2</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_R2" description="Resistor"/>
+      <property name="MPN" value="ERJ3EKF22R0V"/>
+      <property name="StableID" value="sensor.component.r2"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="Sensor_R2"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>15bff872-9d84-4018-bd1a-e078df2098ab</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R3">
+      <value>2.7kΩ</value>
+      <footprint>CrystalShim_Sensor:Sensor_R3</footprint>
+      <datasheet>https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="MPN">ERJ3EKF2701V</field>
+        <field name="StableID">sensor.component.r3</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_R3</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_R3" description="Resistor"/>
+      <property name="MPN" value="ERJ3EKF2701V"/>
+      <property name="StableID" value="sensor.component.r3"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="Sensor_R3"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>73243da2-b3e0-4ef9-9a85-1fb7d3c68943</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R4">
+      <value>2.7kΩ</value>
+      <footprint>CrystalShim_Sensor:Sensor_R4</footprint>
+      <datasheet>https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="MPN">ERJ3EKF2701V</field>
+        <field name="StableID">sensor.component.r4</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_R4</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_R4" description="Resistor"/>
+      <property name="MPN" value="ERJ3EKF2701V"/>
+      <property name="StableID" value="sensor.component.r4"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="Sensor_R4"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>cdd64e28-5ea8-42c6-b1dc-4a923f762c20</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R5">
+      <value>10kΩ</value>
+      <footprint>CrystalShim_Sensor:Sensor_R5</footprint>
+      <datasheet>https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="MPN">ERJ3EKF1002V</field>
+        <field name="StableID">sensor.component.r5</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_R5</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_R5" description="Resistor"/>
+      <property name="MPN" value="ERJ3EKF1002V"/>
+      <property name="StableID" value="sensor.component.r5"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="Sensor_R5"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>8d4974c4-f535-470c-aaec-45513c32144b</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R6">
+      <value>3.01kΩ</value>
+      <footprint>CrystalShim_Sensor:Sensor_R6</footprint>
+      <datasheet>https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="MPN">ERJ3EKF3011V</field>
+        <field name="StableID">sensor.component.r6</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_R6</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_R6" description="Resistor"/>
+      <property name="MPN" value="ERJ3EKF3011V"/>
+      <property name="StableID" value="sensor.component.r6"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="Sensor_R6"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>8c1aa930-d8d4-4c06-a406-aeeebbcfead6</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U1">
+      <value>FDC1004DGSR</value>
+      <footprint>CrystalShim_Sensor:Sensor_U1</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/fdc1004.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">FDC1004DGSR</field>
+        <field name="StableID">sensor.component.u1</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_U1</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/fdc1004.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_U1" description="Integrated Circuit"/>
+      <property name="MPN" value="FDC1004DGSR"/>
+      <property name="StableID" value="sensor.component.u1"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="Sensor_U1"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>db75aa9c-e6d8-4b1d-83ff-0295198d7337</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="10"/>
+            <pin num="9"/>
+            <pin num="8"/>
+            <pin num="7"/>
+            <pin num="6"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U2">
+      <value>TPS7A2433DBVR</value>
+      <footprint>CrystalShim_Sensor:Sensor_U2</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/tps7a24.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">TPS7A2433DBVR</field>
+        <field name="StableID">sensor.component.u2</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_U2</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/tps7a24.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_U2" description="Integrated Circuit"/>
+      <property name="MPN" value="TPS7A2433DBVR"/>
+      <property name="StableID" value="sensor.component.u2"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="Sensor_U2"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>7a9f98ca-38a8-4c5c-8ad6-69e7a29f7144</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="5"/>
+            <pin num="4"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U3">
+      <value>ESDS312DBVR</value>
+      <footprint>CrystalShim_Sensor:Sensor_U3</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/esds312.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">ESDS312DBVR</field>
+        <field name="StableID">sensor.component.u3</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_U3</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/esds312.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Sensor" part="Sensor_U3" description="Integrated Circuit"/>
+      <property name="MPN" value="ESDS312DBVR"/>
+      <property name="StableID" value="sensor.component.u3"/>
+      <property name="Sheetname" value="Tank sensor, local 3.3 V and stored dry baseline"/>
+      <property name="Sheetfile" value="tanksensor.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="Sensor_U3"/>
+      <sheetpath names="/Tank sensor, local 3.3 V and stored dry baseline/" tstamps="/2eb505f5-a26e-4106-8e87-fb24497d65e1/"/>
+      <tstamps>4a5e8410-2e9d-4c42-9a75-df8de11e5d32</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="5"/>
+            <pin num="4"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_C1">
+      <description>Capacitor</description>
+      <docs>https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf</docs>
+      <footprints>
+        <fp>Sensor_C1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">10uF</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_C1</field>
+        <field name="Datasheet">https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf</field>
+        <field name="Description">Capacitor</field>
+        <field name="MPN">C3216X7R1E106K160AB</field>
+        <field name="StableID">sensor.component.c1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_C2">
+      <description>Capacitor</description>
+      <docs>https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf</docs>
+      <footprints>
+        <fp>Sensor_C2</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">10uF</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_C2</field>
+        <field name="Datasheet">https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf</field>
+        <field name="Description">Capacitor</field>
+        <field name="MPN">C3216X7R1E106K160AB</field>
+        <field name="StableID">sensor.component.c2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_C3">
+      <description>Capacitor</description>
+      <docs>https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf</docs>
+      <footprints>
+        <fp>Sensor_C3</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">100nF</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_C3</field>
+        <field name="Datasheet">https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf</field>
+        <field name="Description">Capacitor</field>
+        <field name="MPN">C1608X7R1H104K080AA</field>
+        <field name="StableID">sensor.component.c3</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_C4">
+      <description>Capacitor</description>
+      <docs>https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf</docs>
+      <footprints>
+        <fp>Sensor_C4</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">1uF</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_C4</field>
+        <field name="Datasheet">https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf</field>
+        <field name="Description">Capacitor</field>
+        <field name="MPN">C2012X7R1E105K125AB</field>
+        <field name="StableID">sensor.component.c4</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_D2">
+      <description>Integrated Circuit</description>
+      <docs>https://www.ic-components.pl/files/fe/STPS2L40AF.pdf</docs>
+      <footprints>
+        <fp>Sensor_D2</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">STPS2L40U</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_D2</field>
+        <field name="Datasheet">https://www.ic-components.pl/files/fe/STPS2L40AF.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">STPS2L40U</field>
+        <field name="StableID">sensor.component.d2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_E1">
+      <description>Integrated Circuit</description>
+      <docs>https://www.ti.com/lit/ug/tidu736a/tidu736a.pdf</docs>
+      <footprints>
+        <fp>Sensor_E1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">PCB-COPPER-OOP-50</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_E1</field>
+        <field name="Datasheet">https://www.ti.com/lit/ug/tidu736a/tidu736a.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">PCB-COPPER-OOP-50</field>
+        <field name="StableID">sensor.component.e1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="sen_oop_level" type="passive"/>
+        <pin num="2" name="sen_level" type="passive"/>
+        <pin num="3" name="sen_rl" type="passive"/>
+        <pin num="4" name="sen_oop_rl" type="passive"/>
+        <pin num="5" name="trace_rl_vertical" type="passive"/>
+        <pin num="6" name="trace_rl_horizontal" type="passive"/>
+        <pin num="7" name="shield2_level_back" type="passive"/>
+        <pin num="8" name="shield1_level_back" type="passive"/>
+        <pin num="9" name="shield1_ref_back" type="passive"/>
+        <pin num="10" name="shield2_ref_back" type="passive"/>
+        <pin num="11" name="shield1_rl_trace_vertical" type="passive"/>
+        <pin num="12" name="shield1_rl_trace_horizontal" type="passive"/>
+        <pin num="13" name="trace_oop_rl_vertical" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_J1">
+      <description>Integrated Circuit</description>
+      <docs>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf</docs>
+      <footprints>
+        <fp>Sensor_J1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">43045-0600</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_J1</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">43045-0600</field>
+        <field name="StableID">sensor.component.j1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="V5_SENSOR" type="passive"/>
+        <pin num="2" name="SDA_CABLE" type="passive"/>
+        <pin num="3" name="SCL_CABLE" type="passive"/>
+        <pin num="4" name="GND_4" type="passive"/>
+        <pin num="5" name="GND_5" type="passive"/>
+        <pin num="6" name="GND_6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_R1">
+      <description>Resistor</description>
+      <docs>https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</docs>
+      <footprints>
+        <fp>Sensor_R1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">22Ω</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_R1</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</field>
+        <field name="Description">Resistor</field>
+        <field name="MPN">ERJ3EKF22R0V</field>
+        <field name="StableID">sensor.component.r1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_R2">
+      <description>Resistor</description>
+      <docs>https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</docs>
+      <footprints>
+        <fp>Sensor_R2</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">22Ω</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_R2</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</field>
+        <field name="Description">Resistor</field>
+        <field name="MPN">ERJ3EKF22R0V</field>
+        <field name="StableID">sensor.component.r2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_R3">
+      <description>Resistor</description>
+      <docs>https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</docs>
+      <footprints>
+        <fp>Sensor_R3</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">2.7kΩ</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_R3</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</field>
+        <field name="Description">Resistor</field>
+        <field name="MPN">ERJ3EKF2701V</field>
+        <field name="StableID">sensor.component.r3</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_R4">
+      <description>Resistor</description>
+      <docs>https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</docs>
+      <footprints>
+        <fp>Sensor_R4</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">2.7kΩ</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_R4</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</field>
+        <field name="Description">Resistor</field>
+        <field name="MPN">ERJ3EKF2701V</field>
+        <field name="StableID">sensor.component.r4</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_R5">
+      <description>Resistor</description>
+      <docs>https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</docs>
+      <footprints>
+        <fp>Sensor_R5</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">10kΩ</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_R5</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</field>
+        <field name="Description">Resistor</field>
+        <field name="MPN">ERJ3EKF1002V</field>
+        <field name="StableID">sensor.component.r5</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_R6">
+      <description>Resistor</description>
+      <docs>https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</docs>
+      <footprints>
+        <fp>Sensor_R6</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">3.01kΩ</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_R6</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf</field>
+        <field name="Description">Resistor</field>
+        <field name="MPN">ERJ3EKF3011V</field>
+        <field name="StableID">sensor.component.r6</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_U1">
+      <description>Integrated Circuit</description>
+      <docs>https://www.ti.com/lit/ds/symlink/fdc1004.pdf</docs>
+      <footprints>
+        <fp>Sensor_U1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">FDC1004DGSR</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_U1</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/fdc1004.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">FDC1004DGSR</field>
+        <field name="StableID">sensor.component.u1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SHLD1" type="output"/>
+        <pin num="2" name="CIN_LEVEL" type="input"/>
+        <pin num="3" name="CIN_RL" type="input"/>
+        <pin num="4" name="CIN3" type="input"/>
+        <pin num="5" name="CIN4" type="input"/>
+        <pin num="6" name="SHLD2" type="output"/>
+        <pin num="7" name="GND" type="power_in"/>
+        <pin num="8" name="VDD" type="power_in"/>
+        <pin num="9" name="SDA" type="bidirectional"/>
+        <pin num="10" name="SCL" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_U2">
+      <description>Integrated Circuit</description>
+      <docs>https://www.ti.com/lit/ds/symlink/tps7a24.pdf</docs>
+      <footprints>
+        <fp>Sensor_U2</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TPS7A2433DBVR</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_U2</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/tps7a24.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">TPS7A2433DBVR</field>
+        <field name="StableID">sensor.component.u2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="IN" type="power_in"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="NC" type="passive"/>
+        <pin num="5" name="OUT" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Sensor" part="Sensor_U3">
+      <description>Integrated Circuit</description>
+      <docs>https://www.ti.com/lit/ds/symlink/esds312.pdf</docs>
+      <footprints>
+        <fp>Sensor_U3</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ESDS312DBVR</field>
+        <field name="Footprint">CrystalShim_Sensor:Sensor_U3</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/esds312.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">ESDS312DBVR</field>
+        <field name="StableID">sensor.component.u3</field>
+      </fields>
+      <pins>
+        <pin num="1" name="NC_1" type="passive"/>
+        <pin num="2" name="GND" type="passive"/>
+        <pin num="3" name="NC_3" type="passive"/>
+        <pin num="4" name="IO1" type="passive"/>
+        <pin num="5" name="IO2" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="CrystalShim_Sensor">
+      <uri>${KIPRJMOD}/libraries-v2/CrystalShim_Sensor.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="CIN_LEVEL" class="Electrode">
+      <node ref="E1" pin="2" pinfunction="sen_level_2" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="CIN_LEVEL_2" pintype="input"/>
+    </net>
+    <net code="2" name="CIN_RL" class="Electrode">
+      <node ref="E1" pin="3" pinfunction="sen_rl_3" pintype="passive"/>
+      <node ref="E1" pin="5" pinfunction="trace_rl_vertical_5" pintype="passive"/>
+      <node ref="E1" pin="6" pinfunction="trace_rl_horizontal_6" pintype="passive"/>
+      <node ref="U1" pin="3" pinfunction="CIN_RL_3" pintype="input"/>
+    </net>
+    <net code="3" name="GND" class="Default">
+      <node ref="C1" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C2" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C3" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C4" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="J1" pin="4" pinfunction="GND_4_4" pintype="passive"/>
+      <node ref="J1" pin="5" pinfunction="GND_5_5" pintype="passive"/>
+      <node ref="J1" pin="6" pinfunction="GND_6_6" pintype="passive"/>
+      <node ref="R5" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R6" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U1" pin="7" pinfunction="GND_7" pintype="power_in"/>
+      <node ref="U2" pin="2" pinfunction="GND_2" pintype="power_in"/>
+      <node ref="U2" pin="4" pinfunction="NC_4" pintype="passive"/>
+      <node ref="U3" pin="2" pinfunction="GND_2" pintype="passive"/>
+    </net>
+    <net code="4" name="I2C_SCL" class="Default">
+      <node ref="R2" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R4" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U1" pin="10" pinfunction="SCL_10" pintype="input"/>
+    </net>
+    <net code="5" name="I2C_SDA" class="Default">
+      <node ref="R1" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R3" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U1" pin="9" pinfunction="SDA_9" pintype="bidirectional"/>
+    </net>
+    <net code="6" name="SCL_CABLE" class="Default">
+      <node ref="J1" pin="3" pinfunction="SCL_CABLE_3" pintype="passive"/>
+      <node ref="R2" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U3" pin="5" pinfunction="IO2_5" pintype="passive"/>
+    </net>
+    <net code="7" name="SDA_CABLE" class="Default">
+      <node ref="J1" pin="2" pinfunction="SDA_CABLE_2" pintype="passive"/>
+      <node ref="R1" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U3" pin="4" pinfunction="IO1_4" pintype="passive"/>
+    </net>
+    <net code="8" name="SHLD1" class="Electrode">
+      <node ref="E1" pin="11" pinfunction="shield1_rl_trace_vertical_11" pintype="passive"/>
+      <node ref="E1" pin="12" pinfunction="shield1_rl_trace_horizontal_12" pintype="passive"/>
+      <node ref="E1" pin="8" pinfunction="shield1_level_back_8" pintype="passive"/>
+      <node ref="E1" pin="9" pinfunction="shield1_ref_back_9" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="SHLD1_1" pintype="output"/>
+    </net>
+    <net code="9" name="SHLD2" class="Electrode">
+      <node ref="E1" pin="1" pinfunction="sen_oop_level_1" pintype="passive"/>
+      <node ref="E1" pin="10" pinfunction="shield2_ref_back_10" pintype="passive"/>
+      <node ref="E1" pin="13" pinfunction="trace_oop_rl_vertical_13" pintype="passive"/>
+      <node ref="E1" pin="4" pinfunction="sen_oop_rl_4" pintype="passive"/>
+      <node ref="E1" pin="7" pinfunction="shield2_level_back_7" pintype="passive"/>
+      <node ref="U1" pin="6" pinfunction="SHLD2_6" pintype="output"/>
+    </net>
+    <net code="10" name="V3V3_SENSOR" class="Default">
+      <node ref="C2" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C3" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C4" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D2" pin="2" pinfunction="A_2" pintype="passive"/>
+      <node ref="R3" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R4" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R6" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="8" pinfunction="VDD_8" pintype="power_in"/>
+      <node ref="U2" pin="5" pinfunction="OUT_5" pintype="power_out"/>
+    </net>
+    <net code="11" name="V5_SENSOR" class="Default">
+      <node ref="C1" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D2" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="J1" pin="1" pinfunction="V5_SENSOR_1" pintype="passive"/>
+      <node ref="R5" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U2" pin="1" pinfunction="IN_1" pintype="power_in"/>
+      <node ref="U2" pin="3" pinfunction="EN_3" pintype="input"/>
+    </net>
+    <net code="12" name="unconnected-(U1-CIN3-Pad4)" class="Default">
+      <node ref="U1" pin="4" pinfunction="CIN3_4" pintype="input+no_connect"/>
+    </net>
+    <net code="13" name="unconnected-(U1-CIN4-Pad5)" class="Default">
+      <node ref="U1" pin="5" pinfunction="CIN4_5" pintype="input+no_connect"/>
+    </net>
+    <net code="14" name="unconnected-(U3-NC_1-Pad1)" class="Default">
+      <node ref="U3" pin="1" pinfunction="NC_1_1" pintype="passive+no_connect"/>
+    </net>
+    <net code="15" name="unconnected-(U3-NC_3-Pad3)" class="Default">
+      <node ref="U3" pin="3" pinfunction="NC_3_3" pintype="passive+no_connect"/>
+    </net>
+  </nets>
+</export>

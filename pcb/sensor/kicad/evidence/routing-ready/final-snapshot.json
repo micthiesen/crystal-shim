@@ -1,0 +1,1236 @@
+{
+  "board_id": "sensor.board.main",
+  "kicad_owned": {
+    "graphics": {
+      "details": [],
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "rules": {
+      "details": [
+        {
+          "board_setup": {
+            "copper_layer_count": 2,
+            "minimum_clearance_mm": 0.15,
+            "minimum_hole_to_hole_mm": 0.25,
+            "minimum_track_width_mm": 0.15,
+            "minimum_via_drill_mm": 0.3,
+            "minimum_via_size_mm": 0.5,
+            "thickness_mm": 1.6
+          }
+        },
+        {
+          "path": "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_pro",
+          "sha256": "10669a5c2233963ffd83a1119f7c6fd9b3052bc357f14d9a13fa55c281fc2e6b"
+        }
+      ],
+      "sha256": "d582ab2bf2927aace4314c6286e49569ade85d1fbed40c0cab492bc26965bd78"
+    },
+    "tracks": {
+      "details": [],
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "vias": {
+      "details": [],
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "zones": {
+      "details": [
+        {
+          "bbox_mm": [
+            81,
+            79,
+            38,
+            64
+          ],
+          "layers": [
+            "B.Cu",
+            "F.Cu"
+          ],
+          "name": "SENSOR_WINDOW_NO_ROUTING",
+          "net": "",
+          "outline_mm": [
+            [
+              [
+                81,
+                79
+              ],
+              [
+                119,
+                79
+              ],
+              [
+                119,
+                143
+              ],
+              [
+                81,
+                143
+              ]
+            ]
+          ],
+          "priority": 0,
+          "uuid": "db2e70c1-68c5-4603-9020-77bef46d3f3c"
+        }
+      ],
+      "sha256": "1c65b5f1c5cdb0566e53f2a3bf66b3b86c827d41f3bcb22d8f4c954a3495ad97"
+    }
+  },
+  "routed": false,
+  "schematic_owned": {
+    "components": [
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_C1",
+        "manufacturer_part_number": "C3216X7R1E106K160AB",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C1",
+        "symbol": "CrystalShim_Sensor:Sensor_C1",
+        "value": "10uF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c3216x7r1e106k160ab_200122.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_C2",
+        "manufacturer_part_number": "C3216X7R1E106K160AB",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C2",
+        "symbol": "CrystalShim_Sensor:Sensor_C2",
+        "value": "10uF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_C3",
+        "manufacturer_part_number": "C1608X7R1H104K080AA",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C3",
+        "symbol": "CrystalShim_Sensor:Sensor_C3",
+        "value": "100nF"
+      },
+      {
+        "datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c2012x7r1e105k125ab.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_C4",
+        "manufacturer_part_number": "C2012X7R1E105K125AB",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "C4",
+        "symbol": "CrystalShim_Sensor:Sensor_C4",
+        "value": "1uF"
+      },
+      {
+        "datasheet": "https://www.ic-components.pl/files/fe/STPS2L40AF.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_D2",
+        "manufacturer_part_number": "STPS2L40U",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "D2",
+        "symbol": "CrystalShim_Sensor:Sensor_D2",
+        "value": "STPS2L40U"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ug/tidu736a/tidu736a.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_E1",
+        "manufacturer_part_number": "PCB-COPPER-OOP-50",
+        "pins": [
+          "1",
+          "10",
+          "11",
+          "12",
+          "13",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "ref": "E1",
+        "symbol": "CrystalShim_Sensor:Sensor_E1",
+        "value": "PCB-COPPER-OOP-50"
+      },
+      {
+        "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450600_sd.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_J1",
+        "manufacturer_part_number": "43045-0600",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "ref": "J1",
+        "symbol": "CrystalShim_Sensor:Sensor_J1",
+        "value": "43045-0600"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_R1",
+        "manufacturer_part_number": "ERJ3EKF22R0V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R1",
+        "symbol": "CrystalShim_Sensor:Sensor_R1",
+        "value": "22\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_R2",
+        "manufacturer_part_number": "ERJ3EKF22R0V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R2",
+        "symbol": "CrystalShim_Sensor:Sensor_R2",
+        "value": "22\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_R3",
+        "manufacturer_part_number": "ERJ3EKF2701V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R3",
+        "symbol": "CrystalShim_Sensor:Sensor_R3",
+        "value": "2.7k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_R4",
+        "manufacturer_part_number": "ERJ3EKF2701V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R4",
+        "symbol": "CrystalShim_Sensor:Sensor_R4",
+        "value": "2.7k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_R5",
+        "manufacturer_part_number": "ERJ3EKF1002V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R5",
+        "symbol": "CrystalShim_Sensor:Sensor_R5",
+        "value": "10k\u03a9"
+      },
+      {
+        "datasheet": "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/DMM0000COL17.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_R6",
+        "manufacturer_part_number": "ERJ3EKF3011V",
+        "pins": [
+          "1",
+          "2"
+        ],
+        "ref": "R6",
+        "symbol": "CrystalShim_Sensor:Sensor_R6",
+        "value": "3.01k\u03a9"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/fdc1004.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_U1",
+        "manufacturer_part_number": "FDC1004DGSR",
+        "pins": [
+          "1",
+          "10",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "ref": "U1",
+        "symbol": "CrystalShim_Sensor:Sensor_U1",
+        "value": "FDC1004DGSR"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/tps7a24.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_U2",
+        "manufacturer_part_number": "TPS7A2433DBVR",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "ref": "U2",
+        "symbol": "CrystalShim_Sensor:Sensor_U2",
+        "value": "TPS7A2433DBVR"
+      },
+      {
+        "datasheet": "https://www.ti.com/lit/ds/symlink/esds312.pdf",
+        "footprint": "CrystalShim_Sensor:Sensor_U3",
+        "manufacturer_part_number": "ESDS312DBVR",
+        "pins": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "ref": "U3",
+        "symbol": "CrystalShim_Sensor:Sensor_U3",
+        "value": "ESDS312DBVR"
+      }
+    ],
+    "nets": [
+      {
+        "endpoints": [
+          [
+            "E1",
+            "2"
+          ],
+          [
+            "U1",
+            "2"
+          ]
+        ],
+        "name": "CIN_LEVEL"
+      },
+      {
+        "endpoints": [
+          [
+            "E1",
+            "3"
+          ],
+          [
+            "E1",
+            "5"
+          ],
+          [
+            "E1",
+            "6"
+          ],
+          [
+            "U1",
+            "3"
+          ]
+        ],
+        "name": "CIN_RL"
+      },
+      {
+        "endpoints": [
+          [
+            "C1",
+            "2"
+          ],
+          [
+            "C2",
+            "2"
+          ],
+          [
+            "C3",
+            "2"
+          ],
+          [
+            "C4",
+            "2"
+          ],
+          [
+            "J1",
+            "4"
+          ],
+          [
+            "J1",
+            "5"
+          ],
+          [
+            "J1",
+            "6"
+          ],
+          [
+            "R5",
+            "2"
+          ],
+          [
+            "R6",
+            "2"
+          ],
+          [
+            "U1",
+            "7"
+          ],
+          [
+            "U2",
+            "2"
+          ],
+          [
+            "U2",
+            "4"
+          ],
+          [
+            "U3",
+            "2"
+          ]
+        ],
+        "name": "GND"
+      },
+      {
+        "endpoints": [
+          [
+            "R2",
+            "2"
+          ],
+          [
+            "R4",
+            "2"
+          ],
+          [
+            "U1",
+            "10"
+          ]
+        ],
+        "name": "I2C_SCL"
+      },
+      {
+        "endpoints": [
+          [
+            "R1",
+            "2"
+          ],
+          [
+            "R3",
+            "2"
+          ],
+          [
+            "U1",
+            "9"
+          ]
+        ],
+        "name": "I2C_SDA"
+      },
+      {
+        "endpoints": [
+          [
+            "J1",
+            "3"
+          ],
+          [
+            "R2",
+            "1"
+          ],
+          [
+            "U3",
+            "5"
+          ]
+        ],
+        "name": "SCL_CABLE"
+      },
+      {
+        "endpoints": [
+          [
+            "J1",
+            "2"
+          ],
+          [
+            "R1",
+            "1"
+          ],
+          [
+            "U3",
+            "4"
+          ]
+        ],
+        "name": "SDA_CABLE"
+      },
+      {
+        "endpoints": [
+          [
+            "E1",
+            "11"
+          ],
+          [
+            "E1",
+            "12"
+          ],
+          [
+            "E1",
+            "8"
+          ],
+          [
+            "E1",
+            "9"
+          ],
+          [
+            "U1",
+            "1"
+          ]
+        ],
+        "name": "SHLD1"
+      },
+      {
+        "endpoints": [
+          [
+            "E1",
+            "1"
+          ],
+          [
+            "E1",
+            "10"
+          ],
+          [
+            "E1",
+            "13"
+          ],
+          [
+            "E1",
+            "4"
+          ],
+          [
+            "E1",
+            "7"
+          ],
+          [
+            "U1",
+            "6"
+          ]
+        ],
+        "name": "SHLD2"
+      },
+      {
+        "endpoints": [
+          [
+            "C2",
+            "1"
+          ],
+          [
+            "C3",
+            "1"
+          ],
+          [
+            "C4",
+            "1"
+          ],
+          [
+            "D2",
+            "2"
+          ],
+          [
+            "R3",
+            "1"
+          ],
+          [
+            "R4",
+            "1"
+          ],
+          [
+            "R6",
+            "1"
+          ],
+          [
+            "U1",
+            "8"
+          ],
+          [
+            "U2",
+            "5"
+          ]
+        ],
+        "name": "V3V3_SENSOR"
+      },
+      {
+        "endpoints": [
+          [
+            "C1",
+            "1"
+          ],
+          [
+            "D2",
+            "1"
+          ],
+          [
+            "J1",
+            "1"
+          ],
+          [
+            "R5",
+            "1"
+          ],
+          [
+            "U2",
+            "1"
+          ],
+          [
+            "U2",
+            "3"
+          ]
+        ],
+        "name": "V5_SENSOR"
+      }
+    ]
+  },
+  "source_owned": {
+    "components": [
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_C1",
+        "pads": [
+          {
+            "net": "V5_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            84,
+            72
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "C1",
+        "stable_id": "sensor.component.c1",
+        "uuid": "6b7f6a7c-7e92-4097-9f34-b663d360e3c3",
+        "value": "10uF"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_C2",
+        "pads": [
+          {
+            "net": "V3V3_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            94,
+            72
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "C2",
+        "stable_id": "sensor.component.c2",
+        "uuid": "d5dce3ab-9ef4-4369-a944-580fd33bc6a6",
+        "value": "10uF"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_C3",
+        "pads": [
+          {
+            "net": "V3V3_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            109.5,
+            75
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "C3",
+        "stable_id": "sensor.component.c3",
+        "uuid": "5ec5e035-5aa5-4dc6-8cf8-1a2f41efb32f",
+        "value": "100nF"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_C4",
+        "pads": [
+          {
+            "net": "V3V3_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            112,
+            75
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "C4",
+        "stable_id": "sensor.component.c4",
+        "uuid": "2bd1dfb2-3292-4e7a-87dc-025fa20663f0",
+        "value": "1uF"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_D2",
+        "pads": [
+          {
+            "net": "V5_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "V3V3_SENSOR",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            89,
+            66
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "D2",
+        "stable_id": "sensor.component.d2",
+        "uuid": "61e69fcb-4d91-426c-912c-82dd0da2a99d",
+        "value": "STPS2L40U"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_E1",
+        "pads": [
+          {
+            "net": "SHLD2",
+            "number": "1"
+          },
+          {
+            "net": "SHLD2",
+            "number": "10"
+          },
+          {
+            "net": "SHLD1",
+            "number": "11"
+          },
+          {
+            "net": "SHLD1",
+            "number": "12"
+          },
+          {
+            "net": "SHLD2",
+            "number": "13"
+          },
+          {
+            "net": "CIN_LEVEL",
+            "number": "2"
+          },
+          {
+            "net": "CIN_RL",
+            "number": "3"
+          },
+          {
+            "net": "SHLD2",
+            "number": "4"
+          },
+          {
+            "net": "CIN_RL",
+            "number": "5"
+          },
+          {
+            "net": "CIN_RL",
+            "number": "6"
+          },
+          {
+            "net": "SHLD2",
+            "number": "7"
+          },
+          {
+            "net": "SHLD1",
+            "number": "8"
+          },
+          {
+            "net": "SHLD1",
+            "number": "9"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            100,
+            110
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "E1",
+        "stable_id": "sensor.component.e1",
+        "uuid": "1c58dc51-c1e1-48d8-a730-36a36ae4248d",
+        "value": "PCB-COPPER-OOP-50"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_J1",
+        "pads": [
+          {
+            "net": "V5_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "SDA_CABLE",
+            "number": "2"
+          },
+          {
+            "net": "SCL_CABLE",
+            "number": "3"
+          },
+          {
+            "net": "GND",
+            "number": "4"
+          },
+          {
+            "net": "GND",
+            "number": "5"
+          },
+          {
+            "net": "GND",
+            "number": "6"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            100,
+            65
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "J1",
+        "stable_id": "sensor.component.j1",
+        "uuid": "95b86222-ddc9-46eb-a1b9-07d7652cb0f0",
+        "value": "43045-0600"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_R1",
+        "pads": [
+          {
+            "net": "SDA_CABLE",
+            "number": "1"
+          },
+          {
+            "net": "I2C_SDA",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            114,
+            67
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R1",
+        "stable_id": "sensor.component.r1",
+        "uuid": "a25ec3fb-465a-4fbc-ae7e-da4f75a25d79",
+        "value": "22\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_R2",
+        "pads": [
+          {
+            "net": "SCL_CABLE",
+            "number": "1"
+          },
+          {
+            "net": "I2C_SCL",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            116.5,
+            67
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R2",
+        "stable_id": "sensor.component.r2",
+        "uuid": "c9cd055c-30ad-401e-96f1-5fad687d1247",
+        "value": "22\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_R3",
+        "pads": [
+          {
+            "net": "V3V3_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "I2C_SDA",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            110,
+            72
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R3",
+        "stable_id": "sensor.component.r3",
+        "uuid": "af0c0940-d6cd-4170-96ad-18eb00f09d88",
+        "value": "2.7k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_R4",
+        "pads": [
+          {
+            "net": "V3V3_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "I2C_SCL",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            115,
+            72
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "R4",
+        "stable_id": "sensor.component.r4",
+        "uuid": "6e3bf233-aee6-428a-9ece-2056b9fe5b93",
+        "value": "2.7k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_R5",
+        "pads": [
+          {
+            "net": "V5_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            89,
+            76
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R5",
+        "stable_id": "sensor.component.r5",
+        "uuid": "102686cb-5f8a-44d6-b0ef-2ce707fc7f3c",
+        "value": "10k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_R6",
+        "pads": [
+          {
+            "net": "V3V3_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            99,
+            75
+          ],
+          "rotation_deg": 90,
+          "side": "front"
+        },
+        "ref": "R6",
+        "stable_id": "sensor.component.r6",
+        "uuid": "36bee68a-f696-4f31-9008-df6e7ad644dc",
+        "value": "3.01k\u03a9"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_U1",
+        "pads": [
+          {
+            "net": "SHLD1",
+            "number": "1"
+          },
+          {
+            "net": "I2C_SCL",
+            "number": "10"
+          },
+          {
+            "net": "CIN_LEVEL",
+            "number": "2"
+          },
+          {
+            "net": "CIN_RL",
+            "number": "3"
+          },
+          {
+            "net": "",
+            "number": "4"
+          },
+          {
+            "net": "",
+            "number": "5"
+          },
+          {
+            "net": "SHLD2",
+            "number": "6"
+          },
+          {
+            "net": "GND",
+            "number": "7"
+          },
+          {
+            "net": "V3V3_SENSOR",
+            "number": "8"
+          },
+          {
+            "net": "I2C_SDA",
+            "number": "9"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            105,
+            75
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "U1",
+        "stable_id": "sensor.component.u1",
+        "uuid": "6e02ce1b-ca7b-4d90-8fb9-aeea01c39b5f",
+        "value": "FDC1004DGSR"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_U2",
+        "pads": [
+          {
+            "net": "V5_SENSOR",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          },
+          {
+            "net": "V5_SENSOR",
+            "number": "3"
+          },
+          {
+            "net": "GND",
+            "number": "4"
+          },
+          {
+            "net": "V3V3_SENSOR",
+            "number": "5"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            89,
+            72
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "U2",
+        "stable_id": "sensor.component.u2",
+        "uuid": "d406170e-53a8-4839-a6f9-81c5341d7362",
+        "value": "TPS7A2433DBVR"
+      },
+      {
+        "footprint": "CrystalShim_Sensor:Sensor_U3",
+        "pads": [
+          {
+            "net": "",
+            "number": "1"
+          },
+          {
+            "net": "GND",
+            "number": "2"
+          },
+          {
+            "net": "",
+            "number": "3"
+          },
+          {
+            "net": "SDA_CABLE",
+            "number": "4"
+          },
+          {
+            "net": "SCL_CABLE",
+            "number": "5"
+          }
+        ],
+        "placement": {
+          "position_mm": [
+            114,
+            62
+          ],
+          "rotation_deg": 0,
+          "side": "front"
+        },
+        "ref": "U3",
+        "stable_id": "sensor.component.u3",
+        "uuid": "dcf85d20-f5da-4e0b-81f7-36d6068070a5",
+        "value": "ESDS312DBVR"
+      }
+    ],
+    "holes": [
+      {
+        "drill_mm": [
+          3,
+          3
+        ],
+        "footprint_ref": "J1",
+        "pad": "",
+        "position_mm": [
+          103,
+          60.68
+        ],
+        "uuid": "c02b65c7-1235-418d-a957-85d509d5d2ea"
+      }
+    ],
+    "outline": [
+      {
+        "bbox_mm": [
+          118.95,
+          56.95,
+          0.1,
+          86.1
+        ],
+        "class": "PCB_SHAPE",
+        "end_mm": [
+          119,
+          57
+        ],
+        "layer": "Edge.Cuts",
+        "position_mm": [
+          119,
+          143
+        ],
+        "start_mm": [
+          119,
+          143
+        ],
+        "uuid": "0b0e08c1-2b75-4026-bf05-1306c0c23010"
+      },
+      {
+        "bbox_mm": [
+          80.95,
+          142.95,
+          38.1,
+          0.1
+        ],
+        "class": "PCB_SHAPE",
+        "end_mm": [
+          119,
+          143
+        ],
+        "layer": "Edge.Cuts",
+        "position_mm": [
+          81,
+          143
+        ],
+        "start_mm": [
+          81,
+          143
+        ],
+        "uuid": "534131f5-8b94-4f3d-b1d5-63e5c4b9fab5"
+      },
+      {
+        "bbox_mm": [
+          80.95,
+          56.95,
+          0.1,
+          86.1
+        ],
+        "class": "PCB_SHAPE",
+        "end_mm": [
+          81,
+          143
+        ],
+        "layer": "Edge.Cuts",
+        "position_mm": [
+          81,
+          57
+        ],
+        "start_mm": [
+          81,
+          57
+        ],
+        "uuid": "9a2e923b-2104-4694-a726-e0115661d43e"
+      },
+      {
+        "bbox_mm": [
+          80.95,
+          56.95,
+          38.1,
+          0.1
+        ],
+        "class": "PCB_SHAPE",
+        "end_mm": [
+          81,
+          57
+        ],
+        "layer": "Edge.Cuts",
+        "position_mm": [
+          119,
+          57
+        ],
+        "start_mm": [
+          119,
+          57
+        ],
+        "uuid": "d1fe286b-9197-45ba-b5c8-03dd12e5f78c"
+      }
+    ]
+  },
+  "uuid_map": {
+    "sensor.component.c1": "6b7f6a7c-7e92-4097-9f34-b663d360e3c3",
+    "sensor.component.c2": "d5dce3ab-9ef4-4369-a944-580fd33bc6a6",
+    "sensor.component.c3": "5ec5e035-5aa5-4dc6-8cf8-1a2f41efb32f",
+    "sensor.component.c4": "2bd1dfb2-3292-4e7a-87dc-025fa20663f0",
+    "sensor.component.d2": "61e69fcb-4d91-426c-912c-82dd0da2a99d",
+    "sensor.component.e1": "1c58dc51-c1e1-48d8-a730-36a36ae4248d",
+    "sensor.component.j1": "95b86222-ddc9-46eb-a1b9-07d7652cb0f0",
+    "sensor.component.r1": "a25ec3fb-465a-4fbc-ae7e-da4f75a25d79",
+    "sensor.component.r2": "c9cd055c-30ad-401e-96f1-5fad687d1247",
+    "sensor.component.r3": "af0c0940-d6cd-4170-96ad-18eb00f09d88",
+    "sensor.component.r4": "6e3bf233-aee6-428a-9ece-2056b9fe5b93",
+    "sensor.component.r5": "102686cb-5f8a-44d6-b0ef-2ce707fc7f3c",
+    "sensor.component.r6": "36bee68a-f696-4f31-9008-df6e7ad644dc",
+    "sensor.component.u1": "6e02ce1b-ca7b-4d90-8fb9-aeea01c39b5f",
+    "sensor.component.u2": "d406170e-53a8-4839-a6f9-81c5341d7362",
+    "sensor.component.u3": "dcf85d20-f5da-4e0b-81f7-36d6068070a5"
+  }
+}

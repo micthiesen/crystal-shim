@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { MainsPrimary } from "./primary";
-import { mainsMountingHoles, mainsPlacements } from "./placements";
+import { mainsMountingHoles, mainsPlacements, mainsBoardSize } from "./placements";
 import { MainsSecondaryPower } from "./secondary-power";
 import { MainsSuppression } from "./suppression";
 
@@ -10,8 +10,8 @@ import { MainsSuppression } from "./suppression";
 export default function MainsCircuit() {
   return (
     <board
-      width={135}
-      height={75}
+      width={mainsBoardSize.width}
+      height={mainsBoardSize.height}
       thickness={1.6}
       layers={2}
       material="fr4"
@@ -27,10 +27,10 @@ export default function MainsCircuit() {
       />
       <schematicsheet
         name="Secondary"
-        displayName="Protected isolated supply and controller harness"
+        displayName="Shared 12 V motor feed and regulated 5 V controller supply"
         sheetIndex={1}
-        sheetWidth={400}
-        sheetHeight={180}
+        sheetWidth={650}
+        sheetHeight={400}
       />
       <schematicsheet
         name="Suppression"

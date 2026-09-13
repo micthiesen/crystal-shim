@@ -3,7 +3,7 @@
 The controller uses **JLC04161H-7628**, four layers, nominal 1.6 mm FR4,
 1 oz outer / 0.5 oz inner copper, NP-155F / Tg155 material basis, green mask and
 ENIG. USB is a 90 ohm differential pair with explicit **81-99 ohm acceptance**.
-U10 uses eight **0.20/0.35 mm epoxy-filled, copper-capped through vias**. U1 uses
+The removed service eFuse requires no via-in-pad process. U1 uses
 four **0.20/0.45 mm tented ground vias** with no added paste apertures.
 
 These are reviewed design choices for native layout. They are not fabricated
@@ -12,13 +12,14 @@ records application and verification obligations; every native operation still
 needs saved-board evidence. No routing, detailed stackup or thermal/paste
 augmentation is complete merely because it appears in that declaration.
 
-## Applied native subset
+## Retained native stack basis
 
-The adopted [KiCad project](../../pcb/controller/kicad/README.md) now contains
+The prior adopted [KiCad project](../../pcb/controller/kicad/README.md) contained
 the reviewed copper/dielectric thicknesses, material labels and Er values below,
 with green mask, white silk and ENIG. KiCad's GUI saved the detailed stack;
 native readback verifies the basic rules and Default/USB90 routing preferences.
-No tracks, vias or copper zones have been added.
+The current ECO must preserve and reverify these settings; current native status
+is recorded in [STATE](../STATE.md). This page does not declare routing readiness.
 
 The known nominal copper and dielectric layers sum to **1.5862 mm**. KiCad adds
 its still-unverified **0.010 mm mask on each side**, giving a consistent saved
@@ -129,33 +130,12 @@ a sensitivity example gives 94.1°C at 50°C air. Meeting the more restrictive
 125°C thermal-design ceiling at that power/ambient requires an actual effective
 thermal resistance below 151.5°C/W. Neither calculation measures this board.
 
-**U10 TPS259470:** allocate at least 25 mm² of useful bottom copper to each
-IN and OUT net, broad top escapes and 2 mm power spines except short reviewed
-pad necks. Review continuous current capacity for at least 1.5 A. Keep programming
-ground out of IN/OUT and TVS current loops, joining near GND pin 8.
-
-The eight filled/capped vias have 0.20 mm drills and 0.35 mm copper diameters,
-with a 0.075 mm annulus. In native footprint-local coordinates, pin 5 IN uses
-x=-0.25 and pin 6 OUT uses x=+0.25; each has y=-0.75, -0.25, +0.25, +0.75 mm.
-The [actual source-polygon clearance calculation](evidence/controller-stackup/via-clearances.json)
-records 0.150 mm inter-net via copper, 0.175 mm to other source copper,
-0.125 mm from control mask openings to via copper and 0.225 mm from drills to
-opposite-net via copper. These are nominal geometry checks awaiting native DRC.
-
-Each via's copper extends 0.025 mm beyond its original power land, inside the
-unchanged +0.05 mm NSMD opening. Retain the
-[TI RPW0010A](https://www.ti.com/lit/ds/symlink/tps25947.pdf) 0.100 mm stencil
-and split 1.06 x 0.28 mm R0.05 power windows. Add no circular mask or paste
-apertures. Specify epoxy fill and copper cap, not tenting or ink plugging.
-The 0.20 mm drill avoids the conflict between newer 0.15 mm capability claims
-and the [older POFV/aspect-ratio contract](https://jlcpcb.com/blog/via-in-pad-design-deep-dive).
-Aspect ratio is 7.95 nominal and 8.745 at maximum selected board thickness.
-
-Normal U10 loss screens at 27.9 mW using the 740 mA service allocation, 45 mΩ
-and the quiescent allowance. A short at 5.3675 V and 1.280 A is about **6.87 W
-while limiting**. Normal conduction loss does not close startup, short, retry
-or OV recovery behavior. The datasheet's thermal fixtures are not measurements
-of this layout.
+**Future motor outputs:** route the 12 V input and common return with at least
+2 mm copper width for the 2 A continuous allocation, and each 1 A output with
+at least 1 mm width. Short package-pad necks need individual review. Keep each
+Q/D/J flyback loop compact and return motor current directly to J6, away from
+the sensor and 5 V harness return. These are routing requirements, not measured
+thermal results. See the [refill contract](refill-expansion.md).
 
 **U1 ESP module:** retain nine separate 0.8 mm ground lands and paste apertures.
 Use four 0.20/0.45 mm GND vias at native x=-2.130/-0.880 and
@@ -170,11 +150,11 @@ Preserve the [Espressif land pattern and antenna exclusion](https://www.espressi
 
 Apply and query the saved native stack, impedance/net classes, zones, via nets,
 mask/paste, keepouts and route geometry. Measure useful copper after clearances,
-preserve the USB reference and account for U10 power-via antipads. Inspect the
+preserve the USB reference and the direct motor return. Inspect the
 stencil as physical aperture unions, including shared USB contacts.
 
 Final-board commissioning still covers minimum-input/full-load regulation,
-closed-enclosure radio heating, the 50°C internal-air limit, U10 fault cycling,
+closed-enclosure radio heating, the 50°C internal-air limit, motor-branch loading,
 USB operation and actual manufacturing process. The approximate 2.8 W controller
 power screen excludes other enclosure loads and does not prove ambient temperature.
 

@@ -1,5 +1,10 @@
 # Mains enclosure and J5 service fit
 
+Historical fit evidence, superseded by the [shared enclosure](../../cad/shared-enclosure/README.md)
+for the 110 × 110 mm controller and 180 × 110 mm mains board. The dimensions and
+open requirements below describe the old enclosure only and are not current
+placement constraints.
+
 The nominal Hammond CAD screen supports the complete mains carrier at floor
 origin **(9.5, 4) mm**, with PCB top **Z28 mm**. This moves the earlier allocation
 1.5 mm east without changing the board, component or mounting-hole source

@@ -51,6 +51,16 @@ const effects = () => {
 const shape = (s: SchematicSymbol) => {
   const copy = clone(s);
   copy.properties = [];
+  // Relative subtraction in the converter leaves ~1e-14 mm noise between
+  // repeated symbols. Compare at 1 nm while retaining the unrounded graph.
+  const round = (node: object) => {
+    for (const [key, value] of Object.entries(node)) {
+      if (typeof value === "number")
+        Reflect.set(node, key, Math.round(value * 1e9) / 1e9);
+      else if (value && typeof value === "object") round(value);
+    }
+  };
+  round(copy);
   return copy.getString();
 };
 
@@ -64,11 +74,11 @@ export function applyControllerProjectSymbolsForInitialExport(
 ): SchematicSymbol[] {
   const source = json.filter((e) => e.type === "source_component");
   const expected = manifest.components.filter((c) => c.footprint.pad_numbers.length);
-  if (sheets.length !== 8 || source.length !== 95 || expected.length !== 95)
-    throw new Error("Project library requires the complete 95-part initial hierarchy");
+  if (sheets.length !== 10 || source.length !== 113 || expected.length !== 113)
+    throw new Error("Project library requires the complete 113-part initial hierarchy");
   const byRef = new Map(source.map((s) => [s.name, s]));
   const byManifest = new Map(expected.map((c) => [c.ref, c]));
-  if (byRef.size !== 95 || byManifest.size !== 95)
+  if (byRef.size !== 113 || byManifest.size !== 113)
     throw new Error("Duplicate project source reference");
   const seen = new Set<string>();
   const library: SchematicSymbol[] = [];
@@ -208,7 +218,7 @@ export function applyControllerProjectSymbolsForInitialExport(
     });
     return { sheet, entries };
   });
-  if (seen.size !== 95)
+  if (seen.size !== 113)
     throw new Error("Project library did not cover every source reference");
   for (const { sheet, entries } of plans) {
     for (const { instance, id } of entries) instance.libraryId = new SymbolLibId(id);
@@ -308,9 +318,9 @@ export const controllerPowerFlags = [
   },
   {
     ref: "#FLG0103",
-    net: "V5_SERVICE_RAW",
-    witness: "U10",
-    pin: "5",
+    net: "V5_SERVICE",
+    witness: "J2",
+    pin: "1",
     basis: "External service supply enters through J2",
     rotation: 90,
   },
@@ -332,11 +342,11 @@ export function addControllerPowerFlagsForInitialExport(
     sheet.symbols.map((instance) => ({ sheet, instance })),
   );
   if (
-    sheets.length !== 8 ||
-    instances.length !== 95 ||
+    sheets.length !== 10 ||
+    instances.length !== 113 ||
     instances.some((e) => reference(e.instance)?.startsWith("#"))
   )
-    throw new Error("Power flags require the unannotated 95-part initial hierarchy");
+    throw new Error("Power flags require the unannotated 113-part initial hierarchy");
   const definition = controllerPowerFlagDefinition();
   const plans = controllerPowerFlags.map((declaration) => {
     const net = manifest.nets.find((n) => n.name === declaration.net);

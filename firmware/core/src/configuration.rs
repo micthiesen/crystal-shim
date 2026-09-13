@@ -18,7 +18,7 @@ use crate::{
 };
 
 pub const CONFIGURATION_MAGIC: [u8; 4] = *b"CSCF";
-pub const CONFIGURATION_FORMAT_VERSION: u8 = 1;
+pub const CONFIGURATION_FORMAT_VERSION: u8 = 2;
 pub const CONFIGURATION_BLOB_MAX_LEN: usize = 2048;
 pub const SETTINGS_AUTH_TOKEN_LEN: usize = 32;
 pub const PUSHOVER_KEY_LEN: usize = 30;
@@ -673,13 +673,10 @@ fn encode_calibration(
     data: &CalibrationData,
 ) -> Result<(), ConfigurationError> {
     writer.i32(data.level_empty_counts)?;
+    writer.i32(data.wet_reference_empty_counts)?;
     encode_raw_channels(writer, data.low_endpoint)?;
     encode_raw_channels(writer, data.high_endpoint)?;
-    for limits in [
-        data.channels.level,
-        data.channels.wet_reference,
-        data.channels.dry_reference,
-    ] {
+    for limits in [data.channels.level, data.channels.wet_reference] {
         writer.i32(limits.envelope.min)?;
         writer.i32(limits.envelope.max)?;
         writer.u32(limits.max_slew_counts_per_second)?;
@@ -704,17 +701,16 @@ fn encode_raw_channels(
     channels: RawChannels,
 ) -> Result<(), ConfigurationError> {
     writer.i32(channels.level)?;
-    writer.i32(channels.wet_reference)?;
-    writer.i32(channels.dry_reference)
+    writer.i32(channels.wet_reference)
 }
 
 fn decode_calibration(reader: &mut Reader<'_>) -> Result<CalibrationData, ConfigurationError> {
     let level_empty_counts = reader.i32()?;
+    let wet_reference_empty_counts = reader.i32()?;
     let low_endpoint = decode_raw_channels(reader)?;
     let high_endpoint = decode_raw_channels(reader)?;
     let level = decode_channel_limits(reader)?;
     let wet_reference = decode_channel_limits(reader)?;
-    let dry_reference = decode_channel_limits(reader)?;
     let reference_sign = match reader.byte()? {
         0 => ReferenceSign::Positive,
         1 => ReferenceSign::Negative,
@@ -734,12 +730,12 @@ fn decode_calibration(reader: &mut Reader<'_>) -> Result<CalibrationData, Config
     };
     Ok(CalibrationData {
         level_empty_counts,
+        wet_reference_empty_counts,
         low_endpoint,
         high_endpoint,
         channels: Channels {
             level,
             wet_reference,
-            dry_reference,
         },
         reference_sign,
         minimum_reference_span_counts,
@@ -755,7 +751,6 @@ fn decode_raw_channels(reader: &mut Reader<'_>) -> Result<RawChannels, Configura
     Ok(Channels {
         level: reader.i32()?,
         wet_reference: reader.i32()?,
-        dry_reference: reader.i32()?,
     })
 }
 
@@ -887,11 +882,10 @@ mod tests {
     const APP_TOKEN: &str = "A12345678901234567890123456789";
     const USER_KEY: &str = "B12345678901234567890123456789";
 
-    fn raw_channels(level: i32, wet_reference: i32, dry_reference: i32) -> RawChannels {
+    fn raw_channels(level: i32, wet_reference: i32) -> RawChannels {
         Channels {
             level,
             wet_reference,
-            dry_reference,
         }
     }
 
@@ -906,16 +900,13 @@ mod tests {
         };
         CalibrationData {
             level_empty_counts: 1_000,
-            low_endpoint: raw_channels(1_200, 700, 300),
-            high_endpoint: raw_channels(2_500, 900, 300),
+            wet_reference_empty_counts: 300,
+            low_endpoint: raw_channels(1_200, 700),
+            high_endpoint: raw_channels(2_500, 900),
             channels: Channels {
                 level: limits,
                 wet_reference: ChannelLimits {
                     max_slew_counts_per_second: 60_000,
-                    ..limits
-                },
-                dry_reference: ChannelLimits {
-                    max_slew_counts_per_second: 50_000,
                     ..limits
                 },
             },
@@ -1058,6 +1049,13 @@ mod tests {
         let mut unknown_version = [0u8; CONFIGURATION_BLOB_MAX_LEN];
         unknown_version[..bytes.len()].copy_from_slice(bytes);
         unknown_version[4] = CONFIGURATION_FORMAT_VERSION + 1;
+        assert_eq!(
+            ValidatedDeviceConfig::decode(&unknown_version[..bytes.len()]).unwrap_err(),
+            ConfigurationError::BlobVersion
+        );
+
+        // The old three-channel calibration layout cannot be interpreted as v2.
+        unknown_version[4] = 1;
         assert_eq!(
             ValidatedDeviceConfig::decode(&unknown_version[..bytes.len()]).unwrap_err(),
             ConfigurationError::BlobVersion

@@ -19,7 +19,7 @@ import { controllerPlacementErrors } from "./placement-check";
 import { createControllerManifest } from "./design-manifest";
 import { applyControllerFieldsForInitialExport } from "./fields-initial-export";
 
-// Rendering all 95 components exceeded Bun's 5 s default on GitHub's runner
+// Rendering all 110 components exceeded Bun's 5 s default on GitHub's runner
 // (5.55 s, with no assertion failure). Keep the limit local to this full design.
 test("controller schematic preserves power separation, hardware permission and buffered sensor boundaries across sheets", async () => {
   const circuit = new Circuit();
@@ -30,14 +30,14 @@ test("controller schematic preserves power separation, hardware permission and b
   const ports = json.filter((e) => e.type === "source_port");
   const nets = json.filter((e) => e.type === "source_net");
   const traces = json.filter((e) => e.type === "source_trace");
-  expect(components).toHaveLength(95);
-  expect(new Set(components.map((e) => e.name)).size).toBe(95);
+  expect(components).toHaveLength(113);
+  expect(new Set(components.map((e) => e.name)).size).toBe(113);
   expect(new Set(nets.map((e) => e.name)).size).toBe(nets.length);
-  expect(json.filter((e) => e.type === "schematic_sheet")).toHaveLength(7);
+  expect(json.filter((e) => e.type === "schematic_sheet")).toHaveLength(9);
   const initialGraphs = createControllerInitialGraphs(json);
   const nativePcb = parseKicadPcb(initialGraphs.pcb.getString());
-  expect(initialGraphs.schematicFiles).toHaveLength(8);
-  expect(nativePcb.footprints).toHaveLength(99); // 95 parts plus four board NPTHs
+  expect(initialGraphs.schematicFiles).toHaveLength(10);
+  expect(nativePcb.footprints).toHaveLength(117); // 110 parts plus four board NPTHs
   // Check every actual source/native position against the authored manufacturer
   // datum. pcbRelative prevents the compiler's implicit group packing/rotation.
   for (const [ref, placement] of Object.entries(controllerPlacements)) {
@@ -63,8 +63,7 @@ test("controller schematic preserves power separation, hardware permission and b
   // test cannot detect an extra connection introduced by another sheet.
   const expectedBoundaries = {
     V5_PSU: ["D1.2", "J1.1", "R14.1", "TP2.1"],
-    V5_SERVICE_RAW: ["C20.1", "C21.1", "D5.1", "J2.1", "R30.1", "R33.1", "U10.5"],
-    V5_SERVICE: ["C22.1", "D2.2", "D6.1", "R37.1", "U10.6"],
+    V5_SERVICE: ["C20.1", "C21.1", "D2.2", "J2.1"],
     V5_LOGIC: [
       "C1.1",
       "C2.1",
@@ -85,10 +84,10 @@ test("controller schematic preserves power separation, hardware permission and b
     RELAY_GATED: ["R20.1", "TP8.1", "U6.4"],
     MOS_GATE: ["Q1.1", "R11.1", "R20.2"],
     CHIP_EN: ["C9.1", "R53.2", "R55.1", "U1.3", "U4.3"],
-    SENSOR_BUS_EN: ["R64.1", "U1.8", "U3.5"],
+    SENSOR_BUS_EN: ["R64.1", "U1.8", "U3.5", "U12.5"],
     SENSOR_POWER_EN: ["R65.1", "U1.20", "U5.3"],
     SENSOR_POWER_FAULT_N: ["R66.2", "U1.21", "U5.4"],
-    V5_SENSOR_SW: ["C43.1", "C44.1", "R67.1", "R68.1", "U5.6"],
+    V5_SENSOR_SW: ["C43.1", "C44.1", "R67.1", "R68.1", "R69.1", "U5.6"],
     V5_SENSOR: ["D7.1", "J3.1", "R68.2"],
     SENSOR_SDA: ["R60.2", "TP5.1", "U1.16", "U3.6"],
     SENSOR_SCL: ["R61.2", "TP6.1", "U1.17", "U3.7"],
@@ -96,6 +95,23 @@ test("controller schematic preserves power separation, hardware permission and b
     SCL_BUFFER_A: ["R63.1", "U3.2"],
     SDA_CABLE: ["J3.2", "R62.2", "U11.4"],
     SCL_CABLE: ["J3.3", "R63.2", "U11.5"],
+    PUMP_TRANSFER: ["U1.9", "R80.1"],
+    PUMP_CHLORINE: ["U1.27", "R82.1"],
+    PUMP_DECHLOR: ["U1.26", "R84.1"],
+    TRANSFER_GATE: ["R80.2", "R81.1", "Q2.1"],
+    TRANSFER_DRAIN: ["Q2.3", "D9.2", "J7.2"],
+    CHLORINE_GATE: ["R82.2", "R83.1", "Q3.1"],
+    CHLORINE_DRAIN: ["Q3.3", "D10.2", "J8.2"],
+    DECHLOR_GATE: ["R84.2", "R85.1", "Q4.1"],
+    DECHLOR_DRAIN: ["Q4.3", "D11.2", "J9.2"],
+    V12_PUMP: ["J6.1", "J7.1", "J8.1", "J9.1", "D9.1", "D10.1", "D11.1", "C47.1"],
+    V5_RESERVOIR: ["R69.2", "D8.1", "J5.1"],
+    RESERVOIR_SDA: ["U1.6", "U12.6", "R72.2"],
+    RESERVOIR_SCL: ["U1.7", "U12.7", "R73.2"],
+    RESERVOIR_SDA_CABLE: ["J5.2", "R70.1", "U13.4"],
+    RESERVOIR_SCL_CABLE: ["J5.3", "R71.1", "U13.5"],
+    ACCESSORY_INPUT1: ["U1.4", "TP12.1"],
+    ACCESSORY_INPUT2: ["U1.5", "TP13.1"],
     UART0_RX: ["TP9.1", "U1.24"],
     UART0_TX: ["TP10.1", "U1.25"],
   };
@@ -157,7 +173,7 @@ test("controller schematic preserves power separation, hardware permission and b
   // Pinned 0.0.205 exposes only serialized children publicly. Its internal
   // initial-file cache carries the typed graphs; no native file is loaded here.
   const initialFiles = Reflect.get(converter, "files") as { kicadSch: KicadSch }[];
-  expect(initialFiles).toHaveLength(8);
+  expect(initialFiles).toHaveLength(10);
   const sheets = initialFiles.map((f) => f.kicadSch);
   const reference = (symbol: SchematicSymbol) =>
     symbol.properties.find((p) => p.key === "Reference")?.value;
@@ -182,7 +198,7 @@ test("controller schematic preserves power separation, hardware permission and b
   ).toThrow();
   expect(sheets.map((s) => s.getString())).toEqual(before);
   expect(applyControllerPinTypesForInitialExport(exportJson, sheets).components).toBe(
-    95,
+    113,
   );
   const native = sheets.map((s) => parseKicadSch(s.getString()));
   const pinList = (symbol: SchematicSymbol): import("kicadts").SymbolPin[] => [
@@ -210,7 +226,8 @@ test("controller schematic preserves power separation, hardware permission and b
     ["U3", "2", "SCLA", "bidirectional"],
     ["U5", "4", "FAULT_N", "open_collector"],
     ["U5", "6", "OUT", "power_out"],
-    ["U10", "3", "AUXOFF", "open_collector"],
+    ["U12", "2", "SCLA", "bidirectional"],
+    ["U13", "1", "NC_1", "no_connect"],
     ["U11", "1", "NC_1", "no_connect"],
     ["J4", "A6", "A6", "passive"],
     ["Q1", "1", "G", "input"],

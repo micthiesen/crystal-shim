@@ -3,7 +3,9 @@
     "allowImportingTsExtensions": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
-    "lib": ["ESNext"],
+    "lib": [
+      "ESNext"
+    ],
     "module": "Preserve",
     "moduleDetection": "force",
     "moduleResolution": "bundler",
@@ -13,7 +15,10 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["bun", "tscircuit"]
+    "types": [
+      "bun",
+      "tscircuit"
+    ]
   },
   "include": [
     "fixtures/**/*.ts",
@@ -23,6 +28,8 @@
     "controller/design/**/*.tsx",
     "mains/design/**/*.ts",
     "mains/design/**/*.tsx",
-    "scripts/lib/**/*.ts"
+    "scripts/lib/**/*.ts",
+    "sensor/design/**/*.ts",
+    "sensor/design/**/*.tsx"
   ]
 }

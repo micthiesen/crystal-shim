@@ -1,4 +1,8 @@
-import { controllerCapacitors, controllerResistors } from "./passive-components";
+import {
+  controllerCapacitors,
+  controllerResistors,
+  precisionResistors,
+} from "./passive-components";
 import { ap63203, tca9517a } from "./ic-land-patterns";
 import { dbv6, dbv5, fsusb42 } from "./logic-land-patterns";
 import { tps259470a, smbj8_0ca } from "./service-protection-land-patterns";
@@ -11,10 +15,9 @@ import { usbConnectorPattern } from "./usb-connector";
 // the selected model evidence where available; never infer a datasheet by family.
 export const controllerDatasheets: Readonly<Record<string, string>> = {
   ...Object.fromEntries(
-    Object.values(controllerResistors).map((part) => [
-      part.mpn,
-      part.pattern.source.url,
-    ]),
+    [...Object.values(controllerResistors), ...Object.values(precisionResistors)].map(
+      (part) => [part.mpn, part.pattern.source.url],
+    ),
   ),
   ...Object.fromEntries(
     Object.values(controllerCapacitors).map((part) => [part.mpn, part.datasheetUrl]),

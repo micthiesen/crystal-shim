@@ -1,94 +1,86 @@
 # Current state
 
-Last updated: 2026-09-12
+Last updated: 2026-09-13
 
 ## Now
 
-- New scope: [future refill attachment reservation](design/refill-expansion.md),
-  referencing the external Executor artifact without importing its full spec.
-  GPIO1/2/3, a separate bus and default-off enable are reserved as requirements.
-  Owner correction: the present power board must supply all three future pumps
-  and extension electronics; no separate external pump supply is planned. Pump
-  voltage/current envelope, common supply/rails and power output must be sized
-  before ordering. The old 50 mA controller branch is superseded. No source/native
-  circuit changed; controller ECO, power capture and fit remain open.
-  The prior documentation revision passed `sh scripts/check.sh`; this power-scope
-  correction has document checks only, not electrical or hardware validation.
+The agreed simplified design is captured in the specifications, BOM, firmware
+bindings, all three tscircuit schematics and placements, and native KiCad projects.
+The current milestone is routing preparation, not fabrication or commissioning.
 
-- The [original full delivery goal](goal.md) remains active. This is one fabrication
-  cycle for three final-use boards, actual ESP firmware and final-unit commissioning.
-  No fabrication or operating gate has passed; all 34 commissioning rows remain
-  Not run and the [BOM](../bom/bom.csv) is not ready to order.
-- [Matter](design/matter-integration.md), sensor/control bindings, gated storage,
-  private first configuration, [settings](design/settings.md) and the bounded
-  [Pushover worker](design/pushover.md) are implemented. Physical calibration and
-  runtime memory/timing evidence remain open. [Signed-time agreement](design/unattended-time.md)
-  is implemented and independently reviewed offline; acquisition, clock bounds,
-  execution policy, generation coupling and app adoption remain work.
-- The [controller](../pcb/controller/kicad/README.md) is adopted with 95 electrical
-  parts, 99 footprints, strict eight-sheet ERC/parity and partial native rules/stack
-  readback. It remains unrouted, with zero ordinary DRC findings and 216 unconnected
-  items in the last native report. Remaining augmentation, mated fit and fabrication
-  are open. No adopted controller file changed in this session.
-- [Mains source](../pcb/mains/design/README.md) captures all 23 parts, 66 logical
-  pins, 14 nets, 81 numbered lands, five NPTHs and the 135 x 75 mm placement.
-  In-memory initial PCB/schematic preparation is implemented and reviewed.
-  [Guarded staging and native helpers](design/mains-native-handoff.md) are now
-  implemented and host-tested, but the real native helper chain has not run.
-  The [thermal/stencil proposal](design/mains-thermal-stencil.md) and integrated
-  augmentation draft are saved. Final independent reviews were interrupted and
-  remain pending; no mains stage, adoption, routing or fabrication is accepted.
-- The [enclosure](design/mains-enclosure-fit.md), [J3 housing study](design/mains-j3-occupancy.md)
-  and [sensor harness study](design/sensor-harness.md) provide conditional nominal
-  allocations. Full mated J3 metal/crimp/wire occupancy, guard/retention, carrier,
-  cable restraint and qualified assembly processes remain open.
-- Freshwater, 5 mm glass, a 50 mm physical sensing span, the owner's separate snug
-  clip and 203.2 mm complete harness limit remain fixed. The already-pending owner
-  question is the normal-full water distance below the glass top edge. The
-  38 x 86 mm proposal with 11-50 mm travel is not accepted sensor geometry;
-  do not repeat the question or make other work depend on it.
+- One 120 VAC input supplies the filtered CrystalSkim and isolated electronics.
+  The mains board has an IRM-45-12 and AP63205 5 V buck. The controller retains its
+  3.3 V buck. Future loads have a fixed nominal 12 V, 2 A aggregate continuous
+  allocation, 3 A brief startup target and 1 A continuous maximum per channel.
+- Three simple pump drivers/connectors and a second buffered sensor connection
+  are on the current controller, with two accessible accessory input pads.
+  Future additions are accessories and a reservoir sensor PCB. The external
+  [refill artifact](design/refill-expansion.md) remains the feature specification;
+  refill, dosing and reservoir behavior are not implemented. Pump GPIOs stay low.
+- Service power uses the known 5 V adapter, a 2 A fused lead and existing diode OR.
+  The service and mains secondary eFuses are removed. Sensor regulation uses
+  TPS7A2433, with LEVEL and wet reference channels plus stored dry baselines.
+  Optional live dry reference and LT3042 circuitry are removed. Ordinary digital
+  resistors are 1%; the actual sense divider retains precision parts.
+- The demonstrated skimmer EMI requirement, mains/SELV boundary, filter,
+  suppression and local control behavior remain. Exceptional overload/reset and
+  manual recovery are acceptable. No extraordinary ESD qualification or redundant
+  pump safety subsystem was added.
+- The shared Hammond 1590ZGRP243 enclosure has a retained manufacturer STEP,
+  board/connector/wiring allocations and expanded-envelope fit checks under
+  [cad/shared-enclosure](../cad/shared-enclosure/). Board mounts use insulating
+  hardware. Mains J1 was moved 3 mm to clear its full mounting envelope.
 
-## Next
+## Routing handoff
 
-Close the [refill attachment interface](design/refill-expansion.md#closure-before-the-present-board-order)
-in controller source and a guarded ECO before controller routing. This narrowly
-adds physical expansion provisions; do not implement the refill feature. The
-mains preparation tooling review below can continue independently, but its current
-power design cannot be released until the shared pump-power provision is captured.
+Open the production projects directly. Keep their adjacent project files,
+custom rules and local libraries together. Never export a new seed over them.
 
-Finish independent review of the saved mains thermal/stencil proposal, integrated
-augmentation and staging wrapper/native helpers. Reconcile initial ignored-check
-categories with the installed KiCad defaults and actual mains evidence, then add
-the package commands and run the guarded product stage with source/native parity,
-ERC/DRC and full-page visual review. Only actual adoption creates a handoff lock.
+| Board | Project | Placement | Expected unrouted connections |
+| --- | --- | --- | --- |
+| Controller | [controller.kicad_pro](../pcb/controller/kicad/controller.kicad_pro) | 110 × 110 mm, 4 layers, 117 footprints | 253 |
+| Sensor | [sensor.kicad_pro](../pcb/sensor/kicad/sensor.kicad_pro) | 38 × 86 mm, 2 layers, 16 footprints including electrode copper | 41 |
+| Mains | [mains.kicad_pro](../pcb/mains/kicad/mains.kicad_pro) | 180 × 110 mm, 2 layers, 26 footprints | 39 |
 
-This continues the previous G-02/G-03/G-04 step: source capture and host staging
-are ready, while native validation and mated fit remain. Start from
-[the native handoff sequence](design/mains-native-handoff.md) and
-[thermal contract](design/mains-thermal-stencil.md); neither depends on fabricated
-hardware or the pending sensor rim measurement. Complete mated J3 occupancy and
-controller augmentation remain useful independent work.
+All three native ECOs are accepted with strict ERC, source and schematic parity,
+preserved geometry and zero ordinary or schematic-parity DRC findings. Expected unconnected items remain because routing is the next
+step. Physical commissioning is not claimed by these checks.
 
-## Candidates Not Chosen
+Routing settings include power/motor widths, the controller stack and USB class,
+antenna/mount copper exclusions, the sensor sensing-window rule area, and mains
+3.2 mm primary and 8 mm primary-to-SELV rules plus barrier/mount exclusions.
+The five standard initial DRC ignored categories remain explicitly recorded;
+applicable fabrication checks and routed connectivity must be closed before an
+order. All ERC categories are enabled with no exclusions.
 
-- **Freeze sensor geometry:** still needs the existing rim datum; sensor interface
-  and harness work can continue independently.
-- **Enable unattended time acquisition:** the offline agreement is ready, but clock
-  bounds, generation coupling and control availability during crypto precede adoption.
-- **Route or release boards now:** complete native constraints and mated fit still
-  precede routing/release. Host tests and partial native rules do not close those gates.
+Follow the native project READMEs and each `kicad-augment.json` while routing.
+Ground planes, return paths, thermal vias, final paste/silk and routed checks are
+routing/manufacturing work, not missing schematic or placement decisions.
+Use the declared copper widths and compact buck/motor loops; join sensor copper
+islands at the head and keep all layer changes above the rim. Preserve the
+controller USB reference plane and the mains clearance boundary.
 
-## Learned Recently
+## Evidence and remaining work
 
-- [Mains thermal/stencil](design/mains-thermal-stencil.md): exact two-layer via,
-  copper and twelve-aperture proposal; normal loss is small, startup/fault heating
-  remains conditional and requires transient evidence.
-- [Isolation basis](design/mains-design-basis.md#pcb-partition-spacing-and-physical-basis):
-  all eight isolated nets and unused primary metal now explicitly receive the barrier.
-- [Native preparation](design/mains-native-handoff.md#guarded-staging-implementation):
-  source-bound exclusive staging, native receipt expectations and the omitted shared
-  origin fingerprint correction; product native execution is still pending.
-- [Review log](design/review-log.md) and [session receipt](design/evidence/mains-native/staging-preparation.json):
-  completed checks, initial findings and unfinished follow-up review scopes.
-- [Controller stack](design/controller-stackup.md): saved header/stack total is
-  1.6062 mm, with unqualified mask/loss defaults; source 1.6 mm is nominal ordering data.
+- [Controller native ECO](../pcb/controller/kicad/evidence/shared-power/): previous
+  lock, plan, native snapshot, strict cleanup, DRC and complete page renders.
+- [Sensor routing evidence](../pcb/sensor/kicad/evidence/routing-ready/): accepted
+  ECO, exact pin/copper parity, strict ERC, DRC, physical stack and renders.
+- [Mains final ECO](../pcb/mains/design/evidence/final-eco-receipt.json): accepted
+  placement, strict ERC, 3.2/8 mm rules, DRC/parity, mounting envelopes and renders.
+  Initial adoption evidence is retained beside it.
+- `sh scripts/check.sh` passed after all circuit, firmware and tooling corrections:
+  firmware/TLS/build checks, 26 UI tests, 250 PCB tests (33,263 assertions) and
+  42 handoff tests. [Validation record](design/evidence/routing-ready/validation.json).
+- Focused review resolved actual pin/footprint mapping, supply/drop budgets,
+  sensor discharge timing, mount/connector interference, native clearance,
+  schematic connectivity and library-field defects. It did not expand protection
+  scope. Earlier smaller-board/eFuse evidence is historical and superseded.
+
+The owner can begin routing now. No input
+is outstanding for schematic/placement decisions. Final routed DRC/CAM, assembly
+process checks, fabrication files and actual calibration, temperatures, pump
+startup, EMI/PC sleep and HomeKit behavior remain the later release/commissioning
+stages. All physical test rows remain Not run. No parts were ordered, hardware
+flashed or mains energized. The broader [delivery goal](goal.md) remains distinct
+from this completed routing-preparation milestone.

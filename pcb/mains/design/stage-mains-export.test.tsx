@@ -260,7 +260,7 @@ test("writes the actual complete initial hierarchy once without adoption", async
   const pcb = parseKicadPcb(
     await readFile(join(env.STILLAIR_HANDOFF_STAGE, "mains.kicad_pcb"), "utf8"),
   );
-  expect(pcb.footprints).toHaveLength(27);
+  expect(pcb.footprints).toHaveLength(26);
   const refs = pcb.footprints.map(
     (fp) => fp.properties.find((p) => p.key === "Reference")?.value,
   );
@@ -271,7 +271,7 @@ test("writes the actual complete initial hierarchy once without adoption", async
     symbols += parseKicadSch(
       await readFile(join(env.STILLAIR_HANDOFF_STAGE, file.filename), "utf8"),
     ).symbols.length;
-  expect(symbols).toBe(25); // 23 physical parts and two excluded ERC flags.
+  expect(symbols).toBe(24); // 22 physical parts and two excluded ERC flags.
   for (const file of plan.files)
     expect(
       await readFile(join(env.STILLAIR_HANDOFF_STAGE, file.filename), "utf8"),
@@ -286,7 +286,7 @@ test("writes the actual complete initial hierarchy once without adoption", async
 test("native exporter failure leaves no success receipt and cannot be retried", async () => {
   const env = await freshStage();
   const fakeBin = await mkdtemp(join(scratch, "fake-native-"));
-  await writeFile(join(fakeBin, "sh"), "#!/bin/sh\nexit 23\n");
+  await writeFile(join(fakeBin, "sh"), "#!/bin/sh\nexit 21\n");
   await chmod(join(fakeBin, "sh"), 0o700);
   const child = Bun.spawn(["bun", wrapper], {
     cwd: pcbRoot,
@@ -299,7 +299,7 @@ test("native exporter failure leaves no success receipt and cannot be retried", 
     new Response(child.stderr).text(),
   ]);
   expect(code).not.toBe(0);
-  expect(stderr).toContain("Initial native footprint export failed (23)");
+  expect(stderr).toContain("Initial native footprint export failed (21)");
   expect(await readdir(env.STILLAIR_HANDOFF_STAGE)).toHaveLength(8);
   await expect(guardMainsStage(env)).rejects.toThrow("Fresh stage");
 }, 20_000);
@@ -337,7 +337,7 @@ test("registration evidence binds exact stage, native table and pinned tool prov
     },
     symbol_inventory: {
       library: join(scratch, "CrystalShim_Mains.kicad_sym"),
-      count: 24,
+      count: 23,
       symbols: [
         ...Object.keys(mainsPlacements).map((ref) => `Mains_${ref}`),
         "PWR_FLAG",

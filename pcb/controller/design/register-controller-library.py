@@ -128,8 +128,8 @@ def register() -> Path:
     root = handoff.resolve_staged_footprint_root(stage, Path("footprints"))
     library = root / "CrystalShim_Controller.pretty"
     expected = {f"Controller_{item['ref']}.kicad_mod" for item in manifest["components"]}
-    if len(expected) != 99 or {p.name for p in library.iterdir()} != expected:
-        raise ValueError("source-exported library must contain exactly 99 controller footprints")
+    if len(expected) != 117 or {p.name for p in library.iterdir()} != expected:
+        raise ValueError("source-exported library must contain exactly 117 controller footprints")
     if any(not (library / name).is_file() for name in expected):
         raise ValueError("source-exported footprint is not a regular file")
     if not (stage / "controller.kicad_pcb").is_file() or not (stage / "controller.kicad_sch").is_file():
@@ -143,8 +143,8 @@ def register() -> Path:
     if not symbol_library.is_file() or symbol_table.exists():
         raise ValueError("registration requires a fresh project symbol library and no symbol table")
     symbol_names = {f"Controller_{item['ref']}" for item in manifest["components"] if item['footprint']['pad_numbers']} | {"PWR_FLAG"}
-    if len(symbol_names) != 96:
-        raise ValueError("expected 95 source symbols and one ERC-only flag definition")
+    if len(symbol_names) != 114:
+        raise ValueError("expected 113 source symbols and one ERC-only flag definition")
     project = stage / "controller.kicad_pro"
     client = Konnect()
     try:
@@ -153,7 +153,7 @@ def register() -> Path:
         client.send({"jsonrpc": "2.0", "method": "notifications/initialized"})
         client.call("load_toolset", {"name": "library"})
         symbol_inventory = client.call("list_symbols_in_library", {"library_path": str(symbol_library)})
-        if symbol_inventory.get("library") != str(symbol_library) or symbol_inventory.get("count") != 96 or sorted(symbol_inventory.get("symbols", [])) != sorted(symbol_names):
+        if symbol_inventory.get("library") != str(symbol_library) or symbol_inventory.get("count") != 114 or sorted(symbol_inventory.get("symbols", [])) != sorted(symbol_names):
             raise ValueError("source-exported symbol library differs from the controller declaration")
         if tree_hashes(stage) != before:
             raise ValueError("symbol inspection changed stage inputs")

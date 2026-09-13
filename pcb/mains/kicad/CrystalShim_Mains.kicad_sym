@@ -1,0 +1,4414 @@
+(kicad_symbol_lib
+  (version 20231120)
+  (generator tscircuit)
+  (symbol "Mains_J1"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "J"
+      (id 0)
+      (at 2.0072 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "43160-0102"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_J1"
+      (id 2)
+      (at -1.819 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_J1"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "43160-0102"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_J1_0_1"
+      (polyline
+        (pts
+          (xy -38.354 -22.8016)
+          (xy -36.83 -22.8016)
+          (xy 0 -22.8016)
+          (xy 35.56 -22.8016)
+          (xy 37.084 -22.8016)
+          (xy 37.084 -2.54)
+          (xy 37.084 -1.27)
+          (xy 37.084 0)
+          (xy 37.084 1.27)
+          (xy 37.084 2.54)
+          (xy 37.084 22.775)
+          (xy 35.56 22.775)
+          (xy 0 22.775)
+          (xy -36.83 22.775)
+          (xy -38.354 22.775)
+          (xy -38.354 2.54)
+          (xy -38.354 1.27)
+          (xy -38.354 0)
+          (xy -38.354 -1.27)
+          (xy -38.354 -2.54)
+          (xy -38.354 -22.8016)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_J1_1_1"
+      (pin passive line
+        (at -44.45 1.27 0)
+        (length 6.096)
+        (name "LINE"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -44.45 -1.27 0)
+        (length 6.096)
+        (name "NEUTRAL"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_J2"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "J"
+      (id 0)
+      (at 2.0072 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "43160-0103"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_J2"
+      (id 2)
+      (at -1.819 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_J2"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "43160-0103"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_J2_0_1"
+      (polyline
+        (pts
+          (xy -38.354 -21.81)
+          (xy -36.83 -21.81)
+          (xy 0 -21.81)
+          (xy 35.56 -21.81)
+          (xy 37.084 -21.81)
+          (xy 37.084 -3.81)
+          (xy 37.084 -1.27)
+          (xy 37.084 0)
+          (xy 37.084 1.27)
+          (xy 37.084 2.54)
+          (xy 37.084 5.08)
+          (xy 37.084 22.9079)
+          (xy 35.56 22.9079)
+          (xy 0 22.9079)
+          (xy -36.83 22.9079)
+          (xy -38.354 22.9079)
+          (xy -38.354 5.08)
+          (xy -38.354 2.54)
+          (xy -38.354 1.27)
+          (xy -38.354 0)
+          (xy -38.354 -1.27)
+          (xy -38.354 -3.81)
+          (xy -38.354 -21.81)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_J2_1_1"
+      (pin passive line
+        (at -44.45 1.27 0)
+        (length 6.096)
+        (name "LINE"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -44.45 -1.27 0)
+        (length 6.096)
+        (name "NEUTRAL"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 43.18 0 180)
+        (length 6.096)
+        (name "UNUSED_3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_J3"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "J"
+      (id 0)
+      (at 1.8009 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "43160-0104"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_J3"
+      (id 2)
+      (at -1.5474 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_J3"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "43160-0104"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_J3_0_1"
+      (polyline
+        (pts
+          (xy -37.1929 -29.31)
+          (xy -1.27 -29.31)
+          (xy 0 -29.31)
+          (xy 1.27 -29.31)
+          (xy 37.1929 -29.31)
+          (xy 37.1929 -3.81)
+          (xy 37.1929 -1.27)
+          (xy 37.1929 0)
+          (xy 37.1929 1.27)
+          (xy 37.1929 2.54)
+          (xy 37.1929 5.08)
+          (xy 37.1929 30.3362)
+          (xy 1.27 30.3362)
+          (xy 0 30.3362)
+          (xy -1.27 30.3362)
+          (xy -37.1929 30.3362)
+          (xy -37.1929 5.08)
+          (xy -37.1929 2.54)
+          (xy -37.1929 1.27)
+          (xy -37.1929 0)
+          (xy -37.1929 -1.27)
+          (xy -37.1929 -3.81)
+          (xy -37.1929 -29.31)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_J3_1_1"
+      (pin passive line
+        (at -43.18 1.27 0)
+        (length 5.9871)
+        (name "LINE"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -43.18 -1.27 0)
+        (length 5.9871)
+        (name "NEUTRAL"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 43.18 1.27 180)
+        (length 5.9871)
+        (name "UNUSED_3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 43.18 -1.27 180)
+        (length 5.9871)
+        (name "UNUSED_4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_J4"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "J"
+      (id 0)
+      (at 2.0764 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "43160-0106"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_J4"
+      (id 2)
+      (at -1.7649 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_J4"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "43160-0106"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_J4_0_1"
+      (polyline
+        (pts
+          (xy -37.2241 -36.81)
+          (xy 0 -36.81)
+          (xy 38.319 -36.81)
+          (xy 38.319 -3.81)
+          (xy 38.319 -1.27)
+          (xy 38.319 0)
+          (xy 38.319 1.27)
+          (xy 38.319 2.54)
+          (xy 38.319 5.08)
+          (xy 38.319 37.7645)
+          (xy 0 37.7645)
+          (xy -37.2241 37.7645)
+          (xy -37.2241 5.08)
+          (xy -37.2241 2.54)
+          (xy -37.2241 1.27)
+          (xy -37.2241 0)
+          (xy -37.2241 -1.27)
+          (xy -37.2241 -3.81)
+          (xy -37.2241 -36.81)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_J4_1_1"
+      (pin passive line
+        (at -43.18 1.27 0)
+        (length 5.9559)
+        (name "LINE"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -43.18 -1.27 0)
+        (length 5.9559)
+        (name "NEUTRAL"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 44.45 5.08 180)
+        (length 6.131)
+        (name "UNUSED_3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 44.45 1.27 180)
+        (length 6.131)
+        (name "UNUSED_4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 44.45 -1.27 180)
+        (length 6.131)
+        (name "UNUSED_5"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "5"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 44.45 -3.81 180)
+        (length 6.131)
+        (name "UNUSED_6"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "6"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_U1"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U"
+      (id 0)
+      (at 2.0072 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "IRM-45-12"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_U1"
+      (id 2)
+      (at -1.8153 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.meanwell.com/Upload/PDF/IRM-45/IRM-45-SPEC.PDF"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_U1"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "IRM-45-12"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_U1_0_1"
+      (polyline
+        (pts
+          (xy -45.9441 -30.3114)
+          (xy 0 -30.3114)
+          (xy 8.89 -30.3114)
+          (xy 44.8129 -30.3114)
+          (xy 44.8129 -2.54)
+          (xy 44.8129 -1.27)
+          (xy 44.8129 0)
+          (xy 44.8129 1.27)
+          (xy 44.8129 2.54)
+          (xy 44.8129 30.275)
+          (xy 8.89 30.275)
+          (xy 0 30.275)
+          (xy -45.9441 30.275)
+          (xy -45.9441 2.54)
+          (xy -45.9441 1.27)
+          (xy -45.9441 0)
+          (xy -45.9441 -1.27)
+          (xy -45.9441 -2.54)
+          (xy -45.9441 -30.3114)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_U1_1_1"
+      (pin power_in line
+        (at -52.07 -1.27 0)
+        (length 6.1259)
+        (name "AC_N"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin power_in line
+        (at -52.07 1.27 0)
+        (length 6.1259)
+        (name "AC_L"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin power_out line
+        (at 50.8 -1.27 180)
+        (length 5.9871)
+        (name "GND_ISO"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin power_out line
+        (at 50.8 1.27 180)
+        (length 5.9871)
+        (name "V12_RAW"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_F3"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "F"
+      (id 0)
+      (at 2.0072 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "0215001.MXEP"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_F3"
+      (id 2)
+      (at -1.819 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_215_datasheet?assetguid=990f7193-d9a2-48e4-b760-2b43514249cf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_F3"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "0215001.MXEP"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_F3_0_1"
+      (polyline
+        (pts
+          (xy -30.6917 -15.0519)
+          (xy 0 -15.0519)
+          (xy 29.6333 -15.0519)
+          (xy 29.6333 0)
+          (xy 29.6333 15.0197)
+          (xy 0 15.0197)
+          (xy -30.6917 15.0197)
+          (xy -30.6917 0)
+          (xy -30.6917 -15.0519)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_F3_1_1"
+      (pin passive line
+        (at -36.83 0 0)
+        (length 6.1383)
+        (name "IN"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 35.56 0 180)
+        (length 5.9267)
+        (name "OUT"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_K1"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "K"
+      (id 0)
+      (at 2.024 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "G5RL-1A-TV8 DC5"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_K1"
+      (id 2)
+      (at -1.9808 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5rl.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_K1"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "G5RL-1A-TV8 DC5"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_K1_0_1"
+      (polyline
+        (pts
+          (xy -44.8129 -29.31)
+          (xy -8.89 -29.31)
+          (xy -1.27 -29.31)
+          (xy 0 -29.31)
+          (xy 44.8235 -29.31)
+          (xy 44.8235 -3.81)
+          (xy 44.8235 -1.27)
+          (xy 44.8235 0)
+          (xy 44.8235 1.27)
+          (xy 44.8235 2.54)
+          (xy 44.8235 5.08)
+          (xy 44.8235 30.3362)
+          (xy 0 30.3362)
+          (xy -1.27 30.3362)
+          (xy -8.89 30.3362)
+          (xy -44.8129 30.3362)
+          (xy -44.8129 5.08)
+          (xy -44.8129 2.54)
+          (xy -44.8129 1.27)
+          (xy -44.8129 0)
+          (xy -44.8129 -1.27)
+          (xy -44.8129 -3.81)
+          (xy -44.8129 -29.31)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_K1_1_1"
+      (pin passive line
+        (at 50.8 1.27 180)
+        (length 5.9765)
+        (name "COIL_HIGH"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -50.8 1.27 0)
+        (length 5.9871)
+        (name "CONTACT_FIXED"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -50.8 -1.27 0)
+        (length 5.9871)
+        (name "CONTACT_MOVING"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 50.8 -1.27 180)
+        (length 5.9765)
+        (name "COIL_LOW"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "5"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_RV1"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "RV"
+      (id 0)
+      (at 1.8009 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "TMOV14RP175EL2T7"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_RV1"
+      (id 2)
+      (at -1.8168 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_RV1"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "TMOV14RP175EL2T7"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_RV1_0_1"
+      (polyline
+        (pts
+          (xy -38.319 -22.8016)
+          (xy 0 -22.8016)
+          (xy 1.27 -22.8016)
+          (xy 37.1929 -22.8016)
+          (xy 37.1929 -2.54)
+          (xy 37.1929 -1.27)
+          (xy 37.1929 0)
+          (xy 37.1929 1.27)
+          (xy 37.1929 2.54)
+          (xy 37.1929 22.775)
+          (xy 1.27 22.775)
+          (xy 0 22.775)
+          (xy -38.319 22.775)
+          (xy -38.319 2.54)
+          (xy -38.319 1.27)
+          (xy -38.319 0)
+          (xy -38.319 -1.27)
+          (xy -38.319 -2.54)
+          (xy -38.319 -22.8016)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_RV1_1_1"
+      (pin passive line
+        (at -44.45 0 0)
+        (length 6.131)
+        (name "LINE"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 43.18 0 180)
+        (length 5.9871)
+        (name "NEUTRAL"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "PWR_FLAG"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+      (hide yes)
+    )
+    (exclude_from_sim yes)
+    (in_bom no)
+    (on_board no)
+    (in_pos_files no)
+    (property "Reference" "#FLG"
+      (at 0 1.905 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "PWR_FLAG"
+      (at 0 3.81 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "PWR_FLAG_0_0"
+      (pin power_out line
+        (at 0 0 90)
+        (length 0)
+        (name ""
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (symbol "PWR_FLAG_0_1"
+      (polyline
+        (pts
+          (xy 0 0)
+          (xy 0 1.27)
+          (xy -1.016 1.905)
+          (xy 0 2.54)
+          (xy 1.016 1.905)
+          (xy 0 1.27)
+        )
+        (stroke
+          (width 0)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (power global)
+  )
+  (symbol "Mains_U2"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U"
+      (id 0)
+      (at 2.0332 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "AP63205WU-7"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_U2"
+      (id 2)
+      (at -1.7791 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_U2"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "AP63205WU-7"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_U2_0_1"
+      (polyline
+        (pts
+          (xy -10.5064 -7.8921)
+          (xy 0 -7.8921)
+          (xy 10.5064 -7.8921)
+          (xy 10.5064 -5.08)
+          (xy 10.5064 -3.81)
+          (xy 10.5064 -2.54)
+          (xy 10.5064 -1.27)
+          (xy 10.5064 0)
+          (xy 10.5064 1.27)
+          (xy 10.5064 2.54)
+          (xy 10.5064 3.81)
+          (xy 10.5064 6.985)
+          (xy 0 6.985)
+          (xy -10.5064 6.985)
+          (xy -10.5064 3.81)
+          (xy -10.5064 2.54)
+          (xy -10.5064 1.27)
+          (xy -10.5064 0)
+          (xy -10.5064 -1.27)
+          (xy -10.5064 -2.54)
+          (xy -10.5064 -3.81)
+          (xy -10.5064 -5.08)
+          (xy -10.5064 -7.8921)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_U2_1_1"
+      (pin input line
+        (at -16.51 3.81 0)
+        (length 6.0036)
+        (name "FB"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin input line
+        (at -16.51 0 0)
+        (length 6.0036)
+        (name "EN"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin power_in line
+        (at -16.51 -5.08 0)
+        (length 6.0036)
+        (name "VIN"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin power_in line
+        (at 16.51 -5.08 180)
+        (length 6.0036)
+        (name "GND"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "4"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin power_out line
+        (at 16.51 0 180)
+        (length 6.0036)
+        (name "SW"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "5"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 16.51 3.81 180)
+        (length 6.0036)
+        (name "BST"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "6"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_L1"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "L"
+      (id 0)
+      (at 1.9554 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "4.7µH"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_L1"
+      (id 2)
+      (at -1.7109 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Component"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" ""
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_L1"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "SRP5030TA-4R7M"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_L1_0_1"
+      (polyline
+        (pts
+          (xy -2.8575 0.0322)
+          (xy -2.8765 1.27)
+          (xy -2.8935 1.2997)
+          (xy -2.9294 1.3625)
+          (xy -2.9653 1.425)
+          (xy -3.0013 1.4869)
+          (xy -3.0371 1.5481)
+          (xy -3.0731 1.6083)
+          (xy -3.109 1.6675)
+          (xy -3.145 1.7254)
+          (xy -3.1809 1.782)
+          (xy -3.2168 1.8368)
+          (xy -3.2528 1.8901)
+          (xy -3.2887 1.9415)
+          (xy -3.3247 1.991)
+          (xy -3.3606 2.0384)
+          (xy -3.3966 2.0837)
+          (xy -3.4324 2.1267)
+          (xy -3.4683 2.1675)
+          (xy -3.5043 2.2059)
+          (xy -3.5402 2.242)
+          (xy -3.5762 2.2757)
+          (xy -3.6121 2.307)
+          (xy -3.6481 2.3358)
+          (xy -3.684 2.3624)
+          (xy -3.7199 2.3865)
+          (xy -3.7559 2.4084)
+          (xy -3.7918 2.428)
+          (xy -3.8278 2.4456)
+          (xy -3.8636 2.461)
+          (xy -3.8996 2.4745)
+          (xy -3.9355 2.4863)
+          (xy -3.9714 2.4963)
+          (xy -4.0074 2.5047)
+          (xy -4.0433 2.5117)
+          (xy -4.0793 2.5176)
+          (xy -4.1152 2.5222)
+          (xy -4.1512 2.526)
+          (xy -4.1871 2.529)
+          (xy -4.2231 2.5315)
+          (xy -4.259 2.5336)
+          (xy -4.2948 2.5355)
+          (xy -4.3308 2.5336)
+          (xy -4.3667 2.5315)
+          (xy -4.4027 2.529)
+          (xy -4.4386 2.526)
+          (xy -4.4746 2.5222)
+          (xy -4.5105 2.5176)
+          (xy -4.5464 2.5117)
+          (xy -4.5824 2.5047)
+          (xy -4.6183 2.4963)
+          (xy -4.6543 2.4863)
+          (xy -4.6901 2.4745)
+          (xy -4.7261 2.461)
+          (xy -4.762 2.4456)
+          (xy -4.7979 2.428)
+          (xy -4.8339 2.4084)
+          (xy -4.8698 2.3865)
+          (xy -4.9058 2.3624)
+          (xy -4.9417 2.3358)
+          (xy -4.9777 2.307)
+          (xy -5.0136 2.2757)
+          (xy -5.0495 2.242)
+          (xy -5.0855 2.2059)
+          (xy -5.1213 2.1675)
+          (xy -5.1573 2.1267)
+          (xy -5.1932 2.0837)
+          (xy -5.2292 2.0384)
+          (xy -5.2651 1.991)
+          (xy -5.301 1.9415)
+          (xy -5.337 1.8901)
+          (xy -5.3729 1.8368)
+          (xy -5.4089 1.782)
+          (xy -5.4448 1.7254)
+          (xy -5.4808 1.6675)
+          (xy -5.5167 1.6083)
+          (xy -5.5525 1.5481)
+          (xy -5.5885 1.4869)
+          (xy -5.6244 1.425)
+          (xy -5.6604 1.3625)
+          (xy -5.6963 1.2997)
+          (xy -5.7132 1.27)
+          (xy -5.7323 0.0322)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 0.0172 0.0355)
+          (xy 0 1.1572)
+          (xy -0.0017 1.27)
+          (xy -0.0187 1.2997)
+          (xy -0.0547 1.3625)
+          (xy -0.0906 1.425)
+          (xy -0.1264 1.4869)
+          (xy -0.1624 1.5482)
+          (xy -0.1983 1.6084)
+          (xy -0.2343 1.6675)
+          (xy -0.2702 1.7254)
+          (xy -0.3062 1.782)
+          (xy -0.3421 1.8369)
+          (xy -0.378 1.8901)
+          (xy -0.414 1.9415)
+          (xy -0.4499 1.991)
+          (xy -0.4859 2.0384)
+          (xy -0.5217 2.0837)
+          (xy -0.5577 2.1267)
+          (xy -0.5936 2.1675)
+          (xy -0.6295 2.2059)
+          (xy -0.6655 2.242)
+          (xy -0.7014 2.2757)
+          (xy -0.7374 2.307)
+          (xy -0.7733 2.3358)
+          (xy -0.8093 2.3624)
+          (xy -0.8452 2.3865)
+          (xy -0.8811 2.4084)
+          (xy -0.9171 2.4281)
+          (xy -0.9529 2.4456)
+          (xy -0.9889 2.461)
+          (xy -1.0248 2.4746)
+          (xy -1.0608 2.4863)
+          (xy -1.0967 2.4963)
+          (xy -1.1326 2.5047)
+          (xy -1.1686 2.5117)
+          (xy -1.2045 2.5176)
+          (xy -1.2405 2.5223)
+          (xy -1.2764 2.526)
+          (xy -1.3124 2.529)
+          (xy -1.3482 2.5315)
+          (xy -1.3841 2.5336)
+          (xy -1.4201 2.5355)
+          (xy -1.456 2.5336)
+          (xy -1.492 2.5315)
+          (xy -1.5279 2.529)
+          (xy -1.5639 2.526)
+          (xy -1.5998 2.5223)
+          (xy -1.6357 2.5176)
+          (xy -1.6717 2.5117)
+          (xy -1.7076 2.5047)
+          (xy -1.7436 2.4963)
+          (xy -1.7794 2.4863)
+          (xy -1.8154 2.4746)
+          (xy -1.8513 2.461)
+          (xy -1.8873 2.4456)
+          (xy -1.9232 2.4281)
+          (xy -1.9591 2.4084)
+          (xy -1.9951 2.3865)
+          (xy -2.031 2.3624)
+          (xy -2.067 2.3358)
+          (xy -2.1029 2.307)
+          (xy -2.1389 2.2757)
+          (xy -2.1748 2.242)
+          (xy -2.2106 2.2059)
+          (xy -2.2466 2.1675)
+          (xy -2.2825 2.1267)
+          (xy -2.3185 2.0837)
+          (xy -2.3544 2.0384)
+          (xy -2.3904 1.991)
+          (xy -2.4263 1.9415)
+          (xy -2.4622 1.8901)
+          (xy -2.4982 1.8369)
+          (xy -2.5341 1.782)
+          (xy -2.5701 1.7254)
+          (xy -2.6059 1.6675)
+          (xy -2.6419 1.6084)
+          (xy -2.6778 1.5482)
+          (xy -2.7137 1.4869)
+          (xy -2.7497 1.425)
+          (xy -2.7856 1.3625)
+          (xy -2.8216 1.2997)
+          (xy -2.8385 1.27)
+          (xy -2.8575 0.0355)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 2.892 0.0355)
+          (xy 2.873 1.27)
+          (xy 2.856 1.2997)
+          (xy 2.8202 1.3625)
+          (xy 2.7842 1.425)
+          (xy 2.7483 1.4869)
+          (xy 2.7124 1.5482)
+          (xy 2.6764 1.6084)
+          (xy 2.6405 1.6675)
+          (xy 2.6045 1.7254)
+          (xy 2.5686 1.782)
+          (xy 2.5326 1.8369)
+          (xy 2.4967 1.8901)
+          (xy 2.4608 1.9415)
+          (xy 2.4248 1.991)
+          (xy 2.389 2.0384)
+          (xy 2.353 2.0837)
+          (xy 2.3171 2.1267)
+          (xy 2.2811 2.1675)
+          (xy 2.2452 2.2059)
+          (xy 2.2093 2.242)
+          (xy 2.1733 2.2757)
+          (xy 2.1374 2.307)
+          (xy 2.1014 2.3358)
+          (xy 2.0655 2.3624)
+          (xy 2.0295 2.3865)
+          (xy 1.9936 2.4084)
+          (xy 1.9578 2.4281)
+          (xy 1.9218 2.4456)
+          (xy 1.8859 2.461)
+          (xy 1.8499 2.4746)
+          (xy 1.814 2.4863)
+          (xy 1.778 2.4963)
+          (xy 1.7421 2.5047)
+          (xy 1.7062 2.5117)
+          (xy 1.6702 2.5176)
+          (xy 1.6343 2.5223)
+          (xy 1.5983 2.526)
+          (xy 1.5625 2.529)
+          (xy 1.5265 2.5315)
+          (xy 1.4906 2.5336)
+          (xy 1.4547 2.5355)
+          (xy 1.4187 2.5336)
+          (xy 1.3828 2.5315)
+          (xy 1.3468 2.529)
+          (xy 1.3109 2.526)
+          (xy 1.2749 2.5223)
+          (xy 1.239 2.5176)
+          (xy 1.2031 2.5117)
+          (xy 1.1671 2.5047)
+          (xy 1.1313 2.4963)
+          (xy 1.0953 2.4863)
+          (xy 1.0594 2.4746)
+          (xy 1.0234 2.461)
+          (xy 0.9875 2.4456)
+          (xy 0.9516 2.4281)
+          (xy 0.9156 2.4084)
+          (xy 0.8797 2.3865)
+          (xy 0.8437 2.3624)
+          (xy 0.8078 2.3358)
+          (xy 0.7718 2.307)
+          (xy 0.736 2.2757)
+          (xy 0.7001 2.242)
+          (xy 0.6641 2.2059)
+          (xy 0.6282 2.1675)
+          (xy 0.5922 2.1267)
+          (xy 0.5563 2.0837)
+          (xy 0.5203 2.0384)
+          (xy 0.4844 1.991)
+          (xy 0.4484 1.9415)
+          (xy 0.4125 1.8901)
+          (xy 0.3766 1.8369)
+          (xy 0.3406 1.782)
+          (xy 0.3048 1.7254)
+          (xy 0.2688 1.6675)
+          (xy 0.2329 1.6084)
+          (xy 0.1969 1.5482)
+          (xy 0.161 1.4869)
+          (xy 0.1251 1.425)
+          (xy 0.0891 1.3625)
+          (xy 0.0532 1.2997)
+          (xy 0.0363 1.27)
+          (xy 0.0172 0.0355)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 5.7667 0.0355)
+          (xy 5.7478 1.27)
+          (xy 5.7309 1.2997)
+          (xy 5.6949 1.3625)
+          (xy 5.659 1.425)
+          (xy 5.6231 1.4869)
+          (xy 5.5871 1.5482)
+          (xy 5.5512 1.6084)
+          (xy 5.5152 1.6675)
+          (xy 5.4793 1.7254)
+          (xy 5.4433 1.782)
+          (xy 5.4074 1.8369)
+          (xy 5.3715 1.8901)
+          (xy 5.3355 1.9415)
+          (xy 5.2997 1.991)
+          (xy 5.2637 2.0384)
+          (xy 5.2278 2.0837)
+          (xy 5.1918 2.1267)
+          (xy 5.1559 2.1675)
+          (xy 5.1199 2.2059)
+          (xy 5.084 2.242)
+          (xy 5.0481 2.2757)
+          (xy 5.0121 2.307)
+          (xy 4.9762 2.3358)
+          (xy 4.9402 2.3624)
+          (xy 4.9044 2.3865)
+          (xy 4.8684 2.4084)
+          (xy 4.8325 2.4281)
+          (xy 4.7966 2.4456)
+          (xy 4.7606 2.461)
+          (xy 4.7247 2.4746)
+          (xy 4.6887 2.4863)
+          (xy 4.6528 2.4963)
+          (xy 4.6168 2.5047)
+          (xy 4.5809 2.5117)
+          (xy 4.545 2.5176)
+          (xy 4.509 2.5223)
+          (xy 4.4732 2.526)
+          (xy 4.4372 2.529)
+          (xy 4.4013 2.5315)
+          (xy 4.3653 2.5336)
+          (xy 4.3294 2.5355)
+          (xy 4.2935 2.5336)
+          (xy 4.2575 2.5315)
+          (xy 4.2216 2.529)
+          (xy 4.1856 2.526)
+          (xy 4.1497 2.5223)
+          (xy 4.1137 2.5176)
+          (xy 4.0779 2.5117)
+          (xy 4.042 2.5047)
+          (xy 4.006 2.4963)
+          (xy 3.9701 2.4863)
+          (xy 3.9341 2.4746)
+          (xy 3.8982 2.461)
+          (xy 3.8622 2.4456)
+          (xy 3.8263 2.4281)
+          (xy 3.7904 2.4084)
+          (xy 3.7544 2.3865)
+          (xy 3.7185 2.3624)
+          (xy 3.6825 2.3358)
+          (xy 3.6467 2.307)
+          (xy 3.6107 2.2757)
+          (xy 3.5748 2.242)
+          (xy 3.5389 2.2059)
+          (xy 3.5029 2.1675)
+          (xy 3.467 2.1267)
+          (xy 3.431 2.0837)
+          (xy 3.3951 2.0384)
+          (xy 3.3591 1.991)
+          (xy 3.3232 1.9415)
+          (xy 3.2873 1.8901)
+          (xy 3.2513 1.8369)
+          (xy 3.2155 1.782)
+          (xy 3.1795 1.7254)
+          (xy 3.1436 1.6675)
+          (xy 3.1076 1.6084)
+          (xy 3.0717 1.5482)
+          (xy 3.0357 1.4869)
+          (xy 2.9998 1.425)
+          (xy 2.9639 1.3625)
+          (xy 2.9279 1.2997)
+          (xy 2.911 1.27)
+          (xy 2.892 0.0355)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -5.7774 0.6543)
+          (xy -7.6111 0.6543)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 7.624 -1.2777)
+          (xy 7.62 -1.2777)
+          (xy 5.791 -1.2777)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Mains_L1_1_1"
+      (pin passive line
+        (at -7.62 1.27 0)
+        (length 0.0096)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 7.62 -1.27 180)
+        (length 0.0096)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_J5"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "J"
+      (id 0)
+      (at 2.039 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "43650-0300"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_J5"
+      (id 2)
+      (at -1.7841 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/436/43650/436501200_sd.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_J5"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "43650-0300"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_J5_0_1"
+      (polyline
+        (pts
+          (xy -15.8044 -6.4861)
+          (xy 0 -6.4861)
+          (xy 15.8044 -6.4861)
+          (xy 15.8044 -5.08)
+          (xy 15.8044 -3.81)
+          (xy 15.8044 -2.54)
+          (xy 15.8044 -1.27)
+          (xy 15.8044 0)
+          (xy 15.8044 1.27)
+          (xy 15.8044 2.54)
+          (xy 15.8044 3.81)
+          (xy 15.8044 5.3975)
+          (xy 0 5.3975)
+          (xy -15.8044 5.3975)
+          (xy -15.8044 3.81)
+          (xy -15.8044 2.54)
+          (xy -15.8044 1.27)
+          (xy -15.8044 0)
+          (xy -15.8044 -1.27)
+          (xy -15.8044 -2.54)
+          (xy -15.8044 -3.81)
+          (xy -15.8044 -5.08)
+          (xy -15.8044 -6.4861)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_J5_1_1"
+      (pin passive line
+        (at -21.59 2.54 0)
+        (length 5.7856)
+        (name "V5_PSU"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at -21.59 -2.54 0)
+        (length 5.7856)
+        (name "GND"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 21.59 0 180)
+        (length 5.7856)
+        (name "COIL_DRAIN"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_J6"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "J"
+      (id 0)
+      (at 2.039 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "43045-0200"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_J6"
+      (id 2)
+      (at -1.7841 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_J6"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "43045-0200"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_J6_0_1"
+      (polyline
+        (pts
+          (xy -14.2993 -3)
+          (xy 0 -3)
+          (xy 14.2993 -3)
+          (xy 14.2993 0)
+          (xy 14.2993 3.791)
+          (xy 0 3.791)
+          (xy -14.2993 3.791)
+          (xy -14.2993 0)
+          (xy -14.2993 -3)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_J6_1_1"
+      (pin passive line
+        (at -20.32 0 0)
+        (length 6.0207)
+        (name "POSITIVE"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 20.32 0 180)
+        (length 6.0207)
+        (name "RETURN"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_F2"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "F"
+      (id 0)
+      (at 2.0332 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "0451003.MRL"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_F2"
+      (id 2)
+      (at -1.7791 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.littelfuse.com/assetdocs/fuse-451-and-453-datasheet?assetguid=533cd5cc-956c-4243-867f-6ab5a62f6ba1"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_F2"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "0451003.MRL"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_F2_0_1"
+      (polyline
+        (pts
+          (xy -10.5064 -3)
+          (xy 0 -3)
+          (xy 10.5064 -3)
+          (xy 10.5064 0)
+          (xy 10.5064 3.791)
+          (xy 0 3.791)
+          (xy -10.5064 3.791)
+          (xy -10.5064 0)
+          (xy -10.5064 -3)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_F2_1_1"
+      (pin passive line
+        (at -16.51 0 0)
+        (length 6.0036)
+        (name "IN"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 16.51 0 180)
+        (length 6.0036)
+        (name "OUT"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_C2"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "C"
+      (id 0)
+      (at 1.7204 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "22uF"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_C2"
+      (id 2)
+      (at -2.0072 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Capacitor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "C cap capacitor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_C2"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "GRM32ER71E226ME15L"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_C2_0_1"
+      (polyline
+        (pts
+          (xy 3.81 0)
+          (xy 0.762 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -1.016 0)
+          (xy -5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 0.762 3.5139)
+          (xy 0.762 1.27)
+          (xy 0.762 0)
+          (xy 0.762 -1.27)
+          (xy 0.762 -3.5523)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -1.016 3.5139)
+          (xy -1.016 1.27)
+          (xy -1.016 0)
+          (xy -1.016 -1.27)
+          (xy -1.016 -3.5523)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Mains_C2_1_1"
+      (pin passive line
+        (at -5.08 0 0)
+        (length 0.0113)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 3.81 0 180)
+        (length 0.0085)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_C3"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "C"
+      (id 0)
+      (at 1.7204 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "22uF"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_C3"
+      (id 2)
+      (at -2.0072 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Capacitor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "C cap capacitor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_C3"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "GRM32ER71E226ME15L"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_C3_0_1"
+      (polyline
+        (pts
+          (xy 3.81 0)
+          (xy 0.762 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -1.016 0)
+          (xy -5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 0.762 2.25)
+          (xy 0.762 0)
+          (xy 0.762 -2.2355)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -1.016 2.25)
+          (xy -1.016 0)
+          (xy -1.016 -2.2355)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Mains_C3_1_1"
+      (pin passive line
+        (at -5.08 0 0)
+        (length 0.0113)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 3.81 0 180)
+        (length 0.0085)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_C4"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "C"
+      (id 0)
+      (at 1.7204 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "22uF"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_C4"
+      (id 2)
+      (at -1.5104 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Capacitor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "C cap capacitor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_C4"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "GRM32ER71E226ME15L"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_C4_0_1"
+      (polyline
+        (pts
+          (xy 3.81 0)
+          (xy 0.762 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -0.7645 0)
+          (xy -3.81 0)
+          (xy -5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 0.762 3.5139)
+          (xy 0.762 1.27)
+          (xy 0.762 0)
+          (xy 0.762 -1.27)
+          (xy 0.762 -3.5523)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -0.7645 3.5139)
+          (xy -0.7645 1.27)
+          (xy -0.7645 0)
+          (xy -0.7645 -1.27)
+          (xy -0.7645 -3.5523)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Mains_C4_1_1"
+      (pin passive line
+        (at -5.08 0 0)
+        (length 0.8467)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 3.81 0 180)
+        (length 0.0085)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_C5"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "C"
+      (id 0)
+      (at 2.2939 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "100nF"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_C5"
+      (id 2)
+      (at -1.5054 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Capacitor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "C cap capacitor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_C5"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "C1608X7R1H104K080AA"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_C5_0_1"
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy 1.016 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -0.762 0)
+          (xy -3.81 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 1.016 2.4003)
+          (xy 1.016 0)
+          (xy 1.016 -2.4928)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -0.762 2.4003)
+          (xy -0.762 0)
+          (xy -0.762 -2.4928)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Mains_C5_1_1"
+      (pin passive line
+        (at -3.81 0 0)
+        (length 0.0085)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 5.08 0 180)
+        (length 0.0113)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_C6"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "C"
+      (id 0)
+      (at 1.7204 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "22uF"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_C6"
+      (id 2)
+      (at -1.5104 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Capacitor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "C cap capacitor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_C6"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "GRM32ER71E226ME15L"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_C6_0_1"
+      (polyline
+        (pts
+          (xy 3.81 0)
+          (xy 0.762 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -0.7645 0)
+          (xy -3.81 0)
+          (xy -5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 0.762 2.2355)
+          (xy 0.762 0)
+          (xy 0.762 -2.4387)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -0.7645 2.2355)
+          (xy -0.7645 0)
+          (xy -0.7645 -2.4387)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Mains_C6_1_1"
+      (pin passive line
+        (at -5.08 0 0)
+        (length 0.8467)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 3.81 0 180)
+        (length 0.0085)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_C7"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "C"
+      (id 0)
+      (at 2.2939 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "100nF"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_C7"
+      (id 2)
+      (at -1.5054 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Capacitor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "C cap capacitor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_C7"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "C1608X7R1H104K080AA"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_C7_0_1"
+      (polyline
+        (pts
+          (xy 5.08 0)
+          (xy 1.016 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -0.762 0)
+          (xy -3.81 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 1.016 2.4387)
+          (xy 1.016 0)
+          (xy 1.016 -2.3831)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -0.762 2.4387)
+          (xy -0.762 0)
+          (xy -0.762 -2.3831)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Mains_C7_1_1"
+      (pin passive line
+        (at -3.81 0 0)
+        (length 0.0085)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 5.08 0 180)
+        (length 0.0113)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_D1"
+    (pin_numbers
+      (hide no)
+    )
+    (pin_names
+      (offset 1.27)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "D"
+      (id 0)
+      (at 2.2939 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "1N4007-E3/54"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_D1"
+      (id 2)
+      (at -1.5054 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.vishay.com/docs/88503/1n4001.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Integrated Circuit"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "U IC chip"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_D1"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "1N4007-E3/54"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_D1_0_1"
+      (polyline
+        (pts
+          (xy -8.7086 -3)
+          (xy -3.81 -3)
+          (xy 0 -3)
+          (xy 5.08 -3)
+          (xy 9.4343 -3)
+          (xy 9.4343 0)
+          (xy 9.4343 3.791)
+          (xy 5.08 3.791)
+          (xy 0 3.791)
+          (xy -3.81 3.791)
+          (xy -8.7086 3.791)
+          (xy -8.7086 0)
+          (xy -8.7086 -3)
+        )
+        (stroke
+          (width 0.254)
+          (type default)
+        )
+        (fill
+          (type background)
+        )
+      )
+    )
+    (symbol "Mains_D1_1_1"
+      (pin passive line
+        (at -15.24 0 0)
+        (length 6.5314)
+        (name "K"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 15.24 0 180)
+        (length 5.8057)
+        (name "A"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_R1"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "R"
+      (id 0)
+      (at 2.2939 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "100Ω"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_R1"
+      (id 2)
+      (at -1.5054 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.vishay.com/docs/28915/pr02fs.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Resistor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "R res resistor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_R1"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "PR02FS0201000KA100"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_R1_0_1"
+      (polyline
+        (pts
+          (xy -3.81 0)
+          (xy -2.5397 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 3.3863 0)
+          (xy 5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -2.5397 1.1997)
+          (xy 0 1.1997)
+          (xy 3.3863 1.1997)
+          (xy 3.3863 0)
+          (xy 3.3863 -1.1946)
+          (xy 0 -1.1946)
+          (xy -2.5397 -1.1946)
+          (xy -2.5397 0)
+          (xy -2.5397 1.1997)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Mains_R1_1_1"
+      (pin passive line
+        (at -3.81 0 0)
+        (length 0.0085)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 5.08 0 180)
+        (length 0.0113)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+  (symbol "Mains_C1"
+    (pin_numbers
+      (hide yes)
+    )
+    (pin_names
+      (offset 0)
+    )
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "C"
+      (id 0)
+      (at 1.7204 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "47nF"
+      (id 1)
+      (at 0 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Footprint" "CrystalShim_Mains:Mains_C1"
+      (id 2)
+      (at -2.0072 0 90)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Datasheet" "https://www.tdk-electronics.tdk.com/inf/20/20/db/fc_2009/X2_B32921_928.pdf"
+      (id 3)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "Description" "Capacitor"
+      (id 4)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_keywords" "C cap capacitor"
+      (id 5)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "ki_fp_filters" "CrystalShim_Mains:Mains_C1"
+      (id 6)
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property "MPN" "B32921C3473K000"
+      (at 0 0 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (symbol "Mains_C1_0_1"
+      (polyline
+        (pts
+          (xy 3.81 0)
+          (xy 0.762 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -1.016 0)
+          (xy -5.08 0)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy 0.762 2.4003)
+          (xy 0.762 0)
+          (xy 0.762 -2.39)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+      (polyline
+        (pts
+          (xy -1.016 2.4003)
+          (xy -1.016 0)
+          (xy -1.016 -2.39)
+        )
+        (stroke
+          (width 0.18)
+          (type default)
+        )
+        (fill
+          (type none)
+        )
+      )
+    )
+    (symbol "Mains_C1_1_1"
+      (pin passive line
+        (at -5.08 0 0)
+        (length 0.0113)
+        (name "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+      (pin passive line
+        (at 3.81 0 180)
+        (length 0.0085)
+        (name "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)
+            )
+          )
+        )
+      )
+    )
+    (embedded_fonts no)
+  )
+)

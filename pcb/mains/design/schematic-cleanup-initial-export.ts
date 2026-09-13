@@ -122,8 +122,8 @@ export function applyMainsSchematicCleanupForInitialExport(
       }
     }
   }
-  if (seen.size !== 23 || allPins.length !== 66)
-    throw new Error("Mains cleanup requires all 66 logical symbol pins");
+  if (seen.size !== 22 || allPins.length !== 60)
+    throw new Error("Mains cleanup requires all 60 logical symbol pins");
   const markers = mainsExpectedNc.map((id) => {
     const p = allPins.find((pin) => `${pin.ref}.${pin.number}` === id);
     if (

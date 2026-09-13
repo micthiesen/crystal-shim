@@ -8,33 +8,20 @@ import {
 // Product electrical contract from mains-design-basis.md and power-protection-review.md.
 // Keep the integration test's independent transcription as a cross-check.
 export const mainsExpectedNets = {
-  AC_L_FUSED: ["J1.1", "J2.1", "RV1.1", "U1.2"],
+  FILTER_LINE_L: ["F3.2", "J2.1"],
+  AC_L_FUSED: ["F3.1", "J1.1", "RV1.1", "U1.2"],
   AC_N: ["J1.2", "J2.2", "RV1.2", "U1.1"],
   PUMP_L_FILTERED: ["J3.1", "K1.3"],
   PUMP_N_FILTERED: ["C1.2", "J3.2", "J4.2"],
   PUMP_L_SW: ["J4.1", "K1.4", "R1.1"],
   SNUBBER_RC: ["C1.1", "R1.2"],
-  V5_RAW: ["C2.1", "C3.1", "R2.1", "R4.1", "U1.4", "U2.5"],
-  V5_PSU: ["C4.1", "D1.1", "D2.1", "J5.1", "K1.1", "R7.1", "U2.6"],
+  V12_RAW: ["C2.1", "C3.1", "C7.1", "F2.1", "U1.4", "U2.2", "U2.3"],
+  V12_MOTOR: ["F2.2", "J6.1"],
+  V5_PSU: ["C4.1", "C6.1", "D1.1", "J5.1", "K1.1", "L1.2", "U2.1"],
   COIL_DRAIN: ["D1.2", "J5.3", "K1.5"],
-  GND_ISO: [
-    "C2.2",
-    "C3.2",
-    "C4.2",
-    "C5.2",
-    "D2.2",
-    "J5.2",
-    "R3.2",
-    "R5.2",
-    "R6.2",
-    "R7.2",
-    "U1.3",
-    "U2.8",
-  ],
-  EFUSE_UV: ["R2.2", "R3.1", "U2.1"],
-  EFUSE_OV: ["R4.2", "R5.1", "U2.2"],
-  EFUSE_ILM: ["R6.1", "U2.9"],
-  EFUSE_DVDT: ["C5.1", "U2.7"],
+  GND_ISO: ["C2.2", "C3.2", "C4.2", "C6.2", "C7.2", "J5.2", "J6.2", "U1.3", "U2.4"],
+  BUCK5_SW: ["C5.2", "L1.1", "U2.5"],
+  BUCK5_BST: ["C5.1", "U2.6"],
 } as const;
 export const mainsExpectedPins = {
   C1: [1, 2],
@@ -42,37 +29,25 @@ export const mainsExpectedPins = {
   C3: [1, 2],
   C4: [1, 2],
   C5: [1, 2],
+  C6: [1, 2],
+  C7: [1, 2],
   D1: [1, 2],
-  D2: [1, 2],
+  F3: [1, 2],
+  F2: [1, 2],
   J1: [1, 2],
   J2: [1, 2, 3],
   J3: [1, 2, 3, 4],
   J4: [1, 2, 3, 4, 5, 6],
   J5: [1, 2, 3],
+  J6: [1, 2],
   K1: [1, 3, 4, 5],
+  L1: [1, 2],
   R1: [1, 2],
-  R2: [1, 2],
-  R3: [1, 2],
-  R4: [1, 2],
-  R5: [1, 2],
-  R6: [1, 2],
-  R7: [1, 2],
   RV1: [1, 2],
   U1: [1, 2, 3, 4],
-  U2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  U2: [1, 2, 3, 4, 5, 6],
 } as const;
-export const mainsExpectedNc = [
-  "J2.3",
-  "J3.3",
-  "J3.4",
-  "J4.3",
-  "J4.4",
-  "J4.5",
-  "J4.6",
-  "U2.3",
-  "U2.4",
-  "U2.10",
-].sort();
+export const mainsExpectedNc = ["J2.3", "J3.3", "J3.4", "J4.3", "J4.4", "J4.5", "J4.6"];
 
 const expectedByPin = new Map<string, string>(
   Object.entries(mainsExpectedNets).flatMap(([net, pins]) =>
@@ -101,7 +76,7 @@ export function mainsSchematicConnectivityErrors(json: CircuitJson): string[] {
     new Set(parts.map((p) => p.source_component_id)).size !== parts.length
   )
     errors.push("Mains component identities changed");
-  if (ports.length !== 66 || new Set(ports.map((p) => p.source_port_id)).size !== 66)
+  if (ports.length !== 60 || new Set(ports.map((p) => p.source_port_id)).size !== 60)
     errors.push("Mains port identities changed");
   if (
     !same(

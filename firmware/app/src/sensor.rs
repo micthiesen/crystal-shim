@@ -155,7 +155,6 @@ pub async fn run(hardware: SensorHardware) {
                                 channels: Channels {
                                     level: frame.level.counts(),
                                     wet_reference: frame.wet_reference.counts(),
-                                    dry_reference: frame.dry_reference.counts(),
                                 },
                                 sequence,
                                 started_at: Millis(frame.started_ms),

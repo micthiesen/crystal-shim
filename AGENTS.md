@@ -16,7 +16,9 @@ parts, firmware, PCB source, test evidence, and exported mechanical artifacts.
 - `firmware/cli/`: host simulation; `firmware/app/`: separate ESP32-C6 workspace.
 - `pcb/`: Bun/TypeScript tscircuit authoring, then guarded KiCad routing and fabrication.
   `controller/design/` owns source; `controller/kicad/` is its adopted, unrouted
-  native project. Sensor and mains capture remain partial. None is fabrication-ready.
+  native project with the shared-power ECO accepted for routing. Sensor and mains
+  native handoffs are also accepted for routing; final receipts are recorded in
+  STATE. Routing and fabrication acceptance remain distinct.
 - `bom/bom.csv`: candidate/selected parts and independent purchase status.
 - `testing/test-matrix.csv`: commissioning criteria and actual evidence.
 - `cad/`: enclosure exports and the PCB attachment interface. The owner models
@@ -55,8 +57,9 @@ override, never sensor faults or maintenance. Shared configurable duration start
 at 15 minutes; repeated commands, schedule overlap and config changes cannot extend
 an active run indefinitely. See the complete contract in `docs/controls.md`.
 Hardware pulldown, watchdog recovery, and software checks do not detect or cure welded
-contacts. No GPIO map, electrode dimensions, passive protection values, or mains
-spacing is approved yet. Preserve provisional labels until evidence replaces them.
+contacts. GPIOs, electrode geometry, components and spacing are selected in source
+and the design bases. Preserve the accepted interfaces and documented routing
+constraints; physical calibration and commissioning remain unmeasured.
 
 Use the project `$pcb`, `$konnect`, and `$kicad-manufacture` skills for PCB work.
 Tscircuit owns new-board schematic, specification, and placement. KiCad owns
@@ -133,12 +136,11 @@ a PR or repeated confirmation. If no remote exists, commit locally and report th
 Preserve concurrent changes. Do not purchase parts, flash hardware, or energize mains
 as a side effect of setup. Keep durable knowledge in this repository, not personal
 memory.
-Preserve the [future refill attachment reservation](docs/design/refill-expansion.md):
-GPIO1/2/3, separate bus and default-off enable must be captured before controller
-routing/fabrication. The present power board must supply all three future pumps
-and extension electronics; size and capture its supply/rails and output before
-ordering so later work does not need a replacement power PCB or external supply.
-The linked artifact owns the future feature; do not implement refill/conditioning
-now. Prefer proportionate protection for credible failures; review redundant
-hardware and unsupported source combinations before adding cost or complexity.
+Preserve the [future refill attachment](docs/design/refill-expansion.md): the present
+mains board powers all future loads at fixed 12 V; three pump drivers and the
+separate reservoir sensor bus live on the current controller. Later additions are
+accessories and a reservoir sensor PCB, without a separate expansion driver board.
+Keep the agreed simple service input, shared sensor recovery and ordinary 1% digital
+resistors. Do not implement refill/conditioning firmware or add redundant protection
+banks. Actual mains separation and skimmer EMI provisions remain requirements.
 Update these living instructions as project conventions emerge.

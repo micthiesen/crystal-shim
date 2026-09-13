@@ -5,21 +5,21 @@ import { IsolatedSupply, PumpRelay } from "./power-components";
 
 const circuit = new Circuit();
 circuit.add(
-  <board width={125} height={70} routingDisabled>
-    <IsolatedSupply name="U1" pcbX={-53} pcbY={15} schX={-7} />
-    <PumpRelay name="K1" pcbX={14} pcbY={8} schX={7} />
+  <board width={200} height={120} routingDisabled>
+    <IsolatedSupply name="U1" pcbX={-87} pcbY={25} schX={-7} />
+    <PumpRelay name="K1" pcbX={30} pcbY={8} schX={7} />
     <silkscreentext
       text="COMPONENT-SIDE LAND REVIEW / NOT A BOARD"
       pcbX={0}
-      pcbY={27}
+      pcbY={48}
       fontSize={1.3}
     />
-    <silkscreentext text="IRM-10-5" pcbX={-31} pcbY={20} fontSize={1.3} />
-    <silkscreentext text="G5RL-1A-TV8 DC5" pcbX={27} pcbY={20} fontSize={1.3} />
-    <silkscreentext text="3: -V / 4: +V" pcbX={-43} pcbY={-18} fontSize={1} />
-    <silkscreentext text="1: N / 2: L" pcbX={-18} pcbY={-18} fontSize={1} />
-    <silkscreentext text="3/4: CONTACTS" pcbX={16} pcbY={-10} fontSize={1} />
-    <silkscreentext text="1/5: COIL" pcbX={39} pcbY={-10} fontSize={1} />
+    <silkscreentext text="IRM-45-12" pcbX={-43} pcbY={32} fontSize={1.3} />
+    <silkscreentext text="G5RL-1A-TV8 DC5" pcbX={43} pcbY={20} fontSize={1.3} />
+    <silkscreentext text="3: -V / 4: +12V" pcbX={-7} pcbY={-33} fontSize={1} />
+    <silkscreentext text="1: N / 2: L" pcbX={-75} pcbY={32} fontSize={1} />
+    <silkscreentext text="3/4: CONTACTS" pcbX={31} pcbY={-10} fontSize={1} />
+    <silkscreentext text="1/5: COIL" pcbX={57} pcbY={-10} fontSize={1} />
   </board>,
 );
 await circuit.renderUntilSettled();

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "operation": "sensor.augment.sensing-window",
+  "kicad_version": "10.0.5",
+  "rectangle_mm": [
+    81,
+    79,
+    119,
+    143
+  ],
+  "layers": [
+    "F.Cu",
+    "B.Cu"
+  ],
+  "vias_fills_prohibited": true,
+  "tracks_allowed_for_pad_entry": true,
+  "source_pads_preserved": true,
+  "board_sha256_before": "6980c41365ea52b5412c79108d7d7a653575e81bc2bbb89f1f93356812ce8231",
+  "board_sha256_after": "dffedf769660f4d1bddec022961668b31be846c6f79f9e876481da4f7627b3ab",
+  "script_sha256": "785732e2bb220be199436e6d678c88b9100966b461e818acfa0453e179201595"
+}

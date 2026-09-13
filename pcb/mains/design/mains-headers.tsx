@@ -15,7 +15,7 @@ export type MainsHeaderRef = keyof typeof mainsHeaderDefinitions;
 
 export const mainsHeaderNets = {
   J1: ["AC_L_FUSED", "AC_N"],
-  J2: ["AC_L_FUSED", "AC_N"],
+  J2: ["FILTER_LINE_L", "AC_N"],
   J3: ["PUMP_L_FILTERED", "PUMP_N_FILTERED"],
   J4: ["PUMP_L_SW", "PUMP_N_FILTERED"],
 } as const;

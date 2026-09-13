@@ -7,6 +7,8 @@ import { ControllerTestPoints } from "./test-points";
 import { ControllerUsbInterface } from "./usb-interface";
 import { controllerMountingHoles } from "./placements";
 import { Fragment } from "react";
+import { ControllerPumpDrivers } from "./pump-drivers";
+import { ControllerReservoirInterface } from "./reservoir-interface";
 
 // One controller schematic, using the final-use electrical sections. The source
 // uses explicit complete-board placements. Do not export for fabrication until
@@ -14,7 +16,7 @@ import { Fragment } from "react";
 export default function ControllerCircuit() {
   return (
     <board
-      width={70}
+      width={110}
       height={110}
       thickness={1.6}
       layers={4}
@@ -30,7 +32,7 @@ export default function ControllerCircuit() {
       <schematicsheet name="Power" displayName="Logic power" sheetIndex={1} />
       <schematicsheet
         name="Service"
-        displayName="Protected isolated service input"
+        displayName="Known-adapter service input"
         sheetIndex={2}
       />
       <schematicsheet
@@ -53,6 +55,18 @@ export default function ControllerCircuit() {
         displayName="Test and UART service pads"
         sheetIndex={6}
       />
+      <schematicsheet
+        name="Pumps"
+        displayName="Three future accessory pump outputs"
+        sheetIndex={7}
+      />
+      <schematicsheet
+        name="Reservoir"
+        displayName="Second short sensor interface"
+        sheetIndex={8}
+      />
+      <ControllerPumpDrivers />
+      <ControllerReservoirInterface />
       <ControllerRelayDrive />
       <ControllerLogicPower />
       <ControllerServiceInput />

@@ -1,0 +1,122 @@
+{
+  "kicad_version": "10.0.5",
+  "project_sha256": "1f9cc5d984ab4b9d22d17879bbf456a31095e943090edbaf8efef9038c1de583",
+  "board_sha256_unchanged": "eb8cbdacd04d9c99949e278b981df6a3c0e08536db800919451e8b4fd3212058",
+  "classes": {
+    "Default": {
+      "bus_width": 12,
+      "clearance": 0.15,
+      "diff_pair_gap": 0.25,
+      "diff_pair_via_gap": 0.25,
+      "diff_pair_width": 0.2,
+      "line_style": 0,
+      "microvia_diameter": 0.3,
+      "microvia_drill": 0.1,
+      "name": "Default",
+      "pcb_color": "rgba(0, 0, 0, 0.000)",
+      "priority": 2147483647,
+      "schematic_color": "rgba(0, 0, 0, 0.000)",
+      "track_width": 0.3,
+      "tuning_profile": "",
+      "via_diameter": 0.6,
+      "via_drill": 0.3,
+      "wire_width": 6
+    },
+    "LogicPower": {
+      "clearance": 0.15,
+      "name": "LogicPower",
+      "pcb_color": "rgba(0, 0, 0, 0.000)",
+      "priority": 3,
+      "schematic_color": "rgba(0, 0, 0, 0.000)",
+      "track_width": 2.0,
+      "tuning_profile": "",
+      "via_diameter": 0.6,
+      "via_drill": 0.3
+    },
+    "Motor": {
+      "clearance": 0.15,
+      "name": "Motor",
+      "pcb_color": "rgba(0, 0, 0, 0.000)",
+      "priority": 2,
+      "schematic_color": "rgba(0, 0, 0, 0.000)",
+      "track_width": 3.0,
+      "tuning_profile": "",
+      "via_diameter": 0.6,
+      "via_drill": 0.3
+    },
+    "Primary": {
+      "clearance": 3.2,
+      "name": "Primary",
+      "pcb_color": "rgba(0, 0, 0, 0.000)",
+      "priority": 0,
+      "schematic_color": "rgba(0, 0, 0, 0.000)",
+      "track_width": 2.0,
+      "tuning_profile": "",
+      "via_diameter": 0.6,
+      "via_drill": 0.3
+    },
+    "PrimaryInput": {
+      "clearance": 3.2,
+      "name": "PrimaryInput",
+      "pcb_color": "rgba(0, 0, 0, 0.000)",
+      "priority": 1,
+      "schematic_color": "rgba(0, 0, 0, 0.000)",
+      "track_width": 3.0,
+      "tuning_profile": "",
+      "via_diameter": 0.6,
+      "via_drill": 0.3
+    }
+  },
+  "patterns": [
+    {
+      "netclass": "Primary",
+      "pattern": "FILTER_LINE_L"
+    },
+    {
+      "netclass": "Primary",
+      "pattern": "PUMP_L_FILTERED"
+    },
+    {
+      "netclass": "Primary",
+      "pattern": "PUMP_N_FILTERED"
+    },
+    {
+      "netclass": "Primary",
+      "pattern": "PUMP_L_SW"
+    },
+    {
+      "netclass": "Primary",
+      "pattern": "SNUBBER_RC"
+    },
+    {
+      "netclass": "PrimaryInput",
+      "pattern": "AC_L_FUSED"
+    },
+    {
+      "netclass": "PrimaryInput",
+      "pattern": "AC_N"
+    },
+    {
+      "netclass": "Motor",
+      "pattern": "V12_RAW"
+    },
+    {
+      "netclass": "Motor",
+      "pattern": "V12_MOTOR"
+    },
+    {
+      "netclass": "Motor",
+      "pattern": "GND_ISO"
+    },
+    {
+      "netclass": "LogicPower",
+      "pattern": "V5_PSU"
+    },
+    {
+      "netclass": "LogicPower",
+      "pattern": "COIL_DRAIN"
+    }
+  ],
+  "scope": "Native netclasses and basic rules only; 8mm custom isolation rule still requires GUI",
+  "script_sha256": "880ce93af4d1a1f4b6779110debe2f89313825ad38aa6560dfd8decb479f71d9"
+}

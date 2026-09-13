@@ -85,23 +85,12 @@ beforeAll(async () => {
   initial = sheets.map((s) => s.getString());
 });
 
-test("ten exact NC markers survive serialization while every prior object is preserved", () => {
+test("seven exact NC markers survive serialization while every prior object is preserved", () => {
   const sheets = fresh();
   expect(applyMainsSchematicCleanupForInitialExport(sheets, manifest)).toEqual({
-    noConnects: 10,
+    noConnects: 7,
   });
-  const unused = [
-    "J2.3",
-    "J3.3",
-    "J3.4",
-    "J4.3",
-    "J4.4",
-    "J4.5",
-    "J4.6",
-    "U2.3",
-    "U2.4",
-    "U2.10",
-  ];
+  const unused = ["J2.3", "J3.3", "J3.4", "J4.3", "J4.4", "J4.5", "J4.6"];
   const actual: string[] = [];
   for (const [index, sheet] of sheets.entries()) {
     const read = parseKicadSch(sheet.getString());
@@ -145,7 +134,7 @@ test("late NC conflicts, source drift and ambiguous geometry reject the complete
   ] as const) {
     const sheets = fresh(),
       changed = structuredClone(manifest);
-    const p = pinAt(sheets, "U2", "4");
+    const p = pinAt(sheets, "J4", "6");
     if (mode === "wire")
       p.sheet.wires = [...p.sheet.wires, wire(p.x - 1, p.y, p.x + 1, p.y)];
     if (mode === "junction")
@@ -158,7 +147,7 @@ test("late NC conflicts, source drift and ambiguous geometry reject the complete
         p.pin.at!.angle!,
       ]);
     if (mode === "source")
-      changed.nets[0]!.endpoints.push({ component: "mains.component.u2", pad: "4" });
+      changed.nets[0]!.endpoints.push({ component: "mains.component.j4", pad: "6" });
     if (mode === "pin") p.pin.numberString = "UNKNOWN";
     if (mode === "duplicate-library")
       p.sheet.libSymbols!.symbols = [...p.sheet.libSymbols!.symbols, p.library];
@@ -176,14 +165,14 @@ test("late NC conflicts, source drift and ambiguous geometry reject the complete
 
 test("native rounding keeps NCs attached and rejects conductors that quantize onto unused pins", () => {
   const sheets = fresh();
-  const p = pinAt(sheets, "U2", "4");
+  const p = pinAt(sheets, "J4", "6");
   // Each independent coordinate is less than half an IU away. Adding floats
   // first incorrectly rounds the marker by one IU, later enlarged by gridding.
   p.instance.at!.x += 0.000045;
   p.pin.at!.x += 0.000045;
   applyMainsSchematicCleanupForInitialExport(sheets, manifest);
   const gridded = gridInitialSchematics(sheets).sheets;
-  const target = pinAt(gridded, "U2", "4");
+  const target = pinAt(gridded, "J4", "6");
   expect(
     target.sheet.noConnects.filter(
       (n) => Math.abs(n.at!.x - target.x) < 1e-8 && Math.abs(n.at!.y - target.y) < 1e-8,
@@ -191,7 +180,7 @@ test("native rounding keeps NCs attached and rejects conductors that quantize on
   ).toHaveLength(1);
   for (const mode of ["wire", "label", "junction"] as const) {
     const changed = fresh();
-    const t = pinAt(changed, "U2", "4");
+    const t = pinAt(changed, "J4", "6");
     if (mode === "wire")
       t.sheet.wires = [
         ...t.sheet.wires,
@@ -224,9 +213,9 @@ test("complete initial graphs refresh all four caches, exact fields, NCs and gri
   const parts = sheets
     .flatMap((s) => s.symbols)
     .filter((s) => !reference(s)?.startsWith("#"));
-  expect(parts).toHaveLength(23);
-  expect(parts.flatMap((s) => s.pins)).toHaveLength(66);
-  expect(sheets.flatMap((s) => s.noConnects)).toHaveLength(10);
+  expect(parts).toHaveLength(22);
+  expect(parts.flatMap((s) => s.pins)).toHaveLength(60);
+  expect(sheets.flatMap((s) => s.noConnects)).toHaveLength(7);
   expect(
     sheets
       .flatMap((s) => s.symbols)
@@ -236,7 +225,7 @@ test("complete initial graphs refresh all four caches, exact fields, NCs and gri
   ).toEqual(["#FLG0201", "#FLG0202"]);
   expect(result.symbolLibraryFile.filename).toBe("CrystalShim_Mains.kicad_sym");
   const library = parseKicadSym(result.symbolLibraryFile.content);
-  expect(library.symbols).toHaveLength(24);
+  expect(library.symbols).toHaveLength(23);
   const ncMatches: string[] = [];
   for (const sheet of sheets) {
     for (const instance of sheet.symbols) {
@@ -288,21 +277,32 @@ test("complete initial graphs refresh all four caches, exact fields, NCs and gri
     }
   }
   expect(ncMatches.sort()).toEqual(
-    [
-      "J2.3",
-      "J3.3",
-      "J3.4",
-      "J4.3",
-      "J4.4",
-      "J4.5",
-      "J4.6",
-      "U2.3",
-      "U2.4",
-      "U2.10",
-    ].sort(),
+    ["J2.3", "J3.3", "J3.4", "J4.3", "J4.4", "J4.5", "J4.6"].sort(),
   );
-  expect(result.pcb.footprints).toHaveLength(27);
+  expect(result.pcb.footprints).toHaveLength(26);
   expect(
     result.pcb.footprints.flatMap((fp) => fp.fpPads).filter((p) => p.number),
-  ).toHaveLength(81);
+  ).toHaveLength(75);
+});
+
+test("fresh export splits the SW label trunk instead of leaving the converter orphan stub", () => {
+  const graphs = createMainsInitialGraphs(source);
+  const sheet = parseKicadSch(
+    graphs.schematicFiles.find((f) => f.filename === "secondary.kicad_sch")!.content,
+  );
+  const spans = sheet.wires.map((w) =>
+    (w.points!.points as Xy[]).map((p) => [p.x, p.y]),
+  );
+  expect(spans).not.toContainEqual([
+    [381, 254],
+    [382.27, 254],
+  ]);
+  expect(spans).toContainEqual([
+    [332.74, 254],
+    [382.27, 254],
+  ]);
+  expect(spans).toContainEqual([
+    [382.27, 254],
+    [429.26, 254],
+  ]);
 });

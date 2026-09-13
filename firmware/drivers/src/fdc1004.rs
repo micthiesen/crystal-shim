@@ -1,7 +1,7 @@
 //! FDC1004 out-of-phase acquisition, SNOSCY5C sections 6.5.3 and 6.6.
 //!
-//! Each frame consists of three single conversions: CIN1-CIN4, CIN2-CIN4,
-//! CIN3-CIN4. CIN4 is physically open. This selects opposite-phase SHLD2 without
+//! Each frame consists of two single conversions: CIN1-CIN4 and CIN2-CIN4.
+//! CIN3 and CIN4 are physically open. This selects opposite-phase SHLD2 without
 //! CAPDAC. Repeated mode is deliberately disabled so results cannot be overwritten
 //! between the required MSB and LSB reads.
 //!
@@ -15,7 +15,7 @@ const ADDRESS: u8 = 0x50;
 const FDC_CONF: u8 = 0x0c;
 const RESET: u16 = 0x8000;
 const RATE_100: u16 = 0x0400;
-const CONFIGS: [u16; 3] = [0x0c00, 0x2c00, 0x4c00];
+const CONFIGS: [u16; 2] = [0x0c00, 0x2c00];
 const CONVERSION_TIMEOUT_MS: u64 = 40;
 const FRAME_TIMEOUT_MS: u64 = 100;
 const RAW_LIMIT: i32 = 15 * (1 << 19);
@@ -43,12 +43,11 @@ impl RawCapacitance {
 }
 
 /// One complete ordered set. `started_ms` is the conservative freshness timestamp:
-/// the three electrodes are sampled sequentially, not simultaneously.
+/// the two electrodes are sampled sequentially, not simultaneously.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct Frame {
     pub level: RawCapacitance,
     pub wet_reference: RawCapacitance,
-    pub dry_reference: RawCapacitance,
     pub started_ms: u64,
     pub completed_ms: u64,
 }
@@ -127,7 +126,7 @@ impl<I: I2c> Fdc1004<I> {
         self.initialized = false;
         let started_ms = self.time(&now)?;
         self.verify_configuration().await?;
-        let mut values = [RawCapacitance(0); 3];
+        let mut values = [RawCapacitance(0); 2];
         for (index, value) in values.iter_mut().enumerate() {
             // Section 6.5.3.2 permits only one MEAS bit for a single trigger.
             // REPEAT=0; the example 0x0540 in that section contradicts its own
@@ -157,14 +156,13 @@ impl<I: I2c> Fdc1004<I> {
             let lsb = self.read(register + 1).await?;
             *value = decode(msb, lsb)?;
         }
-        // A brownout partway through the frame must not pass as three valid zeros.
+        // A brownout partway through the frame must not pass as two valid zeros.
         self.verify_configuration().await?;
         let completed_ms = self.deadline(&now, started_ms, FRAME_TIMEOUT_MS)?;
         self.initialized = true;
         Ok(Frame {
             level: values[0],
             wet_reference: values[1],
-            dry_reference: values[2],
             started_ms,
             completed_ms,
         })

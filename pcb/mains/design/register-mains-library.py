@@ -26,13 +26,13 @@ spec.loader.exec_module(handoff)
 BOARD_ID = "mains.board.main"
 LIBRARY = "CrystalShim_Mains"
 EXPECTED_PINS = {
-    **{f"C{i}": {"1", "2"} for i in range(1, 6)},
-    **{f"R{i}": {"1", "2"} for i in range(1, 8)},
-    "D1": {"1", "2"}, "D2": {"1", "2"}, "RV1": {"1", "2"},
+    **{f"C{i}": {"1", "2"} for i in range(1, 8)},
+    "R1": {"1", "2"}, "L1": {"1", "2"}, "F2": {"1", "2"}, "F3": {"1", "2"},
+    "D1": {"1", "2"}, "RV1": {"1", "2"},
     "J1": {"1", "2"}, "J2": {"1", "2", "3"},
     "J3": {"1", "2", "3", "4"}, "J4": {str(i) for i in range(1, 7)},
-    "J5": {"1", "2", "3"}, "K1": {"1", "3", "4", "5"},
-    "U1": {"1", "2", "3", "4"}, "U2": {str(i) for i in range(1, 11)},
+    "J5": {"1", "2", "3"}, "J6": {"1", "2"}, "K1": {"1", "3", "4", "5"},
+    "U1": {"1", "2", "3", "4"}, "U2": {str(i) for i in range(1, 7)},
     **{f"H{i}": set() for i in range(1, 5)},
 }
 
@@ -73,12 +73,12 @@ def guarded_stage() -> Path:
 
 def validate_mains_manifest(manifest: dict) -> None:
     board = manifest["board"]
-    if (board["stable_id"] != BOARD_ID or board["width_mm"] != 135 or board["height_mm"] != 75
+    if (board["stable_id"] != BOARD_ID or board["width_mm"] != 180 or board["height_mm"] != 110
             or board["layer_count"] != 2 or board.get("kicad_origin_mm") != [100, 100]):
         raise ValueError("requires the exact mains board manifest")
     components = manifest["components"]
-    if len(components) != 27 or {c["ref"] for c in components} != set(EXPECTED_PINS):
-        raise ValueError("requires 23 exact mains references and four mounting holes")
+    if len(components) != 26 or {c["ref"] for c in components} != set(EXPECTED_PINS):
+        raise ValueError("requires 22 exact mains references and four mounting holes")
     for component in components:
         ref = component["ref"]
         if (component["stable_id"] != f"mains.component.{ref.lower()}"
@@ -93,7 +93,7 @@ def validate_mains_manifest(manifest: dict) -> None:
 def validate_native_pad_numbers(ref: str, numbers: list[str]) -> None:
     expected = [number for number in EXPECTED_PINS[ref]
                 for _ in range(2 if ref in {"J1", "J2", "J3", "J4"} else 1)]
-    if ref in {"H1", "H2", "H3", "H4", "J5"}:
+    if ref in {"H1", "H2", "H3", "H4", "J5", "J6"}:
         expected.append("")
     if sorted(numbers) != sorted(expected):
         raise ValueError(f"{ref}: exact physical pad/locator multiset changed")
@@ -194,8 +194,8 @@ def register() -> Path:
     root = handoff.resolve_staged_footprint_root(stage, Path("footprints"))
     library = root / "CrystalShim_Mains.pretty"
     expected = {f"Mains_{item['ref']}.kicad_mod" for item in manifest["components"]}
-    if len(expected) != 27 or {p.name for p in library.iterdir()} != expected:
-        raise ValueError("source-exported library must contain exactly 27 mains footprints")
+    if len(expected) != 26 or {p.name for p in library.iterdir()} != expected:
+        raise ValueError("source-exported library must contain exactly 26 mains footprints")
     if any(not (library / name).is_file() for name in expected):
         raise ValueError("source-exported footprint is not a regular file")
     if not (stage / "mains.kicad_pcb").is_file() or not (stage / "mains.kicad_sch").is_file():
@@ -209,8 +209,8 @@ def register() -> Path:
     if not symbol_library.is_file() or symbol_table.exists():
         raise ValueError("registration requires a fresh project symbol library and no symbol table")
     symbol_names = {f"Mains_{item['ref']}" for item in manifest["components"] if item['footprint']['pad_numbers']} | {"PWR_FLAG"}
-    if len(symbol_names) != 24:
-        raise ValueError("expected 23 source symbols and one ERC-only flag definition")
+    if len(symbol_names) != 23:
+        raise ValueError("expected 22 source symbols and one ERC-only flag definition")
     project = stage / "mains.kicad_pro"
     client = Konnect()
     try:
@@ -219,7 +219,7 @@ def register() -> Path:
         client.send({"jsonrpc": "2.0", "method": "notifications/initialized"})
         client.call("load_toolset", {"name": "library"})
         symbol_inventory = client.call("list_symbols_in_library", {"library_path": str(symbol_library)})
-        if symbol_inventory.get("library") != str(symbol_library) or symbol_inventory.get("count") != 24 or sorted(symbol_inventory.get("symbols", [])) != sorted(symbol_names):
+        if symbol_inventory.get("library") != str(symbol_library) or symbol_inventory.get("count") != 23 or sorted(symbol_inventory.get("symbols", [])) != sorted(symbol_names):
             raise ValueError("source-exported symbol library differs from the mains declaration")
         if tree_hashes(stage) != before:
             raise ValueError("symbol inspection changed stage inputs")

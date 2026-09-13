@@ -1,101 +1,34 @@
 # Active sensor daughterboard
 
-The [detailed design basis](design/sensor-design-basis.md) now specifies the TI
-channel/shield topology, parts and proposed geometry. Its dry-reference band
-requires the normal-full water surface at least 11 mm below the rim; the owner
-measurement is pending before that geometry is fixed. The 50 mm physical level
-electrode and the valid calibrated water range are separate dimensions.
+The final tank board uses one FDC1004DGSR, a fixed 3.3 V TPS7A2433DBVR regulator,
+one continuous 50 mm level electrode and one wet/liquid reference. Its local
+converter communicates with the ESP over the existing short 6-pin5 V/I2C harness.
+There is no sensor processor. See the [complete design basis](design/sensor-design-basis.md)
+and [source/placement](../pcb/sensor/design/README.md).
 
-## Proposed hardware
+The board is38 x86 mm, with a 22 mm electronics head above the tank rim and a
+50 mm physical sensing span down from that rim. It remains flat outside 5 mm
+freshwater aquarium glass. The owner supplies a separate gravity/friction clip;
+side retention rails and a fixed rim datum support that clip without adhesive.
+The wet reference sits below the sensing span. All contact-face copper is
+mask-covered and has no components or vias in the sensing window.
 
-| Item | Initial requirement |
-| --- | --- |
-| Water | Freshwater aquarium |
-| Mounting | Snug against outside 5 mm glass, held by an owner-designed external clip; adhesive is not required |
-| Width | Reasonably compact; ample glass width available, no fixed maximum specified |
-| Sensing span | 50 mm downward from the top of the tank rim; extra board padding at top/bottom allowed |
-| Converter | One TI FDC1004DGSR, leaded VSSOP-10; capture candidate pending footprint review |
-| Electrodes | One continuous level electrode, matched dry reference above range, wet reference below range |
-| Shielding | Driven, out-of-phase arrangement adapted from TI's actual geometry |
-| Supply | 5 V cable input, local 3.3 V regulator and decoupling |
-| Interface | 3.3 V I2C, initially 100 kHz |
-| Harness | At most 8 inches (203.2 mm), six-position locking Molex Micro-Fit 3.0 candidate |
-| Conductors | Three signal/return pairs: 5 V/GND, SDA/GND, SCL/GND |
-| Assembly | Components face outward; 0603/0805 passives where practical |
-| Processor | None; ESP performs calibration and interpretation |
+The optional live dry/environment reference is omitted. Stored dry baselines and
+measured calibration endpoints replace it, removing the earlier 11 mm high-water
+exclusion and the pending normal-full rim measurement. This does not guarantee
+useful resolution right at the rim: final-unit calibration sets operating margins
+and confirms performance through actual glass, wet film and mounting conditions.
+No independent dry-reference witness or environmental compensation is claimed.
 
-The owner will model a separate 3D-printed mount that clips over the glass and is
-retained by gravity and friction. That mount is outside this project's scope.
-The sensor PCB itself stays on the outside face of the glass and does not wrap
-over the rim. Define a practical attachment interface on the PCB, with dimensions,
-permitted clamp/retention regions and component/connector clearances for the owner
-to use. Choose those features during board design without compromising the
-electrodes or driven shields; no arbitrary hole pattern is frozen by this brief.
+Keep the harness at most 203.2 mm complete, initially 100 kHz I2C, with local 3.3 V
+pullups and the existing numbered Micro-Fit mates. The future reservoir board can
+use an independently addressed controller bus and the shared sensor power feed;
+its reservoir geometry remains future work. Motor drivers are on the present
+controller board, not another future expansion-control PCB.
 
-The FDC1004 has four capacitance channels and active shield drivers and supports
-a 3.3 V supply. VSSOP-10 avoids requiring the smaller leadless package.
-[TI datasheet](https://www.ti.com/lit/ds/symlink/fdc1004.pdf).
-
-Place the electronics and connector near the top, away from the main sensing
-area. Keep electrode-to-converter traces short. Resolve connector footprint,
-local regulator noise, decoupling, pullups to 3.3 V, cable capacitance/rise time,
-and connector ESD protection during schematic work. No pin numbers are assigned
-by the pair list; draw both mating faces before freezing the harness.
-
-## Geometry and calibration
-
-Design this as the final-use daughterboard in the complete three-board release.
-There is no separate sensor prototype or pre-fabrication wet-glass test phase.
-Before release, document the reference-derived geometry, channel/shield assignment,
-expected capacitance and converter range, reference coverage and mounting tolerances.
-Use reference evidence and calculations to review the design; physical calibration
-and performance verification follow on the final board.
-
-Adapt [TI TIDA-00317](https://www.ti.com/tool/TIDA-00317), particularly
-[TIDU736A sections 4 and 6](https://www.ti.com/lit/ug/tidu736a/tidu736a.pdf), rather
-than replacing it with six independent level pads. Its matched liquid and
-environment references support compensation, while the out-of-phase shield
-geometry reduces nearby-object interference. This is a reference to adapt and
-validate on glass, not evidence that our board already achieves its performance.
-
-Owner inputs (2026-09-11): **5 mm glass**, with the desired detection span extending
-**50 mm down from the top of the tank rim**. The board must not clip over the rim.
-Padding at the top and bottom is acceptable; 50 mm is the sensing span, not the
-total PCB height. The available width is generous; keep the board reasonably
-compact while preserving the reference geometry and a usable clip attachment.
-Dry/wet reference margins, exact stick width, retention features and electrode
-placement relative to the rim remain engineering work. The clip may extend over
-the glass; the PCB need not. Resolve any actual obstruction when checking the
-owner's mount against the board interface, before claiming coverage at the datum.
-The wet reference must remain covered
-and the dry reference remain above water throughout the calibrated range.
-Detectable departures from commissioned raw/reference envelopes must become
-invalid input immediately. Capacitance alone cannot distinguish every wet film,
-mounting gap or board shift from a valid water level; no independent physical
-reference witness is fitted. Record those limits and test them during final-unit
-commissioning. Specify the channel/shield assignment from TI's
-design before capture; the fourth channel does not imply another required pad.
-
-Calibration must retain raw level/wet/dry capacitances, baseline/scale, validity
-bounds and revision. Reject stale, disconnected, saturated, out-of-range, or
-degenerate reference readings. A normalized level can support multiple discrete
-thresholds without claiming physical millimeters. Thresholds and allowed sample
-age need actual calibration; do not invent physical values from the demo.
-
-## Acceptance evidence
-
-Test rising and falling water, particularly a receding level that leaves wet
-glass. Use the actual freshwater aquarium conditions. Include deposits/biofilm,
-temperature changes, clip pressure, contact gaps, removal/reseating, nearby
-hands/objects, cable motion, and skimmer switching. Validate repeatable snug
-contact; any protective layer or spacer must be included in the sensor calibration.
-Perform these checks during final-board commissioning, initially with isolated
-low-voltage power and mains disconnected. Retain raw measurements and independent
-observed water position. Establish a stable stop/restart margin before unattended
-automatic operation. This acceptance work does not block fabrication of the full
-board set. See the `SEN-*` rows in
-[the commissioning matrix](../testing/test-matrix.csv).
-
-Until that evidence exists, no routine cleaning and immunity to hand movement
-remain goals. Continuous sensing is a hardware simplification, not a promise of
-precision level measurement.
+Commission the final board after the one fabrication cycle. Retain raw LEVEL/RL
+readings, stored dry values, calibration limits/revision and observed water
+positions. Test rising/falling water, receding film/deposits, temperature, clip
+pressure and reseating, hands, cable motion and skimmer switching. Set a stable
+stop/restart margin before unattended use. Simulation and source checks cannot
+pass those commissioning rows. There is no separate prototype or planned respin.

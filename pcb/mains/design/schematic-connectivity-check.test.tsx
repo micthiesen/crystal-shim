@@ -74,7 +74,7 @@ test("native admission checks every unique pad, Sabre tail, NC and net number", 
     ["U2", "5"],
     ["J5", "3"],
     ["J3", "3"],
-    ["D2", "2"],
+    ["F2", "2"],
   ] as const;
   for (const [ref, number] of cases) {
     const board = parseKicadPcb(initial);

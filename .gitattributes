@@ -5,3 +5,5 @@
 
 # Preserve the exact KiCad-rendered bytes bound by handoff/evidence hashes.
 pcb/controller/kicad/evidence/**/*.svg -whitespace linguist-generated=true
+pcb/sensor/kicad/evidence/**/*.svg -whitespace linguist-generated=true
+pcb/mains/kicad/review-renders/**/*.svg -whitespace linguist-generated=true

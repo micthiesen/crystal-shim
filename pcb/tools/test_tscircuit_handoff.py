@@ -458,6 +458,50 @@ class ManifestTests(unittest.TestCase):
         self.assertEqual(result["kicad_owned"]["tracks"]["sha256"], handoff.digest(raw["tracks"]))
         self.assertTrue(result["routed"])
 
+    def test_unique_native_nc_bookkeeping_does_not_create_source_drift(self) -> None:
+        source = handoff.normalize_manifest(manifest())
+        aug = handoff.validate_augmentation(augmentation(), source)
+        baseline = snapshot()
+        native = copy.deepcopy(baseline)
+        for item in native["source_owned"]["components"]:
+            item["pads"][2]["net"] = f"unconnected-({item['ref']}-NC-Pad3)"
+        original = copy.deepcopy(native)
+        canonical = handoff.canonical_source_nc_nets(native["source_owned"], source)
+        self.assertEqual(canonical, baseline["source_owned"])
+        self.assertEqual(native, original)
+        self.assertEqual(handoff.parity_errors(native, source, aug), [])
+        plan = handoff.build_plan(source, aug, lock_for(manifest()), native, False, False)
+        self.assertFalse(plan["blocked"])
+        self.assertEqual(plan["drift"], [])
+        raw = {**native["source_owned"], "tracks": [], "vias": [], "zones": [], "rules": [], "graphics": []}
+        fresh = handoff.normalize_kicad_snapshot_data(raw, source, False)
+        self.assertTrue(all(pad["net"] == "" for item in fresh["source_owned"]["components"] for pad in item["pads"] if pad["number"] == "3"))
+
+    def test_nc_normalization_never_hides_actual_or_ambiguous_connections(self) -> None:
+        source = handoff.normalize_manifest(manifest())
+        aug = handoff.validate_augmentation(augmentation(), source)
+        for failure in ("real_net", "shared_nc", "connected_pin", "wrong_pin"):
+            with self.subTest(failure=failure):
+                current = snapshot()
+                parts = current["source_owned"]["components"]
+                if failure == "real_net":
+                    parts[0]["pads"][2]["net"] = "DATA"
+                elif failure == "shared_nc":
+                    for part in parts:
+                        part["pads"][2]["net"] = "unconnected-(U1-Pad3)"
+                elif failure == "connected_pin":
+                    parts[0]["pads"][1]["net"] = "unconnected-(U1-Pad2)"
+                else:
+                    parts[0]["pads"][2]["net"] = "unconnected-(U2-Pad3)"
+                self.assertEqual(handoff.canonical_source_nc_nets(current["source_owned"], source), current["source_owned"])
+                self.assertTrue(handoff.parity_errors(current, source, aug))
+                self.assertTrue(handoff.build_plan(source, aug, lock_for(manifest()), current, False, False)["blocked"])
+        named_source = copy.deepcopy(source)
+        named_source["nets"][0]["name"] = "unconnected-(U1-Pad3)"
+        current = snapshot()["source_owned"]
+        current["components"][0]["pads"][2]["net"] = "unconnected-(U1-Pad3)"
+        self.assertEqual(handoff.canonical_source_nc_nets(current, named_source), current)
+
     def test_native_snapshot_reads_board_thickness_from_design_settings(self) -> None:
         with tempfile.TemporaryDirectory(prefix="stillair-snapshot-thickness-") as raw_dir:
             root = Path(raw_dir)
@@ -944,6 +988,127 @@ class CliTests(unittest.TestCase):
         path.write_text(json.dumps(value))
         return path
 
+    def eco_fixture(self, root: Path) -> dict:
+        root = root.resolve()
+        old = manifest()
+        target = handoff.normalize_manifest(old)
+        target["components"][0]["value"] = "revised value"
+        before = snapshot()
+        after = copy.deepcopy(before)
+        after["source_owned"]["components"][0]["value"] = "revised value"
+        after["schematic_owned"]["components"][0]["value"] = "revised value"
+        aug = handoff.validate_augmentation(augmentation(), target)
+        lock = lock_for(old, snap=before)
+        lock["initial_handoff_receipt_sha256"] = "a" * 64
+        plan = handoff.build_plan(target, aug, lock, before, False, False)
+        board = root / "board.kicad_pcb"
+        schematic = root / "board.kicad_sch"
+        board.write_text("native PCB fixture")
+        schematic.write_text("(kicad_sch)")
+        project = {"erc": {"rule_severities": {"pin_not_connected": "error"}, "erc_exclusions": []}}
+        self.write_json(root, "board.kicad_pro", project)
+        cleanup = {
+            "schema_version": 1, "board_id": "pcb-03", "passed": True, "errors": [],
+            "manifest_sha256": handoff.digest(target), "augmentation_sha256": handoff.digest(aug),
+            "root_schematic": str(schematic),
+            "root_schematic_sha256": hashlib.sha256(schematic.read_bytes()).hexdigest(),
+            "native_files": handoff.hash_protected_tree(root),
+            "schematic_owned": copy.deepcopy(after["schematic_owned"]),
+            "erc_report": {**kicad_report(), "included_severities": ["error", "warning", "exclusion"]},
+        }
+        values = {"manifest": target, "augmentation": aug, "lock": lock, "plan": plan,
+                  "before-snapshot": before, "after-snapshot": after, "cleanup-receipt": cleanup}
+        for name, value in values.items():
+            self.write_json(root, name + ".json", value)
+        render = root / "review.svg"
+        render.write_text("<svg/>")
+        values.update(project=project, actual=copy.deepcopy(after), root=root)
+        return values
+
+    def run_eco_fixture(self, fixture: dict) -> int:
+        root = fixture["root"]
+        arguments = ["accept-eco", str(root / "manifest.json")]
+        for name in ("augmentation", "lock", "plan", "before-snapshot", "after-snapshot", "cleanup-receipt"):
+            arguments.extend(["--" + name, str(root / (name + ".json"))])
+        arguments.extend(["--board", str(root / "board.kicad_pcb"), "--schematic", str(root / "board.kicad_sch"),
+                          "--receipt", str(root / "eco.json"), "--render", str(root / "review.svg")])
+        actual = copy.deepcopy(fixture["actual"])
+        actual.pop("schematic_owned")
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()), mock.patch.object(
+            handoff, "extract_kicad_data", return_value={"tracks": [], "vias": []}
+        ), mock.patch.object(handoff, "normalize_kicad_snapshot_data", return_value=actual):
+            return handoff.main(arguments)
+
+    def test_accept_eco_preserves_initial_provenance_and_binds_native_files(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            fixture = self.eco_fixture(Path(raw))
+            self.assertEqual(self.run_eco_fixture(fixture), 0)
+            lock = handoff.read_json(Path(raw) / "lock.json")
+            receipt = handoff.read_json(Path(raw) / "eco.json")
+            self.assertEqual(lock["initial_handoff_receipt_sha256"], "a" * 64)
+            self.assertEqual(lock["eco_receipt_sha256"], handoff.digest(receipt))
+            self.assertEqual(receipt["previous_lock_sha256"], handoff.digest(fixture["lock"]))
+            self.assertEqual(receipt["native_files"], handoff.hash_protected_tree(Path(raw)))
+            self.assertEqual(receipt["review_renders"][0]["sha256"], hashlib.sha256(b"<svg/>").hexdigest())
+            self.assertEqual(lock["snapshot"], fixture["after-snapshot"])
+
+    def test_accept_eco_rejects_invalid_evidence_without_advancing_lock(self) -> None:
+        for failure in ("lock_checksum", "plan_forgery", "blocked_plan", "target_mismatch",
+                        "stale_native", "stale_cleanup", "erc_violation", "ignored_check",
+                        "omitted_exclusions", "project_ignore", "project_exclusion",
+                        "schematic_mismatch", "native_mismatch", "unauthorized_tracks",
+                        "bad_source_parity", "bad_schematic_parity", "missing_render"):
+            with self.subTest(failure=failure), tempfile.TemporaryDirectory() as raw:
+                root = Path(raw)
+                f = self.eco_fixture(root)
+                if failure == "lock_checksum":
+                    f["lock"]["snapshot_sha256"] = "bad"
+                elif failure == "plan_forgery":
+                    f["plan"]["authorized_kicad_owned_changes"].append("tracks")
+                elif failure == "blocked_plan":
+                    f["plan"]["blocked"] = True
+                elif failure == "target_mismatch":
+                    f["manifest"]["components"][0]["value"] = "different target"
+                elif failure == "stale_native":
+                    (root / "board.kicad_pcb").write_text("changed after cleanup")
+                elif failure == "stale_cleanup":
+                    f["cleanup-receipt"]["manifest_sha256"] = "bad"
+                elif failure == "erc_violation":
+                    f["cleanup-receipt"]["erc_report"]["violations"] = [{"type": "pin_not_connected"}]
+                elif failure == "ignored_check":
+                    f["cleanup-receipt"]["erc_report"]["ignored_checks"] = [{"key": "pin_not_connected"}]
+                elif failure == "omitted_exclusions":
+                    f["cleanup-receipt"]["erc_report"]["included_severities"].remove("exclusion")
+                elif failure in ("project_ignore", "project_exclusion"):
+                    if failure == "project_ignore":
+                        f["project"]["erc"]["rule_severities"]["pin_not_connected"] = "ignore"
+                    else:
+                        f["project"]["erc"]["erc_exclusions"] = ["excluded finding"]
+                    self.write_json(root, "board.kicad_pro", f["project"])
+                    f["cleanup-receipt"]["native_files"] = handoff.hash_protected_tree(root)
+                elif failure == "schematic_mismatch":
+                    f["after-snapshot"]["schematic_owned"]["components"][0]["value"] = "wrong"
+                elif failure == "native_mismatch":
+                    f["actual"]["kicad_owned"]["tracks"] = "changed"
+                elif failure == "unauthorized_tracks":
+                    f["after-snapshot"]["kicad_owned"]["tracks"] = "changed"
+                    f["actual"] = copy.deepcopy(f["after-snapshot"])
+                elif failure == "bad_source_parity":
+                    f["after-snapshot"]["source_owned"]["components"][0]["pads"][0]["net"] = "WRONG"
+                    f["actual"] = copy.deepcopy(f["after-snapshot"])
+                elif failure == "bad_schematic_parity":
+                    f["after-snapshot"]["schematic_owned"]["components"][0]["manufacturer_part_number"] = "WRONG"
+                    f["cleanup-receipt"]["schematic_owned"] = copy.deepcopy(f["after-snapshot"]["schematic_owned"])
+                    f["actual"] = copy.deepcopy(f["after-snapshot"])
+                elif failure == "missing_render":
+                    (root / "review.svg").unlink()
+                for name in ("manifest", "augmentation", "lock", "plan", "before-snapshot", "after-snapshot", "cleanup-receipt"):
+                    self.write_json(root, name + ".json", f[name])
+                original_lock = (root / "lock.json").read_bytes()
+                self.assertNotEqual(self.run_eco_fixture(f), 0)
+                self.assertEqual((root / "lock.json").read_bytes(), original_lock)
+                self.assertFalse((root / "eco.json").exists())
+
     def test_accept_then_clean_plan_for_pcb03(self) -> None:
         with tempfile.TemporaryDirectory(prefix="stillair-handoff-test-") as raw_dir:
             root = Path(raw_dir)
@@ -1201,6 +1366,11 @@ class CliTests(unittest.TestCase):
                 return_value={"path": "fake", "returncode": 0, "sha256": "0" * 64, "version": "fake"},
             ), mock.patch.object(
                 handoff, "resolve_executable", return_value=fake_tool
+            ), mock.patch.object(
+                # These tools are fake; protect their fixture repository rather
+                # than racing unrelated native GUI saves in the shared checkout.
+                # Source and production roots still receive the real hash guard.
+                handoff, "__file__", str(source / "pcb" / "tools" / "tscircuit_handoff.py")
             ):
                 result = handoff.main([
                     "stage", str(manifest_path),

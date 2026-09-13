@@ -7,7 +7,7 @@ import { MainsSecondaryPower, secondaryPowerReviewPlacements } from "./secondary
 // Component-review canvas only. These bounds are not a mains-board specification.
 const circuit = new Circuit();
 circuit.add(
-  <board width={100} height={70} routingDisabled pcbRelative>
+  <board width={180} height={110} routingDisabled pcbRelative>
     <schematicsheet
       name="Secondary"
       displayName="Mains isolated secondary protection"

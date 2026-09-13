@@ -59,14 +59,14 @@ export function applyMainsProjectSymbolsForInitialExport(
 ): SchematicSymbol[] {
   const source = json.filter((e) => e.type === "source_component");
   const expected = manifest.components.filter((c) => c.footprint.pad_numbers.length);
-  if (sheets.length !== 4 || source.length !== 23 || expected.length !== 23)
-    throw new Error("Project library requires the complete 23-part initial hierarchy");
+  if (sheets.length !== 4 || source.length !== 22 || expected.length !== 22)
+    throw new Error("Project library requires the complete 22-part initial hierarchy");
   const byRef = new Map(source.map((s) => [s.name, s]));
   const byManifest = new Map(expected.map((c) => [c.ref, c]));
   if (
-    byRef.size !== 23 ||
-    byManifest.size !== 23 ||
-    new Set(source.map((s) => s.source_component_id)).size !== 23
+    byRef.size !== 22 ||
+    byManifest.size !== 22 ||
+    new Set(source.map((s) => s.source_component_id)).size !== 22
   )
     throw new Error("Duplicate project source reference");
   const seen = new Set<string>();
@@ -93,7 +93,12 @@ export function applyMainsProjectSymbolsForInitialExport(
       seen.add(ref);
       const fields = component.fields;
       if (
-        !["simple_chip", "simple_resistor", "simple_capacitor"].includes(s.ftype) ||
+        ![
+          "simple_chip",
+          "simple_resistor",
+          "simple_capacitor",
+          "simple_inductor",
+        ].includes(s.ftype) ||
         component.stable_id !== mainsComponentId(ref) ||
         component.footprint.kicad !== mainsNativeFootprint(ref) ||
         !("manufacturer_part_number" in fields) ||
@@ -221,7 +226,7 @@ export function applyMainsProjectSymbolsForInitialExport(
     });
     return { sheet, entries };
   });
-  if (seen.size !== 23)
+  if (seen.size !== 22)
     throw new Error("Project library did not cover every source reference");
   for (const { sheet, entries } of plans) {
     for (const { instance, id } of entries) instance.libraryId = id;
@@ -316,12 +321,12 @@ export function addMainsPowerFlagsForInitialExport(
   );
   if (
     sheets.length !== 4 ||
-    instances.length !== 23 ||
+    instances.length !== 22 ||
     instances.some((e) => reference(e.instance)?.startsWith("#"))
   )
-    throw new Error("Power flags require the unannotated 23-part initial hierarchy");
+    throw new Error("Power flags require the unannotated 22-part initial hierarchy");
   const expected = manifest.components.filter((c) => c.footprint.pad_numbers.length);
-  if (expected.length !== 23 || new Set(expected.map((c) => c.ref)).size !== 23)
+  if (expected.length !== 22 || new Set(expected.map((c) => c.ref)).size !== 22)
     throw new Error("Power flags require all mains manifest identities");
   for (const component of expected) {
     const matches = instances.filter((e) => reference(e.instance) === component.ref);

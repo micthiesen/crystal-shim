@@ -68,7 +68,7 @@ export function validateControllerRegistration(
     receipt.symbol_library?.path !== controllerSymbolLibraryFilename ||
     receipt.symbol_library?.sha256 !== sha256(symbolLibraryBytes) ||
     receipt.symbol_inventory?.library !== symbolLibrary ||
-    receipt.symbol_inventory?.count !== 96 ||
+    receipt.symbol_inventory?.count !== 114 ||
     !Array.isArray(receipt.symbol_inventory?.symbols) ||
     JSON.stringify([...receipt.symbol_inventory.symbols].sort()) !==
       JSON.stringify(
@@ -310,12 +310,12 @@ function bindManifest(
 function validateFiles(files: InitialFile[]) {
   const names = files.map((file) => file.filename);
   if (
-    names.length !== 10 ||
-    new Set(names).size !== 10 ||
+    names.length !== 12 ||
+    new Set(names).size !== 12 ||
     !names.includes("controller.kicad_pcb") ||
     !names.includes(controllerSymbolLibraryFilename) ||
     !names.includes("controller.kicad_sch") ||
-    names.filter((name) => name.endsWith(".kicad_sch")).length !== 8 ||
+    names.filter((name) => name.endsWith(".kicad_sch")).length !== 10 ||
     files.some(
       (file) =>
         !/^[A-Za-z0-9_-]+\.kicad_(?:pcb|sch|sym)$/.test(file.filename) ||
@@ -437,7 +437,7 @@ export async function stageControllerExport(
   const libraryReceipt = JSON.parse(libraryReceiptBytes.toString());
   if (
     libraryReceipt.status !== "validated-native-library-only" ||
-    libraryReceipt.footprints !== 99 ||
+    libraryReceipt.footprints !== 117 ||
     libraryReceipt.source.sha256.board !== sha256(plan.files[0]!.content) ||
     libraryReceipt.source.sha256.manifest !== sha256(plan.guard.manifest)
   )

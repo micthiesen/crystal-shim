@@ -27,6 +27,8 @@ pub struct Board {
     pub wifi: WIFI<'static>,
     pub bt: BT<'static>,
     pub flash: FLASH<'static>,
+    // Reserved pump channels remain off for the lifetime of the application.
+    pub _pump_outputs: [Output<'static>; 3],
     pub relay: Output<'static>,
     pub maintenance: Input<'static>,
     pub psu_good: Input<'static>,
@@ -43,6 +45,11 @@ impl Board {
         // External resistors supply these same safe states before application entry.
         let output = OutputConfig::default();
         let relay = Output::new(p.GPIO10, Level::Low, output);
+        let pump_outputs = [
+            Output::new(p.GPIO1, Level::Low, output),
+            Output::new(p.GPIO2, Level::Low, output),
+            Output::new(p.GPIO3, Level::Low, output),
+        ];
         let bus_enable = Output::new(p.GPIO0, Level::Low, output);
         let power = Output::new(p.GPIO22, Level::Low, output);
         let led = Output::new(p.GPIO20, Level::Low, output);
@@ -71,6 +78,7 @@ impl Board {
             bt: p.BT,
             flash: p.FLASH,
             relay,
+            _pump_outputs: pump_outputs,
             maintenance: Input::new(p.GPIO11, InputConfig::default()),
             psu_good: Input::new(p.GPIO21, InputConfig::default()),
             sensor_fault,

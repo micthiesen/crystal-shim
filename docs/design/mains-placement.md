@@ -1,108 +1,62 @@
-# Mains placement feasibility
+# Mains placement allocation
 
-A complete 23-part allocation fits the planned **135 x 75 mm** board in a
-conditional two-dimensional screen. This is a source-coordinate proposal, not
-accepted placement or routing. All 23 parts are now captured in the complete
-mains source, including the [MOV](mov-capture.md) with a project-owned installed
-acceptance contract and 28 x 28 mm reserve. Its missing manufacturer body datum
-is not replaced by an asserted manufacturer envelope.
+The shared-power revision uses **180 ×110 mm**, two layers, 1.6 mm FR4,
+22 electrical parts and four corner mounts. This supersedes the previous
+135 ×75 mm/IRM-10-5 placement and its numeric enclosure/isolation screens.
+Those old measurements must not be presented as results for this allocation.
 
-The isolated supply and relay bridge the primary/secondary boundary. All other
-primary bodies, including unused Sabre contacts, remain on the mains side.
-J2 and J3 occupy opposite left/right board edges to separate the filter LINE and
-LOAD wiring. The MOV is beside J1; the RC network is beside J4. PE stays off-board.
+U1 occupies the upper-left 87 ×52 mm module area, with primary pins at the left
+and 12 V output pins toward the board centre. K1 retains the right-side coil/
+left-side contact orientation in the lower half. J1 and J2 serve the input and
+filter LINE at the left; J3/J4 occupy the lower edge. F3 sits between U1 and the
+primary connector row. R1/C1 sit left of K1 to keep primary snubber copper away from its isolated coil.
+RV1 remains beside the inlet path. Keep filter LINE and
+LOAD harnesses apart. J5/J6 leave the isolated right edge through the partition.
 
-## Measured proposal geometry
+The authoritative positions are
+[`placements.ts`](../../pcb/mains/design/placements.ts), component datums in
+millimetres, +X right/+Y up. U1's datum is the module drawing origin, not body
+centre; relay datum is contact pin 3. The integration test independently checks
+every position and numbered-pin geometry. `placement-check.ts` additionally
+requires conservative pad-copper lower bounds of 8 mm primary-to-isolated and
+3.2 mm different-primary-net separation, including unused Sabre blades. It
+rejects the former R1 position that placed snubber copper too near K1 coil. Board mounts are (±85,±50), 3.2 mm
+NPTH, with an initial 4 mm radius mounting hardware allocation. J5/J6 add their
+own locator holes. All parts mount on top.
 
-The independent script checks axis-aligned bounds conservatively around actual
-copper, source envelopes and proposed mounting hardware. It does not compute
-routed creepage, solder fillets, fabrication tolerance or three-dimensional access.
-Root inspected the generated placement image.
+Native routing must establish the **8 mm primary-to-isolated** barrier around
+all source copper and occupied primary metal, including unused Sabre contacts,
+and **3.2 mm between different primary nets**. A fixed full-width horizontal
+strip is no longer an adequate description: the larger module bridges a boundary
+that turns toward K1. Keep copper away from the primary side of the module,
+connector metal, board mounts and wiring. Soldermask does not count as insulation.
 
-| Check | Proposal result |
-| --- | ---: |
-| Parts / numbered copper lands / NPTHs | 23 / 81 / 5 |
-| Different primary-net copper gap | 3.40 mm, MOV pads |
-| Primary-to-isolated copper gap | 15.62 mm |
-| Whole primary-to-isolated envelope gap | 10.69 mm |
-| Primary to proposed mounting hardware | 9.295 mm |
-| Smallest courtyard pair gap | 0.75 mm |
-| Courtyard overlap / off-board courtyard | None |
-| Copper-free horizontal strip | Board Y = 44..54 mm |
+The buck cluster is placed to the right of U1 secondary terminals. Tighten the
+VIN bypass/GND loop and SW–L1–output-capacitor path during routing, with FB sensing
+after L1 and a quiet return. Route the separately fused 12 V feed above the buck
+cluster to J6. Motor return should join near U1 return rather than through the
+logic/sensing ground path. Leave the buck SW copper small and remote from sensors.
 
-The strip is clear of source pad copper. Primary bodies extend into parts of it;
-it is not a universal metal-free boundary. Routing must also preserve the full
-primary-body separation requirements.
+This is a source skeleton for native routing, not accepted fabrication placement.
+The larger supply body, 30.5 mm maximum height and 195 g mass require the revised
+shared enclosure. Earlier `mains-enclosure-fit` and placement evidence files are
+historical for the smaller board. Recompute mated-body, mounting-metal, tool-access
+and complete enclosure fit for this source before fabrication.
 
-The script independently compares all **79 existing-model pad centres** with an
-actual tscircuit compile, within 0.000001 mm. The complete source now includes the
-two MOV pads, with independent integration tests for all 81 physical lands and
-the authored placement datums. Four 3.2 mm corner mounting holes are centred
-5 mm from the edges,
-with an assumed 8 mm diameter hardware/tool reserve. J5 contributes the fifth
-NPTH. The [nominal enclosure screen](mains-enclosure-fit.md) moves the complete
-carrier 1.5 mm east to floor origin (9.5, 4), PCB top Z28. This clears the actual
-case model without changing any source coordinates. Filter/full harness and
-complete mated enclosure fit remain required.
 
-## Integrated source coordinates
+The four mounts use M3 insulating screws, washers and standoffs. No metal screw,
+washer or threaded insert may occupy the board-side mounting allocation. Maximum
+occupied hardware diameter is 8 mm, matching the existing 4 mm radius allocation;
+the selected insulating enclosure support carries the module mass. Native 8×8 mm
+copper-free squares centered on H1–H4 reserve that envelope, with tracks, vias and
+fills prohibited on both layers. KiCad's pad prohibition also rejects mechanical
+NPTH pads, so these four areas allow pads; the source-locked placement contains
+only its NPTH mounting pad inside each area and cannot gain other pads without
+a source/parity change. Existing NPTH mounting holes remain present. This is the routing hardware choice, not a later metal-fastener
+clearance decision; replacing it with metal would change the insulation design.
 
-These are tscircuit coordinates in millimetres, relative to the board centre,
-with positive Y upward and source rotations. Each origin is the existing model's
-source origin, not its body centre; several datums are project choices. Keep all
-parts on the top side.
-
-| Ref | pcbX | pcbY | pcbRotation |
-| --- | ---: | ---: | ---: |
-| U1 | -13.2 | -27.35 | 90 |
-| K1 | 24.75 | 1.9 | 270 |
-| J1 | -42.2465 | 24.62 | 0 |
-| J2 | -53.12 | -3.993 | 90 |
-| J3 | 36.2605 | 0.62 | 0 |
-| J4 | 4.7675 | 24.62 | 0 |
-| R1 | 16.08 | 14.5 | 0 |
-| C1 | 38.5 | 15.5 | 0 |
-| D1 | 26.08 | -28.5 | 180 |
-| J5 | 53.5 | -17.5 | 270 |
-| U2 | -21 | -27 | 0 |
-| D2 | -27 | -32 | 0 |
-| R2 | -25 | -21.5 | 0 |
-| R3 | -25 | -24.5 | 0 |
-| R4 | -29 | -21.5 | 0 |
-| R5 | -29 | -24.5 | 0 |
-| R6 | -20.5 | -32.5 | 0 |
-| R7 | 37.5 | -28.5 | 0 |
-| C2 | -17 | -21 | 0 |
-| C3 | -17 | -24 | 0 |
-| C4 | -12 | -31.5 | 0 |
-| C5 | -16.8 | -28 | 0 |
-| RV1 | -36.25 | 4.5 | 0 |
-
-## Obligations before placement acceptance
-
-- Apply the MOV's project-owned installed acceptance volume, with its measured
-  final-unit fit and controlled assembly process. Its source reserve is an
-  allocation, not a guarantee that every supplied part will fit.
-- Resolve the qualified Sabre body-to-tail poses, mating face numbering, latch
-  access and adjacent plug cross-mating; retain every unused blade and tail.
-  The housing table requires at least 16.88 mm mated depth at J1 and 17.69 mm
-  at J2-J4 with 0.50 mm edge margins. The current header-only proposal does not
-  prove those deeper, still-unlocated envelopes fit.
-- Apply the [J5 service allocation](mains-enclosure-fit.md), including its
-  14 x 10 mm portal, received-part height and hardware constraints. Complete
-  mated J3 primary occupancy, latch access and guard/retention remain open.
-- Retain the supply and relay's internal isolation qualifications and keep primary
-  routes out of the isolated region and bridge component output/coil sides.
-- Recheck the 3.2 mm primary-net and 8 mm primary/secondary rules using complete
-  copper, solder, hardware, fabrication tolerances and routed native geometry.
-  The MOV's nominal 3.40 mm gap has only 0.20 mm above the primary-net rule.
-- Complete source/native preparation, electrical metadata, mask/paste/thermal
-  process, guarded handoff and native review before routing. No fabrication, assembly
-  or operating gate is passed by this feasibility result.
-
-The source-derived models, distance calculation, compiled-coordinate comparison,
-CSV and inspected SVG/PNG are in
-`/tmp/crystal-shim-mains-placement-independent`. The checked result identities are:
-
-- `placement-results.json` SHA-256 `20095478bc1e45c4a5cc6177ea42c6e86412086cdc3cd9b91e3c948f6ae4228a`.
-- `source-geometry-check.json` SHA-256 `cf2b38bfa36b92342269525ac8ecf1b186e19b9148893d249c6b2cfb0d231460`.
+J1 is at (-73,-42) mm after moving it 3 mm right to clear H3's full hardware
+allocation. Its maximum shroud/latch envelope begins at X=-79.958 mm, leaving
+1.042 mm to the H3 reservation edge at -81 mm. J4's maximum envelope ends near
+X=79.42 mm, leaving over 1.5 mm to H4's reservation; U1's body starts at X=-77.5 mm,
+clear of H1's -81 mm reservation edge. H2 is clear of the J6/secondary cluster.

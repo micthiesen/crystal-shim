@@ -1,30 +1,47 @@
 # Controller placement and routing basis
 
-Status: complete source placement under review, 2026-09-12. The authoritative 95-reference table is [placements.ts](../../pcb/controller/design/placements.ts). All seven electrical sections use that table; the board owns the four mounting holes below. The independent proposal is retained at `/tmp/crystal-shim-controller-placement-proposal`. Root adjusted six test-pad positions to preserve the existing 8 mm minimum centre spacing. Enclosure fit, final stackup, routing and manufacturing release remain open.
+Status: complete source placement under review, 2026-09-12. The authoritative
+113-reference table is [placements.ts](../../pcb/controller/design/placements.ts).
+All nine electrical sections use that table; the board owns four mounting holes.
+Source placement and the expanded enclosure screen are separate from native
+parity, routing and manufacturing release. Current native receipts are in
+[STATE](../STATE.md).
 
-Coordinates are **the component's electrical footprint origin**, as passed to source `pcbX` and `pcbY`: millimetres, X right, Y up, positive rotation counterclockwise. They are not the renderer's copper-bounding `pcb_component.center`. The 70 x 110 board occupies X=-35..35, Y=-55..55. All 95 parts stay on top. The complete initial graph exporter invokes the manufacturer-origin adapters before interpreting native footprint anchors.
+Coordinates are **the component's electrical footprint origin**, as passed to source `pcbX` and `pcbY`: millimetres, X right, Y up, positive rotation counterclockwise. They are not the renderer's copper-bounding `pcb_component.center`. The 110 x 110 board occupies X=-55..55, Y=-55..55. All 113 parts stay on top. The complete initial graph exporter invokes the manufacturer-origin adapters before interpreting native footprint anchors.
 
 ## Mechanical placement and explicit limits
 
-Use four 3.2 mm NPTHs at source **(-30,26), (30,26), (-30,-50), (30,-50)**. In the specification's upper-left board coordinates these are **(5,29), (65,29), (5,105), (65,105)**. The upper two holes move 24 mm down from the initial (5,5)/(65,5) allocation. Their former locations conflict with the top harness/antenna arrangement. Reserve a 4 mm radius around every hole for a screw head, spacer and tool clearance; this is a project allocation, not a selected mounting-part drawing. The revised holes do not claim alignment with Hammond's existing bosses. A retained insulating mounting arrangement and actual underside clearance remain required.
+Use four 3.2 mm NPTHs at source **(-30,26), (30,26), (-30,-50), (30,-50)**. In the specification's upper-left board coordinates these are **(25,29), (85,29), (25,105), (85,105)**. The upper holes clear the top harness/antenna arrangement. Reserve a 4 mm radius around every hole for a screw head, spacer and tool clearance; this is a project allocation, not a selected mounting-part drawing. The revised holes do not claim alignment with Hammond's existing bosses. A retained insulating mounting arrangement and actual underside clearance remain required.
 
 Place J1 and J3 toward the top; their plugs and harnesses depart north, then turn vertically/left within the low-voltage space. At Y=41, both locator centres are at Y=45.32, giving 9.68 mm to the board's Y=55 edge, within the Molex 10.16 mm maximum. Do not measure that distance from pin 1. Keep the J1 harness away from J3's sensor leads, with the coil-current loop confined to J1/Q1 and the mains-board coil/suppression. The two header courtyards have 0.5 mm between them. Individual mating housings, latch-tool access and cable bends must still be overlaid; the assembly courtyards do not prove the mating sweep.
 
 U1 is at (20.2,45.25), rotation 0. Its nominal antenna is X=11.2..29.2, Y=55..61, fully beyond the top board edge. The maximum module outline reaches Y=61.1. Preserve that RF overhang, the manufacturer's no-baseboard-copper region, a grounded base under the module's non-antenna portion, and the separately declared module ground-pad/via/paste work. Do not extend a plane, fixture, shield or support below the antenna. Header housings and wires must stay to its left; do not run a sensor, UART, USB or coil harness across the antenna volume.
 
-**Enclosure allocation:** floor X=186.5+pcbX, Y=90-pcbY, PCB underside Z20.0 above the flat inside floor. The [actual nominal CAD screen](controller-enclosure-fit.md) replaces the former X187 and rectangular-wall estimates. It includes drafted walls, corner structures and lid; the 0.5 mm westward mounting shift yields 16.104 mm antenna-to-housing clearance and 0.885 mm board-to-corner clearance. The board-to-partition gap remains only 0.5 mm. Current enclosure variation, fixture tolerances and final support/cover hardware still need the declared checks; this is not a guaranteed universal fit.
+**Enclosure allocation:** the current board is 110 × 110 mm. Use the shared
+[1590ZGRP243 fit screen](../../cad/shared-enclosure/README.md), rotating the
+controller 90 degrees in the enclosure so its sensor/antenna end faces the tank.
+The old 1554V2GY offsets, wall openings and fit receipts are historical and do not
+constrain this larger enclosure. Native PCB coordinates remain source X right/Y up
+converted to KiCad about (100,100); enclosure rotation does not rotate the PCB file.
 
-J4's front plane is Y=-55 at the bottom PCB edge, floor Y145, USB axis Z23.33. The selected StarTech service-plug drawing and GCT's 1.85 mm shoulder gap prove that a nose-sized cutout fails. Allocate the covered 55 x 23 mm south-wall opening in the enclosure-fit contract. Its enlarged 14 x 8 mm USB insertion sweep clears the nominal housing by 2.33 mm. Exact cover/gasket/retention selection remains work; no extension lead or additional board is introduced.
-
-J2 faces south at (-21,-41), rotation 180. Its locator-to-bottom-edge distance remains 9.68 mm. Manufacturer mate dimensions leave only 1.586 mm nominal wall clearance for the enlarged envelope, insufficient for a cable bend. The same covered opening clears an 8 x 12 mm insertion sweep by 4.60 mm and permits the already selected pigtail's bend outside the wall. Enforce the external clamp and bend allocation in the enclosure-fit contract.
-
-The three switches are on the right service side, with SW1 maintenance lowest, SW2 boot in the middle, and SW3 reset above them. D4 is above the switches. Preserve distinct labels, top actuation and hand-solder access. Select LED standoff/lead trim and the actuator/sealed-access arrangement in enclosure CAD. The carrier allocation now places the PCB underside at Z20, with about 9 mm from the carrier top to the worst reviewed THT tail away from mounting contacts. Exact mounting hardware and actuator/lid fit remain to finish.
+J5 is the second sensor port on the left, J6 the separate 12 V feed at lower left,
+and J7/J8/J9 the three pump outputs down the right edge. Reserve full mating access,
+labels, and direct motor returns. TP12/13 and adjacent ground provide future
+accessory input attachment without a separate driver board.
 
 ## Routing intent
 
 **Buck and input OR:** keep D1/D2 and C1/C2 on the harness/power side. U2, C7, C8, L1 and C3 form a compact block. C7 bridges the VIN/GND side directly; C8 rotation 270 places its BST end above its SW end beside U2. L1 pin 1 faces SW, pin 2 faces the C3/C4 output bank. Keep SW copper confined to U2.5/C8.2/L1.1. Sense 3V3 from the quiet C3/C4 output node, returning to FB outside the switching-current loop, with ground shielding and without a long exposed loop around the inductor. Maintain a broad ground region underneath the buck and adjacent capacitor ground vias. Diodes recommends 2 oz top/bottom copper and bottom ground for thermal performance. Source now selects a four-layer, 1.6 mm FR4 board: top components/signals, uninterrupted L2 GND, L3 power/limited routing and bottom limited routing/ground; the exact stackup, finished copper and USB dimensions are selected in [the fabrication contract](controller-stackup.md) and still require native application and validation. No thermal result follows from these positions.
 
-**Service power:** route J2 -> D5/input reservoir -> U10 IN, then U10 OUT -> C22/D6 -> D2. C21 is the closest input HF bypass. R32/R35 terminate near EN/OVLO; R36 and C23 stay next to ILM/DVDT on the quiet side. Give their ground returns a small quiet island tied once near U10 GND, without carrying input/TVS/output current. Provide separately dimensioned IN/OUT heat-spreading copper and vias; there is no ground exposed pad. D6 and C22 returns must go to the power-return region, not through the programming-resistor return. Stencil apertures, thermal vias and pad anchors remain the reviewed native augmentation work.
+**Service power:** route J2/C20/C21 directly to D2. The former U10 network,
+clamps, programming returns and filled-via requirement are removed. Use the
+[known-adapter service procedure](service-input.md).
+
+**Future motor bank:** V12_PUMP and its return carry at most 2 A continuous, with
+a 3 A brief aggregate start target. Allocate 2 mm trunk and 1 mm per-channel
+copper, reviewing short pad necks individually. Route switched drains as motor
+power paths. Keep Q2/Q3/Q4, flyback diodes and connectors in compact loops; return
+to J6.2 without using the sensor or three-wire 5 V harness return.
 
 **Sensor:** take J3 power to D7's cathode node, then through R68 to V5_SENSOR_SW at C43/C44/U5 OUT. R68 rotation 90 leaves pin 2 toward the cable/TVS node and pin 1 toward the protected capacitors. R67 bleeds only that protected switch-output node. Keep D7's anode current path broad and direct to the J3 ground region using short vias where needed. Do not funnel it through U5 ground, the capacitor return neck or U3 ground. U11 clamps the cable SDA/SCL nodes; R62/R63 separate those from U3's A side. U3's B-side pullups are R60/R61 toward the module. Route SENSOR_SDA/SCL separately from SDA_CABLE/SCL_CABLE. There are approximately 6.1..7.9 mm connector-to-ESD/TVS pad-centre distances in this hand-assembly layout; final routes and return inductance must be reviewed, not described as already optimized suppression.
 
@@ -34,17 +51,9 @@ The three switches are on the right service side, with SW1 maintenance lowest, S
 
 ## Evidence and verification scope
 
-The independent scratch `check_and_render.py` takes the already compiled exact source graphics, transforms them about source electrical origins, and checks every proposed courtyard. The result is **95 references, zero rectangular courtyard intersections, zero conflicts with 4 mm mounting reserves**. U1 and J4 are the only courtyard excursions beyond the rectangle, corresponding to the antenna and edge-connector assembly margin. The test-point circles are conservatively bounded as squares. The actual compiled source additionally passes the full component/placement error check. `controllerPlacementErrors` checks all 95 compiled courtyards, edge exceptions and mounting reserves. These checks are not KiCad DRC, route feasibility, solder-mask/paste verification or enclosure fit.
-
-`critical-distances.csv` gives independent copper-bounding-box gaps and pad-bounding-centre distances. Examples: buck input bypass gap 1.65 mm at both VIN/GND; bootstrap gaps 1.15 mm; L1-to-C3 gap 1.25 mm; U10 input bypass gap 1.35 mm; U5-to-C43 gap 1.43 mm; U1-to-C6 gap 1.05 mm; R44/R45-to-USB-pad gaps 1.31/2.18 mm. These are geometric lower bounds, not routed length or loop inductance.
-
-Primary evidence:
-
-- [Hammond exact drawing](https://www.hammfg.com/files/parts/pdf/1554V2GY.pdf?v=1697661937), drawing 1554V Rev 28.02.2020, one sheet. Local `hammond.pdf`, SHA-256 `d78fc8beb66d1eba627408fb19ff8dafe63cea62e5febefe2ad4b0bc1bbd5a1e`; visually inspected `hammond-1.png`. Distinguishes inside length/width 232.26/148.26 from panel 231.47/146.74, and shows 3 mm wall, 83.50 mm inside height, bosses and cover structures. The later nominal STEP screen, source hash and revision limitation are in [controller-enclosure-fit.md](controller-enclosure-fit.md).
-- [Espressif module placement and USB guidelines](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32c6/pcb-layout-design.html#general-principles-of-pcb-layout-for-modules-positioning-a-module-on-a-base-board), read 2026-09-12; sections Module Placement and USB. Preferred antenna overhang; recommended 15 mm housing clearance; ground-referenced 90 ohm USB pair. No page-byte hash claimed for the live HTML. Module dimensions and source origins use the project's pinned v1.4 module drawing and library evidence.
-- [Diodes AP63203 DS41326 Rev 3-2](https://www.diodes.com/assets/Datasheets/AP63200-AP63201-AP63203-AP63205.pdf), p15/Fig25; cached SHA-256 `ef99daa3789d835bc025dfcb4c605c5c2e6d3e7223e86d40b33e6b497ea5a722`. The layout figure was read with the pin table and adopted source geometry.
-- [TI TPS25947 Rev C](https://www.ti.com/lit/ds/symlink/tps25947.pdf), pp62-64 section8.4/Fig8-22/23; cached SHA-256 `8f96de389903091650d4f462dcfad3210071c3ae7093623a7978f34baf8a65b4`. Input/output short loops, quiet programming ground and IN/OUT thermal copper are retained as routing obligations.
-- [GCT USB4105 B4](https://gct.co/files/drawings/usb4105.pdf), sheet1/2, 2023-12-18; cached SHA-256 `fb331fbabee8392ed2937ed757c1610cb0f174b84625147c0b580a18eea8c0e5`. Re-inspected the actual mating view, locator and board-edge drawing.
-- Exact Molex and semiconductor/passive package envelopes, masks and original source citations are in the root's checked `connector-physical-models.ts`, `land-pattern-physical.ts` and their imported maps. No new land geometry or package tolerance is inferred by the placement script.
-
-Before accepting the placement: confirm the saved native positions and all repeated-pad nets, inspect PCB renders, finish the mating/enclosure overlay including the J2 and J4 issues above, adopt layer/ground/thermal/antenna constraints, and review routability. Calibration, ESD/power transients, RF range and enclosure temperature remain final-board measurements under existing gates.
+The current source placement checker covers all authored courtyards, board edges
+and mounting reserves. Its checks do not establish routed current loops, native
+DRC, mask/paste or exact cable fit. Current native parity, ERC/DRC and render
+receipts are recorded in [STATE](../STATE.md). Earlier 95-part geometry and U10
+critical-distance receipts are superseded; do not use them as acceptance of the
+expanded controller.

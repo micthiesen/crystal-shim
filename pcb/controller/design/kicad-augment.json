@@ -26,11 +26,11 @@
       "owner": "kicad",
       "target": {},
       "params": {
-        "scope": "all 99 manifest components",
+        "scope": "all 117 manifest components",
         "library": "CrystalShim_Controller",
         "mapping": "Controller_<exact manifest reference>",
         "reason": "Preserve the compiled initial geometry through native per-reference FootprintSave/FootprintLoad; no installed stock substitution.",
-        "verification": "Bind compiled and effective initial geometry hashes, the native library receipt, exact pad multiplicities, all pad nets, NPTHs, placement and 396 cardinal rotations. Register the stage-local library through verified Konnect before initial ERC/DRC.",
+        "verification": "Bind compiled and effective initial geometry hashes, the native library receipt, exact pad multiplicities, all pad nets, NPTHs, placement and 468 cardinal rotations. Register the stage-local library through verified Konnect before initial ERC/DRC.",
         "status": "applied during guarded initial stage; complete only when its receipts and parity pass"
       }
     },
@@ -116,8 +116,8 @@
           0.3,
           0.6
         ],
-        "reason": "Project routing allocations within the selected 1 oz process; declared U10/U1 vias are smaller than ordinary routing vias.",
-        "verification": "Native setup/custom-rule readback, native pad/polygon/via distances, actual connected copper and clean DRC; source artwork and hole sizes remain authoritative. KiCad minimum-mask-width merges close openings when plotting; inspect physical aperture unions instead of treating it as a standalone web DRC guarantee. The 0.35 mm minimum via diameter permits the separately declared U10 vias; ordinary routing retains 0.60 mm vias.",
+        "reason": "Project routing allocations within selected 1 oz process; U1 ground vias are smaller than ordinary routing vias.",
+        "verification": "Native rules readback, pad/via distances and clean DRC. Ordinary routing uses 0.60 mm vias; declared module ground vias use 0.45 mm. Inspect plotted mask aperture unions.",
         "status": "basic setup and Default routing preferences applied with fresh native readback; actual copper, mask aperture and routed DRC verification remain open"
       }
     },
@@ -164,15 +164,21 @@
       "params": {
         "scope": "power, control, I2C and USB paths resolved from the current source manifest",
         "power_spine_width_min_mm": 2,
-        "service_continuous_current_review_a": 1.5,
+        "service_continuous_current_review_a": 1.0,
         "requirements": [
           "Short unavoidable IC pad necks need individual length/copper/current review.",
           "Keep U2 SW and high-current input/capacitor loops compact; sense FB at the quiet output capacitor.",
-          "Keep U10 programming return separate from IN/OUT/TVS loops; join near GND pin 8.",
-          "Separate cable ESD/TVS returns from sensor buffer and programming grounds."
+          "Separate cable ESD/TVS returns from sensor buffer and programming grounds.",
+          "Route V12_PUMP trunk and return directly between J6 and the output bank; each switched drain is a motor-current path.",
+          "Keep Q2/Q3/Q4, their flyback diodes and output connectors in compact loops. Do not pass motor return current through sensor or three-wire 5 V harness returns."
         ],
         "verification": "Saved net-class rules and actual route/current/thermal review. These width allocations do not prove final current capacity.",
-        "status": "declared; apply before routing"
+        "status": "Applied in saved native board; routed width, current and thermal verification remain open",
+        "motor_trunk_width_min_mm": 2.0,
+        "motor_channel_width_min_mm": 1.0,
+        "motor_continuous_current_a": 2.0,
+        "motor_channel_continuous_current_a": 1.0,
+        "motor_startup_aggregate_target_a": 3.0
       }
     },
     {
@@ -199,72 +205,10 @@
         "requirements": [
           "Preserve continuous In1.Cu beneath USB and non-antenna module body.",
           "Use broad joined bottom copper rather than an isolated thermal rectangle; measure remaining useful copper after clearances.",
-          "Keep SW copper small, with quiet FB routing. There is no U2 exposed ground pad.",
-          "Do not carry power/TVS current through U10 programming-ground return."
+          "Keep SW copper small, with quiet FB routing. There is no U2 exposed ground pad."
         ],
         "verification": "Native zone net/layer/fill readback, connected area and return-path inspection, DRC; final closed-enclosure thermal tests remain required.",
         "status": "declared; zones/vias not yet applied"
-      }
-    },
-    {
-      "id": "controller.augment.u10-filled-vias",
-      "kind": "pofv",
-      "owner": "kicad",
-      "target": {
-        "component_stable_id": "controller.component.u10"
-      },
-      "params": {
-        "drill_mm": 0.2,
-        "copper_diameter_mm": 0.35,
-        "annulus_mm": 0.075,
-        "process": "Epoxy filled and copper capped through vias; no independent via mask or paste apertures.",
-        "footprint_local_centres_mm": {
-          "5": [
-            [
-              -0.25,
-              -0.75
-            ],
-            [
-              -0.25,
-              -0.25
-            ],
-            [
-              -0.25,
-              0.25
-            ],
-            [
-              -0.25,
-              0.75
-            ]
-          ],
-          "6": [
-            [
-              0.25,
-              -0.75
-            ],
-            [
-              0.25,
-              -0.25
-            ],
-            [
-              0.25,
-              0.25
-            ],
-            [
-              0.25,
-              0.75
-            ]
-          ]
-        },
-        "minimum_bottom_copper_area_per_power_net_mm2": 25,
-        "requirements": [
-          "Pin 5 vias join IN; pin 6 vias join OUT. Neither array is ground.",
-          "Retain source lands and +0.05 mm NSMD openings. Same-net via copper extends 0.025 mm beyond each power land inside the existing mask opening.",
-          "Retain TI split power apertures and 0.100 mm stencil; do not print circular via apertures.",
-          "Preserve quiet GND8 return and USB reference when power-via antipads merge locally."
-        ],
-        "verification": "Actual native pad/net resolver, via coordinates and connected copper; minimum nominal inter-net via copper 0.150, control-mask to via copper 0.125, drill to other-net via copper 0.225 mm; DRC and explicit capped-via order process.",
-        "status": "declared and geometry reviewed; not yet inserted or fabricated"
       }
     },
     {
@@ -324,7 +268,7 @@
           "Retain all four H1-H4 source locations and clear screw/spacer/tool access."
         ],
         "verification": "All-layer native render/zone inspection and full 3D assembly/mating sweep against controller-enclosure-fit.md; final carrier/support tolerances remain open.",
-        "status": "declared; native keepouts and final assembly verification pending"
+        "status": "Keepouts applied in saved native board; routed exclusion and final assembly verification remain open"
       }
     },
     {
@@ -334,14 +278,12 @@
       "target": {},
       "params": {
         "stencil_thickness_mm": 0.1,
-        "u10_power_windows": "Two 1.06 x 0.28 mm R0.05 windows per IN/OUT power land; preserve TI RPW0010A corner-pad apertures and their 93%/82% examples.",
         "u1_ground_windows": "Nine separate 0.8 mm apertures; never a single ground square.",
         "j4_ground_windows": "One R0.25 0.60 x 1.15 aperture per shared A1+B12 and A12+B1 area, two total; remaining VBUS/data apertures retain source geometry.",
         "requirements": [
-          "No paste on J1/J2/J3, SW1/SW2/SW3, D4, H1-H4 or TP1-TP11. Hand-solder through-hole items after SMT.",
+          "No paste on J1/J2/J3/J5/J6/J7/J8/J9, SW1/SW2/SW3, D4, H1-H4 or TP1-TP14. Hand-solder through-hole items after SMT.",
           "Remove F.Paste from J4 shell slots for the selected shell hand-solder process; never double-print shared A/B copper.",
-          "Resolve all other package-specific apertures against source physical-model declarations, using 0.100 mm as the board process rather than silently claiming the 0.125 mm DBV example.",
-          "Filled U10 vias add no mask/paste openings; U1 interstitial vias stay tented and clear of all apertures."
+          "Resolve all other package-specific apertures against source physical-model declarations, using 0.100 mm as the board process rather than silently claiming the 0.125 mm DBV example."
         ],
         "verification": "Saved native pad layers/margins and exact paste polygons, Gerber stencil union/area counts and assembly process review.",
         "status": "declared; package-by-package native aperture/process closure still required"
@@ -378,12 +320,12 @@
         "allowed_initial_semantic_differences": [],
         "requirements": [
           "Snap symbol pins, wires and labels to a consistent connection grid while preserving all manifest endpoints and electrical types.",
-          "Resolve the 95 exporter-local symbol-library links using validated symbol definitions and a native project library table.",
+          "Resolve the 113 exporter-local symbol-library links using validated symbol definitions and a native project library table.",
           "Place explicit no-connect markers on every manifest unconnected pin; preserve pin numbers and ensure none is wired.",
-          "Declare power sources at V5_LOGIC, V5_SERVICE_RAW, V3V3 and GND as supported by source supply paths; PWR_FLAG is an ERC source annotation, not proof a rail is live.",
+          "Declare power sources at V5_LOGIC, V5_SERVICE, V3V3 and GND as supported by source supply paths; PWR_FLAG is an ERC source annotation, not proof a rail is live.",
           "Resolve dangling-wire reports by UUID in the actual child sheet; the initial ERC root path and coordinate units are misleading. Power and USB each contain a redundant collinear overlap. Union/split only after preserving every pin/label anchor and explicit T junction, then require identical native XML connectivity.",
           "Fit every sheet's complete symbols, fields and wiring inside its page at a readable scale. Inspect every complete rendered page, including margins and title block, before acceptance.",
-          "Preserve all 95 exact values, MPNs, datasheet and footprint fields and every hierarchical sheet.",
+          "Preserve all 113 exact values, MPNs, datasheet and footprint fields and every hierarchical sheet.",
           "After actual native Save, enable every ERC category and include error, warning and exclusion severities in the before-routing report. Initial defaults and excluded findings are not release waivers."
         ],
         "verification": "Require strict source schematic/XML parity and a clean ERC report with all categories enabled and error/warning/exclusion severities included before any routing; initial allowances do not apply to this gate.",
@@ -391,13 +333,13 @@
         "project_symbol_library": {
           "file": "CrystalShim_Controller.kicad_sym",
           "nickname": "CrystalShim_Controller",
-          "source_entries": 95,
+          "source_entries": 113,
           "mapping": "Controller_<exact source reference>",
           "annotation_entries": [
             "PWR_FLAG"
           ],
           "serialization": "Fresh typed initial graph, version 20231120; registered through verified project-scoped Konnect. Every source pin identity/type retained; library pin/display positions follow the declared monotone initial grid transform and standalone cache is rebuilt identically.",
-          "footprint_filters": "Exact Library:Footprint filters match each source-selected per-reference footprint; no alternate wildcard. Native XML must preserve all95 filters. KiCad footprint_filter remains ignored by the initial settings and must be enabled and run through supported native UI/settings before release."
+          "footprint_filters": "Exact Library:Footprint filters match each source-selected per-reference footprint; no alternate wildcard. Native XML must preserve all113 filters. KiCad footprint_filter remains ignored by the initial settings and must be enabled and run through supported native UI/settings before release."
         },
         "power_flags": {
           "definition": "CrystalShim_Controller:PWR_FLAG",
@@ -423,7 +365,7 @@
             },
             {
               "reference": "#FLG0103",
-              "net": "V5_SERVICE_RAW",
+              "net": "V5_SERVICE",
               "basis": "External service supply enters through J2"
             },
             {
@@ -444,7 +386,7 @@
           "mapping": "Separate strictly monotone X/Y map for each electrical sheet, canonical native integer coordinates, preserving every orthogonal wire, pin, label, junction and NC incidence. No nearest-coordinate merge. Preserve two-field junction/NC at syntax.",
           "branch_junctions": "Add explicit dots only where all incident wires already connect through shared endpoints, positive collinear overlap or existing junctions. Current source-derived branch dots prevent native Save from disconnecting branches when merging collinear stubs. Unconnected crossings or endpoint-on-interior contacts are never inferred as net ties.",
           "display": "Map symbol body polylines and field anchors, retaining font/stroke sizes and circle radii. Explicit joined four-lobe L1 display repair leaves all electrical pin anchors, lengths and types unchanged. Zero-length power flag definitions stay rigid.",
-          "verification": "Require identical native XML components, pin names/types, all 51 named nets/254 connected pins/20 NCs. Preserve every original wire and junction; add only proven branch dots. Current enabled ERC findings must be empty both initially and after native GUI save of a disposable copy; native wire merging may change segment counts but not connectivity. The before-routing saved report must include excluded findings and no ignored categories. Inspect complete pages and L1/module/USB/test-pad/flag details.",
+          "verification": "Require identical native XML components, pin names/types, all 63 named nets/303 connected pins/12 NCs. Preserve every original wire and junction; add only proven branch dots. Current enabled ERC findings must be empty both initially and after native GUI save of a disposable copy; native wire merging may change segment counts but not connectivity. The before-routing saved report must include excluded findings and no ignored categories. Inspect complete pages and L1/module/USB/test-pad/flag details.",
           "remaining": "Source label islands resolve the prior J4 ground and module page/label crossings. Full native page review, strict saved ERC and current exact parity are still required for each adoption candidate."
         }
       }
@@ -478,7 +420,7 @@
         "finish": "ENIG",
         "mask": "green",
         "silkscreen": "white",
-        "text": "Export all three final boards together after G-02/G-03/G-04: Gerbers, PTH/NPTH drills, assembly BOM/CPL with exact exclusions, stencil, netlist/rule receipts, harness drawings and reviewed mechanical interface. State the exact stack, 81-99 ohm USB acceptance, U10 capped vias and U1 tenting. No part purchase or fabrication order is implied.",
+        "text": "Export all three final boards together after G-02/G-03/G-04: Gerbers, PTH/NPTH drills, assembly BOM/CPL with exact exclusions, stencil, netlist/rule receipts, harness drawings and reviewed mechanical interface. State the exact stack, 81-99 ohm USB acceptance, U1 tenting. No part purchase or fabrication order is implied.",
         "verification": "Use project kicad-manufacture checks and independent CAM/assembly review; source/simulation tests do not establish electrical or operating acceptance.",
         "status": "declared; no manufacturing package released"
       }

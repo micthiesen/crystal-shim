@@ -108,7 +108,9 @@ pub fn validate(bytes: &[u8]) -> Result<ValidatedDeviceConfig> {
         || config.pushover().is_some()
         || !config.schedule().entries().is_empty()
     {
-        return Err("first configuration requires revision 1 without calibration, schedules or Pushover credentials");
+        return Err(
+            "first configuration requires revision 1 without calibration, schedules or Pushover credentials",
+        );
     }
     Ok(config)
 }
@@ -240,20 +242,18 @@ mod tests {
         };
         let calibration = CalibrationData {
             level_empty_counts: 1000,
+            wet_reference_empty_counts: 300,
             low_endpoint: Channels {
                 level: 1200,
                 wet_reference: 700,
-                dry_reference: 300,
             },
             high_endpoint: Channels {
                 level: 2500,
                 wet_reference: 900,
-                dry_reference: 300,
             },
             channels: Channels {
                 level: limits,
                 wet_reference: limits,
-                dry_reference: limits,
             },
             reference_sign: ReferenceSign::Positive,
             minimum_reference_span_counts: 100,

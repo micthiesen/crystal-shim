@@ -35,8 +35,8 @@ class ManifestAdmission(unittest.TestCase):
         before = deepcopy(MANIFEST)
         registration.validate_mains_manifest(MANIFEST)
         self.assertEqual(MANIFEST, before)
-        self.assertEqual(len(MANIFEST["components"]), 27)
-        self.assertEqual(sum(len(c["footprint"]["pad_numbers"]) for c in MANIFEST["components"]), 66)
+        self.assertEqual(len(MANIFEST["components"]), 26)
+        self.assertEqual(sum(len(c["footprint"]["pad_numbers"]) for c in MANIFEST["components"]), 60)
 
     def test_rejects_foreign_geometry_identity_and_pad_set(self):
         mutations = [
@@ -69,15 +69,15 @@ class ManifestAdmission(unittest.TestCase):
             numbers = list(component["footprint"]["pad_numbers"])
             if ref in {"J1", "J2", "J3", "J4"}:
                 numbers *= 2
-            if ref in {"J5", "H1", "H2", "H3", "H4"}:
+            if ref in {"J5", "J6", "H1", "H2", "H3", "H4"}:
                 numbers.append("")
             physical[ref] = numbers
             registration.validate_native_pad_numbers(ref, list(reversed(numbers)))
             for drift in [numbers[:-1], numbers + [numbers[0]], numbers + ["99"]]:
                 with self.subTest(ref=ref, drift=drift), self.assertRaises(ValueError):
                     registration.validate_native_pad_numbers(ref, drift)
-        self.assertEqual(sum(bool(number) for numbers in physical.values() for number in numbers), 81)
-        self.assertEqual(sum(number == "" for numbers in physical.values() for number in numbers), 5)
+        self.assertEqual(sum(bool(number) for numbers in physical.values() for number in numbers), 75)
+        self.assertEqual(sum(number == "" for numbers in physical.values() for number in numbers), 6)
         for ref in ("J1", "J2", "J3", "J4"):
             drift = list(physical[ref])
             drift[0] = drift[1]

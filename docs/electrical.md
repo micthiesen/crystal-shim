@@ -5,51 +5,42 @@ calculations now live in the [controller](design/controller-design-basis.md) and
 [mains](design/mains-design-basis.md) design basis. Those documents refine the
 initial choices below; no layout or fabrication gate has passed.
 
-The [future refill interface reservation](design/refill-expansion.md) adds a separate
-digital expansion bus and hardware disable to the controller requirements, plus
-a power-board output sized for all three future pumps and extension electronics.
-These are not yet captured. One common isolated supply arrangement must be sized
-before the present board order; a separate external pump supply is not planned.
+The [future refill attachment](design/refill-expansion.md) places three fixed-12 V
+pump drivers and a separate reservoir sensor bus on the present controller.
+One isolated supply powers all electronics and future pumps. Refill/conditioning
+behavior and the reservoir sensor PCB are future work.
 
 ## Power and controller
 
-| Function | Proposed choice | Remaining work |
-| --- | --- | --- |
-| MCU | ESP32-C6-WROOM-1 module | Exact flash option, footprint, pin map, antenna keepout |
-| Isolated PSU | Mean Well IRM-10-5, PCB mount | Thermal/current budget, input protection, approved isolation layout |
-| Rails | 5 V relay + daughterboard; regulated 3.3 V ESP | Regulator selection, transient margin, decoupling |
-| Relay driver | Logic-level MOSFET, gate pulldown, coil suppression | Part/value selection, dropout behavior, reset tests |
-| Programming | Self-powered native USB data and isolated 5 V service input | Capture hardware VBUS gate and [GST18U05-P1J service protection](design/service-input.md); verify source combinations and transients |
-| Local UI | Status LED and maintenance/off button | Pin assignments, debounce, indications and explicit exit action |
+| Function | Selected source contract |
+| --- | --- |
+| MCU | ESP32-C6-WROOM-1-N8, existing native USB and UART retained |
+| Isolated PSU | PCB-mounted Mean Well IRM-45-12, 12 V / 3.8 A |
+| Rails | AP63205 fixed 5 V on mains board; AP63203 fixed 3.3 V on controller |
+| Future pumps | Three AO3400A low-side outputs with flyback; 1 A each, 2 A combined continuous |
+| Base allocation | 5 V / 850 mA; future loads separately allocated 12 V / 2 A |
+| Programming | Self-powered native USB data; [known-adapter service input](design/service-input.md), mains disconnected |
+| Local controls | Existing status LED, maintenance/off, boot and reset buttons |
 
-IRM-10-5 is a 5 V, 2 A isolated encapsulated module, selected to provide margin
-above the secondary current limit. Use the module rather than
-designing a discrete mains converter; component approvals do not certify this
-controller. Keep its primary on the mains board and its secondary clearly
-separated. Account for ESP radio peaks, relay pickup/hold current, sensor, regulator
-losses, and enclosure temperature in the power budget.
-[Mean Well specification](https://www.meanwell.com/Upload/PDF/IRM-10/IRM-10-SPEC.pdf).
+The common supply has a 45.6 W nameplate. Base plus a brief 3 A future motor
+startup target is allocated 42.9325 W using conservative buck efficiency and rail
+limits. Select future pumps within that envelope. Source protection and a motor
+branch fuse replace the former secondary eFuse; an exceptional fault may cause a
+reset and explicit recovery. Detailed limits and exact parts belong to the
+[mains basis](design/mains-design-basis.md). Preserve the primary/secondary barrier
+and relay contact/coil isolation; component approvals do not certify the assembly.
 
-The WROOM-1 module avoids custom RF matching. Follow its actual antenna placement,
-power and strapping constraints; Stillair's C6 MINI module footprint/pin map is not
-interchangeable. [Espressif module datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf).
-
-The low-voltage board contains the MOSFET driver; the mains board contains the
-relay and PSU. A low-voltage harness carries isolated 5 V, return and the coil
-drive connection with a documented suppression-current path. The
-[secondary protection circuit](design/power-protection-review.md) puts a
-TPS259470 between the raw module output and both coil/controller branches.
-Exact source capture and transient review remain work. Mains/low-voltage
-separation applies to every
-track, pad, mounting point and harness, including the relay coil region.
+The three-wire low-voltage harness retains isolated 5 V, ground and COIL_DRAIN.
+A separate two-wire 12 V harness carries motor current to the controller output
+bank. Keep its return out of sensor and logic supply harnesses. Grounds remain
+common on the isolated side.
 
 ## Switching and interference control
 
-The relay candidate is **G5RL-1A-TV8 with a 5 V coil**, normally open. Confirm the
-exact ordering code, motor-load rating at the actual voltage, minimum-load
-behavior, coil consumption, isolation and footprint before selection. Its TV8
-designation alone is not a motor rating. The family includes explicit motor
-ratings; match the correct variant and load class, then test pump starting.
+The relay is **G5RL-1A-TV8 DC5**, normally open, with the sourced pin map and
+motor-load basis in the [mains design](design/mains-design-basis.md). The TV8
+marking alone is not the motor rating. Verify the actual CrystalSkim starts and
+coil release during final commissioning.
 [Manufacturer G5RL family](https://components.omron.com/us-en/products/relays/G5RL).
 
 Switch hot after the pump-branch filter. Neutral passes through the filter to the
@@ -57,12 +48,12 @@ load; it is not switched alone. PE is continuous and never switched. The relay
 must release when control power disappears. A mechanical relay is the baseline;
 no solid-state or more elaborate switching scheme is selected.
 
-| Measure | Position and purpose | Not yet fixed |
-| --- | --- | --- |
-| Series RC snubber | Across switched hot and output neutral, near pump connection; suppress switching ringing | Mains-rated capacitor, resistor pulse/thermal ratings and values |
-| Manufactured two-stage EMI filter | Pump branch, before relay; reduce conducted interference | Exact variant, measured attenuation, leakage, terminations, dimensions |
-| Protected MOV | Input surge suppression coordinated with protection | MCOV, energy, failure/thermal protection, location and fuse coordination |
-| Fuse | Protected mains input and any required branch protection | Type, rating, interrupt capacity, inrush coordination and holder |
+| Measure | Selected design and position |
+| --- | --- |
+| Series RC snubber | 47 nF B32921C3473K000 and 100 ohm PR02FS0201000KA100 across switched hot/output neutral |
+| Manufactured two-stage EMI filter | FN2090A-1-06 / 802490-SF on the pump branch before the relay |
+| Protected MOV | TMOV14RP175EL2T7 at the protected mains input |
+| Fuses | 2 A inlet cartridge; 1 A axial filter branch; 3 A SMT isolated 12 V motor branch |
 
 Do not install the RC network across open relay contacts by default: that creates
 a bypass current path through the nominally off pump. This project chooses a
@@ -73,9 +64,8 @@ manufacturer guidance calls for experimental confirmation. This is a commissioni
 check, not a separate prototype phase.
 [Relay precautions](https://components.omron.com/us-en/system/files/2026-05/ds_related_pdf/K337-E1.pdf).
 
-Start filter selection with the low-current Schaffner/TE FN2090 family. It is a
-two-stage filter; choose by attenuation, earth leakage, size and termination,
-not the largest amperage. Leakage must be considered with the installation's
+The selected FN2090A-1-06 is a low-current two-stage filter. Its exact variant
+and wiring are captured in the mains basis. Leakage must be considered with the installation's
 GFCI and other equipment. [TE FN2090 family](https://www.te.com/en/product-CAT-P97-F2090.html).
 
 The reported PC waking is consistent with interference but does not establish
@@ -114,8 +104,8 @@ for the eventual sensor wire. See [source provenance](sources.md).
 
 ## Design review boundary
 
-No fuse, MOV, snubber or regulator values; final mains connector set; GPIO map;
-PCB outline; creepage/clearance; or enclosure layout is released. A qualified
-mains design review must establish applicable insulation/spacing, protection,
-PE bonding and enclosure requirements for this installation. This brief contains
+Exact components, GPIOs, outlines and enclosure allocation are selected in source.
+Native routing and fabrication acceptance remain separate. Mains review must
+verify the captured insulation/spacing, protection, PE bonding and enclosure
+requirements for this installation. This brief contains
 no authorization or procedure to energize an unfinished assembly.
