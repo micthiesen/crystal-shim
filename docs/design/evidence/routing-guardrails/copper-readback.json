@@ -1,0 +1,62 @@
+{
+  "controller": {
+    "board_sha256": "939daa2f052bf4ffbac2cd9925ecfbb7c35f33dbf9dee540b686be8ebc4aba94",
+    "ground_vias": 25,
+    "planes": [
+      {
+        "name": "controller GND F.Cu",
+        "net": "GND",
+        "layer": "F.Cu",
+        "area_mm2": 11080.344
+      },
+      {
+        "name": "controller GND B.Cu",
+        "net": "GND",
+        "layer": "B.Cu",
+        "area_mm2": 11472.958
+      },
+      {
+        "name": "controller GND In1.Cu",
+        "net": "GND",
+        "layer": "In1.Cu",
+        "area_mm2": 11472.958
+      }
+    ]
+  },
+  "mains": {
+    "board_sha256": "fd1fcf83740565e1d598bade119b9d0a10045189bc31b1d70562c14e58b97c96",
+    "ground_vias": 11,
+    "planes": [
+      {
+        "name": "mains GND_ISO F.Cu",
+        "net": "GND_ISO",
+        "layer": "F.Cu",
+        "area_mm2": 6744.294
+      },
+      {
+        "name": "mains GND_ISO B.Cu",
+        "net": "GND_ISO",
+        "layer": "B.Cu",
+        "area_mm2": 6791.799
+      }
+    ]
+  },
+  "sensor": {
+    "board_sha256": "0c5e176abd52a14c613cba8f654f2239185c7a6ce0e198b689d60bc32fe89f5c",
+    "ground_vias": 7,
+    "planes": [
+      {
+        "name": "sensor GND F.Cu",
+        "net": "GND",
+        "layer": "F.Cu",
+        "area_mm2": 710.944
+      },
+      {
+        "name": "sensor GND B.Cu",
+        "net": "GND",
+        "layer": "B.Cu",
+        "area_mm2": 762.146
+      }
+    ]
+  }
+}

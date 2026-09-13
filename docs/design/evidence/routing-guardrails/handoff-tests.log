@@ -1,0 +1,14 @@
+....ERROR: staging/generated-output root must not overlap --production-dir
+.....ERROR: KiCad check contains undeclared initial finding types: endpoint_off_grid
+ERROR: KiCad check omitted required severities: warning
+ERROR: KiCad check contains undeclared ignored checks: hidden_failure
+ERROR: Schematic cleanup requires all checks enabled; ignored checks: footprint_filter
+ERROR: Schematic cleanup requires all checks enabled; ignored checks: four_way_junction
+ERROR: Schematic cleanup requires all checks enabled; ignored checks: simulation_model_issue
+ERROR: Schematic cleanup requires all checks enabled; ignored checks: single_global_label
+ERROR: Schematic cleanup requires all checks enabled; ignored checks: footprint_filter, four_way_junction, simulation_model_issue, single_global_label
+....................................
+----------------------------------------------------------------------
+Ran 45 tests in 0.149s
+
+OK

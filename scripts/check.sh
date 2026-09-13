@@ -34,3 +34,5 @@ node --test firmware/settings/ui/app.test.mjs
   bun run test
   bun run test:handoff
 )
+
+python3 -m unittest discover -s pcb/tools -p test_check_routing.py

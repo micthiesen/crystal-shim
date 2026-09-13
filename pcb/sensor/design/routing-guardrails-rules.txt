@@ -1,0 +1,15 @@
+(version 1)
+
+# Generated reference; install through KiCad Board Setup > Custom Rules.
+
+(rule "Ordinary through vias"
+  (condition "A.Type == 'Via'")
+  (constraint via_diameter (min 0.6mm)) (constraint hole_size (min 0.3mm)))
+
+(rule "No blind or microvias"
+  (condition "A.Type == 'Via'")
+  (constraint disallow micro_via blind_via buried_via))
+
+(rule "Sensing field only electrodes"
+  (condition "A.NetName != 'CIN_LEVEL' && A.NetName != 'CIN_RL' && A.NetName != 'SHLD1' && A.NetName != 'SHLD2' && A.intersectsArea('SENSOR_WINDOW_NO_ROUTING')")
+  (constraint disallow track))

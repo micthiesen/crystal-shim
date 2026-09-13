@@ -113,8 +113,8 @@ A subsequent native-GUI investigation enabled all four deferred checks in the
 same disposable copy, without changing the source stage or its declaration.
 `erc-strict.json` has no ignored checks: footprint_filter, four_way_junction and
 simulation_model_issue report zero findings. Seven single_global_label findings
-remain, all sheet-internal USB net names: USB_CC1, USB_CC2, USB_D_N_PORT,
-USB_D_P_PORT, USB_SWITCH_OE_N, USB_D_P_SWITCH and USB_D_N_SWITCH. Their naming and
+remain, all sheet-internal USB net names: USB_CC1, USB_CC2, USB_D_PORT_N,
+USB_D_PORT_P, USB_SWITCH_OE_N, USB_D_SWITCH_P and USB_D_SWITCH_N. Their naming and
 source-parity treatment required the source-layout correction below.
 This evidence does not silently remove the initial stage's declared exceptions.
 

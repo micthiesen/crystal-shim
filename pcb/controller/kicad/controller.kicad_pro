@@ -521,6 +521,44 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
+        "name": "BuckSwitch",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": -1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 1.0,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Logic3V3",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": -1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 1.0,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
         "name": "LogicPower",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": -1,
@@ -592,11 +630,11 @@
       },
       {
         "netclass": "USB90",
-        "pattern": "USB_D_N_PORT"
+        "pattern": "USB_D_PORT_N"
       },
       {
         "netclass": "USB90",
-        "pattern": "USB_D_N_SWITCH"
+        "pattern": "USB_D_SWITCH_N"
       },
       {
         "netclass": "USB90",
@@ -604,11 +642,11 @@
       },
       {
         "netclass": "USB90",
-        "pattern": "USB_D_P_PORT"
+        "pattern": "USB_D_PORT_P"
       },
       {
         "netclass": "USB90",
-        "pattern": "USB_D_P_SWITCH"
+        "pattern": "USB_D_SWITCH_P"
       },
       {
         "netclass": "LogicPower",
@@ -637,6 +675,14 @@
       {
         "netclass": "MotorChannel",
         "pattern": "DECHLOR_DRAIN"
+      },
+      {
+        "netclass": "Logic3V3",
+        "pattern": "V3V3"
+      },
+      {
+        "netclass": "BuckSwitch",
+        "pattern": "BUCK_SW"
       }
     ]
   },

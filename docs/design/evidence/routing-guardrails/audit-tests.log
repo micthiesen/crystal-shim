@@ -1,0 +1,7 @@
+....../Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/pcbnew.py:63: DeprecationWarning: The SWIG-based Python interface to the PCB editor is deprecated and will be removed in a future version of KiCad.  Please plan to move to the new IPC API and/or make use of the kicad-cli tool for your KiCad automation needs.
+  warnings.warn("The SWIG-based Python interface to the PCB editor is deprecated and will be removed "
+......
+----------------------------------------------------------------------
+Ran 12 tests in 0.554s
+
+OK

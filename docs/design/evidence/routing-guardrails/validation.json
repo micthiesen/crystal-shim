@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-13",
+  "stage": "routing guardrails; detailed traces remain owner work",
+  "full_repository_gate": "Passed; subsequent history-hash change covered by all 45 handoff tests, final USB check covered by all 12 native geometry tests.",
+  "native_drc_negative_probes": 8,
+  "usb_native_pair_checks": 6,
+  "native_geometry_tests": 12,
+  "handoff_tests": 45,
+  "source_cli": {
+    "errors": 0,
+    "pin_metadata_warnings": 101,
+    "placement_heuristic_warnings": 1,
+    "note": "Generic pinAttributes metadata is not the project pin-map authority; exact part/manifest tests and strict native ERC pass. J6 bottom-facing connector differs from nearest-left-edge heuristic; accepted placement/enclosure unchanged."
+  },
+  "reviews": [
+    "bounded routing policy review",
+    "via ECO authorization tests",
+    "independent mains/sensor full copper review",
+    "root controller all-copper review and negative-test triage"
+  ],
+  "shared_tooling": {
+    "stillair_via_support_commit": "9f60768",
+    "peer_tests": 41,
+    "remaining_sync_drift": "Pre-existing earlier handoff differences; outside this via-only port.",
+    "history_cache_fix_commit": "d48e7e9"
+  },
+  "boards": {
+    "controller": {
+      "ordinary_drc": 0,
+      "schematic_parity": 0,
+      "unconnected": 166,
+      "strict_erc": "passed",
+      "eco_receipt": "pcb/controller/kicad/evidence/routing-guardrails/eco-acceptance.json"
+    },
+    "mains": {
+      "ordinary_drc": 0,
+      "schematic_parity": 0,
+      "unconnected": 31,
+      "strict_erc": "passed",
+      "eco_receipt": "pcb/mains/kicad/evidence/routing-guardrails/eco-acceptance.json"
+    },
+    "sensor": {
+      "ordinary_drc": 0,
+      "schematic_parity": 0,
+      "unconnected": 29,
+      "strict_erc": "passed",
+      "eco_receipt": "pcb/sensor/kicad/evidence/routing-guardrails/eco-acceptance.json"
+    }
+  },
+  "logs_sha256": {
+    "full-check.log": "c7377cdc22c3585f3ba4aa4af53e272e9e2db1771c8409dcdf9506609f6d106b",
+    "routing-check.log": "fa7293d1bc46da54147201f8a17de1f61a125d56edba2012a10590bf322d9c04",
+    "native-tests.json": "da4d4dc912c8ac782a8fbcb72fbfa37b7c4ee4f7c3b261d5a10b50db9d06243b",
+    "audit-tests.log": "176a702175455498a9f4d7775b9f24426be0016c668070ca8572fc61a1658d63",
+    "source-checks.log": "112db6fc96b1f6b41667ba48f4cbad2f273d0d1e8189e6f9829f64cb77478577"
+  }
+}

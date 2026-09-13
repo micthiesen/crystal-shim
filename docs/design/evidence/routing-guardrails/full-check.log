@@ -1,0 +1,996 @@
+Documentation checks passed (86 documents, 2 CSV tables, sync map)
+TLS production/host profiles, resolved vendor path and source receipts match
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.013s
+
+OK
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.44s
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.43s
+     Running unittests ../app/src/tls.rs (target/debug/deps/crystal_shim_tls_tests-2e0f23c46374c092)
+
+running 29 tests
+test operation::tests::explicit_mailbox_withdrawal_revokes_tls_before_control_consumes_it ... ok
+test app_pushover::tests::clock_revocation_cancels_pending_io_before_it_is_polled_again ... ok
+test app_pushover::tests::accepted_configuration_capture_stops_pending_tls_and_cannot_retry_old_work ... ok
+test app_pushover::tests::network_change_cancels_actual_worker_before_next_retry_without_resetting_event_age ... ok
+test app_pushover::tests::dropping_actual_worker_cancels_dns_tcp_and_tls_before_releasing_queue_and_lease ... ok
+test operation::tests::exact_deadline_and_hook_observed_rollback_are_latched ... ok
+test operation::tests::same_observation_new_authority_and_clear_cannot_reauthorize_an_old_scope ... ok
+test operation::tests::malformed_calendar_and_reversed_certificate_ranges_are_rejected ... ok
+test operation::tests::original_anchor_age_and_checked_scope_exhaustion_prevent_unsafe_start ... ok
+test operation::tests::valid_intervals_survive_scalar_queries_and_cover_the_original_deadline ... ok
+test operation::tests::source_changes_revoke_network_but_preserve_independent_operator_authority ... ok
+test tests::a_new_observation_renews_the_anchor_and_explicit_clear_revokes_it ... ok
+test tests::converts_to_c_calendar_fields ... ok
+test tests::actual_verifier_rejects_missing_stale_and_out_of_validity_utc ... ok
+test tests::advancing_utc_crosses_day_month_leap_day_and_year_boundaries ... ok
+test tests::clock_expires_without_publisher_or_caller_refresh ... ok
+test tests::control_accepted_original_capture_drives_both_clocks_without_dispatch_refresh ... ok
+test tests::monotonic_reset_wrap_and_saturation_fail_closed ... ok
+test tests::fixed_policy_parses_the_exact_root_and_requires_hostname_and_verification ... ok
+test tests::observed_monotonic_rollback_revokes_trust_even_after_the_anchor ... ok
+test tests::operation_handshake_tests::operation_lease_accepts_uncertain_clock_and_real_full_chain ... ok
+test tests::operation_handshake_tests::operation_lease_rejects_certificate_expiring_inside_original_horizon ... ok
+test tests::public_chain_validates_and_wrong_hostname_or_trust_is_rejected ... ok
+test tests::validates_gregorian_limits ... ok
+test tests::operation_handshake_tests::operation_lease_rejects_authority_change_while_handshake_is_pending ... ok
+test tests::operation_handshake_tests::operation_lease_checks_each_selected_certificate_depth ... ok
+test tests::operation_handshake_tests::operation_lease_is_invalid_at_its_exact_deadline ... ok
+test tests::scalar_tls_cannot_accept_an_interval_by_choosing_one_endpoint ... ok
+test tests::verifier_observes_certificate_expiry_as_utc_advances ... ok
+
+test result: ok. 29 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.29s
+
+     Running tests/restriction_handshake.rs (target/debug/deps/restriction_handshake-80573ea909073929)
+
+running 1 test
+test actual_async_and_blocking_handshake_restriction_matrix ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.64s
+
+TLS verifier cannot escape its borrow (expected E0515)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.12s
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running unittests ../app/src/partition.rs (target/debug/deps/crystal_shim_partition_tests-17dd982b7a69e209)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/selection.rs (target/debug/deps/selection-e7b9b367af18ebdd)
+
+running 3 tests
+test custom_type_and_unknown_subtype_before_nvs_do_not_panic ... ok
+test first_nvs_is_chosen_and_corrupt_table_is_rejected ... ok
+test unsafe_ranges_flags_overlaps_and_absence_are_rejected ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.13s
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/main.rs (target/debug/deps/crystal_shim_sim-8ff7276570a5a78b)
+
+running 1 test
+test tests::tick_preserves_acquisition_time_and_bad_input_is_rejected ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/crystal_shim_core-3038080a15deee97)
+
+running 158 tests
+test calibration::tests::commissioned_negative_reference_sign_preserves_level_orientation ... ok
+test calibration::tests::every_channel_envelope_and_converter_limit_is_checked ... ok
+test calibration::tests::collapsed_and_reversed_references_are_faults_not_low_water ... ok
+test calibration::tests::exact_output_domain_is_checked_before_rounding ... ok
+test calibration::tests::extrema_and_large_configuration_limits_do_not_overflow ... ok
+test calibration::tests::future_backwards_overlapping_and_excessive_duration_frames_fail_closed ... ok
+test calibration::tests::freshness_uses_frame_start_and_rejected_frames_cannot_be_replayed ... ok
+test calibration::tests::invalid_calibration_output_resets_water_confirmation_before_a_later_valid_edge ... ok
+test calibration::tests::invalid_frames_do_not_erase_channel_slew_history ... ok
+test calibration::tests::malformed_calibration_is_rejected_before_any_frame_can_be_valid ... ok
+test calibration::tests::normalized_level_slew_is_checked_separately_from_raw_slew ... ok
+test calibration::tests::ratio_uses_stored_dry_baselines_and_live_wet_reference ... ok
+test calibration::tests::separate_dry_offsets_cancel_only_when_commissioned_with_the_same_stack ... ok
+test configuration::tests::absent_optional_fields_remain_absent_and_uncommissioned ... ok
+test configuration::tests::corrupt_truncated_oversized_wrong_version_and_wrong_endian_are_rejected ... ok
+test configuration::tests::cross_field_and_external_credential_limits_are_enforced ... ok
+test flash_gate::tests::cancelled_or_completed_requests_cannot_authorize_a_later_request ... ok
+test configuration::tests::all_fields_and_maximum_schedule_round_trip_canonically ... ok
+test flash_gate::tests::every_chunk_requires_its_own_off_acknowledgement ... ok
+test flash_gate::tests::generation_exhaustion_permanently_inhibits_without_reusing_a_ticket ... ok
+test configuration::tests::debug_output_redacts_every_secret ... ok
+test policy::tests::changed_thresholds_require_new_recovery_confirmation ... ok
+test policy::tests::changing_run_duration_cannot_extend_an_active_request ... ok
+test policy::tests::expiry_after_a_gap_does_not_suppress_a_new_window ... ok
+test policy::tests::faults_hardware_off_and_maintenance_cancel_manual_override ... ok
+test policy::tests::high_water_recovery_cannot_restart_outside_original_window ... ok
+test policy::tests::homekit_off_suppresses_current_window_but_not_a_later_slot ... ok
+test policy::tests::late_on_for_a_low_blocked_window_gets_one_full_manual_duration ... ok
+test policy::tests::manual_low_override_is_bounded_and_repeated_on_cannot_extend_it ... ok
+test policy::tests::new_on_after_a_resolved_timing_fault_can_override_valid_low_water ... ok
+test policy::tests::off_survives_a_temporarily_missing_window_and_a_bad_clock ... ok
+test policy::tests::off_then_explicit_on_starts_a_new_override_after_minimum_off ... ok
+test policy::tests::on_during_automatic_run_retains_the_original_deadline ... ok
+test policy::tests::on_with_invalid_sensor_is_not_queued_for_later ... ok
+test configuration::tests::valid_crc_does_not_bypass_canonical_or_cross_field_validation ... ok
+test policy::tests::overlapping_and_adjacent_windows_cannot_extend_continuous_run ... ok
+test policy::tests::scheduled_run_requires_high_water_and_expires_at_original_end ... ok
+test policy::tests::water_edges_are_independent_of_schedule_relay_and_manual_override ... ok
+test retained::tests::an_interrupted_eligible_window_becomes_suppressed_before_control_runs ... ok
+test retained::tests::canonical_blob_round_trips ... ok
+test retained::tests::configured_missing_corrupt_and_revision_mismatch_fail_to_maintenance ... ok
+test retained::tests::crc_matches_the_standard_check_value ... ok
+test retained::tests::impossible_occurrence_ids_require_recovery_even_with_valid_crc ... ok
+test retained::tests::never_configured_is_reachable_but_stale_storage_is_not_ignored ... ok
+test retained::tests::malformed_flags_lengths_ids_and_noncanonical_fields_are_rejected ... ok
+test runtime::tests::automatic_persistence_does_not_cancel_an_accepted_manual_wait_or_run ... ok
+test runtime::tests::clear_supersedes_an_older_queued_utc_but_a_later_operator_observation_can_apply ... ok
+test runtime::tests::clock_authority_tests::checked_authority_exhaustion_closes_only_clock_and_keeps_pending_or_active_manual_lease ... ok
+test runtime::tests::clock_authority_tests::clear_with_or_without_an_anchor_invalidates_without_reusing_generation ... ok
+test runtime::tests::clearing_or_aging_clock_suppresses_unexposed_eligibility ... ok
+test runtime::tests::clock_authority_tests::expired_or_rolled_back_anchor_is_invalidated_before_any_replacement ... ok
+test runtime::tests::clock_authority_tests::explicit_source_withdrawal_keeps_a_newer_operator_authority_unchanged ... ok
+test runtime::tests::clock_authority_tests::every_clock_loss_path_fails_closed_at_the_last_generation ... ok
+test runtime::tests::clock_authority_tests::identical_and_aba_operator_replacements_have_distinct_accepted_generations ... ok
+test runtime::tests::clock_authority_tests::invalid_candidates_do_not_mint_authority_or_replace_valid_operator_time ... ok
+test runtime::tests::clock_authority_tests::invalid_network_observation_withdraws_network_authority_once ... ok
+test runtime::tests::clock_authority_tests::network_authority_keeps_original_attempt_epoch_through_consumption_and_delay ... ok
+test runtime::tests::automatic_interval_waits_for_certain_start_and_stops_at_possible_end ... ok
+test runtime::tests::clock_authority_tests::only_actual_network_revocation_advances_generation_and_it_bypasses_storage ... ok
+test runtime::tests::clock_corrections_within_an_active_occurrence_cannot_extend_its_run_cap ... ok
+test runtime::tests::clock_loss_bypasses_immutable_storage_and_does_not_revoke_operator_time ... ok
+test runtime::tests::configuration_power_cuts_after_first_record_commit_recover_in_maintenance ... ok
+test runtime::tests::durable_administration_requires_current_configured_quiescent_maintenance ... ok
+test runtime::tests::configuration_stops_and_suppresses_the_active_occurrence ... ok
+test runtime::tests::configuration_save_revokes_automatic_lease_before_a_distinct_window ... ok
+test runtime::tests::failed_configuration_writes_do_not_publish_and_same_revision_repair_can_finish ... ok
+test runtime::tests::explicit_stops_do_not_defer_their_writes_behind_a_manual_lease ... ok
+test runtime::tests::first_configuration_commits_retained_then_config_before_publication ... ok
+test runtime::tests::first_boot_failed_second_write_can_retry_when_retained_is_already_identical ... ok
+test runtime::tests::full_ingress_off_supersedes_queued_on_before_a_control_tick ... ok
+test runtime::tests::expiry_tick_on_cannot_succeed_or_renew_but_toggle_to_off_still_applies ... ok
+test runtime::tests::maintenance_exit_waits_for_storage_and_a_pressed_button_supersedes_it ... ok
+test runtime::tests::late_eligibility_ack_cannot_reopen_an_interval_that_may_have_ended ... ok
+test runtime::tests::network_revocation_and_fresh_correction_observe_old_expiry_before_late_ack ... ok
+test runtime::tests::no_clock_is_inactive_and_rollback_or_expiry_does_not_revive_it ... ok
+test runtime::tests::off_discards_older_queued_clock_instead_of_revealing_a_schedule_afterward ... ok
+test runtime::tests::off_during_eligibility_write_cannot_be_overwritten_by_its_ack ... ok
+test runtime::tests::invalidated_calendar_occurrence_cannot_lend_its_automatic_lease_to_a_later_window ... ok
+test runtime::tests::off_is_applied_before_a_later_suppression_failure_is_known ... ok
+test runtime::tests::original_utc_capture_survives_dispatch_and_matches_exact_expiry ... ok
+test runtime::tests::published_revision_rejects_old_sensor_frames_and_missing_calibration ... ok
+test runtime::tests::rejected_network_candidate_withdraws_network_but_preserves_operator_anchor ... ok
+test runtime::tests::expired_eligibility_is_suppressed_even_when_its_write_ack_is_late ... ok
+test runtime::tests::on_and_toggle_acknowledgements_follow_the_final_safety_decision ... ok
+test runtime::tests::reserved_usb_clock_clear_applies_and_routes_its_reply_while_config_owns_ingress ... ok
+test runtime::tests::expiry_suppression_waits_for_manual_lease_without_allowing_schedule_replay ... ok
+test runtime::tests::same_tick_operator_wins_and_network_loss_preserves_waiting_and_active_low_override ... ok
+test runtime::tests::repeated_on_and_rejected_configuration_cannot_extend_manual_deadline ... ok
+test runtime::tests::stale_and_duplicate_storage_acks_cannot_advance_transactions ... ok
+test runtime::tests::reset_before_first_configuration_commit_uses_old_records_and_repairs_eligibility ... ok
+test runtime::tests::ticket_exhaustion_fails_closed_with_a_reply ... ok
+test runtime::tests::schedule_requires_durable_eligibility_and_off_has_separate_durable_ack ... ok
+test runtime::tests::toggle_is_resolved_by_control_and_reserved_off_still_wins ... ok
+test runtime::tests::uncertain_clock_corrections_and_revocation_do_not_extend_or_cancel_manual_low_lease ... ok
+test runtime::tests::valid_low_on_and_toggle_pending_recovery_are_applied_without_extending_the_lease ... ok
+test runtime_ingress::tests::cancelled_queued_work_is_removed_but_dispatched_work_keeps_ownership_until_ack ... ok
+test runtime_ingress::tests::generation_exhaustion_and_cancelled_off_cannot_lose_revocation ... ok
+test runtime_ingress::tests::parser_is_exact_bounded_and_never_accepts_malformed_configuration ... ok
+test runtime_ingress::tests::producer_and_generation_route_replies_independently_of_user_ids ... ok
+test runtime_ingress::tests::reserved_off_is_correlated_and_stale_completion_cannot_release_it ... ok
+test runtime::tests::usb_and_physical_maintenance_revoke_both_leases_before_a_distinct_window ... ok
+test runtime_ingress::tests::unacknowledgeable_off_still_supersedes_a_queued_start ... ok
+test schedule::tests::a_full_day_run_survives_two_midnights_across_spring_forward ... ok
+test schedule::tests::a_longer_config_or_backward_clock_cannot_extend_a_retained_end ... ok
+test runtime::tests::usb_configuration_uses_the_canonical_codec_and_runtime_transaction ... ok
+test schedule::tests::fallback_uses_only_the_earlier_resolution ... ok
+test schedule::tests::malformed_inputs_and_numeric_limits_fail_closed ... ok
+test schedule::tests::maximum_local_day_has_correct_weekday_without_overflow ... ok
+test schedule::tests::midnight_overlap_and_adjacency_keep_distinct_ordered_occurrences ... ok
+test schedule::tests::occurrence_must_be_persisted_then_uses_only_its_remaining_time ... ok
+test schedule::tests::public_civil_fields_and_out_of_range_resolutions_are_validated ... ok
+test schedule::tests::replay_decision_cannot_replace_the_durable_off_watermark ... ok
+test schedule::tests::retained_suppression_and_watermark_block_reset_and_clock_replay ... ok
+test schedule::tests::scheduler_rejects_invalid_retained_structs_without_requiring_blob_decode ... ok
+test schedule::tests::unknown_time_and_missing_dst_start_do_not_open_a_window ... ok
+test schedule_interval::tests::mismatched_civil_interval_and_invalid_retained_fields_fail_closed ... ok
+test schedule_interval::tests::overlapping_occurrences_cannot_lend_each_other_uncertain_time ... ok
+test schedule_interval::tests::uncertainty_must_fit_one_whole_occurrence_including_its_end_boundary ... ok
+test tests::a_dip_below_restart_discards_the_recovery_timer ... ok
+test schedule_interval::tests::midnight_and_dst_fold_share_one_utc_occurrence_only ... ok
+test tests::a_fault_restarts_the_minimum_off_period ... ok
+test tests::bad_configuration_is_rejected ... ok
+test tests::boot_is_off_and_waits_for_both_timers ... ok
+test tests::invalid_times_fail_closed ... ok
+test tests::invalid_sensor_immediately_stops_without_low_debounce ... ok
+test tests::long_control_gap_requires_recovery_even_with_new_data ... ok
+test tests::maintenance_entry_survives_a_bad_clock_and_requires_an_explicit_exit ... ok
+test runtime_ingress::tests::partial_lines_have_one_deadline_and_overflow_is_drained ... ok
+test tests::low_debounce_resets_and_restart_requires_hysteresis_and_minimum_off ... ok
+test tests::one_cached_reading_cannot_prove_stable_recovery ... ok
+test tests::maintenance_is_latched_and_exit_requires_fresh_recovery ... ok
+test tests::stale_sample_stops_even_when_level_was_high ... ok
+test timezone::tests::fixed_fractional_offset_round_trips ... ok
+test timezone::tests::malformed_and_implementation_dependent_rules_are_rejected ... ok
+test timezone::tests::negative_daylight_shift_reverses_the_gap_and_fold_seasons ... ok
+test timezone::tests::non_hour_daylight_shift_has_thirty_minute_gap_and_fold ... ok
+test timezone::tests::quoted_names_and_24_hour_transition_are_supported ... ok
+test utc::tests::epochs_and_calendar_limits ... ok
+test timezone::tests::southern_hemisphere_spans_new_year ... ok
+test utc::tests::either_counter_exhaustion_revokes_the_published_network_epoch_immediately ... ok
+test utc::tests::exhausted_source_epoch_cannot_revoke_or_block_independent_operator_authority ... ok
+test utc::tests::explicit_rejection_changes_publication_epoch_before_revocation_is_consumed ... ok
+test runtime_ingress::tests::silent_expiry_and_overflow_wipe_partial_bytes_before_the_next_newline ... ok
+test utc::tests::null_invalid_delayed_and_transport_results_never_create_freshness ... ok
+test utc::tests::original_capture_fraction_expiry_and_timer_failures ... ok
+test timezone::tests::utc_and_local_calendar_boundaries_fail_without_wrapping ... ok
+test utc::tests::original_epoch_is_not_restamped_after_policy_operator_or_session_changes ... ok
+test utc::tests::source_and_operator_generations_reject_old_work_and_preserve_revocation ... ok
+test timezone::tests::vancouver_2026_gap_and_fold_are_exact ... ok
+test utc::tests::source_epoch_and_attempt_exhaustion_are_independent_and_keep_revocation ... ok
+test utc::tests::source_epoch_survives_read_consumption_and_transport_completion ... ok
+test utc_bounds::tests::bounds_calendar_and_outward_seconds_never_collapse_uncertainty ... ok
+test utc_bounds::tests::elapsed_extrema_are_outward_and_tight_by_integer_cross_multiplication ... ok
+test utc_bounds::tests::inverse_deadline_cannot_outlast_the_latest_possible_utc ... ok
+test utc_bounds::tests::original_interval_survives_dispatch_but_expires_and_latches_rollback ... ok
+test water::tests::cached_stale_and_future_samples_cannot_confirm_a_water_change ... ok
+test water::tests::first_low_classification_is_silent_and_edges_are_not_repeated ... ok
+test water::tests::intermediate_band_and_faults_reset_confirmation_without_fabricating_edges ... ok
+
+test result: ok. 158 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/crystal_shim_drivers-1e7c8011ceb06026)
+
+running 9 tests
+test fdc1004::tests::backwards_clock_between_frames_requires_explicit_recovery ... ok
+test fdc1004::tests::cancelled_bus_future_requires_reset_before_another_frame ... ok
+test fdc1004::tests::completed_conversion_at_deadline_is_still_timed_out ... ok
+test fdc1004::tests::brownout_configuration_is_not_returned_as_zero_water ... ok
+test fdc1004::tests::decode_rejects_reserved_bits_and_converter_limits ... ok
+test fdc1004::tests::reads_ordered_single_shots_and_preserves_signed_counts ... ok
+test fdc1004::tests::wrong_identity_cannot_initialize ... ok
+test fdc1004::tests::partial_frame_bus_error_invalidates_driver_until_reset ... ok
+test fdc1004::tests::stuck_conversion_has_finite_poll_count_even_with_frozen_clock ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/crystal_shim_matter-798804e6e0b0eb94)
+
+running 29 tests
+test profile::tests::private_profile_never_advertises_a_scene_timer_or_startup_path ... ok
+test provision_transfer::tests::physical_settings_token_commands_are_exact_and_do_not_enter_runtime_parser ... ok
+test provision_transfer::tests::never_configured_applied_maintenance_and_unavailable_store_cannot_admit ... ok
+test provision_transfer::tests::reserved_off_survives_busy_ingress_and_transfer_rejects_other_local_mutations ... ok
+test provision_transfer::tests::cancelled_or_expired_internal_request_cannot_supply_a_later_ack ... ok
+test service::tests::enclosing_cancellation_drops_both_owned_services ... ok
+test provision_transfer::tests::stale_tokens_busy_begin_and_duplicate_chunks_cannot_complete_another_transfer ... ok
+test provision_transfer::tests::queued_exit_or_config_prevents_maintenance_admission_and_storage_failure_cannot_ack ... ok
+test service::tests::startup_error_does_not_cancel_or_stop_polling_local_service ... ok
+test time_source::tests::both_deadlines_reject_ready_work_at_or_after_expiry_and_broken_monotonic_time ... ok
+test time_source::tests::capture_binds_target_and_sha256_of_the_encoded_root_ca ... ok
+test time_source::tests::deadline_and_enclosing_cancellation_drop_an_unfinished_read ... ok
+test provision_transfer::tests::receiving_loses_permission_on_stale_future_or_non_durable_gpio_observations ... ok
+test provision_transfer::tests::silent_timeout_boundaries_rollback_total_cap_and_exhaustion_wipe ... ok
+test time_source::tests::source_removal_and_every_identity_change_reject_the_captured_request ... ok
+test time_source::tests::ack_wait_keeps_the_validated_report_capture_and_cannot_publish_after_read_deadline ... ok
+test time_source::tests::time_sync_adds_only_the_administered_trusted_source_feature ... ok
+test time_source::tests::root_preserves_the_wifi_server_clusters_and_advertises_the_time_client ... ok
+test time_source::tests::subscription_events_continuation_missing_reports_and_malformed_tlv_are_rejected ... ok
+test provision_transfer::tests::transfer_capacity_and_exact_time_boundaries_are_enforced_without_wrap ... ok
+test time_source::tests::exact_utc_path_and_one_nullable_unsigned_scalar_are_required ... ok
+test provision_transfer::tests::valid_record_needs_durable_gpio_ack_and_separate_reboot_request ... ok
+test provision_transfer::tests::receiving_cancel_wipes_and_lost_final_receipt_can_be_checked_without_rewriting ... ok
+test provision_transfer::tests::receipt_expiry_and_failed_readback_never_authorize_reboot ... ok
+test provisioning::tests::forbidden_setup_codes_and_missing_material_do_not_open_commissioning ... ok
+test provision_transfer::tests::wire_parser_shares_framing_at_every_split_and_rejects_malformed_owned_chunks ... ok
+test provision_transfer::tests::malformed_owner_offsets_lengths_integrity_and_invalid_records_never_reach_store ... ok
+test provisioning::tests::complete_x509_record_accepts_matching_identity_and_rejects_substitution ... ok
+test provisioning::tests::bounded_private_record_checks_complete_length_and_key_consistency ... ok
+
+test result: ok. 29 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+
+     Running unittests src/bin/matter-provision.rs (target/debug/deps/matter_provision-91e53c8b8d230891)
+
+running 19 tests
+test configuration::tests::defaults_and_precise_overrides_use_production_validation ... ok
+test config_sender::tests::invalid_profile_or_id_never_writes ... ok
+test configuration::tests::valid_calibration_and_credentials_are_outside_the_bootstrap_profile ... ok
+test configuration::tests::invalid_inputs_never_produce_a_configuration ... ok
+test config_sender::tests::partial_io_lost_reply_and_original_deadlines_never_retry ... ok
+test config_sender::tests::overflow_and_non_utf8_input_are_bounded_without_becoming_receipts ... ok
+test config_sender::tests::production_runtime_durability_failure_revision_and_reservation_are_observed ... ok
+test sender::tests::replies_require_exact_grammar_ids_tokens_and_verified_outcomes ... ok
+test sender::tests::bad_offsets_cancel_owned_staging_and_never_commit ... ok
+test sender::tests::no_ready_no_chunks_and_partial_transport_failure_never_appends_cancel ... ok
+test config_sender::tests::matching_durable_only_and_every_attempt_is_one_exact_config ... ok
+test sender::tests::lost_requests_replay_only_after_status_proves_the_unchanged_offset ... ok
+test sender::tests::lost_chunk_and_commit_acks_are_resolved_without_duplicate_writes ... ok
+test sender::tests::bounded_diagnostic_flood_and_lost_reboot_ack_fail_honestly ... ok
+test sender::tests::reboot_during_lost_commit_is_uncertain_and_identical_retry_is_verified ... ok
+test sender::tests::actual_writer_installs_identical_bytes_and_only_explicit_reboot_gets_fresh_admission ... ok
+test sender::tests::storage_errors_never_report_success_or_reboot ... ok
+test files::tests::interrupted_staging_never_publishes_and_completed_records_never_overwrite ... ok
+test serial::tests::pseudo_terminal_is_raw_no_echo_bounded_and_does_not_request_hangup ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests/configuration_tool.rs (target/debug/deps/configuration_tool-4ac6d4e7840267e6)
+
+running 5 tests
+test disconnected_pty_after_complete_config_reports_unknown_without_retry ... ok
+test invalid_private_files_and_profiles_fail_before_any_serial_mutation ... ok
+test malformed_parameters_and_unsupported_mutations_publish_nothing ... ok
+test create_and_validate_private_bootstrap_with_fresh_tokens_and_no_physical_claims ... ok
+test real_cli_sends_one_validated_record_over_fragmented_owned_pty ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+     Running tests/gated_store.rs (target/debug/deps/gated_store-bfcf6e0a41d885f4)
+
+running 5 tests
+test every_protocol_operation_returns_failure_and_releases_its_permit_after_driver_error ... ok
+test source_policy_mutations_invalidate_before_flash_even_when_the_write_fails ... ok
+test initial_provisioning_is_verified_idempotent_and_never_replaces_other_identity ... ok
+test real_owner_shares_matter_and_application_records_through_gated_load_store_remove ... ok
+test every_raw_installation_boundary_can_fail_without_losing_other_keys_and_retry_recovers ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.51s
+
+     Running tests/on_off.rs (target/debug/deps/on_off-18e08b15457bfd5b)
+
+running 6 tests
+test abandoned_dispatched_command_keeps_ownership_until_its_late_completion ... ok
+test full_usb_slot_preserves_off_and_dropping_queued_matter_work_releases_its_claim ... ok
+test handler_advertises_only_bounded_commands_and_reports_observed_state ... ok
+test pending_command_expires_at_boundary_or_monotonic_rollback ... ok
+test timeout_cancels_queued_work_and_never_reuses_its_claim ... ok
+test success_waits_for_control_application_and_rejection_is_not_acknowledged ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/on_off_runtime.rs (target/debug/deps/on_off_runtime-328a5a00a5f42e72)
+
+running 1 test
+test actual_runtime_rejection_reaches_matter_while_valid_low_pending_remains_successful ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/provision_install.rs (target/debug/deps/provision_install-f65a90e1e706a189)
+
+running 2 tests
+test invalid_input_and_conflicting_valid_identity_never_write ... ok
+test one_access_decides_and_verifies_installation_and_cleans_every_failure ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/provision_tool.rs (target/debug/deps/provision_tool-583e7a94d79cbb2f)
+
+running 5 tests
+test unsafe_files_and_existing_output_are_rejected_without_overwrite ... ok
+test validated_cli_sends_exact_loaded_record_over_fragmented_pseudo_terminal ... ok
+test sender_rejects_private_file_and_trust_failures_before_any_terminal_mutation ... ok
+test fresh_issuance_import_and_validation_use_real_codec_without_printing_secrets ... ok
+test signature_trust_and_cd_identity_fail_without_publishing_a_record ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.89s
+
+     Running unittests src/lib.rs (target/debug/deps/crystal_shim_pushover-75948e516827af32)
+
+running 20 tests
+test http::tests::guard_rechecks_ready_results_rollback_and_cancellation_before_repoll ... ok
+test policy::tests::capacity_counts_active_and_preserves_it_while_evicting_oldest_pending ... ok
+test policy::tests::accepted_replacement_cancels_before_durability_and_failure_keeps_delivery_paused ... ok
+test policy::tests::configuration_pause_cannot_clear_a_rejected_credential_generation ... ok
+test policy::tests::expiry_and_late_acceptance_never_renew_capture_or_acknowledge ... ok
+test policy::tests::known_rejections_never_become_retries_at_deadline_or_expiry ... ok
+test policy::tests::captures_exact_edges_without_reclassification_or_coalescing ... ok
+test policy::tests::clock_rollback_and_counter_exhaustion_never_reuse_tokens ... ok
+test policy::tests::rejected_generation_survives_schedule_edits_and_explicit_clear_restores_it ... ok
+test policy::tests::retry_backoff_keeps_original_event_and_stops_after_three_attempts ... ok
+test policy::tests::revision_and_credential_changes_cancel_old_pending_and_active_work ... ok
+test http::tests::slow_progress_cannot_extend_the_original_twenty_second_attempt ... ok
+test http::tests::recovery_message_preserves_capture_utc_and_actual_override_state ... ok
+test policy::tests::terminal_and_cancelled_unknown_outcomes_are_visible_without_retries ... ok
+test http::tests::sends_one_exact_normal_priority_form_and_accepts_complete_fragmented_json ... ok
+test http::tests::pending_io_partial_writes_and_external_cancellation_are_bounded_and_wipe ... ok
+test http::tests::response_categories_never_follow_redirects_or_retry_api_rejections ... ok
+test http::tests::framing_preflight_rejects_panics_ambiguity_compression_and_overflow ... ok
+test http::tests::json_success_is_typed_unique_complete_and_bounded ... ok
+test http::tests::chunking_requires_explicit_termination_and_cannot_exceed_raw_or_decoded_limits ... ok
+
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/crystal_shim_roughtime-0f6459f69c2a34ff)
+
+running 31 tests
+test agreement::tests::complete_coordinator_storage_remains_fixed_and_small ... ok
+test tests::captured_independent_public_packets_match_encoder_and_authenticate ... ok
+test tests::canonical_offsets_tags_and_count_fail_before_slicing_or_crypto ... ok
+test tests::frame_length_magic_truncation_and_oversize_are_bounded ... ok
+test agreement::tests::public_signed_pair_matches_wire_and_is_order_independent_at_original_capture ... ok
+test agreement::tests::explicit_drift_and_quantization_expand_transport_and_projection_outward ... ok
+test agreement::tests::historical_receives_do_not_mask_actual_clock_rollback_or_refresh_capture ... ok
+test tests::complete_request_frame_and_padding_are_in_merkle_leaf ... ok
+test tests::independent_reference_tree_vector_has_three_levels_with_mixed_sides ... ok
+test agreement::tests::projection_reveals_a_one_ms_gap_and_never_forces_agreement ... ok
+test tests::maximum_response_size_accepts_unknown_padding_but_rejects_amplification ... ok
+test agreement::tests::real_bad_and_cross_round_datagrams_consume_the_round_without_sample_import ... ok
+test tests::missing_envelopes_signatures_and_malformed_nested_headers_are_rejected ... ok
+test tests::pinned_roots_are_out_of_band_and_public_reply_cannot_choose_its_root ... ok
+test tests::delegation_boundaries_are_inclusive_without_calendar_restricting_keys ... ok
+test tests::replay_with_different_nonce_or_same_nonce_but_different_packet_is_rejected ... ok
+test tests::signatures_cover_original_signed_bytes_and_use_the_exact_contexts ... ok
+test tests::captured_signatures_accept_unknown_final_values_of_one_two_or_three_bytes ... ok
+test agreement::tests::narrow_adversarial_overlap_keeps_the_honest_hull_not_the_intersection ... ok
+test tests::unknown_canonical_tags_are_opaque_in_every_message ... ok
+test agreement::tests::pending_missing_duplicate_and_unstarted_work_never_produces_partial_agreement ... ok
+test tests::original_deadline_is_checked_after_ready_work_and_capture_is_not_refreshed ... ok
+test agreement::tests::touching_endpoints_and_exact_twenty_second_hull_pass_but_one_more_ms_fails ... ok
+test agreement::tests::projection_width_and_transport_deadlines_include_quantization ... ok
+test agreement::tests::clock_rollback_future_captures_and_counter_limits_fail_closed ... ok
+test agreement::tests::round_and_individual_deadlines_include_verification_and_final_completion ... ok
+test agreement::tests::projection_range_overflow_and_expired_dispatch_never_create_an_observation ... ok
+test tests::returned_utc_bounds_reject_underflow_overflow_and_calendar_overrun ... ok
+test tests::nonempty_merkle_paths_verify_both_orders_and_require_exhausted_index ... ok
+test tests::signed_version_type_and_radius_fail_closed ... ok
+test tests::every_required_tag_and_exact_scalar_size_is_enforced ... ok
+
+test result: ok. 31 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running unittests src/lib.rs (target/debug/deps/crystal_shim_settings-9468a965bc8b7115)
+
+running 31 tests
+test tests::checked_deadlines_reject_boundary_backwards_and_overflow ... ok
+test tests::freshness_edit_preserves_measured_calibration_and_its_frame_duration_floor ... ok
+test tests::provisioning_reservation_covers_settings_usb_and_preserves_off ... ok
+test tests::queued_cancellation_and_stale_reply_cannot_acknowledge_next_settings_request ... ok
+test tests::malformed_direct_constructor_regression_is_real ... ok
+test tests::cancelling_before_control_dispatch_removes_only_that_request ... ok
+test tests::cancelled_http_future_wipes_buffers_and_keeps_dispatched_commit ... ok
+test tests::ready_first_completion_at_the_original_deadline_cannot_win ... ok
+test tests::settings_admission_cannot_be_used_to_rotate_a_token_over_http ... ok
+test tests::all_sixteen_entries_timings_and_replacement_credentials_fit_bounded_request_and_view ... ok
+test tests::raw_non_utf8_auth_is_not_silently_ignored ... ok
+test tests::partial_reads_replay_body_exactly_and_leave_pipeline_unread ... ok
+test tests::revision_and_token_are_rechecked_after_body_await ... ok
+test tests::response_timings_and_full_width_freshness_are_durable_and_return_decimal_strings ... ok
+test tests::save_waits_for_both_writes_and_preserves_private_fields ... ok
+test tests::token_rotation_revalidates_next_revision_preserves_settings_and_rejects_bad_input ... ok
+test tests::api_reads_require_auth_and_are_redacted ... ok
+test tests::token_a_b_a_does_not_reauthorize_an_old_revision ... ok
+test tests::explicit_pushover_clear_and_replace_do_not_require_echoing_secrets ... ok
+test tests::full_allowed_browser_header_count_accepts_but_one_more_rejects ... ok
+test tests::only_explicit_exit_can_leave_saved_maintenance_and_physical_button_wins ... ok
+test tests::static_page_is_public_self_contained_and_never_interpolates_a_token ... ok
+test tests::storage_failure_never_claims_durable_or_publishes_candidate ... ok
+test tests::header_count_capacity_body_limit_and_incomplete_body_are_bounded ... ok
+test tests::stalled_read_write_and_slow_header_never_extend_deadline ... ok
+test tests::security_header_duplicates_cross_origin_and_url_tokens_rejected ... ok
+test tests::timeout_is_unknown_and_dispatched_work_still_has_its_owner ... ok
+test tests::form_rejects_duplicate_unknown_bad_percent_and_out_of_range_values ... ok
+test tests::invalid_and_duplicate_framing_never_reaches_connection_or_admission ... ok
+test tests::pre_admission_errors_are_known_json_without_body_drain ... ok
+test tests::malformed_or_missing_response_timing_never_reaches_admission ... ok
+
+test result: ok. 31 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+   Doc-tests crystal_shim_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests crystal_shim_drivers
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests crystal_shim_matter
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests crystal_shim_pushover
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests crystal_shim_roughtime
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests crystal_shim_settings
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+    Finished `dev` profile [optimized + debuginfo] target(s) in 0.40s
+    Finished `release` profile [optimized] target(s) in 0.20s
+Matter production/host API identities match; sync-mutex is absent
+Settings HTTP parser is edge-http 0.8.0 io-only in host/app; secret tracing is absent
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+OK
+✔ local second conversion preserves precision and rejects invalid times (0.580666ms)
+✔ config drafts preserve IDs, day masks and timezone and never prefill secrets (0.479917ms)
+✔ configuration form matches the exact bounded backend contract (0.196709ms)
+✔ malformed thresholds, durations, revision, timezone and schedules fail before a request (0.611625ms)
+✔ Pushover credentials are included only for explicit replacement (0.2245ms)
+✔ tokens stay in Authorization and requests cannot use arbitrary URLs or redirects (2.308958ms)
+✔ successful save never retries, exits maintenance or refetches automatically (0.387833ms)
+✔ unknown outcomes require explicit refetch without a write retry (0.346917ms)
+✔ lost or malformed write replies are unknown and never expose server error text (0.388792ms)
+✔ each mutation requires its exact acknowledgement outcome (0.494041ms)
+✔ Off waits for a pending save and cannot open a second request (0.724125ms)
+✔ Off remains available after an uncertain mutation (0.161375ms)
+✔ a lock aborts requests and a late response cannot unlock or restore state (0.1305ms)
+✔ re-unlocking does not let an older generation overwrite the new session (0.081333ms)
+✔ configuration and status from different revisions cannot enable mutation (0.057333ms)
+✔ Off cannot overtake the status request after configuration has loaded (0.317583ms)
+✔ the session discards unexpected secret fields returned by the server (0.089958ms)
+✔ static page has external self assets, password entry and no credential form names (0.440459ms)
+✔ actual DOM bootstrap disables Off during save and Lock clears all credential fields (0.610666ms)
+✔ bootstrap loads CSS after the module and enables no API or form before its load event (0.375083ms)
+✔ a stylesheet failure leaves access disabled and reports failure without retrying (0.220291ms)
+✔ known pre-admission JSON rejection is not an ambiguous mutation (0.165792ms)
+✔ DOM enables Off after an ambiguous write settles without requiring refetch (0.579125ms)
+✔ timing form preserves full u64 decimal precision and enforces freshness floor (0.564625ms)
+✔ the session rejects imprecise numeric timing JSON instead of silently rounding it (0.047208ms)
+✔ the rendered timing inputs load and submit exact values through the real form handler (0.595292ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 40.363375
+$ bun run lint && bun run format
+$ oxlint --report-unused-disable-directives fixtures scripts/lib tools controller/design mains/design sensor/design
+$ oxfmt --check "fixtures/**/*.ts" "fixtures/**/*.tsx" "tools/*.ts" "controller/design/**/*.ts" "controller/design/**/*.tsx" "mains/design/**/*.ts" "mains/design/**/*.tsx" "scripts/lib/**/*.ts" "sensor/design/**/*.ts" "sensor/design/**/*.tsx"
+Checking formatting...
+
+All matched files use the correct format.
+Finished in 10ms on 148 files using 18 threads.
+$ tsc --noEmit
+$ tsci check source fixtures/tooling-smoke.circuit.tsx && tsci check pin_specification fixtures/tooling-smoke.circuit.tsx && tsci check schematic-placement fixtures/tooling-smoke.circuit.tsx && tsci check netlist fixtures/tooling-smoke.circuit.tsx && tsci check placement fixtures/tooling-smoke.circuit.tsx
+Errors: 0
+Warnings: 0
+Errors: 0
+Warnings: 0
+
+Errors: 0
+Warnings: 0
+
+Readable Netlist:
+COMPONENTS:
+ - R1: 1kΩ resistor
+ - C1: 100nF capacitor
+
+NET: TOOLING_OUT
+  - C1 pin1 (+)
+  - R1 pin2
+
+
+EMPTY NET PINS:
+  - R1 pin1
+  - C1 pin2 (-)
+
+COMPONENT_PINS:
+R1 (1kΩ undefined)
+- pin1(anode, pos, left): NETS(TOOLING_IN)
+- pin2(cathode, neg, right): NETS(TOOLING_OUT)
+
+C1 (100nF undefined)
+- pin1(anode, pos, left): NETS(TOOLING_OUT)
+- pin2(cathode, neg, right): NETS(TOOLING_GND)
+
+placement summary: no placement issues
+
+board top-layer utilization:
+- occupied: 4.322% (8.643mm^2 of 200mm^2)
+- empty spaces over 5% of board area:
+  - 42.7% (85.4mm^2); bounds=(minX=-10mm, maxX=10mm, minY=-5mm, maxY=-0.73mm)
+  - 42.7% (85.4mm^2); bounds=(minX=-10mm, maxX=10mm, minY=0.73mm, maxY=5mm)
+
+board-edge status:
+- R1: 4.525mm inside top edge
+- C1: 4.525mm inside top edge
+
+placement drc:
+Errors: 0
+Warnings: 0
+$ bun run build:smoke && bun test fixtures scripts/lib controller/design mains/design sensor/design tools/export_kicad_schematic.test.ts
+$ tsci build fixtures/tooling-smoke.circuit.tsx --routing-disabled
+Building 1 file(s)...
+Building fixtures/tooling-smoke.circuit.tsx...
+Generating circuit JSON...
+Circuit JSON written to dist/fixtures/tooling-smoke/circuit.json
+R1 is missing schematic reference designator text. For a custom symbol, add name="{REFDES}" inside the symbol.
+C1 is missing schematic reference designator text. For a custom symbol, add name="{REFDES}" inside the symbol.
+
+Build complete
+  Circuits  1 passed
+  Output    dist
+
+✓ Done
+Build exiting with code 0: build finished successfully
+bun test v1.3.11 (af24e281)
+
+tools/export_kicad_schematic.test.ts:
+(pass) exports every hierarchical schematic file from the tooling fixture [61.84ms]
+
+fixtures/tooling-smoke.test.ts:
+(pass) the installed toolchain builds a placed TSX circuit with named nets [0.25ms]
+
+sensor/design/source-checks.test.tsx:
+(pass) complete source has no capture or placement errors and only two sensing channels [23.81ms]
+(pass) drawn-net checking catches an altered sensor signal label [1.91ms]
+(pass) electrode copper uses exact rim transform, same-net overlaps, covered mask and no paste [4.04ms]
+(pass) ordinary source changes do not mutate original Circuit JSON during native preparation [4.16ms]
+(pass) fresh schematic export has full fields, real pin types and only declared no-connects [57.00ms]
+(pass) each electrode copper island reaches the head without a via on the glass face [0.11ms]
+(pass) stage writer refuses repository and incomplete guard inputs [4.05ms]
+
+scripts/lib/footprint-origin-initial-export.test.ts:
+(pass) explicit readonly registry identifies a new repeated-tail pattern without controller defaults [0.33ms]
+(pass) registry is supplied per call and late failure cannot expose partial center changes [0.15ms]
+(pass) shared matcher retains rejection of orphan pads, invalid internal tails and incomplete geometry [0.16ms]
+
+scripts/lib/schematic-grid-initial-export.test.ts:
+(pass) native precision canonicalizes float noise but preserves real microstubs [1.27ms]
+(pass) cardinal poses keep tiny wires distinct and NC arity correct across overlapping sheets [2.83ms]
+(pass) late unsupported input rejects atomically, including invalid native at arity [2.67ms]
+(pass) controller topology, identities, types and standalone cache survive grid alignment [255.57ms]
+(pass) connected branch dots survive straight-wire merging without joining unconnected crossings [1.45ms]
+(pass) L1 display has joined lobes and tails without moving any electrical pin [151.19ms]
+
+mains/design/power-components.test.tsx:
+(pass) mains power models mirror actual bottom-view drawings and preserve contact stagger
+(pass) mains source and initial native copper retain pin geometry at 0 degrees [231.41ms]
+(pass) mains source and initial native copper retain pin geometry at 90 degrees [238.47ms]
+(pass) mains source and initial native copper retain pin geometry at 180 degrees [247.68ms]
+(pass) mains source and initial native copper retain pin geometry at 270 degrees [247.06ms]
+(pass) mains physical declarations keep insulation separate from body and assembly bounds [0.26ms]
+
+mains/design/native-helpers.test.tsx:
+(pass) mains native helpers admit the actual source and reject unsafe stage or identity drift without native I/O [571.60ms]
+
+mains/design/mounting-holes-initial-export.test.tsx:
+(pass) mains mounts gain four board-only identities without changing physical geometry [295.75ms]
+(pass) mains mount identification refuses malformed late holes atomically [39.34ms]
+
+mains/design/physical-initial-export.test.tsx:
+(pass) complete mains conversion restores exactly 48 PTH masks and preserves every other native field [13.11ms]
+(pass) mains PTH mask adaptation preserves exact geometry at 0 degrees [282.20ms]
+(pass) mains PTH mask adaptation preserves exact geometry at 90 degrees [287.36ms]
+(pass) mains PTH mask adaptation preserves exact geometry at 180 degrees [287.49ms]
+(pass) mains PTH mask adaptation preserves exact geometry at 270 degrees [289.52ms]
+(pass) mains physical adapter rejects geometry, identity and paste drift before any mask changes [188.23ms]
+
+mains/design/mov-component.test.tsx:
+(pass) MOV occupied acceptance leaves margins inside its separately declared reserve and courtyard
+(pass) MOV exact pad identities, slot axis and 29 mm courtyard survive rotation 0 [219.18ms]
+(pass) MOV exact pad identities, slot axis and 29 mm courtyard survive rotation 90 [229.12ms]
+(pass) MOV exact pad identities, slot axis and 29 mm courtyard survive rotation 180 [233.79ms]
+(pass) MOV exact pad identities, slot axis and 29 mm courtyard survive rotation 270 [233.56ms]
+
+mains/design/fields-initial-export.test.tsx:
+(pass) exact fields survive serialization and preserve every other property, UUID, pin and sheet attribute [28.01ms]
+(pass) late field conflicts and wrong manifest identities reject the whole batch without mutation [122.09ms]
+
+mains/design/schematic-connectivity-check.test.tsx:
+(pass) product net contract refuses coordinated renames, NC changes and orphan identities [310.66ms]
+(pass) native admission checks every unique pad, Sabre tail, NC and net number [34.68ms]
+
+mains/design/stage-mains-export.test.tsx:
+(pass) initial source fingerprint includes the shared origin matcher [1.21ms]
+(pass) requires every exact shared guard before creating output [53.49ms]
+(pass) rejects stage aliases, non-stage directories and symlinked input files [155.84ms]
+(pass) rejects nonregular manifest before opening a FIFO [53.25ms]
+(pass) preexisting outputs and link targets remain byte-identical on rejection [518.76ms]
+(pass) regenerated source rejects a stale normalized manifest before native emission [487.86ms]
+(pass) augmentation cannot target another board [486.64ms]
+(pass) detects changed inputs and outputs added after source preparation [175.72ms]
+(pass) validates every generated filename before the first write [263.82ms]
+(pass) rejects a stage directory replaced after source preparation [54.78ms]
+(pass) writes the actual complete initial hierarchy once without adoption [63.04ms]
+(pass) native exporter failure leaves no success receipt and cannot be retried [968.22ms]
+(pass) CLI rejects supplied target paths [259.81ms]
+(pass) registration evidence binds exact stage, native table and pinned tool provenance [0.68ms]
+(pass) initial rules evidence requires the declared value and unchanged project/tool bindings [0.27ms]
+
+mains/design/secondary-power.test.tsx:
+(pass) shared supply section has fixed 5 V buck and separately fused 12 V without a second cutoff bank [272.95ms]
+(pass) motor fuse lands follow manufacturer dimensions rather than a generic 2410 assumption [0.10ms]
+
+mains/design/j5-physical-initial-export.test.tsx:
+(pass) J5 raw admission preserves exact lands, drill axes and locator at 0 degrees [243.59ms]
+(pass) J5 raw admission preserves exact lands, drill axes and locator at 90 degrees [236.39ms]
+(pass) J5 raw admission preserves exact lands, drill axes and locator at 180 degrees [240.88ms]
+(pass) J5 raw admission preserves exact lands, drill axes and locator at 270 degrees [240.15ms]
+(pass) J5 admission rejects effective missing J5 drift without mutation [0.61ms]
+(pass) J5 admission rejects effective duplicate J5 drift without mutation [1.07ms]
+(pass) J5 admission rejects effective duplicate reference drift without mutation [0.97ms]
+(pass) J5 admission rejects effective duplicate value drift without mutation [0.96ms]
+(pass) J5 admission rejects effective wrong part drift without mutation [0.82ms]
+(pass) J5 admission rejects effective conflicting MPN drift without mutation [0.74ms]
+(pass) J5 admission rejects effective duplicate MPN drift without mutation [0.84ms]
+(pass) J5 admission rejects effective wrong footprint drift without mutation [0.73ms]
+(pass) J5 admission rejects effective bottom layer drift without mutation [0.42ms]
+(pass) J5 admission rejects effective noncardinal placement drift without mutation [0.72ms]
+(pass) J5 admission rejects effective nonfinite placement drift without mutation [0.65ms]
+(pass) J5 admission rejects effective missing position drift without mutation [0.38ms]
+(pass) J5 admission rejects effective missing land drift without mutation [0.81ms]
+(pass) J5 admission rejects effective repeated land drift without mutation [0.75ms]
+(pass) J5 admission rejects effective wrong land number drift without mutation [0.44ms]
+(pass) J5 admission rejects effective duplicate land number drift without mutation [0.72ms]
+(pass) J5 admission rejects effective pad 2 shifted X drift without mutation [0.80ms]
+(pass) J5 admission rejects effective pad 3 shifted Y drift without mutation [0.67ms]
+(pass) J5 admission rejects effective pad 2 copper width drift without mutation [0.69ms]
+(pass) J5 admission rejects effective pad 3 copper height drift without mutation [0.62ms]
+(pass) J5 admission rejects effective swapped copper dimensions drift without mutation [0.55ms]
+(pass) J5 admission rejects effective pad 2 shape drift without mutation [0.56ms]
+(pass) J5 admission rejects effective rounded raw pin 1 drift without mutation [0.37ms]
+(pass) J5 admission rejects effective PTH made SMT drift without mutation [0.79ms]
+(pass) J5 admission rejects effective pad 2 drill diameter drift without mutation [0.50ms]
+(pass) J5 admission rejects effective pad 3 slot axis drift without mutation [0.60ms]
+(pass) J5 admission rejects effective changed raw drill encoding drift without mutation [0.07ms]
+(pass) J5 admission rejects effective offset drill drift without mutation
+(pass) J5 admission rejects effective wrong pad angle drift without mutation [1.59ms]
+(pass) J5 admission rejects effective one-sided copper drift without mutation [0.53ms]
+(pass) J5 admission rejects effective missing mask layer drift without mutation [0.57ms]
+(pass) J5 admission rejects effective repeated layer drift without mutation [0.41ms]
+(pass) J5 admission rejects effective raw pad mask override drift without mutation [0.69ms]
+(pass) J5 admission rejects effective footprint mask override drift without mutation [0.65ms]
+(pass) J5 admission rejects effective footprint paste override drift without mutation [0.58ms]
+(pass) J5 admission rejects effective pad paste override drift without mutation [0.70ms]
+(pass) J5 admission rejects effective PTH paste layer drift without mutation [0.43ms]
+(pass) J5 admission rejects effective NPTH paste layer drift without mutation
+(pass) J5 admission rejects effective paste line drift without mutation
+(pass) J5 admission rejects effective paste polygon drift without mutation [1.35ms]
+(pass) J5 admission rejects effective raw rounding override drift without mutation [0.38ms]
+(pass) J5 admission rejects effective trapezoid delta drift without mutation [0.55ms]
+(pass) J5 admission rejects effective chamfer override drift without mutation
+(pass) J5 admission rejects effective remove unused copper drift without mutation
+(pass) J5 admission rejects effective missing locator drift without mutation [1.46ms]
+(pass) J5 admission rejects effective repeated locator drift without mutation [0.46ms]
+(pass) J5 admission rejects effective locator X drift without mutation [0.38ms]
+(pass) J5 admission rejects effective locator Y drift without mutation [0.45ms]
+(pass) J5 admission rejects effective locator angle drift without mutation [0.26ms]
+(pass) J5 admission rejects effective locator size drift without mutation [0.77ms]
+(pass) J5 admission rejects effective locator drill drift without mutation [0.39ms]
+(pass) J5 admission rejects effective locator drill width drift without mutation [0.44ms]
+(pass) J5 admission rejects effective locator plated drift without mutation [0.15ms]
+(pass) J5 admission rejects effective locator shape drift without mutation [0.63ms]
+(pass) J5 admission rejects effective locator copper net drift without mutation [0.50ms]
+
+mains/design/suppression.test.tsx:
+(pass) coil clamp and load-side RC retain polarity and cannot bypass the open relay [238.62ms]
+(pass) finished drills and physical envelopes use exact body and wire maxima [0.18ms]
+(pass) suppression part drill centres and exact identities survive rotation 0 [235.75ms]
+(pass) suppression part drill centres and exact identities survive rotation 90 [240.53ms]
+(pass) suppression part drill centres and exact identities survive rotation 180 [238.48ms]
+(pass) suppression part drill centres and exact identities survive rotation 270 [239.01ms]
+
+mains/design/mains-initial-pcb.test.tsx:
+(pass) complete initial mains graph combines datums, PTH mask, connector shapes and buck nets [398.18ms]
+
+mains/design/schematic-cleanup-initial-export.test.tsx:
+(pass) seven exact NC markers survive serialization while every prior object is preserved [16.77ms]
+(pass) late NC conflicts, source drift and ambiguous geometry reject the complete batch atomically [90.57ms]
+(pass) native rounding keeps NCs attached and rejects conductors that quantize onto unused pins [39.55ms]
+(pass) complete initial graphs refresh all four caches, exact fields, NCs and gridded project library [74.10ms]
+(pass) fresh export splits the SW label trunk instead of leaving the converter orphan stub [67.08ms]
+
+mains/design/mains-headers.test.tsx:
+(pass) Sabre headers retain thirty physical tails and exact circuit nets at 0 degrees [247.44ms]
+(pass) Sabre headers retain thirty physical tails and exact circuit nets at 90 degrees [262.06ms]
+(pass) Sabre headers retain thirty physical tails and exact circuit nets at 180 degrees [259.59ms]
+(pass) Sabre headers retain thirty physical tails and exact circuit nets at 270 degrees [262.21ms]
+(pass) Sabre mechanical bounds distinguish seated body, protruding latch and mated access [0.38ms]
+
+mains/design/project-symbol-library-initial-export.test.tsx:
+(pass) 22 unique library entries preserve all symbol geometry, pins, types and instance syntax [51.11ms]
+(pass) late bad IDs, incompatible duplicate definitions and pin-type edits fail atomically [131.47ms]
+(pass) two declared annotations add zero-length power_out pins and no physical parts or geometry [34.23ms]
+(pass) power annotations remain on exact witness pins after native rounding and label reordering [38.77ms]
+(pass) neutral witness needs its actual attached label, not another matching label on the page [89.40ms]
+(pass) missing power witness, changed rail, preexisting flag and real output conflicts cannot be hidden [429.58ms]
+
+mains/design/pin-electrical-initial-export.test.tsx:
+(pass) all 22 parts and 60 logical pins receive component ERC semantics, only in libraries [17.98ms]
+(pass) exact shared parts reuse controller contracts and source names match every chip [0.59ms]
+(pass) valid extra cached copies on other sheets are all typed [7.46ms]
+(pass) source, instance and late cache drift fail without partial typing [485.85ms]
+(pass) raw converter power graphic instances are refused until label normalization [15.46ms]
+
+mains/design/design-manifest.test.tsx:
+(pass) mains manifest normalizes to the shared schema with 26 stable refs, all logical nets and six NPTHs [97.91ms]
+(pass) source receipts retain SMT copper, mask, paste and graphics even when the converter ignores them [297.10ms]
+(pass) malformed identities, lost physical lands, changed pins/nets and moved placements fail without mutating input [193.05ms]
+
+mains/design/mains-integration.test.tsx:
+(pass) full mains source retains 22 parts and every connected or intentionally unused pin [371.43ms]
+(pass) whole-board source and drawn nets preserve isolation, raw/protected power and load-side RC [1.51ms]
+(pass) full assembly preserves 30 Sabre tails including 14 tails of seven unused blades [0.62ms]
+(pass) every authored position and four board holes survive full-sheet compilation [1.07ms]
+(pass) a drawn primary/secondary short and missing load-neutral labels fail connectivity [1.20ms]
+(pass) mains pads preserve 8 mm isolation and 3.2 mm primary separation including unused blades [3.30ms]
+(pass) mains header occupied envelopes clear all 8 mm insulating mount reservations
+
+mains/design/footprint-origin-initial-export.test.tsx:
+(pass) complete mains origins match authored datums without changing any other source field [362.16ms]
+(pass) mains origin correction preserves all native pad and outline points at 0 degrees [280.67ms]
+(pass) mains origin correction preserves all native pad and outline points at 90 degrees [283.12ms]
+(pass) mains origin correction preserves all native pad and outline points at 180 degrees [287.49ms]
+(pass) mains origin correction preserves all native pad and outline points at 270 degrees [289.07ms]
+(pass) mains preparation rejects missing tails, changed locators and non-rigid pin movement [295.88ms]
+
+controller/design/mounting-holes-initial-export.test.tsx:
+(pass) initial controller holes retain geometry while gaining stable board-only identities [215.56ms]
+(pass) initial hole identity rejects late geometry, duplicates and identity drift atomically [219.83ms]
+
+controller/design/usb-interface.test.tsx:
+(pass) self-powered USB retains exact refs, physical pins, CC pulldowns and hardware gate [358.68ms]
+(pass) all USB schematic pins reach their electrical labels and NC pins stay isolated [338.44ms]
+(pass) sixteen signal labels each name exactly one distinct useful USB wire island [342.97ms]
+(pass) J4 uses horizontal ground labels with one explicit A12/B1 branch [331.63ms]
+
+controller/design/protection-land-pattern.test.tsx:
+(pass) STPS2L40U SMB copper preserves the adopted K/A map at both orientations [221.29ms]
+(pass) USBLC6 copper and physical functions survive top-view conversion and rotation [246.34ms]
+
+controller/design/service-protection-land-pattern.test.tsx:
+(pass) TPS259470A RPW has ten functional lands, long IN/OUT and single concave corner pads [255.92ms]
+(pass) SMBJ8.0CA compiles as a nonpolar two-terminal clamp with Littelfuse limit-based lands [220.26ms]
+(pass) initial eFuse export anchors preserve complete world polygons, nets and unrelated graph at four rotations [360.28ms]
+(pass) initial eFuse export validates the whole batch before any mutation [329.21ms]
+
+controller/design/connector-physical-export.test.tsx:
+(pass) connector graphics preserve every absolute pad and NPTH in native export at 0 degrees [297.38ms]
+(pass) connector graphics preserve every absolute pad and NPTH in native export at 90 degrees [300.43ms]
+(pass) connector graphics preserve every absolute pad and NPTH in native export at 180 degrees [297.94ms]
+(pass) connector graphics preserve every absolute pad and NPTH in native export at 270 degrees [293.05ms]
+(pass) connector initial adapter rejects drift across the complete batch before mutating [306.04ms]
+
+controller/design/ic-physical-models.test.ts:
+(pass) physical declarations cover exact remaining IDs without replacing existing copper or DBV/DGK models [0.02ms]
+(pass) body-centred placement envelopes preserve the drawing axes and vertical limits
+(pass) mask choice respects TI's limit and leaves webs between every distinct copper land [0.44ms]
+(pass) RPW assembly declaration preserves split power apertures and functional thermal nets [0.04ms]
+
+controller/design/relay-drive.test.tsx:
+(pass) relay circuit compiles the supervisor, independent permission gate and low-side coil path [299.41ms]
+
+controller/design/controller-integration.test.tsx:
+(pass) controller schematic preserves power separation, hardware permission and buffered sensor boundaries across sheets [3299.40ms]
+
+controller/design/module-controls.test.tsx:
+(pass) module controls preserve GPIO allocation, separate buttons and current-limited reset/LED paths [350.46ms]
+(pass) module signal labels serve distinct short islands and face inward at page edges [348.86ms]
+
+controller/design/test-points.test.tsx:
+(pass) service pads expose every required net with probe room and no purchased or pasted part [299.59ms]
+(pass) initial KiCad export preserves exact pad copper, mask, nets and BOM exclusions while removing only paste [314.91ms]
+(pass) paste adjustment fails atomically on an unexpected pad or a second application [301.25ms]
+
+controller/design/land-pattern.test.tsx:
+(pass) physical package declarations preserve native body, courtyard and mask at 0 degrees [345.12ms]
+(pass) physical package declarations preserve native body, courtyard and mask at 90 degrees [338.68ms]
+(pass) physical package declarations preserve native body, courtyard and mask at 180 degrees [337.85ms]
+(pass) physical package declarations preserve native body, courtyard and mask at 270 degrees [339.30ms]
+(pass) supervisor, feed, relay gate and USB models bind each physical pin correctly [259.66ms]
+(pass) regulator, relay and sensor-buffer lands preserve pin identity after rotation [249.32ms]
+(pass) WROOM module pads retain the selected firmware functions and NC [0.03ms]
+(pass) the compiled WROOM retains every pad and the native asymmetric origin [258.57ms]
+
+controller/design/schematic-cleanup-initial-export.test.tsx:
+(pass) 12 exact NC markers and two wire repairs preserve all physical anchors, pin types and wire union [86.59ms]
+(pass) full initial export refreshes every child cache with the cleanup [463.47ms]
+(pass) late ambiguous USB branches or wrong labels reject atomically, including earlier power plans and all NCs [171.37ms]
+(pass) NC markers cannot conceal a wire, a changed source contract or a moved/unknown pin [212.83ms]
+(pass) coincident geometry on a separate sheet remains independent [17.02ms]
+
+controller/design/service-input.test.tsx:
+(pass) known-adapter service input has only its connector and bypass capacitors [240.18ms]
+(pass) service joins the existing OR input without creating a coil-supply or PSU-sense path [369.28ms]
+
+controller/design/logic-power.test.tsx:
+(pass) logic supply preserves diode isolation, bootstrap connection and direct fixed-output feedback [258.10ms]
+
+controller/design/stage-controller-export.test.tsx:
+(pass) initial source fingerprint includes the shared origin matcher [1.70ms]
+(pass) requires every exact shared guard before creating output [54.02ms]
+(pass) rejects stage aliases, non-stage directories and symlinked input files [160.62ms]
+(pass) rejects nonregular manifest before opening a FIFO [54.69ms]
+(pass) preexisting outputs and link targets remain byte-identical on rejection [533.74ms]
+(pass) regenerated source rejects a stale normalized manifest before native emission [2523.75ms]
+(pass) augmentation cannot target another board [2531.60ms]
+(pass) detects changed inputs and outputs added after source preparation [164.06ms]
+(pass) validates every generated filename before the first write [267.33ms]
+(pass) rejects a stage directory replaced after source preparation [54.18ms]
+(pass) writes the actual complete initial hierarchy once without adoption [87.15ms]
+(pass) native exporter failure leaves no success receipt and cannot be retried [3450.43ms]
+(pass) CLI rejects supplied target paths [260.64ms]
+(pass) registration evidence binds exact stage, native table and pinned tool provenance [0.76ms]
+(pass) initial rules evidence requires the declared value and unchanged project/tool bindings [0.55ms]
+
+controller/design/connector-physical-models.test.ts:
+(pass) declarations bind the six selected native IDs and preserve document provenance
+(pass) Molex native pin-one origins remain distinct from housing and tail bounds
+(pass) Molex mating edge uses the locator datum rather than pin one or courtyard
+(pass) USB envelope includes rear tails while mating direction and PCB edge remain at the front
+(pass) LED and button physical centres preserve polarity and repeated terminal pairs [0.52ms]
+
+controller/design/sensor-interface.test.tsx:
+(pass) sensor interface preserves protected power, three I2C segments and every physical connector/ESD pin [346.26ms]
+
+controller/design/project-symbol-library-initial-export.test.tsx:
+(pass) 113 unique library entries preserve all symbol geometry, pins, types and instance syntax [285.63ms]
+(pass) late bad IDs, incompatible duplicate definitions and pin-type edits fail atomically [524.01ms]
+(pass) four declared annotations add zero-length power_out pins and no physical parts or geometry [255.16ms]
+(pass) missing power witness, changed rail, preexisting flag and real output conflicts cannot be hidden [797.50ms]
+
+controller/design/passive-land-pattern.test.tsx:
+(pass) sensor power pulse resistor and local bulk retain exact 2512/1206 lands at both orientations [225.51ms]
+(pass) assembly parts keep LED polarity, switch permanent pairs and inductor geometry [235.82ms]
+(pass) selected passive values retain manufacturer codes and reviewed copper after rotation [247.98ms]
+(pass) service passives select exact values and package copper at 0 degrees [236.60ms]
+(pass) service passives select exact values and package copper at 90 degrees [234.31ms]
+(pass) shared C1608 copper keeps each capacitor's own characterization link [0.36ms]
+(pass) Micro-Fit source preserves circuit numbering, round drills and non-plated locator positions [241.78ms]
+
+controller/design/design-manifest.test.tsx:
+(pass) controller source manifest retains stable refs, full logical nets and all physical holes [3918.11ms]
+
+controller/design/usb-connector.test.tsx:
+(pass) USB source keeps paired power copper, independent data contacts and four shell stakes [1043.98ms]
+(pass) project ground corners clear both unchanged locators in compiled and parsed native geometry [1056.17ms]
+(pass) initial USB export preserves native pin names, nets and symbol/copper identity [262.30ms]
+(pass) initial-export mapping rejects stale refs or changed pin sets without partial mutation [262.23ms]
+(pass) initial USB export preserves absolute contacts at every cardinal rotation [1061.36ms]
+
+controller/design/cable-protection-land-pattern.test.tsx:
+(pass) ESDS312 NCs and SMBJ7.0A polarity preserve exact manufacturer copper at 0 and 90 degrees [237.65ms]
+
+controller/design/footprint-origin-initial-export.test.tsx:
+(pass) manufacturer origin normalization preserves absolute native geometry at 0 degrees [281.89ms]
+(pass) manufacturer origin normalization preserves absolute native geometry at 90 degrees [281.50ms]
+(pass) manufacturer origin normalization preserves absolute native geometry at 180 degrees [281.80ms]
+(pass) manufacturer origin normalization preserves absolute native geometry at 270 degrees [277.29ms]
+(pass) origin normalization rejects drift and preserves the entire input batch [288.11ms]
+
+ 250 pass
+ 0 fail
+ 33267 expect() calls
+Ran 250 tests across 47 files. [72.66s]
+$ python3 -m unittest tools.test_tscircuit_handoff
+....ERROR: staging/generated-output root must not overlap --production-dir
+.....ERROR: KiCad check contains undeclared initial finding types: endpoint_off_grid
+ERROR: KiCad check omitted required severities: warning
+ERROR: KiCad check contains undeclared ignored checks: hidden_failure
+ERROR: Schematic cleanup requires all checks enabled; ignored checks: footprint_filter
+ERROR: Schematic cleanup requires all checks enabled; ignored checks: four_way_junction
+ERROR: Schematic cleanup requires all checks enabled; ignored checks: simulation_model_issue
+ERROR: Schematic cleanup requires all checks enabled; ignored checks: single_global_label
+ERROR: Schematic cleanup requires all checks enabled; ignored checks: footprint_filter, four_way_junction, simulation_model_issue, single_global_label
+...................................
+----------------------------------------------------------------------
+Ran 44 tests in 0.147s
+
+OK
+......s
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK (skipped=1)

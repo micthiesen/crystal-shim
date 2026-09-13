@@ -1,0 +1,60 @@
+{
+  "after_snapshot_sha256": "2ff4158f1f5840dc108ee7768278276d28ddd57ecb2c704925df46a4ea00617f",
+  "augmentation_sha256": "d49069bfdbd356b72c16b78b0f298d82fd25211e210f0fddf70609a429a2185c",
+  "before_snapshot_sha256": "d65a42ddcd787f7d26fe7be72c1c08c726912e89b54148dc4123ef1fe3a91b40",
+  "board_id": "sensor.board.main",
+  "cleanup_receipt_sha256": "4d62c484c4459ddc62e306134c367dc6dc9e17592b779b3563224a8c8be8d7f7",
+  "kind": "native_eco",
+  "manifest_sha256": "05d6f0bf8be1e2edb99ff6532cedf902f5d9a390af59f77347bbf9412f3de125",
+  "native_files": {
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/CrystalShim_Sensor.kicad_sym": "16c9e009380d34a8be5455c8937da2f21aad0a0441855370f7693ae0e3775052",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_C1.kicad_mod": "69880ad43f63eb0a8682f2ca52eb2129b9d3467fac5a2eb8e9276c8e7d57bab7",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_C2.kicad_mod": "6f9aa79555e12de74bf3fa69cd5ee044bde20d65fe3a9f06def9aacee85cd155",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_C3.kicad_mod": "ad417f7fbddda2cd158bc0cc62b3ecd4931e3dfb574bbe3baf18fb25716baf94",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_C4.kicad_mod": "8213f3500ae0981d906b0d52c5e627668fed297513704cbadc8670f9927c0dff",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_D2.kicad_mod": "78ec43e04eaf2393b1b4c9d908508f936efa41e8adf42ced818b78400a411296",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_E1.kicad_mod": "0514812fa32a6c13af962f1b73135b4f6d9ca9c3448d5e681090e08afc614047",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_J1.kicad_mod": "67dfa5ec9685aa9400583c959eec6fb945eac90e568d7eb732c47a8af38af0e3",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_R1.kicad_mod": "9ec58b5b6634c8a5d07cb3547532f097e65396d866bc244022010817ecd91581",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_R2.kicad_mod": "3e54fff0cc4c0de77ef9e6b28564557fbcae7d7688df4fd5ad4b6a9bdf185ac8",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_R3.kicad_mod": "103e935371e960ce5fbacb8d3c8ceab591a0a42a9ec585b2fe9d12d038aab2f9",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_R4.kicad_mod": "9ab6f0c2878367379a5bb1aadbb9d4fad506f1898f58a05b7b230f7523507d81",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_R5.kicad_mod": "b5fa50d10b45fec33f77504f1fa8939cfe6ec6c64acdb9485268103bf73d5b77",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_R6.kicad_mod": "7806e4525895007f2510aa4ee3a12c75daf664684805d72aa977ccd8bd0a8eb8",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_U1.kicad_mod": "c17a11f5cb8045eb774f680a9dbddeab573a975f762ff41d80b987495aca7a5a",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_U2.kicad_mod": "53249c58e984326eb44ec8503401f37a427af562cf96b638020e7288edfd3030",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/footprints/CrystalShim_Sensor.pretty/Sensor_U3.kicad_mod": "8c2d6ea9ec038a06014f5aa1ae68b333d8129bae1449c50eb9d314d0c7bc2b71",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/fp-lib-table": "7ae17aad939b9cc6a592704d141b999d6761fe3198262c8211a48556cce6cb84",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/libraries-v2/CrystalShim_Sensor.kicad_sym": "96dbfc90bca530f2fb25cf9dc8f38de6864c541e3477018b8d026e8811c5448d",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_dru": "a81abd6425ada34cbe178a5427ed4f99c0f498def68e1321c2fe8fc8723b7753",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_pcb": "0c5e176abd52a14c613cba8f654f2239185c7a6ce0e198b689d60bc32fe89f5c",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_prl": "108258e9c0fd6a6c3c880d685b03fb71f6abd226732b41b2a8d17a216463f2ff",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_pro": "10669a5c2233963ffd83a1119f7c6fd9b3052bc357f14d9a13fa55c281fc2e6b",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_sch": "41af7cc2142d25fcc4e5e17fa10a5f9a4115f065b03830a3a7f4f3550cfc1f29",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sym-lib-table": "09c2184ff2eeb45a2c4462d8f68dddc063943567ee5ad372887ed985676794ae",
+    "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/tanksensor.kicad_sch": "6878dc31778c3f0b122ec2d5db66803b4264a0556be7963674eab96008fe71da"
+  },
+  "passed": true,
+  "plan_sha256": "a4648de7f709787c32d179d7288685c214727e73a01444ada8d49f7daafa31ad",
+  "preservation": {
+    "board_id": "sensor.board.main",
+    "errors": [],
+    "kicad_owned_after_sha256": "d2d8f76aa74e871a290ab937433949c98e0e5d8893cbc1701647403972e1b805",
+    "kicad_owned_before_sha256": "8cbf2ce6152b67cb35c0c2717f7e2841db783b8d9d0f93a2798351e4f7bd4f42",
+    "passed": true,
+    "schema_version": 1
+  },
+  "previous_lock_sha256": "6798d53adc2eb1bfa1ff76b34dda1060e6735c0d9d23c4adad1baef897098b0c",
+  "review_render_root": "/Users/michael/Code/crystal-shim/pcb/sensor/kicad",
+  "review_renders": [
+    {
+      "path": "evidence/routing-guardrails/copper/sensor-B_Cu.png",
+      "sha256": "918101f5c117737e6ce3eed251ec35ff75d4b62c0f3f326d8238cd60b92c56e7"
+    },
+    {
+      "path": "evidence/routing-guardrails/copper/sensor-F_Cu.png",
+      "sha256": "f305bf78880cfba20d5dad84c5793e5aa4b5566f789bf8eb8886ca731b0c904a"
+    }
+  ],
+  "schema_version": 1
+}

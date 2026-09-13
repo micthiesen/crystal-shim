@@ -16,6 +16,15 @@ test("controller source manifest retains stable refs, full logical nets and all 
   expect(manifest.components).toHaveLength(117);
   expect(new Set(manifest.components.map((c) => c.footprint.kicad)).size).toBe(117);
   expect(manifest.nets).toHaveLength(63);
+  for (const stage of ["PORT", "SWITCH"]) {
+    for (const polarity of ["N", "P"]) {
+      const name = `USB_D_${stage}_${polarity}`;
+      expect(manifest.nets.find((net) => net.name === name)?.stable_id).toBe(
+        `controller.net.usb_d_${polarity.toLowerCase()}_${stage.toLowerCase()}`,
+      );
+    }
+  }
+
   expect(manifest.board.holes).toHaveLength(14);
   expect(
     manifest.board.holes.filter((h) => h.ref === "J4").map((h) => h.stable_id),

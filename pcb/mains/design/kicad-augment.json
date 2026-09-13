@@ -231,7 +231,7 @@
           "AP63205 has no exposed pad; do not apply the removed TPS259470 split-land/via bank."
         ],
         "verification": "Native net/layer/clearance and final-unit thermal review.",
-        "status": "Declared; routing pending."
+        "status": "Applied and refilled in routing-guardrails ECO. Inspect again after detailed routing; physical thermal results remain unmeasured."
       }
     },
     {
@@ -346,6 +346,224 @@
         "text": "Release all final boards together through project manufacture gates. Include exact assembly/BOM/CPL, stencil, drills, harness and revised enclosure interfaces. F1 inlet/filter/PE are offboard; F2 motor and F3 branch fuses are on the mains PCB. No order or energizing implied.",
         "verification": "Project kicad-manufacture gates and independent CAM/assembly review; final sensor, load, temperature and interference commissioning remains separate.",
         "status": "Declared; native application and saved evidence pending."
+      }
+    },
+    {
+      "id": "mains.augment.routing-guardrails-zone",
+      "kind": "zone",
+      "owner": "kicad",
+      "target": {
+        "net_stable_id": "mains.net.gnd_iso"
+      },
+      "params": {
+        "planes": {
+          "net": "GND_ISO",
+          "layers": [
+            "F.Cu",
+            "B.Cu"
+          ],
+          "outline": [
+            [
+              88,
+              45
+            ],
+            [
+              190,
+              45
+            ],
+            [
+              190,
+              127
+            ],
+            [
+              146,
+              127
+            ],
+            [
+              146,
+              104
+            ],
+            [
+              88,
+              104
+            ]
+          ],
+          "vias": [
+            [
+              122.3,
+              72.3,
+              0.6,
+              0.3
+            ],
+            [
+              123.7,
+              72.3,
+              0.6,
+              0.3
+            ],
+            [
+              122.3,
+              79.3,
+              0.6,
+              0.3
+            ],
+            [
+              123.7,
+              79.3,
+              0.6,
+              0.3
+            ],
+            [
+              150.3,
+              81.3,
+              0.6,
+              0.3
+            ],
+            [
+              151.7,
+              81.3,
+              0.6,
+              0.3
+            ],
+            [
+              156.3,
+              81.3,
+              0.6,
+              0.3
+            ],
+            [
+              157.7,
+              81.3,
+              0.6,
+              0.3
+            ],
+            [
+              129.5,
+              87,
+              0.6,
+              0.3
+            ],
+            [
+              134.3,
+              84.7,
+              0.6,
+              0.3
+            ],
+            [
+              134.3,
+              85.5,
+              0.6,
+              0.3
+            ]
+          ]
+        },
+        "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove all floating islands. In2 remains available for power/signal routing; no arbitrary split power plane.",
+        "status": "Apply through native API and fill; verify saved zone connectivity/DRC."
+      }
+    },
+    {
+      "id": "mains.augment.routing-guardrails-via",
+      "kind": "via",
+      "owner": "kicad",
+      "target": {
+        "net_stable_id": "mains.net.gnd_iso"
+      },
+      "params": {
+        "placements_native_xy_diameter_drill_mm": [
+          [
+            122.3,
+            72.3,
+            0.6,
+            0.3
+          ],
+          [
+            123.7,
+            72.3,
+            0.6,
+            0.3
+          ],
+          [
+            122.3,
+            79.3,
+            0.6,
+            0.3
+          ],
+          [
+            123.7,
+            79.3,
+            0.6,
+            0.3
+          ],
+          [
+            150.3,
+            81.3,
+            0.6,
+            0.3
+          ],
+          [
+            151.7,
+            81.3,
+            0.6,
+            0.3
+          ],
+          [
+            156.3,
+            81.3,
+            0.6,
+            0.3
+          ],
+          [
+            157.7,
+            81.3,
+            0.6,
+            0.3
+          ],
+          [
+            129.5,
+            87,
+            0.6,
+            0.3
+          ],
+          [
+            134.3,
+            84.7,
+            0.6,
+            0.3
+          ],
+          [
+            134.3,
+            85.5,
+            0.6,
+            0.3
+          ]
+        ],
+        "tenting": "both sides",
+        "status": "Declared GND stitching/thermal vias; preserve source pads and every existing route."
+      }
+    },
+    {
+      "id": "mains.augment.routing-guardrails-custom_rule",
+      "kind": "custom_rule",
+      "owner": "kicad",
+      "target": {
+        "net_stable_id": "mains.net.gnd_iso"
+      },
+      "params": {
+        "policy": "Enforce routing defaults and exact power/USB/ground-reference/sensing constraints using native DRC plus pcb/tools/check_routing.py. No hardware or firmware scope change.",
+        "status": "Apply through native settings/GUI, exercise with intentionally bad scratch traces.",
+        "policy_file": "pcb/tools/routing-policy.json",
+        "verification": "Native negative DRC tests and check-routing.sh; full narrow-segment containment supplements native intersectsArea.",
+        "policy_sha256": "dd0085e3ae30f79d0cb61dd71c377b8f6ba74e327b639b0869c817c11d904756"
+      }
+    },
+    {
+      "id": "mains.augment.routing-fields",
+      "kind": "fabrication_note",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "category": "routing",
+        "text": "Synchronize hidden schematic fields (MPN, Datasheet, Description, StableID where present) into native footprints; preserve all pad/footprint geometry and connectivity."
       }
     }
   ],

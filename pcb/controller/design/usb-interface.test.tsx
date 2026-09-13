@@ -29,10 +29,10 @@ const expectedNets: Record<string, string[]> = {
   USB_VBUS: ["J4.A4", "J4.A9", "J4.B4", "J4.B9", "R42.1", "U9.5"],
   USB_CC1: ["J4.A5", "R40.1"],
   USB_CC2: ["J4.B5", "R41.1"],
-  USB_D_P_PORT: ["J4.A6", "J4.B6", "U9.1", "U9.6", "U8.3"],
-  USB_D_N_PORT: ["J4.A7", "J4.B7", "U9.3", "U9.4", "U8.4"],
-  USB_D_N_SWITCH: ["U8.6", "R44.1"],
-  USB_D_P_SWITCH: ["U8.7", "R45.1"],
+  USB_D_PORT_P: ["J4.A6", "J4.B6", "U9.1", "U9.6", "U8.3"],
+  USB_D_PORT_N: ["J4.A7", "J4.B7", "U9.3", "U9.4", "U8.4"],
+  USB_D_SWITCH_N: ["U8.6", "R44.1"],
+  USB_D_SWITCH_P: ["U8.7", "R45.1"],
   USB_D_N: ["R44.2"],
   USB_D_P: ["R45.2"],
   USB_VBUS_SENSE: ["R42.2", "R43.1", "U7.2"],
@@ -205,7 +205,7 @@ test("all USB schematic pins reach their electrical labels and NC pins stay isol
   // Prove the audit catches the original disconnected-label failure: source
   // connectivity remains intact when only its real signal labels are removed.
   const missingLabel = json.filter(
-    (e) => e.type !== "schematic_net_label" || e.text !== "USB_D_P_PORT",
+    (e) => e.type !== "schematic_net_label" || e.text !== "USB_D_PORT_P",
   );
   const broken = schematicConnectivity(missingLabel);
   expect(broken.get("J4.A6")).toEqual([]);
@@ -217,7 +217,7 @@ test("all USB schematic pins reach their electrical labels and NC pins stay isol
   ).toBe(true);
 
   const label = json.find(
-    (e) => e.type === "schematic_net_label" && e.text === "USB_D_P_PORT",
+    (e) => e.type === "schematic_net_label" && e.text === "USB_D_PORT_P",
   );
   if (!label || label.type !== "schematic_net_label")
     throw new Error("Missing USB data label");
@@ -283,11 +283,11 @@ test("all USB schematic pins reach their electrical labels and NC pins stay isol
 const signalIslands: Record<string, string[][]> = {
   USB_CC1: [["J4.A5"], ["R40.1"]],
   USB_CC2: [["J4.B5"], ["R41.1"]],
-  USB_D_P_PORT: [["J4.A6", "J4.B6"], ["U9.1", "U9.6"], ["U8.3"]],
-  USB_D_N_PORT: [["J4.A7", "J4.B7"], ["U9.3", "U9.4"], ["U8.4"]],
+  USB_D_PORT_P: [["J4.A6", "J4.B6"], ["U9.1", "U9.6"], ["U8.3"]],
+  USB_D_PORT_N: [["J4.A7", "J4.B7"], ["U9.3", "U9.4"], ["U8.4"]],
   USB_SWITCH_OE_N: [["U7.4"], ["U8.10", "R46.2"]],
-  USB_D_P_SWITCH: [["U8.7"], ["R45.1"]],
-  USB_D_N_SWITCH: [["U8.6"], ["R44.1"]],
+  USB_D_SWITCH_P: [["U8.7"], ["R45.1"]],
+  USB_D_SWITCH_N: [["U8.6"], ["R44.1"]],
 };
 
 test("sixteen signal labels each name exactly one distinct useful USB wire island", async () => {

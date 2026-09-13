@@ -1,3 +1,9 @@
+Current routing preparation: planes, fills, ground/thermal vias and enforced
+routing rules are applied. Follow the [routing guide](../../../docs/design/routing-guardrails.md)
+and run `sh scripts/check-routing.sh mains`. The current ECO receipt is
+[evidence/routing-guardrails/eco-acceptance.json](evidence/routing-guardrails/eco-acceptance.json).
+Earlier evidence/counts below describe the pre-fill placement milestone.
+
 # Mains native project
 
 `mains.kicad_sch` and `mains.kicad_pcb` are the adopted, unrouted shared-supply

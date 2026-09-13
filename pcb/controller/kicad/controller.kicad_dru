@@ -1,0 +1,429 @@
+(version 1)
+
+# Generated reference; install through KiCad Board Setup > Custom Rules.
+
+(rule "Ordinary through vias"
+  (condition "A.Type == 'Via'")
+  (constraint via_diameter (min 0.6mm)) (constraint hole_size (min 0.3mm)))
+
+(rule "No blind or microvias"
+  (condition "A.Type == 'Via'")
+  (constraint disallow micro_via blind_via buried_via))
+
+(rule "V5_PSU routing width"
+  (condition "A.NetName == 'V5_PSU'")
+  (constraint track_width (min 2mm) (opt 2mm)))
+
+(rule "V5_PSU outer copper only"
+  (condition "A.NetName == 'V5_PSU' && A.Layer == 'In*.Cu'")
+  (constraint disallow track via))
+
+(rule "V5_PSU no single power via"
+  (condition "A.NetName == 'V5_PSU'")
+  (constraint disallow via))
+
+(rule "Neck V5_PSU D1.2.0"
+  (condition "A.NetName == 'V5_PSU' && A.intersectsArea('Neck V5_PSU D1.2.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "Neck V5_PSU J1.1.0"
+  (condition "A.NetName == 'V5_PSU' && A.intersectsArea('Neck V5_PSU J1.1.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "Neck V5_PSU R14.1.0"
+  (condition "A.NetName == 'V5_PSU' && A.intersectsArea('Neck V5_PSU R14.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V5_PSU TP2.1.0"
+  (condition "A.NetName == 'V5_PSU' && A.intersectsArea('Neck V5_PSU TP2.1.0')")
+  (constraint track_width (min 2mm) (opt 2mm)))
+
+(rule "V5_SERVICE routing width"
+  (condition "A.NetName == 'V5_SERVICE'")
+  (constraint track_width (min 2mm) (opt 2mm)))
+
+(rule "V5_SERVICE outer copper only"
+  (condition "A.NetName == 'V5_SERVICE' && A.Layer == 'In*.Cu'")
+  (constraint disallow track via))
+
+(rule "V5_SERVICE no single power via"
+  (condition "A.NetName == 'V5_SERVICE'")
+  (constraint disallow via))
+
+(rule "Neck V5_SERVICE C20.1.0"
+  (condition "A.NetName == 'V5_SERVICE' && A.intersectsArea('Neck V5_SERVICE C20.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V5_SERVICE C21.1.0"
+  (condition "A.NetName == 'V5_SERVICE' && A.intersectsArea('Neck V5_SERVICE C21.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V5_SERVICE D2.2.0"
+  (condition "A.NetName == 'V5_SERVICE' && A.intersectsArea('Neck V5_SERVICE D2.2.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "Neck V5_SERVICE J2.1.0"
+  (condition "A.NetName == 'V5_SERVICE' && A.intersectsArea('Neck V5_SERVICE J2.1.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "V5_LOGIC routing width"
+  (condition "A.NetName == 'V5_LOGIC'")
+  (constraint track_width (min 2mm) (opt 2mm)))
+
+(rule "V5_LOGIC outer copper only"
+  (condition "A.NetName == 'V5_LOGIC' && A.Layer == 'In*.Cu'")
+  (constraint disallow track via))
+
+(rule "V5_LOGIC no single power via"
+  (condition "A.NetName == 'V5_LOGIC'")
+  (constraint disallow via))
+
+(rule "Neck V5_LOGIC C1.1.0"
+  (condition "A.NetName == 'V5_LOGIC' && A.intersectsArea('Neck V5_LOGIC C1.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V5_LOGIC C2.1.0"
+  (condition "A.NetName == 'V5_LOGIC' && A.intersectsArea('Neck V5_LOGIC C2.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V5_LOGIC C42.1.0"
+  (condition "A.NetName == 'V5_LOGIC' && A.intersectsArea('Neck V5_LOGIC C42.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V5_LOGIC C7.1.0"
+  (condition "A.NetName == 'V5_LOGIC' && A.intersectsArea('Neck V5_LOGIC C7.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V5_LOGIC D1.1.0"
+  (condition "A.NetName == 'V5_LOGIC' && A.intersectsArea('Neck V5_LOGIC D1.1.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "Neck V5_LOGIC D2.1.0"
+  (condition "A.NetName == 'V5_LOGIC' && A.intersectsArea('Neck V5_LOGIC D2.1.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "Neck V5_LOGIC TP3.1.0"
+  (condition "A.NetName == 'V5_LOGIC' && A.intersectsArea('Neck V5_LOGIC TP3.1.0')")
+  (constraint track_width (min 2mm) (opt 2mm)))
+
+(rule "Neck V5_LOGIC U2.2.0"
+  (condition "A.NetName == 'V5_LOGIC' && A.intersectsArea('Neck V5_LOGIC U2.2.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V5_LOGIC U2.3.0"
+  (condition "A.NetName == 'V5_LOGIC' && A.intersectsArea('Neck V5_LOGIC U2.3.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V5_LOGIC U5.1.0"
+  (condition "A.NetName == 'V5_LOGIC' && A.intersectsArea('Neck V5_LOGIC U5.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V5_LOGIC U5.5.0"
+  (condition "A.NetName == 'V5_LOGIC' && A.intersectsArea('Neck V5_LOGIC U5.5.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "V12_PUMP routing width"
+  (condition "A.NetName == 'V12_PUMP'")
+  (constraint track_width (min 2mm) (opt 2mm)))
+
+(rule "V12_PUMP outer copper only"
+  (condition "A.NetName == 'V12_PUMP' && A.Layer == 'In*.Cu'")
+  (constraint disallow track via))
+
+(rule "V12_PUMP no single power via"
+  (condition "A.NetName == 'V12_PUMP'")
+  (constraint disallow via))
+
+(rule "Neck V12_PUMP C47.1.0"
+  (condition "A.NetName == 'V12_PUMP' && A.intersectsArea('Neck V12_PUMP C47.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V12_PUMP D10.1.0"
+  (condition "A.NetName == 'V12_PUMP' && A.intersectsArea('Neck V12_PUMP D10.1.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "Neck V12_PUMP D11.1.0"
+  (condition "A.NetName == 'V12_PUMP' && A.intersectsArea('Neck V12_PUMP D11.1.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "Neck V12_PUMP D9.1.0"
+  (condition "A.NetName == 'V12_PUMP' && A.intersectsArea('Neck V12_PUMP D9.1.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "Neck V12_PUMP J6.1.0"
+  (condition "A.NetName == 'V12_PUMP' && A.intersectsArea('Neck V12_PUMP J6.1.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "Neck V12_PUMP J7.1.0"
+  (condition "A.NetName == 'V12_PUMP' && A.intersectsArea('Neck V12_PUMP J7.1.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "Neck V12_PUMP J8.1.0"
+  (condition "A.NetName == 'V12_PUMP' && A.intersectsArea('Neck V12_PUMP J8.1.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "Neck V12_PUMP J9.1.0"
+  (condition "A.NetName == 'V12_PUMP' && A.intersectsArea('Neck V12_PUMP J9.1.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "TRANSFER_DRAIN routing width"
+  (condition "A.NetName == 'TRANSFER_DRAIN'")
+  (constraint track_width (min 1mm) (opt 1mm)))
+
+(rule "TRANSFER_DRAIN outer copper only"
+  (condition "A.NetName == 'TRANSFER_DRAIN' && A.Layer == 'In*.Cu'")
+  (constraint disallow track via))
+
+(rule "TRANSFER_DRAIN no single power via"
+  (condition "A.NetName == 'TRANSFER_DRAIN'")
+  (constraint disallow via))
+
+(rule "Neck TRANSFER_DRAIN D9.2.0"
+  (condition "A.NetName == 'TRANSFER_DRAIN' && A.intersectsArea('Neck TRANSFER_DRAIN D9.2.0')")
+  (constraint track_width (min 1mm) (opt 1mm)))
+
+(rule "Neck TRANSFER_DRAIN J7.2.0"
+  (condition "A.NetName == 'TRANSFER_DRAIN' && A.intersectsArea('Neck TRANSFER_DRAIN J7.2.0')")
+  (constraint track_width (min 1mm) (opt 1mm)))
+
+(rule "Neck TRANSFER_DRAIN Q2.3.0"
+  (condition "A.NetName == 'TRANSFER_DRAIN' && A.intersectsArea('Neck TRANSFER_DRAIN Q2.3.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "CHLORINE_DRAIN routing width"
+  (condition "A.NetName == 'CHLORINE_DRAIN'")
+  (constraint track_width (min 1mm) (opt 1mm)))
+
+(rule "CHLORINE_DRAIN outer copper only"
+  (condition "A.NetName == 'CHLORINE_DRAIN' && A.Layer == 'In*.Cu'")
+  (constraint disallow track via))
+
+(rule "CHLORINE_DRAIN no single power via"
+  (condition "A.NetName == 'CHLORINE_DRAIN'")
+  (constraint disallow via))
+
+(rule "Neck CHLORINE_DRAIN D10.2.0"
+  (condition "A.NetName == 'CHLORINE_DRAIN' && A.intersectsArea('Neck CHLORINE_DRAIN D10.2.0')")
+  (constraint track_width (min 1mm) (opt 1mm)))
+
+(rule "Neck CHLORINE_DRAIN J8.2.0"
+  (condition "A.NetName == 'CHLORINE_DRAIN' && A.intersectsArea('Neck CHLORINE_DRAIN J8.2.0')")
+  (constraint track_width (min 1mm) (opt 1mm)))
+
+(rule "Neck CHLORINE_DRAIN Q3.3.0"
+  (condition "A.NetName == 'CHLORINE_DRAIN' && A.intersectsArea('Neck CHLORINE_DRAIN Q3.3.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "DECHLOR_DRAIN routing width"
+  (condition "A.NetName == 'DECHLOR_DRAIN'")
+  (constraint track_width (min 1mm) (opt 1mm)))
+
+(rule "DECHLOR_DRAIN outer copper only"
+  (condition "A.NetName == 'DECHLOR_DRAIN' && A.Layer == 'In*.Cu'")
+  (constraint disallow track via))
+
+(rule "DECHLOR_DRAIN no single power via"
+  (condition "A.NetName == 'DECHLOR_DRAIN'")
+  (constraint disallow via))
+
+(rule "Neck DECHLOR_DRAIN D11.2.0"
+  (condition "A.NetName == 'DECHLOR_DRAIN' && A.intersectsArea('Neck DECHLOR_DRAIN D11.2.0')")
+  (constraint track_width (min 1mm) (opt 1mm)))
+
+(rule "Neck DECHLOR_DRAIN J9.2.0"
+  (condition "A.NetName == 'DECHLOR_DRAIN' && A.intersectsArea('Neck DECHLOR_DRAIN J9.2.0')")
+  (constraint track_width (min 1mm) (opt 1mm)))
+
+(rule "Neck DECHLOR_DRAIN Q4.3.0"
+  (condition "A.NetName == 'DECHLOR_DRAIN' && A.intersectsArea('Neck DECHLOR_DRAIN Q4.3.0')")
+  (constraint track_width (min 0.6mm) (opt 0.6mm)))
+
+(rule "V3V3 routing width"
+  (condition "A.NetName == 'V3V3'")
+  (constraint track_width (min 1mm) (opt 1mm)))
+
+(rule "Neck V3V3 C11.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 C11.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 C12.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 C12.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 C3.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 C3.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 C30.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 C30.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 C31.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 C31.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 C4.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 C4.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 C40.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 C40.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 C41.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 C41.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 C45.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 C45.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 C46.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 C46.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 C5.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 C5.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 C6.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 C6.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 L1.2.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 L1.2.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 R12.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 R12.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 R46.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 R46.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 R50.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 R50.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 R51.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 R51.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 R52.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 R52.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 R53.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 R53.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 R60.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 R60.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 R61.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 R61.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 R66.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 R66.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 R72.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 R72.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 R73.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 R73.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 TP4.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 TP4.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 U1.2.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 U1.2.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 U12.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 U12.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 U12.8.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 U12.8.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 U2.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 U2.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 U3.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 U3.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 U3.8.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 U3.8.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 U4.6.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 U4.6.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 U6.5.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 U6.5.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 U7.5.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 U7.5.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "Neck V3V3 U8.1.0"
+  (condition "A.NetName == 'V3V3' && A.intersectsArea('Neck V3V3 U8.1.0')")
+  (constraint track_width (min 0.3mm) (opt 0.3mm)))
+
+(rule "L2 ground reference"
+  (condition "A.NetName != 'GND'")
+  (layer "In1.Cu")
+  (constraint disallow track zone))
+
+(rule "USB routing geometry"
+  (condition "A.NetName == 'USB_D_*'")
+  (constraint track_width (min 0.24mm) (opt 0.24mm) (max 0.24mm)) (constraint diff_pair_gap (min 0.15mm) (opt 0.15mm) (max 0.15mm)))
+
+(rule "USB no vias"
+  (condition "A.NetName == 'USB_D_*'")
+  (constraint disallow via))
+
+(rule "USB front only"
+  (condition "A.NetName == 'USB_D_*' && A.Layer != 'F.Cu'")
+  (constraint disallow track))
+
+(rule "USB side ground spacing"
+  (condition "A.Type != 'Pad' && B.Type != 'Pad' && ((A.NetName == 'USB_D_*' && B.NetName == 'GND') || (B.NetName == 'USB_D_*' && A.NetName == 'GND'))")
+  (layer "F.Cu")
+  (constraint clearance (min 0.5mm)))
+
+(rule "Module ground via 118.07 51.585"
+  (condition "A.Type == 'Via' && A.NetName == 'GND' && A.Position_X == 118.07mm && A.Position_Y == 51.585mm")
+  (constraint via_diameter (min 0.45mm)) (constraint hole_size (min 0.2mm)))
+
+(rule "Module ground via 118.07 52.835"
+  (condition "A.Type == 'Via' && A.NetName == 'GND' && A.Position_X == 118.07mm && A.Position_Y == 52.835mm")
+  (constraint via_diameter (min 0.45mm)) (constraint hole_size (min 0.2mm)))
+
+(rule "Module ground via 119.32 51.585"
+  (condition "A.Type == 'Via' && A.NetName == 'GND' && A.Position_X == 119.32mm && A.Position_Y == 51.585mm")
+  (constraint via_diameter (min 0.45mm)) (constraint hole_size (min 0.2mm)))
+
+(rule "Module ground via 119.32 52.835"
+  (condition "A.Type == 'Via' && A.NetName == 'GND' && A.Position_X == 119.32mm && A.Position_Y == 52.835mm")
+  (constraint via_diameter (min 0.45mm)) (constraint hole_size (min 0.2mm)))
+
+(rule "Buck switch width"
+  (condition "A.NetName == 'BUCK_SW'")
+  (constraint track_width (min 0.3mm) (opt 1mm)))
+
+(rule "Buck switch no vias"
+  (condition "A.NetName == 'BUCK_SW'")
+  (constraint disallow via))

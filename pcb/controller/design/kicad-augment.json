@@ -130,11 +130,11 @@
         "net_class": "USB90",
         "nets": [
           "USB_D_N",
-          "USB_D_N_PORT",
-          "USB_D_N_SWITCH",
+          "USB_D_PORT_N",
+          "USB_D_SWITCH_N",
           "USB_D_P",
-          "USB_D_P_PORT",
-          "USB_D_P_SWITCH"
+          "USB_D_PORT_P",
+          "USB_D_SWITCH_P"
         ],
         "impedance_ohm": 90,
         "tolerance_percent": 10,
@@ -208,7 +208,7 @@
           "Keep SW copper small, with quiet FB routing. There is no U2 exposed ground pad."
         ],
         "verification": "Native zone net/layer/fill readback, connected area and return-path inspection, DRC; final closed-enclosure thermal tests remain required.",
-        "status": "declared; zones/vias not yet applied"
+        "status": "Applied and refilled in routing-guardrails ECO. Inspect again after detailed routing; physical thermal results remain unmeasured."
       }
     },
     {
@@ -245,7 +245,7 @@
           "Preserve close returns at module GND1/28 and keep every via/copper structure out of the antenna overhang."
         ],
         "verification": "Native GND assignment and aperture layers; nominal drill-to-paste 0.218198 mm and drill-to-mask-opening 0.147487 mm. Final aperture/filled-via process must match the manufacturing package.",
-        "status": "declared; not yet inserted"
+        "status": "Applied and refilled in routing-guardrails ECO. Inspect again after detailed routing; physical thermal results remain unmeasured."
       }
     },
     {
@@ -423,6 +423,385 @@
         "text": "Export all three final boards together after G-02/G-03/G-04: Gerbers, PTH/NPTH drills, assembly BOM/CPL with exact exclusions, stencil, netlist/rule receipts, harness drawings and reviewed mechanical interface. State the exact stack, 81-99 ohm USB acceptance, U1 tenting. No part purchase or fabrication order is implied.",
         "verification": "Use project kicad-manufacture checks and independent CAM/assembly review; source/simulation tests do not establish electrical or operating acceptance.",
         "status": "declared; no manufacturing package released"
+      }
+    },
+    {
+      "id": "controller.augment.routing-guardrails-zone",
+      "kind": "zone",
+      "owner": "kicad",
+      "target": {
+        "net_stable_id": "controller.net.gnd"
+      },
+      "params": {
+        "planes": {
+          "net": "GND",
+          "layers": [
+            "F.Cu",
+            "In1.Cu",
+            "B.Cu"
+          ],
+          "outline": [
+            [
+              45,
+              45
+            ],
+            [
+              155,
+              45
+            ],
+            [
+              155,
+              155
+            ],
+            [
+              45,
+              155
+            ]
+          ],
+          "vias": [
+            [
+              80.7,
+              100.8,
+              0.6,
+              0.3
+            ],
+            [
+              80.7,
+              102,
+              0.6,
+              0.3
+            ],
+            [
+              74.7,
+              100.8,
+              0.6,
+              0.3
+            ],
+            [
+              74.7,
+              102,
+              0.6,
+              0.3
+            ],
+            [
+              97.4,
+              94.4,
+              0.6,
+              0.3
+            ],
+            [
+              97.4,
+              95.6,
+              0.6,
+              0.3
+            ],
+            [
+              97.4,
+              98.9,
+              0.6,
+              0.3
+            ],
+            [
+              97.4,
+              100.1,
+              0.6,
+              0.3
+            ],
+            [
+              81.6,
+              98.1,
+              0.6,
+              0.3
+            ],
+            [
+              81.6,
+              98.9,
+              0.6,
+              0.3
+            ],
+            [
+              82.3,
+              95.8,
+              0.6,
+              0.3
+            ],
+            [
+              82.3,
+              96.6,
+              0.6,
+              0.3
+            ],
+            [
+              118.07,
+              51.585,
+              0.45,
+              0.2
+            ],
+            [
+              118.07,
+              52.835,
+              0.45,
+              0.2
+            ],
+            [
+              119.32,
+              51.585,
+              0.45,
+              0.2
+            ],
+            [
+              119.32,
+              52.835,
+              0.45,
+              0.2
+            ],
+            [
+              137,
+              135.39999999999998,
+              0.6,
+              0.3
+            ],
+            [
+              137,
+              136.2,
+              0.6,
+              0.3
+            ],
+            [
+              137,
+              137.0,
+              0.6,
+              0.3
+            ],
+            [
+              137,
+              117.4,
+              0.6,
+              0.3
+            ],
+            [
+              137,
+              118.2,
+              0.6,
+              0.3
+            ],
+            [
+              137,
+              119.0,
+              0.6,
+              0.3
+            ],
+            [
+              137,
+              99.4,
+              0.6,
+              0.3
+            ],
+            [
+              137,
+              100.2,
+              0.6,
+              0.3
+            ],
+            [
+              137,
+              101.0,
+              0.6,
+              0.3
+            ]
+          ]
+        },
+        "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove all floating islands. In2 remains available for power/signal routing; no arbitrary split power plane.",
+        "status": "Apply through native API and fill; verify saved zone connectivity/DRC."
+      }
+    },
+    {
+      "id": "controller.augment.routing-guardrails-via",
+      "kind": "via",
+      "owner": "kicad",
+      "target": {
+        "net_stable_id": "controller.net.gnd"
+      },
+      "params": {
+        "placements_native_xy_diameter_drill_mm": [
+          [
+            80.7,
+            100.8,
+            0.6,
+            0.3
+          ],
+          [
+            80.7,
+            102,
+            0.6,
+            0.3
+          ],
+          [
+            74.7,
+            100.8,
+            0.6,
+            0.3
+          ],
+          [
+            74.7,
+            102,
+            0.6,
+            0.3
+          ],
+          [
+            97.4,
+            94.4,
+            0.6,
+            0.3
+          ],
+          [
+            97.4,
+            95.6,
+            0.6,
+            0.3
+          ],
+          [
+            97.4,
+            98.9,
+            0.6,
+            0.3
+          ],
+          [
+            97.4,
+            100.1,
+            0.6,
+            0.3
+          ],
+          [
+            81.6,
+            98.1,
+            0.6,
+            0.3
+          ],
+          [
+            81.6,
+            98.9,
+            0.6,
+            0.3
+          ],
+          [
+            82.3,
+            95.8,
+            0.6,
+            0.3
+          ],
+          [
+            82.3,
+            96.6,
+            0.6,
+            0.3
+          ],
+          [
+            118.07,
+            51.585,
+            0.45,
+            0.2
+          ],
+          [
+            118.07,
+            52.835,
+            0.45,
+            0.2
+          ],
+          [
+            119.32,
+            51.585,
+            0.45,
+            0.2
+          ],
+          [
+            119.32,
+            52.835,
+            0.45,
+            0.2
+          ],
+          [
+            137,
+            135.39999999999998,
+            0.6,
+            0.3
+          ],
+          [
+            137,
+            136.2,
+            0.6,
+            0.3
+          ],
+          [
+            137,
+            137.0,
+            0.6,
+            0.3
+          ],
+          [
+            137,
+            117.4,
+            0.6,
+            0.3
+          ],
+          [
+            137,
+            118.2,
+            0.6,
+            0.3
+          ],
+          [
+            137,
+            119.0,
+            0.6,
+            0.3
+          ],
+          [
+            137,
+            99.4,
+            0.6,
+            0.3
+          ],
+          [
+            137,
+            100.2,
+            0.6,
+            0.3
+          ],
+          [
+            137,
+            101.0,
+            0.6,
+            0.3
+          ]
+        ],
+        "tenting": "both sides",
+        "status": "Declared GND stitching/thermal vias; preserve source pads and every existing route."
+      }
+    },
+    {
+      "id": "controller.augment.routing-guardrails-custom_rule",
+      "kind": "custom_rule",
+      "owner": "kicad",
+      "target": {
+        "net_stable_id": "controller.net.gnd"
+      },
+      "params": {
+        "policy": "Enforce routing defaults and exact power/USB/ground-reference/sensing constraints using native DRC plus pcb/tools/check_routing.py. No hardware or firmware scope change.",
+        "status": "Apply through native settings/GUI, exercise with intentionally bad scratch traces.",
+        "policy_file": "pcb/tools/routing-policy.json",
+        "verification": "Native negative DRC tests and check-routing.sh; full narrow-segment containment supplements native intersectsArea.",
+        "policy_sha256": "610604c6737b631b08ab1073978cb0e701418032858b0956ec4648ba9ebe07a5"
+      }
+    },
+    {
+      "id": "controller.augment.routing-fields",
+      "kind": "fabrication_note",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "category": "routing",
+        "text": "Synchronize hidden schematic fields (MPN, Datasheet, Description, StableID where present) into native footprints; preserve all pad/footprint geometry and connectivity."
       }
     }
   ]

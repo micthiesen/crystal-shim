@@ -111,6 +111,9 @@ io-only edge-http and shares the existing network/ingress/storage owners; its No
 UI tests and resolved-feature guard belong to the validation gate. Install PCB dependencies first with
 `cd pcb && bun install --frozen-lockfile`.
 Use `python3 .agents/skills/sync/sync-status.py` after shared-tooling changes.
+For owner routing, use `sh scripts/check-routing.sh [board]` and the
+[prepared routing rules](docs/design/routing-guardrails.md). Keep the native
+projects, custom rules and existing planes/vias together; use netclass sizes.
 For a real board also run the `$pcb` source, render, parity, ERC/DRC and handoff gates;
 hardware tests live in the commissioning matrix and cannot be passed by simulation.
 

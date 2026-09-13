@@ -193,9 +193,17 @@ export function createControllerManifest(json: CircuitJson) {
   const sourceNets = json.filter((e) => e.type === "source_net");
   if (sourceNets.length !== 63 || new Set(sourceNets.map((n) => n.name)).size !== 63)
     throw new Error("Expected 61 unique named controller nets");
+  // KiCad differential routing recognizes polarity at the end of the name.
+  // Preserve accepted net identities across the USB display-name correction.
+  const acceptedUsbNetNames: Record<string, string> = {
+    USB_D_PORT_N: "usb_d_n_port",
+    USB_D_PORT_P: "usb_d_p_port",
+    USB_D_SWITCH_N: "usb_d_n_switch",
+    USB_D_SWITCH_P: "usb_d_p_switch",
+  };
   const nets = sourceNets
     .map((net) => ({
-      stable_id: `controller.net.${net.name.toLowerCase()}`,
+      stable_id: `controller.net.${acceptedUsbNetNames[net.name] ?? net.name.toLowerCase()}`,
       name: net.name,
       endpoints: ports
         .filter((port) => drawn.get(port.source_port_id)?.includes(net.name))

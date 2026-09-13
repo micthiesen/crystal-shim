@@ -123,6 +123,168 @@
         "text": "Unconnected items allowed only for initial unrouted placement. Native enabled checks and source parity still required before routing;zero unconnected for fabrication.",
         "category": "routing"
       }
+    },
+    {
+      "id": "sensor.augment.routing-guardrails-zone",
+      "kind": "zone",
+      "owner": "kicad",
+      "target": {
+        "net_stable_id": "sensor.net.gnd"
+      },
+      "params": {
+        "planes": {
+          "net": "GND",
+          "layers": [
+            "F.Cu",
+            "B.Cu"
+          ],
+          "outline": [
+            [
+              81,
+              57
+            ],
+            [
+              119,
+              57
+            ],
+            [
+              119,
+              78.8
+            ],
+            [
+              81,
+              78.8
+            ]
+          ],
+          "vias": [
+            [
+              84,
+              69.2,
+              0.6,
+              0.3
+            ],
+            [
+              94,
+              69.2,
+              0.6,
+              0.3
+            ],
+            [
+              86.8,
+              72,
+              0.6,
+              0.3
+            ],
+            [
+              108.5,
+              75.3,
+              0.6,
+              0.3
+            ],
+            [
+              109.5,
+              73.4,
+              0.6,
+              0.3
+            ],
+            [
+              112,
+              73,
+              0.6,
+              0.3
+            ],
+            [
+              113.8,
+              62,
+              0.6,
+              0.3
+            ]
+          ]
+        },
+        "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove all floating islands. In2 remains available for power/signal routing; no arbitrary split power plane.",
+        "status": "Apply through native API and fill; verify saved zone connectivity/DRC."
+      }
+    },
+    {
+      "id": "sensor.augment.routing-guardrails-via",
+      "kind": "via",
+      "owner": "kicad",
+      "target": {
+        "net_stable_id": "sensor.net.gnd"
+      },
+      "params": {
+        "placements_native_xy_diameter_drill_mm": [
+          [
+            84,
+            69.2,
+            0.6,
+            0.3
+          ],
+          [
+            94,
+            69.2,
+            0.6,
+            0.3
+          ],
+          [
+            86.8,
+            72,
+            0.6,
+            0.3
+          ],
+          [
+            108.5,
+            75.3,
+            0.6,
+            0.3
+          ],
+          [
+            109.5,
+            73.4,
+            0.6,
+            0.3
+          ],
+          [
+            112,
+            73,
+            0.6,
+            0.3
+          ],
+          [
+            113.8,
+            62,
+            0.6,
+            0.3
+          ]
+        ],
+        "tenting": "both sides",
+        "status": "Declared GND stitching/thermal vias; preserve source pads and every existing route."
+      }
+    },
+    {
+      "id": "sensor.augment.routing-guardrails-custom_rule",
+      "kind": "custom_rule",
+      "owner": "kicad",
+      "target": {
+        "net_stable_id": "sensor.net.gnd"
+      },
+      "params": {
+        "policy": "Enforce routing defaults and exact power/USB/ground-reference/sensing constraints using native DRC plus pcb/tools/check_routing.py. No hardware or firmware scope change.",
+        "status": "Apply through native settings/GUI, exercise with intentionally bad scratch traces.",
+        "policy_file": "pcb/tools/routing-policy.json",
+        "verification": "Native negative DRC tests and check-routing.sh; full narrow-segment containment supplements native intersectsArea.",
+        "policy_sha256": "3e90a16f1b042b4e27c0214fde997d79add3320076229729dd818b86066b57cc"
+      }
+    },
+    {
+      "id": "sensor.augment.routing-fields",
+      "kind": "fabrication_note",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "category": "routing",
+        "text": "Synchronize hidden schematic fields (MPN, Datasheet, Description, StableID where present) into native footprints; preserve all pad/footprint geometry and connectivity."
+      }
     }
   ]
 }

@@ -1,0 +1,1499 @@
+Errors: 0
+Warnings: 0
+Errors: 0
+Warnings: 101
+- source_component_pins_underspecified_warning: All pins on J6 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on J7 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on D9 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on Q2 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on J8 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on D10 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on Q3 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on J9 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on D11 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on Q4 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on J5 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on U12 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on D8 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on J1 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on U6 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on Q1 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on D1 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on D2 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on U2 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on J2 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on SW1 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on SW2 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on SW3 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on D4 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on U9 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on U5 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on D7 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on J3 are underspecified (no pinAttributes set)
+- source_component_pins_underspecified_warning: All pins on U3 are underspecified (no pinAttributes set)
+- source_no_power_pin_defined_warning: J6 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: J7 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: D9 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: Q2 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: J8 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: D10 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: Q3 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: J9 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: D11 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: Q4 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: J5 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: U12 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: U13 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: D8 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: J1 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: U4 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: U6 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: Q1 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: D1 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: D2 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: U2 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: J2 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: U1 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: SW1 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: SW2 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: SW3 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: D4 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: J4 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: U9 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: U8 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: U7 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: U5 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: D7 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: J3 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: U11 has no pin with requires_power=true
+- source_no_power_pin_defined_warning: U3 has no pin with requires_power=true
+- source_no_ground_pin_defined_warning: J6 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: J7 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: D9 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: Q2 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: J8 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: D10 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: Q3 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: J9 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: D11 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: Q4 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: J5 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: U12 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: U13 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: D8 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: J1 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: U4 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: U6 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: Q1 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: D1 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: D2 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: U2 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: J2 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: U1 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: SW1 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: SW2 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: SW3 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: D4 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: J4 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: U9 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: U8 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: U7 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: U5 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: D7 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: J3 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: U11 has no pin with requires_ground=true
+- source_no_ground_pin_defined_warning: U3 has no pin with requires_ground=true
+<SchematicSheet name="Pumps" id="schematic_sheet_7">
+<SchematicBoxPositions>
+<SchematicBoxPlacement componentName="C47" positionAnchor="center" schX="-10" schY="12" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="Q2" positionAnchor="center" schX="0" schY="6" width="1.2" height="0.6" />
+<SchematicBoxPlacement componentName="Q3" positionAnchor="center" schX="0" schY="-4" width="1.2" height="0.6" />
+<SchematicBoxPlacement componentName="Q4" positionAnchor="center" schX="0" schY="-14" width="1.2" height="0.6" />
+</SchematicBoxPositions>
+<SchematicPlacementIssues>
+<CapacitorSymbolHorizontal componentName="C47" schX="-10" schY="12" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="Q2" pinSide="right" edgeSide="top" pinName="D" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.4" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="Q2" pinSide="right" edgeSide="bottom" pinName="D" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.4" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="Q3" pinSide="right" edgeSide="top" pinName="D" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.4" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="Q3" pinSide="right" edgeSide="bottom" pinName="D" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.4" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="Q4" pinSide="right" edgeSide="top" pinName="D" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.4" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="Q4" pinSide="right" edgeSide="bottom" pinName="D" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.4" />
+</SchematicPlacementIssues>
+</SchematicSheet>
+<SchematicSheet name="Reservoir" id="schematic_sheet_8">
+<SchematicBoxPositions>
+<SchematicBoxPlacement componentName="U13" positionAnchor="center" schX="8" schY="-5" width="1.5" height="0.8" />
+<SchematicBoxPlacement componentName="C45" positionAnchor="center" schX="-3" schY="6" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="C46" positionAnchor="center" schX="0" schY="6" width="0.6" height="0.65" />
+</SchematicBoxPositions>
+<SchematicPlacementIssues>
+<CapacitorSymbolHorizontal componentName="C45" schX="-3" schY="6" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C46" schX="0" schY="6" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="U13" pinSide="right" edgeSide="top" pinName="IO2" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.6" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="U13" pinSide="right" edgeSide="bottom" pinName="IO1" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.6" />
+</SchematicPlacementIssues>
+</SchematicSheet>
+<SchematicSheet name="Relay" id="schematic_sheet_0">
+<SchematicBoxPositions>
+<SchematicBoxPlacement componentName="J1" positionAnchor="center" schX="13.5" schY="3" width="2.1" height="0.6" />
+<SchematicBoxPlacement componentName="U4" positionAnchor="center" schX="-6" schY="0" width="1.8" height="0.8" />
+<SchematicBoxPlacement componentName="R15" positionAnchor="center" schX="-9" schY="0" width="0.9" height="0.6" />
+<SchematicBoxPlacement componentName="R12" positionAnchor="center" schX="-3" schY="3" width="0.9" height="0.6" />
+<SchematicBoxPlacement componentName="C11" positionAnchor="center" schX="-6" schY="-3" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="U6" positionAnchor="center" schX="0" schY="0" width="1.4" height="0.8" />
+<SchematicBoxPlacement componentName="C12" positionAnchor="center" schX="0" schY="-3" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="Q1" positionAnchor="center" schX="9.75" schY="0" width="1.2" height="0.6" />
+<SchematicBoxPlacement componentName="R11" positionAnchor="center" schX="5.25" schY="-3" width="0.9" height="0.6" />
+</SchematicBoxPositions>
+<SchematicPlacementIssues>
+<CapacitorSymbolHorizontal componentName="C11" schX="-6" schY="-3" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C12" schX="0" schY="-3" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="J1" pinSide="right" edgeSide="top" pinName="COIL_DRAIN" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.4" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="J1" pinSide="right" edgeSide="bottom" pinName="COIL_DRAIN" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.4" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="U6" pinSide="right" edgeSide="top" pinName="VCC" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.6" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="U6" pinSide="right" edgeSide="bottom" pinName="Y" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.6" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="Q1" pinSide="right" edgeSide="top" pinName="D" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.4" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="Q1" pinSide="right" edgeSide="bottom" pinName="D" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.4" />
+<TraceCanBeSimplifiedByMovingComponent schematicTraceId="schematic_trace_67" targetComponentName="C12" deltaSchX="0" deltaSchY="-0.5" newSchX="0" newSchY="-3.5" currentTurnCount="3" suggestedTurnCount="1" message="move C12 down by 0.5 (to schX=0, schY=-3.5) to reduce this trace from 3 turns to 1" />
+<TraceCanBeSimplifiedByMovingComponent schematicTraceId="schematic_trace_68" targetComponentName="R12" deltaSchX="-4.5" deltaSchY="0" newSchX="-7.5" newSchY="3" currentTurnCount="3" suggestedTurnCount="1" message="move R12 left by 4.5 (to schX=-7.5, schY=3) to reduce this trace from 3 turns to 1" />
+<TraceCanBeSimplifiedByMovingComponent schematicTraceId="schematic_trace_71" targetComponentName="U4" deltaSchX="0" deltaSchY="-0.5" newSchX="-6" newSchY="-0.5" currentTurnCount="3" suggestedTurnCount="1" message="move U4 down by 0.5 (to schX=-6, schY=-0.5) to reduce this trace from 3 turns to 1" />
+</SchematicPlacementIssues>
+</SchematicSheet>
+<SchematicSheet name="Power" id="schematic_sheet_1">
+<SchematicBoxPositions>
+<SchematicBoxPlacement componentName="C1" positionAnchor="center" schX="-7" schY="4" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="C2" positionAnchor="center" schX="-7" schY="-2" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="C7" positionAnchor="center" schX="-2" schY="-5" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="C8" positionAnchor="center" schX="4" schY="5" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="C3" positionAnchor="center" schX="12" schY="4" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="C4" positionAnchor="center" schX="12" schY="-2" width="0.6" height="0.65" />
+</SchematicBoxPositions>
+<SchematicPlacementIssues>
+<CapacitorSymbolHorizontal componentName="C1" schX="-7" schY="4" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C2" schX="-7" schY="-2" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C7" schX="-2" schY="-5" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C8" schX="4" schY="5" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C3" schX="12" schY="4" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C4" schX="12" schY="-2" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+</SchematicPlacementIssues>
+</SchematicSheet>
+<SchematicSheet name="Service" id="schematic_sheet_2">
+<SchematicBoxPositions>
+<SchematicBoxPlacement componentName="C20" positionAnchor="center" schX="0" schY="0" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="C21" positionAnchor="center" schX="4" schY="0" width="0.6" height="0.65" />
+</SchematicBoxPositions>
+<SchematicPlacementIssues>
+<CapacitorSymbolHorizontal componentName="C20" schX="0" schY="0" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C21" schX="4" schY="0" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+</SchematicPlacementIssues>
+</SchematicSheet>
+<SchematicSheet name="Module" id="schematic_sheet_3">
+<SchematicBoxPositions>
+<SchematicBoxPlacement componentName="U1" positionAnchor="center" schX="0" schY="0" width="2" height="3.2" />
+<SchematicBoxPlacement componentName="C5" positionAnchor="center" schX="7" schY="-4" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="C6" positionAnchor="center" schX="11" schY="-4" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="C9" positionAnchor="center" schX="-11" schY="-8" width="0.6" height="0.65" />
+</SchematicBoxPositions>
+<SchematicPlacementIssues>
+<CapacitorSymbolHorizontal componentName="C5" schX="7" schY="-4" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C6" schX="11" schY="-4" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C9" schX="-11" schY="-8" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="U1" pinSide="right" edgeSide="top" pinName="GND_EP" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="3" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="U1" pinSide="right" edgeSide="bottom" pinName="IO18" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="3" />
+</SchematicPlacementIssues>
+</SchematicSheet>
+<SchematicSheet name="USB" id="schematic_sheet_4">
+<SchematicBoxPositions>
+<SchematicBoxPlacement componentName="J4" positionAnchor="center" schX="-11" schY="0" width="1.4" height="2" />
+<SchematicBoxPlacement componentName="C31" positionAnchor="center" schX="4.5" schY="-6" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="R42" positionAnchor="center" schX="-11" schY="-7" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="R43" positionAnchor="center" schX="-11" schY="-11" width="0.9" height="0.6" />
+<SchematicBoxPlacement componentName="U7" positionAnchor="center" schX="-3.5" schY="-8" width="1.4" height="0.8" />
+<SchematicBoxPlacement componentName="C30" positionAnchor="center" schX="-3.5" schY="-12" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="R46" positionAnchor="center" schX="7" schY="3" width="0.9" height="0.6" />
+</SchematicBoxPositions>
+<SchematicPlacementIssues>
+<CapacitorSymbolHorizontal componentName="C31" schX="4.5" schY="-6" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C30" schX="-3.5" schY="-12" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="J4" pinSide="right" edgeSide="top" pinName="SH" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="1.8" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="J4" pinSide="right" edgeSide="bottom" pinName="B4" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="1.8" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="U7" pinSide="right" edgeSide="top" pinName="VCC" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.6" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="U7" pinSide="right" edgeSide="bottom" pinName="Y" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.6" />
+<TraceCanBeSimplifiedByMovingComponent schematicTraceId="schematic_trace_31" targetComponentName="R46" deltaSchX="-0.12" deltaSchY="0" newSchX="6.88" newSchY="3" currentTurnCount="3" suggestedTurnCount="1" message="move R46 left by 0.12 (to schX=6.88, schY=3) to reduce this trace from 3 turns to 1" />
+<TraceCanBeSimplifiedByMovingComponent schematicTraceId="schematic_trace_112" targetComponentName="R43" deltaSchX="+8" deltaSchY="0" newSchX="-3" newSchY="-11" currentTurnCount="3" suggestedTurnCount="1" message="move R43 right by 8 (to schX=-3, schY=-11) to reduce this trace from 3 turns to 1" />
+<TraceCanBeSimplifiedByMovingComponent schematicTraceId="schematic_trace_114" targetComponentName="R43" deltaSchX="+0.5" deltaSchY="0" newSchX="-10.5" newSchY="-11" currentTurnCount="3" suggestedTurnCount="1" message="move R43 right by 0.5 (to schX=-10.5, schY=-11) to reduce this trace from 3 turns to 1" />
+</SchematicPlacementIssues>
+</SchematicSheet>
+<SchematicSheet name="SensorInterface" id="schematic_sheet_5">
+<SchematicBoxPositions>
+<SchematicBoxPlacement componentName="C42" positionAnchor="center" schX="-10" schY="8" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="C43" positionAnchor="center" schX="-1" schY="6" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="C44" positionAnchor="center" schX="-1" schY="3" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="R67" positionAnchor="center" schX="-1" schY="0" width="0.9" height="0.6" />
+<SchematicBoxPlacement componentName="U11" positionAnchor="center" schX="7" schY="-7" width="1.5" height="0.8" />
+<SchematicBoxPlacement componentName="C40" positionAnchor="center" schX="-11" schY="-10" width="0.6" height="0.65" />
+<SchematicBoxPlacement componentName="C41" positionAnchor="center" schX="-7" schY="-10" width="0.6" height="0.65" />
+</SchematicBoxPositions>
+<SchematicPlacementIssues>
+<CapacitorSymbolHorizontal componentName="C42" schX="-10" schY="8" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C43" schX="-1" schY="6" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C44" schX="-1" schY="3" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C40" schX="-11" schY="-10" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<CapacitorSymbolHorizontal componentName="C41" schX="-7" schY="-10" width="0.6" height="0.65" message="Use schOrientation="vertical" on this capacitor to fix the symbol orientation" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="U11" pinSide="right" edgeSide="top" pinName="IO2" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.6" />
+<SchematicPinPaddingToEdgeTooLarge message="Move schematic pins closer to the box edge or change the schematic box height" componentName="U11" pinSide="right" edgeSide="bottom" pinName="IO1" measuredPadding="0.3" maxAllowedPadding="0.2" excessPadding="0.1" suggestedSchHeight="0.6" />
+<TraceCanBeSimplifiedByMovingComponent schematicTraceId="schematic_trace_141" targetComponentName="R67" deltaSchX="-0.961" deltaSchY="0" newSchX="-1.961" newSchY="0" currentTurnCount="3" suggestedTurnCount="1" message="move R67 left by 0.961 (to schX=-1.961, schY=0) to reduce this trace from 3 turns to 1" />
+</SchematicPlacementIssues>
+</SchematicSheet>
+Errors: 0
+Warnings: 0
+
+Readable Netlist:
+COMPONENTS:
+ - J6: 43045-0200
+ - C47: 22uF capacitor
+ - J7: 43045-0200
+ - D9: STPS2L40U
+ - Q2: AO3400A
+ - R80: 100Ω resistor
+ - R81: 10kΩ resistor
+ - J8: 43045-0200
+ - D10: STPS2L40U
+ - Q3: AO3400A
+ - R82: 100Ω resistor
+ - R83: 10kΩ resistor
+ - J9: 43045-0200
+ - D11: STPS2L40U
+ - Q4: AO3400A
+ - R84: 100Ω resistor
+ - R85: 10kΩ resistor
+ - J5: 43045-0600
+ - U12: TCA9517ADGKR
+ - U13: ESDS312DBVR
+ - D8: SMBJ7.0A
+ - R69: 6.8Ω resistor
+ - R70: 22Ω resistor
+ - R71: 22Ω resistor
+ - R72: 2.7kΩ resistor
+ - R73: 2.7kΩ resistor
+ - C45: 100nF capacitor
+ - C46: 100nF capacitor
+ - J1: 43650-0300
+ - U4: TPS3808G01DBVR
+ - R14: 95.3kΩ resistor
+ - R15: 10kΩ resistor
+ - R12: 10kΩ resistor
+ - C11: 100nF capacitor
+ - U6: SN74LVC1G08DBVR
+ - R2: 10kΩ resistor
+ - C12: 100nF capacitor
+ - R20: 100Ω resistor
+ - Q1: AO3400A
+ - R11: 10kΩ resistor
+ - D1: STPS2L40U
+ - D2: STPS2L40U
+ - C1: 22uF capacitor
+ - C2: 22uF capacitor
+ - C7: 100nF capacitor
+ - U2: AP63203WU-7
+ - C8: 100nF capacitor
+ - L1: L1, source_component
+ - C3: 22uF capacitor
+ - C4: 22uF capacitor
+ - J2: 43045-0200
+ - C20: 1uF capacitor
+ - C21: 100nF capacitor
+ - U1: ESP32-C6-WROOM-1-N8
+ - SW1: B3F-1002-G
+ - SW2: B3F-1002-G
+ - SW3: B3F-1002-G
+ - D4: WP710A10LGD
+ - R50: 10kΩ resistor
+ - R51: 10kΩ resistor
+ - R52: 10kΩ resistor
+ - R53: 10kΩ resistor
+ - R54: 680Ω resistor
+ - R55: 330Ω resistor
+ - C5: 22uF capacitor
+ - C6: 100nF capacitor
+ - C9: 1uF capacitor
+ - J4: USB4105-GF-A
+ - R40: 5.1kΩ resistor
+ - R41: 5.1kΩ resistor
+ - U9: USBLC6-2SC6
+ - U8: FSUSB42MUX
+ - C31: 100nF capacitor
+ - R44: 22Ω resistor
+ - R45: 22Ω resistor
+ - R42: 1kΩ resistor
+ - R43: 100kΩ resistor
+ - U7: SN74LVC1G14DBVR
+ - C30: 100nF capacitor
+ - R46: 10kΩ resistor
+ - U5: TPS2553DBVR
+ - C42: 100nF capacitor
+ - R65: 10kΩ resistor
+ - R66: 10kΩ resistor
+ - C43: 1uF capacitor
+ - C44: 10uF capacitor
+ - R67: 10kΩ resistor
+ - R68: 6.8Ω resistor
+ - D7: SMBJ7.0A
+ - J3: 43045-0600
+ - U11: ESDS312DBVR
+ - R62: 22Ω resistor
+ - R63: 22Ω resistor
+ - U3: TCA9517ADGKR
+ - C40: 100nF capacitor
+ - C41: 100nF capacitor
+ - R60: 2.7kΩ resistor
+ - R61: 2.7kΩ resistor
+ - R64: 10kΩ resistor
+ - TP1: TP1, source_component
+ - TP2: TP2, source_component
+ - TP3: TP3, source_component
+ - TP4: TP4, source_component
+ - TP5: TP5, source_component
+ - TP6: TP6, source_component
+ - TP7: TP7, source_component
+ - TP8: TP8, source_component
+ - TP9: TP9, source_component
+ - TP10: TP10, source_component
+ - TP11: TP11, source_component
+ - TP12: TP12, source_component
+ - TP13: TP13, source_component
+ - TP14: TP14, source_component
+
+NET: TRANSFER_GATE
+  - R81 pin1
+  - R80 pin2
+  - Q2 G
+
+NET: TRANSFER_DRAIN
+  - Q2 D
+  - D9 A
+  - J7 RETURN
+
+NET: CHLORINE_GATE
+  - R83 pin1
+  - R82 pin2
+  - Q3 G
+
+NET: CHLORINE_DRAIN
+  - Q3 D
+  - D10 A
+  - J8 RETURN
+
+NET: V12_PUMP
+  - D11 K
+  - J9 POSITIVE (+)
+  - D10 K
+  - J8 POSITIVE (+)
+  - D9 K
+  - J7 POSITIVE (+)
+  - C47 pin1 (+)
+  - J6 POSITIVE (+)
+
+NET: DECHLOR_GATE
+  - R85 pin1
+  - R84 pin2
+  - Q4 G
+
+NET: DECHLOR_DRAIN
+  - Q4 D
+  - D11 A
+  - J9 RETURN
+
+NET: V5_RESERVOIR
+  - R69 pin2
+  - D8 K
+  - J5 V5_SENSOR
+
+NET: RESERVOIR_SDA_CABLE
+  - R70 pin1
+  - U13 IO1
+  - J5 SDA_CABLE
+
+NET: RESERVOIR_SCL_CABLE
+  - R71 pin1
+  - U13 IO2
+  - J5 SCL_CABLE
+
+NET: RESERVOIR_SDA_PROTECTED
+  - R70 pin2
+  - U12 SDAA
+
+NET: RESERVOIR_SCL_PROTECTED
+  - R71 pin2
+  - U12 SCLA
+
+NET: PSU_SENSE
+  - R15 pin1
+  - R14 pin2
+  - U4 SENSE
+
+NET: MOS_GATE
+  - R11 pin1
+  - Q1 G
+  - R20 pin2
+
+NET: COIL_DRAIN
+  - Q1 D
+  - J1 COIL_DRAIN
+
+NET: BUCK_SW
+  - L1 pin1 (+)
+  - C8 pin2 (-)
+  - U2 SW
+
+NET: BUCK_BST
+  - C8 pin1 (+)
+  - U2 BST
+
+NET: V5_SERVICE
+  - C21 pin1 (+)
+  - C20 pin1 (+)
+  - J2 POSITIVE (+)
+  - D2 A
+
+NET: CHIP_EN
+  - C9 pin1 (+)
+  - R55 pin1
+  - R53 pin2
+  - U1 EN
+  - U4 MR_N
+
+NET: PUMP_TRANSFER
+  - U1 IO1
+  - R80 pin1
+
+NET: PUMP_CHLORINE
+  - U1 IO2
+  - R82 pin1
+
+NET: PUMP_DECHLOR
+  - U1 IO3
+  - R84 pin1
+
+NET: RESERVOIR_SDA
+  - U1 IO6
+  - R72 pin2
+  - U12 SDAB
+
+NET: RESERVOIR_SCL
+  - U1 IO7
+  - R73 pin2
+  - U12 SCLB
+
+NET: RELAY_REQUEST
+  - U1 IO10
+  - R2 pin1
+  - U6 A
+
+NET: MAINTENANCE_N
+  - R50 pin2
+  - SW1 CONTACT_A
+  - SW1 pin1_internal_1
+  - U1 IO11
+
+NET: BOOT_N
+  - R51 pin2
+  - SW2 CONTACT_A
+  - SW2 pin1_internal_1
+  - U1 IO9
+
+NET: BOOT_STRAP8
+  - R52 pin2
+  - U1 IO8
+
+NET: STATUS_LED
+  - R54 pin1
+  - U1 IO20
+
+NET: LED_ANODE
+  - R54 pin2
+  - D4 A
+
+NET: RESET_CONTACT
+  - R55 pin2
+  - SW3 CONTACT_A
+  - SW3 pin1_internal_1
+
+NET: USB_CC1
+  - R40 pin1
+  - J4 A5
+
+NET: USB_CC2
+  - R41 pin1
+  - J4 B5
+
+NET: USB_D_PORT_P
+  - U8 D_P
+  - U9 IO1_1
+  - U9 IO1_6
+  - J4 B6
+  - J4 A6
+
+NET: USB_D_PORT_N
+  - U8 D_N
+  - U9 IO2_3
+  - U9 IO2_4
+  - J4 B7
+  - J4 A7
+
+NET: USB_D_SWITCH_N
+  - R44 pin1
+  - U8 HSD1_N
+
+NET: USB_D_N
+  - R44 pin2
+  - U1 IO12
+
+NET: USB_D_SWITCH_P
+  - R45 pin1
+  - U8 HSD1_P
+
+NET: USB_D_P
+  - R45 pin2
+  - U1 IO13
+
+NET: USB_VBUS
+  - R42 pin1
+  - U9 VBUS
+  - J4 B9
+  - J4 B4
+  - J4 A9
+  - J4 A4
+
+NET: USB_VBUS_SENSE
+  - U7 A
+  - R43 pin1
+  - R42 pin2
+
+NET: USB_SWITCH_OE_N
+  - R46 pin2
+  - U8 OE_N
+  - U7 Y
+
+NET: V5_SENSOR_SW
+  - R68 pin1
+  - R67 pin1
+  - C44 pin1 (+)
+  - C43 pin1 (+)
+  - U5 OUT
+  - R69 pin1
+
+NET: V5_SENSOR
+  - J3 V5_SENSOR
+  - D7 K
+  - R68 pin2
+
+NET: SDA_BUFFER_A
+  - U3 SDAA
+  - R62 pin1
+
+NET: SDA_CABLE
+  - R62 pin2
+  - U11 IO1
+  - J3 SDA_CABLE
+
+NET: SCL_BUFFER_A
+  - U3 SCLA
+  - R63 pin1
+
+NET: SCL_CABLE
+  - R63 pin2
+  - U11 IO2
+  - J3 SCL_CABLE
+
+NET: SENSOR_BUS_EN
+  - R64 pin1
+  - U3 EN
+  - U1 IO0
+  - U12 EN
+
+NET: SENSOR_POWER_EN
+  - R65 pin1
+  - U5 EN
+  - U1 IO22
+
+NET: SENSOR_POWER_FAULT_N
+  - R66 pin2
+  - U5 FAULT_N
+  - U1 IO23
+
+NET: V5_PSU
+  - TP2 pin1
+  - D1 A
+  - R14 pin1
+  - J1 V5_PSU
+
+NET: V5_LOGIC
+  - TP3 pin1
+  - C42 pin1 (+)
+  - U5 ILIM
+  - U5 IN
+  - U2 VIN
+  - U2 EN
+  - C7 pin1 (+)
+  - C2 pin1 (+)
+  - C1 pin1 (+)
+  - D2 K
+  - D1 K
+
+NET: V3V3
+  - TP4 pin1
+  - R61 pin1
+  - R60 pin1
+  - C41 pin1 (+)
+  - C40 pin1 (+)
+  - U3 VCCB
+  - U3 VCCA
+  - R66 pin1
+  - R46 pin1
+  - C30 pin1 (+)
+  - U7 VCC
+  - C31 pin1 (+)
+  - U8 VCC
+  - C6 pin1 (+)
+  - C5 pin1 (+)
+  - R53 pin1
+  - R52 pin1
+  - R51 pin1
+  - R50 pin1
+  - U1 V3V3
+  - C4 pin1 (+)
+  - C3 pin1 (+)
+  - L1 pin2 (-)
+  - U2 FB
+  - C12 pin1 (+)
+  - U6 VCC
+  - C11 pin1 (+)
+  - R12 pin1
+  - U4 VDD
+  - C46 pin1 (+)
+  - C45 pin1 (+)
+  - R73 pin1
+  - R72 pin1
+  - U12 VCCB
+  - U12 VCCA
+
+NET: SENSOR_SDA
+  - TP5 pin1
+  - R60 pin2
+  - U3 SDAB
+  - U1 IO18
+
+NET: SENSOR_SCL
+  - TP6 pin1
+  - R61 pin2
+  - U3 SCLB
+  - U1 IO19
+
+NET: PSU_GOOD
+  - TP7 pin1
+  - U1 IO21
+  - U6 B
+  - R12 pin2
+  - U4 RESET_N
+
+NET: RELAY_GATED
+  - TP8 pin1
+  - R20 pin1
+  - U6 Y
+
+NET: UART0_RX
+  - TP9 pin1
+  - U1 RXD0_IO17
+
+NET: UART0_TX
+  - TP10 pin1
+  - U1 TXD0_IO16
+
+NET: ACCESSORY_INPUT1
+  - TP12 pin1
+  - U1 IO4
+
+NET: ACCESSORY_INPUT2
+  - TP13 pin1
+  - U1 IO5
+
+NET: GND
+  - TP14 pin1
+  - TP11 pin1
+  - TP1 pin1
+  - R64 pin2
+  - C41 pin2 (-)
+  - C40 pin2 (-)
+  - U3 GND
+  - U11 GND
+  - J3 GND_6
+  - J3 GND_5
+  - J3 GND_4
+  - D7 A
+  - R67 pin2
+  - C44 pin2 (-)
+  - C43 pin2 (-)
+  - R65 pin2
+  - C42 pin2 (-)
+  - U5 GND
+  - C30 pin2 (-)
+  - U7 GND
+  - R43 pin2
+  - C31 pin2 (-)
+  - U9 GND
+  - R41 pin2
+  - R40 pin2
+  - U8 GND
+  - U8 SEL
+  - J4 SH
+  - J4 pin17_internal_1
+  - J4 pin17_internal_2
+  - J4 pin17_internal_3
+  - J4 B12
+  - J4 B1
+  - J4 A12
+  - J4 A1
+  - C9 pin2 (-)
+  - C6 pin2 (-)
+  - C5 pin2 (-)
+  - D4 K
+  - SW3 CONTACT_B
+  - SW3 pin2_internal_1
+  - SW2 CONTACT_B
+  - SW2 pin2_internal_1
+  - SW1 CONTACT_B
+  - SW1 pin2_internal_1
+  - U1 GND_EP
+  - U1 pin29_internal_1
+  - U1 pin29_internal_2
+  - U1 pin29_internal_3
+  - U1 pin29_internal_4
+  - U1 pin29_internal_5
+  - U1 pin29_internal_6
+  - U1 pin29_internal_7
+  - U1 pin29_internal_8
+  - U1 GND_28
+  - U1 GND_1
+  - C21 pin2 (-)
+  - C20 pin2 (-)
+  - J2 RETURN
+  - C4 pin2 (-)
+  - C3 pin2 (-)
+  - U2 GND
+  - C7 pin2 (-)
+  - C2 pin2 (-)
+  - C1 pin2 (-)
+  - R11 pin2
+  - Q1 S
+  - C12 pin2 (-)
+  - R2 pin2
+  - U6 GND
+  - C11 pin2 (-)
+  - R15 pin2
+  - U4 GND
+  - J1 GND
+  - C46 pin2 (-)
+  - C45 pin2 (-)
+  - D8 A
+  - U13 GND
+  - U12 GND
+  - J5 GND_6
+  - J5 GND_5
+  - J5 GND_4
+  - R85 pin2
+  - Q4 S
+  - R83 pin2
+  - Q3 S
+  - R81 pin2
+  - Q2 S
+  - C47 pin2 (-)
+  - J6 RETURN
+
+
+COMPONENT_PINS:
+J6 (43045-0200)
+- pin1(POSITIVE): NETS(V12_PUMP)
+- pin2(RETURN): NETS(GND)
+
+C47 (22uF undefined)
+- pin1(pos): NETS(V12_PUMP)
+- pin2(neg): NETS(GND)
+
+J7 (43045-0200)
+- pin1(POSITIVE): NETS(V12_PUMP)
+- pin2(RETURN): NETS(TRANSFER_DRAIN)
+
+D9 (STPS2L40U)
+- pin1(K): NETS(V12_PUMP)
+- pin2(A): NETS(TRANSFER_DRAIN)
+
+Q2 (AO3400A)
+- pin1(G): NETS(TRANSFER_GATE)
+- pin2(S): NETS(GND)
+- pin3(D): NETS(TRANSFER_DRAIN)
+
+R80 (100Ω undefined)
+- pin1(anode, pos, left): NETS(PUMP_TRANSFER)
+- pin2(cathode, neg, right): NETS(TRANSFER_GATE)
+
+R81 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(TRANSFER_GATE)
+- pin2(cathode, neg, right): NETS(GND)
+
+J8 (43045-0200)
+- pin1(POSITIVE): NETS(V12_PUMP)
+- pin2(RETURN): NETS(CHLORINE_DRAIN)
+
+D10 (STPS2L40U)
+- pin1(K): NETS(V12_PUMP)
+- pin2(A): NETS(CHLORINE_DRAIN)
+
+Q3 (AO3400A)
+- pin1(G): NETS(CHLORINE_GATE)
+- pin2(S): NETS(GND)
+- pin3(D): NETS(CHLORINE_DRAIN)
+
+R82 (100Ω undefined)
+- pin1(anode, pos, left): NETS(PUMP_CHLORINE)
+- pin2(cathode, neg, right): NETS(CHLORINE_GATE)
+
+R83 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(CHLORINE_GATE)
+- pin2(cathode, neg, right): NETS(GND)
+
+J9 (43045-0200)
+- pin1(POSITIVE): NETS(V12_PUMP)
+- pin2(RETURN): NETS(DECHLOR_DRAIN)
+
+D11 (STPS2L40U)
+- pin1(K): NETS(V12_PUMP)
+- pin2(A): NETS(DECHLOR_DRAIN)
+
+Q4 (AO3400A)
+- pin1(G): NETS(DECHLOR_GATE)
+- pin2(S): NETS(GND)
+- pin3(D): NETS(DECHLOR_DRAIN)
+
+R84 (100Ω undefined)
+- pin1(anode, pos, left): NETS(PUMP_DECHLOR)
+- pin2(cathode, neg, right): NETS(DECHLOR_GATE)
+
+R85 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(DECHLOR_GATE)
+- pin2(cathode, neg, right): NETS(GND)
+
+J5 (43045-0600)
+- pin1(V5_SENSOR): NETS(V5_RESERVOIR)
+- pin2(SDA_CABLE): NETS(RESERVOIR_SDA_CABLE)
+- pin3(SCL_CABLE): NETS(RESERVOIR_SCL_CABLE)
+- pin4(GND_4): NETS(GND)
+- pin5(GND_5): NETS(GND)
+- pin6(GND_6): NETS(GND)
+
+U12 (TCA9517ADGKR)
+- pin1(VCCA): NETS(V3V3)
+- pin2(SCLA): NETS(RESERVOIR_SCL_PROTECTED)
+- pin3(SDAA): NETS(RESERVOIR_SDA_PROTECTED)
+- pin4(GND): NETS(GND)
+- pin5(EN): NETS(SENSOR_BUS_EN)
+- pin6(SDAB): NETS(RESERVOIR_SDA)
+- pin7(SCLB): NETS(RESERVOIR_SCL)
+- pin8(VCCB): NETS(V3V3)
+
+U13 (ESDS312DBVR)
+- pin1(NC_1): NOT_CONNECTED
+- pin2(GND): NETS(GND)
+- pin3(NC_3): NOT_CONNECTED
+- pin4(IO1): NETS(RESERVOIR_SDA_CABLE)
+- pin5(IO2): NETS(RESERVOIR_SCL_CABLE)
+
+D8 (SMBJ7.0A)
+- pin1(K): NETS(V5_RESERVOIR)
+- pin2(A): NETS(GND)
+
+R69 (6.8Ω undefined)
+- pin1(anode, pos, left): NETS(V5_SENSOR_SW)
+- pin2(cathode, neg, right): NETS(V5_RESERVOIR)
+
+R70 (22Ω undefined)
+- pin1(anode, pos, left): NETS(RESERVOIR_SDA_CABLE)
+- pin2(cathode, neg, right): NETS(RESERVOIR_SDA_PROTECTED)
+
+R71 (22Ω undefined)
+- pin1(anode, pos, left): NETS(RESERVOIR_SCL_CABLE)
+- pin2(cathode, neg, right): NETS(RESERVOIR_SCL_PROTECTED)
+
+R72 (2.7kΩ undefined)
+- pin1(anode, pos, left): NETS(V3V3)
+- pin2(cathode, neg, right): NETS(RESERVOIR_SDA)
+
+R73 (2.7kΩ undefined)
+- pin1(anode, pos, left): NETS(V3V3)
+- pin2(cathode, neg, right): NETS(RESERVOIR_SCL)
+
+C45 (100nF undefined)
+- pin1(pos): NETS(V3V3)
+- pin2(neg): NETS(GND)
+
+C46 (100nF undefined)
+- pin1(pos): NETS(V3V3)
+- pin2(neg): NETS(GND)
+
+J1 (43650-0300)
+- pin1(V5_PSU): NETS(V5_PSU)
+- pin2(GND): NETS(GND)
+- pin3(COIL_DRAIN): NETS(COIL_DRAIN)
+
+U4 (TPS3808G01DBVR)
+- pin1(RESET_N): NETS(PSU_GOOD)
+- pin2(GND): NETS(GND)
+- pin3(MR_N): NETS(CHIP_EN)
+- pin4(CT): NOT_CONNECTED
+- pin5(SENSE): NETS(PSU_SENSE)
+- pin6(VDD): NETS(V3V3)
+
+R14 (95.3kΩ undefined)
+- pin1(anode, pos, left): NETS(V5_PSU)
+- pin2(cathode, neg, right): NETS(PSU_SENSE)
+
+R15 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(PSU_SENSE)
+- pin2(cathode, neg, right): NETS(GND)
+
+R12 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(V3V3)
+- pin2(cathode, neg, right): NETS(PSU_GOOD)
+
+C11 (100nF undefined)
+- pin1(pos): NETS(V3V3)
+- pin2(neg): NETS(GND)
+
+U6 (SN74LVC1G08DBVR)
+- pin1(A): NETS(RELAY_REQUEST)
+- pin2(B): NETS(PSU_GOOD)
+- pin3(GND): NETS(GND)
+- pin4(Y): NETS(RELAY_GATED)
+- pin5(VCC): NETS(V3V3)
+
+R2 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(RELAY_REQUEST)
+- pin2(cathode, neg, right): NETS(GND)
+
+C12 (100nF undefined)
+- pin1(pos): NETS(V3V3)
+- pin2(neg): NETS(GND)
+
+R20 (100Ω undefined)
+- pin1(anode, pos, left): NETS(RELAY_GATED)
+- pin2(cathode, neg, right): NETS(MOS_GATE)
+
+Q1 (AO3400A)
+- pin1(G): NETS(MOS_GATE)
+- pin2(S): NETS(GND)
+- pin3(D): NETS(COIL_DRAIN)
+
+R11 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(MOS_GATE)
+- pin2(cathode, neg, right): NETS(GND)
+
+D1 (STPS2L40U)
+- pin1(K): NETS(V5_LOGIC)
+- pin2(A): NETS(V5_PSU)
+
+D2 (STPS2L40U)
+- pin1(K): NETS(V5_LOGIC)
+- pin2(A): NETS(V5_SERVICE)
+
+C1 (22uF undefined)
+- pin1(pos): NETS(V5_LOGIC)
+- pin2(neg): NETS(GND)
+
+C2 (22uF undefined)
+- pin1(pos): NETS(V5_LOGIC)
+- pin2(neg): NETS(GND)
+
+C7 (100nF undefined)
+- pin1(pos): NETS(V5_LOGIC)
+- pin2(neg): NETS(GND)
+
+U2 (AP63203WU-7)
+- pin1(FB): NETS(V3V3)
+- pin2(EN): NETS(V5_LOGIC)
+- pin3(VIN): NETS(V5_LOGIC)
+- pin4(GND): NETS(GND)
+- pin5(SW): NETS(BUCK_SW)
+- pin6(BST): NETS(BUCK_BST)
+
+C8 (100nF undefined)
+- pin1(pos): NETS(BUCK_BST)
+- pin2(neg): NETS(BUCK_SW)
+
+L1 (SRP5030TA-4R7M)
+- pin1(anode, pos, left): NETS(BUCK_SW)
+- pin2(cathode, neg, right): NETS(V3V3)
+
+C3 (22uF undefined)
+- pin1(pos): NETS(V3V3)
+- pin2(neg): NETS(GND)
+
+C4 (22uF undefined)
+- pin1(pos): NETS(V3V3)
+- pin2(neg): NETS(GND)
+
+J2 (43045-0200)
+- pin1(POSITIVE): NETS(V5_SERVICE)
+- pin2(RETURN): NETS(GND)
+
+C20 (1uF undefined)
+- pin1(pos): NETS(V5_SERVICE)
+- pin2(neg): NETS(GND)
+
+C21 (100nF undefined)
+- pin1(pos): NETS(V5_SERVICE)
+- pin2(neg): NETS(GND)
+
+U1 (ESP32-C6-WROOM-1-N8)
+- pin29_internal_1(pin29, 29): NETS(GND)
+- pin29_internal_2(pin29, 29): NETS(GND)
+- pin29_internal_3(pin29, 29): NETS(GND)
+- pin29_internal_4(pin29, 29): NETS(GND)
+- pin29_internal_5(pin29, 29): NETS(GND)
+- pin29_internal_6(pin29, 29): NETS(GND)
+- pin29_internal_7(pin29, 29): NETS(GND)
+- pin29_internal_8(pin29, 29): NETS(GND)
+- pin1(GND_1): NETS(GND)
+- pin2(V3V3): NETS(V3V3)
+- pin3(EN): NETS(CHIP_EN)
+- pin4(IO4): NETS(ACCESSORY_INPUT1)
+- pin5(IO5): NETS(ACCESSORY_INPUT2)
+- pin6(IO6): NETS(RESERVOIR_SDA)
+- pin7(IO7): NETS(RESERVOIR_SCL)
+- pin8(IO0): NETS(SENSOR_BUS_EN)
+- pin9(IO1): NETS(PUMP_TRANSFER)
+- pin10(IO8): NETS(BOOT_STRAP8)
+- pin11(IO10): NETS(RELAY_REQUEST)
+- pin12(IO11): NETS(MAINTENANCE_N)
+- pin13(IO12): NETS(USB_D_N)
+- pin14(IO13): NETS(USB_D_P)
+- pin15(IO9): NETS(BOOT_N)
+- pin16(IO18): NETS(SENSOR_SDA)
+- pin17(IO19): NETS(SENSOR_SCL)
+- pin18(IO20): NETS(STATUS_LED)
+- pin19(IO21): NETS(PSU_GOOD)
+- pin20(IO22): NETS(SENSOR_POWER_EN)
+- pin21(IO23): NETS(SENSOR_POWER_FAULT_N)
+- pin22(NC): NOT_CONNECTED
+- pin23(IO15): NOT_CONNECTED
+- pin24(RXD0_IO17): NETS(UART0_RX)
+- pin25(TXD0_IO16): NETS(UART0_TX)
+- pin26(IO3): NETS(PUMP_DECHLOR)
+- pin27(IO2): NETS(PUMP_CHLORINE)
+- pin28(GND_28): NETS(GND)
+- pin29(GND_EP): NETS(GND)
+
+SW1 (B3F-1002-G)
+- pin1_internal_1(pin1, 1): NETS(MAINTENANCE_N)
+- pin2_internal_1(pin2, 2): NETS(GND)
+- pin1(CONTACT_A): NETS(MAINTENANCE_N)
+- pin2(CONTACT_B): NETS(GND)
+
+SW2 (B3F-1002-G)
+- pin1_internal_1(pin1, 1): NETS(BOOT_N)
+- pin2_internal_1(pin2, 2): NETS(GND)
+- pin1(CONTACT_A): NETS(BOOT_N)
+- pin2(CONTACT_B): NETS(GND)
+
+SW3 (B3F-1002-G)
+- pin1_internal_1(pin1, 1): NETS(RESET_CONTACT)
+- pin2_internal_1(pin2, 2): NETS(GND)
+- pin1(CONTACT_A): NETS(RESET_CONTACT)
+- pin2(CONTACT_B): NETS(GND)
+
+D4 (WP710A10LGD)
+- pin1(K): NETS(GND)
+- pin2(A): NETS(LED_ANODE)
+
+R50 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(V3V3)
+- pin2(cathode, neg, right): NETS(MAINTENANCE_N)
+
+R51 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(V3V3)
+- pin2(cathode, neg, right): NETS(BOOT_N)
+
+R52 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(V3V3)
+- pin2(cathode, neg, right): NETS(BOOT_STRAP8)
+
+R53 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(V3V3)
+- pin2(cathode, neg, right): NETS(CHIP_EN)
+
+R54 (680Ω undefined)
+- pin1(anode, pos, left): NETS(STATUS_LED)
+- pin2(cathode, neg, right): NETS(LED_ANODE)
+
+R55 (330Ω undefined)
+- pin1(anode, pos, left): NETS(CHIP_EN)
+- pin2(cathode, neg, right): NETS(RESET_CONTACT)
+
+C5 (22uF undefined)
+- pin1(pos): NETS(V3V3)
+- pin2(neg): NETS(GND)
+
+C6 (100nF undefined)
+- pin1(pos): NETS(V3V3)
+- pin2(neg): NETS(GND)
+
+C9 (1uF undefined)
+- pin1(pos): NETS(CHIP_EN)
+- pin2(neg): NETS(GND)
+
+J4 (USB4105-GF-A)
+- pin17_internal_1(pin17, 17): NETS(GND)
+- pin17_internal_2(pin17, 17): NETS(GND)
+- pin17_internal_3(pin17, 17): NETS(GND)
+- pin1(A1): NETS(GND)
+- pin2(A4): NETS(USB_VBUS)
+- pin3(A5): NETS(USB_CC1)
+- pin4(A6): NETS(USB_D_PORT_P)
+- pin5(A7): NETS(USB_D_PORT_N)
+- pin6(A8): NOT_CONNECTED
+- pin7(A9): NETS(USB_VBUS)
+- pin8(A12): NETS(GND)
+- pin9(B1): NETS(GND)
+- pin10(B4): NETS(USB_VBUS)
+- pin11(B5): NETS(USB_CC2)
+- pin12(B6): NETS(USB_D_PORT_P)
+- pin13(B7): NETS(USB_D_PORT_N)
+- pin14(B8): NOT_CONNECTED
+- pin15(B9): NETS(USB_VBUS)
+- pin16(B12): NETS(GND)
+- pin17(SH): NETS(GND)
+
+R40 (5.1kΩ undefined)
+- pin1(anode, pos, left): NETS(USB_CC1)
+- pin2(cathode, neg, right): NETS(GND)
+
+R41 (5.1kΩ undefined)
+- pin1(anode, pos, left): NETS(USB_CC2)
+- pin2(cathode, neg, right): NETS(GND)
+
+U9 (USBLC6-2SC6)
+- pin1(IO1_1): NETS(USB_D_PORT_P)
+- pin2(GND): NETS(GND)
+- pin3(IO2_3): NETS(USB_D_PORT_N)
+- pin4(IO2_4): NETS(USB_D_PORT_N)
+- pin5(VBUS): NETS(USB_VBUS)
+- pin6(IO1_6): NETS(USB_D_PORT_P)
+
+U8 (FSUSB42MUX)
+- pin1(VCC): NETS(V3V3)
+- pin2(SEL): NETS(GND)
+- pin3(D_P): NETS(USB_D_PORT_P)
+- pin4(D_N): NETS(USB_D_PORT_N)
+- pin5(GND): NETS(GND)
+- pin6(HSD1_N): NETS(USB_D_SWITCH_N)
+- pin7(HSD1_P): NETS(USB_D_SWITCH_P)
+- pin8(HSD2_N): NOT_CONNECTED
+- pin9(HSD2_P): NOT_CONNECTED
+- pin10(OE_N): NETS(USB_SWITCH_OE_N)
+
+C31 (100nF undefined)
+- pin1(pos): NETS(V3V3)
+- pin2(neg): NETS(GND)
+
+R44 (22Ω undefined)
+- pin1(anode, pos, left): NETS(USB_D_SWITCH_N)
+- pin2(cathode, neg, right): NETS(USB_D_N)
+
+R45 (22Ω undefined)
+- pin1(anode, pos, left): NETS(USB_D_SWITCH_P)
+- pin2(cathode, neg, right): NETS(USB_D_P)
+
+R42 (1kΩ undefined)
+- pin1(anode, pos, left): NETS(USB_VBUS)
+- pin2(cathode, neg, right): NETS(USB_VBUS_SENSE)
+
+R43 (100kΩ undefined)
+- pin1(anode, pos, left): NETS(USB_VBUS_SENSE)
+- pin2(cathode, neg, right): NETS(GND)
+
+U7 (SN74LVC1G14DBVR)
+- pin1(NC): NOT_CONNECTED
+- pin2(A): NETS(USB_VBUS_SENSE)
+- pin3(GND): NETS(GND)
+- pin4(Y): NETS(USB_SWITCH_OE_N)
+- pin5(VCC): NETS(V3V3)
+
+C30 (100nF undefined)
+- pin1(pos): NETS(V3V3)
+- pin2(neg): NETS(GND)
+
+R46 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(V3V3)
+- pin2(cathode, neg, right): NETS(USB_SWITCH_OE_N)
+
+U5 (TPS2553DBVR)
+- pin1(IN): NETS(V5_LOGIC)
+- pin2(GND): NETS(GND)
+- pin3(EN): NETS(SENSOR_POWER_EN)
+- pin4(FAULT_N): NETS(SENSOR_POWER_FAULT_N)
+- pin5(ILIM): NETS(V5_LOGIC)
+- pin6(OUT): NETS(V5_SENSOR_SW)
+
+C42 (100nF undefined)
+- pin1(pos): NETS(V5_LOGIC)
+- pin2(neg): NETS(GND)
+
+R65 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(SENSOR_POWER_EN)
+- pin2(cathode, neg, right): NETS(GND)
+
+R66 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(V3V3)
+- pin2(cathode, neg, right): NETS(SENSOR_POWER_FAULT_N)
+
+C43 (1uF undefined)
+- pin1(pos): NETS(V5_SENSOR_SW)
+- pin2(neg): NETS(GND)
+
+C44 (10uF undefined)
+- pin1(pos): NETS(V5_SENSOR_SW)
+- pin2(neg): NETS(GND)
+
+R67 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(V5_SENSOR_SW)
+- pin2(cathode, neg, right): NETS(GND)
+
+R68 (6.8Ω undefined)
+- pin1(anode, pos, left): NETS(V5_SENSOR_SW)
+- pin2(cathode, neg, right): NETS(V5_SENSOR)
+
+D7 (SMBJ7.0A)
+- pin1(K): NETS(V5_SENSOR)
+- pin2(A): NETS(GND)
+
+J3 (43045-0600)
+- pin1(V5_SENSOR): NETS(V5_SENSOR)
+- pin2(SDA_CABLE): NETS(SDA_CABLE)
+- pin3(SCL_CABLE): NETS(SCL_CABLE)
+- pin4(GND_4): NETS(GND)
+- pin5(GND_5): NETS(GND)
+- pin6(GND_6): NETS(GND)
+
+U11 (ESDS312DBVR)
+- pin1(NC_1): NOT_CONNECTED
+- pin2(GND): NETS(GND)
+- pin3(NC_3): NOT_CONNECTED
+- pin4(IO1): NETS(SDA_CABLE)
+- pin5(IO2): NETS(SCL_CABLE)
+
+R62 (22Ω undefined)
+- pin1(anode, pos, left): NETS(SDA_BUFFER_A)
+- pin2(cathode, neg, right): NETS(SDA_CABLE)
+
+R63 (22Ω undefined)
+- pin1(anode, pos, left): NETS(SCL_BUFFER_A)
+- pin2(cathode, neg, right): NETS(SCL_CABLE)
+
+U3 (TCA9517ADGKR)
+- pin1(VCCA): NETS(V3V3)
+- pin2(SCLA): NETS(SCL_BUFFER_A)
+- pin3(SDAA): NETS(SDA_BUFFER_A)
+- pin4(GND): NETS(GND)
+- pin5(EN): NETS(SENSOR_BUS_EN)
+- pin6(SDAB): NETS(SENSOR_SDA)
+- pin7(SCLB): NETS(SENSOR_SCL)
+- pin8(VCCB): NETS(V3V3)
+
+C40 (100nF undefined)
+- pin1(pos): NETS(V3V3)
+- pin2(neg): NETS(GND)
+
+C41 (100nF undefined)
+- pin1(pos): NETS(V3V3)
+- pin2(neg): NETS(GND)
+
+R60 (2.7kΩ undefined)
+- pin1(anode, pos, left): NETS(V3V3)
+- pin2(cathode, neg, right): NETS(SENSOR_SDA)
+
+R61 (2.7kΩ undefined)
+- pin1(anode, pos, left): NETS(V3V3)
+- pin2(cathode, neg, right): NETS(SENSOR_SCL)
+
+R64 (10kΩ undefined)
+- pin1(anode, pos, left): NETS(SENSOR_BUS_EN)
+- pin2(cathode, neg, right): NETS(GND)
+
+TP1
+- pin1: NETS(GND)
+
+TP2
+- pin1: NETS(V5_PSU)
+
+TP3
+- pin1: NETS(V5_LOGIC)
+
+TP4
+- pin1: NETS(V3V3)
+
+TP5
+- pin1: NETS(SENSOR_SDA)
+
+TP6
+- pin1: NETS(SENSOR_SCL)
+
+TP7
+- pin1: NETS(PSU_GOOD)
+
+TP8
+- pin1: NETS(RELAY_GATED)
+
+TP9
+- pin1: NETS(UART0_RX)
+
+TP10
+- pin1: NETS(UART0_TX)
+
+TP11
+- pin1: NETS(GND)
+
+TP12
+- pin1: NETS(ACCESSORY_INPUT1)
+
+TP13
+- pin1: NETS(ACCESSORY_INPUT2)
+
+TP14
+- pin1: NETS(GND)
+
+placement summary: no placement issues
+
+board top-layer utilization:
+- occupied: 25.827% (3125.013mm^2 of 12100mm^2)
+- empty spaces over 5% of board area:
+  - 12.041% (1457mm^2); bounds=(minX=-55mm, maxX=22.5mm, minY=-29.15mm, maxY=-10.35mm)
+  - 7.898% (955.598mm^2); bounds=(minX=33.55mm, maxX=55mm, minY=10.45mm, maxY=55mm)
+
+board-edge status:
+- J6: 8.18mm inside top edge
+- C47: 9.8mm inside left edge
+- J7: 5.18mm inside right edge
+- D9: 17.91mm inside right edge
+- Q2: 18.4mm inside top edge
+- R80: 15.55mm inside top edge
+- R81: 12.55mm inside top edge
+- J8: 5.18mm inside right edge
+- D10: 17.91mm inside right edge
+- Q3: 18.65mm inside right edge
+- R82: 19.95mm inside right edge
+- R83: 19.95mm inside right edge
+- J9: 5.18mm inside right edge
+- D11: 17.91mm inside right edge
+- Q4: 18.65mm inside right edge
+- R84: 19.95mm inside right edge
+- R85: 19.95mm inside right edge
+- J5: 8.18mm inside bottom edge
+- U12: 8.1mm inside left edge
+- U13: 9.75mm inside left edge
+- D8: 2.37mm inside left edge
+- R69: 7.25mm inside left edge
+- R70: 9.05mm inside left edge
+- R71: 12.55mm inside left edge
+- R72: 8.55mm inside left edge
+- R73: 12.05mm inside left edge
+- C45: 5.15mm inside left edge
+- C46: 16.15mm inside left edge
+- J1: 8.18mm inside bottom edge
+- U4: 25.15mm inside left edge
+- R14: 30.55mm inside left edge
+- R15: 30.55mm inside left edge
+- R12: 22.25mm inside left edge
+- C11: 25.95mm inside left edge
+- U6: 27.65mm inside bottom edge
+- R2: 30.45mm inside left edge
+- C12: 29.15mm inside bottom edge
+- R20: 25.55mm inside bottom edge
+- Q1: 20.4mm inside bottom edge
+- R11: 20.35mm inside bottom edge
+- D1: 23.08mm inside left edge
+- D2: 28.91mm inside left edge
+- C1: 30.8mm inside left edge
+- C2: 24.8mm inside left edge
+- C7: 33.95mm inside left edge
+- U2: 33.4mm inside left edge
+- C8: 37.75mm inside left edge
+- L1: 39.75mm inside left edge
+- C3: 47.5mm inside left edge
+- C4: 47.5mm inside left edge
+- J2: 8.18mm inside top edge
+- C20: 16.475mm inside top edge
+- C21: 19.75mm inside top edge
+- U1: 1.04mm inside bottom edge
+- SW1: 23.5mm inside right edge
+- SW2: 23.5mm inside right edge
+- SW3: 23.5mm inside right edge
+- D4: 27.56mm inside right edge
+- R50: 15.05mm inside bottom edge
+- R51: 17.65mm inside bottom edge
+- R52: 12.55mm inside bottom edge
+- R53: 8.55mm inside bottom edge
+- R54: 12.55mm inside bottom edge
+- R55: 10.05mm inside bottom edge
+- C5: 4.475mm inside bottom edge
+- C6: 2.4mm inside bottom edge
+- C9: 5.975mm inside bottom edge
+- J4: 1.7mm inside top edge
+- R40: 7.15mm inside top edge
+- R41: 7.15mm inside top edge
+- U9: 10.25mm inside top edge
+- U8: 17.1mm inside top edge
+- C31: 17.25mm inside top edge
+- R44: 17.8mm inside bottom edge
+- R45: 20.3mm inside bottom edge
+- R42: 11.55mm inside top edge
+- R43: 13.95mm inside top edge
+- U7: 18.75mm inside top edge
+- C30: 16.15mm inside top edge
+- R46: 21.95mm inside top edge
+- U5: 33.25mm inside bottom edge
+- C42: 33.45mm inside bottom edge
+- R65: 37.55mm inside bottom edge
+- R66: 40.55mm inside bottom edge
+- C43: 33.975mm inside bottom edge
+- C44: 38.8mm inside left edge
+- R67: 37.55mm inside bottom edge
+- R68: 22.75mm inside bottom edge
+- D7: 19.17mm inside bottom edge
+- J3: 8.18mm inside bottom edge
+- U11: 19.55mm inside bottom edge
+- R62: 25.45mm inside bottom edge
+- R63: 25.45mm inside bottom edge
+- U3: 31.8mm inside bottom edge
+- C40: 30.95mm inside bottom edge
+- C41: 30.95mm inside bottom edge
+- R60: 35.95mm inside bottom edge
+- R61: 35.95mm inside bottom edge
+- R64: 36.55mm inside bottom edge
+- TP1: 23.5mm inside left edge
+- TP2: 36mm inside left edge
+- TP3: 44mm inside left edge
+- TP4: 44mm inside top edge
+- TP5: 28mm inside left edge
+- TP6: 36mm inside left edge
+- TP7: 36mm inside top edge
+- TP8: 36mm inside top edge
+- TP9: 39mm inside right edge
+- TP10: 33mm inside top edge
+- TP11: 39mm inside right edge
+- TP12: 5mm inside top edge
+- TP13: 5mm inside top edge
+- TP14: 13mm inside top edge
+
+placement drc:
+Errors: 0
+Warnings: 1
+- pcb_connector_not_in_accessible_orientation_warning: component is facing y- but should face x- so the connector is accessible from the board edge

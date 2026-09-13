@@ -29,10 +29,10 @@ export function ControllerUsbInterface() {
           B9: "net.USB_VBUS",
           A5: "net.USB_CC1",
           B5: "net.USB_CC2",
-          A6: "net.USB_D_P_PORT",
-          B6: "net.USB_D_P_PORT",
-          A7: "net.USB_D_N_PORT",
-          B7: "net.USB_D_N_PORT",
+          A6: "net.USB_D_PORT_P",
+          B6: "net.USB_D_PORT_P",
+          A7: "net.USB_D_PORT_N",
+          B7: "net.USB_D_PORT_N",
         }}
         noConnect={["A8", "B8"]}
       />
@@ -95,42 +95,42 @@ export function ControllerUsbInterface() {
         anchorSide="bottom"
       />
       <netlabel
-        net="USB_D_P_PORT"
+        net="USB_D_PORT_P"
         connectsTo={[".J4 > .pin4", ".J4 > .pin12"]}
         schX={-8.5}
         schY={1.8}
         anchorSide="left"
       />
       <netlabel
-        net="USB_D_P_PORT"
+        net="USB_D_PORT_P"
         connectsTo={[".U9 > .pin1", ".U9 > .pin6"]}
         schX={-3.5}
         schY={1.5}
         anchorSide="bottom"
       />
       <netlabel
-        net="USB_D_P_PORT"
+        net="USB_D_PORT_P"
         connectsTo=".U8 > .pin3"
         schX={1.5}
         schY={0}
         anchorSide="right"
       />
       <netlabel
-        net="USB_D_N_PORT"
+        net="USB_D_PORT_N"
         connectsTo={[".J4 > .pin5", ".J4 > .pin13"]}
         schX={-7.5}
         schY={-2}
         anchorSide="left"
       />
       <netlabel
-        net="USB_D_N_PORT"
+        net="USB_D_PORT_N"
         connectsTo={[".U9 > .pin3", ".U9 > .pin4"]}
         schX={-3.5}
         schY={-1.5}
         anchorSide="top"
       />
       <netlabel
-        net="USB_D_N_PORT"
+        net="USB_D_PORT_N"
         connectsTo=".U8 > .pin4"
         schX={1.5}
         schY={-0.2}
@@ -151,28 +151,28 @@ export function ControllerUsbInterface() {
         anchorSide="left"
       />
       <netlabel
-        net="USB_D_N_SWITCH"
+        net="USB_D_SWITCH_N"
         connectsTo=".U8 > .pin6"
         schX={7}
         schY={-1.2}
         anchorSide="left"
       />
       <netlabel
-        net="USB_D_N_SWITCH"
+        net="USB_D_SWITCH_N"
         connectsTo=".R44 > .pin1"
         schX={9}
         schY={-2}
         anchorSide="right"
       />
       <netlabel
-        net="USB_D_P_SWITCH"
+        net="USB_D_SWITCH_P"
         connectsTo=".U8 > .pin7"
         schX={7}
         schY={-0.2}
         anchorSide="left"
       />
       <netlabel
-        net="USB_D_P_SWITCH"
+        net="USB_D_SWITCH_P"
         connectsTo=".R45 > .pin1"
         schX={9}
         schY={2}
@@ -207,10 +207,10 @@ export function ControllerUsbInterface() {
         schY={0}
         schSheetName="USB"
         connections={{
-          IO1_1: "net.USB_D_P_PORT",
-          IO1_6: "net.USB_D_P_PORT",
-          IO2_3: "net.USB_D_N_PORT",
-          IO2_4: "net.USB_D_N_PORT",
+          IO1_1: "net.USB_D_PORT_P",
+          IO1_6: "net.USB_D_PORT_P",
+          IO2_3: "net.USB_D_PORT_N",
+          IO2_4: "net.USB_D_PORT_N",
           GND: "net.GND",
           VBUS: "net.USB_VBUS",
         }}
@@ -224,11 +224,11 @@ export function ControllerUsbInterface() {
         connections={{
           VCC: "net.V3V3",
           SEL: "net.GND",
-          D_P: "net.USB_D_P_PORT",
-          D_N: "net.USB_D_N_PORT",
+          D_P: "net.USB_D_PORT_P",
+          D_N: "net.USB_D_PORT_N",
           GND: "net.GND",
-          HSD1_N: "net.USB_D_N_SWITCH",
-          HSD1_P: "net.USB_D_P_SWITCH",
+          HSD1_N: "net.USB_D_SWITCH_N",
+          HSD1_P: "net.USB_D_SWITCH_P",
           OE_N: "net.USB_SWITCH_OE_N",
         }}
         noConnect={["HSD2_N", "HSD2_P"]}
@@ -250,7 +250,7 @@ export function ControllerUsbInterface() {
         schX={11}
         schY={-2}
         schSheetName="USB"
-        connections={{ pin1: "net.USB_D_N_SWITCH", pin2: "net.USB_D_N" }}
+        connections={{ pin1: "net.USB_D_SWITCH_N", pin2: "net.USB_D_N" }}
       />
       <ControllerResistor
         name="R45"
@@ -259,7 +259,7 @@ export function ControllerUsbInterface() {
         schX={11}
         schY={2}
         schSheetName="USB"
-        connections={{ pin1: "net.USB_D_P_SWITCH", pin2: "net.USB_D_P" }}
+        connections={{ pin1: "net.USB_D_SWITCH_P", pin2: "net.USB_D_P" }}
       />
       <ControllerResistor
         name="R42"

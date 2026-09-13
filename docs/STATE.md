@@ -38,9 +38,9 @@ custom rules and local libraries together. Never export a new seed over them.
 
 | Board | Project | Placement | Expected unrouted connections |
 | --- | --- | --- | --- |
-| Controller | [controller.kicad_pro](../pcb/controller/kicad/controller.kicad_pro) | 110 × 110 mm, 4 layers, 117 footprints | 253 |
-| Sensor | [sensor.kicad_pro](../pcb/sensor/kicad/sensor.kicad_pro) | 38 × 86 mm, 2 layers, 16 footprints including electrode copper | 41 |
-| Mains | [mains.kicad_pro](../pcb/mains/kicad/mains.kicad_pro) | 180 × 110 mm, 2 layers, 26 footprints | 39 |
+| Controller | [controller.kicad_pro](../pcb/controller/kicad/controller.kicad_pro) | 110 × 110 mm, 4 layers, 117 footprints | 166 |
+| Sensor | [sensor.kicad_pro](../pcb/sensor/kicad/sensor.kicad_pro) | 38 × 86 mm, 2 layers, 16 footprints including electrode copper | 29 |
+| Mains | [mains.kicad_pro](../pcb/mains/kicad/mains.kicad_pro) | 180 × 110 mm, 2 layers, 26 footprints | 31 |
 
 All three native ECOs are accepted with strict ERC, source and schematic parity,
 preserved geometry and zero ordinary or schematic-parity DRC findings. Expected unconnected items remain because routing is the next
@@ -54,8 +54,10 @@ applicable fabrication checks and routed connectivity must be closed before an
 order. All ERC categories are enabled with no exclusions.
 
 Follow the native project READMEs and each `kicad-augment.json` while routing.
-Ground planes, return paths, thermal vias, final paste/silk and routed checks are
-routing/manufacturing work, not missing schematic or placement decisions.
+Ground planes and 43 ground/thermal vias are now applied and filled. Native
+width/via/layer rules and bounded pad-escape checks are installed; all USB pairs
+are recognized by the differential router. See [routing guardrails](design/routing-guardrails.md).
+Final trace paths, paste/silk and fabrication checks remain routing/manufacturing work.
 Use the declared copper widths and compact buck/motor loops; join sensor copper
 islands at the head and keep all layer changes above the rim. Preserve the
 controller USB reference plane and the mains clearance boundary.
@@ -77,6 +79,11 @@ controller USB reference plane and the mains clearance boundary.
   schematic connectivity and library-field defects. It did not expand protection
   scope. Earlier smaller-board/eFuse evidence is historical and superseded.
 
+Run `sh scripts/check-routing.sh` during routing; unconnected items are allowed
+until `--final`. All three boards currently have zero ordinary DRC/parity findings.
+The eight negative native DRC probes and six USB pair-recognition checks pass.
+Current ECO evidence is in each board’s `kicad/evidence/routing-guardrails/`.
+
 The owner can begin routing now. No input
 is outstanding for schematic/placement decisions. Final routed DRC/CAM, assembly
 process checks, fabrication files and actual calibration, temperatures, pump
@@ -84,3 +91,7 @@ startup, EMI/PC sleep and HomeKit behavior remain the later release/commissionin
 stages. All physical test rows remain Not run. No parts were ordered, hardware
 flashed or mains energized. The broader [delivery goal](goal.md) remains distinct
 from this completed routing-preparation milestone.
+
+Routing guardrail validation: [current checks](design/evidence/routing-guardrails/validation.json).
+The small via-authorization tooling change was also ported to Stillair (`9f60768`, then the history-cache receipt fix `d48e7e9`);
+older shared handoff divergence was not part of this PCB task.

@@ -73,6 +73,168 @@
         "target": {}
       },
       {
+        "id": "sensor.augment.routing-fields",
+        "kind": "fabrication_note",
+        "owner": "kicad",
+        "params": {
+          "category": "routing",
+          "text": "Synchronize hidden schematic fields (MPN, Datasheet, Description, StableID where present) into native footprints; preserve all pad/footprint geometry and connectivity."
+        },
+        "target": {}
+      },
+      {
+        "id": "sensor.augment.routing-guardrails-custom_rule",
+        "kind": "custom_rule",
+        "owner": "kicad",
+        "params": {
+          "policy": "Enforce routing defaults and exact power/USB/ground-reference/sensing constraints using native DRC plus pcb/tools/check_routing.py. No hardware or firmware scope change.",
+          "policy_file": "pcb/tools/routing-policy.json",
+          "policy_sha256": "3e90a16f1b042b4e27c0214fde997d79add3320076229729dd818b86066b57cc",
+          "status": "Apply through native settings/GUI, exercise with intentionally bad scratch traces.",
+          "verification": "Native negative DRC tests and check-routing.sh; full narrow-segment containment supplements native intersectsArea."
+        },
+        "target": {
+          "net_stable_id": "sensor.net.gnd"
+        }
+      },
+      {
+        "id": "sensor.augment.routing-guardrails-via",
+        "kind": "via",
+        "owner": "kicad",
+        "params": {
+          "placements_native_xy_diameter_drill_mm": [
+            [
+              84,
+              69.2,
+              0.6,
+              0.3
+            ],
+            [
+              94,
+              69.2,
+              0.6,
+              0.3
+            ],
+            [
+              86.8,
+              72,
+              0.6,
+              0.3
+            ],
+            [
+              108.5,
+              75.3,
+              0.6,
+              0.3
+            ],
+            [
+              109.5,
+              73.4,
+              0.6,
+              0.3
+            ],
+            [
+              112,
+              73,
+              0.6,
+              0.3
+            ],
+            [
+              113.8,
+              62,
+              0.6,
+              0.3
+            ]
+          ],
+          "status": "Declared GND stitching/thermal vias; preserve source pads and every existing route.",
+          "tenting": "both sides"
+        },
+        "target": {
+          "net_stable_id": "sensor.net.gnd"
+        }
+      },
+      {
+        "id": "sensor.augment.routing-guardrails-zone",
+        "kind": "zone",
+        "owner": "kicad",
+        "params": {
+          "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove all floating islands. In2 remains available for power/signal routing; no arbitrary split power plane.",
+          "planes": {
+            "layers": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "GND",
+            "outline": [
+              [
+                81,
+                57
+              ],
+              [
+                119,
+                57
+              ],
+              [
+                119,
+                78.8
+              ],
+              [
+                81,
+                78.8
+              ]
+            ],
+            "vias": [
+              [
+                84,
+                69.2,
+                0.6,
+                0.3
+              ],
+              [
+                94,
+                69.2,
+                0.6,
+                0.3
+              ],
+              [
+                86.8,
+                72,
+                0.6,
+                0.3
+              ],
+              [
+                108.5,
+                75.3,
+                0.6,
+                0.3
+              ],
+              [
+                109.5,
+                73.4,
+                0.6,
+                0.3
+              ],
+              [
+                112,
+                73,
+                0.6,
+                0.3
+              ],
+              [
+                113.8,
+                62,
+                0.6,
+                0.3
+              ]
+            ]
+          },
+          "status": "Apply through native API and fill; verify saved zone connectivity/DRC."
+        },
+        "target": {
+          "net_stable_id": "sensor.net.gnd"
+        }
+      },
+      {
         "id": "sensor.augment.schematic-cleanup",
         "kind": "schematic_cleanup",
         "owner": "kicad",
@@ -127,9 +289,9 @@
     ],
     "schema_version": 1
   },
-  "augmentation_sha256": "74889565734ca025fe644b94807b0320bc291ee933d9a39e0e08fcb29d58d8e6",
+  "augmentation_sha256": "d49069bfdbd356b72c16b78b0f298d82fd25211e210f0fddf70609a429a2185c",
   "board_id": "sensor.board.main",
-  "eco_receipt_sha256": "e6faf4eb1187b65a2ae5363dba7ecf3fd895f0eda2d34404ae7544a088bde5ac",
+  "eco_receipt_sha256": "366188e256b2fe9af75c153626eb9078587473502a79514d74e0a43ea16ab105",
   "initial_handoff_receipt_sha256": "36efff3ff1f4307b5852de878750d190a647a157a856c1817d2d5e60975e19f7",
   "manifest": {
     "board": {
@@ -1071,22 +1233,202 @@
             }
           },
           {
+            "path": "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_dru",
+            "sha256": "a81abd6425ada34cbe178a5427ed4f99c0f498def68e1321c2fe8fc8723b7753"
+          },
+          {
             "path": "/Users/michael/Code/crystal-shim/pcb/sensor/kicad/sensor.kicad_pro",
             "sha256": "10669a5c2233963ffd83a1119f7c6fd9b3052bc357f14d9a13fa55c281fc2e6b"
           }
         ],
-        "sha256": "d582ab2bf2927aace4314c6286e49569ade85d1fbed40c0cab492bc26965bd78"
+        "sha256": "c5935fbc61ba3bc81e45fbbb948389cc674940ba27856d92817ecb9dd50cd2d4"
       },
       "tracks": {
         "details": [],
         "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
       },
       "vias": {
-        "details": [],
-        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        "details": [
+          {
+            "drill_mm": 0.3,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "GND",
+            "position_mm": [
+              108.5,
+              75.3
+            ],
+            "uuid": "bdfb9204-1125-48a9-b171-155c915ffea3",
+            "width_mm": 0.6
+          },
+          {
+            "drill_mm": 0.3,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "GND",
+            "position_mm": [
+              109.5,
+              73.4
+            ],
+            "uuid": "a2bb09e9-c676-4070-b939-21908dc6934e",
+            "width_mm": 0.6
+          },
+          {
+            "drill_mm": 0.3,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "GND",
+            "position_mm": [
+              112,
+              73
+            ],
+            "uuid": "59d348e6-013c-452e-9cc4-021ae30df5b3",
+            "width_mm": 0.6
+          },
+          {
+            "drill_mm": 0.3,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "GND",
+            "position_mm": [
+              113.8,
+              62
+            ],
+            "uuid": "450f841d-c4fd-4908-b8d6-22c6273e24b6",
+            "width_mm": 0.6
+          },
+          {
+            "drill_mm": 0.3,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "GND",
+            "position_mm": [
+              84,
+              69.2
+            ],
+            "uuid": "8f51b69e-e688-467e-a8ea-6ec9171d281b",
+            "width_mm": 0.6
+          },
+          {
+            "drill_mm": 0.3,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "GND",
+            "position_mm": [
+              86.8,
+              72
+            ],
+            "uuid": "85748dfd-f50d-4eec-a0f8-d3a584c811c1",
+            "width_mm": 0.6
+          },
+          {
+            "drill_mm": 0.3,
+            "layer": "F.Cu",
+            "layer_pair": [
+              "F.Cu",
+              "B.Cu"
+            ],
+            "net": "GND",
+            "position_mm": [
+              94,
+              69.2
+            ],
+            "uuid": "6804ee08-54b4-401a-9c8e-942af688ef02",
+            "width_mm": 0.6
+          }
+        ],
+        "sha256": "425ab70c4f4ebe946e9ac660b81ac91ee3a1217a253c346f11f2b9365b7952e4"
       },
       "zones": {
         "details": [
+          {
+            "bbox_mm": [
+              81,
+              57,
+              38,
+              21.8
+            ],
+            "layers": [
+              "B.Cu"
+            ],
+            "name": "sensor GND B.Cu",
+            "net": "GND",
+            "outline_mm": [
+              [
+                [
+                  81,
+                  57
+                ],
+                [
+                  119,
+                  57
+                ],
+                [
+                  119,
+                  78.8
+                ],
+                [
+                  81,
+                  78.8
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "956260b5-9295-4e99-b36a-bf44859c6a84"
+          },
+          {
+            "bbox_mm": [
+              81,
+              57,
+              38,
+              21.8
+            ],
+            "layers": [
+              "F.Cu"
+            ],
+            "name": "sensor GND F.Cu",
+            "net": "GND",
+            "outline_mm": [
+              [
+                [
+                  81,
+                  57
+                ],
+                [
+                  119,
+                  57
+                ],
+                [
+                  119,
+                  78.8
+                ],
+                [
+                  81,
+                  78.8
+                ]
+              ]
+            ],
+            "priority": 0,
+            "uuid": "ba4b1745-8889-45d5-b3ad-6dd0d06b1ecb"
+          },
           {
             "bbox_mm": [
               81,
@@ -1124,10 +1466,10 @@
             "uuid": "db2e70c1-68c5-4603-9020-77bef46d3f3c"
           }
         ],
-        "sha256": "1c65b5f1c5cdb0566e53f2a3bf66b3b86c827d41f3bcb22d8f4c954a3495ad97"
+        "sha256": "9d580c38da5875e6f701be62d074e17146aa3857f3733d649c6a4277d8f8aad7"
       }
     },
-    "routed": false,
+    "routed": true,
     "schematic_owned": {
       "components": [
         {
@@ -2286,5 +2628,5 @@
       "sensor.component.u3": "dcf85d20-f5da-4e0b-81f7-36d6068070a5"
     }
   },
-  "snapshot_sha256": "d65a42ddcd787f7d26fe7be72c1c08c726912e89b54148dc4123ef1fe3a91b40"
+  "snapshot_sha256": "2ff4158f1f5840dc108ee7768278276d28ddd57ecb2c704925df46a4ea00617f"
 }

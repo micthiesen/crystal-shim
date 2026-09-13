@@ -112,3 +112,15 @@ The receipt includes the previous lock digest, plan, before/after digests,
 cleanup receipt digest, native file hashes and preservation result. The updated
 lock retains `initial_handoff_receipt_sha256` and adds `eco_receipt_sha256`.
 No native file is written. Failed validation leaves the comparison lock unchanged.
+
+## Routing guardrails
+
+`sh scripts/check-routing.sh [controller|mains|sensor]` runs fresh copper DRC,
+schematic parity and complete narrow-segment checks. Add `--final` to require
+zero remaining connections. See [the routing guide](../../docs/design/routing-guardrails.md).
+
+Run `sh pcb/tools/kicad_python.sh pcb/tools/test_native_routing_rules.py` for the
+scratch-project negative DRC tests, and `sh pcb/tools/kicad_python.sh -m unittest
+discover -s pcb/tools -p test_check_routing.py` for geometric/native audit tests.
+The native apply helper requires a reviewed augmentation/plan and preserves
+existing geometry; it is not a command to rerun over owner routing.

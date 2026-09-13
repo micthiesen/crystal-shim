@@ -3981,7 +3981,7 @@
 			)
 		)
 	)
-	(global_label "USB_D_P_SWITCH"
+	(global_label "USB_D_SWITCH_P"
 		(shape input)
 		(at 431.8 128.27 180)
 		(effects
@@ -4025,7 +4025,7 @@
 			)
 		)
 	)
-	(global_label "USB_D_P_SWITCH"
+	(global_label "USB_D_SWITCH_P"
 		(shape input)
 		(at 402.59 162.56 0)
 		(effects
@@ -4047,7 +4047,7 @@
 			)
 		)
 	)
-	(global_label "USB_D_P_PORT"
+	(global_label "USB_D_PORT_P"
 		(shape input)
 		(at 245.11 135.89 90)
 		(effects
@@ -4157,7 +4157,7 @@
 			)
 		)
 	)
-	(global_label "USB_D_P_PORT"
+	(global_label "USB_D_PORT_P"
 		(shape input)
 		(at 320.04 160.02 180)
 		(effects
@@ -4179,7 +4179,7 @@
 			)
 		)
 	)
-	(global_label "USB_D_N_PORT"
+	(global_label "USB_D_PORT_N"
 		(shape input)
 		(at 245.11 181.61 270)
 		(effects
@@ -4223,7 +4223,7 @@
 			)
 		)
 	)
-	(global_label "USB_D_P_PORT"
+	(global_label "USB_D_PORT_P"
 		(shape input)
 		(at 168.91 132.08 0)
 		(effects
@@ -4421,7 +4421,7 @@
 			)
 		)
 	)
-	(global_label "USB_D_N_SWITCH"
+	(global_label "USB_D_SWITCH_N"
 		(shape input)
 		(at 431.8 189.23 180)
 		(effects
@@ -4487,7 +4487,7 @@
 			)
 		)
 	)
-	(global_label "USB_D_N_PORT"
+	(global_label "USB_D_PORT_N"
 		(shape input)
 		(at 184.15 189.23 0)
 		(effects
@@ -4575,7 +4575,7 @@
 			)
 		)
 	)
-	(global_label "USB_D_N_PORT"
+	(global_label "USB_D_PORT_N"
 		(shape input)
 		(at 320.04 162.56 180)
 		(effects
@@ -4597,7 +4597,7 @@
 			)
 		)
 	)
-	(global_label "USB_D_N_SWITCH"
+	(global_label "USB_D_SWITCH_N"
 		(shape input)
 		(at 402.59 176.53 0)
 		(effects

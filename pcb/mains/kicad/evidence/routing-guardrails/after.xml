@@ -1,0 +1,1258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/Users/michael/Code/crystal-shim/pcb/mains/kicad/mains.kicad_sch</source>
+    <date>2026-09-13T00:30:00</date>
+    <tool>Eeschema 10.0.5</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>mains.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/Primary/" tstamps="/f1d09619-0800-4ea2-89a5-3ca87f3e8523/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>primary.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/Secondary/" tstamps="/ab855a56-2586-493b-8e16-8a51352d115d/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>secondary.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="4" name="/Suppression/" tstamps="/3c5cdb7f-75b0-440b-ac32-d4363c859b21/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>suppression.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="F3">
+      <value>0215001.MXEP</value>
+      <footprint>CrystalShim_Mains:Mains_F3</footprint>
+      <datasheet>https://www.littelfuse.com/assetdocs/littelfuse_fuse_215_datasheet?assetguid=990f7193-d9a2-48e4-b760-2b43514249cf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">0215001.MXEP</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_F3</field>
+        <field name="Datasheet">https://www.littelfuse.com/assetdocs/littelfuse_fuse_215_datasheet?assetguid=990f7193-d9a2-48e4-b760-2b43514249cf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_F3" description="Integrated Circuit"/>
+      <property name="MPN" value="0215001.MXEP"/>
+      <property name="Sheetname" value="Primary"/>
+      <property name="Sheetfile" value="primary.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_F3"/>
+      <sheetpath names="/Primary/" tstamps="/f1d09619-0800-4ea2-89a5-3ca87f3e8523/"/>
+      <tstamps>4f532c27-c864-4aab-bc9f-f4a67c570b59</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J1">
+      <value>43160-0102</value>
+      <footprint>CrystalShim_Mains:Mains_J1</footprint>
+      <datasheet>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">43160-0102</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_J1</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_J1" description="Integrated Circuit"/>
+      <property name="MPN" value="43160-0102"/>
+      <property name="Sheetname" value="Primary"/>
+      <property name="Sheetfile" value="primary.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_J1"/>
+      <sheetpath names="/Primary/" tstamps="/f1d09619-0800-4ea2-89a5-3ca87f3e8523/"/>
+      <tstamps>8477b2e1-50f3-4100-8ac7-413ddce5e3c1</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J2">
+      <value>43160-0103</value>
+      <footprint>CrystalShim_Mains:Mains_J2</footprint>
+      <datasheet>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">43160-0103</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_J2</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_J2" description="Integrated Circuit"/>
+      <property name="MPN" value="43160-0103"/>
+      <property name="Sheetname" value="Primary"/>
+      <property name="Sheetfile" value="primary.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_J2"/>
+      <sheetpath names="/Primary/" tstamps="/f1d09619-0800-4ea2-89a5-3ca87f3e8523/"/>
+      <tstamps>59dab1d4-ea7b-4ace-9d66-2ca7e2f62f64</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J3">
+      <value>43160-0104</value>
+      <footprint>CrystalShim_Mains:Mains_J3</footprint>
+      <datasheet>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">43160-0104</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_J3</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_J3" description="Integrated Circuit"/>
+      <property name="MPN" value="43160-0104"/>
+      <property name="Sheetname" value="Primary"/>
+      <property name="Sheetfile" value="primary.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_J3"/>
+      <sheetpath names="/Primary/" tstamps="/f1d09619-0800-4ea2-89a5-3ca87f3e8523/"/>
+      <tstamps>f2430578-1079-4249-8117-24f2ee8b720c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J4">
+      <value>43160-0106</value>
+      <footprint>CrystalShim_Mains:Mains_J4</footprint>
+      <datasheet>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">43160-0106</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_J4</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_J4" description="Integrated Circuit"/>
+      <property name="MPN" value="43160-0106"/>
+      <property name="Sheetname" value="Primary"/>
+      <property name="Sheetfile" value="primary.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_J4"/>
+      <sheetpath names="/Primary/" tstamps="/f1d09619-0800-4ea2-89a5-3ca87f3e8523/"/>
+      <tstamps>64a66bcc-225b-4ce3-96a5-33d7db7d6f11</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="K1">
+      <value>G5RL-1A-TV8 DC5</value>
+      <footprint>CrystalShim_Mains:Mains_K1</footprint>
+      <datasheet>https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5rl.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">G5RL-1A-TV8 DC5</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_K1</field>
+        <field name="Datasheet">https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5rl.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_K1" description="Integrated Circuit"/>
+      <property name="MPN" value="G5RL-1A-TV8 DC5"/>
+      <property name="Sheetname" value="Primary"/>
+      <property name="Sheetfile" value="primary.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_K1"/>
+      <sheetpath names="/Primary/" tstamps="/f1d09619-0800-4ea2-89a5-3ca87f3e8523/"/>
+      <tstamps>32508b76-e97f-4b3b-8e4c-043cda78a678</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="1"/>
+            <pin num="5"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="RV1">
+      <value>TMOV14RP175EL2T7</value>
+      <footprint>CrystalShim_Mains:Mains_RV1</footprint>
+      <datasheet>https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">TMOV14RP175EL2T7</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_RV1</field>
+        <field name="Datasheet">https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_RV1" description="Integrated Circuit"/>
+      <property name="MPN" value="TMOV14RP175EL2T7"/>
+      <property name="Sheetname" value="Primary"/>
+      <property name="Sheetfile" value="primary.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_RV1"/>
+      <sheetpath names="/Primary/" tstamps="/f1d09619-0800-4ea2-89a5-3ca87f3e8523/"/>
+      <tstamps>84890434-1e4f-44b5-b680-fa6474b1787a</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U1">
+      <value>IRM-45-12</value>
+      <footprint>CrystalShim_Mains:Mains_U1</footprint>
+      <datasheet>https://www.meanwell.com/Upload/PDF/IRM-45/IRM-45-SPEC.PDF</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">IRM-45-12</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_U1</field>
+        <field name="Datasheet">https://www.meanwell.com/Upload/PDF/IRM-45/IRM-45-SPEC.PDF</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_U1" description="Integrated Circuit"/>
+      <property name="MPN" value="IRM-45-12"/>
+      <property name="Sheetname" value="Primary"/>
+      <property name="Sheetfile" value="primary.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_U1"/>
+      <sheetpath names="/Primary/" tstamps="/f1d09619-0800-4ea2-89a5-3ca87f3e8523/"/>
+      <tstamps>765801d5-2605-43b2-9c6c-ed41f7c20d64</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="2"/>
+            <pin num="1"/>
+            <pin num="4"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C2">
+      <value>22uF</value>
+      <footprint>CrystalShim_Mains:Mains_C2</footprint>
+      <datasheet>https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</datasheet>
+      <description>Capacitor</description>
+      <fields>
+        <field name="MPN">GRM32ER71E226ME15L</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C2</field>
+        <field name="Datasheet">https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</field>
+        <field name="Description">Capacitor</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_C2" description="Capacitor"/>
+      <property name="MPN" value="GRM32ER71E226ME15L"/>
+      <property name="Sheetname" value="Secondary"/>
+      <property name="Sheetfile" value="secondary.kicad_sch"/>
+      <property name="ki_keywords" value="C cap capacitor"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_C2"/>
+      <sheetpath names="/Secondary/" tstamps="/ab855a56-2586-493b-8e16-8a51352d115d/"/>
+      <tstamps>e5859540-005b-4a64-bab5-50008bef6fb0</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C3">
+      <value>22uF</value>
+      <footprint>CrystalShim_Mains:Mains_C3</footprint>
+      <datasheet>https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</datasheet>
+      <description>Capacitor</description>
+      <fields>
+        <field name="MPN">GRM32ER71E226ME15L</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C3</field>
+        <field name="Datasheet">https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</field>
+        <field name="Description">Capacitor</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_C3" description="Capacitor"/>
+      <property name="MPN" value="GRM32ER71E226ME15L"/>
+      <property name="Sheetname" value="Secondary"/>
+      <property name="Sheetfile" value="secondary.kicad_sch"/>
+      <property name="ki_keywords" value="C cap capacitor"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_C3"/>
+      <sheetpath names="/Secondary/" tstamps="/ab855a56-2586-493b-8e16-8a51352d115d/"/>
+      <tstamps>9fd2c52f-c5a6-4882-9a3a-83d2f56f949f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C4">
+      <value>22uF</value>
+      <footprint>CrystalShim_Mains:Mains_C4</footprint>
+      <datasheet>https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</datasheet>
+      <description>Capacitor</description>
+      <fields>
+        <field name="MPN">GRM32ER71E226ME15L</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C4</field>
+        <field name="Datasheet">https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</field>
+        <field name="Description">Capacitor</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_C4" description="Capacitor"/>
+      <property name="MPN" value="GRM32ER71E226ME15L"/>
+      <property name="Sheetname" value="Secondary"/>
+      <property name="Sheetfile" value="secondary.kicad_sch"/>
+      <property name="ki_keywords" value="C cap capacitor"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_C4"/>
+      <sheetpath names="/Secondary/" tstamps="/ab855a56-2586-493b-8e16-8a51352d115d/"/>
+      <tstamps>a1a53153-f720-4907-8f4f-88794aded087</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C5">
+      <value>100nF</value>
+      <footprint>CrystalShim_Mains:Mains_C5</footprint>
+      <datasheet>https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf</datasheet>
+      <description>Capacitor</description>
+      <fields>
+        <field name="MPN">C1608X7R1H104K080AA</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C5</field>
+        <field name="Datasheet">https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf</field>
+        <field name="Description">Capacitor</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_C5" description="Capacitor"/>
+      <property name="MPN" value="C1608X7R1H104K080AA"/>
+      <property name="Sheetname" value="Secondary"/>
+      <property name="Sheetfile" value="secondary.kicad_sch"/>
+      <property name="ki_keywords" value="C cap capacitor"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_C5"/>
+      <sheetpath names="/Secondary/" tstamps="/ab855a56-2586-493b-8e16-8a51352d115d/"/>
+      <tstamps>dcddd6ff-818f-4602-91c6-676ca7a78037</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C6">
+      <value>22uF</value>
+      <footprint>CrystalShim_Mains:Mains_C6</footprint>
+      <datasheet>https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</datasheet>
+      <description>Capacitor</description>
+      <fields>
+        <field name="MPN">GRM32ER71E226ME15L</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C6</field>
+        <field name="Datasheet">https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</field>
+        <field name="Description">Capacitor</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_C6" description="Capacitor"/>
+      <property name="MPN" value="GRM32ER71E226ME15L"/>
+      <property name="Sheetname" value="Secondary"/>
+      <property name="Sheetfile" value="secondary.kicad_sch"/>
+      <property name="ki_keywords" value="C cap capacitor"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_C6"/>
+      <sheetpath names="/Secondary/" tstamps="/ab855a56-2586-493b-8e16-8a51352d115d/"/>
+      <tstamps>bda27984-6ccd-476a-95df-9f03d7a66e9d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C7">
+      <value>100nF</value>
+      <footprint>CrystalShim_Mains:Mains_C7</footprint>
+      <datasheet>https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf</datasheet>
+      <description>Capacitor</description>
+      <fields>
+        <field name="MPN">C1608X7R1H104K080AA</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C7</field>
+        <field name="Datasheet">https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf</field>
+        <field name="Description">Capacitor</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_C7" description="Capacitor"/>
+      <property name="MPN" value="C1608X7R1H104K080AA"/>
+      <property name="Sheetname" value="Secondary"/>
+      <property name="Sheetfile" value="secondary.kicad_sch"/>
+      <property name="ki_keywords" value="C cap capacitor"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_C7"/>
+      <sheetpath names="/Secondary/" tstamps="/ab855a56-2586-493b-8e16-8a51352d115d/"/>
+      <tstamps>900f0e71-44be-438c-94c2-bba87d80ea57</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="F2">
+      <value>0451003.MRL</value>
+      <footprint>CrystalShim_Mains:Mains_F2</footprint>
+      <datasheet>https://www.littelfuse.com/assetdocs/fuse-451-and-453-datasheet?assetguid=533cd5cc-956c-4243-867f-6ab5a62f6ba1</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">0451003.MRL</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_F2</field>
+        <field name="Datasheet">https://www.littelfuse.com/assetdocs/fuse-451-and-453-datasheet?assetguid=533cd5cc-956c-4243-867f-6ab5a62f6ba1</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_F2" description="Integrated Circuit"/>
+      <property name="MPN" value="0451003.MRL"/>
+      <property name="Sheetname" value="Secondary"/>
+      <property name="Sheetfile" value="secondary.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_F2"/>
+      <sheetpath names="/Secondary/" tstamps="/ab855a56-2586-493b-8e16-8a51352d115d/"/>
+      <tstamps>44f7e847-6555-4111-8707-990ede4f8f3d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J5">
+      <value>43650-0300</value>
+      <footprint>CrystalShim_Mains:Mains_J5</footprint>
+      <datasheet>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/436/43650/436501200_sd.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">43650-0300</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_J5</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/436/43650/436501200_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_J5" description="Integrated Circuit"/>
+      <property name="MPN" value="43650-0300"/>
+      <property name="Sheetname" value="Secondary"/>
+      <property name="Sheetfile" value="secondary.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_J5"/>
+      <sheetpath names="/Secondary/" tstamps="/ab855a56-2586-493b-8e16-8a51352d115d/"/>
+      <tstamps>9ed075b2-c43c-43ce-8df3-7c91dd4ca1a3</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J6">
+      <value>43045-0200</value>
+      <footprint>CrystalShim_Mains:Mains_J6</footprint>
+      <datasheet>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">43045-0200</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_J6</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_J6" description="Integrated Circuit"/>
+      <property name="MPN" value="43045-0200"/>
+      <property name="Sheetname" value="Secondary"/>
+      <property name="Sheetfile" value="secondary.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_J6"/>
+      <sheetpath names="/Secondary/" tstamps="/ab855a56-2586-493b-8e16-8a51352d115d/"/>
+      <tstamps>7d1299f7-2d90-43d8-a939-6a4aedb5b9cf</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="L1">
+      <value>4.7µH</value>
+      <footprint>CrystalShim_Mains:Mains_L1</footprint>
+      <datasheet>https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf</datasheet>
+      <description>Inductor</description>
+      <fields>
+        <field name="MPN">SRP5030TA-4R7M</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_L1</field>
+        <field name="Datasheet">https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf</field>
+        <field name="Description">Inductor</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_L1" description="Component"/>
+      <property name="MPN" value="SRP5030TA-4R7M"/>
+      <property name="Sheetname" value="Secondary"/>
+      <property name="Sheetfile" value="secondary.kicad_sch"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_L1"/>
+      <sheetpath names="/Secondary/" tstamps="/ab855a56-2586-493b-8e16-8a51352d115d/"/>
+      <tstamps>72e7f29b-730d-4f12-96cf-0b40d96cc5af</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U2">
+      <value>AP63205WU-7</value>
+      <footprint>CrystalShim_Mains:Mains_U2</footprint>
+      <datasheet>https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">AP63205WU-7</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_U2</field>
+        <field name="Datasheet">https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_U2" description="Integrated Circuit"/>
+      <property name="MPN" value="AP63205WU-7"/>
+      <property name="Sheetname" value="Secondary"/>
+      <property name="Sheetfile" value="secondary.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_U2"/>
+      <sheetpath names="/Secondary/" tstamps="/ab855a56-2586-493b-8e16-8a51352d115d/"/>
+      <tstamps>40418f1b-1913-468e-b4be-189f8a090904</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="6"/>
+            <pin num="5"/>
+            <pin num="4"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C1">
+      <value>47nF</value>
+      <footprint>CrystalShim_Mains:Mains_C1</footprint>
+      <datasheet>https://www.tdk-electronics.tdk.com/inf/20/20/db/fc_2009/X2_B32921_928.pdf</datasheet>
+      <description>Capacitor</description>
+      <fields>
+        <field name="MPN">B32921C3473K000</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C1</field>
+        <field name="Datasheet">https://www.tdk-electronics.tdk.com/inf/20/20/db/fc_2009/X2_B32921_928.pdf</field>
+        <field name="Description">Capacitor</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_C1" description="Capacitor"/>
+      <property name="MPN" value="B32921C3473K000"/>
+      <property name="Sheetname" value="Suppression"/>
+      <property name="Sheetfile" value="suppression.kicad_sch"/>
+      <property name="ki_keywords" value="C cap capacitor"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_C1"/>
+      <sheetpath names="/Suppression/" tstamps="/3c5cdb7f-75b0-440b-ac32-d4363c859b21/"/>
+      <tstamps>700b1bbc-94bd-4edd-96e4-a0dccfc9e9a1</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D1">
+      <value>1N4007-E3/54</value>
+      <footprint>CrystalShim_Mains:Mains_D1</footprint>
+      <datasheet>https://www.vishay.com/docs/88503/1n4001.pdf</datasheet>
+      <description>Integrated Circuit</description>
+      <fields>
+        <field name="MPN">1N4007-E3/54</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_D1</field>
+        <field name="Datasheet">https://www.vishay.com/docs/88503/1n4001.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_D1" description="Integrated Circuit"/>
+      <property name="MPN" value="1N4007-E3/54"/>
+      <property name="Sheetname" value="Suppression"/>
+      <property name="Sheetfile" value="suppression.kicad_sch"/>
+      <property name="ki_keywords" value="U IC chip"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_D1"/>
+      <sheetpath names="/Suppression/" tstamps="/3c5cdb7f-75b0-440b-ac32-d4363c859b21/"/>
+      <tstamps>3a6fd5a8-f36e-4ba0-88ed-ed1d622771db</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R1">
+      <value>100Ω</value>
+      <footprint>CrystalShim_Mains:Mains_R1</footprint>
+      <datasheet>https://www.vishay.com/docs/28915/pr02fs.pdf</datasheet>
+      <description>Resistor</description>
+      <fields>
+        <field name="MPN">PR02FS0201000KA100</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_R1</field>
+        <field name="Datasheet">https://www.vishay.com/docs/28915/pr02fs.pdf</field>
+        <field name="Description">Resistor</field>
+      </fields>
+      <libsource lib="CrystalShim_Mains" part="Mains_R1" description="Resistor"/>
+      <property name="MPN" value="PR02FS0201000KA100"/>
+      <property name="Sheetname" value="Suppression"/>
+      <property name="Sheetfile" value="suppression.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="CrystalShim_Mains:Mains_R1"/>
+      <sheetpath names="/Suppression/" tstamps="/3c5cdb7f-75b0-440b-ac32-d4363c859b21/"/>
+      <tstamps>08f842c2-a67d-4a64-9fdc-8ce13ed16af5</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="CrystalShim_Mains" part="Mains_C1">
+      <description>Capacitor</description>
+      <docs>https://www.tdk-electronics.tdk.com/inf/20/20/db/fc_2009/X2_B32921_928.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_C1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">47nF</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C1</field>
+        <field name="Datasheet">https://www.tdk-electronics.tdk.com/inf/20/20/db/fc_2009/X2_B32921_928.pdf</field>
+        <field name="Description">Capacitor</field>
+        <field name="MPN">B32921C3473K000</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_C2">
+      <description>Capacitor</description>
+      <docs>https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_C2</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22uF</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C2</field>
+        <field name="Datasheet">https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</field>
+        <field name="Description">Capacitor</field>
+        <field name="MPN">GRM32ER71E226ME15L</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_C3">
+      <description>Capacitor</description>
+      <docs>https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_C3</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22uF</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C3</field>
+        <field name="Datasheet">https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</field>
+        <field name="Description">Capacitor</field>
+        <field name="MPN">GRM32ER71E226ME15L</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_C4">
+      <description>Capacitor</description>
+      <docs>https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_C4</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22uF</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C4</field>
+        <field name="Datasheet">https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</field>
+        <field name="Description">Capacitor</field>
+        <field name="MPN">GRM32ER71E226ME15L</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_C5">
+      <description>Capacitor</description>
+      <docs>https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_C5</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">100nF</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C5</field>
+        <field name="Datasheet">https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf</field>
+        <field name="Description">Capacitor</field>
+        <field name="MPN">C1608X7R1H104K080AA</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_C6">
+      <description>Capacitor</description>
+      <docs>https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_C6</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22uF</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C6</field>
+        <field name="Datasheet">https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647</field>
+        <field name="Description">Capacitor</field>
+        <field name="MPN">GRM32ER71E226ME15L</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_C7">
+      <description>Capacitor</description>
+      <docs>https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_C7</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">100nF</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_C7</field>
+        <field name="Datasheet">https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf</field>
+        <field name="Description">Capacitor</field>
+        <field name="MPN">C1608X7R1H104K080AA</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_D1">
+      <description>Integrated Circuit</description>
+      <docs>https://www.vishay.com/docs/88503/1n4001.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_D1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">1N4007-E3/54</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_D1</field>
+        <field name="Datasheet">https://www.vishay.com/docs/88503/1n4001.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">1N4007-E3/54</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_F2">
+      <description>Integrated Circuit</description>
+      <docs>https://www.littelfuse.com/assetdocs/fuse-451-and-453-datasheet?assetguid=533cd5cc-956c-4243-867f-6ab5a62f6ba1</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_F2</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">0451003.MRL</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_F2</field>
+        <field name="Datasheet">https://www.littelfuse.com/assetdocs/fuse-451-and-453-datasheet?assetguid=533cd5cc-956c-4243-867f-6ab5a62f6ba1</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">0451003.MRL</field>
+      </fields>
+      <pins>
+        <pin num="1" name="IN" type="passive"/>
+        <pin num="2" name="OUT" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_F3">
+      <description>Integrated Circuit</description>
+      <docs>https://www.littelfuse.com/assetdocs/littelfuse_fuse_215_datasheet?assetguid=990f7193-d9a2-48e4-b760-2b43514249cf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_F3</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">0215001.MXEP</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_F3</field>
+        <field name="Datasheet">https://www.littelfuse.com/assetdocs/littelfuse_fuse_215_datasheet?assetguid=990f7193-d9a2-48e4-b760-2b43514249cf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">0215001.MXEP</field>
+      </fields>
+      <pins>
+        <pin num="1" name="IN" type="passive"/>
+        <pin num="2" name="OUT" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_J1">
+      <description>Integrated Circuit</description>
+      <docs>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_J1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">43160-0102</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_J1</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">43160-0102</field>
+      </fields>
+      <pins>
+        <pin num="1" name="LINE" type="passive"/>
+        <pin num="2" name="NEUTRAL" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_J2">
+      <description>Integrated Circuit</description>
+      <docs>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_J2</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">43160-0103</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_J2</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">43160-0103</field>
+      </fields>
+      <pins>
+        <pin num="1" name="LINE" type="passive"/>
+        <pin num="2" name="NEUTRAL" type="passive"/>
+        <pin num="3" name="UNUSED_3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_J3">
+      <description>Integrated Circuit</description>
+      <docs>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_J3</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">43160-0104</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_J3</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">43160-0104</field>
+      </fields>
+      <pins>
+        <pin num="1" name="LINE" type="passive"/>
+        <pin num="2" name="NEUTRAL" type="passive"/>
+        <pin num="3" name="UNUSED_3" type="passive"/>
+        <pin num="4" name="UNUSED_4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_J4">
+      <description>Integrated Circuit</description>
+      <docs>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_J4</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">43160-0106</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_J4</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">43160-0106</field>
+      </fields>
+      <pins>
+        <pin num="1" name="LINE" type="passive"/>
+        <pin num="2" name="NEUTRAL" type="passive"/>
+        <pin num="3" name="UNUSED_3" type="passive"/>
+        <pin num="4" name="UNUSED_4" type="passive"/>
+        <pin num="5" name="UNUSED_5" type="passive"/>
+        <pin num="6" name="UNUSED_6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_J5">
+      <description>Integrated Circuit</description>
+      <docs>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/436/43650/436501200_sd.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_J5</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">43650-0300</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_J5</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/436/43650/436501200_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">43650-0300</field>
+      </fields>
+      <pins>
+        <pin num="1" name="V5_PSU" type="passive"/>
+        <pin num="2" name="GND" type="passive"/>
+        <pin num="3" name="COIL_DRAIN" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_J6">
+      <description>Integrated Circuit</description>
+      <docs>https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_J6</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">43045-0200</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_J6</field>
+        <field name="Datasheet">https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">43045-0200</field>
+      </fields>
+      <pins>
+        <pin num="1" name="POSITIVE" type="passive"/>
+        <pin num="2" name="RETURN" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_K1">
+      <description>Integrated Circuit</description>
+      <docs>https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5rl.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_K1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">K</field>
+        <field name="Value">G5RL-1A-TV8 DC5</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_K1</field>
+        <field name="Datasheet">https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5rl.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">G5RL-1A-TV8 DC5</field>
+      </fields>
+      <pins>
+        <pin num="1" name="COIL_HIGH" type="passive"/>
+        <pin num="3" name="CONTACT_FIXED" type="passive"/>
+        <pin num="4" name="CONTACT_MOVING" type="passive"/>
+        <pin num="5" name="COIL_LOW" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_L1">
+      <description>Component</description>
+      <docs>https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_L1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">4.7µH</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_L1</field>
+        <field name="Datasheet">https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf</field>
+        <field name="Description">Component</field>
+        <field name="MPN">SRP5030TA-4R7M</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_R1">
+      <description>Resistor</description>
+      <docs>https://www.vishay.com/docs/28915/pr02fs.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_R1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">100Ω</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_R1</field>
+        <field name="Datasheet">https://www.vishay.com/docs/28915/pr02fs.pdf</field>
+        <field name="Description">Resistor</field>
+        <field name="MPN">PR02FS0201000KA100</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_RV1">
+      <description>Integrated Circuit</description>
+      <docs>https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_RV1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">RV</field>
+        <field name="Value">TMOV14RP175EL2T7</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_RV1</field>
+        <field name="Datasheet">https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">TMOV14RP175EL2T7</field>
+      </fields>
+      <pins>
+        <pin num="1" name="LINE" type="passive"/>
+        <pin num="2" name="NEUTRAL" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_U1">
+      <description>Integrated Circuit</description>
+      <docs>https://www.meanwell.com/Upload/PDF/IRM-45/IRM-45-SPEC.PDF</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_U1</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">IRM-45-12</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_U1</field>
+        <field name="Datasheet">https://www.meanwell.com/Upload/PDF/IRM-45/IRM-45-SPEC.PDF</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">IRM-45-12</field>
+      </fields>
+      <pins>
+        <pin num="1" name="AC_N" type="power_in"/>
+        <pin num="2" name="AC_L" type="power_in"/>
+        <pin num="3" name="GND_ISO" type="power_out"/>
+        <pin num="4" name="V12_RAW" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="CrystalShim_Mains" part="Mains_U2">
+      <description>Integrated Circuit</description>
+      <docs>https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf</docs>
+      <footprints>
+        <fp>CrystalShim_Mains:Mains_U2</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">AP63205WU-7</field>
+        <field name="Footprint">CrystalShim_Mains:Mains_U2</field>
+        <field name="Datasheet">https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf</field>
+        <field name="Description">Integrated Circuit</field>
+        <field name="MPN">AP63205WU-7</field>
+      </fields>
+      <pins>
+        <pin num="1" name="FB" type="input"/>
+        <pin num="2" name="EN" type="input"/>
+        <pin num="3" name="VIN" type="power_in"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="SW" type="power_out"/>
+        <pin num="6" name="BST" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="CrystalShim_Mains">
+      <uri>${KIPRJMOD}/CrystalShim_Mains.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="AC_L_FUSED" class="PrimaryInput,Default">
+      <node ref="F3" pin="1" pinfunction="IN_1" pintype="passive"/>
+      <node ref="J1" pin="1" pinfunction="LINE_1" pintype="passive"/>
+      <node ref="RV1" pin="1" pinfunction="LINE_1" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="AC_L_2" pintype="power_in"/>
+    </net>
+    <net code="2" name="AC_N" class="PrimaryInput,Default">
+      <node ref="J1" pin="2" pinfunction="NEUTRAL_2" pintype="passive"/>
+      <node ref="J2" pin="2" pinfunction="NEUTRAL_2" pintype="passive"/>
+      <node ref="RV1" pin="2" pinfunction="NEUTRAL_2" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="AC_N_1" pintype="power_in"/>
+    </net>
+    <net code="3" name="BUCK5_BST" class="Default">
+      <node ref="C5" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U2" pin="6" pinfunction="BST_6" pintype="passive"/>
+    </net>
+    <net code="4" name="BUCK5_SW" class="BuckSwitch">
+      <node ref="C5" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="L1" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U2" pin="5" pinfunction="SW_5" pintype="power_out"/>
+    </net>
+    <net code="5" name="COIL_DRAIN" class="Coil,LogicPower">
+      <node ref="D1" pin="2" pinfunction="A_2" pintype="passive"/>
+      <node ref="J5" pin="3" pinfunction="COIL_DRAIN_3" pintype="passive"/>
+      <node ref="K1" pin="5" pinfunction="COIL_LOW_5" pintype="passive"/>
+    </net>
+    <net code="6" name="FILTER_LINE_L" class="Primary,Default">
+      <node ref="F3" pin="2" pinfunction="OUT_2" pintype="passive"/>
+      <node ref="J2" pin="1" pinfunction="LINE_1" pintype="passive"/>
+    </net>
+    <net code="7" name="GND_ISO" class="Motor,Default">
+      <node ref="C2" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C3" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C4" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C6" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C7" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="J5" pin="2" pinfunction="GND_2" pintype="passive"/>
+      <node ref="J6" pin="2" pinfunction="RETURN_2" pintype="passive"/>
+      <node ref="U1" pin="3" pinfunction="GND_ISO_3" pintype="power_out"/>
+      <node ref="U2" pin="4" pinfunction="GND_4" pintype="power_in"/>
+    </net>
+    <net code="8" name="PUMP_L_FILTERED" class="Primary,Default">
+      <node ref="J3" pin="1" pinfunction="LINE_1" pintype="passive"/>
+      <node ref="K1" pin="3" pinfunction="CONTACT_FIXED_3" pintype="passive"/>
+    </net>
+    <net code="9" name="PUMP_L_SW" class="Primary,Default">
+      <node ref="J4" pin="1" pinfunction="LINE_1" pintype="passive"/>
+      <node ref="K1" pin="4" pinfunction="CONTACT_MOVING_4" pintype="passive"/>
+      <node ref="R1" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="10" name="PUMP_N_FILTERED" class="Primary,Default">
+      <node ref="C1" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="J3" pin="2" pinfunction="NEUTRAL_2" pintype="passive"/>
+      <node ref="J4" pin="2" pinfunction="NEUTRAL_2" pintype="passive"/>
+    </net>
+    <net code="11" name="SNUBBER_RC" class="Primary,Default">
+      <node ref="C1" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R1" pin="2" pinfunction="2_2" pintype="passive"/>
+    </net>
+    <net code="12" name="V5_PSU" class="LogicPower,Default">
+      <node ref="C4" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C6" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D1" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="J5" pin="1" pinfunction="V5_PSU_1" pintype="passive"/>
+      <node ref="K1" pin="1" pinfunction="COIL_HIGH_1" pintype="passive"/>
+      <node ref="L1" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U2" pin="1" pinfunction="FB_1" pintype="input"/>
+    </net>
+    <net code="13" name="V12_MOTOR" class="Motor,Default">
+      <node ref="F2" pin="2" pinfunction="OUT_2" pintype="passive"/>
+      <node ref="J6" pin="1" pinfunction="POSITIVE_1" pintype="passive"/>
+    </net>
+    <net code="14" name="V12_RAW" class="Motor,Default">
+      <node ref="C2" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C3" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C7" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="F2" pin="1" pinfunction="IN_1" pintype="passive"/>
+      <node ref="U1" pin="4" pinfunction="V12_RAW_4" pintype="power_out"/>
+      <node ref="U2" pin="2" pinfunction="EN_2" pintype="input"/>
+      <node ref="U2" pin="3" pinfunction="VIN_3" pintype="power_in"/>
+    </net>
+    <net code="15" name="unconnected-(J2-UNUSED_3-Pad3)" class="Default">
+      <node ref="J2" pin="3" pinfunction="UNUSED_3_3" pintype="passive+no_connect"/>
+    </net>
+    <net code="16" name="unconnected-(J3-UNUSED_3-Pad3)" class="Default">
+      <node ref="J3" pin="3" pinfunction="UNUSED_3_3" pintype="passive+no_connect"/>
+    </net>
+    <net code="17" name="unconnected-(J3-UNUSED_4-Pad4)" class="Default">
+      <node ref="J3" pin="4" pinfunction="UNUSED_4_4" pintype="passive+no_connect"/>
+    </net>
+    <net code="18" name="unconnected-(J4-UNUSED_3-Pad3)" class="Default">
+      <node ref="J4" pin="3" pinfunction="UNUSED_3_3" pintype="passive+no_connect"/>
+    </net>
+    <net code="19" name="unconnected-(J4-UNUSED_4-Pad4)" class="Default">
+      <node ref="J4" pin="4" pinfunction="UNUSED_4_4" pintype="passive+no_connect"/>
+    </net>
+    <net code="20" name="unconnected-(J4-UNUSED_5-Pad5)" class="Default">
+      <node ref="J4" pin="5" pinfunction="UNUSED_5_5" pintype="passive+no_connect"/>
+    </net>
+    <net code="21" name="unconnected-(J4-UNUSED_6-Pad6)" class="Default">
+      <node ref="J4" pin="6" pinfunction="UNUSED_6_6" pintype="passive+no_connect"/>
+    </net>
+  </nets>
+</export>

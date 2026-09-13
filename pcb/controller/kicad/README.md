@@ -1,3 +1,9 @@
+Current routing preparation: planes, fills, ground/thermal vias and enforced
+routing rules are applied. Follow the [routing guide](../../../docs/design/routing-guardrails.md)
+and run `sh scripts/check-routing.sh controller`. The current ECO receipt is
+[evidence/routing-guardrails/eco-acceptance.json](evidence/routing-guardrails/eco-acceptance.json).
+Earlier evidence/counts below describe the pre-fill placement milestone.
+
 # Controller KiCad routing handoff
 
 Open [controller.kicad_pro](controller.kicad_pro). The accepted shared-power ECO

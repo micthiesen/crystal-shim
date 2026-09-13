@@ -1,3 +1,9 @@
+Current routing preparation: planes, fills, ground/thermal vias and enforced
+routing rules are applied. Follow the [routing guide](../../../docs/design/routing-guardrails.md)
+and run `sh scripts/check-routing.sh sensor`. The current ECO receipt is
+[evidence/routing-guardrails/eco-acceptance.json](evidence/routing-guardrails/eco-acceptance.json).
+Earlier evidence/counts below describe the pre-fill placement milestone.
+
 # Sensor native routing project
 
 The complete source-derived seed was adopted from the verified initial stage on
