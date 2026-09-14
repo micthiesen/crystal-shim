@@ -41,6 +41,10 @@ Physical calibration and acceptance use the final boards after assembly.
    order and assemble the three boards, enclosure and harnesses as one complete
    build, including the sensor's thin adhesive mounting. There is no
    intermediate sensor-board order or measurement-driven second fabrication phase.
+   The [printed assembly bench guide](assembly/README.md) gives the exact purchased
+   parts, placement maps, stencil/hot-bed versus iron steps and board/harness
+   combination. Keep firmware, power-up, testing and tank mounting interactive;
+   the booklet deliberately leaves those procedures out.
 5. **Calibrate and commission the final low-voltage hardware.** With mains
    disconnected and a reviewed isolated low-voltage power arrangement, verify
    supplies, supported USB/service arrangements, default-off drive, sensor faults,
