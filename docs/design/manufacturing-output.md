@@ -13,7 +13,7 @@ supplier construction and finished-tolerance acceptance.
 
 | Board | Outline / copper layers | Order construction / stencil | Hand assembly | No physical part, exclude from BOM/CPL |
 | --- | --- | --- | --- | --- |
-| controller | 150 × 110 mm / 4 | JLC04161H-7628; 81–99 Ω USB acceptance; 0.100 mm laser-cut stencil | J1–J3, J5–J9, SW1–SW3, D4; J4 shell joints after SMT signal reflow | H1–H4, TP1–TP14 |
+| controller | 150 × 110 mm / 4 | JLC04161H-7628; no paid USB impedance control; 0.100 mm laser-cut stencil | J1–J3, J5–J9, SW1–SW3, D4; J4 shell joints after SMT signal reflow | H1–H4, TP1–TP14 |
 | sensor | 18 × 64 mm / 4 | 35 µm outer / 15.2 µm inner copper; 0.2104 / 1.065 / 0.2104 mm dielectrics, 1.6062 mm physical total; 0.100 mm stencil | Six-wire pigtail soldered to J1 after SMT | E1, J1 |
 | mains | 150 × 110 mm / 2 | 1 oz outer copper, 1.51 mm FR4 core, nominal 1.6 mm total; 0.100 mm stencil | U1, K1, J1–J6, F3, D1, R1, C1, RV1 | H1–H4 |
 

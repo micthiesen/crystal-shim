@@ -48,7 +48,7 @@ return paths broad and direct to their supply return; keep buck loops compact.
 
 | Board | Route first | Then | Main tips |
 | --- | --- | --- | --- |
-| Controller | Compact buck power loops | USB pairs, broad power/motor paths, remaining signals | USB pairs on F.Cu without vias; keep In1.Cu ground intact; use In2.Cu/B.Cu for ordinary signals as permitted |
+| Controller | Compact buck power loops | USB pairs, broad power/motor paths, remaining signals | Reviewed USB F.Cu/B.Cu paths and through vias accepted; keep In1.Cu ground intact; use In2.Cu/B.Cu for ordinary signals as permitted |
 | Mains | Buck loops and broad isolated supply paths | Primary input/filter/relay paths, then coil/control | Keep power trunks on outer copper without vias; preserve primary/SELV gaps and separate filter LINE/LOAD paths |
 | Sensor | Local regulator and decoupling | I2C and pigtail; inspect the prepared CIN/shield connections | Preserve the fixed glass-side electrodes and inner driven shields; use permitted outward/inner routing and existing field restrictions |
 
@@ -75,7 +75,7 @@ preference report does not prove which width an unsaved open editor will choose.
 | Controller ordinary signal | 0.25 mm default; 0.15 mm fabrication minimum allows fine-pitch escapes |
 | Controller 5 V rails, 12 V trunk | 2 mm |
 | Controller pump drains, 3.3 V trunk | 1 mm |
-| USB | 0.24 mm width, 0.15 mm pair gap, F.Cu only |
+| USB | 0.24 mm width / 0.15 mm gap remain defaults; reviewed F.Cu/B.Cu paths and vias accepted |
 | Mains input/MOV and 12 V motor trunks | 3 mm |
 | Other mains primary and 5 V trunk | 2 mm |
 | Both buck switch nodes | 1 mm preferred, 0.3 mm minimum for their short lead escapes |
@@ -101,14 +101,12 @@ available. Non-ground traces/zones cannot occupy the controller In1 reference;
 signal vias may pass through it with an antipad. Blind/micro/buried vias are blocked.
 
 USB port/switch names now end in `_N`/`_P`, so KiCad recognizes all three pairs.
-Their stable source identities and endpoints did not change. Use differential-pair
-routing. Add adjacent ground stitching at the specified maximum 5 mm pitch as
-the actual USB path takes shape. The 0.5 mm front-side ground spacing applies to routed copper, with the
-existing component pads retaining their package clearance. Inspect pad transitions,
-keep the pair over In1 ground, and meet the 0.5 mm mismatch target. The final
-custom check also compares total routed copper length for each pair; inspect
-branch/pad transitions as well. The fixed stack
-and geometry are the existing impedance design basis, not measured impedance.
+Their stable source identities and endpoints did not change. The owner's
+2026-09-14 [USB decision](controller-routing-review.md) accepts the reviewed
+full-speed routing without paid impedance control. Existing no-via/front-only,
+pair-gap and mismatch checks are legacy policy findings for these paths, not
+requests to reroute. Native rules and checker policy still need reconciliation
+before formal handoff acceptance; retain all short/clearance/connectivity checks.
 
 Mains DRC still enforces 3.2 mm between different primary nets and 8 mm between
 primary and isolated copper. The sensor field rules follow its four-layer stack and declared breakouts. Do not

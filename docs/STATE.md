@@ -1,6 +1,6 @@
 # Current state
 
-Last updated: 2026-09-13
+Last updated: 2026-09-14
 
 ## Now
 
@@ -29,7 +29,7 @@ Never export a fresh source seed over these native projects.
 
 | Board | Project | Saved placement | Expected unrouted connections |
 | --- | --- | --- | --- |
-| Controller | [controller.kicad_pro](../pcb/controller/kicad/controller.kicad_pro) | 150 × 110 mm, 4 layers, 117 footprints | 166 |
+| Controller | [controller.kicad_pro](../pcb/controller/kicad/controller.kicad_pro) | 150 × 110 mm, 4 layers, 117 footprints | 0 (routing reviewed) |
 | Sensor | [sensor.kicad_pro](../pcb/sensor/kicad/sensor.kicad_pro) | 18 × 64 mm, 4 layers, 16 footprints | 0 (routing accepted) |
 | Mains | [mains.kicad_pro](../pcb/mains/kicad/mains.kicad_pro) | 150 × 110 mm, 2 layers, 26 footprints | 0 (routing accepted) |
 
@@ -125,13 +125,13 @@ historical findings and the new receipt records closure.
 
 ## Next
 
-The owner is routing the controller. Preserve the accepted mains and sensor
-routing. Mains acceptance includes the exact V12_RAW input pour and a bounded
-0.8 mm U2 feedback branch; the 2 mm load-rail requirement remains in force. See
-[mains routing acceptance](design/evidence/mains-routing-acceptance/README.md).
-Finish controller routing, then conduct one combined pre-fabrication review of all
-three boards. Use [routing guardrails](design/routing-guardrails.md) during routing and
-[manufacturing output](design/manufacturing-output.md) for the final release gates.
+Controller routing and both follow-up fixes are reviewed. The owner accepts
+full-speed USB vias and no paid impedance control; see
+[controller review and USB decision](design/controller-routing-review.md).
+Preserve the completed routing. Reconcile the legacy native USB/service-via
+rules, V5_LOGIC pour declaration and fabrication note before advancing the controller
+handoff lock. Then conduct the requested combined pre-fabrication review of all
+three boards. Sensor and mains routing remain accepted.
 No physical hardware is required for this stage.
 
 ### Candidates not chosen

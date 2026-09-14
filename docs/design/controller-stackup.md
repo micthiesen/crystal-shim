@@ -2,7 +2,10 @@
 
 The controller uses **JLC04161H-7628**, four layers, nominal 1.6 mm FR4,
 1 oz outer / 0.5 oz inner copper, NP-155F / Tg155 material basis, green mask and
-ENIG. USB is a 90 ohm differential pair with explicit **81-99 ohm acceptance**.
+ENIG. USB operates at full speed (12 Mbps). The owner accepted the reviewed
+F.Cu/B.Cu routing and through vias on 2026-09-14, with **no paid impedance
+control and no 81-99 ohm fabrication acceptance requirement**.
+See [the accepted USB decision](controller-routing-review.md).
 The removed service eFuse requires no via-in-pad process. U1 uses
 four **0.20/0.45 mm tented ground vias** with no added paste apertures.
 
@@ -35,8 +38,8 @@ values and do not replace the separately recorded USB solver mask model. Their
 output treatment is fixed: retain them only as CAD visualization metadata; exclude
 native/Gerber-job default mask thickness and loss tangent from supplier order
 constraints. The persistent native User.Comments fabrication note states the
-reviewed vendor stack, nominal order thickness and explicit USB acceptance. Include
-that note in the fabrication drawing/requirements. Verify the final order against
+reviewed vendor stack, nominal order thickness and the former USB acceptance.
+Correct that legacy native note before exporting fabrication requirements. Verify the final order against
 these requirements during export, without treating native defaults as measured values.
 
 Basic rules now read back as 0.15 mm clearance/minimum track, 0.20 mm minimum via
@@ -46,7 +49,7 @@ The last setting merges close mask apertures when plotting; it does not independ
 prove a physical 0.10 mm mask web. Default uses 0.25 mm routing width and
 0.30/0.60 mm drill/pad preferences. All six USB nets use USB90's 0.24 mm width
 and 0.15 mm differential gap while retaining 0.15 mm ordinary clearance.
-The **0.50 mm grounded side spacing** remains a separate route requirement.
+The former **0.50 mm grounded side spacing** is historical USB design guidance.
 Net-class routing preferences are not hard minimum-width enforcement.
 
 ## Stack and USB geometry
@@ -73,32 +76,18 @@ nominal copper. Board thickness includes manufacturing tolerance and mask.
 [calculator guide](https://jlcpcb.com/help/article/user-guide-to-the-jlcpcb-impedance-calculator)
 are the fabrication references.
 
-Use a coated coplanar differential pair on F.Cu over uninterrupted In1.Cu GND:
-**0.24 mm trace width, 0.15 mm pair gap, 0.50 mm clearance to grounded copper on
-both sides**. The pair plus side clearances occupies 1.63 mm. The reserved 3 mm
-corridor leaves 0.685 mm per side for ground rails. Stitch those rails with
-0.30/0.60 mm vias at a project starting pitch no greater than 5 mm.
+The original uniform F.Cu line model used 0.24 mm width, 0.15 mm pair gap
+and 0.50 mm side-ground clearance. Its recorded calculation was
+[vendor calculation](evidence/controller-stackup/selected-usb-calculation.json); that model
+is historical design evidence, not a prediction for the accepted routed board.
+The USB90 netclass name and routing preferences may remain as useful defaults.
 
-The [actual vendor request and response](evidence/controller-stackup/selected-usb-calculation.json)
-return **89.942796 ohms** for that uniform line. The model is
-`DiffCoatedCoplanarWaveguideWithLowerGnd1B`; all submitted dimensions are in mil,
-including H1=0.2104/0.0254, W1=0.24/0.0254, W2=W1-0.5, S1=0.15/0.0254,
-D1=0.50/0.0254 and T1=1.6. Its mask inputs are C1=C3=1, C2=0.6 and CEr=3.8.
-The guide's older mask/taper settings produce
-[89.813843 ohms](evidence/controller-stackup/older-guide-settings-usb-calculation.json).
-Neither nominal result bounds production variation or pad/device discontinuities.
-
-Route J4 through U9 and U8 to R44/R45 and the module without long branch stubs.
-Merge the duplicate connector data contacts immediately, keep the long pair on
-F.Cu, and use symmetric pad transitions. The project mismatch target is at most
-0.5 mm. A necessary layer change requires a new line model and paired ground
-return vias. These implement the
-[Espressif USB guidance](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32c6/pcb-layout-design.html#usb).
-
-JLC's [laminate article](https://jlcpcb.com/help/article/multi-layer-pcb-standard-laminated-structures)
-and [capability page](https://jlcpcb.com/capabilities/pcb-capabilities) describe
-different default/free impedance tolerances. Retain explicit 81-99 ohm acceptance
-in the manufacturing requirements. Do not infer it from a default checkbox.
+The owner accepts the saved F.Cu/B.Cu USB paths, connector crossover and through
+vias without paid impedance control. The former F.Cu-only, no-via, exact pair-gap,
+0.5 mm mismatch and mandatory side-ground/stitch-pitch requirements are superseded
+for the reviewed paths. Preserve connectivity, absence of shorts, ground returns
+and short connector branches. No functional failure was identified during review;
+actual USB operation remains unmeasured until final-board commissioning.
 
 ## USB locator correction
 
