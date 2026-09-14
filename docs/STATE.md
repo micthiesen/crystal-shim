@@ -113,12 +113,31 @@ workflow rehearsal. No routing or fabrication acceptance was advanced.
 
 ## Next
 
-The owner routes the remaining connections. Use `sh scripts/check-routing.sh`
-during routing; after routing, refill/save and add `--final` to require zero
-unconnected items. Finish routed copper/mask/paste/silk and fabrication checks,
-then use the [manufacturing output profile](design/manufacturing-output.md) to
-export manufacturing files. Source placement and native preparation are
-complete; routing-dependent verification is not fabrication acceptance.
+Close the sensor routing review before treating it as fabrication-ready. The
+owner's saved routing reviewed on 2026-09-13 has zero unconnected items and zero
+unwaived native DRC/parity findings; all ground pads share one F.Cu fill, In1 ground
+is continuous, and three added GND vias fit the permitted gap. The revised U1/C3
+power connection is about 3.1 mm instead of 28 mm. These are working-tree review
+observations, not a new accepted native receipt; the handoff table above records
+the earlier baseline.
+
+First review the changed B.Cu CIN_LEVEL and SHLD2 breakouts against the sensor
+geometry contract, restoring them if needed or explicitly accepting verified
+changes. Reconcile C3's 0.25 mm native move with source placement. The final routing
+command still fails its fixed-breakout checks despite clean native connectivity.
+Then run source/native parity and the final copper/mask/paste/silk review under
+[the routing guide](design/routing-guardrails.md) and
+[manufacturing output profile](design/manufacturing-output.md). No hardware is
+needed. This bounded review closes known sensor acceptance gaps before attention
+moves to the remaining boards; it does not authorize fabrication release.
+
+### Candidates not chosen
+
+- Controller/mains routing: independently startable, larger work with power,
+  return-path and isolation risks; remains necessary for the complete board set,
+  but does not resolve the current sensor review findings.
+- Manufacturing exports: follow all three boards' routed acceptance and
+  G-02/G-03/G-04 review; exporting now would package an unaccepted design.
 
 Physical calibration, adhesive response, temperatures, pump startup, EMI, PC sleep
 and HomeKit behavior remain commissioning stages. All physical test rows remain
