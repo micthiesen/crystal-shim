@@ -147,11 +147,13 @@ on the way, recorded from the owner's actual CSV. USB connectors, six-pin
 housings and cable-tie bases were increased to 10 each. The enclosure and existing
 mains input cord are in stock and have no shipment tracking. The owner also
 confirmed the other hookup wires, heatshrink, cable ties, 3M anchor tape and all
-listed support parts in stock. Totals are 72 lines on the way, 14 in stock and
-17 not ordered. The twisted sensor cable remains to order. The current
+listed support parts in stock. The female mains pigtail, both FR-4 sheet stocks,
+earth-junction hardware and cover, and an existing service power supply are also
+in stock. The service supply's model and ratings are not recorded, so electrical
+suitability remains to be verified. Totals are 72 lines on the way, 24 in stock
+and seven not ordered: six PCB components and the twisted sensor cable. The current
 [inventory ledger](../bom/inventory.csv) supersedes purchase statuses in dated
-cart/fabrication exports. Six PCB part types and the listed remaining assembly
-supplies still need sourcing. Native boards and fabrication outputs are unchanged.
+cart/fabrication exports. Native boards and fabrication outputs are unchanged.
 
 Open the [interactive order guide](https://mcp.syas.ca/boris/artifacts/art_ex30qrfnee6mu1033yz),
 or use the [order settings](design/manufacturing-output.md) and
