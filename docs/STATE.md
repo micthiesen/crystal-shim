@@ -150,10 +150,15 @@ confirmed the other hookup wires, heatshrink, cable ties, 3M anchor tape and all
 listed support parts in stock. The female mains pigtail, both FR-4 sheet stocks,
 earth-junction hardware and cover, and an existing service power supply are also
 in stock. The service supply's model and ratings are not recorded, so electrical
-suitability remains to be verified. Totals are 72 lines on the way, 24 in stock
-and seven not ordered: six PCB components and the twisted sensor cable. The current
+suitability remains to be verified. The owner confirmed the twisted sensor cable
+ordered from AliExpress; its actual
+model, gauge, pair count, length and order number are not recorded. Totals are
+73 lines on the way, 24 in stock and six not ordered, all PCB components. The current
 [inventory ledger](../bom/inventory.csv) supersedes purchase statuses in dated
 cart/fabrication exports. Native boards and fabrication outputs are unchanged.
+The [MOV sourcing/fit review](../bom/mov-sourcing-2026-09-14.md) found no confirmed
+small-quantity exact source. Mouser stocks the bulk alternative, but full-tolerance
+unformed fit is not guaranteed; no substitution or footprint change is approved.
 
 Open the [interactive order guide](https://mcp.syas.ca/boris/artifacts/art_ex30qrfnee6mu1033yz),
 or use the [order settings](design/manufacturing-output.md) and
