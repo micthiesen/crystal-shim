@@ -25,8 +25,9 @@ number is not recorded.
 
 - [Ordered items](ordered-items.csv): actual quantities, SKUs and board/use mapping.
 - [Order record](order.json): source hash and reconciliation to the proposed cart.
-- [Current inventory](../../inventory.csv): all 103 procurement lines, including
-  72 on the way, two in stock and 29 not ordered.
+- [Current inventory](../../inventory.csv): all 103 procurement lines. Subsequent
+  owner stock confirmations bring the totals to 72 on the way, 14 in stock and
+  17 not ordered. The original supplier order above remains unchanged.
 
 The six previously unavailable PCB part types remain not ordered. Procurement
 substitutions retain the compatibility evidence from the

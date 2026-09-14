@@ -3,8 +3,10 @@
 [inventory.csv](inventory.csv) is the current purchase and stock ledger for all
 103 consolidated procurement lines. DigiKey order
 [101602605](purchases/101602605/README.md) has 72 lines on the way, reconciled to
-the owner's actual order CSV. The enclosure and existing mains input cord are
-in stock. The other 29 lines have no new purchase or stock credit.
+the owner's actual order CSV. Fourteen lines are in stock: the enclosure, mains
+input cord, other hookup wires, heatshrink, cable ties, 3M anchor tape and support
+parts. Stock quantities allocate the current build, not the owner's total holdings.
+Seventeen lines remain not ordered, including the twisted sensor cable.
 
 [bom.csv](bom.csv) tracks one current three-board assembly independently of
 purchase status. Current source contains **113 controller components** (99 purchased

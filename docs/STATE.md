@@ -145,7 +145,10 @@ an intact separator without changing PCB holes or elevations.
 [DigiKey order 101602605](../bom/purchases/101602605/README.md) has 72 lines
 on the way, recorded from the owner's actual CSV. USB connectors, six-pin
 housings and cable-tie bases were increased to 10 each. The enclosure and existing
-mains input cord are in stock and have no shipment tracking. The current
+mains input cord are in stock and have no shipment tracking. The owner also
+confirmed the other hookup wires, heatshrink, cable ties, 3M anchor tape and all
+listed support parts in stock. Totals are 72 lines on the way, 14 in stock and
+17 not ordered. The twisted sensor cable remains to order. The current
 [inventory ledger](../bom/inventory.csv) supersedes purchase statuses in dated
 cart/fabrication exports. Six PCB part types and the listed remaining assembly
 supplies still need sourcing. Native boards and fabrication outputs are unchanged.
