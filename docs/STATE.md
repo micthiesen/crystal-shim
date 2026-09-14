@@ -168,7 +168,9 @@ Controller and sensor outputs remain unchanged. The [MOV assembly contract](desi
 covers lead capture with standard JLCPCB tolerances; physical seating and complete
 body-envelope inspection remain assembly checks. The six components remain
 not ordered. The [Mouser cart](../bom/mouser-cart-2026-09-14.md) now contains one
-of each: CA$14.72 merchandise plus displayed CA$20 shipping, before tax. Five
+of each plus six M0599-4-N nylon spacer blanks requested by the owner:
+CA$26.84 merchandise plus displayed CA$20 shipping, before tax. The spacers
+show shipment in 20 days, four for 3.2 mm feet and two for 8.2 mm sleeves. Five
 ship now; AP63203WU-7 is backordered with stock expected September 18, 2026.
 Cart persistence was verified after reload. Owner checkout remains; no purchase made.
 
