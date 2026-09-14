@@ -142,6 +142,13 @@ an intact separator without changing PCB holes or elevations.
 
 ## Next
 
+The [DigiKey Canada review cart](../bom/digikey-cart-2026-09-14/README.md)
+contains 74 live-stocked lines at CAD $586.25 before tax/shipping, for one
+three-board set plus selected inexpensive spares. Six PCB part types and the
+listed remaining assembly supplies need separate sourcing. Compatible purchase
+substitutions are documented; native boards and fabrication outputs are unchanged.
+Nothing has been ordered.
+
 Open the [interactive order guide](https://mcp.syas.ca/boris/artifacts/art_ex30qrfnee6mu1033yz),
 or use the [order settings](design/manufacturing-output.md) and
 [purchase list](../bom/order-2026-09-14/README.md) to order bare boards, stencils

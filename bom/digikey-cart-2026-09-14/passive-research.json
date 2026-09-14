@@ -1,0 +1,809 @@
+{
+  "date": "2026-09-14",
+  "scope": "PCB order lines12 through28, plus reviewed22uF alternative for line34; one each board; no cart mutation or purchase",
+  "stock_note": "Public DigiKey pages observed on date; stock is not reserved and some page caches are older. Final cart is authoritative.",
+  "lines": [
+    {
+      "order_line_id": "ORDER-LINE-012",
+      "original_mpn": "B3F-1002-G",
+      "selected_mpn": "B3F-1002-G",
+      "digikey_sku": "SW787-ND",
+      "package": "Bulk",
+      "required_quantity": 3,
+      "previous_suggested_quantity": 4,
+      "recommended_quantity": 3,
+      "spares": 0,
+      "stock_observed": 780,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 4.95
+        },
+        {
+          "quantity": 10,
+          "unit_price": 4.148
+        },
+        {
+          "quantity": 25,
+          "unit_price": 3.846
+        }
+      ],
+      "recommended_extended_price": 14.85,
+      "product_url": "https://www.digikey.ca/en/products/detail/omron-electronics-inc-emc-div/B3F-1002-G/664748",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/omron-electronics-inc-emc-div/B3F-1002-G/664748"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: SW1 SW2 SW3",
+      "quantity_reason": "Three required; no extra CAD4.95 switch solely for spares.",
+      "original_digikey_sku": "SW787-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-013",
+      "original_mpn": "C1608X7R1H104K080AA",
+      "selected_mpn": "C1608X7R1H104K080AA",
+      "digikey_sku": "445-1314-1-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 16,
+      "previous_suggested_quantity": 20,
+      "recommended_quantity": 20,
+      "spares": 4,
+      "stock_observed": 306280,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.16
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.088
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.061
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.0526
+        }
+      ],
+      "recommended_extended_price": 1.76,
+      "product_url": "https://www.digikey.ca/en/products/detail/tdk/C1608X7R1H104K080AA/567687",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/tdk/C1608X7R1H104K080AA/567687"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: C6 C7 C8 C11 C12 C21 C30 C31 C40 C41 C42 C45 C46; mains: C5 C7; sensor: C3",
+      "quantity_reason": "Four spares for sixteen fitted; fifty-pack adds CAD1.29 without being needed.",
+      "original_digikey_sku": "445-1314-1-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-014",
+      "original_mpn": "C2012X7R1E105K125AB",
+      "selected_mpn": "C2012X7R1E105K125AB",
+      "digikey_sku": "445-1354-1-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 4,
+      "previous_suggested_quantity": 7,
+      "recommended_quantity": 10,
+      "spares": 6,
+      "stock_observed": 54580,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.33
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.189
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.1354
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.1189
+        }
+      ],
+      "recommended_extended_price": 1.89,
+      "product_url": "https://www.digikey.ca/en/products/detail/tdk/C2012X7R1E105K125AB/513887",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/tdk/C2012X7R1E105K125AB/513887"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: C9 C20 C43; sensor: C4",
+      "quantity_reason": "Ten cost CAD1.89, less than seven at CAD2.31.",
+      "original_digikey_sku": "445-1354-1-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-015",
+      "original_mpn": "C3216X7R1E106K160AB",
+      "selected_mpn": "CL31B106KLHNNNE",
+      "digikey_sku": "1276-3103-1-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 3,
+      "previous_suggested_quantity": 6,
+      "recommended_quantity": 10,
+      "spares": 7,
+      "stock_observed": 130712,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 1.19
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.746
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.5716
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.5179
+        }
+      ],
+      "recommended_extended_price": 7.46,
+      "product_url": "https://www.digikey.ca/en/products/detail/samsung-electro-mechanics/CL31B106KLHNNNE/3891189",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/samsung-electro-mechanics/CL31B106KLHNNNE/3891189",
+        "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/8439/SpecSheet_CL31B106KLHNNN_20251215.pdf",
+        "https://datasheet.octopart.com/CL31B106KLHNNNE-Samsung-Electro-Mechanics-datasheet-181552175.pdf"
+      ],
+      "selection": "compatible substitute, engineering screening",
+      "use": "controller: C44; sensor: C1 C2",
+      "original_stock_observed": 0,
+      "original_incoming": "2000 expected 2026-11-30",
+      "quantity_reason": "Ten cost CAD7.46; six cost CAD7.14. Four extra spares cost CAD0.32.",
+      "compatibility": {
+        "nominal": "10uF \u00b110% X7R; 35V replaces25V; same1206/3216 outline,1.6mm nominal thickness1.8mmmaximum",
+        "application": "Sensor C1,C2 and controller C44 all at at most5.5V, no12V application.",
+        "dc_bias_screen": "Samsung exact-part typical curve shows approximately27% loss at5.5V. Screening with30%bias loss,10%initial tolerance,15%temperature loss and10%aging allowance yields10*0.70*0.90*0.85*0.90=4.8195uF, above documented4.7uF minimum. Typical curve and engineering aging allowance are not guaranteed production limits or measured hardware evidence.",
+        "maximum_capacitance": "Same nominal capacitance/tolerance/X7R means existing maximum capacitance and discharge budget remains unchanged.",
+        "datasheets": [
+          "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/8439/SpecSheet_CL31B106KLHNNN_20251215.pdf",
+          "https://datasheet.octopart.com/CL31B106KLHNNNE-Samsung-Electro-Mechanics-datasheet-181552175.pdf"
+        ]
+      },
+      "original_digikey_sku": "445-7705-1-ND",
+      "cart_instruction": "Try original SKU first. Use selected substitute only if live cart original is unavailable."
+    },
+    {
+      "order_line_id": "ORDER-LINE-016",
+      "original_mpn": "CRCW25126R80FKEGHP",
+      "selected_mpn": "CRCW25126R80FKEGHP",
+      "digikey_sku": "541-6.80RCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 2,
+      "previous_suggested_quantity": 5,
+      "recommended_quantity": 3,
+      "spares": 1,
+      "stock_observed": 3444,
+      "price_currency": "USD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.75
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.454
+        },
+        {
+          "quantity": 25,
+          "unit_price": 0.3872
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.3482
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.3176
+        }
+      ],
+      "recommended_extended_price": 2.25,
+      "product_url": "https://www.digikey.ca/en/products/detail/vishay-dale/CRCW25126R80FKEGHP/2229493",
+      "sources": [
+        "https://www.digikey.com/en/products/detail/vishay-dale/CRCW25126R80FKEGHP/2229493"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: R68 R69",
+      "cad_price_verified": false,
+      "quantity_reason": "Two required plus one spare. Exact pulse-rated highpower part retained. CAD price must be read from cart; Canadian page failed public retrieval.",
+      "original_digikey_sku": "541-6.80RCT-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-017",
+      "original_mpn": "ERA3AEB103V",
+      "selected_mpn": "ERA-3AEB103V",
+      "digikey_sku": "P10KDBCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 1,
+      "previous_suggested_quantity": 4,
+      "recommended_quantity": 2,
+      "spares": 1,
+      "stock_observed": 176835,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.17
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.12
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.106
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.1
+        }
+      ],
+      "recommended_extended_price": 0.34,
+      "product_url": "https://www.digikey.ca/en/products/detail/panasonic-industry/ERA-3AEB103V/1465878",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/panasonic-industry/ERA-3AEB103V/1465878"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: R15",
+      "quantity_reason": "One required plus one spare; ten would cost more than two.",
+      "original_digikey_sku": "P10KDBCT-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-018",
+      "original_mpn": "ERA3AEB9532V",
+      "selected_mpn": "ERA-3AEB9532V",
+      "digikey_sku": "P95.3KDBCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 1,
+      "previous_suggested_quantity": 4,
+      "recommended_quantity": 2,
+      "spares": 1,
+      "stock_observed": 3500,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.17
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.12
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.106
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.1
+        }
+      ],
+      "recommended_extended_price": 0.34,
+      "product_url": "https://www.digikey.ca/en/products/detail/panasonic-electronic-components/ERA-3AEB9532V/2026927",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/panasonic-electronic-components/ERA-3AEB9532V/2026927"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: R14",
+      "quantity_reason": "One required plus one spare; ten would cost more than two.",
+      "original_digikey_sku": "P95.3KDBCT-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-019",
+      "original_mpn": "ERJ3EKF1000V",
+      "selected_mpn": "ERJ-3EKF1000V",
+      "digikey_sku": "P100HCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 4,
+      "previous_suggested_quantity": 7,
+      "recommended_quantity": 10,
+      "spares": 6,
+      "stock_observed": 1467146,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.16
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.061
+        },
+        {
+          "quantity": 25,
+          "unit_price": 0.0448
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.0368
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.0305
+        }
+      ],
+      "recommended_extended_price": 0.61,
+      "product_url": "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF1000V/196074",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF1000V/196074"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: R20 R80 R82 R84",
+      "quantity_reason": "Ten-piece cut tape price break gives useful assembly spares for about CAD0.61 (CAD0.64 for5.1k); no100packs justified.",
+      "original_digikey_sku": "P100HCT-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-020",
+      "original_mpn": "ERJ3EKF1001V",
+      "selected_mpn": "ERJ-3EKF1001V",
+      "digikey_sku": "P1.00KHCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 1,
+      "previous_suggested_quantity": 4,
+      "recommended_quantity": 10,
+      "spares": 9,
+      "stock_observed": 2081436,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.16
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.061
+        },
+        {
+          "quantity": 25,
+          "unit_price": 0.0448
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.0368
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.0305
+        }
+      ],
+      "recommended_extended_price": 0.61,
+      "product_url": "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF1001V/196032",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF1001V/196032"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: R42",
+      "quantity_reason": "Ten-piece cut tape price break gives useful assembly spares for about CAD0.61 (CAD0.64 for5.1k); no100packs justified.",
+      "original_digikey_sku": "P1.00KHCT-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-021",
+      "original_mpn": "ERJ3EKF1002V",
+      "selected_mpn": "ERJ-3EKF1002V",
+      "digikey_sku": "P10.0KHCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 16,
+      "previous_suggested_quantity": 20,
+      "recommended_quantity": 25,
+      "spares": 9,
+      "stock_observed": 2913449,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.16
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.061
+        },
+        {
+          "quantity": 25,
+          "unit_price": 0.0448
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.0368
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.0305
+        }
+      ],
+      "recommended_extended_price": 1.12,
+      "product_url": "https://www.digikey.ca/en/products/detail/panasonic-electronic-components/ERJ-3EKF1002V/196066",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/panasonic-electronic-components/ERJ-3EKF1002V/196066"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: R2 R11 R12 R46 R50 R51 R52 R53 R64 R65 R66 R67 R81 R83 R85; sensor: R5",
+      "quantity_reason": "Twenty-five cost CAD1.12, less than previous twenty at CAD1.22; nine spares.",
+      "original_digikey_sku": "P10.0KHCT-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-022",
+      "original_mpn": "ERJ3EKF1003V",
+      "selected_mpn": "ERJ-3EKF1003V",
+      "digikey_sku": "P100KHCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 1,
+      "previous_suggested_quantity": 4,
+      "recommended_quantity": 10,
+      "spares": 9,
+      "stock_observed": 229332,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.16
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.061
+        },
+        {
+          "quantity": 25,
+          "unit_price": 0.0448
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.0368
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.0305
+        }
+      ],
+      "recommended_extended_price": 0.61,
+      "product_url": "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF1003V/198110",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF1003V/198110"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: R43",
+      "quantity_reason": "Ten-piece cut tape price break gives useful assembly spares for about CAD0.61 (CAD0.64 for5.1k); no100packs justified.",
+      "original_digikey_sku": "P100KHCT-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-023",
+      "original_mpn": "ERJ3EKF22R0V",
+      "selected_mpn": "ERJ-3EKF22R0V",
+      "digikey_sku": "P22.0HCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 8,
+      "previous_suggested_quantity": 11,
+      "recommended_quantity": 10,
+      "spares": 2,
+      "stock_observed": 262594,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.16
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.061
+        },
+        {
+          "quantity": 25,
+          "unit_price": 0.0448
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.0368
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.0305
+        }
+      ],
+      "recommended_extended_price": 0.61,
+      "product_url": "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF22R0V/1746340",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF22R0V/1746340"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: R44 R45 R62 R63 R70 R71; sensor: R1 R2",
+      "quantity_reason": "Ten-piece cut tape price break gives useful assembly spares for about CAD0.61 (CAD0.64 for5.1k); no100packs justified.",
+      "original_digikey_sku": "P22.0HCT-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-024",
+      "original_mpn": "ERJ3EKF2701V",
+      "selected_mpn": "ERJ-3EKF2701V",
+      "digikey_sku": "P2.70KHCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 6,
+      "previous_suggested_quantity": 9,
+      "recommended_quantity": 10,
+      "spares": 4,
+      "stock_observed": 103831,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.16
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.061
+        },
+        {
+          "quantity": 25,
+          "unit_price": 0.0448
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.0368
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.0305
+        }
+      ],
+      "recommended_extended_price": 0.61,
+      "product_url": "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF2701V/1746355",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF2701V/1746355"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: R60 R61 R72 R73; sensor: R3 R4",
+      "quantity_reason": "Ten-piece cut tape price break gives useful assembly spares for about CAD0.61 (CAD0.64 for5.1k); no100packs justified.",
+      "original_digikey_sku": "P2.70KHCT-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-025",
+      "original_mpn": "ERJ3EKF3011V",
+      "selected_mpn": "ERJ-3EKF3011V",
+      "digikey_sku": "P3.01KHCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 1,
+      "previous_suggested_quantity": 4,
+      "recommended_quantity": 10,
+      "spares": 9,
+      "stock_observed": 164618,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.16
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.061
+        },
+        {
+          "quantity": 25,
+          "unit_price": 0.0448
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.0368
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.0305
+        }
+      ],
+      "recommended_extended_price": 0.61,
+      "product_url": "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF3011V/196267",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF3011V/196267"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "sensor: R6",
+      "quantity_reason": "Ten-piece cut tape price break gives useful assembly spares for about CAD0.61 (CAD0.64 for5.1k); no100packs justified.",
+      "original_digikey_sku": "P3.01KHCT-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-026",
+      "original_mpn": "ERJ3EKF3300V",
+      "selected_mpn": "CRCW0603330RFKEA",
+      "digikey_sku": "541-330HCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 1,
+      "previous_suggested_quantity": 4,
+      "recommended_quantity": 10,
+      "spares": 9,
+      "stock_observed": 42327,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.16
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.05
+        },
+        {
+          "quantity": 25,
+          "unit_price": 0.0376
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.0304
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.0248
+        }
+      ],
+      "recommended_extended_price": 0.5,
+      "product_url": "https://www.digikey.ca/en/products/detail/vishay-dale/CRCW0603330RFKEA/1179752",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/vishay-dale/CRCW0603330RFKEA/1179752",
+        "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
+      ],
+      "selection": "compatible substitute",
+      "use": "controller: R55",
+      "original_stock_observed": 0,
+      "original_incoming": "5000 expected 2026-10-02",
+      "quantity_reason": "Ten cost CAD0.50, less than four at CAD0.64.",
+      "compatibility": {
+        "value": "330ohm1%",
+        "package": "0603 standard chip,1.55x0.85mm vs Panasonic1.60x0.80mm; compatible0603landpattern",
+        "ratings": "0.125W replaces0.1W, \u00b1100ppm/K unchanged, -55..155C unchanged,75V rated working voltage. Ordinary thick-film resistor; no circuit/net/value change.",
+        "datasheet": "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
+      },
+      "original_digikey_sku": "P330HCT-ND",
+      "cart_instruction": "Try original SKU first. Use selected substitute only if live cart original is unavailable."
+    },
+    {
+      "order_line_id": "ORDER-LINE-027",
+      "original_mpn": "ERJ3EKF5101V",
+      "selected_mpn": "ERJ-3EKF5101V",
+      "digikey_sku": "P5.10KHCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 2,
+      "previous_suggested_quantity": 5,
+      "recommended_quantity": 10,
+      "spares": 8,
+      "stock_observed": 185701,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.17
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.064
+        },
+        {
+          "quantity": 25,
+          "unit_price": 0.048
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.039
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.0323
+        }
+      ],
+      "recommended_extended_price": 0.64,
+      "product_url": "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF5101V/1746427",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF5101V/1746427"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: R40 R41",
+      "quantity_reason": "Ten-piece cut tape price break gives useful assembly spares for about CAD0.61 (CAD0.64 for5.1k); no100packs justified.",
+      "original_digikey_sku": "P5.10KHCT-ND"
+    },
+    {
+      "order_line_id": "ORDER-LINE-028",
+      "original_mpn": "ERJ3EKF6800V",
+      "selected_mpn": "ERJ-3EKF6800V",
+      "digikey_sku": "P680HCT-ND",
+      "original_digikey_sku": "P680HCT-ND",
+      "package": "Cut Tape (CT)",
+      "required_quantity": 1,
+      "previous_suggested_quantity": 4,
+      "recommended_quantity": 10,
+      "spares": 9,
+      "stock_observed": 138160,
+      "price_currency": "CAD",
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price": 0.16
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.062
+        },
+        {
+          "quantity": 25,
+          "unit_price": 0.0456
+        },
+        {
+          "quantity": 50,
+          "unit_price": 0.0374
+        },
+        {
+          "quantity": 100,
+          "unit_price": 0.0309
+        }
+      ],
+      "recommended_extended_price": 0.62,
+      "product_url": "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF6800V/413159",
+      "sources": [
+        "https://www.digikey.ca/en/products/detail/panasonic-industry/ERJ-3EKF6800V/413159"
+      ],
+      "selection": "exact MPN; Panasonic hyphen normalization only",
+      "use": "controller: R54",
+      "quantity_reason": "Ten costCAD0.62 versus fourCAD0.64."
+    }
+  ],
+  "cad_subtotal_excluding_line_016": 33.18,
+  "open_checks": [
+    "Read CAD price for541-6.80RCT-ND in final cart.",
+    "Confirm all final cart stock; no reservation made by this research."
+  ],
+  "supplemental_22uf_fallback": {
+    "order_line_id": "ORDER-LINE-034",
+    "original_mpn": "GRM32ER71E226ME15L",
+    "selected_mpn": "CGA6P3X7R1E226M250AB",
+    "digikey_sku": "445-180363-1-ND",
+    "package": "Cut Tape (CT)",
+    "required_quantity": 10,
+    "recommended_quantity": 12,
+    "stock_observed": 38553,
+    "price_currency": "CAD",
+    "price_breaks": [
+      {
+        "quantity": 1,
+        "unit_price": 2.71
+      },
+      {
+        "quantity": 10,
+        "unit_price": 1.805
+      },
+      {
+        "quantity": 50,
+        "unit_price": 1.4458
+      },
+      {
+        "quantity": 100,
+        "unit_price": 1.3349
+      }
+    ],
+    "recommended_extended_price": 21.66,
+    "product_url": "https://www.digikey.ca/en/products/detail/tdk/CGA6P3X7R1E226M250AB/9555472",
+    "cart_instruction": "Prefer original Murata if live stock available. This is a reviewed alternate if both original packaging choices are backordered.",
+    "compatibility": {
+      "nominal": "22uF \u00b120%, 25V, X7R,1210/3225, standard MLCC terminations; same nominal capacitance, tolerance and voltage. AEC-Q200 automotive grade.",
+      "mechanical": "3.2x2.5mm nominal body fits the existing1210 footprint. Maximum height2.8mm vs original2.7mm;0.1mm increase is below existing neighboring tall component envelope and does not alter the separated board stack.",
+      "typical_dc_bias_loss_pct": {
+        "3.3V": "approximately0",
+        "5V": "approximately5",
+        "12.54V": "approximately33"
+      },
+      "screening": "Exact TDK characterization graph visually checked from manufacturer-authored June28,2018 sheet. All points are inside existing design allowances:10% at3.3V,25% at5V,65% at12.54V. Existing derated bank calculations remain conservative: controller22.9uF at3.3V and19.1uF at5V; mains input10.472uF at12.54V. No nominal-capacitance increase affects the maximum-capacitance budgets.",
+      "limitation": "Typical characterization is design evidence, not a guaranteed combined limit or measured assembled-board result. Final startup/ripple/load-transient checks remain required."
+    },
+    "sources": [
+      "https://www.digikey.ca/en/products/detail/tdk/CGA6P3X7R1E226M250AB/9555472",
+      "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA6P3X7R1E226M250AB",
+      "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/cga6p3x7r1e226m250ab.pdf",
+      "https://www.ariat-tech.com/datasheet/40/CGA6P3X7R1E226M250AB.pdf"
+    ],
+    "local_inspected_pdf": "/tmp/crystal-tdk22-cga-real.pdf",
+    "local_inspected_render": "/tmp/crystal-tdk22-cga-real.png"
+  }
+}

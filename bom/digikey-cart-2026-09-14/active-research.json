@@ -1,0 +1,622 @@
+{
+  "date": "2026-09-14",
+  "scope": "PCB zero-based lines 0-11 and 28-49",
+  "evidence_limit": "Web indexed and directly opened DigiKey pages, mixed crawl dates up to five months old. Cart must confirm stock and CAD prices. No purchase or cart action performed. Zero stock entries are unresolved, not authorization for a different device.",
+  "lines": [
+    {
+      "index": 0,
+      "id": "ORDER-LINE-001",
+      "original_mpn": "0215001.MXEP",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "F3476-ND",
+      "observed_stock": 0,
+      "unit_price_cad": 4.72,
+      "first_break": null,
+      "product_url": "https://www.digikey.ca/en/products/detail/littelfuse-inc/0215001-MXEP/777430",
+      "status": "exact_available_cart_confirmed",
+      "notes": "Exact Canadian page fetch failed; zero stock seen in distributor substitute tables. Need cart verification.",
+      "cart_availability": "Immediate, root native browser report"
+    },
+    {
+      "index": 1,
+      "id": "ORDER-LINE-002",
+      "original_mpn": "0451003.MRL",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "F2583CT-ND",
+      "observed_stock": 21867,
+      "unit_price_cad": 3.57,
+      "first_break": {
+        "quantity": 5,
+        "unit_cad": 2.964
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/littelfuse-inc/0451003-MRL/813061",
+      "status": "exact_available"
+    },
+    {
+      "index": 2,
+      "id": "ORDER-LINE-003",
+      "original_mpn": "1868076",
+      "required": 4,
+      "recommended_buy": 4,
+      "digikey_sku": "277-5840-ND",
+      "observed_stock": 410,
+      "unit_price_cad": 2.8,
+      "first_break": null,
+      "product_url": "https://www.digikey.ca/en/products/detail/phoenix-contact/1868076/2511066",
+      "status": "exact_available",
+      "cart_availability": "Immediate, root native browser report"
+    },
+    {
+      "index": 3,
+      "id": "ORDER-LINE-004",
+      "original_mpn": "1N4007-E3/54",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "1N4007-E3/54GICT-ND",
+      "observed_stock": 182557,
+      "unit_price_cad": 0.84,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.513
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/vishay-general-semiconductor-diodes-division/1N4007-E3-54/868990",
+      "status": "exact_available"
+    },
+    {
+      "index": 4,
+      "id": "ORDER-LINE-005",
+      "original_mpn": "43045-0200",
+      "required": 5,
+      "recommended_buy": 6,
+      "digikey_sku": "WM1813-ND",
+      "observed_stock": 8991,
+      "unit_price_cad": 1.47,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 1.25
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/molex/0430450200/252526",
+      "status": "exact_available"
+    },
+    {
+      "index": 5,
+      "id": "ORDER-LINE-006",
+      "original_mpn": "43045-0600",
+      "required": 2,
+      "recommended_buy": 3,
+      "digikey_sku": "WM1815-ND",
+      "observed_stock": 241,
+      "unit_price_cad": 3.04,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 2.58
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/molex/0430450600/252528",
+      "status": "exact_available"
+    },
+    {
+      "index": 6,
+      "id": "ORDER-LINE-007",
+      "original_mpn": "43650-0300",
+      "required": 2,
+      "recommended_buy": 3,
+      "digikey_sku": "WM1861-ND",
+      "observed_stock": 13577,
+      "unit_price_cad": 1.83,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 1.551
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/molex/0436500300/268990",
+      "status": "exact_available"
+    },
+    {
+      "index": 7,
+      "id": "ORDER-LINE-008",
+      "original_mpn": "AO3400A",
+      "required": 4,
+      "recommended_buy": 10,
+      "digikey_sku": "785-1000-1-ND",
+      "observed_stock": 341624,
+      "unit_price_cad": 0.81,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.503
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/alpha-omega-semiconductor-inc/AO3400A/1855772",
+      "status": "exact_available",
+      "notes": "10costs5.03 vs5cost4.05, useful MOSFET spares for0.98 extra."
+    },
+    {
+      "index": 8,
+      "id": "ORDER-LINE-009",
+      "original_mpn": "AP63203WU-7",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "AP63203WU-7DICT-ND",
+      "observed_stock": 0,
+      "unit_price_cad": null,
+      "first_break": null,
+      "product_url": "https://www.digikey.ca/en/products/detail/diodes-incorporated/AP63203WU-7/9858430",
+      "status": "unresolved_availability",
+      "notes": "Direct page today zero,3000expected2027-01-04. Q variant also zero."
+    },
+    {
+      "index": 9,
+      "id": "ORDER-LINE-010",
+      "original_mpn": "AP63205WU-7",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "AP63205WU-7DICT-ND",
+      "observed_stock": 0,
+      "unit_price_cad": 1.39,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.992
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/diodes-incorporated/AP63205WU-7/9858424",
+      "status": "unresolved_availability",
+      "notes": "3000expected2027-01-11. Q variant also zero expected2026-11-09."
+    },
+    {
+      "index": 10,
+      "id": "ORDER-LINE-011",
+      "original_mpn": "B32921C3473K000",
+      "required": 1,
+      "recommended_buy": 4,
+      "digikey_sku": "495-6903-ND",
+      "observed_stock": 6963,
+      "unit_price_cad": 0.74,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.459
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/epcos-tdk-electronics/B32921C3473K000/3492420",
+      "status": "exact_available"
+    },
+    {
+      "index": 11,
+      "id": "ORDER-LINE-012",
+      "original_mpn": "B3F-1002-G",
+      "required": 3,
+      "recommended_buy": 4,
+      "digikey_sku": "SW787-ND",
+      "observed_stock": 780,
+      "unit_price_cad": 5.07,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 4.246
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/omron-electronics-inc-emc-div/B3F-1002-G/664748",
+      "status": "exact_available"
+    },
+    {
+      "index": 28,
+      "id": "ORDER-LINE-029",
+      "original_mpn": "ESDS312DBVR",
+      "required": 3,
+      "recommended_buy": 4,
+      "digikey_sku": "296-51112-1-ND",
+      "observed_stock": 16336,
+      "unit_price_cad": 1.19,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.737
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/texas-instruments/ESDS312DBVR/9655797",
+      "status": "exact_available"
+    },
+    {
+      "index": 29,
+      "id": "ORDER-LINE-030",
+      "original_mpn": "ESP32-C6-WROOM-1-N8",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "1965-ESP32-C6-WROOM-1-N8CT-ND",
+      "observed_stock": 1256,
+      "unit_price_cad": 8.67,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 7.499
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/espressif-systems/ESP32-C6-WROOM-1-N8/17728866",
+      "status": "exact_available"
+    },
+    {
+      "index": 30,
+      "id": "ORDER-LINE-031",
+      "original_mpn": "FDC1004DGSR",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "296-48544-1-ND",
+      "observed_stock": 6464,
+      "unit_price_cad": 6.62,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 4.997
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/texas-instruments/FDC1004DGSR/5250523",
+      "status": "exact_available"
+    },
+    {
+      "index": 31,
+      "id": "ORDER-LINE-032",
+      "original_mpn": "FSUSB42MUX",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "FSUSB42MUXCT-ND",
+      "observed_stock": 67044,
+      "unit_price_cad": 1.33,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.945
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/onsemi/FSUSB42MUX/2036916",
+      "status": "exact_available"
+    },
+    {
+      "index": 32,
+      "id": "ORDER-LINE-033",
+      "original_mpn": "G5RL-1A-TV8 DC5",
+      "required": 1,
+      "recommended_buy": 1,
+      "digikey_sku": "39-G5RL-1A-TV8DC5-ND",
+      "observed_stock": 0,
+      "unit_price_cad": null,
+      "first_break": {
+        "quantity": 100,
+        "unit_cad": 5.476
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/omron-electronics-inc-emc-div/G5RL-1A-TV8-DC5/11312926",
+      "status": "unresolved_availability",
+      "notes": "Nonstock MOQ100 confirmed live cart. Reject E-HR/E-TV8/E-LN: manufacturer drawing has six pins and5mmcontact spacing versus original four pins3.5mm. Four-pin1A-LN is TV5 rather than TV8; not approved. Four-pin1A4-TV8 also nonstock. Keep original unresolved rather than modify PCB.",
+      "primary_source": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5rl.pdf"
+    },
+    {
+      "index": 33,
+      "id": "ORDER-LINE-034",
+      "original_mpn": "GRM32ER71E226ME15L",
+      "required": 10,
+      "recommended_buy": 13,
+      "digikey_sku": "490-14682-1-ND",
+      "observed_stock": 88223,
+      "unit_price_cad": 1.14,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.716
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/murata-electronics/GRM32ER71E226ME15K/4905639",
+      "status": "compatible_packaging_variant_but_cart_backorder",
+      "selected_mpn": "GRM32ER71E226ME15K",
+      "compatibility": "Same exact capacitor; L=180mm 1000pc reel, K=330mm 4000pc reel. Same electrical/physical specifications, including DC bias behavior.",
+      "primary_source": "https://www.murata.com/en-us/products/productdetail.aspx?partno=GRM32ER71E226ME15%23",
+      "original_digikey_sku": "490-10758-1-ND",
+      "cart_availability": "Both original and packaging variant subject to root cart verification; K variant backorder confirmed"
+    },
+    {
+      "index": 34,
+      "id": "ORDER-LINE-035",
+      "original_mpn": "IRM-45-12",
+      "required": 1,
+      "recommended_buy": 1,
+      "digikey_sku": "1866-3053-ND",
+      "observed_stock": 1225,
+      "unit_price_cad": 21.1,
+      "first_break": {
+        "quantity": 5,
+        "unit_cad": 20.224
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/mean-well-usa-inc/IRM-45-12/7704678",
+      "status": "exact_available"
+    },
+    {
+      "index": 35,
+      "id": "ORDER-LINE-036",
+      "original_mpn": "PR02FS0201000KA100",
+      "required": 1,
+      "recommended_buy": 4,
+      "digikey_sku": "BC3366CT-ND",
+      "observed_stock": 4995,
+      "unit_price_cad": 0.66,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.423
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/vishay-beyschlag-draloric-bc-components/PR02FS0201000KR500/6691167",
+      "status": "packaging_substitution",
+      "selected_mpn": "PR02FS0201000KR500",
+      "compatibility": "Verified Vishay28915p2: A1=1000pc axial ammo, R5=5000pc axial reel. Both5mm tape pitch52mm tape width; all device fields same, including0.78mm wire,100ohm10%,2W, defined fusing and pulse performance.",
+      "primary_source": "https://www.vishay.com/docs/28915/pr02fs.pdf"
+    },
+    {
+      "index": 36,
+      "id": "ORDER-LINE-037",
+      "original_mpn": "S2B-XH-A",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "455-S2B-XH-A-ND",
+      "observed_stock": 33365,
+      "unit_price_cad": 0.21,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.179
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/jst-sales-america-inc/S2B-XH-A/1651055",
+      "status": "exact_available"
+    },
+    {
+      "index": 37,
+      "id": "ORDER-LINE-038",
+      "original_mpn": "SMBJ7.0A",
+      "required": 2,
+      "recommended_buy": 3,
+      "digikey_sku": "SMBJ7.0ALFCT-ND",
+      "observed_stock": 3,
+      "unit_price_cad": 0.74,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.461
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/littelfuse-inc/SMBJ7-0A/285960",
+      "status": "exact_available",
+      "notes": "Only3in latest opened page; exact manufacturer is Littelfuse."
+    },
+    {
+      "index": 38,
+      "id": "ORDER-LINE-039",
+      "original_mpn": "SN74LVC1G08DBVR",
+      "required": 1,
+      "recommended_buy": 10,
+      "digikey_sku": "296-11601-1-ND",
+      "observed_stock": 253269,
+      "unit_price_cad": 0.19,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.12
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/texas-instruments/SN74LVC1G08DBVR/385740",
+      "status": "exact_available",
+      "notes": "10cost1.20 vs2cost.38; modest .82 increment for reusable logic spares."
+    },
+    {
+      "index": 39,
+      "id": "ORDER-LINE-040",
+      "original_mpn": "SN74LVC1G14DBVR",
+      "required": 1,
+      "recommended_buy": 10,
+      "digikey_sku": "296-11607-1-ND",
+      "observed_stock": 67854,
+      "unit_price_cad": 0.22,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.15
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/texas-instruments/SN74LVC1G14DBVR/385746",
+      "status": "exact_available",
+      "notes": "Conflicting cached zero-stock pages. Direct cart verification especially needed.10cost1.50 vs2cost.44."
+    },
+    {
+      "index": 40,
+      "id": "ORDER-LINE-041",
+      "original_mpn": "SRP5030TA-4R7M",
+      "required": 2,
+      "recommended_buy": 3,
+      "digikey_sku": "SRP5030TA-4R7MCT-ND",
+      "observed_stock": 168,
+      "unit_price_cad": 1.62,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 1.33
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/bourns-inc/SRP5030TA-4R7M/5429759",
+      "status": "exact_available"
+    },
+    {
+      "index": 41,
+      "id": "ORDER-LINE-042",
+      "original_mpn": "STPS2L40U",
+      "required": 6,
+      "recommended_buy": 10,
+      "digikey_sku": "497-5574-1-ND",
+      "observed_stock": 28731,
+      "unit_price_cad": 0.85,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.524
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/stmicroelectronics/STPS2L40U/1039650",
+      "status": "exact_available",
+      "notes": "10cost5.24 less than7cost5.95, unconditional sensible price break."
+    },
+    {
+      "index": 42,
+      "id": "ORDER-LINE-043",
+      "original_mpn": "TCA9517ADGKR",
+      "required": 2,
+      "recommended_buy": 3,
+      "digikey_sku": "296-39220-1-ND",
+      "observed_stock": 40934,
+      "unit_price_cad": 1.94,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 1.401
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/texas-instruments/TCA9517ADGKR/5143217",
+      "status": "exact_available"
+    },
+    {
+      "index": 43,
+      "id": "ORDER-LINE-044",
+      "original_mpn": "TMOV14RP175EL2T7",
+      "required": 1,
+      "recommended_buy": 4,
+      "digikey_sku": "TMOV14RP175EL2T7-ND",
+      "observed_stock": 0,
+      "unit_price_cad": null,
+      "first_break": null,
+      "product_url": null,
+      "status": "unresolved_availability",
+      "notes": "Littelfuse primary p8 confirms L2T7=crimped inline7.5mm tape; L2B7 identicalleadform bulk, candidate catalog not found. BaseTMOV14RP175E/F4008-ND is electrically same but straight non-inline leads, so not automatically exact mechanical drop-in. Do not replace with V14E175P non-thermal MOV.",
+      "primary_source": "https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05"
+    },
+    {
+      "index": 44,
+      "id": "ORDER-LINE-045",
+      "original_mpn": "TPS2553DBVR",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "296-23990-1-ND",
+      "observed_stock": 4848,
+      "unit_price_cad": 2.0,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 1.448
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/texas-instruments/TPS2553DBVT/1984893",
+      "status": "compatible_packaging_variant_but_cart_backorder",
+      "selected_mpn": "TPS2553DBVT",
+      "compatibility": "Same TPS2553 DBV6 chip, 250pc SMALL T&R instead of3000pc LARGE T&R. TI ordering addendum confirms same2553 device marking andNIPDAU leads. Do not substitute -1 fault-latching variant.",
+      "primary_source": "https://www.ti.com/lit/ds/symlink/tps2553.pdf",
+      "original_digikey_sku": "296-32464-1-ND",
+      "cart_availability": "T variant backorder confirmed; original R being checked"
+    },
+    {
+      "index": 45,
+      "id": "ORDER-LINE-046",
+      "original_mpn": "TPS3808G01DBVR",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "296-17188-1-ND",
+      "observed_stock": 87505,
+      "unit_price_cad": 3.06,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 2.245
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/texas-instruments/TPS3808G01DBVR/666712",
+      "status": "exact_available"
+    },
+    {
+      "index": 46,
+      "id": "ORDER-LINE-047",
+      "original_mpn": "TPS7A2433DBVR",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "296-TPS7A2433DBVRCT-ND",
+      "observed_stock": 21132,
+      "unit_price_cad": 1.11,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.786
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/texas-instruments/TPS7A2433DBVR/11502221",
+      "status": "exact_available"
+    },
+    {
+      "index": 47,
+      "id": "ORDER-LINE-048",
+      "original_mpn": "USB4105-GF-A",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "2073-USB4105-GF-ACT-ND",
+      "observed_stock": 138713,
+      "unit_price_cad": 1.17,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.991
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/gct/USB4105-GF-A/11198510",
+      "status": "exact_available"
+    },
+    {
+      "index": 48,
+      "id": "ORDER-LINE-049",
+      "original_mpn": "USBLC6-2SC6",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "497-5235-1-ND",
+      "observed_stock": 0,
+      "unit_price_cad": 0.79,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.482
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/stmicroelectronics/USBLC6-2SC6/1040559",
+      "status": "unresolved_availability",
+      "notes": "Zero stock,3000expected2026-09-25. Automotive Y alsozero. Other manufacturers same-name not yet approved."
+    },
+    {
+      "index": 49,
+      "id": "ORDER-LINE-050",
+      "original_mpn": "WP710A10LGD",
+      "required": 1,
+      "recommended_buy": 2,
+      "digikey_sku": "754-1609-ND",
+      "observed_stock": 50215,
+      "unit_price_cad": 0.34,
+      "first_break": {
+        "quantity": 10,
+        "unit_cad": 0.236
+      },
+      "product_url": "https://www.digikey.ca/en/products/detail/kingbright/WP710A10LGD/2657762",
+      "status": "exact_cart_backorder",
+      "cart_availability": "Backorder Sep28, root native browser report",
+      "notes": "Do not rely on indexed50215stock. Wurth151031VS06000 is a possible functional indicator but differs20mA rating and wider flange; not approved in this bounded review."
+    }
+  ],
+  "final_notes": [
+    "Livecart supersedes every indexed availability and price field.",
+    "Primary-approved packaging substitutions: lines33,35,44. Their liveavailability must be confirmed.",
+    "No approved different-die buck,relay,USBESD substitution. These are unresolved if exactpart backordered.",
+    "All34assignedlines have exactSKU; original PR02 A100 exactSKU notfound, samepartR500 alternative supplied."
+  ],
+  "final_trial_assessments": [
+    {
+      "original": "WP710A10LGD",
+      "substitute": "HLMP-1790",
+      "sku": "516-1310-ND",
+      "buy_quantity": 2,
+      "status": "Approved compatible; root live cart reports Immediate",
+      "basis": "Low-current green LED, 2 mA test, 1.9 V typical, 7 mA maximum. Existing R54 is680 ohms, about2mA. DrawingB lead pitch2.29\u20132.79mm nominal2.54; square leads0.40\u20130.55mm fit0.9mm drills. Bodydiameter max3.17mm, flange3.43mm, height6.35mm. Cathode goes native pad1.",
+      "source": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/1021/HLMP-47zz,HLMP-17zz_2021-08-09.pdf",
+      "product_url": "https://www.digikey.ca/en/products/detail/broadcom-limited/HLMP-1790/637574"
+    },
+    {
+      "original": "TPS2553DBVR",
+      "substitute": "TPS2553QDBVRQ1",
+      "sku": "296-40729-1-ND",
+      "status": "Electrically compatible but live cart backorder, excluded",
+      "basis": "Same DBV pinout, active-high EN, thermal recovery and reverse cutoff. ActualU5 ILIM tiedIN: both50/75/100mA currentlimit. Q FAULT deglitch5\u201311ms vs5\u201310ms ordinary variant; immaterial fault reporting.",
+      "sources": [
+        "https://www.ti.com/lit/ds/symlink/tps2553-q1.pdf",
+        "https://www.ti.com/lit/ds/symlink/tps2553.pdf"
+      ]
+    },
+    {
+      "originals": [
+        "AP63203WU-7",
+        "AP63205WU-7"
+      ],
+      "substitutes": [
+        "AP63203QWU-7",
+        "AP63205QWU-7"
+      ],
+      "skus": [
+        "31-AP63203QWU-7CT-ND",
+        "31-AP63205QWU-7CT-ND"
+      ],
+      "status": "Both live cart backorder, excluded; root stopped further comparison",
+      "source": "https://www.diodes.com/assets/Datasheets/AP63200Q_AP63201Q_AP63203Q_AP63205Q.pdf"
+    },
+    {
+      "original": "TMOV14RP175EL2T7",
+      "substitute": "TMOV14RP175E",
+      "sku": "F4008-ND",
+      "status": "Electrical match; mechanical forming compatibility not verified, not approved as drop-in",
+      "basis": "Basebulk straight leads0.76\u20130.86mm fit1.3mm drills and6.5\u20138.5mm longitudinalpitch fits existing slot. Bulk lateral lead offset1.5\u20134mm requires forming beyond inline capture. Body17\u00d79mm max,height22mm leaves4mm under26mm assemblyenvelope. Datasheet does not establish stress-free forming within this allowance. Source currently factoryoutercrimp only/no forced reshaping. PreferL2T7 orL2B7; latter samecrimpedinline7.5mm packagingonlychange but no DigiKeySKU found.",
+      "source": "https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05"
+    }
+  ]
+}

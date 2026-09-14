@@ -1,0 +1,1471 @@
+{
+  "date": "2026-09-14",
+  "scope": "Offboard BOM indices50\u2013102; one complete set; no order placed",
+  "pricing_note": "CAD where explicitly shown. Public DigiKey page reads may be cached; confirm stock/price in cart. No private inventory allocated.",
+  "lines": [
+    {
+      "bom_index": 50,
+      "order_line_id": "ORDER-LINE-051",
+      "requested_mpn": "FN2090A-1-06 / 802490-SF",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 1,
+      "status": "add_exact_verify_canadian_price",
+      "recommended_cart_quantity": 1,
+      "reason": "Exact filter; US DigiKey primary page verified, Canadian page fetch failed. Cart must verify CAD price.",
+      "original_source": "https://www.te.com/en/product-CAT-P97-F2090.html",
+      "sku": "817-2400-ND",
+      "url": "https://www.digikey.com/en/products/detail/te-connectivity-schaffner/FN2090A-1-06/1997007",
+      "stock": 50,
+      "unit_price_usd": 35.5
+    },
+    {
+      "bom_index": 51,
+      "order_line_id": "ORDER-LINE-052",
+      "requested_mpn": "43025-0600",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 2,
+      "status": "add_exact",
+      "recommended_cart_quantity": 2,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://www.molex.com/en-us/products/part-detail/430250600",
+      "url": "https://www.digikey.ca/en/products/detail/molex/0430250600/252498",
+      "sku": "WM1785-ND",
+      "stock": 90495,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 0.8
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 0.675
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 0.6324
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 0.6022
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 0.5734
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 0.5374
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 0.5117
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 0.48725
+        },
+        {
+          "quantity": 2500,
+          "unit_price_cad": 0.45673
+        }
+      ],
+      "estimated_line_cad": 1.6
+    },
+    {
+      "bom_index": 52,
+      "order_line_id": "ORDER-LINE-053",
+      "requested_mpn": "6200.2300",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 1,
+      "status": "add_exact",
+      "recommended_cart_quantity": 1,
+      "reason": "6200.23 is DigiKey shortened notation for6200.2300; legacy DigiKey catalog maps same486-1032-ND to6200.2300. Flange C14 fused6.3mm FASTON matches.",
+      "original_source": "https://www.schurter.com/en/datasheet/typ_6200.pdf",
+      "url": "https://www.digikey.ca/en/products/detail/schurter-inc/6200-23/569922",
+      "sku": "486-1032-ND",
+      "stock": 1807,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 6.71
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 5.697
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 5.3396
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 5.0844
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 4.8415
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 4.53832
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 4.32174
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 4.11561
+        },
+        {
+          "quantity": 2500,
+          "unit_price_cad": 3.8582
+        }
+      ],
+      "estimated_line_cad": 6.71
+    },
+    {
+      "bom_index": 53,
+      "order_line_id": "ORDER-LINE-054",
+      "requested_mpn": "1112.048.005350",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 1,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "Exact Americord outlet pigtail not found at DigiKey; retain direct Americord supplier, no unverified mains-cord substitute.",
+      "original_source": "https://www.americord.com/en-ca/products/4ft-roj-2-strip-3-8-to-nema-5-15r-power-cord-18-3-sjtow-na"
+    },
+    {
+      "bom_index": 54,
+      "order_line_id": "ORDER-LINE-055",
+      "requested_mpn": "0215002.MXP",
+      "required_quantity": 2,
+      "required_unit": "each",
+      "bom_suggested_buy": 4,
+      "status": "add_exact",
+      "recommended_cart_quantity": 5,
+      "reason": "Five cost15.11CAD versus four14.60CAD: one extra spare for0.51CAD.",
+      "original_source": "https://www.littelfuse.com/assetdocs/fuse-215-datasheet?assetguid=990f7193-d9a2-48e4-b760-2b43514249cf",
+      "url": "https://www.digikey.ca/en/products/detail/littelfuse-inc/0215002-MXP/777434",
+      "sku": "F4609-ND",
+      "stock": 27728,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 3.65
+        },
+        {
+          "quantity": 5,
+          "unit_price_cad": 3.022
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 2.787
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 2.313
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 2.1337
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 1.91708
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 1.76714
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 1.62819
+        },
+        {
+          "quantity": 5000,
+          "unit_price_cad": 1.53815
+        }
+      ],
+      "estimated_line_cad": 15.11
+    },
+    {
+      "bom_index": 55,
+      "order_line_id": "ORDER-LINE-056",
+      "requested_mpn": "1590ZGRP243",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 1,
+      "status": "add_exact",
+      "recommended_cart_quantity": 1,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://www.hammfg.com/part/1590ZGRP243",
+      "url": "https://www.digikey.ca/en/products/detail/hammond-manufacturing/1590ZGRP243/2360723",
+      "sku": "HM1993-ND",
+      "stock": 46,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 255.61
+        },
+        {
+          "quantity": 5,
+          "unit_price_cad": 215.94
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 200.928
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 200.6392
+        }
+      ],
+      "estimated_line_cad": 255.61
+    },
+    {
+      "bom_index": 56,
+      "order_line_id": "ORDER-LINE-057",
+      "requested_mpn": "467MP (25mm wide converter strip or sheet)",
+      "required_quantity": 1,
+      "required_unit": "18 x 64mm patch",
+      "bom_suggested_buy": 3,
+      "status": "add_exact",
+      "recommended_cart_quantity": 1,
+      "reason": "Same 467MP 0.058 mm adhesive in a 25.4 mm wide x 4.6 m converter roll. Cut intact 18 x 64 mm sensor patches; one roll covers all requested patches. This is the smallest economical in-stock DigiKey format found, replacing the $51.75 four-inch roll.",
+      "original_source": "https://multimedia.3m.com/mws/media/2522781O/3m-adhesive-transfer-tape-467mp.pdf?fn=3M-Adhesive-Transfer-Tape-467MP.pdf",
+      "url": "https://www.digikey.ca/en/products/detail/3m-tc/467MP-1-5/2649272",
+      "sku": "1067-467MP-1-5-ND",
+      "stock": 87,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 19.96
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 15.177
+        }
+      ],
+      "selected_mpn": "467MP-1-5",
+      "estimated_line_cad": 19.96
+    },
+    {
+      "bom_index": 57,
+      "order_line_id": "ORDER-LINE-058",
+      "requested_mpn": "5493C, slate, cut length",
+      "required_quantity": 0.2032,
+      "required_unit": "m maximum installed",
+      "bom_suggested_buy": 1,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "Selected Alpha Wire is sold by DigiKey in100ft or larger spools. One-set requirement is1\u20132m per color; buy exact cut lengths outside DigiKey to avoid hundreds of dollars in unused wire. No substitute chosen without insulation/crimp and sensor capacitance verification.",
+      "original_source": "https://www.alphawire.com/products/cable/xtra-guard-performance-cable/xtra-guard-1/5493c"
+    },
+    {
+      "bom_index": 58,
+      "order_line_id": "ORDER-LINE-059",
+      "requested_mpn": "RC320",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 1,
+      "status": "out_of_stock",
+      "recommended_cart_quantity": 0,
+      "reason": "RC320-01 exact cover for6200 inlet. DigiKey has0; retain outside supplier/backorder. Other RC320 suffixes are not interchangeable.",
+      "original_source": "https://www.schurter.com/en/datasheet/typ_6200.pdf",
+      "sku": "486-3-125-661-ND",
+      "selected_mpn": "3-125-661",
+      "stock": 0,
+      "url": "https://www.digikey.ca/en/products/detail/schurter-inc/3-125-661/13912458"
+    },
+    {
+      "bom_index": 59,
+      "order_line_id": "ORDER-LINE-060",
+      "requested_mpn": "43645-0300",
+      "required_quantity": 2,
+      "required_unit": "each",
+      "bom_suggested_buy": 3,
+      "status": "add_exact",
+      "recommended_cart_quantity": 3,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://www.molex.com/en-us/products/part-detail/436450300",
+      "url": "https://www.digikey.ca/en/products/detail/molex/0436450300/268975",
+      "sku": "WM1846-ND",
+      "stock": 25531,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 0.62
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 0.517
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 0.4848
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 0.4614
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 0.4392
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 0.41172
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 0.39204
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 0.37331
+        },
+        {
+          "quantity": 2500,
+          "unit_price_cad": 0.34992
+        }
+      ],
+      "estimated_line_cad": 1.86
+    },
+    {
+      "bom_index": 60,
+      "order_line_id": "ORDER-LINE-061",
+      "requested_mpn": "43025-0200",
+      "required_quantity": 2,
+      "required_unit": "each",
+      "bom_suggested_buy": 3,
+      "status": "add_exact",
+      "recommended_cart_quantity": 3,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://www.molex.com/en-us/products/part-detail/430250200",
+      "url": "https://www.digikey.ca/en/products/detail/molex/0430250200/252496",
+      "sku": "WM1783-ND",
+      "stock": 196632,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 0.56
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 0.483
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 0.4532
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 0.4312
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 0.4104
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 0.38476
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 0.36634
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 0.34884
+        },
+        {
+          "quantity": 2500,
+          "unit_price_cad": 0.32698
+        }
+      ],
+      "estimated_line_cad": 1.68
+    },
+    {
+      "bom_index": 61,
+      "order_line_id": "ORDER-LINE-062",
+      "requested_mpn": "6715 black and 6715 white; 18AWG",
+      "required_quantity": 4,
+      "required_unit": "m purchasing allocation",
+      "bom_suggested_buy": 4,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "Selected Alpha Wire is sold by DigiKey in100ft or larger spools. One-set requirement is1\u20132m per color; buy exact cut lengths outside DigiKey to avoid hundreds of dollars in unused wire. No substitute chosen without insulation/crimp and sensor capacitance verification.",
+      "original_source": "https://www.alphawire.com/en/products/wire/ecogen/ecowire/6715"
+    },
+    {
+      "bom_index": 62,
+      "order_line_id": "ORDER-LINE-063",
+      "requested_mpn": "3075 green/yellow; 18AWG",
+      "required_quantity": 2,
+      "required_unit": "m purchasing allocation",
+      "bom_suggested_buy": 2,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "Selected Alpha Wire is sold by DigiKey in100ft or larger spools. One-set requirement is1\u20132m per color; buy exact cut lengths outside DigiKey to avoid hundreds of dollars in unused wire. No substitute chosen without insulation/crimp and sensor capacitance verification.",
+      "original_source": "https://www.alphawire.com/en/products/wire/hook-up-wire/premium/3075"
+    },
+    {
+      "bom_index": 63,
+      "order_line_id": "ORDER-LINE-064",
+      "requested_mpn": "6713 red, black and blue; 22AWG",
+      "required_quantity": 3,
+      "required_unit": "m purchasing allocation",
+      "bom_suggested_buy": 3,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "Selected Alpha Wire is sold by DigiKey in100ft or larger spools. One-set requirement is1\u20132m per color; buy exact cut lengths outside DigiKey to avoid hundreds of dollars in unused wire. No substitute chosen without insulation/crimp and sensor capacitance verification.",
+      "original_source": "https://www.alphawire.com/disteAPI/SpecPDF/DownloadProductSpecPdf?productPartNumber=6713"
+    },
+    {
+      "bom_index": 64,
+      "order_line_id": "ORDER-LINE-065",
+      "requested_mpn": "2-520184-2",
+      "required_quantity": 8,
+      "required_unit": "each",
+      "bom_suggested_buy": 10,
+      "status": "add_exact",
+      "recommended_cart_quantity": 10,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://www.te.com/en/product-2-520184-2.html",
+      "url": "https://www.digikey.ca/en/products/detail/te-connectivity-amp-connectors/2-520184-2/289250",
+      "sku": "A27817-ND",
+      "stock": 225460,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 0.5
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 0.426
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 0.4004
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 0.381
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 0.3629
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 0.34008
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 0.3238
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 0.30832
+        },
+        {
+          "quantity": 3000,
+          "unit_price_cad": 0.28531
+        }
+      ],
+      "estimated_line_cad": 4.26
+    },
+    {
+      "bom_index": 65,
+      "order_line_id": "ORDER-LINE-066",
+      "requested_mpn": "31886",
+      "required_quantity": 2,
+      "required_unit": "each",
+      "bom_suggested_buy": 2,
+      "status": "add_exact",
+      "recommended_cart_quantity": 2,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://www.te.com/en/product-31886.html",
+      "url": "https://www.digikey.ca/en/products/detail/te-connectivity-amp-connectors/31886/237080",
+      "sku": "A27238-ND",
+      "stock": 33365,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 0.86
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 0.731
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 0.6852
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 0.6528
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 0.6215
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 0.58248
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 0.55466
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 0.52816
+        },
+        {
+          "quantity": 3000,
+          "unit_price_cad": 0.48874
+        }
+      ],
+      "estimated_line_cad": 1.72
+    },
+    {
+      "bom_index": 66,
+      "order_line_id": "ORDER-LINE-067",
+      "requested_mpn": "320551",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 1,
+      "status": "add_exact",
+      "recommended_cart_quantity": 1,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://www.te.com/en/product-320551.html",
+      "url": "https://www.digikey.ca/en/products/detail/te-connectivity-amp-connectors/320551/287733",
+      "sku": "A27237-ND",
+      "stock": 27671,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 0.62
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 0.522
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 0.4884
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 0.4652
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 0.4429
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 0.41504
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 0.3952
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 0.37631
+        },
+        {
+          "quantity": 3000,
+          "unit_price_cad": 0.34823
+        }
+      ],
+      "estimated_line_cad": 0.62
+    },
+    {
+      "bom_index": 67,
+      "order_line_id": "ORDER-LINE-068",
+      "requested_mpn": "M3231",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 1,
+      "status": "add_exact",
+      "recommended_cart_quantity": 1,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://www.heyco.com/wp-content/uploads/2024/10/Liquid-Tight-Cordgrips-NPT.pdf",
+      "url": "https://www.digikey.ca/en/products/detail/heyco-products-corporation/M3231/15906457",
+      "sku": "3720-M3231-ND",
+      "stock": 14355,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 2.01
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 1.709
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 1.602
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 1.5254
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 1.4525
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 1.36144
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 1.29646
+        },
+        {
+          "quantity": 1500,
+          "unit_price_cad": 1.19974
+        },
+        {
+          "quantity": 3000,
+          "unit_price_cad": 1.1425
+        }
+      ],
+      "estimated_line_cad": 2.01
+    },
+    {
+      "bom_index": 68,
+      "order_line_id": "ORDER-LINE-069",
+      "requested_mpn": "6009.1315",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 1,
+      "status": "add_exact",
+      "recommended_cart_quantity": 1,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://www.schurter.com/en/datasheet/6009.1315",
+      "url": "https://www.digikey.ca/en/products/detail/schurter-inc/6009-1315/2646839",
+      "sku": "486-1958-ND",
+      "stock": 185,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 18.56
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 15.764
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 14.7764
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 14.0712
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 13.3996
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 12.56116
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 11.96216
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 11.39184
+        }
+      ],
+      "estimated_line_cad": 18.56
+    },
+    {
+      "bom_index": 69,
+      "order_line_id": "ORDER-LINE-070",
+      "requested_mpn": "GST18U05-P1J",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 0,
+      "status": "verify_owned",
+      "recommended_cart_quantity": 0,
+      "reason": "BOM explicitly says verify already-owned GST18U05-P1J. Do not buy duplicate without inventory confirmation.",
+      "original_source": "https://www.meanwell.com/Upload/PDF/GST18U/GST18U-SPEC.PDF"
+    },
+    {
+      "bom_index": 70,
+      "order_line_id": "ORDER-LINE-071",
+      "requested_mpn": "10-02248",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 1,
+      "status": "add_exact",
+      "recommended_cart_quantity": 1,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://tensility.s3.us-west-2.amazonaws.com/imports/product_spec_sheets/10-02248.pdf",
+      "url": "https://www.digikey.ca/en/products/detail/tensility-international-corp/10-02248/6412283",
+      "sku": "839-10-02248-ND",
+      "stock": 261,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 5.03
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 4.272
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 4.0044
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 3.8134
+        },
+        {
+          "quantity": 240,
+          "unit_price_cad": 3.41346
+        },
+        {
+          "quantity": 480,
+          "unit_price_cad": 3.25056
+        },
+        {
+          "quantity": 720,
+          "unit_price_cad": 3.15893
+        },
+        {
+          "quantity": 1200,
+          "unit_price_cad": 3.04716
+        },
+        {
+          "quantity": 2640,
+          "unit_price_cad": 2.88243
+        }
+      ],
+      "estimated_line_cad": 5.03
+    },
+    {
+      "bom_index": 71,
+      "order_line_id": "ORDER-LINE-072",
+      "requested_mpn": "01500274Z",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 1,
+      "status": "add_exact",
+      "recommended_cart_quantity": 1,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://www.littelfuse.com/assetdocs/fuse-holder-150-datasheet?assetguid=662e5ae4-2c3a-4d7a-8642-e7d9db02703d",
+      "url": "https://www.digikey.ca/en/products/detail/littelfuse-inc/01500274Z/29453",
+      "sku": "F1468-ND",
+      "stock": 64246,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 6.25
+        },
+        {
+          "quantity": 5,
+          "unit_price_cad": 5.184
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 4.785
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 3.969
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 3.6607
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 3.28796
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 3.03
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 2.7907
+        },
+        {
+          "quantity": 5000,
+          "unit_price_cad": 2.7835
+        }
+      ],
+      "estimated_line_cad": 6.25
+    },
+    {
+      "bom_index": 72,
+      "order_line_id": "ORDER-LINE-073",
+      "requested_mpn": "XHP-2",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 2,
+      "status": "add_exact",
+      "recommended_cart_quantity": 2,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://www.jst.com/wp-content/uploads/2025/06/eXH.pdf",
+      "url": "https://www.digikey.ca/en/products/detail/jst-sales-america-inc/XHP-2/555485",
+      "sku": "455-2266-ND",
+      "stock": 269455,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 0.16
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 0.092
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 0.0868
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 0.0828
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 0.0789
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 0.074
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 0.07044
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 0.06706
+        },
+        {
+          "quantity": 3000,
+          "unit_price_cad": 0.06205
+        }
+      ],
+      "estimated_line_cad": 0.32
+    },
+    {
+      "bom_index": 73,
+      "order_line_id": "ORDER-LINE-074",
+      "requested_mpn": "SXH-001T-P0.6",
+      "required_quantity": 2,
+      "required_unit": "each",
+      "bom_suggested_buy": 6,
+      "status": "add_verified_substitute",
+      "recommended_cart_quantity": 10,
+      "reason": "JST application-tooling catalog identifies BXH as loose form of SXH-001T-P0.6.22AWG service lead is inside22\u201326AWG range.10 cost0.74CAD versus6 cost0.90CAD; original SXH cut tape minimum100 costs6.90CAD.",
+      "original_source": "https://www.jst.com/wp-content/uploads/2025/06/eXH.pdf",
+      "url": "https://www.digikey.ca/en/products/detail/jst-sales-america-inc/BXH-001T-P0-6/7423881",
+      "sku": "BXH-001T-P0.6-ND",
+      "stock": 166967,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 0.15
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 0.074
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 0.0696
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 0.066
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 0.0629
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 0.05892
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 0.05614
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 0.05344
+        },
+        {
+          "quantity": 2500,
+          "unit_price_cad": 0.05009
+        }
+      ],
+      "selected_mpn": "BXH-001T-P0.6",
+      "substitution_source": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/4896/App_Tooling.pdf",
+      "estimated_line_cad": 0.74
+    },
+    {
+      "bom_index": 74,
+      "order_line_id": "ORDER-LINE-075",
+      "requested_mpn": "43030-0007",
+      "required_quantity": 16,
+      "required_unit": "each",
+      "bom_suggested_buy": 24,
+      "status": "add_exact",
+      "recommended_cart_quantity": 25,
+      "reason": "25contacts cost5.89CAD versus24 cost6.024CAD; exact same contact.",
+      "original_source": "https://www.molex.com/en-us/products/part-detail/430300007",
+      "url": "https://www.digikey.ca/en/products/detail/molex/0430300007/252479",
+      "sku": "WM1837-ND",
+      "stock": 427658,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 0.29
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 0.251
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 0.2356
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 0.2242
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 0.2134
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 0.2
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 0.19044
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 0.18133
+        },
+        {
+          "quantity": 2500,
+          "unit_price_cad": 0.16996
+        }
+      ],
+      "estimated_line_cad": 5.89
+    },
+    {
+      "bom_index": 75,
+      "order_line_id": "ORDER-LINE-076",
+      "requested_mpn": "6714 red and black;20AWG",
+      "required_quantity": 2,
+      "required_unit": "m purchasing allocation",
+      "bom_suggested_buy": 2,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "Selected Alpha Wire is sold by DigiKey in100ft or larger spools. One-set requirement is1\u20132m per color; buy exact cut lengths outside DigiKey to avoid hundreds of dollars in unused wire. No substitute chosen without insulation/crimp and sensor capacitance verification.",
+      "original_source": "https://www.alphawire.com/en/products/wire/ecogen/ecowire/6714"
+    },
+    {
+      "bom_index": 76,
+      "order_line_id": "ORDER-LINE-077",
+      "requested_mpn": "8463",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 2,
+      "status": "add_exact",
+      "recommended_cart_quantity": 2,
+      "reason": "Exact accepted MPN; no substitution.",
+      "original_source": "https://www.heyco.com/wp-content/uploads/2024/08/Sun_Products_Catalog.pdf",
+      "url": "https://www.digikey.ca/en/products/detail/heyco-products-corporation/8463/15906932",
+      "sku": "3720-8463-ND",
+      "stock": 52226,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 0.51
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 0.432
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 0.4048
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 0.3852
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 0.3669
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 0.34388
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 0.3274
+        },
+        {
+          "quantity": 1500,
+          "unit_price_cad": 0.30296
+        },
+        {
+          "quantity": 3000,
+          "unit_price_cad": 0.28849
+        }
+      ],
+      "estimated_line_cad": 1.02
+    },
+    {
+      "bom_index": 77,
+      "order_line_id": "ORDER-LINE-078",
+      "requested_mpn": "Adhesive-lined heatshrink assortment rated>=600V;fit insulated splice OD",
+      "required_quantity": 1,
+      "required_unit": "kit",
+      "bom_suggested_buy": 1,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/electrical.md"
+    },
+    {
+      "bom_index": 78,
+      "order_line_id": "ORDER-LINE-079",
+      "requested_mpn": "Unclad flame-retardant FR-4;2mm;UL94V-0 at2mm",
+      "required_quantity": 1,
+      "required_unit": "200 x 200mm minimum sheet",
+      "bom_suggested_buy": 1,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 79,
+      "order_line_id": "ORDER-LINE-080",
+      "requested_mpn": "Unclad flame-retardant FR-4;3mm;UL94V-0 at3mm",
+      "required_quantity": 1,
+      "required_unit": "250 x 250mm minimum sheet",
+      "bom_suggested_buy": 1,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 80,
+      "order_line_id": "ORDER-LINE-081",
+      "requested_mpn": "M4 nylon threaded rod;>=80mm",
+      "required_quantity": 4,
+      "required_unit": "each",
+      "bom_suggested_buy": 5,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 81,
+      "order_line_id": "ORDER-LINE-082",
+      "requested_mpn": "M4x30 stainless steel or brass bolt/stud",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 1,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 82,
+      "order_line_id": "ORDER-LINE-083",
+      "requested_mpn": "Nonconductive cable-tie base;15\u201320mm square",
+      "required_quantity": 2,
+      "required_unit": "each",
+      "bom_suggested_buy": 3,
+      "status": "add_spec_selected",
+      "recommended_cart_quantity": 3,
+      "reason": "Phoenix ABS nonconductive19.1mm square tie base matches15\u201320mm requirement; accepts ties<=4mm. Use specified anchor adhesive preparation; received bond unmeasured.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md",
+      "url": "https://www.digikey.ca/en/products/detail/phoenix-contact/3240707/4461932",
+      "sku": "277-16905-ND",
+      "stock": 136351,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 0.16
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 0.09
+        }
+      ],
+      "selected_mpn": "3240707",
+      "estimated_line_cad": 0.48
+    },
+    {
+      "bom_index": 83,
+      "order_line_id": "ORDER-LINE-084",
+      "requested_mpn": "Nylon small cable tie compatible with selected bases",
+      "required_quantity": 4,
+      "required_unit": "each",
+      "bom_suggested_buy": 8,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 84,
+      "order_line_id": "ORDER-LINE-085",
+      "requested_mpn": "5952",
+      "required_quantity": 1,
+      "required_unit": "50 x 50mm minimum patch",
+      "bom_suggested_buy": 2,
+      "status": "outside_digikey_economic",
+      "recommended_cart_quantity": 0,
+      "reason": "No economical stocked 5952 sheet found. Small die-cut pack is discontinued; 1.5 x 5 inch multipack is nonstock and expensive. Keep outside-DigiKey sourcing for a small authentic 19 mm wide 5952 strip, used only under cable anchors. Do not substitute it for thin sensor 467MP.",
+      "original_source": "https://www.3m.com/3M/en_US/p/dc/v100809057/",
+      "url": "https://www.digikey.ca/en/products/detail/3m-tc/5952-0-5-5/2649400",
+      "sku": "1067-5952-0.5-5-ND",
+      "stock": 95,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 69
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 53.053
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 48.0816
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 44.7484
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 42.39
+        }
+      ],
+      "small_format_research": [
+        {
+          "mpn": "3M 5952 0.5\" X 2\"-5",
+          "availability": "No longer available at DigiKey",
+          "url": "https://www.digikey.com/en/products/detail/3m-tc/3M-5952-0-5-X-2-5/7579178"
+        },
+        {
+          "mpn": "5952-1.5-5(15)",
+          "availability": "Not stocked; MOQ 2 at USD59.865 each",
+          "url": "https://www.digikey.com/en/products/detail/3m-tc/5952-1-5-5-15/7579228"
+        }
+      ]
+    },
+    {
+      "bom_index": 85,
+      "order_line_id": "ORDER-LINE-086",
+      "requested_mpn": "M4 nylon nut",
+      "required_quantity": 40,
+      "required_unit": "each",
+      "bom_suggested_buy": 48,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 86,
+      "order_line_id": "ORDER-LINE-087",
+      "requested_mpn": "M4 nylon flat washer",
+      "required_quantity": 40,
+      "required_unit": "each",
+      "bom_suggested_buy": 48,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 87,
+      "order_line_id": "ORDER-LINE-088",
+      "requested_mpn": "M4-compatible elastomer sealing washer",
+      "required_quantity": 6,
+      "required_unit": "each",
+      "bom_suggested_buy": 10,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 88,
+      "order_line_id": "ORDER-LINE-089",
+      "requested_mpn": "Insulating/rubber foot;10mm high",
+      "required_quantity": 4,
+      "required_unit": "each",
+      "bom_suggested_buy": 5,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 89,
+      "order_line_id": "ORDER-LINE-090",
+      "requested_mpn": "Nylon spacer tube;M4 clearance bore;trim to3.2mm",
+      "required_quantity": 4,
+      "required_unit": "each",
+      "bom_suggested_buy": 5,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 90,
+      "order_line_id": "ORDER-LINE-091",
+      "requested_mpn": "M3 plain insulating spacer; 7 mm effective; OD <=8 mm",
+      "required_quantity": 4,
+      "required_unit": "each",
+      "bom_suggested_buy": 5,
+      "status": "add_spec_selected_verify_canadian_price",
+      "recommended_cart_quantity": 5,
+      "reason": "Unthreaded nylon spacer, 7 mm length, 3.2 mm bore, 5 mm OD matches lower PCB spacer. Canadian page fetch failed; verify CAD price in cart.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md",
+      "selected_mpn": "R30-6700794",
+      "sku": "952-2015-ND",
+      "stock": 12185,
+      "url": "https://www.digikey.com/en/products/detail/harwin-inc/R30-6700794/3727980",
+      "price_breaks_usd": [
+        {
+          "quantity": 1,
+          "unit_price": 0.66
+        },
+        {
+          "quantity": 5,
+          "unit_price": 0.554
+        },
+        {
+          "quantity": 10,
+          "unit_price": 0.514
+        }
+      ]
+    },
+    {
+      "bom_index": 91,
+      "order_line_id": "ORDER-LINE-092",
+      "requested_mpn": "M3 plain insulating spacer;3mm effective;OD<=8mm",
+      "required_quantity": 4,
+      "required_unit": "each",
+      "bom_suggested_buy": 5,
+      "status": "add_spec_selected",
+      "recommended_cart_quantity": 5,
+      "reason": "Harwin3mm long unthreaded nylon,3.2mm bore/5mmOD matches upper PCB spacer exact specification;5qty pricebreak2.22CAD.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md",
+      "url": "https://www.digikey.ca/en/products/detail/harwin-inc/R30-6700394/2264507",
+      "sku": "952-1526-ND",
+      "stock": 52067,
+      "price_breaks": [
+        {
+          "quantity": 1,
+          "unit_price_cad": 0.54
+        },
+        {
+          "quantity": 5,
+          "unit_price_cad": 0.444
+        },
+        {
+          "quantity": 10,
+          "unit_price_cad": 0.411
+        },
+        {
+          "quantity": 25,
+          "unit_price_cad": 0.3736
+        },
+        {
+          "quantity": 50,
+          "unit_price_cad": 0.3486
+        },
+        {
+          "quantity": 100,
+          "unit_price_cad": 0.3265
+        },
+        {
+          "quantity": 250,
+          "unit_price_cad": 0.30064
+        },
+        {
+          "quantity": 500,
+          "unit_price_cad": 0.28356
+        },
+        {
+          "quantity": 1000,
+          "unit_price_cad": 0.26829
+        }
+      ],
+      "selected_mpn": "R30-6700394",
+      "estimated_line_cad": 2.22
+    },
+    {
+      "bom_index": 92,
+      "order_line_id": "ORDER-LINE-093",
+      "requested_mpn": "M3 x 16 mm nylon pan-head bolt",
+      "required_quantity": 4,
+      "required_unit": "each",
+      "bom_suggested_buy": 6,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 93,
+      "order_line_id": "ORDER-LINE-094",
+      "requested_mpn": "M3x12 countersunk nylon screw",
+      "required_quantity": 12,
+      "required_unit": "each",
+      "bom_suggested_buy": 16,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 94,
+      "order_line_id": "ORDER-LINE-095",
+      "requested_mpn": "M3 nylon nut;OD<=8mm",
+      "required_quantity": 16,
+      "required_unit": "each",
+      "bom_suggested_buy": 20,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 95,
+      "order_line_id": "ORDER-LINE-096",
+      "requested_mpn": "M3 nylon flat washer;OD<=8mm",
+      "required_quantity": 32,
+      "required_unit": "each",
+      "bom_suggested_buy": 48,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 96,
+      "order_line_id": "ORDER-LINE-097",
+      "requested_mpn": "M4 stainless steel or brass hex nut",
+      "required_quantity": 3,
+      "required_unit": "each",
+      "bom_suggested_buy": 4,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 97,
+      "order_line_id": "ORDER-LINE-098",
+      "requested_mpn": "M4 all-metal prevailing-torque locknut",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 2,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 98,
+      "order_line_id": "ORDER-LINE-099",
+      "requested_mpn": "M4 metal flat washer",
+      "required_quantity": 4,
+      "required_unit": "each",
+      "bom_suggested_buy": 6,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 99,
+      "order_line_id": "ORDER-LINE-100",
+      "requested_mpn": "M4 metal serrated locking washer",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 2,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 100,
+      "order_line_id": "ORDER-LINE-101",
+      "requested_mpn": "Insulating removable terminal cover;fitsM4PEstack",
+      "required_quantity": 1,
+      "required_unit": "each",
+      "bom_suggested_buy": 1,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 101,
+      "order_line_id": "ORDER-LINE-102",
+      "requested_mpn": "M4 x 30 mm nylon bolt",
+      "required_quantity": 2,
+      "required_unit": "each",
+      "bom_suggested_buy": 4,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    },
+    {
+      "bom_index": 102,
+      "order_line_id": "ORDER-LINE-103",
+      "requested_mpn": "Insulating M4 clearance sleeve;8.2mm effective",
+      "required_quantity": 2,
+      "required_unit": "each",
+      "bom_suggested_buy": 3,
+      "status": "outside_digikey_selection",
+      "recommended_cart_quantity": 0,
+      "reason": "No exact compatible DigiKey SKU established; procure to frozen mechanical stock specification.",
+      "original_source": "../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md"
+    }
+  ]
+}

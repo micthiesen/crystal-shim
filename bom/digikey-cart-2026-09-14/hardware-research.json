@@ -1,0 +1,191 @@
+{
+  "checked_date": "2026-09-14",
+  "scope": "One complete three-board set; read-only supplier research, no order placed. Prices and stock are page observations, not reservations. USD entries require Canadian cart price verification.",
+  "items": [
+    {
+      "description": "M3 nylon hex nut",
+      "manufacturer": "Essentra Components",
+      "manufacturer_part_number": "04M030050HN",
+      "digikey_part_number": "RPC7082-ND",
+      "required_quantity": 16,
+      "recommended_buy_quantity": 20,
+      "currency": "CAD",
+      "unit_price_at_recommended_quantity": 0.13,
+      "extended_price": 2.6,
+      "observed_stock": 25917,
+      "source": "https://www.digikey.ca/en/products/detail/essentra-components/04M030050HN/9677096",
+      "compatibility_basis": "M3 x 0.5 nylon nut; approximately 5.33 mm across flats fits the PCB mounting envelope.",
+      "price_breaks": {
+        "1": 0.17,
+        "5": 0.142,
+        "10": 0.13,
+        "25": 0.1172,
+        "50": 0.1092
+      },
+      "status": "available_primary_catalog"
+    },
+    {
+      "description": "M3 nylon flat washer",
+      "manufacturer": "Essentra Components",
+      "manufacturer_part_number": "MFW030A",
+      "digikey_part_number": "RPC1552-ND",
+      "required_quantity": 32,
+      "recommended_buy_quantity": 50,
+      "currency": "CAD",
+      "unit_price_at_recommended_quantity": 0.0956,
+      "extended_price": 4.78,
+      "observed_stock": 13402,
+      "source": "https://www.digikey.ca/en/products/detail/essentra-components/MFW030A/4105389",
+      "compatibility_basis": "3.2 mm bore, 7.01 mm OD, 0.51 mm thick nylon washer; OD below 8 mm mounting limit. Fifty cost less than BOM stock quantity 48.",
+      "price_breaks": {
+        "1": 0.16,
+        "5": 0.124,
+        "10": 0.114,
+        "25": 0.1036,
+        "50": 0.0956
+      },
+      "status": "available_primary_catalog"
+    },
+    {
+      "description": "M4 nylon hex nut",
+      "manufacturer": "Essentra Components",
+      "manufacturer_part_number": "04M040070HN",
+      "digikey_part_number": "RPC6312-ND",
+      "required_quantity": 40,
+      "recommended_buy_quantity": 50,
+      "currency": "CAD",
+      "unit_price_at_recommended_quantity": 0.164,
+      "extended_price": 8.2,
+      "observed_stock": 6788,
+      "source": "https://www.digikey.ca/en/products/detail/essentra-components/04M040070HN/9564174",
+      "compatibility_basis": "M4 nylon nut, 3 mm thick and 6.91 mm width. Fifty cost less than 48.",
+      "price_breaks": {
+        "1": 0.26,
+        "5": 0.212,
+        "10": 0.195,
+        "25": 0.1764,
+        "50": 0.164
+      },
+      "status": "available_primary_catalog"
+    },
+    {
+      "description": "M4 nylon flat washer",
+      "manufacturer": "Essentra Components",
+      "manufacturer_part_number": "16M04090080",
+      "digikey_part_number": "RPC10430-ND",
+      "required_quantity": 40,
+      "recommended_buy_quantity": 50,
+      "currency": "CAD",
+      "unit_price_at_recommended_quantity": 0.1008,
+      "extended_price": 5.04,
+      "observed_stock": 5213,
+      "source": "https://www.digikey.ca/en/products/detail/essentra-components/16M04090080/10299326",
+      "compatibility_basis": "4.30 mm bore, 9 mm OD, 0.80 mm thick nylon washer. Fifty cost less than 48. Include actual washer thickness when setting effective spacer heights.",
+      "price_breaks": {
+        "1": 0.16,
+        "5": 0.13,
+        "10": 0.121,
+        "25": 0.1092,
+        "50": 0.1008
+      },
+      "status": "available_primary_catalog"
+    },
+    {
+      "description": "M3 x 16 nylon panhead screw",
+      "manufacturer": "Essentra Components",
+      "manufacturer_part_number": "50M030050P016",
+      "digikey_part_number": "RPC7004-ND",
+      "required_quantity": 4,
+      "recommended_buy_quantity": 6,
+      "currency": "CAD",
+      "unit_price_at_recommended_quantity": 0.19,
+      "extended_price": 1.14,
+      "observed_stock": 15659,
+      "source": "https://www.digikey.ca/en/products/detail/essentra-components/50M030050P016/9677018",
+      "compatibility_basis": "M3 x 0.5, 16 mm under-head length, Phillips panhead, nylon; approximately 5.4 mm head diameter and 2.3 mm head height.",
+      "price_breaks": {
+        "1": 0.24,
+        "5": 0.19,
+        "10": 0.175,
+        "25": 0.158
+      },
+      "status": "available_primary_catalog"
+    },
+    {
+      "description": "M3 x 12 nylon countersunk screw",
+      "manufacturer": "Essentra Components",
+      "manufacturer_part_number": "50M030050H012",
+      "digikey_part_number": "145-50M030050H012-ND",
+      "required_quantity": 12,
+      "recommended_buy_quantity": 16,
+      "currency": "USD",
+      "unit_price_at_recommended_quantity": 0.109,
+      "extended_price": 1.744,
+      "observed_stock": 2914,
+      "source": "https://www.digikey.com/en/products/detail/essentra-components/50M030050H012/11639440",
+      "compatibility_basis": "M3 x 0.5 nylon slotted flat head; 12 mm overall countersunk length, 10.3 mm below head, 6.3 mm head diameter. Canadian page could not be read; confirm CAD cart offer.",
+      "price_breaks": {
+        "1": 0.15,
+        "5": 0.118,
+        "10": 0.109,
+        "25": 0.0988
+      },
+      "status": "available_primary_catalog"
+    },
+    {
+      "description": "M4 x 30 nylon through bolt",
+      "manufacturer": "Essentra Components",
+      "manufacturer_part_number": "50M040070D030",
+      "digikey_part_number": "RPC7018-ND",
+      "required_quantity": 2,
+      "recommended_buy_quantity": 5,
+      "currency": "USD",
+      "unit_price_at_recommended_quantity": 0.126,
+      "extended_price": 0.63,
+      "observed_stock": 1019,
+      "source": "https://www.digikey.com/en/products/detail/essentra-components/50M040070D030/9677032",
+      "compatibility_basis": "M4 x 0.7 nylon slotted cheese head; 30 mm under-head length, 7 mm head diameter and 2.6 mm head height. Mechanical requirement specifies nylon through bolt without a prescribed head style. Five cost USD 0.63 versus four USD 0.60. Canadian page could not be read; confirm CAD cart offer.",
+      "price_breaks": {
+        "1": 0.15,
+        "5": 0.126,
+        "10": 0.117,
+        "25": 0.1052
+      },
+      "status": "available_primary_catalog"
+    },
+    {
+      "description": "M4 stainless or brass plain metal nut",
+      "required_quantity": 3,
+      "recommended_buy_quantity": 4,
+      "status": "outside_digikey",
+      "reason": "No sufficiently verified stocked small-quantity DigiKey match established in bounded search. Source locally; preserve the metal-to-metal PE ring-terminal pressure stack and do not substitute nylon."
+    },
+    {
+      "description": "M4 stainless or brass flat washer",
+      "required_quantity": 4,
+      "recommended_buy_quantity": 6,
+      "status": "outside_digikey",
+      "reason": "No sufficiently verified stocked small-quantity DigiKey match established in bounded search. Source locally; preserve the metal-to-metal PE ring-terminal pressure stack and do not substitute nylon."
+    },
+    {
+      "description": "M4 metal serrated washer",
+      "required_quantity": 1,
+      "recommended_buy_quantity": 2,
+      "status": "outside_digikey",
+      "reason": "No sufficiently verified stocked small-quantity DigiKey match established in bounded search. Source locally; preserve the metal-to-metal PE ring-terminal pressure stack and do not substitute nylon."
+    },
+    {
+      "description": "M4 all-metal locking nut",
+      "required_quantity": 1,
+      "recommended_buy_quantity": 2,
+      "status": "outside_digikey",
+      "reason": "No sufficiently verified stocked small-quantity DigiKey match established in bounded search. Source locally; preserve the metal-to-metal PE ring-terminal pressure stack and do not substitute nylon."
+    }
+  ],
+  "verification_notes": [
+    "Seven exact stocked nylon catalog entries; four metal PE hardware lines remain outside DigiKey.",
+    "Counts of fitted hardware follow parent task; M4 stock count already includes assembly allowances.",
+    "Mounting feet and spacers must be cut/selected for the effective dimensions in mechanical-closure.md, accounting for actual washers.",
+    "Countersunk seat geometry must match the purchased screw head; catalog flat-head identification does not verify an already-machined countersink."
+  ]
+}
