@@ -3,11 +3,12 @@
 Complete Crystal Shim as a one-shot final-use three-board controller, carrying the
 owner's requirements through implementation, independent adversarial review,
 verification, manufacturing delivery and final-unit commissioning support.
-The long-term delivery continues through routing, manufacture and commissioning.
-The current milestone is the simplified specification, complete schematics and
-placement, and verified native projects ready for the owner to route. It does not
-include routing, ordering or implementing the future refill feature. See [STATE](STATE.md)
-for the completed milestone and its evidence.
+The design, routing, fabrication-delivery and purchasing milestone is complete.
+All components/materials are ordered or in stock, and the owner placed JLCPCB
+order W2026091502305469 for five of each final board. The project is waiting for
+hardware delivery at the owner's request. Assembly and physical commissioning
+remain future work; purchase confirmation does not establish operating acceptance.
+See [STATE](STATE.md) for the order records and current handoff.
 
 1. Resolve parts, footprints, sensor geometry, all board/harness interfaces,
    power/protection calculations, isolation and mechanical fit from primary

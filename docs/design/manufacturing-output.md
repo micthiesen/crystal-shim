@@ -1,5 +1,9 @@
 # Manufacturing output profile
 
+**Order placed:** [W2026091502305469](../../bom/purchases/W2026091502305469/README.md).
+That record holds the owner’s actual colours, via covering and final form selections;
+the profile below remains the reviewed release baseline.
+
 This is the bare-board export and order profile for all three routed native boards.
 The 2026-09-14 release uses the checked outputs under each board’s
 `fabrication/2026-09-14-rev1/` directory. See the release evidence before ordering.
