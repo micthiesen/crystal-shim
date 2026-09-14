@@ -167,8 +167,10 @@ to review the final traces before ordering. Use the replacement mains ZIP under
 Controller and sensor outputs remain unchanged. The [MOV assembly contract](design/mov-capture.md)
 covers lead capture with standard JLCPCB tolerances; physical seating and complete
 body-envelope inspection remain assembly checks. The six components remain
-not ordered. Mouser consolidation still includes the previously reported AP63203WU-7
-backorder; recheck availability at checkout.
+not ordered. The [Mouser cart](../bom/mouser-cart-2026-09-14.md) now contains one
+of each: CA$14.72 merchandise plus displayed CA$20 shipping, before tax. Five
+ship now; AP63203WU-7 is backordered with stock expected September 18, 2026.
+Cart persistence was verified after reload. Owner checkout remains; no purchase made.
 
 Open the [interactive order guide](https://mcp.syas.ca/boris/artifacts/art_ex30qrfnee6mu1033yz),
 or use the [order settings](design/manufacturing-output.md) and
