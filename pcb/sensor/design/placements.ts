@@ -7,7 +7,7 @@ export const sensorPlacements = {
   D2: { pcbX: 2, pcbY: 29, pcbRotation: 0 },
   C1: { pcbX: -2, pcbY: 23, pcbRotation: 90 },
   C2: { pcbX: 6, pcbY: 23, pcbRotation: 90 },
-  C3: { pcbX: 6.5, pcbY: 8, pcbRotation: 90 },
+  C3: { pcbX: 6.75, pcbY: 8, pcbRotation: 90 },
   C4: { pcbX: 6.5, pcbY: 12, pcbRotation: 90 },
   R1: { pcbX: -4, pcbY: 10, pcbRotation: 0 },
   R2: { pcbX: -4, pcbY: 7, pcbRotation: 0 },

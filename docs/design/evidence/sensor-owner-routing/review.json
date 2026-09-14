@@ -1,0 +1,110 @@
+{
+  "scope": "Read-only B.Cu CIN_LEVEL/SHLD2 review against git HEAD",
+  "board": "pcb/sensor/kicad/sensor.kicad_pcb",
+  "recommendation": "No electrical rework required for these two changes; retained geometry still requires reconciliation with exact protected-stub checks. Historical handoff lock unchanged.",
+  "CIN_LEVEL": {
+    "old_path_mm": [
+      [
+        100.6,
+        95
+      ],
+      [
+        101.7,
+        95
+      ]
+    ],
+    "current_path_mm": [
+      [
+        100.6,
+        95
+      ],
+      [
+        103.15,
+        95
+      ],
+      [
+        104.675,
+        96.525
+      ]
+    ],
+    "width_mm": 0.15,
+    "same_net_bar_bounds_mm": [
+      101.5,
+      94.25,
+      107.85,
+      98.8
+    ],
+    "copper_union_delta_mm2": 0,
+    "assessment": "All added trace beyond old endpoint lies inside existing same-net rectangular bar. No electrode area or clearance change."
+  },
+  "SHLD2": {
+    "old_path_mm": [
+      [
+        99,
+        97
+      ],
+      [
+        98.3,
+        97
+      ]
+    ],
+    "current_path_mm": [
+      [
+        99,
+        97
+      ],
+      [
+        98.525,
+        96.525
+      ],
+      [
+        95.325,
+        96.525
+      ]
+    ],
+    "width_mm": 0.15,
+    "same_net_bar_bounds_mm": [
+      92.15,
+      94.25,
+      98.5,
+      98.8
+    ],
+    "existing_via": {
+      "center_mm": [
+        99,
+        97
+      ],
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3
+    },
+    "copper_union_area_estimate_mm2": {
+      "added": 0.060067,
+      "removed": 0.030468,
+      "net": 0.029599
+    },
+    "area_method": "Numerical integration of round-capped tracks, existing rectangular pad and circular via at 0.001 mm grid. Estimate, not exact native polygon boolean.",
+    "assessment": "Long added tail lies within existing same-net bar. Short diagonal shifts a tiny amount of copper within the existing breakout corridor. Does not alter bar shapes, slots, shield topology or via location. No meaningful additional load identified from this local geometry change."
+  },
+  "mask": {
+    "all_five_B_Cu_tracks_HasSolderMask": false,
+    "all_E1_B_Cu_pads_on_B_Mask": false,
+    "CIN_LEVEL_and_SHLD2_vias_tented_B_Cu": true
+  },
+  "clearance": "Fresh full DRC handled by parent; this subreview does not independently assert its result. CIN_LEVEL copper union unchanged; SHLD2 local diagonal must retain passing native clearance.",
+  "limitations": [
+    "Physical liquid-response calibration remains unmeasured",
+    "No source, native board, rules or locks modified"
+  ],
+  "baseline_commit": "3c0c8e6",
+  "sha256": {
+    "pcb/sensor/kicad/sensor.kicad_pcb": "1b94e98e3c224908d4005c001344469bcc459e7d74653f8752529c217476ff45",
+    "pcb/sensor/design/placements.ts": "a92ed3e49fe3c8f15dda24e112ee29154c1b7beb0bb82cb91c9e6a978bb1e306",
+    "pcb/dist/sensor/design/design-manifest.json": "d9e76cb36a0e60eb1bbf381ce5cabfa12c936d10e44282650867cc3880ccddf5"
+  },
+  "validation": {
+    "source_native_parity_errors": [],
+    "sensor_source_tests_passed": 10,
+    "full_project_gate": "sh scripts/check.sh: exit 0",
+    "routing_final": "exit 1: exact protected-breakout geometry differs; zero native DRC/parity findings and zero unconnected items"
+  }
+}

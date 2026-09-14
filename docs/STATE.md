@@ -121,11 +121,19 @@ power connection is about 3.1 mm instead of 28 mm. These are working-tree review
 observations, not a new accepted native receipt; the handoff table above records
 the earlier baseline.
 
-First review the changed B.Cu CIN_LEVEL and SHLD2 breakouts against the sensor
-geometry contract, restoring them if needed or explicitly accepting verified
-changes. Reconcile C3's 0.25 mm native move with source placement. The final routing
-command still fails its fixed-breakout checks despite clean native connectivity.
-Then run source/native parity and the final copper/mask/paste/silk review under
+C3's authorized 0.25 mm move is now reflected in source placement at x=6.75,
+y=8 mm (native x=106.75, y=92 mm, rotation 90 degrees); fresh source/native parity
+passes. The B.Cu review found no electrical rework required: CIN_LEVEL's extended
+tail lies inside its existing same-net bar, while SHLD2's tail also overlaps its
+bar and the short diagonal only changes the local breakout. Both connections
+already existed electrically before these additions. See the
+[sensor routing review](design/evidence/sensor-owner-routing/review.md).
+
+Next reconcile the exact reviewed breakout geometry with the protected routing
+contract through the guarded acceptance workflow. The final routing command still
+fails its old fixed-breakout checks despite clean native connectivity; neither
+that policy nor the accepted lock was changed by this review. Then complete the
+final copper/mask/paste/silk review under
 [the routing guide](design/routing-guardrails.md) and
 [manufacturing output profile](design/manufacturing-output.md). No hardware is
 needed. This bounded review closes known sensor acceptance gaps before attention
