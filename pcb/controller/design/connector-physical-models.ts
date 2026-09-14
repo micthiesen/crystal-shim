@@ -7,6 +7,7 @@ const sensorId =
   "Connector_Molex:Molex_Micro-Fit_3.0_43045-0600_2x03_P3.00mm_Horizontal";
 const serviceId =
   "Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal";
+const servicePowerId = "Connector_JST:JST_XH_S2B-XH-A_1x02_P2.50mm_Horizontal";
 const psuId = "Connector_Molex:Molex_Micro-Fit_3.0_43650-0300_1x03_P3.00mm_Horizontal";
 const usbId = "Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal";
 const ledId = "LED_THT:LED_D3.0mm";
@@ -33,6 +34,36 @@ const dualSource = {
 export const connectorPhysicalModels: Readonly<
   Partial<Record<string, PhysicalLandPattern>>
 > = {
+  [servicePowerId]: {
+    packageCenter: { x: 1.25, y: 3.45 },
+    envelopeCenter: { x: 1.25, y: 3.45 },
+    body: {
+      width: 7.4,
+      height: 11.5,
+      thicknessMax: 6.1,
+      basis:
+        "JST XH p5 side-entry S2B-XH-A: B=7.4, body plus rear extension 7+4.5=11.5, C=9.2 from pin row to mating face. Native bounds X=-2.45..4.95, Y=-2.3..9.2. Height 6.1 is a reference dimension, not a guaranteed maximum.",
+    },
+    envelope: {
+      width: 8.4,
+      height: 12.5,
+      basis:
+        "Project conservative 0.5 mm allowance on each side of the nominal drawing bound; manufacturer does not specify a full tolerance stack here. Mated housing and wire bend are separate.",
+    },
+    solderMask: thtMask,
+    nativeAssembly: {
+      paste:
+        "No paste on either PTH. Hand-solder after SMT; support the friction-lock housing and inspect hole fill.",
+      thermal:
+        "No thermal pad or plastic locator. Preserve solder access and avoid loading the housing during soldering.",
+    },
+    source: {
+      url: "https://www.jst.com/wp-content/uploads/2025/06/eXH.pdf",
+      sha256: "1128a1bdb747cf3da211ed85e11c542f2d310652d8188a69b2dc0e8c40115ef8",
+      drawing:
+        "JST XH manufacturer catalog, p2 side-entry PCB layout, p5 S2B-XH-A C=9.2 variant. Holes diameter0.9 +0.1, pitch2.5 +/-0.05; installed KiCad copper1.7x2.0 and drill1.0 are project land choices within this hole range.",
+    },
+  },
   [sensorId]: {
     packageCenter: { x: 3, y: -3.965 },
     envelopeCenter: { x: 3, y: -2.675 },
@@ -209,6 +240,18 @@ export type ConnectorMechanicalConstraint = {
 export const connectorMechanicalConstraints: Readonly<
   Partial<Record<string, ConnectorMechanicalConstraint>>
 > = {
+  [servicePowerId]: {
+    mating: {
+      direction: "+y",
+      basis:
+        "Mating face is native y=9.2. Allow XHP-2 housing insertion, friction-lock release and service-wire bend separately from assembly courtyard.",
+    },
+    underside:
+      "Reference tail projection is 3.4 mm below seating plane; allow solder fillets below the 1.6 mm board.",
+    assembly:
+      "Two 1.0 mm plated holes on 2.5 mm pitch; no locator. XHP-2 with SXH-001T-P0.6 contacts, 22 AWG service lead, 3 A connector rating. This housing cannot mate with the 12 V Micro-Fit ports.",
+    marking: "Mark pin 1 +5V SERVICE and pin 2 GND; preserve pin-one indication.",
+  },
   [sensorId]: {
     mating: {
       direction: "-y",
@@ -233,7 +276,8 @@ export const connectorMechanicalConstraints: Readonly<
       "3.18+/-0.25 tail projection; verify plastic retention on 1.6 mm nominal PCB against the 1.57 mm recommended thickness.",
     assembly:
       "Locator at (0, -4.32), hole 3.00+/-0.05; signal holes 1.02+/-0.05. Preserve native pin 1 origin and keying.",
-    marking: "Mark pin 1 V5_SERVICE_RAW and pin 2 GND; retain pin 1 triangle.",
+    marking:
+      "Mark pin 1 positive supply and pin 2 return per port; pump outputs use switched drain, not GND. Retain pin 1 triangle.",
   },
   [psuId]: {
     mating: {

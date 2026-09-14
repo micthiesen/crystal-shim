@@ -17,8 +17,10 @@ PNGs remain. Native dimensions and copper geometry govern implementation.
 The accepted circuits and firmware behavior remain: isolated 12 V/5 V supply,
 controller 3.3 V buck, three future pump drivers, two sensor ports, service diode
 OR, and two FDC1004 measurements with stored dry baselines. No protection bank,
-refill firmware or additional board was added. Necessary right-angle mains
-connector substitutions and the sensor electrode/pigtail changes are implemented.
+refill firmware or additional board was added. Mains J1–J4 now use Phoenix 1868076
+two-position side-entry screw terminals, with both positions used. Controller J2
+uses JST S2B-XH-A/XHP-2 for 5 V service, distinct from the 12 V Micro-Fit ports.
+The sensor electrode/pigtail changes remain implemented.
 
 ## Routing handoff
 
@@ -52,6 +54,11 @@ settings. Final routed fabrication checks still apply; no blanket new waiver was
 
 ## Evidence
 
+- [Connector ECO](design/evidence/connector-eco/): controller and mains accepted
+  after strict ERC, source/native parity, DRC, complete preparation and independent
+  electrical/preservation review. Seven unused mains pins and obsolete NC labels
+  removed; connector pad escapes updated. All unrelated copper and rules preserved.
+  `sh scripts/check.sh` passes; routing counts remain 166/31/21.
 - [Controller compact ECO](../pcb/controller/kicad/evidence/stacked-layout/) and
   [separator contract](../pcb/controller/kicad/evidence/dielectric-separator/);
   [final preparation](../pcb/controller/kicad/evidence/pre-routing-preparation/) closes paste, labels and order metadata.

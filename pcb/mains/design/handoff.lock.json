@@ -52,7 +52,7 @@
               82
             ],
             [
-              "1 L   2 N   3 NC",
+              "1 L   2 N",
               44,
               84
             ],
@@ -67,7 +67,7 @@
               130
             ],
             [
-              "1 L  2 N  3-4 NC",
+              "1 L   2 N",
               47,
               132
             ],
@@ -77,7 +77,7 @@
               130
             ],
             [
-              "1 L  2 N  3-6 NC",
+              "1 L   2 N",
               101,
               135
             ],
@@ -102,7 +102,7 @@
               131
             ],
             [
-              "NC CAVITIES ARE NOT PE",
+              "PE BYPASSES BOARD",
               85,
               151
             ]
@@ -110,7 +110,7 @@
           "requirements": [
             "Mark primary/isolated regions, J1 T2A fused input, F3 T1A branch/J2 filter LINE, J3 filter LOAD, J4 switched pump, J5 5V/coil and J6 12V motor feed.",
             "Show pin1, line/neutral, D1 cathode and positive/return. Label F2 3A and both internal 12V harness ends.",
-            "Unused connector cavities are not PE; keep text clear of copper and holes."
+            "All four mains terminals use exactly two positions, line and neutral; mark that PE bypasses the board and keep text clear of copper and holes."
           ],
           "status": "Applied native final-preparation ECO; labels verified through saved readback and ordinary DRC.",
           "verification": "Complete front/back render and final Gerber/assembly inspection; native silk/text DRC."
@@ -230,8 +230,8 @@
           "mapping": "Mains_<exact manifest reference>",
           "reason": "Preserve source-derived physical geometry through native FootprintSave/FootprintLoad; no stock substitution.",
           "scope": "All 26 manifest components: 22 electrical and H1-H4",
-          "status": "Stacked-layout ECO: retain all pad geometries and reference IDs; update J1-J4 right-angle body/courtyard/value/MPN and native library definitions.",
-          "verification": "Exact source/native geometry, all 75 numbered lands (53 PTH/22 SMT), six NPTHs, nets and poses; register source-derived library through guarded Konnect."
+          "status": "Stacked-layout ECO: retain unrelated geometry and reference IDs; replace J1-J4 with two-pin Phoenix1868076 screw terminals and update native library definitions.",
+          "verification": "Exact source/native geometry, all 53 numbered lands (31 PTH/22 SMT), six NPTHs, nets and poses; register source-derived library through guarded Konnect."
         },
         "target": {}
       },
@@ -274,8 +274,8 @@
         "params": {
           "numbered_pad_mask_margin_mm": 0.05,
           "requirements": [
-            "Preserve U1.1/K1.1/D1.1 square lands, paired Sabre tails, J5/J6 rounded pin1 and locator geometry.",
-            "All 53 PTH and six NPTH remain free of paste; 22 SMT masks retain 0.05 mm allowance.",
+            "Preserve U1.1/K1.1/D1.1 square lands, two used pins per fixed terminal, J5/J6 rounded pin1 and locator geometry.",
+            "All 31 PTH and six NPTH remain free of paste; 22 SMT masks retain 0.05 mm allowance.",
             "Preserve RV1 plated slot and confirm final 3.2 mm different-net margin after fabrication tolerances."
           ],
           "rv1_plated_slot_drill_mm": [
@@ -286,7 +286,7 @@
             5.3,
             2.9
           ],
-          "status": "Native readback complete: numbered pads 0.05 mm mask; 53 PTH and six NPTH without paste; RV1 pad2 3.7 x 1.3 mm plated slot inside 5.3 x 2.9 mm copper.",
+          "status": "Native readback complete: numbered pads 0.05 mm mask; 31 PTH and six NPTH without paste; RV1 pad2 3.7 x 1.3 mm plated slot inside 5.3 x 2.9 mm copper.",
           "verification": "Saved pad shape/layer/drill/mask/paste and slot readback, native DRC plus fabrication CAM review."
         },
         "target": {}
@@ -326,7 +326,7 @@
           "requirements": [
             "Maintain the separate 8/3.2 mm isolation and primary rules.",
             "Use short VIN bypass and SW-inductor-output-capacitor loops; FB senses after L1.",
-            "Join both Sabre tails; size F1/F3 branch routes and MOV loops for their real current and pulse duties.",
+            "Use both fixed screw-terminal pins; size F1/F3 branch routes and MOV loops for their real current and pulse duties.",
             "Motor return joins U1 return without sharing the buck/logic return path."
           ],
           "status": "Applied through native API and read back: Primary 2 mm, PrimaryInput 3 mm, Motor 3 mm, LogicPower 2 mm, short buck Default 0.3 mm; primary clearance 3.2 mm, isolated 0.15 mm, ordinary vias 0.6/0.3 mm. No routing added.",
@@ -445,6 +445,222 @@
         "owner": "kicad",
         "params": {
           "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove floating islands. Both layers retain isolated ground only.",
+          "connector_eco": {
+            "basis": "Phoenix 1868076 single-tail replacement: exactly one physical pad per electrical number. Resize .0 rule area to saved pad bounding box inflated by routing-policy.json; remove obsolete dual-tail .1 rule area. Copper planes, vias and all unrelated rules/areas stay unchanged.",
+            "receipt": "docs/design/evidence/connector-eco/mains/escape-zone-application.json",
+            "removed": [
+              {
+                "name": "Neck AC_L_FUSED J1.1.1",
+                "uuid": "24226bb4-2ded-41e3-857e-885ea7ebfd9c"
+              },
+              {
+                "name": "Neck AC_N J1.2.1",
+                "uuid": "6dcfd6e6-ae6c-485d-93e6-706f557ff063"
+              },
+              {
+                "name": "Neck AC_N J2.2.1",
+                "uuid": "919ee4e9-f8ee-4839-b758-44f34254dde0"
+              },
+              {
+                "name": "Neck FILTER_LINE_L J2.1.1",
+                "uuid": "09f3a72d-2641-42f0-8a6b-689937b7509a"
+              },
+              {
+                "name": "Neck PUMP_L_FILTERED J3.1.1",
+                "uuid": "643f9c8d-fd82-4477-9ace-25266f7124da"
+              },
+              {
+                "name": "Neck PUMP_N_FILTERED J3.2.1",
+                "uuid": "233dd1aa-8ab1-4143-91eb-7dbd24f3d38e"
+              },
+              {
+                "name": "Neck PUMP_N_FILTERED J4.2.1",
+                "uuid": "4d0095a0-0a23-4671-90d1-798b405244c4"
+              },
+              {
+                "name": "Neck PUMP_L_SW J4.1.1",
+                "uuid": "d277cf5c-d7fb-4bf8-a2fd-e52d5d94491f"
+              }
+            ],
+            "resized": [
+              {
+                "name": "Neck AC_L_FUSED J1.1.0",
+                "outline_mm": [
+                  [
+                    38.25,
+                    62.25
+                  ],
+                  [
+                    43.75,
+                    62.25
+                  ],
+                  [
+                    43.75,
+                    67.75
+                  ],
+                  [
+                    38.25,
+                    67.75
+                  ]
+                ],
+                "uuid": "a10ad736-80bb-408b-a91f-4de21a8417d9"
+              },
+              {
+                "name": "Neck AC_N J1.2.0",
+                "outline_mm": [
+                  [
+                    38.25,
+                    69.87
+                  ],
+                  [
+                    43.75,
+                    69.87
+                  ],
+                  [
+                    43.75,
+                    75.37
+                  ],
+                  [
+                    38.25,
+                    75.37
+                  ]
+                ],
+                "uuid": "2fb50dd4-4526-408d-9738-a4618dd0e9bd"
+              },
+              {
+                "name": "Neck AC_N J2.2.0",
+                "outline_mm": [
+                  [
+                    38.25,
+                    96.87
+                  ],
+                  [
+                    43.75,
+                    96.87
+                  ],
+                  [
+                    43.75,
+                    102.37
+                  ],
+                  [
+                    38.25,
+                    102.37
+                  ]
+                ],
+                "uuid": "ee47fafc-e02d-464c-8b43-d231f7866bae"
+              },
+              {
+                "name": "Neck FILTER_LINE_L J2.1.0",
+                "outline_mm": [
+                  [
+                    38.25,
+                    89.25
+                  ],
+                  [
+                    43.75,
+                    89.25
+                  ],
+                  [
+                    43.75,
+                    94.75
+                  ],
+                  [
+                    38.25,
+                    94.75
+                  ]
+                ],
+                "uuid": "33f31123-4e68-4dd1-866e-8f3d00a73c88"
+              },
+              {
+                "name": "Neck PUMP_L_FILTERED J3.1.0",
+                "outline_mm": [
+                  [
+                    43.25,
+                    138.25
+                  ],
+                  [
+                    48.75,
+                    138.25
+                  ],
+                  [
+                    48.75,
+                    143.75
+                  ],
+                  [
+                    43.25,
+                    143.75
+                  ]
+                ],
+                "uuid": "94a9071c-6dad-4a92-9c3f-f84e47907524"
+              },
+              {
+                "name": "Neck PUMP_N_FILTERED J3.2.0",
+                "outline_mm": [
+                  [
+                    50.87,
+                    138.25
+                  ],
+                  [
+                    56.37,
+                    138.25
+                  ],
+                  [
+                    56.37,
+                    143.75
+                  ],
+                  [
+                    50.87,
+                    143.75
+                  ]
+                ],
+                "uuid": "e29035e7-3795-4085-8596-51674079afc8"
+              },
+              {
+                "name": "Neck PUMP_N_FILTERED J4.2.0",
+                "outline_mm": [
+                  [
+                    105.87,
+                    138.25
+                  ],
+                  [
+                    111.37,
+                    138.25
+                  ],
+                  [
+                    111.37,
+                    143.75
+                  ],
+                  [
+                    105.87,
+                    143.75
+                  ]
+                ],
+                "uuid": "00719d07-acee-47b2-bdb3-5ae51cf132d9"
+              },
+              {
+                "name": "Neck PUMP_L_SW J4.1.0",
+                "outline_mm": [
+                  [
+                    98.25,
+                    138.25
+                  ],
+                  [
+                    103.75,
+                    138.25
+                  ],
+                  [
+                    103.75,
+                    143.75
+                  ],
+                  [
+                    98.25,
+                    143.75
+                  ]
+                ],
+                "uuid": "4e8555e7-2349-4a69-be14-d90c21d34aae"
+              }
+            ]
+          },
           "planes": {
             "layers": [
               "F.Cu",
@@ -558,7 +774,7 @@
           "allowed_initial_erc_types": [],
           "allowed_initial_semantic_differences": [],
           "requirements": [
-            "Preserve four sheets, 22 exact parts, 60 logical pins, 14 nets, 53 connected endpoints and seven unused Sabre NCs.",
+            "Preserve four sheets, 22 exact parts, 53 logical pins, 14 nets, 53 connected endpoints and zero NCs.",
             "Register 22 per-reference symbols plus PWR_FLAG, preserving exact electrical types and fields. U2 AP63205 has six connected pins.",
             "Only #FLG0201 at U1 AC_N and #FLG0202 at U1 AC_L_FUSED; exclude from physical/BOM outputs.",
             "Preserve wire/label/pin/NC incidence and 1.27 mm grid; inspect every full page before clean native ERC."
@@ -749,9 +965,9 @@
     ],
     "schema_version": 1
   },
-  "augmentation_sha256": "6dbd3a8ddce052293777782b13bbbcd573eae6ac5c346caa500ce1a488fb7d97",
+  "augmentation_sha256": "464422b250a8960cf23b71574c0f27bcdda779328ac49158ba64a64e42367ef3",
   "board_id": "mains.board.main",
-  "eco_receipt_sha256": "2890fcf8da2daedac65dc48945e2814082c4d12e71ecf84c90519e4561a1d90f",
+  "eco_receipt_sha256": "285846a769eaccf43cf1eb3df79f01c96833ac1484c39ce11ce0fc7cabc43d5e",
   "initial_handoff_receipt_sha256": "7f77ebdfcd91923fed0cbed8bc41b45c4b88332f3a66fc19a959beeac6678017",
   "manifest": {
     "board": {
@@ -822,7 +1038,7 @@
         "compiled_board_sha256": "f7b552b53594a80dfc7b13eb1e79ef3e4391edd84521d46e207844ef688837f4",
         "material": "FR4",
         "thickness_mm": 1.6,
-        "unowned_physical_geometry_sha256": "57a9b81008e5db408b03cfd0e849a336e23304ab3db6122d447ae38ed763eb86"
+        "unowned_physical_geometry_sha256": "6aca7cb6a603a7b2ade0e09bd56579b31d01084f5a1ad17c8a60e2e3e9524f5c"
       },
       "stable_id": "mains.board.main",
       "width_mm": 150
@@ -1182,18 +1398,18 @@
       },
       {
         "fields": {
-          "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
-          "manufacturer_part_number": "43160-1102"
+          "datasheet_url": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
+          "manufacturer_part_number": "1868076"
         },
         "footprint": {
-          "initial_geometry_sha256": "b1a84735aaf1fe42a2a5aa510fcd1ef9ae34d48a8cb557cd94b5357dd297ecea",
+          "initial_geometry_sha256": "1a6bb4ef9a3fa87e853c4a09826b94d1a08f60a3447ebfe5295a02d23acf62a6",
           "kicad": "CrystalShim_Mains:Mains_J1",
           "pad_numbers": [
             "1",
             "2"
           ],
-          "source_geometry_sha256": "f9e05e9a4b662fb2ac924b660febb68dbb5ee1945c4614c8fd35469380cfb880",
-          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-1102"
+          "source_geometry_sha256": "961b2e119e7a36e5f90cd9a74e123cbd950c9853554784ba165be94d8fd5aa38",
+          "tscircuit": "tscircuit:CrystalShim:Phoenix_MKDS_5_2_7_62_1868076"
         },
         "placement": {
           "rotation_deg": 270,
@@ -1204,23 +1420,22 @@
         "ref": "J1",
         "stable_id": "mains.component.j1",
         "symbol": "CrystalShim_Mains:Mains_J1",
-        "value": "43160-1102"
+        "value": "1868076"
       },
       {
         "fields": {
-          "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
-          "manufacturer_part_number": "43160-1103"
+          "datasheet_url": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
+          "manufacturer_part_number": "1868076"
         },
         "footprint": {
-          "initial_geometry_sha256": "d171ef8141492df08f3cbed1b6d3b44277bd186faa75414b9b6cefd46a32d65c",
+          "initial_geometry_sha256": "1a6bb4ef9a3fa87e853c4a09826b94d1a08f60a3447ebfe5295a02d23acf62a6",
           "kicad": "CrystalShim_Mains:Mains_J2",
           "pad_numbers": [
             "1",
-            "2",
-            "3"
+            "2"
           ],
-          "source_geometry_sha256": "64971f4a651595e9a23e5d7511f768c9e8f7ceb59ac734a272fcd7a531f57110",
-          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-1103"
+          "source_geometry_sha256": "961b2e119e7a36e5f90cd9a74e123cbd950c9853554784ba165be94d8fd5aa38",
+          "tscircuit": "tscircuit:CrystalShim:Phoenix_MKDS_5_2_7_62_1868076"
         },
         "placement": {
           "rotation_deg": 270,
@@ -1230,25 +1445,23 @@
         },
         "ref": "J2",
         "stable_id": "mains.component.j2",
-        "symbol": "CrystalShim_Mains:Mains_J2",
-        "value": "43160-1103"
+        "symbol": "CrystalShim_Mains:Mains_J2_Terminal",
+        "value": "1868076"
       },
       {
         "fields": {
-          "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
-          "manufacturer_part_number": "43160-1104"
+          "datasheet_url": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
+          "manufacturer_part_number": "1868076"
         },
         "footprint": {
-          "initial_geometry_sha256": "19112a9913e215b651473711f4f3eab62172cd63f19526303cfca30d4e6ca75d",
+          "initial_geometry_sha256": "1a6bb4ef9a3fa87e853c4a09826b94d1a08f60a3447ebfe5295a02d23acf62a6",
           "kicad": "CrystalShim_Mains:Mains_J3",
           "pad_numbers": [
             "1",
-            "2",
-            "3",
-            "4"
+            "2"
           ],
-          "source_geometry_sha256": "48348463ce0c7f3174640a3a8a6c8aad7b236c10448e4c0d0528486a740e00be",
-          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-1104"
+          "source_geometry_sha256": "2a9b925434e5b32c048a925456ae21cbc6691af6dc06112f0139577602fa8fde",
+          "tscircuit": "tscircuit:CrystalShim:Phoenix_MKDS_5_2_7_62_1868076"
         },
         "placement": {
           "rotation_deg": 0,
@@ -1258,27 +1471,23 @@
         },
         "ref": "J3",
         "stable_id": "mains.component.j3",
-        "symbol": "CrystalShim_Mains:Mains_J3",
-        "value": "43160-1104"
+        "symbol": "CrystalShim_Mains:Mains_J3_Terminal",
+        "value": "1868076"
       },
       {
         "fields": {
-          "datasheet_url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
-          "manufacturer_part_number": "43160-1106"
+          "datasheet_url": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
+          "manufacturer_part_number": "1868076"
         },
         "footprint": {
-          "initial_geometry_sha256": "101916cee51d1cbc0f338e4277c9308e03ec30102e9e80158e6841a3034618cd",
+          "initial_geometry_sha256": "1a6bb4ef9a3fa87e853c4a09826b94d1a08f60a3447ebfe5295a02d23acf62a6",
           "kicad": "CrystalShim_Mains:Mains_J4",
           "pad_numbers": [
             "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6"
+            "2"
           ],
-          "source_geometry_sha256": "a16e69991797fa1b6061df3b061a0d56d904b50fea0fb0abb54f2e08c6245721",
-          "tscircuit": "tscircuit:CrystalShim:Molex_Sabre_43160-1106"
+          "source_geometry_sha256": "2a9b925434e5b32c048a925456ae21cbc6691af6dc06112f0139577602fa8fde",
+          "tscircuit": "tscircuit:CrystalShim:Phoenix_MKDS_5_2_7_62_1868076"
         },
         "placement": {
           "rotation_deg": 0,
@@ -1288,8 +1497,8 @@
         },
         "ref": "J4",
         "stable_id": "mains.component.j4",
-        "symbol": "CrystalShim_Mains:Mains_J4",
-        "value": "43160-1106"
+        "symbol": "CrystalShim_Mains:Mains_J4_Terminal",
+        "value": "1868076"
       },
       {
         "fields": {
@@ -1655,11 +1864,6 @@
             "name": "NEUTRAL",
             "no_connect": false,
             "number": "2"
-          },
-          {
-            "name": "UNUSED_3",
-            "no_connect": true,
-            "number": "3"
           }
         ],
         "J3": [
@@ -1672,16 +1876,6 @@
             "name": "NEUTRAL",
             "no_connect": false,
             "number": "2"
-          },
-          {
-            "name": "UNUSED_3",
-            "no_connect": true,
-            "number": "3"
-          },
-          {
-            "name": "UNUSED_4",
-            "no_connect": true,
-            "number": "4"
           }
         ],
         "J4": [
@@ -1694,26 +1888,6 @@
             "name": "NEUTRAL",
             "no_connect": false,
             "number": "2"
-          },
-          {
-            "name": "UNUSED_3",
-            "no_connect": true,
-            "number": "3"
-          },
-          {
-            "name": "UNUSED_4",
-            "no_connect": true,
-            "number": "4"
-          },
-          {
-            "name": "UNUSED_5",
-            "no_connect": true,
-            "number": "5"
-          },
-          {
-            "name": "UNUSED_6",
-            "no_connect": true,
-            "number": "6"
           }
         ],
         "J5": [
@@ -1859,7 +2033,7 @@
         ]
       },
       "native_footprint_policy": "Per-reference source-derived native library; never substitute stock geometry.",
-      "physical_numbered_pad_count": 75,
+      "physical_numbered_pad_count": 53,
       "physical_pad_numbers": {
         "C1": [
           "1",
@@ -1903,41 +2077,19 @@
         ],
         "J1": [
           "1",
-          "1",
-          "2",
           "2"
         ],
         "J2": [
           "1",
-          "1",
-          "2",
-          "2",
-          "3",
-          "3"
+          "2"
         ],
         "J3": [
           "1",
-          "1",
-          "2",
-          "2",
-          "3",
-          "3",
-          "4",
-          "4"
+          "2"
         ],
         "J4": [
           "1",
-          "1",
-          "2",
-          "2",
-          "3",
-          "3",
-          "4",
-          "4",
-          "5",
-          "5",
-          "6",
-          "6"
+          "2"
         ],
         "J5": [
           "1",
@@ -1981,7 +2133,7 @@
           "6"
         ]
       },
-      "source_paste_record_count": 118,
+      "source_paste_record_count": 74,
       "status": "Source manifest only; augmentation, clean ERC/DRC and accepted handoff remain open.",
       "title": "Crystal Shim isolated mains switching",
       "unused_logical_pin_count": 7
@@ -2292,7 +2444,7 @@
       "tscircuit": "0.0.2465"
     }
   },
-  "manifest_sha256": "3083daced8b092665598c90513da6b54665086b9e439605b1ffef2b8f1815874",
+  "manifest_sha256": "82af2f59154ba6346b99eaa17009ae5b2377d4baba52a0a0ed99a56b68fdfad4",
   "schema_version": 1,
   "snapshot": {
     "board_id": "mains.board.main",
@@ -2381,22 +2533,6 @@
           },
           {
             "bbox_mm": [
-              38.45238,
-              83.3214,
-              11.09524,
-              1.3572
-            ],
-            "class": "PCB_TEXT",
-            "layer": "F.Silkscreen",
-            "position_mm": [
-              44,
-              84
-            ],
-            "text": "1 L   2 N   3 NC",
-            "uuid": "38d39e3c-c02a-4013-acc3-186360a420d5"
-          },
-          {
-            "bbox_mm": [
               38.633333,
               53.3214,
               12.733334,
@@ -2429,19 +2565,19 @@
           },
           {
             "bbox_mm": [
-              41.185714,
-              131.3214,
-              11.628573,
+              40.871428,
+              83.3214,
+              6.257144,
               1.3572
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
-              47,
-              132
+              44,
+              84
             ],
-            "text": "1 L  2 N  3-4 NC",
-            "uuid": "02f7bf9d-71ed-4699-bff5-92c9c62cc735"
+            "text": "1 L   2 N",
+            "uuid": "38d39e3c-c02a-4013-acc3-186360a420d5"
           },
           {
             "bbox_mm": [
@@ -2477,9 +2613,25 @@
           },
           {
             "bbox_mm": [
-              77.338095,
+              43.871428,
+              131.3214,
+              6.257144,
+              1.3572
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              47,
+              132
+            ],
+            "text": "1 L   2 N",
+            "uuid": "02f7bf9d-71ed-4699-bff5-92c9c62cc735"
+          },
+          {
+            "bbox_mm": [
+              78.57619,
               150.3214,
-              15.32381,
+              12.84762,
               1.3572
             ],
             "class": "PCB_TEXT",
@@ -2488,7 +2640,7 @@
               85,
               151
             ],
-            "text": "NC CAVITIES ARE NOT PE",
+            "text": "PE BYPASSES BOARD",
             "uuid": "a00a003e-b72e-4384-9f6a-5f4865d6b747"
           },
           {
@@ -2541,9 +2693,9 @@
           },
           {
             "bbox_mm": [
-              95.185714,
+              97.871428,
               134.3214,
-              11.628573,
+              6.257144,
               1.3572
             ],
             "class": "PCB_TEXT",
@@ -2552,11 +2704,11 @@
               101,
               135
             ],
-            "text": "1 L  2 N  3-6 NC",
+            "text": "1 L   2 N",
             "uuid": "fc7a9b1a-5108-4465-9fcb-3e81755e9c2f"
           }
         ],
-        "sha256": "e5447e570af09879f462a945d5d23aeb85ab164adee165fcaee5154fcbc7d58f"
+        "sha256": "ce569d9b6b5870b4904437318000dde0d2e42aea6a0f2a25b19d90eb1dde3034"
       },
       "rules": {
         "details": [
@@ -2760,8 +2912,8 @@
         "details": [
           {
             "bbox_mm": [
-              105.743,
-              135.07,
+              105.87,
+              138.25,
               5.5,
               5.5
             ],
@@ -2774,61 +2926,25 @@
             "outline_mm": [
               [
                 [
-                  105.743,
-                  135.07
+                  105.87,
+                  138.25
                 ],
                 [
-                  111.243,
-                  135.07
+                  111.37,
+                  138.25
                 ],
                 [
-                  111.243,
-                  140.57
+                  111.37,
+                  143.75
                 ],
                 [
-                  105.743,
-                  140.57
+                  105.87,
+                  143.75
                 ]
               ]
             ],
             "priority": 0,
             "uuid": "00719d07-acee-47b2-bdb3-5ae51cf132d9"
-          },
-          {
-            "bbox_mm": [
-              105.743,
-              138.25,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck PUMP_N_FILTERED J4.2.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  105.743,
-                  138.25
-                ],
-                [
-                  111.243,
-                  138.25
-                ],
-                [
-                  111.243,
-                  143.75
-                ],
-                [
-                  105.743,
-                  143.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "4d0095a0-0a23-4671-90d1-798b405244c4"
           },
           {
             "bbox_mm": [
@@ -3811,168 +3927,24 @@
               "B.Cu",
               "F.Cu"
             ],
-            "name": "Neck AC_L_FUSED J1.1.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  38.25,
-                  62.25
-                ],
-                [
-                  43.75,
-                  62.25
-                ],
-                [
-                  43.75,
-                  67.75
-                ],
-                [
-                  38.25,
-                  67.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "24226bb4-2ded-41e3-857e-885ea7ebfd9c"
-          },
-          {
-            "bbox_mm": [
-              38.25,
-              69.743,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_N J1.2.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  38.25,
-                  69.743
-                ],
-                [
-                  43.75,
-                  69.743
-                ],
-                [
-                  43.75,
-                  75.243
-                ],
-                [
-                  38.25,
-                  75.243
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "6dcfd6e6-ae6c-485d-93e6-706f557ff063"
-          },
-          {
-            "bbox_mm": [
-              38.25,
-              89.25,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck FILTER_LINE_L J2.1.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  38.25,
-                  89.25
-                ],
-                [
-                  43.75,
-                  89.25
-                ],
-                [
-                  43.75,
-                  94.75
-                ],
-                [
-                  38.25,
-                  94.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "09f3a72d-2641-42f0-8a6b-689937b7509a"
-          },
-          {
-            "bbox_mm": [
-              38.25,
-              96.743,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck AC_N J2.2.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  38.25,
-                  96.743
-                ],
-                [
-                  43.75,
-                  96.743
-                ],
-                [
-                  43.75,
-                  102.243
-                ],
-                [
-                  38.25,
-                  102.243
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "919ee4e9-f8ee-4839-b758-44f34254dde0"
-          },
-          {
-            "bbox_mm": [
-              41.43,
-              62.25,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
             "name": "Neck AC_L_FUSED J1.1.0",
             "net": "",
             "outline_mm": [
               [
                 [
-                  41.43,
+                  38.25,
                   62.25
                 ],
                 [
-                  46.93,
+                  43.75,
                   62.25
                 ],
                 [
-                  46.93,
+                  43.75,
                   67.75
                 ],
                 [
-                  41.43,
+                  38.25,
                   67.75
                 ]
               ]
@@ -3982,8 +3954,8 @@
           },
           {
             "bbox_mm": [
-              41.43,
-              69.743,
+              38.25,
+              69.87,
               5.5,
               5.5
             ],
@@ -3996,20 +3968,20 @@
             "outline_mm": [
               [
                 [
-                  41.43,
-                  69.743
+                  38.25,
+                  69.87
                 ],
                 [
-                  46.93,
-                  69.743
+                  43.75,
+                  69.87
                 ],
                 [
-                  46.93,
-                  75.243
+                  43.75,
+                  75.37
                 ],
                 [
-                  41.43,
-                  75.243
+                  38.25,
+                  75.37
                 ]
               ]
             ],
@@ -4018,7 +3990,7 @@
           },
           {
             "bbox_mm": [
-              41.43,
+              38.25,
               89.25,
               5.5,
               5.5
@@ -4032,19 +4004,19 @@
             "outline_mm": [
               [
                 [
-                  41.43,
+                  38.25,
                   89.25
                 ],
                 [
-                  46.93,
+                  43.75,
                   89.25
                 ],
                 [
-                  46.93,
+                  43.75,
                   94.75
                 ],
                 [
-                  41.43,
+                  38.25,
                   94.75
                 ]
               ]
@@ -4054,8 +4026,8 @@
           },
           {
             "bbox_mm": [
-              41.43,
-              96.743,
+              38.25,
+              96.87,
               5.5,
               5.5
             ],
@@ -4068,20 +4040,20 @@
             "outline_mm": [
               [
                 [
-                  41.43,
-                  96.743
+                  38.25,
+                  96.87
                 ],
                 [
-                  46.93,
-                  96.743
+                  43.75,
+                  96.87
                 ],
                 [
-                  46.93,
-                  102.243
+                  43.75,
+                  102.37
                 ],
                 [
-                  41.43,
-                  102.243
+                  38.25,
+                  102.37
                 ]
               ]
             ],
@@ -4091,7 +4063,7 @@
           {
             "bbox_mm": [
               43.25,
-              135.07,
+              138.25,
               5.5,
               5.5
             ],
@@ -4105,19 +4077,19 @@
               [
                 [
                   43.25,
-                  135.07
+                  138.25
                 ],
                 [
                   48.75,
-                  135.07
+                  138.25
                 ],
                 [
                   48.75,
-                  140.57
+                  143.75
                 ],
                 [
                   43.25,
-                  140.57
+                  143.75
                 ]
               ]
             ],
@@ -4126,44 +4098,8 @@
           },
           {
             "bbox_mm": [
-              43.25,
+              50.87,
               138.25,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck PUMP_L_FILTERED J3.1.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  43.25,
-                  138.25
-                ],
-                [
-                  48.75,
-                  138.25
-                ],
-                [
-                  48.75,
-                  143.75
-                ],
-                [
-                  43.25,
-                  143.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "643f9c8d-fd82-4477-9ace-25266f7124da"
-          },
-          {
-            "bbox_mm": [
-              50.743,
-              135.07,
               5.5,
               5.5
             ],
@@ -4176,61 +4112,25 @@
             "outline_mm": [
               [
                 [
-                  50.743,
-                  135.07
+                  50.87,
+                  138.25
                 ],
                 [
-                  56.243,
-                  135.07
+                  56.37,
+                  138.25
                 ],
                 [
-                  56.243,
-                  140.57
+                  56.37,
+                  143.75
                 ],
                 [
-                  50.743,
-                  140.57
+                  50.87,
+                  143.75
                 ]
               ]
             ],
             "priority": 0,
             "uuid": "e29035e7-3795-4085-8596-51674079afc8"
-          },
-          {
-            "bbox_mm": [
-              50.743,
-              138.25,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck PUMP_N_FILTERED J3.2.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  50.743,
-                  138.25
-                ],
-                [
-                  56.243,
-                  138.25
-                ],
-                [
-                  56.243,
-                  143.75
-                ],
-                [
-                  50.743,
-                  143.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "233dd1aa-8ab1-4143-91eb-7dbd24f3d38e"
           },
           {
             "bbox_mm": [
@@ -4559,7 +4459,7 @@
           {
             "bbox_mm": [
               98.25,
-              135.07,
+              138.25,
               5.5,
               5.5
             ],
@@ -4573,63 +4473,27 @@
               [
                 [
                   98.25,
-                  135.07
+                  138.25
                 ],
                 [
                   103.75,
-                  135.07
+                  138.25
                 ],
                 [
                   103.75,
-                  140.57
+                  143.75
                 ],
                 [
                   98.25,
-                  140.57
+                  143.75
                 ]
               ]
             ],
             "priority": 0,
             "uuid": "4e8555e7-2349-4a69-be14-d90c21d34aae"
-          },
-          {
-            "bbox_mm": [
-              98.25,
-              138.25,
-              5.5,
-              5.5
-            ],
-            "layers": [
-              "B.Cu",
-              "F.Cu"
-            ],
-            "name": "Neck PUMP_L_SW J4.1.1",
-            "net": "",
-            "outline_mm": [
-              [
-                [
-                  98.25,
-                  138.25
-                ],
-                [
-                  103.75,
-                  138.25
-                ],
-                [
-                  103.75,
-                  143.75
-                ],
-                [
-                  98.25,
-                  143.75
-                ]
-              ]
-            ],
-            "priority": 0,
-            "uuid": "d277cf5c-d7fb-4bf8-a2fd-e52d5d94491f"
           }
         ],
-        "sha256": "aea0bb82b2af00b542088fbf259e0c0d154bcefc723fea5c1726a967c0b51dac"
+        "sha256": "d7adefc1a56e2fa630a0ed28c0d5d0ef5d40c3989e86cb773ebb96ca79e194b7"
       }
     },
     "routed": true,
@@ -4756,59 +4620,52 @@
           "value": "0215001.MXEP"
         },
         {
-          "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+          "datasheet": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
           "footprint": "CrystalShim_Mains:Mains_J1",
-          "manufacturer_part_number": "43160-1102",
+          "manufacturer_part_number": "1868076",
           "pins": [
             "1",
             "2"
           ],
           "ref": "J1",
           "symbol": "CrystalShim_Mains:Mains_J1",
-          "value": "43160-1102"
+          "value": "1868076"
         },
         {
-          "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+          "datasheet": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
           "footprint": "CrystalShim_Mains:Mains_J2",
-          "manufacturer_part_number": "43160-1103",
+          "manufacturer_part_number": "1868076",
           "pins": [
             "1",
-            "2",
-            "3"
+            "2"
           ],
           "ref": "J2",
-          "symbol": "CrystalShim_Mains:Mains_J2",
-          "value": "43160-1103"
+          "symbol": "CrystalShim_Mains:Mains_J2_Terminal",
+          "value": "1868076"
         },
         {
-          "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+          "datasheet": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
           "footprint": "CrystalShim_Mains:Mains_J3",
-          "manufacturer_part_number": "43160-1104",
+          "manufacturer_part_number": "1868076",
           "pins": [
             "1",
-            "2",
-            "3",
-            "4"
+            "2"
           ],
           "ref": "J3",
-          "symbol": "CrystalShim_Mains:Mains_J3",
-          "value": "43160-1104"
+          "symbol": "CrystalShim_Mains:Mains_J3_Terminal",
+          "value": "1868076"
         },
         {
-          "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf",
+          "datasheet": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
           "footprint": "CrystalShim_Mains:Mains_J4",
-          "manufacturer_part_number": "43160-1106",
+          "manufacturer_part_number": "1868076",
           "pins": [
             "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6"
+            "2"
           ],
           "ref": "J4",
-          "symbol": "CrystalShim_Mains:Mains_J4",
-          "value": "43160-1106"
+          "symbol": "CrystalShim_Mains:Mains_J4_Terminal",
+          "value": "1868076"
         },
         {
           "datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/436/43650/436501200_sd.pdf",
@@ -5525,14 +5382,6 @@
               "number": "1"
             },
             {
-              "net": "AC_L_FUSED",
-              "number": "1"
-            },
-            {
-              "net": "AC_N",
-              "number": "2"
-            },
-            {
               "net": "AC_N",
               "number": "2"
             }
@@ -5548,7 +5397,7 @@
           "ref": "J1",
           "stable_id": "mains.component.j1",
           "uuid": "fdd113e4-b483-4966-8e8e-594e249d8da6",
-          "value": "43160-1102"
+          "value": "1868076"
         },
         {
           "footprint": "CrystalShim_Mains:Mains_J2",
@@ -5558,24 +5407,8 @@
               "number": "1"
             },
             {
-              "net": "FILTER_LINE_L",
-              "number": "1"
-            },
-            {
               "net": "AC_N",
               "number": "2"
-            },
-            {
-              "net": "AC_N",
-              "number": "2"
-            },
-            {
-              "net": "",
-              "number": "3"
-            },
-            {
-              "net": "",
-              "number": "3"
             }
           ],
           "placement": {
@@ -5589,7 +5422,7 @@
           "ref": "J2",
           "stable_id": "mains.component.j2",
           "uuid": "f9bd9824-adc3-46eb-9161-0563d8a9d5e0",
-          "value": "43160-1103"
+          "value": "1868076"
         },
         {
           "footprint": "CrystalShim_Mains:Mains_J3",
@@ -5599,32 +5432,8 @@
               "number": "1"
             },
             {
-              "net": "PUMP_L_FILTERED",
-              "number": "1"
-            },
-            {
               "net": "PUMP_N_FILTERED",
               "number": "2"
-            },
-            {
-              "net": "PUMP_N_FILTERED",
-              "number": "2"
-            },
-            {
-              "net": "",
-              "number": "3"
-            },
-            {
-              "net": "",
-              "number": "3"
-            },
-            {
-              "net": "",
-              "number": "4"
-            },
-            {
-              "net": "",
-              "number": "4"
             }
           ],
           "placement": {
@@ -5638,7 +5447,7 @@
           "ref": "J3",
           "stable_id": "mains.component.j3",
           "uuid": "a2a0148b-5172-4ca9-97c2-cfe00c39a9db",
-          "value": "43160-1104"
+          "value": "1868076"
         },
         {
           "footprint": "CrystalShim_Mains:Mains_J4",
@@ -5648,48 +5457,8 @@
               "number": "1"
             },
             {
-              "net": "PUMP_L_SW",
-              "number": "1"
-            },
-            {
               "net": "PUMP_N_FILTERED",
               "number": "2"
-            },
-            {
-              "net": "PUMP_N_FILTERED",
-              "number": "2"
-            },
-            {
-              "net": "",
-              "number": "3"
-            },
-            {
-              "net": "",
-              "number": "3"
-            },
-            {
-              "net": "",
-              "number": "4"
-            },
-            {
-              "net": "",
-              "number": "4"
-            },
-            {
-              "net": "",
-              "number": "5"
-            },
-            {
-              "net": "",
-              "number": "5"
-            },
-            {
-              "net": "",
-              "number": "6"
-            },
-            {
-              "net": "",
-              "number": "6"
             }
           ],
           "placement": {
@@ -5703,7 +5472,7 @@
           "ref": "J4",
           "stable_id": "mains.component.j4",
           "uuid": "5722fae4-eeba-4e2e-87bc-0bc2b635e630",
-          "value": "43160-1106"
+          "value": "1868076"
         },
         {
           "footprint": "CrystalShim_Mains:Mains_J5",
@@ -6146,5 +5915,5 @@
       "mains.component.u2": "cdf7500d-9648-4055-8e37-f336be0f366b"
     }
   },
-  "snapshot_sha256": "1109ce5aea5abeb881ff2bf9f978626b239220adb8bf669bf84dfddcb2b855cd"
+  "snapshot_sha256": "4312d96e308fcfe8592bdbe367d305dec725bd790a97e7eb8cfd110a39a1389d"
 }

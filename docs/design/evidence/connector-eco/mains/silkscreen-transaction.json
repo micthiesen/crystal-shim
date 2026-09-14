@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "before_files": {
+    "CrystalShim_Mains.kicad_sym": "27b0d6acd92f7e3c15fedb2dc91c2965471bd9b8983265cfac3be15dfc623cd0",
+    "fp-lib-table": "3c60f00dfe31c44c3cf25b963f4d63cc940333f3840b3df0df30e5af3cfad536",
+    "mains.kicad_dru": "c167105a4929bc0646427951da49ba5565bf40f54aff7b45432d5a4726af2ffc",
+    "mains.kicad_pcb": "27beef31050ce15af1adb58ec0549f94b00a65b38e249b4306b9ce0527584d9d",
+    "mains.kicad_prl": "4f6b8b7c380fa395767040dc330c2d63a63d08f870981d36e2ecc0328f30a027",
+    "mains.kicad_pro": "e7d84877002929a03aa44062e9c1c357cf9c1212a3b5170210142e6bcef079bb",
+    "mains.kicad_sch": "30f5c0b057fb1326418e315bcb3326a9d6edb0f36e71cecbc5a281ca9d7a8648",
+    "primary.kicad_sch": "21058991510bc2da161a58d16ece715da0ee447b875b48b75b638b000527e54a",
+    "secondary.kicad_sch": "1c8fdcb57dca749a6d3c8f911ff5c0cd1c97e925936c55d623317c03f1ae22b9",
+    "suppression.kicad_sch": "709dbaa130e71e079eca781f7e00d124d68350a3fd9ddf0e0bd7a19bc04d76ae",
+    "sym-lib-table": "3fd9476e3fbdadc7e7611d272928872dfe5075224fabd8d2e8bc88639d884c85"
+  },
+  "operations": [
+    {
+      "op": "text_update",
+      "uuid": "02f7bf9d-71ed-4699-bff5-92c9c62cc735",
+      "from": {
+        "layer": "F.Silkscreen",
+        "mirrored": false,
+        "position_mm": [
+          47.0,
+          132.0
+        ],
+        "rotation_deg": 0.0,
+        "size_mm": [
+          0.8,
+          0.8
+        ],
+        "text": "1 L  2 N  3-4 NC",
+        "thickness_mm": 0.12
+      },
+      "to": {
+        "layer": "F.Silkscreen",
+        "mirrored": false,
+        "position_mm": [
+          47.0,
+          132.0
+        ],
+        "rotation_deg": 0.0,
+        "size_mm": [
+          0.8,
+          0.8
+        ],
+        "text": "1 L   2 N",
+        "thickness_mm": 0.12
+      }
+    },
+    {
+      "op": "text_update",
+      "uuid": "38d39e3c-c02a-4013-acc3-186360a420d5",
+      "from": {
+        "layer": "F.Silkscreen",
+        "mirrored": false,
+        "position_mm": [
+          44.0,
+          84.0
+        ],
+        "rotation_deg": 0.0,
+        "size_mm": [
+          0.8,
+          0.8
+        ],
+        "text": "1 L   2 N   3 NC",
+        "thickness_mm": 0.12
+      },
+      "to": {
+        "layer": "F.Silkscreen",
+        "mirrored": false,
+        "position_mm": [
+          44.0,
+          84.0
+        ],
+        "rotation_deg": 0.0,
+        "size_mm": [
+          0.8,
+          0.8
+        ],
+        "text": "1 L   2 N",
+        "thickness_mm": 0.12
+      }
+    },
+    {
+      "op": "text_update",
+      "uuid": "a00a003e-b72e-4384-9f6a-5f4865d6b747",
+      "from": {
+        "layer": "F.Silkscreen",
+        "mirrored": false,
+        "position_mm": [
+          85.0,
+          151.0
+        ],
+        "rotation_deg": 0.0,
+        "size_mm": [
+          0.8,
+          0.8
+        ],
+        "text": "NC CAVITIES ARE NOT PE",
+        "thickness_mm": 0.12
+      },
+      "to": {
+        "layer": "F.Silkscreen",
+        "mirrored": false,
+        "position_mm": [
+          85.0,
+          151.0
+        ],
+        "rotation_deg": 0.0,
+        "size_mm": [
+          0.8,
+          0.8
+        ],
+        "text": "PE BYPASSES BOARD",
+        "thickness_mm": 0.12
+      }
+    },
+    {
+      "op": "text_update",
+      "uuid": "fc7a9b1a-5108-4465-9fcb-3e81755e9c2f",
+      "from": {
+        "layer": "F.Silkscreen",
+        "mirrored": false,
+        "position_mm": [
+          101.0,
+          135.0
+        ],
+        "rotation_deg": 0.0,
+        "size_mm": [
+          0.8,
+          0.8
+        ],
+        "text": "1 L  2 N  3-6 NC",
+        "thickness_mm": 0.12
+      },
+      "to": {
+        "layer": "F.Silkscreen",
+        "mirrored": false,
+        "position_mm": [
+          101.0,
+          135.0
+        ],
+        "rotation_deg": 0.0,
+        "size_mm": [
+          0.8,
+          0.8
+        ],
+        "text": "1 L   2 N",
+        "thickness_mm": 0.12
+      }
+    }
+  ]
+}

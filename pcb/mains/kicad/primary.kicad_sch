@@ -477,6 +477,119 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "CrystalShim_Mains:Mains_J2_Terminal"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1868076"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Mains_J2_Terminal_1_1"
+				(rectangle
+					(start -38.354 -3.81)
+					(end -35.814 3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -44.45 1.27 0)
+					(length 6.096)
+					(name "LINE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -44.45 -1.27 0)
+					(length 6.096)
+					(name "NEUTRAL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "CrystalShim_Mains:Mains_J3"
 			(pin_names
 				(offset 1.27)
@@ -655,6 +768,119 @@
 						)
 					)
 					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Mains:Mains_J3_Terminal"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1868076"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Mains_J3_Terminal_1_1"
+				(rectangle
+					(start -37.1929 -3.81)
+					(end -34.6529 3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -43.18 1.27 0)
+					(length 5.9871)
+					(name "LINE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -43.18 -1.27 0)
+					(length 5.9871)
+					(name "NEUTRAL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -879,6 +1105,119 @@
 						)
 					)
 					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "CrystalShim_Mains:Mains_J4_Terminal"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1868076"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Mains_J4_Terminal_1_1"
+				(rectangle
+					(start -37.2241 -3.81)
+					(end -34.6841 3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -43.18 1.27 0)
+					(length 5.9559)
+					(name "LINE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -43.18 -1.27 0)
+					(length 5.9559)
+					(name "NEUTRAL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1533,34 +1872,6 @@
 			)
 		)
 		(uuid "06a806f6-7bef-48ed-8fbc-ddec07702570")
-	)
-	(no_connect
-		(at 765.81 397.51)
-		(uuid "1ebab122-6952-4e41-9ef0-379cb474eb64")
-	)
-	(no_connect
-		(at 765.81 400.05)
-		(uuid "3f903026-1470-47dd-8cc1-2e28fcaef804")
-	)
-	(no_connect
-		(at 195.58 398.78)
-		(uuid "699cccaa-4913-49ea-a526-06ad1287d4e4")
-	)
-	(no_connect
-		(at 765.81 393.7)
-		(uuid "8a1ce736-bc80-4271-8907-1c939afc0e48")
-	)
-	(no_connect
-		(at 389.89 400.05)
-		(uuid "aaac45a7-f473-433b-bfc7-737757380d47")
-	)
-	(no_connect
-		(at 389.89 397.51)
-		(uuid "c9f167bb-4376-47ec-9a63-714c5bdf1c6d")
-	)
-	(no_connect
-		(at 765.81 402.59)
-		(uuid "e9edadec-c4ef-4206-9820-16a2c777a9c4")
 	)
 	(wire
 		(pts
@@ -2409,7 +2720,7 @@
 		)
 	)
 	(symbol
-		(lib_id "CrystalShim_Mains:Mains_J2")
+		(lib_id "CrystalShim_Mains:Mains_J2_Terminal")
 		(at 152.4 398.78 0)
 		(unit 1)
 		(body_style 1)
@@ -2430,7 +2741,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "43160-1103"
+		(property "Value" "1868076"
 			(at 114.046 422.54 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2452,7 +2763,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+		(property "Datasheet" "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076"
 			(at 152.4 398.78 0)
 			(hide yes)
 			(show_name no)
@@ -2474,7 +2785,7 @@
 				)
 			)
 		)
-		(property "MPN" "43160-1103"
+		(property "MPN" "1868076"
 			(at 0 0 0)
 			(hide yes)
 			(show_name no)
@@ -2491,9 +2802,6 @@
 		(pin "2"
 			(uuid "ba9b1ec0-a75b-43c9-928c-4cad299391f9")
 		)
-		(pin "3"
-			(uuid "dd99d0ca-c886-4f28-a02f-57568f40ce89")
-		)
 		(instances
 			(project "mains"
 				(path "/3398af38-3486-40e8-a51d-d2dfe0c56816/f1d09619-0800-4ea2-89a5-3ca87f3e8523"
@@ -2504,7 +2812,7 @@
 		)
 	)
 	(symbol
-		(lib_id "CrystalShim_Mains:Mains_J4")
+		(lib_id "CrystalShim_Mains:Mains_J4_Terminal")
 		(at 721.36 398.78 0)
 		(unit 1)
 		(body_style 1)
@@ -2525,7 +2833,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "43160-1106"
+		(property "Value" "1868076"
 			(at 684.1359 437.54 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2547,7 +2855,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+		(property "Datasheet" "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076"
 			(at 721.36 398.78 0)
 			(hide yes)
 			(show_name no)
@@ -2569,7 +2877,7 @@
 				)
 			)
 		)
-		(property "MPN" "43160-1106"
+		(property "MPN" "1868076"
 			(at 0 0 0)
 			(hide yes)
 			(show_name no)
@@ -2585,18 +2893,6 @@
 		)
 		(pin "2"
 			(uuid "e19a7032-6f88-4e54-ba08-ccf7ada41608")
-		)
-		(pin "3"
-			(uuid "746fc145-50a3-4736-8d34-a80a962775bf")
-		)
-		(pin "4"
-			(uuid "1a878598-de16-430c-9c59-084e1af956ed")
-		)
-		(pin "5"
-			(uuid "a77882ec-0554-42ea-8277-08e05b6c72c4")
-		)
-		(pin "6"
-			(uuid "a3ba1627-fc46-49d5-bbd7-10f89b766567")
 		)
 		(instances
 			(project "mains"
@@ -2727,7 +3023,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "43160-1102"
+		(property "Value" "1868076"
 			(at 114.046 212.7142 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2749,7 +3045,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+		(property "Datasheet" "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076"
 			(at 152.4 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -2771,7 +3067,7 @@
 				)
 			)
 		)
-		(property "MPN" "43160-1102"
+		(property "MPN" "1868076"
 			(at 0 0 0)
 			(hide yes)
 			(show_name no)
@@ -2966,7 +3262,7 @@
 		)
 	)
 	(symbol
-		(lib_id "CrystalShim_Mains:Mains_J3")
+		(lib_id "CrystalShim_Mains:Mains_J3_Terminal")
 		(at 346.71 398.78 0)
 		(unit 1)
 		(body_style 1)
@@ -2987,7 +3283,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "43160-1104"
+		(property "Value" "1868076"
 			(at 309.5171 430.04 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3009,7 +3305,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf"
+		(property "Datasheet" "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076"
 			(at 346.71 398.78 0)
 			(hide yes)
 			(show_name no)
@@ -3031,7 +3327,7 @@
 				)
 			)
 		)
-		(property "MPN" "43160-1104"
+		(property "MPN" "1868076"
 			(at 0 0 0)
 			(hide yes)
 			(show_name no)
@@ -3047,12 +3343,6 @@
 		)
 		(pin "2"
 			(uuid "7bd66ae0-0240-4b85-a70f-b2f4c245df00")
-		)
-		(pin "3"
-			(uuid "7a327e0e-37da-4f23-b4b7-07b137e5c882")
-		)
-		(pin "4"
-			(uuid "73037426-bf3b-4219-8056-9328f07a319d")
 		)
 		(instances
 			(project "mains"

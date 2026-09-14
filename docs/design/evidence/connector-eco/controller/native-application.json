@@ -1,0 +1,20 @@
+{
+  "tool": "KiCad pcbnew",
+  "version": "10.0.5",
+  "candidate": "/tmp/crystal-connectors-native/controller",
+  "plan_sha256": "f37d5b1714390b1a9de7ebd026ae4faeae618cb2aaf9ee25035601357e10210c",
+  "retained_pad_uuids": {
+    "J2.1": "1c31d381-a052-40a2-be29-dbe0e95e460f",
+    "J2.2": "ff14a6f6-c15b-437f-9b77-36731ee0e64b"
+  },
+  "removed_footprint_pad_uuids": [
+    "11f8199b-bf4d-4912-8bb7-4aa3638f05ce"
+  ],
+  "changed_zone_uuids": [
+    "d0f13ab2-23fe-4c80-831e-6474685ca637"
+  ],
+  "tracks_preserved": 0,
+  "vias_preserved": 25,
+  "source_parity": true,
+  "script_sha256": "9b03f2ac12252cae5d5820f30d833a087c7e9237011d3adc62f96071ad985f40"
+}

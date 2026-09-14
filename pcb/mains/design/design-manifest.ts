@@ -64,7 +64,9 @@ export function mainsNativeFootprint(ref: string) {
 export function mainsProjectSymbol(ref: string) {
   if (!Object.hasOwn(mainsPlacements, ref))
     throw new Error(`No mains schematic symbol for ${ref}`);
-  return mainsNativeFootprint(ref);
+  return /^J[2-4]$/.test(ref)
+    ? `${mainsNativeFootprint(ref)}_Terminal`
+    : mainsNativeFootprint(ref);
 }
 
 type Part = {
@@ -268,10 +270,10 @@ export function createMainsManifest(json: CircuitJson) {
     (e) => e.type === "pcb_smtpad" || e.type === "pcb_plated_hole",
   );
   if (
-    ports.length !== 60 ||
-    physicalPorts.length !== 60 ||
+    ports.length !== 53 ||
+    physicalPorts.length !== 53 ||
     schematics.length !== 22 ||
-    allLands.length !== 75 ||
+    allLands.length !== 53 ||
     ports.some(
       (p) =>
         !bySource.has(p.source_component_id ?? "") || !Number.isInteger(p.pin_number),
@@ -415,7 +417,7 @@ export function createMainsManifest(json: CircuitJson) {
         const lands = allLands.filter(
           (p) => p.pcb_port_id === pcbPorts[0]!.pcb_port_id,
         );
-        const count = /^J[1-4]$/.test(ref) ? 2 : 1;
+        const count = 1;
         if (
           lands.length !== count ||
           lands.some((p) => p.pcb_component_id !== placed.pcb_component_id)
@@ -583,7 +585,7 @@ export function createMainsManifest(json: CircuitJson) {
     metadata: {
       board_designator: "Mains",
       title: "Crystal Shim isolated mains switching",
-      physical_numbered_pad_count: 75,
+      physical_numbered_pad_count: 53,
       connected_logical_pin_count: 53,
       unused_logical_pin_count: 7,
       physical_pad_numbers: Object.fromEntries(

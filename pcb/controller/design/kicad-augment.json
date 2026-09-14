@@ -31,7 +31,8 @@
         "mapping": "Controller_<exact manifest reference>",
         "reason": "Preserve the compiled initial geometry through native per-reference FootprintSave/FootprintLoad; no installed stock substitution.",
         "verification": "Bind compiled and effective initial geometry hashes, the native library receipt, exact pad multiplicities, all pad nets, NPTHs, placement and 468 cardinal rotations. Register the stage-local library through verified Konnect before initial ERC/DRC.",
-        "status": "applied during guarded initial stage; complete only when its receipts and parity pass"
+        "status": "applied during guarded initial stage; complete only when its receipts and parity pass",
+        "connector_eco": "J2 only: JST S2B-XH-A, two PTH contacts, no locator; source-authored 180 degree rotation change maintains outward service cable exit. Preserve all other connectors, routes, vias, zones and footprint/pad identities where retained."
       }
     },
     {
@@ -613,7 +614,8 @@
           ]
         },
         "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove all floating islands. In2 remains available for power/signal routing; no arbitrary split power plane.",
-        "status": "Applied with native API and project-aware refill; saved planes and zone DRC verified. Refill and inspect useful copper again after owner routing."
+        "status": "Applied with native API and project-aware refill; saved planes and zone DRC verified. Refill and inspect useful copper again after owner routing.",
+        "connector_eco": "Resize only Neck V5_SERVICE J2.1.0 to the new JST pad bounding box plus the existing 1 mm allowance; retain zone UUID and all other planes/rules."
       }
     },
     {

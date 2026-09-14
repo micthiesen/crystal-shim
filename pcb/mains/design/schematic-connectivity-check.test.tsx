@@ -29,8 +29,8 @@ test("product net contract refuses coordinated renames, NC changes and orphan id
       }
     },
     (json) => {
-      const pin = json.find((e) => e.type === "source_port" && e.do_not_connect);
-      if (pin?.type === "source_port") pin.do_not_connect = false;
+      const pin = json.find((e) => e.type === "source_port");
+      if (pin?.type === "source_port") pin.do_not_connect = true;
     },
     (json) => {
       const net = json.find((e) => e.type === "source_net");
@@ -65,7 +65,7 @@ test("product net contract refuses coordinated renames, NC changes and orphan id
   }
 });
 
-test("native admission checks every unique pad, Sabre tail, NC and net number", async () => {
+test("native admission checks every terminal pad and net number", async () => {
   const initial = createMainsInitialPcb(await compiled).getString();
   const original = parseKicadPcb(initial);
   expect(() => assertMainsInitialPadNets(original)).not.toThrow();
@@ -73,7 +73,7 @@ test("native admission checks every unique pad, Sabre tail, NC and net number", 
     ["K1", "3"],
     ["U2", "5"],
     ["J5", "3"],
-    ["J3", "3"],
+    ["J3", "2"],
     ["F2", "2"],
   ] as const;
   for (const [ref, number] of cases) {

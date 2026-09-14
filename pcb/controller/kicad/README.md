@@ -5,6 +5,9 @@ Open [controller.kicad_pro](controller.kicad_pro). This is the accepted
 clean strict ERC, no schematic parity differences and no ordinary DRC findings.
 Four 3.2 mm NPTH mounts are inset 7 mm and align with the mains board below.
 
+The 5 V service input J2 uses JST S2B-XH-A/XHP-2, distinct from the 12 V Micro-Fit ports.
+See the [connector ECO](../../../docs/design/evidence/connector-eco/controller/).
+
 Ground pours, reference plane, thermal/ground vias, netclasses, bounded pad
 escapes and native custom rules are installed. Follow the
 [routing guide](../../../docs/design/routing-guardrails.md) for order and widths.

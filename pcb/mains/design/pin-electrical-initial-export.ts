@@ -5,10 +5,10 @@ import { mainsChipElectricalContracts } from "./pin-electrical-contract";
 import { mainsSchematicConnectivityErrors } from "./schematic-connectivity-check";
 
 const chipMpns: Readonly<Record<string, string>> = {
-  J1: "43160-1102",
-  J2: "43160-1103",
-  J3: "43160-1104",
-  J4: "43160-1106",
+  J1: "1868076",
+  J2: "1868076",
+  J3: "1868076",
+  J4: "1868076",
   J5: "43650-0300",
   U1: "IRM-45-12",
   U2: "AP63205WU-7",
@@ -69,12 +69,12 @@ export function applyMainsPinTypesForInitialExport(
   if (
     sources.length !== 22 ||
     byRef.size !== 22 ||
-    ports.length !== 60 ||
+    ports.length !== 53 ||
     sources.some((s) => !s.source_component_id?.trim()) ||
     ports.some((p) => !p.source_port_id?.trim())
   )
     throw new Error(
-      "Mains electrical source must contain 22 parts and 60 identified pins",
+      "Mains electrical source must contain 22 parts and 53 identified pins",
     );
 
   const declarations = new Map<string, Readonly<Record<string, ElectricalPin>>>();
@@ -183,8 +183,8 @@ export function applyMainsPinTypesForInitialExport(
       declarations.set(libraryId, expected);
     }
   }
-  if (seen.size !== 22 || logicalPins !== 60)
-    throw new Error("Initial mains electrical coverage must be 22 parts and 60 pins");
+  if (seen.size !== 22 || logicalPins !== 53)
+    throw new Error("Initial mains electrical coverage must be 22 parts and 53 pins");
 
   const plans = new Map<SymbolPin, ElectricalPin["type"]>();
   // The pinned converter caches repeated passive definitions, including copies

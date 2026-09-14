@@ -38,7 +38,7 @@ test("controller source manifest retains stable refs, full logical nets and all 
     ["H3", -68, -48, 3.2],
     ["H4", 68, -48, 3.2],
   ]);
-  expect(manifest.board.holes).toHaveLength(14);
+  expect(manifest.board.holes).toHaveLength(13);
   expect(
     manifest.board.holes.filter((h) => h.ref === "J4").map((h) => h.stable_id),
   ).toEqual(["controller.hole.j4.locator-1", "controller.hole.j4.locator-2"]);
@@ -92,7 +92,7 @@ test("controller source manifest retains stable refs, full logical nets and all 
   expect(normalized.status).toBe(0);
   const shared = JSON.parse(normalized.stdout);
   expect(shared.components).toHaveLength(117);
-  expect(shared.board.holes).toHaveLength(14);
+  expect(shared.board.holes).toHaveLength(13);
   expect(shared.nets).toHaveLength(63);
   expect(shared.components[0].footprint.source_geometry_sha256).toMatch(
     /^[0-9a-f]{64}$/,

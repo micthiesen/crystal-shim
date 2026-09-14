@@ -40,9 +40,9 @@ const expectedPins = {
   F3: [1, 2],
   F2: [1, 2],
   J1: [1, 2],
-  J2: [1, 2, 3],
-  J3: [1, 2, 3, 4],
-  J4: [1, 2, 3, 4, 5, 6],
+  J2: [1, 2],
+  J3: [1, 2],
+  J4: [1, 2],
   J5: [1, 2, 3],
   J6: [1, 2],
   K1: [1, 3, 4, 5],
@@ -52,7 +52,7 @@ const expectedPins = {
   U1: [1, 2, 3, 4],
   U2: [1, 2, 3, 4, 5, 6],
 } as const;
-const expectedNc = ["J2.3", "J3.3", "J3.4", "J4.3", "J4.4", "J4.5", "J4.6"].sort();
+const expectedNc: string[] = [];
 
 let compiled: Promise<CircuitJson> | undefined;
 function compile() {
@@ -86,13 +86,13 @@ function schematicPin(json: CircuitJson, endpoint: string) {
   return pin;
 }
 
-test("full mains source retains 22 parts and every connected or intentionally unused pin", async () => {
+test("full mains source retains 22 parts with every pin connected", async () => {
   const json = await compile();
   const parts = json.filter((e) => e.type === "source_component");
   const ports = json.filter((e) => e.type === "source_port");
   expect(parts.map((p) => p.name).sort()).toEqual(Object.keys(expectedPins).sort());
   expect(parts).toHaveLength(22);
-  expect(ports).toHaveLength(60);
+  expect(ports).toHaveLength(53);
   for (const part of parts) {
     const pins = ports.filter(
       (p) => p.source_component_id === part.source_component_id,
@@ -170,7 +170,7 @@ test("whole-board source and drawn nets preserve isolation, raw/protected power 
   expect(schematicConnectivityErrors(json)).toEqual([]);
 });
 
-test("full assembly preserves 30 Sabre tails including 14 tails of seven unused blades", async () => {
+test("full assembly has one physical pin per logical pin and no unused terminal positions", async () => {
   const json = await compile();
   const names = endpointNames(json);
   const parts = json.filter((e) => e.type === "source_component");
@@ -178,21 +178,21 @@ test("full assembly preserves 30 Sabre tails including 14 tails of seven unused 
   const lands = json.filter(
     (e) => e.type === "pcb_plated_hole" || e.type === "pcb_smtpad",
   );
-  expect(lands).toHaveLength(75);
+  expect(lands).toHaveLength(53);
   for (const port of pcbPorts) {
     const endpoint = names.get(port.source_port_id);
     if (!endpoint) throw new Error(`Missing source identity for ${port.pcb_port_id}`);
     expect(lands.filter((land) => land.pcb_port_id === port.pcb_port_id)).toHaveLength(
-      /^J[1-4]\./.test(endpoint) ? 2 : 1,
+      1,
     );
   }
-  let sabreTails = 0;
+  let terminalPins = 0;
   let unusedTails = 0;
   for (const [ref, blades] of [
     ["J1", 2],
-    ["J2", 3],
-    ["J3", 4],
-    ["J4", 6],
+    ["J2", 2],
+    ["J3", 2],
+    ["J4", 2],
   ] as const) {
     const source = parts.find((p) => p.name === ref)!;
     const pcb = json.find(
@@ -202,20 +202,20 @@ test("full assembly preserves 30 Sabre tails including 14 tails of seven unused 
     );
     if (pcb?.type !== "pcb_component") throw new Error(`Missing ${ref}`);
     const tails = lands.filter((e) => e.pcb_component_id === pcb.pcb_component_id);
-    expect(tails).toHaveLength(blades * 2);
+    expect(tails).toHaveLength(blades);
     for (let number = 1; number <= blades; number++) {
       const pair = tails.filter((e) => {
         const port = pcbPorts.find((p) => p.pcb_port_id === e.pcb_port_id);
         return port && names.get(port.source_port_id) === `${ref}.${number}`;
       });
-      expect(pair).toHaveLength(2);
+      expect(pair).toHaveLength(1);
       expect(pair.every((e) => e.type === "pcb_plated_hole")).toBe(true);
-      sabreTails += pair.length;
+      terminalPins += pair.length;
       if (number > 2) unusedTails += pair.length;
     }
   }
-  expect(sabreTails).toBe(30);
-  expect(unusedTails).toBe(14);
+  expect(terminalPins).toBe(8);
+  expect(unusedTails).toBe(0);
 });
 
 test("every authored position and four board holes survive full-sheet compilation", async () => {
@@ -253,7 +253,7 @@ test("every authored position and four board holes survive full-sheet compilatio
   };
   // Numeric datum definitions are component-side +Y down, from the audited
   // exact part models. Every selected pin-1 datum except U1 is at local (0,0);
-  // K1 uses contact pin 3. Sabre's second same-number tail is not this datum.
+  // K1 uses contact pin 3 as its package datum.
   const originAnchors: Record<string, readonly [number, number, number]> = {
     U1: [1, 5.3, 11.75],
     K1: [3, 0, 0],
@@ -369,7 +369,7 @@ test("a drawn primary/secondary short and missing load-neutral labels fail conne
   );
 });
 
-test("mains pads preserve 8 mm isolation and 3.2 mm primary separation including unused blades", async () => {
+test("mains pads preserve 8 mm isolation and 3.2 mm primary separation including terminal copper", async () => {
   const json = await compile();
   expect(mainsPlacementIsolationErrors(json)).toEqual([]);
   const changed = structuredClone(json);

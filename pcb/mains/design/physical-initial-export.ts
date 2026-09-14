@@ -220,7 +220,7 @@ export function applyMainsPhysicalForInitialExport(board: KicadPcb) {
     }
     if (remaining.size) fail("unexpected physical pads");
   }
-  if (plans.length !== 48)
+  if (plans.length !== 26)
     throw new Error("Mains PTH batch changed; refuse mains initial export");
   // Validate the entire batch before changing even its first mask margin.
   for (const { pad, margin } of plans) pad.solderMaskMargin = margin;

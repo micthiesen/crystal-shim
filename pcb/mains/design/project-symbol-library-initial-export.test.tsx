@@ -80,17 +80,18 @@ test("22 unique library entries preserve all symbol geometry, pins, types and in
     for (const [j, instance] of read.symbols.entries()) {
       const prior = before[i]!.symbols[j]!;
       const ref = reference(instance)!;
-      expect(instance.libraryId).toBe(`CrystalShim_Mains:Mains_${ref}`);
+      const symbolName = `Mains_${ref}${/^J[2-4]$/.test(ref) ? "_Terminal" : ""}`;
+      expect(instance.libraryId).toBe(`CrystalShim_Mains:${symbolName}`);
       const cache = read.libSymbols!.symbols.find(
         (s) => s.libraryId === instance.libraryId,
       )!;
-      const standalone = clone(library.find((s) => s.libraryId === `Mains_${ref}`)!);
+      const standalone = clone(library.find((s) => s.libraryId === symbolName)!);
       standalone.libraryId = instance.libraryId;
       expect(standalone.getString()).toBe(cache.getString());
       const restored = clone(cache);
       const base = prior.libraryId!.split(":").at(-1)!;
       for (const child of restored.subSymbols)
-        child.libraryId = base + child.libraryId!.slice(`Mains_${ref}`.length);
+        child.libraryId = base + child.libraryId!.slice(symbolName.length);
       restored.libraryId = prior.libraryId!;
       const oldLibrary = before[i]!.libSymbols!.symbols.find(
         (s) => s.libraryId === prior.libraryId,

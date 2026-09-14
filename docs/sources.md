@@ -14,10 +14,8 @@ do not certify the assembly or constitute measured Crystal Shim results.
 | [Omron-origin G5RL family](https://components.omron.com/us-en/products/relays/G5RL) | Candidate family; exact contact/load/coil rating still requires variant review |
 | [Relay precautions K337-E1](https://components.omron.com/us-en/system/files/2026-05/ds_related_pdf/K337-E1.pdf) | RC/varistor suppression and actual-load validation |
 | [TE/Schaffner FN2090](https://www.te.com/en/product-CAT-P97-F2090.html) | Two-stage family and variant leakage/termination choices |
-| [Molex Sabre header drawing](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf) | Selected right-angle 43160-1102/-1103/-1104/-1106 headers; five-page family drawing includes vertical and right-angle variants. Use the right-angle geometry for the stacked board |
-| [Molex Sabre receptacle housing drawing](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/444/44441/444412006_sd.pdf) | Exact 44441-2002/-2003/-2004/-2006 housing dimensions and circuit identification |
-| [Molex Sabre 43375-2001 contact drawing](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/433/43375/433752001_sd.pdf) | Loose 18-20 AWG female contact and 2.84 mm maximum insulation diameter |
-| [Molex Sabre product specification PS-44441-9999-001](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/productspecificationpdf/444/44441/PS-44441-9999-001.pdf) | Series identification, agency ratings and wire/circuit current tables; verify exact variant before release |
+| [Phoenix Contact 1868076](https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076) | Selected two-position MKDS 5/2-7,62 fixed side-entry terminal on mains J1–J4; see terminal capture basis for drawing receipt and assembly limits |
+| [JST XH series](https://www.jst.com/wp-content/uploads/2025/06/eXH.pdf) | Controller J2 S2B-XH-A right-angle header, XHP-2 housing and SXH-001T-P0.6 contacts; 2.5 mm interface distinct from 12 V Micro-Fit |
 | [Molex 43025-0600](https://www.molex.com/en-us/products/part-detail/430250600) | Six-position dual-row 3.0 mm housing, latch and polarization |
 | [TI TPS7A24](https://www.ti.com/lit/ds/symlink/tps7a24.pdf) | Fixed 3.3 V sensor regulator and pin/land mapping |
 | [Hammond 1590ZGRP243](https://www.hammfg.com/part/1590ZGRP243) | Current GRP enclosure and manufacturer drawing/STEP |

@@ -1,0 +1,11 @@
+{
+  "scope": "Four mains candidate board silkscreen text replacements only",
+  "native_board_sha256": "917a86c12685518f18b8c470eb4a8c2dd9f968b006fc096f17642afa5c97b66e",
+  "preservation": "Complete saved semantic readback differs only by the four declared text strings; pad, footprint, track, via, zone, board outline and text placements are unchanged.",
+  "drc": {
+    "violations": 0,
+    "schematic_parity": 0,
+    "unconnected_items": 31
+  },
+  "render_review": "Inspected front copper/silkscreen/fabrication/courtyard render: all four terminal labels are two-pin line/neutral, PE BYPASSES BOARD replaces obsolete NC wording; text positions and other graphics remain unchanged."
+}

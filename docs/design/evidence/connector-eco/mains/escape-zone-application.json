@@ -1,0 +1,930 @@
+{
+  "kind": "native-mains-connector-escape-eco",
+  "before_board_sha256": "917a86c12685518f18b8c470eb4a8c2dd9f968b006fc096f17642afa5c97b66e",
+  "after_board_sha256": "940c3fc55649e154bc1f947f1cb08fbb1c927c02c29eabfd4b34644d79a95619",
+  "scratch": "/var/folders/37/7y1z4kxn5mv9bkbckqxrnzy40000gn/T/crystal-mains-escape-eco-5hsin5gw",
+  "operations": [
+    {
+      "action": "resize",
+      "uuid": "a10ad736-80bb-408b-a91f-4de21a8417d9",
+      "name": "Neck AC_L_FUSED J1.1.0",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck AC_L_FUSED J1.1.0",
+        "outline_mm": [
+          [
+            41.43,
+            62.25
+          ],
+          [
+            46.93,
+            62.25
+          ],
+          [
+            46.93,
+            67.75
+          ],
+          [
+            41.43,
+            67.75
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      },
+      "after_outline_mm": [
+        [
+          38.25,
+          62.25
+        ],
+        [
+          43.75,
+          62.25
+        ],
+        [
+          43.75,
+          67.75
+        ],
+        [
+          38.25,
+          67.75
+        ]
+      ]
+    },
+    {
+      "action": "remove",
+      "uuid": "24226bb4-2ded-41e3-857e-885ea7ebfd9c",
+      "name": "Neck AC_L_FUSED J1.1.1",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck AC_L_FUSED J1.1.1",
+        "outline_mm": [
+          [
+            38.25,
+            62.25
+          ],
+          [
+            43.75,
+            62.25
+          ],
+          [
+            43.75,
+            67.75
+          ],
+          [
+            38.25,
+            67.75
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      }
+    },
+    {
+      "action": "resize",
+      "uuid": "2fb50dd4-4526-408d-9738-a4618dd0e9bd",
+      "name": "Neck AC_N J1.2.0",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck AC_N J1.2.0",
+        "outline_mm": [
+          [
+            41.43,
+            69.743
+          ],
+          [
+            46.93,
+            69.743
+          ],
+          [
+            46.93,
+            75.243
+          ],
+          [
+            41.43,
+            75.243
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      },
+      "after_outline_mm": [
+        [
+          38.25,
+          69.87
+        ],
+        [
+          43.75,
+          69.87
+        ],
+        [
+          43.75,
+          75.37
+        ],
+        [
+          38.25,
+          75.37
+        ]
+      ]
+    },
+    {
+      "action": "remove",
+      "uuid": "6dcfd6e6-ae6c-485d-93e6-706f557ff063",
+      "name": "Neck AC_N J1.2.1",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck AC_N J1.2.1",
+        "outline_mm": [
+          [
+            38.25,
+            69.743
+          ],
+          [
+            43.75,
+            69.743
+          ],
+          [
+            43.75,
+            75.243
+          ],
+          [
+            38.25,
+            75.243
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      }
+    },
+    {
+      "action": "resize",
+      "uuid": "ee47fafc-e02d-464c-8b43-d231f7866bae",
+      "name": "Neck AC_N J2.2.0",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck AC_N J2.2.0",
+        "outline_mm": [
+          [
+            41.43,
+            96.743
+          ],
+          [
+            46.93,
+            96.743
+          ],
+          [
+            46.93,
+            102.243
+          ],
+          [
+            41.43,
+            102.243
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      },
+      "after_outline_mm": [
+        [
+          38.25,
+          96.87
+        ],
+        [
+          43.75,
+          96.87
+        ],
+        [
+          43.75,
+          102.37
+        ],
+        [
+          38.25,
+          102.37
+        ]
+      ]
+    },
+    {
+      "action": "remove",
+      "uuid": "919ee4e9-f8ee-4839-b758-44f34254dde0",
+      "name": "Neck AC_N J2.2.1",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck AC_N J2.2.1",
+        "outline_mm": [
+          [
+            38.25,
+            96.743
+          ],
+          [
+            43.75,
+            96.743
+          ],
+          [
+            43.75,
+            102.243
+          ],
+          [
+            38.25,
+            102.243
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      }
+    },
+    {
+      "action": "resize",
+      "uuid": "33f31123-4e68-4dd1-866e-8f3d00a73c88",
+      "name": "Neck FILTER_LINE_L J2.1.0",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck FILTER_LINE_L J2.1.0",
+        "outline_mm": [
+          [
+            41.43,
+            89.25
+          ],
+          [
+            46.93,
+            89.25
+          ],
+          [
+            46.93,
+            94.75
+          ],
+          [
+            41.43,
+            94.75
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      },
+      "after_outline_mm": [
+        [
+          38.25,
+          89.25
+        ],
+        [
+          43.75,
+          89.25
+        ],
+        [
+          43.75,
+          94.75
+        ],
+        [
+          38.25,
+          94.75
+        ]
+      ]
+    },
+    {
+      "action": "remove",
+      "uuid": "09f3a72d-2641-42f0-8a6b-689937b7509a",
+      "name": "Neck FILTER_LINE_L J2.1.1",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck FILTER_LINE_L J2.1.1",
+        "outline_mm": [
+          [
+            38.25,
+            89.25
+          ],
+          [
+            43.75,
+            89.25
+          ],
+          [
+            43.75,
+            94.75
+          ],
+          [
+            38.25,
+            94.75
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      }
+    },
+    {
+      "action": "resize",
+      "uuid": "94a9071c-6dad-4a92-9c3f-f84e47907524",
+      "name": "Neck PUMP_L_FILTERED J3.1.0",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck PUMP_L_FILTERED J3.1.0",
+        "outline_mm": [
+          [
+            43.25,
+            135.07
+          ],
+          [
+            48.75,
+            135.07
+          ],
+          [
+            48.75,
+            140.57
+          ],
+          [
+            43.25,
+            140.57
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      },
+      "after_outline_mm": [
+        [
+          43.25,
+          138.25
+        ],
+        [
+          48.75,
+          138.25
+        ],
+        [
+          48.75,
+          143.75
+        ],
+        [
+          43.25,
+          143.75
+        ]
+      ]
+    },
+    {
+      "action": "remove",
+      "uuid": "643f9c8d-fd82-4477-9ace-25266f7124da",
+      "name": "Neck PUMP_L_FILTERED J3.1.1",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck PUMP_L_FILTERED J3.1.1",
+        "outline_mm": [
+          [
+            43.25,
+            138.25
+          ],
+          [
+            48.75,
+            138.25
+          ],
+          [
+            48.75,
+            143.75
+          ],
+          [
+            43.25,
+            143.75
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      }
+    },
+    {
+      "action": "resize",
+      "uuid": "e29035e7-3795-4085-8596-51674079afc8",
+      "name": "Neck PUMP_N_FILTERED J3.2.0",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck PUMP_N_FILTERED J3.2.0",
+        "outline_mm": [
+          [
+            50.743,
+            135.07
+          ],
+          [
+            56.243,
+            135.07
+          ],
+          [
+            56.243,
+            140.57
+          ],
+          [
+            50.743,
+            140.57
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      },
+      "after_outline_mm": [
+        [
+          50.87,
+          138.25
+        ],
+        [
+          56.37,
+          138.25
+        ],
+        [
+          56.37,
+          143.75
+        ],
+        [
+          50.87,
+          143.75
+        ]
+      ]
+    },
+    {
+      "action": "remove",
+      "uuid": "233dd1aa-8ab1-4143-91eb-7dbd24f3d38e",
+      "name": "Neck PUMP_N_FILTERED J3.2.1",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck PUMP_N_FILTERED J3.2.1",
+        "outline_mm": [
+          [
+            50.743,
+            138.25
+          ],
+          [
+            56.243,
+            138.25
+          ],
+          [
+            56.243,
+            143.75
+          ],
+          [
+            50.743,
+            143.75
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      }
+    },
+    {
+      "action": "resize",
+      "uuid": "00719d07-acee-47b2-bdb3-5ae51cf132d9",
+      "name": "Neck PUMP_N_FILTERED J4.2.0",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck PUMP_N_FILTERED J4.2.0",
+        "outline_mm": [
+          [
+            105.743,
+            135.07
+          ],
+          [
+            111.243,
+            135.07
+          ],
+          [
+            111.243,
+            140.57
+          ],
+          [
+            105.743,
+            140.57
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      },
+      "after_outline_mm": [
+        [
+          105.87,
+          138.25
+        ],
+        [
+          111.37,
+          138.25
+        ],
+        [
+          111.37,
+          143.75
+        ],
+        [
+          105.87,
+          143.75
+        ]
+      ]
+    },
+    {
+      "action": "remove",
+      "uuid": "4d0095a0-0a23-4671-90d1-798b405244c4",
+      "name": "Neck PUMP_N_FILTERED J4.2.1",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck PUMP_N_FILTERED J4.2.1",
+        "outline_mm": [
+          [
+            105.743,
+            138.25
+          ],
+          [
+            111.243,
+            138.25
+          ],
+          [
+            111.243,
+            143.75
+          ],
+          [
+            105.743,
+            143.75
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      }
+    },
+    {
+      "action": "resize",
+      "uuid": "4e8555e7-2349-4a69-be14-d90c21d34aae",
+      "name": "Neck PUMP_L_SW J4.1.0",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck PUMP_L_SW J4.1.0",
+        "outline_mm": [
+          [
+            98.25,
+            135.07
+          ],
+          [
+            103.75,
+            135.07
+          ],
+          [
+            103.75,
+            140.57
+          ],
+          [
+            98.25,
+            140.57
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      },
+      "after_outline_mm": [
+        [
+          98.25,
+          138.25
+        ],
+        [
+          103.75,
+          138.25
+        ],
+        [
+          103.75,
+          143.75
+        ],
+        [
+          98.25,
+          143.75
+        ]
+      ]
+    },
+    {
+      "action": "remove",
+      "uuid": "d277cf5c-d7fb-4bf8-a2fd-e52d5d94491f",
+      "name": "Neck PUMP_L_SW J4.1.1",
+      "before": {
+        "net": "",
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "name": "Neck PUMP_L_SW J4.1.1",
+        "outline_mm": [
+          [
+            98.25,
+            138.25
+          ],
+          [
+            103.75,
+            138.25
+          ],
+          [
+            103.75,
+            143.75
+          ],
+          [
+            98.25,
+            143.75
+          ]
+        ],
+        "simple_outline": true,
+        "rule_area": true,
+        "fill_mode": 0,
+        "clearance_mm": 0.0,
+        "min_thickness_mm": 0.25,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5,
+        "pad_connection": 1,
+        "island_removal": 0,
+        "priority": 0,
+        "keepout": {
+          "tracks": false,
+          "vias": false,
+          "pads": false,
+          "footprints": false,
+          "zone_fills": false
+        }
+      }
+    }
+  ],
+  "verification": {
+    "saved_semantic_readback": "only 8 declared rule-area outlines changed and 8 obsolete rule areas removed",
+    "filled_copper_preserved": true,
+    "production_readback_matches": true,
+    "native_drc": {
+      "violations": 0,
+      "unconnected_items": 31,
+      "schematic_parity": 0
+    }
+  }
+}

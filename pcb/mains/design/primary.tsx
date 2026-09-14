@@ -6,7 +6,7 @@ import { ThermallyProtectedMov } from "./mov-component";
 
 // The inlet fuse, manufactured filter and continuous PE wiring are off-board.
 // Only the IRM's internal isolation and relay's contact/coil boundary bridge the
-// primary and isolated secondary domains. Empty Sabre cavities retain their metal.
+// primary and isolated secondary domains. Fixed terminals have exactly two used positions.
 export function MainsPrimary() {
   return (
     <group name="MainsPrimary" schSheetName="Primary">
@@ -26,7 +26,7 @@ export function MainsPrimary() {
         schY={-5}
         schWidth={5}
         schHeight={3}
-        schPinArrangement={{ leftSide: [1, 2], rightSide: [3] }}
+        schPinArrangement={{ leftSide: [1, 2] }}
       />
       <MainsHeader
         name="J3"
@@ -34,8 +34,8 @@ export function MainsPrimary() {
         schX={-5}
         schY={-5}
         schWidth={5}
-        schHeight={4}
-        schPinArrangement={{ leftSide: [1, 2], rightSide: [3, 4] }}
+        schHeight={3}
+        schPinArrangement={{ leftSide: [1, 2] }}
       />
       <MainsHeader
         name="J4"
@@ -43,8 +43,8 @@ export function MainsPrimary() {
         schX={20}
         schY={-5}
         schWidth={5}
-        schHeight={5}
-        schPinArrangement={{ leftSide: [1, 2], rightSide: [3, 4, 5, 6] }}
+        schHeight={3}
+        schPinArrangement={{ leftSide: [1, 2] }}
       />
       <IsolatedSupply
         name="U1"

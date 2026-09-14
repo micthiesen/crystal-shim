@@ -1,0 +1,6074 @@
+{
+  "footprints": {
+    "0258a8da-538d-492c-9474-c2cdcc8d4636": {
+      "ref": "RV1",
+      "pose": {
+        "position_mm": [
+          60.25,
+          120.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_RV1",
+      "fields": {
+        "Reference": "RV1",
+        "Value": "TMOV14RP175EL2T7",
+        "Datasheet": "https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "TMOV14RP175EL2T7"
+      },
+      "attributes": 0
+    },
+    "2170374d-1429-49de-9e43-315b9ecd4b2e": {
+      "ref": "F2",
+      "pose": {
+        "position_mm": [
+          149.0,
+          93.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_F2",
+      "fields": {
+        "Reference": "F2",
+        "Value": "0451003.MRL",
+        "Datasheet": "https://www.littelfuse.com/assetdocs/fuse-451-and-453-datasheet?assetguid=533cd5cc-956c-4243-867f-6ab5a62f6ba1",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "0451003.MRL"
+      },
+      "attributes": 0
+    },
+    "334177a6-37f2-4df5-8f13-6a09172721db": {
+      "ref": "H1",
+      "pose": {
+        "position_mm": [
+          32.0,
+          52.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_H1",
+      "fields": {
+        "Reference": "H1",
+        "Value": "3.2mm NPTH",
+        "Datasheet": "",
+        "Description": ""
+      },
+      "attributes": 28
+    },
+    "3e58f041-0d7e-403a-8611-4106ddca6aba": {
+      "ref": "C3",
+      "pose": {
+        "position_mm": [
+          144.0,
+          99.0
+        ],
+        "rotation_deg": 90.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_C3",
+      "fields": {
+        "Reference": "C3",
+        "Value": "22uF",
+        "Datasheet": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "Description": "Capacitor",
+        "Supplier Part Number": "",
+        "MPN": "GRM32ER71E226ME15L"
+      },
+      "attributes": 0
+    },
+    "4f04e9a0-7e77-4db9-bf12-8e9663b6417e": {
+      "ref": "K1",
+      "pose": {
+        "position_mm": [
+          110.0,
+          117.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_K1",
+      "fields": {
+        "Reference": "K1",
+        "Value": "G5RL-1A-TV8 DC5",
+        "Datasheet": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5rl.pdf",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "G5RL-1A-TV8 DC5"
+      },
+      "attributes": 0
+    },
+    "5722fae4-eeba-4e2e-87bc-0bc2b635e630": {
+      "ref": "J4",
+      "pose": {
+        "position_mm": [
+          101.0,
+          141.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_J4",
+      "fields": {
+        "Reference": "J4",
+        "Value": "1868076",
+        "Datasheet": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "1868076"
+      },
+      "attributes": 0
+    },
+    "5a7ec519-7ef4-4a4e-9ca0-0fe4aee1bc0e": {
+      "ref": "H4",
+      "pose": {
+        "position_mm": [
+          168.0,
+          148.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_H4",
+      "fields": {
+        "Reference": "H4",
+        "Value": "3.2mm NPTH",
+        "Datasheet": "",
+        "Description": ""
+      },
+      "attributes": 28
+    },
+    "5bb211d8-3070-4db3-ae2e-e569a24c76f8": {
+      "ref": "H3",
+      "pose": {
+        "position_mm": [
+          32.0,
+          148.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_H3",
+      "fields": {
+        "Reference": "H3",
+        "Value": "3.2mm NPTH",
+        "Datasheet": "",
+        "Description": ""
+      },
+      "attributes": 28
+    },
+    "66bc14ae-4f2b-4ae5-a944-889d7f5e4f2a": {
+      "ref": "L1",
+      "pose": {
+        "position_mm": [
+          157.0,
+          109.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_L1",
+      "fields": {
+        "Reference": "L1",
+        "Value": "4.7\u00b5H",
+        "Datasheet": "https://www.bourns.com/docs/product-datasheets/srp5030ta.pdf",
+        "Description": "Inductor",
+        "Supplier Part Number": "",
+        "MPN": "SRP5030TA-4R7M"
+      },
+      "attributes": 0
+    },
+    "77a84192-5367-42f7-b530-e3e6d658d8cc": {
+      "ref": "D1",
+      "pose": {
+        "position_mm": [
+          145.0,
+          125.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_D1",
+      "fields": {
+        "Reference": "D1",
+        "Value": "1N4007-E3/54",
+        "Datasheet": "https://www.vishay.com/docs/88503/1n4001.pdf",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "1N4007-E3/54"
+      },
+      "attributes": 0
+    },
+    "7ce1ecc1-2ef2-417c-a45d-a336c65671be": {
+      "ref": "C1",
+      "pose": {
+        "position_mm": [
+          85.0,
+          132.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_C1",
+      "fields": {
+        "Reference": "C1",
+        "Value": "47nF",
+        "Datasheet": "https://www.tdk-electronics.tdk.com/inf/20/20/db/fc_2009/X2_B32921_928.pdf",
+        "Description": "Capacitor",
+        "Supplier Part Number": "",
+        "MPN": "B32921C3473K000"
+      },
+      "attributes": 0
+    },
+    "7d61c51d-d4e1-4565-82bc-a70f6e9153c7": {
+      "ref": "J5",
+      "pose": {
+        "position_mm": [
+          164.0,
+          72.0
+        ],
+        "rotation_deg": 270.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_J5",
+      "fields": {
+        "Reference": "J5",
+        "Value": "43650-0300",
+        "Datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/436/43650/436501200_sd.pdf",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "43650-0300"
+      },
+      "attributes": 0
+    },
+    "7ea1a870-de31-42e5-8758-4fc529712acc": {
+      "ref": "C2",
+      "pose": {
+        "position_mm": [
+          144.0,
+          106.0
+        ],
+        "rotation_deg": 90.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_C2",
+      "fields": {
+        "Reference": "C2",
+        "Value": "22uF",
+        "Datasheet": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "Description": "Capacitor",
+        "Supplier Part Number": "",
+        "MPN": "GRM32ER71E226ME15L"
+      },
+      "attributes": 0
+    },
+    "8ae0c4af-666b-4760-b677-454c19f1a22c": {
+      "ref": "C6",
+      "pose": {
+        "position_mm": [
+          165.0,
+          117.0
+        ],
+        "rotation_deg": 90.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_C6",
+      "fields": {
+        "Reference": "C6",
+        "Value": "22uF",
+        "Datasheet": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "Description": "Capacitor",
+        "Supplier Part Number": "",
+        "MPN": "GRM32ER71E226ME15L"
+      },
+      "attributes": 0
+    },
+    "97886a07-0bb6-40b1-a89b-7c1df68f2e6f": {
+      "ref": "H2",
+      "pose": {
+        "position_mm": [
+          168.0,
+          52.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_H2",
+      "fields": {
+        "Reference": "H2",
+        "Value": "3.2mm NPTH",
+        "Datasheet": "",
+        "Description": ""
+      },
+      "attributes": 28
+    },
+    "9eb39846-3576-4c7e-943d-623af0fe090d": {
+      "ref": "J6",
+      "pose": {
+        "position_mm": [
+          164.0,
+          93.0
+        ],
+        "rotation_deg": 270.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_J6",
+      "fields": {
+        "Reference": "J6",
+        "Value": "43045-0200",
+        "Datasheet": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/430/43045/430450200_sd.pdf",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "43045-0200"
+      },
+      "attributes": 0
+    },
+    "a2a0148b-5172-4ca9-97c2-cfe00c39a9db": {
+      "ref": "J3",
+      "pose": {
+        "position_mm": [
+          46.0,
+          141.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_J3",
+      "fields": {
+        "Reference": "J3",
+        "Value": "1868076",
+        "Datasheet": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "1868076"
+      },
+      "attributes": 0
+    },
+    "aec77f2f-281d-40a4-9a4f-c7ddd31eeba7": {
+      "ref": "F3",
+      "pose": {
+        "position_mm": [
+          84.0,
+          109.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_F3",
+      "fields": {
+        "Reference": "F3",
+        "Value": "0215001.MXEP",
+        "Datasheet": "https://www.littelfuse.com/assetdocs/littelfuse_fuse_215_datasheet?assetguid=990f7193-d9a2-48e4-b760-2b43514249cf",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "0215001.MXEP"
+      },
+      "attributes": 0
+    },
+    "cc3117b7-e22b-42dc-beea-ecf993d2b002": {
+      "ref": "C7",
+      "pose": {
+        "position_mm": [
+          143.0,
+          112.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_C7",
+      "fields": {
+        "Reference": "C7",
+        "Value": "100nF",
+        "Datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "Description": "Capacitor",
+        "Supplier Part Number": "",
+        "MPN": "C1608X7R1H104K080AA"
+      },
+      "attributes": 0
+    },
+    "cdf7500d-9648-4055-8e37-f336be0f366b": {
+      "ref": "U2",
+      "pose": {
+        "position_mm": [
+          149.0,
+          109.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_U2",
+      "fields": {
+        "Reference": "U2",
+        "Value": "AP63205WU-7",
+        "Datasheet": "https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "AP63205WU-7"
+      },
+      "attributes": 0
+    },
+    "d2d1e18f-8df4-41a6-acc3-72edf4e1d6a8": {
+      "ref": "R1",
+      "pose": {
+        "position_mm": [
+          85.0,
+          125.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_R1",
+      "fields": {
+        "Reference": "R1",
+        "Value": "100\u03a9",
+        "Datasheet": "https://www.vishay.com/docs/28915/pr02fs.pdf",
+        "Description": "Resistor",
+        "Supplier Part Number": "",
+        "MPN": "PR02FS0201000KA100"
+      },
+      "attributes": 0
+    },
+    "dc43c01f-3a19-46ba-ab36-eece6617d737": {
+      "ref": "C5",
+      "pose": {
+        "position_mm": [
+          151.0,
+          104.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_C5",
+      "fields": {
+        "Reference": "C5",
+        "Value": "100nF",
+        "Datasheet": "https://product.tdk.cn/system/files/dam/doc/product/capacitor/ceramic/mlcc/charasheet/c1608x7r1h104k080aa.pdf",
+        "Description": "Capacitor",
+        "Supplier Part Number": "",
+        "MPN": "C1608X7R1H104K080AA"
+      },
+      "attributes": 0
+    },
+    "e49821c4-bb10-4049-8397-e48cda85ffc7": {
+      "ref": "C4",
+      "pose": {
+        "position_mm": [
+          165.0,
+          109.0
+        ],
+        "rotation_deg": 90.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_C4",
+      "fields": {
+        "Reference": "C4",
+        "Value": "22uF",
+        "Datasheet": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM32ER71E226ME15-04CA-EN_PDF_CERAMICCAPACITORSMD?lastModifiedDatetime=20260730173647",
+        "Description": "Capacitor",
+        "Supplier Part Number": "",
+        "MPN": "GRM32ER71E226ME15L"
+      },
+      "attributes": 0
+    },
+    "f4ddb951-5fb2-408a-abd4-c7e5dbc94d1f": {
+      "ref": "U1",
+      "pose": {
+        "position_mm": [
+          53.0,
+          52.0
+        ],
+        "rotation_deg": 0.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_U1",
+      "fields": {
+        "Reference": "U1",
+        "Value": "IRM-45-12",
+        "Datasheet": "https://www.meanwell.com/Upload/PDF/IRM-45/IRM-45-SPEC.PDF",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "IRM-45-12"
+      },
+      "attributes": 0
+    },
+    "f9bd9824-adc3-46eb-9161-0563d8a9d5e0": {
+      "ref": "J2",
+      "pose": {
+        "position_mm": [
+          41.0,
+          92.0
+        ],
+        "rotation_deg": 270.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_J2",
+      "fields": {
+        "Reference": "J2",
+        "Value": "1868076",
+        "Datasheet": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "1868076"
+      },
+      "attributes": 0
+    },
+    "fdd113e4-b483-4966-8e8e-594e249d8da6": {
+      "ref": "J1",
+      "pose": {
+        "position_mm": [
+          41.0,
+          65.0
+        ],
+        "rotation_deg": 270.0
+      },
+      "layer": "F.Cu",
+      "fpid": "CrystalShim_Mains:Mains_J1",
+      "fields": {
+        "Reference": "J1",
+        "Value": "1868076",
+        "Datasheet": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
+        "Description": "Integrated Circuit",
+        "Supplier Part Number": "",
+        "MPN": "1868076"
+      },
+      "attributes": 0
+    }
+  },
+  "pads": {
+    "8e919cd5-f036-42cc-85bb-39995ce07323": {
+      "footprint_uuid": "0258a8da-538d-492c-9474-c2cdcc8d4636",
+      "number": "1",
+      "net": "AC_L_FUSED",
+      "position_mm": [
+        60.25,
+        120.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.9,
+        2.9
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "349f4c05-3cb8-405e-a0cf-93eab1176272": {
+      "footprint_uuid": "0258a8da-538d-492c-9474-c2cdcc8d4636",
+      "number": "2",
+      "net": "AC_N",
+      "position_mm": [
+        67.75,
+        120.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        5.3,
+        2.9
+      ],
+      "drill_mm": [
+        3.7,
+        1.3
+      ],
+      "drill_shape": 2,
+      "shape": 2,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "bd4b3a85-277c-49ef-9239-025777f41e4a": {
+      "footprint_uuid": "2170374d-1429-49de-9e43-315b9ecd4b2e",
+      "number": "1",
+      "net": "V12_RAW",
+      "position_mm": [
+        146.55,
+        93.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        1.96,
+        3.15
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "af0eddc4-c00f-45c1-b988-a7f226dd7cf9": {
+      "footprint_uuid": "2170374d-1429-49de-9e43-315b9ecd4b2e",
+      "number": "2",
+      "net": "V12_MOTOR",
+      "position_mm": [
+        151.45,
+        93.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        1.96,
+        3.15
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "c5d518f4-7f06-46b2-940c-0d6f729a1109": {
+      "footprint_uuid": "334177a6-37f2-4df5-8f13-6a09172721db",
+      "number": "",
+      "net": "",
+      "position_mm": [
+        32.0,
+        52.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        3.2,
+        3.2
+      ],
+      "drill_mm": [
+        3.2,
+        3.2
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 3,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": null
+    },
+    "cc47932f-ad30-48bc-8a9d-dabc0cc47a3a": {
+      "footprint_uuid": "3e58f041-0d7e-403a-8611-4106ddca6aba",
+      "number": "1",
+      "net": "V12_RAW",
+      "position_mm": [
+        144.0,
+        100.65
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.05,
+        1.1
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "9658a722-6990-4d30-a6ab-78074c1d60da": {
+      "footprint_uuid": "3e58f041-0d7e-403a-8611-4106ddca6aba",
+      "number": "2",
+      "net": "GND_ISO",
+      "position_mm": [
+        144.0,
+        97.35
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.05,
+        1.1
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "7a443872-dcda-4db6-b932-f6ce7f997201": {
+      "footprint_uuid": "4f04e9a0-7e77-4db9-bf12-8e9663b6417e",
+      "number": "1",
+      "net": "V5_PSU",
+      "position_mm": [
+        133.5,
+        117.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.8,
+        2.8
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "b0665336-1618-4971-9ac5-42bf23e7f43c": {
+      "footprint_uuid": "4f04e9a0-7e77-4db9-bf12-8e9663b6417e",
+      "number": "3",
+      "net": "PUMP_L_FILTERED",
+      "position_mm": [
+        110.0,
+        117.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.8,
+        2.8
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "20b051f3-77a5-4fb9-8276-4712f7b38d09": {
+      "footprint_uuid": "4f04e9a0-7e77-4db9-bf12-8e9663b6417e",
+      "number": "4",
+      "net": "PUMP_L_SW",
+      "position_mm": [
+        113.5,
+        124.5
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.8,
+        2.8
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "43517fe4-7052-4cb4-be55-aa996b643e2a": {
+      "footprint_uuid": "4f04e9a0-7e77-4db9-bf12-8e9663b6417e",
+      "number": "5",
+      "net": "COIL_DRAIN",
+      "position_mm": [
+        133.5,
+        124.5
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.8,
+        2.8
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "3791a142-5f42-489b-b290-a8611aaf4ae0": {
+      "footprint_uuid": "5722fae4-eeba-4e2e-87bc-0bc2b635e630",
+      "number": "1",
+      "net": "PUMP_L_SW",
+      "position_mm": [
+        101.0,
+        141.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        3.5,
+        3.5
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "51008124-5e25-4003-83fc-395e1c62e457": {
+      "footprint_uuid": "5722fae4-eeba-4e2e-87bc-0bc2b635e630",
+      "number": "2",
+      "net": "PUMP_N_FILTERED",
+      "position_mm": [
+        108.62,
+        141.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        3.5,
+        3.5
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "274028c7-5427-4c1d-a04b-8930815e4d0c": {
+      "footprint_uuid": "5a7ec519-7ef4-4a4e-9ca0-0fe4aee1bc0e",
+      "number": "",
+      "net": "",
+      "position_mm": [
+        168.0,
+        148.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        3.2,
+        3.2
+      ],
+      "drill_mm": [
+        3.2,
+        3.2
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 3,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": null
+    },
+    "ec4b4a4a-8c63-4376-9a0c-51341818624f": {
+      "footprint_uuid": "5bb211d8-3070-4db3-ae2e-e569a24c76f8",
+      "number": "",
+      "net": "",
+      "position_mm": [
+        32.0,
+        148.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        3.2,
+        3.2
+      ],
+      "drill_mm": [
+        3.2,
+        3.2
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 3,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": null
+    },
+    "5a958bed-aad0-4ecd-9033-5beb7e021fb9": {
+      "footprint_uuid": "66bc14ae-4f2b-4ae5-a944-889d7f5e4f2a",
+      "number": "1",
+      "net": "BUCK5_SW",
+      "position_mm": [
+        154.75,
+        109.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.0,
+        1.8
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "6d9f4651-2b10-4e7b-9362-4af5e15662ff": {
+      "footprint_uuid": "66bc14ae-4f2b-4ae5-a944-889d7f5e4f2a",
+      "number": "2",
+      "net": "V5_PSU",
+      "position_mm": [
+        159.25,
+        109.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.0,
+        1.8
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "3bfffe9b-d59f-4560-a19b-45659197e775": {
+      "footprint_uuid": "77a84192-5367-42f7-b530-e3e6d658d8cc",
+      "number": "1",
+      "net": "V5_PSU",
+      "position_mm": [
+        145.0,
+        125.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.6,
+        2.6
+      ],
+      "drill_mm": [
+        1.1,
+        1.1
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "76fdb61f-dcab-4d7b-b440-de9d0d6c04ac": {
+      "footprint_uuid": "77a84192-5367-42f7-b530-e3e6d658d8cc",
+      "number": "2",
+      "net": "COIL_DRAIN",
+      "position_mm": [
+        155.16,
+        125.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.6,
+        2.6
+      ],
+      "drill_mm": [
+        1.1,
+        1.1
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "3682e282-59ce-480a-972d-6e1e8811f662": {
+      "footprint_uuid": "7ce1ecc1-2ef2-417c-a45d-a336c65671be",
+      "number": "1",
+      "net": "SNUBBER_RC",
+      "position_mm": [
+        85.0,
+        132.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.9,
+        2.9
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "9ed7d0e8-81f7-4335-8499-93d3b9ffa9a5": {
+      "footprint_uuid": "7ce1ecc1-2ef2-417c-a45d-a336c65671be",
+      "number": "2",
+      "net": "PUMP_N_FILTERED",
+      "position_mm": [
+        95.0,
+        132.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.9,
+        2.9
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "54bd77e7-554b-4a95-81be-c4f3b9087f8f": {
+      "footprint_uuid": "7d61c51d-d4e1-4565-82bc-a70f6e9153c7",
+      "number": "",
+      "net": "",
+      "position_mm": [
+        168.32,
+        75.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        3.0,
+        3.0
+      ],
+      "drill_mm": [
+        3.0,
+        3.0
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 3,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": null
+    },
+    "dd29eb4a-509b-4836-99f4-a3e35eac6eb7": {
+      "footprint_uuid": "7d61c51d-d4e1-4565-82bc-a70f6e9153c7",
+      "number": "1",
+      "net": "V5_PSU",
+      "position_mm": [
+        164.0,
+        72.0
+      ],
+      "rotation_deg": 270.0,
+      "size_mm": [
+        1.5,
+        2.02
+      ],
+      "drill_mm": [
+        1.02,
+        1.02
+      ],
+      "drill_shape": 1,
+      "shape": 4,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "8fc83d0d-8869-4228-bfa8-db1b073c713d": {
+      "footprint_uuid": "7d61c51d-d4e1-4565-82bc-a70f6e9153c7",
+      "number": "2",
+      "net": "GND_ISO",
+      "position_mm": [
+        164.0,
+        75.0
+      ],
+      "rotation_deg": 270.0,
+      "size_mm": [
+        1.5,
+        2.02
+      ],
+      "drill_mm": [
+        1.02,
+        1.02
+      ],
+      "drill_shape": 2,
+      "shape": 2,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "a30283e4-8c29-451c-af1e-5a702da2a6f9": {
+      "footprint_uuid": "7d61c51d-d4e1-4565-82bc-a70f6e9153c7",
+      "number": "3",
+      "net": "COIL_DRAIN",
+      "position_mm": [
+        164.0,
+        78.0
+      ],
+      "rotation_deg": 270.0,
+      "size_mm": [
+        1.5,
+        2.02
+      ],
+      "drill_mm": [
+        1.02,
+        1.02
+      ],
+      "drill_shape": 2,
+      "shape": 2,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "406c3e5b-0c14-4256-a003-ff99e2a55c6f": {
+      "footprint_uuid": "7ea1a870-de31-42e5-8758-4fc529712acc",
+      "number": "1",
+      "net": "V12_RAW",
+      "position_mm": [
+        144.0,
+        107.65
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.05,
+        1.1
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "39b3c677-8e6c-4d71-be96-966e62ce4aa1": {
+      "footprint_uuid": "7ea1a870-de31-42e5-8758-4fc529712acc",
+      "number": "2",
+      "net": "GND_ISO",
+      "position_mm": [
+        144.0,
+        104.35
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.05,
+        1.1
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "11d3b0bf-c39c-471f-b683-4e93d99e27a7": {
+      "footprint_uuid": "8ae0c4af-666b-4760-b677-454c19f1a22c",
+      "number": "1",
+      "net": "V5_PSU",
+      "position_mm": [
+        165.0,
+        118.65
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.05,
+        1.1
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "d6bf76b5-68cd-47eb-9838-2719ae98fcfc": {
+      "footprint_uuid": "8ae0c4af-666b-4760-b677-454c19f1a22c",
+      "number": "2",
+      "net": "GND_ISO",
+      "position_mm": [
+        165.0,
+        115.35
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.05,
+        1.1
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "6b2c2e11-3186-4160-a101-e2e7c9e98129": {
+      "footprint_uuid": "97886a07-0bb6-40b1-a89b-7c1df68f2e6f",
+      "number": "",
+      "net": "",
+      "position_mm": [
+        168.0,
+        52.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        3.2,
+        3.2
+      ],
+      "drill_mm": [
+        3.2,
+        3.2
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 3,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": null
+    },
+    "05a2fbf8-3343-4c79-a4eb-370d69f349e4": {
+      "footprint_uuid": "9eb39846-3576-4c7e-943d-623af0fe090d",
+      "number": "",
+      "net": "",
+      "position_mm": [
+        168.32,
+        93.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        3.0,
+        3.0
+      ],
+      "drill_mm": [
+        3.0,
+        3.0
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 3,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": null
+    },
+    "e90c32fc-380a-4b20-af2f-b488424c2391": {
+      "footprint_uuid": "9eb39846-3576-4c7e-943d-623af0fe090d",
+      "number": "1",
+      "net": "V12_MOTOR",
+      "position_mm": [
+        164.0,
+        93.0
+      ],
+      "rotation_deg": 270.0,
+      "size_mm": [
+        1.5,
+        1.5
+      ],
+      "drill_mm": [
+        1.02,
+        1.02
+      ],
+      "drill_shape": 1,
+      "shape": 4,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "150e10f8-81e5-48c1-bfee-23970def9a1b": {
+      "footprint_uuid": "9eb39846-3576-4c7e-943d-623af0fe090d",
+      "number": "2",
+      "net": "GND_ISO",
+      "position_mm": [
+        161.0,
+        93.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        1.5,
+        1.5
+      ],
+      "drill_mm": [
+        1.02,
+        1.02
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "73ba0475-310a-4439-b59f-340950a66e6b": {
+      "footprint_uuid": "a2a0148b-5172-4ca9-97c2-cfe00c39a9db",
+      "number": "1",
+      "net": "PUMP_L_FILTERED",
+      "position_mm": [
+        46.0,
+        141.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        3.5,
+        3.5
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "e23bbfd3-7db1-4af8-9b00-3f7ebde47cec": {
+      "footprint_uuid": "a2a0148b-5172-4ca9-97c2-cfe00c39a9db",
+      "number": "2",
+      "net": "PUMP_N_FILTERED",
+      "position_mm": [
+        53.62,
+        141.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        3.5,
+        3.5
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "8e8942e0-bef3-4113-be8b-3d6c09b29486": {
+      "footprint_uuid": "aec77f2f-281d-40a4-9a4f-c7ddd31eeba7",
+      "number": "1",
+      "net": "AC_L_FUSED",
+      "position_mm": [
+        84.0,
+        109.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.5,
+        2.5
+      ],
+      "drill_mm": [
+        1.1,
+        1.1
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "a888bff9-6e14-4b47-ab52-32eaa6cd558d": {
+      "footprint_uuid": "aec77f2f-281d-40a4-9a4f-c7ddd31eeba7",
+      "number": "2",
+      "net": "FILTER_LINE_L",
+      "position_mm": [
+        114.48,
+        109.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.5,
+        2.5
+      ],
+      "drill_mm": [
+        1.1,
+        1.1
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "7234a493-8e09-4aaa-94ae-6e23ba438901": {
+      "footprint_uuid": "cc3117b7-e22b-42dc-beea-ecf993d2b002",
+      "number": "1",
+      "net": "V12_RAW",
+      "position_mm": [
+        142.3,
+        112.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        0.7,
+        0.7
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "6223e94f-ba95-4f75-ad2e-068c4ed2b6dc": {
+      "footprint_uuid": "cc3117b7-e22b-42dc-beea-ecf993d2b002",
+      "number": "2",
+      "net": "GND_ISO",
+      "position_mm": [
+        143.7,
+        112.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        0.7,
+        0.7
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "15868e92-ef57-4a22-8da5-0b6d758e3656": {
+      "footprint_uuid": "cdf7500d-9648-4055-8e37-f336be0f366b",
+      "number": "1",
+      "net": "V5_PSU",
+      "position_mm": [
+        147.9,
+        108.05
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        1.0,
+        0.7
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "518c4668-5949-47ec-b900-cacdbfda01b8": {
+      "footprint_uuid": "cdf7500d-9648-4055-8e37-f336be0f366b",
+      "number": "2",
+      "net": "V12_RAW",
+      "position_mm": [
+        147.9,
+        109.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        1.0,
+        0.7
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "7cf124b0-a5fc-4941-a65d-edb63f1d9923": {
+      "footprint_uuid": "cdf7500d-9648-4055-8e37-f336be0f366b",
+      "number": "3",
+      "net": "V12_RAW",
+      "position_mm": [
+        147.9,
+        109.95
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        1.0,
+        0.7
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "1f51beb5-7c8f-41bc-8466-cdd3d18beba7": {
+      "footprint_uuid": "cdf7500d-9648-4055-8e37-f336be0f366b",
+      "number": "4",
+      "net": "GND_ISO",
+      "position_mm": [
+        150.1,
+        109.95
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        1.0,
+        0.7
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "db95361f-9ea7-475c-a4b1-38454815b310": {
+      "footprint_uuid": "cdf7500d-9648-4055-8e37-f336be0f366b",
+      "number": "5",
+      "net": "BUCK5_SW",
+      "position_mm": [
+        150.1,
+        109.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        1.0,
+        0.7
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "675ecab2-7410-4b5d-b4ba-8de08526ee6c": {
+      "footprint_uuid": "cdf7500d-9648-4055-8e37-f336be0f366b",
+      "number": "6",
+      "net": "BUCK5_BST",
+      "position_mm": [
+        150.1,
+        108.05
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        1.0,
+        0.7
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "61c9122b-d87d-42d9-8633-47ec339fd04a": {
+      "footprint_uuid": "d2d1e18f-8df4-41a6-acc3-72edf4e1d6a8",
+      "number": "1",
+      "net": "PUMP_L_SW",
+      "position_mm": [
+        85.0,
+        125.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.6,
+        2.6
+      ],
+      "drill_mm": [
+        1.1,
+        1.1
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "0caec6f6-c610-4280-8ecc-494a10e3cc1d": {
+      "footprint_uuid": "d2d1e18f-8df4-41a6-acc3-72edf4e1d6a8",
+      "number": "2",
+      "net": "SNUBBER_RC",
+      "position_mm": [
+        100.24,
+        125.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.6,
+        2.6
+      ],
+      "drill_mm": [
+        1.1,
+        1.1
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "740ab895-8cdf-4708-9b55-3dd85ccf7930": {
+      "footprint_uuid": "dc43c01f-3a19-46ba-ab36-eece6617d737",
+      "number": "1",
+      "net": "BUCK5_BST",
+      "position_mm": [
+        150.3,
+        104.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        0.7,
+        0.7
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "529a1f79-afc0-4409-a890-735f19173c50": {
+      "footprint_uuid": "dc43c01f-3a19-46ba-ab36-eece6617d737",
+      "number": "2",
+      "net": "BUCK5_SW",
+      "position_mm": [
+        151.7,
+        104.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        0.7,
+        0.7
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "5997b3af-65fb-44fd-bd99-88d51541ce9b": {
+      "footprint_uuid": "e49821c4-bb10-4049-8397-e48cda85ffc7",
+      "number": "1",
+      "net": "V5_PSU",
+      "position_mm": [
+        165.0,
+        110.65
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.05,
+        1.1
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "1529f6ea-b832-4a37-9061-eb7ae16f56e1": {
+      "footprint_uuid": "e49821c4-bb10-4049-8397-e48cda85ffc7",
+      "number": "2",
+      "net": "GND_ISO",
+      "position_mm": [
+        165.0,
+        107.35
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        2.05,
+        1.1
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 1,
+      "layers": [
+        "F.Cu",
+        "F.Mask",
+        "F.Paste"
+      ],
+      "paste": {
+        "paste_layers": [
+          "F.Paste"
+        ],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "2de246d2-ef0a-4a50-bbde-36bd905b2939": {
+      "footprint_uuid": "f4ddb951-5fb2-408a-abd4-c7e5dbc94d1f",
+      "number": "1",
+      "net": "AC_N",
+      "position_mm": [
+        58.3,
+        63.75
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        3.0,
+        3.0
+      ],
+      "drill_mm": [
+        1.5,
+        1.5
+      ],
+      "drill_shape": 1,
+      "shape": 1,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "29288b1a-311f-4b16-915d-7a79ec6fd2d2": {
+      "footprint_uuid": "f4ddb951-5fb2-408a-abd4-c7e5dbc94d1f",
+      "number": "2",
+      "net": "AC_L_FUSED",
+      "position_mm": [
+        58.3,
+        57.0
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        3.0,
+        3.0
+      ],
+      "drill_mm": [
+        1.5,
+        1.5
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "9d9373e1-ae3d-48ec-a394-a19d36832f35": {
+      "footprint_uuid": "f4ddb951-5fb2-408a-abd4-c7e5dbc94d1f",
+      "number": "3",
+      "net": "GND_ISO",
+      "position_mm": [
+        134.3,
+        92.75
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        4.5,
+        4.5
+      ],
+      "drill_mm": [
+        2.5,
+        2.5
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "e36fc06b-81dd-4dc3-b0b9-f045515a3f62": {
+      "footprint_uuid": "f4ddb951-5fb2-408a-abd4-c7e5dbc94d1f",
+      "number": "4",
+      "net": "V12_RAW",
+      "position_mm": [
+        134.3,
+        98.25
+      ],
+      "rotation_deg": 0.0,
+      "size_mm": [
+        4.5,
+        4.5
+      ],
+      "drill_mm": [
+        2.5,
+        2.5
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "67daa6ee-9025-428b-bf0e-798a024624f0": {
+      "footprint_uuid": "f9bd9824-adc3-46eb-9161-0563d8a9d5e0",
+      "number": "1",
+      "net": "FILTER_LINE_L",
+      "position_mm": [
+        41.0,
+        92.0
+      ],
+      "rotation_deg": 270.0,
+      "size_mm": [
+        3.5,
+        3.5
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "241911b5-98b7-4387-b515-8b011cbeaff8": {
+      "footprint_uuid": "f9bd9824-adc3-46eb-9161-0563d8a9d5e0",
+      "number": "2",
+      "net": "AC_N",
+      "position_mm": [
+        41.0,
+        99.62
+      ],
+      "rotation_deg": 270.0,
+      "size_mm": [
+        3.5,
+        3.5
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "8b56741a-4289-4bf4-8525-9756ab2fd613": {
+      "footprint_uuid": "fdd113e4-b483-4966-8e8e-594e249d8da6",
+      "number": "1",
+      "net": "AC_L_FUSED",
+      "position_mm": [
+        41.0,
+        65.0
+      ],
+      "rotation_deg": 270.0,
+      "size_mm": [
+        3.5,
+        3.5
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    },
+    "74834690-efe6-4298-8d6d-324bec61b01a": {
+      "footprint_uuid": "fdd113e4-b483-4966-8e8e-594e249d8da6",
+      "number": "2",
+      "net": "AC_N",
+      "position_mm": [
+        41.0,
+        72.62
+      ],
+      "rotation_deg": 270.0,
+      "size_mm": [
+        3.5,
+        3.5
+      ],
+      "drill_mm": [
+        1.3,
+        1.3
+      ],
+      "drill_shape": 1,
+      "shape": 0,
+      "attribute": 0,
+      "layers": [
+        "B.Cu",
+        "B.Mask",
+        "F.Cu",
+        "F.Mask",
+        "In1.Cu",
+        "In10.Cu",
+        "In11.Cu",
+        "In12.Cu",
+        "In13.Cu",
+        "In14.Cu",
+        "In15.Cu",
+        "In16.Cu",
+        "In17.Cu",
+        "In18.Cu",
+        "In19.Cu",
+        "In2.Cu",
+        "In20.Cu",
+        "In21.Cu",
+        "In22.Cu",
+        "In23.Cu",
+        "In24.Cu",
+        "In25.Cu",
+        "In26.Cu",
+        "In27.Cu",
+        "In28.Cu",
+        "In29.Cu",
+        "In3.Cu",
+        "In30.Cu",
+        "In4.Cu",
+        "In5.Cu",
+        "In6.Cu",
+        "In7.Cu",
+        "In8.Cu",
+        "In9.Cu"
+      ],
+      "paste": {
+        "paste_layers": [],
+        "margin_mm": null,
+        "margin_ratio": null
+      },
+      "mask_margin_mm": 0.05
+    }
+  },
+  "tracks": {},
+  "vias": {
+    "08104545-7e3f-4eb8-81a7-5e6333b132ba": {
+      "net": "GND_ISO",
+      "position_mm": [
+        165.7,
+        106.3
+      ],
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "via_type": 4,
+      "front_tenting": 1,
+      "back_tenting": 1
+    },
+    "210a770f-5b71-4cf5-868b-3dd1ff347784": {
+      "net": "GND_ISO",
+      "position_mm": [
+        144.7,
+        103.3
+      ],
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "via_type": 4,
+      "front_tenting": 1,
+      "back_tenting": 1
+    },
+    "2c2126c1-c706-4f3b-b38e-1da1b3d05508": {
+      "net": "GND_ISO",
+      "position_mm": [
+        151.3,
+        109.7
+      ],
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "via_type": 4,
+      "front_tenting": 1,
+      "back_tenting": 1
+    },
+    "2dd5649e-3dbc-4138-9644-71e572016282": {
+      "net": "GND_ISO",
+      "position_mm": [
+        164.3,
+        114.3
+      ],
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "via_type": 4,
+      "front_tenting": 1,
+      "back_tenting": 1
+    },
+    "46044fd3-aa92-4b97-ab63-6ac3c3ac3591": {
+      "net": "GND_ISO",
+      "position_mm": [
+        151.3,
+        110.5
+      ],
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "via_type": 4,
+      "front_tenting": 1,
+      "back_tenting": 1
+    },
+    "69de5a2f-8c97-465a-83fb-d5a70f726083": {
+      "net": "GND_ISO",
+      "position_mm": [
+        144.7,
+        96.3
+      ],
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "via_type": 4,
+      "front_tenting": 1,
+      "back_tenting": 1
+    },
+    "75df47fb-0217-4ab5-afad-9a269e0e8f4f": {
+      "net": "GND_ISO",
+      "position_mm": [
+        144.5,
+        112.0
+      ],
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "via_type": 4,
+      "front_tenting": 1,
+      "back_tenting": 1
+    },
+    "946de00a-0b94-4c96-8dee-1732f1475040": {
+      "net": "GND_ISO",
+      "position_mm": [
+        165.7,
+        114.3
+      ],
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "via_type": 4,
+      "front_tenting": 1,
+      "back_tenting": 1
+    },
+    "94ec4dd5-4509-4213-8743-11bd4b79e57c": {
+      "net": "GND_ISO",
+      "position_mm": [
+        143.3,
+        96.3
+      ],
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "via_type": 4,
+      "front_tenting": 1,
+      "back_tenting": 1
+    },
+    "c92ab1ba-ab43-4d4a-9110-b8495861cecd": {
+      "net": "GND_ISO",
+      "position_mm": [
+        143.3,
+        103.3
+      ],
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "via_type": 4,
+      "front_tenting": 1,
+      "back_tenting": 1
+    },
+    "f57eae07-3167-43dd-aa93-b4669ce3aa42": {
+      "net": "GND_ISO",
+      "position_mm": [
+        164.3,
+        106.3
+      ],
+      "diameter_mm": 0.6,
+      "drill_mm": 0.3,
+      "layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "via_type": 4,
+      "front_tenting": 1,
+      "back_tenting": 1
+    }
+  },
+  "zones": {
+    "c9883153-e79b-47ed-ae67-d2b496d8ea71": {
+      "net": "GND_ISO",
+      "layers": [
+        "F.Cu"
+      ],
+      "name": "mains GND_ISO F.Cu",
+      "outline_mm": [
+        [
+          127.0,
+          45.0
+        ],
+        [
+          175.0,
+          45.0
+        ],
+        [
+          175.0,
+          127.0
+        ],
+        [
+          127.0,
+          127.0
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": false,
+      "fill_mode": 0,
+      "clearance_mm": 0.15,
+      "min_thickness_mm": 0.2,
+      "thermal_gap_mm": 0.3,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 3,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": true,
+        "vias": true,
+        "pads": true,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "005dbaa6-f469-48d8-908e-c1a0cfecad33": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "MOUNT_H3_INSULATING_HARDWARE",
+      "outline_mm": [
+        [
+          28.0,
+          144.0
+        ],
+        [
+          36.0,
+          144.0
+        ],
+        [
+          36.0,
+          152.0
+        ],
+        [
+          28.0,
+          152.0
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": true,
+        "vias": true,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": true
+      }
+    },
+    "00719d07-acee-47b2-bdb3-5ae51cf132d9": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck PUMP_N_FILTERED J4.2.0",
+      "outline_mm": [
+        [
+          105.87,
+          138.25
+        ],
+        [
+          111.37,
+          138.25
+        ],
+        [
+          111.37,
+          143.75
+        ],
+        [
+          105.87,
+          143.75
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "07589d8d-7897-4078-a074-17767ddfbd36": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V12_RAW U2.2.0",
+      "outline_mm": [
+        [
+          144.4,
+          105.65
+        ],
+        [
+          151.4,
+          105.65
+        ],
+        [
+          151.4,
+          112.35
+        ],
+        [
+          144.4,
+          112.35
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "12603abf-dfa3-42d0-adee-6b8204922069": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V5_PSU C4.1.0",
+      "outline_mm": [
+        [
+          162.975,
+          109.1
+        ],
+        [
+          167.025,
+          109.1
+        ],
+        [
+          167.025,
+          112.2
+        ],
+        [
+          162.975,
+          112.2
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "1fd199ae-f87e-4a92-a6a8-cf3cf8ac993f": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck PUMP_N_FILTERED C1.2.0",
+      "outline_mm": [
+        [
+          92.55,
+          129.55
+        ],
+        [
+          97.45,
+          129.55
+        ],
+        [
+          97.45,
+          134.45
+        ],
+        [
+          92.55,
+          134.45
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "2843ade1-825f-4ec9-a875-70b7dea70867": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V5_PSU K1.1.0",
+      "outline_mm": [
+        [
+          131.1,
+          114.6
+        ],
+        [
+          135.9,
+          114.6
+        ],
+        [
+          135.9,
+          119.4
+        ],
+        [
+          131.1,
+          119.4
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "2c09074d-d63a-481b-b9d4-80dae0f514df": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck AC_N U1.1.0",
+      "outline_mm": [
+        [
+          55.8,
+          61.25
+        ],
+        [
+          60.8,
+          61.25
+        ],
+        [
+          60.8,
+          66.25
+        ],
+        [
+          55.8,
+          66.25
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "2fb50dd4-4526-408d-9738-a4618dd0e9bd": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck AC_N J1.2.0",
+      "outline_mm": [
+        [
+          38.25,
+          69.87
+        ],
+        [
+          43.75,
+          69.87
+        ],
+        [
+          43.75,
+          75.37
+        ],
+        [
+          38.25,
+          75.37
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "33f31123-4e68-4dd1-866e-8f3d00a73c88": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck FILTER_LINE_L J2.1.0",
+      "outline_mm": [
+        [
+          38.25,
+          89.25
+        ],
+        [
+          43.75,
+          89.25
+        ],
+        [
+          43.75,
+          94.75
+        ],
+        [
+          38.25,
+          94.75
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "34f591cf-e1bb-4105-a562-99ede6049c5b": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V12_RAW C2.1.0",
+      "outline_mm": [
+        [
+          141.975,
+          106.1
+        ],
+        [
+          146.025,
+          106.1
+        ],
+        [
+          146.025,
+          109.2
+        ],
+        [
+          141.975,
+          109.2
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "455ef5bf-46e0-4c5e-a792-ddccd77167ed": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck AC_L_FUSED F3.1.0",
+      "outline_mm": [
+        [
+          81.75,
+          106.75
+        ],
+        [
+          86.25,
+          106.75
+        ],
+        [
+          86.25,
+          111.25
+        ],
+        [
+          81.75,
+          111.25
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "4e8555e7-2349-4a69-be14-d90c21d34aae": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck PUMP_L_SW J4.1.0",
+      "outline_mm": [
+        [
+          98.25,
+          138.25
+        ],
+        [
+          103.75,
+          138.25
+        ],
+        [
+          103.75,
+          143.75
+        ],
+        [
+          98.25,
+          143.75
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "5fd2116f-78c6-479d-acb3-1932cbef9161": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V5_PSU J5.1.0",
+      "outline_mm": [
+        [
+          161.99,
+          70.25
+        ],
+        [
+          166.01,
+          70.25
+        ],
+        [
+          166.01,
+          73.75
+        ],
+        [
+          161.99,
+          73.75
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "64c73e57-5b4d-46d6-af60-a9229fe59f98": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck AC_L_FUSED RV1.1.0",
+      "outline_mm": [
+        [
+          57.8,
+          117.55
+        ],
+        [
+          62.7,
+          117.55
+        ],
+        [
+          62.7,
+          122.45
+        ],
+        [
+          57.8,
+          122.45
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "70efbd4c-65e6-4a68-a707-fc8b7f3924a1": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V5_PSU D1.1.0",
+      "outline_mm": [
+        [
+          142.7,
+          122.7
+        ],
+        [
+          147.3,
+          122.7
+        ],
+        [
+          147.3,
+          127.3
+        ],
+        [
+          142.7,
+          127.3
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "74c7def5-f40f-4987-96d9-3440dcb334ff": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck PUMP_L_SW R1.1.0",
+      "outline_mm": [
+        [
+          82.7,
+          122.7
+        ],
+        [
+          87.3,
+          122.7
+        ],
+        [
+          87.3,
+          127.3
+        ],
+        [
+          82.7,
+          127.3
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "7861402b-a22c-4336-ac73-206163e55043": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V12_RAW U1.4.0",
+      "outline_mm": [
+        [
+          131.05,
+          95.0
+        ],
+        [
+          137.55,
+          95.0
+        ],
+        [
+          137.55,
+          101.5
+        ],
+        [
+          131.05,
+          101.5
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "7a72d412-b6a2-4baa-bada-0f30459c6fd6": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck AC_N RV1.2.0",
+      "outline_mm": [
+        [
+          64.099999,
+          117.55
+        ],
+        [
+          71.4,
+          117.55
+        ],
+        [
+          71.4,
+          122.45
+        ],
+        [
+          64.099999,
+          122.45
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "7c0926c6-554d-46a9-959e-7a7d3db0f9b5": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck AC_L_FUSED U1.2.0",
+      "outline_mm": [
+        [
+          55.8,
+          54.5
+        ],
+        [
+          60.8,
+          54.5
+        ],
+        [
+          60.8,
+          59.5
+        ],
+        [
+          55.8,
+          59.5
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "7e55f0a9-7164-4436-a289-2c63863ef92d": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V12_RAW C3.1.0",
+      "outline_mm": [
+        [
+          141.975,
+          99.1
+        ],
+        [
+          146.025,
+          99.1
+        ],
+        [
+          146.025,
+          102.2
+        ],
+        [
+          141.975,
+          102.2
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "84035bc3-d0b8-4b8f-967d-227058ea6160": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "MAINS_ISOLATION_1",
+      "outline_mm": [
+        [
+          119.0,
+          127.0
+        ],
+        [
+          127.0,
+          127.0
+        ],
+        [
+          127.0,
+          45.0
+        ],
+        [
+          119.0,
+          45.0
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": true,
+        "vias": true,
+        "pads": true,
+        "footprints": false,
+        "zone_fills": true
+      }
+    },
+    "9238d10a-c714-453a-9c85-079adb62ad24": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "MAINS_ISOLATION_2",
+      "outline_mm": [
+        [
+          119.0,
+          135.0
+        ],
+        [
+          175.0,
+          135.0
+        ],
+        [
+          175.0,
+          127.0
+        ],
+        [
+          119.0,
+          127.0
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": true,
+        "vias": true,
+        "pads": true,
+        "footprints": false,
+        "zone_fills": true
+      }
+    },
+    "94a9071c-6dad-4a92-9c3f-f84e47907524": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck PUMP_L_FILTERED J3.1.0",
+      "outline_mm": [
+        [
+          43.25,
+          138.25
+        ],
+        [
+          48.75,
+          138.25
+        ],
+        [
+          48.75,
+          143.75
+        ],
+        [
+          43.25,
+          143.75
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "94e2aeb7-37c6-4055-bbed-580216ba475a": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V12_RAW C7.1.0",
+      "outline_mm": [
+        [
+          140.95,
+          110.65
+        ],
+        [
+          143.65,
+          110.65
+        ],
+        [
+          143.65,
+          113.35
+        ],
+        [
+          140.95,
+          113.35
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "9a4463bf-cc15-4c87-a308-c342ed02a58f": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V12_MOTOR J6.1.0",
+      "outline_mm": [
+        [
+          162.25,
+          91.25
+        ],
+        [
+          165.75,
+          91.25
+        ],
+        [
+          165.75,
+          94.75
+        ],
+        [
+          162.25,
+          94.75
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "a0e1fbda-c50d-441f-8523-525fb54c8824": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "MOUNT_H1_INSULATING_HARDWARE",
+      "outline_mm": [
+        [
+          28.0,
+          48.0
+        ],
+        [
+          36.0,
+          48.0
+        ],
+        [
+          36.0,
+          56.0
+        ],
+        [
+          28.0,
+          56.0
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": true,
+        "vias": true,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": true
+      }
+    },
+    "a10ad736-80bb-408b-a91f-4de21a8417d9": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck AC_L_FUSED J1.1.0",
+      "outline_mm": [
+        [
+          38.25,
+          62.25
+        ],
+        [
+          43.75,
+          62.25
+        ],
+        [
+          43.75,
+          67.75
+        ],
+        [
+          38.25,
+          67.75
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "ada4bb35-0bc8-403e-b64d-2a6a5a2879d6": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck SNUBBER_RC R1.2.0",
+      "outline_mm": [
+        [
+          97.94,
+          122.7
+        ],
+        [
+          102.54,
+          122.7
+        ],
+        [
+          102.54,
+          127.3
+        ],
+        [
+          97.94,
+          127.3
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "b3ad9d21-ef23-409c-95cd-99a6df4a2d4a": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck PUMP_L_FILTERED K1.3.0",
+      "outline_mm": [
+        [
+          107.6,
+          114.6
+        ],
+        [
+          112.4,
+          114.6
+        ],
+        [
+          112.4,
+          119.4
+        ],
+        [
+          107.6,
+          119.4
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "b5b1f3f4-5209-4af4-abd1-72186174de5b": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck SNUBBER_RC C1.1.0",
+      "outline_mm": [
+        [
+          82.55,
+          129.55
+        ],
+        [
+          87.45,
+          129.55
+        ],
+        [
+          87.45,
+          134.45
+        ],
+        [
+          82.55,
+          134.45
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "bae53233-5a9d-40cd-b6d2-3e6c73a18ab4": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V5_PSU C6.1.0",
+      "outline_mm": [
+        [
+          162.975,
+          117.1
+        ],
+        [
+          167.025,
+          117.1
+        ],
+        [
+          167.025,
+          120.2
+        ],
+        [
+          162.975,
+          120.2
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "c2064ea1-4fbf-4cac-87a3-6a3f7d4bae57": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "MOUNT_H2_INSULATING_HARDWARE",
+      "outline_mm": [
+        [
+          164.0,
+          48.0
+        ],
+        [
+          172.0,
+          48.0
+        ],
+        [
+          172.0,
+          56.0
+        ],
+        [
+          164.0,
+          56.0
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": true,
+        "vias": true,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": true
+      }
+    },
+    "c3116636-8ea1-4702-816e-59549a6bd9df": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V12_MOTOR F2.2.0",
+      "outline_mm": [
+        [
+          149.47,
+          90.425
+        ],
+        [
+          153.43,
+          90.425
+        ],
+        [
+          153.43,
+          95.575
+        ],
+        [
+          149.47,
+          95.575
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "e29035e7-3795-4085-8596-51674079afc8": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck PUMP_N_FILTERED J3.2.0",
+      "outline_mm": [
+        [
+          50.87,
+          138.25
+        ],
+        [
+          56.37,
+          138.25
+        ],
+        [
+          56.37,
+          143.75
+        ],
+        [
+          50.87,
+          143.75
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "e5a1439d-6b9f-48af-992b-e5448c366815": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "MOUNT_H4_INSULATING_HARDWARE",
+      "outline_mm": [
+        [
+          164.0,
+          144.0
+        ],
+        [
+          172.0,
+          144.0
+        ],
+        [
+          172.0,
+          152.0
+        ],
+        [
+          164.0,
+          152.0
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": true,
+        "vias": true,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": true
+      }
+    },
+    "ea50b8b7-3ac9-4721-8a0c-2b1e3a312746": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck PUMP_L_SW K1.4.0",
+      "outline_mm": [
+        [
+          111.1,
+          122.1
+        ],
+        [
+          115.9,
+          122.1
+        ],
+        [
+          115.9,
+          126.9
+        ],
+        [
+          111.1,
+          126.9
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "ebb940c0-c3e5-4ce5-a832-a3861848bfba": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V12_RAW F2.1.0",
+      "outline_mm": [
+        [
+          144.57,
+          90.425
+        ],
+        [
+          148.53,
+          90.425
+        ],
+        [
+          148.53,
+          95.575
+        ],
+        [
+          144.57,
+          95.575
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "ec6d0abc-3e5e-4a7b-ad7f-0c9e0331a4db": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V5_PSU U2.1.0",
+      "outline_mm": [
+        [
+          144.4,
+          104.7
+        ],
+        [
+          151.4,
+          104.7
+        ],
+        [
+          151.4,
+          111.4
+        ],
+        [
+          144.4,
+          111.4
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "ee47fafc-e02d-464c-8b43-d231f7866bae": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck AC_N J2.2.0",
+      "outline_mm": [
+        [
+          38.25,
+          96.87
+        ],
+        [
+          43.75,
+          96.87
+        ],
+        [
+          43.75,
+          102.37
+        ],
+        [
+          38.25,
+          102.37
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "ef69763d-cf50-41d1-b70d-94c2c666a038": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck FILTER_LINE_L F3.2.0",
+      "outline_mm": [
+        [
+          112.23,
+          106.75
+        ],
+        [
+          116.73,
+          106.75
+        ],
+        [
+          116.73,
+          111.25
+        ],
+        [
+          112.23,
+          111.25
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "f4792a77-56c3-4590-8d49-d480f70c7bb3": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V12_RAW U2.3.0",
+      "outline_mm": [
+        [
+          146.4,
+          108.6
+        ],
+        [
+          149.4,
+          108.6
+        ],
+        [
+          149.4,
+          111.3
+        ],
+        [
+          146.4,
+          111.3
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "f5a1a711-6e98-486a-a5c8-0ec0fb273de3": {
+      "net": "",
+      "layers": [
+        "B.Cu",
+        "F.Cu"
+      ],
+      "name": "Neck V5_PSU L1.2.0",
+      "outline_mm": [
+        [
+          157.25,
+          107.1
+        ],
+        [
+          161.25,
+          107.1
+        ],
+        [
+          161.25,
+          110.9
+        ],
+        [
+          157.25,
+          110.9
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": true,
+      "fill_mode": 0,
+      "clearance_mm": 0.0,
+      "min_thickness_mm": 0.25,
+      "thermal_gap_mm": 0.5,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 1,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": false,
+        "vias": false,
+        "pads": false,
+        "footprints": false,
+        "zone_fills": false
+      }
+    },
+    "f326a018-0f18-4cd2-bfad-93660e296bf8": {
+      "net": "GND_ISO",
+      "layers": [
+        "B.Cu"
+      ],
+      "name": "mains GND_ISO B.Cu",
+      "outline_mm": [
+        [
+          127.0,
+          45.0
+        ],
+        [
+          175.0,
+          45.0
+        ],
+        [
+          175.0,
+          127.0
+        ],
+        [
+          127.0,
+          127.0
+        ]
+      ],
+      "simple_outline": true,
+      "rule_area": false,
+      "fill_mode": 0,
+      "clearance_mm": 0.15,
+      "min_thickness_mm": 0.2,
+      "thermal_gap_mm": 0.3,
+      "thermal_spoke_mm": 0.5,
+      "pad_connection": 3,
+      "island_removal": 0,
+      "priority": 0,
+      "keepout": {
+        "tracks": true,
+        "vias": true,
+        "pads": true,
+        "footprints": false,
+        "zone_fills": false
+      }
+    }
+  },
+  "drawings": {
+    "90c32aff-533b-4060-b75f-a9350fddfbdb": {
+      "kind": "shape",
+      "shape": 0,
+      "layer": "Edge.Cuts",
+      "start_mm": [
+        25.0,
+        45.0
+      ],
+      "end_mm": [
+        175.0,
+        45.0
+      ],
+      "width_mm": 0.05
+    },
+    "2dc7fa51-b612-45d7-b45e-855163f3579f": {
+      "kind": "shape",
+      "shape": 0,
+      "layer": "Edge.Cuts",
+      "start_mm": [
+        25.0,
+        155.0
+      ],
+      "end_mm": [
+        25.0,
+        45.0
+      ],
+      "width_mm": 0.05
+    },
+    "a2b70237-72ee-422b-b766-713d70b6ffaa": {
+      "kind": "shape",
+      "shape": 0,
+      "layer": "Edge.Cuts",
+      "start_mm": [
+        175.0,
+        45.0
+      ],
+      "end_mm": [
+        175.0,
+        155.0
+      ],
+      "width_mm": 0.05
+    },
+    "da92156e-73bd-4125-bd71-e690e766145d": {
+      "kind": "shape",
+      "shape": 0,
+      "layer": "Edge.Cuts",
+      "start_mm": [
+        175.0,
+        155.0
+      ],
+      "end_mm": [
+        25.0,
+        155.0
+      ],
+      "width_mm": 0.05
+    },
+    "4ef614cf-5e20-462c-ba0d-01c5b5713ee9": {
+      "kind": "text",
+      "text": "J2 FILTER LINE",
+      "position_mm": [
+        44.0,
+        82.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "38d39e3c-c02a-4013-acc3-186360a420d5": {
+      "kind": "text",
+      "text": "1 L   2 N",
+      "position_mm": [
+        44.0,
+        84.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "ff8305db-cfbd-4937-8d7b-698459c12ab2": {
+      "kind": "text",
+      "text": "J1 T2A FUSED INPUT",
+      "position_mm": [
+        45.0,
+        54.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "11994ba5-6ba5-41da-a4c6-7eddbd41e5b4": {
+      "kind": "text",
+      "text": "1 L   2 N",
+      "position_mm": [
+        45.0,
+        56.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "e996948c-984d-4e82-a5e5-aa061bc561db": {
+      "kind": "text",
+      "text": "J3 FILTER LOAD",
+      "position_mm": [
+        47.0,
+        130.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "02f7bf9d-71ed-4699-bff5-92c9c62cc735": {
+      "kind": "text",
+      "text": "1 L   2 N",
+      "position_mm": [
+        47.0,
+        132.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "c1238440-1c0b-4a6e-8793-2a4c1512aa1d": {
+      "kind": "text",
+      "text": "F3 T1A",
+      "position_mm": [
+        83.0,
+        96.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "a00a003e-b72e-4384-9f6a-5f4865d6b747": {
+      "kind": "text",
+      "text": "PE BYPASSES BOARD",
+      "position_mm": [
+        85.0,
+        151.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "262006b4-cd9a-4feb-9585-ec8e6c99cd0b": {
+      "kind": "text",
+      "text": "PRIMARY",
+      "position_mm": [
+        90.0,
+        49.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "b9eb1f59-4a90-4499-8671-09dfc1f94dea": {
+      "kind": "text",
+      "text": "J4 SWITCHED PUMP",
+      "position_mm": [
+        101.0,
+        130.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "fc7a9b1a-5108-4465-9fcb-3e81755e9c2f": {
+      "kind": "text",
+      "text": "1 L   2 N",
+      "position_mm": [
+        101.0,
+        135.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "6c960a00-f28c-467a-91f0-02b78097fb14": {
+      "kind": "text",
+      "text": "D1 K=+5V",
+      "position_mm": [
+        145.0,
+        131.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "f0fadcfc-aa92-4e5c-b416-9f8563cad39c": {
+      "kind": "text",
+      "text": "ISOLATED 12V / 5V",
+      "position_mm": [
+        148.0,
+        49.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "e21498fc-b3fb-4786-be53-339a5603b8df": {
+      "kind": "text",
+      "text": "F2 3A",
+      "position_mm": [
+        149.0,
+        90.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "2607391b-76a8-4a89-ab6e-f79dffa99a9c": {
+      "kind": "text",
+      "text": "J5 1:+5V 2:RET 3:COIL",
+      "position_mm": [
+        150.0,
+        63.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    },
+    "b7c3b7de-642e-412a-9b33-cecbbb19d564": {
+      "kind": "text",
+      "text": "J6 1:+12V 2:RET",
+      "position_mm": [
+        158.0,
+        99.0
+      ],
+      "layer": "F.Silkscreen",
+      "size_mm": [
+        0.8,
+        0.8
+      ],
+      "thickness_mm": 0.12,
+      "rotation_deg": 0.0,
+      "mirrored": false
+    }
+  },
+  "netclasses": {
+    "Default": {
+      "track_width_mm": 0.3,
+      "clearance_mm": 0.15,
+      "via_diameter_mm": 0.6,
+      "via_drill_mm": 0.3,
+      "diff_pair_width_mm": 0.2,
+      "diff_pair_gap_mm": 0.25,
+      "diff_pair_via_gap_mm": 0.25
+    },
+    "BuckSwitch": {
+      "track_width_mm": 1.0,
+      "clearance_mm": 0.15,
+      "via_diameter_mm": 0.6,
+      "via_drill_mm": 0.3,
+      "diff_pair_width_mm": 0.2,
+      "diff_pair_gap_mm": 0.25,
+      "diff_pair_via_gap_mm": 0.25
+    },
+    "Coil": {
+      "track_width_mm": 0.3,
+      "clearance_mm": 0.15,
+      "via_diameter_mm": 0.6,
+      "via_drill_mm": 0.3,
+      "diff_pair_width_mm": 0.2,
+      "diff_pair_gap_mm": 0.25,
+      "diff_pair_via_gap_mm": 0.25
+    },
+    "LogicPower": {
+      "track_width_mm": 2.0,
+      "clearance_mm": 0.15,
+      "via_diameter_mm": 0.6,
+      "via_drill_mm": 0.3,
+      "diff_pair_width_mm": -1e-06,
+      "diff_pair_gap_mm": -1e-06,
+      "diff_pair_via_gap_mm": -1e-06
+    },
+    "Motor": {
+      "track_width_mm": 3.0,
+      "clearance_mm": 0.15,
+      "via_diameter_mm": 0.6,
+      "via_drill_mm": 0.3,
+      "diff_pair_width_mm": -1e-06,
+      "diff_pair_gap_mm": -1e-06,
+      "diff_pair_via_gap_mm": -1e-06
+    },
+    "Primary": {
+      "track_width_mm": 2.0,
+      "clearance_mm": 3.2,
+      "via_diameter_mm": 0.6,
+      "via_drill_mm": 0.3,
+      "diff_pair_width_mm": -1e-06,
+      "diff_pair_gap_mm": -1e-06,
+      "diff_pair_via_gap_mm": -1e-06
+    },
+    "PrimaryInput": {
+      "track_width_mm": 3.0,
+      "clearance_mm": 3.2,
+      "via_diameter_mm": 0.6,
+      "via_drill_mm": 0.3,
+      "diff_pair_width_mm": -1e-06,
+      "diff_pair_gap_mm": -1e-06,
+      "diff_pair_via_gap_mm": -1e-06
+    }
+  },
+  "copper_layers": 2
+}

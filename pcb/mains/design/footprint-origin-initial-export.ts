@@ -21,7 +21,7 @@ import {
 import { movCapture } from "./mov-component";
 
 // Exact component-side datums (+Y down), not compiler copper-box centres.
-// Keep both physical tails of every Sabre blade and J5's unnumbered locator.
+// Keep every terminal pin and J5's unnumbered locator.
 // A slot has one centre just like a round hole; its shape is verified separately.
 export const mainsOriginPatterns: Readonly<Record<string, OriginPattern>> = {
   "IRM-45-12": isolatedSupplyPattern,

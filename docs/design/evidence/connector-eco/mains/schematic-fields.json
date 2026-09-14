@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "schematic": "/tmp/crystal-connectors-native/mains/primary.kicad_sch",
+  "before_sha256": "fc6f7aa5fb88f7868bb0e4ed81e4a06968a6f1239980bc5d3ffb1d90370c236c",
+  "after_sha256": "2995c796c4acba3e30ecc16bfc0e2f6af38cc985423a4e9892e418481a65d298",
+  "edits": [
+    {
+      "reference": "J1",
+      "fields": {
+        "Value": "1868076",
+        "MPN": "1868076",
+        "Datasheet": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076"
+      }
+    },
+    {
+      "reference": "J2",
+      "fields": {
+        "Value": "1868076",
+        "MPN": "1868076",
+        "Datasheet": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076"
+      }
+    },
+    {
+      "reference": "J3",
+      "fields": {
+        "Value": "1868076",
+        "MPN": "1868076",
+        "Datasheet": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076"
+      }
+    },
+    {
+      "reference": "J4",
+      "fields": {
+        "Value": "1868076",
+        "MPN": "1868076",
+        "Datasheet": "https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076"
+      }
+    }
+  ],
+  "konnect": {
+    "server": {
+      "name": "konnect",
+      "version": "0.2.1"
+    },
+    "result": {
+      "errors": [],
+      "updated": [
+        {
+          "changes": [
+            "Datasheet \u2192 https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
+            "MPN \u2192 1868076",
+            "Value \u2192 1868076"
+          ],
+          "reference": "J1"
+        },
+        {
+          "changes": [
+            "Datasheet \u2192 https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
+            "MPN \u2192 1868076",
+            "Value \u2192 1868076"
+          ],
+          "reference": "J2"
+        },
+        {
+          "changes": [
+            "Datasheet \u2192 https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
+            "MPN \u2192 1868076",
+            "Value \u2192 1868076"
+          ],
+          "reference": "J3"
+        },
+        {
+          "changes": [
+            "Datasheet \u2192 https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076",
+            "MPN \u2192 1868076",
+            "Value \u2192 1868076"
+          ],
+          "reference": "J4"
+        }
+      ],
+      "updated_count": 4
+    }
+  },
+  "semantic_preservation": true,
+  "native_net_connectivity_preserved": true
+}

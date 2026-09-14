@@ -1,0 +1,32 @@
+{
+  "mains.kicad_pcb": {
+    "before": "e9237d8626933360720e1fe1530343d3e4ee469702dc8bfbd9905b30f2707f50",
+    "after": "917a86c12685518f18b8c470eb4a8c2dd9f968b006fc096f17642afa5c97b66e"
+  },
+  "primary.kicad_sch": {
+    "before": "390ffe138e967b504b7a041ba870d3a31e7e812cc239d5e128c3df319c2b1611",
+    "after": "bdc346962e823ce5466644bbc0d98503cb588a18e8247068ff08b024ef4f1e00",
+    "before_native_normalization": "2995c796c4acba3e30ecc16bfc0e2f6af38cc985423a4e9892e418481a65d298",
+    "normalization": "kicad-cli sch upgrade --force"
+  },
+  "CrystalShim_Mains.kicad_sym": {
+    "before": "e69830fe18e999664bb8f2124a372e45613c288a9575b21a057ad536d2b77c44",
+    "after": "1feb65d4dde9b6b0b15c9169c64020d56e89faf2399f3aaff8d8a2927bbdf2b1"
+  },
+  "footprints/CrystalShim_Mains.pretty/Mains_J1.kicad_mod": {
+    "before": "337ee7c80d7e209401ded0002462a7539bb7bff328f88d851dfd4d785c81f50b",
+    "after": "d253b5d0267827dfdb9cae7acfc1f78339ea91a8c534b28986d2189325244c88"
+  },
+  "footprints/CrystalShim_Mains.pretty/Mains_J2.kicad_mod": {
+    "before": "cb297c2a41e2510de1de9d3c4fb435cbf7d65e394db3688ee286b2c94e1b1e47",
+    "after": "27326187a68001cdd509d32ee2cd0e1e1463a0cb9e9700a62837a4ccabc8472a"
+  },
+  "footprints/CrystalShim_Mains.pretty/Mains_J3.kicad_mod": {
+    "before": "23d902ddd47fe07dfd44afd2636cca0d4a78097a7136d90e2dd3be7ecf36e969",
+    "after": "6056f6a57bc42058d14b5a32b26e83f9f1ee07da790c0c12a71b87e0657158d3"
+  },
+  "footprints/CrystalShim_Mains.pretty/Mains_J4.kicad_mod": {
+    "before": "c5cb8745cf6c02d69a001935b32bc8ad65dc178214d3d49d09008304184e3018",
+    "after": "216698fadbc4ef609088e44c7e89fc553d8a5d1ebf5d0df1c3aa839596ec5854"
+  }
+}

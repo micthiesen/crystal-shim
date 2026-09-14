@@ -4,9 +4,6 @@ import type { CircuitJson } from "circuit-json";
 import { CircuitJsonToKicadSchConverter } from "circuit-json-to-kicad";
 import {
   At,
-  Junction,
-  Pts,
-  Wire,
   Xy,
   parseKicadSch,
   parseKicadSym,
@@ -21,7 +18,6 @@ import { applyMainsProjectSymbolsForInitialExport } from "./project-symbol-libra
 import { applyMainsFieldsForInitialExport } from "./fields-initial-export";
 import { applyMainsSchematicCleanupForInitialExport } from "./schematic-cleanup-initial-export";
 import { createMainsInitialGraphs } from "./mains-initial-export";
-import { gridInitialSchematics } from "../../scripts/lib/schematic-grid-initial-export";
 
 let source: CircuitJson;
 let manifest: ReturnType<typeof createMainsManifest>;
@@ -49,8 +45,6 @@ function pinAt(sheets: KicadSch[], ref: string, number: string) {
     y: instance.at!.y - pin.at!.y,
   };
 }
-const wire = (x1: number, y1: number, x2: number, y2: number) =>
-  new Wire({ points: new Pts([new Xy(x1, y1), new Xy(x2, y2)]) });
 
 beforeAll(async () => {
   const circuit = new Circuit();
@@ -85,45 +79,17 @@ beforeAll(async () => {
   initial = sheets.map((s) => s.getString());
 });
 
-test("seven exact NC markers survive serialization while every prior object is preserved", () => {
+test("all-connected mains terminals need no NC markers and preserve the initial graph", () => {
   const sheets = fresh();
   expect(applyMainsSchematicCleanupForInitialExport(sheets, manifest)).toEqual({
-    noConnects: 7,
+    noConnects: 0,
   });
-  const unused = ["J2.3", "J3.3", "J3.4", "J4.3", "J4.4", "J4.5", "J4.6"];
-  const actual: string[] = [];
-  for (const [index, sheet] of sheets.entries()) {
-    const read = parseKicadSch(sheet.getString());
-    for (const marker of read.noConnects) {
-      expect(marker.at?.angle).toBeUndefined();
-      expect(marker.uuid?.value).toBeTruthy();
-      const matches = unused.filter((id) => {
-        const [ref, number] = id.split(".");
-        const p = pinAt(sheets, ref!, number!);
-        return (
-          p.sheet === sheet && Math.hypot(p.x - marker.at!.x, p.y - marker.at!.y) < 1e-8
-        );
-      });
-      expect(matches).toHaveLength(1);
-      actual.push(matches[0]!);
-    }
-    read.noConnects = [];
-    expect(read.getString()).toBe(initial[index]!);
-  }
-  expect(actual.sort()).toEqual(unused.sort());
-  const once = sheets.map((s) => s.getString());
-  expect(() => applyMainsSchematicCleanupForInitialExport(sheets, manifest)).toThrow(
-    "unmodified initial",
-  );
-  expect(sheets.map((s) => s.getString())).toEqual(once);
+  expect(sheets.map((s) => s.getString())).toEqual(initial);
+  expect(sheets.flatMap((s) => s.noConnects)).toEqual([]);
 });
 
-test("late NC conflicts, source drift and ambiguous geometry reject the complete batch atomically", () => {
+test("source drift and ambiguous geometry reject the complete batch atomically", () => {
   for (const mode of [
-    "wire",
-    "junction",
-    "label",
-    "other-pin",
     "source",
     "pin",
     "duplicate-library",
@@ -132,22 +98,15 @@ test("late NC conflicts, source drift and ambiguous geometry reject the complete
     "ref",
     "sheet",
   ] as const) {
-    const sheets = fresh(),
-      changed = structuredClone(manifest);
-    const p = pinAt(sheets, "J4", "6");
-    if (mode === "wire")
-      p.sheet.wires = [...p.sheet.wires, wire(p.x - 1, p.y, p.x + 1, p.y)];
-    if (mode === "junction")
-      p.sheet.junctions = [...p.sheet.junctions, new Junction({ at: [p.x, p.y] })];
-    if (mode === "label") p.sheet.globalLabels[0]!.at = new At([p.x, p.y]);
-    if (mode === "other-pin")
-      pins(p.library).find((q) => q.numberString === "3")!.at = new At([
-        p.pin.at!.x,
-        p.pin.at!.y,
-        p.pin.at!.angle!,
-      ]);
-    if (mode === "source")
-      changed.nets[0]!.endpoints.push({ component: "mains.component.j4", pad: "6" });
+    const sheets = fresh();
+    const changed = structuredClone(manifest);
+    const p = pinAt(sheets, "J4", "2");
+    if (mode === "source") {
+      for (const net of changed.nets)
+        net.endpoints = net.endpoints.filter(
+          (e) => !(e.component === "mains.component.j4" && e.pad === "2"),
+        );
+    }
     if (mode === "pin") p.pin.numberString = "UNKNOWN";
     if (mode === "duplicate-library")
       p.sheet.libSymbols!.symbols = [...p.sheet.libSymbols!.symbols, p.library];
@@ -160,44 +119,6 @@ test("late NC conflicts, source drift and ambiguous geometry reject the complete
     const before = sheets.map((s) => s.getString());
     expect(() => applyMainsSchematicCleanupForInitialExport(sheets, changed)).toThrow();
     expect(sheets.map((s) => s.getString())).toEqual(before);
-  }
-});
-
-test("native rounding keeps NCs attached and rejects conductors that quantize onto unused pins", () => {
-  const sheets = fresh();
-  const p = pinAt(sheets, "J4", "6");
-  // Each independent coordinate is less than half an IU away. Adding floats
-  // first incorrectly rounds the marker by one IU, later enlarged by gridding.
-  p.instance.at!.x += 0.000045;
-  p.pin.at!.x += 0.000045;
-  applyMainsSchematicCleanupForInitialExport(sheets, manifest);
-  const gridded = gridInitialSchematics(sheets).sheets;
-  const target = pinAt(gridded, "J4", "6");
-  expect(
-    target.sheet.noConnects.filter(
-      (n) => Math.abs(n.at!.x - target.x) < 1e-8 && Math.abs(n.at!.y - target.y) < 1e-8,
-    ),
-  ).toHaveLength(1);
-  for (const mode of ["wire", "label", "junction"] as const) {
-    const changed = fresh();
-    const t = pinAt(changed, "J4", "6");
-    if (mode === "wire")
-      t.sheet.wires = [
-        ...t.sheet.wires,
-        wire(t.x - 1, t.y + 0.00004, t.x + 1, t.y + 0.00004),
-      ];
-    if (mode === "label")
-      t.sheet.globalLabels[0]!.at = new At([t.x + 0.00004, t.y + 0.00004]);
-    if (mode === "junction")
-      t.sheet.junctions = [
-        ...t.sheet.junctions,
-        new Junction({ at: [t.x + 0.00004, t.y + 0.00004] }),
-      ];
-    const before = changed.map((s) => s.getString());
-    expect(() => applyMainsSchematicCleanupForInitialExport(changed, manifest)).toThrow(
-      "touching electrical geometry",
-    );
-    expect(changed.map((s) => s.getString())).toEqual(before);
   }
 });
 
@@ -214,8 +135,8 @@ test("complete initial graphs refresh all four caches, exact fields, NCs and gri
     .flatMap((s) => s.symbols)
     .filter((s) => !reference(s)?.startsWith("#"));
   expect(parts).toHaveLength(22);
-  expect(parts.flatMap((s) => s.pins)).toHaveLength(60);
-  expect(sheets.flatMap((s) => s.noConnects)).toHaveLength(7);
+  expect(parts.flatMap((s) => s.pins)).toHaveLength(53);
+  expect(sheets.flatMap((s) => s.noConnects)).toHaveLength(0);
   expect(
     sheets
       .flatMap((s) => s.symbols)
@@ -276,13 +197,11 @@ test("complete initial graphs refresh all four caches, exact fields, NCs and gri
       ncMatches.push(matches[0]!);
     }
   }
-  expect(ncMatches.sort()).toEqual(
-    ["J2.3", "J3.3", "J3.4", "J4.3", "J4.4", "J4.5", "J4.6"].sort(),
-  );
+  expect(ncMatches.sort()).toEqual([]);
   expect(result.pcb.footprints).toHaveLength(26);
   expect(
     result.pcb.footprints.flatMap((fp) => fp.fpPads).filter((p) => p.number),
-  ).toHaveLength(75);
+  ).toHaveLength(53);
 });
 
 test("fresh export splits the SW label trunk instead of leaving the converter orphan stub", () => {

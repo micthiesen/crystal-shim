@@ -38,12 +38,14 @@ tolerances. The MOV has a 29 × 29 mm courtyard and 26.5 mm height reserve; the
 relay has a 29 × 12.7 mm envelope and 15.7 mm height. These allocations explain
 the common board size; they do not establish thermal or physical assembly tests.
 
-Use right-angle Sabre headers on lower-board J1–J4: **43160-1102, -1103, -1104,
--1106**, retaining the corresponding 44441-200n housings, 43375-2001 contacts and
-unused-contact assignments. Use their actual right-angle footprint and mating
-geometry, not a rotated vertical header. Lower J5/J6 already use right-angle
-Micro-Fit interfaces. Keep mating, latch release and withdrawal paths outward
-from accessible edges. Separate filter LINE/LOAD wiring. Controller buttons,
+Use **Phoenix Contact 1868076 (MKDS 5/2-7,62)** fixed side-entry screw
+terminals on lower-board J1–J4. Each uses both positions. Their bodies are
+15.24 × 12.5 × 21.5 mm, below the existing 30.5 mm supply height allocation.
+Reserve 35 mm outward wiring access; top screw access requires removing the
+controller and separator with mains disconnected. Lower J5/J6 retain right-angle
+Micro-Fit mating, latch release and withdrawal paths outward from accessible
+edges. Controller service J2 is JST S2B-XH-A, physically distinct from the
+12 V Micro-Fit ports. Separate filter LINE/LOAD wiring. Controller buttons,
 USB and test points remain accessible from above or an edge.
 
 Preserve the controller antenna overhang and 15 mm three-dimensional reserve

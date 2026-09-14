@@ -328,3 +328,14 @@ not ERC/DRC or manufacturing readiness. The exporter itself does not register or
 adopt a library. The adopted controller's footprint and symbol tables were
 subsequently saved through the native project-library dialogs with `${KIPRJMOD}`
 URIs. This tool does not text-write either library table.
+
+### Distinct 5 V service connector
+
+J2 uses JST S2B-XH-A side-entry, with XHP-2 housing and SXH-001T-P0.6
+contacts on a fused 22 AWG 5 V service lead. Pin 1 is V5_SERVICE; pin 2 is GND.
+This two-position friction-lock connector is mechanically distinct from the
+12 V two-position Micro-Fit ports. Its native mating direction is +Y, so J2
+uses source rotation 0 degrees to retain outward access on the lower edge.
+`service-power-header.tsx` owns its exact pad pattern; the legacy
+`ServiceHeader` Micro-Fit helper continues to serve the 12 V ports unchanged.
+JST's p2 PCB layout and p5 exact C=9.2 side-entry variant govern its geometry.

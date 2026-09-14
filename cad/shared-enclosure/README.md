@@ -27,10 +27,14 @@ wire routing and electrical insulation acceptance remain engineering checks.
 No RF notch is selected.
 
 Allow **35 mm outward mating/wiring depth** at each used edge. Lower primary
-headers exit left and south; lower isolated headers exit right. Upper sensor
+fixed terminals exit left and south; lower isolated headers exit right. Upper sensor
 headers exit north, service connectors south and pump outputs right. The north
 reserve stays left of the antenna. These are space allocations, not measured
-housing withdrawal distances, cable bend radii or exact crimp models.
+housing withdrawal distances, cable bend radii or exact crimp models. Mains
+J1–J4 now use 21.5 mm-high Phoenix Contact 1868076 terminals, within the existing
+30.5 mm lower assembly height reserve. Their top screws require removal of the
+controller and separator with mains disconnected. The gross reserve geometry
+is unchanged; the historical fit receipt is not an exact terminal assembly model.
 
 The filter/wiring reserve is rotated to **75 × 130 × 40 mm**, at X292..367,
 Y40..170, Z10..50. Its nominal enclosure clearance is **5.40 mm**; expanding the

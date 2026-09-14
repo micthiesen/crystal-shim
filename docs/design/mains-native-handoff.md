@@ -1,6 +1,10 @@
 # Mains native handoff
 
-Historical shared-power handoff record before stacked compaction. Its dimensions,
+Historical shared-power handoff record before stacked compaction and the
+connector ECO. Current J1–J4 are two-position Phoenix Contact 1868076 fixed
+terminals: 53 logical pins / 53 lands (31 PTH, 22 SMT), no NC pins, and the
+unchanged 53 connected endpoints. The Sabre counts below are historical.
+Its dimensions,
 J1 move, unconnected counts and acceptance receipts below describe that earlier
 geometry. Current source/native acceptance is recorded in [STATE](../STATE.md);
 the [routing guide](routing-guardrails.md) governs current routing.

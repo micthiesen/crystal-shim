@@ -102,32 +102,19 @@ test("mains manifest normalizes to the shared schema with 26 stable refs, all lo
   expect(new Set(manifest.components.map((c) => c.footprint.kicad)).size).toBe(26);
   expect(
     manifest.components.reduce((sum, c) => sum + c.footprint.pad_numbers.length, 0),
-  ).toBe(60);
+  ).toBe(53);
   expect(manifest.nets).toHaveLength(14);
   expect(manifest.nets.reduce((sum, n) => sum + n.endpoints.length, 0)).toBe(53);
-  expect(manifest.metadata.physical_numbered_pad_count).toBe(75);
-  expect(Object.values(manifest.metadata.physical_pad_numbers).flat()).toHaveLength(75);
-  expect(manifest.metadata.physical_pad_numbers.J4).toEqual([
-    "1",
-    "1",
-    "2",
-    "2",
-    "3",
-    "3",
-    "4",
-    "4",
-    "5",
-    "5",
-    "6",
-    "6",
-  ]);
-  expect(manifest.metadata.source_paste_record_count).toBe(118);
-  expect(Object.values(manifest.metadata.logical_pins).flat()).toHaveLength(60);
+  expect(manifest.metadata.physical_numbered_pad_count).toBe(53);
+  expect(Object.values(manifest.metadata.physical_pad_numbers).flat()).toHaveLength(53);
+  expect(manifest.metadata.physical_pad_numbers.J4).toEqual(["1", "2"]);
+  expect(manifest.metadata.source_paste_record_count).toBe(74);
+  expect(Object.values(manifest.metadata.logical_pins).flat()).toHaveLength(53);
   expect(
     Object.values(manifest.metadata.logical_pins)
       .flat()
       .filter((p) => p.no_connect),
-  ).toHaveLength(7);
+  ).toHaveLength(0);
   expect(manifest.metadata.logical_pins.K1).toEqual([
     { number: "1", name: "COIL_HIGH", no_connect: false },
     { number: "3", name: "CONTACT_FIXED", no_connect: false },
@@ -440,8 +427,8 @@ test("malformed identities, lost physical lands, changed pins/nets and moved pla
             (e) =>
               e.type === "source_port" &&
               e.source_component_id === id &&
-              e.pin_number === 3,
-          )!.do_not_connect = false;
+              e.pin_number === 2,
+          )!.do_not_connect = true;
       },
     ],
     [

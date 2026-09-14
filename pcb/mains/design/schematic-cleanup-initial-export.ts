@@ -85,7 +85,10 @@ export function applyMainsSchematicCleanupForInitialExport(
         !Number.isFinite(instance.at.y) ||
         (instance.at.angle ?? 0) !== 0 ||
         instance.mirror ||
-        instance.libraryId !== `CrystalShim_Mains:Mains_${ref}`
+        instance.libraryId !==
+          (/^J[2-4]$/.test(ref)
+            ? `CrystalShim_Mains:Mains_${ref}_Terminal`
+            : `CrystalShim_Mains:Mains_${ref}`)
       )
         throw new Error("Mains cleanup symbol identity or orientation changed");
       seen.add(ref);
@@ -122,8 +125,8 @@ export function applyMainsSchematicCleanupForInitialExport(
       }
     }
   }
-  if (seen.size !== 22 || allPins.length !== 60)
-    throw new Error("Mains cleanup requires all 60 logical symbol pins");
+  if (seen.size !== 22 || allPins.length !== 53)
+    throw new Error("Mains cleanup requires all 53 logical symbol pins");
   const markers = mainsExpectedNc.map((id) => {
     const p = allPins.find((pin) => `${pin.ref}.${pin.number}` === id);
     if (

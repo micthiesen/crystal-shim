@@ -1,3 +1,4 @@
+import { ServicePowerHeader } from "./service-power-header";
 // A compiler/visual review of actual part models, never a product-board export.
 import { mkdir } from "node:fs/promises";
 import { Fragment } from "react";
@@ -7,7 +8,7 @@ import { ControllerBuck, RelayMosfet, SensorBusBuffer } from "./ic-components";
 import { PowerSchottky, UsbEsdProtection } from "./protection-components";
 import { ControllerCapacitor, ControllerResistor } from "./passive-components";
 import { BuckInductor, ControllerButton, StatusLed } from "./assembly-components";
-import { PsuHeader, SensorHeader, ServiceHeader } from "./micro-fit-components";
+import { PsuHeader, SensorHeader } from "./micro-fit-components";
 import { UsbConnector } from "./usb-connector";
 import { ServiceEfuse, BidirectionalSupplyTvs } from "./service-protection-components";
 import {
@@ -22,7 +23,7 @@ const circuit = new Circuit();
 circuit.add(
   <board width={140} height={170} routingDisabled>
     <SensorHeader name="J1" pcbX={-50} pcbY={42} schX={-50} schY={25} />
-    <ServiceHeader name="J2" pcbX={-25} pcbY={42} schX={-25} schY={25} />
+    <ServicePowerHeader name="J2" pcbX={-25} pcbY={42} schX={-25} schY={25} />
     <PsuHeader name="J3" pcbX={0} pcbY={42} schX={0} schY={25} />
     <UsbConnector name="J4" pcbX={25} pcbY={42} schX={25} schY={25} />
     <silkscreenrect pcbX={25} pcbY={42} width={8.94} height={7.35} />

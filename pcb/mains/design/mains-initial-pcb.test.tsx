@@ -16,9 +16,9 @@ test("complete initial mains graph combines datums, PTH mask, connector shapes a
   expect(input).toEqual(unchanged);
   expect(board.footprints).toHaveLength(26);
   const pads = board.footprints.flatMap((fp) => fp.fpPads);
-  expect(pads.filter((p) => p.number)).toHaveLength(75);
+  expect(pads.filter((p) => p.number)).toHaveLength(53);
   expect(pads.filter((p) => p.padType === "np_thru_hole")).toHaveLength(6);
-  expect(pads.filter((p) => p.padType === "thru_hole")).toHaveLength(53);
+  expect(pads.filter((p) => p.padType === "thru_hole")).toHaveLength(31);
   expect(pads.filter((p) => p.padType === "smd")).toHaveLength(22);
   for (const pad of pads) {
     if (pad.number) expect(pad.solderMaskMargin).toBe(0.05);

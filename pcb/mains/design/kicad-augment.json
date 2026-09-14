@@ -30,8 +30,8 @@
         "library": "CrystalShim_Mains",
         "mapping": "Mains_<exact manifest reference>",
         "reason": "Preserve source-derived physical geometry through native FootprintSave/FootprintLoad; no stock substitution.",
-        "verification": "Exact source/native geometry, all 75 numbered lands (53 PTH/22 SMT), six NPTHs, nets and poses; register source-derived library through guarded Konnect.",
-        "status": "Stacked-layout ECO: retain all pad geometries and reference IDs; update J1-J4 right-angle body/courtyard/value/MPN and native library definitions."
+        "verification": "Exact source/native geometry, all 53 numbered lands (31 PTH/22 SMT), six NPTHs, nets and poses; register source-derived library through guarded Konnect.",
+        "status": "Stacked-layout ECO: retain unrelated geometry and reference IDs; replace J1-J4 with two-pin Phoenix1868076 screw terminals and update native library definitions."
       }
     },
     {
@@ -197,7 +197,7 @@
         "requirements": [
           "Maintain the separate 8/3.2 mm isolation and primary rules.",
           "Use short VIN bypass and SW-inductor-output-capacitor loops; FB senses after L1.",
-          "Join both Sabre tails; size F1/F3 branch routes and MOV loops for their real current and pulse duties.",
+          "Use both fixed screw-terminal pins; size F1/F3 branch routes and MOV loops for their real current and pulse duties.",
           "Motor return joins U1 return without sharing the buck/logic return path."
         ],
         "verification": "Saved routes, net classes and current/return review.",
@@ -255,12 +255,12 @@
           2.9
         ],
         "requirements": [
-          "Preserve U1.1/K1.1/D1.1 square lands, paired Sabre tails, J5/J6 rounded pin1 and locator geometry.",
-          "All 53 PTH and six NPTH remain free of paste; 22 SMT masks retain 0.05 mm allowance.",
+          "Preserve U1.1/K1.1/D1.1 square lands, two used pins per fixed terminal, J5/J6 rounded pin1 and locator geometry.",
+          "All 31 PTH and six NPTH remain free of paste; 22 SMT masks retain 0.05 mm allowance.",
           "Preserve RV1 plated slot and confirm final 3.2 mm different-net margin after fabrication tolerances."
         ],
         "verification": "Saved pad shape/layer/drill/mask/paste and slot readback, native DRC plus fabrication CAM review.",
-        "status": "Native readback complete: numbered pads 0.05 mm mask; 53 PTH and six NPTH without paste; RV1 pad2 3.7 x 1.3 mm plated slot inside 5.3 x 2.9 mm copper."
+        "status": "Native readback complete: numbered pads 0.05 mm mask; 31 PTH and six NPTH without paste; RV1 pad2 3.7 x 1.3 mm plated slot inside 5.3 x 2.9 mm copper."
       }
     },
     {
@@ -272,7 +272,7 @@
         "requirements": [
           "Mark primary/isolated regions, J1 T2A fused input, F3 T1A branch/J2 filter LINE, J3 filter LOAD, J4 switched pump, J5 5V/coil and J6 12V motor feed.",
           "Show pin1, line/neutral, D1 cathode and positive/return. Label F2 3A and both internal 12V harness ends.",
-          "Unused connector cavities are not PE; keep text clear of copper and holes."
+          "All four mains terminals use exactly two positions, line and neutral; mark that PE bypasses the board and keep text clear of copper and holes."
         ],
         "verification": "Complete front/back render and final Gerber/assembly inspection; native silk/text DRC.",
         "status": "Applied native final-preparation ECO; labels verified through saved readback and ordinary DRC.",
@@ -303,7 +303,7 @@
             82
           ],
           [
-            "1 L   2 N   3 NC",
+            "1 L   2 N",
             44,
             84
           ],
@@ -318,7 +318,7 @@
             130
           ],
           [
-            "1 L  2 N  3-4 NC",
+            "1 L   2 N",
             47,
             132
           ],
@@ -328,7 +328,7 @@
             130
           ],
           [
-            "1 L  2 N  3-6 NC",
+            "1 L   2 N",
             101,
             135
           ],
@@ -353,7 +353,7 @@
             131
           ],
           [
-            "NC CAVITIES ARE NOT PE",
+            "PE BYPASSES BOARD",
             85,
             151
           ]
@@ -375,7 +375,7 @@
         ],
         "allowed_initial_semantic_differences": [],
         "requirements": [
-          "Preserve four sheets, 22 exact parts, 60 logical pins, 14 nets, 53 connected endpoints and seven unused Sabre NCs.",
+          "Preserve four sheets, 22 exact parts, 53 logical pins, 14 nets, 53 connected endpoints and zero NCs.",
           "Register 22 per-reference symbols plus PWR_FLAG, preserving exact electrical types and fields. U2 AP63205 has six connected pins.",
           "Only #FLG0201 at U1 AC_N and #FLG0202 at U1 AC_L_FUSED; exclude from physical/BOM outputs.",
           "Preserve wire/label/pin/NC incidence and 1.27 mm grid; inspect every full page before clean native ERC."
@@ -520,7 +520,223 @@
           ]
         },
         "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove floating islands. Both layers retain isolated ground only.",
-        "status": "Apply through native API and fill; verify saved zone connectivity/DRC."
+        "status": "Apply through native API and fill; verify saved zone connectivity/DRC.",
+        "connector_eco": {
+          "basis": "Phoenix 1868076 single-tail replacement: exactly one physical pad per electrical number. Resize .0 rule area to saved pad bounding box inflated by routing-policy.json; remove obsolete dual-tail .1 rule area. Copper planes, vias and all unrelated rules/areas stay unchanged.",
+          "resized": [
+            {
+              "uuid": "a10ad736-80bb-408b-a91f-4de21a8417d9",
+              "name": "Neck AC_L_FUSED J1.1.0",
+              "outline_mm": [
+                [
+                  38.25,
+                  62.25
+                ],
+                [
+                  43.75,
+                  62.25
+                ],
+                [
+                  43.75,
+                  67.75
+                ],
+                [
+                  38.25,
+                  67.75
+                ]
+              ]
+            },
+            {
+              "uuid": "2fb50dd4-4526-408d-9738-a4618dd0e9bd",
+              "name": "Neck AC_N J1.2.0",
+              "outline_mm": [
+                [
+                  38.25,
+                  69.87
+                ],
+                [
+                  43.75,
+                  69.87
+                ],
+                [
+                  43.75,
+                  75.37
+                ],
+                [
+                  38.25,
+                  75.37
+                ]
+              ]
+            },
+            {
+              "uuid": "ee47fafc-e02d-464c-8b43-d231f7866bae",
+              "name": "Neck AC_N J2.2.0",
+              "outline_mm": [
+                [
+                  38.25,
+                  96.87
+                ],
+                [
+                  43.75,
+                  96.87
+                ],
+                [
+                  43.75,
+                  102.37
+                ],
+                [
+                  38.25,
+                  102.37
+                ]
+              ]
+            },
+            {
+              "uuid": "33f31123-4e68-4dd1-866e-8f3d00a73c88",
+              "name": "Neck FILTER_LINE_L J2.1.0",
+              "outline_mm": [
+                [
+                  38.25,
+                  89.25
+                ],
+                [
+                  43.75,
+                  89.25
+                ],
+                [
+                  43.75,
+                  94.75
+                ],
+                [
+                  38.25,
+                  94.75
+                ]
+              ]
+            },
+            {
+              "uuid": "94a9071c-6dad-4a92-9c3f-f84e47907524",
+              "name": "Neck PUMP_L_FILTERED J3.1.0",
+              "outline_mm": [
+                [
+                  43.25,
+                  138.25
+                ],
+                [
+                  48.75,
+                  138.25
+                ],
+                [
+                  48.75,
+                  143.75
+                ],
+                [
+                  43.25,
+                  143.75
+                ]
+              ]
+            },
+            {
+              "uuid": "e29035e7-3795-4085-8596-51674079afc8",
+              "name": "Neck PUMP_N_FILTERED J3.2.0",
+              "outline_mm": [
+                [
+                  50.87,
+                  138.25
+                ],
+                [
+                  56.37,
+                  138.25
+                ],
+                [
+                  56.37,
+                  143.75
+                ],
+                [
+                  50.87,
+                  143.75
+                ]
+              ]
+            },
+            {
+              "uuid": "00719d07-acee-47b2-bdb3-5ae51cf132d9",
+              "name": "Neck PUMP_N_FILTERED J4.2.0",
+              "outline_mm": [
+                [
+                  105.87,
+                  138.25
+                ],
+                [
+                  111.37,
+                  138.25
+                ],
+                [
+                  111.37,
+                  143.75
+                ],
+                [
+                  105.87,
+                  143.75
+                ]
+              ]
+            },
+            {
+              "uuid": "4e8555e7-2349-4a69-be14-d90c21d34aae",
+              "name": "Neck PUMP_L_SW J4.1.0",
+              "outline_mm": [
+                [
+                  98.25,
+                  138.25
+                ],
+                [
+                  103.75,
+                  138.25
+                ],
+                [
+                  103.75,
+                  143.75
+                ],
+                [
+                  98.25,
+                  143.75
+                ]
+              ]
+            }
+          ],
+          "removed": [
+            {
+              "uuid": "24226bb4-2ded-41e3-857e-885ea7ebfd9c",
+              "name": "Neck AC_L_FUSED J1.1.1"
+            },
+            {
+              "uuid": "6dcfd6e6-ae6c-485d-93e6-706f557ff063",
+              "name": "Neck AC_N J1.2.1"
+            },
+            {
+              "uuid": "919ee4e9-f8ee-4839-b758-44f34254dde0",
+              "name": "Neck AC_N J2.2.1"
+            },
+            {
+              "uuid": "09f3a72d-2641-42f0-8a6b-689937b7509a",
+              "name": "Neck FILTER_LINE_L J2.1.1"
+            },
+            {
+              "uuid": "643f9c8d-fd82-4477-9ace-25266f7124da",
+              "name": "Neck PUMP_L_FILTERED J3.1.1"
+            },
+            {
+              "uuid": "233dd1aa-8ab1-4143-91eb-7dbd24f3d38e",
+              "name": "Neck PUMP_N_FILTERED J3.2.1"
+            },
+            {
+              "uuid": "4d0095a0-0a23-4671-90d1-798b405244c4",
+              "name": "Neck PUMP_N_FILTERED J4.2.1"
+            },
+            {
+              "uuid": "d277cf5c-d7fb-4bf8-a2fd-e52d5d94491f",
+              "name": "Neck PUMP_L_SW J4.1.1"
+            }
+          ],
+          "receipt": "docs/design/evidence/connector-eco/mains/escape-zone-application.json"
+        }
       }
     },
     {

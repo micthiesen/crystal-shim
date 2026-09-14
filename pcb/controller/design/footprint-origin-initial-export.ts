@@ -1,3 +1,4 @@
+import { servicePowerHeaderPattern } from "./service-power-header";
 import type { CircuitJson } from "circuit-json";
 import { wroomPattern } from "./esp32-c6-wroom";
 import { buttonPattern, statusLedPattern } from "./assembly-components";
@@ -19,6 +20,7 @@ const patterns: Readonly<Record<string, OriginPattern>> = {
   "43650-0300": psuHeaderPattern,
   "43045-0600": sensorHeaderPattern,
   "43045-0200": serviceHeaderPattern,
+  "S2B-XH-A": servicePowerHeaderPattern,
 };
 
 // Controller registry only; the shared matcher preserves its original behavior.

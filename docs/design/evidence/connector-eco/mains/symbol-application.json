@@ -1,0 +1,263 @@
+[
+  {
+    "name": "load_toolset",
+    "arguments": {
+      "name": "library"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\n  \"loaded\": \"library\",\n  \"tools\": [\n    {\n      \"description\": \"Create a new footprint (.kicad_mod) file from a pad layout description.\",\n      \"name\": \"create_footprint\"\n    },\n    {\n      \"description\": \"Edit the size, shape, or position of a pad in an existing .kicad_mod footprint file.\",\n      \"name\": \"edit_footprint_pad\"\n    },\n    {\n      \"description\": \"Register a local footprint library directory in the KiCAD global or project library table.\",\n      \"name\": \"register_footprint_library\"\n    },\n    {\n      \"description\": \"List all registered footprint libraries (global and optionally project-level).\",\n      \"name\": \"list_footprint_libraries\"\n    },\n    {\n      \"description\": \"Create a new KiCAD schematic symbol and append it to a .kicad_sym library file. Supports single-unit symbols (via `pins`) and multi-unit parts like dual/quad op-amps or gate banks (via `units` + optional `common_pins`). Each unit gets a rectangular body sized to its pins.\",\n      \"name\": \"create_symbol\"\n    },\n    {\n      \"description\": \"Delete a symbol definition from a .kicad_sym library file.\",\n      \"name\": \"delete_symbol\"\n    },\n    {\n      \"description\": \"List all symbol names defined in a .kicad_sym library file.\",\n      \"name\": \"list_symbols_in_library\"\n    },\n    {\n      \"description\": \"Register a .kicad_sym library file in the KiCAD global or project symbol table.\",\n      \"name\": \"register_symbol_library\"\n    },\n    {\n      \"description\": \"List all registered symbol libraries (global and optionally project-level).\",\n      \"name\": \"list_symbol_libraries\"\n    },\n    {\n      \"description\": \"Search for symbols across all registered libraries by name or keyword.\",\n      \"name\": \"search_symbols\"\n    },\n    {\n      \"description\": \"List all footprints in a specific registered footprint library (.pretty directory).\",\n      \"name\": \"list_library_footprints\"\n    },\n    {\n      \"description\": \"Return detailed information about a footprint: pad layout, courtyard, description.\",\n      \"name\": \"get_footprint_info\"\n    },\n    {\n      \"description\": \"Search for footprints across all registered libraries by name or keyword.\",\n      \"name\": \"search_footprints\"\n    },\n    {\n      \"description\": \"Return detailed information about a schematic symbol: pins, properties, description.\",\n      \"name\": \"get_symbol_info\"\n    }\n  ],\n  \"tools_added\": 14\n}",
+          "type": "text"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "name": "load_toolset",
+    "arguments": {
+      "name": "sch_components"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\n  \"loaded\": \"sch_components\",\n  \"tools\": [\n    {\n      \"description\": \"Create a new blank .kicad_sch schematic file.\",\n      \"name\": \"create_schematic\"\n    },\n    {\n      \"description\": \"Add a symbol from a KiCAD library to the schematic. The symbol is snapped to the 1.27mm schematic grid. Specify position in schematic mm coordinates.\",\n      \"name\": \"add_schematic_component\"\n    },\n    {\n      \"description\": \"Remove a symbol instance from the schematic by its reference designator.\",\n      \"name\": \"delete_schematic_component\"\n    },\n    {\n      \"description\": \"Update fields (Reference, Value, Footprint, custom properties) of a symbol instance.\",\n      \"name\": \"edit_schematic_component\"\n    },\n    {\n      \"description\": \"Get all properties, position, and pin locations for a symbol instance.\",\n      \"name\": \"get_schematic_component\"\n    },\n    {\n      \"description\": \"List all symbol instances in a schematic with their positions, values, footprints, and pin locations.\",\n      \"name\": \"list_schematic_components\"\n    },\n    {\n      \"description\": \"Move a symbol to a new position. Does NOT adjust connected wires.\",\n      \"name\": \"move_schematic_component\"\n    },\n    {\n      \"description\": \"Rotate a symbol by setting its absolute rotation angle (0/90/180/270).\",\n      \"name\": \"rotate_schematic_component\"\n    },\n    {\n      \"description\": \"Move a symbol and stretch/shrink connected wire stubs to preserve connections.\",\n      \"name\": \"move_connected\"\n    },\n    {\n      \"description\": \"Move all symbols within a bounding box by a given offset.\",\n      \"name\": \"move_region\"\n    },\n    {\n      \"description\": \"Run kicad-cli to auto-assign reference designators (R? \u2192 R1, U? \u2192 U1, etc.).\",\n      \"name\": \"annotate_schematic\"\n    },\n    {\n      \"description\": \"Get the exact schematic-space (X,Y) coordinates of every pin on a symbol, accounting for rotation and mirroring. Uses the canonical pin transform.\",\n      \"name\": \"get_schematic_pin_locations\"\n    },\n    {\n      \"description\": \"Get pin locations for multiple components in a single file read.\",\n      \"name\": \"batch_get_schematic_pin_locations\"\n    },\n    {\n      \"description\": \"Add a custom property (annotation) to a symbol instance in the schematic.\",\n      \"name\": \"add_component_annotation\"\n    },\n    {\n      \"description\": \"Add a group property to multiple components in the schematic.\",\n      \"name\": \"group_components\"\n    },\n    {\n      \"description\": \"Replace a component's lib_id with a new library symbol (swap the component type).\",\n      \"name\": \"replace_component\"\n    },\n    {\n      \"description\": \"Render the schematic to a PNG image (base64-encoded) via kicad-cli.\",\n      \"name\": \"get_schematic_view\"\n    }\n  ],\n  \"tools_added\": 17\n}",
+          "type": "text"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "name": "load_toolset",
+    "arguments": {
+      "name": "sch_batch"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\n  \"loaded\": \"sch_batch\",\n  \"tools\": [\n    {\n      \"description\": \"Connect multiple component pins to a named net by adding net labels at each pin endpoint. Single file read \u2192 all labels inserted \u2192 single file write.\",\n      \"name\": \"batch_connect_to_net\"\n    },\n    {\n      \"description\": \"Delete multiple schematic items (wires, labels, junctions, components) by UUID or component reference designator \u2014 single file write.\",\n      \"name\": \"batch_delete\"\n    },\n    {\n      \"description\": \"Move multiple components by a uniform dx/dy offset in a single atomic file write.\",\n      \"name\": \"bulk_move_schematic_components\"\n    },\n    {\n      \"description\": \"Apply field updates (Value, Footprint, custom properties) to multiple components in a single atomic file write.\",\n      \"name\": \"batch_edit_schematic_components\"\n    },\n    {\n      \"description\": \"Delete multiple components by reference designator in a single atomic file write.\",\n      \"name\": \"batch_delete_schematic_components\"\n    },\n    {\n      \"description\": \"Add a wire stub and matching net label at a point to route a signal through a region without drawing a full wire path. Direction controls stub orientation.\",\n      \"name\": \"connect_passthrough\"\n    },\n    {\n      \"description\": \"Add a text annotation (non-net label) to the schematic at a given position.\",\n      \"name\": \"add_schematic_text\"\n    },\n    {\n      \"description\": \"Return a compact spatial summary of the schematic: component positions, bounding box, and optionally wire segments and label locations.\",\n      \"name\": \"get_schematic_layout\"\n    },\n    {\n      \"description\": \"Check all wire endpoints for floating ends (not connected to a pin, label, or another wire). Reports each floating endpoint with its coordinates.\",\n      \"name\": \"validate_wire_connections\"\n    },\n    {\n      \"description\": \"Check that every non-passive pin on every component has at least one wire or label connected. Reports unconnected pins with reference, pin number, and schematic position.\",\n      \"name\": \"validate_component_connections\"\n    }\n  ],\n  \"tools_added\": 10\n}",
+          "type": "text"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "name": "load_toolset",
+    "arguments": {
+      "name": "sch_wiring"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\n  \"loaded\": \"sch_wiring\",\n  \"tools\": [\n    {\n      \"description\": \"Add a wire segment between two points. The wire must be horizontal or vertical. T-junctions are automatically detected and junction dots inserted.\",\n      \"name\": \"add_wire\"\n    },\n    {\n      \"description\": \"Add multiple wire segments in a single file read/write cycle.\",\n      \"name\": \"batch_add_wire\"\n    },\n    {\n      \"description\": \"Delete a wire segment by its UUID, or by matching BOTH endpoints (all four of x1/y1/x2/y2, either direction). Fails without deleting anything when no wire matches.\",\n      \"name\": \"delete_schematic_wire\"\n    },\n    {\n      \"description\": \"Delete multiple wire segments in a single file read/write cycle.\",\n      \"name\": \"batch_delete_schematic_wire\"\n    },\n    {\n      \"description\": \"Split a wire at a given point, creating two wire segments and a junction.\",\n      \"name\": \"split_wire_at_point\"\n    },\n    {\n      \"description\": \"Add a net label to the schematic. Type can be 'net_label', 'global_label', or 'hierarchical_label'.\",\n      \"name\": \"add_schematic_net_label\"\n    },\n    {\n      \"description\": \"Delete a net label by net name and position.\",\n      \"name\": \"delete_schematic_net_label\"\n    },\n    {\n      \"description\": \"Rotate a net label to a new angle and update its justify direction accordingly.\",\n      \"name\": \"rotate_schematic_label\"\n    },\n    {\n      \"description\": \"Move all labels matching a net name by a given X/Y offset.\",\n      \"name\": \"move_labels_by_offset\"\n    },\n    {\n      \"description\": \"Rotate multiple labels by net name in a single file read/write cycle.\",\n      \"name\": \"batch_rotate_labels\"\n    },\n    {\n      \"description\": \"Add a power symbol (VCC, GND, etc.) to the schematic. Auto-numbers the internal #PWR reference.\",\n      \"name\": \"add_power_symbol\"\n    },\n    {\n      \"description\": \"Add a no-connect flag (X marker) to an unconnected pin endpoint.\",\n      \"name\": \"add_no_connect\"\n    },\n    {\n      \"description\": \"Remove a no-connect flag at a given position.\",\n      \"name\": \"delete_no_connect\"\n    },\n    {\n      \"description\": \"Delete multiple no-connect flags in a single file read/write cycle.\",\n      \"name\": \"batch_delete_no_connect\"\n    },\n    {\n      \"description\": \"Add a junction dot at a point where wires cross or T-intersect.\",\n      \"name\": \"add_junction\"\n    },\n    {\n      \"description\": \"Add multiple junction dots in a single file read/write cycle.\",\n      \"name\": \"batch_add_junction\"\n    },\n    {\n      \"description\": \"Connect a pin endpoint to a named net by adding a short wire stub and a net label.\",\n      \"name\": \"connect_to_net\"\n    },\n    {\n      \"description\": \"Connect two component pins by reference and pin number. Looks up pin coordinates automatically and routes a wire between them.\",\n      \"name\": \"connect_pins\"\n    },\n    {\n      \"description\": \"Connect two schematic points directly with a wire (auto-routes H+V segments). Use connect_pins if you have component references instead of coordinates.\",\n      \"name\": \"add_schematic_connection\"\n    }\n  ],\n  \"tools_added\": 19\n}",
+          "type": "text"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "name": "create_symbol",
+    "arguments": {
+      "library_path": "/tmp/crystal-connectors-mains-sch/CrystalShim_Mains.kicad_sym",
+      "name": "Mains_J2_Terminal",
+      "reference_prefix": "J",
+      "value": "1868076",
+      "units": [
+        {
+          "pins": [
+            {
+              "number": "1",
+              "name": "LINE",
+              "type": "passive",
+              "x": -44.45,
+              "y": 1.27,
+              "angle": 0.0,
+              "length": 6.096
+            },
+            {
+              "number": "2",
+              "name": "NEUTRAL",
+              "type": "passive",
+              "x": -44.45,
+              "y": -1.27,
+              "angle": 0.0,
+              "length": 6.096
+            }
+          ]
+        }
+      ]
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\n  \"library\": \"/tmp/crystal-connectors-mains-sch/CrystalShim_Mains.kicad_sym\",\n  \"power_pin_count\": 0,\n  \"success\": true,\n  \"symbol\": \"Mains_J2_Terminal\",\n  \"unit_count\": 1\n}",
+          "type": "text"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "name": "replace_component",
+    "arguments": {
+      "schematic": "/tmp/crystal-connectors-mains-sch/primary.kicad_sch",
+      "reference": "J2",
+      "new_lib_id": "CrystalShim_Mains:Mains_J2_Terminal"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\n  \"new_lib_id\": \"CrystalShim_Mains:Mains_J2_Terminal\",\n  \"old_lib_id\": \"CrystalShim_Mains:Mains_J2\",\n  \"reference\": \"J2\",\n  \"unit\": null\n}",
+          "type": "text"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "name": "create_symbol",
+    "arguments": {
+      "library_path": "/tmp/crystal-connectors-mains-sch/CrystalShim_Mains.kicad_sym",
+      "name": "Mains_J3_Terminal",
+      "reference_prefix": "J",
+      "value": "1868076",
+      "units": [
+        {
+          "pins": [
+            {
+              "number": "1",
+              "name": "LINE",
+              "type": "passive",
+              "x": -43.18,
+              "y": 1.27,
+              "angle": 0.0,
+              "length": 5.9871
+            },
+            {
+              "number": "2",
+              "name": "NEUTRAL",
+              "type": "passive",
+              "x": -43.18,
+              "y": -1.27,
+              "angle": 0.0,
+              "length": 5.9871
+            }
+          ]
+        }
+      ]
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\n  \"library\": \"/tmp/crystal-connectors-mains-sch/CrystalShim_Mains.kicad_sym\",\n  \"power_pin_count\": 0,\n  \"success\": true,\n  \"symbol\": \"Mains_J3_Terminal\",\n  \"unit_count\": 1\n}",
+          "type": "text"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "name": "replace_component",
+    "arguments": {
+      "schematic": "/tmp/crystal-connectors-mains-sch/primary.kicad_sch",
+      "reference": "J3",
+      "new_lib_id": "CrystalShim_Mains:Mains_J3_Terminal"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\n  \"new_lib_id\": \"CrystalShim_Mains:Mains_J3_Terminal\",\n  \"old_lib_id\": \"CrystalShim_Mains:Mains_J3\",\n  \"reference\": \"J3\",\n  \"unit\": null\n}",
+          "type": "text"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "name": "create_symbol",
+    "arguments": {
+      "library_path": "/tmp/crystal-connectors-mains-sch/CrystalShim_Mains.kicad_sym",
+      "name": "Mains_J4_Terminal",
+      "reference_prefix": "J",
+      "value": "1868076",
+      "units": [
+        {
+          "pins": [
+            {
+              "number": "1",
+              "name": "LINE",
+              "type": "passive",
+              "x": -43.18,
+              "y": 1.27,
+              "angle": 0.0,
+              "length": 5.9559
+            },
+            {
+              "number": "2",
+              "name": "NEUTRAL",
+              "type": "passive",
+              "x": -43.18,
+              "y": -1.27,
+              "angle": 0.0,
+              "length": 5.9559
+            }
+          ]
+        }
+      ]
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\n  \"library\": \"/tmp/crystal-connectors-mains-sch/CrystalShim_Mains.kicad_sym\",\n  \"power_pin_count\": 0,\n  \"success\": true,\n  \"symbol\": \"Mains_J4_Terminal\",\n  \"unit_count\": 1\n}",
+          "type": "text"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "name": "replace_component",
+    "arguments": {
+      "schematic": "/tmp/crystal-connectors-mains-sch/primary.kicad_sch",
+      "reference": "J4",
+      "new_lib_id": "CrystalShim_Mains:Mains_J4_Terminal"
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\n  \"new_lib_id\": \"CrystalShim_Mains:Mains_J4_Terminal\",\n  \"old_lib_id\": \"CrystalShim_Mains:Mains_J4\",\n  \"reference\": \"J4\",\n  \"unit\": null\n}",
+          "type": "text"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "name": "batch_delete",
+    "arguments": {
+      "schematic": "/tmp/crystal-connectors-mains-sch/primary.kicad_sch",
+      "uuids": [
+        "1ebab122-6952-4e41-9ef0-379cb474eb64",
+        "3f903026-1470-47dd-8cc1-2e28fcaef804",
+        "699cccaa-4913-49ea-a526-06ad1287d4e4",
+        "8a1ce736-bc80-4271-8907-1c939afc0e48",
+        "aaac45a7-f473-433b-bfc7-737757380d47",
+        "c9f167bb-4376-47ec-9a63-714c5bdf1c6d",
+        "e9edadec-c4ef-4206-9820-16a2c777a9c4"
+      ]
+    },
+    "result": {
+      "content": [
+        {
+          "text": "{\n  \"deleted\": [\n    \"1ebab122-6952-4e41-9ef0-379cb474eb64\",\n    \"3f903026-1470-47dd-8cc1-2e28fcaef804\",\n    \"699cccaa-4913-49ea-a526-06ad1287d4e4\",\n    \"8a1ce736-bc80-4271-8907-1c939afc0e48\",\n    \"aaac45a7-f473-433b-bfc7-737757380d47\",\n    \"c9f167bb-4376-47ec-9a63-714c5bdf1c6d\",\n    \"e9edadec-c4ef-4206-9820-16a2c777a9c4\"\n  ],\n  \"deleted_count\": 7,\n  \"errors\": []\n}",
+          "type": "text"
+        }
+      ],
+      "isError": false
+    }
+  }
+]

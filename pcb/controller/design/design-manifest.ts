@@ -255,8 +255,8 @@ export function createControllerManifest(json: CircuitJson) {
       };
     })
     .sort((a, b) => a.stable_id.localeCompare(b.stable_id));
-  if (holes.length !== 14 || new Set(holes.map((h) => h.stable_id)).size !== 14)
-    throw new Error("Expected fourteen individually identified controller NPTHs");
+  if (holes.length !== 13 || new Set(holes.map((h) => h.stable_id)).size !== 13)
+    throw new Error("Expected thirteen individually identified controller NPTHs");
   const mechanical = controllerMountingHoles.map((hole) => ({
     stable_id: controllerComponentId(hole.ref),
     ref: hole.ref,

@@ -1,74 +1,66 @@
-# Mains Sabre header capture basis
+# Mains terminal capture basis
 
-The current stacked board uses right-angle Molex Sabre headers. Exact source
-models in [mains-headers.tsx](../../pcb/mains/design/mains-headers.tsx) preserve
-both tails of every circuit, including unused blades. J1/J2 mate outward to the
-left; J3/J4 mate outward from the lower edge. See [placement](mains-placement.md).
+J1–J4 each use **Phoenix Contact 1868076, MKDS 5/2-7,62**, a fixed
+side-entry screw terminal block with two used positions. This replaces the
+2/3/4/6-position Sabre scheme, its seven unused circuits and repeated solder
+tails. There are no pluggable mains housings or separate crimp contacts.
+J1/J2 face outward left; J3/J4 face outward from the lower edge.
 
-The authority is Molex **431600001-SD PSD000 A1**, released 2020-05-26,
-**sheets 3/4/5** for the right-angle parts. The [official drawing](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/431/43160/431600106_sd.pdf)
-was recovered from a [manufacturer drawing mirror](https://www.megastar.com/content/pdfs/431601102_sd.pdf).
-SHA-256: `249d83521d452abfae030237405456be0e05ec06e08c629489d60fa035962fa7`.
-The right-angle outline and PCB hole drawing were visually inspected. Sheets 1/2
-and previous vertical-header occupancy studies do not define these body envelopes.
+## Electrical assignments
 
-## Parts and circuit mapping
+| Ref | Function | Pin 1 | Pin 2 |
+| --- | --- | --- | --- |
+| J1 | INPUT | AC_L_FUSED | AC_N |
+| J2 | FILTER IN | FILTER_LINE_L | AC_N |
+| J3 | FILTER OUT | PUMP_L_FILTERED | PUMP_N_FILTERED |
+| J4 | PUMP | PUMP_L_SW | PUMP_N_FILTERED |
 
-| Ref | Header | Cable housing | Circuits / tails | Connected circuits | Empty cable cavities |
-| --- | --- | --- | --- | --- | --- |
-| J1 | 43160-1102 | 44441-2002 | 2 / 4 | 1 AC_L_FUSED; 2 AC_N | none |
-| J2 | 43160-1103 | 44441-2003 | 3 / 6 | 1 FILTER_LINE_L; 2 AC_N | 3 |
-| J3 | 43160-1104 | 44441-2004 | 4 / 8 | 1 PUMP_L_FILTERED; 2 PUMP_N_FILTERED | 3, 4 |
-| J4 | 43160-1106 | 44441-2006 | 6 / 12 | 1 PUMP_L_SW; 2 PUMP_N_FILTERED | 3, 4, 5, 6 |
+F3 separates AC_L_FUSED from FILTER_LINE_L. PE bypasses these terminals and
+remains continuous. Each circuit has one plated solder tail: eight circuits
+and eight tails total, all connected. The board totals are 53 logical pins,
+53 numbered lands (31 PTH, 22 SMT), 14 nets and 53 connected endpoints, with
+no NC pins. The circuit and protection topology are unchanged.
 
-Use 43375-2001 cable contacts and molded cavity numbering. F3 separates
-AC_L_FUSED from FILTER_LINE_L. PE bypasses every header and remains continuous.
-The selected short-tail parts have no board locks. No optional board-lock holes
-are present. Different pole counts alone do not prove protection against partial
-or incorrect mating.
+Fixed wiring removes the old unproven cross-mating scheme. It still requires
+correct assembly: mark terminal function and L/N on the board and both wire ends,
+keep filter LINE and LOAD pairs apart, then check continuity before energizing.
+No mains connection is interchangeable by intended function.
 
-There are 15 logical circuits and 30 plated tails: 16 connected tails and 14
-unused tails. Each used blade has two same-net lands that must both be connected
-and soldered. Unused metal remains subject to the primary separation rules.
+## Drawing and footprint
 
-## Land pattern
+Authority: [Phoenix product page](https://www.phoenixcontact.com/en-us/products/pcb-terminal-block-mkds-5-2-762-1868076)
+and [manufacturer product PDF](https://www.phoenixcontact.com/us/products/1868076/pdf).
+The retained drawing source is a [manufacturer PDF mirror](https://static.chipdip.ru/lib/954/DOC034954716.pdf),
+SHA-256 `ada027e88b46d2245ef499b6a4ed4edcb2eb3bfa147cb4703733281099163a01`.
 
-Local component coordinates are X right, Y down, with the origin at circuit 1's
-front tail. Mating is toward positive Y. Circuit n has X=(n−1)×7.493 mm and two
-identically numbered tails at Y=−3.18 and 0 mm. Source placement transforms Y once
-into tscircuit's upward axis. The signed transforms are tested at all cardinal
-rotations.
+- Pin pitch: 7.62 mm; drill: 1.3 mm; copper land diameter: 3.5 mm.
+- Body: 15.24 × 12.5 mm; height above PCB: 21.5 mm.
+- Pin row: 4.6 mm from the rear. Native pin 1 is the datum, pin 2 is
+  (+7.62, 0), body centre is (+3.81, +1.65), and wire entry faces native +Y.
+- Source and native models retain these datums, not the old Sabre dimensions.
 
-Finished drill is **1.78 ±0.08 mm**; row pitch is **3.18 ±0.13 mm**; circuit pitch
-is **7.493 ±0.13 mm**, non-accumulative. The project uses **3.50 mm circular copper**,
-which is a project land choice rather than a manufacturer-specified diameter.
-Minimum annulus with a 1.86 mm finished hole is 0.82 mm. Adjacent-circuit nominal
-copper clearance is 3.993 mm, or 3.863 mm at minimum pitch before process and
-solder allowances. Same-circuit circles overlap 0.32 mm intentionally. PTHs have
-no paste; native mask allowance and circuit-1 markings are retained.
+See [source models](../../pcb/mains/design/mains-headers.tsx),
+[footprint audit](footprint-audit.md) and [placement](mains-placement.md).
 
-## Body and mating allocation
+## Wire termination and service access
 
-| Circuits | Nominal width | Maximum width |
-| --- | ---: | ---: |
-| 2 | 21.08 mm | 21.41 mm |
-| 3 | 28.58 mm | 28.91 mm |
-| 4 | 36.07 mm | 36.40 mm |
-| 6 | 51.05 mm | 51.38 mm |
+The manufacturer specifies **8 mm strip length** and **0.5–0.6 N·m tightening
+torque**. Its connection range is AWG 24–10; flexible conductors are
+0.2–4 mm² and ferruled conductors 0.25–4 mm². Retain the selected 18 AWG
+mains wiring. Support the terminal body or housing during tightening so torque
+does not load the solder pins. Verify received wire and termination against the
+exact manufacturer instructions; do not leave exposed strands outside the entry.
+The cULus use-group B rating is 300 V / 30 A; this does not raise the project's
+2 A inlet or 1 A pump-branch limits or establish final assembly insulation.
 
-Right-angle shroud depth is **14.76 ±0.10 mm**. The height allocation is
-**13.67 mm**, including the 11.53 ±0.15 mm body and 1.86 ±0.13 mm latch projection.
-Short solder tails are **3.81 ±0.28 mm**. Drawing sheets 3/4 bound the body pose
-using 19.78 ±0.38 mm overall depth, the tail rows and 13.13 mm board-lock datum.
+Retain **35 mm outward wiring access**. The top screw heads require removal of
+the controller and insulating separator with mains disconnected. These are
+assembly/service terminals, not quick-disconnect plugs accessible under the
+installed controller. Their 21.5 mm height fits inside the existing 30.5 mm
+lower-board supply envelope; no enclosure reserve geometry change is needed.
+Keep the terminal screws, stripped wire, solder joints and routing within the
+3.2 mm different-primary-net and 8 mm primary-to-SELV separation requirements.
 
-The source reserves local Y=**−4.25..17.25 mm**, including rear tails and assembly
-allowance, with the drawing's maximum width. This conservative whole-header
-allocation governs courtyard and mount checks. The mated housing has a **17 mm
-height allocation**; allow **35 mm beyond the board edge** for outward mating,
-latch release and wiring. Final cable construction must fit those reserves.
-
-The native footprints and schematic fields use the exact right-angle part codes.
-Source tests retain every pad, net, rotation and mounting reservation; native DRC
-checks actual copper separation. Courtyards describe occupancy, not insulation.
-Complete routed and assembled clearance, solder, thermal and cable checks remain
-part of fabrication review and commissioning.
+The current acceptance receipt is linked from [STATE](../STATE.md). Historical
+Sabre and enclosure receipts do not validate these terminals. Routing, fabricated
+clearance and physical assembly/commissioning remain separate acceptance stages.

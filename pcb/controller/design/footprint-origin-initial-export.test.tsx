@@ -1,3 +1,4 @@
+import { ServicePowerHeader } from "./service-power-header";
 import { expect, test } from "bun:test";
 import type { CircuitJson } from "circuit-json";
 import { Circuit } from "tscircuit";
@@ -5,7 +6,7 @@ import { CircuitJsonToKicadPcbConverter } from "circuit-json-to-kicad";
 import { At, parseKicadPcb } from "kicadts";
 import { Esp32C6Wroom } from "./esp32-c6-wroom";
 import { ControllerButton, StatusLed } from "./assembly-components";
-import { PsuHeader, SensorHeader, ServiceHeader } from "./micro-fit-components";
+import { PsuHeader, SensorHeader } from "./micro-fit-components";
 import { prepareFootprintOriginsForInitialExport } from "./footprint-origin-initial-export";
 
 const refs = ["U1", "J1", "J2", "J3", "D4", "SW1"];
@@ -21,7 +22,7 @@ async function gallery(rotation: number) {
     <board width={210} height={65} pcbRelative routingDisabled>
       <Esp32C6Wroom name="U1" {...placement(0)} />
       <PsuHeader name="J1" {...placement(1)} />
-      <ServiceHeader name="J2" {...placement(2)} />
+      <ServicePowerHeader name="J2" {...placement(2)} />
       <SensorHeader name="J3" {...placement(3)} />
       <StatusLed name="D4" {...placement(4)} />
       <ControllerButton name="SW1" {...placement(5)} />
@@ -107,7 +108,7 @@ for (const rotation of [0, 90, 180, 270]) {
       };
       const oldGeometry = geometry(previous);
       const newGeometry = geometry(footprint);
-      expect(newGeometry.length).toBe([50, 17, 16, 20, 15, 17][index]);
+      expect(newGeometry.length).toBe([50, 17, 15, 20, 15, 17][index]);
       expect(newGeometry.length).toBe(oldGeometry.length);
       for (const [i, point] of newGeometry.entries()) {
         expect(point.x).toBeCloseTo(oldGeometry[i]!.x, 7);

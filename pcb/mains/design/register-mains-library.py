@@ -29,8 +29,8 @@ EXPECTED_PINS = {
     **{f"C{i}": {"1", "2"} for i in range(1, 8)},
     "R1": {"1", "2"}, "L1": {"1", "2"}, "F2": {"1", "2"}, "F3": {"1", "2"},
     "D1": {"1", "2"}, "RV1": {"1", "2"},
-    "J1": {"1", "2"}, "J2": {"1", "2", "3"},
-    "J3": {"1", "2", "3", "4"}, "J4": {str(i) for i in range(1, 7)},
+    "J1": {"1", "2"}, "J2": {"1", "2"},
+    "J3": {"1", "2"}, "J4": {"1", "2"},
     "J5": {"1", "2", "3"}, "J6": {"1", "2"}, "K1": {"1", "3", "4", "5"},
     "U1": {"1", "2", "3", "4"}, "U2": {str(i) for i in range(1, 7)},
     **{f"H{i}": set() for i in range(1, 5)},
@@ -86,13 +86,12 @@ def validate_mains_manifest(manifest: dict) -> None:
                 or len(component["footprint"]["pad_numbers"]) != len(EXPECTED_PINS[ref])
                 or set(component["footprint"]["pad_numbers"]) != EXPECTED_PINS[ref]):
             raise ValueError(f"{ref}: exact mains component or pin identity changed")
-        if EXPECTED_PINS[ref] and component.get("symbol") != f"{LIBRARY}:Mains_{ref}":
+        if EXPECTED_PINS[ref] and component.get("symbol") != f"{LIBRARY}:Mains_{ref}" + ("_Terminal" if ref in {"J2", "J3", "J4"} else ""):
             raise ValueError(f"{ref}: exact mains symbol identity changed")
 
 
 def validate_native_pad_numbers(ref: str, numbers: list[str]) -> None:
-    expected = [number for number in EXPECTED_PINS[ref]
-                for _ in range(2 if ref in {"J1", "J2", "J3", "J4"} else 1)]
+    expected = list(EXPECTED_PINS[ref])
     if ref in {"H1", "H2", "H3", "H4", "J5", "J6"}:
         expected.append("")
     if sorted(numbers) != sorted(expected):

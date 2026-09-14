@@ -1,3 +1,4 @@
+import { servicePowerHeaderPattern } from "./service-power-header";
 import { expect, test } from "bun:test";
 import { buttonPattern, statusLedPattern, statusLedPins } from "./assembly-components";
 import {
@@ -13,6 +14,7 @@ import {
 import { usbConnectorPattern, usbConnectorPinMap } from "./usb-connector";
 
 const ids = [
+  servicePowerHeaderPattern.id,
   sensorHeaderPattern.id,
   serviceHeaderPattern.id,
   psuHeaderPattern.id,
@@ -21,7 +23,7 @@ const ids = [
   buttonPattern.id,
 ];
 
-test("declarations bind the six selected native IDs and preserve document provenance", () => {
+test("declarations bind the selected native IDs and preserve document provenance", () => {
   expect(Object.keys(connectorPhysicalModels).sort()).toEqual([...ids].sort());
   expect(Object.keys(connectorMechanicalConstraints).sort()).toEqual([...ids].sort());
   for (const id of ids) {

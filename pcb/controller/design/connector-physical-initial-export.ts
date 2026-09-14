@@ -1,3 +1,4 @@
+import { servicePowerHeaderPattern } from "./service-power-header";
 import type { FootprintPad, KicadPcb } from "kicadts";
 import { At } from "kicadts";
 import {
@@ -11,6 +12,10 @@ import { connectorPhysicalModels } from "./connector-physical-models";
 import type { ThtPattern } from "./tht-footprint";
 
 const thtModels: Record<string, { part: string; pattern: ThtPattern }> = {
+  [servicePowerHeaderPattern.id]: {
+    part: "S2B-XH-A",
+    pattern: servicePowerHeaderPattern,
+  },
   [sensorHeaderPattern.id]: { part: "43045-0600", pattern: sensorHeaderPattern },
   [serviceHeaderPattern.id]: { part: "43045-0200", pattern: serviceHeaderPattern },
   [psuHeaderPattern.id]: { part: "43650-0300", pattern: psuHeaderPattern },

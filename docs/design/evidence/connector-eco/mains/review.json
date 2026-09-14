@@ -1,0 +1,11 @@
+{
+  "validation": "349b74b678be58eab9fd317cdb348d0d7f0f870b0d0944b678bea93778a56409",
+  "reviewer": "Codex root; independent electrical and native preservation review by connector_selection and controller_service",
+  "scopes": {
+    "visual_contract": "Inspected current primary schematic and final board composite. Four two-position side-entry terminal bodies fit unchanged board placement and access allocations; obsolete NC silk replaced, L/N labels and PE bypass visible.",
+    "schematics": "Strict ERC zero findings and exact source/native net, pin and field parity pass. Seven unused pins and their NC flags removed; all eight live connector endpoints retain original polarity. Native library normalization resolves cache field mismatch.",
+    "placement_and_copper": "Independent native review confirms unrelated footprints, copper, vias and rules preserved. Eight connector escape regions resized to actual pad bounds plus policy allowance; eight old tail areas removed. Existing corresponding custom-rule entries are inactive without areas and cause no DRC findings. Complete preparation audit passes; 31 expected unrouted connections.",
+    "assembly_and_process": "Phoenix 1868076 manufacturer drawing supports pitch, drill, body and side-entry direction. Fixed wire termination avoids interchangeable mains plugs; each connector uses both positions. Hand solder after reflow; strip8mm and torque0.5-0.6Nm. Top screwdriver access requires removing controller/separator with mains disconnected. PE remains off-board; physical assembly and final routed fabrication remain future gates."
+  },
+  "unresolved_findings": []
+}

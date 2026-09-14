@@ -215,7 +215,7 @@ def export(args: argparse.Namespace) -> Path:
             pad.SetNetCode(0)
         plans.append((ref, name, source_id, clone, footprint_snapshot(clone, pcbnew)))
     total_pads = sum(bool(p.GetNumber()) for fp in footprints for p in fp.Pads())
-    require(total_pads == 75, "Expected all 75 numbered physical lands, including repeated pads")
+    require(total_pads == 53, "Expected all 53 numbered physical lands")
     require(sum(p.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH for fp in footprints for p in fp.Pads()) == 6,
             "Expected four mounting and two connector NPTHs")
     require(registration.tree_hashes(stage) == before_files and stage_identity == (stage.stat().st_dev, stage.stat().st_ino),

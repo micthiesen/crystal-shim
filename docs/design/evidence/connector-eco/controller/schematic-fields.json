@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "schematic": "/tmp/crystal-connectors-native/controller/expansion-source/service.kicad_sch",
+  "before_sha256": "74104d61d3e521e73acc8fb4f4d8e065b5f0b8cc3e65d18b964e03971ab139f6",
+  "after_sha256": "59c51fc6b73a864225667066326088e8d31caa29194cce37ee08a0a6923ca877",
+  "edits": [
+    {
+      "reference": "J2",
+      "fields": {
+        "Value": "S2B-XH-A",
+        "MPN": "S2B-XH-A",
+        "Datasheet": "https://www.jst.com/wp-content/uploads/2025/06/eXH.pdf"
+      }
+    }
+  ],
+  "konnect": {
+    "server": {
+      "name": "konnect",
+      "version": "0.2.1"
+    },
+    "result": {
+      "errors": [],
+      "updated": [
+        {
+          "changes": [
+            "Datasheet \u2192 https://www.jst.com/wp-content/uploads/2025/06/eXH.pdf",
+            "MPN \u2192 S2B-XH-A",
+            "Value \u2192 S2B-XH-A"
+          ],
+          "reference": "J2"
+        }
+      ],
+      "updated_count": 1
+    }
+  },
+  "semantic_preservation": true,
+  "native_net_connectivity_preserved": true
+}

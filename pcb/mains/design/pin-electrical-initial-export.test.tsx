@@ -102,7 +102,7 @@ function fresh(normalize = true) {
   return { json, sheets };
 }
 
-test("all 22 parts and 60 logical pins receive component ERC semantics, only in libraries", () => {
+test("all 22 parts and 53 logical pins receive component ERC semantics, only in libraries", () => {
   const { json, sheets } = fresh();
   const sourceBefore = structuredClone(json);
   const before = sheets.map((s) => s.getString());
@@ -110,8 +110,8 @@ test("all 22 parts and 60 logical pins receive component ERC semantics, only in 
   expect(sheets).toHaveLength(4);
   expect(applyMainsPinTypesForInitialExport(json, sheets)).toEqual({
     components: 22,
-    logicalPins: 60,
-    libraryPins: 60,
+    logicalPins: 53,
+    libraryPins: 53,
   });
   const expectedActive = {
     "U1.1": "power_in",
@@ -167,7 +167,7 @@ test("exact shared parts reuse controller contracts and source names match every
     (e) => e.type === "source_component" && e.ftype === "simple_chip",
   );
   expect(chips).toHaveLength(13);
-  expect(Object.keys(mainsChipElectricalContracts)).toHaveLength(13);
+  expect(Object.keys(mainsChipElectricalContracts)).toHaveLength(10);
   for (const chip of chips) {
     const contract = mainsChipElectricalContracts[chip.manufacturer_part_number!]!;
     const sourcePins = source
@@ -187,7 +187,7 @@ test("valid extra cached copies on other sheets are all typed", () => {
   const extra = cloneLibrary(librariesFor(sheets, "U1")[0]!);
   const last = sheetFor(sheets, "D1");
   last.libSymbols!.symbols = [...last.libSymbols!.symbols, extra];
-  expect(applyMainsPinTypesForInitialExport(json, sheets).libraryPins).toBe(64);
+  expect(applyMainsPinTypesForInitialExport(json, sheets).libraryPins).toBe(57);
   expect(pins(extra).map((p) => p.pinElectricalType)).toEqual([
     "power_in",
     "power_in",
@@ -221,7 +221,7 @@ test("source, instance and late cache drift fail without partial typing", () => 
       sourcePort(j, "K1", 5).pin_number = 2;
     },
     "source NC": (j) => {
-      sourcePort(j, "J4", 6).do_not_connect = false;
+      sourcePort(j, "J4", 2).do_not_connect = true;
     },
     "source net": (j) => {
       const n = j.find((e) => e.type === "source_net")!;

@@ -25,7 +25,7 @@ Start with 2 mm 5 V/12 V power routes, 3 mm for shared motor-feed/return trunks,
 and 0.3 mm short buck lead escapes widening immediately. Ordinary isolated signal
 clearance is 0.15 mm. Primary routes start at 2 mm; J1/MOV surge paths at 3 mm
 where pads allow. These are layout allocations, not a fuse-clearing qualification.
-Join both tails of each Sabre blade. Preserve 8 mm primary-to-isolated and 3.2 mm
+Solder the single PTH tail of each primary terminal circuit. Preserve 8 mm primary-to-isolated and 3.2 mm
 different-primary-net gaps after copper fill. Keep F2 motor feed and its return
 sized for the actual startup current without interpreting the fuse as a current limiter.
 

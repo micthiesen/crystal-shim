@@ -1,3 +1,4 @@
+import { servicePowerHeaderDatasheet } from "./service-power-header";
 import {
   controllerCapacitors,
   controllerResistors,
@@ -14,6 +15,7 @@ import { usbConnectorPattern } from "./usb-connector";
 // Exact source metadata lost by the pinned Circuit JSON serialization. Reuse
 // the selected model evidence where available; never infer a datasheet by family.
 export const controllerDatasheets: Readonly<Record<string, string>> = {
+  "S2B-XH-A": servicePowerHeaderDatasheet,
   ...Object.fromEntries(
     [...Object.values(controllerResistors), ...Object.values(precisionResistors)].map(
       (part) => [part.mpn, part.pattern.source.url],

@@ -32,6 +32,15 @@ test("controller schematic preserves power separation, hardware permission and b
   const traces = json.filter((e) => e.type === "source_trace");
   expect(components).toHaveLength(113);
   expect(new Set(components.map((e) => e.name)).size).toBe(113);
+  // A service cable must not fit a 12 V port; changing the shared Micro-Fit
+  // helper would silently replace the pump supply/output headers too.
+  expect(components.find((e) => e.name === "J2")!.manufacturer_part_number).toBe(
+    "S2B-XH-A",
+  );
+  for (const ref of ["J6", "J7", "J8", "J9"])
+    expect(components.find((e) => e.name === ref)!.manufacturer_part_number).toBe(
+      "43045-0200",
+    );
   expect(new Set(nets.map((e) => e.name)).size).toBe(nets.length);
   expect(json.filter((e) => e.type === "schematic_sheet")).toHaveLength(9);
   const initialGraphs = createControllerInitialGraphs(json);

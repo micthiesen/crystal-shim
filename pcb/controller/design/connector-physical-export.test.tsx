@@ -1,9 +1,10 @@
+import { ServicePowerHeader } from "./service-power-header";
 import { expect, test } from "bun:test";
 import { Circuit } from "tscircuit";
 import { CircuitJsonToKicadPcbConverter } from "circuit-json-to-kicad";
 import { At, parseKicadPcb } from "kicadts";
 import { applyConnectorPhysicalForInitialExport } from "./connector-physical-initial-export";
-import { SensorHeader, ServiceHeader, PsuHeader } from "./micro-fit-components";
+import { SensorHeader, PsuHeader } from "./micro-fit-components";
 import { StatusLed, ControllerButton } from "./assembly-components";
 import { UsbConnector } from "./usb-connector";
 import {
@@ -53,36 +54,27 @@ const cases: { ref: string; body: Outline; court: Outline; lands: Land[] }[] = [
   },
   {
     ref: "J2",
-    body: { center: { x: 0, y: -3.965 }, width: 7.15, height: 9.91 },
-    court: { center: { x: 0, y: -2.675 }, width: 8.9, height: 14.15 },
+    body: { center: { x: 1.25, y: 3.45 }, width: 7.4, height: 11.5 },
+    court: { center: { x: 1.25, y: 3.45 }, width: 9.4, height: 13.5 },
     lands: [
       {
         number: "1",
         x: 0,
         y: 0,
-        width: 1.5,
-        height: 1.5,
-        drill: [1.02, 1.02],
+        width: 1.7,
+        height: 2,
+        drill: [1, 1],
         shape: "roundrect",
         radius: 0.25,
       },
       {
         number: "2",
-        x: 0,
-        y: 3,
-        width: 1.5,
-        height: 1.5,
-        drill: [1.02, 1.02],
-        shape: "circle",
-      },
-      {
-        number: "",
-        x: 0,
-        y: -4.32,
-        width: 3,
-        height: 3,
-        drill: [3, 3],
-        shape: "circle",
+        x: 2.5,
+        y: 0,
+        width: 1.7,
+        height: 2,
+        drill: [1, 1],
+        shape: "oval",
       },
     ],
   },
@@ -255,7 +247,7 @@ async function gallery(rotation: number) {
   circuit.add(
     <board width={210} height={60} pcbRelative routingDisabled>
       <SensorHeader name="J1" {...placement(0)} />
-      <ServiceHeader name="J2" {...placement(1)} />
+      <ServicePowerHeader name="J2" {...placement(1)} />
       <PsuHeader name="J3" {...placement(2)} />
       <UsbConnector
         name="J4"
@@ -303,7 +295,7 @@ for (const rotation of [0, 90, 180, 270]) {
         const ref = fp.properties.find((p) => p.key === "Reference")?.value;
         if (["J1", "J2", "J3"].includes(ref ?? "") && pad.number === "1") {
           pad.shape = "roundrect";
-          pad.roundrectRatio = 1 / 6;
+          pad.roundrectRatio = ref === "J2" ? 0.25 / 1.7 : 1 / 6;
         }
       }
     }

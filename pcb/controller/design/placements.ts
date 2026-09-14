@@ -24,7 +24,7 @@ export const controllerPlacements = {
   L1: { pcbX: -12, pcbY: 5, pcbRotation: 0 },
   C3: { pcbX: -5.3, pcbY: 5, pcbRotation: 0 },
   C4: { pcbX: -5.3, pcbY: 0.5, pcbRotation: 0 },
-  J2: { pcbX: -21, pcbY: -41, pcbRotation: 180 },
+  J2: { pcbX: -21, pcbY: -41, pcbRotation: 0 },
   C20: { pcbX: -8.7, pcbY: -38, pcbRotation: 0 },
   C21: { pcbX: -12, pcbY: -34.9, pcbRotation: 0 },
   U1: { pcbX: 20.2, pcbY: 45.25, pcbRotation: 0 },

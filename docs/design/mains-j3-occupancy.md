@@ -1,7 +1,8 @@
 # J3 mated housing bound
 
 Historical vertical-J3/old-enclosure occupancy study, superseded by the
-right-angle J3 and [stacked mechanical layout](../mechanical.md). Numeric bounds
+two-position Phoenix Contact 1868076 fixed J3 terminal and
+[stacked mechanical layout](../mechanical.md). Numeric bounds
 below must not be applied to the current board.
 
 The manufacturer drawings support a **conditional housing-plastic south bound

@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-13",
+  "scope": "connector ECO, accepted for routing",
+  "checks": {
+    "full_project": {
+      "command": "sh scripts/check.sh",
+      "passed": true,
+      "log_sha256": "2fe7b620e744b207e79eab137e77c8e2c4e631467931293570d08b6f9bb8113c"
+    },
+    "routing": {
+      "command": "sh scripts/check-routing.sh",
+      "passed": true,
+      "unconnected": {
+        "controller": 166,
+        "mains": 31,
+        "sensor": 21
+      }
+    },
+    "final_native": {
+      "controller": {
+        "acceptance": "c7cacedeeaaa7c0b0be07b48aba03c1f91bfe028e4d174b938d638b88ce0f2e7",
+        "validation": "526761f98848a7adb39ad589b8f247289fce1e0a7a93f8ad51d82bfc5facc2d7",
+        "review": "832745bf78ffa16ffb4ea2c50c098a14db68108a30f93d8e1128a741ba978743"
+      },
+      "mains": {
+        "acceptance": "285846a769eaccf43cf1eb3df79f01c96833ac1484c39ce11ce0fc7cabc43d5e",
+        "validation": "349b74b678be58eab9fd317cdb348d0d7f0f870b0d0944b678bea93778a56409",
+        "review": "e04f2f718cb90b4f7d085f8e584c150b8b4177b5fbd0bf4d920f686490f9a0e8"
+      }
+    }
+  },
+  "physical_commissioning": "not performed; routing/fabrication and assembled acceptance remain distinct"
+}

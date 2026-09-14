@@ -2,7 +2,7 @@ import { beforeAll, expect, test } from "bun:test";
 import type { CircuitJson } from "circuit-json";
 import { Circuit } from "tscircuit";
 import { CircuitJsonToKicadPcbConverter } from "circuit-json-to-kicad";
-import { At, Layer, PadNet, Property, parseKicadPcb, type KicadPcb } from "kicadts";
+import { At, Layer, Property, parseKicadPcb, type KicadPcb } from "kicadts";
 import { PsuHeader, ServiceHeader } from "../../controller/design/micro-fit-components";
 import MainsCircuit from "./mains.circuit";
 import { MainsHeader } from "./mains-headers";
@@ -61,26 +61,26 @@ function verifyMaskOnly(board: KicadPcb) {
       changed++;
     }
   }
-  expect(changed).toBe(48);
+  expect(changed).toBe(26);
   applyMainsPhysicalForInitialExport(board);
-  // Whitelist only the 48 margins. This checks all UUIDs, nets, pad centres,
+  // Whitelist only the 26 margins. This checks all UUIDs, nets, pad centres,
   // angles, sizes, drills, layers, shapes, outlines and unrelated graph state.
   expect(board.getString()).toBe(expected.getString());
   applyMainsPhysicalForInitialExport(board);
   expect(board.getString()).toBe(expected.getString());
 }
 
-test("complete mains conversion restores exactly 48 PTH masks and preserves every other native field", () => {
+test("complete mains conversion restores exactly 26 PTH masks and preserves every other native field", () => {
   const sourceSnapshot = JSON.stringify(completeSource);
   const board = convert(completeSource);
   expect(board.footprints).toHaveLength(26);
   const pads = board.footprints.flatMap((fp) => fp.fpPads);
-  expect(pads.filter((pad) => pad.number)).toHaveLength(75);
-  expect(pads.filter((pad) => pad.padType === "thru_hole")).toHaveLength(53);
+  expect(pads.filter((pad) => pad.number)).toHaveLength(53);
+  expect(pads.filter((pad) => pad.padType === "thru_hole")).toHaveLength(31);
   expect(pads.filter((pad) => pad.padType === "np_thru_hole")).toHaveLength(6);
   verifyMaskOnly(board);
   expect(JSON.stringify(completeSource)).toBe(sourceSnapshot);
-  expect(completeSource.filter((e) => e.type === "pcb_solder_paste")).toHaveLength(118);
+  expect(completeSource.filter((e) => e.type === "pcb_solder_paste")).toHaveLength(74);
   for (const pad of pads.filter((p) => p.padType !== "smd"))
     expect(pad.layers?.layers.some((layer) => layer.endsWith(".Paste"))).toBe(false);
   expect(
@@ -90,11 +90,10 @@ test("complete mains conversion restores exactly 48 PTH masks and preserves ever
     expect(footprint(board, ref).fpPads.find((p) => p.number === "1")!.shape).toBe(
       "rect",
     );
-  const unusedTails = ["J2", "J3", "J4"].flatMap((ref) =>
+  const unusedTerminals = ["J2", "J3", "J4"].flatMap((ref) =>
     footprint(board, ref).fpPads.filter((pad) => Number(pad.number) > 2),
   );
-  expect(unusedTails).toHaveLength(14);
-  expect(unusedTails.every((pad) => pad.net === undefined)).toBe(true);
+  expect(unusedTerminals).toHaveLength(0);
   const mov = footprint(board, "RV1");
   expect(mov.fpLines.filter((line) => line.layer?.names.includes("F.Fab"))).toEqual([]);
   expect(mov.fpPolys.filter((poly) => poly.layer?.names.includes("F.Fab"))).toEqual([]);
@@ -159,19 +158,12 @@ const lands: Record<string, Land[]> = {
     ["2", 30.48, 0, 1.1, 2.5, 2.5, "circle"],
   ],
   ...Object.fromEntries(
-    ([2, 3, 4, 6] as const).map((count, i) => [
-      `J${i + 1}`,
-      Array.from({ length: count }, (_, n) =>
-        [-3.18, 0].map((y): Land => [
-          String(n + 1),
-          n * 7.493,
-          y,
-          1.78,
-          3.5,
-          3.5,
-          "circle",
-        ]),
-      ).flat(),
+    [1, 2, 3, 4].map((i) => [
+      `J${i}`,
+      [
+        ["1", 0, 0, 1.3, 3.5, 3.5, "circle"],
+        ["2", 7.62, 0, 1.3, 3.5, 3.5, "circle"],
+      ] as Land[],
     ]),
   ),
   U1: [
@@ -391,27 +383,21 @@ test("mains physical adapter rejects geometry, identity and paste drift before a
       },
     ],
     [
-      "missing unused Sabre tail",
+      "missing terminal pin",
       (b) => {
         const fp = footprint(b, "J4");
         fp.fpPads = fp.fpPads.slice(0, -1);
       },
     ],
     [
-      "duplicated Sabre tail",
+      "overlapping terminal pins",
       (b) => {
         const pads = footprint(b, "J4").fpPads;
         pads[1]!.at = pads[0]!.at;
       },
     ],
     [
-      "Sabre tail nets differ",
-      (b) => {
-        footprint(b, "J4").fpPads[1]!.net = new PadNet(999, "WRONG_NET");
-      },
-    ],
-    [
-      "Sabre pin 1 is round",
+      "terminal pin 1 shape changed",
       (b) => {
         footprint(b, "J4").fpPads[0]!.shape = "rect";
       },

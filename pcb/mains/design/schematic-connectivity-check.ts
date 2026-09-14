@@ -35,9 +35,9 @@ export const mainsExpectedPins = {
   F3: [1, 2],
   F2: [1, 2],
   J1: [1, 2],
-  J2: [1, 2, 3],
-  J3: [1, 2, 3, 4],
-  J4: [1, 2, 3, 4, 5, 6],
+  J2: [1, 2],
+  J3: [1, 2],
+  J4: [1, 2],
   J5: [1, 2, 3],
   J6: [1, 2],
   K1: [1, 3, 4, 5],
@@ -47,7 +47,7 @@ export const mainsExpectedPins = {
   U1: [1, 2, 3, 4],
   U2: [1, 2, 3, 4, 5, 6],
 } as const;
-export const mainsExpectedNc = ["J2.3", "J3.3", "J3.4", "J4.3", "J4.4", "J4.5", "J4.6"];
+export const mainsExpectedNc: string[] = [];
 
 const expectedByPin = new Map<string, string>(
   Object.entries(mainsExpectedNets).flatMap(([net, pins]) =>
@@ -76,7 +76,7 @@ export function mainsSchematicConnectivityErrors(json: CircuitJson): string[] {
     new Set(parts.map((p) => p.source_component_id)).size !== parts.length
   )
     errors.push("Mains component identities changed");
-  if (ports.length !== 60 || new Set(ports.map((p) => p.source_port_id)).size !== 60)
+  if (ports.length !== 53 || new Set(ports.map((p) => p.source_port_id)).size !== 53)
     errors.push("Mains port identities changed");
   if (
     !same(
@@ -162,7 +162,7 @@ export function assertMainsInitialPadNets(board: KicadPcb) {
       fp.properties.filter((p) => p.key === "Reference").length !== 1
     )
       throw new Error(`${ref}: native identity changed`);
-    const multiplicity = /^J[1-4]$/.test(ref) ? 2 : 1;
+    const multiplicity = 1;
     const numbered = fp.fpPads.filter((p) => p.number);
     if (
       !same(

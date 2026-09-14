@@ -173,9 +173,9 @@ for (const rotation of [0, 90, 180, 270]) {
         old.fpPads.map((p) => p.drill?.getString()),
       );
     }
-    // 49 numbered through-hole lands, including both tails on all 15 blades,
-    // plus J5's one locator. No duplicate pad may disappear during normalization.
-    expect(native.footprints.flatMap((fp) => fp.fpPads)).toHaveLength(55);
+    // All 27 numbered through-hole lands and six connector locator/mount holes
+    // survive normalization.
+    expect(native.footprints.flatMap((fp) => fp.fpPads)).toHaveLength(33);
   });
 }
 

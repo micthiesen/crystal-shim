@@ -34,8 +34,10 @@ resistors use 1% ERJ parts; the PSU supervisor divider retains precision ERA par
 - TCA9517ADGKR and ESDS312DBVR are captured for each of the two sensor ports.
   Both buffer supplies are 3.3 V, cable on A and ESP on B. Shared sensor power
   retains TPS2553DBVR, with separate passive branch filtering.
-- Molex 43045-0200 motor and service headers share a family but different voltage
-  functions. Assembly labels and pin-1 polarity must match the wiring drawing.
+- Molex 43045-0200 headers serve the 12 V feed and motor outputs. Controller
+  service J2 uses JST S2B-XH-A with XHP-2 housing and SXH-001T-P0.6 contacts,
+  making the 5 V interface physically distinct. Both service pins are used.
+  Assembly labels and pin-1 polarity must match the wiring drawing.
   Two 43045-0600 headers on the controller share one electrical sensor pinout;
   the tank sensor uses six numbered solder lands for its pigtail instead of a
   header. 43650-0300 carries the 5 V/return/coil harness.
@@ -57,9 +59,10 @@ B32921C3473K000 is the 47 nF X2 snubber capacitor; PR02FS0201000KA100 is its
 100 ohm flameproof resistor. Formed leads and installed bodies must fit the
 captured assembly envelope. 1N4007-E3/54 is the relay-coil flyback diode.
 
-The four right-angle Sabre headers are individually 43160-1102, -1103, -1104 and -1106.
-Their 7.493 mm pitch and unused metal are part of the mains spacing review;
-unused mating cavities do not remove header copper. Refer to the
+J1–J4 each use a Phoenix Contact 1868076 fixed side-entry screw terminal block.
+Each has two used pins at 7.62 mm pitch, with 1.3 mm holes and 3.5 mm copper
+lands. There are no unused contacts or cable housings. The body is
+15.24 × 12.5 × 21.5 mm. Refer to the
 [mains design basis](mains-design-basis.md) and actual manufacturer drawings.
 
 ## Sensor

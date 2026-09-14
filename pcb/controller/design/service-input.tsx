@@ -1,5 +1,5 @@
 import { controllerPlacements } from "./placements";
-import { ServiceHeader } from "./micro-fit-components";
+import { ServicePowerHeader } from "./service-power-header";
 import { ControllerCapacitor } from "./passive-components";
 
 // Known 5 V adapter, fused in its service lead. Mains-disconnected servicing only.
@@ -7,7 +7,7 @@ import { ControllerCapacitor } from "./passive-components";
 export function ControllerServiceInput() {
   return (
     <group name="ServiceInput" schSheetName="Service">
-      <ServiceHeader
+      <ServicePowerHeader
         name="J2"
         {...controllerPlacements.J2}
         schX={-4}

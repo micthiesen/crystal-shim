@@ -214,8 +214,8 @@ def export(args: argparse.Namespace) -> Path:
         plans.append((ref, name, source_id, clone, footprint_snapshot(clone, pcbnew)))
     total_pads = sum(bool(p.GetNumber()) for fp in footprints for p in fp.Pads())
     require(total_pads == 332, "Expected all 332 numbered physical lands, including repeated pads")
-    require(sum(p.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH for fp in footprints for p in fp.Pads()) == 14,
-            "Expected four mounting and five connector NPTHs")
+    require(sum(p.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH for fp in footprints for p in fp.Pads()) == 13,
+            "Expected four mounting and nine connector NPTHs")
 
     output.mkdir(parents=True, exist_ok=False)
     library = output / "CrystalShim_Controller.pretty"

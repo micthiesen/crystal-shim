@@ -239,12 +239,21 @@ export const chipElectricalContracts: Readonly<Record<string, ChipElectricalCont
       basis:
         "Molex passive connector; external power-source declarations belong to the board harness contract, not to the connector symbol.",
     },
+    "S2B-XH-A": {
+      pins: pins([
+        ["POSITIVE", "passive"],
+        ["RETURN", "passive"],
+      ]),
+      basis:
+        "JST passive two-position service connector; external 5 V service supply is separately declared.",
+    },
     "43045-0200": {
       pins: pins([
         ["POSITIVE", "passive"],
         ["RETURN", "passive"],
       ]),
-      basis: "Molex passive connector; external service supply is separately declared.",
+      basis:
+        "Molex passive connector; 12 V source and pump switched returns belong to the board harness contract.",
     },
     "43045-0600": {
       pins: pins([

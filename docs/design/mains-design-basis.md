@@ -177,10 +177,13 @@ filter's current rating. Keep LINE and LOAD pairs apart. The OASE CrystalSkim350
 Commission actual current, starts and relay opening behavior; 4 W/120 V is only
 unity-power-factor current, not a fuse-selection measurement.
 
-J1/J2/J3/J4 use right-angle Molex Sabre headers **43160-1102/-1103/-1104/-1106**, respective
-**44441-2002/-2003/-2004/-2006** housings and **43375-2001** contacts. Circuits 1/2
-are line/neutral; higher-numbered metal blades remain intentionally unconnected.
-Retain both solder tails on every blade and all occupied-metal clearance rules.
+J1/J2/J3/J4 each use **Phoenix Contact 1868076, MKDS 5/2-7,62**, a fixed
+side-entry screw terminal with two used circuits: 1=line, 2=neutral. There are
+no unused pins, pluggable housings or separate crimp contacts. Each circuit has
+one solder tail. See the [terminal capture basis](mains-header-capture.md) for
+geometry and assembly instructions. Label both ends of each wire by function;
+fixed wiring removes the old unproven cross-mating scheme but still requires
+correct assembly and continuity checks.
 Keep the selected Schurter inlet/cord, insulated TE 2-520184-2 Faston terminals,
 Americord 1112.048.005350 output pigtail and Heyco M3231 gland described in the
 [harness specification](../electrical.md). Do not alter the pump's original cord.
@@ -196,8 +199,8 @@ all-layer routed clearances and final temperature still need native/assembly rev
 
 ## Capture and acceptance
 
-Source capture contains 22 electrical parts, 60 logical pins, 75 numbered lands
-(53 PTH, 22 SMT), 14 named nets, 53 connected endpoints, seven deliberate NCs,
+Source capture contains 22 electrical parts, 53 logical pins, 53 numbered lands
+(31 PTH, 22 SMT), 14 named nets, 53 connected endpoints, no NC pins,
 and six NPTHs. See [placement](mains-placement.md),
 [thermal/stencil](mains-thermal-stencil.md) and [native handoff](mains-native-handoff.md).
 The source and in-memory converter checks do not establish a routed clearance,

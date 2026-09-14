@@ -4,7 +4,9 @@ The simplified service connection is for setup and calibration with household
 mains disconnected. It is not an alternate motor supply. Do not live-mate the
 service lead or use arbitrary simultaneous power sources.
 
-J2 is the existing two-position Molex 43045-0200: pin 1 is positive regulated 5 V,
+J2 is a two-position JST S2B-XH-A right-angle header, mating XHP-2 housing
+with two SXH-001T-P0.6 contacts. It is physically distinct from the two-position
+Micro-Fit 12 V feed and pump ports. Pin 1 is positive regulated 5 V,
 pin 2 is isolated ground. C20 (1 µF) and C21 (100 nF) bypass the input. D2
 (STPS2L40U) feeds V5_LOGIC through the existing diode OR; D1 remains the mains-board
 5 V input. The service supply does not feed the relay coil or 12 V motor rail.
@@ -31,4 +33,12 @@ specify parts to populate on this revision. See the
 Service rail allocation: 4.75 V adapter minimum − 0.19 V fuse maximum at 2 A
 − 0.09 V harness/contact allowance − 0.45 V OR diode = 4.02 V, above the
 3.9 V logic budget. The holder’s 16 AWG leads require insulated splices to the
-Micro-Fit-compatible lead; do not force them into smaller crimp contacts.
+JST XH-compatible 22 AWG lead; do not force them into smaller crimp contacts.
+
+The [JST XH drawing](https://www.jst.com/wp-content/uploads/2025/06/eXH.pdf)
+specifies S2B-XH-A, XHP-2 and SXH-001T-P0.6 (AWG 28–22). Use 22 AWG at
+the service connector; its 3 A rating accommodates the retained 2 A fused lead.
+Splice the holder’s 16 AWG leads to the compatible 22 AWG wire. XH uses friction
+retention; it does not provide the Micro-Fit positive latch. The right-angle
+header exits the existing lower service edge. Its 7.4 mm width, 11.5 mm full
+depth including the rear extension and 6.1 mm height fit the service allocation.

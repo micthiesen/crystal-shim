@@ -5,7 +5,7 @@ lower board has 26 footprints and **31 unrouted connections**. Strict ERC,
 schematic parity and ordinary DRC pass. Four 3.2 mm NPTH mounts are inset 7 mm
 and align with the controller, with 45 mm clear board-face separation.
 
-J1–J4 use the reviewed right-angle Sabre footprints. All 106 previous owner-routed
+J1–J4 use Phoenix 1868076 two-position side-entry screw terminals, with both positions used. All 106 previous owner-routed
 tracks were cleared as authorized. Eleven ground vias, isolated F.Cu/B.Cu pours,
 mounting/barrier exclusions, netclasses and bounded pad-escape rules are applied.
 The saved two-layer stack totals 1.6 mm.
@@ -17,6 +17,7 @@ inheritance disabled; narrow segments belong only inside their named pad escapes
 
 [Stacked-layout evidence](evidence/stacked-layout/) includes the accepted ECO,
 exact pad/field parity, strict ERC, filled DRC and five native rule probes.
+[Connector ECO](../../../docs/design/evidence/connector-eco/mains/) replaces the headers and obsolete NC labels.
 [Final preparation](evidence/final-preparation/) adds service labels and verifies
 mask/paste/slot geometry. [The handoff lock](../design/handoff.lock.json) binds
 current acceptance. Older

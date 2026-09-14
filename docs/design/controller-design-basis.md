@@ -95,7 +95,8 @@ USB is a self-powered data/service interface. Connector VBUS powers no ESP,
 sensor or relay load, removing radio current and input bulk charging from the
 host's budget. Its only steady load is the hardware presence detector. A separate
 regulated isolated **5 V service supply, at least 1 A**, connects to a two-position
-Micro-Fit `43045-0200` header through `43025-0200` and `43030-0007` contacts:
+JST `S2B-XH-A` right-angle header through `XHP-2` and `SXH-001T-P0.6` contacts.
+Its 2.5 mm XH interface is distinct from the 12 V Micro-Fit ports:
 circuit 1 V5_SERVICE, circuit 2 GND. It differs in position count from the
 three-position coil/PSU harness and six-position sensor harness, but shares its
 housing with the new 12 V ports: label and verify all harnesses before connection.

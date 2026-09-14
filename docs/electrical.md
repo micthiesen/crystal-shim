@@ -79,17 +79,18 @@ survive repeated switching; a cleaner bench waveform alone does not pass `EMI-*`
 | --- | --- |
 | Enclosure input | IEC C14 inlet, appropriate enclosed/guarded termination |
 | Skimmer output | Rated mains receptacle or strain-relieved female pigtail, original pump cord intact |
-| Internal mains input/output | Molex Sabre 7.50 mm: `43160-1102/-1103/-1104/-1106` right-angle headers, `44441-2002/-2003/-2004/-2006` housings and `43375-2001` contacts; L1/N2 |
+| Internal mains input/output | Phoenix Contact `1868076` MKDS 5/2-7,62 fixed side-entry screw terminals on J1–J4; two used positions, L1/N2 |
+| Controller service 5 V | JST `S2B-XH-A` header, `XHP-2` housing, two `SXH-001T-P0.6` contacts; 1=5 V, 2=GND, physically distinct from 12 V Micro-Fit ports |
 | Sensor cable | Six solder lands on sensor J1 with left-exiting 24 AWG pigtail; six-position locking/polarized Micro-Fit at controller, housing `43025-0600` |
 
-The Sabre product specification reports 600 V AC RMS under CSA and 16 A fully
-loaded for the 43160 header series, subject to the exact part, wire, cavity
-count and applicable derating. Different circuit counts do not prove
-non-intermateability: require a CAD partial/cross-mate check, receipt inspection
-of keying and pin numbering, and final DRC before release. These ratings do not
-establish waterproofness or allow exposed live unplugging. All mains connectors
-remain enclosed. Do not use a DC barrel connector for mains.
-[Molex Sabre product specification](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/productspecificationpdf/444/44441/PS-44441-9999-001.pdf).
+The fixed mains terminals remove the oversized plugs and unused positions.
+They do not enforce correct field wiring: label every terminal and both wire ends
+as INPUT, FILTER IN, FILTER OUT or PUMP, with L/N, then verify continuity before
+energizing. All mains terminals remain enclosed. Top screw access requires
+removing the controller and separator with mains disconnected. Retain the
+existing clearances and strain relief; connector ratings do not establish an
+assembled insulation or ingress rating. See the
+[terminal drawing and assembly basis](design/mains-header-capture.md).
 
 The six-position Micro-Fit candidate is a dual-row, 3.0 mm, locking and polarized
 receptacle. Select mating header and terminals together for wire gauge and plating;
