@@ -1,0 +1,22 @@
+{
+  "artifact_id": "art_ex30qrfnee6mu1033yz",
+  "url": "https://mcp.syas.ca/boris/artifacts/art_ex30qrfnee6mu1033yz",
+  "source_commit": "114d348",
+  "live_data_source": {
+    "provider": "Notion",
+    "page_id": "3db70643-efe0-8114-98e6-fa5e05ae8bb2",
+    "visibility": "private draft",
+    "purpose": "Private backing data for the requested Executor artifact; no workspace pages moved or shared."
+  },
+  "local_data_sha256": "a6c7fa1b5de08fbff9787b78270fb0405ae1430b49593fd503956c97b9839648",
+  "component_sha256": "be3adcf6f5c7de78252638997f308664497dd3e89402a1e13eb05747288f6a17",
+  "verified": {
+    "parts": 103,
+    "boards": 3,
+    "form_settings": 18,
+    "relative_source_urls": 0,
+    "data_readback": "Notion live fetch parsed complete release JSON, Ready to order, exact stencil ZIP URLs",
+    "artifact_creation": "Executor saved component and returned persistent URL"
+  },
+  "inventory_and_prices_verified": false
+}

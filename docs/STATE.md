@@ -142,7 +142,8 @@ an intact separator without changing PCB holes or elevations.
 
 ## Next
 
-Use the [order settings](design/manufacturing-output.md) and
+Open the [interactive order guide](https://mcp.syas.ca/boris/artifacts/art_ex30qrfnee6mu1033yz),
+or use the [order settings](design/manufacturing-output.md) and
 [purchase list](../bom/order-2026-09-14/README.md) to order bare boards, stencils
 and parts. Check the supplier upload preview against the retained CAM before paying.
 PCB assembly service is No; no custom JLCPCB communication or process is required.

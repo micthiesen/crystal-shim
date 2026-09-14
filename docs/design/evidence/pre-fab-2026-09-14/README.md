@@ -7,6 +7,10 @@ supplier instructions are required. No order has been placed.
 
 ## Downloads and purchasing
 
+Open the **[interactive order guide](https://mcp.syas.ca/boris/artifacts/art_ex30qrfnee6mu1033yz)**
+for searchable parts, form settings and download links. Its live data is backed
+by a private Notion draft; the repository copies remain the release record.
+
 - [Controller fabrication package](../../../../pcb/controller/fabrication/2026-09-14-rev1/README.md), four layers, 150 × 110 mm.
 - [Sensor fabrication package](../../../../pcb/sensor/fabrication/2026-09-14-rev1/README.md), four layers, 18 × 64 mm.
 - [Mains fabrication package](../../../../pcb/mains/fabrication/2026-09-14-rev1/README.md), two layers, 150 × 110 mm.
