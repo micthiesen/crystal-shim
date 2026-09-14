@@ -1,0 +1,3107 @@
+{
+  "schema_version": 1,
+  "quantity_scope": "One populated controller, sensor and mains board; 135 physical components. Bare-board order quantity is five each.",
+  "board_order": [
+    "controller",
+    "sensor",
+    "mains"
+  ],
+  "coordinate_convention": "Millimetres in native KiCad component-side top view; +x right, +y down. Do not mirror.",
+  "identification_note": "Use the exact purchased MPN on the labelled bag/reel. Body descriptions help separate packages; no lot-specific topmark text is asserted.",
+  "sources": {
+    "inventory": "bom/inventory.csv",
+    "digikey_receipt": "bom/purchases/101602605/ordered-items.csv",
+    "mouser_receipt": "bom/purchases/40452969/order.json",
+    "assembly_split": "docs/design/manufacturing-output.md",
+    "substitutions": "bom/digikey-cart-2026-09-14/README.md"
+  },
+  "boards": [
+    {
+      "id": "controller",
+      "name": "Controller",
+      "orientation_view": "Component-side top view: ESP antenna at top, USB at bottom.",
+      "native_board": "pcb/controller/kicad/controller.kicad_pcb",
+      "native_sha256": "8b899306da71ce1b17afd0ab18bb4e7d96edef3adc1743543a294608163e9853",
+      "accepted_manifest": "pcb/controller/design/handoff.lock.json",
+      "groups": [
+        {
+          "id": "controller-c1",
+          "purchased_mpn": "CGA6P3X7R1E226M250AB",
+          "design_mpn": "GRM32ER71E226ME15L",
+          "value": "22uF",
+          "package": "1210 / 3225",
+          "visual_description": "22 µF ceramic chip capacitor; metal terminations at both ends. Nonpolar.",
+          "package_evidence": [
+            "bom/digikey-cart-2026-09-14/passive-research.json"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              3.2,
+              2.5
+            ],
+            "height_max": 2.8,
+            "basis": "Approved purchased TDK part: nominal body XY and maximum height."
+          },
+          "refs": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C47"
+          ],
+          "quantity": 6,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "C1",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C2",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C3",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C4",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C5",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C47",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-c6",
+          "purchased_mpn": "C1608X7R1H104K080AA",
+          "design_mpn": "C1608X7R1H104K080AA",
+          "value": "100nF",
+          "package": "0603 / 1608",
+          "visual_description": "100 nF ceramic chip capacitor; metal terminations at both ends. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured TDK C1608 nominal body dimensions."
+          },
+          "refs": [
+            "C6",
+            "C7",
+            "C8",
+            "C11",
+            "C12",
+            "C21",
+            "C30",
+            "C31",
+            "C40",
+            "C41",
+            "C42",
+            "C45",
+            "C46"
+          ],
+          "quantity": 13,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "C6",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C7",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C8",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C11",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C12",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C21",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C30",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C31",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C40",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C41",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C42",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C45",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C46",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-c9",
+          "purchased_mpn": "C2012X7R1E105K125AB",
+          "design_mpn": "C2012X7R1E105K125AB",
+          "value": "1uF",
+          "package": "0805 / 2012",
+          "visual_description": "1 µF ceramic chip capacitor; metal terminations at both ends. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              2.0,
+              1.25
+            ],
+            "basis": "Captured exact TDK part nominal body dimensions."
+          },
+          "refs": [
+            "C9",
+            "C20",
+            "C43"
+          ],
+          "quantity": 3,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "C9",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C20",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C43",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-c44",
+          "purchased_mpn": "CL31B106KLHNNNE",
+          "design_mpn": "C3216X7R1E106K160AB",
+          "value": "10uF",
+          "package": "1206 / 3216",
+          "visual_description": "10 µF ceramic chip capacitor; metal terminations at both ends. Nonpolar.",
+          "package_evidence": [
+            "bom/digikey-cart-2026-09-14/passive-research.json"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              3.2,
+              1.6
+            ],
+            "height_nominal": 1.6,
+            "height_max": 1.8,
+            "basis": "Approved purchased Samsung part: 3216 outline and stated nominal/maximum thickness."
+          },
+          "refs": [
+            "C44"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "C44",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-d1",
+          "purchased_mpn": "STPS2L40U",
+          "design_mpn": "STPS2L40U",
+          "value": "STPS2L40U",
+          "package": "SMB / DO-214AA",
+          "visual_description": "Two-terminal Schottky diode; cathode band must face the indicated end.",
+          "package_evidence": [
+            "pcb/controller/design/protection-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy_max": [
+              4.6,
+              3.95
+            ],
+            "basis": "Captured ST maximum moulded-body envelope, excluding leads."
+          },
+          "refs": [
+            "D1",
+            "D2",
+            "D9",
+            "D10",
+            "D11"
+          ],
+          "quantity": 5,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "D1",
+              "orientation": {
+                "kind": "cathode",
+                "cue": "Cathode band faces right, to pad 1 (V5_LOGIC).",
+                "cathode_xy_mm": [
+                  73.11,
+                  93.6
+                ],
+                "pad1_net": "V5_LOGIC"
+              }
+            },
+            {
+              "ref": "D2",
+              "orientation": {
+                "kind": "cathode",
+                "cue": "Cathode band faces up, to pad 1 (V5_LOGIC).",
+                "cathode_xy_mm": [
+                  75.0,
+                  104.79
+                ],
+                "pad1_net": "V5_LOGIC"
+              }
+            },
+            {
+              "ref": "D9",
+              "orientation": {
+                "kind": "cathode",
+                "cue": "Cathode band faces down, to pad 1 (V12_PUMP).",
+                "cathode_xy_mm": [
+                  156.0,
+                  131.11
+                ],
+                "pad1_net": "V12_PUMP"
+              }
+            },
+            {
+              "ref": "D10",
+              "orientation": {
+                "kind": "cathode",
+                "cue": "Cathode band faces down, to pad 1 (V12_PUMP).",
+                "cathode_xy_mm": [
+                  156.0,
+                  113.11
+                ],
+                "pad1_net": "V12_PUMP"
+              }
+            },
+            {
+              "ref": "D11",
+              "orientation": {
+                "kind": "cathode",
+                "cue": "Cathode band faces down, to pad 1 (V12_PUMP).",
+                "cathode_xy_mm": [
+                  156.0,
+                  95.11
+                ],
+                "pad1_net": "V12_PUMP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-d4",
+          "purchased_mpn": "HLMP-1790",
+          "design_mpn": "WP710A10LGD",
+          "value": "WP710A10LGD",
+          "package": "3 mm through-hole LED",
+          "visual_description": "Two-lead low-current green indicator LED. Identify cathode from the bought part marking.",
+          "package_evidence": [
+            "bom/digikey-cart-2026-09-14/active-research.json"
+          ],
+          "package_dimensions_mm": {
+            "lead_pitch_nominal": 2.54,
+            "body_diameter_max": 3.17,
+            "flange_diameter": 3.43,
+            "height": 6.35,
+            "basis": "Approved Broadcom HLMP-1790 replacement drawing, not original Kingbright LED."
+          },
+          "assembly_notes": [
+            "Hand-solder only after reflow."
+          ],
+          "refs": [
+            "D4"
+          ],
+          "quantity": 1,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "D4",
+              "orientation": {
+                "kind": "cathode",
+                "cue": "Cathode lead faces left, to pad 1 (GND).",
+                "cathode_xy_mm": [
+                  124.0,
+                  86.0
+                ],
+                "pad1_net": "GND"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-d7",
+          "purchased_mpn": "SMBJ7.0A",
+          "design_mpn": "SMBJ7.0A",
+          "value": "SMBJ7.0A",
+          "package": "SMB / DO-214AA",
+          "visual_description": "Two-terminal unidirectional TVS diode with a cathode band. Keep separate from STPS2L40U.",
+          "package_evidence": [
+            "pcb/controller/design/cable-protection-land-patterns.ts"
+          ],
+          "refs": [
+            "D7",
+            "D8"
+          ],
+          "quantity": 2,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "D7",
+              "orientation": {
+                "kind": "cathode",
+                "cue": "Cathode band faces up, to pad 1 (V5_SENSOR).",
+                "cathode_xy_mm": [
+                  81.1,
+                  65.25
+                ],
+                "pad1_net": "V5_SENSOR"
+              }
+            },
+            {
+              "ref": "D8",
+              "orientation": {
+                "kind": "cathode",
+                "cue": "Cathode band faces up, to pad 1 (V5_RESERVOIR).",
+                "cathode_xy_mm": [
+                  48.5,
+                  64.55
+                ],
+                "pad1_net": "V5_RESERVOIR"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-j1",
+          "purchased_mpn": "0436500300",
+          "design_mpn": "43650-0300",
+          "value": "43650-0300",
+          "package": "Micro-Fit 3.0, 3 positions, right angle",
+          "visual_description": "Three-position Molex header in one row; plastic locating pegs.",
+          "package_evidence": [
+            "pcb/controller/design/connector-physical-models.ts"
+          ],
+          "package_dimensions_mm": {
+            "pitch": 3.0,
+            "basis": "Captured exact 43650-0300 layout."
+          },
+          "refs": [
+            "J1"
+          ],
+          "quantity": 1,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "J1",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Mating mouth faces top; pin 1 is leftmost (+5 V).",
+                "pad1_xy_mm": [
+                  71.0,
+                  59.0
+                ],
+                "pad1_net": "V5_PSU"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-j2",
+          "purchased_mpn": "S2B-XH-A",
+          "design_mpn": "S2B-XH-A",
+          "value": "S2B-XH-A",
+          "package": "JST XH, 2 positions, side entry",
+          "visual_description": "Two-pin side-entry JST header. Different pitch and housing from Molex Micro-Fit.",
+          "package_evidence": [
+            "pcb/controller/design/connector-physical-models.ts"
+          ],
+          "package_dimensions_mm": {
+            "pitch": 2.5,
+            "body_xy": [
+              7.4,
+              11.5
+            ],
+            "basis": "Captured S2B-XH-A nominal body plus rear extension; pitch is 2.50 mm."
+          },
+          "refs": [
+            "J2"
+          ],
+          "quantity": 1,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "J2",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Mating mouth faces bottom; pin 1 is left (+5 V).",
+                "pad1_xy_mm": [
+                  79.0,
+                  141.0
+                ],
+                "pad1_net": "V5_SERVICE"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-j3",
+          "purchased_mpn": "0430450600",
+          "design_mpn": "43045-0600",
+          "value": "43045-0600",
+          "package": "Micro-Fit 3.0, 6 positions, right angle",
+          "visual_description": "Six-position Molex header, two rows of three circuits; plastic locating pegs.",
+          "package_evidence": [
+            "pcb/controller/design/connector-physical-models.ts"
+          ],
+          "package_dimensions_mm": {
+            "pitch": 3.0,
+            "basis": "Captured exact 43045-0600 layout."
+          },
+          "refs": [
+            "J3",
+            "J5"
+          ],
+          "quantity": 2,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "J3",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Mating mouth faces top; pin 1 is upper-left (+5 V).",
+                "pad1_xy_mm": [
+                  86.0,
+                  59.0
+                ],
+                "pad1_net": "V5_SENSOR"
+              }
+            },
+            {
+              "ref": "J5",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Mating mouth faces top; pin 1 is upper-left (+5 V).",
+                "pad1_xy_mm": [
+                  56.0,
+                  59.0
+                ],
+                "pad1_net": "V5_RESERVOIR"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-j4",
+          "purchased_mpn": "USB4105-GF-A",
+          "design_mpn": "USB4105-GF-A",
+          "value": "USB4105-GF-A",
+          "package": "USB-C, 16 contacts, top mount",
+          "visual_description": "Metal USB-C receptacle with fine SMT contacts and four through-hole shell tabs.",
+          "package_evidence": [
+            "pcb/controller/design/usb-connector.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              8.94,
+              7.35
+            ],
+            "height_nominal": 3.31,
+            "basis": "Captured USB4105 body dimensions."
+          },
+          "assembly_notes": [
+            "Reflow SMT contacts first, then iron-solder four shell joints.",
+            "Use saved duplicate-contact paste suppression; do not add duplicate deposits or paste to the shell slots."
+          ],
+          "refs": [
+            "J4"
+          ],
+          "quantity": 1,
+          "method": "mixed",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "J4",
+              "orientation": {
+                "kind": "connector",
+                "cue": "USB mouth faces bottom board edge."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-j6",
+          "purchased_mpn": "0430450200",
+          "design_mpn": "43045-0200",
+          "value": "43045-0200",
+          "package": "Micro-Fit 3.0, 2 positions, right angle",
+          "visual_description": "Two-position Molex header, two rows of one circuit; plastic locating peg.",
+          "package_evidence": [
+            "pcb/controller/design/connector-physical-models.ts"
+          ],
+          "package_dimensions_mm": {
+            "pitch": 3.0,
+            "basis": "Captured exact 43045-0200 layout."
+          },
+          "refs": [
+            "J6",
+            "J7",
+            "J8",
+            "J9"
+          ],
+          "quantity": 4,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "J6",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Mating mouth faces bottom; pin 1 is bottom of two-pad column (+12 V).",
+                "pad1_xy_mm": [
+                  56.0,
+                  141.0
+                ],
+                "pad1_net": "V12_PUMP"
+              }
+            },
+            {
+              "ref": "J7",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Mating mouth faces right; pin 1 is right (+12 V).",
+                "pad1_xy_mm": [
+                  164.0,
+                  135.0
+                ],
+                "pad1_net": "V12_PUMP"
+              }
+            },
+            {
+              "ref": "J8",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Mating mouth faces right; pin 1 is right (+12 V).",
+                "pad1_xy_mm": [
+                  164.0,
+                  117.0
+                ],
+                "pad1_net": "V12_PUMP"
+              }
+            },
+            {
+              "ref": "J9",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Mating mouth faces right; pin 1 is right (+12 V).",
+                "pad1_xy_mm": [
+                  164.0,
+                  99.0
+                ],
+                "pad1_net": "V12_PUMP"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-l1",
+          "purchased_mpn": "SRP5030TA-4R7M",
+          "design_mpn": "SRP5030TA-4R7M",
+          "value": "4.7µH",
+          "package": "SRP5030TA",
+          "visual_description": "4.7 µH moulded power inductor with two terminals. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/assembly-components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_xyz_max": [
+              6.0,
+              5.4,
+              3.0
+            ],
+            "basis": "Manufacturer maximum envelope recorded in buckInductorPattern.source."
+          },
+          "refs": [
+            "L1"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "L1",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-q1",
+          "purchased_mpn": "AO3400A",
+          "design_mpn": "AO3400A",
+          "value": "AO3400A",
+          "package": "SOT-23, 3 leads",
+          "visual_description": "Three-lead MOSFET: two leads on one side and one drain lead opposite.",
+          "package_evidence": [
+            "pcb/controller/design/ic-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              2.9
+            ],
+            "basis": "Captured SOT-23 body model."
+          },
+          "refs": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4"
+          ],
+          "quantity": 4,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "Q1",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Two-lead side faces down; lone drain lead faces up. Pin 1/gate is lower left.",
+                "pad1_xy_mm": [
+                  74.05,
+                  68.2
+                ],
+                "pad1_net": "MOS_GATE"
+              }
+            },
+            {
+              "ref": "Q2",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Two-lead side faces down; lone drain lead faces up. Pin 1/gate is lower left.",
+                "pad1_xy_mm": [
+                  154.05,
+                  136.2
+                ],
+                "pad1_net": "TRANSFER_GATE"
+              }
+            },
+            {
+              "ref": "Q3",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Two-lead side faces down; lone drain lead faces up. Pin 1/gate is lower left.",
+                "pad1_xy_mm": [
+                  154.05,
+                  118.2
+                ],
+                "pad1_net": "CHLORINE_GATE"
+              }
+            },
+            {
+              "ref": "Q4",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Two-lead side faces down; lone drain lead faces up. Pin 1/gate is lower left.",
+                "pad1_xy_mm": [
+                  154.05,
+                  100.2
+                ],
+                "pad1_net": "DECHLOR_GATE"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-r2",
+          "purchased_mpn": "ERJ-3EKF1002V",
+          "design_mpn": "ERJ3EKF1002V",
+          "value": "10kΩ",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R2",
+            "R11",
+            "R12",
+            "R46",
+            "R50",
+            "R51",
+            "R52",
+            "R53",
+            "R64",
+            "R65",
+            "R66",
+            "R67",
+            "R81",
+            "R83",
+            "R85"
+          ],
+          "quantity": 15,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R2",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R11",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R12",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R46",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R50",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R51",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R52",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R53",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R64",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R65",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R66",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R67",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R81",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R83",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R85",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-r14",
+          "purchased_mpn": "ERA-3AEB9532V",
+          "design_mpn": "ERA3AEB9532V",
+          "value": "95.3kΩ",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R14"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R14",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-r15",
+          "purchased_mpn": "ERA-3AEB103V",
+          "design_mpn": "ERA3AEB103V",
+          "value": "10kΩ",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R15"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R15",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-r20",
+          "purchased_mpn": "ERJ-3EKF1000V",
+          "design_mpn": "ERJ3EKF1000V",
+          "value": "100Ω",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R20",
+            "R80",
+            "R82",
+            "R84"
+          ],
+          "quantity": 4,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R20",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R80",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R82",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R84",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-r40",
+          "purchased_mpn": "ERJ-3EKF5101V",
+          "design_mpn": "ERJ3EKF5101V",
+          "value": "5.1kΩ",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R40",
+            "R41"
+          ],
+          "quantity": 2,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R40",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R41",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-r42",
+          "purchased_mpn": "ERJ-3EKF1001V",
+          "design_mpn": "ERJ3EKF1001V",
+          "value": "1kΩ",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R42"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R42",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-r43",
+          "purchased_mpn": "ERJ-3EKF1003V",
+          "design_mpn": "ERJ3EKF1003V",
+          "value": "100kΩ",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R43"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R43",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-r44",
+          "purchased_mpn": "ERJ-3EKF22R0V",
+          "design_mpn": "ERJ3EKF22R0V",
+          "value": "22Ω",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R44",
+            "R45",
+            "R62",
+            "R63",
+            "R70",
+            "R71"
+          ],
+          "quantity": 6,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R44",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R45",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R62",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R63",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R70",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R71",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-r54",
+          "purchased_mpn": "ERJ-3EKF6800V",
+          "design_mpn": "ERJ3EKF6800V",
+          "value": "680Ω",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R54"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R54",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-r55",
+          "purchased_mpn": "CRCW0603330RFKEA",
+          "design_mpn": "ERJ3EKF3300V",
+          "value": "330Ω",
+          "package": "0603",
+          "visual_description": "330 Ω chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "bom/digikey-cart-2026-09-14/passive-research.json"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.55,
+              0.85
+            ],
+            "basis": "Approved purchased Vishay part dimensions; do not substitute Panasonic body dimensions."
+          },
+          "refs": [
+            "R55"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R55",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-r60",
+          "purchased_mpn": "ERJ-3EKF2701V",
+          "design_mpn": "ERJ3EKF2701V",
+          "value": "2.7kΩ",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R60",
+            "R61",
+            "R72",
+            "R73"
+          ],
+          "quantity": 4,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R60",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R61",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R72",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R73",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-r68",
+          "purchased_mpn": "CRCW25126R80FKEGHP",
+          "design_mpn": "CRCW25126R80FKEGHP",
+          "value": "6.8Ω",
+          "package": "2512",
+          "visual_description": "6.8 Ω power chip resistor; larger flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              6.3,
+              3.15
+            ],
+            "basis": "Captured Vishay CRCW2512-HP nominal body dimensions."
+          },
+          "refs": [
+            "R68",
+            "R69"
+          ],
+          "quantity": 2,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R68",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R69",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-sw1",
+          "purchased_mpn": "B3F-1002-G",
+          "design_mpn": "B3F-1002-G",
+          "value": "B3F-1002-G",
+          "package": "6 mm through-hole tactile switch",
+          "visual_description": "Four-leg pushbutton with two internally paired contacts.",
+          "package_evidence": [
+            "pcb/controller/design/assembly-components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "footprint_lead_pitch_xy": [
+              6.5,
+              4.5
+            ],
+            "basis": "Captured four-hole pattern. Dimensions are PCB lead spacings, not body dimensions."
+          },
+          "assembly_notes": [
+            "Hand-solder after reflow. Non-washable switch; keep cleaner out after installation."
+          ],
+          "refs": [
+            "SW1",
+            "SW2",
+            "SW3"
+          ],
+          "quantity": 3,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "SW1",
+              "orientation": {
+                "kind": "switch",
+                "cue": "MAINTENANCE. Fit four leads to rectangular footprint. Each horizontal lead pair is one common contact."
+              }
+            },
+            {
+              "ref": "SW2",
+              "orientation": {
+                "kind": "switch",
+                "cue": "BOOT. Fit four leads to rectangular footprint. Each horizontal lead pair is one common contact."
+              }
+            },
+            {
+              "ref": "SW3",
+              "orientation": {
+                "kind": "switch",
+                "cue": "RESET. Fit four leads to rectangular footprint. Each horizontal lead pair is one common contact."
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-u1",
+          "purchased_mpn": "ESP32-C6-WROOM-1-N8",
+          "design_mpn": "ESP32-C6-WROOM-1-N8",
+          "value": "ESP32-C6-WROOM-1-N8",
+          "package": "Castellated RF module",
+          "visual_description": "Module with metal shield, PCB antenna end, perimeter pads and underside ground pad.",
+          "package_evidence": [
+            "docs/design/controller-design-basis.md"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              18.0,
+              25.5
+            ],
+            "basis": "Recorded nominal ESP32-C6-WROOM-1 body."
+          },
+          "assembly_notes": [
+            "Place and reflow in the SMT stage. Solder all nine underside pad-29 ground lands using the saved nine-window paste pattern.",
+            "Antenna end overhangs the top board edge."
+          ],
+          "refs": [
+            "U1"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U1",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Antenna end at top, extending beyond board edge. Pin 1 is the uppermost left perimeter pad.",
+                "pad1_xy_mm": [
+                  111.45,
+                  46.49
+                ],
+                "pad1_net": "GND"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-u11",
+          "purchased_mpn": "ESDS312DBVR",
+          "design_mpn": "ESDS312DBVR",
+          "value": "ESDS312DBVR",
+          "package": "SOT-23-5 (DBV)",
+          "visual_description": "Five-lead ESD protector; keep separate from the five-lead logic and LDO parts.",
+          "package_evidence": [
+            "pcb/controller/design/cable-protection-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              2.9
+            ],
+            "basis": "ESDS312 model reuses captured TI DBV0005A body."
+          },
+          "refs": [
+            "U11",
+            "U13"
+          ],
+          "quantity": 2,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U11",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is lower left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  92.05,
+                  67.7
+                ],
+                "pad1_net": "unconnected-(U11-NC_1-Pad1)"
+              }
+            },
+            {
+              "ref": "U13",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is lower left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  55.05,
+                  68.3
+                ],
+                "pad1_net": "unconnected-(U13-NC_1-Pad1)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-u3",
+          "purchased_mpn": "TCA9517ADGKR",
+          "design_mpn": "TCA9517ADGKR",
+          "value": "TCA9517ADGKR",
+          "package": "VSSOP-8 (DGK)",
+          "visual_description": "Eight-lead I²C buffer, four leads on each side.",
+          "package_evidence": [
+            "pcb/controller/design/ic-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              3.0,
+              3.0
+            ],
+            "basis": "Captured DGK0008A body model."
+          },
+          "refs": [
+            "U3",
+            "U12"
+          ],
+          "quantity": 2,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U3",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is upper left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  97.8,
+                  77.025
+                ],
+                "pad1_net": "V3V3"
+              }
+            },
+            {
+              "ref": "U12",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is upper left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  53.8,
+                  77.025
+                ],
+                "pad1_net": "V3V3"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-u2",
+          "purchased_mpn": "AP63203WU-7",
+          "design_mpn": "AP63203WU-7",
+          "value": "AP63203WU-7",
+          "package": "TSOT26, 6 leads",
+          "visual_description": "Six-lead 3.3 V buck regulator. Bag must say AP63203, not AP63205.",
+          "package_evidence": [
+            "pcb/controller/design/ic-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              2.9
+            ],
+            "basis": "Captured TSOT26 body model."
+          },
+          "assembly_notes": [
+            "No exposed thermal pad."
+          ],
+          "refs": [
+            "U2"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "Mouser 40452969",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U2",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is upper left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  78.9,
+                  94.05
+                ],
+                "pad1_net": "V3V3"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-u4",
+          "purchased_mpn": "TPS3808G01DBVR",
+          "design_mpn": "TPS3808G01DBVR",
+          "value": "TPS3808G01DBVR",
+          "package": "SOT-23-6 (DBV)",
+          "visual_description": "Voltage supervisor with six leads; identify by its labelled bag.",
+          "package_evidence": [
+            "pcb/controller/design/logic-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              2.9
+            ],
+            "basis": "Captured TI DBV0006A body model."
+          },
+          "refs": [
+            "U4"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U4",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is upper left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  70.7,
+                  84.05
+                ],
+                "pad1_net": "PSU_GOOD"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-u5",
+          "purchased_mpn": "TPS2553DBVR",
+          "design_mpn": "TPS2553DBVR",
+          "value": "TPS2553DBVR",
+          "package": "SOT-23-6 (DBV)",
+          "visual_description": "Sensor power switch with six leads; identify by its labelled bag.",
+          "package_evidence": [
+            "pcb/controller/design/logic-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              2.9
+            ],
+            "basis": "Captured TI DBV0006A body model."
+          },
+          "refs": [
+            "U5"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "Mouser 40452969",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U5",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is upper left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  84.7,
+                  78.55
+                ],
+                "pad1_net": "V5_LOGIC"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-u6",
+          "purchased_mpn": "SN74LVC1G08DBVR",
+          "design_mpn": "SN74LVC1G08DBVR",
+          "value": "SN74LVC1G08DBVR",
+          "package": "SOT-23-5 (DBV)",
+          "visual_description": "AND gate with five leads; do not mix the two logic parts.",
+          "package_evidence": [
+            "pcb/controller/design/logic-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              2.9
+            ],
+            "basis": "Captured TI DBV0005A body model."
+          },
+          "refs": [
+            "U6"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U6",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is lower left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  79.55,
+                  75.8
+                ],
+                "pad1_net": "RELAY_REQUEST"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-u7",
+          "purchased_mpn": "SN74LVC1G14DBVR",
+          "design_mpn": "SN74LVC1G14DBVR",
+          "value": "SN74LVC1G14DBVR",
+          "package": "SOT-23-5 (DBV)",
+          "visual_description": "Inverter with five leads; do not mix the two logic parts.",
+          "package_evidence": [
+            "pcb/controller/design/logic-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              2.9
+            ],
+            "basis": "Captured TI DBV0005A body model."
+          },
+          "refs": [
+            "U7"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U7",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is lower right. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  121.3,
+                  135.95
+                ],
+                "pad1_net": "unconnected-(U7-NC-Pad1)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-u8",
+          "purchased_mpn": "FSUSB42MUX",
+          "design_mpn": "FSUSB42MUX",
+          "value": "FSUSB42MUX",
+          "package": "MSOP-10",
+          "visual_description": "Ten-lead USB switch, five leads on each side.",
+          "package_evidence": [
+            "pcb/controller/design/logic-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              3.0,
+              3.0
+            ],
+            "basis": "Captured MSOP-10 body model."
+          },
+          "refs": [
+            "U8"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U8",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is lower left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  110.0,
+                  137.2
+                ],
+                "pad1_net": "V3V3"
+              }
+            }
+          ]
+        },
+        {
+          "id": "controller-u9",
+          "purchased_mpn": "USBLC6-2SC6",
+          "design_mpn": "USBLC6-2SC6",
+          "value": "USBLC6-2SC6",
+          "package": "SOT-23-6",
+          "visual_description": "Six-lead USB ESD protector; identify by labelled bag.",
+          "package_evidence": [
+            "pcb/controller/design/protection-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy_max": [
+              1.75,
+              3.05
+            ],
+            "basis": "Captured ST maximum moulded-body envelope."
+          },
+          "refs": [
+            "U9"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "Mouser 40452969",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U9",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is lower left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  110.05,
+                  144.15
+                ],
+                "pad1_net": "USB_D_PORT_P"
+              }
+            }
+          ]
+        }
+      ],
+      "no_part_refs": [
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "TP1",
+        "TP2",
+        "TP3",
+        "TP4",
+        "TP5",
+        "TP6",
+        "TP7",
+        "TP8",
+        "TP9",
+        "TP10",
+        "TP11",
+        "TP12",
+        "TP13",
+        "TP14"
+      ],
+      "counts": {
+        "physical": 99,
+        "SMT": 86,
+        "iron": 12,
+        "mixed": 1,
+        "groups": 37
+      }
+    },
+    {
+      "id": "sensor",
+      "name": "Sensor",
+      "orientation_view": "Component-side top view: RIM at top, six pigtail pads down left.",
+      "native_board": "pcb/sensor/kicad/sensor.kicad_pcb",
+      "native_sha256": "fe6298667105e543f876fc5038c5cc83eb03fb228bc9c9813e843e2a0afc7c8e",
+      "accepted_manifest": "pcb/sensor/design/handoff.lock.json",
+      "groups": [
+        {
+          "id": "sensor-c1",
+          "purchased_mpn": "CL31B106KLHNNNE",
+          "design_mpn": "C3216X7R1E106K160AB",
+          "value": "10uF",
+          "package": "1206 / 3216",
+          "visual_description": "10 µF ceramic chip capacitor; metal terminations at both ends. Nonpolar.",
+          "package_evidence": [
+            "bom/digikey-cart-2026-09-14/passive-research.json"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              3.2,
+              1.6
+            ],
+            "height_nominal": 1.6,
+            "height_max": 1.8,
+            "basis": "Approved purchased Samsung part: 3216 outline and stated nominal/maximum thickness."
+          },
+          "refs": [
+            "C1",
+            "C2"
+          ],
+          "quantity": 2,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "C1",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C2",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "sensor-c3",
+          "purchased_mpn": "C1608X7R1H104K080AA",
+          "design_mpn": "C1608X7R1H104K080AA",
+          "value": "100nF",
+          "package": "0603 / 1608",
+          "visual_description": "100 nF ceramic chip capacitor; metal terminations at both ends. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured TDK C1608 nominal body dimensions."
+          },
+          "refs": [
+            "C3"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "C3",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "sensor-c4",
+          "purchased_mpn": "C2012X7R1E105K125AB",
+          "design_mpn": "C2012X7R1E105K125AB",
+          "value": "1uF",
+          "package": "0805 / 2012",
+          "visual_description": "1 µF ceramic chip capacitor; metal terminations at both ends. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              2.0,
+              1.25
+            ],
+            "basis": "Captured exact TDK part nominal body dimensions."
+          },
+          "refs": [
+            "C4"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "C4",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "sensor-d2",
+          "purchased_mpn": "STPS2L40U",
+          "design_mpn": "STPS2L40U",
+          "value": "STPS2L40U",
+          "package": "SMB / DO-214AA",
+          "visual_description": "Two-terminal Schottky diode; cathode band must face the indicated end.",
+          "package_evidence": [
+            "pcb/controller/design/protection-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy_max": [
+              4.6,
+              3.95
+            ],
+            "basis": "Captured ST maximum moulded-body envelope, excluding leads."
+          },
+          "refs": [
+            "D2"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "D2",
+              "orientation": {
+                "kind": "cathode",
+                "cue": "Cathode band faces left, to pad 1 (V5_SENSOR).",
+                "cathode_xy_mm": [
+                  99.89,
+                  71.0
+                ],
+                "pad1_net": "V5_SENSOR"
+              }
+            }
+          ]
+        },
+        {
+          "id": "sensor-r1",
+          "purchased_mpn": "ERJ-3EKF22R0V",
+          "design_mpn": "ERJ3EKF22R0V",
+          "value": "22Ω",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R1",
+            "R2"
+          ],
+          "quantity": 2,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R1",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R2",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "sensor-r3",
+          "purchased_mpn": "ERJ-3EKF2701V",
+          "design_mpn": "ERJ3EKF2701V",
+          "value": "2.7kΩ",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R3",
+            "R4"
+          ],
+          "quantity": 2,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R3",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "R4",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "sensor-r5",
+          "purchased_mpn": "ERJ-3EKF1002V",
+          "design_mpn": "ERJ3EKF1002V",
+          "value": "10kΩ",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R5"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R5",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "sensor-r6",
+          "purchased_mpn": "ERJ-3EKF3011V",
+          "design_mpn": "ERJ3EKF3011V",
+          "value": "3.01kΩ",
+          "package": "0603 / 1608",
+          "visual_description": "Chip resistor; flat body with two end terminations. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured Panasonic ERA3A/ERJ3 nominal body dimensions."
+          },
+          "refs": [
+            "R6"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R6",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "sensor-u1",
+          "purchased_mpn": "FDC1004DGSR",
+          "design_mpn": "FDC1004DGSR",
+          "value": "FDC1004DGSR",
+          "package": "VSSOP-10 (DGS)",
+          "visual_description": "Ten-lead capacitance converter, five fine-pitch leads per side.",
+          "package_evidence": [
+            "pcb/sensor/design/components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              3.0,
+              3.0
+            ],
+            "basis": "Captured TI DGS0010A body model."
+          },
+          "refs": [
+            "U1"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U1",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is upper left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  99.8,
+                  91.0
+                ],
+                "pad1_net": "SHLD1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "sensor-u2",
+          "purchased_mpn": "TPS7A2433DBVR",
+          "design_mpn": "TPS7A2433DBVR",
+          "value": "TPS7A2433DBVR",
+          "package": "SOT-23-5 (DBV)",
+          "visual_description": "Five-lead 3.3 V LDO regulator; identify by labelled bag.",
+          "package_evidence": [
+            "pcb/sensor/design/components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              2.9
+            ],
+            "basis": "TPS7A2433 model reuses captured TI DBV0005A body."
+          },
+          "refs": [
+            "U2"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U2",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is upper left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  100.7,
+                  76.05
+                ],
+                "pad1_net": "V5_SENSOR"
+              }
+            }
+          ]
+        },
+        {
+          "id": "sensor-u3",
+          "purchased_mpn": "ESDS312DBVR",
+          "design_mpn": "ESDS312DBVR",
+          "value": "ESDS312DBVR",
+          "package": "SOT-23-5 (DBV)",
+          "visual_description": "Five-lead ESD protector; keep separate from the five-lead logic and LDO parts.",
+          "package_evidence": [
+            "pcb/controller/design/cable-protection-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              2.9
+            ],
+            "basis": "ESDS312 model reuses captured TI DBV0005A body."
+          },
+          "refs": [
+            "U3"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U3",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is upper left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  96.7,
+                  84.05
+                ],
+                "pad1_net": "unconnected-(U3-NC_1-Pad1)"
+              }
+            }
+          ]
+        }
+      ],
+      "no_part_refs": [
+        "E1",
+        "J1"
+      ],
+      "counts": {
+        "physical": 14,
+        "SMT": 14,
+        "iron": 0,
+        "mixed": 0,
+        "groups": 11
+      },
+      "wire_land_note": {
+        "ref": "J1",
+        "method": "iron",
+        "cue": "Six pigtail lands, numbered top to bottom: 1 +5 V; 2 SDA; 3 SCL; 4/5/6 GND. Wires leave leftward on the component side. No header part and no stencil paste.",
+        "pairing": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            6
+          ]
+        ],
+        "evidence": "docs/design/controller-design-basis.md"
+      }
+    },
+    {
+      "id": "mains",
+      "name": "Mains",
+      "orientation_view": "Component-side top view: PSU upper left, isolated buck at right, J1/J2 left and J3/J4 bottom.",
+      "native_board": "pcb/mains/kicad/mains.kicad_pcb",
+      "native_sha256": "6aeb75dd9386a3d0151babd7f4f4bf0b2a6d4c155d9eeb951b36a0fd0e36d4ff",
+      "accepted_manifest": "pcb/mains/design/handoff.lock.json",
+      "groups": [
+        {
+          "id": "mains-c1",
+          "purchased_mpn": "B32921C3473K000",
+          "design_mpn": "B32921C3473K000",
+          "value": "47nF",
+          "package": "X2 radial film capacitor",
+          "visual_description": "47 nF 305 VAC safety film capacitor in a rectangular body with two straight leads. Nonpolar.",
+          "package_evidence": [
+            "pcb/mains/design/suppression-components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_xyz_max": [
+              13.0,
+              5.0,
+              11.0
+            ],
+            "lead_pitch": 10.0,
+            "basis": "Captured exact B32921C3473K000 maximum body and straight-lead pitch."
+          },
+          "refs": [
+            "C1"
+          ],
+          "quantity": 1,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "C1",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-c2",
+          "purchased_mpn": "CGA6P3X7R1E226M250AB",
+          "design_mpn": "GRM32ER71E226ME15L",
+          "value": "22uF",
+          "package": "1210 / 3225",
+          "visual_description": "22 µF ceramic chip capacitor; metal terminations at both ends. Nonpolar.",
+          "package_evidence": [
+            "bom/digikey-cart-2026-09-14/passive-research.json"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              3.2,
+              2.5
+            ],
+            "height_max": 2.8,
+            "basis": "Approved purchased TDK part: nominal body XY and maximum height."
+          },
+          "refs": [
+            "C2",
+            "C3",
+            "C4",
+            "C6"
+          ],
+          "quantity": 4,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "C2",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C3",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C4",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C6",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-c5",
+          "purchased_mpn": "C1608X7R1H104K080AA",
+          "design_mpn": "C1608X7R1H104K080AA",
+          "value": "100nF",
+          "package": "0603 / 1608",
+          "visual_description": "100 nF ceramic chip capacitor; metal terminations at both ends. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/passive-land-patterns.ts"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              0.8
+            ],
+            "basis": "Captured TDK C1608 nominal body dimensions."
+          },
+          "refs": [
+            "C5",
+            "C7"
+          ],
+          "quantity": 2,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "C5",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            },
+            {
+              "ref": "C7",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-d1",
+          "purchased_mpn": "1N4007-E3/54",
+          "design_mpn": "1N4007-E3/54",
+          "value": "1N4007-E3/54",
+          "package": "DO-41 / DO-204AL axial",
+          "visual_description": "Two-lead axial diode with a cathode band.",
+          "package_evidence": [
+            "pcb/mains/design/suppression-components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_length_range": [
+              4.1,
+              5.2
+            ],
+            "body_diameter_range": [
+              2.0,
+              2.7
+            ],
+            "footprint_lead_pitch": 10.16,
+            "basis": "Captured manufacturer body ranges; lead pitch is the project forming choice."
+          },
+          "refs": [
+            "D1"
+          ],
+          "quantity": 1,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "D1",
+              "orientation": {
+                "kind": "cathode",
+                "cue": "Cathode band faces left, to pad 1 (V5_PSU).",
+                "cathode_xy_mm": [
+                  145.0,
+                  125.0
+                ],
+                "pad1_net": "V5_PSU"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-f2",
+          "purchased_mpn": "0451003.MRL",
+          "design_mpn": "0451003.MRL",
+          "value": "0451003.MRL",
+          "package": "NANO² 451 SMT fuse",
+          "visual_description": "3 A rectangular surface-mount fuse with two end terminals. Nonpolar.",
+          "package_evidence": [
+            "pcb/mains/design/secondary-components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_xyz_nominal": [
+              6.1,
+              2.69,
+              2.69
+            ],
+            "basis": "Captured Littelfuse 451 manufacturer nominal dimensions; tolerances are ±0.20/±0.25/±0.25 mm."
+          },
+          "refs": [
+            "F2"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "F2",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-f3",
+          "purchased_mpn": "0215001.MXEP",
+          "design_mpn": "0215001.MXEP",
+          "value": "0215001.MXEP",
+          "package": "215 axial leaded fuse",
+          "visual_description": "T1A leaded cylindrical fuse; one wire from each end. Nonpolar.",
+          "package_evidence": [
+            "pcb/mains/design/power-components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_length_nominal": 21.5,
+            "body_diameter_nominal": 5.5,
+            "footprint_lead_pitch": 30.48,
+            "basis": "Manufacturer body length ±1 mm and diameter ±0.3 mm; lead pitch is the project forming choice."
+          },
+          "assembly_notes": [
+            "Body standoff at least 1.5 mm. Bend leads more than 1 mm from end caps.",
+            "Hand-solder at 350 ±5 °C for at most 5 s, per captured manufacturer guidance."
+          ],
+          "refs": [
+            "F3"
+          ],
+          "quantity": 1,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "F3",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-j1",
+          "purchased_mpn": "1868076",
+          "design_mpn": "1868076",
+          "value": "1868076",
+          "package": "MKDS 5/2-7,62, 2-position fixed terminal",
+          "visual_description": "Two screw terminals with side wire entry and one solder tail per circuit.",
+          "package_evidence": [
+            "pcb/mains/design/mains-headers.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_xyz": [
+              15.24,
+              12.5,
+              21.5
+            ],
+            "pitch": 7.62,
+            "basis": "Captured exact Phoenix 1868076 product drawing; Z is height above PCB."
+          },
+          "refs": [
+            "J1",
+            "J2",
+            "J3",
+            "J4"
+          ],
+          "quantity": 4,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "J1",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Wire entry faces left; pin 1/L is above pin 2/N.",
+                "pad1_xy_mm": [
+                  41.0,
+                  65.0
+                ],
+                "pad1_net": "AC_L_FUSED"
+              }
+            },
+            {
+              "ref": "J2",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Wire entry faces left; pin 1/L is above pin 2/N.",
+                "pad1_xy_mm": [
+                  41.0,
+                  92.0
+                ],
+                "pad1_net": "FILTER_LINE_L"
+              }
+            },
+            {
+              "ref": "J3",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Wire entry faces bottom; pin 1/L is left of pin 2/N.",
+                "pad1_xy_mm": [
+                  46.0,
+                  141.0
+                ],
+                "pad1_net": "PUMP_L_FILTERED"
+              }
+            },
+            {
+              "ref": "J4",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Wire entry faces bottom; pin 1/L is left of pin 2/N.",
+                "pad1_xy_mm": [
+                  101.0,
+                  141.0
+                ],
+                "pad1_net": "PUMP_L_SW"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-j5",
+          "purchased_mpn": "0436500300",
+          "design_mpn": "43650-0300",
+          "value": "43650-0300",
+          "package": "Micro-Fit 3.0, 3 positions, right angle",
+          "visual_description": "Three-position Molex header in one row; plastic locating pegs.",
+          "package_evidence": [
+            "pcb/controller/design/connector-physical-models.ts"
+          ],
+          "package_dimensions_mm": {
+            "pitch": 3.0,
+            "basis": "Captured exact 43650-0300 layout."
+          },
+          "refs": [
+            "J5"
+          ],
+          "quantity": 1,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "J5",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Mating mouth faces right; pin 1 is top (+5 V).",
+                "pad1_xy_mm": [
+                  164.0,
+                  72.0
+                ],
+                "pad1_net": "V5_PSU"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-j6",
+          "purchased_mpn": "0430450200",
+          "design_mpn": "43045-0200",
+          "value": "43045-0200",
+          "package": "Micro-Fit 3.0, 2 positions, right angle",
+          "visual_description": "Two-position Molex header, two rows of one circuit; plastic locating peg.",
+          "package_evidence": [
+            "pcb/controller/design/connector-physical-models.ts"
+          ],
+          "package_dimensions_mm": {
+            "pitch": 3.0,
+            "basis": "Captured exact 43045-0200 layout."
+          },
+          "refs": [
+            "J6"
+          ],
+          "quantity": 1,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "J6",
+              "orientation": {
+                "kind": "connector",
+                "cue": "Mating mouth faces right; pin 1 is right (+12 V).",
+                "pad1_xy_mm": [
+                  164.0,
+                  93.0
+                ],
+                "pad1_net": "V12_MOTOR"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-k1",
+          "purchased_mpn": "G5RL-1A-TV8 DC5",
+          "design_mpn": "G5RL-1A-TV8 DC5",
+          "value": "G5RL-1A-TV8 DC5",
+          "package": "Through-hole relay, 4 pins",
+          "visual_description": "Rectangular relay; two coil pins at one end and two contact pins at the other.",
+          "package_evidence": [
+            "pcb/mains/design/power-components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_xy_average": [
+              28.8,
+              12.5
+            ],
+            "height_max": 15.7,
+            "basis": "Captured manufacturer average body XY and maximum height."
+          },
+          "assembly_notes": [
+            "Hand-solder after reflow. Flux-protected relay; do not wash as a sealed part."
+          ],
+          "refs": [
+            "K1"
+          ],
+          "quantity": 1,
+          "method": "iron",
+          "order_ref": "Mouser 40452969",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "K1",
+              "orientation": {
+                "kind": "relay",
+                "cue": "Coil pins at right: pad 1/+5 V above pad 5/coil drain. Contact pins at left.",
+                "pad1_xy_mm": [
+                  133.5,
+                  117.0
+                ],
+                "pad1_net": "V5_PSU"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-l1",
+          "purchased_mpn": "SRP5030TA-4R7M",
+          "design_mpn": "SRP5030TA-4R7M",
+          "value": "4.7µH",
+          "package": "SRP5030TA",
+          "visual_description": "4.7 µH moulded power inductor with two terminals. Nonpolar.",
+          "package_evidence": [
+            "pcb/controller/design/assembly-components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_xyz_max": [
+              6.0,
+              5.4,
+              3.0
+            ],
+            "basis": "Manufacturer maximum envelope recorded in buckInductorPattern.source."
+          },
+          "refs": [
+            "L1"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "L1",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-r1",
+          "purchased_mpn": "PR02FS0201000KR500",
+          "design_mpn": "PR02FS0201000KA100",
+          "value": "100Ω",
+          "package": "PR02FS axial, 2 W",
+          "visual_description": "100 Ω fusible axial resistor; one wire from each end. Nonpolar.",
+          "package_evidence": [
+            "pcb/mains/design/suppression-components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_length_max": 10.0,
+            "body_diameter_max": 3.9,
+            "footprint_lead_pitch": 15.24,
+            "basis": "Captured PR02FS body, excluding coating extent; purchased suffix only changes supply packaging."
+          },
+          "refs": [
+            "R1"
+          ],
+          "quantity": 1,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "R1",
+              "orientation": {
+                "kind": "nonpolar",
+                "cue": "Nonpolar; either end may face pad 1."
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-rv1",
+          "purchased_mpn": "TMOV14RP175E",
+          "design_mpn": "TMOV14RP175E",
+          "value": "TMOV14RP175E",
+          "package": "Bulk two-lead thermally protected MOV",
+          "visual_description": "Upright disc with two unformed, staggered leads. Nonpolar.",
+          "package_evidence": [
+            "docs/design/mov-capture.md"
+          ],
+          "package_dimensions_mm": {
+            "body_diameter_max": 17.0,
+            "body_thickness_max": 9.0,
+            "manufacturer_height_A_max": 22.0,
+            "basis": "Captured Littelfuse limits; these do not establish complete occupied-body position relative to the leads."
+          },
+          "assembly_notes": [
+            "Use revised round-hole plus plated-slot capture. Rotate upright body to align unbent leads; do not reshape or force leads.",
+            "Support 0.5–1.0 mm above PCB using a removable fixture and independent lead heat sinks while hand soldering."
+          ],
+          "refs": [
+            "RV1"
+          ],
+          "quantity": 1,
+          "method": "iron",
+          "order_ref": "Mouser 40452969",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "RV1",
+              "orientation": {
+                "kind": "mechanical",
+                "cue": "Nonpolar. Keep disc upright; rotate to align staggered, unbent leads with round hole and plated slot. Do not force leads."
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-u1",
+          "purchased_mpn": "IRM-45-12",
+          "design_mpn": "IRM-45-12",
+          "value": "IRM-45-12",
+          "package": "Through-hole encapsulated PSU",
+          "visual_description": "Large rectangular 12 V supply module with four pins: two AC and two DC.",
+          "package_evidence": [
+            "pcb/mains/design/power-components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              87.0,
+              52.0
+            ],
+            "basis": "Recorded nominal body XY; maximum body envelope is separate."
+          },
+          "assembly_notes": [
+            "Hand-solder after reflow."
+          ],
+          "refs": [
+            "U1"
+          ],
+          "quantity": 1,
+          "method": "iron",
+          "order_ref": "DigiKey 101602605",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U1",
+              "orientation": {
+                "kind": "module",
+                "cue": "AC pins at left; DC pins at lower right. Upper AC pin is L; lower AC pin is N. Upper DC pin is −; lower DC pin is +.",
+                "pad1_xy_mm": [
+                  58.3,
+                  63.75
+                ],
+                "pad1_net": "AC_N"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mains-u2",
+          "purchased_mpn": "AP63205WU-7",
+          "design_mpn": "AP63205WU-7",
+          "value": "AP63205WU-7",
+          "package": "TSOT26, 6 leads",
+          "visual_description": "Six-lead 5 V buck regulator. Bag must say AP63205, not AP63203.",
+          "package_evidence": [
+            "pcb/mains/design/secondary-components.tsx"
+          ],
+          "package_dimensions_mm": {
+            "body_xy": [
+              1.6,
+              2.9
+            ],
+            "basis": "Mains TSOT26 uses the captured AP63203 family body model."
+          },
+          "assembly_notes": [
+            "No exposed thermal pad."
+          ],
+          "refs": [
+            "U2"
+          ],
+          "quantity": 1,
+          "method": "SMT",
+          "order_ref": "Mouser 40452969",
+          "inventory_status": "On the way",
+          "placements": [
+            {
+              "ref": "U2",
+              "orientation": {
+                "kind": "pin1",
+                "cue": "Pin 1 is upper left. Align the manufacturer pin-1 identifier; do not infer it from printed text direction.",
+                "pad1_xy_mm": [
+                  147.9,
+                  108.05
+                ],
+                "pad1_net": "V5_PSU"
+              }
+            }
+          ]
+        }
+      ],
+      "no_part_refs": [
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "counts": {
+        "physical": 22,
+        "SMT": 9,
+        "iron": 13,
+        "mixed": 0,
+        "groups": 15
+      }
+    }
+  ],
+  "counts": {
+    "physical": 135,
+    "unique_purchased_mpns": 50,
+    "board_mpn_groups": 63,
+    "SMT": 109,
+    "iron": 25,
+    "mixed": 1
+  }
+}

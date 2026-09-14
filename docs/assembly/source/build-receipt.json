@@ -1,0 +1,86 @@
+{
+  "pages": 17,
+  "component_placements": 135,
+  "coverage": {
+    "controller": 99,
+    "mains": 22,
+    "sensor": 14
+  },
+  "page_index": [
+    {
+      "page": 1,
+      "title": "Start with the flat parts"
+    },
+    {
+      "page": 2,
+      "title": "Recognize the SMT packages"
+    },
+    {
+      "page": 3,
+      "title": "Sensor  /  all 14 parts reflow"
+    },
+    {
+      "page": 4,
+      "title": "Controller  /  iron parts + area map"
+    },
+    {
+      "page": 5,
+      "title": "Controller A  /  Relay + reservoir interface"
+    },
+    {
+      "page": 6,
+      "title": "Controller B1  /  ESP module + nearby passives"
+    },
+    {
+      "page": 7,
+      "title": "Controller B2  /  Tank sensor interface + LED"
+    },
+    {
+      "page": 8,
+      "title": "Controller C  /  Power + service connectors"
+    },
+    {
+      "page": 9,
+      "title": "Controller D  /  USB + pushbuttons"
+    },
+    {
+      "page": 10,
+      "title": "Controller E  /  Three pump drivers"
+    },
+    {
+      "page": 11,
+      "title": "Mains  /  nine SMT parts first"
+    },
+    {
+      "page": 12,
+      "title": "Recognize the iron-soldered parts"
+    },
+    {
+      "page": 13,
+      "title": "Mains  /  fit the tall parts"
+    },
+    {
+      "page": 14,
+      "title": "Iron work  /  fit, solder, trim"
+    },
+    {
+      "page": 15,
+      "title": "Wire the three connections"
+    },
+    {
+      "page": 16,
+      "title": "Connect mains, filter and PE"
+    },
+    {
+      "page": 17,
+      "title": "Combine the finished boards"
+    }
+  ],
+  "native_hashes": {
+    "controller": "8b899306da71ce1b17afd0ab18bb4e7d96edef3adc1743543a294608163e9853",
+    "mains": "6aeb75dd9386a3d0151babd7f4f4bf0b2a6d4c155d9eeb951b36a0fd0e36d4ff",
+    "sensor": "fe6298667105e543f876fc5038c5cc83eb03fb228bc9c9813e843e2a0afc7c8e"
+  },
+  "pdf_sha256": "a1e7481c6eb2aaecf3baf49c641d44a004a46454ccc209b1adda9e99321a99a4",
+  "layout_warnings": []
+}

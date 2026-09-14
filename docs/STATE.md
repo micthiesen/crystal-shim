@@ -4,6 +4,11 @@ Last updated: 2026-09-14
 
 ## Now
 
+- **Assembly booklet complete:** the [17-page bench guide](assembly/README.md)
+  covers all 135 purchased component placements, stencil/hot-bed versus iron
+  work, the three harnesses, mains/PE wiring and final board combination. Its
+  ImageGen illustrations, exact native placement maps and reproducible source
+  are tracked. Every page was visually reviewed; no native board was changed.
 - **Purchasing complete; waiting for hardware delivery**, as requested by the owner.
   [JLCPCB W2026091502305469](../bom/purchases/W2026091502305469/README.md)
   covers five each of controller, mains and sensor. Actual colours: white/black
@@ -39,7 +44,9 @@ Last updated: 2026-09-14
 Wait for the ordered hardware. The owner explicitly closed the purchasing phase;
 no further design changes or purchases are requested. When deliveries arrive,
 record actual receipts, then follow [build](build.md) and the
-[commissioning matrix](../testing/test-matrix.csv) for assembly and commissioning.
+[assembly bench guide](assembly/README.md) for construction. Continue firmware,
+power-up, testing and tank mounting interactively using the
+[commissioning matrix](../testing/test-matrix.csv).
 
 All physical test rows remain Not run. Sensor calibration, adhesive response,
 load startup, temperature, EMI, USB, RF and HomeKit operation remain unmeasured.

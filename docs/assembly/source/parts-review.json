@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "placement_count": 135,
+  "board_groups": 63,
+  "unique_purchased_mpns": 50,
+  "historical_mpn_differences": [
+    {
+      "board": "mains",
+      "ref": "RV1",
+      "historical_purchase_list_mpn": "TMOV14RP175EL2T7",
+      "current_design_and_purchased_mpn": "TMOV14RP175E"
+    }
+  ],
+  "validated": [
+    "JSON parse",
+    "exact physical reference set vs purchase list",
+    "accepted manifest MPN and value",
+    "current inventory purchased label",
+    "unique refs and group quantities",
+    "existing package evidence paths",
+    "unchanged native board hashes",
+    "all 159 native refs partition into physical plus no-part refs"
+  ],
+  "output": "docs/assembly/source/parts.json"
+}
