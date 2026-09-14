@@ -209,9 +209,9 @@
             "sensor/design/sensor.circuit.tsx"
           ],
           "returncode": 1,
-          "stdout_sha256": "34e560ab84dd19cb4b6f939791adddb9258fb5c907083682cb1c6e5968f82715",
+          "stdout_sha256": "e48271a7f4e93f4bac12679359ed2dbb33f3a95110eb14db515e493bbad2d3eb",
           "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "reason": "Pinned tsci placement treats copper-only E1 as a top-side connector body and reports 15 false body intrusions across its full multilayer bounding box. Its own placement DRC reports 0 errors and 0 warnings. Require the exact report, native copper DRC and layer-aware readiness; do not resize the accepted electrode to satisfy this model.",
+          "reason": "Pinned tsci placement treats copper-only E1 as a top-side connector body and reports 15 false body intrusions across its full multilayer bounding box. Its own placement DRC reports 0 errors and 0 warnings. Require the exact report, native copper DRC and layer-aware readiness; do not resize the accepted electrode to satisfy this model. The authorized C3 +0.25 mm X move changes only its reported center, bounds and edge distance; all other output matches the prior receipt exactly.",
           "countercheck": "native_drc_and_preparation"
         }
       }

@@ -1,0 +1,17 @@
+{
+  "acceptance": "6630a01a0a60fa617d8840f3f53e58d9895fa1c1d82e24565d249fde2581f7b9",
+  "accepted_lock_sha256": "08c8cdd38d15e6f9ac467c764e0f139b3da003b7d7c852d4ee1f26a2764b91d3",
+  "allow_routed_eco": true,
+  "allow_routed_placement": true,
+  "baseline_method": "Historical accepted snapshot used because owner-applied C3 and routing changes preceded this session. Guarded accept-eco reconstructed the plan, verified exact routing deltas and current native preservation, then advanced the lock.",
+  "before_snapshot": "21cefccaf2aade3e5f322198e3f834ea2881caecff1f4d26f961b8894f4130e0",
+  "board": "sensor",
+  "development_gate": "8ba5ea105bbe555b2de1bc52896606f7197ce94799a033bca9aba9b95fb2d08f",
+  "independent_policy_review": "3f4292da50226f263d264bdd65d6bdb5b77df7bb318d5cf250f6099436ea9f4f",
+  "independent_routing_review": "f7be6d917f9e5b0c5c264b81d649e0ec971a7625fd1648f0de6f2d29e2c903ea",
+  "plan": "42dde4f8cbf2ed3780fbf78b075c5e5d46beea4526b7c707c02b959b0b059369",
+  "review": "941ff9d9442f513d3605c2c40113e5bda1219c626e5910d0b422a62ec1917cd7",
+  "schema_version": 1,
+  "stage": "accepted",
+  "validation": "cba20e2444f58739264d7ab5e9ff223a8a6978d48893ef531baf59e576a32a76"
+}

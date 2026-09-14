@@ -30,13 +30,13 @@ Never export a fresh source seed over these native projects.
 | Board | Project | Saved placement | Expected unrouted connections |
 | --- | --- | --- | --- |
 | Controller | [controller.kicad_pro](../pcb/controller/kicad/controller.kicad_pro) | 150 × 110 mm, 4 layers, 117 footprints | 166 |
-| Sensor | [sensor.kicad_pro](../pcb/sensor/kicad/sensor.kicad_pro) | 18 × 64 mm, 4 layers, 16 footprints | 21 |
+| Sensor | [sensor.kicad_pro](../pcb/sensor/kicad/sensor.kicad_pro) | 18 × 64 mm, 4 layers, 16 footprints | 0 (routing accepted) |
 | Mains | [mains.kicad_pro](../pcb/mains/kicad/mains.kicad_pro) | 150 × 110 mm, 2 layers, 26 footprints | 31 |
 
 Filled ground pours, reference/shield layers, ground/thermal vias, netclasses and
 native DRC rules are installed. The mains board's 106 owner-routed tracks were
-cleared as authorized. Sensor CIN/shield breakouts are already connected; route
-its remaining local power, decoupling and digital connections. The four-layer
+cleared as authorized. Sensor routing is accepted with 117 track segments and nine tented vias; its
+final routing check reports zero findings and zero unconnected items. The four-layer
 sensor keeps electronics behind driven shielding while preserving the slim face.
 
 Trunk widths remain the router defaults even when starting at small pads. Narrow
@@ -111,43 +111,35 @@ full project gate, 151 focused test executions, three actual-board preparation
 passes, copied-board mutation/rejection probes and an accepted temporary-copy
 workflow rehearsal. No routing or fabrication acceptance was advanced.
 
+## Sensor routing accepted
+
+The owner-approved sensor board, C3 source placement and exact glass-side paths
+are now retained in the [routing acceptance](design/evidence/sensor-routing-acceptance/README.md)
+and updated handoff lock. Source/native parity, strict ERC, native preparation,
+independent copper review and `sh scripts/check-routing.sh sensor --final` pass.
+The full development gate `sh scripts/check.sh` passes. All 13 ground pads connect
+to one F.Cu fill and five GND vias join it to continuous In1 ground. U1/C3's local
+power path is 3.0708 mm. The two reviewed glass-side additions need no rework.
+This accepts routing, not fabrication release; prior review notes retain their
+historical findings and the new receipt records closure.
+
 ## Next
 
-Close the sensor routing review before treating it as fabrication-ready. The
-owner's saved routing reviewed on 2026-09-13 has zero unconnected items and zero
-unwaived native DRC/parity findings; all ground pads share one F.Cu fill, In1 ground
-is continuous, and three added GND vias fit the permitted gap. The revised U1/C3
-power connection is about 3.1 mm instead of 28 mm. These are working-tree review
-observations, not a new accepted native receipt; the handoff table above records
-the earlier baseline.
-
-C3's authorized 0.25 mm move is now reflected in source placement at x=6.75,
-y=8 mm (native x=106.75, y=92 mm, rotation 90 degrees); fresh source/native parity
-passes. The B.Cu review found no electrical rework required: CIN_LEVEL's extended
-tail lies inside its existing same-net bar, while SHLD2's tail also overlaps its
-bar and the short diagonal only changes the local breakout. Both connections
-already existed electrically before these additions. See the
-[sensor routing review](design/evidence/sensor-owner-routing/review.md).
-
-Next reconcile the exact reviewed breakout geometry with the protected routing
-contract through the guarded acceptance workflow. The final routing command still
-fails its old fixed-breakout checks despite clean native connectivity; neither
-that policy nor the accepted lock was changed by this review. Then complete the
-final copper/mask/paste/silk review under
-[the routing guide](design/routing-guardrails.md) and
-[manufacturing output profile](design/manufacturing-output.md). No hardware is
-needed. This bounded review closes known sensor acceptance gaps before attention
-moves to the remaining boards; it does not authorize fabrication release.
+The owner is routing mains. Preserve that in-progress native work and the accepted
+sensor routing. Review mains when the owner requests it, then finish the remaining
+controller routing and conduct one combined pre-fabrication review of all three
+boards. Use [routing guardrails](design/routing-guardrails.md) during routing and
+[manufacturing output](design/manufacturing-output.md) for the final release gates.
+No physical hardware is required for this stage.
 
 ### Candidates not chosen
 
-- Controller/mains routing: independently startable, larger work with power,
-  return-path and isolation risks; remains necessary for the complete board set,
-  but does not resolve the current sensor review findings.
-- Manufacturing exports: follow all three boards' routed acceptance and
-  G-02/G-03/G-04 review; exporting now would package an unaccepted design.
+- Further sensor routing: no open routing finding; retain the accepted board
+  unless the final combined review identifies a concrete change.
+- Manufacturing exports/order: wait for completed controller/mains routing and
+  the combined G-02/G-03/G-04 review explicitly requested by the owner.
 
 Physical calibration, adhesive response, temperatures, pump startup, EMI, PC sleep
 and HomeKit behavior remain commissioning stages. All physical test rows remain
 Not run. No parts were ordered, hardware flashed or mains energized. The broader
-[delivery goal](goal.md) continues beyond this routing-preparation milestone.
+[delivery goal](goal.md) continues beyond routing acceptance.

@@ -8,6 +8,6 @@ geometry is outside the present feature scope.
 
 The accepted [native project](kicad/README.md) is 18 × 64 mm with four layers,
 horizontal glass-side electrodes, inner driven shields and a left-exiting soldered
-pigtail. Its power/ground copper and CIN/shield breakouts are prepared; 21 connections
-remain for owner routing. See [STATE](../../docs/STATE.md) for validation and the
+pigtail. Owner routing is complete with zero unconnected items; the exact routing is
+accepted separately from the final three-board pre-fabrication review. See [STATE](../../docs/STATE.md) for validation and the
 exact intentional inner-shield padstack exceptions.

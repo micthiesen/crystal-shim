@@ -113,7 +113,7 @@ through-hole component tails may protrude into the tape. No blind/buried vias or
 via-in-pad fabrication process is required by this target. Both netclasses default to
 0.45 mm vias with 0.20 mm drills. Additional vias must fit the central shield gap and
 pass native clearance checks; the six required breakout/ground vias are already placed.
-Keep the three prepared B.Cu stubs.
+Keep the accepted B.Cu breakout geometry recorded in `pcb/tools/routing-policy.json`.
 
 ### Left-exiting pigtail
 

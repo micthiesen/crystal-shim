@@ -1,16 +1,17 @@
 # Sensor routing handoff
 
 Open [sensor.kicad_pro](sensor.kicad_pro). The compact sensor is **18 × 64 mm,
-four layers**, with 16 footprints and 21 remaining unrouted connections. Mount
+four layers**, with 16 footprints and zero unrouted connections. Mount
 its mask-covered glass face with thin adhesive film, top 2 mm below the rim.
 J1 is six outward-face solder pads; the pigtail exits left when looking at the
 electronics. No component lead or mount sits between electrode copper and glass.
 
 The glass-facing B.Cu electrodes and In2.Cu driven shields are fixed geometry.
-F.Cu holds electronics and ordinary routing; In1.Cu provides ground and permitted
-routing. F.Cu/In1.Cu ground pours, six tented vias and 15 CIN/shield connection
-segments are already prepared. Preserve them while routing local power,
-decoupling, I2C and the pigtail. Through vias default to 0.45/0.20 mm.
+F.Cu holds electronics and all ordinary routes; In1.Cu provides continuous ground.
+The accepted routing has 117 track segments and nine tented vias, including five
+GND vias. All ground pads share the F.Cu fill, connected to In1.Cu. Preserve the
+routed board and its exact accepted glass-side breakouts. Through vias default to
+0.45/0.20 mm.
 
 Strict ERC and schematic parity are clean. Six exact, UUID-bound padstack
 warnings are excluded because the intentional driven-shield pads exist only on
@@ -29,3 +30,5 @@ Keep this project, its custom rules and local libraries together. Route, refill
 with **B**, save and run `sh scripts/check-routing.sh sensor --final` before
 fabrication checks/export. Unconnected items are allowed without `--final`.
 Physical capacitance and adhesive response remain commissioning measurements.
+
+Owner routing is accepted in the [routing receipt](../../../docs/design/evidence/sensor-routing-acceptance/README.md). Final pre-fabrication review remains deferred until all three boards are reviewed together.
