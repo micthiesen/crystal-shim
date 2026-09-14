@@ -5,7 +5,9 @@
   "source": "Owner-pasted form settings, followed by purchase confirmation: mains changed red to blue; sensor/controller via option changed to0.2mm/(0.3/0.35mm); all other pasted settings unchanged.",
   "order_date": "Not separately supplied; do not infer from order number",
   "amount": "Not supplied",
-  "stencil_purchase": "Not stated in supplied confirmation",
+  "stencil_purchase": "Owner subsequently confirmed one ordered top stencil per board and supplied the product details recorded in stencils. The earlier PCB-only confirmation did not state stencil inclusion.",
+  "stencil_source": "Owner-pasted ordered stencil product details supplied while requesting printed PCB stenciling fixtures. No separate stencil order number, receipt/price, dispatch or delivery confirmation was supplied.",
+  "stencil_thickness_verification": "The design release and printed assembly guide use a 0.10 mm review basis. The actual order selection is Select by JLCPCB; the supplied stencil thickness remains unknown and must be checked on receipt.",
   "dispatch_or_delivery": "Not confirmed",
   "boards": [
     {
@@ -158,6 +160,89 @@
       "layer_sequence": "Blank in supplied order details",
       "press_fit_hole": false,
       "backdrill": false
+    }
+  ],
+  "stencils": [
+    {
+      "board": "controller",
+      "gerber_file": "crystal-shim-controller-rev1-jlcpcb_Y11",
+      "quoted_build_time": "1-2 days",
+      "framework": false,
+      "step_stencil": false,
+      "nano_coating": false,
+      "dimension_listing_mm": [
+        380,
+        280
+      ],
+      "side": "Top",
+      "quantity": 1,
+      "thickness_selection": "Select by JLCPCB",
+      "custom_size_mm": [
+        170,
+        130
+      ],
+      "polishing_process": "Sanding",
+      "fiducials": "No Fiducial",
+      "confirm_production_file": false,
+      "engrave_text": false,
+      "ultrasonic_resistant_adhesive": false,
+      "package_box": "With JLCPCB logo",
+      "stencil_process_type": "Solder paste stencil",
+      "weight_kg": 0.26
+    },
+    {
+      "board": "mains",
+      "gerber_file": "crystal-shim-mains-rev1-jlcpcb_Y12",
+      "quoted_build_time": "1-2 days",
+      "framework": false,
+      "step_stencil": false,
+      "nano_coating": false,
+      "dimension_listing_mm": [
+        380,
+        280
+      ],
+      "side": "Top",
+      "quantity": 1,
+      "thickness_selection": "Select by JLCPCB",
+      "custom_size_mm": [
+        170,
+        130
+      ],
+      "polishing_process": "Sanding",
+      "fiducials": "No Fiducial",
+      "confirm_production_file": false,
+      "engrave_text": false,
+      "ultrasonic_resistant_adhesive": false,
+      "package_box": "With JLCPCB logo",
+      "stencil_process_type": "Solder paste stencil",
+      "weight_kg": 0.26
+    },
+    {
+      "board": "sensor",
+      "gerber_file": "crystal-shim-sensor-rev1-jlcpcb_Y13",
+      "quoted_build_time": "1-2 days",
+      "framework": false,
+      "step_stencil": false,
+      "nano_coating": false,
+      "dimension_listing_mm": [
+        380,
+        280
+      ],
+      "side": "Top",
+      "quantity": 1,
+      "thickness_selection": "Select by JLCPCB",
+      "custom_size_mm": [
+        40,
+        90
+      ],
+      "polishing_process": "Sanding",
+      "fiducials": "No Fiducial",
+      "confirm_production_file": false,
+      "engrave_text": false,
+      "ultrasonic_resistant_adhesive": false,
+      "package_box": "With JLCPCB logo",
+      "stencil_process_type": "Solder paste stencil",
+      "weight_kg": 0.14
     }
   ]
 }

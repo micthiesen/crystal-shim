@@ -1,0 +1,86 @@
+{
+  "units": "mm",
+  "material": "PETG",
+  "floor": 3.0,
+  "pocket_depth": 1.8,
+  "top": 4.8,
+  "wall_clearance_per_side": 0.6,
+  "tab_top": 4.3999999999999995,
+  "beam_width": 1.2,
+  "beam_length": 20.0,
+  "nominal_preload": 0.6,
+  "design_travel": 1.2,
+  "nominal_shim": 0.2,
+  "source_sha256": "24ec8d3bd0bf7f747ab72e6131f17ec66263eef016a2d172b35ce4bfb7f97ff1",
+  "boards": {
+    "controller": {
+      "name": "controller",
+      "width": 150,
+      "height": 110,
+      "tray": 210,
+      "stencil": [
+        170,
+        130
+      ],
+      "release": "2026-09-14-rev1",
+      "order_thickness": 1.6,
+      "gerber": "pcb/controller/fabrication/2026-09-14-rev1/gerbers/controller-Edge_Cuts.gm1",
+      "gerber_sha256": "57dd2fd64c9fff57e391d92677281b63e3a46ecf5f917d17314703275ff90e6f",
+      "pocket": [
+        151.2,
+        111.2
+      ],
+      "outside_stencil_border": [
+        20.0,
+        40.0
+      ],
+      "volume_cm3": 179.73
+    },
+    "mains": {
+      "name": "mains",
+      "width": 150,
+      "height": 110,
+      "tray": 210,
+      "stencil": [
+        170,
+        130
+      ],
+      "release": "2026-09-14-mov-bulk",
+      "order_thickness": 1.6,
+      "gerber": "pcb/mains/fabrication/2026-09-14-mov-bulk/gerbers/mains-Edge_Cuts.gm1",
+      "gerber_sha256": "db85cb259927b228cde4a074aca876c2d5a7e2fce84f9253fd43f8c17c98d084",
+      "pocket": [
+        151.2,
+        111.2
+      ],
+      "outside_stencil_border": [
+        20.0,
+        40.0
+      ],
+      "volume_cm3": 179.73
+    },
+    "sensor": {
+      "name": "sensor",
+      "width": 18,
+      "height": 64,
+      "tray": 130,
+      "stencil": [
+        40,
+        90
+      ],
+      "release": "2026-09-14-rev1",
+      "order_thickness": 1.6,
+      "gerber": "pcb/sensor/fabrication/2026-09-14-rev1/gerbers/sensor-Edge_Cuts.gm1",
+      "gerber_sha256": "40c01818a87053db21ad392e129dc41c0f23437b49087bf4ac11b5118c2d3054",
+      "pocket": [
+        19.2,
+        65.2
+      ],
+      "outside_stencil_border": [
+        45.0,
+        20.0
+      ],
+      "volume_cm3": 77.28
+    }
+  }
+}

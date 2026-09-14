@@ -1,0 +1,66 @@
+{
+  "date": "2026-09-14",
+  "status": "Digital design reviewed and released for printing; physical fit untested",
+  "checks": {
+    "valid_single_STEP_solids": 6,
+    "watertight_STL_and_3MF_pairs": 6,
+    "board_outline_and_thickness_cases": 81,
+    "spring_geometry_intact": true,
+    "free_spring_travel_mm": 1.2,
+    "layer_support_direction": "0.2 mm upper sections do not extend beyond preceding sections",
+    "full_repository_gate": "sh scripts/check.sh: exit 0",
+    "conditional_skips": {
+      "test_check_routing.py": 2,
+      "test_kicad_native_integration.py": 17,
+      "test_pcb_readiness.py": 24
+    },
+    "native_PCB_changes": false
+  },
+  "independent_review": {
+    "result": "No remaining blocking findings",
+    "closed_finding": "Sensor access well nicked the upper spring near its root; moved both wells to Y=-10 mm and added full-spring containment check",
+    "other_improvements": "Parameterized pocket render labels; documented depth/shim regeneration constraints and strokes toward fixed datums"
+  },
+  "visual_review": [
+    "output/preview.png: all trays fully visible, stencil outlines, pockets, tabs and tape borders inspected",
+    "output/details.png: continuous spring and nominal flush section inspected"
+  ],
+  "not_measured": [
+    "Printed flatness and dimensional accuracy",
+    "Actual board/stencil geometry and foil thickness",
+    "PETG retention force, creep and fatigue",
+    "Paste registration and transfer",
+    "Physical print or slicer-specific toolpaths"
+  ],
+  "sha256": {
+    "cad/stencil-fixtures/README.md": "8c74f1684b68d73f6eafd99a3a7f4439a7c2118b62e39e3e21565a854876be85",
+    "cad/stencil-fixtures/build.py": "24ec8d3bd0bf7f747ab72e6131f17ec66263eef016a2d172b35ce4bfb7f97ff1",
+    "cad/stencil-fixtures/output/controller-shim-0.2mm.3mf": "5c2bc150a2159d2607da41f562675dbb6213b2b21b66be62e7d3174f8b51d18f",
+    "cad/stencil-fixtures/output/controller-shim-0.2mm.step": "b62844f5bfab06628c38d5b63e7835447fa30bf305b1c181fc044854dff76ae4",
+    "cad/stencil-fixtures/output/controller-shim-0.2mm.stl": "52caaba9f30192098b7e6dd882a28f2013407fbd340c5c6a052332307f7e46cb",
+    "cad/stencil-fixtures/output/controller-tray.3mf": "0d6f346740baefe844de7b6ec66e9be2cbbf5692b90dc63e78454f42d19c87e1",
+    "cad/stencil-fixtures/output/controller-tray.step": "17b41c94d36289a9da1b7d9826d13fe90f65275313c5bc2ab64d470d81f79500",
+    "cad/stencil-fixtures/output/controller-tray.stl": "20ac799a127e60d67a92e2d4ae38dcdebdca8898f326670f35961dd434efa85e",
+    "cad/stencil-fixtures/output/details.png": "6156137e353890ac71fe04c9f96c30b023cd9c70ae5f8e09e266676e0e6a2f29",
+    "cad/stencil-fixtures/output/mains-shim-0.2mm.3mf": "4ea139aa1472e274b7540b10ee56bf67e587748bc4c1108dd60b10c1aa025f0c",
+    "cad/stencil-fixtures/output/mains-shim-0.2mm.step": "83aa2d1b7c9ebdd654849a926fdf7e31f03ed0fed49d95dcb396a33974a4a56b",
+    "cad/stencil-fixtures/output/mains-shim-0.2mm.stl": "52caaba9f30192098b7e6dd882a28f2013407fbd340c5c6a052332307f7e46cb",
+    "cad/stencil-fixtures/output/mains-tray.3mf": "6fa4a906793a104a5ad28f062bc2a2465210e48fa57934424c057b16c3037149",
+    "cad/stencil-fixtures/output/mains-tray.step": "825a14d81b6b627ec2e699bbfea8528f57170109a587c5721fe282d11bd8560d",
+    "cad/stencil-fixtures/output/mains-tray.stl": "cf02f97f48ec0dc6674d8d0bfc5781c7e44b54addd75084adbe83cd2156f5f9a",
+    "cad/stencil-fixtures/output/parameters.json": "8579d8f02a74d18cdc3856264fab5de51698736ff9ded851a1e8834d5de4f609",
+    "cad/stencil-fixtures/output/preview.png": "f58e3a4d7bba23a903397a0c0bb2708ff9f1189882a36aab547ea48aac0818b7",
+    "cad/stencil-fixtures/output/sensor-shim-0.2mm.3mf": "f07a26deda19cc615d332ed6e70d276c61106a3bbf1a46900370e5ed18279edb",
+    "cad/stencil-fixtures/output/sensor-shim-0.2mm.step": "51c0cfeaffe09342d91fc1d78bf4392c615833bba9a40722f9cbc0b87d45cace",
+    "cad/stencil-fixtures/output/sensor-shim-0.2mm.stl": "3f0edef70eda44bfd47a8acb80f147aa883e7e75a556f35f44bccd119b6a4ef0",
+    "cad/stencil-fixtures/output/sensor-tray.3mf": "f569ddd6a0162d72a66fca945aa14d86ebbe75d75624afa560012c367e24b5df",
+    "cad/stencil-fixtures/output/sensor-tray.step": "facb3aa9335151754330e7ad278859ffa33ab0831e8fda7f5098be2b2fe92eb5",
+    "cad/stencil-fixtures/output/sensor-tray.stl": "bbe01fbed96b6715dd6e42b0d93e4bd503a46a6c07c24a5581d8c21fcde1bc7e",
+    "cad/stencil-fixtures/output/validation.json": "af1ec176d7973ed1e275b70d3d6c9337f02d50791787a2557a7dbc49298b5776",
+    "cad/stencil-fixtures/pyproject.toml": "6c2a938165406ad92a41b2d2ced720479586949f8a1549e0904fde24ed7eee2c",
+    "cad/stencil-fixtures/render.py": "66681072e73c12f3a33a142caefc60ad6dee32a935c5a4e10cf31f40576d021f",
+    "cad/stencil-fixtures/uv.lock": "8754b2c4232cb51c99fdb7a61119b78c2e09c8b6ef42bc937adf691a971e571d",
+    "cad/stencil-fixtures/validate.py": "b789550dd3b3e5b4fd799c3adb35bf43173f98f3115daf6539636b9145c19338"
+  },
+  "order_sha256": "6837c1c31b6ad499286622890f0adfa43eaafb3b438d437f4b169688bcf261e5"
+}

@@ -27,16 +27,27 @@ Last updated: 2026-09-14
   [booklet review](assembly/README.md#sources-and-review) retain validation.
   The booklet work changed no native board. No hardware was flashed or mains
   energized; all physical commissioning rows remain Not run.
+- **Paste fixtures are modeled for the ordered boards.** The
+  [CadQuery source and print files](../cad/stencil-fixtures/README.md) provide
+  square PETG trays with flexible locating tabs, 1.8 mm pockets and separate
+  nominal 0.2 mm shims. The two large trays are 210 mm square; the sensor tray
+  is 130 mm square. Use the measured PCB/printed pocket depth to select shims
+  and verify a flush stencil seat. CAD/export checks, independent review and
+  visual review passed; physical print fit remains untested.
 - **Receipt and assembly details remain open.** The Mouser receipt records
   AP63203WU-7 on backorder and delayed spacer blanks. Actual AliExpress cable
-  specifications, internal cut lengths, stencil purchase and the existing service
+  specifications, internal cut lengths and the existing service
   supply's suitability remain unconfirmed. See the
   [assembly limits](assembly/README.md#sources-and-review) and
   [service input](design/service-input.md). These are not new purchase requests.
+  The owner confirmed all three top stencils: 170 × 130 mm for controller/mains,
+  40 × 90 mm for sensor. JLCPCB selected the foil thickness; its actual value
+  remains unknown, distinct from the printed guide's 0.10 mm design basis.
 
 ## Next
 
-Wait for hardware, then record actual receipts and assemble interactively using
+Print the [paste fixtures](../cad/stencil-fixtures/README.md) if desired while
+waiting for hardware. Then record actual receipts and assemble interactively using
 the [bench guide](assembly/README.md) and [build sequence](build.md).
 
 The owner closed procurement, and assembly requires the received boards and

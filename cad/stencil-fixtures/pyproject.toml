@@ -1,0 +1,15 @@
+[project]
+name = "crystal-shim-stencil-fixtures"
+version = "0.1.0"
+description = "Parametric paste-stencil fixtures for the three ordered PCBs"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "cadquery==2.8.0",
+    "matplotlib>=3.10,<4",
+    "trimesh>=4.9,<5",
+    "networkx>=3.4,<4",
+    "lxml>=5,<7",
+]
+
+[tool.uv]
+package = false

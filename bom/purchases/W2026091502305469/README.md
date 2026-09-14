@@ -29,7 +29,29 @@ name alone cannot distinguish old/new archive bytes; upload identity was not
 independently verified. Controller and sensor released files remain under
 `fabrication/2026-09-14-rev1/`.
 
+## Ordered stencils
+
+The owner subsequently confirmed one **top stencil per board** and supplied the
+product details below. The original PCB-only confirmation did not state stencil
+inclusion. No separate stencil order number, receipt/price or shipment confirmation
+was supplied.
+
+| Board / uploaded suffix | Custom size | Listed Dimension | Quantity | Listed weight |
+| --- | --- | --- | --- | --- |
+| Controller / `_Y11` | 170 × 130 mm | 380 × 280 mm | 1 | 0.26 kg |
+| Mains / `_Y12` | 170 × 130 mm | 380 × 280 mm | 1 | 0.26 kg |
+| Sensor / `_Y13` | 40 × 90 mm | 380 × 280 mm | 1 | 0.14 kg |
+
+The custom size and standard Dimension listing are retained separately as pasted.
+All three report 1–2 days build time, Framework No, Step Stencil No, Nano-Coating
+No, Sanding, No Fiducial, Confirm Production file No, Engrave Text No,
+Ultrasonic-resistant adhesive No, With JLCPCB logo box, and Solder paste stencil
+process type. Exact filenames and selections are in [order.json](order.json).
+
+**Thickness: Select by JLCPCB.** The design release and printed assembly guide
+use a **0.10 mm design-review basis**; this is not a confirmed supplied thickness.
+Check the received stencil specification before treating that basis as fulfilled.
+
 The owner considers purchasing complete and requests waiting for the hardware.
-Stencil inclusion is not specified in the pasted PCB lines; no stencil purchase
-is inferred. No received quantities, physical tests, flashing or mains operation
-are recorded by this purchase confirmation.
+No received quantities, physical tests, flashing or mains operation are recorded
+by these purchase confirmations.

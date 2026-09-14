@@ -62,8 +62,12 @@ were rechecked for the [Littelfuse 215 hand-solder conditions](https://www.litte
 and [Phoenix 1868076 termination](https://www.phoenixcontact.com/us/products/1868076/pdf).
 No universal hot-bed setting or unverified TMOV iron-temperature limit is given.
 
-Stencil purchase, actual sensor-cable specifications and internal cut lengths
-remain unrecorded. The guide preserves the sensor's 203.2 mm termination-to-crimp
+The owner subsequently confirmed the [three top stencil purchases](../../bom/purchases/W2026091502305469/README.md#ordered-stencils).
+Their ordered thickness is **Select by JLCPCB**; the supplied thickness remains
+unknown. The printed guide's **0.10 mm** instruction records the design-review
+basis, not the confirmed order selection. Check the received stencil specification.
+Actual sensor-cable specifications and internal cut lengths remain unrecorded.
+The guide preserves the sensor's 203.2 mm termination-to-crimp
 limit without inventing cable colours or housing-face numbering. Parts marked
 On the way are not claimed received. The service lead is outside the installed
 three-harness build and remains covered in [service input](../design/service-input.md).

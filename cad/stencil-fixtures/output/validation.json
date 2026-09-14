@@ -1,0 +1,662 @@
+{
+  "scope": "Digital geometry only; no physical print, force or paste test",
+  "source_sha256": {
+    "build.py": "24ec8d3bd0bf7f747ab72e6131f17ec66263eef016a2d172b35ce4bfb7f97ff1",
+    "validate.py": "b789550dd3b3e5b4fd799c3adb35bf43173f98f3115daf6539636b9145c19338",
+    "uv.lock": "8754b2c4232cb51c99fdb7a61119b78c2e09c8b6ef42bc937adf691a971e571d"
+  },
+  "parts": {
+    "controller-tray": {
+      "valid_single_solid": true,
+      "watertight_stl_and_3mf": true,
+      "print_bounds_mm": [
+        210.0,
+        210.0,
+        4.8
+      ],
+      "files_sha256": {
+        "step": "17b41c94d36289a9da1b7d9826d13fe90f65275313c5bc2ab64d470d81f79500",
+        "stl": "20ac799a127e60d67a92e2d4ae38dcdebdca8898f326670f35961dd434efa85e",
+        "3mf": "0d6f346740baefe844de7b6ec66e9be2cbbf5692b90dc63e78454f42d19c87e1"
+      }
+    },
+    "controller-shim-0.2mm": {
+      "valid_single_solid": true,
+      "watertight_stl_and_3mf": true,
+      "print_bounds_mm": [
+        147.0,
+        107.0,
+        0.2
+      ],
+      "files_sha256": {
+        "step": "b62844f5bfab06628c38d5b63e7835447fa30bf305b1c181fc044854dff76ae4",
+        "stl": "52caaba9f30192098b7e6dd882a28f2013407fbd340c5c6a052332307f7e46cb",
+        "3mf": "5c2bc150a2159d2607da41f562675dbb6213b2b21b66be62e7d3174f8b51d18f"
+      }
+    },
+    "mains-tray": {
+      "valid_single_solid": true,
+      "watertight_stl_and_3mf": true,
+      "print_bounds_mm": [
+        210.0,
+        210.0,
+        4.8
+      ],
+      "files_sha256": {
+        "step": "825a14d81b6b627ec2e699bbfea8528f57170109a587c5721fe282d11bd8560d",
+        "stl": "cf02f97f48ec0dc6674d8d0bfc5781c7e44b54addd75084adbe83cd2156f5f9a",
+        "3mf": "6fa4a906793a104a5ad28f062bc2a2465210e48fa57934424c057b16c3037149"
+      }
+    },
+    "mains-shim-0.2mm": {
+      "valid_single_solid": true,
+      "watertight_stl_and_3mf": true,
+      "print_bounds_mm": [
+        147.0,
+        107.0,
+        0.2
+      ],
+      "files_sha256": {
+        "step": "83aa2d1b7c9ebdd654849a926fdf7e31f03ed0fed49d95dcb396a33974a4a56b",
+        "stl": "52caaba9f30192098b7e6dd882a28f2013407fbd340c5c6a052332307f7e46cb",
+        "3mf": "4ea139aa1472e274b7540b10ee56bf67e587748bc4c1108dd60b10c1aa025f0c"
+      }
+    },
+    "sensor-tray": {
+      "valid_single_solid": true,
+      "watertight_stl_and_3mf": true,
+      "print_bounds_mm": [
+        130.0,
+        130.0,
+        4.8
+      ],
+      "files_sha256": {
+        "step": "facb3aa9335151754330e7ad278859ffa33ab0831e8fda7f5098be2b2fe92eb5",
+        "stl": "bbe01fbed96b6715dd6e42b0d93e4bd503a46a6c07c24a5581d8c21fcde1bc7e",
+        "3mf": "f569ddd6a0162d72a66fca945aa14d86ebbe75d75624afa560012c367e24b5df"
+      }
+    },
+    "sensor-shim-0.2mm": {
+      "valid_single_solid": true,
+      "watertight_stl_and_3mf": true,
+      "print_bounds_mm": [
+        15.0,
+        61.0,
+        0.2
+      ],
+      "files_sha256": {
+        "step": "51c0cfeaffe09342d91fc1d78bf4392c615833bba9a40722f9cbc0b87d45cace",
+        "stl": "3f0edef70eda44bfd47a8acb80f147aa883e7e75a556f35f44bccd119b6a4ef0",
+        "3mf": "f07a26deda19cc615d332ed6e70d276c61106a3bbf1a46900370e5ed18279edb"
+      }
+    }
+  },
+  "boards": {
+    "controller": {
+      "release": {
+        "rectangle_mm": [
+          150,
+          110
+        ],
+        "sha256": "57dd2fd64c9fff57e391d92677281b63e3a46ecf5f917d17314703275ff90e6f"
+      },
+      "fit": {
+        "cases": [
+          {
+            "dw": -0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": -0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": -0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": -0.2,
+            "dh": 0,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": -0.2,
+            "dh": 0,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": -0.2,
+            "dh": 0,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": -0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": -0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": -0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0,
+            "dh": -0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0,
+            "dh": -0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0,
+            "dh": -0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0,
+            "dh": 0,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0,
+            "dh": 0,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0,
+            "dh": 0,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0,
+            "dh": 0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0,
+            "dh": 0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0,
+            "dh": 0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0.2,
+            "dh": 0,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0.2,
+            "dh": 0,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0.2,
+            "dh": 0,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          }
+        ],
+        "fixed_collisions_mm3": 0,
+        "free_spring_translation_clear_to_mm": 1.2,
+        "negative_controls": [
+          "oversize PCB hits wall",
+          "unflexed tabs intersect PCB"
+        ],
+        "outside_stencil_border_mm": [
+          20.0,
+          40.0
+        ],
+        "remaining_hard_wall_gap_at_max_board_mm": 0.39999999999999997
+      },
+      "unsupported_upper_layer_area_mm2": 0
+    },
+    "mains": {
+      "release": {
+        "rectangle_mm": [
+          150,
+          110
+        ],
+        "sha256": "db85cb259927b228cde4a074aca876c2d5a7e2fce84f9253fd43f8c17c98d084"
+      },
+      "fit": {
+        "cases": [
+          {
+            "dw": -0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": -0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": -0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": -0.2,
+            "dh": 0,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": -0.2,
+            "dh": 0,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": -0.2,
+            "dh": 0,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": -0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": -0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": -0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0,
+            "dh": -0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0,
+            "dh": -0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0,
+            "dh": -0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0,
+            "dh": 0,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0,
+            "dh": 0,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0,
+            "dh": 0,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0,
+            "dh": 0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0,
+            "dh": 0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0,
+            "dh": 0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0.2,
+            "dh": 0,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0.2,
+            "dh": 0,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0.2,
+            "dh": 0,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          }
+        ],
+        "fixed_collisions_mm3": 0,
+        "free_spring_translation_clear_to_mm": 1.2,
+        "negative_controls": [
+          "oversize PCB hits wall",
+          "unflexed tabs intersect PCB"
+        ],
+        "outside_stencil_border_mm": [
+          20.0,
+          40.0
+        ],
+        "remaining_hard_wall_gap_at_max_board_mm": 0.39999999999999997
+      },
+      "unsupported_upper_layer_area_mm2": 0
+    },
+    "sensor": {
+      "release": {
+        "rectangle_mm": [
+          18,
+          64
+        ],
+        "sha256": "40c01818a87053db21ad392e129dc41c0f23437b49087bf4ac11b5118c2d3054"
+      },
+      "fit": {
+        "cases": [
+          {
+            "dw": -0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": -0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": -0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": -0.2,
+            "dh": 0,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": -0.2,
+            "dh": 0,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": -0.2,
+            "dh": 0,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": -0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": -0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": -0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0,
+            "dh": -0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0,
+            "dh": -0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0,
+            "dh": -0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0,
+            "dh": 0,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0,
+            "dh": 0,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0,
+            "dh": 0,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0,
+            "dh": 0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0,
+            "dh": 0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0,
+            "dh": 0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0.2,
+            "dh": -0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0.2,
+            "dh": 0,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0.2,
+            "dh": 0,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0.2,
+            "dh": 0,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          },
+          {
+            "dw": 0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.44,
+            "shim": 0.36
+          },
+          {
+            "dw": 0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.6,
+            "shim": 0.2
+          },
+          {
+            "dw": 0.2,
+            "dh": 0.2,
+            "pcb_thickness": 1.76,
+            "shim": 0.04
+          }
+        ],
+        "fixed_collisions_mm3": 0,
+        "free_spring_translation_clear_to_mm": 1.2,
+        "negative_controls": [
+          "oversize PCB hits wall",
+          "unflexed tabs intersect PCB"
+        ],
+        "outside_stencil_border_mm": [
+          45.0,
+          20.0
+        ],
+        "remaining_hard_wall_gap_at_max_board_mm": 0.39999999999999997
+      },
+      "unsupported_upper_layer_area_mm2": 0
+    }
+  },
+  "beam_estimate": {
+    "model": "Small-deflection cantilever screening only, epsilon=3*t*delta/(2*L^2)",
+    "max_outer_fiber_strain": 0.005399999999999999,
+    "not_proven": "Material fatigue, root stress concentration, printed stiffness or retention force"
+  }
+}
