@@ -1,0 +1,79 @@
+{
+  "release": "2026-09-14-rev1",
+  "board": "mains",
+  "status": "ready_to_order",
+  "prepared_from_commit": "6cfbcd9647188cf45c2d8633b66a326d69b334e8",
+  "native_files": {
+    "mains.kicad_dru": "d51dfc0d22f020adc98d06f513a38904ce078129722fe092fad8490993076c5f",
+    "mains.kicad_pcb": "2f7dde485c391e9a32bbc67e7dff616bb25a9b33989e7ad31ee7235522f2a335",
+    "mains.kicad_pro": "36111b798fb63750d0dd533c5a4071854bd931c0684d24724e78683809a405f9",
+    "mains.kicad_sch": "30f5c0b057fb1326418e315bcb3326a9d6edb0f36e71cecbc5a281ca9d7a8648",
+    "primary.kicad_sch": "bdc346962e823ce5466644bbc0d98503cb588a18e8247068ff08b024ef4f1e00",
+    "secondary.kicad_sch": "1c8fdcb57dca749a6d3c8f911ff5c0cd1c97e925936c55d623317c03f1ae22b9",
+    "suppression.kicad_sch": "709dbaa130e71e079eca781f7e00d124d68350a3fd9ddf0e0bd7a19bc04d76ae"
+  },
+  "accepted_lock_sha256": "d0a069fe6a05732c495adf8a9958c8298b28e720662d53794a80d47cf793aa04",
+  "acceptance": {
+    "run": "docs/design/evidence/pre-fab-2026-09-14/mains/release-acceptance/run.json",
+    "validation": "b67d06167e01695d9b7663662e77081986d1c233f88f959764453db97cbbf4e8",
+    "review": "4adc52c1c13bc7db2e117f28b3a45d15cb44e032370d53fe87baf05d6d129b7e",
+    "receipt": "0ed5351ac83257eefe9614174fc42f7ffc6ede1d5f123054ed56a10b6ac3458c"
+  },
+  "order_profile": "docs/design/manufacturing-output.md",
+  "assembly": "owner; no PCB assembly service",
+  "impedance_control": false,
+  "custom_supplier_instructions": false,
+  "quantity_suggested": 5,
+  "parts_sets": 1,
+  "checked_files": {
+    "assembly/mains-F_Fab.svg": "850ccd73df83e955727ce76c8ac345463f2305ab8b048414d53eae48ef0b1512",
+    "assembly/mains-F_Mask.svg": "580e4b9979a0cef964c12394d1e2eb423070c3a1c9880edb64988048d2df28dc",
+    "assembly/mains-F_Silkscreen.svg": "030b4ded5fb3e44c9ab18486a9ab3a472da0a3309b755a8d218911f5d2a04b3f",
+    "assembly/schematic.pdf": "b19e2a1de816c838791f9a343cdb77dca312a707832f5a9ec53c8786a47b3d43",
+    "crystal-shim-mains-rev1-jlcpcb.zip": "ce6496a41e2401418cb742586c0c3a9a9f5433573e280e27c2118ff0b2d8ad80",
+    "drills/mains-NPTH-drl_map.pdf": "92cd4d9e4f1d010ad3e59e775418e089c508964558099e1d54e7c28595eb1de9",
+    "drills/mains-NPTH.drl": "dbf92949cc2b50361e45baca4dead216eac730a5ad092390915d86e4314b7db2",
+    "drills/mains-PTH-drl_map.pdf": "e52f0aab2e38f50de7c3870ae07c006104d5548a924f3235ad13896c0ea38c3b",
+    "drills/mains-PTH.drl": "882bda3cf7666f101c9c1dfdc040daf359579fce8c95e8bba6ea819ab891e8a6",
+    "drills/mains-drill.rpt": "fe0ba214a30e344c2bdfe7be12d94be69d895275f3937e887c9550cc11d15801",
+    "evidence/export.json": "e80468b1719c3bb0be47f979b93a5d8ff8e395e965e8d007d504c8e24beebf1d",
+    "evidence/gerber-bottom.svg": "49c8f6a6b95d0ab68488b88cbdef26b4323f5bb03b6adb2f98bd95e7219c6bdc",
+    "evidence/gerber-top.svg": "56c4a3b20aa1054c095a3684e1eb0201fff4abe465aa7e4326f7717e3f56b2d5",
+    "gerbers/mains-B_Cu.gbl": "88b239c488b29e3cee8a5147b005bcc32cd91dd23d0970641f1a40170d6a3c76",
+    "gerbers/mains-B_Mask.gbs": "f570a879885e448b22500322eff3b3fc6d7f1fe5802b3081f072f9f5b887e57d",
+    "gerbers/mains-B_Silkscreen.gbo": "dec33c339c62f802df24954b35afb6462c4ce5dda7a628da5bc9e60d4daf7c93",
+    "gerbers/mains-Edge_Cuts.gm1": "1363fa91299f2d86f1e81c248b49b18b079b9dd82da6749cf1489c04602d7f87",
+    "gerbers/mains-F_Cu.gtl": "25ea907f205866b19b74c555c086d3aec65438f557ae2aa85691b3e1eddecea7",
+    "gerbers/mains-F_Mask.gts": "29cfa0b16fe25615cf20ce94c8af0daf2e8296b0855a69ca48bb4619f6bdf1de",
+    "gerbers/mains-F_Silkscreen.gto": "faf5db8337cdf16ec5b72f436ad2afc06bc22031896ca8d2949104efd4167f34",
+    "gerbers/mains-job.gbrjob": "24d66a4493b33b67fb97feae9b47e20ace7584138825efb9048614aea0ddc749",
+    "stencil/mains-F_Paste.gtp": "c098bb95f9989ac795120aa0df0be51d64e72a16d9c83509969f71df3946ce00",
+    "stencil/mains-job.gbrjob": "1895e390ba590761e448afe2b1cdaba909fe4d6e932e9417fa5dbbf8e8cc8fb8",
+    "crystal-shim-mains-rev1-top-stencil.zip": "9a7226312109f70e4386323161a5dada72bd6f6024278a54be41f1a643dc7926"
+  },
+  "review_evidence": {
+    "docs/design/evidence/pre-fab-2026-09-14/cam-check.json": "1a957a3d363195b67e477eceb2090c57fe639671b20857097a28e6df2e93bbc0",
+    "docs/design/evidence/pre-fab-2026-09-14/cam-review.md": "e038887730de8bc9efa424fd62f010e1e0ed29ad66c996a7ff165b96ff8bab44",
+    "docs/design/evidence/pre-fab-2026-09-14/electrical-review.md": "787e61f199f4a805146694b430278d5064c5396f6642491205f8f46238001c2b",
+    "docs/design/evidence/pre-fab-2026-09-14/manufacturing-review.md": "b564e3508c36290ce13f59f3c65f65c4029eea0494d53ce854515de650b07f13",
+    "docs/design/evidence/pre-fab-2026-09-14/strict-drc-review.md": "18c92f75e16c7a532fee21b432c5d6b91282d3705064b5b99548e1468cdbf1d9",
+    "docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md": "5605aabdf97b79c41cb02e0b07eba0c4bdbfc79d54a321d817f80d6ebb611705",
+    "docs/design/evidence/pre-fab-2026-09-14/native-rule-regression.json": "efaad5b5052a3ac501ba7df2fff58c58a45e9352847b6dcc9ad01a1f6ff6f630",
+    "docs/design/evidence/pre-fab-2026-09-14/project-check.json": "5cbd6d9f417533bc767f93152452f62bd2724b4abbd05dee8f5c5bbd4c0c5f61",
+    "cad/shared-enclosure/support-fit.json": "28b42da856b1a2bfcab43fd95d767a6819f785136bfc3c0fe2947bd25f3ec826"
+  },
+  "limits": [
+    "Supplier upload preview/quote/DFM not performed; use standard settings and compare preview with retained CAM.",
+    "Physical assembly, calibration and commissioning remain unrun. No purchases, flashing or mains energization."
+  ],
+  "stencil_upload": {
+    "file": "crystal-shim-mains-rev1-top-stencil.zip",
+    "members": [
+      "mains-F_Paste.gtp",
+      "mains-Edge_Cuts.gm1"
+    ],
+    "thickness_mm": 0.1,
+    "side": "top",
+    "framework": "none"
+  }
+}

@@ -103,10 +103,9 @@ signal vias may pass through it with an antipad. Blind/micro/buried vias are blo
 USB port/switch names now end in `_N`/`_P`, so KiCad recognizes all three pairs.
 Their stable source identities and endpoints did not change. The owner's
 2026-09-14 [USB decision](controller-routing-review.md) accepts the reviewed
-full-speed routing without paid impedance control. Existing no-via/front-only,
-pair-gap and mismatch checks are legacy policy findings for these paths, not
-requests to reroute. Native rules and checker policy still need reconciliation
-before formal handoff acceptance; retain all short/clearance/connectivity checks.
+full-speed routing without paid impedance control. Native rules and the checker now permit F.Cu/B.Cu USB traces and through vias,
+without the old hard pair-gap/mismatch/side-ground constraints. Width defaults
+remain 0.24 mm; short/clearance/connectivity checks remain enforced. In1 stays GND-only.
 
 Mains DRC still enforces 3.2 mm between different primary nets and 8 mm between
 primary and isolated copper. The sensor field rules follow its four-layer stack and declared breakouts. Do not

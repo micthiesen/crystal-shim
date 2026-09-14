@@ -59,7 +59,8 @@
               "minimum_width_mm": 0.6,
               "inflate_mm": 1
             }
-          ]
+          ],
+          "allow_vias": true
         },
         "V5_LOGIC": {
           "minimum_width_mm": 2,
@@ -482,7 +483,13 @@
         "USB_D_PORT_P",
         "USB_D_SWITCH_P"
       ],
-      "usb_layer": "F.Cu"
+      "usb_layer": "F.Cu",
+      "usb_layers": [
+        "F.Cu",
+        "B.Cu"
+      ],
+      "usb_allow_vias": true,
+      "usb_length_mismatch_max_mm": null
     },
     "mains": {
       "nets": {

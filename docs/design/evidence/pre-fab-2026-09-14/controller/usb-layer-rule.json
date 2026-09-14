@@ -1,0 +1,8 @@
+{
+  "channel": "KiCad GUI custom-rule editor on scratch copy; saved and reopened by KiCad CLI DRC",
+  "before_sha256": "f6c8bda467eb6042f6cff5f98eb3b9937dfe41e636e938b57afc726f7a511800",
+  "after_sha256": "2d1e6f9c66ed3fb458c64f7095699dd2d0ddd57139b6a1fb8df74ac04ff8e8cb",
+  "native_drc_findings": 0,
+  "unconnected": 0,
+  "change": "Explicit USB outer copper only rule preserves native rejection of In2.Cu routes; no PCB copper or geometry changed."
+}

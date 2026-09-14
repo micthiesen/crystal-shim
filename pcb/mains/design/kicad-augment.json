@@ -275,89 +275,491 @@
           "All four mains terminals use exactly two positions, line and neutral; mark that PE bypasses the board and keep text clear of copper and holes."
         ],
         "verification": "Complete front/back render and final Gerber/assembly inspection; native silk/text DRC.",
-        "status": "Applied native final-preparation ECO; labels verified through saved readback and ordinary DRC.",
+        "status": "Hand-tailored outward silk and reference labels, shared crystal/water logo and REV 1.0; scratch saved/reopened with electrical geometry preserved, 2026-09-14. Final CAM verification required.",
         "labels": [
           [
-            "PRIMARY",
-            90,
-            49
+            "T2A FUSED INPUT",
+            44.0,
+            54.0
           ],
           [
-            "ISOLATED 12V / 5V",
-            148,
-            49
-          ],
-          [
-            "J1 T2A FUSED INPUT",
-            45,
-            54
+            "FILTER LINE",
+            44.0,
+            83.0
           ],
           [
             "1 L   2 N",
-            45,
-            56
-          ],
-          [
-            "J2 FILTER LINE",
-            44,
-            82
+            44.0,
+            85.0
           ],
           [
             "1 L   2 N",
-            44,
-            84
+            45.0,
+            56.0
           ],
           [
-            "F3 T1A",
-            83,
-            96
-          ],
-          [
-            "J3 FILTER LOAD",
-            47,
-            130
+            "FILTER LOAD",
+            47.0,
+            130.0
           ],
           [
             "1 L   2 N",
-            47,
-            132
-          ],
-          [
-            "J4 SWITCHED PUMP",
-            101,
-            130
-          ],
-          [
-            "1 L   2 N",
-            101,
-            135
-          ],
-          [
-            "J5 1:+5V 2:RET 3:COIL",
-            150,
-            63
-          ],
-          [
-            "J6 1:+12V 2:RET",
-            158,
-            99
-          ],
-          [
-            "F2 3A",
-            149,
-            90
-          ],
-          [
-            "D1 K=+5V",
-            145,
-            131
+            47.0,
+            132.0
           ],
           [
             "PE BYPASSES BOARD",
-            85,
-            151
+            83.0,
+            151.5
+          ],
+          [
+            "T1A",
+            99.0,
+            116.2
+          ],
+          [
+            "SWITCHED PUMP",
+            105.0,
+            131.0
+          ],
+          [
+            "1 L   2 N",
+            105.0,
+            133.0
+          ],
+          [
+            "K=+5V",
+            150.0,
+            129.3
+          ],
+          [
+            "3A",
+            155.2,
+            93.0
+          ],
+          [
+            "1:+5V 2:RET 3:COIL",
+            161.0,
+            64.0
+          ],
+          [
+            "1:+12V 2:RET",
+            165.0,
+            100.0
+          ],
+          [
+            "DANGER - MAINS",
+            90.0,
+            48.0
+          ],
+          [
+            "MAINS / REV 1.0",
+            139.5,
+            143.0
+          ],
+          [
+            "ISOLATED 12V / 5V",
+            148.0,
+            48.0
+          ],
+          [
+            "CRYSTAL SHIM",
+            139.5,
+            140.5
           ]
-        ]
+        ],
+        "reference_labels": {
+          "RV1": {
+            "text": "RV1",
+            "position_mm": [
+              64.0,
+              136.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "F2": {
+            "text": "F2",
+            "position_mm": [
+              149.0,
+              89.4
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "H1": {
+            "text": "H1",
+            "position_mm": [
+              38.0,
+              52.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C3": {
+            "text": "C3",
+            "position_mm": [
+              147.5,
+              99.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "K1": {
+            "text": "K1",
+            "position_mm": [
+              122.0,
+              130.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "J4": {
+            "text": "J4",
+            "position_mm": [
+              105.0,
+              128.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "H4": {
+            "text": "H4",
+            "position_mm": [
+              162.0,
+              148.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "H3": {
+            "text": "H3",
+            "position_mm": [
+              38.0,
+              148.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "L1": {
+            "text": "L1",
+            "position_mm": [
+              157.0,
+              113.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "D1": {
+            "text": "D1",
+            "position_mm": [
+              150.0,
+              121.9
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C1": {
+            "text": "C1",
+            "position_mm": [
+              89.0,
+              136.3
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "J5": {
+            "text": "J5",
+            "position_mm": [
+              161.0,
+              62.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C2": {
+            "text": "C2",
+            "position_mm": [
+              140.0,
+              107.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C6": {
+            "text": "C6",
+            "position_mm": [
+              168.5,
+              117.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "H2": {
+            "text": "H2",
+            "position_mm": [
+              162.0,
+              52.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "J6": {
+            "text": "J6",
+            "position_mm": [
+              165.0,
+              85.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "J3": {
+            "text": "J3",
+            "position_mm": [
+              47.0,
+              128.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "F3": {
+            "text": "F3",
+            "position_mm": [
+              99.0,
+              114.2
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C7": {
+            "text": "C7",
+            "position_mm": [
+              142.8,
+              114.4
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U2": {
+            "text": "U2",
+            "position_mm": [
+              149.0,
+              112.4
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R1": {
+            "text": "R1",
+            "position_mm": [
+              94.0,
+              120.9
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C5": {
+            "text": "C5",
+            "position_mm": [
+              151.0,
+              101.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C4": {
+            "text": "C4",
+            "position_mm": [
+              168.5,
+              109.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U1": {
+            "text": "U1",
+            "position_mm": [
+              62.0,
+              48.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "J2": {
+            "text": "J2",
+            "position_mm": [
+              44.0,
+              81.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "J1": {
+            "text": "J1",
+            "position_mm": [
+              44.0,
+              52.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.9,
+              0.9
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          }
+        }
       }
     },
     {
@@ -413,7 +815,7 @@
         "finish": "ENIG",
         "mask": "green",
         "silkscreen": "white",
-        "text": "Release all final boards together through project manufacture gates. Include exact assembly/BOM/CPL, stencil, drills, harness and revised enclosure interfaces. F1 inlet/filter/PE are offboard; F2 motor and F3 branch fuses are on the mains PCB. No order or energizing implied.",
+        "text": "Release all final boards together through project manufacture gates. Include exact owner-assembly purchase BOM, stencil, drills, harness and revised enclosure interfaces. F1 inlet/filter/PE are offboard; F2 motor and F3 branch fuses are on the mains PCB. No order or energizing implied.",
         "verification": "Project kicad-manufacture gates and independent CAM/assembly review; final sensor, load, temperature and interference commissioning remains separate.",
         "status": "ENIG/green mask/white silk are selected order specifications. Remaining delivery is post-routing checks and fabrication export, not native preparation."
       }

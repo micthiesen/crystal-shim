@@ -53,6 +53,9 @@ class NativeRoutingTests(unittest.TestCase):
         from check_routing import ROOT, POLICY
         self.board = self.pcbnew.LoadBoard(str(ROOT / 'pcb/controller/kicad/controller.kicad_pcb'))
         self.policy = json.loads(POLICY.read_text())['boards']['controller']
+        self.policy.pop('usb_layers', None)
+        self.policy.pop('usb_allow_vias', None)
+        self.policy.pop('usb_length_mismatch_max_mm', None)
 
     def test_final_usb_length_mismatch(self):
         from check_routing import usb_length_findings
@@ -62,9 +65,12 @@ class NativeRoutingTests(unittest.TestCase):
 
     def test_final_usb_length_within_target(self):
         from check_routing import usb_length_findings
+        from types import SimpleNamespace
+        before = {t.m_Uuid.AsString() for t in self.board.GetTracks()}
         self.add_track('USB_D_P', (90, 110), (92.4, 110), .24)
         self.add_track('USB_D_N', (90, 111), (92, 111), .24)
-        self.assertFalse(usb_length_findings(self.board, self.policy, self.pcbnew))
+        new_tracks = [t for t in self.board.GetTracks() if t.m_Uuid.AsString() not in before]
+        self.assertFalse(usb_length_findings(SimpleNamespace(GetTracks=lambda: new_tracks), self.policy, self.pcbnew))
 
     def add_track(self, net, start, end, width, layer=None):
         p = self.pcbnew
@@ -109,6 +115,16 @@ class NativeRoutingTests(unittest.TestCase):
         self.add_track('USB_D_N',(100,100),(101,100),.24,self.pcbnew.B_Cu)
         self.assertTrue(any('USB must stay' in f for f in audit(self.board,self.policy,self.pcbnew)))
 
+
+    def test_reviewed_usb_bottom_and_vias_policy(self):
+        from check_routing import audit, usb_length_findings
+        self.policy.update(usb_layers=['F.Cu', 'B.Cu'], usb_allow_vias=True,
+                           usb_length_mismatch_max_mm=None)
+        self.add_track('USB_D_N', (100,100), (101,100), .24, self.pcbnew.B_Cu)
+        self.assertFalse(any('USB must stay' in f for f in audit(self.board,self.policy,self.pcbnew)))
+        self.assertEqual(usb_length_findings(self.board,self.policy,self.pcbnew), [])
+        self.add_track('USB_D_P', (100,100), (101,100), .24, self.pcbnew.In1_Cu)
+        self.assertTrue(any('reserved ground' in f for f in audit(self.board,self.policy,self.pcbnew)))
 
     def test_v3v3_via_allowed_but_motor_via_rejected(self):
         from check_routing import audit

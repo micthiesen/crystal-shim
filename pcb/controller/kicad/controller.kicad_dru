@@ -46,10 +46,6 @@
   (condition "A.NetName == 'V5_SERVICE' && A.Layer == 'In*.Cu'")
   (constraint disallow track via))
 
-(rule "V5_SERVICE no single power via"
-  (condition "A.NetName == 'V5_SERVICE'")
-  (constraint disallow via))
-
 (rule "Neck V5_SERVICE C20.1.0"
   (condition "A.NetName == 'V5_SERVICE' && A.enclosedByArea('Neck V5_SERVICE C20.1.0')")
   (constraint track_width (min 0.3mm) (opt 2mm)))
@@ -389,20 +385,7 @@
 
 (rule "USB routing geometry"
   (condition "A.NetName == 'USB_D_*'")
-  (constraint track_width (min 0.24mm) (opt 0.24mm) (max 0.24mm)) (constraint diff_pair_gap (min 0.15mm) (opt 0.15mm) (max 0.15mm)))
-
-(rule "USB no vias"
-  (condition "A.NetName == 'USB_D_*'")
-  (constraint disallow via))
-
-(rule "USB front only"
-  (condition "A.NetName == 'USB_D_*' && A.Layer != 'F.Cu'")
-  (constraint disallow track))
-
-(rule "USB side ground spacing"
-  (condition "A.Type != 'Pad' && B.Type != 'Pad' && ((A.NetName == 'USB_D_*' && B.NetName == 'GND') || (B.NetName == 'USB_D_*' && A.NetName == 'GND'))")
-  (layer "F.Cu")
-  (constraint clearance (min 0.5mm)))
+  (constraint track_width (min 0.24mm) (opt 0.24mm) (max 0.24mm)))
 
 (rule "Module ground via 118.07 51.585"
   (condition "A.Type == 'Via' && A.NetName == 'GND' && A.Position_X == 118.07mm && A.Position_Y == 51.585mm")
@@ -427,3 +410,7 @@
 (rule "Buck switch no vias"
   (condition "A.NetName == 'BUCK_SW'")
   (constraint disallow via))
+
+(rule "USB outer copper only"
+  (condition "A.NetName == 'USB_D_*' && A.Layer != 'F.Cu' && A.Layer != 'B.Cu'")
+  (constraint disallow track))

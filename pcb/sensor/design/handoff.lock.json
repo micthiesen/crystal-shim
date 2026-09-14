@@ -158,15 +158,277 @@
               84.5
             ],
             [
+              "REV 1.0",
+              100,
+              123.2
+            ],
+            [
               "RIM",
               102,
               69
+            ],
+            [
+              "LEVEL SENSOR",
+              100,
+              121
+            ],
+            [
+              "CRYSTAL",
+              100,
+              114
+            ],
+            [
+              "SHIM",
+              100,
+              116.3
             ]
           ],
+          "reference_labels": {
+            "C1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                99.35,
+                77
+              ],
+              "rotation_deg": 90,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "C1",
+              "thickness_mm": 0.15
+            },
+            "C2": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                107.8,
+                77
+              ],
+              "rotation_deg": 90,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "C2",
+              "thickness_mm": 0.15
+            },
+            "C3": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                106.75,
+                94.2
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "C3",
+              "thickness_mm": 0.15
+            },
+            "C4": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                108,
+                88
+              ],
+              "rotation_deg": 90,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "C4",
+              "thickness_mm": 0.15
+            },
+            "D2": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                102,
+                73.5
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "D2",
+              "thickness_mm": 0.15
+            },
+            "E1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                100,
+                130
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "E1",
+              "thickness_mm": 0.15
+            },
+            "J1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                93.5,
+                86.5
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "J1",
+              "thickness_mm": 0.15
+            },
+            "R1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                94,
+                90
+              ],
+              "rotation_deg": 90,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "R1",
+              "thickness_mm": 0.15
+            },
+            "R2": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                94,
+                93
+              ],
+              "rotation_deg": 90,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "R2",
+              "thickness_mm": 0.15
+            },
+            "R3": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                102,
+                86.3
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "R3",
+              "thickness_mm": 0.15
+            },
+            "R4": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                108,
+                84
+              ],
+              "rotation_deg": 90,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "R4",
+              "thickness_mm": 0.15
+            },
+            "R5": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                98,
+                82.3
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "R5",
+              "thickness_mm": 0.15
+            },
+            "R6": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                106.5,
+                82.1
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "R6",
+              "thickness_mm": 0.15
+            },
+            "U1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                102,
+                89
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "U1",
+              "thickness_mm": 0.15
+            },
+            "U2": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                102,
+                79.6
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "U2",
+              "thickness_mm": 0.15
+            },
+            "U3": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                98,
+                87.6
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "U3",
+              "thickness_mm": 0.15
+            }
+          },
           "requirements": [
             "Outward J1 pad numbers 1 through 6 and top RIM orientation; no glass-facing silkscreen."
           ],
-          "status": "Applied during final preparation.",
+          "status": "Hand-tailored outward silk and reference labels, shared crystal/water logo and REV 1.0; scratch saved/reopened with electrical geometry preserved, 2026-09-14. Final CAM verification required.",
           "verification": "Native saved readback and DRC, F.SilkS render."
         },
         "target": {}
@@ -2984,9 +3246,9 @@
     ],
     "schema_version": 1
   },
-  "augmentation_sha256": "c6bd9fc926c77c745b34665c1a8aa3bd6b7c7902a0d176f5581bb26e62a0aca7",
+  "augmentation_sha256": "bff22abc40487e7729b1a2b61b4cad7f6a550cae474f2b79744f9da1ba35dcf4",
   "board_id": "sensor.board.main",
-  "eco_receipt_sha256": "6630a01a0a60fa617d8840f3f53e58d9895fa1c1d82e24565d249fde2581f7b9",
+  "eco_receipt_sha256": "fff7d909f9e6e3c38e0f70f6afc79f5fac8dfb514259323ab2d1dc0659f915fb",
   "initial_handoff_receipt_sha256": "36efff3ff1f4307b5852de878750d190a647a157a856c1817d2d5e60975e19f7",
   "manifest": {
     "board": {
@@ -4095,6 +4357,45 @@
           },
           {
             "bbox_mm": [
+              93.925,
+              118.425,
+              12.15,
+              0.15
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              106,
+              118.5
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              94,
+              118.5
+            ],
+            "start_mm": [
+              94,
+              118.5
+            ],
+            "uuid": "b75163a6-e431-468b-b276-4327789364af"
+          },
+          {
+            "bbox_mm": [
+              94.398809,
+              120.15175,
+              11.202382,
+              1.6965
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              100,
+              121
+            ],
+            "text": "LEVEL SENSOR",
+            "uuid": "7aa2d15e-3431-437d-9860-600c1745bd8e"
+          },
+          {
+            "bbox_mm": [
               95.274048,
               68.76875,
               1.051905,
@@ -4188,9 +4489,241 @@
             ],
             "text": "6",
             "uuid": "854afdfc-c5f6-4079-a5fd-719c54f33942"
+          },
+          {
+            "bbox_mm": [
+              96.152143,
+              113.03475,
+              7.695714,
+              1.9305
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              100,
+              114
+            ],
+            "text": "CRYSTAL",
+            "uuid": "37373c03-9ba6-42ec-a0a3-950627e3fa72"
+          },
+          {
+            "bbox_mm": [
+              96.925,
+              103.925,
+              3.15,
+              3.15
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              100,
+              104
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              97,
+              107
+            ],
+            "start_mm": [
+              97,
+              107
+            ],
+            "uuid": "6d20bdac-c535-42e7-8469-3991c0a88490"
+          },
+          {
+            "bbox_mm": [
+              96.925,
+              106.925,
+              3.15,
+              3.15
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              97,
+              107
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              100,
+              110
+            ],
+            "start_mm": [
+              100,
+              110
+            ],
+            "uuid": "b8f7552c-0626-4a60-80bb-ef0e19aa5a10"
+          },
+          {
+            "bbox_mm": [
+              97.493095,
+              122.46875,
+              5.01381,
+              1.4625
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              100,
+              123.2
+            ],
+            "text": "REV 1.0",
+            "uuid": "cf7245c3-a1bb-4ac3-b3e5-376ae9c28b73"
+          },
+          {
+            "bbox_mm": [
+              97.723571,
+              115.33475,
+              4.552858,
+              1.9305
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              100,
+              116.3
+            ],
+            "text": "SHIM",
+            "uuid": "aa412d40-0268-4511-80f2-9a51943eaabf"
+          },
+          {
+            "bbox_mm": [
+              97.825,
+              106.825,
+              2.25,
+              0.6
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              100,
+              107.35
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              97.9,
+              106.9
+            ],
+            "start_mm": [
+              97.9,
+              106.9
+            ],
+            "uuid": "61c7c3b9-e067-4b29-b044-46e7d57e8d3c"
+          },
+          {
+            "bbox_mm": [
+              98.575,
+              107.925,
+              1.5,
+              0.45
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              100,
+              108.3
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              98.65,
+              108
+            ],
+            "start_mm": [
+              98.65,
+              108
+            ],
+            "uuid": "6fc9cc82-4c3e-45e9-a722-1bed9ece3255"
+          },
+          {
+            "bbox_mm": [
+              99.925,
+              103.925,
+              3.15,
+              3.15
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              103,
+              107
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              100,
+              104
+            ],
+            "start_mm": [
+              100,
+              104
+            ],
+            "uuid": "4733f547-129b-42e5-b62b-9637dc8cc43b"
+          },
+          {
+            "bbox_mm": [
+              99.925,
+              106.825,
+              2.25,
+              0.6
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              102.1,
+              106.9
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              100,
+              107.35
+            ],
+            "start_mm": [
+              100,
+              107.35
+            ],
+            "uuid": "b12e282b-9b28-4611-bcff-3e1427159164"
+          },
+          {
+            "bbox_mm": [
+              99.925,
+              106.925,
+              3.15,
+              3.15
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              100,
+              110
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              103,
+              107
+            ],
+            "start_mm": [
+              103,
+              107
+            ],
+            "uuid": "ebec0749-7576-47c6-b16a-6ea2bf4f9622"
+          },
+          {
+            "bbox_mm": [
+              99.925,
+              107.925,
+              1.5,
+              0.45
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              101.35,
+              108
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              100,
+              108.3
+            ],
+            "start_mm": [
+              100,
+              108.3
+            ],
+            "uuid": "a940d416-f99d-46dc-a50d-35ae75195716"
           }
         ],
-        "sha256": "b6b96e04fc1e4b9b95268adae1d0cca9a0caa8fc35a6cd810f602682bcb31e71"
+        "sha256": "7a6bdaa07106b23043bed185a1c92250ca4e778ccb70a40399635e6b4405f25f"
       },
       "rules": {
         "details": [
@@ -7800,5 +8333,5 @@
       "sensor.component.u3": "dcf85d20-f5da-4e0b-81f7-36d6068070a5"
     }
   },
-  "snapshot_sha256": "32d6edf9de22cdd3c87fbdbeef39762da2c3147f58332d670c30c260473af8b4"
+  "snapshot_sha256": "bea42ec6535cf0581b7617b4715638a31d38ae0e451f246db1540b430cba0b8d"
 }

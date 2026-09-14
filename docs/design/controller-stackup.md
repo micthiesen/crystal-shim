@@ -1,7 +1,7 @@
 # Controller fabrication and routing contract
 
-The controller uses **JLC04161H-7628**, four layers, nominal 1.6 mm FR4,
-1 oz outer / 0.5 oz inner copper, NP-155F / Tg155 material basis, green mask and
+The controller orders the standard four-layer **No requirement** construction,
+nominal 1.6 mm FR4, 1 oz outer / 0.5 oz inner copper, green mask and
 ENIG. USB operates at full speed (12 Mbps). The owner accepted the reviewed
 F.Cu/B.Cu routing and through vias on 2026-09-14, with **no paid impedance
 control and no 81-99 ohm fabrication acceptance requirement**.
@@ -37,10 +37,9 @@ constraints flag remains disabled. These placeholders are not supplier acceptanc
 values and do not replace the separately recorded USB solver mask model. Their
 output treatment is fixed: retain them only as CAD visualization metadata; exclude
 native/Gerber-job default mask thickness and loss tangent from supplier order
-constraints. The persistent native User.Comments fabrication note states the
-reviewed vendor stack, nominal order thickness and the former USB acceptance.
-Correct that legacy native note before exporting fabrication requirements. Verify the final order against
-these requirements during export, without treating native defaults as measured values.
+constraints. The native User.Comments fabrication note now states No requirement stack,
+no impedance control, no PCB assembly and tented vias without filling/capping/plugging.
+The saved native note and release archive agree; native defaults are not measured values.
 
 Basic rules now read back as 0.15 mm clearance/minimum track, 0.20 mm minimum via
 drill, 0.35 mm minimum via diameter, 0.075 mm annulus, 0.20 mm hole-to-copper,
@@ -56,7 +55,8 @@ Net-class routing preferences are not hard minimum-width enforcement.
 
 The selected vendor template is `30726297697b4c18a0946278a48fb7d8`, displayed as
 `JLC04161H-7628(Standard/Finished thickness1.59mm±10%)`. Its nominal 1.6 mm ordering
-selection is distinct from the separate “No requirement” template. The retained
+selection is historical. The separate “No requirement” template has the same
+published nominal layer geometry and is the current order choice. The retained
 [template data](evidence/controller-stackup/selected-stackup.json) identifies it.
 
 | Layer | Nominal thickness | Purpose |
@@ -166,12 +166,11 @@ substitute ink plugging at this proximity under
 [JLC's covering rules](https://jlcpcb.com/help/article/pcb-via-covering).
 Preserve the [Espressif land pattern and antenna exclusion](https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf).
 
-## Application and evidence still owed
+## Release evidence and commissioning
 
-After owner routing, recheck the saved native stack, impedance/net classes, zones,
-via nets, mask/paste, keepouts and route geometry. Measure useful copper after clearances,
-preserve the USB reference and the direct motor return. Inspect the
-stencil as physical aperture unions, including shared USB contacts.
+The [2026-09-14 review](evidence/pre-fab-2026-09-14/) records current native
+stack/netclass, zone, via, mask/paste and routed-geometry checks, together with
+exported CAM and stencil inspection. The saved copper is preserved.
 
 Final-board commissioning still covers minimum-input/full-load regulation,
 closed-enclosure radio heating, the 50°C internal-air limit, motor-branch loading,

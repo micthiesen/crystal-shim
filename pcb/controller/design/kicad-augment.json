@@ -51,7 +51,7 @@
           "mask_thickness_each_mm": 0.01,
           "dielectric_loss_tangent": 0.02,
           "dielectric_constraints": false,
-          "release_limit": "Nonbinding CAD visualization metadata only. Manufacture to JLC04161H-7628 and the explicit 81-99 ohm USB requirement; do not promote native mask thickness/loss tangent or Gerber-job stack metadata into supplier acceptance values. The separate recorded vendor USB solver mask model remains authoritative for routing."
+          "release_limit": "Nonbinding CAD visualization metadata only. Manufacture using the standard four-layer No requirement stack without paid impedance control; do not promote native mask thickness/loss tangent or Gerber-job stack metadata into supplier acceptance values. The recorded uniform-line USB solver model is historical design evidence only."
         },
         "vendor_stack": "JLC04161H-7628",
         "vendor_template_id": "30726297697b4c18a0946278a48fb7d8",
@@ -137,24 +137,32 @@
           "USB_D_PORT_P",
           "USB_D_SWITCH_P"
         ],
-        "impedance_ohm": 90,
-        "tolerance_percent": 10,
         "trace_width_mm": 0.24,
         "pair_gap_mm": 0.15,
-        "coplanar_ground_gap_mm": 0.5,
-        "uniform_line_solver_ohm": 89.9427963903,
-        "layer": "F.Cu",
         "reference_layer": "In1.Cu",
-        "ground_stitch_pitch_max_mm": 5,
-        "length_mismatch_target_mm": 0.5,
+        "ground_stitch_pitch_max_mm": null,
+        "length_mismatch_target_mm": null,
         "requirements": [
-          "Resolve exact consecutive data nets from J4 through U9/U8 to R44/R45/U1; the list is descriptive and does not authorize renaming.",
-          "Continuous L2 GND under the complete USB path; uniform grounded side rails, short paired pad transitions, no protection stubs.",
-          "Keep the long pair on L1; a layer change requires new line calculation and adjacent paired ground return vias.",
-          "Merge duplicate connector contacts immediately, and print one aperture per physical shared contact area."
+          "Preserve exact connectivity J4 through U9/U8 to R44/R45/U1, ordinary clearance and continuous In1 ground.",
+          "Owner accepts reviewed full-speed 12 Mbps F.Cu/B.Cu routes, connector crossover and through vias without paid impedance control.",
+          "Preserve short duplicate-contact joins and no long open stubs; no additional impedance acceptance requirement."
         ],
-        "verification": "Inspect actual routed pair and returns, measure mismatch and geometry, and require explicit 81-99 ohm fabrication acceptance. The uniform-line calculation does not model U9/U8/pad discontinuities.",
-        "status": "USB90 preferences assigned to all six exact nets; ground-side spacing, routed geometry, returns and fabrication impedance acceptance remain open"
+        "verification": "Native connectivity/clearance and independent routed review; actual USB operation at commissioning.",
+        "status": "Owner decision accepted 2026-09-14. Nominal impedance/solver fields are historical uniform-line design evidence only.",
+        "paid_impedance_control": false,
+        "impedance_acceptance_required": false,
+        "layers": [
+          "F.Cu",
+          "B.Cu"
+        ],
+        "allow_through_vias": true,
+        "historical_uniform_line_model": {
+          "impedance_ohm": 90,
+          "tolerance_percent": 10,
+          "coplanar_ground_gap_mm": 0.5,
+          "uniform_line_solver_ohm": 89.9427963903,
+          "layer": "F.Cu"
+        }
       }
     },
     {
@@ -303,7 +311,1756 @@
           "Move reference/value text only for final legibility without changing source placement; keep text off pads, holes and board edges."
         ],
         "verification": "Inspect front/back 2D renders and final Gerbers; run native text/silk DRC.",
-        "status": "Applied native connector, input voltage/pin-1, USB, RESET/BOOT/MAINTENANCE function labels; existing test-point function labels retained. Saved render and native silk DRC audited. Final CAM inspection is verification."
+        "status": "Hand-tailored outward silk and reference labels, shared crystal/water logo and REV 1.0; scratch saved/reopened with electrical geometry preserved, 2026-09-14. Final CAM verification required.",
+        "labels": [
+          [
+            "1 +5V",
+            49.5,
+            59.0
+          ],
+          [
+            "1 +12V",
+            49.5,
+            141.0
+          ],
+          [
+            "CONTROLLER  /  REV 1.0",
+            52.0,
+            124.0
+          ],
+          [
+            "J6 12V IN",
+            56.0,
+            152.0
+          ],
+          [
+            "J5 RESERVOIR",
+            59.0,
+            48.5
+          ],
+          [
+            "1 +5V",
+            68.0,
+            64.5
+          ],
+          [
+            "1 +5V",
+            72.5,
+            141.0
+          ],
+          [
+            "J1 PSU/RELAY",
+            74.0,
+            48.5
+          ],
+          [
+            "J2 SERVICE 5V",
+            79.0,
+            152.0
+          ],
+          [
+            "J3 SENSOR",
+            89.0,
+            48.5
+          ],
+          [
+            "1 +5V",
+            97.0,
+            59.0
+          ],
+          [
+            "USB",
+            122.0,
+            151.0
+          ],
+          [
+            "RESET",
+            140.0,
+            104.25
+          ],
+          [
+            "BOOT",
+            140.0,
+            116.25
+          ],
+          [
+            "MAINTENANCE",
+            140.0,
+            128.25
+          ],
+          [
+            "1 +12V",
+            164.0,
+            93.0
+          ],
+          [
+            "J9 DECHLOR",
+            164.0,
+            106.0
+          ],
+          [
+            "1 +12V",
+            164.0,
+            111.0
+          ],
+          [
+            "J8 CHLORINE",
+            164.0,
+            124.0
+          ],
+          [
+            "1 +12V",
+            164.0,
+            129.0
+          ],
+          [
+            "J7 TRANSFER",
+            164.0,
+            142.0
+          ],
+          [
+            "CRYSTAL SHIM",
+            52.0,
+            121.0
+          ]
+        ],
+        "reference_labels": {
+          "C21": {
+            "text": "C21",
+            "position_mm": [
+              88.0,
+              133.15
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R72": {
+            "text": "R72",
+            "position_mm": [
+              51.849999,
+              83.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP1": {
+            "text": "TP1",
+            "position_mm": [
+              69.5,
+              107.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R65": {
+            "text": "R65",
+            "position_mm": [
+              83.25,
+              83.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R46": {
+            "text": "R46",
+            "position_mm": [
+              107.0,
+              134.45
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U5": {
+            "text": "U5",
+            "position_mm": [
+              86.0,
+              76.85
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U3": {
+            "text": "U3",
+            "position_mm": [
+              100.0,
+              75.8
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP3": {
+            "text": "TP3",
+            "position_mm": [
+              90.0,
+              107.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R11": {
+            "text": "R11",
+            "position_mm": [
+              68.85,
+              66.4
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP12": {
+            "text": "TP12",
+            "position_mm": [
+              90.0,
+              146.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP11": {
+            "text": "TP11",
+            "position_mm": [
+              115.0,
+              102.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "D7": {
+            "text": "D7",
+            "position_mm": [
+              78.27,
+              67.7
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "SW1": {
+            "text": "SW1",
+            "position_mm": [
+              127.25,
+              124.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "D8": {
+            "text": "D8",
+            "position_mm": [
+              45.669999,
+              67.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP4": {
+            "text": "TP4",
+            "position_mm": [
+              98.0,
+              107.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C47": {
+            "text": "C47",
+            "position_mm": [
+              57.0,
+              128.574999
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C9": {
+            "text": "C9",
+            "position_mm": [
+              106.2,
+              53.425
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C4": {
+            "text": "C4",
+            "position_mm": [
+              94.7,
+              97.074999
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C20": {
+            "text": "C20",
+            "position_mm": [
+              91.3,
+              136.075
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R71": {
+            "text": "R71",
+            "position_mm": [
+              60.15,
+              72.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "D9": {
+            "text": "D9",
+            "position_mm": [
+              153.21,
+              129.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R51": {
+            "text": "R51",
+            "position_mm": [
+              132.0,
+              61.25
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R83": {
+            "text": "R83",
+            "position_mm": [
+              153.0,
+              125.85
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R68": {
+            "text": "R68",
+            "position_mm": [
+              89.375,
+              71.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "SW2": {
+            "text": "SW2",
+            "position_mm": [
+              127.25,
+              112.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "D2": {
+            "text": "D2",
+            "position_mm": [
+              72.21,
+              106.9
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R50": {
+            "text": "R50",
+            "position_mm": [
+              105.75,
+              61.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP8": {
+            "text": "TP8",
+            "position_mm": [
+              98.0,
+              115.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U13": {
+            "text": "U13",
+            "position_mm": [
+              53.05,
+              67.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R14": {
+            "text": "R14",
+            "position_mm": [
+              76.6,
+              81.949999
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "J4": {
+            "text": "J4",
+            "position_mm": [
+              108.0,
+              145.67
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "Q3": {
+            "text": "Q3",
+            "position_mm": [
+              151.95,
+              117.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "H1": {
+            "text": "H1",
+            "position_mm": [
+              32.0,
+              49.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R52": {
+            "text": "R52",
+            "position_mm": [
+              105.5,
+              59.15
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R84": {
+            "text": "R84",
+            "position_mm": [
+              152.0,
+              101.149999
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C42": {
+            "text": "C42",
+            "position_mm": [
+              80.2,
+              79.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C7": {
+            "text": "C7",
+            "position_mm": [
+              82.0,
+              100.05
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R67": {
+            "text": "R67",
+            "position_mm": [
+              93.35,
+              84.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R69": {
+            "text": "R69",
+            "position_mm": [
+              56.0,
+              86.325
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R44": {
+            "text": "R44",
+            "position_mm": [
+              105.75,
+              63.25
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R20": {
+            "text": "R20",
+            "position_mm": [
+              73.85,
+              71.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP2": {
+            "text": "TP2",
+            "position_mm": [
+              82.0,
+              107.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C45": {
+            "text": "C45",
+            "position_mm": [
+              48.449999,
+              79.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP13": {
+            "text": "TP13",
+            "position_mm": [
+              98.0,
+              146.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C2": {
+            "text": "C2",
+            "position_mm": [
+              72.0,
+              103.825
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C43": {
+            "text": "C43",
+            "position_mm": [
+              90.6,
+              81.425
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "H2": {
+            "text": "H2",
+            "position_mm": [
+              168.0,
+              49.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R85": {
+            "text": "R85",
+            "position_mm": [
+              153.0,
+              107.85
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R2": {
+            "text": "R2",
+            "position_mm": [
+              76.5,
+              80.15
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP7": {
+            "text": "TP7",
+            "position_mm": [
+              90.0,
+              115.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "Q1": {
+            "text": "Q1",
+            "position_mm": [
+              75.0,
+              64.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R60": {
+            "text": "R60",
+            "position_mm": [
+              103.0,
+              84.45
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U1": {
+            "text": "U1",
+            "position_mm": [
+              120.199999,
+              64.45
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C46": {
+            "text": "C46",
+            "position_mm": [
+              63.55,
+              79.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R55": {
+            "text": "R55",
+            "position_mm": [
+              104.2,
+              57.35
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "Q2": {
+            "text": "Q2",
+            "position_mm": [
+              151.95,
+              135.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C31": {
+            "text": "C31",
+            "position_mm": [
+              106.5,
+              139.15
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "D4": {
+            "text": "D4",
+            "position_mm": [
+              125.27,
+              83.699999
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "L1": {
+            "text": "L1",
+            "position_mm": [
+              88.0,
+              93.1
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "SW3": {
+            "text": "SW3",
+            "position_mm": [
+              127.25,
+              100.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R42": {
+            "text": "R42",
+            "position_mm": [
+              121.0,
+              144.85
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C30": {
+            "text": "C30",
+            "position_mm": [
+              120.0,
+              140.25
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R15": {
+            "text": "R15",
+            "position_mm": [
+              76.6,
+              88.15
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U9": {
+            "text": "U9",
+            "position_mm": [
+              108.05,
+              143.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R63": {
+            "text": "R63",
+            "position_mm": [
+              93.35,
+              71.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R64": {
+            "text": "R64",
+            "position_mm": [
+              99.5,
+              83.85
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP9": {
+            "text": "TP9",
+            "position_mm": [
+              115.0,
+              110.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C12": {
+            "text": "C12",
+            "position_mm": [
+              76.0,
+              76.25
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R43": {
+            "text": "R43",
+            "position_mm": [
+              127.15,
+              140.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C40": {
+            "text": "C40",
+            "position_mm": [
+              92.45,
+              77.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R70": {
+            "text": "R70",
+            "position_mm": [
+              52.349999,
+              72.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "H3": {
+            "text": "H3",
+            "position_mm": [
+              32.0,
+              145.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C41": {
+            "text": "C41",
+            "position_mm": [
+              107.55,
+              77.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U8": {
+            "text": "U8",
+            "position_mm": [
+              113.85,
+              135.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C6": {
+            "text": "C6",
+            "position_mm": [
+              108.6,
+              49.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R54": {
+            "text": "R54",
+            "position_mm": [
+              132.0,
+              56.15
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U11": {
+            "text": "U11",
+            "position_mm": [
+              90.05,
+              66.4
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R41": {
+            "text": "R41",
+            "position_mm": [
+              119.85,
+              146.8
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "Q4": {
+            "text": "Q4",
+            "position_mm": [
+              151.95,
+              99.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R61": {
+            "text": "R61",
+            "position_mm": [
+              108.65,
+              82.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R40": {
+            "text": "R40",
+            "position_mm": [
+              102.149999,
+              146.8
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "D10": {
+            "text": "D10",
+            "position_mm": [
+              153.21,
+              111.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R62": {
+            "text": "R62",
+            "position_mm": [
+              101.15,
+              71.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C11": {
+            "text": "C11",
+            "position_mm": [
+              72.0,
+              79.25
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R80": {
+            "text": "R80",
+            "position_mm": [
+              152.0,
+              137.15
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "H4": {
+            "text": "H4",
+            "position_mm": [
+              168.0,
+              145.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP10": {
+            "text": "TP10",
+            "position_mm": [
+              115.0,
+              118.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C8": {
+            "text": "C8",
+            "position_mm": [
+              83.1,
+              92.05
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP5": {
+            "text": "TP5",
+            "position_mm": [
+              74.0,
+              115.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R45": {
+            "text": "R45",
+            "position_mm": [
+              108.5,
+              67.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R53": {
+            "text": "R53",
+            "position_mm": [
+              108.5,
+              55.85
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R81": {
+            "text": "R81",
+            "position_mm": [
+              154.0,
+              143.85
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U7": {
+            "text": "U7",
+            "position_mm": [
+              120.0,
+              132.35
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U4": {
+            "text": "U4",
+            "position_mm": [
+              72.0,
+              87.65
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP6": {
+            "text": "TP6",
+            "position_mm": [
+              82.0,
+              115.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C5": {
+            "text": "C5",
+            "position_mm": [
+              103.3,
+              48.075
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C1": {
+            "text": "C1",
+            "position_mm": [
+              78.0,
+              103.825
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R66": {
+            "text": "R66",
+            "position_mm": [
+              90.5,
+              87.85
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "D11": {
+            "text": "D11",
+            "position_mm": [
+              153.21,
+              93.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R12": {
+            "text": "R12",
+            "position_mm": [
+              65.55,
+              83.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "D1": {
+            "text": "D1",
+            "position_mm": [
+              71.0,
+              91.51
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U12": {
+            "text": "U12",
+            "position_mm": [
+              56.0,
+              75.399999
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R82": {
+            "text": "R82",
+            "position_mm": [
+              152.0,
+              119.149999
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C44": {
+            "text": "C44",
+            "position_mm": [
+              86.0,
+              88.575
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "TP14": {
+            "text": "TP14",
+            "position_mm": [
+              98.0,
+              138.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U6": {
+            "text": "U6",
+            "position_mm": [
+              80.5,
+              77.75
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "U2": {
+            "text": "U2",
+            "position_mm": [
+              80.0,
+              92.3
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C3": {
+            "text": "C3",
+            "position_mm": [
+              94.7,
+              92.574999
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R73": {
+            "text": "R73",
+            "position_mm": [
+              59.65,
+              83.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.85,
+              0.85
+            ],
+            "thickness_mm": 0.13,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          }
+        }
       }
     },
     {
@@ -422,7 +2179,7 @@
         "finish": "ENIG",
         "mask": "green",
         "silkscreen": "white",
-        "text": "Export all three final boards together after G-02/G-03/G-04: Gerbers, PTH/NPTH drills, assembly BOM/CPL with exact exclusions, stencil, netlist/rule receipts, harness drawings and reviewed mechanical interface. State the exact stack, 81-99 ohm USB acceptance, U1 tenting. No part purchase or fabrication order is implied. Native User.Comments fabrication note states the ordering stack and nonbinding visualization defaults; preserve it in the fabrication drawing/requirements rather than importing native default mask/loss values as order constraints.",
+        "text": "Export all three final boards together after G-02/G-03/G-04: Gerbers, PTH/NPTH drills, owner-assembly purchase BOM with exact no-part exclusions, stencil, netlist/rule receipts, harness drawings and reviewed mechanical interface. State the exact stack, no paid USB impedance control, U1 tenting. Order bare PCBs using standard form options with PCB assembly set to No. No part purchase or fabrication order is implied. Native User.Comments fabrication note states the ordering stack and nonbinding visualization defaults; preserve it in the fabrication drawing/requirements rather than importing native default mask/loss values as order constraints.",
         "verification": "Use project kicad-manufacture checks and independent CAM/assembly review; source/simulation tests do not establish electrical or operating acceptance.",
         "status": "declared; no manufacturing package released"
       }
@@ -611,6 +2368,70 @@
               0.6,
               0.3
             ]
+          ],
+          "extra_pours": [
+            {
+              "uuid": "c8aef543-ff98-4a81-a15f-c2346f1caf25",
+              "net": "V5_LOGIC",
+              "layer": "F.Cu",
+              "outline": [
+                [
+                  88.0,
+                  79.0
+                ],
+                [
+                  88.0,
+                  80.0
+                ],
+                [
+                  86.0,
+                  80.0
+                ],
+                [
+                  85.25,
+                  79.0
+                ],
+                [
+                  84.0,
+                  79.0
+                ],
+                [
+                  84.0,
+                  80.0
+                ],
+                [
+                  83.25,
+                  80.75
+                ],
+                [
+                  82.25,
+                  80.75
+                ],
+                [
+                  82.25,
+                  79.042858
+                ],
+                [
+                  83.700001,
+                  77.8
+                ],
+                [
+                  85.8,
+                  77.8
+                ],
+                [
+                  86.6,
+                  79.0
+                ]
+              ],
+              "clearance_mm": 0.0,
+              "minimum_thickness_mm": 0.25,
+              "pad_connection": "solid",
+              "thermal_gap_mm": 0.5,
+              "thermal_spoke_mm": 0.5,
+              "island_removal": "always",
+              "filled": true
+            }
           ]
         },
         "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove all floating islands. In2 remains available for power/signal routing; no arbitrary split power plane.",
@@ -805,6 +2626,29 @@
       "params": {
         "category": "routing",
         "text": "Synchronize hidden schematic fields (MPN, Datasheet, Description, StableID where present) into native footprints; preserve all pad/footprint geometry and connectivity."
+      }
+    },
+    {
+      "id": "controller.augment.service-via-pair",
+      "kind": "fabrication_note",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "category": "routing",
+        "net": "V5_SERVICE",
+        "vias_native_xy_mm": [
+          [
+            78,
+            112
+          ],
+          [
+            77,
+            111
+          ]
+        ],
+        "diameter_mm": 0.6,
+        "drill_mm": 0.3,
+        "basis": "Two parallel service-feed vias connected on both outer layers; reviewed 2026-09-14. No motor or relay-coil load."
       }
     }
   ]

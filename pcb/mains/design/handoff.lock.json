@@ -49,19 +49,19 @@
         "params": {
           "labels": [
             [
-              "PRIMARY",
-              90,
-              49
-            ],
-            [
-              "ISOLATED 12V / 5V",
-              148,
-              49
-            ],
-            [
-              "J1 T2A FUSED INPUT",
-              45,
+              "T2A FUSED INPUT",
+              44,
               54
+            ],
+            [
+              "FILTER LINE",
+              44,
+              83
+            ],
+            [
+              "1 L   2 N",
+              44,
+              85
             ],
             [
               "1 L   2 N",
@@ -69,22 +69,7 @@
               56
             ],
             [
-              "J2 FILTER LINE",
-              44,
-              82
-            ],
-            [
-              "1 L   2 N",
-              44,
-              84
-            ],
-            [
-              "F3 T1A",
-              83,
-              96
-            ],
-            [
-              "J3 FILTER LOAD",
+              "FILTER LOAD",
               47,
               130
             ],
@@ -94,47 +79,464 @@
               132
             ],
             [
-              "J4 SWITCHED PUMP",
-              101,
-              130
+              "PE BYPASSES BOARD",
+              83,
+              151.5
             ],
             [
-              "1 L   2 N",
-              101,
-              135
+              "T1A",
+              99,
+              116.2
             ],
             [
-              "J5 1:+5V 2:RET 3:COIL",
-              150,
-              63
-            ],
-            [
-              "J6 1:+12V 2:RET",
-              158,
-              99
-            ],
-            [
-              "F2 3A",
-              149,
-              90
-            ],
-            [
-              "D1 K=+5V",
-              145,
+              "SWITCHED PUMP",
+              105,
               131
             ],
             [
-              "PE BYPASSES BOARD",
-              85,
-              151
+              "1 L   2 N",
+              105,
+              133
+            ],
+            [
+              "K=+5V",
+              150,
+              129.3
+            ],
+            [
+              "3A",
+              155.2,
+              93
+            ],
+            [
+              "1:+5V 2:RET 3:COIL",
+              161,
+              64
+            ],
+            [
+              "1:+12V 2:RET",
+              165,
+              100
+            ],
+            [
+              "DANGER - MAINS",
+              90,
+              48
+            ],
+            [
+              "MAINS / REV 1.0",
+              139.5,
+              143
+            ],
+            [
+              "ISOLATED 12V / 5V",
+              148,
+              48
+            ],
+            [
+              "CRYSTAL SHIM",
+              139.5,
+              140.5
             ]
           ],
+          "reference_labels": {
+            "C1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                89,
+                136.3
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "C1",
+              "thickness_mm": 0.15
+            },
+            "C2": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                140,
+                107
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "C2",
+              "thickness_mm": 0.15
+            },
+            "C3": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                147.5,
+                99.5
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "C3",
+              "thickness_mm": 0.15
+            },
+            "C4": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                168.5,
+                109
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "C4",
+              "thickness_mm": 0.15
+            },
+            "C5": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                151,
+                101.5
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "C5",
+              "thickness_mm": 0.15
+            },
+            "C6": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                168.5,
+                117
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "C6",
+              "thickness_mm": 0.15
+            },
+            "C7": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                142.8,
+                114.4
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "C7",
+              "thickness_mm": 0.15
+            },
+            "D1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                150,
+                121.9
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "D1",
+              "thickness_mm": 0.15
+            },
+            "F2": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                149,
+                89.4
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "F2",
+              "thickness_mm": 0.15
+            },
+            "F3": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                99,
+                114.2
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "F3",
+              "thickness_mm": 0.15
+            },
+            "H1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                38,
+                52
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "H1",
+              "thickness_mm": 0.15
+            },
+            "H2": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                162,
+                52
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "H2",
+              "thickness_mm": 0.15
+            },
+            "H3": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                38,
+                148
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "H3",
+              "thickness_mm": 0.15
+            },
+            "H4": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                162,
+                148
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "H4",
+              "thickness_mm": 0.15
+            },
+            "J1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                44,
+                52
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "J1",
+              "thickness_mm": 0.15
+            },
+            "J2": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                44,
+                81
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "J2",
+              "thickness_mm": 0.15
+            },
+            "J3": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                47,
+                128
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "J3",
+              "thickness_mm": 0.15
+            },
+            "J4": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                105,
+                128.5
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "J4",
+              "thickness_mm": 0.15
+            },
+            "J5": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                161,
+                62
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "J5",
+              "thickness_mm": 0.15
+            },
+            "J6": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                165,
+                85.5
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "J6",
+              "thickness_mm": 0.15
+            },
+            "K1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                122,
+                130
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "K1",
+              "thickness_mm": 0.15
+            },
+            "L1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                157,
+                113.6
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "L1",
+              "thickness_mm": 0.15
+            },
+            "R1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                94,
+                120.9
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "R1",
+              "thickness_mm": 0.15
+            },
+            "RV1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                64,
+                136.5
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "RV1",
+              "thickness_mm": 0.15
+            },
+            "U1": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                62,
+                48.5
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.9,
+                0.9
+              ],
+              "text": "U1",
+              "thickness_mm": 0.15
+            },
+            "U2": {
+              "layer": "F.Silkscreen",
+              "mirrored": false,
+              "position_mm": [
+                149,
+                112.4
+              ],
+              "rotation_deg": 0,
+              "size_mm": [
+                0.8,
+                0.8
+              ],
+              "text": "U2",
+              "thickness_mm": 0.15
+            }
+          },
           "requirements": [
             "Mark primary/isolated regions, J1 T2A fused input, F3 T1A branch/J2 filter LINE, J3 filter LOAD, J4 switched pump, J5 5V/coil and J6 12V motor feed.",
             "Show pin1, line/neutral, D1 cathode and positive/return. Label F2 3A and both internal 12V harness ends.",
             "All four mains terminals use exactly two positions, line and neutral; mark that PE bypasses the board and keep text clear of copper and holes."
           ],
-          "status": "Applied native final-preparation ECO; labels verified through saved readback and ordinary DRC.",
+          "status": "Hand-tailored outward silk and reference labels, shared crystal/water logo and REV 1.0; scratch saved/reopened with electrical geometry preserved, 2026-09-14. Final CAM verification required.",
           "verification": "Complete front/back render and final Gerber/assembly inspection; native silk/text DRC."
         },
         "target": {}
@@ -238,7 +640,7 @@
           "mask": "green",
           "silkscreen": "white",
           "status": "ENIG/green mask/white silk are selected order specifications. Remaining delivery is post-routing checks and fabrication export, not native preparation.",
-          "text": "Release all final boards together through project manufacture gates. Include exact assembly/BOM/CPL, stencil, drills, harness and revised enclosure interfaces. F1 inlet/filter/PE are offboard; F2 motor and F3 branch fuses are on the mains PCB. No order or energizing implied.",
+          "text": "Release all final boards together through project manufacture gates. Include exact owner-assembly purchase BOM, stencil, drills, harness and revised enclosure interfaces. F1 inlet/filter/PE are offboard; F2 motor and F3 branch fuses are on the mains PCB. No order or energizing implied.",
           "verification": "Project kicad-manufacture gates and independent CAM/assembly review; final sensor, load, temperature and interference commissioning remains separate."
         },
         "target": {}
@@ -1043,9 +1445,9 @@
     ],
     "schema_version": 1
   },
-  "augmentation_sha256": "51ed3b6d5f240930ec1162cfc893137f8b7359f9c7830699cffb6af4a7f40516",
+  "augmentation_sha256": "5da2f0277c1f832342789caa1b4de0e0dccda28e99d455bb9785ae26e7f0a236",
   "board_id": "mains.board.main",
-  "eco_receipt_sha256": "47f5a4ad16c552f9a6ab20a6f16839f0c5ddaef778f2ee8f58da2d79ba1ed023",
+  "eco_receipt_sha256": "0ed5351ac83257eefe9614174fc42f7ffc6ede1d5f123054ed56a10b6ac3458c",
   "initial_handoff_receipt_sha256": "7f77ebdfcd91923fed0cbed8bc41b45c4b88332f3a66fc19a959beeac6678017",
   "manifest": {
     "board": {
@@ -2531,138 +2933,370 @@
         "details": [
           {
             "bbox_mm": [
-              141.7,
-              130.3214,
-              6.6,
-              1.3572
+              101.457858,
+              132.21025,
+              7.084284,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
-              145,
-              131
+              105,
+              133
             ],
-            "text": "D1 K=+5V",
-            "uuid": "6c960a00-f28c-467a-91f0-02b78097fb14"
+            "text": "1 L   2 N",
+            "uuid": "fc7a9b1a-5108-4465-9fcb-3e81755e9c2f"
           },
           {
             "bbox_mm": [
-              142.014286,
-              48.3214,
-              11.971429,
-              1.3572
+              118.925,
+              136.925,
+              2.15,
+              2.15
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              121,
+              137
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              119,
+              139
+            ],
+            "start_mm": [
+              119,
+              139
+            ],
+            "uuid": "ba54af6f-d3e7-4e70-8906-e0e598184a09"
+          },
+          {
+            "bbox_mm": [
+              118.925,
+              138.925,
+              2.15,
+              2.15
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              119,
+              139
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              121,
+              141
+            ],
+            "start_mm": [
+              121,
+              141
+            ],
+            "uuid": "f90b56c7-6a3e-442c-ade0-d3030c1f2367"
+          },
+          {
+            "bbox_mm": [
+              119.525,
+              138.858333,
+              1.55,
+              0.45
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              121,
+              139.233333
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              119.6,
+              138.933333
+            ],
+            "start_mm": [
+              119.6,
+              138.933333
+            ],
+            "uuid": "7ec11172-a1ef-400e-805e-d2ae4bd6cb4b"
+          },
+          {
+            "bbox_mm": [
+              120.025,
+              139.591667,
+              1.05,
+              0.35
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              121,
+              139.866667
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              120.1,
+              139.666667
+            ],
+            "start_mm": [
+              120.1,
+              139.666667
+            ],
+            "uuid": "1c518370-d797-4a2e-9f58-0799fd0c1b2b"
+          },
+          {
+            "bbox_mm": [
+              120.925,
+              136.925,
+              2.15,
+              2.15
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              123,
+              139
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              121,
+              137
+            ],
+            "start_mm": [
+              121,
+              137
+            ],
+            "uuid": "b70686ae-9969-447f-8d08-644a850804ca"
+          },
+          {
+            "bbox_mm": [
+              120.925,
+              138.858333,
+              1.55,
+              0.45
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              122.4,
+              138.933333
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              121,
+              139.233333
+            ],
+            "start_mm": [
+              121,
+              139.233333
+            ],
+            "uuid": "2974aa9b-2443-43de-ba63-0747cc6bd141"
+          },
+          {
+            "bbox_mm": [
+              120.925,
+              138.925,
+              2.15,
+              2.15
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              121,
+              141
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              123,
+              139
+            ],
+            "start_mm": [
+              123,
+              139
+            ],
+            "uuid": "22b72e64-fd1c-42ae-8e16-8e6c25bade2d"
+          },
+          {
+            "bbox_mm": [
+              120.925,
+              139.591667,
+              1.05,
+              0.35
+            ],
+            "class": "PCB_SHAPE",
+            "end_mm": [
+              121.9,
+              139.666667
+            ],
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              121,
+              139.866667
+            ],
+            "start_mm": [
+              121,
+              139.866667
+            ],
+            "uuid": "d6999e87-3454-47d5-b74e-489e145cf8fa"
+          },
+          {
+            "bbox_mm": [
+              132.242144,
+              139.447,
+              14.515713,
+              2.106
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              139.5,
+              140.5
+            ],
+            "text": "CRYSTAL SHIM",
+            "uuid": "5b7ed6f0-d40a-4027-a00d-47fff7231015"
+          },
+          {
+            "bbox_mm": [
+              132.89881,
+              142.15175,
+              13.202381,
+              1.6965
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              139.5,
+              143
+            ],
+            "text": "MAINS / REV 1.0",
+            "uuid": "ba07f423-7859-4ba1-9b24-65796efb4b01"
+          },
+          {
+            "bbox_mm": [
+              140.517857,
+              47.15175,
+              14.964287,
+              1.6965
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
               148,
-              49
+              48
             ],
             "text": "ISOLATED 12V / 5V",
             "uuid": "f0fadcfc-aa92-4e5c-b416-9f8563cad39c"
           },
           {
             "bbox_mm": [
-              142.966667,
-              62.3214,
-              14.066667,
-              1.3572
+              147.486428,
+              128.51025,
+              5.027144,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
               150,
-              63
+              129.3
             ],
-            "text": "J5 1:+5V 2:RET 3:COIL",
+            "text": "K=+5V",
+            "uuid": "6c960a00-f28c-467a-91f0-02b78097fb14"
+          },
+          {
+            "bbox_mm": [
+              154.179287,
+              63.21025,
+              13.641427,
+              1.5795
+            ],
+            "class": "PCB_TEXT",
+            "layer": "F.Silkscreen",
+            "position_mm": [
+              161,
+              64
+            ],
+            "text": "1:+5V 2:RET 3:COIL",
             "uuid": "2607391b-76a8-4a89-ab6e-f79dffa99a9c"
           },
           {
             "bbox_mm": [
-              147.147619,
-              89.3214,
-              3.704762,
-              1.3572
+              154.250714,
+              92.21025,
+              1.898572,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
-              149,
-              90
+              155.2,
+              93
             ],
-            "text": "F2 3A",
+            "text": "3A",
             "uuid": "e21498fc-b3fb-4786-be53-339a5603b8df"
           },
           {
             "bbox_mm": [
-              152.795238,
-              98.3214,
-              10.409525,
-              1.3572
+              160.236429,
+              99.21025,
+              9.527143,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
-              158,
-              99
+              165,
+              100
             ],
-            "text": "J6 1:+12V 2:RET",
+            "text": "1:+12V 2:RET",
             "uuid": "b7c3b7de-642e-412a-9b33-cecbbb19d564"
           },
           {
             "bbox_mm": [
-              38.633333,
-              53.3214,
-              12.733334,
-              1.3572
+              37.929286,
+              53.21025,
+              12.141428,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
-              45,
+              44,
               54
             ],
-            "text": "J1 T2A FUSED INPUT",
+            "text": "T2A FUSED INPUT",
             "uuid": "ff8305db-cfbd-4937-8d7b-698459c12ab2"
           },
           {
             "bbox_mm": [
-              39.385714,
-              81.3214,
-              9.228572,
-              1.3572
+              39.900715,
+              82.21025,
+              8.19857,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
               44,
-              82
+              83
             ],
-            "text": "J2 FILTER LINE",
+            "text": "FILTER LINE",
             "uuid": "4ef614cf-5e20-462c-ba0d-01c5b5713ee9"
           },
           {
             "bbox_mm": [
-              40.871428,
-              83.3214,
-              6.257144,
-              1.3572
+              40.457858,
+              84.21025,
+              7.084284,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
               44,
-              84
+              85
             ],
             "text": "1 L   2 N",
             "uuid": "38d39e3c-c02a-4013-acc3-186360a420d5"
           },
           {
             "bbox_mm": [
-              41.871428,
-              55.3214,
-              6.257144,
-              1.3572
+              41.457858,
+              55.21025,
+              7.084284,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
@@ -2675,10 +3309,10 @@
           },
           {
             "bbox_mm": [
-              42.195238,
-              129.3214,
-              9.609524,
-              1.3572
+              42.686429,
+              129.21025,
+              8.627142,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
@@ -2686,15 +3320,15 @@
               47,
               130
             ],
-            "text": "J3 FILTER LOAD",
+            "text": "FILTER LOAD",
             "uuid": "e996948c-984d-4e82-a5e5-aa061bc561db"
           },
           {
             "bbox_mm": [
-              43.871428,
-              131.3214,
-              6.257144,
-              1.3572
+              43.457858,
+              131.21025,
+              7.084284,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
@@ -2707,86 +3341,70 @@
           },
           {
             "bbox_mm": [
-              78.57619,
-              150.3214,
-              12.84762,
-              1.3572
+              75.750714,
+              150.71025,
+              14.498573,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
-              85,
-              151
+              83,
+              151.5
             ],
             "text": "PE BYPASSES BOARD",
             "uuid": "a00a003e-b72e-4384-9f6a-5f4865d6b747"
           },
           {
             "bbox_mm": [
-              80.842857,
-              95.3214,
-              4.314286,
-              1.3572
-            ],
-            "class": "PCB_TEXT",
-            "layer": "F.Silkscreen",
-            "position_mm": [
-              83,
-              96
-            ],
-            "text": "F3 T1A",
-            "uuid": "c1238440-1c0b-4a6e-8793-2a4c1512aa1d"
-          },
-          {
-            "bbox_mm": [
-              87.366667,
-              48.3214,
-              5.266666,
-              1.3572
+              83.351191,
+              47.15175,
+              13.297619,
+              1.6965
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
               90,
-              49
+              48
             ],
-            "text": "PRIMARY",
+            "text": "DANGER - MAINS",
             "uuid": "262006b4-cd9a-4feb-9585-ec8e6c99cd0b"
           },
           {
             "bbox_mm": [
-              95.014285,
-              129.3214,
-              11.97143,
-              1.3572
+              97.707857,
+              115.41025,
+              2.584286,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
-              101,
-              130
+              99,
+              116.2
             ],
-            "text": "J4 SWITCHED PUMP",
-            "uuid": "b9eb1f59-4a90-4499-8671-09dfc1f94dea"
+            "text": "T1A",
+            "uuid": "c1238440-1c0b-4a6e-8793-2a4c1512aa1d"
           },
           {
             "bbox_mm": [
-              97.871428,
-              134.3214,
-              6.257144,
-              1.3572
+              99.357858,
+              130.21025,
+              11.284284,
+              1.5795
             ],
             "class": "PCB_TEXT",
             "layer": "F.Silkscreen",
             "position_mm": [
-              101,
-              135
+              105,
+              131
             ],
-            "text": "1 L   2 N",
-            "uuid": "fc7a9b1a-5108-4465-9fcb-3e81755e9c2f"
+            "text": "SWITCHED PUMP",
+            "uuid": "b9eb1f59-4a90-4499-8671-09dfc1f94dea"
           }
         ],
-        "sha256": "ce569d9b6b5870b4904437318000dde0d2e42aea6a0f2a25b19d90eb1dde3034"
+        "sha256": "14d5cedab2bc36e5c2e86bece812931a52b9cd1032e9f8896850a50a089c7cad"
       },
       "rules": {
         "details": [
@@ -7690,5 +8308,5 @@
       "mains.component.u2": "cdf7500d-9648-4055-8e37-f336be0f366b"
     }
   },
-  "snapshot_sha256": "ee3c5599ea8818b608e5376a118355cd1e9f84933358c1c57bc9dbf13d90830d"
+  "snapshot_sha256": "037d71537c5be6ad601844b085a0c10d9535577fa0a62c1566d2583f07ba8b62"
 }

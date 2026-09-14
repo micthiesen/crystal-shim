@@ -812,13 +812,275 @@
             84.5
           ],
           [
+            "REV 1.0",
+            100.0,
+            123.2
+          ],
+          [
             "RIM",
-            102,
-            69
+            102.0,
+            69.0
+          ],
+          [
+            "LEVEL SENSOR",
+            100.0,
+            121.0
+          ],
+          [
+            "CRYSTAL",
+            100.0,
+            114.0
+          ],
+          [
+            "SHIM",
+            100.0,
+            116.3
           ]
         ],
         "verification": "Native saved readback and DRC, F.SilkS render.",
-        "status": "Applied during final preparation."
+        "status": "Hand-tailored outward silk and reference labels, shared crystal/water logo and REV 1.0; scratch saved/reopened with electrical geometry preserved, 2026-09-14. Final CAM verification required.",
+        "reference_labels": {
+          "R5": {
+            "text": "R5",
+            "position_mm": [
+              98.0,
+              82.3
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "J1": {
+            "text": "J1",
+            "position_mm": [
+              93.5,
+              86.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C4": {
+            "text": "C4",
+            "position_mm": [
+              108.0,
+              88.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 90.0,
+            "mirrored": false
+          },
+          "R6": {
+            "text": "R6",
+            "position_mm": [
+              106.5,
+              82.1
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C3": {
+            "text": "C3",
+            "position_mm": [
+              106.75,
+              94.2
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "D2": {
+            "text": "D2",
+            "position_mm": [
+              102.0,
+              73.5
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C1": {
+            "text": "C1",
+            "position_mm": [
+              99.35,
+              77.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 90.0,
+            "mirrored": false
+          },
+          "U1": {
+            "text": "U1",
+            "position_mm": [
+              102.0,
+              89.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R4": {
+            "text": "R4",
+            "position_mm": [
+              108.0,
+              84.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 90.0,
+            "mirrored": false
+          },
+          "R1": {
+            "text": "R1",
+            "position_mm": [
+              94.0,
+              90.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 90.0,
+            "mirrored": false
+          },
+          "R3": {
+            "text": "R3",
+            "position_mm": [
+              102.0,
+              86.3
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "R2": {
+            "text": "R2",
+            "position_mm": [
+              94.0,
+              93.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 90.0,
+            "mirrored": false
+          },
+          "U2": {
+            "text": "U2",
+            "position_mm": [
+              102.0,
+              79.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "C2": {
+            "text": "C2",
+            "position_mm": [
+              107.8,
+              77.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 90.0,
+            "mirrored": false
+          },
+          "U3": {
+            "text": "U3",
+            "position_mm": [
+              98.0,
+              87.6
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          },
+          "E1": {
+            "text": "E1",
+            "position_mm": [
+              100.0,
+              130.0
+            ],
+            "layer": "F.Silkscreen",
+            "size_mm": [
+              0.8,
+              0.8
+            ],
+            "thickness_mm": 0.15,
+            "rotation_deg": 0.0,
+            "mirrored": false
+          }
+        }
       }
     },
     {

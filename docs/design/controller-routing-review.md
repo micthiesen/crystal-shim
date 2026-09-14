@@ -20,14 +20,13 @@ The two requested fixes were verified from fresh saved native geometry:
   on F.Cu and B.Cu. This service feed excludes motor and relay-coil current.
 - The unused V3V3 via at (52,77.5) is removed.
 
-Fresh refilled DRC reports zero unconnected items, zero schematic-parity issues,
-and no shorts or clearance findings. Its 23 remaining findings are 21 superseded
-USB policy findings and two instances of the old V5_SERVICE no-via rule. The rule
-name says single via, but its condition prohibits every via on that net.
+The release reconciles the native rules and routing checker with this decision,
+declares the exact added V5_LOGIC pour and replaces the legacy fabrication note.
+Fresh final routing checks report **zero findings and zero unconnected items**.
+The former 21 USB and two service-via policy findings are removed through the
+reviewed rule changes, without changing traces, vias or clearances.
 
-This records routing review and the owner's USB decision. Formal handoff-lock
-advancement remains pending reconciliation of the native rules/checker policy,
-the newly added V5_LOGIC pour declaration and the legacy native fabrication note.
-Do not claim clean all-rule DRC or export the old impedance requirement. Preserve
-the saved routing while closing that paperwork. Final combined three-board
-pre-fabrication review and physical commissioning remain separate gates.
+The [combined pre-fabrication review](evidence/pre-fab-2026-09-14/) records current
+validation, copper preservation, labels, procurement and CAM evidence. USB operation
+still requires final-board commissioning; no signal-integrity certification or
+impedance guarantee is claimed.

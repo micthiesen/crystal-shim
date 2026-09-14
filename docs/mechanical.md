@@ -59,6 +59,31 @@ as well as board copper against the existing 8 mm primary-to-SELV and 3.2 mm
 different-primary-net requirements. Spacer length alone is not insulation
 acceptance. Keep ventilation and final-unit temperature checks for the stack.
 
+## Selected support construction
+
+Use the [stock-material mounting construction](design/evidence/pre-fab-2026-09-14/mechanical-closure.md)
+and its [manufacturer-solid CAD check](../cad/shared-enclosure/support-fit.json).
+A 182 × 144 × 3 mm insulating FR-4 carrier supports the lower board on plain
+7 mm spacers. Two FR-4 upper rails on four external M4 nylon rods support the
+controller on plain 3 mm spacers, preserving its 45 mm clear separation. Eight
+corner tabs and eight insulating edge-stop screws retain the separator without
+holes or an RF notch. Use single through-bolts at PCB supports, not opposing
+screws in short spacers. All PCB mounting hardware stays within the 8 mm reserves.
+
+The four frame/base holes are at enclosure coordinates (90,55), (260,55),
+(90,185), (260,185), with 4.4 mm bores. The actual base surface is Z1.8 at those
+points; 3.2 mm effective feet place the carrier underside at Z5. The separate PE
+bracket sits at X270..310,Y180..210,Z10..13, fastened at (275,195), (305,195).
+Its central M4 PE junction uses an independently clamped metal ring stack and
+an insulating cover. Base penetrations need sealing and as-built inspection.
+The construction record gives stock sizes, fasteners and the complete cut pattern.
+
+The new support/harness/enclosure interference check passes against the retained
+manufacturer solid. No conductive support is added near the antenna; new dielectric
+rails approach to 5.44 mm and their RF influence remains unmeasured. Mechanical
+load, fastening, PE continuity, sealing and physical commissioning remain as-built
+checks. The separator itself and PCB positions are unchanged.
+
 ## Enclosure and wiring
 
 The retained enclosure candidate is **Hammond 1590ZGRP243**: 400 × 250 × 120 mm
@@ -101,7 +126,10 @@ sits between PCB and glass. Avoid foam and trapped air; the owner selects tape
 and its installed thickness becomes part of final calibration.
 
 Electronics and six pigtail solder lands face outward. The cable exits left when
-viewed from outside, with outward-side strain relief. Preserve a flat glass-facing
+viewed from outside, with outward-side strain relief. Anchor its jacket to adjacent glass using two
+nonconductive tie bases with VHB 5952 and a relaxed bend to J1, as specified in
+the mounting construction. Keep foam tape under those external anchors only.
+Preserve a flat glass-facing
 surface without exposed solder, through-hole connector tails or mounting holes.
 The [sensor specification](sensor.md) defines the 50 mm physical electrode span
 and lower wet reference. The accepted image remains a visual reference, not a

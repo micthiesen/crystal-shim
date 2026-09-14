@@ -90,7 +90,8 @@ def run(names=("controller", "mains", "sensor")):
                 expectations = [
                     (track(board,'V12_PUMP',pos(0,0),pos(10,0)), 'V12_PUMP routing width','track_width'),
                     (track(board,'USB_D_PORT_N',pos(0,10),pos(5,10),.3), 'USB routing geometry','track_width'),
-                    (track(board,'USB_D_SWITCH_P',pos(10,10),pos(15,10),.24,pcbnew.B_Cu), 'USB front only','items_not_allowed'),
+                    (track(board,'USB_D_SWITCH_P',pos(10,10),pos(15,10),.24,pcbnew.In1_Cu), 'USB outer copper only','items_not_allowed'),
+                    (track(board,'USB_D_SWITCH_N',pos(10,25),pos(15,25),.24,pcbnew.In2_Cu), 'USB outer copper only','items_not_allowed'),
                     (track(board,'V3V3',pos(0,20),pos(5,20),1,pcbnew.In1_Cu), 'L2 ground reference','items_not_allowed'),
                     (via(board,'GND',pos(20,10)), 'Ordinary through vias',None),
                     (via(board,'V12_PUMP',pos(30,10)), 'V12_PUMP no single power via','items_not_allowed'),

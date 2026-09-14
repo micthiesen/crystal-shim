@@ -1,0 +1,27 @@
+{
+  "initial_failure": {
+    "command": [
+      "sh",
+      "pcb/tools/kicad_python.sh",
+      "pcb/tools/test_native_routing_rules.py",
+      "controller",
+      "mains",
+      "sensor"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/Users/michael/Code/crystal-shim/pcb/tools/test_native_routing_rules.py\", line 164, in <module>\n    run(args.boards or ('controller','mains','sensor'))\n  File \"/Users/michael/Code/crystal-shim/pcb/tools/test_native_routing_rules.py\", line 151, in run\n    require_finding(report,uuid,rule,kind)\n  File \"/Users/michael/Code/crystal-shim/pcb/tools/test_native_routing_rules.py\", line 57, in require_finding\n    raise AssertionError(f'Missing {rule!r}/{kind} for {uuid}: {json.dumps(actual, indent=2)}')\nAssertionError: Missing 'L2 ground reference'/items_not_allowed for ededdae4-acea-4a26-a867-469c7c772c8f: [\n  {\n    \"description\": \"Items not allowed (rule 'USB outer copper only')\",\n    \"items\": [\n      {\n        \"description\": \"Track [USB_D_SWITCH_P] on In1.Cu, length 5.0000 mm\",\n        \"pos\": {\n          \"x\": 205.05,\n          \"y\": 206.829235\n        },\n        \"uuid\": \"ededdae4-acea-4a26-a867-469c7c772c8f\"\n      }\n    ],\n    \"severity\": \"error\",\n    \"type\": \"items_not_allowed\"\n  },\n  {\n    \"description\": \"Track has unconnected end\",\n    \"items\": [\n      {\n        \"description\": \"Track [USB_D_SWITCH_P] on In1.Cu, length 5.0000 mm\",\n        \"pos\": {\n          \"x\": 205.05,\n          \"y\": 206.829235\n        },\n        \"uuid\": \"ededdae4-acea-4a26-a867-469c7c772c8f\"\n      }\n    ],\n    \"severity\": \"warning\",\n    \"type\": \"track_dangling\"\n  }\n]\n"
+  },
+  "resolution": "Updated In1 USB expected rule name to the new more-specific outer-copper rule; separate V3V3 In1 probe retains ground-reference coverage.",
+  "command": [
+    "sh",
+    "pcb/tools/kicad_python.sh",
+    "pcb/tools/test_native_routing_rules.py",
+    "controller",
+    "mains",
+    "sensor"
+  ],
+  "exit_code": 0,
+  "stdout": "{\n  \"differential_pairs\": [\n    [\n      \"USB_D_N\",\n      \"USB_D_P\"\n    ],\n    [\n      \"USB_D_P\",\n      \"USB_D_N\"\n    ],\n    [\n      \"USB_D_PORT_N\",\n      \"USB_D_PORT_P\"\n    ],\n    [\n      \"USB_D_PORT_P\",\n      \"USB_D_PORT_N\"\n    ],\n    [\n      \"USB_D_SWITCH_N\",\n      \"USB_D_SWITCH_P\"\n    ],\n    [\n      \"USB_D_SWITCH_P\",\n      \"USB_D_SWITCH_N\"\n    ]\n  ],\n  \"controller\": {\n    \"probes\": 7,\n    \"passed\": true\n  },\n  \"mains\": {\n    \"probes\": 5,\n    \"passed\": true\n  },\n  \"sensor\": {\n    \"probes\": 2,\n    \"passed\": true\n  }\n}\n",
+  "stderr": ""
+}

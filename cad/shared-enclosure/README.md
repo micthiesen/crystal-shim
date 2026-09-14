@@ -17,13 +17,14 @@ Both board outlines occupy X100..250, Y65..175 mm in enclosure-floor coordinates
 Mains PCB bottom/top are Z15/16.6; controller bottom/top are Z61.6/63.2.
 Four aligned mounting columns have centres **(107,72), (243,72), (107,168),
 (243,168)**. Use insulating M3 hardware within the 8 mm maximum reserved diameter.
-Exact spacer, washer, carrier attachment and board-load details remain to select.
+The selected support construction below fixes spacer, washer and carrier geometry;
+board-load and fastening performance remain physical checks.
 
 An **intact 158 × 118 × 2 mm insulating separator** occupies X96..254,
 Y61..179, Z50.1..52.1. Its lower face is 3 mm above the allocated 30.5 mm supply
 height; it leaves 6.5 mm to the upper assembly's underside reserve at Z58.6.
-This is a geometric allocation. Material, retention, primary-guard edges,
-wire routing and electrical insulation acceptance remain engineering checks.
+The support construction below selects FR-4 and edge retention without separator
+penetrations. Wire routing and as-built electrical insulation still need inspection.
 No RF notch is selected.
 
 Allow **35 mm outward mating/wiring depth** at each used edge. Lower primary
@@ -57,3 +58,20 @@ intentional mating interfaces may touch. Three negative controls detect wall,
 lid and lowered-separator collisions. The exported STEP reloads as **19 valid
 solids**. No route, fabrication, machining or assembled ingress rating follows
 from this gross-fit result.
+
+## Selected insulating support assembly
+
+[Support construction](../../docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md)
+now specifies a stock FR-4 carrier, two upper rails, four external nylon rods and
+corner clamps that preserve the hole-free separator. The PCB elevations and hole
+pattern above remain unchanged. [Support CAD](support-fit.step) and
+[results](support-fit.json) are reproduced with `python check_supports.py` from
+this directory, using the same CadQuery environment as the original fit screen.
+
+The precise manufacturer-solid check locates the inner base surface at **Z1.8**
+and outer base surface at **Z−4.0** at all six chosen base fastenings. Earlier text
+called the retained Z0 datum the floor; it is a reference datum, not that local
+surface. Carrier feet therefore have **3.2 mm** effective height to carrier Z5.
+The new geometry checks actual base material, support/harness interference and
+negative controls. Exact fastener engagement, physical loads, sealing, PE continuity
+and the dielectric supports' RF effects remain assembly/commissioning checks.

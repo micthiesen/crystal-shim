@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="18.05000000000001mm" height="64.05000000000001mm" viewBox="90.975 -132.025 18.05000000000001 64.05000000000001" style="background-color:white" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="f-copper">
+                    <feFlood result="flood-black" flood-color="black" flood-opacity="1"/>
+                    <feFlood result="flood-green" flood-color="#cccccc"/>
+                    <feBlend in="SourceGraphic" in2="flood-black" result="overlay" mode="normal"/>
+                    <feBlend in="overlay" in2="flood-green" result="colored" mode="multiply"/>
+                    <feColorMatrix in="overlay" type="matrix" result="alphaOut" values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    1 0 0 0 0"/>
+                    <feComposite in="colored" in2="alphaOut" operator="in"/>
+                    </filter>
+    <filter id="f-mask">
+                    <feFlood result="flood-black" flood-color="black" flood-opacity="1"/>
+                    <feFlood result="flood-green" flood-color="#004200"/>
+                    <feBlend in="SourceGraphic" in2="flood-black" result="overlay" mode="normal"/>
+                    <feBlend in="overlay" in2="flood-green" result="colored" mode="multiply"/>
+                    <feColorMatrix in="overlay" type="matrix" result="alphaOut" values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    0.7490196078431373 0 0 0 0"/>
+                    <feComposite in="colored" in2="alphaOut" operator="in"/>
+                    </filter>
+    <filter id="f-paste">
+                    <feFlood result="flood-black" flood-color="black" flood-opacity="1"/>
+                    <feFlood result="flood-green" flood-color="#999999"/>
+                    <feBlend in="SourceGraphic" in2="flood-black" result="overlay" mode="normal"/>
+                    <feBlend in="overlay" in2="flood-green" result="colored" mode="multiply"/>
+                    <feColorMatrix in="overlay" type="matrix" result="alphaOut" values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    1 0 0 0 0"/>
+                    <feComposite in="colored" in2="alphaOut" operator="in"/>
+                    </filter>
+    <filter id="f-silk">
+                    <feFlood result="flood-black" flood-color="black" flood-opacity="1"/>
+                    <feFlood result="flood-green" flood-color="#e0e0e0"/>
+                    <feBlend in="SourceGraphic" in2="flood-black" result="overlay" mode="normal"/>
+                    <feBlend in="overlay" in2="flood-green" result="colored" mode="multiply"/>
+                    <feColorMatrix in="overlay" type="matrix" result="alphaOut" values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    1 0 0 0 0"/>
+                    <feComposite in="colored" in2="alphaOut" operator="in"/>
+                    </filter>
+    <filter id="f-drill">
+                    <feFlood result="flood-black" flood-color="black" flood-opacity="1"/>
+                    <feFlood result="flood-green" flood-color="#303030"/>
+                    <feBlend in="SourceGraphic" in2="flood-black" result="overlay" mode="normal"/>
+                    <feBlend in="overlay" in2="flood-green" result="colored" mode="multiply"/>
+                    <feColorMatrix in="overlay" type="matrix" result="alphaOut" values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    1 0 0 0 0"/>
+                    <feComposite in="colored" in2="alphaOut" operator="in"/>
+                    </filter>
+    <filter id="f-outline">
+                    <feFlood result="flood-black" flood-color="black" flood-opacity="1"/>
+                    <feFlood result="flood-green" flood-color="#F0C000"/>
+                    <feBlend in="SourceGraphic" in2="flood-black" result="overlay" mode="normal"/>
+                    <feBlend in="overlay" in2="flood-green" result="colored" mode="multiply"/>
+                    <feColorMatrix in="overlay" type="matrix" result="alphaOut" values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    1 0 0 0 0"/>
+                    <feComposite in="colored" in2="alphaOut" operator="in"/>
+                    </filter>
+    <g id="a0">
+      <rect x="-3.175" y="-2.275" width="6.35" height="4.55" fill="white"/>
+    </g>
+    <g id="a1">
+      <rect x="-0.075" y="-25.0" width="0.15" height="50.0" fill="white"/>
+    </g>
+    <g id="a2">
+      <rect x="-3.175" y="-5.0" width="6.35" height="10.0" fill="white"/>
+    </g>
+    <g id="a3">
+      <rect x="-0.075" y="-28.5375" width="0.15" height="57.075" fill="white"/>
+    </g>
+    <g id="a4">
+      <rect x="-0.825" y="-0.075" width="1.65" height="0.15" fill="white"/>
+    </g>
+    <g id="a5">
+      <rect x="-0.075" y="-31.0" width="0.15" height="62.0" fill="white"/>
+    </g>
+    <g id="a6">
+      <circle cx="0.0" cy="0.0" r="0.225" fill="white"/>
+    </g>
+    <g id="a7">
+      <circle cx="0.0" cy="0.0" r="0.3" fill="white"/>
+    </g>
+    <g id="a8">
+      <circle cx="0.0" cy="0.0" r="0.075" fill="white"/>
+    </g>
+  </defs>
+  <g transform="translate(200.0 0) scale(-1 1)">
+    <g id="l-bottom-copper" filter="url(#f-copper)" fill="white" stroke="none" stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" transform="translate(0 -200.0) scale(1 -1)">
+      <rect x="92.15" y="-73.55" width="6.35" height="4.55"/>
+      <rect x="92.15" y="-78.6" width="6.35" height="4.55"/>
+      <rect x="92.15" y="-83.65" width="6.35" height="4.55"/>
+      <rect x="92.15" y="-88.7" width="6.35" height="4.55"/>
+      <rect x="92.15" y="-93.75" width="6.35" height="4.55"/>
+      <rect x="92.15" y="-98.8" width="6.35" height="4.55"/>
+      <rect x="92.15" y="-103.85" width="6.35" height="4.55"/>
+      <rect x="92.15" y="-108.9" width="6.35" height="4.55"/>
+      <rect x="92.15" y="-113.95" width="6.35" height="4.55"/>
+      <rect x="92.15" y="-119.0" width="6.35" height="4.55"/>
+      <rect x="101.5" y="-73.55" width="6.35" height="4.55"/>
+      <rect x="101.5" y="-78.6" width="6.35" height="4.55"/>
+      <rect x="101.5" y="-83.65" width="6.35" height="4.55"/>
+      <rect x="101.5" y="-88.7" width="6.35" height="4.55"/>
+      <rect x="101.5" y="-93.75" width="6.35" height="4.55"/>
+      <rect x="101.5" y="-98.8" width="6.35" height="4.55"/>
+      <rect x="101.5" y="-103.85" width="6.35" height="4.55"/>
+      <rect x="101.5" y="-108.9" width="6.35" height="4.55"/>
+      <rect x="101.5" y="-113.95" width="6.35" height="4.55"/>
+      <rect x="101.5" y="-119.0" width="6.35" height="4.55"/>
+      <rect x="107.7" y="-119.0" width="0.15" height="50.0"/>
+      <rect x="101.5" y="-131.0" width="6.35" height="10.0"/>
+      <rect x="92.15" y="-131.0" width="6.35" height="10.0"/>
+      <rect x="99.925" y="-126.075" width="0.15" height="57.075"/>
+      <rect x="99.925" y="-126.075" width="1.65" height="0.15"/>
+      <rect x="92.15" y="-131.0" width="0.15" height="62.0"/>
+      <circle cx="100.575" cy="-77.0" r="0.225"/>
+      <circle cx="100.575" cy="-101.025" r="0.225"/>
+      <circle cx="100.575" cy="-82.0" r="0.225"/>
+      <circle cx="100.575" cy="-100.175" r="0.225"/>
+      <circle cx="100.575" cy="-89.75" r="0.225"/>
+      <circle cx="101.0" cy="-97.0" r="0.3"/>
+      <circle cx="100.6" cy="-95.0" r="0.225"/>
+      <circle cx="100.6" cy="-94.0" r="0.225"/>
+      <circle cx="99.0" cy="-97.0" r="0.3"/>
+      <path d="M 103.15 -95.0 L 104.675 -96.525" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.15"/>
+      <path d="M 100.6 -95.0 L 103.15 -95.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.15"/>
+      <path d="M 100.6 -94.0 L 100.0 -94.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.15"/>
+      <path d="M 98.525 -96.525 L 95.325 -96.525" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.15"/>
+      <path d="M 99.0 -97.0 L 98.525 -96.525" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.15"/>
+    </g>
+    <g id="l-bottom-mask" filter="url(#f-mask)" fill="black" stroke="none" stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" transform="translate(0 -200.0) scale(1 -1)">
+      <path id="outline-path" d="M 91.0 -132.0 L 109.0 -132.0 L 109.0 -68.0 L 91.0 -68.0 L 91.0 -132.0 L 109.0 -132.0 L 91.0 -132.0 Z" fill="white"/>
+    </g>
+    <g id="l-bottom-silk" filter="url(#f-silk)" fill="none" stroke="white" stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" transform="translate(0 -200.0) scale(1 -1)"/>
+    <g id="l-drill-0" filter="url(#f-drill)" stroke-linejoin="round" stroke-linecap="round" transform="translate(0 -200.0) scale(1 -1)">
+      <circle cx="100.575" cy="-77.0" r="0.1" fill="white"/>
+      <circle cx="100.575" cy="-82.0" r="0.1" fill="white"/>
+      <circle cx="100.575" cy="-89.75" r="0.1" fill="white"/>
+      <circle cx="100.575" cy="-100.175" r="0.1" fill="white"/>
+      <circle cx="100.575" cy="-101.025" r="0.1" fill="white"/>
+      <circle cx="100.6" cy="-94.0" r="0.1" fill="white"/>
+      <circle cx="100.6" cy="-95.0" r="0.1" fill="white"/>
+      <circle cx="99.0" cy="-97.0" r="0.15" fill="white"/>
+      <circle cx="101.0" cy="-97.0" r="0.15" fill="white"/>
+    </g>
+    <g id="l-mechanical-outline" stroke-linejoin="round" stroke-linecap="round" transform="translate(0 -200.0) scale(1 -1)">
+      <path d="M 91.0 -68.0 L 109.0 -68.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.05"/>
+      <path d="M 91.0 -132.0 L 91.0 -68.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.05"/>
+      <path d="M 109.0 -68.0 L 109.0 -132.0 L 91.0 -132.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.05"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,533 @@
+{
+  "scope": "CAM archive identity, parsed layers/outlines/drills, tenting apertures, native visible refs and exported silk strokes; not strict DRC",
+  "boards": {
+    "controller": {
+      "passed": true,
+      "native_sha256": "8b899306da71ce1b17afd0ab18bb4e7d96edef3adc1743543a294608163e9853",
+      "zip_sha256": "804b3c8fc526c1c6a5d57c95cb46d5e76911f7c1bd52f473ecd13885a3fc301d",
+      "members": {
+        "controller-NPTH.drl": "82e5f2ce756bc41c030c3d1aad67c01411e517f5b73bf6cdbbf40fb7143ca3b2",
+        "controller-PTH.drl": "e75bfd7837ee99fc09e12ad709e79047fe5c97e75dc2f12ce5e3234ac86c1759",
+        "controller-B_Cu.gbl": "ed1227446299e290faf328db1fdd55918be02510bc97d270748f4ffb964e60a0",
+        "controller-B_Mask.gbs": "d70ce84c0e562eef191f83860dfd80a31b912d315157772461d5af9c1976ab53",
+        "controller-B_Silkscreen.gbo": "817411272c2806349eb5cc60dfbb02d1132c1639c8f06952708eeb81320bda6e",
+        "controller-Edge_Cuts.gm1": "57dd2fd64c9fff57e391d92677281b63e3a46ecf5f917d17314703275ff90e6f",
+        "controller-F_Cu.gtl": "58bdf47d0754de5435a735b19c44bc67b6ef7f99c606c2305a1cbad707aee553",
+        "controller-F_Mask.gts": "07da0a8979eeb47b204313a6f61e7e09c1e5f094592da12d4337ab5ba3e76221",
+        "controller-F_Silkscreen.gto": "62e43664cae90f9e8fdd0876599a0b020c811773cfe08a5e911a38aa37d61bc6",
+        "controller-In1_Cu.g1": "7cb4e594826836a95fbe18dbd38ea3a4ed519f52ad1400cbcb42212ae79f8db6",
+        "controller-In2_Cu.g2": "afdb5d2a0d54eb0ed06328ff40e3e41fef4fde9905da73ac5bba133b484a69f1"
+      },
+      "dimensions_mm": [
+        150.0,
+        110.0
+      ],
+      "layers": {
+        "top/copper": {
+          "objects": 972,
+          "bbox_mm": [
+            [
+              25.5005,
+              -154.4995
+            ],
+            [
+              174.4995,
+              -45.5005
+            ]
+          ]
+        },
+        "top/mask": {
+          "objects": 341,
+          "bbox_mm": [
+            [
+              30.404932,
+              -153.345295
+            ],
+            [
+              169.815376,
+              -45.99
+            ]
+          ]
+        },
+        "top/silk": {
+          "objects": 5113,
+          "bbox_mm": [
+            [
+              31.28738,
+              -152.52981899999997
+            ],
+            [
+              168.81309499999998,
+              -47.546467
+            ]
+          ]
+        },
+        "bottom/copper": {
+          "objects": 232,
+          "bbox_mm": [
+            [
+              25.5005,
+              -154.4995
+            ],
+            [
+              174.4995,
+              -45.5005
+            ]
+          ]
+        },
+        "bottom/mask": {
+          "objects": 56,
+          "bbox_mm": [
+            [
+              30.404932,
+              -153.345295
+            ],
+            [
+              169.815376,
+              -50.404932
+            ]
+          ]
+        },
+        "bottom/silk": {
+          "objects": 0,
+          "bbox_mm": null
+        },
+        "inner_2/copper": {
+          "objects": 187,
+          "bbox_mm": [
+            [
+              52.300000000000004,
+              -153.3
+            ],
+            [
+              164.75,
+              -49.0
+            ]
+          ]
+        },
+        "inner_1/copper": {
+          "objects": 146,
+          "bbox_mm": [
+            [
+              25.5005,
+              -154.4995
+            ],
+            [
+              174.4995,
+              -45.5005
+            ]
+          ]
+        },
+        "mechanical/outline": {
+          "objects": 4,
+          "bbox_mm": [
+            [
+              24.95,
+              -155.05
+            ],
+            [
+              175.05,
+              -44.95
+            ]
+          ]
+        }
+      },
+      "pth_count": 145,
+      "npth_count": 13,
+      "slots": [
+        {
+          "plated": true,
+          "center": [
+            106.68,
+            -148.22
+          ],
+          "diameter": 0.6,
+          "span": 1.1000000000000227,
+          "ends": [
+            [
+              106.68,
+              -147.67
+            ],
+            [
+              106.68,
+              -148.77
+            ]
+          ]
+        },
+        {
+          "plated": true,
+          "center": [
+            106.68,
+            -152.4
+          ],
+          "diameter": 0.6,
+          "span": 0.8000000000000114,
+          "ends": [
+            [
+              106.68,
+              -152.0
+            ],
+            [
+              106.68,
+              -152.8
+            ]
+          ]
+        },
+        {
+          "plated": true,
+          "center": [
+            115.32,
+            -148.22
+          ],
+          "diameter": 0.6,
+          "span": 1.1000000000000227,
+          "ends": [
+            [
+              115.32,
+              -147.67
+            ],
+            [
+              115.32,
+              -148.77
+            ]
+          ]
+        },
+        {
+          "plated": true,
+          "center": [
+            115.32,
+            -152.4
+          ],
+          "diameter": 0.6,
+          "span": 0.8000000000000114,
+          "ends": [
+            [
+              115.32,
+              -152.0
+            ],
+            [
+              115.32,
+              -152.8
+            ]
+          ]
+        }
+      ],
+      "drill_tools_mm": [
+        0.2,
+        0.3,
+        0.6,
+        0.65,
+        0.9,
+        1.0,
+        1.02,
+        1.1,
+        3.0,
+        3.2
+      ],
+      "vias": 102,
+      "native_tented_both": 102,
+      "via_centered_mask_flashes": [],
+      "identified_reference_count": 117,
+      "visible_reference_fields": 109,
+      "standalone_reference_labels": [
+        "J5",
+        "J1",
+        "J3",
+        "J2",
+        "J9",
+        "J8",
+        "J6",
+        "J7"
+      ],
+      "matched_board_silk_shapes": 8,
+      "front_paste_objects": 271,
+      "native_paste_pad_count": 271
+    },
+    "sensor": {
+      "passed": true,
+      "native_sha256": "fe6298667105e543f876fc5038c5cc83eb03fb228bc9c9813e843e2a0afc7c8e",
+      "zip_sha256": "5594c00a55ad7cedcf84e4552d71ecffc16600900cc74a81a4a8ddac892a4ea4",
+      "members": {
+        "sensor-NPTH.drl": "2cf36de4c3bc3d6ccefe0bb8b31d2af779ec90163655ae02947248aabab0ee20",
+        "sensor-PTH.drl": "c19c4d224f6a8bd9fc4aa4fd392681156d3d85de9012a5084079155f423664a2",
+        "sensor-B_Cu.gbl": "a7ca94df277dabb9ac9f98eaa3657c7273e988aae3d114603b7e996edc6d4a7c",
+        "sensor-B_Mask.gbs": "9c965f80114697549ea480861ddd62ccf9b1ecb4c860bed7e78a946480f12073",
+        "sensor-B_Silkscreen.gbo": "16be37f615c65bcfdac065bf64ae52ffb503dfcef9918dbe247ed81c8b7048be",
+        "sensor-Edge_Cuts.gm1": "40c01818a87053db21ad392e129dc41c0f23437b49087bf4ac11b5118c2d3054",
+        "sensor-F_Cu.gtl": "05966e3a020a087524ff89273ac90c480ef8c1e2cef79f984bc69ed4f5844566",
+        "sensor-F_Mask.gts": "8ca906a670d9606ffd0f993df1748905b4ec72898e2807d4e6060f864be517c9",
+        "sensor-F_Silkscreen.gto": "7b93e43f923396583ec1cdf49efed714e0996ce099bb722771671991a4de8f20",
+        "sensor-In1_Cu.g1": "ee2fa6f048a2003243cccd3c1fde63cc6904a358e9ab5eda478d1c122354c4c1",
+        "sensor-In2_Cu.g2": "355d90727ff8c2521527798e2d5a20c9173d9e846f0387003cb26fff2ec810e8"
+      },
+      "dimensions_mm": [
+        18.0,
+        64.0
+      ],
+      "layers": {
+        "top/copper": {
+          "objects": 170,
+          "bbox_mm": [
+            [
+              91.5005,
+              -131.4995
+            ],
+            [
+              108.4995,
+              -68.5
+            ]
+          ]
+        },
+        "top/mask": {
+          "objects": 48,
+          "bbox_mm": [
+            [
+              92.0,
+              -93.5
+            ],
+            [
+              107.6,
+              -68.5
+            ]
+          ]
+        },
+        "top/silk": {
+          "objects": 627,
+          "bbox_mm": [
+            [
+              92.853571,
+              -130.43729499999998
+            ],
+            [
+              108.437295,
+              -68.487295
+            ]
+          ]
+        },
+        "bottom/copper": {
+          "objects": 40,
+          "bbox_mm": [
+            [
+              92.14999999999999,
+              -131.0
+            ],
+            [
+              107.85000000000001,
+              -69.0
+            ]
+          ]
+        },
+        "bottom/mask": {
+          "objects": 0,
+          "bbox_mm": null
+        },
+        "bottom/silk": {
+          "objects": 0,
+          "bbox_mm": null
+        },
+        "inner_1/copper": {
+          "objects": 10,
+          "bbox_mm": [
+            [
+              91.5005,
+              -131.4995
+            ],
+            [
+              108.4995,
+              -68.5005
+            ]
+          ]
+        },
+        "inner_2/copper": {
+          "objects": 15,
+          "bbox_mm": [
+            [
+              91.65,
+              -131.5
+            ],
+            [
+              108.35,
+              -68.5
+            ]
+          ]
+        },
+        "mechanical/outline": {
+          "objects": 4,
+          "bbox_mm": [
+            [
+              90.975,
+              -132.025
+            ],
+            [
+              109.025,
+              -67.975
+            ]
+          ]
+        }
+      },
+      "pth_count": 9,
+      "npth_count": 0,
+      "slots": [],
+      "drill_tools_mm": [
+        0.2,
+        0.3
+      ],
+      "vias": 9,
+      "native_tented_both": 9,
+      "via_centered_mask_flashes": [],
+      "identified_reference_count": 16,
+      "visible_reference_fields": 16,
+      "standalone_reference_labels": [],
+      "matched_board_silk_shapes": 9,
+      "front_paste_objects": 42,
+      "native_paste_pad_count": 42
+    },
+    "mains": {
+      "passed": true,
+      "native_sha256": "2f7dde485c391e9a32bbc67e7dff616bb25a9b33989e7ad31ee7235522f2a335",
+      "zip_sha256": "ce6496a41e2401418cb742586c0c3a9a9f5433573e280e27c2118ff0b2d8ad80",
+      "members": {
+        "mains-NPTH.drl": "dbf92949cc2b50361e45baca4dead216eac730a5ad092390915d86e4314b7db2",
+        "mains-PTH.drl": "882bda3cf7666f101c9c1dfdc040daf359579fce8c95e8bba6ea819ab891e8a6",
+        "mains-B_Cu.gbl": "88b239c488b29e3cee8a5147b005bcc32cd91dd23d0970641f1a40170d6a3c76",
+        "mains-B_Mask.gbs": "f570a879885e448b22500322eff3b3fc6d7f1fe5802b3081f072f9f5b887e57d",
+        "mains-B_Silkscreen.gbo": "dec33c339c62f802df24954b35afb6462c4ce5dda7a628da5bc9e60d4daf7c93",
+        "mains-Edge_Cuts.gm1": "1363fa91299f2d86f1e81c248b49b18b079b9dd82da6749cf1489c04602d7f87",
+        "mains-F_Cu.gtl": "25ea907f205866b19b74c555c086d3aec65438f557ae2aa85691b3e1eddecea7",
+        "mains-F_Mask.gts": "29cfa0b16fe25615cf20ce94c8af0daf2e8296b0855a69ca48bb4619f6bdf1de",
+        "mains-F_Silkscreen.gto": "faf5db8337cdf16ec5b72f436ad2afc06bc22031896ca8d2949104efd4167f34"
+      },
+      "dimensions_mm": [
+        150.0,
+        110.0
+      ],
+      "layers": {
+        "top/copper": {
+          "objects": 128,
+          "bbox_mm": [
+            [
+              39.25,
+              -142.75
+            ],
+            [
+              174.4995,
+              -45.5005
+            ]
+          ]
+        },
+        "top/mask": {
+          "objects": 59,
+          "bbox_mm": [
+            [
+              30.4,
+              -149.6
+            ],
+            [
+              169.82,
+              -50.4
+            ]
+          ]
+        },
+        "top/silk": {
+          "objects": 1551,
+          "bbox_mm": [
+            [
+              37.315476,
+              -151.983557
+            ],
+            [
+              169.61785799999998,
+              -47.3322
+            ]
+          ]
+        },
+        "bottom/copper": {
+          "objects": 72,
+          "bbox_mm": [
+            [
+              39.25,
+              -142.75
+            ],
+            [
+              174.4995,
+              -45.5005
+            ]
+          ]
+        },
+        "bottom/mask": {
+          "objects": 37,
+          "bbox_mm": [
+            [
+              30.4,
+              -149.6
+            ],
+            [
+              169.82,
+              -50.4
+            ]
+          ]
+        },
+        "bottom/silk": {
+          "objects": 0,
+          "bbox_mm": null
+        },
+        "mechanical/outline": {
+          "objects": 4,
+          "bbox_mm": [
+            [
+              24.975,
+              -155.025
+            ],
+            [
+              175.025,
+              -44.975
+            ]
+          ]
+        }
+      },
+      "pth_count": 42,
+      "npth_count": 6,
+      "slots": [
+        {
+          "plated": true,
+          "center": [
+            67.75,
+            -120.0
+          ],
+          "diameter": 1.3,
+          "span": 2.4000000000000057,
+          "ends": [
+            [
+              66.55,
+              -120.0
+            ],
+            [
+              68.95,
+              -120.0
+            ]
+          ]
+        }
+      ],
+      "drill_tools_mm": [
+        0.3,
+        1.02,
+        1.1,
+        1.3,
+        1.5,
+        2.5,
+        3.0,
+        3.2
+      ],
+      "vias": 11,
+      "native_tented_both": 11,
+      "via_centered_mask_flashes": [],
+      "identified_reference_count": 26,
+      "visible_reference_fields": 26,
+      "standalone_reference_labels": [],
+      "matched_board_silk_shapes": 8,
+      "front_paste_objects": 22,
+      "native_paste_pad_count": 22
+    }
+  },
+  "passed": true
+}

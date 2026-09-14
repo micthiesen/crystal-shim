@@ -1,0 +1,107 @@
+{
+  "passed": true,
+  "scope": "Stock-material support geometry against manufacturer enclosure and allocated component/harness volumes. Not load, torque, insulation, vibration or ingress testing.",
+  "negative_controls": {
+    "uncut_base_rejects_frame_rods_mm3": 72.88494956328319,
+    "lowered_rail_hits_separator_mm3": 2555.8725684204296
+  },
+  "pe_base_fixings_xy_mm": [
+    [
+      275,
+      195
+    ],
+    [
+      305,
+      195
+    ]
+  ],
+  "base_fixings_xy_mm": [
+    [
+      90,
+      55
+    ],
+    [
+      260,
+      55
+    ],
+    [
+      90,
+      185
+    ],
+    [
+      260,
+      185
+    ]
+  ],
+  "base_hole_diameter_mm": 4.4,
+  "frame_rod_stock_min_mm": 80,
+  "pe_bracket_bounds_mm": [
+    270,
+    310,
+    180,
+    210,
+    10,
+    13
+  ],
+  "base_wall_thickness_mm": 5.8,
+  "actual_inner_floor_z_mm": 1.8,
+  "floor_foot_height_mm": 3.2,
+  "carrier_bounds_mm": [
+    84,
+    266,
+    48,
+    192,
+    5,
+    8
+  ],
+  "separator_unchanged": [
+    96,
+    254,
+    61,
+    179,
+    50.1,
+    52.1
+  ],
+  "upper_rails_z_mm": [
+    55.6,
+    58.6
+  ],
+  "floor_material_checks": {
+    "(90, 55)": {
+      "material_volume_mm3": 88.19078897157274,
+      "full_cylinder_mm3": 88.19078897157274,
+      "above_floor_clearance_mm3": 0.0
+    },
+    "(260, 55)": {
+      "material_volume_mm3": 88.19078897157246,
+      "full_cylinder_mm3": 88.19078897157246,
+      "above_floor_clearance_mm3": 0.0
+    },
+    "(90, 185)": {
+      "material_volume_mm3": 88.19078897157277,
+      "full_cylinder_mm3": 88.19078897157277,
+      "above_floor_clearance_mm3": 0.0
+    },
+    "(260, 185)": {
+      "material_volume_mm3": 88.19078897157247,
+      "full_cylinder_mm3": 88.19078897157247,
+      "above_floor_clearance_mm3": 0.0
+    },
+    "(275, 195)": {
+      "material_volume_mm3": 88.19078897157247,
+      "full_cylinder_mm3": 88.19078897157247,
+      "above_floor_clearance_mm3": 0.0
+    },
+    "(305, 195)": {
+      "material_volume_mm3": 88.19078897157247,
+      "full_cylinder_mm3": 88.19078897157247,
+      "above_floor_clearance_mm3": 0.0
+    }
+  },
+  "interference_findings": {},
+  "antenna_to_supports_min_mm": 5.437830449729014,
+  "note": "New supports are all dielectric; closest is upper rail. Physical RF effect unmeasured.",
+  "source_sha256": "c44881ef623315ffbccaa5e705a3ec12974a3cd2dda27fff8a0494578bfc8b2d",
+  "script_sha256": "2eca09ffae2659793be081c0714ca6fe1a1d21f66978070be71a623af80dc62a",
+  "step_sha256": "f0216ab76d399d95989c229b6b152c85ee4421a1098f0cb84c983049b21a8408"
+}

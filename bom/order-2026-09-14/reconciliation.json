@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-14",
+  "scope": "One assembled controller + mains + tank sensor; owner assembly; no future accessories",
+  "physical_parts": {
+    "controller": 99,
+    "mains": 22,
+    "sensor": 14
+  },
+  "physical_part_total": 135,
+  "pcb_mpn_groups": 50,
+  "excluded_features": 24,
+  "manifest_native_mpn_mismatches": 0,
+  "canonical_board_quantity_mismatches": 0,
+  "purchase_inventory": "No receipt-backed stock allocated; service adapter verify owned",
+  "input_sha256": {
+    "pcb/controller/design/handoff.lock.json": "abec3668ac8c3197eb24bcf061fab6a5c7f29d80fdaf5767ddf12f011e83c2ed",
+    "pcb/controller/kicad/controller.kicad_pcb": "8b899306da71ce1b17afd0ab18bb4e7d96edef3adc1743543a294608163e9853",
+    "pcb/mains/design/handoff.lock.json": "d0a069fe6a05732c495adf8a9958c8298b28e720662d53794a80d47cf793aa04",
+    "pcb/mains/kicad/mains.kicad_pcb": "2f7dde485c391e9a32bbc67e7dff616bb25a9b33989e7ad31ee7235522f2a335",
+    "pcb/sensor/design/handoff.lock.json": "7df5df9850070baa9d8ff317e183772704dd5d436474817df2e310d7a5b7813f",
+    "pcb/sensor/kicad/sensor.kicad_pcb": "fe6298667105e543f876fc5038c5cc83eb03fb228bc9c9813e843e2a0afc7c8e",
+    "bom/bom.csv": "0b91d6279016070ad22b5edea0f48728872d8a8f20e272a1925455628fece51e",
+    "pcb/controller/kicad/controller.kicad_dru": "2d1e6f9c66ed3fb458c64f7095699dd2d0ddd57139b6a1fb8df74ac04ff8e8cb",
+    "docs/design/evidence/pre-fab-2026-09-14/controller/release-acceptance/run.json": "f509c01b24d2d670e43d5739d2cacc6a38ed5776416c38962b21a4691d1052bb",
+    "pcb/mains/kicad/mains.kicad_dru": "d51dfc0d22f020adc98d06f513a38904ce078129722fe092fad8490993076c5f",
+    "docs/design/evidence/pre-fab-2026-09-14/mains/release-acceptance/run.json": "18fc6f7c21f6a4d4575d1e601f64a29177ebe8793e818df98d30c05879ba6385",
+    "pcb/sensor/kicad/sensor.kicad_dru": "6f4bdfb611f6eab7cb5d6be420452a3b5fc5e9d412e1d2d840f461661dc97486",
+    "docs/design/evidence/pre-fab-2026-09-14/sensor/release-acceptance/run.json": "e48b643d6e889837eeb16d3e32717f0a1ad0a633a7a61d845c4aa0f9c376380b"
+  },
+  "native_readback": "Fresh read-only pcbnew footprint reference and MPN comparison after final three-board release acceptance; accepted locks, native boards, custom rules and release run receipts hashed."
+}

@@ -41,16 +41,17 @@ sensor keeps electronics behind driven shielding while preserving the slim face.
 
 Trunk widths remain the router defaults even when starting at small pads. Narrow
 escapes are permitted only inside bounded named regions; ordinary KiCad DRC
-rejects long narrow tracks crossing those regions. USB pair recognition, layer
-restrictions, mains clearances and fixed sensor copper checks are retained. See
+rejects long narrow tracks crossing those regions. USB pair recognition and outer-layer enforcement, mains clearances and fixed
+sensor copper checks are retained. See
 the [routing guide](design/routing-guardrails.md) and
 [interactive routing cheat sheet](https://mcp.syas.ca/boris/artifacts/art_e9fv40epjxmu078n9c).
 
 Strict ERC and source/schematic parity pass. Six exact UUID-bound sensor padstack
 warnings are excluded for intentional In2-only driven-shield pads; independent
 geometry/net checks verify those pads and all other padstack warnings stay enabled.
-The previously recorded five initial DRC categories retain their explicit default
-settings. Final routed fabrication checks still apply; no blanket new waiver was added.
+The five initial ignored DRC categories were reviewed item-by-item in the final
+[strict-category audit](design/evidence/pre-fab-2026-09-14/strict-drc-review.md).
+Their analytical review is distinct from a strict-severity native DRC pass.
 
 ## Evidence
 
@@ -123,25 +124,31 @@ power path is 3.0708 mm. The two reviewed glass-side additions need no rework.
 This accepts routing, not fabrication release; prior review notes retain their
 historical findings and the new receipt records closure.
 
+## Fabrication release accepted
+
+The [Rev 1.0 release](design/evidence/pre-fab-2026-09-14/README.md) contains the
+reviewed Gerber/drill ZIPs, top-only100 µm stencils, owner assembly drawings,
+exact JLCPCB form settings and 103-line consolidated purchase BOM. All three
+handoff locks now point to current accepted release evidence. The controller USB
+rules and note match the agreed full-speed F.Cu/B.Cu/via routing without paid
+impedance control. Routed copper is preserved.
+
+All 159 board references are identified, with hand-tailored silk and a shared logo.
+Independent electrical, manufacturing, CAM and mechanical reviews found no further
+PCB change required. Native final checks report zero unconnected items and no
+unwaived findings. The full project gate passes; actual native regression probes
+also pass. The mechanical support model specifies stock insulating supports and
+an intact separator without changing PCB holes or elevations.
+
 ## Next
 
-Controller routing and both follow-up fixes are reviewed. The owner accepts
-full-speed USB vias and no paid impedance control; see
-[controller review and USB decision](design/controller-routing-review.md).
-Preserve the completed routing. Reconcile the legacy native USB/service-via
-rules, V5_LOGIC pour declaration and fabrication note before advancing the controller
-handoff lock. Then conduct the requested combined pre-fabrication review of all
-three boards. Sensor and mains routing remain accepted.
-No physical hardware is required for this stage.
+Use the [order settings](design/manufacturing-output.md) and
+[purchase list](../bom/order-2026-09-14/README.md) to order bare boards, stencils
+and parts. Check the supplier upload preview against the retained CAM before paying.
+PCB assembly service is No; no custom JLCPCB communication or process is required.
+No purchase was made, hardware flashed or mains energized.
 
-### Candidates not chosen
-
-- Further sensor routing: no open routing finding; retain the accepted board
-  unless the final combined review identifies a concrete change.
-- Manufacturing exports/order: wait for completed controller/mains routing and
-  the combined G-02/G-03/G-04 review explicitly requested by the owner.
-
-Physical calibration, adhesive response, temperatures, pump startup, EMI, PC sleep
-and HomeKit behavior remain commissioning stages. All physical test rows remain
-Not run. No parts were ordered, hardware flashed or mains energized. The broader
-[delivery goal](goal.md) continues beyond routing acceptance.
+Physical calibration, adhesive response, temperatures, pump startup, EMI, USB,
+RF and HomeKit behavior remain commissioning stages. All physical test rows remain
+Not run. The broader [delivery goal](goal.md) continues through assembly and
+commissioning of the final boards.

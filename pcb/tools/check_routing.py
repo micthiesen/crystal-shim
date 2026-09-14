@@ -92,13 +92,14 @@ def audit(board, policy, pcbnew):
         if is_via:
             if net in policy['nets'] and policy.get('forbid_vias_on_rail_nets') and not policy['nets'][net].get('allow_vias', False):
                 findings.append(f"{net} via {ident}: rail transitions are not approved; keep this trunk on an outer layer")
-            if net in policy.get('usb_nets', []):
+            if net in policy.get('usb_nets', []) and not policy.get('usb_allow_vias', False):
                 findings.append(f"{net} via {ident}: USB must stay on {policy['usb_layer']}")
         else:
             if layer == policy.get('ground_reference_layer') and net != policy.get('ground_net'):
                 findings.append(f"{net} track {ident}: reserved ground reference layer {layer}")
-            if net in policy.get('usb_nets', []) and layer != policy['usb_layer']:
-                findings.append(f"{net} track {ident}: USB must stay on {policy['usb_layer']}")
+            if net in policy.get('usb_nets', []) and layer not in policy.get('usb_layers', [policy['usb_layer']]):
+                allowed = ", ".join(policy.get('usb_layers', [policy['usb_layer']]))
+                findings.append(f"{net} track {ident}: USB must stay on {allowed}")
             rule = policy['nets'].get(net)
             width = mm(item.GetWidth())
             if rule and width + EPS < rule['minimum_width_mm']:
@@ -195,6 +196,9 @@ def sensor_geometry_findings(board, field, pcbnew):
 
 def usb_length_findings(board, policy, pcbnew):
     """Conservative total-copper mismatch check after routing is complete."""
+    limit = policy.get('usb_length_mismatch_max_mm', 0.5)
+    if limit is None:
+        return []
     lengths = {net: 0.0 for net in policy.get('usb_nets', [])}
     for item in board.GetTracks():
         net = str(item.GetNetname())
@@ -205,8 +209,8 @@ def usb_length_findings(board, policy, pcbnew):
         if net.endswith('_P'):
             negative = net[:-1] + 'N'
             mismatch = abs(lengths[net] - lengths[negative])
-            if mismatch > 0.5 + EPS:
-                findings.append(f"USB {net}/{negative}: total routed copper mismatch {mismatch:.3f} mm exceeds 0.5 mm")
+            if mismatch > limit + EPS:
+                findings.append(f"USB {net}/{negative}: total routed copper mismatch {mismatch:.3f} mm exceeds {limit:g} mm")
     return findings
 
 

@@ -35,7 +35,7 @@
             "ENIG",
             "Stencil",
             "JLC04161H-7628",
-            "81-99 ohm",
+            "No impedance control",
             "0.100 mm"
           ],
           "process_document": "docs/design/manufacturing-output.md"
@@ -184,20 +184,28 @@
         "labels": {
           "operation": "final-silkscreen",
           "required_text": [
-            "J5 RESERVOIR",
-            "J1 PSU/RELAY",
-            "J3 SENSOR",
+            "1 +5V",
+            "1 +12V",
+            "CONTROLLER  /  REV 1.0",
             "J6 12V IN",
+            "J5 RESERVOIR",
+            "1 +5V",
+            "1 +5V",
+            "J1 PSU/RELAY",
             "J2 SERVICE 5V",
-            "J9 DECHLOR",
-            "J8 CHLORINE",
-            "J7 TRANSFER",
+            "J3 SENSOR",
+            "1 +5V",
+            "USB",
             "RESET",
             "BOOT",
             "MAINTENANCE",
-            "USB",
-            "1 +5V",
-            "1 +12V"
+            "1 +12V",
+            "J9 DECHLOR",
+            "1 +12V",
+            "J8 CHLORINE",
+            "1 +12V",
+            "J7 TRANSFER",
+            "CRYSTAL SHIM"
           ],
           "forbidden_layers": []
         },
@@ -344,7 +352,26 @@
         },
         "labels": {
           "operation": "final-silkscreen",
-          "required_text": [],
+          "required_text": [
+            "T2A FUSED INPUT",
+            "FILTER LINE",
+            "1 L   2 N",
+            "1 L   2 N",
+            "FILTER LOAD",
+            "1 L   2 N",
+            "PE BYPASSES BOARD",
+            "T1A",
+            "SWITCHED PUMP",
+            "1 L   2 N",
+            "K=+5V",
+            "3A",
+            "1:+5V 2:RET 3:COIL",
+            "1:+12V 2:RET",
+            "DANGER - MAINS",
+            "MAINS / REV 1.0",
+            "ISOLATED 12V / 5V",
+            "CRYSTAL SHIM"
+          ],
           "forbidden_layers": []
         },
         "exclusions": {
@@ -465,7 +492,19 @@
         },
         "labels": {
           "operation": "final-silkscreen",
-          "required_text": [],
+          "required_text": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "REV 1.0",
+            "RIM",
+            "LEVEL SENSOR",
+            "CRYSTAL",
+            "SHIM"
+          ],
           "forbidden_layers": [
             "B.SilkS"
           ]

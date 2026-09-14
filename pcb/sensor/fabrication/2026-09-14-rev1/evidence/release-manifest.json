@@ -1,0 +1,79 @@
+{
+  "release": "2026-09-14-rev1",
+  "board": "sensor",
+  "status": "ready_to_order",
+  "prepared_from_commit": "6cfbcd9647188cf45c2d8633b66a326d69b334e8",
+  "native_files": {
+    "sensor.kicad_dru": "6f4bdfb611f6eab7cb5d6be420452a3b5fc5e9d412e1d2d840f461661dc97486",
+    "sensor.kicad_pcb": "fe6298667105e543f876fc5038c5cc83eb03fb228bc9c9813e843e2a0afc7c8e",
+    "sensor.kicad_pro": "dd02892573ac026dc9c472231b77190ebcf82ecc3ea53cef6087b850f3433988",
+    "sensor.kicad_sch": "41af7cc2142d25fcc4e5e17fa10a5f9a4115f065b03830a3a7f4f3550cfc1f29",
+    "tanksensor.kicad_sch": "99e8ee689da746a468750afe48d0ecf2bb17b359e07d3d24faba29ec8aa7d29a"
+  },
+  "accepted_lock_sha256": "7df5df9850070baa9d8ff317e183772704dd5d436474817df2e310d7a5b7813f",
+  "acceptance": {
+    "run": "docs/design/evidence/pre-fab-2026-09-14/sensor/release-acceptance/run.json",
+    "validation": "9129e37ab9849308647bfcd0ff77d7d6a7e20aa9e2fd8f00a48cbb858bf066e9",
+    "review": "9f67b408c6537b099219858549dfb018502f2f40e5c8b1f4ea76066b0212b00d",
+    "receipt": "fff7d909f9e6e3c38e0f70f6afc79f5fac8dfb514259323ab2d1dc0659f915fb"
+  },
+  "order_profile": "docs/design/manufacturing-output.md",
+  "assembly": "owner; no PCB assembly service",
+  "impedance_control": false,
+  "custom_supplier_instructions": false,
+  "quantity_suggested": 5,
+  "parts_sets": 1,
+  "checked_files": {
+    "assembly/schematic.pdf": "01f87128e9e289bc756b52e782581ac53c8d778589048d0eb42c5bcbfdfecd4e",
+    "assembly/sensor-F_Fab.svg": "be91dc637f8e4ab4e9f571193ea1e1db992bc3a4cc8f4ab5714370f8dc73a8af",
+    "assembly/sensor-F_Mask.svg": "bf989d4b8d9784412240ddc0d1985827c37076c54f95ad8a9b388e9d024ec0ab",
+    "assembly/sensor-F_Silkscreen.svg": "0e4daead28dcb27b89a75feda93d3dba1ea48ec91e7bb7cc91f971ec39ad637f",
+    "crystal-shim-sensor-rev1-jlcpcb.zip": "5594c00a55ad7cedcf84e4552d71ecffc16600900cc74a81a4a8ddac892a4ea4",
+    "drills/sensor-NPTH-drl_map.pdf": "0fea43bacc044b7560271a7baff2471da6c0c17de068f6d55170b2008d39fd49",
+    "drills/sensor-NPTH.drl": "2cf36de4c3bc3d6ccefe0bb8b31d2af779ec90163655ae02947248aabab0ee20",
+    "drills/sensor-PTH-drl_map.pdf": "56fa00b5f98b6a40b217b1ef50e978ea50ece1892403039a4db182b757dc86b1",
+    "drills/sensor-PTH.drl": "c19c4d224f6a8bd9fc4aa4fd392681156d3d85de9012a5084079155f423664a2",
+    "drills/sensor-drill.rpt": "38f933c7d6ec023dd62a65324dc9f600581ce40fb9e8bbb88526abe0eb7162bf",
+    "evidence/export.json": "5baba46724f273e14c30c1bc03aff0ecbb4fbf514ead9db2a9e1f496913e4067",
+    "evidence/gerber-bottom.svg": "5e23484ff1397ec95627293028f3761f58e972bfa3e178291dd8b435731ac5d5",
+    "evidence/gerber-top.svg": "b8dd6f9109bcc1741dd61c68f20fb01dcdfdbe1bef498a75a33711625352a274",
+    "gerbers/sensor-B_Cu.gbl": "a7ca94df277dabb9ac9f98eaa3657c7273e988aae3d114603b7e996edc6d4a7c",
+    "gerbers/sensor-B_Mask.gbs": "9c965f80114697549ea480861ddd62ccf9b1ecb4c860bed7e78a946480f12073",
+    "gerbers/sensor-B_Silkscreen.gbo": "16be37f615c65bcfdac065bf64ae52ffb503dfcef9918dbe247ed81c8b7048be",
+    "gerbers/sensor-Edge_Cuts.gm1": "40c01818a87053db21ad392e129dc41c0f23437b49087bf4ac11b5118c2d3054",
+    "gerbers/sensor-F_Cu.gtl": "05966e3a020a087524ff89273ac90c480ef8c1e2cef79f984bc69ed4f5844566",
+    "gerbers/sensor-F_Mask.gts": "8ca906a670d9606ffd0f993df1748905b4ec72898e2807d4e6060f864be517c9",
+    "gerbers/sensor-F_Silkscreen.gto": "7b93e43f923396583ec1cdf49efed714e0996ce099bb722771671991a4de8f20",
+    "gerbers/sensor-In1_Cu.g1": "ee2fa6f048a2003243cccd3c1fde63cc6904a358e9ab5eda478d1c122354c4c1",
+    "gerbers/sensor-In2_Cu.g2": "355d90727ff8c2521527798e2d5a20c9173d9e846f0387003cb26fff2ec810e8",
+    "gerbers/sensor-job.gbrjob": "a0757f1ab2b103c64d3b09a65473734a0ac2e37cc03250da17bdf65b4f4fafdf",
+    "stencil/sensor-F_Paste.gtp": "74ed5178da1338296d48f5b690ce5b29b14f19d4d6a4f112e23a83356a97fd33",
+    "stencil/sensor-job.gbrjob": "c1d51b351c64a092e62dead57ad4637b4efff10aeeb03eef093f61f1a1696bb8",
+    "crystal-shim-sensor-rev1-top-stencil.zip": "aa5756916e201c292ab405337ada5212016c25518bb10bba954ff408ad19efc9"
+  },
+  "review_evidence": {
+    "docs/design/evidence/pre-fab-2026-09-14/cam-check.json": "1a957a3d363195b67e477eceb2090c57fe639671b20857097a28e6df2e93bbc0",
+    "docs/design/evidence/pre-fab-2026-09-14/cam-review.md": "e038887730de8bc9efa424fd62f010e1e0ed29ad66c996a7ff165b96ff8bab44",
+    "docs/design/evidence/pre-fab-2026-09-14/electrical-review.md": "787e61f199f4a805146694b430278d5064c5396f6642491205f8f46238001c2b",
+    "docs/design/evidence/pre-fab-2026-09-14/manufacturing-review.md": "b564e3508c36290ce13f59f3c65f65c4029eea0494d53ce854515de650b07f13",
+    "docs/design/evidence/pre-fab-2026-09-14/strict-drc-review.md": "18c92f75e16c7a532fee21b432c5d6b91282d3705064b5b99548e1468cdbf1d9",
+    "docs/design/evidence/pre-fab-2026-09-14/mechanical-closure.md": "5605aabdf97b79c41cb02e0b07eba0c4bdbfc79d54a321d817f80d6ebb611705",
+    "docs/design/evidence/pre-fab-2026-09-14/native-rule-regression.json": "efaad5b5052a3ac501ba7df2fff58c58a45e9352847b6dcc9ad01a1f6ff6f630",
+    "docs/design/evidence/pre-fab-2026-09-14/project-check.json": "5cbd6d9f417533bc767f93152452f62bd2724b4abbd05dee8f5c5bbd4c0c5f61",
+    "cad/shared-enclosure/support-fit.json": "28b42da856b1a2bfcab43fd95d767a6819f785136bfc3c0fe2947bd25f3ec826"
+  },
+  "limits": [
+    "Supplier upload preview/quote/DFM not performed; use standard settings and compare preview with retained CAM.",
+    "Physical assembly, calibration and commissioning remain unrun. No purchases, flashing or mains energization."
+  ],
+  "stencil_upload": {
+    "file": "crystal-shim-sensor-rev1-top-stencil.zip",
+    "members": [
+      "sensor-F_Paste.gtp",
+      "sensor-Edge_Cuts.gm1"
+    ],
+    "thickness_mm": 0.1,
+    "side": "top",
+    "framework": "none"
+  }
+}

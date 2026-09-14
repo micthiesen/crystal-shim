@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="150.05mm" height="110.05000000000001mm" viewBox="24.975 -155.025 150.05 110.05000000000001" style="background-color:white" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="f-copper">
+                    <feFlood result="flood-black" flood-color="black" flood-opacity="1"/>
+                    <feFlood result="flood-green" flood-color="#cccccc"/>
+                    <feBlend in="SourceGraphic" in2="flood-black" result="overlay" mode="normal"/>
+                    <feBlend in="overlay" in2="flood-green" result="colored" mode="multiply"/>
+                    <feColorMatrix in="overlay" type="matrix" result="alphaOut" values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    1 0 0 0 0"/>
+                    <feComposite in="colored" in2="alphaOut" operator="in"/>
+                    </filter>
+    <filter id="f-mask">
+                    <feFlood result="flood-black" flood-color="black" flood-opacity="1"/>
+                    <feFlood result="flood-green" flood-color="#004200"/>
+                    <feBlend in="SourceGraphic" in2="flood-black" result="overlay" mode="normal"/>
+                    <feBlend in="overlay" in2="flood-green" result="colored" mode="multiply"/>
+                    <feColorMatrix in="overlay" type="matrix" result="alphaOut" values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    0.7490196078431373 0 0 0 0"/>
+                    <feComposite in="colored" in2="alphaOut" operator="in"/>
+                    </filter>
+    <filter id="f-paste">
+                    <feFlood result="flood-black" flood-color="black" flood-opacity="1"/>
+                    <feFlood result="flood-green" flood-color="#999999"/>
+                    <feBlend in="SourceGraphic" in2="flood-black" result="overlay" mode="normal"/>
+                    <feBlend in="overlay" in2="flood-green" result="colored" mode="multiply"/>
+                    <feColorMatrix in="overlay" type="matrix" result="alphaOut" values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    1 0 0 0 0"/>
+                    <feComposite in="colored" in2="alphaOut" operator="in"/>
+                    </filter>
+    <filter id="f-silk">
+                    <feFlood result="flood-black" flood-color="black" flood-opacity="1"/>
+                    <feFlood result="flood-green" flood-color="#e0e0e0"/>
+                    <feBlend in="SourceGraphic" in2="flood-black" result="overlay" mode="normal"/>
+                    <feBlend in="overlay" in2="flood-green" result="colored" mode="multiply"/>
+                    <feColorMatrix in="overlay" type="matrix" result="alphaOut" values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    1 0 0 0 0"/>
+                    <feComposite in="colored" in2="alphaOut" operator="in"/>
+                    </filter>
+    <filter id="f-drill">
+                    <feFlood result="flood-black" flood-color="black" flood-opacity="1"/>
+                    <feFlood result="flood-green" flood-color="#303030"/>
+                    <feBlend in="SourceGraphic" in2="flood-black" result="overlay" mode="normal"/>
+                    <feBlend in="overlay" in2="flood-green" result="colored" mode="multiply"/>
+                    <feColorMatrix in="overlay" type="matrix" result="alphaOut" values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    1 0 0 0 0"/>
+                    <feComposite in="colored" in2="alphaOut" operator="in"/>
+                    </filter>
+    <filter id="f-outline">
+                    <feFlood result="flood-black" flood-color="black" flood-opacity="1"/>
+                    <feFlood result="flood-green" flood-color="#F0C000"/>
+                    <feBlend in="SourceGraphic" in2="flood-black" result="overlay" mode="normal"/>
+                    <feBlend in="overlay" in2="flood-green" result="colored" mode="multiply"/>
+                    <feColorMatrix in="overlay" type="matrix" result="alphaOut" values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    1 0 0 0 0"/>
+                    <feComposite in="colored" in2="alphaOut" operator="in"/>
+                    </filter>
+    <g id="a0">
+      <circle cx="0.0" cy="0.0" r="1.45" fill="white"/>
+    </g>
+    <g id="a1">
+      <path d="M -1.2 0.0 L 1.2 0.0" fill="none" stroke="white" stroke-width="2.9" stroke-linecap="round"/>
+    </g>
+    <g id="a2">
+      <rect x="-1.4" y="-1.4" width="2.8" height="2.8" fill="white"/>
+    </g>
+    <g id="a3">
+      <circle cx="0.0" cy="0.0" r="1.4" fill="white"/>
+    </g>
+    <g id="a4">
+      <circle cx="0.0" cy="0.0" r="1.75" fill="white"/>
+    </g>
+    <g id="a5">
+      <rect x="-1.3" y="-1.3" width="2.6" height="2.6" fill="white"/>
+    </g>
+    <g id="a6">
+      <circle cx="0.0" cy="0.0" r="1.3" fill="white"/>
+    </g>
+    <g id="a7">
+      <path d="M -0.76 0.5 L -0.76 -0.5 L 0.76 -0.5 L 0.76 0.5 L -0.76 0.5" fill="white"/>
+      <circle cx="-0.76" cy="0.5" r="0.25" fill="white"/>
+      <circle cx="-0.76" cy="-0.5" r="0.25" fill="white"/>
+      <circle cx="0.76" cy="-0.5" r="0.25" fill="white"/>
+      <circle cx="0.76" cy="0.5" r="0.25" fill="white"/>
+      <rect x="-1.26" y="-0.25" width="1.0" height="0.5" transform="rotate(-90.0 -0.76 0.0)" fill="white"/>
+      <rect x="-0.76" y="-0.75" width="1.52" height="0.5" fill="white"/>
+      <rect x="0.26" y="-0.25" width="1.0" height="0.5" transform="rotate(90.0 0.76 0.0)" fill="white"/>
+      <rect x="-0.76" y="0.25" width="1.52" height="0.5" transform="rotate(180.0 0.0 0.5)" fill="white"/>
+    </g>
+    <g id="a8">
+      <path d="M -0.26 0.0 L 0.26 0.0" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <g id="a9">
+      <path d="M -0.5 0.5 L -0.5 -0.5 L 0.5 -0.5 L 0.5 0.5 L -0.5 0.5" fill="white"/>
+      <circle cx="-0.5" cy="0.5" r="0.25" fill="white"/>
+      <circle cx="-0.5" cy="-0.5" r="0.25" fill="white"/>
+      <circle cx="0.5" cy="-0.5" r="0.25" fill="white"/>
+      <circle cx="0.5" cy="0.5" r="0.25" fill="white"/>
+      <rect x="-1.0" y="-0.25" width="1.0" height="0.5" transform="rotate(-90.0 -0.5 0.0)" fill="white"/>
+      <rect x="-0.5" y="-0.75" width="1.0" height="0.5" fill="white"/>
+      <rect x="0.0" y="-0.25" width="1.0" height="0.5" transform="rotate(90.0 0.5 0.0)" fill="white"/>
+      <rect x="-0.5" y="0.25" width="1.0" height="0.5" transform="rotate(180.0 0.0 0.5)" fill="white"/>
+    </g>
+    <g id="a10">
+      <circle cx="0.0" cy="0.0" r="0.75" fill="white"/>
+    </g>
+    <g id="a11">
+      <circle cx="0.0" cy="0.0" r="1.25" fill="white"/>
+    </g>
+    <g id="a12">
+      <rect x="-1.5" y="-1.5" width="3.0" height="3.0" fill="white"/>
+    </g>
+    <g id="a13">
+      <circle cx="0.0" cy="0.0" r="1.5" fill="white"/>
+    </g>
+    <g id="a14">
+      <circle cx="0.0" cy="0.0" r="2.25" fill="white"/>
+    </g>
+    <g id="a15">
+      <circle cx="0.0" cy="0.0" r="0.3" fill="white"/>
+    </g>
+    <g id="a16">
+      <circle cx="0.0" cy="0.0" r="1.0" fill="white"/>
+    </g>
+    <g id="a17">
+      <circle cx="0.0" cy="0.0" r="0.15" fill="white"/>
+    </g>
+    <g id="a18">
+      <circle cx="0.0" cy="0.0" r="1.5" fill="black"/>
+    </g>
+    <g id="a19">
+      <path d="M -1.2 0.0 L 1.2 0.0" fill="none" stroke="black" stroke-width="3.0" stroke-linecap="round"/>
+    </g>
+    <g id="a20">
+      <circle cx="0.0" cy="0.0" r="1.6" fill="black"/>
+    </g>
+    <g id="a21">
+      <path d="M -1.4 -1.4 L 1.4 -1.4 L 1.4 1.4 L -1.4 1.4 L -1.4 -1.4" fill="black"/>
+      <circle cx="-1.4" cy="-1.4" r="0.05" fill="black"/>
+      <circle cx="1.4" cy="-1.4" r="0.05" fill="black"/>
+      <circle cx="1.4" cy="1.4" r="0.05" fill="black"/>
+      <circle cx="-1.4" cy="1.4" r="0.05" fill="black"/>
+      <rect x="-1.4" y="-1.45" width="2.8" height="0.1" fill="black"/>
+      <rect x="0.0" y="-0.05" width="2.8" height="0.1" transform="rotate(90.0 1.4 0.0)" fill="black"/>
+      <rect x="-1.4" y="1.35" width="2.8" height="0.1" transform="rotate(180.0 0.0 1.4)" fill="black"/>
+      <rect x="-2.8" y="-0.05" width="2.8" height="0.1" transform="rotate(-90.0 -1.4 0.0)" fill="black"/>
+    </g>
+    <g id="a22">
+      <circle cx="0.0" cy="0.0" r="1.45" fill="black"/>
+    </g>
+    <g id="a23">
+      <circle cx="0.0" cy="0.0" r="1.8" fill="black"/>
+    </g>
+    <g id="a24">
+      <path d="M -1.3 -1.3 L 1.3 -1.3 L 1.3 1.3 L -1.3 1.3 L -1.3 -1.3" fill="black"/>
+      <circle cx="-1.3" cy="-1.3" r="0.05" fill="black"/>
+      <circle cx="1.3" cy="-1.3" r="0.05" fill="black"/>
+      <circle cx="1.3" cy="1.3" r="0.05" fill="black"/>
+      <circle cx="-1.3" cy="1.3" r="0.05" fill="black"/>
+      <rect x="-1.3" y="-1.35" width="2.6" height="0.1" fill="black"/>
+      <rect x="0.0" y="-0.05" width="2.6" height="0.1" transform="rotate(90.0 1.3 0.0)" fill="black"/>
+      <rect x="-1.3" y="1.25" width="2.6" height="0.1" transform="rotate(180.0 0.0 1.3)" fill="black"/>
+      <rect x="-2.6" y="-0.05" width="2.6" height="0.1" transform="rotate(-90.0 -1.3 0.0)" fill="black"/>
+    </g>
+    <g id="a25">
+      <circle cx="0.0" cy="0.0" r="1.35" fill="black"/>
+    </g>
+    <g id="a26">
+      <path d="M -0.76 0.5 L -0.76 -0.5 L 0.76 -0.5 L 0.76 0.5 L -0.76 0.5" fill="black"/>
+      <circle cx="-0.76" cy="0.5" r="0.3" fill="black"/>
+      <circle cx="-0.76" cy="-0.5" r="0.3" fill="black"/>
+      <circle cx="0.76" cy="-0.5" r="0.3" fill="black"/>
+      <circle cx="0.76" cy="0.5" r="0.3" fill="black"/>
+      <rect x="-1.26" y="-0.3" width="1.0" height="0.6" transform="rotate(-90.0 -0.76 0.0)" fill="black"/>
+      <rect x="-0.76" y="-0.8" width="1.52" height="0.6" fill="black"/>
+      <rect x="0.26" y="-0.3" width="1.0" height="0.6" transform="rotate(90.0 0.76 0.0)" fill="black"/>
+      <rect x="-0.76" y="0.2" width="1.52" height="0.6" transform="rotate(180.0 0.0 0.5)" fill="black"/>
+    </g>
+    <g id="a27">
+      <path d="M -0.26 0.0 L 0.26 0.0" fill="none" stroke="black" stroke-width="1.6" stroke-linecap="round"/>
+    </g>
+    <g id="a28">
+      <path d="M -0.5 0.5 L -0.5 -0.5 L 0.5 -0.5 L 0.5 0.5 L -0.5 0.5" fill="black"/>
+      <circle cx="-0.5" cy="0.5" r="0.3" fill="black"/>
+      <circle cx="-0.5" cy="-0.5" r="0.3" fill="black"/>
+      <circle cx="0.5" cy="-0.5" r="0.3" fill="black"/>
+      <circle cx="0.5" cy="0.5" r="0.3" fill="black"/>
+      <rect x="-1.0" y="-0.3" width="1.0" height="0.6" transform="rotate(-90.0 -0.5 0.0)" fill="black"/>
+      <rect x="-0.5" y="-0.8" width="1.0" height="0.6" fill="black"/>
+      <rect x="0.0" y="-0.3" width="1.0" height="0.6" transform="rotate(90.0 0.5 0.0)" fill="black"/>
+      <rect x="-0.5" y="0.2" width="1.0" height="0.6" transform="rotate(180.0 0.0 0.5)" fill="black"/>
+    </g>
+    <g id="a29">
+      <circle cx="0.0" cy="0.0" r="0.8" fill="black"/>
+    </g>
+    <g id="a30">
+      <circle cx="0.0" cy="0.0" r="1.3" fill="black"/>
+    </g>
+    <g id="a31">
+      <path d="M -1.5 -1.5 L 1.5 -1.5 L 1.5 1.5 L -1.5 1.5 L -1.5 -1.5" fill="black"/>
+      <circle cx="-1.5" cy="-1.5" r="0.05" fill="black"/>
+      <circle cx="1.5" cy="-1.5" r="0.05" fill="black"/>
+      <circle cx="1.5" cy="1.5" r="0.05" fill="black"/>
+      <circle cx="-1.5" cy="1.5" r="0.05" fill="black"/>
+      <rect x="-1.5" y="-1.55" width="3.0" height="0.1" fill="black"/>
+      <rect x="0.0" y="-0.05" width="3.0" height="0.1" transform="rotate(90.0 1.5 0.0)" fill="black"/>
+      <rect x="-1.5" y="1.45" width="3.0" height="0.1" transform="rotate(180.0 0.0 1.5)" fill="black"/>
+      <rect x="-3.0" y="-0.05" width="3.0" height="0.1" transform="rotate(-90.0 -1.5 0.0)" fill="black"/>
+    </g>
+    <g id="a32">
+      <circle cx="0.0" cy="0.0" r="1.55" fill="black"/>
+    </g>
+    <g id="a33">
+      <circle cx="0.0" cy="0.0" r="2.3" fill="black"/>
+    </g>
+  </defs>
+  <g transform="translate(200.0 0) scale(-1 1)">
+    <g id="l-bottom-copper" filter="url(#f-copper)" fill="white" stroke="none" stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" transform="translate(0 -200.0) scale(1 -1)">
+      <circle cx="60.25" cy="-120.0" r="1.45"/>
+      <path d="M 66.55 -120.0 L 68.95 -120.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.9"/>
+      <rect x="132.1" y="-118.4" width="2.8" height="2.8"/>
+      <circle cx="110.0" cy="-117.0" r="1.4"/>
+      <circle cx="113.5" cy="-124.5" r="1.4"/>
+      <circle cx="133.5" cy="-124.5" r="1.4"/>
+      <circle cx="101.0" cy="-141.0" r="1.75"/>
+      <circle cx="108.62" cy="-141.0" r="1.75"/>
+      <rect x="143.7" y="-126.3" width="2.6" height="2.6"/>
+      <circle cx="155.16" cy="-125.0" r="1.3"/>
+      <circle cx="85.0" cy="-132.0" r="1.45"/>
+      <circle cx="95.0" cy="-132.0" r="1.45"/>
+      <path d="M 163.24 -71.5 L 163.24 -72.5 L 164.76 -72.5 L 164.76 -71.5 L 163.24 -71.5"/>
+      <circle cx="163.24" cy="-71.5" r="0.25"/>
+      <circle cx="163.24" cy="-72.5" r="0.25"/>
+      <circle cx="164.76" cy="-72.5" r="0.25"/>
+      <circle cx="164.76" cy="-71.5" r="0.25"/>
+      <rect x="162.74" y="-72.25" width="1.0" height="0.5" transform="rotate(-90.0 163.24 -72.0)"/>
+      <rect x="163.24" y="-72.75" width="1.52" height="0.5"/>
+      <rect x="164.26" y="-72.25" width="1.0" height="0.5" transform="rotate(90.0 164.76 -72.0)"/>
+      <rect x="163.24" y="-71.75" width="1.52" height="0.5" transform="rotate(180.0 164.0 -71.5)"/>
+      <path d="M 163.74 -75.0 L 164.26 -75.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path d="M 163.74 -78.0 L 164.26 -78.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path d="M 163.5 -92.5 L 163.5 -93.5 L 164.5 -93.5 L 164.5 -92.5 L 163.5 -92.5"/>
+      <circle cx="163.5" cy="-92.5" r="0.25"/>
+      <circle cx="163.5" cy="-93.5" r="0.25"/>
+      <circle cx="164.5" cy="-93.5" r="0.25"/>
+      <circle cx="164.5" cy="-92.5" r="0.25"/>
+      <rect x="163.0" y="-93.25" width="1.0" height="0.5" transform="rotate(-90.0 163.5 -93.0)"/>
+      <rect x="163.5" y="-93.75" width="1.0" height="0.5"/>
+      <rect x="164.0" y="-93.25" width="1.0" height="0.5" transform="rotate(90.0 164.5 -93.0)"/>
+      <rect x="163.5" y="-92.75" width="1.0" height="0.5" transform="rotate(180.0 164.0 -92.5)"/>
+      <circle cx="161.0" cy="-93.0" r="0.75"/>
+      <circle cx="46.0" cy="-141.0" r="1.75"/>
+      <circle cx="53.62" cy="-141.0" r="1.75"/>
+      <circle cx="84.0" cy="-109.0" r="1.25"/>
+      <circle cx="114.48" cy="-109.0" r="1.25"/>
+      <circle cx="85.0" cy="-125.0" r="1.3"/>
+      <circle cx="100.24" cy="-125.0" r="1.3"/>
+      <rect x="56.8" y="-65.25" width="3.0" height="3.0"/>
+      <circle cx="58.3" cy="-57.0" r="1.5"/>
+      <circle cx="134.3" cy="-92.75" r="2.25"/>
+      <circle cx="134.3" cy="-98.25" r="2.25"/>
+      <circle cx="41.0" cy="-92.0" r="1.75"/>
+      <circle cx="41.0" cy="-99.62" r="1.75"/>
+      <circle cx="41.0" cy="-65.0" r="1.75"/>
+      <circle cx="41.0" cy="-72.62" r="1.75"/>
+      <circle cx="165.7" cy="-106.3" r="0.3"/>
+      <circle cx="144.7" cy="-103.3" r="0.3"/>
+      <circle cx="151.3" cy="-109.7" r="0.3"/>
+      <circle cx="164.3" cy="-114.3" r="0.3"/>
+      <circle cx="151.3" cy="-110.5" r="0.3"/>
+      <circle cx="144.7" cy="-96.3" r="0.3"/>
+      <circle cx="144.5" cy="-112.0" r="0.3"/>
+      <circle cx="165.7" cy="-114.3" r="0.3"/>
+      <circle cx="143.3" cy="-96.3" r="0.3"/>
+      <circle cx="143.3" cy="-103.3" r="0.3"/>
+      <circle cx="164.3" cy="-106.3" r="0.3"/>
+      <path d="M 60.25 -80.0 L 45.25 -65.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.0"/>
+      <path d="M 84.0 -109.0 L 84.0 -103.75 L 60.25 -80.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.0"/>
+      <path d="M 45.25 -65.0 L 41.0 -65.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.0"/>
+      <path d="M 53.25 -57.0 L 58.3 -57.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.0"/>
+      <path d="M 60.25 -120.0 L 60.25 -80.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.0"/>
+      <path d="M 45.25 -65.0 L 53.25 -57.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.0"/>
+      <path d="M 41.0 -72.62 L 47.45 -79.07 L 47.45 -95.6449" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.0"/>
+      <path d="M 43.4749 -99.62 L 41.0 -99.62" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.0"/>
+      <path d="M 47.45 -95.6449 L 43.4749 -99.62" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.0"/>
+      <path d="M 105.74 -124.5 L 105.74 -132.26" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.0"/>
+      <path d="M 101.0 -137.0 L 101.0 -141.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.0"/>
+      <path d="M 102.518 -119.5 L 90.5 -119.5 L 85.0 -125.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.0"/>
+      <path d="M 102.518 -119.5 L 105.74 -122.722" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.0"/>
+      <path d="M 105.74 -132.26 L 101.0 -137.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.0"/>
+      <path d="M 113.5 -124.5 L 105.74 -124.5" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.0"/>
+      <path d="M 105.74 -122.722 L 105.74 -124.5" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.0"/>
+      <path d="M 164.0 -78.0 L 166.25 -80.25" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+      <path d="M 153.41 -126.75 L 155.16 -125.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+      <path d="M 166.25 -103.25 L 167.25 -104.25" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+      <path d="M 163.25 -123.25 L 156.91 -123.25" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+      <path d="M 166.25 -80.25 L 166.25 -103.25" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+      <path d="M 135.75 -126.75 L 153.41 -126.75" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+      <path d="M 133.5 -124.5 L 135.75 -126.75" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+      <path d="M 156.91 -123.25 L 155.16 -125.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+      <path d="M 167.25 -119.25 L 163.25 -123.25" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+      <path d="M 167.25 -104.25 L 167.25 -119.25" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+      <path d="M 174.459 -45.5194 L 174.495 -45.5689 L 174.5 -45.5995 L 174.5 -126.901 L 174.481 -126.959 L 174.431 -126.995 L 174.4 -127.0 L 153.824 -127.0 L 153.766 -126.981 L 153.73 -126.932 L 153.73 -126.87 L 153.754 -126.831 L 154.312 -126.273 L 154.367 -126.245 L 154.427 -126.255 L 154.603 -126.344 L 154.82 -126.415 L 154.82 -126.415 L 154.82 -126.415 L 155.046 -126.451 L 155.046 -126.451 L 155.274 -126.451 L 155.5 -126.415 L 155.5 -126.415 L 155.5 -126.415 L 155.717 -126.344 L 155.92 -126.241 L 156.105 -126.106 L 156.266 -125.945 L 156.401 -125.76 L 156.504 -125.557 L 156.575 -125.34 L 156.611 -125.114 L 156.611 -124.886 L 156.611 -124.886 L 156.575 -124.66 L 156.562 -124.622 L 156.504 -124.443 L 156.415 -124.267 L 156.405 -124.207 L 156.433 -124.152 L 157.005 -123.579 L 157.06 -123.552 L 157.075 -123.55 L 163.29 -123.55 L 163.29 -123.55 L 163.366 -123.53 L 163.435 -123.49 L 163.49 -123.435 L 167.49 -119.435 L 167.53 -119.366 L 167.55 -119.29 L 167.55 -104.21 L 167.53 -104.134 L 167.53 -104.134 L 167.53 -104.134 L 167.49 -104.065 L 167.49 -104.065 L 167.49 -104.065 L 167.49 -104.065 L 166.579 -103.155 L 166.552 -103.1 L 166.55 -103.085 L 166.55 -93.6694 L 166.569 -93.6112 L 166.619 -93.5752 L 166.68 -93.5752 L 166.73 -93.6112 L 166.741 -93.6315 L 166.792 -93.7537 L 166.792 -93.7537 L 166.903 -93.9468 L 166.903 -93.9468 L 167.039 -94.1236 L 167.196 -94.2812 L 167.373 -94.4169 L 167.373 -94.4169 L 167.566 -94.5284 L 167.566 -94.5284 L 167.734 -94.598 L 167.772 -94.6137 L 167.988 -94.6714 L 168.209 -94.7005 L 168.209 -94.7005 L 168.431 -94.7005 L 168.431 -94.7005 L 168.652 -94.6714 L 168.868 -94.6137 L 168.998 -94.5599 L 169.074 -94.5284 L 169.074 -94.5284 L 169.074 -94.5284 L 169.267 -94.4169 L 169.444 -94.2812 L 169.601 -94.1236 L 169.737 -93.9468 L 169.848 -93.7537 L 169.855 -93.7383 L 169.922 -93.5752 L 169.934 -93.5478 L 169.991 -93.3325 L 170.02 -93.1115 L 170.02 -92.8885 L 169.991 -92.6675 L 169.934 -92.4522 L 169.899 -92.3685 L 169.848 -92.2463 L 169.848 -92.2463 L 169.737 -92.0532 L 169.737 -92.0532 L 169.601 -91.8764 L 169.444 -91.7188 L 169.267 -91.5831 L 169.267 -91.5831 L 169.074 -91.4716 L 169.074 -91.4716 L 168.868 -91.3863 L 168.773 -91.3608 L 168.652 -91.3286 L 168.652 -91.3286 L 168.652 -91.3286 L 168.431 -91.2995 L 168.209 -91.2995 L 168.209 -91.2995 L 167.988 -91.3286 L 167.988 -91.3286 L 167.772 -91.3863 L 167.566 -91.4716 L 167.566 -91.4716 L 167.373 -91.5831 L 167.196 -91.7188 L 167.039 -91.8764 L 166.903 -92.0532 L 166.792 -92.2463 L 166.792 -92.2463 L 166.741 -92.3685 L 166.701 -92.415 L 166.642 -92.4293 L 166.585 -92.4059 L 166.553 -92.3537 L 166.55 -92.3306 L 166.55 -80.2104 L 166.55 -80.2104 L 166.53 -80.134 L 166.53 -80.134 L 166.53 -80.134 L 166.49 -80.0655 L 166.49 -80.0655 L 166.49 -80.0655 L 166.49 -80.0655 L 165.033 -78.6078 L 165.005 -78.5533 L 165.015 -78.4928 L 165.02 -78.4828 L 165.058 -78.4265 L 165.126 -78.2627 L 165.161 -78.0887 L 165.161 -77.9113 L 165.126 -77.7373 L 165.058 -77.5735 L 165.058 -77.5735 L 164.959 -77.426 L 164.834 -77.3005 L 164.687 -77.202 L 164.523 -77.1341 L 164.349 -77.0995 L 164.349 -77.0995 L 163.651 -77.0995 L 163.651 -77.0995 L 163.477 -77.1341 L 163.477 -77.1341 L 163.313 -77.202 L 163.313 -77.202 L 163.166 -77.3005 L 163.041 -77.426 L 162.942 -77.5735 L 162.942 -77.5735 L 162.874 -77.7373 L 162.874 -77.7373 L 162.839 -77.9113 L 162.839 -78.0887 L 162.874 -78.2627 L 162.874 -78.2627 L 162.942 -78.4265 L 162.942 -78.4265 L 163.025 -78.5503 L 163.041 -78.574 L 163.166 -78.6995 L 163.313 -78.798 L 163.477 -78.8659 L 163.651 -78.9005 L 163.651 -78.9005 L 164.349 -78.9005 L 164.349 -78.9005 L 164.349 -78.9005 L 164.349 -78.9005 L 164.38 -78.8942 L 164.403 -78.8898 L 164.463 -78.897 L 164.492 -78.9169 L 165.921 -80.3455 L 165.948 -80.4 L 165.95 -80.4155 L 165.95 -103.29 L 165.97 -103.366 L 165.97 -103.366 L 166.01 -103.435 L 166.01 -103.435 L 166.921 -104.345 L 166.948 -104.4 L 166.95 -104.415 L 166.95 -119.085 L 166.931 -119.143 L 166.921 -119.155 L 163.155 -122.921 L 163.1 -122.948 L 163.085 -122.95 L 156.95 -122.95 L 156.87 -122.95 L 156.824 -122.962 L 156.794 -122.97 L 156.725 -123.01 L 156.725 -123.01 L 156.008 -123.727 L 155.953 -123.755 L 155.893 -123.745 L 155.717 -123.656 L 155.5 -123.585 L 155.274 -123.549 L 155.274 -123.549 L 155.046 -123.549 L 155.046 -123.549 L 154.82 -123.585 L 154.603 -123.656 L 154.4 -123.759 L 154.4 -123.759 L 154.215 -123.894 L 154.054 -124.055 L 153.919 -124.24 L 153.919 -124.24 L 153.816 -124.443 L 153.745 -124.66 L 153.709 -124.886 L 153.709 -125.114 L 153.745 -125.34 L 153.816 -125.557 L 153.905 -125.733 L 153.915 -125.793 L 153.887 -125.848 L 153.315 -126.421 L 153.26 -126.448 L 153.245 -126.45 L 146.544 -126.45 L 146.486 -126.431 L 146.45 -126.381 L 146.447 -126.331 L 146.45 -126.315 L 146.451 -126.315 L 146.451 -123.685 L 146.45 -123.685 L 146.442 -123.641 L 146.442 -123.641 L 146.409 -123.591 L 146.409 -123.591 L 146.391 -123.579 L 146.359 -123.558 L 146.359 -123.558 L 146.315 -123.549 L 146.315 -123.549 L 143.685 -123.549 L 143.685 -123.549 L 143.641 -123.558 L 143.641 -123.558 L 143.591 -123.591 L 143.591 -123.591 L 143.558 -123.641 L 143.558 -123.641 L 143.549 -123.685 L 143.549 -126.315 L 143.553 -126.331 L 143.546 -126.392 L 143.504 -126.437 L 143.456 -126.45 L 135.915 -126.45 L 135.857 -126.431 L 135.845 -126.421 L 134.847 -125.422 L 134.819 -125.368 L 134.829 -125.307 L 134.937 -125.095 L 135.012 -124.863 L 135.012 -124.863 L 135.05 -124.622 L 135.05 -124.378 L 135.012 -124.137 L 134.986 -124.055 L 134.937 -123.905 L 134.861 -123.755 L 134.826 -123.687 L 134.787 -123.633 L 134.683 -123.49 L 134.51 -123.317 L 134.421 -123.252 L 134.313 -123.174 L 134.095 -123.063 L 133.863 -122.988 L 133.622 -122.95 L 133.622 -122.95 L 133.378 -122.95 L 133.378 -122.95 L 133.137 -122.988 L 132.905 -123.063 L 132.687 -123.174 L 132.49 -123.317 L 132.317 -123.49 L 132.174 -123.687 L 132.063 -123.905 L 131.988 -124.137 L 131.95 -124.378 L 131.95 -124.622 L 131.988 -124.863 L 132.063 -125.095 L 132.174 -125.313 L 132.214 -125.368 L 132.317 -125.51 L 132.49 -125.683 L 132.633 -125.787 L 132.687 -125.826 L 132.796 -125.882 L 132.905 -125.937 L 133.137 -126.012 L 133.137 -126.012 L 133.137 -126.012 L 133.378 -126.05 L 133.378 -126.05 L 133.622 -126.05 L 133.863 -126.012 L 133.863 -126.012 L 133.863 -126.012 L 134.095 -125.937 L 134.307 -125.829 L 134.368 -125.819 L 134.422 -125.847 L 134.422 -125.847 L 135.406 -126.831 L 135.434 -126.886 L 135.424 -126.946 L 135.381 -126.989 L 135.336 -127.0 L 127.099 -127.0 L 127.041 -126.981 L 127.005 -126.932 L 127.0 -126.901 L 127.0 -115.585 L 131.95 -115.585 L 131.95 -118.415 L 131.958 -118.459 L 131.958 -118.459 L 131.991 -118.509 L 132.041 -118.542 L 132.052 -118.544 L 132.085 -118.55 L 132.085 -118.55 L 132.085 -118.55 L 132.085 -118.55 L 134.915 -118.55 L 134.915 -118.55 L 134.915 -118.55 L 134.915 -118.55 L 134.937 -118.546 L 134.959 -118.542 L 135.009 -118.509 L 135.042 -118.459 L 135.05 -118.415 L 135.05 -115.585 L 135.05 -115.585 L 135.05 -115.585 L 135.042 -115.541 L 135.042 -115.541 L 135.009 -115.491 L 135.009 -115.491 L 135.008 -115.491 L 134.959 -115.458 L 134.959 -115.458 L 134.915 -115.45 L 134.915 -115.45 L 132.085 -115.45 L 132.085 -115.45 L 132.041 -115.458 L 132.041 -115.458 L 131.991 -115.491 L 131.991 -115.491 L 131.958 -115.541 L 131.958 -115.541 L 131.95 -115.585 L 127.0 -115.585 L 127.0 -98.1152 L 131.899 -98.1152 L 131.899 -98.3848 L 131.93 -98.6527 L 131.93 -98.6527 L 131.99 -98.9156 L 132.079 -99.1701 L 132.079 -99.1701 L 132.196 -99.413 L 132.196 -99.413 L 132.196 -99.413 L 132.339 -99.6413 L 132.507 -99.8521 L 132.698 -100.043 L 132.909 -100.211 L 133.137 -100.354 L 133.137 -100.354 L 133.137 -100.354 L 133.35 -100.457 L 133.38 -100.471 L 133.499 -100.513 L 133.634 -100.56 L 133.634 -100.56 L 133.634 -100.56 L 133.897 -100.62 L 133.97 -100.628 L 134.165 -100.65 L 134.165 -100.65 L 134.165 -100.65 L 134.165 -100.65 L 134.435 -100.65 L 134.435 -100.65 L 134.435 -100.65 L 134.435 -100.65 L 134.606 -100.631 L 134.703 -100.62 L 134.966 -100.56 L 135.22 -100.471 L 135.463 -100.354 L 135.691 -100.211 L 135.902 -100.043 L 136.093 -99.8521 L 136.261 -99.6413 L 136.404 -99.413 L 136.521 -99.1701 L 136.61 -98.9156 L 136.67 -98.6527 L 136.681 -98.5564 L 136.7 -98.3848 L 136.701 -98.3848 L 136.701 -98.1152 L 136.7 -98.1152 L 136.67 -97.8473 L 136.67 -97.8473 L 136.61 -97.5844 L 136.521 -97.3299 L 136.521 -97.3299 L 136.404 -97.087 L 136.404 -97.087 L 136.261 -96.8587 L 136.093 -96.6479 L 135.902 -96.4573 L 135.691 -96.2892 L 135.463 -96.1457 L 135.463 -96.1457 L 135.463 -96.1457 L 135.22 -96.0287 L 135.22 -96.0287 L 134.966 -95.9397 L 134.703 -95.8797 L 134.703 -95.8797 L 134.435 -95.8495 L 134.435 -95.8495 L 134.165 -95.8495 L 134.165 -95.8495 L 133.897 -95.8797 L 133.897 -95.8797 L 133.634 -95.9397 L 133.38 -96.0287 L 133.38 -96.0287 L 133.137 -96.1457 L 133.137 -96.1457 L 132.909 -96.2892 L 132.698 -96.4573 L 132.507 -96.6479 L 132.339 -96.8587 L 132.196 -97.087 L 132.196 -97.087 L 132.079 -97.3299 L 132.079 -97.3299 L 131.99 -97.5844 L 131.93 -97.8473 L 131.93 -97.8473 L 131.899 -98.1152 L 127.0 -98.1152 L 127.0 -92.4685 L 163.1 -92.4685 L 163.1 -93.5315 L 163.1 -93.5315 L 163.114 -93.6253 L 163.114 -93.6253 L 163.172 -93.7383 L 163.262 -93.8281 L 163.375 -93.8856 L 163.468 -93.9005 L 164.532 -93.9005 L 164.532 -93.9005 L 164.532 -93.9005 L 164.578 -93.8931 L 164.625 -93.8856 L 164.625 -93.8856 L 164.625 -93.8856 L 164.738 -93.8281 L 164.828 -93.7383 L 164.886 -93.6253 L 164.9 -93.5315 L 164.9 -92.4685 L 164.9 -92.4685 L 164.9 -92.4685 L 164.9 -92.4685 L 164.886 -92.3747 L 164.886 -92.3747 L 164.886 -92.3747 L 164.828 -92.2617 L 164.738 -92.1719 L 164.625 -92.1144 L 164.625 -92.1144 L 164.532 -92.0995 L 163.468 -92.0995 L 163.468 -92.0995 L 163.375 -92.1144 L 163.375 -92.1144 L 163.262 -92.1719 L 163.172 -92.2617 L 163.114 -92.3747 L 163.1 -92.4685 L 127.0 -92.4685 L 127.0 -74.75 L 162.719 -74.75 L 163.555 -74.75 L 163.525 -74.8031 L 163.49 -74.9329 L 163.49 -75.0671 L 163.525 -75.1969 L 163.555 -75.25 L 162.719 -75.25 L 162.73 -75.3063 L 162.73 -75.3063 L 162.81 -75.4974 L 162.81 -75.4974 L 162.924 -75.6693 L 163.071 -75.8156 L 163.243 -75.9305 L 163.243 -75.9305 L 163.434 -76.0096 L 163.637 -76.05 L 163.637 -76.05 L 163.75 -76.05 L 163.75 -76.05 L 163.75 -75.4446 L 163.803 -75.4752 L 163.933 -75.51 L 164.067 -75.51 L 164.197 -75.4752 L 164.25 -75.4446 L 164.25 -76.05 L 164.25 -76.05 L 164.363 -76.05 L 164.363 -76.05 L 164.566 -76.0096 L 164.757 -75.9305 L 164.757 -75.9305 L 164.929 -75.8156 L 165.076 -75.6693 L 165.19 -75.4974 L 165.19 -75.4974 L 165.27 -75.3063 L 165.27 -75.3063 L 165.281 -75.25 L 164.445 -75.25 L 164.475 -75.1969 L 164.51 -75.0671 L 164.51 -74.9329 L 164.498 -74.8885 L 166.619 -74.8885 L 166.619 -75.1115 L 166.645 -75.3063 L 166.649 -75.3325 L 166.649 -75.3325 L 166.706 -75.5478 L 166.792 -75.7537 L 166.792 -75.7537 L 166.894 -75.9305 L 166.903 -75.9468 L 167.039 -76.1236 L 167.196 -76.2812 L 167.373 -76.4169 L 167.373 -76.4169 L 167.566 -76.5284 L 167.566 -76.5284 L 167.734 -76.598 L 167.772 -76.6137 L 167.988 -76.6714 L 168.209 -76.7005 L 168.209 -76.7005 L 168.431 -76.7005 L 168.431 -76.7005 L 168.652 -76.6714 L 168.868 -76.6137 L 168.998 -76.5599 L 169.074 -76.5284 L 169.074 -76.5284 L 169.074 -76.5284 L 169.267 -76.4169 L 169.444 -76.2812 L 169.601 -76.1236 L 169.737 -75.9468 L 169.848 -75.7537 L 169.934 -75.5478 L 169.991 -75.3325 L 170.02 -75.1115 L 170.02 -74.8885 L 169.991 -74.6675 L 169.934 -74.4522 L 169.883 -74.3307 L 169.848 -74.2463 L 169.848 -74.2463 L 169.737 -74.0532 L 169.737 -74.0532 L 169.601 -73.8764 L 169.444 -73.7188 L 169.267 -73.5831 L 169.267 -73.5831 L 169.074 -73.4716 L 169.074 -73.4716 L 168.868 -73.3863 L 168.773 -73.3608 L 168.652 -73.3286 L 168.652 -73.3286 L 168.652 -73.3286 L 168.431 -73.2995 L 168.209 -73.2995 L 168.209 -73.2995 L 167.988 -73.3286 L 167.988 -73.3286 L 167.772 -73.3863 L 167.566 -73.4716 L 167.566 -73.4716 L 167.373 -73.5831 L 167.196 -73.7188 L 167.039 -73.8764 L 166.903 -74.0532 L 166.792 -74.2463 L 166.792 -74.2463 L 166.706 -74.4522 L 166.649 -74.6675 L 166.649 -74.6675 L 166.631 -74.8031 L 166.619 -74.8885 L 164.498 -74.8885 L 164.475 -74.8031 L 164.445 -74.75 L 165.281 -74.75 L 165.27 -74.6937 L 165.27 -74.6937 L 165.19 -74.5026 L 165.19 -74.5026 L 165.076 -74.3307 L 164.929 -74.1844 L 164.757 -74.0695 L 164.757 -74.0695 L 164.566 -73.9903 L 164.363 -73.95 L 164.25 -73.95 L 164.25 -73.95 L 164.25 -74.5554 L 164.197 -74.5248 L 164.067 -74.49 L 163.933 -74.49 L 163.803 -74.5248 L 163.75 -74.5554 L 163.75 -73.95 L 163.75 -73.95 L 163.637 -73.95 L 163.434 -73.9903 L 163.243 -74.0695 L 163.243 -74.0695 L 163.071 -74.1844 L 162.924 -74.3307 L 162.81 -74.5026 L 162.81 -74.5026 L 162.73 -74.6937 L 162.73 -74.6937 L 162.719 -74.75 L 127.0 -74.75 L 127.0 -71.4685 L 162.839 -71.4685 L 162.839 -72.5315 L 162.84 -72.5315 L 162.854 -72.6253 L 162.854 -72.6253 L 162.912 -72.7383 L 163.002 -72.8281 L 163.115 -72.8856 L 163.208 -72.9005 L 164.792 -72.9005 L 164.792 -72.9005 L 164.792 -72.9005 L 164.838 -72.8931 L 164.885 -72.8856 L 164.885 -72.8856 L 164.885 -72.8856 L 164.998 -72.8281 L 165.088 -72.7383 L 165.146 -72.6253 L 165.161 -72.5315 L 165.16 -71.4685 L 165.16 -71.4685 L 165.16 -71.4685 L 165.16 -71.4685 L 165.146 -71.3747 L 165.146 -71.3747 L 165.146 -71.3747 L 165.088 -71.2617 L 164.998 -71.1719 L 164.885 -71.1144 L 164.885 -71.1144 L 164.792 -71.0995 L 163.208 -71.0995 L 163.208 -71.0995 L 163.115 -71.1144 L 163.115 -71.1144 L 163.002 -71.1719 L 162.912 -71.2617 L 162.854 -71.3747 L 162.839 -71.4685 L 127.0 -71.4685 L 127.0 -56.0 L 164.0 -56.0 L 164.0 -56.0 L 172.0 -56.0 L 172.0 -56.0 L 172.0 -48.0 L 164.0 -48.0 L 164.0 -56.0 L 127.0 -56.0 L 127.0 -45.5995 L 127.019 -45.5413 L 127.068 -45.5053 L 127.099 -45.5005 L 174.4 -45.5005 L 174.459 -45.5194"/>
+    </g>
+    <g id="l-bottom-mask" filter="url(#f-mask)" fill="black" stroke="none" stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" transform="translate(0 -200.0) scale(1 -1)">
+      <path id="outline-path" d="M 25.0 -155.0 L 175.0 -155.0 L 175.0 -45.0 L 25.0 -45.0 L 25.0 -155.0 L 175.0 -155.0 L 25.0 -155.0 Z" fill="white"/>
+      <circle cx="60.25" cy="-120.0" r="1.5"/>
+      <path d="M 66.55 -120.0 L 68.95 -120.0" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.0"/>
+      <circle cx="32.0" cy="-52.0" r="1.6"/>
+      <path d="M 132.1 -118.4 L 134.9 -118.4 L 134.9 -115.6 L 132.1 -115.6 L 132.1 -118.4"/>
+      <circle cx="132.1" cy="-118.4" r="0.05"/>
+      <circle cx="134.9" cy="-118.4" r="0.05"/>
+      <circle cx="134.9" cy="-115.6" r="0.05"/>
+      <circle cx="132.1" cy="-115.6" r="0.05"/>
+      <rect x="132.1" y="-118.45" width="2.8" height="0.1"/>
+      <rect x="133.5" y="-117.05" width="2.8" height="0.1" transform="rotate(90.0 134.9 -117.0)"/>
+      <rect x="132.1" y="-115.65" width="2.8" height="0.1" transform="rotate(180.0 133.5 -115.6)"/>
+      <rect x="130.7" y="-117.05" width="2.8" height="0.1" transform="rotate(-90.0 132.1 -117.0)"/>
+      <circle cx="110.0" cy="-117.0" r="1.45"/>
+      <circle cx="113.5" cy="-124.5" r="1.45"/>
+      <circle cx="133.5" cy="-124.5" r="1.45"/>
+      <circle cx="101.0" cy="-141.0" r="1.8"/>
+      <circle cx="108.62" cy="-141.0" r="1.8"/>
+      <circle cx="168.0" cy="-148.0" r="1.6"/>
+      <circle cx="32.0" cy="-148.0" r="1.6"/>
+      <path d="M 143.7 -126.3 L 146.3 -126.3 L 146.3 -123.7 L 143.7 -123.7 L 143.7 -126.3"/>
+      <circle cx="143.7" cy="-126.3" r="0.05"/>
+      <circle cx="146.3" cy="-126.3" r="0.05"/>
+      <circle cx="146.3" cy="-123.7" r="0.05"/>
+      <circle cx="143.7" cy="-123.7" r="0.05"/>
+      <rect x="143.7" y="-126.35" width="2.6" height="0.1"/>
+      <rect x="145.0" y="-125.05" width="2.6" height="0.1" transform="rotate(90.0 146.3 -125.0)"/>
+      <rect x="143.7" y="-123.75" width="2.6" height="0.1" transform="rotate(180.0 145.0 -123.7)"/>
+      <rect x="142.4" y="-125.05" width="2.6" height="0.1" transform="rotate(-90.0 143.7 -125.0)"/>
+      <circle cx="155.16" cy="-125.0" r="1.35"/>
+      <circle cx="85.0" cy="-132.0" r="1.5"/>
+      <circle cx="95.0" cy="-132.0" r="1.5"/>
+      <circle cx="168.32" cy="-75.0" r="1.5"/>
+      <path d="M 163.24 -71.5 L 163.24 -72.5 L 164.76 -72.5 L 164.76 -71.5 L 163.24 -71.5"/>
+      <circle cx="163.24" cy="-71.5" r="0.3"/>
+      <circle cx="163.24" cy="-72.5" r="0.3"/>
+      <circle cx="164.76" cy="-72.5" r="0.3"/>
+      <circle cx="164.76" cy="-71.5" r="0.3"/>
+      <rect x="162.74" y="-72.3" width="1.0" height="0.6" transform="rotate(-90.0 163.24 -72.0)"/>
+      <rect x="163.24" y="-72.8" width="1.52" height="0.6"/>
+      <rect x="164.26" y="-72.3" width="1.0" height="0.6" transform="rotate(90.0 164.76 -72.0)"/>
+      <rect x="163.24" y="-71.8" width="1.52" height="0.6" transform="rotate(180.0 164.0 -71.5)"/>
+      <path d="M 163.74 -75.0 L 164.26 -75.0" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+      <path d="M 163.74 -78.0 L 164.26 -78.0" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+      <circle cx="168.0" cy="-52.0" r="1.6"/>
+      <circle cx="168.32" cy="-93.0" r="1.5"/>
+      <path d="M 163.5 -92.5 L 163.5 -93.5 L 164.5 -93.5 L 164.5 -92.5 L 163.5 -92.5"/>
+      <circle cx="163.5" cy="-92.5" r="0.3"/>
+      <circle cx="163.5" cy="-93.5" r="0.3"/>
+      <circle cx="164.5" cy="-93.5" r="0.3"/>
+      <circle cx="164.5" cy="-92.5" r="0.3"/>
+      <rect x="163.0" y="-93.3" width="1.0" height="0.6" transform="rotate(-90.0 163.5 -93.0)"/>
+      <rect x="163.5" y="-93.8" width="1.0" height="0.6"/>
+      <rect x="164.0" y="-93.3" width="1.0" height="0.6" transform="rotate(90.0 164.5 -93.0)"/>
+      <rect x="163.5" y="-92.8" width="1.0" height="0.6" transform="rotate(180.0 164.0 -92.5)"/>
+      <circle cx="161.0" cy="-93.0" r="0.8"/>
+      <circle cx="46.0" cy="-141.0" r="1.8"/>
+      <circle cx="53.62" cy="-141.0" r="1.8"/>
+      <circle cx="84.0" cy="-109.0" r="1.3"/>
+      <circle cx="114.48" cy="-109.0" r="1.3"/>
+      <circle cx="85.0" cy="-125.0" r="1.35"/>
+      <circle cx="100.24" cy="-125.0" r="1.35"/>
+      <path d="M 56.8 -65.25 L 59.8 -65.25 L 59.8 -62.25 L 56.8 -62.25 L 56.8 -65.25"/>
+      <circle cx="56.8" cy="-65.25" r="0.05"/>
+      <circle cx="59.8" cy="-65.25" r="0.05"/>
+      <circle cx="59.8" cy="-62.25" r="0.05"/>
+      <circle cx="56.8" cy="-62.25" r="0.05"/>
+      <rect x="56.8" y="-65.3" width="3.0" height="0.1"/>
+      <rect x="58.3" y="-63.8" width="3.0" height="0.1" transform="rotate(90.0 59.8 -63.75)"/>
+      <rect x="56.8" y="-62.3" width="3.0" height="0.1" transform="rotate(180.0 58.3 -62.25)"/>
+      <rect x="55.3" y="-63.8" width="3.0" height="0.1" transform="rotate(-90.0 56.8 -63.75)"/>
+      <circle cx="58.3" cy="-57.0" r="1.55"/>
+      <circle cx="134.3" cy="-92.75" r="2.3"/>
+      <circle cx="134.3" cy="-98.25" r="2.3"/>
+      <circle cx="41.0" cy="-92.0" r="1.8"/>
+      <circle cx="41.0" cy="-99.62" r="1.8"/>
+      <circle cx="41.0" cy="-65.0" r="1.8"/>
+      <circle cx="41.0" cy="-72.62" r="1.8"/>
+    </g>
+    <g id="l-bottom-silk" filter="url(#f-silk)" fill="none" stroke="white" stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" transform="translate(0 -200.0) scale(1 -1)"/>
+    <g id="l-drill-0" filter="url(#f-drill)" stroke-linejoin="round" stroke-linecap="round" transform="translate(0 -200.0) scale(1 -1)">
+      <circle cx="143.3" cy="-96.3" r="0.15" fill="white"/>
+      <circle cx="143.3" cy="-103.3" r="0.15" fill="white"/>
+      <circle cx="144.5" cy="-112.0" r="0.15" fill="white"/>
+      <circle cx="144.7" cy="-96.3" r="0.15" fill="white"/>
+      <circle cx="144.7" cy="-103.3" r="0.15" fill="white"/>
+      <circle cx="151.3" cy="-109.7" r="0.15" fill="white"/>
+      <circle cx="151.3" cy="-110.5" r="0.15" fill="white"/>
+      <circle cx="164.3" cy="-106.3" r="0.15" fill="white"/>
+      <circle cx="164.3" cy="-114.3" r="0.15" fill="white"/>
+      <circle cx="165.7" cy="-106.3" r="0.15" fill="white"/>
+      <circle cx="165.7" cy="-114.3" r="0.15" fill="white"/>
+      <circle cx="161.0" cy="-93.0" r="0.51" fill="white"/>
+      <circle cx="164.0" cy="-72.0" r="0.51" fill="white"/>
+      <circle cx="164.0" cy="-75.0" r="0.51" fill="white"/>
+      <circle cx="164.0" cy="-78.0" r="0.51" fill="white"/>
+      <circle cx="164.0" cy="-93.0" r="0.51" fill="white"/>
+      <circle cx="84.0" cy="-109.0" r="0.55" fill="white"/>
+      <circle cx="85.0" cy="-125.0" r="0.55" fill="white"/>
+      <circle cx="100.24" cy="-125.0" r="0.55" fill="white"/>
+      <circle cx="114.48" cy="-109.0" r="0.55" fill="white"/>
+      <circle cx="145.0" cy="-125.0" r="0.55" fill="white"/>
+      <circle cx="155.16" cy="-125.0" r="0.55" fill="white"/>
+      <circle cx="41.0" cy="-65.0" r="0.65" fill="white"/>
+      <circle cx="41.0" cy="-72.62" r="0.65" fill="white"/>
+      <circle cx="41.0" cy="-92.0" r="0.65" fill="white"/>
+      <circle cx="41.0" cy="-99.62" r="0.65" fill="white"/>
+      <circle cx="46.0" cy="-141.0" r="0.65" fill="white"/>
+      <circle cx="53.62" cy="-141.0" r="0.65" fill="white"/>
+      <circle cx="60.25" cy="-120.0" r="0.65" fill="white"/>
+      <circle cx="85.0" cy="-132.0" r="0.65" fill="white"/>
+      <circle cx="95.0" cy="-132.0" r="0.65" fill="white"/>
+      <circle cx="101.0" cy="-141.0" r="0.65" fill="white"/>
+      <circle cx="108.62" cy="-141.0" r="0.65" fill="white"/>
+      <circle cx="110.0" cy="-117.0" r="0.65" fill="white"/>
+      <circle cx="113.5" cy="-124.5" r="0.65" fill="white"/>
+      <circle cx="133.5" cy="-117.0" r="0.65" fill="white"/>
+      <circle cx="133.5" cy="-124.5" r="0.65" fill="white"/>
+      <circle cx="58.3" cy="-57.0" r="0.75" fill="white"/>
+      <circle cx="58.3" cy="-63.75" r="0.75" fill="white"/>
+      <circle cx="134.3" cy="-92.75" r="1.25" fill="white"/>
+      <circle cx="134.3" cy="-98.25" r="1.25" fill="white"/>
+      <path d="M 66.55 -120.0 L 68.95 -120.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/>
+    </g>
+    <g id="l-drill-1" filter="url(#f-drill)" stroke-linejoin="round" stroke-linecap="round" transform="translate(0 -200.0) scale(1 -1)">
+      <circle cx="168.32" cy="-75.0" r="1.5" fill="white"/>
+      <circle cx="168.32" cy="-93.0" r="1.5" fill="white"/>
+      <circle cx="32.0" cy="-52.0" r="1.6" fill="white"/>
+      <circle cx="32.0" cy="-148.0" r="1.6" fill="white"/>
+      <circle cx="168.0" cy="-52.0" r="1.6" fill="white"/>
+      <circle cx="168.0" cy="-148.0" r="1.6" fill="white"/>
+    </g>
+    <g id="l-mechanical-outline" stroke-linejoin="round" stroke-linecap="round" transform="translate(0 -200.0) scale(1 -1)">
+      <path d="M 25.0 -45.0 L 175.0 -45.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.05"/>
+      <path d="M 25.0 -155.0 L 25.0 -45.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.05"/>
+      <path d="M 175.0 -45.0 L 175.0 -155.0 L 25.0 -155.0" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.05"/>
+    </g>
+  </g>
+</svg>
