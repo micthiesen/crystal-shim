@@ -15,6 +15,10 @@ native object and project setting was preserved; only the bounded rule area and
 custom rule were added. The owner completed routing before baseline capture.
 
 Native regression suites pass: 35 readiness tests and 20 routing tests.
+The full `sh scripts/check.sh` gate also completed successfully on 2026-09-13,
+including firmware, TLS, PCB source/tooling and document checks. Native-only
+tests skip under its default Python; readiness and routing were exercised
+separately with KiCad Python as recorded above.
 Shared readiness changes are synced to Stillair in 05eda50. The controller is
 next. Final combined pre-fabrication review and physical commissioning remain
 pending; this receipt does not release manufacturing outputs.
