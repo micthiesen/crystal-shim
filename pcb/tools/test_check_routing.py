@@ -86,6 +86,24 @@ class NativeRoutingTests(unittest.TestCase):
         self.add_track('V12_PUMP',(100,130),(110,130),2)
         self.assertFalse(any('below 2 mm' in f for f in audit(self.board,self.policy,self.pcbnew)))
 
+    def test_corridor_requires_width_layer_and_complete_copper_enclosure(self):
+        from check_routing import audit
+        corridor = {'name': 'TEST_SENSE', 'minimum_width_mm': .8,
+                    'layer': 'F.Cu', 'bounds_mm': [99, 129, 111, 131]}
+        self.policy['nets']['V12_PUMP']['corridors'] = [corridor]
+        for width, layer, y, rejected in [(.8, self.pcbnew.F_Cu, 130, False),
+                                         (.79, self.pcbnew.F_Cu, 130, True),
+                                         (.8, self.pcbnew.B_Cu, 130, True),
+                                         (.8, self.pcbnew.F_Cu, 129.39, True)]:
+            with self.subTest(width=width, layer=layer, y=y):
+                before = {t.m_Uuid.AsString() for t in self.board.GetTracks()}
+                self.add_track('V12_PUMP', (100, y), (110, y), width, layer)
+                track = next(t for t in self.board.GetTracks() if t.m_Uuid.AsString() not in before)
+                ident = track.m_Uuid.AsString()
+                findings = audit(self.board, self.policy, self.pcbnew)
+                self.assertEqual(any(ident in f and 'below 2 mm' in f for f in findings), rejected)
+                self.board.RemoveNative(track)
+
     def test_usb_on_bottom_is_rejected(self):
         from check_routing import audit
         self.add_track('USB_D_N',(100,100),(101,100),.24,self.pcbnew.B_Cu)

@@ -287,3 +287,7 @@
 (rule "Buck switch no vias"
   (condition "A.NetName == 'BUCK5_SW'")
   (constraint disallow via))
+
+(rule "MAINS_FB_SENSE"
+  (condition "A.NetName == 'V5_PSU' && A.Layer == 'F.Cu' && A.enclosedByArea('MAINS_FB_SENSE')")
+  (constraint track_width (min 0.8mm) (opt 2mm)))

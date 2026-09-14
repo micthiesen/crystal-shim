@@ -103,6 +103,8 @@ def audit(board, policy, pcbnew):
             width = mm(item.GetWidth())
             if rule and width + EPS < rule['minimum_width_mm']:
                 eligible = [b for minimum,b in exceptions[net] if width + EPS >= minimum]
+                eligible += [c['bounds_mm'] for c in rule.get('corridors', [])
+                             if layer == c['layer'] and width + EPS >= c['minimum_width_mm']]
                 if isinstance(item, pcbnew.PCB_ARC):
                     # Conservative exact enclosure: curved exceptions may not span boxes.
                     allowed = any(box_inside(rect(item.GetBoundingBox()), b) for b in eligible)
@@ -112,7 +114,7 @@ def audit(board, policy, pcbnew):
                     boxes = [(b[0]+radius,b[1]+radius,b[2]-radius,b[3]-radius) for b in eligible]
                     allowed = segment_in_boxes(point(item.GetStart()), point(item.GetEnd()), boxes)
                 if not allowed:
-                    findings.append(f"{net} track {ident}: {width:g} mm below {rule['minimum_width_mm']:g} mm outside approved pad escapes")
+                    findings.append(f"{net} track {ident}: {width:g} mm below {rule['minimum_width_mm']:g} mm outside approved pad escapes or corridors")
     if policy.get('sensor_field'):
         findings += sensor_geometry_findings(board, policy['sensor_field'], pcbnew)
     return findings

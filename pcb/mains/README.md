@@ -11,4 +11,6 @@ See the [design basis](../../docs/design/mains-design-basis.md),
 [placement](../../docs/design/mains-placement.md), and
 [native handoff](../../docs/design/mains-native-handoff.md). The [native project](kicad/README.md) has the accepted stacked placement,
 right-angle connectors, filled isolated pours and installed routing rules.
-It is ready for routing with 31 unconnected items and clean strict ERC/parity/DRC.
+Routing is accepted with zero unconnected items and clean strict ERC/parity/DRC.
+See [routing acceptance](../../docs/design/evidence/mains-routing-acceptance/README.md).
+Combined three-board pre-fabrication review remains pending.

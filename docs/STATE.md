@@ -31,11 +31,11 @@ Never export a fresh source seed over these native projects.
 | --- | --- | --- | --- |
 | Controller | [controller.kicad_pro](../pcb/controller/kicad/controller.kicad_pro) | 150 × 110 mm, 4 layers, 117 footprints | 166 |
 | Sensor | [sensor.kicad_pro](../pcb/sensor/kicad/sensor.kicad_pro) | 18 × 64 mm, 4 layers, 16 footprints | 0 (routing accepted) |
-| Mains | [mains.kicad_pro](../pcb/mains/kicad/mains.kicad_pro) | 150 × 110 mm, 2 layers, 26 footprints | 31 |
+| Mains | [mains.kicad_pro](../pcb/mains/kicad/mains.kicad_pro) | 150 × 110 mm, 2 layers, 26 footprints | 0 (routing accepted) |
 
 Filled ground pours, reference/shield layers, ground/thermal vias, netclasses and
-native DRC rules are installed. The mains board's 106 owner-routed tracks were
-cleared as authorized. Sensor routing is accepted with 117 track segments and nine tented vias; its
+native DRC rules are installed. Mains routing is accepted with zero DRC/parity
+findings and zero unconnected items. Sensor routing is accepted with 117 track segments and nine tented vias; its
 final routing check reports zero findings and zero unconnected items. The four-layer
 sensor keeps electronics behind driven shielding while preserving the slim face.
 
@@ -125,10 +125,12 @@ historical findings and the new receipt records closure.
 
 ## Next
 
-The owner is routing mains. Preserve that in-progress native work and the accepted
-sensor routing. Review mains when the owner requests it, then finish the remaining
-controller routing and conduct one combined pre-fabrication review of all three
-boards. Use [routing guardrails](design/routing-guardrails.md) during routing and
+The owner is routing the controller. Preserve the accepted mains and sensor
+routing. Mains acceptance includes the exact V12_RAW input pour and a bounded
+0.8 mm U2 feedback branch; the 2 mm load-rail requirement remains in force. See
+[mains routing acceptance](design/evidence/mains-routing-acceptance/README.md).
+Finish controller routing, then conduct one combined pre-fabrication review of all
+three boards. Use [routing guardrails](design/routing-guardrails.md) during routing and
 [manufacturing output](design/manufacturing-output.md) for the final release gates.
 No physical hardware is required for this stage.
 

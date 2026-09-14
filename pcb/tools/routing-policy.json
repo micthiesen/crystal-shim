@@ -750,6 +750,19 @@
               "minimum_width_mm": 0.3,
               "inflate_mm": 3
             }
+          ],
+          "corridors": [
+            {
+              "name": "MAINS_FB_SENSE",
+              "minimum_width_mm": 0.8,
+              "layer": "F.Cu",
+              "bounds_mm": [
+                148.55,
+                107.7,
+                149.45,
+                117.45
+              ]
+            }
           ]
         }
       },

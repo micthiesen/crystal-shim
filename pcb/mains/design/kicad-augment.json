@@ -517,9 +517,65 @@
               0.6,
               0.3
             ]
+          ],
+          "extra_pours": [
+            {
+              "uuid": "0dfea1d5-66ba-4dd5-aa3b-985cc22aeb57",
+              "net": "V12_RAW",
+              "layer": "F.Cu",
+              "outline": [
+                [
+                  148.5,
+                  108.5
+                ],
+                [
+                  147.25,
+                  108.5
+                ],
+                [
+                  144.9,
+                  106.15
+                ],
+                [
+                  141.25,
+                  106.15
+                ],
+                [
+                  141.25,
+                  111.9
+                ],
+                [
+                  141.85,
+                  112.5
+                ],
+                [
+                  143,
+                  112.5
+                ],
+                [
+                  143,
+                  111.55
+                ],
+                [
+                  144.1,
+                  110.45
+                ],
+                [
+                  148.5,
+                  110.45
+                ]
+              ],
+              "clearance_mm": 0.1,
+              "minimum_thickness_mm": 0.25,
+              "pad_connection": "solid",
+              "thermal_gap_mm": 0.5,
+              "thermal_spoke_mm": 0.5,
+              "island_removal": "always",
+              "filled": true
+            }
           ]
         },
-        "connection": "Solid SMD/vias and motor-return pads; thermal relief on remaining through-hole pads, 0.3 mm gap, 0.5 mm spoke. Remove floating islands. Both layers retain isolated ground only.",
+        "connection": "Ground pours retain their declared connections; the separately declared F.Cu V12_RAW pour joins the local buck input capacitors and VIN/EN.",
         "status": "Apply through native API and fill; verify saved zone connectivity/DRC.",
         "connector_eco": {
           "basis": "Phoenix 1868076 single-tail replacement: exactly one physical pad per electrical number. Resize .0 rule area to saved pad bounding box inflated by routing-policy.json; remove obsolete dual-tail .1 rule area. Copper planes, vias and all unrelated rules/areas stay unchanged.",
@@ -960,6 +1016,28 @@
           "a5353ea1-eb94-4a2a-b866-866899a4c9aa"
         ],
         "reason": "Owner explicitly requested clearing all previously routed mains tracks before compact stacked redesign."
+      }
+    },
+    {
+      "id": "mains.augment.feedback-sense",
+      "kind": "custom_rule",
+      "owner": "kicad",
+      "target": {},
+      "params": {
+        "corridor": {
+          "name": "MAINS_FB_SENSE",
+          "minimum_width_mm": 0.8,
+          "layer": "F.Cu",
+          "bounds_mm": [
+            148.55,
+            107.7,
+            149.45,
+            117.45
+          ]
+        },
+        "net": "V5_PSU",
+        "purpose": "U2.1 feedback sense branch only; preserve the 2 mm load-carrying rail default.",
+        "verification": "Exact F.Cu area and rule readback, full swept copper enclosure and final DRC."
       }
     }
   ],
