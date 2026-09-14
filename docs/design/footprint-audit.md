@@ -53,8 +53,9 @@ uses axial 0215001.MXEP. The separate inlet F1 is a 2 A 0215002.MXP cartridge,
 not a PCB placement.
 
 G5RL-1A-TV8 DC5 retains the manufacturer coil/contact mapping and contact stagger.
-TMOV14RP175EL2T7 retains the exact outer-crimp part and project installed envelope;
-its round/slot geometry and assembly process require native verification.
+TMOV14RP175E uses the bulk straight-lead part and the existing installed envelope.
+The enlarged 4.5 x 1.3 mm slot captures the full published lead spacing without
+forming; see the [MOV capture](mov-capture.md) and current ECO evidence.
 B32921C3473K000 is the 47 nF X2 snubber capacitor; PR02FS0201000KA100 is its
 100 ohm flameproof resistor. Formed leads and installed bodies must fit the
 captured assembly envelope. 1N4007-E3/54 is the relay-coil flyback diode.

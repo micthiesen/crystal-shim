@@ -710,7 +710,7 @@
             5.3,
             2.9
           ],
-          "status": "Native readback complete: numbered pads 0.05 mm mask; 31 PTH and six NPTH without paste; RV1 pad2 3.7 x 1.3 mm plated slot inside 5.3 x 2.9 mm copper.",
+          "status": "Native readback complete: numbered pads 0.05 mm mask; 31 PTH and six NPTH without paste; RV1 bulk MOV ECO: pad2 at local (7.9,0), 4.5 x 1.3 mm plated slot inside 6.1 x 2.9 mm copper. Its named neutral escape area follows the new pad bounds; tracks are preserved.",
           "verification": "Saved pad shape/layer/drill/mask/paste and slot readback, native DRC plus fabrication CAM review."
         },
         "target": {}
@@ -1085,6 +1085,12 @@
               }
             ]
           },
+          "mov_bulk_eco": {
+            "change": "Extend right edge from71.4 to72.2 mm to follow enlarged RV1.2 pad; no copper-zone changes.",
+            "name": "Neck AC_N RV1.2.0",
+            "receipt": "docs/design/evidence/mov-bulk-eco/escape-application.json",
+            "rule_area_uuid": "7a72d412-b6a2-4baa-bada-0f30459c6fd6"
+          },
           "planes": {
             "extra_pours": [
               {
@@ -1445,9 +1451,9 @@
     ],
     "schema_version": 1
   },
-  "augmentation_sha256": "5da2f0277c1f832342789caa1b4de0e0dccda28e99d455bb9785ae26e7f0a236",
+  "augmentation_sha256": "cae2f73305ac7488ab48d6a1b12dc96502b8bd58f478819b171a4a144a18b8de",
   "board_id": "mains.board.main",
-  "eco_receipt_sha256": "0ed5351ac83257eefe9614174fc42f7ffc6ede1d5f123054ed56a10b6ac3458c",
+  "eco_receipt_sha256": "572914e1cc20671c0cab0881ce63f9f67ba0d2b8b19eeaaa0f4b2968c020cda8",
   "initial_handoff_receipt_sha256": "7f77ebdfcd91923fed0cbed8bc41b45c4b88332f3a66fc19a959beeac6678017",
   "manifest": {
     "board": {
@@ -1518,7 +1524,7 @@
         "compiled_board_sha256": "f7b552b53594a80dfc7b13eb1e79ef3e4391edd84521d46e207844ef688837f4",
         "material": "FR4",
         "thickness_mm": 1.6,
-        "unowned_physical_geometry_sha256": "6aca7cb6a603a7b2ade0e09bd56579b31d01084f5a1ad17c8a60e2e3e9524f5c"
+        "unowned_physical_geometry_sha256": "fb39bfac1772833a2399a71fce46aa838dc5d8d1ec478b460a3dabdc8c50104f"
       },
       "stable_id": "mains.board.main",
       "width_mm": 150
@@ -2116,17 +2122,17 @@
       {
         "fields": {
           "datasheet_url": "https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05",
-          "manufacturer_part_number": "TMOV14RP175EL2T7"
+          "manufacturer_part_number": "TMOV14RP175E"
         },
         "footprint": {
-          "initial_geometry_sha256": "945eea69107c4087c580c46faffed4042eaec4459d4a349ca1554d368734d37f",
+          "initial_geometry_sha256": "e0b3b71e99b83fa23c57154040f83abc16c14b8922f96e3e6d162ba2909a37e7",
           "kicad": "CrystalShim_Mains:Mains_RV1",
           "pad_numbers": [
             "1",
             "2"
           ],
-          "source_geometry_sha256": "d767c391a70d593de692b51bfbb8f341e23ba622cf3afa19b9473be4b160ff93",
-          "tscircuit": "tscircuit:CrystalShim:TMOV14RP175EL2T7_RoundSlot"
+          "source_geometry_sha256": "677572afa85ce99629fb2db6c3e0c245b395bbd6176460279e6db2f978f14313",
+          "tscircuit": "tscircuit:CrystalShim:TMOV14RP175E_RoundSlot"
         },
         "placement": {
           "rotation_deg": 0,
@@ -2137,7 +2143,7 @@
         "ref": "RV1",
         "stable_id": "mains.component.rv1",
         "symbol": "CrystalShim_Mains:Mains_RV1",
-        "value": "TMOV14RP175EL2T7"
+        "value": "TMOV14RP175E"
       },
       {
         "fields": {
@@ -2924,7 +2930,7 @@
       "tscircuit": "0.0.2465"
     }
   },
-  "manifest_sha256": "82af2f59154ba6346b99eaa17009ae5b2377d4baba52a0a0ed99a56b68fdfad4",
+  "manifest_sha256": "dc14959c9ef6eb1a6808936b698492d28bba2096c557c16a66aa0bc756f99d3e",
   "schema_version": 1,
   "snapshot": {
     "board_id": "mains.board.main",
@@ -6637,7 +6643,7 @@
             "bbox_mm": [
               64.099999,
               117.55,
-              7.300001,
+              8.100001,
               4.9
             ],
             "layers": [
@@ -6653,11 +6659,11 @@
                   117.55
                 ],
                 [
-                  71.4,
+                  72.2,
                   117.55
                 ],
                 [
-                  71.4,
+                  72.2,
                   122.45
                 ],
                 [
@@ -6886,7 +6892,7 @@
             "uuid": "4e8555e7-2349-4a69-be14-d90c21d34aae"
           }
         ],
-        "sha256": "e53471381ab55306ca7dcec5c7730881477a53d6975513f2bb17ddb27fed7546"
+        "sha256": "ebcdd77f6184b299ae85a260992f4d104ba6afb01b187e062e34ebec348e5961"
       }
     },
     "routed": true,
@@ -7126,14 +7132,14 @@
         {
           "datasheet": "https://www.littelfuse.com/assetdocs/tmov-itmov?assetguid=bd475732-1071-4352-b8aa-f78b0007eb05",
           "footprint": "CrystalShim_Mains:Mains_RV1",
-          "manufacturer_part_number": "TMOV14RP175EL2T7",
+          "manufacturer_part_number": "TMOV14RP175E",
           "pins": [
             "1",
             "2"
           ],
           "ref": "RV1",
           "symbol": "CrystalShim_Mains:Mains_RV1",
-          "value": "TMOV14RP175EL2T7"
+          "value": "TMOV14RP175E"
         },
         {
           "datasheet": "https://www.meanwell.com/Upload/PDF/IRM-45/IRM-45-SPEC.PDF",
@@ -8027,7 +8033,7 @@
           "ref": "RV1",
           "stable_id": "mains.component.rv1",
           "uuid": "0258a8da-538d-492c-9474-c2cdcc8d4636",
-          "value": "TMOV14RP175EL2T7"
+          "value": "TMOV14RP175E"
         },
         {
           "footprint": "CrystalShim_Mains:Mains_U1",
@@ -8308,5 +8314,5 @@
       "mains.component.u2": "cdf7500d-9648-4055-8e37-f336be0f366b"
     }
   },
-  "snapshot_sha256": "037d71537c5be6ad601844b085a0c10d9535577fa0a62c1566d2583f07ba8b62"
+  "snapshot_sha256": "26ae266f9be523796d92c8bc70959b2827377057204e76a435cda8a48ec11d24"
 }

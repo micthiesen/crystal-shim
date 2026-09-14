@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "schematic": "/tmp/crystal-mov-native-stage2/primary.kicad_sch",
+  "before_sha256": "bdc346962e823ce5466644bbc0d98503cb588a18e8247068ff08b024ef4f1e00",
+  "after_sha256": "c862c70c1764a09dc16e4746a4abb2ea5174dcae6bb55648e2c45d3e29f52011",
+  "edits": [
+    {
+      "reference": "RV1",
+      "fields": {
+        "Value": "TMOV14RP175E",
+        "MPN": "TMOV14RP175E"
+      }
+    }
+  ],
+  "konnect": {
+    "server": {
+      "name": "konnect",
+      "version": "0.2.1"
+    },
+    "result": {
+      "errors": [],
+      "updated": [
+        {
+          "changes": [
+            "MPN \u2192 TMOV14RP175E",
+            "Value \u2192 TMOV14RP175E"
+          ],
+          "reference": "RV1"
+        }
+      ],
+      "updated_count": 1
+    }
+  },
+  "semantic_preservation": true,
+  "native_net_connectivity_preserved": true
+}

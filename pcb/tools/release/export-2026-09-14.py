@@ -1,14 +1,24 @@
 """Read-only KiCad release export; never modifies native designs."""
 from pathlib import Path
+import argparse,re
 import hashlib,json,subprocess,zipfile
 ROOT=Path(__file__).resolve().parents[3]
-RELEASE='2026-09-14-rev1'
+def release_name(value):
+ if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*',value) or '..' in value:
+  raise argparse.ArgumentTypeError('release must be a simple directory name without slashes or dot-dot')
+ return value
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--boards',nargs='+',choices=['controller','mains','sensor'],default=['controller','mains','sensor'])
+parser.add_argument('--release',type=release_name,default='2026-09-14-rev1')
+args=parser.parse_args()
+BOARDS=list(dict.fromkeys(args.boards))
+RELEASE=args.release
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def run(args,log):
  r=subprocess.run(args,cwd=ROOT,text=True,capture_output=True)
  log.append({'argv':args,'exit_code':r.returncode,'stdout':r.stdout,'stderr':r.stderr})
  if r.returncode:raise RuntimeError(r.stdout+r.stderr)
-for board in ['controller','mains','sensor']:
+for board in BOARDS:
  native=ROOT/'pcb'/board/'kicad'/f'{board}.kicad_pcb';out=ROOT/'pcb'/board/'fabrication'/RELEASE
  for folder in ['gerbers','drills','assembly','evidence','stencil']: (out/folder).mkdir(parents=True,exist_ok=True)
  before=digest(native);log=[]

@@ -1,0 +1,135 @@
+{
+  "after_files": {
+    "CrystalShim_Mains.kicad_sym": "1feb65d4dde9b6b0b15c9169c64020d56e89faf2399f3aaff8d8a2927bbdf2b1",
+    "fp-lib-table": "3c60f00dfe31c44c3cf25b963f4d63cc940333f3840b3df0df30e5af3cfad536",
+    "mains.kicad_dru": "d51dfc0d22f020adc98d06f513a38904ce078129722fe092fad8490993076c5f",
+    "mains.kicad_pcb": "6aeb75dd9386a3d0151babd7f4f4bf0b2a6d4c155d9eeb951b36a0fd0e36d4ff",
+    "mains.kicad_prl": "23d7f7529fd5a8d88396084f977dcdad86e8c10eee30c37c96fbc214e4e6baa2",
+    "mains.kicad_pro": "36111b798fb63750d0dd533c5a4071854bd931c0684d24724e78683809a405f9",
+    "mains.kicad_sch": "30f5c0b057fb1326418e315bcb3326a9d6edb0f36e71cecbc5a281ca9d7a8648",
+    "primary.kicad_sch": "c862c70c1764a09dc16e4746a4abb2ea5174dcae6bb55648e2c45d3e29f52011",
+    "secondary.kicad_sch": "1c8fdcb57dca749a6d3c8f911ff5c0cd1c97e925936c55d623317c03f1ae22b9",
+    "suppression.kicad_sch": "709dbaa130e71e079eca781f7e00d124d68350a3fd9ddf0e0bd7a19bc04d76ae",
+    "sym-lib-table": "3fd9476e3fbdadc7e7611d272928872dfe5075224fabd8d2e8bc88639d884c85"
+  },
+  "before_files": {
+    "CrystalShim_Mains.kicad_sym": "1feb65d4dde9b6b0b15c9169c64020d56e89faf2399f3aaff8d8a2927bbdf2b1",
+    "fp-lib-table": "3c60f00dfe31c44c3cf25b963f4d63cc940333f3840b3df0df30e5af3cfad536",
+    "mains.kicad_dru": "d51dfc0d22f020adc98d06f513a38904ce078129722fe092fad8490993076c5f",
+    "mains.kicad_pcb": "2aa924c73884cc7e73201ef62c8f0101627fcf3a8b7fd2b48b39aa3987c80147",
+    "mains.kicad_prl": "23d7f7529fd5a8d88396084f977dcdad86e8c10eee30c37c96fbc214e4e6baa2",
+    "mains.kicad_pro": "36111b798fb63750d0dd533c5a4071854bd931c0684d24724e78683809a405f9",
+    "mains.kicad_sch": "30f5c0b057fb1326418e315bcb3326a9d6edb0f36e71cecbc5a281ca9d7a8648",
+    "primary.kicad_sch": "c862c70c1764a09dc16e4746a4abb2ea5174dcae6bb55648e2c45d3e29f52011",
+    "secondary.kicad_sch": "1c8fdcb57dca749a6d3c8f911ff5c0cd1c97e925936c55d623317c03f1ae22b9",
+    "suppression.kicad_sch": "709dbaa130e71e079eca781f7e00d124d68350a3fd9ddf0e0bd7a19bc04d76ae",
+    "sym-lib-table": "3fd9476e3fbdadc7e7611d272928872dfe5075224fabd8d2e8bc88639d884c85"
+  },
+  "board": "mains.kicad_pcb",
+  "changes": [
+    {
+      "after": {
+        "clearance_mm": 0.0,
+        "fill_mode": 0,
+        "island_removal": 0,
+        "keepout": {
+          "footprints": false,
+          "pads": false,
+          "tracks": false,
+          "vias": false,
+          "zone_fills": false
+        },
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "min_thickness_mm": 0.25,
+        "name": "Neck AC_N RV1.2.0",
+        "net": "",
+        "outline_mm": [
+          [
+            64.099999,
+            117.55
+          ],
+          [
+            72.2,
+            117.55
+          ],
+          [
+            72.2,
+            122.45
+          ],
+          [
+            64.099999,
+            122.45
+          ]
+        ],
+        "pad_connection": 1,
+        "priority": 0,
+        "rule_area": true,
+        "simple_outline": true,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5
+      },
+      "before": {
+        "clearance_mm": 0.0,
+        "fill_mode": 0,
+        "island_removal": 0,
+        "keepout": {
+          "footprints": false,
+          "pads": false,
+          "tracks": false,
+          "vias": false,
+          "zone_fills": false
+        },
+        "layers": [
+          "B.Cu",
+          "F.Cu"
+        ],
+        "min_thickness_mm": 0.25,
+        "name": "Neck AC_N RV1.2.0",
+        "net": "",
+        "outline_mm": [
+          [
+            64.099999,
+            117.55
+          ],
+          [
+            71.4,
+            117.55
+          ],
+          [
+            71.4,
+            122.45
+          ],
+          [
+            64.099999,
+            122.45
+          ]
+        ],
+        "pad_connection": 1,
+        "priority": 0,
+        "rule_area": true,
+        "simple_outline": true,
+        "thermal_gap_mm": 0.5,
+        "thermal_spoke_mm": 0.5
+      },
+      "category": "zones",
+      "selector": "7a72d412-b6a2-4baa-bada-0f30459c6fd6"
+    }
+  ],
+  "kicad_version": "10.0.5",
+  "kind": "native-kicad-transaction",
+  "publication": "per-file replacement; guarded rollback on failure; not multi-file atomic",
+  "published_files": [
+    "mains.kicad_pcb"
+  ],
+  "readback_after_sha256": "039bfc83f040616b92ed25c8467969e5076781b394bf83fc15379a725793bd5d",
+  "readback_before_sha256": "82d9e91cf7763ec6b709cf5413d31d2f7bf447b09e63df00a7a65a49516b23d3",
+  "schema_version": 1,
+  "transaction_sha256": "a9fe4580684510b89c00fd2ee1a5ffdd116b3ddf3d6fedfa45986466aa6aa684",
+  "validation": {
+    "scope": "Native application only; external acceptance checks required",
+    "status": "not_run"
+  }
+}

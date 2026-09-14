@@ -7,7 +7,7 @@
 		(at 0 -3 0)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "3b1b4778-b32d-4495-96f2-b846e15a73db")
+		(uuid "bb691822-7489-4f02-8bc5-b7666e7e0c7d")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15,11 +15,11 @@
 			)
 		)
 	)
-	(property "Value" "Mains_RV1"
+	(property "Value" "TMOV14RP175E"
 		(at 0 3 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "dffa7d91-643a-4e20-b766-425306ff375f")
+		(uuid "ec43cef0-6658-454b-9f3a-7767ce14d7d1")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -31,7 +31,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "b4c38ebf-26b2-422d-999f-1143a2e867e5")
+		(uuid "f4259d8d-9728-4ec8-9ddc-3f91b936dc3b")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -43,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "3f970ecf-d270-4306-ad9f-7299f75b21b8")
+		(uuid "03322722-7093-4b59-9081-438250fdd067")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -55,7 +55,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "0979f800-1ee1-b601-3449-740249b13203")
+		(uuid "8cbdf290-ca4a-487c-82ee-6da4183430fc")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -74,7 +74,7 @@
 		)
 		(fill no)
 		(layer "F.CrtYd")
-		(uuid "2e04fe00-5ea4-1081-14b2-e0fe77f62d83")
+		(uuid "05c76613-d76e-4888-88a7-20722762cdf6")
 	)
 	(pad "1" thru_hole circle
 		(at 0 0)
@@ -83,16 +83,16 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(solder_mask_margin 0.05)
-		(uuid "599e02a6-43f9-fb3a-1e6e-06e67f29f6fa")
+		(uuid "658ace8e-ff85-4ddf-8655-3f84467c3a3e")
 	)
 	(pad "2" thru_hole oval
-		(at 7.5 0)
-		(size 5.3 2.9)
-		(drill oval 3.7 1.3)
+		(at 7.9 0)
+		(size 6.1 2.9)
+		(drill oval 4.5 1.3)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(solder_mask_margin 0.05)
-		(uuid "77d239fc-0f62-3bfc-590d-c2043e823ffc")
+		(uuid "2b47f85c-e258-420d-9eac-c58c4eaedafb")
 	)
 	(embedded_fonts no)
 )

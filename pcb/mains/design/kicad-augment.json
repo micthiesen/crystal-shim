@@ -260,7 +260,7 @@
           "Preserve RV1 plated slot and confirm final 3.2 mm different-net margin after fabrication tolerances."
         ],
         "verification": "Saved pad shape/layer/drill/mask/paste and slot readback, native DRC plus fabrication CAM review.",
-        "status": "Native readback complete: numbered pads 0.05 mm mask; 31 PTH and six NPTH without paste; RV1 pad2 3.7 x 1.3 mm plated slot inside 5.3 x 2.9 mm copper."
+        "status": "Native readback complete: numbered pads 0.05 mm mask; 31 PTH and six NPTH without paste; RV1 bulk MOV ECO: pad2 at local (7.9,0), 4.5 x 1.3 mm plated slot inside 6.1 x 2.9 mm copper. Its named neutral escape area follows the new pad bounds; tracks are preserved."
       }
     },
     {
@@ -1194,6 +1194,12 @@
             }
           ],
           "receipt": "docs/design/evidence/connector-eco/mains/escape-zone-application.json"
+        },
+        "mov_bulk_eco": {
+          "rule_area_uuid": "7a72d412-b6a2-4baa-bada-0f30459c6fd6",
+          "name": "Neck AC_N RV1.2.0",
+          "change": "Extend right edge from71.4 to72.2 mm to follow enlarged RV1.2 pad; no copper-zone changes.",
+          "receipt": "docs/design/evidence/mov-bulk-eco/escape-application.json"
         }
       }
     },

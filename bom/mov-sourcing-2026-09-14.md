@@ -1,6 +1,9 @@
 # MOV sourcing and alternative fit
 
-Reviewed 2026-09-14. No MOV ordered and no PCB/fabrication change made.
+Historical pre-ECO review, 2026-09-14. No MOV was ordered. The owner subsequently
+authorized a footprint change for TMOV14RP175E; the current
+[capture contract](../docs/design/mov-capture.md) supersedes the old-footprint fit
+assessment below.
 
 ## Exact part
 

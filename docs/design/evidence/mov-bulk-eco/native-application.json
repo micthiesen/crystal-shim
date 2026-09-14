@@ -1,0 +1,17 @@
+{
+  "method": "KiCad native API board/library edit and guarded Konnect schematic field update; scratch save/reopen before publication",
+  "before": {
+    "mains.kicad_pcb": "2f7dde485c391e9a32bbc67e7dff616bb25a9b33989e7ad31ee7235522f2a335",
+    "primary.kicad_sch": "bdc346962e823ce5466644bbc0d98503cb588a18e8247068ff08b024ef4f1e00",
+    "footprints/CrystalShim_Mains.pretty/Mains_RV1.kicad_mod": "af2a93808787029c4ccf73a516e4f01bcb987cefc536bfbda8e5bf660a8cb195"
+  },
+  "after": {
+    "mains.kicad_pcb": "2aa924c73884cc7e73201ef62c8f0101627fcf3a8b7fd2b48b39aa3987c80147",
+    "primary.kicad_sch": "c862c70c1764a09dc16e4746a4abb2ea5174dcae6bb55648e2c45d3e29f52011",
+    "footprints/CrystalShim_Mains.pretty/Mains_RV1.kicad_mod": "094e27e5ace773a279ed4768c7aedf491b01a473db6721e7aabe7e15126bd9f5"
+  },
+  "changed_references": [
+    "RV1"
+  ],
+  "routing_changes": []
+}

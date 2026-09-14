@@ -4,6 +4,12 @@ This is the bare-board export and order profile for all three routed native boar
 The 2026-09-14 release uses the checked outputs under each board’s
 `fabrication/2026-09-14-rev1/` directory. See the release evidence before ordering.
 
+The mains MOV ECO has a separate output directory,
+`pcb/mains/fabrication/2026-09-14-mov-bulk/`. Once its current ECO review passes,
+use that mains ZIP instead of the earlier rev1 mains ZIP. Controller and sensor
+outputs remain in their original release directories. The MOV slot remains an
+ordinary plated routed slot; no additional order-form feature is required.
+
 ## Board and assembly selection
 
 All boards use ENIG, green mask and white silkscreen. Order bare PCBs only:

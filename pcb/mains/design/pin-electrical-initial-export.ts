@@ -13,7 +13,7 @@ const chipMpns: Readonly<Record<string, string>> = {
   U1: "IRM-45-12",
   U2: "AP63205WU-7",
   K1: "G5RL-1A-TV8 DC5",
-  RV1: "TMOV14RP175EL2T7",
+  RV1: "TMOV14RP175E",
   D1: "1N4007-E3/54",
   F2: "0451003.MRL",
   F3: "0215001.MXEP",

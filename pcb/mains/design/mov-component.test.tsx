@@ -23,17 +23,49 @@ test("MOV occupied acceptance leaves margins inside its separately declared rese
   expect((reserve.width - accepted.width) / 2).toBe(0.5);
   expect((courtyard.width - reserve.width) / 2).toBe(0.5);
   expect(reserve.topMax - accepted.topMax).toBe(0.5);
-  expect(accepted.crimpSeatAboveBoard).toEqual({ min: 0.5, max: 1 });
+  expect(accepted.bodySeatingAboveBoard).toEqual({ min: 0.5, max: 1 });
   expect(accepted.tailAndSolderBelowBoardMax).toBe(2);
-  expect([accepted.yawMaxDegrees, accepted.leanMaxDegrees]).toEqual([20, 5]);
+  expect([accepted.yawMaxDegrees, accepted.leanMaxDegrees]).toEqual([35, 5]);
   expect(accepted.basis).toContain(
     "No manufacturer common body offset Cy is guaranteed",
   );
   expect(movCapture.inspectedDrawingSha256).toBe(
     "039bf6182ec4e86bce375c1935716375361cefe365a1f8515b030bdd343fbea5",
   );
-  expect(movCapture.exactOrderCodePcnSha256).toBe(
-    "b9d3184c7444360a685f10237abfa86e856746c808ab24a3e11b9ce330047ab1",
+});
+
+test("bulk MOV tolerance corners fit unformed without reducing the existing copper gap", () => {
+  const { round, slot, installedAcceptance } = movCapture;
+  // Littelfuse drawing: e=6.5..8.5, e1=1.5..4.0, lead diameter<=0.86 mm.
+  // https://jlcpcb.com/capabilities/pcb-capabilities: conservatively bound
+  // finished aperture size by ±0.15 mm and differential centre error by 0.15 mm.
+  const leadMax = 0.86;
+  const centreError = 0.15;
+  const apertureTolerance = 0.15;
+  const travel =
+    (round.drill - apertureTolerance - leadMax) / 2 +
+    (slot.drillWidth - apertureTolerance - leadMax) / 2;
+  const pitch = slot.x - round.x;
+  expect(slot.drillHeight - apertureTolerance).toBeGreaterThan(leadMax);
+  for (const e of [6.5, 8.5]) {
+    for (const stagger of [1.5, 4]) {
+      const span = Math.hypot(e, stagger);
+      const requiredTravel = Math.abs(span - pitch) + centreError;
+      expect(travel - requiredTravel).toBeGreaterThan(0.24);
+      const yaw =
+        ((Math.atan2(stagger, e) + Math.asin(centreError / span)) * 180) / Math.PI;
+      expect(yaw).toBeLessThan(installedAcceptance.yawMaxDegrees);
+    }
+  }
+  // Both left edges are unchanged: the larger pad contains the old connected pad.
+  expect(slot.x - slot.drillWidth / 2).toBeCloseTo(7.5 - 3.7 / 2, 8);
+  expect(slot.x - slot.width / 2).toBeCloseTo(7.5 - 5.3 / 2, 8);
+  const copperGap = pitch - slot.width / 2 - round.copper / 2;
+  expect(copperGap).toBeCloseTo(3.4, 8);
+  expect(copperGap).toBeGreaterThanOrEqual(3.2);
+  // Published straight-body height plus controlled seating, before whole-volume inspection.
+  expect(22 + installedAcceptance.bodySeatingAboveBoard.max).toBeLessThan(
+    installedAcceptance.topMax,
   );
 });
 
@@ -54,7 +86,7 @@ for (const rotation of [0, 90, 180, 270]) {
     const parts = json.filter((e) => e.type === "source_component");
     expect(parts).toHaveLength(1);
     expect(parts[0]!.name).toBe("RV1");
-    expect(parts[0]!.manufacturer_part_number).toBe("TMOV14RP175EL2T7");
+    expect(parts[0]!.manufacturer_part_number).toBe("TMOV14RP175E");
     expect(movPins).toEqual({ pin1: "LINE", pin2: "NEUTRAL" });
     const ports = json.filter((e) => e.type === "source_port");
     expect(ports).toHaveLength(2);
@@ -77,7 +109,7 @@ for (const rotation of [0, 90, 180, 270]) {
     const pcb = json.find((e) => e.type === "pcb_component")!;
     if (pcb.type !== "pcb_component") throw new Error("Missing source footprint");
     expect(pcb.metadata?.kicad_footprint?.footprintName).toBe(
-      "CrystalShim:TMOV14RP175EL2T7_RoundSlot",
+      "CrystalShim:TMOV14RP175E_RoundSlot",
     );
     expect(json.filter((e) => e.type === "pcb_plated_hole")).toHaveLength(2);
     // Missing body-to-lead datums must not become an invented F.Fab package.
@@ -112,10 +144,8 @@ for (const rotation of [0, 90, 180, 270]) {
     expect(native.footprints).toHaveLength(1);
     const fp = native.footprints[0]!;
     expect(fp.properties.find((p) => p.key === "Reference")?.value).toBe("RV1");
-    expect(fp.properties.find((p) => p.key === "Value")?.value).toBe(
-      "TMOV14RP175EL2T7",
-    );
-    expect(fp.libraryLink).toBe("CrystalShim:TMOV14RP175EL2T7_RoundSlot");
+    expect(fp.properties.find((p) => p.key === "Value")?.value).toBe("TMOV14RP175E");
+    expect(fp.libraryLink).toBe("CrystalShim:TMOV14RP175E_RoundSlot");
     expect(fp.fpPads.map((p) => p.number).sort()).toEqual(["1", "2"]);
     const round = fp.fpPads.find((p) => p.number === "1")!;
     const slot = fp.fpPads.find((p) => p.number === "2")!;
@@ -129,8 +159,8 @@ for (const rotation of [0, 90, 180, 270]) {
     expect(slot.padType).toBe("thru_hole");
     expect(slot.shape).toBe("oval");
     expect(slot.drill?.oval).toBe(true);
-    expect([slot.drill?.diameter, slot.drill?.width]).toEqual([3.7, 1.3]);
-    expect([slot.size?.width, slot.size?.height]).toEqual([5.3, 2.9]);
+    expect([slot.drill?.diameter, slot.drill?.width]).toEqual([4.5, 1.3]);
+    expect([slot.size?.width, slot.size?.height]).toEqual([6.1, 2.9]);
     const at = fp.position;
     if (!(at instanceof At) || !round.at || !slot.at)
       throw new Error("Missing native pose");
@@ -144,8 +174,8 @@ for (const rotation of [0, 90, 180, 270]) {
     // The pinned converter places Circuit JSON (0, 0) at native (100, 100).
     expect(first.x).toBeCloseTo(107, 7);
     expect(first.y).toBeCloseTo(103, 7);
-    expect(second.x - first.x).toBeCloseTo(7.5 * Math.cos(a), 7);
-    expect(second.y - first.y).toBeCloseTo(-7.5 * Math.sin(a), 7);
+    expect(second.x - first.x).toBeCloseTo(7.9 * Math.cos(a), 7);
+    expect(second.y - first.y).toBeCloseTo(-7.9 * Math.sin(a), 7);
     // KiCad serializes the pad's angle in board coordinates. Slot symmetry is 180°.
     expect(Math.sin((((slot.at.angle ?? 0) - rotation) * Math.PI) / 180)).toBeCloseTo(
       0,

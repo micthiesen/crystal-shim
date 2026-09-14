@@ -1,13 +1,24 @@
 """Read-only quantitative CAM audit. Run with gerbonara installed; --native uses KiCad Python."""
 from pathlib import Path
+import argparse,re
 import sys,json,hashlib,math,subprocess,zipfile,collections,warnings
 ROOT=Path(__file__).resolve().parents[3]
-RELEASE='2026-09-14-rev1'
+def release_name(value):
+ if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*',value) or '..' in value:
+  raise argparse.ArgumentTypeError('release must be a simple directory name without slashes or dot-dot')
+ return value
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--boards',nargs='+',choices=['controller','mains','sensor'],default=['controller','mains','sensor'])
+parser.add_argument('--release',type=release_name,default='2026-09-14-rev1')
+parser.add_argument('--native',action='store_true',help=argparse.SUPPRESS)
+args=parser.parse_args()
+BOARDS=list(dict.fromkeys(args.boards))
+RELEASE=args.release
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
-if '--native' in sys.argv:
+if args.native:
  import pcbnew
  result={}
- for name in ['controller','sensor','mains']:
+ for name in BOARDS:
   path=ROOT/'pcb'/name/'kicad'/f'{name}.kicad_pcb';b=pcbnew.LoadBoard(str(path));drills=[];vias=[];refs=[];paste=[];logos=[]
   def hole(p,plated):
    sz=p.GetDrillSize();x=p.GetPosition().x/1e6;y=-p.GetPosition().y/1e6;w=sz.x/1e6;h=sz.y/1e6
@@ -30,7 +41,7 @@ if '--native' in sys.argv:
  print(json.dumps(result));sys.exit()
 from gerbonara import LayerStack,GerberFile
 warnings.filterwarnings('ignore',message='.*G90 header statement.*',category=SyntaxWarning)
-r=subprocess.run(['sh','pcb/tools/kicad_python.sh',str(Path(__file__).resolve()),'--native'],cwd=ROOT,text=True,capture_output=True,check=True);native=json.loads(r.stdout)
+r=subprocess.run(['sh','pcb/tools/kicad_python.sh',str(Path(__file__).resolve()),'--native','--release',RELEASE,'--boards',*BOARDS],cwd=ROOT,text=True,capture_output=True,check=True);native=json.loads(r.stdout)
 report={'scope':'CAM archive identity, parsed layers/outlines/drills, tenting apertures, native visible refs and exported silk strokes; not strict DRC','boards':{}}
 for name,n in native.items():
  out=ROOT/'pcb'/name/'fabrication'/RELEASE;archive=out/f'crystal-shim-{name}-rev1-jlcpcb.zip';receipt=json.loads((out/'evidence'/'export.json').read_text());assert receipt['native_sha256']==n['sha256']

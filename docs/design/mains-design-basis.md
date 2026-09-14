@@ -162,7 +162,7 @@ confirm its temperature derating and actual startup pulses. A fuse is not a
 3 A current limiter. IRM hiccup may occur before F2 opens; base-power availability
 during a motor short is not promised. Do not add a second eFuse bank.
 
-Retain **TMOV14RP175EL2T7** across fused line/neutral at J1, with its
+Retain **TMOV14RP175E** across fused line/neutral at J1, with its
 [existing source/installed-envelope contract](mov-capture.md). F1 carries its
 surge/fault current. Retain the load-side **PR02FS0201000KA100** 100 Ω flameproof
 2 W resistor and **B32921C3473K000** 47 nF/305 VAC X2 capacitor. The RC bridges

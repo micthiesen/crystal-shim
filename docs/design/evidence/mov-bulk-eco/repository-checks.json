@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "command": "sh scripts/check.sh",
+      "exit_code": 0,
+      "log_sha256": "13f4e33f9515bc864a20ed9d009c377ec00baf78a8ea8256964d62788335439a"
+    },
+    {
+      "command": "sh scripts/check-routing.sh mains --final",
+      "exit_code": 0,
+      "log_sha256": "ebecc8a0ec264f4b8090a1738619ffd5ac5ef5addfdba436dd60e0547132c4fe"
+    }
+  ],
+  "note": "Initial complete check caught stale aggregate-test dimensions; corrected from3.7/5.3 to4.5/6.1 and complete check reran successfully."
+}

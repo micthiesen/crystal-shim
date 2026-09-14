@@ -43,7 +43,7 @@ export const mainsChipElectricalContracts: Readonly<
     basis:
       "Phoenix Contact MKDS 5/2-7,62: two passive screw-clamp terminals with one solder pin each, 7.62 mm pitch. Both terminals are used.",
   },
-  TMOV14RP175EL2T7: {
+  TMOV14RP175E: {
     pins: passivePins(["LINE", "NEUTRAL"]),
     basis:
       "Littelfuse TMOV/ iTMOV specification: selected two-lead thermally protected MOV is a nonpolar passive shunt device. It has no powered status or third indicator terminal.",

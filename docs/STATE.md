@@ -155,10 +155,20 @@ ordered from AliExpress; its actual
 model, gauge, pair count, length and order number are not recorded. Totals are
 73 lines on the way, 24 in stock and six not ordered, all PCB components. The current
 [inventory ledger](../bom/inventory.csv) supersedes purchase statuses in dated
-cart/fabrication exports. Native boards and fabrication outputs are unchanged.
-The [MOV sourcing/fit review](../bom/mov-sourcing-2026-09-14.md) found no confirmed
-small-quantity exact source. Mouser stocks the bulk alternative, but full-tolerance
-unformed fit is not guaranteed; no substitution or footprint change is approved.
+cart/fabrication exports.
+
+The owner authorized the bulk MOV substitution to `TMOV14RP175E`. RV1 pad2 now
+uses a 4.5 × 1.3 mm plated slot at local (7.9, 0), with its right edge extended
+0.8 mm. All 89 mains tracks and 11 vias are unchanged. Source/native parity,
+strict ERC, DRC and preparation passed, and the ECO handoff is accepted in
+[retained evidence](design/evidence/mov-bulk-eco/run.json). The owner still plans
+to review the final traces before ordering. Use the replacement mains ZIP under
+`pcb/mains/fabrication/2026-09-14-mov-bulk/`; the earlier mains ZIP is superseded.
+Controller and sensor outputs remain unchanged. The [MOV assembly contract](design/mov-capture.md)
+covers lead capture with standard JLCPCB tolerances; physical seating and complete
+body-envelope inspection remain assembly checks. The six components remain
+not ordered. Mouser consolidation still includes the previously reported AP63203WU-7
+backorder; recheck availability at checkout.
 
 Open the [interactive order guide](https://mcp.syas.ca/boris/artifacts/art_ex30qrfnee6mu1033yz),
 or use the [order settings](design/manufacturing-output.md) and

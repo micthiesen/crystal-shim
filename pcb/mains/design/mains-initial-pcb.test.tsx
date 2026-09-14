@@ -75,8 +75,8 @@ test("complete initial mains graph combines datums, PTH mask, connector shapes a
   const slot = mov.fpPads.find((p) => p.number === "2")!;
   expect(slot.net?.name).toBe("AC_N");
   expect(slot.drill?.oval).toBe(true);
-  expect([slot.drill?.diameter, slot.drill?.width]).toEqual([3.7, 1.3]);
-  expect([slot.size?.width, slot.size?.height]).toEqual([5.3, 2.9]);
+  expect([slot.drill?.diameter, slot.drill?.width]).toEqual([4.5, 1.3]);
+  expect([slot.size?.width, slot.size?.height]).toEqual([6.1, 2.9]);
   // A stale passive Value string must not disguise changed source quantities
   // while the order code still names the old selected part.
   for (const ref of ["R1", "C1"]) {

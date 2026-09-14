@@ -52,7 +52,7 @@ no solid-state or more elaborate switching scheme is selected.
 | --- | --- |
 | Series RC snubber | 47 nF B32921C3473K000 and 100 ohm PR02FS0201000KA100 across switched hot/output neutral |
 | Manufactured two-stage EMI filter | FN2090A-1-06 / 802490-SF on the pump branch before the relay |
-| Protected MOV | TMOV14RP175EL2T7 at the protected mains input |
+| Protected MOV | TMOV14RP175E at the protected mains input |
 | Fuses | 2 A inlet cartridge; 1 A axial filter branch; 3 A SMT isolated 12 V motor branch |
 
 Do not install the RC network across open relay contacts by default: that creates

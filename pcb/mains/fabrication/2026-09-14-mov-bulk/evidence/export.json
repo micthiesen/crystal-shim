@@ -1,0 +1,114 @@
+{
+  "native_sha256": "6aeb75dd9386a3d0151babd7f4f4bf0b2a6d4c155d9eeb951b36a0fd0e36d4ff",
+  "commands": [
+    {
+      "argv": [
+        "kicad-cli",
+        "pcb",
+        "export",
+        "gerbers",
+        "--check-zones",
+        "--layers",
+        "F.Cu,B.Cu,F.Mask,B.Mask,F.Silkscreen,B.Silkscreen,Edge.Cuts",
+        "--output",
+        "/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/gerbers/",
+        "/Users/michael/Code/crystal-shim/pcb/mains/kicad/mains.kicad_pcb"
+      ],
+      "exit_code": 0,
+      "stdout": "Plotted to '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/gerbers/mains-F_Cu.gtl'.\nPlotted to '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/gerbers/mains-B_Cu.gbl'.\nPlotted to '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/gerbers/mains-F_Silkscreen.gto'.\nPlotted to '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/gerbers/mains-B_Silkscreen.gbo'.\nPlotted to '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/gerbers/mains-F_Mask.gts'.\nPlotted to '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/gerbers/mains-B_Mask.gbs'.\nPlotted to '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/gerbers/mains-Edge_Cuts.gm1'.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "kicad-cli",
+        "pcb",
+        "export",
+        "gerbers",
+        "--check-zones",
+        "--layers",
+        "F.Paste",
+        "--output",
+        "/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/stencil/",
+        "/Users/michael/Code/crystal-shim/pcb/mains/kicad/mains.kicad_pcb"
+      ],
+      "exit_code": 0,
+      "stdout": "Plotted to '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/stencil/mains-F_Paste.gtp'.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "kicad-cli",
+        "pcb",
+        "export",
+        "drill",
+        "--format",
+        "excellon",
+        "--excellon-units",
+        "mm",
+        "--drill-origin",
+        "absolute",
+        "--excellon-separate-th",
+        "--excellon-oval-format",
+        "route",
+        "--generate-map",
+        "--map-format",
+        "pdf",
+        "--generate-report",
+        "--output",
+        "/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/drills/",
+        "/Users/michael/Code/crystal-shim/pcb/mains/kicad/mains.kicad_pcb"
+      ],
+      "exit_code": 0,
+      "stdout": "Created file '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/drills/mains-PTH.drl'\nCreated file '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/drills/mains-NPTH.drl'\nCreated file '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/drills/mains-PTH-drl_map.pdf'.\nCreated file '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/drills/mains-NPTH-drl_map.pdf'.\nDone.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "kicad-cli",
+        "sch",
+        "export",
+        "pdf",
+        "--output",
+        "/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/assembly/schematic.pdf",
+        "/Users/michael/Code/crystal-shim/pcb/mains/kicad/mains.kicad_sch"
+      ],
+      "exit_code": 0,
+      "stdout": "Plotted to '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/assembly/schematic.pdf'.\nDone.\n",
+      "stderr": "Fontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 19: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 20: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 23: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 42: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 43: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 46: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 68: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 69: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 72: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 88: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 89: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 92: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 108: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 109: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 112: invalid constant used : math\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 120: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 121: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 124: invalid constant used : system-ui\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 132: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 133: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 136: invalid constant used : cursive\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 144: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 145: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 148: invalid constant used : fantasy\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 156: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 157: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 160: invalid constant used : ui-sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 168: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 169: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 172: invalid constant used : ui-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 180: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 181: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 184: invalid constant used : ui-monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 192: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 193: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 196: invalid constant used : ui-rounded\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 204: invalid attribute 'xsi:nil'\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 205: invalid constant used : \nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-guessfamily.conf\", line 208: invalid constant used : fangsong\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/48-spacing.conf\", line 14: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 10: invalid constant used : serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 18: invalid constant used : sans-serif\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 26: invalid constant used : monospace\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 34: invalid constant used : emoji\nFontconfig warning: \"/opt/homebrew/etc/fonts/conf.d/49-sansserif.conf\", line 42: invalid constant used : math\n"
+    },
+    {
+      "argv": [
+        "kicad-cli",
+        "pcb",
+        "export",
+        "svg",
+        "--layers",
+        "F.Fab,F.Silkscreen,F.Mask",
+        "--common-layers",
+        "Edge.Cuts",
+        "--mode-multi",
+        "--page-size-mode",
+        "2",
+        "--exclude-drawing-sheet",
+        "--output",
+        "/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/assembly/",
+        "/Users/michael/Code/crystal-shim/pcb/mains/kicad/mains.kicad_pcb"
+      ],
+      "exit_code": 0,
+      "stdout": "Plotted to '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/assembly/mains-F_Fab.svg'.\nPlotted to '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/assembly/mains-F_Silkscreen.svg'.\nPlotted to '/Users/michael/Code/crystal-shim/pcb/mains/fabrication/2026-09-14-mov-bulk/assembly/mains-F_Mask.svg'.\nDone.\n",
+      "stderr": ""
+    }
+  ],
+  "upload_members": {
+    "mains-B_Mask.gbs": "c045408e94a68ba7b170cb496a4c2a30b73e4b9ee6722559f9b1b4b52310afe7",
+    "mains-B_Cu.gbl": "a431b4cdf344b8b43ac21fc8d61c489eaaa7f894aad7f704348ba8beeb1d12f4",
+    "mains-F_Cu.gtl": "bc80fb6300b40e87a0a2151c86228d0ac5a6a60bc087dda16ebd9ff0ad621ea3",
+    "mains-Edge_Cuts.gm1": "db85cb259927b228cde4a074aca876c2d5a7e2fce84f9253fd43f8c17c98d084",
+    "mains-F_Silkscreen.gto": "121ee98e41f1070fa161720fbe4c3cd49c7a75ee202e6b7652e1f0650e09be52",
+    "mains-F_Mask.gts": "f889b17ef47475ffb147cd5c6d1d3b605dac4f809e1f26abe723383b0d4c4580",
+    "mains-B_Silkscreen.gbo": "6e53dc4cfc49a9138267ae74d37a40fb0246c619a499ac8ff45382f085758061",
+    "mains-PTH.drl": "68d8cd5e2f8215afc5b3d4858b5a4624f3f2773e088109e245d84719d4d9e6d7",
+    "mains-NPTH.drl": "0a98978603a991715102ecc78dd39badb5cf94522d733857f0bd2021081b02b8"
+  },
+  "status": "exported; CAM review and release acceptance recorded separately"
+}
