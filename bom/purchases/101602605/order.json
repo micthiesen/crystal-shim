@@ -1,0 +1,1193 @@
+{
+  "supplier": "DigiKey Canada",
+  "order_number": "101602605",
+  "reported_date": "2026-09-14",
+  "status": "On the way",
+  "source": "User confirmation of purchase and attached supplier-items.csv. Supplier Availability=Immediate is not a delivery confirmation.",
+  "source_sha256": "c74c77b31da1fdb00101e55ca43c0d5e8e2655b6e791d2f89156ce2f9f25402c",
+  "currency": "CAD",
+  "line_count": 72,
+  "merchandise_subtotal_cad": "336.35",
+  "tax_shipping_and_paid_total": "Not provided in attached CSV",
+  "quantity_changes_from_cart": [
+    {
+      "customer_reference": "CS-048",
+      "mpn": "USB4105-GF-A",
+      "cart_quantity": 1,
+      "ordered_quantity": 10
+    },
+    {
+      "customer_reference": "CS-052",
+      "mpn": "0430250600",
+      "cart_quantity": 2,
+      "ordered_quantity": 10
+    },
+    {
+      "customer_reference": "CS-083",
+      "mpn": "3240707",
+      "cart_quantity": 3,
+      "ordered_quantity": 10
+    }
+  ],
+  "omitted_cart_references": [
+    "CS-056",
+    "CS-069"
+  ],
+  "lines": [
+    {
+      "order_line_number": 1,
+      "order_line_id": "ORDER-LINE-001",
+      "customer_reference": "CS-001",
+      "digikey_sku": "F3476-ND",
+      "ordered_mpn": "0215001.MXEP",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "5.01000",
+      "extended_price_cad": "5.01",
+      "source_ids": [
+        "BOM-118"
+      ],
+      "use": "mains: F3"
+    },
+    {
+      "order_line_number": 2,
+      "order_line_id": "ORDER-LINE-003",
+      "customer_reference": "CS-003",
+      "digikey_sku": "277-5840-ND",
+      "ordered_mpn": "1868076",
+      "quantity_ordered": 4,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "2.80000",
+      "extended_price_cad": "11.20",
+      "source_ids": [
+        "BOM-09"
+      ],
+      "use": "mains: J1 J2 J3 J4"
+    },
+    {
+      "order_line_number": 3,
+      "order_line_id": "ORDER-LINE-005",
+      "customer_reference": "CS-005",
+      "digikey_sku": "WM1813-ND",
+      "ordered_mpn": "0430450200",
+      "quantity_ordered": 5,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "1.44000",
+      "extended_price_cad": "7.20",
+      "source_ids": [
+        "BOM-38"
+      ],
+      "use": "controller: J6 J7 J8 J9; mains: J6"
+    },
+    {
+      "order_line_number": 4,
+      "order_line_id": "ORDER-LINE-006",
+      "customer_reference": "CS-006",
+      "digikey_sku": "WM1815-ND",
+      "ordered_mpn": "0430450600",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "2.99000",
+      "extended_price_cad": "5.98",
+      "source_ids": [
+        "BOM-07"
+      ],
+      "use": "controller: J3 J5"
+    },
+    {
+      "order_line_number": 5,
+      "order_line_id": "ORDER-LINE-007",
+      "customer_reference": "CS-007",
+      "digikey_sku": "WM1861-ND",
+      "ordered_mpn": "0436500300",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "1.79000",
+      "extended_price_cad": "3.58",
+      "source_ids": [
+        "BOM-35"
+      ],
+      "use": "controller: J1; mains: J5"
+    },
+    {
+      "order_line_number": 6,
+      "order_line_id": "ORDER-LINE-011",
+      "customer_reference": "CS-011",
+      "digikey_sku": "495-6903-ND",
+      "ordered_mpn": "B32921C3473K000",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.82000",
+      "extended_price_cad": "0.82",
+      "source_ids": [
+        "BOM-14"
+      ],
+      "use": "mains: C1"
+    },
+    {
+      "order_line_number": 7,
+      "order_line_id": "ORDER-LINE-012",
+      "customer_reference": "CS-012",
+      "digikey_sku": "SW787-ND",
+      "ordered_mpn": "B3F-1002-G",
+      "quantity_ordered": 3,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "4.95000",
+      "extended_price_cad": "14.85",
+      "source_ids": [
+        "BOM-20"
+      ],
+      "use": "controller: SW1 SW2 SW3"
+    },
+    {
+      "order_line_number": 8,
+      "order_line_id": "ORDER-LINE-035",
+      "customer_reference": "CS-035",
+      "digikey_sku": "1866-3053-ND",
+      "ordered_mpn": "IRM-45-12",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "21.10000",
+      "extended_price_cad": "21.10",
+      "source_ids": [
+        "BOM-03"
+      ],
+      "use": "mains: U1"
+    },
+    {
+      "order_line_number": 9,
+      "order_line_id": "ORDER-LINE-037",
+      "customer_reference": "CS-037",
+      "digikey_sku": "455-S2B-XH-A-ND",
+      "ordered_mpn": "S2B-XH-A",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.21000",
+      "extended_price_cad": "0.21",
+      "source_ids": [
+        "BOM-125"
+      ],
+      "use": "controller: J2"
+    },
+    {
+      "order_line_number": 10,
+      "order_line_id": "ORDER-LINE-002",
+      "customer_reference": "CS-002",
+      "digikey_sku": "F2583CT-ND",
+      "ordered_mpn": "0451003.MRL",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "3.62000",
+      "extended_price_cad": "3.62",
+      "source_ids": [
+        "BOM-119"
+      ],
+      "use": "mains: F2"
+    },
+    {
+      "order_line_number": 11,
+      "order_line_id": "ORDER-LINE-004",
+      "customer_reference": "CS-004",
+      "digikey_sku": "1N4007-E3/54GICT-ND",
+      "ordered_mpn": "1N4007-E3/54",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.82000",
+      "extended_price_cad": "0.82",
+      "source_ids": [
+        "BOM-25"
+      ],
+      "use": "mains: D1"
+    },
+    {
+      "order_line_number": 12,
+      "order_line_id": "ORDER-LINE-008",
+      "customer_reference": "CS-008",
+      "digikey_sku": "785-1000-1-ND",
+      "ordered_mpn": "AO3400A",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.50300",
+      "extended_price_cad": "5.03",
+      "source_ids": [
+        "BOM-15"
+      ],
+      "use": "controller: Q1 Q2 Q3 Q4"
+    },
+    {
+      "order_line_number": 13,
+      "order_line_id": "ORDER-LINE-029",
+      "customer_reference": "CS-029",
+      "digikey_sku": "296-51112-1-ND",
+      "ordered_mpn": "ESDS312DBVR",
+      "quantity_ordered": 3,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "1.23000",
+      "extended_price_cad": "3.69",
+      "source_ids": [
+        "BOM-107"
+      ],
+      "use": "controller: U11 U13; sensor: U3"
+    },
+    {
+      "order_line_number": 14,
+      "order_line_id": "ORDER-LINE-030",
+      "customer_reference": "CS-030",
+      "digikey_sku": "1965-ESP32-C6-WROOM-1-N8CT-ND",
+      "ordered_mpn": "ESP32-C6-WROOM-1-N8",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "8.67000",
+      "extended_price_cad": "8.67",
+      "source_ids": [
+        "BOM-02"
+      ],
+      "use": "controller: U1"
+    },
+    {
+      "order_line_number": 15,
+      "order_line_id": "ORDER-LINE-031",
+      "customer_reference": "CS-031",
+      "digikey_sku": "296-48544-1-ND",
+      "ordered_mpn": "FDC1004DGSR",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "6.51000",
+      "extended_price_cad": "6.51",
+      "source_ids": [
+        "BOM-01"
+      ],
+      "use": "sensor: U1"
+    },
+    {
+      "order_line_number": 16,
+      "order_line_id": "ORDER-LINE-032",
+      "customer_reference": "CS-032",
+      "digikey_sku": "FSUSB42MUXCT-ND",
+      "ordered_mpn": "FSUSB42MUX",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "1.30000",
+      "extended_price_cad": "1.30",
+      "source_ids": [
+        "BOM-30"
+      ],
+      "use": "controller: U8"
+    },
+    {
+      "order_line_number": 17,
+      "order_line_id": "ORDER-LINE-036",
+      "customer_reference": "CS-036",
+      "digikey_sku": "BC3366CT-ND",
+      "ordered_mpn": "PR02FS0201000KR500",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.72000",
+      "extended_price_cad": "0.72",
+      "source_ids": [
+        "BOM-24"
+      ],
+      "use": "mains: R1"
+    },
+    {
+      "order_line_number": 18,
+      "order_line_id": "ORDER-LINE-038",
+      "customer_reference": "CS-038",
+      "digikey_sku": "SMBJ7.0ALFCT-ND",
+      "ordered_mpn": "SMBJ7.0A",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.78000",
+      "extended_price_cad": "1.56",
+      "source_ids": [
+        "BOM-108"
+      ],
+      "use": "controller: D7 D8"
+    },
+    {
+      "order_line_number": 19,
+      "order_line_id": "ORDER-LINE-039",
+      "customer_reference": "CS-039",
+      "digikey_sku": "296-11601-1-ND",
+      "ordered_mpn": "SN74LVC1G08DBVR",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.12000",
+      "extended_price_cad": "1.20",
+      "source_ids": [
+        "BOM-29"
+      ],
+      "use": "controller: U6"
+    },
+    {
+      "order_line_number": 20,
+      "order_line_id": "ORDER-LINE-040",
+      "customer_reference": "CS-040",
+      "digikey_sku": "296-11607-1-ND",
+      "ordered_mpn": "SN74LVC1G14DBVR",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.14700",
+      "extended_price_cad": "1.47",
+      "source_ids": [
+        "BOM-31"
+      ],
+      "use": "controller: U7"
+    },
+    {
+      "order_line_number": 21,
+      "order_line_id": "ORDER-LINE-041",
+      "customer_reference": "CS-041",
+      "digikey_sku": "SRP5030TA-4R7MCT-ND",
+      "ordered_mpn": "SRP5030TA-4R7M",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "1.72000",
+      "extended_price_cad": "3.44",
+      "source_ids": [
+        "BOM-26"
+      ],
+      "use": "controller: L1; mains: L1"
+    },
+    {
+      "order_line_number": 22,
+      "order_line_id": "ORDER-LINE-042",
+      "customer_reference": "CS-042",
+      "digikey_sku": "497-5574-1-ND",
+      "ordered_mpn": "STPS2L40U",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.52500",
+      "extended_price_cad": "5.25",
+      "source_ids": [
+        "BOM-27"
+      ],
+      "use": "controller: D1 D2 D9 D10 D11; sensor: D2"
+    },
+    {
+      "order_line_number": 23,
+      "order_line_id": "ORDER-LINE-043",
+      "customer_reference": "CS-043",
+      "digikey_sku": "296-39220-1-ND",
+      "ordered_mpn": "TCA9517ADGKR",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "1.91000",
+      "extended_price_cad": "3.82",
+      "source_ids": [
+        "BOM-33"
+      ],
+      "use": "controller: U3 U12"
+    },
+    {
+      "order_line_number": 24,
+      "order_line_id": "ORDER-LINE-046",
+      "customer_reference": "CS-046",
+      "digikey_sku": "296-17188-1-ND",
+      "ordered_mpn": "TPS3808G01DBVR",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "3.06000",
+      "extended_price_cad": "3.06",
+      "source_ids": [
+        "BOM-28"
+      ],
+      "use": "controller: U4"
+    },
+    {
+      "order_line_number": 25,
+      "order_line_id": "ORDER-LINE-047",
+      "customer_reference": "CS-047",
+      "digikey_sku": "296-TPS7A2433DBVRCT-ND",
+      "ordered_mpn": "TPS7A2433DBVR",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "1.11000",
+      "extended_price_cad": "1.11",
+      "source_ids": [
+        "BOM-17"
+      ],
+      "use": "sensor: U2"
+    },
+    {
+      "order_line_number": 26,
+      "order_line_id": "ORDER-LINE-048",
+      "customer_reference": "CS-048",
+      "digikey_sku": "2073-USB4105-GF-ACT-ND",
+      "ordered_mpn": "USB4105-GF-A",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.99100",
+      "extended_price_cad": "9.91",
+      "source_ids": [
+        "BOM-18"
+      ],
+      "use": "controller: J4"
+    },
+    {
+      "order_line_number": 27,
+      "order_line_id": "ORDER-LINE-013",
+      "customer_reference": "CS-013",
+      "digikey_sku": "445-1314-1-ND",
+      "ordered_mpn": "C1608X7R1H104K080AA",
+      "quantity_ordered": 20,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.08800",
+      "extended_price_cad": "1.76",
+      "source_ids": [
+        "BOM-81"
+      ],
+      "use": "controller: C6 C7 C8 C11 C12 C21 C30 C31 C40 C41 C42 C45 C46; mains: C5 C7; sensor: C3"
+    },
+    {
+      "order_line_number": 28,
+      "order_line_id": "ORDER-LINE-014",
+      "customer_reference": "CS-014",
+      "digikey_sku": "445-1354-1-ND",
+      "ordered_mpn": "C2012X7R1E105K125AB",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.19100",
+      "extended_price_cad": "1.91",
+      "source_ids": [
+        "BOM-82"
+      ],
+      "use": "controller: C9 C20 C43; sensor: C4"
+    },
+    {
+      "order_line_number": 29,
+      "order_line_id": "ORDER-LINE-016",
+      "customer_reference": "CS-016",
+      "digikey_sku": "541-6.80RCT-ND",
+      "ordered_mpn": "CRCW25126R80FKEGHP",
+      "quantity_ordered": 3,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "1.22000",
+      "extended_price_cad": "3.66",
+      "source_ids": [
+        "BOM-110"
+      ],
+      "use": "controller: R68 R69"
+    },
+    {
+      "order_line_number": 30,
+      "order_line_id": "ORDER-LINE-017",
+      "customer_reference": "CS-017",
+      "digikey_sku": "P10KDBCT-ND",
+      "ordered_mpn": "ERA-3AEB103V",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.17000",
+      "extended_price_cad": "0.34",
+      "source_ids": [
+        "BOM-83"
+      ],
+      "use": "controller: R15"
+    },
+    {
+      "order_line_number": 31,
+      "order_line_id": "ORDER-LINE-018",
+      "customer_reference": "CS-018",
+      "digikey_sku": "P95.3KDBCT-ND",
+      "ordered_mpn": "ERA-3AEB9532V",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.17000",
+      "extended_price_cad": "0.34",
+      "source_ids": [
+        "BOM-90"
+      ],
+      "use": "controller: R14"
+    },
+    {
+      "order_line_number": 32,
+      "order_line_id": "ORDER-LINE-019",
+      "customer_reference": "CS-019",
+      "digikey_sku": "P100HCT-ND",
+      "ordered_mpn": "ERJ-3EKF1000V",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.06100",
+      "extended_price_cad": "0.61",
+      "source_ids": [
+        "BOM-87"
+      ],
+      "use": "controller: R20 R80 R82 R84"
+    },
+    {
+      "order_line_number": 33,
+      "order_line_id": "ORDER-LINE-020",
+      "customer_reference": "CS-020",
+      "digikey_sku": "P1.00KHCT-ND",
+      "ordered_mpn": "ERJ-3EKF1001V",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.06100",
+      "extended_price_cad": "0.61",
+      "source_ids": [
+        "BOM-85"
+      ],
+      "use": "controller: R42"
+    },
+    {
+      "order_line_number": 34,
+      "order_line_id": "ORDER-LINE-021",
+      "customer_reference": "CS-021",
+      "digikey_sku": "P10.0KHCT-ND",
+      "ordered_mpn": "ERJ-3EKF1002V",
+      "quantity_ordered": 25,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.04480",
+      "extended_price_cad": "1.12",
+      "source_ids": [
+        "BOM-121"
+      ],
+      "use": "controller: R2 R11 R12 R46 R50 R51 R52 R53 R64 R65 R66 R67 R81 R83 R85; sensor: R5"
+    },
+    {
+      "order_line_number": 35,
+      "order_line_id": "ORDER-LINE-022",
+      "customer_reference": "CS-022",
+      "digikey_sku": "P100KHCT-ND",
+      "ordered_mpn": "ERJ-3EKF1003V",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.06100",
+      "extended_price_cad": "0.61",
+      "source_ids": [
+        "BOM-86"
+      ],
+      "use": "controller: R43"
+    },
+    {
+      "order_line_number": 36,
+      "order_line_id": "ORDER-LINE-023",
+      "customer_reference": "CS-023",
+      "digikey_sku": "P22.0HCT-ND",
+      "ordered_mpn": "ERJ-3EKF22R0V",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.06100",
+      "extended_price_cad": "0.61",
+      "source_ids": [
+        "BOM-89"
+      ],
+      "use": "controller: R44 R45 R62 R63 R70 R71; sensor: R1 R2"
+    },
+    {
+      "order_line_number": 37,
+      "order_line_id": "ORDER-LINE-024",
+      "customer_reference": "CS-024",
+      "digikey_sku": "P2.70KHCT-ND",
+      "ordered_mpn": "ERJ-3EKF2701V",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.06400",
+      "extended_price_cad": "0.64",
+      "source_ids": [
+        "BOM-88"
+      ],
+      "use": "controller: R60 R61 R72 R73; sensor: R3 R4"
+    },
+    {
+      "order_line_number": 38,
+      "order_line_id": "ORDER-LINE-025",
+      "customer_reference": "CS-025",
+      "digikey_sku": "P3.01KHCT-ND",
+      "ordered_mpn": "ERJ-3EKF3011V",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.06100",
+      "extended_price_cad": "0.61",
+      "source_ids": [
+        "BOM-117"
+      ],
+      "use": "sensor: R6"
+    },
+    {
+      "order_line_number": 39,
+      "order_line_id": "ORDER-LINE-027",
+      "customer_reference": "CS-027",
+      "digikey_sku": "P5.10KHCT-ND",
+      "ordered_mpn": "ERJ-3EKF5101V",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.06100",
+      "extended_price_cad": "0.61",
+      "source_ids": [
+        "BOM-84"
+      ],
+      "use": "controller: R40 R41"
+    },
+    {
+      "order_line_number": 40,
+      "order_line_id": "ORDER-LINE-028",
+      "customer_reference": "CS-028",
+      "digikey_sku": "P680HCT-ND",
+      "ordered_mpn": "ERJ-3EKF6800V",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.06400",
+      "extended_price_cad": "0.64",
+      "source_ids": [
+        "BOM-80"
+      ],
+      "use": "controller: R54"
+    },
+    {
+      "order_line_number": 41,
+      "order_line_id": "ORDER-LINE-051",
+      "customer_reference": "CS-051",
+      "digikey_sku": "817-2400-ND",
+      "ordered_mpn": "FN2090A-1-06",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "55.46000",
+      "extended_price_cad": "55.46",
+      "source_ids": [
+        "BOM-05"
+      ],
+      "use": "Enclosure mains: Manufactured two-stage EMI filter"
+    },
+    {
+      "order_line_number": 42,
+      "order_line_id": "ORDER-LINE-052",
+      "customer_reference": "CS-052",
+      "digikey_sku": "WM1785-ND",
+      "ordered_mpn": "0430250600",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.67500",
+      "extended_price_cad": "6.75",
+      "source_ids": [
+        "BOM-06"
+      ],
+      "use": "Sensor harness: Six-position cable receptacle housing"
+    },
+    {
+      "order_line_number": 43,
+      "order_line_id": "ORDER-LINE-053",
+      "customer_reference": "CS-053",
+      "digikey_sku": "486-1032-ND",
+      "ordered_mpn": "6200.23",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "6.61000",
+      "extended_price_cad": "6.61",
+      "source_ids": [
+        "BOM-10"
+      ],
+      "use": "Enclosure: Standard mains input"
+    },
+    {
+      "order_line_number": 44,
+      "order_line_id": "ORDER-LINE-055",
+      "customer_reference": "CS-055",
+      "digikey_sku": "F4609-ND",
+      "ordered_mpn": "0215002.MXP",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "3.65000",
+      "extended_price_cad": "7.30",
+      "source_ids": [
+        "BOM-12",
+        "BOM-123"
+      ],
+      "use": "Mains: 2 A time-lag inlet fuse F1; Service 2 A time-lag cartridge"
+    },
+    {
+      "order_line_number": 45,
+      "order_line_id": "ORDER-LINE-057",
+      "customer_reference": "CS-057",
+      "digikey_sku": "1067-467MP-1-5-ND",
+      "ordered_mpn": "467MP-1-5",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "19.65000",
+      "extended_price_cad": "19.65",
+      "source_ids": [
+        "BOM-22"
+      ],
+      "use": "Sensor mount: Thin uniform adhesive film for sensor-to-glass mounting"
+    },
+    {
+      "order_line_number": 46,
+      "order_line_id": "ORDER-LINE-060",
+      "customer_reference": "CS-060",
+      "digikey_sku": "WM1846-ND",
+      "ordered_mpn": "0436450300",
+      "quantity_ordered": 3,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.62000",
+      "extended_price_cad": "1.86",
+      "source_ids": [
+        "BOM-36"
+      ],
+      "use": "Controller/mains harness: Three-position LV cable housing"
+    },
+    {
+      "order_line_number": 47,
+      "order_line_id": "ORDER-LINE-061",
+      "customer_reference": "CS-061",
+      "digikey_sku": "WM1783-ND",
+      "ordered_mpn": "0430250200",
+      "quantity_ordered": 3,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.56000",
+      "extended_price_cad": "1.68",
+      "source_ids": [
+        "BOM-39"
+      ],
+      "use": "12 V harness: Two-position cable housing"
+    },
+    {
+      "order_line_number": 48,
+      "order_line_id": "ORDER-LINE-065",
+      "customer_reference": "CS-065",
+      "digikey_sku": "A27817-ND",
+      "ordered_mpn": "2-520184-2",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.42600",
+      "extended_price_cad": "4.26",
+      "source_ids": [
+        "BOM-57"
+      ],
+      "use": "Mains harness: Insulated 6.35 mm receptacle"
+    },
+    {
+      "order_line_number": 49,
+      "order_line_id": "ORDER-LINE-066",
+      "customer_reference": "CS-066",
+      "digikey_sku": "A27238-ND",
+      "ordered_mpn": "31886",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.86000",
+      "extended_price_cad": "1.72",
+      "source_ids": [
+        "BOM-58"
+      ],
+      "use": "PE harness: Inlet and filter PE stud ring"
+    },
+    {
+      "order_line_number": 50,
+      "order_line_id": "ORDER-LINE-067",
+      "customer_reference": "CS-067",
+      "digikey_sku": "A27237-ND",
+      "ordered_mpn": "320551",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.62000",
+      "extended_price_cad": "0.62",
+      "source_ids": [
+        "BOM-59"
+      ],
+      "use": "PE harness: Pigtail PE stud ring"
+    },
+    {
+      "order_line_number": 51,
+      "order_line_id": "ORDER-LINE-068",
+      "customer_reference": "CS-068",
+      "digikey_sku": "3720-M3231-ND",
+      "ordered_mpn": "M3231",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "2.01000",
+      "extended_price_cad": "2.01",
+      "source_ids": [
+        "BOM-60"
+      ],
+      "use": "Enclosure: Output cord gland"
+    },
+    {
+      "order_line_number": 52,
+      "order_line_id": "ORDER-LINE-071",
+      "customer_reference": "CS-071",
+      "digikey_sku": "839-10-02248-ND",
+      "ordered_mpn": "10-02248",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "5.03000",
+      "extended_price_cad": "5.03",
+      "source_ids": [
+        "BOM-93"
+      ],
+      "use": "Service kit: Barrel adapter cable for JST XH service harness"
+    },
+    {
+      "order_line_number": 53,
+      "order_line_id": "ORDER-LINE-072",
+      "customer_reference": "CS-072",
+      "digikey_sku": "F1468-ND",
+      "ordered_mpn": "01500274Z",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "6.25000",
+      "extended_price_cad": "6.25",
+      "source_ids": [
+        "BOM-122"
+      ],
+      "use": "Service kit: Service inline fuse holder"
+    },
+    {
+      "order_line_number": 54,
+      "order_line_id": "ORDER-LINE-073",
+      "customer_reference": "CS-073",
+      "digikey_sku": "455-2266-ND",
+      "ordered_mpn": "XHP-2",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.16000",
+      "extended_price_cad": "0.32",
+      "source_ids": [
+        "BOM-126"
+      ],
+      "use": "Service harness: Two-position 5 V service housing"
+    },
+    {
+      "order_line_number": 55,
+      "order_line_id": "ORDER-LINE-074",
+      "customer_reference": "CS-074",
+      "digikey_sku": "BXH-001T-P0.6-ND",
+      "ordered_mpn": "BXH-001T-P0.6",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.07300",
+      "extended_price_cad": "0.73",
+      "source_ids": [
+        "BOM-127"
+      ],
+      "use": "Service harness: 5 V service crimp contacts"
+    },
+    {
+      "order_line_number": 56,
+      "order_line_id": "ORDER-LINE-075",
+      "customer_reference": "CS-075",
+      "digikey_sku": "WM1837-ND",
+      "ordered_mpn": "0430300007",
+      "quantity_ordered": 25,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.23560",
+      "extended_price_cad": "5.89",
+      "source_ids": [
+        "BOM-08",
+        "BOM-37",
+        "BOM-40"
+      ],
+      "use": "Sensor and board-to-board harnesses: Female crimp contact"
+    },
+    {
+      "order_line_number": 57,
+      "order_line_id": "ORDER-LINE-077",
+      "customer_reference": "CS-077",
+      "digikey_sku": "3720-8463-ND",
+      "ordered_mpn": "8463",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.50000",
+      "extended_price_cad": "1.00",
+      "source_ids": [
+        "ORDER-02"
+      ],
+      "use": "Enclosure and assembly stock: Black nylon1/2NPT gland locknut"
+    },
+    {
+      "order_line_number": 58,
+      "order_line_id": "ORDER-LINE-083",
+      "customer_reference": "CS-083",
+      "digikey_sku": "277-16905-ND",
+      "ordered_mpn": "3240707",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.08900",
+      "extended_price_cad": "0.89",
+      "source_ids": [
+        "ORDER-08"
+      ],
+      "use": "Enclosure and assembly stock: Glass-side external cable anchors"
+    },
+    {
+      "order_line_number": 59,
+      "order_line_id": "ORDER-LINE-091",
+      "customer_reference": "CS-091",
+      "digikey_sku": "952-2015-ND",
+      "ordered_mpn": "R30-6700794",
+      "quantity_ordered": 5,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.94400",
+      "extended_price_cad": "4.72",
+      "source_ids": [
+        "ORDER-16"
+      ],
+      "use": "Enclosure and assembly stock: Lower PCB supports"
+    },
+    {
+      "order_line_number": 60,
+      "order_line_id": "ORDER-LINE-092",
+      "customer_reference": "CS-092",
+      "digikey_sku": "952-1526-ND",
+      "ordered_mpn": "R30-6700394",
+      "quantity_ordered": 5,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.47800",
+      "extended_price_cad": "2.39",
+      "source_ids": [
+        "ORDER-17"
+      ],
+      "use": "Enclosure and assembly stock: Upper PCB spacers"
+    },
+    {
+      "order_line_number": 61,
+      "order_line_id": "ORDER-LINE-015",
+      "customer_reference": "CS-015",
+      "digikey_sku": "1276-3103-1-ND",
+      "ordered_mpn": "CL31B106KLHNNNE",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.74600",
+      "extended_price_cad": "7.46",
+      "source_ids": [
+        "BOM-66"
+      ],
+      "use": "controller: C44; sensor: C1 C2"
+    },
+    {
+      "order_line_number": 62,
+      "order_line_id": "ORDER-LINE-026",
+      "customer_reference": "CS-026",
+      "digikey_sku": "541-330HCT-ND",
+      "ordered_mpn": "CRCW0603330RFKEA",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.05000",
+      "extended_price_cad": "0.50",
+      "source_ids": [
+        "BOM-91"
+      ],
+      "use": "controller: R55"
+    },
+    {
+      "order_line_number": 63,
+      "order_line_id": "ORDER-LINE-034",
+      "customer_reference": "CS-034",
+      "digikey_sku": "445-180363-1-ND",
+      "ordered_mpn": "CGA6P3X7R1E226M250AB",
+      "quantity_ordered": 10,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "1.77800",
+      "extended_price_cad": "17.78",
+      "source_ids": [
+        "BOM-63"
+      ],
+      "use": "controller: C1 C2 C3 C4 C5 C47; mains: C2 C3 C4 C6"
+    },
+    {
+      "order_line_number": 64,
+      "order_line_id": "ORDER-LINE-050",
+      "customer_reference": "CS-050",
+      "digikey_sku": "516-1310-ND",
+      "ordered_mpn": "HLMP-1790",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.95000",
+      "extended_price_cad": "1.90",
+      "source_ids": [
+        "BOM-19"
+      ],
+      "use": "controller: D4"
+    },
+    {
+      "order_line_number": 65,
+      "order_line_id": "ORDER-LINE-095",
+      "customer_reference": "CS-095",
+      "digikey_sku": "RPC7082-ND",
+      "ordered_mpn": "04M030050HN",
+      "quantity_ordered": 20,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.12800",
+      "extended_price_cad": "2.56",
+      "source_ids": [
+        "ORDER-21"
+      ],
+      "use": "Enclosure and assembly stock: Corner-stop and upper-support nuts"
+    },
+    {
+      "order_line_number": 66,
+      "order_line_id": "ORDER-LINE-096",
+      "customer_reference": "CS-096",
+      "digikey_sku": "RPC1552-ND",
+      "ordered_mpn": "MFW030A",
+      "quantity_ordered": 50,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.09400",
+      "extended_price_cad": "4.70",
+      "source_ids": [
+        "ORDER-22"
+      ],
+      "use": "Enclosure and assembly stock: PCB/corner-stop washers"
+    },
+    {
+      "order_line_number": 67,
+      "order_line_id": "ORDER-LINE-086",
+      "customer_reference": "CS-086",
+      "digikey_sku": "RPC6312-ND",
+      "ordered_mpn": "04M040070HN",
+      "quantity_ordered": 50,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.16020",
+      "extended_price_cad": "8.01",
+      "source_ids": [
+        "ORDER-11"
+      ],
+      "use": "Enclosure and assembly stock: Frame/base elevation locking nuts"
+    },
+    {
+      "order_line_number": 68,
+      "order_line_id": "ORDER-LINE-087",
+      "customer_reference": "CS-087",
+      "digikey_sku": "RPC10430-ND",
+      "ordered_mpn": "16M04090080",
+      "quantity_ordered": 50,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.09940",
+      "extended_price_cad": "4.97",
+      "source_ids": [
+        "ORDER-12"
+      ],
+      "use": "Enclosure and assembly stock: Frame/base washers"
+    },
+    {
+      "order_line_number": 69,
+      "order_line_id": "ORDER-LINE-093",
+      "customer_reference": "CS-093",
+      "digikey_sku": "RPC7004-ND",
+      "ordered_mpn": "50M030050P016",
+      "quantity_ordered": 6,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.18800",
+      "extended_price_cad": "1.13",
+      "source_ids": [
+        "ORDER-18"
+      ],
+      "use": "Enclosure and assembly stock: Lower PCB through-bolts"
+    },
+    {
+      "order_line_number": 70,
+      "order_line_id": "ORDER-LINE-094",
+      "customer_reference": "CS-094",
+      "digikey_sku": "145-50M030050H012-ND",
+      "ordered_mpn": "50M030050H012",
+      "quantity_ordered": 16,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.17000",
+      "extended_price_cad": "2.72",
+      "source_ids": [
+        "ORDER-20"
+      ],
+      "use": "Enclosure and assembly stock: Corner stop and upper rail through-fasteners"
+    },
+    {
+      "order_line_number": 71,
+      "order_line_id": "ORDER-LINE-102",
+      "customer_reference": "CS-102",
+      "digikey_sku": "RPC7018-ND",
+      "ordered_mpn": "50M040070D030",
+      "quantity_ordered": 5,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "0.20600",
+      "extended_price_cad": "1.03",
+      "source_ids": [
+        "ORDER-28"
+      ],
+      "use": "Enclosure and assembly stock: PE bracket base bolts"
+    },
+    {
+      "order_line_number": 72,
+      "order_line_id": "ORDER-LINE-059",
+      "customer_reference": "CS-059",
+      "digikey_sku": "486-3-125-661-ND",
+      "ordered_mpn": "3-125-661",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "status": "On the way",
+      "unit_price_cad": "3.25000",
+      "extended_price_cad": "3.25",
+      "source_ids": [
+        "BOM-34"
+      ],
+      "use": "Enclosure: IEC rear terminal cover"
+    }
+  ]
+}

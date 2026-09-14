@@ -1,7 +1,11 @@
 # DigiKey Canada review cart
 
+This is the historical proposed cart. The owner subsequently purchased
+[order 101602605](../purchases/101602605/README.md) with changed quantities and
+two omitted lines. Use [current inventory](../inventory.csv) for purchase status.
+
 [Open the prepared cart](https://www.digikey.ca/short/zt741mwt).
-No order has been placed. The link creates a copy with the same parts, quantities
+At cart preparation, no order had been placed. The link creates a copy with the same parts, quantities
 and customer references; later changes to one copy do not update other copies.
 
 Verified on 2026-09-14 in the live Canadian cart: **74 lines, CAD $586.25** before

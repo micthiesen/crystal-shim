@@ -142,19 +142,20 @@ an intact separator without changing PCB holes or elevations.
 
 ## Next
 
-The [DigiKey Canada review cart](../bom/digikey-cart-2026-09-14/README.md)
-contains 74 live-stocked lines at CAD $586.25 before tax/shipping, for one
-three-board set plus selected inexpensive spares. Six PCB part types and the
-listed remaining assembly supplies need separate sourcing. Compatible purchase
-substitutions are documented; native boards and fabrication outputs are unchanged.
-Nothing has been ordered.
+[DigiKey order 101602605](../bom/purchases/101602605/README.md) has 72 lines
+on the way, recorded from the owner's actual CSV. USB connectors, six-pin
+housings and cable-tie bases were increased to 10 each. The enclosure and existing
+mains input cord are in stock and have no shipment tracking. The current
+[inventory ledger](../bom/inventory.csv) supersedes purchase statuses in dated
+cart/fabrication exports. Six PCB part types and the listed remaining assembly
+supplies still need sourcing. Native boards and fabrication outputs are unchanged.
 
 Open the [interactive order guide](https://mcp.syas.ca/boris/artifacts/art_ex30qrfnee6mu1033yz),
 or use the [order settings](design/manufacturing-output.md) and
 [purchase list](../bom/order-2026-09-14/README.md) to order bare boards, stencils
 and parts. Check the supplier upload preview against the retained CAM before paying.
 PCB assembly service is No; no custom JLCPCB communication or process is required.
-No purchase was made, hardware flashed or mains energized.
+No hardware has been flashed or mains energized by this work.
 
 Physical calibration, adhesive response, temperatures, pump startup, EMI, USB,
 RF and HomeKit behavior remain commissioning stages. All physical test rows remain

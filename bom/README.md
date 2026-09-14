@@ -1,5 +1,11 @@
 # Bill of materials
 
+[inventory.csv](inventory.csv) is the current purchase and stock ledger for all
+103 consolidated procurement lines. DigiKey order
+[101602605](purchases/101602605/README.md) has 72 lines on the way, reconciled to
+the owner's actual order CSV. The enclosure and existing mains input cord are
+in stock. The other 29 lines have no new purchase or stock credit.
+
 [bom.csv](bom.csv) tracks one current three-board assembly independently of
 purchase status. Current source contains **113 controller components** (99 purchased
 parts and 14 copper test pads), **22 mains parts**, and **16 sensor components**
@@ -12,7 +18,8 @@ Rows marked **Not populated** have quantity zero. Their stable IDs and old
 selection notes remain for history; do not order them. Shared current MPNs are
 consolidated into one active group, so former duplicate rows must not be added
 again. Design selection does not establish native-board parity, fabrication
-readiness, availability or a purchase. No parts have been ordered by this work.
+readiness, availability or a purchase. Purchase status and order references now
+reflect the actual order above; dated fabrication and cart exports remain historical snapshots.
 
 The present assembly includes the IRM-45-12, mains-board 5 V buck, fused 12 V
 feed, three controller pump drivers, second sensor port and two input pads.
