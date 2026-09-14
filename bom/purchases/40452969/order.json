@@ -1,0 +1,102 @@
+{
+  "supplier": "Mouser Canada",
+  "web_order_number": "40452969",
+  "order_date": "2026-09-14",
+  "supplier_order_status": "Order Entered",
+  "currency": "CAD",
+  "source_filename": "Order_40452969.pdf",
+  "source_sha256": "d31a31c074e44e7b93e7765abed0492bb3efa36b73284da33e24392027d143d9",
+  "source_handling": "Original retained in owner Downloads; address, phone and payment details omitted from repository.",
+  "merchandise_total_cad": "34.52",
+  "shipping_total_cad": "20.00",
+  "estimated_gst_as_labeled_cad": "6.54",
+  "order_total_cad": "61.06",
+  "shipping_method": "UPS Worldwide Express Saver",
+  "receipt_note": "Receipt prints all line extended totals as0.00; calculated quantity-times-unit-price totals reconcile exactly to printed merchandise total. Tax label preserved as printed. Order entered is not confirmation of dispatch or receipt.",
+  "lines": [
+    {
+      "line_number": 1,
+      "mpn": "AP63203WU-7",
+      "mouser_sku": "621-AP63203WU-7",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "unit_price_cad": "1.28",
+      "calculated_extended_cad": "2.56",
+      "receipt_extended_cad": "0.00",
+      "supplier_availability": "2 Backordered",
+      "inventory_line_ids": "ORDER-LINE-009"
+    },
+    {
+      "line_number": 2,
+      "mpn": "AP63205WU-7",
+      "mouser_sku": "621-AP63205WU-7",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "unit_price_cad": "1.31",
+      "calculated_extended_cad": "2.62",
+      "receipt_extended_cad": "0.00",
+      "supplier_availability": "2 Ships Now",
+      "inventory_line_ids": "ORDER-LINE-010"
+    },
+    {
+      "line_number": 3,
+      "mpn": "G5RL-1A-TV8 DC5",
+      "mouser_sku": "653-G5RL-1A-TV8DC5",
+      "quantity_ordered": 1,
+      "quantity_received": 0,
+      "unit_price_cad": "7.03",
+      "calculated_extended_cad": "7.03",
+      "receipt_extended_cad": "0.00",
+      "supplier_availability": "1 Ships Now",
+      "inventory_line_ids": "ORDER-LINE-033"
+    },
+    {
+      "line_number": 4,
+      "mpn": "TMOV14RP175E",
+      "mouser_sku": "576-TMOV14RP175E",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "unit_price_cad": "2.81",
+      "calculated_extended_cad": "5.62",
+      "receipt_extended_cad": "0.00",
+      "supplier_availability": "2 Ships Now",
+      "inventory_line_ids": "ORDER-LINE-044"
+    },
+    {
+      "line_number": 5,
+      "mpn": "TPS2553DBVR",
+      "mouser_sku": "595-TPS2553DBVR",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "unit_price_cad": "1.58",
+      "calculated_extended_cad": "3.16",
+      "receipt_extended_cad": "0.00",
+      "supplier_availability": "2 Ships Now",
+      "inventory_line_ids": "ORDER-LINE-045"
+    },
+    {
+      "line_number": 6,
+      "mpn": "USBLC6-2SC6",
+      "mouser_sku": "511-USBLC6-2SC6",
+      "quantity_ordered": 2,
+      "quantity_received": 0,
+      "unit_price_cad": "0.706",
+      "calculated_extended_cad": "1.41",
+      "receipt_extended_cad": "0.00",
+      "supplier_availability": "2 Ships Now",
+      "inventory_line_ids": "ORDER-LINE-049"
+    },
+    {
+      "line_number": 7,
+      "mpn": "M0599-4-N",
+      "mouser_sku": "761-M0599-4-N",
+      "quantity_ordered": 6,
+      "quantity_received": 0,
+      "unit_price_cad": "2.02",
+      "calculated_extended_cad": "12.12",
+      "receipt_extended_cad": "0.00",
+      "supplier_availability": "6 Ships in 20 Days",
+      "inventory_line_ids": "ORDER-LINE-090;ORDER-LINE-103"
+    }
+  ]
+}

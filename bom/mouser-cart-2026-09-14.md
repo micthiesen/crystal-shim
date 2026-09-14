@@ -1,5 +1,8 @@
 # Final component cart, Mouser Canada
 
+Historical cart proposal. Purchased as [order 40452969](purchases/40452969/README.md)
+with increased quantities; that receipt supersedes quantities and totals below.
+
 Prepared in the owner’s logged-in account on 2026-09-14 and verified after reload.
 No checkout or purchase performed. Inventory remains Not ordered until confirmed.
 One of each covers the six outstanding inventory lines for one of each board.

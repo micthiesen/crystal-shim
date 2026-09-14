@@ -25,12 +25,12 @@ number is not recorded.
 
 - [Ordered items](ordered-items.csv): actual quantities, SKUs and board/use mapping.
 - [Order record](order.json): source hash and reconciliation to the proposed cart.
-- [Current inventory](../../inventory.csv): all 103 procurement lines. Subsequent
-  owner stock confirmations and the separately ordered AliExpress sensor cable
-  bring the totals to 73 on the way, 24 in stock and six not ordered. The original
-  supplier order above remains unchanged.
+- [Current inventory](../../inventory.csv): all 103 procurement lines are now
+  ordered or in stock following owner confirmations, the AliExpress cable order
+  and [Mouser order 40452969](../40452969/README.md). This DigiKey receipt remains
+  unchanged.
 
-The six previously unavailable PCB part types remain not ordered. Procurement
+Procurement
 substitutions retain the compatibility evidence from the
 [cart review](../../digikey-cart-2026-09-14/README.md). No design or fabrication
 files were modified when recording this purchase.

@@ -153,9 +153,10 @@ in stock. The service supply's model and ratings are not recorded, so electrical
 suitability remains to be verified. The owner confirmed the twisted sensor cable
 ordered from AliExpress; its actual
 model, gauge, pair count, length and order number are not recorded. Totals are
-73 lines on the way, 24 in stock and six not ordered, all PCB components. The current
-[inventory ledger](../bom/inventory.csv) supersedes purchase statuses in dated
-cart/fabrication exports.
+79 lines with status On the way and 24 In stock, with zero not ordered.
+Two in-stock spacer allocations also have additional quantities ordered.
+The [inventory ledger](../bom/inventory.csv) and supplier purchase receipts
+supersede quantities and statuses in historical cart/fabrication exports.
 
 The owner authorized the bulk MOV substitution to `TMOV14RP175E`. RV1 pad2 now
 uses a 4.5 × 1.3 mm plated slot at local (7.9, 0), with its right edge extended
@@ -166,13 +167,14 @@ to review the final traces before ordering. Use the replacement mains ZIP under
 `pcb/mains/fabrication/2026-09-14-mov-bulk/`; the earlier mains ZIP is superseded.
 Controller and sensor outputs remain unchanged. The [MOV assembly contract](design/mov-capture.md)
 covers lead capture with standard JLCPCB tolerances; physical seating and complete
-body-envelope inspection remain assembly checks. The six components remain
-not ordered. The [Mouser cart](../bom/mouser-cart-2026-09-14.md) now contains one
-of each plus six M0599-4-N nylon spacer blanks requested by the owner:
-CA$26.84 merchandise plus displayed CA$20 shipping, before tax. The spacers
-show shipment in 20 days, four for 3.2 mm feet and two for 8.2 mm sleeves. Five
-ship now; AP63203WU-7 is backordered with stock expected September 18, 2026.
-Cart persistence was verified after reload. Owner checkout remains; no purchase made.
+body-envelope inspection remain assembly checks. [Mouser order 40452969](../bom/purchases/40452969/README.md) is purchased:
+two each of AP63203WU-7, AP63205WU-7, TMOV14RP175E, TPS2553DBVR and USBLC6-2SC6;
+one relay and six M0599-4-N spacer blanks. Receipt total CAD61.06 comprises
+34.52 merchandise, 20.00 shipping and 6.54 labeled estimated GST. AP63203WU-7
+is backordered; spacers show shipment in 20 days. No delivery is recorded.
+All component/material purchases are covered. The only remaining procurement
+step is the owner's PCB fabrication order, with the selected stencils if included.
+
 
 Open the [interactive order guide](https://mcp.syas.ca/boris/artifacts/art_ex30qrfnee6mu1033yz),
 or use the [order settings](design/manufacturing-output.md) and
