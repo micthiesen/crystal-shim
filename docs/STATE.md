@@ -9,6 +9,8 @@ Last updated: 2026-09-14
   work, the three harnesses, mains/PE wiring and final board combination. Its
   ImageGen illustrations, exact native placement maps and reproducible source
   are tracked. Every page was visually reviewed; no native board was changed.
+  One duplex Letter copy was printed through Executor; printer job 230 reports
+  completed successfully. See the [print receipt](assembly/print-receipt.json).
 - **Purchasing complete; waiting for hardware delivery**, as requested by the owner.
   [JLCPCB W2026091502305469](../bom/purchases/W2026091502305469/README.md)
   covers five each of controller, mains and sensor. Actual colours: white/black

@@ -90,5 +90,9 @@ sh pcb/tools/kicad_python.sh docs/assembly/source/extract_native.py
 Do not silently recapture geometry if the ordered board revision changes. Reconcile
 parts, orientation cues and the booklet's content with that revision first.
 
-Printing status and job receipt are recorded separately after Executor submits
-the reviewed PDF to the configured Brother printer.
+Printed through Executor on 2026-09-14: one Letter, duplex long-edge copy.
+The Brother reported job **230 completed successfully**, followed by an empty
+queue. Executor lost its completion response, so the job was verified with a
+read-only IPP completed-job query; it was not submitted twice. See the
+[print receipt](print-receipt.json). The physical paper has not been visually
+inspected by the agent.

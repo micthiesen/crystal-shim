@@ -1,0 +1,31 @@
+{
+  "date_local": "2026-09-14",
+  "timezone": "America/Vancouver",
+  "document": "crystal-shim-assembly-bench-guide.pdf",
+  "document_commit": "cccb60ca749b16b9e1f528f9fb5585a666324b50",
+  "pdf_sha256": "a1e7481c6eb2aaecf3baf49c641d44a004a46454ccc209b1adda9e99321a99a4",
+  "public_download_verified_byte_identical": true,
+  "page_count": 17,
+  "submitted_via": "Executor omni.org.main.print_document",
+  "printer_model": "Brother HL-L2370DW",
+  "job_name": "Crystal Shim assembly bench guide - Rev 1",
+  "requested_copies": 1,
+  "requested_paper": "letter",
+  "requested_sides": "two-sided-long-edge",
+  "expected_sheets": 9,
+  "executor_response": "Internal tool error [1f92ae9b] after submission; no duplicate submission was made.",
+  "completion_verification": {
+    "method": "Read-only direct IPP Get-Jobs, which-jobs=completed",
+    "job_id": 230,
+    "job_name_matched": true,
+    "job_state": "completed",
+    "job_state_reasons": "job-completed-successfully",
+    "sheet_counter_reported": false,
+    "physical_pages_visually_inspected": false
+  },
+  "final_executor_printer_status": {
+    "state": "idle",
+    "queued_job_count": 0,
+    "ready": true
+  }
+}
