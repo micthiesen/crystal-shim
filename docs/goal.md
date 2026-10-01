@@ -4,9 +4,10 @@ Complete Crystal Shim as a one-shot final-use three-board controller, carrying t
 owner's requirements through implementation, independent adversarial review,
 verification, manufacturing delivery and final-unit commissioning support.
 The design, routing, fabrication-delivery and purchasing milestone is complete.
-All components/materials are ordered or in stock, and the owner placed JLCPCB
-order W2026091502305469 for five of each final board. The project is waiting for
-hardware delivery at the owner's request. Assembly and physical commissioning
+Michael confirmed DigiKey 101602605, reviewed AliExpress cable and JLCPCB
+W2026091502305469 boards/stencils received on 2026-09-30 America/Vancouver.
+Mouser 40452969 remains not received: 11 electronics await release following
+the sent request to remove all six spacers, pending vendor confirmation. Assembly and physical commissioning
 remain future work; purchase confirmation does not establish operating acceptance.
 See [STATE](STATE.md) for the order records and current handoff.
 

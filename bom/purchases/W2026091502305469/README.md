@@ -1,8 +1,8 @@
 # JLCPCB order W2026091502305469
 
-**Ordered by the owner. Waiting for delivery.** Five of each board, 15 total.
-Exact reported selections are in [order.json](order.json). No receipt/price or
-shipment confirmation was supplied.
+**Boards and stencils received.** Michael confirmed receipt in the procurement
+reconciliation request on **2026-09-30 America/Vancouver**. Five of each board, 15 total.
+Exact reported selections are in [order.json](order.json). Price and shipment tracking were not supplied; current delivery is owner-confirmed.
 
 | Board | Layers / dimensions | Mask / silk | Via option | Covering |
 | --- | --- | --- | --- | --- |
@@ -33,8 +33,8 @@ independently verified. Controller and sensor released files remain under
 
 The owner subsequently confirmed one **top stencil per board** and supplied the
 product details below. The original PCB-only confirmation did not state stencil
-inclusion. No separate stencil order number, receipt/price or shipment confirmation
-was supplied.
+inclusion. No separate stencil order number, price or shipment tracking was supplied;
+current stencil receipt is owner-confirmed.
 
 | Board / uploaded suffix | Custom size | Listed Dimension | Quantity | Listed weight |
 | --- | --- | --- | --- | --- |
@@ -52,6 +52,5 @@ process type. Exact filenames and selections are in [order.json](order.json).
 use a **0.10 mm design-review basis**; this is not a confirmed supplied thickness.
 Check the received stencil specification before treating that basis as fulfilled.
 
-The owner considers purchasing complete and requests waiting for the hardware.
-No received quantities, physical tests, flashing or mains operation are recorded
-by these purchase confirmations.
+The owner confirms receipt of the ordered boards and stencils. No new physical
+tests, flashing, mains operation or measured stencil thickness are claimed.

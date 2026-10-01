@@ -68,8 +68,13 @@ unknown. The printed guide's **0.10 mm** instruction records the design-review
 basis, not the confirmed order selection. Check the received stencil specification.
 Actual sensor-cable specifications and internal cut lengths remain unrecorded.
 The guide preserves the sensor's 203.2 mm termination-to-crimp
-limit without inventing cable colours or housing-face numbering. Parts marked
-On the way are not claimed received. The service lead is outside the installed
+limit without inventing cable colours or housing-face numbering. Michael confirmed DigiKey parts, JLCPCB boards/stencils and the reviewed
+AliExpress cable received on 2026-09-30 America/Vancouver in the procurement
+reconciliation request. Mouser electronics remain not received pending release.
+Receipt does not establish assembly, cable specifications or commissioning.
+Stillair's completed Hall harness is separate from this external sensor cable.
+The live parts source now reflects DigiKey stock receipt; printed PDF and its
+original build/review receipts remain historical artifacts and were not regenerated. The service lead is outside the installed
 three-harness build and remains covered in [service input](../design/service-input.md).
 
 ## Rebuild

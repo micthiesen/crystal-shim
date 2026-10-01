@@ -1,14 +1,14 @@
 {
   "supplier": "JLCPCB",
   "order_number": "W2026091502305469",
-  "status": "Ordered; owner confirmed",
+  "status": "Received; owner confirmed",
   "source": "Owner-pasted form settings, followed by purchase confirmation: mains changed red to blue; sensor/controller via option changed to0.2mm/(0.3/0.35mm); all other pasted settings unchanged.",
   "order_date": "Not separately supplied; do not infer from order number",
   "amount": "Not supplied",
   "stencil_purchase": "Owner subsequently confirmed one ordered top stencil per board and supplied the product details recorded in stencils. The earlier PCB-only confirmation did not state stencil inclusion.",
-  "stencil_source": "Owner-pasted ordered stencil product details supplied while requesting printed PCB stenciling fixtures. No separate stencil order number, receipt/price, dispatch or delivery confirmation was supplied.",
-  "stencil_thickness_verification": "The design release and printed assembly guide use a 0.10 mm review basis. The actual order selection is Select by JLCPCB; the supplied stencil thickness remains unknown and must be checked on receipt.",
-  "dispatch_or_delivery": "Not confirmed",
+  "stencil_source": "Owner-pasted ordered stencil product details supplied while requesting printed PCB stenciling fixtures. The initial stencil-details confirmation supplied no separate stencil order number, price or dispatch/delivery confirmation; current receipt is recorded separately below.",
+  "stencil_thickness_verification": "The design release and printed assembly guide use a 0.10 mm review basis. The actual order selection is Select by JLCPCB; the supplied stencil thickness remains unknown and must be checked on the received stencils.",
+  "dispatch_or_delivery": "Owner-confirmed received 2026-09-30 America/Vancouver; boards and stencils",
   "boards": [
     {
       "base_material": "FR-4",
@@ -244,5 +244,11 @@
       "stencil_process_type": "Solder paste stencil",
       "weight_kg": 0.14
     }
-  ]
+  ],
+  "receipt_confirmation": {
+    "owner": "Michael",
+    "date": "2026-09-30",
+    "timezone": "America/Vancouver",
+    "source": "Owner confirmation in procurement reconciliation request, 2026-09-30 America/Vancouver."
+  }
 }

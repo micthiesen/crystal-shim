@@ -1,7 +1,15 @@
 # Mouser Canada order 40452969
 
-Purchase confirmed by the owner, 2026-09-14. The two-page Detailed Order Receipt
-reports **Order Entered**. No dispatch or receipt is recorded.
+**Not received; remaining electronics await release.** Michael's procurement
+reconciliation request on **2026-09-30 America/Vancouver** reports 17 ordered
+pieces: 11 in-stock electronics held by six M0599-4-N spacers. Sales order
+**282002229**. Removal of **all six spacers** was requested, not split shipment.
+The approved email was **sent 2026-10-01 01:41 UTC (September 30 Vancouver)**
+to canadasales@mouser.com. Vendor confirmation is pending; removal is not complete.
+
+The original 2026-09-14 receipt below reports **Order Entered** and historical
+availability. It is preserved as purchase evidence, superseded for current status
+by the owner report; no dispatch or receipt is claimed.
 
 | Part | Ordered | Unit CAD | Calculated line CAD | Receipt availability |
 | --- | ---: | ---: | ---: | --- |
@@ -27,8 +35,8 @@ The [order record](order.json) retains exact amounts, source SHA-256 and invento
 mapping. Original `Order_40452969.pdf` remains in the owner’s Downloads; personal
 address, phone and payment information are excluded from repository records.
 
-All 103 component/material procurement lines are now ordered or in stock.
-79 lines have status On the way and 24 In stock; two of those in-stock lines also
-have newly ordered spacer quantities. On the way includes backordered items.
-Only the PCB fabrication order remains for the owner, including the selected
-stencils if ordered with the boards. Physical assembly and commissioning remain.
+Current inventory records received DigiKey parts and AliExpress cable, while
+six electronics allocations from this order remain not received. Previously
+owner-held spacer allocations remain stock; ordered spacer removal is pending.
+JLCPCB boards and stencils are received. Assembly and commissioning evidence
+remain separate from purchase and receipt confirmation.

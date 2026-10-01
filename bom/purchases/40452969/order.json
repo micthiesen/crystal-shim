@@ -98,5 +98,19 @@
       "supplier_availability": "6 Ships in 20 Days",
       "inventory_line_ids": "ORDER-LINE-090;ORDER-LINE-103"
     }
-  ]
+  ],
+  "current_status": {
+    "sales_order_number": "282002229",
+    "owner": "Michael",
+    "source": "Owner confirmation in procurement reconciliation request, 2026-09-30 America/Vancouver.",
+    "status": "Not received; 11 in-stock electronics awaiting release",
+    "ordered_pieces": 17,
+    "spacer_removal_requested": 6,
+    "mpn": "M0599-4-N",
+    "request": "Remove all six spacers; not split shipment",
+    "email_sent_utc": "2026-10-01T01:41:00Z",
+    "email_recipient": "canadasales@mouser.com",
+    "vendor_confirmation": "Pending",
+    "historical_availability_note": "supplier_availability fields retain original receipt snapshot; owner reports all electronics in stock at vendor on 2026-09-30."
+  }
 }

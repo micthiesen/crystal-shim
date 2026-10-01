@@ -1,9 +1,10 @@
 # DigiKey Canada order 101602605
 
-**72 order lines are on the way.** Purchase confirmed by the owner on
-2026-09-14. Quantities and part numbers come from the attached
-[supplier CSV](supplier-items.csv), preserved unchanged. No items from this order
-have been recorded as received. The CSV's “Immediate” field describes supplier
+**All 72 order lines received.** Michael confirmed receipt in the procurement
+reconciliation request on **2026-09-30 America/Vancouver**, overriding earlier
+shipment statuses. Purchase was confirmed on 2026-09-14. Quantities and part numbers come from the attached
+[supplier CSV](supplier-items.csv), preserved unchanged. Received quantities in the current ledger match the recorded order quantities;
+BOM allocation quantities remain separate. The CSV's “Immediate” field describes supplier
 availability, not delivery status.
 
 The line-rounded merchandise subtotal is **CAD $336.35**, calculated from the
@@ -26,9 +27,10 @@ number is not recorded.
 - [Ordered items](ordered-items.csv): actual quantities, SKUs and board/use mapping.
 - [Order record](order.json): source hash and reconciliation to the proposed cart.
 - [Current inventory](../../inventory.csv): all 103 procurement lines are now
-  ordered or in stock following owner confirmations, the AliExpress cable order
-  and [Mouser order 40452969](../40452969/README.md). This DigiKey receipt remains
-  unchanged.
+  received or previously in stock except the pending Mouser electronics, following
+  the 2026-09-30 owner confirmation and reviewed AliExpress cable receipt
+  and pending [Mouser order 40452969](../40452969/README.md). The original
+  supplier CSV remains unchanged.
 
 Procurement
 substitutions retain the compatibility evidence from the

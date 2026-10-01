@@ -1,14 +1,20 @@
 # Bill of materials
 
 [inventory.csv](inventory.csv) is the current purchase and stock ledger for all
-103 consolidated procurement lines. DigiKey order
-[101602605](purchases/101602605/README.md) has 72 lines on the way, reconciled to
-the owner's actual order CSV. Twenty-four lines are in stock, including all
-remaining enclosure, wiring, insulating sheet and earth-junction supplies except
-the twisted sensor cable. Stock quantities allocate the current build, not the
-owner's total holdings. Seven lines remain not ordered: six PCB components and
-the sensor cable. The existing service supply is credited as stock with model
-and ratings unspecified; its electrical suitability has not been verified.
+103 consolidated procurement lines. Michael's owner confirmation in the procurement
+reconciliation request on **2026-09-30 America/Vancouver** supersedes earlier
+shipment statuses. DigiKey [101602605](purchases/101602605/README.md), all 72
+order lines, and the reviewed AliExpress sensor cable are received. The cable's
+purchased quantity, model and specifications remain unknown; receipt does not
+confirm harness assembly. JLCPCB boards and stencils are also received.
+Six Mouser electronics allocations remain **On the way**, meaning not received
+and awaiting release, not dispatched. [Mouser 40452969](purchases/40452969/README.md)
+has 11 electronics held by six spacers; removal of all six spacers was requested
+by sent email, with vendor confirmation pending. The two spacer allocations
+retain previously declared owner-held stock independently of that order.
+Stock quantities from received orders reflect purchased quantities; required
+quantities remain distinct build allocations. Existing stock allocations do not
+claim the owner's total holdings. The service supply's suitability remains unverified.
 
 [bom.csv](bom.csv) tracks one current three-board assembly independently of
 purchase status. Current source contains **113 controller components** (99 purchased
