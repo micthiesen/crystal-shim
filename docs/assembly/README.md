@@ -70,10 +70,11 @@ Actual sensor-cable specifications and internal cut lengths remain unrecorded.
 The guide preserves the sensor's 203.2 mm termination-to-crimp
 limit without inventing cable colours or housing-face numbering. Michael confirmed DigiKey parts, JLCPCB boards/stencils and the reviewed
 AliExpress cable received on 2026-09-30 America/Vancouver in the procurement
-reconciliation request. Mouser electronics remain not received pending release.
-Receipt does not establish assembly, cable specifications or commissioning.
+reconciliation request. Michael reported the Mouser electronics received on
+2026-10-05 America/Vancouver; Mouser cancelled the spacer line, whose allocations
+use owner-held stock. Receipt does not establish assembly, cable specifications or commissioning.
 Stillair's completed Hall harness is separate from this external sensor cable.
-The live parts source now reflects DigiKey stock receipt; printed PDF and its
+The live parts source now reflects DigiKey and Mouser stock receipt; printed PDF and its
 original build/review receipts remain historical artifacts and were not regenerated. The service lead is outside the installed
 three-harness build and remains covered in [service input](../design/service-input.md).
 

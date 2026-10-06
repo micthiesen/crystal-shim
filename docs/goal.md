@@ -6,8 +6,9 @@ verification, manufacturing delivery and final-unit commissioning support.
 The design, routing, fabrication-delivery and purchasing milestone is complete.
 Michael confirmed DigiKey 101602605, reviewed AliExpress cable and JLCPCB
 W2026091502305469 boards/stencils received on 2026-09-30 America/Vancouver.
-Mouser 40452969 remains not received: 11 electronics await release following
-the sent request to remove all six spacers, pending vendor confirmation. Assembly and physical commissioning
+Mouser 40452969 shipped its 11 electronics after Mouser cancelled the six-spacer
+line, and Michael reported that order and the PCBs in hand on 2026-10-05
+America/Vancouver. All 103 procurement allocations are recorded In stock. Assembly and physical commissioning
 remain future work; purchase confirmation does not establish operating acceptance.
 See [STATE](STATE.md) for the order records and current handoff.
 

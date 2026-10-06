@@ -1,8 +1,10 @@
 # JLCPCB order W2026091502305469
 
 **Boards and stencils received.** Michael confirmed receipt in the procurement
-reconciliation request on **2026-09-30 America/Vancouver**. Five of each board, 15 total.
-Exact reported selections are in [order.json](order.json). Price and shipment tracking were not supplied; current delivery is owner-confirmed.
+reconciliation request on **2026-09-30 America/Vancouver**. Five of each board, 15 total,
+were ordered. Exact reported selections are in [order.json](order.json). Price and shipment tracking were not supplied; current delivery is owner-confirmed.
+On **2026-10-05 America/Vancouver** Michael reported having the PCBs in hand.
+The received board count and any bare-board inspection are not recorded.
 
 | Board | Layers / dimensions | Mask / silk | Via option | Covering |
 | --- | --- | --- | --- | --- |

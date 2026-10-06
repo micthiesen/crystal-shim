@@ -19,72 +19,84 @@
       "mpn": "AP63203WU-7",
       "mouser_sku": "621-AP63203WU-7",
       "quantity_ordered": 2,
-      "quantity_received": 0,
+      "quantity_received": 2,
       "unit_price_cad": "1.28",
       "calculated_extended_cad": "2.56",
       "receipt_extended_cad": "0.00",
       "supplier_availability": "2 Backordered",
-      "inventory_line_ids": "ORDER-LINE-009"
+      "inventory_line_ids": "ORDER-LINE-009",
+      "line_status": "Shipped 2026-10-02; received",
+      "quantity_shipped": 2
     },
     {
       "line_number": 2,
       "mpn": "AP63205WU-7",
       "mouser_sku": "621-AP63205WU-7",
       "quantity_ordered": 2,
-      "quantity_received": 0,
+      "quantity_received": 2,
       "unit_price_cad": "1.31",
       "calculated_extended_cad": "2.62",
       "receipt_extended_cad": "0.00",
       "supplier_availability": "2 Ships Now",
-      "inventory_line_ids": "ORDER-LINE-010"
+      "inventory_line_ids": "ORDER-LINE-010",
+      "line_status": "Shipped 2026-10-02; received",
+      "quantity_shipped": 2
     },
     {
       "line_number": 3,
       "mpn": "G5RL-1A-TV8 DC5",
       "mouser_sku": "653-G5RL-1A-TV8DC5",
       "quantity_ordered": 1,
-      "quantity_received": 0,
+      "quantity_received": 1,
       "unit_price_cad": "7.03",
       "calculated_extended_cad": "7.03",
       "receipt_extended_cad": "0.00",
       "supplier_availability": "1 Ships Now",
-      "inventory_line_ids": "ORDER-LINE-033"
+      "inventory_line_ids": "ORDER-LINE-033",
+      "line_status": "Shipped 2026-10-02; received",
+      "quantity_shipped": 1
     },
     {
       "line_number": 4,
       "mpn": "TMOV14RP175E",
       "mouser_sku": "576-TMOV14RP175E",
       "quantity_ordered": 2,
-      "quantity_received": 0,
+      "quantity_received": 2,
       "unit_price_cad": "2.81",
       "calculated_extended_cad": "5.62",
       "receipt_extended_cad": "0.00",
       "supplier_availability": "2 Ships Now",
-      "inventory_line_ids": "ORDER-LINE-044"
+      "inventory_line_ids": "ORDER-LINE-044",
+      "line_status": "Shipped 2026-10-02; received",
+      "quantity_shipped": 2
     },
     {
       "line_number": 5,
       "mpn": "TPS2553DBVR",
       "mouser_sku": "595-TPS2553DBVR",
       "quantity_ordered": 2,
-      "quantity_received": 0,
+      "quantity_received": 2,
       "unit_price_cad": "1.58",
       "calculated_extended_cad": "3.16",
       "receipt_extended_cad": "0.00",
       "supplier_availability": "2 Ships Now",
-      "inventory_line_ids": "ORDER-LINE-045"
+      "inventory_line_ids": "ORDER-LINE-045",
+      "line_status": "Shipped 2026-10-02; received",
+      "quantity_shipped": 2
     },
     {
       "line_number": 6,
       "mpn": "USBLC6-2SC6",
       "mouser_sku": "511-USBLC6-2SC6",
       "quantity_ordered": 2,
-      "quantity_received": 0,
+      "quantity_received": 2,
       "unit_price_cad": "0.706",
       "calculated_extended_cad": "1.41",
       "receipt_extended_cad": "0.00",
       "supplier_availability": "2 Ships Now",
-      "inventory_line_ids": "ORDER-LINE-049"
+      "inventory_line_ids": "ORDER-LINE-049",
+      "line_status": "Shipped 2026-10-02; received",
+      "quantity_shipped": 2
     },
     {
       "line_number": 7,
@@ -96,21 +108,38 @@
       "calculated_extended_cad": "12.12",
       "receipt_extended_cad": "0.00",
       "supplier_availability": "6 Ships in 20 Days",
-      "inventory_line_ids": "ORDER-LINE-090;ORDER-LINE-103"
+      "inventory_line_ids": "ORDER-LINE-090;ORDER-LINE-103",
+      "line_status": "Cancelled 2026-10-01 at owner request",
+      "quantity_shipped": 0
     }
   ],
   "current_status": {
     "sales_order_number": "282002229",
     "owner": "Michael",
-    "source": "Owner confirmation in procurement reconciliation request, 2026-09-30 America/Vancouver.",
-    "status": "Not received; 11 in-stock electronics awaiting release",
-    "ordered_pieces": 17,
-    "spacer_removal_requested": 6,
-    "mpn": "M0599-4-N",
-    "request": "Remove all six spacers; not split shipment",
-    "email_sent_utc": "2026-10-01T01:41:00Z",
-    "email_recipient": "canadasales@mouser.com",
-    "vendor_confirmation": "Pending",
+    "status": "Received; 11 electronics shipped, spacer line cancelled",
+    "source": "Owner report 'Got the mouser order', 2026-10-05 America/Vancouver; Mouser and UPS notification emails read 2026-10-05.",
+    "received_basis": "Owner receipt report plus quantities listed in the Mouser shipment notification. Package contents were not separately counted; this is not a physical stocktake.",
+    "spacer_line": {
+      "line_number": 7,
+      "mpn": "M0599-4-N",
+      "quantity_cancelled": 6,
+      "request": "Remove all six spacers; not split shipment",
+      "request_email_sent_utc": "2026-10-01T01:41:00Z",
+      "vendor_cancellation_reply_utc": "2026-10-01T14:37:58Z",
+      "vendor_reply": "Mouser customer service reported line 7, 761-M0599-4-N, cancelled as requested.",
+      "allocations": "ORDER-LINE-090 and ORDER-LINE-103 remain covered by previously owner-held spacer stock."
+    },
+    "order_update_confirmation_utc": "2026-10-01T14:34:59Z",
+    "revised_merchandise_total_cad": "22.40",
+    "revised_shipping_cad": "20.00",
+    "revised_gst_as_labeled_cad": "2.69",
+    "revised_calculated_total_cad": "45.09",
+    "revised_total_note": "Merchandise, shipping and GST are as printed in the update confirmation; the total is their calculated sum. The final card charge and any refund were not checked.",
+    "credit_hold_note": "Mouser's 2026-10-01 reply mentioned a credit hold; the order shipped 2026-10-02.",
+    "invoice_number": "92822100",
+    "ship_date": "2026-10-02",
+    "shipped_pieces": 11,
+    "carrier_delivery": "UPS reported delivery 2026-10-05 17:27 local time",
     "historical_availability_note": "supplier_availability fields retain original receipt snapshot; owner reports all electronics in stock at vendor on 2026-09-30."
   }
 }

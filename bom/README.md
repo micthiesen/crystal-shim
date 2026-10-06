@@ -6,12 +6,13 @@ reconciliation request on **2026-09-30 America/Vancouver** supersedes earlier
 shipment statuses. DigiKey [101602605](purchases/101602605/README.md), all 72
 order lines, and the reviewed AliExpress sensor cable are received. The cable's
 purchased quantity, model and specifications remain unknown; receipt does not
-confirm harness assembly. JLCPCB boards and stencils are also received.
-Six Mouser electronics allocations remain **On the way**, meaning not received
-and awaiting release, not dispatched. [Mouser 40452969](purchases/40452969/README.md)
-has 11 electronics held by six spacers; removal of all six spacers was requested
-by sent email, with vendor confirmation pending. The two spacer allocations
-retain previously declared owner-held stock independently of that order.
+confirm harness assembly. JLCPCB boards and stencils are also received; Michael
+reported the PCBs in hand on 2026-10-05 without a recorded count or inspection.
+[Mouser 40452969](purchases/40452969/README.md) shipped its 11 electronics on
+2026-10-02 after Mouser cancelled the six-spacer line, and Michael reported receipt
+on **2026-10-05 America/Vancouver**. All 103 allocations are now **In stock**.
+That total reconciles earlier records with reported receipts; it is not a new
+physical stocktake. The two spacer allocations are owner-held stock, not Mouser parts.
 Stock quantities from received orders reflect purchased quantities; required
 quantities remain distinct build allocations. Existing stock allocations do not
 claim the owner's total holdings. The service supply's suitability remains unverified.

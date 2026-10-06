@@ -27,9 +27,9 @@ number is not recorded.
 - [Ordered items](ordered-items.csv): actual quantities, SKUs and board/use mapping.
 - [Order record](order.json): source hash and reconciliation to the proposed cart.
 - [Current inventory](../../inventory.csv): all 103 procurement lines are now
-  received or previously in stock except the pending Mouser electronics, following
-  the 2026-09-30 owner confirmation and reviewed AliExpress cable receipt
-  and pending [Mouser order 40452969](../40452969/README.md). The original
+  received or previously in stock, following the 2026-09-30 owner confirmation,
+  reviewed AliExpress cable receipt and the 2026-10-05 receipt of
+  [Mouser order 40452969](../40452969/README.md). The original
   supplier CSV remains unchanged.
 
 Procurement
