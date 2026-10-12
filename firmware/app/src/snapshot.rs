@@ -40,6 +40,18 @@ pub fn publish_administration(readiness: Readiness) {
 pub fn administration() -> Readiness {
     critical_section::with(|cs| ADMINISTRATION.borrow(cs).get()).unwrap_or_default()
 }
+/// Monotonic time of the output owner's latest completed iteration.
+pub fn control_observed_at() -> Option<u64> {
+    critical_section::with(|cs| ADMINISTRATION.borrow(cs).get()).map(|r| r.observed_at_ms)
+}
+static STORAGE_IDLE: Mutex<Cell<bool>> = Mutex::new(Cell::new(false));
+/// No retained or configuration write is requested or awaiting its acknowledgement.
+pub fn publish_storage_idle(idle: bool) {
+    critical_section::with(|cs| STORAGE_IDLE.borrow(cs).set(idle));
+}
+pub fn storage_idle() -> bool {
+    critical_section::with(|cs| STORAGE_IDLE.borrow(cs).get())
+}
 #[derive(Clone, Copy)]
 pub struct BootConfiguration {
     pub configuration: Option<ValidatedDeviceConfig>,

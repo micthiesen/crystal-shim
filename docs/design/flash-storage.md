@@ -29,6 +29,8 @@ execute the flash-backed interrupt/task code. The wrapper never uses its 64 KiB
 block erase path. Whole ranges are checked before partial writes or erases.
 
 The control task still runs every 20 ms while the CPU can service interrupts.
+Issuing a ticket also wakes it, so the acknowledging iteration runs at once rather
+than at the next tick; each chunk still waits for its own complete iteration.
 TIMG1's system-reset timeout is now 1,500 ms. Each gated sector erase has a published
 C6 planning maximum of 500 ms, while a 256-byte program has a 5 ms planning maximum.
 The output is already commanded low throughout those masked intervals. A stalled
@@ -54,7 +56,9 @@ Stillair's pinned `SeqMapKvBlobStore`, with a fresh borrowed gated driver for ea
 operation. It deliberately has no raw-byte debug/trace output. The upstream
 `SeqMapKvBlobStore` trace path dumps values, including credentials; it must not be
 introduced when adding Matter logging. No second raw flash handle may bypass this
-owner.
+gate. The [OTA updater](ota.md) holds the only other `FlashStorage` handle, inside
+`OtaFlash`: the same per-chunk permits, programs and erases restricted to `otadata`
+and the spare app slot, and refusal before access anywhere else, including NVS.
 
 ## Region and records
 

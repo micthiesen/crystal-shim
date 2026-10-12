@@ -87,6 +87,11 @@ Preserve `esp-storage/critical-section`, relay-off acknowledgements and bounded
 flash chunks. Interrupt priority alone cannot protect flash-backed control code.
 Storage never feeds the watchdog or logs stored bytes. See
 [the flash contract](docs/design/flash-storage.md) before adding persistence.
+OTA updates use esp-lan-ota at its pinned revision through the gated `OtaFlash`,
+limited to `otadata` and the spare slot; see [OTA](docs/design/ota.md) and D-24.
+Keep `firmware/app/partitions.csv` NVS at 0x9000/0x6000. USB flashing goes only
+through `scripts/flash.sh`, which erases `otadata`, never NVS. Keep the trial
+image's health confirmation and stored formats readable by the previous release.
 
 Control owns the accepted UTC observation and publishes its original monotonic
 capture to both scheduling and TLS. Use bounded CASE reads from the configured
@@ -106,7 +111,8 @@ Biome, or Zod environment config because those do not fit this hardware scaffold
 Validation gate: `sh scripts/check.sh`. It runs host fmt/clippy/tests, embedded
 fmt/clippy/release build, PCB lint/format/typecheck and tooling tests, and repository
 document checks. The separate `firmware/partition-tests` workspace compiles the actual partition
-selection code against the pinned bootloader library's host backend.
+selection and OTA-region code against the pinned bootloader library's host backend
+and the shipped partition table.
 Verified-TLS policy tests run on Linux through `scripts/check-tls.sh`; on macOS the
 harness uses the default OrbStack Linux machine. That environment needs Rust,
 Clang, libclang and CMake. The embedded TLS build uses `scripts/with-esp-toolchain.sh`

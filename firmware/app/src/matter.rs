@@ -77,7 +77,13 @@ pub enum Status {
 }
 
 const NODE: Node<'static> = Node {
-    endpoints: &[radio::ROOT, crystal_shim_matter::profile::ENDPOINT],
+    endpoints: &[
+        radio::ROOT,
+        // esp-lan-ota's manufacturer cluster on the load endpoint; see D-24.
+        crystal_shim_matter::load_endpoint!(
+            esp_lan_ota::matter::OtaCluster::<'static, crate::ota_flash::OtaFlash>::CLUSTER
+        ),
+    ],
 };
 static PROVISION_BYTES: StaticCell<[u8; storage::SCRATCH_BYTES]> = StaticCell::new();
 static PROVISION: StaticCell<Provisioning<'static>> = StaticCell::new();
@@ -120,6 +126,7 @@ pub async fn run(
     access: &Cell<Access>,
     status: &Cell<Status>,
     identify_until: &Cell<Option<u64>>,
+    ota: Option<&'static crate::ota::Service>,
 ) {
     let mut store = match store {
         Ok(store) => store,
@@ -199,6 +206,15 @@ pub async fn run(
         status.set(Status::StartupFailed);
         return;
     }
+    // Persisted fabrics are loaded. Only the first boot after a USB flash opens the
+    // 15-minute window `esp-ota enroll` uses; physical USB access is the consent.
+    if let Some(ota) = ota {
+        if let Ok(Some(enrollment)) =
+            esp_lan_ota::matter::open_enrollment_window(&ota.boot_info(), stack.matter(), &crypto)
+        {
+            crate::ota::opened(enrollment);
+        }
+    }
     let on_off = OnOff::new(LocalControl, Dataver::new_rand(&mut random));
     let descriptor = desc::DescHandler::new(Dataver::new_rand(&mut random));
     let identify = identify::IdentifyHandler::new_with(
@@ -223,6 +239,13 @@ pub async fn run(
         .chain(
             EpClMatcher::new(endpoint, Some(groups::GroupsHandler::CLUSTER.id)),
             Async(groups.adapt()),
+        )
+        .chain(
+            EpClMatcher::new(endpoint, Some(esp_lan_ota::matter::CLUSTER_ID)),
+            Async(crate::ota::Cluster::new(
+                ota,
+                Dataver::new_rand(&mut random),
+            )),
         );
     let resources = radio::IP_STORAGE.init(embassy_net::StackResources::new());
     let tcp = radio::TCP_POOL_STORAGE.take();

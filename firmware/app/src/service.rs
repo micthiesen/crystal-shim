@@ -39,6 +39,7 @@ pub async fn run(
     access: &Cell<Access>,
     network: &Cell<crate::matter::Status>,
     identify_until: &Cell<Option<u64>>,
+    ota: Result<&'static crate::ota::Service, crate::ota::StartError>,
 ) {
     let receiver = CONSOLE.init(crystal_shim_core::runtime_ingress::Receiver::new());
     let transfer = PROVISION_TRANSFER.init(Transfer::new());
@@ -162,6 +163,14 @@ pub async fn run(
             led.toggle();
         }
 
+        if let Some(enrollment) = crate::ota::take_line() {
+            // `esp-ota enroll` reads this line from the console.
+            let mut line = heapless::String::<96>::new();
+            if writeln!(line, "{enrollment}").is_ok() {
+                let _ =
+                    with_timeout(Duration::from_millis(100), usb.write_all(line.as_bytes())).await;
+            }
+        }
         if reported_at.is_some_and(|at| now >= at && now - at < 1_000) {
             continue;
         }
@@ -206,6 +215,26 @@ pub async fn run(
         let _ = with_timeout(Duration::from_millis(100), usb.write_all(line.as_bytes())).await;
         line.clear();
         if writeln!(line, "PUSHOVER {:?}", crate::pushover::diagnostics()).is_ok() {
+            let _ = with_timeout(Duration::from_millis(100), usb.write_all(line.as_bytes())).await;
+        }
+        line.clear();
+        let formatted = match ota {
+            Ok(ota) => {
+                let status = ota.status();
+                writeln!(
+                    line,
+                    "OTA version={} booted={} image={:?} rollback={} upload={:?} staged={:?}",
+                    status.identity.version.as_str(),
+                    status.booted.name(),
+                    status.state,
+                    status.rollback.name(),
+                    status.upload,
+                    status.staged.map(|staged| staged.slot.name()),
+                )
+            }
+            Err(error) => writeln!(line, "OTA unavailable={error:?}"),
+        };
+        if formatted.is_ok() {
             let _ = with_timeout(Duration::from_millis(100), usb.write_all(line.as_bytes())).await;
         }
     }

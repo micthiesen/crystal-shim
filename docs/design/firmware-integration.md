@@ -211,6 +211,8 @@ fresh sensor/permit inputs arrive and the existing minimum-off interval permits 
 Defer ordinary persistence until off where possible. Boot scans happen before
 run eligibility; factory erase requires the same off condition. Neither network
 nor Matter persistence may bypass the gate or create a second raw flash handle.
+The [OTA updater](ota.md)'s second handle is wrapped in the same gate and limited to
+`otadata` and the spare app slot.
 
 A 4 KiB sector erase has a published C6 planning maximum of 500 ms, compared
 with 70 ms typical; 64 KiB block erase can take 3 s. A ROM write spanning a
@@ -431,7 +433,8 @@ bytes `.rwtext.wifi`, 29,844 bytes `.data`, 528 bytes `.data.wifi`, 220,704 byte
 region. It uses a 100 KiB heap for Wi-Fi, BLE, Matter, and x509, plus a 20 KiB Matter
 bump buffer; the Matter task is documented around 35 to 50 KiB of stack.
 
-The controller's 8 MiB ESP32-C6-WROOM-1-N8 gives comfortable flash margin relative to
+Crystal's OTA release image measured 2,174,736 bytes on 2026-10-12, 52.67% of its
+4,128,768-byte [OTA slot](ota.md). The controller's 8 MiB ESP32-C6-WROOM-1-N8 gives comfortable flash margin relative to
 that image, but it does not add internal SRAM. Crystal must reserve fixed buffers for
 FDC1004 acquisition, two HTTP connections, configuration parsing, eight notification
 events, TLS, and the priority task stacks. Before freezing dependencies, produce a

@@ -197,6 +197,7 @@ dependencies = [
  "embassy-futures",
  "embedded-storage",
  "embedded-storage-async",
+ "esp-lan-ota",
  "libc",
  "p256",
  "rs-matter",
@@ -561,6 +562,15 @@ checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
 dependencies = [
  "libc",
  "windows-sys",
+]
+
+[[package]]
+name = "esp-lan-ota"
+version = "0.1.0"
+source = "git+https://github.com/micthiesen/esp-lan-ota?rev=9b6df6712f2727ecdc7cce8045e39b347085340c#9b6df6712f2727ecdc7cce8045e39b347085340c"
+dependencies = [
+ "embedded-storage",
+ "sha2",
 ]
 
 [[package]]

@@ -1,10 +1,43 @@
 //! Thread-mode flash exclusion. No waits or ROM calls inside the shared-state lock.
-use core::{cell::Cell, hint::spin_loop};
+use core::{
+    cell::{Cell, RefCell},
+    future::poll_fn,
+    hint::spin_loop,
+    task::{Poll, Waker},
+};
 use critical_section::Mutex;
 use crystal_shim_core::flash_gate::{FlashGate, Ticket};
 use esp_hal::interrupt::RunLevel;
 
 static GATE: Mutex<Cell<FlashGate>> = Mutex::new(Cell::new(FlashGate::new()));
+static REQUESTED: Mutex<Cell<bool>> = Mutex::new(Cell::new(false));
+static CONTROL: Mutex<RefCell<Option<Waker>>> = Mutex::new(RefCell::new(None));
+
+/// Wake the output owner for the iteration that acknowledges a new ticket. Only
+/// the iteration count changes; acknowledgement still follows GPIO-low and feeding.
+fn wake_control() {
+    let waker = critical_section::with(|cs| {
+        REQUESTED.borrow(cs).set(true);
+        CONTROL.borrow_ref_mut(cs).take()
+    });
+    if let Some(waker) = waker {
+        waker.wake();
+    }
+}
+/// Completes once a ticket has been issued since the previous completion.
+pub async fn requested() {
+    poll_fn(|cx| {
+        critical_section::with(|cs| {
+            if REQUESTED.borrow(cs).replace(false) {
+                Poll::Ready(())
+            } else {
+                *CONTROL.borrow_ref_mut(cs) = Some(cx.waker().clone());
+                Poll::Pending
+            }
+        })
+    })
+    .await
+}
 
 fn update<R>(f: impl FnOnce(&mut FlashGate) -> R) -> R {
     critical_section::with(|cs| {
@@ -43,6 +76,7 @@ impl Permit {
         }
         let ticket = update(|gate| gate.request()).map_err(|_| Error::Busy)?;
         let permit = Self { ticket };
+        wake_control();
         permit.wait()?;
         Ok(permit)
     }
@@ -51,6 +85,7 @@ impl Permit {
             return Err(Error::WrongContext);
         }
         self.ticket = update(|gate| gate.checkpoint(self.ticket)).map_err(|_| Error::Exhausted)?;
+        wake_control();
         self.wait()
     }
     fn wait(&self) -> Result<(), Error> {

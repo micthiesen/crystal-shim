@@ -1,6 +1,6 @@
 # Current state
 
-Last updated: 2026-10-05
+Last updated: 2026-10-12
 
 ## Now
 
@@ -30,6 +30,12 @@ Last updated: 2026-10-05
   square PETG trays with flexible locating tabs, 1.8 mm pockets and separate
   nominal 0.2 mm shims. Use the measured PCB/printed pocket depth to select shims
   and verify a flush stencil seat. Physical print fit remains untested.
+- **OTA updates are integrated; hardware verification is pending.** The app pins
+  esp-lan-ota `9b6df67`, uses the new [OTA layout](../firmware/app/partitions.csv)
+  with NVS unchanged, and flashes only through `scripts/flash.sh`. The rollback
+  bootloader (ESP-IDF v5.5.5-832-g2553c5ad432) is vendored with its checksum.
+  Release image 2,174,736 bytes, 52.67% of a slot. Updater flash and resets use
+  the relay-off gate; see [OTA](design/ota.md) and CTL-13. Nothing has been flashed.
 - **Digital checks passed; physical work remains unmeasured.** The
   [pre-fab evidence](design/evidence/pre-fab-2026-09-14/README.md), MOV ECO and
   [booklet review](assembly/README.md#sources-and-review) retain validation.
@@ -54,6 +60,9 @@ Start interactive assembly with the [bench guide](assembly/README.md) and
 thickness, the sensor cable and the service supply against the limits above;
 print the [paste fixtures](../cad/stencil-fixtures/README.md) if desired.
 
+The first OTA USB flash (`scripts/flash.sh`) stays an authorized interactive
+step, followed by CTL-13.
+
 Firmware, power-up, testing and tank mounting stay in interactive sessions;
 record actual physical evidence in the [commissioning matrix](../testing/test-matrix.csv).
 Receipt confirmation adds no tests or commissioning results.
@@ -66,6 +75,7 @@ Receipt confirmation adds no tests or commissioning results.
 
 ## Learned Recently
 
+- [OTA](design/ota.md): flash-gate tickets now wake control, so each gated chunk costs one control iteration instead of up to a 20 ms tick; uploads hold the relay off through the HardwareOff fault path.
 - [Mouser order record](../bom/purchases/40452969/README.md): spacer line cancelled 2026-10-01; 11 electronics shipped 2026-10-02 and reported received 2026-10-05.
 - [Inventory](../bom/inventory.csv): 103/103 In stock by record reconciliation; spacer allocations returned to owner-held stock.
 - [Purchased-part mapping](assembly/source/parts.json): exact bag labels and orientations for all 135 placements.

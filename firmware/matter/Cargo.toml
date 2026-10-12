@@ -20,5 +20,7 @@ libc = "=0.2.189"
 
 [dev-dependencies]
 embedded-storage = "0.3"
+# Core OTA logic only (no Matter feature): drives the app's gated OTA flash client.
+esp-lan-ota = { git = "https://github.com/micthiesen/esp-lan-ota", rev = "9b6df6712f2727ecdc7cce8045e39b347085340c" }
 embedded-storage-async = "0.4"
 sequential-storage = "3"

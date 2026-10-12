@@ -1,0 +1,11 @@
+# Crystal Shim OTA layout for the 8 MiB ESP32-C6-WROOM-1-N8 (esp-lan-ota).
+# nvs and phy_init keep espflash's default offsets and sizes, so the Matter
+# fabrics and Crystal records in nvs are untouched by the move to OTA.
+# Two equal 64 KiB-aligned app slots; no factory app. Every USB flash targets
+# ota_0 and erases otadata (see scripts/flash.sh).
+# Name,   Type, SubType,  Offset,   Size
+nvs,      data, nvs,      0x9000,   0x6000,
+phy_init, data, phy,      0xf000,   0x1000,
+otadata,  data, ota,      0x10000,  0x2000,
+ota_0,    app,  ota_0,    0x20000,  0x3F0000,
+ota_1,    app,  ota_1,    0x410000, 0x3F0000,

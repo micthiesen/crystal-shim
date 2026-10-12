@@ -12,6 +12,7 @@ mod schedule;
 mod schedule_interval;
 pub use schedule_interval::ScheduleInterval;
 pub mod timezone;
+pub mod update;
 mod water;
 pub use policy::{
     HardwarePermit, Inputs, ScheduledWindow, Supervisor, SupervisorConfig, SupervisorStatus,

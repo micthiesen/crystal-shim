@@ -52,6 +52,18 @@ offline fixtures. Conservative interval scheduling is implemented and reviewed.
 Interval TLS operation leases are implemented. Signed-source agreement, drift
 policy and unattended runtime acquisition remain work.
 
+## Flashing and updates
+
+The app uses the [OTA layout](app/partitions.csv) and
+[esp-lan-ota](../docs/design/ota.md) at a pinned revision. One authorized USB flash
+with `sh scripts/flash.sh` installs the rollback bootloader from
+[`bootloader/`](bootloader/README.md), writes `ota_0` and erases only `otadata`;
+`esp-ota enroll` then reads its console line, and later updates use `esp-ota push`.
+Uploads start only while the output is idle. An updated image confirms itself
+only after storage, control, network and stable sensor health, or rolls back
+after five minutes. The console's `OTA` line reports the
+running slot, image state and rollback support. No hardware has been flashed.
+
 ## Control contract
 
 Stop-low / automatic restart-after-refill is confirmed. `Supervisor` is the public

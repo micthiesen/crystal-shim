@@ -1,4 +1,5 @@
 //! Priority3 local output owner, runtime transactions and flash exclusion.
+//! Iterates every 20 ms, and promptly whenever a flash ticket awaits acknowledgement.
 use crate::snapshot::{self, STATUS};
 use crystal_shim_core::runtime::{Observation, Runtime};
 use crystal_shim_core::{Fault, HardwarePermit, Reading, RelayCommand};
@@ -96,6 +97,9 @@ pub async fn run(
             relay_off: !relay_on,
             observed_at_ms: now.0,
         });
+        snapshot::publish_storage_idle(runtime.as_ref().is_none_or(|runtime| {
+            runtime.store_request().is_none() && !runtime.configuration_pending()
+        }));
         snapshot::publish_settings_status(crystal_shim_settings::Status {
             relay_on,
             durable_maintenance: runtime.as_ref().is_some_and(Runtime::durable_maintenance),
@@ -119,6 +123,8 @@ pub async fn run(
         if let Some(ticket) = flash_ticket {
             crate::flash_gate::acknowledge_off(ticket);
         }
-        tick.next().await;
+        // A pending flash ticket needs one complete iteration; run it now rather
+        // than at the next tick so each bounded flash chunk does not cost 20 ms.
+        embassy_futures::select::select(tick.next(), crate::flash_gate::requested()).await;
     }
 }

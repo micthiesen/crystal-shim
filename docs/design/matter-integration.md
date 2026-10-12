@@ -52,8 +52,9 @@ scratch buffer. Only one path publishes the owner per boot.
 USB receives/parses and handles applied replies while preparation is pending;
 it leaves storage tickets pending until access is published. A failed Store open
 publishes a permanent typed failure. No network result cancels the local service.
-The app never constructs another `FlashStorage`, opens another partition writer,
-or re-enters storage from inside an access closure. The Matter-owned scratch
+The KV path never constructs another `FlashStorage`, opens another partition
+writer, or re-enters storage from inside an access closure. The separate gated
+[OTA client](ota.md) is the only other flash handle and cannot program NVS. The Matter-owned scratch
 buffer is also 4096 bytes; the fallback buffer remains statically reserved.
 
 The SDK's default blocking mutex uses its single-executor backend. It does not

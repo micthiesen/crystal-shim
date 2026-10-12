@@ -52,6 +52,8 @@ esp-radio = { version = "0.18", default-features = false, features = ["esp32c6",
 esp-storage = { version = "0.9", default-features = false, features = ["esp32c6", "critical-section"] }
 esp-println = { version = "0.17", default-features = false, features = ["esp32c6", "jtag-serial"] }
 esp-backtrace = { version = "0.19", default-features = false, features = ["esp32c6", "panic-handler", "println"] }
+# Pinned OTA library: Matter-delivered updates into ota_0/ota_1 with rollback.
+esp-lan-ota = { git = "https://github.com/micthiesen/esp-lan-ota", rev = "9b6df6712f2727ecdc7cce8045e39b347085340c", features = ["rs-matter-0-2"] }
 esp-bootloader-esp-idf = { version = "0.5", default-features = false, features = ["esp32c6", "validation"] }
 mbedtls-rs = { version = "0.2.0", default-features = false, features = [
   "alg-aes",

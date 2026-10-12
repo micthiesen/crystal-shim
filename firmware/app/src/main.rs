@@ -14,6 +14,8 @@ mod clock;
 mod control;
 mod flash_gate;
 mod matter;
+mod ota;
+mod ota_flash;
 mod partition;
 mod pushover;
 mod radio;
@@ -71,6 +73,8 @@ async fn main(_spawner: embassy_executor::Spawner) {
         .as_mut()
         .map_err(|error| *error)
         .and_then(|store| store.load_boot(storage_buffer));
+    // Boot-record reads and the one-time post-USB otadata mark precede run eligibility.
+    let ota = ota::start(storage_buffer);
     if let Ok(boot) = &boot {
         snapshot::publish_boot(snapshot::BootConfiguration {
             configuration: boot.configuration,
@@ -96,17 +100,26 @@ async fn main(_spawner: embassy_executor::Spawner) {
             &access,
             &network,
             &identify_until,
+            ota,
         ),
-        matter::run(
-            board.rng,
-            board.adc1,
-            board.wifi,
-            board.bt,
-            store,
-            shared_buffer,
-            &access,
-            &network,
-            &identify_until,
+        embassy_futures::join::join(
+            matter::run(
+                board.rng,
+                board.adc1,
+                board.wifi,
+                board.bt,
+                store,
+                shared_buffer,
+                &access,
+                &network,
+                &identify_until,
+                ota.ok(),
+            ),
+            async {
+                if let Ok(ota) = ota {
+                    ota::supervise(ota, &access, &network, boot.is_ok()).await;
+                }
+            },
         ),
     )
     .await;
